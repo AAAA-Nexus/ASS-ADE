@@ -9,7 +9,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli.py:12.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_cli.py:12.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_doctor_stays_local_by_default",
@@ -23,7 +23,7 @@
     "ass_ade.cli._auto_detect_project"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli.py:12"
+    "source": "C:/!ass-ade/tests/test_cli.py:12"
   },
   "kind": "pure_function",
   "made_of": [],

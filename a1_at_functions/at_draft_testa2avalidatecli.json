@@ -9,7 +9,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a_cli.py:41.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_a2a_cli.py:41.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.testa2avalidatecli",
@@ -29,7 +29,7 @@
     "ass_ade.a2a.NegotiationResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a_cli.py:41"
+    "source": "C:/!ass-ade/tests/test_a2a_cli.py:41"
   },
   "kind": "pure_class",
   "made_of": [],

@@ -1,13 +1,13 @@
 {
-  "body": "    def test_no_scheme_raises(self) -> None:\n        with pytest.raises(ValueError, match=\"http or https\"):\n            validate_url(\"atomadic.tech\")\n",
-  "body_hash": "091c0b7ff33f0f86",
+  "body": "def test_no_scheme_raises(self) -> None:\n    with pytest.raises(ValueError, match=\"http or https\"):\n        validate_url(\"atomadic.tech\")\n",
+  "body_hash": "784ced5741e28a79",
   "body_truncated": false,
   "callers_of": [
     "raises",
     "validate_url"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_validation.py:109.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_validation.py:109.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_no_scheme_raises",
@@ -21,7 +21,7 @@
     "ass_ade.nexus.validation.validate_usdc_amount"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_validation.py:109"
+    "source": "C:/!ass-ade/tests/test_validation.py:109"
   },
   "kind": "pure_function",
   "made_of": [],

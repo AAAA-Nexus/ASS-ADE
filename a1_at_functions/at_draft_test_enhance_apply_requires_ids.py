@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_enhance_cli.py:107
+# Extracted from C:/!ass-ade/tests/test_enhance_cli.py:107
 # Component id: at.source.ass_ade.test_enhance_apply_requires_ids
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_enhance_apply_requires_ids(tmp_path: Path) -> None:

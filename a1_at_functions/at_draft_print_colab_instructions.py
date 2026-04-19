@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_training/train_lora.py:210
+# Extracted from C:/!ass-ade/scripts/lora_training/train_lora.py:210
 # Component id: at.source.ass_ade.print_colab_instructions
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def print_colab_instructions(data_path: Path = Path("training_data/training_data.jsonl")) -> None:

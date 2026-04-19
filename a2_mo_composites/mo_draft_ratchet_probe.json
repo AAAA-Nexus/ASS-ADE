@@ -1,12 +1,12 @@
 {
-  "body": "    def ratchet_probe(self, session_ids: list[str], **kwargs: Any) -> RatchetProbeResult:\n        \"\"\"/v1/ratchet/probe \u2014 batch liveness check for up to 100 sessions. $0.008/call\"\"\"\n        return self._post_model(\"/v1/ratchet/probe\", RatchetProbeResult, {\"session_ids\": session_ids, **kwargs})\n",
-  "body_hash": "765490f98b31a4b3",
+  "body": "def ratchet_probe(self, session_ids: list[str], **kwargs: Any) -> RatchetProbeResult:\n    \"\"\"/v1/ratchet/probe \u2014 batch liveness check for up to 100 sessions. $0.008/call\"\"\"\n    return self._post_model(\"/v1/ratchet/probe\", RatchetProbeResult, {\"session_ids\": session_ids, **kwargs})\n",
+  "body_hash": "1a4299bc60f888cb",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:464.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:464.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.ratchet_probe",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:464"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:464"
   },
   "kind": "engine_molecule",
   "made_of": [],

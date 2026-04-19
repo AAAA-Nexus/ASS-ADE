@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_materialize_plan.py:5
+# Extracted from C:/!ass-ade/src/ass_ade/engine/rebuild/schema_materializer.py:105
 # Component id: qk.source.ass_ade.materialize_plan
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def materialize_plan(
@@ -47,6 +49,9 @@ def materialize_plan(
         src_sym = proposal.get("source_symbol") or {}
         body = proposal.get("body") or ""
         lang = (src_sym.get("language") or "python").lower()
+        if body and lang == "python":
+            body = _normalize_python_body_for_emit(body)
+            artifact["body"] = body
 
         version, change_type = assign_version(artifact["id"], body, lang, prev_versions)
         artifact["version"] = version
@@ -74,6 +79,7 @@ def materialize_plan(
                 header = (
                     f"# Extracted from {src_sym.get('path', '?')}:{src_sym.get('line', 0)}\n"
                     f"# Component id: {artifact['id']}\n"
+                    "from __future__ import annotations\n\n"
                     f"__version__ = \"{version}\"\n\n"
                 )
             else:

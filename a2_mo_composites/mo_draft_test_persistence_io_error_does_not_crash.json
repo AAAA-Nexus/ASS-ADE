@@ -1,6 +1,6 @@
 {
-  "body": "    def test_persistence_io_error_does_not_crash(self, tmp_path: Path) -> None:\n        # Point to a directory path (not writable as file)\n        b = BAS({\"bas_state_path\": str(tmp_path)})\n        b.alert(\"novelty_spike\", {\"novelty\": 0.8})  # should not raise\n",
-  "body_hash": "661cb4df1acef77e",
+  "body": "def test_persistence_io_error_does_not_crash(self, tmp_path: Path) -> None:\n    # Point to a directory path (not writable as file)\n    b = BAS({\"bas_state_path\": str(tmp_path)})\n    b.alert(\"novelty_spike\", {\"novelty\": 0.8})  # should not raise\n",
+  "body_hash": "6b984ef7b89b06d8",
   "body_truncated": false,
   "callers_of": [
     "BAS",
@@ -8,7 +8,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:254.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:254.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_persistence_io_error_does_not_crash",
@@ -36,7 +36,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:254"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:254"
   },
   "kind": "engine_molecule",
   "made_of": [],

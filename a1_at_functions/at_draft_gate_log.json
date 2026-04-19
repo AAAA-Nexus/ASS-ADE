@@ -1,16 +1,20 @@
 {
-  "body": "    def gate_log(self) -> list[GateResult]:\n        \"\"\"Full log of gate results for this session.\"\"\"\n        return list(self._gate_log)\n",
-  "body_hash": "e040e185a0cb8ef4",
+  "body": "def gate_log(self) -> list[GateResult]:\n    \"\"\"Full log of gate results for this session.\"\"\"\n    return list(self._gate_log)\n",
+  "body_hash": "8f8b26a2151befe9",
   "body_truncated": false,
   "callers_of": [
     "list"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_qualitygates.py:22.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/gates.py:52.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.gate_log",
   "imports": [
+    "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "typing.Any",
     "ast",
     "re",
     "json",
@@ -27,7 +31,7 @@
     "ass_ade.agent.sam.SAM"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_qualitygates.py:22"
+    "source": "C:/!ass-ade/src/ass_ade/agent/gates.py:52"
   },
   "kind": "pure_function",
   "made_of": [],

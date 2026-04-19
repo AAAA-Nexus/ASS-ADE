@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_map_terrain.py:26
+# Extracted from C:/!ass-ade/tests/test_map_terrain.py:28
 # Component id: at.source.ass_ade.test_map_terrain_proceed_for_existing_local_and_hosted_tool
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_map_terrain_proceed_for_existing_local_and_hosted_tool(tmp_path: Path) -> None:

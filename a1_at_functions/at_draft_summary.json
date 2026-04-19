@@ -1,19 +1,38 @@
 {
-  "body": "    def summary(self) -> str:\n        total = len(self.steps)\n        passed = sum(1 for s in self.steps if s.status == StepStatus.PASSED)\n        failed = sum(1 for s in self.steps if s.status == StepStatus.FAILED)\n        skipped = sum(1 for s in self.steps if s.status == StepStatus.SKIPPED)\n        verdict = \"PASSED\" if self.passed else \"FAILED\"\n        return f\"[{verdict}] {self.name}: {passed}/{total} passed, {failed} failed, {skipped} skipped ({self.duration_ms:.0f}ms)\"\n",
-  "body_hash": "8802aaeba027da0c",
+  "body": "def summary(self) -> str:\n    s = self.scout\n    t = self.test\n    d = self.doc\n    dep = self.dependency\n\n    parts = [\n        f\"Repo at `{self.root}` contains {s['total_files']} files\"\n        f\" ({s['source_files']} source, {s['test_files_count']} test-related)\"\n        f\" across {s['max_depth']} directory levels\"\n        f\" ({s['total_size_kb']} KB total).\",\n    ]\n    if dep[\"has_circular_deps\"]:\n        parts.append(f\"Circular import detected ({len(dep['circular_deps'])} cycle(s)).\")\n    parts.append(\n        f\"Test coverage: {t['test_functions']} test functions\"\n        f\" across {t['test_files']} test files\"\n        f\" (ratio {t['coverage_ratio']}).\"\n    )\n    if d[\"doc_coverage\"] < 0.5:\n        parts.append(f\"Documentation coverage is low ({d['doc_coverage']:.0%}).\")\n    else:\n        parts.append(f\"Documentation coverage: {d['doc_coverage']:.0%}.\")\n    dominant = self.tier.get(\"dominant_tier\", \"unknown\")\n    parts.append(f\"Dominant tier: `{dominant}`.\")\n    return \" \".join(parts)\n",
+  "body_hash": "517183287efa06db",
   "body_truncated": false,
   "callers_of": [
-    "len",
-    "sum"
+    "append",
+    "get",
+    "join",
+    "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_pipelineresult.py:19.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/recon.py:697.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.summary",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "concurrent.futures",
+    "os",
+    "re",
+    "time",
+    "collections.defaultdict",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Literal",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "ass_ade.local.repo.DEFAULT_IGNORED_DIRS",
+    "ass_ade.local.repo.summarize_repo"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_pipelineresult.py:19"
+    "source": "C:/!ass-ade/src/ass_ade/recon.py:697"
   },
   "kind": "pure_function",
   "made_of": [],

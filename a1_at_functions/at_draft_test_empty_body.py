@@ -1,6 +1,8 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpublicpythonapi.py:14
+# Extracted from C:/!ass-ade/tests/test_version_tracker.py:79
 # Component id: at.source.ass_ade.test_empty_body
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
-    def test_empty_body(self):
-        assert _public_python_api("") == set()
+def test_empty_body(self):
+    assert _public_python_api("") == set()

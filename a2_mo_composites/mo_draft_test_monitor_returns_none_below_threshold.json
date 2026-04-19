@@ -1,13 +1,13 @@
 {
-  "body": "    def test_monitor_returns_none_below_threshold(self) -> None:\n        b = BAS({})\n        a = b.monitor({\"synergy\": 0.1, \"novelty\": 0.1, \"gvu_delta\": 0.0})\n        assert a is None\n",
-  "body_hash": "42edbf8b81fdfbf5",
+  "body": "def test_monitor_returns_none_below_threshold(self) -> None:\n    b = BAS({})\n    a = b.monitor({\"synergy\": 0.1, \"novelty\": 0.1, \"gvu_delta\": 0.0})\n    assert a is None\n",
+  "body_hash": "f741d02c0d58d218",
   "body_truncated": false,
   "callers_of": [
     "BAS",
     "monitor"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:180.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:180.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_monitor_returns_none_below_threshold",
@@ -35,7 +35,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:180"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:180"
   },
   "kind": "engine_molecule",
   "made_of": [

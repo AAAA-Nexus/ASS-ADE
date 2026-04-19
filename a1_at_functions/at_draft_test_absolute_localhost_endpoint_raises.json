@@ -1,6 +1,6 @@
 {
-  "body": "    def test_absolute_localhost_endpoint_raises(self) -> None:\n        \"\"\"Invoking a tool with localhost endpoint should raise ValueError.\"\"\"\n        from ass_ade.mcp.utils import invoke_tool\n        \n        tool = MCPTool(\n            name=\"admin-tool\",\n            endpoint=\"https://localhost:8080/admin\",\n            method=\"POST\",\n            paid=False,\n        )\n        \n        with pytest.raises(ValueError, match=\"blocked network address|localhost\"):\n            invoke_tool(\"https://api.example.com\", tool)\n",
-  "body_hash": "072cc9d9d5f79813",
+  "body": "def test_absolute_localhost_endpoint_raises(self) -> None:\n    \"\"\"Invoking a tool with localhost endpoint should raise ValueError.\"\"\"\n    from ass_ade.mcp.utils import invoke_tool\n\n    tool = MCPTool(\n        name=\"admin-tool\",\n        endpoint=\"https://localhost:8080/admin\",\n        method=\"POST\",\n        paid=False,\n    )\n\n    with pytest.raises(ValueError, match=\"blocked network address|localhost\"):\n        invoke_tool(\"https://api.example.com\", tool)\n",
+  "body_hash": "20bc146d063aa7ba",
   "body_truncated": false,
   "callers_of": [
     "MCPTool",
@@ -8,7 +8,7 @@
     "invoke_tool"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_ssrf_protection.py:138.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_ssrf_protection.py:138.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_absolute_localhost_endpoint_raises",
@@ -28,7 +28,7 @@
     "ass_ade.mcp.utils.simulate_invoke"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_ssrf_protection.py:138"
+    "source": "C:/!ass-ade/tests/test_ssrf_protection.py:138"
   },
   "kind": "pure_function",
   "made_of": [],

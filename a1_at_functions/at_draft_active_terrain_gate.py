@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/map_terrain.py:477
+# Extracted from C:/!ass-ade/src/ass_ade/map_terrain.py:1217
 # Component id: at.source.ass_ade.active_terrain_gate
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def active_terrain_gate(
@@ -26,7 +28,7 @@ def active_terrain_gate(
     ctx = context or {}
     root = Path(working_dir).resolve()
     task_description = ctx.get("task_description", "unknown task")
-    default_cap_type: CapabilityType = "tools"
+    default_cap_type = _normalize_type(str(ctx.get("cap_type", "tools"))) or "tools"
 
     # Build current inventory
     inventory = build_capability_inventory(working_dir=root)
@@ -72,12 +74,14 @@ def active_terrain_gate(
                 verification_criteria=criteria,
                 src_root=root,
             )
-        stubs.append(InventionStub(
-            capability_name=cap_name,
-            stub_path=stub_path,
-            spec_summary=spec,
-            verification_criteria=criteria,
-        ))
+        stubs.append(
+            InventionStub(
+                capability_name=cap_name,
+                stub_path=stub_path,
+                spec_summary=spec,
+                verification_criteria=criteria,
+            )
+        )
 
     return ActiveTerrainVerdict(
         verdict="HALT_AND_INVENT",
@@ -85,7 +89,7 @@ def active_terrain_gate(
         capabilities_present=present,
         capabilities_missing=missing_names,
         next_action=(
-            f"HALTED. {len(missing_names)} capability stub(s) created. "
-            "Implement each stub before retrying the original task."
+            f"HALTED. {len(missing_names)} capability implementation packet(s) created. "
+            "Review the generated assets before retrying the original task."
         ),
     )

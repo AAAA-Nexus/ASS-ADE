@@ -1,6 +1,6 @@
 {
-  "body": "    def test_apply_multi_file(self, executor: EditPlanExecutor, workspace: Path):\n        plan = EditPlan(description=\"Multi-file edit\")\n        plan.add_modify(\"main.py\", \"pass\", \"print('main')\")\n        plan.add_modify(\"utils.py\", \"return 42\", \"return 99\")\n        plan.add_create(\"new.py\", \"# new file\\n\")\n        executor.validate(plan)\n        result = executor.apply(plan)\n        assert result.success\n        assert \"print('main')\" in (workspace / \"main.py\").read_text(encoding=\"utf-8\")\n        assert \"return 99\" in (workspace / \"utils.py\").read_text(encoding=\"utf-8\")\n        assert (workspace / \"new.py\").exists()\n",
-  "body_hash": "a4b6442b9e247de6",
+  "body": "def test_apply_multi_file(self, executor: EditPlanExecutor, workspace: Path):\n    plan = EditPlan(description=\"Multi-file edit\")\n    plan.add_modify(\"main.py\", \"pass\", \"print('main')\")\n    plan.add_modify(\"utils.py\", \"return 42\", \"return 99\")\n    plan.add_create(\"new.py\", \"# new file\\n\")\n    executor.validate(plan)\n    result = executor.apply(plan)\n    assert result.success\n    assert \"print('main')\" in (workspace / \"main.py\").read_text(encoding=\"utf-8\")\n    assert \"return 99\" in (workspace / \"utils.py\").read_text(encoding=\"utf-8\")\n    assert (workspace / \"new.py\").exists()\n",
+  "body_hash": "88757353056aa1d8",
   "body_truncated": false,
   "callers_of": [
     "EditPlan",
@@ -12,7 +12,7 @@
     "read_text"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:133.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_plan.py:133.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_apply_multi_file",
@@ -26,7 +26,7 @@
     "ass_ade.tools.plan.EditPlanExecutor"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:133"
+    "source": "C:/!ass-ade/tests/test_plan.py:133"
   },
   "kind": "pure_function",
   "made_of": [],

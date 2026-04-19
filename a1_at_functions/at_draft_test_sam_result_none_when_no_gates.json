@@ -1,6 +1,6 @@
 {
-  "body": "    def test_sam_result_none_when_no_gates(self):\n        provider = _make_provider_returning_text(\"hello\")\n        registry = ToolRegistry()\n        loop = AgentLoop(provider=provider, registry=registry)\n        loop.step(\"What is 2+2?\")\n        assert loop.last_sam_result is None\n",
-  "body_hash": "e4809f1ac125923d",
+  "body": "def test_sam_result_none_when_no_gates(self):\n    provider = _make_provider_returning_text(\"hello\")\n    registry = ToolRegistry()\n    loop = AgentLoop(provider=provider, registry=registry)\n    loop.step(\"What is 2+2?\")\n    assert loop.last_sam_result is None\n",
+  "body_hash": "5467e3dca2818a19",
   "body_truncated": false,
   "callers_of": [
     "_make_provider_returning_text",
@@ -9,7 +9,7 @@
     "step"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase1_integration.py:105.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase1_integration.py:105.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_sam_result_none_when_no_gates",
@@ -35,7 +35,7 @@
     "rich.console.Console"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase1_integration.py:105"
+    "source": "C:/!ass-ade/tests/test_phase1_integration.py:105"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_protocol.py:44
+# Extracted from C:/!ass-ade/tests/test_protocol.py:44
 # Component id: at.source.ass_ade.test_render_protocol_markdown_contains_sections
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_render_protocol_markdown_contains_sections(tmp_path: Path) -> None:

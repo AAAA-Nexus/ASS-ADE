@@ -1,6 +1,6 @@
 {
-  "body": "    def test_exception_becomes_failed_step(self) -> None:\n        pipe = Pipeline(\"err\")\n        pipe.add(\"boom\", error_step)\n        result = pipe.run()\n        assert not result.passed\n        assert result.steps[0].status == StepStatus.FAILED\n        assert \"kaboom\" in result.steps[0].error\n",
-  "body_hash": "5929fa62fbccb3cb",
+  "body": "def test_exception_becomes_failed_step(self) -> None:\n    pipe = Pipeline(\"err\")\n    pipe.add(\"boom\", error_step)\n    result = pipe.run()\n    assert not result.passed\n    assert result.steps[0].status == StepStatus.FAILED\n    assert \"kaboom\" in result.steps[0].error\n",
+  "body_hash": "32ec6c6c3a20f289",
   "body_truncated": false,
   "callers_of": [
     "Pipeline",
@@ -8,7 +8,7 @@
     "run"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:125.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_pipeline.py:125.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_exception_becomes_failed_step",
@@ -23,7 +23,7 @@
     "ass_ade.pipeline.StepStatus"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:125"
+    "source": "C:/!ass-ade/tests/test_pipeline.py:125"
   },
   "kind": "pure_function",
   "made_of": [],

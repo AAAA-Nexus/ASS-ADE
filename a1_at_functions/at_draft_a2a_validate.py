@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_a2a_validate.py:5
+# Extracted from C:/!ass-ade/src/ass_ade/commands/a2a.py:51
 # Component id: at.source.ass_ade.a2a_validate
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def a2a_validate(

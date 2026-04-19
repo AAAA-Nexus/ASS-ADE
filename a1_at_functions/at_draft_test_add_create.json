@@ -1,6 +1,6 @@
 {
-  "body": "    def test_add_create(self):\n        plan = EditPlan(description=\"Test plan\")\n        plan.add_create(\"new.py\", \"print('new')\\n\")\n        assert len(plan.edits) == 1\n        assert plan.edits[0].kind == EditKind.CREATE\n",
-  "body_hash": "9260ebe807618a32",
+  "body": "def test_add_create(self):\n    plan = EditPlan(description=\"Test plan\")\n    plan.add_create(\"new.py\", \"print('new')\\n\")\n    assert len(plan.edits) == 1\n    assert plan.edits[0].kind == EditKind.CREATE\n",
+  "body_hash": "0ca4a831762f22c9",
   "body_truncated": false,
   "callers_of": [
     "EditPlan",
@@ -8,7 +8,7 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:27.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_plan.py:27.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_add_create",
@@ -22,7 +22,7 @@
     "ass_ade.tools.plan.EditPlanExecutor"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:27"
+    "source": "C:/!ass-ade/tests/test_plan.py:27"
   },
   "kind": "pure_function",
   "made_of": [],

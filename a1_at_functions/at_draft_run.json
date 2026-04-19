@@ -1,19 +1,22 @@
 {
-  "body": "    def run(self, ctx: dict) -> dict:\n        ok = self.pre_action_verify(ctx.get(\"action\", {}))\n        return {\"allowed\": ok}\n",
-  "body_hash": "56e4682932e19d55",
+  "body": "def run(self, ctx: dict) -> dict:\n    ok = self.pre_action_verify(ctx.get(\"action\", {}))\n    return {\"allowed\": ok}\n",
+  "body_hash": "2f4599e84ce193ee",
   "body_truncated": false,
   "callers_of": [
     "pre_action_verify",
     "get"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_trustverificationgate.py:50.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/trust_gate.py:52.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.run",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "typing.Any"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_trustverificationgate.py:50"
+    "source": "C:/!ass-ade/src/ass_ade/agent/trust_gate.py:52"
   },
   "kind": "pure_function",
   "made_of": [],

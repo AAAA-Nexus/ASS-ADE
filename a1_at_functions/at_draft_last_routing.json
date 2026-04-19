@@ -1,10 +1,10 @@
 {
-  "body": "    def last_routing(self) -> RoutingDecision | None:\n        return self._last_routing\n",
-  "body_hash": "2c26dea89b70eeab",
+  "body": "def last_routing(self) -> RoutingDecision | None:\n    return self._last_routing\n",
+  "body_hash": "d900cef3f130b30f",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/loop.py:112.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/loop.py:112.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.last_routing",
@@ -34,7 +34,7 @@
     "ass_ade.tools.registry.ToolRegistry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/loop.py:112"
+    "source": "C:/!ass-ade/src/ass_ade/agent/loop.py:112"
   },
   "kind": "pure_function",
   "made_of": [],

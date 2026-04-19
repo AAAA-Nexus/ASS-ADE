@@ -1,26 +1,39 @@
 {
-  "body": "    def test_no_matches(self, workspace: Path):\n        tool = GrepSearchTool(str(workspace))\n        r = tool.execute(pattern=\"ZZZZZ_NOTHING\")\n        assert \"No matches\" in r.output\n",
-  "body_hash": "16f1acd60dea25c9",
+  "body": "def test_no_matches(self, workspace: Path):\n    tool = SearchFilesTool(str(workspace))\n    r = tool.execute(pattern=\"**/*.rs\")\n    assert \"No matches\" in r.output\n",
+  "body_hash": "e254ca7049c5a7ee",
   "body_truncated": false,
   "callers_of": [
-    "GrepSearchTool",
+    "SearchFilesTool",
     "execute",
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testgrepsearch.py:12.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_tools_builtin.py:154.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_no_matches",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.tools.builtin.EditFileTool",
+    "ass_ade.tools.builtin.GrepSearchTool",
+    "ass_ade.tools.builtin.ListDirectoryTool",
+    "ass_ade.tools.builtin.ReadFileTool",
+    "ass_ade.tools.builtin.RunCommandTool",
+    "ass_ade.tools.builtin.SearchFilesTool",
+    "ass_ade.tools.builtin.WriteFileTool",
+    "ass_ade.tools.registry.default_registry"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testgrepsearch.py:12"
+    "source": "C:/!ass-ade/tests/test_tools_builtin.py:154"
   },
   "kind": "pure_function",
   "made_of": [],
   "name": "test_no_matches",
   "product_categories": [
-    "DCM"
+    "COR"
   ],
   "provides": [
     "rebuild candidate for test_no_matches"

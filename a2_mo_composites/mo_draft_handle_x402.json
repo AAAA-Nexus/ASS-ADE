@@ -1,6 +1,6 @@
 {
-  "body": "    def handle_x402(self, response: httpx.Response) -> dict:\n        \"\"\"Parse a 402 Payment Required response and return payment details.\n\n        The x402 protocol returns payment requirements in the response body.\n        This method parses the response into a dict that includes both backward-compatible\n        keys and a typed PaymentChallenge for new code.\n\n        Returns a dict with:\n        - payment_required: bool (always True)\n        - challenge: PaymentChallenge (typed, parsed from response)\n        - amount_usdc: float (from challenge.amount_usdc)\n        - network: str (blockchain network)\n        - treasury: str (payment recipient)\n        - endpoint: str (which endpoint requires payment)\n        - detail: str (human-readable message)\n        - raw: dict (original response body)\n        \"\"\"\n        try:\n            body = response.json()\n        except ValueError:\n            body = {}\n\n        # Try to parse as a typed PaymentChallenge\n        challenge = None\n        try:\n            challenge = PaymentChallenge.from_response(body)\n        except ValueError:\n            pass  # Fall back to loose dict format\n\n        return {\n            \"payment_required\": True,\n            \"challenge\": challenge,  # New: typed PaymentChallenge\n            \"amount_usdc\": body.get(\"amount\") or body.get(\"price_usdc\", 0),\n            \"network\": body.get(\"network\", \"base\"),\n            \"treasury\": body.get(\"address\") or body.get(\"treasury\", \"\"),\n            \"endpoint\": body.get(\"endpoint\", \"\"),\n            \"detail\": body.get(\"detail\") or body.get(\"message\", \"Payment required\"),\n            \"raw\": body,\n        }\n",
-  "body_hash": "2f041c59ca212cce",
+  "body": "def handle_x402(self, response: httpx.Response) -> dict:\n    \"\"\"Parse a 402 Payment Required response and return payment details.\n\n    The x402 protocol returns payment requirements in the response body.\n    This method parses the response into a dict that includes both backward-compatible\n    keys and a typed PaymentChallenge for new code.\n\n    Returns a dict with:\n    - payment_required: bool (always True)\n    - challenge: PaymentChallenge (typed, parsed from response)\n    - amount_usdc: float (from challenge.amount_usdc)\n    - network: str (blockchain network)\n    - treasury: str (payment recipient)\n    - endpoint: str (which endpoint requires payment)\n    - detail: str (human-readable message)\n    - raw: dict (original response body)\n    \"\"\"\n    try:\n        body = response.json()\n    except ValueError:\n        body = {}\n\n    # Try to parse as a typed PaymentChallenge\n    challenge = None\n    try:\n        challenge = PaymentChallenge.from_response(body)\n    except ValueError:\n        pass  # Fall back to loose dict format\n\n    return {\n        \"payment_required\": True,\n        \"challenge\": challenge,  # New: typed PaymentChallenge\n        \"amount_usdc\": body.get(\"amount\") or body.get(\"price_usdc\", 0),\n        \"network\": body.get(\"network\", \"base\"),\n        \"treasury\": body.get(\"address\") or body.get(\"treasury\", \"\"),\n        \"endpoint\": body.get(\"endpoint\", \"\"),\n        \"detail\": body.get(\"detail\") or body.get(\"message\", \"Payment required\"),\n        \"raw\": body,\n    }\n",
+  "body_hash": "43bdb6c297c56b4c",
   "body_truncated": false,
   "callers_of": [
     "json",
@@ -8,7 +8,7 @@
     "get"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:303.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:303.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.handle_x402",
@@ -162,7 +162,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:303"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:303"
   },
   "kind": "engine_molecule",
   "made_of": [

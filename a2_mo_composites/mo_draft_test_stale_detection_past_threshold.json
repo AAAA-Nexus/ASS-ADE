@@ -1,6 +1,6 @@
 {
-  "body": "    def test_stale_detection_past_threshold(self, tmp_path):\n        tca = self._make(tmp_path)\n        # Manually plant an old timestamp (2 hours ago with 1h threshold)\n        tca._reads[\"/old.py\"] = time.time() - 7300\n        stale = tca.get_stale_files([\"/old.py\"])\n        assert len(stale) == 1\n        assert not stale[0].fresh\n",
-  "body_hash": "9cc2763f70ac3bc1",
+  "body": "def test_stale_detection_past_threshold(self, tmp_path):\n    tca = self._make(tmp_path)\n    # Manually plant an old timestamp (2 hours ago with 1h threshold)\n    tca._reads[\"/old.py\"] = time.time() - 7300\n    stale = tca.get_stale_files([\"/old.py\"])\n    assert len(stale) == 1\n    assert not stale[0].fresh\n",
+  "body_hash": "65b8b17d21dda3bb",
   "body_truncated": false,
   "callers_of": [
     "_make",
@@ -9,7 +9,7 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:230.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase_engines.py:230.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_stale_detection_past_threshold",
@@ -64,10 +64,12 @@
     "ass_ade.agent.orchestrator.CycleReport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:230"
+    "source": "C:/!ass-ade/tests/test_phase_engines.py:230"
   },
   "kind": "engine_molecule",
-  "made_of": [],
+  "made_of": [
+    "at.source.ass_ade.get_stale_files"
+  ],
   "name": "test_stale_detection_past_threshold",
   "product_categories": [
     "COR"

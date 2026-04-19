@@ -1,12 +1,12 @@
 {
-  "body": "    def certify_codebase(\n        self,\n        local_certificate: dict[str, Any],\n        agent_id: str | None = None,\n    ) -> CertifyResult:\n        \"\"\"Sign and certify a codebase via AAAA-Nexus PQC signing.\"\"\"\n        payload: dict[str, Any] = {\"certificate\": local_certificate}\n        if agent_id:\n            payload[\"agent_id\"] = agent_id\n        return self._post_model(\"/v1/certify/codebase\", CertifyResult, payload)\n",
-  "body_hash": "c9dcd350008054cd",
+  "body": "def certify_codebase(\n    self,\n    local_certificate: dict[str, Any],\n    agent_id: str | None = None,\n) -> CertifyResult:\n    \"\"\"Sign and certify a codebase via AAAA-Nexus PQC signing.\"\"\"\n    payload: dict[str, Any] = {\"certificate\": local_certificate}\n    if agent_id:\n        payload[\"agent_id\"] = agent_id\n    return self._post_model(\"/v1/certify/codebase\", CertifyResult, payload)\n",
+  "body_hash": "5490887a885c7c9f",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1239.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1239.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.certify_codebase",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1239"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1239"
   },
   "kind": "engine_molecule",
   "made_of": [],

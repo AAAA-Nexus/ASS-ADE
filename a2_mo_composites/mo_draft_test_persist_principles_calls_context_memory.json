@@ -1,6 +1,6 @@
 {
-  "body": "    def test_persist_principles_calls_context_memory(self):\n        from ass_ade.agent.wisdom import WisdomEngine\n        engine = WisdomEngine({})\n        engine._principles = [\"verify before acting\", \"halt on capability gap\"]\n\n        with patch(\"ass_ade.context_memory.store_vector_memory\") as mock_store:\n            count = engine.persist_principles()\n        assert count == 2\n",
-  "body_hash": "9048a4e40f015a95",
+  "body": "def test_persist_principles_calls_context_memory(self):\n    from ass_ade.agent.wisdom import WisdomEngine\n    engine = WisdomEngine({})\n    engine._principles = [\"verify before acting\", \"halt on capability gap\"]\n\n    with patch(\"ass_ade.context_memory.store_vector_memory\") as mock_store:\n        count = engine.persist_principles()\n    assert count == 2\n",
+  "body_hash": "080b912cd2849082",
   "body_truncated": false,
   "callers_of": [
     "WisdomEngine",
@@ -8,7 +8,7 @@
     "persist_principles"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:572.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase_engines.py:572.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_persist_principles_calls_context_memory",
@@ -63,10 +63,12 @@
     "ass_ade.agent.orchestrator.CycleReport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:572"
+    "source": "C:/!ass-ade/tests/test_phase_engines.py:572"
   },
   "kind": "engine_molecule",
-  "made_of": [],
+  "made_of": [
+    "at.source.ass_ade.persist_principles"
+  ],
   "name": "test_persist_principles_calls_context_memory",
   "product_categories": [
     "COR"

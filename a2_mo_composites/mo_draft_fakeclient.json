@@ -1,10 +1,10 @@
 {
-  "body": "    class FakeClient:\n        def __init__(self, base_url: str, timeout: float = 20.0, transport=None, api_key: str | None = None):\n            pass\n\n        def __enter__(self):\n            return self\n\n        def __exit__(self, exc_type, exc, tb):\n            return False\n\n        def get_mcp_manifest(self):\n            return manifest\n",
-  "body_hash": "a79ae839f47fad03",
+  "body": "class FakeClient:\n    def __init__(self, base_url: str, timeout: float = 20.0, transport=None, api_key: str | None = None):\n        pass\n\n    def __enter__(self):\n        return self\n\n    def __exit__(self, exc_type, exc, tb):\n        return False\n\n    def get_mcp_manifest(self):\n        return manifest\n",
+  "body_hash": "1c6c3734b1bac11a",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp.py:168.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp.py:168.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.fakeclient",
@@ -27,7 +27,7 @@
     "ass_ade.mcp.mock_server.start_server"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp.py:168"
+    "source": "C:/!ass-ade/tests/test_mcp.py:168"
   },
   "kind": "engine_molecule",
   "made_of": [],

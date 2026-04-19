@@ -1,12 +1,12 @@
 {
-  "body": "    def compliance_incidents(self, system_id: str, **kwargs: Any) -> dict:\n        \"\"\"/v1/compliance/incidents \u2014 incident registry query (INC-101). $0.020/query\"\"\"\n        return self._get_raw(\"/v1/compliance/incidents\", system_id=system_id, **kwargs)\n",
-  "body_hash": "9a288f51fdacdfee",
+  "body": "def compliance_incidents(self, system_id: str, **kwargs: Any) -> dict:\n    \"\"\"/v1/compliance/incidents \u2014 incident registry query (INC-101). $0.020/query\"\"\"\n    return self._get_raw(\"/v1/compliance/incidents\", system_id=system_id, **kwargs)\n",
+  "body_hash": "5e886a5b85393b3b",
   "body_truncated": false,
   "callers_of": [
     "_get_raw"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1097.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1097.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.compliance_incidents",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1097"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1097"
   },
   "kind": "engine_molecule",
   "made_of": [],

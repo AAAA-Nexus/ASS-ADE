@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/benchmarks/messy_demo/utils.py:18
+# Extracted from C:/!ass-ade/benchmarks/messy_demo/utils.py:18
 # Component id: at.source.ass_ade.helper_thing
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def helper_thing(x, y, z):

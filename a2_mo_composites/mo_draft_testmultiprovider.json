@@ -17,7 +17,7 @@
     "Message"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:378.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:378.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.testmultiprovider",
@@ -96,7 +96,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:378"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:378"
   },
   "kind": "engine_molecule",
   "made_of": [],

@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/tokens.py:141
+# Extracted from C:/!ass-ade/src/ass_ade/engine/tokens.py:141
 # Component id: qk.source.ass_ade.context_window_for
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def context_window_for(model: str | None) -> int:

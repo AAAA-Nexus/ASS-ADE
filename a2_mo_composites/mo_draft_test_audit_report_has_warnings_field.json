@@ -1,6 +1,6 @@
 {
-  "body": "    def test_audit_report_has_warnings_field(self) -> None:\n        w = WisdomEngine({})\n        report = w.run_audit({})\n        assert hasattr(report, \"warnings\")\n        assert isinstance(report.warnings, list)\n",
-  "body_hash": "1c761f454131035d",
+  "body": "def test_audit_report_has_warnings_field(self) -> None:\n    w = WisdomEngine({})\n    report = w.run_audit({})\n    assert hasattr(report, \"warnings\")\n    assert isinstance(report.warnings, list)\n",
+  "body_hash": "0f5fe2dfe6779ede",
   "body_truncated": false,
   "callers_of": [
     "WisdomEngine",
@@ -9,7 +9,7 @@
     "isinstance"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:146.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:146.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_audit_report_has_warnings_field",
@@ -37,10 +37,12 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:146"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:146"
   },
   "kind": "engine_molecule",
-  "made_of": [],
+  "made_of": [
+    "at.source.ass_ade.run_audit"
+  ],
   "name": "test_audit_report_has_warnings_field",
   "product_categories": [
     "SRG"

@@ -1,10 +1,10 @@
 {
-  "body": "    def test_chutes_in_catalog(self):\n        assert \"chutes\" in FREE_PROVIDERS\n",
-  "body_hash": "495583fc527fb8b3",
+  "body": "def test_chutes_in_catalog(self):\n    assert \"chutes\" in FREE_PROVIDERS\n",
+  "body_hash": "0a0db4735c85307f",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:633.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:633.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_chutes_in_catalog",
@@ -83,7 +83,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:633"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:633"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,16 +1,22 @@
 {
-  "body": "    def report(self) -> dict:\n        return {\"engine\": \"proofbridge\", \"translations\": self._translations}\n",
-  "body_hash": "b06845faa0cb997f",
+  "body": "def report(self) -> dict:\n    return {\"engine\": \"proofbridge\", \"translations\": self._translations}\n",
+  "body_hash": "3eb57648afc545a5",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_proofbridge.py:45.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/proofbridge.py:60.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "qk.source.ass_ade.report",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "re",
+    "dataclasses.dataclass",
+    "typing.Any"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_proofbridge.py:45"
+    "source": "C:/!ass-ade/src/ass_ade/agent/proofbridge.py:60"
   },
   "kind": "invariant",
   "made_of": [],

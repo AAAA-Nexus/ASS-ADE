@@ -1,12 +1,12 @@
 {
-  "body": "    def aibom_drift(self, model_id: str, **kwargs: Any) -> AibomDriftResult:\n        \"\"\"/v1/aibom/drift \u2014 AIBOM lineage verification (AIB-401). $0.040/request\"\"\"\n        return self._post_model(\"/v1/aibom/drift\", AibomDriftResult, {\"model_id\": model_id, **kwargs})\n",
-  "body_hash": "01b91d6b028bb14f",
+  "body": "def aibom_drift(self, model_id: str, **kwargs: Any) -> AibomDriftResult:\n    \"\"\"/v1/aibom/drift \u2014 AIBOM lineage verification (AIB-401). $0.040/request\"\"\"\n    return self._post_model(\"/v1/aibom/drift\", AibomDriftResult, {\"model_id\": model_id, **kwargs})\n",
+  "body_hash": "f1e5171f2ca2d87a",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:718.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:718.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.aibom_drift",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:718"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:718"
   },
   "kind": "engine_molecule",
   "made_of": [],

@@ -1,6 +1,8 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testfilehistory.py:38
+# Extracted from C:/!ass-ade/tests/test_history.py:58
 # Component id: at.source.ass_ade.test_undo_no_history
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
-    def test_undo_no_history(self, history: FileHistory):
-        assert history.undo("nonexistent.py") is None
+def test_undo_no_history(self, history: FileHistory):
+    assert history.undo("nonexistent.py") is None

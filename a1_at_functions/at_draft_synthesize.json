@@ -1,18 +1,23 @@
 {
-  "body": "    def synthesize(self, arch: Arch) -> Agent:\n        code = (\n            f\"class Agent_{arch.name}:\\n\"\n            f\"    traits = {arch.traits!r}\\n\"\n            f\"    def run(self, ctx):\\n\"\n            f\"        return {{'arch': {arch.name!r}}}\\n\"\n        )\n        return Agent(name=f\"agent_{arch.name}\", arch=arch, code=code)\n",
-  "body_hash": "9c1d24dbdedc6300",
+  "body": "def synthesize(self, arch: Arch) -> Agent:\n    code = (\n        f\"class Agent_{arch.name}:\\n\"\n        f\"    traits = {arch.traits!r}\\n\"\n        f\"    def run(self, ctx):\\n\"\n        f\"        return {{'arch': {arch.name!r}}}\\n\"\n    )\n    return Agent(name=f\"agent_{arch.name}\", arch=arch, code=code)\n",
+  "body_hash": "942dd625de4221d3",
   "body_truncated": false,
   "callers_of": [
     "Agent"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_severa.py:20.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/severa.py:37.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.synthesize",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_severa.py:20"
+    "source": "C:/!ass-ade/src/ass_ade/agent/severa.py:37"
   },
   "kind": "pure_function",
   "made_of": [],

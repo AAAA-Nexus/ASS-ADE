@@ -1,6 +1,6 @@
 {
-  "body": "    def test_validate_create_success(self, executor: EditPlanExecutor):\n        plan = EditPlan()\n        plan.add_create(\"brand_new.py\", \"content\")\n        errors = executor.validate(plan)\n        assert errors == []\n        assert plan.validated is True\n",
-  "body_hash": "8cb93e6730fa02ee",
+  "body": "def test_validate_create_success(self, executor: EditPlanExecutor):\n    plan = EditPlan()\n    plan.add_create(\"brand_new.py\", \"content\")\n    errors = executor.validate(plan)\n    assert errors == []\n    assert plan.validated is True\n",
+  "body_hash": "053a450002629b5a",
   "body_truncated": false,
   "callers_of": [
     "EditPlan",
@@ -8,7 +8,7 @@
     "validate"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:53.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_plan.py:53.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_validate_create_success",
@@ -22,7 +22,7 @@
     "ass_ade.tools.plan.EditPlanExecutor"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:53"
+    "source": "C:/!ass-ade/tests/test_plan.py:53"
   },
   "kind": "pure_function",
   "made_of": [],

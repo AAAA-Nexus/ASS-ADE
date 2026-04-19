@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_nexus_client_fetches_public_contracts.py:5
+# Extracted from C:/!ass-ade/tests/test_nexus_client.py:7
 # Component id: mo.source.ass_ade.test_nexus_client_fetches_public_contracts
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_nexus_client_fetches_public_contracts() -> None:

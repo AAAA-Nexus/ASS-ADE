@@ -1,12 +1,12 @@
 {
-  "body": "    def test_for_model(self):\n        budget = TokenBudget.for_model(\"gpt-4o\")\n        assert budget.context_window == 128_000\n        assert budget.reserve == RESPONSE_RESERVE\n",
-  "body_hash": "d5f30089e92ba223",
+  "body": "def test_for_model(self):\n    budget = TokenBudget.for_model(\"gpt-4o\")\n    assert budget.context_window == 128_000\n    assert budget.reserve == RESPONSE_RESERVE\n",
+  "body_hash": "d1083877cdcb0001",
   "body_truncated": false,
   "callers_of": [
     "for_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tokens.py:122.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_tokens.py:122.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "qk.source.ass_ade.test_for_model",
@@ -23,7 +23,7 @@
     "ass_ade.engine.types.ToolSchema"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tokens.py:122"
+    "source": "C:/!ass-ade/tests/test_tokens.py:122"
   },
   "kind": "invariant",
   "made_of": [],

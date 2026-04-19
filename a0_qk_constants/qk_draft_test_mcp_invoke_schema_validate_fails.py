@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp.py:163
+# Extracted from C:/!ass-ade/tests/test_mcp.py:163
 # Component id: qk.source.ass_ade.test_mcp_invoke_schema_validate_fails
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_mcp_invoke_schema_validate_fails(monkeypatch, tmp_path: Path) -> None:

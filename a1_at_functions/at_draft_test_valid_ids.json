@@ -1,12 +1,12 @@
 {
-  "body": "    def test_valid_ids(self) -> None:\n        assert validate_agent_id(\"agent-1\") == \"agent-1\"\n        assert validate_agent_id(\"13608\") == \"13608\"\n        assert validate_agent_id(\"my_agent.v2:latest\") == \"my_agent.v2:latest\"\n",
-  "body_hash": "25a529b95ee2e995",
+  "body": "def test_valid_ids(self) -> None:\n    assert validate_agent_id(\"agent-1\") == \"agent-1\"\n    assert validate_agent_id(\"13608\") == \"13608\"\n    assert validate_agent_id(\"my_agent.v2:latest\") == \"my_agent.v2:latest\"\n",
+  "body_hash": "d2816f4c3ea3e1ff",
   "body_truncated": false,
   "callers_of": [
     "validate_agent_id"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_validation.py:16.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_validation.py:16.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_valid_ids",
@@ -20,7 +20,7 @@
     "ass_ade.nexus.validation.validate_usdc_amount"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_validation.py:16"
+    "source": "C:/!ass-ade/tests/test_validation.py:16"
   },
   "kind": "pure_function",
   "made_of": [],

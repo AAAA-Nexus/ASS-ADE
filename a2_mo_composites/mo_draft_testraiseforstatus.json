@@ -7,13 +7,25 @@
     "raises"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testraiseforstatus.py:5.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_errors.py:50.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.testraiseforstatus",
-  "imports": [],
+  "imports": [
+    "pytest",
+    "ass_ade.nexus.errors.NexusAuthError",
+    "ass_ade.nexus.errors.NexusCircuitOpen",
+    "ass_ade.nexus.errors.NexusConnectionError",
+    "ass_ade.nexus.errors.NexusError",
+    "ass_ade.nexus.errors.NexusPaymentRequired",
+    "ass_ade.nexus.errors.NexusRateLimited",
+    "ass_ade.nexus.errors.NexusServerError",
+    "ass_ade.nexus.errors.NexusTimeoutError",
+    "ass_ade.nexus.errors.NexusValidationError",
+    "ass_ade.nexus.errors.raise_for_status"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testraiseforstatus.py:5"
+    "source": "C:/!ass-ade/tests/test_errors.py:50"
   },
   "kind": "engine_molecule",
   "made_of": [

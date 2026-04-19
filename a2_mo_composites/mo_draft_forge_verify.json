@@ -1,12 +1,12 @@
 {
-  "body": "    def forge_verify(self, agent_id: str, **kwargs: Any) -> ForgeVerifyResult:\n        \"\"\"POST /v1/forge/verify \u2014 verify an agent for Forge badge. Free.\"\"\"\n        return self._post_model(\"/v1/forge/verify\", ForgeVerifyResult, {\"agent_id\": agent_id, **kwargs})\n",
-  "body_hash": "a86644cb07ed53c5",
+  "body": "def forge_verify(self, agent_id: str, **kwargs: Any) -> ForgeVerifyResult:\n    \"\"\"POST /v1/forge/verify \u2014 verify an agent for Forge badge. Free.\"\"\"\n    return self._post_model(\"/v1/forge/verify\", ForgeVerifyResult, {\"agent_id\": agent_id, **kwargs})\n",
+  "body_hash": "824d97e515535a0e",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1351.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1351.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.forge_verify",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1351"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1351"
   },
   "kind": "engine_molecule",
   "made_of": [],

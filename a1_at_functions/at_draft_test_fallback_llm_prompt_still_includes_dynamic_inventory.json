@@ -1,0 +1,41 @@
+{
+  "body": "def test_fallback_llm_prompt_still_includes_dynamic_inventory(tmp_path: Path) -> None:\n    prompt = interpreter._fallback_llm_system_prompt(tmp_path, \"preferred_tone=direct\")\n\n    assert \"preferred_tone=direct\" in prompt\n    assert \"Dynamic Capability Inventory\" in prompt\n    assert \"`protocol evolution-record`\" in prompt\n",
+  "body_hash": "d322220353787693",
+  "body_truncated": false,
+  "callers_of": [
+    "_fallback_llm_system_prompt"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_capabilities.py:61.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_fallback_llm_prompt_still_includes_dynamic_inventory",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "ass_ade.interpreter",
+    "ass_ade.agent.capabilities.build_atomadic_intent_prompt",
+    "ass_ade.agent.capabilities.command_path_exists",
+    "ass_ade.agent.capabilities.render_atomadic_help",
+    "ass_ade.agent.capabilities.sync_atomadic_prompt_capabilities",
+    "ass_ade.agent.context.build_system_prompt",
+    "ass_ade.interpreter.Atomadic"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/tests/test_capabilities.py:61"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_fallback_llm_prompt_still_includes_dynamic_inventory",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_fallback_llm_prompt_still_includes_dynamic_inventory"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

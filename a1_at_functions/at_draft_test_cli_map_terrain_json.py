@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_map_terrain.py:151
+# Extracted from C:/!ass-ade/tests/test_map_terrain.py:253
 # Component id: at.source.ass_ade.test_cli_map_terrain_json
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_cli_map_terrain_json(tmp_path: Path) -> None:

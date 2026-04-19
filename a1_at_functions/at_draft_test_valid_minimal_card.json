@@ -1,12 +1,12 @@
 {
-  "body": "    def test_valid_minimal_card(self) -> None:\n        data = {\"name\": \"TestAgent\"}\n        report = validate_agent_card(data)\n        assert report.valid\n        assert report.card is not None\n        assert report.card.name == \"TestAgent\"\n",
-  "body_hash": "b28ba3d6ad259a04",
+  "body": "def test_valid_minimal_card(self) -> None:\n    data = {\"name\": \"TestAgent\"}\n    report = validate_agent_card(data)\n    assert report.valid\n    assert report.card is not None\n    assert report.card.name == \"TestAgent\"\n",
+  "body_hash": "fef7918a99e79986",
   "body_truncated": false,
   "callers_of": [
     "validate_agent_card"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:26.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_a2a.py:26.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_valid_minimal_card",
@@ -29,7 +29,7 @@
     "httpx"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:26"
+    "source": "C:/!ass-ade/tests/test_a2a.py:26"
   },
   "kind": "pure_function",
   "made_of": [],

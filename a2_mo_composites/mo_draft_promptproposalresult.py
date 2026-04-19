@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_promptproposalresult.py:5
+# Extracted from C:/!ass-ade/src/ass_ade/prompt_toolkit.py:64
 # Component id: mo.source.ass_ade.promptproposalresult
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class PromptProposalResult(BaseModel):

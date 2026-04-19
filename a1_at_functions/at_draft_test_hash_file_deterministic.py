@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_certifier.py:21
+# Extracted from C:/!ass-ade/tests/test_certifier.py:21
 # Component id: at.source.ass_ade.test_hash_file_deterministic
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_hash_file_deterministic(tmp_path: Path) -> None:

@@ -14,7 +14,7 @@
     "Response"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_resilience.py:46.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_resilience.py:46.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.testretrytransport",
@@ -30,7 +30,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_resilience.py:46"
+    "source": "C:/!ass-ade/tests/test_resilience.py:46"
   },
   "kind": "engine_molecule",
   "made_of": [

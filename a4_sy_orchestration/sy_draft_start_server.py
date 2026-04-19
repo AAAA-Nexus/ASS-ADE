@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_start_server.py:5
+# Extracted from C:/!ass-ade/src/ass_ade/mcp/mock_server.py:95
 # Component id: sy.source.ass_ade.start_server
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def start_server(

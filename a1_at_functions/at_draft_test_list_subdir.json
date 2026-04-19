@@ -1,6 +1,6 @@
 {
-  "body": "    def test_list_subdir(self, workspace: Path):\n        tool = ListDirectoryTool(str(workspace))\n        r = tool.execute(path=\"sub\")\n        assert r.success\n        assert \"data.txt\" in r.output\n",
-  "body_hash": "d2f39e7b75a8e2a3",
+  "body": "def test_list_subdir(self, workspace: Path):\n    tool = ListDirectoryTool(str(workspace))\n    r = tool.execute(path=\"sub\")\n    assert r.success\n    assert \"data.txt\" in r.output\n",
+  "body_hash": "655fa515b6f8432c",
   "body_truncated": false,
   "callers_of": [
     "ListDirectoryTool",
@@ -8,13 +8,26 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testlistdirectory.py:13.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_tools_builtin.py:137.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_list_subdir",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.tools.builtin.EditFileTool",
+    "ass_ade.tools.builtin.GrepSearchTool",
+    "ass_ade.tools.builtin.ListDirectoryTool",
+    "ass_ade.tools.builtin.ReadFileTool",
+    "ass_ade.tools.builtin.RunCommandTool",
+    "ass_ade.tools.builtin.SearchFilesTool",
+    "ass_ade.tools.builtin.WriteFileTool",
+    "ass_ade.tools.registry.default_registry"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testlistdirectory.py:13"
+    "source": "C:/!ass-ade/tests/test_tools_builtin.py:137"
   },
   "kind": "pure_function",
   "made_of": [],

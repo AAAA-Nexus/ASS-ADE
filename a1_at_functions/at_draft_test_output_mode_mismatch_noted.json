@@ -1,6 +1,6 @@
 {
-  "body": "    def test_output_mode_mismatch_noted(self) -> None:\n        local = self._make_card(\"Local\", skills=[(\"s1\", \"S1\")], input_modes=[\"text/plain\"])\n        remote = self._make_card(\"Remote\", skills=[(\"s1\", \"S1\")], output_modes=[\"application/pdf\"])\n        result = negotiate(local, remote)\n        assert any(\"Output format mismatch\" in n for n in result.notes)\n",
-  "body_hash": "f4790dc8cbd400d8",
+  "body": "def test_output_mode_mismatch_noted(self) -> None:\n    local = self._make_card(\"Local\", skills=[(\"s1\", \"S1\")], input_modes=[\"text/plain\"])\n    remote = self._make_card(\"Remote\", skills=[(\"s1\", \"S1\")], output_modes=[\"application/pdf\"])\n    result = negotiate(local, remote)\n    assert any(\"Output format mismatch\" in n for n in result.notes)\n",
+  "body_hash": "64beef654d399407",
   "body_truncated": false,
   "callers_of": [
     "_make_card",
@@ -8,7 +8,7 @@
     "any"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:256.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_a2a.py:256.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_output_mode_mismatch_noted",
@@ -31,7 +31,7 @@
     "httpx"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:256"
+    "source": "C:/!ass-ade/tests/test_a2a.py:256"
   },
   "kind": "pure_function",
   "made_of": [],

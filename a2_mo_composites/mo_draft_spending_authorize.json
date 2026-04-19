@@ -1,12 +1,12 @@
 {
-  "body": "    def spending_authorize(self, agent_id: str, amount_usdc: float, epoch: int = 0, **kwargs: Any) -> SpendingAuthResult:\n        \"\"\"/v1/spending/authorize \u2014 trust-decay spending bound (SPG-100). $0.040/call\"\"\"\n        return self._post_model(\"/v1/spending/authorize\", SpendingAuthResult, {\n            \"agent_id\": agent_id, \"amount_usdc\": amount_usdc, \"epoch\": epoch, **kwargs,\n        })\n",
-  "body_hash": "5ad247d3973aefe4",
+  "body": "def spending_authorize(self, agent_id: str, amount_usdc: float, epoch: int = 0, **kwargs: Any) -> SpendingAuthResult:\n    \"\"\"/v1/spending/authorize \u2014 trust-decay spending bound (SPG-100). $0.040/call\"\"\"\n    return self._post_model(\"/v1/spending/authorize\", SpendingAuthResult, {\n        \"agent_id\": agent_id, \"amount_usdc\": amount_usdc, \"epoch\": epoch, **kwargs,\n    })\n",
+  "body_hash": "42eaeb7689b8b480",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:782.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:782.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.spending_authorize",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:782"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:782"
   },
   "kind": "engine_molecule",
   "made_of": [],

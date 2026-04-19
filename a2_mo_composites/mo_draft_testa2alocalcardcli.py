@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a_cli.py:139
+# Extracted from C:/!ass-ade/tests/test_a2a_cli.py:139
 # Component id: mo.source.ass_ade.testa2alocalcardcli
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class TestA2ALocalCardCLI:

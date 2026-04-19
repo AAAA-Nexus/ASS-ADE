@@ -1,22 +1,33 @@
 {
-  "body": "    def description(self) -> str:\n        return \"Search file contents for a regex pattern. Returns matching lines with file:line: prefix.\"\n",
-  "body_hash": "c53458f68374cbc8",
+  "body": "def description(self) -> str:\n    return \"Return SHA-256 metadata for an explicit prompt file or prompt text.\"\n",
+  "body_hash": "204fc1f0ca977a01",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_grepsearchtool.py:16.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/tools/prompt.py:109.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.description",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.prompt_toolkit.prompt_diff",
+    "ass_ade.prompt_toolkit.prompt_hash",
+    "ass_ade.prompt_toolkit.prompt_propose",
+    "ass_ade.prompt_toolkit.prompt_section",
+    "ass_ade.prompt_toolkit.prompt_validate",
+    "ass_ade.tools.base.ToolResult"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_grepsearchtool.py:16"
+    "source": "C:/!ass-ade/src/ass_ade/tools/prompt.py:109"
   },
   "kind": "pure_function",
   "made_of": [],
   "name": "description",
   "product_categories": [
-    "DCM"
+    "COR"
   ],
   "provides": [
     "rebuild candidate for description"

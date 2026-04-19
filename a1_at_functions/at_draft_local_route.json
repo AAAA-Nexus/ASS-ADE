@@ -9,7 +9,7 @@
     "RoutingDecision"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/routing.py:119.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/routing.py:119.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.local_route",
@@ -22,7 +22,7 @@
     "typing.Any"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/routing.py:119"
+    "source": "C:/!ass-ade/src/ass_ade/agent/routing.py:119"
   },
   "kind": "pure_function",
   "made_of": [],

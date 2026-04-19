@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_parallel_recon.py:200
+# Extracted from C:/!ass-ade/tests/test_parallel_recon.py:200
 # Component id: at.source.ass_ade.test_dependency_no_circular_clean_repo
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_dependency_no_circular_clean_repo(tmp_path: Path) -> None:

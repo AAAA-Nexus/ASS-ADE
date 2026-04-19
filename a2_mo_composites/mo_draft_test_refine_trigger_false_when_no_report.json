@@ -1,13 +1,13 @@
 {
-  "body": "    def test_refine_trigger_false_when_no_report(self):\n        loop = self._make_loop()\n        assert loop._check_refine_trigger(None) is False\n",
-  "body_hash": "760d51bca6812c05",
+  "body": "def test_refine_trigger_false_when_no_report(self):\n    loop = self._make_loop()\n    assert loop._check_refine_trigger(None) is False\n",
+  "body_hash": "6e730bd7441e1b6b",
   "body_truncated": false,
   "callers_of": [
     "_make_loop",
     "_check_refine_trigger"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:139.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase_engines.py:139.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_refine_trigger_false_when_no_report",
@@ -62,7 +62,7 @@
     "ass_ade.agent.orchestrator.CycleReport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:139"
+    "source": "C:/!ass-ade/tests/test_phase_engines.py:139"
   },
   "kind": "engine_molecule",
   "made_of": [],

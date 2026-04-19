@@ -18,7 +18,7 @@
     "encode"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/session.py:18.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/session.py:18.",
   "exceptions_raised": [
     "RuntimeError"
   ],
@@ -36,7 +36,7 @@
     "ass_ade.nexus.validation.validate_session_id"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/session.py:18"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/session.py:18"
   },
   "kind": "engine_molecule",
   "made_of": [

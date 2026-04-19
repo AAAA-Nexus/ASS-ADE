@@ -1,5 +1,5 @@
 {
-  "module_count": 1330,
+  "module_count": 1082,
   "modules": [
     {
       "change_type": "new",
@@ -135,18 +135,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.assess_blueprint_fulfillment",
-      "name": "assess_blueprint_fulfillment",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.assign_version",
-      "name": "assign_version",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.atomadic",
       "name": "Atomadic",
       "version": "0.1.0"
@@ -191,12 +179,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.bitnet_stream",
       "name": "bitnet_stream",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.break_cycles",
-      "name": "break_cycles",
       "version": "0.1.0"
     },
     {
@@ -249,24 +231,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.build_gap_fill_plan",
-      "name": "build_gap_fill_plan",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.build_handler",
-      "name": "build_handler",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.build_local_analysis",
-      "name": "build_local_analysis",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.build_local_certificate",
       "name": "build_local_certificate",
       "version": "0.1.0"
@@ -275,12 +239,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.build_payment_header",
       "name": "build_payment_header",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.build_provider",
-      "name": "build_provider",
       "version": "0.1.0"
     },
     {
@@ -303,12 +261,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.bump_version",
-      "name": "bump_version",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.calculate_next_version",
       "name": "calculate_next_version",
       "version": "0.1.0"
@@ -317,18 +269,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.can_pay",
       "name": "can_pay",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.cancel",
-      "name": "cancel",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.cancel_once",
-      "name": "cancel_once",
       "version": "0.1.0"
     },
     {
@@ -381,12 +321,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.check",
-      "name": "check",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.check_freshness",
       "name": "check_freshness",
       "version": "0.1.0"
@@ -395,24 +329,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.check_hallucination",
       "name": "check_hallucination",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.check_many_times",
-      "name": "check_many_times",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.check_tier_purity",
-      "name": "check_tier_purity",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.classify_change",
-      "name": "classify_change",
       "version": "0.1.0"
     },
     {
@@ -501,12 +417,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.collect_tool_status",
-      "name": "collect_tool_status",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.command_path_exists",
       "name": "command_path_exists",
       "version": "0.1.0"
@@ -591,12 +501,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.content_hash",
-      "name": "content_hash",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.context_pack_command",
       "name": "context_pack_command",
       "version": "0.1.0"
@@ -675,14 +579,14 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.count_tasks_by_status",
-      "name": "count_tasks_by_status",
+      "id": "at.source.ass_ade.counting_step",
+      "name": "counting_step",
       "version": "0.1.0"
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.counting_step",
-      "name": "counting_step",
+      "id": "at.source.ass_ade.counts",
+      "name": "counts",
       "version": "0.1.0"
     },
     {
@@ -777,20 +681,8 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.derive_made_of_graph",
-      "name": "derive_made_of_graph",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.describe_self",
       "name": "describe_self",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.description",
-      "name": "description",
       "version": "0.1.0"
     },
     {
@@ -819,38 +711,8 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.detect_ci",
-      "name": "detect_ci",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.detect_cycles",
-      "name": "detect_cycles",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.detect_languages",
-      "name": "detect_languages",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.detect_linters",
       "name": "detect_linters",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.detect_test_framework",
-      "name": "detect_test_framework",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.detect_tool",
-      "name": "detect_tool",
       "version": "0.1.0"
     },
     {
@@ -921,12 +783,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.do_work",
-      "name": "do_work",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.docs_command",
       "name": "docs_command",
       "version": "0.1.0"
@@ -951,26 +807,8 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.emit_runnable_package",
-      "name": "emit_runnable_package",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.enforce_tier_purity",
-      "name": "enforce_tier_purity",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.enhance_command",
       "name": "enhance_command",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.enrich_components_with_bodies",
-      "name": "enrich_components_with_bodies",
       "version": "0.1.0"
     },
     {
@@ -1023,12 +861,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.estimate_cost",
-      "name": "estimate_cost",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.ethics_step",
       "name": "ethics_step",
       "version": "0.1.0"
@@ -1037,12 +869,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.evaluate_fitness",
       "name": "evaluate_fitness",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.execute",
-      "name": "execute",
       "version": "0.1.0"
     },
     {
@@ -1077,20 +903,8 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.extract_body",
-      "name": "extract_body",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.extract_symbols",
       "name": "extract_symbols",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.f",
-      "name": "f",
       "version": "0.1.0"
     },
     {
@@ -1119,6 +933,12 @@
     },
     {
       "change_type": "new",
+      "id": "at.source.ass_ade.fake_post",
+      "name": "fake_post",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
       "id": "at.source.ass_ade.fetch_agent_card",
       "name": "fetch_agent_card",
       "version": "0.1.0"
@@ -1127,30 +947,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.fetch_samples",
       "name": "fetch_samples",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.filter_tasks_by_priority",
-      "name": "filter_tasks_by_priority",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.filter_tasks_by_status",
-      "name": "filter_tasks_by_status",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.find_by_assignee",
-      "name": "find_by_assignee",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.find_by_tag",
-      "name": "find_by_tag",
       "version": "0.1.0"
     },
     {
@@ -1263,12 +1059,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.gate_step",
-      "name": "gate_step",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.generate",
       "name": "generate",
       "version": "0.1.0"
@@ -1287,18 +1077,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.generate_status_report",
-      "name": "generate_status_report",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.get_chain_config",
-      "name": "get_chain_config",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.get_chain_config",
       "name": "get_chain_config",
       "version": "0.1.0"
@@ -1307,30 +1085,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.get_gaps",
       "name": "get_gaps",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.get_high_priority_tasks",
-      "name": "get_high_priority_tasks",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.get_null_context",
-      "name": "get_null_context",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.get_overdue_tasks",
-      "name": "get_overdue_tasks",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.get_priority_distribution",
-      "name": "get_priority_distribution",
       "version": "0.1.0"
     },
     {
@@ -1359,12 +1113,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.get_workload_by_assignee",
-      "name": "get_workload_by_assignee",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.greeting",
       "name": "greeting",
       "version": "0.1.0"
@@ -1389,50 +1137,8 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.handler",
-      "name": "handler",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.handler",
-      "name": "handler",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.handler",
-      "name": "handler",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.handler",
-      "name": "handler",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.handler",
-      "name": "handler",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.hash_file",
       "name": "hash_file",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.hello",
-      "name": "hello",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.helper",
-      "name": "helper",
       "version": "0.1.0"
     },
     {
@@ -1521,12 +1227,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.invoke_tool",
-      "name": "invoke_tool",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.is_active",
       "name": "is_active",
       "version": "0.1.0"
@@ -1535,12 +1235,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.is_available",
       "name": "is_available",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.is_cancelled",
-      "name": "is_cancelled",
       "version": "0.1.0"
     },
     {
@@ -1575,12 +1269,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.is_testnet",
-      "name": "is_testnet",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.iter_source_files",
       "name": "iter_source_files",
       "version": "0.1.0"
@@ -1595,12 +1283,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.last_lse_decision",
       "name": "last_lse_decision",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.last_provider_name",
-      "name": "last_provider_name",
       "version": "0.1.0"
     },
     {
@@ -1635,12 +1317,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.list_tools",
-      "name": "list_tools",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.llm_chat",
       "name": "llm_chat",
       "version": "0.1.0"
@@ -1667,18 +1343,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.load_config_again",
       "name": "load_config_again",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.load_prev_versions",
-      "name": "load_prev_versions",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.load_project_metadata",
-      "name": "load_project_metadata",
       "version": "0.1.0"
     },
     {
@@ -1737,12 +1401,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.main",
-      "name": "main",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.map_terrain",
       "name": "map_terrain",
       "version": "0.1.0"
@@ -1791,12 +1449,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.model_name",
-      "name": "model_name",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.monitor",
       "name": "monitor",
       "version": "0.1.0"
@@ -1805,12 +1457,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.monitor_all",
       "name": "monitor_all",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.name",
-      "name": "name",
       "version": "0.1.0"
     },
     {
@@ -1895,12 +1541,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.oracle_trust_phase",
       "name": "oracle_trust_phase",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.parameters",
-      "name": "parameters",
       "version": "0.1.0"
     },
     {
@@ -2133,12 +1773,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.propose_components",
-      "name": "propose_components",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.propose_meta_edit",
       "name": "propose_meta_edit",
       "version": "0.1.0"
@@ -2177,12 +1811,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.provider_for_model",
       "name": "provider_for_model",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.providers",
-      "name": "providers",
       "version": "0.1.0"
     },
     {
@@ -2307,12 +1935,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.rebuild_project",
-      "name": "rebuild_project",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.recall",
       "name": "recall",
       "version": "0.1.0"
@@ -2403,12 +2025,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.render_local_docs",
-      "name": "render_local_docs",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.render_markdown",
       "name": "render_markdown",
       "version": "0.1.0"
@@ -2423,12 +2039,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.render_protocol_markdown",
       "name": "render_protocol_markdown",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.render_rebuild_summary",
-      "name": "render_rebuild_summary",
       "version": "0.1.0"
     },
     {
@@ -2475,12 +2085,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.reputation_step",
-      "name": "reputation_step",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.reset_delegation_depth",
       "name": "reset_delegation_depth",
       "version": "0.1.0"
@@ -2495,12 +2099,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.resolve_tier",
       "name": "resolve_tier",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.resolve_tool",
-      "name": "resolve_tool",
       "version": "0.1.0"
     },
     {
@@ -2529,12 +2127,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.run_again",
-      "name": "run_again",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.run_all",
       "name": "run_all",
       "version": "0.1.0"
@@ -2549,6 +2141,12 @@
       "change_type": "new",
       "id": "at.source.ass_ade.run_golden",
       "name": "run_golden",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.ass_ade.run_harness",
+      "name": "run_harness",
       "version": "0.1.0"
     },
     {
@@ -2597,18 +2195,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.run_training",
       "name": "run_training",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.run_web_research_tool_with_ai_powered_search_pipeline",
-      "name": "run_web_research_tool_with_ai_powered_search_pipeline",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.run_web_search_skill_to_my_project_pipeline",
-      "name": "run_web_search_skill_to_my_project_pipeline",
       "version": "0.1.0"
     },
     {
@@ -2681,12 +2267,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.scan_security_patterns",
       "name": "scan_security_patterns",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.scan_source_symbols",
-      "name": "scan_source_symbols",
       "version": "0.1.0"
     },
     {
@@ -2787,12 +2367,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.simulate_invoke",
-      "name": "simulate_invoke",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.sla_breach",
       "name": "sla_breach",
       "version": "0.1.0"
@@ -2813,12 +2387,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.sla_status",
       "name": "sla_status",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.sort_tasks_by_priority",
-      "name": "sort_tasks_by_priority",
       "version": "0.1.0"
     },
     {
@@ -2849,12 +2417,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.step_stream",
       "name": "step_stream",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.stream",
-      "name": "stream",
       "version": "0.1.0"
     },
     {
@@ -2925,12 +2487,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.sybil_step",
-      "name": "sybil_step",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.symbol",
       "name": "Symbol",
       "version": "0.1.0"
@@ -2945,12 +2501,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.synthesize",
       "name": "synthesize",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.synthesize_missing_components",
-      "name": "synthesize_missing_components",
       "version": "0.1.0"
     },
     {
@@ -3039,12 +2589,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_accepted_write_captures_fix",
-      "name": "test_accepted_write_captures_fix",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_add_create",
       "name": "test_add_create",
       "version": "0.1.0"
@@ -3099,12 +2643,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_aegis_happy_path",
-      "name": "test_aegis_happy_path",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_agent_card_name_validation",
       "name": "test_agent_card_name_validation",
       "version": "0.1.0"
@@ -3117,56 +2655,14 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_agent_discovery_happy_path",
-      "name": "test_agent_discovery_happy_path",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_agent_escrow_happy_path",
-      "name": "test_agent_escrow_happy_path",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_agent_reputation_happy_path",
-      "name": "test_agent_reputation_happy_path",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_agent_run_success_outputs_result",
       "name": "test_agent_run_success_outputs_result",
       "version": "0.1.0"
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_agent_swarm_routing_happy_path",
-      "name": "test_agent_swarm_routing_happy_path",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_aggregate_version_is_max",
       "name": "test_aggregate_version_is_max",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_ai_inference_happy_path",
-      "name": "test_ai_inference_happy_path",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_alert_severity_mapping",
-      "name": "test_alert_severity_mapping",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_all_have_required_keys",
-      "name": "test_all_have_required_keys",
       "version": "0.1.0"
     },
     {
@@ -3195,18 +2691,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_all_texts_unique",
-      "name": "test_all_texts_unique",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_api_key_header_injection",
-      "name": "test_api_key_header_injection",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_appends_well_known_path",
       "name": "test_appends_well_known_path",
       "version": "0.1.0"
@@ -3225,12 +2709,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_apply_includes_diff",
-      "name": "test_apply_includes_diff",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_apply_modify",
       "name": "test_apply_modify",
       "version": "0.1.0"
@@ -3245,12 +2723,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.test_apply_unvalidated_fails",
       "name": "test_apply_unvalidated_fails",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_at_least_15_happy_path_tests_defined",
-      "name": "test_at_least_15_happy_path_tests_defined",
       "version": "0.1.0"
     },
     {
@@ -3309,44 +2781,8 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_basic",
-      "name": "test_basic",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_batch_clears_pending_on_success",
-      "name": "test_batch_clears_pending_on_success",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_batch_fail_keeps_pending",
-      "name": "test_batch_fail_keeps_pending",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_batch_uses_configured_trust_floor_threshold",
-      "name": "test_batch_uses_configured_trust_floor_threshold",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_billing_platform_happy_path",
-      "name": "test_billing_platform_happy_path",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_bitnet_chat",
       "name": "test_bitnet_chat",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_bitnet_happy_path",
-      "name": "test_bitnet_happy_path",
       "version": "0.1.0"
     },
     {
@@ -3363,20 +2799,8 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_bitnet_stream_happy_path",
-      "name": "test_bitnet_stream_happy_path",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_blocked_dangerous",
       "name": "test_blocked_dangerous",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_blocked_event",
-      "name": "test_blocked_event",
       "version": "0.1.0"
     },
     {
@@ -3423,12 +2847,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_build_local_analysis_returns_dict",
-      "name": "test_build_local_analysis_returns_dict",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_build_local_certificate_structure",
       "name": "test_build_local_certificate_structure",
       "version": "0.1.0"
@@ -3443,6 +2861,12 @@
       "change_type": "new",
       "id": "at.source.ass_ade.test_build_provider_instantiates_nexus_provider",
       "name": "test_build_provider_instantiates_nexus_provider",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.ass_ade.test_bump_project_version_preserves_showcase_readme_without_version_line",
+      "name": "test_bump_project_version_preserves_showcase_readme_without_version_line",
       "version": "0.1.0"
     },
     {
@@ -3473,48 +2897,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.test_can_pay_valid",
       "name": "test_can_pay_valid",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_cancellation_context_can_be_marked_cancelled",
-      "name": "test_cancellation_context_can_be_marked_cancelled",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_cancellation_context_defaults_to_not_cancelled",
-      "name": "test_cancellation_context_defaults_to_not_cancelled",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_cancellation_context_is_thread_safe",
-      "name": "test_cancellation_context_is_thread_safe",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_capability_gap_alert",
-      "name": "test_capability_gap_alert",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_capture_fix_adds_to_pending",
-      "name": "test_capture_fix_adds_to_pending",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_capture_principle_adds_to_pending",
-      "name": "test_capture_principle_adds_to_pending",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_capture_rejection_adds_negative",
-      "name": "test_capture_rejection_adds_negative",
       "version": "0.1.0"
     },
     {
@@ -3557,12 +2939,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.test_certify_nonexistent_path",
       "name": "test_certify_nonexistent_path",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_certify_output_verify_happy_path",
-      "name": "test_certify_output_verify_happy_path",
       "version": "0.1.0"
     },
     {
@@ -3651,14 +3027,14 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_clean_code_passes_all_stages",
-      "name": "test_clean_code_passes_all_stages",
+      "id": "at.source.ass_ade.test_cli_commands_batch_happy_path",
+      "name": "test_cli_commands_batch_happy_path",
       "version": "0.1.0"
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_cli_commands_batch_happy_path",
-      "name": "test_cli_commands_batch_happy_path",
+      "id": "at.source.ass_ade.test_cli_map_terrain_accepts_string_requirement",
+      "name": "test_cli_map_terrain_accepts_string_requirement",
       "version": "0.1.0"
     },
     {
@@ -3747,30 +3123,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_complete_basic",
-      "name": "test_complete_basic",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_complete_text_response",
-      "name": "test_complete_text_response",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_complete_tool_call_response",
-      "name": "test_complete_tool_call_response",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_complete_with_tool_calls",
-      "name": "test_complete_with_tool_calls",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_complex_multi_step",
       "name": "test_complex_multi_step",
       "version": "0.1.0"
@@ -3785,18 +3137,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.test_compliance_check_success",
       "name": "test_compliance_check_success",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_compliance_oversight_history_happy_path",
-      "name": "test_compliance_oversight_history_happy_path",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_compliance_products_happy_path",
-      "name": "test_compliance_products_happy_path",
       "version": "0.1.0"
     },
     {
@@ -3831,12 +3171,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_config_passed_through",
-      "name": "test_config_passed_through",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_connect_error_raises_nexus_connection",
       "name": "test_connect_error_raises_nexus_connection",
       "version": "0.1.0"
@@ -3845,12 +3179,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.test_consecutive_5xx_trips_circuit",
       "name": "test_consecutive_5xx_trips_circuit",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_consensus_result_happy_path",
-      "name": "test_consensus_result_happy_path",
       "version": "0.1.0"
     },
     {
@@ -3869,30 +3197,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.test_context_packet_includes_file_hashes",
       "name": "test_context_packet_includes_file_hashes",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_contract_attestation_happy_path",
-      "name": "test_contract_attestation_happy_path",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_control_plane_happy_path",
-      "name": "test_control_plane_happy_path",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_cooldown_prevents_duplicate_alerts",
-      "name": "test_cooldown_prevents_duplicate_alerts",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_count_is_50",
-      "name": "test_count_is_50",
       "version": "0.1.0"
     },
     {
@@ -3933,12 +3237,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_custom_rpc",
-      "name": "test_custom_rpc",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_d_max_breach_emits_bas_alert",
       "name": "test_d_max_breach_emits_bas_alert",
       "version": "0.1.0"
@@ -3957,12 +3255,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_d_max_increment_blocks_at_limit",
-      "name": "test_d_max_increment_blocks_at_limit",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_data_convert_json_to_yaml",
       "name": "test_data_convert_json_to_yaml",
       "version": "0.1.0"
@@ -3971,12 +3263,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.test_data_convert_nonexistent_file",
       "name": "test_data_convert_nonexistent_file",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_data_tools_happy_path",
-      "name": "test_data_tools_happy_path",
       "version": "0.1.0"
     },
     {
@@ -3999,12 +3285,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_default_config_is_empty_dict",
-      "name": "test_default_config_is_empty_dict",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_default_config_path_uses_workspace_root",
       "name": "test_default_config_path_uses_workspace_root",
       "version": "0.1.0"
@@ -4017,32 +3297,8 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_defaults",
-      "name": "test_defaults",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_defi_risk_score",
       "name": "test_defi_risk_score",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_defi_suite_happy_path",
-      "name": "test_defi_suite_happy_path",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_delegate_receipt_happy_path",
-      "name": "test_delegate_receipt_happy_path",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_delegation_depth_resets_on_step",
-      "name": "test_delegation_depth_resets_on_step",
       "version": "0.1.0"
     },
     {
@@ -4071,26 +3327,8 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_detect_ci_github_actions",
-      "name": "test_detect_ci_github_actions",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_detect_config_key_overrides_env",
       "name": "test_detect_config_key_overrides_env",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_detect_languages_ignores_venv",
-      "name": "test_detect_languages_ignores_venv",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_detect_languages_on_tmp",
-      "name": "test_detect_languages_on_tmp",
       "version": "0.1.0"
     },
     {
@@ -4125,12 +3363,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_detect_test_framework_pytest",
-      "name": "test_detect_test_framework_pytest",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_detects_node_project",
       "name": "test_detects_node_project",
       "version": "0.1.0"
@@ -4161,20 +3393,8 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_developer_tools_happy_path",
-      "name": "test_developer_tools_happy_path",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_different_content",
       "name": "test_different_content",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_disabled_flywheel_rejects_captures",
-      "name": "test_disabled_flywheel_rejects_captures",
       "version": "0.1.0"
     },
     {
@@ -4187,12 +3407,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.test_discover_success",
       "name": "test_discover_success",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_discovery_protocol_happy_path",
-      "name": "test_discovery_protocol_happy_path",
       "version": "0.1.0"
     },
     {
@@ -4407,12 +3621,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_escrow_status_happy_path",
-      "name": "test_escrow_status_happy_path",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_exception_becomes_failed_step",
       "name": "test_exception_becomes_failed_step",
       "version": "0.1.0"
@@ -4461,6 +3669,12 @@
     },
     {
       "change_type": "new",
+      "id": "at.source.ass_ade.test_extract_body_dedents_class_methods",
+      "name": "test_extract_body_dedents_class_methods",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
       "id": "at.source.ass_ade.test_extracts_classes",
       "name": "test_extracts_classes",
       "version": "0.1.0"
@@ -4485,20 +3699,14 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_failed_write_is_not_cie_gated",
-      "name": "test_failed_write_is_not_cie_gated",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_fallback_chain_contains_only_known_providers",
       "name": "test_fallback_chain_contains_only_known_providers",
       "version": "0.1.0"
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_fallback_to_ollama",
-      "name": "test_fallback_to_ollama",
+      "id": "at.source.ass_ade.test_fallback_llm_prompt_still_includes_dynamic_inventory",
+      "name": "test_fallback_llm_prompt_still_includes_dynamic_inventory",
       "version": "0.1.0"
     },
     {
@@ -4563,24 +3771,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_find_pattern",
-      "name": "test_find_pattern",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_five_groups_of_ten",
-      "name": "test_five_groups_of_ten",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_flush_alerts_drains_buffer",
-      "name": "test_flush_alerts_drains_buffer",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_forge_badge",
       "name": "test_forge_badge",
       "version": "0.1.0"
@@ -4589,12 +3779,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.test_forge_leaderboard",
       "name": "test_forge_leaderboard",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_forge_marketplace_happy_path",
-      "name": "test_forge_marketplace_happy_path",
       "version": "0.1.0"
     },
     {
@@ -4725,24 +3909,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_gate_sam_fail_open_on_exception",
-      "name": "test_gate_sam_fail_open_on_exception",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_gate_sam_logs_to_gate_log",
-      "name": "test_gate_sam_logs_to_gate_log",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_gate_sam_returns_dict",
-      "name": "test_gate_sam_returns_dict",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_generates_valid_card",
       "name": "test_generates_valid_card",
       "version": "0.1.0"
@@ -4751,18 +3917,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.test_glob_py",
       "name": "test_glob_py",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_glob_py",
-      "name": "test_glob_py",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_governance_happy_path",
-      "name": "test_governance_happy_path",
       "version": "0.1.0"
     },
     {
@@ -4779,18 +3933,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_halt_when_cap_missing",
-      "name": "test_halt_when_cap_missing",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_handle_x402_empty_body",
-      "name": "test_handle_x402_empty_body",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_handle_x402_empty_body",
       "name": "test_handle_x402_empty_body",
       "version": "0.1.0"
@@ -4799,18 +3941,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.test_handle_x402_fallback_fields",
       "name": "test_handle_x402_fallback_fields",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_handle_x402_fallback_fields",
-      "name": "test_handle_x402_fallback_fields",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_handle_x402_parses_payment_details",
-      "name": "test_handle_x402_parses_payment_details",
       "version": "0.1.0"
     },
     {
@@ -4839,20 +3969,8 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_helper",
-      "name": "test_helper",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_history_tracking",
       "name": "test_history_tracking",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_http_errors_raise_exception",
-      "name": "test_http_errors_raise_exception",
       "version": "0.1.0"
     },
     {
@@ -4869,12 +3987,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_identity_auth_happy_path",
-      "name": "test_identity_auth_happy_path",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_identity_sybil_check",
       "name": "test_identity_sybil_check",
       "version": "0.1.0"
@@ -4887,20 +3999,8 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_ids_are_1_to_50",
-      "name": "test_ids_are_1_to_50",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_immediate_ssrf_validation_before_request",
       "name": "test_immediate_ssrf_validation_before_request",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_inference_stream_happy_path",
-      "name": "test_inference_stream_happy_path",
       "version": "0.1.0"
     },
     {
@@ -4947,20 +4047,8 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_invalid_regex",
-      "name": "test_invalid_regex",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_invalid_url_scheme_is_error",
       "name": "test_invalid_url_scheme_is_error",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_invoke_tool_forwards_api_key",
-      "name": "test_invoke_tool_forwards_api_key",
       "version": "0.1.0"
     },
     {
@@ -4991,12 +4079,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.test_iter_files_skips_ignored_dirs",
       "name": "test_iter_files_skips_ignored_dirs",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_lineage_trace_happy_path",
-      "name": "test_lineage_trace_happy_path",
       "version": "0.1.0"
     },
     {
@@ -5073,24 +4155,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_load_project_metadata_empty",
-      "name": "test_load_project_metadata_empty",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_load_project_metadata_package_json",
-      "name": "test_load_project_metadata_package_json",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_load_project_metadata_pyproject",
-      "name": "test_load_project_metadata_pyproject",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_local_card_displays",
       "name": "test_local_card_displays",
       "version": "0.1.0"
@@ -5127,20 +4191,8 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_loop_detected_alert",
-      "name": "test_loop_detected_alert",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_loopback_127_0_0_1_blocked",
       "name": "test_loopback_127_0_0_1_blocked",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_low_confidence_principle_skipped",
-      "name": "test_low_confidence_principle_skipped",
       "version": "0.1.0"
     },
     {
@@ -5241,8 +4293,20 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_map_terrain_auto_invent_persists_tool_plan",
-      "name": "test_map_terrain_auto_invent_persists_tool_plan",
+      "id": "at.source.ass_ade.test_map_terrain_auto_invent_materializes_tool_packet",
+      "name": "test_map_terrain_auto_invent_materializes_tool_packet",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.ass_ade.test_map_terrain_auto_invent_supports_prompts_and_instructions",
+      "name": "test_map_terrain_auto_invent_supports_prompts_and_instructions",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.ass_ade.test_map_terrain_discovers_repo_asset_conventions",
+      "name": "test_map_terrain_discovers_repo_asset_conventions",
       "version": "0.1.0"
     },
     {
@@ -5265,26 +4329,8 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_max_rounds_error_event",
-      "name": "test_max_rounds_error_event",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_max_rounds_safety",
       "name": "test_max_rounds_safety",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_memory_fence_audit_happy_path",
-      "name": "test_memory_fence_audit_happy_path",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_methods_do_not_crash_on_valid_args",
-      "name": "test_methods_do_not_crash_on_valid_args",
       "version": "0.1.0"
     },
     {
@@ -5295,20 +4341,8 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_mev_shield_happy_path",
-      "name": "test_mev_shield_happy_path",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_mev_status",
       "name": "test_mev_status",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_minimal",
-      "name": "test_minimal",
       "version": "0.1.0"
     },
     {
@@ -5379,24 +4413,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_monitor_all_fires_multiple_alerts",
-      "name": "test_monitor_all_fires_multiple_alerts",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_monitor_returns_none_below_threshold",
-      "name": "test_monitor_returns_none_below_threshold",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_monitor_synergy_alert",
-      "name": "test_monitor_synergy_alert",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_multiple_files",
       "name": "test_multiple_files",
       "version": "0.1.0"
@@ -5411,12 +4427,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.test_name_property",
       "name": "test_name_property",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_ncb_check_skipped_for_non_write_tools",
-      "name": "test_ncb_check_skipped_for_non_write_tools",
       "version": "0.1.0"
     },
     {
@@ -5463,12 +4473,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_nexus_added_to_multiprovider_when_catalog_keys_present",
-      "name": "test_nexus_added_to_multiprovider_when_catalog_keys_present",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_nexus_available_when_key_set",
       "name": "test_nexus_available_when_key_set",
       "version": "0.1.0"
@@ -5489,12 +4493,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.test_nexus_is_marked_special",
       "name": "test_nexus_is_marked_special",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_nexus_provider_for_premium",
-      "name": "test_nexus_provider_for_premium",
       "version": "0.1.0"
     },
     {
@@ -5531,12 +4529,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.test_no_lse_falls_back_to_configured_model",
       "name": "test_no_lse_falls_back_to_configured_model",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_no_matches",
-      "name": "test_no_matches",
       "version": "0.1.0"
     },
     {
@@ -5589,18 +4581,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_non_python_skipped_by_cie",
-      "name": "test_non_python_skipped_by_cie",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_non_python_skips_ast",
-      "name": "test_non_python_skips_ast",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_non_retryable_status_returned_immediately",
       "name": "test_non_retryable_status_returned_immediately",
       "version": "0.1.0"
@@ -5631,26 +4611,8 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_null_cancellation_context_never_cancels",
-      "name": "test_null_cancellation_context_never_cancels",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_open_circuit_raises_immediately",
       "name": "test_open_circuit_raises_immediately",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_openai_key_multiprovider_when_catalog_enabled",
-      "name": "test_openai_key_multiprovider_when_catalog_enabled",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_openai_key_picks_openai",
-      "name": "test_openai_key_picks_openai",
       "version": "0.1.0"
     },
     {
@@ -5703,24 +4665,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_owasp_critical_eval_blocked",
-      "name": "test_owasp_critical_eval_blocked",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_owasp_eval_injection_blocked",
-      "name": "test_owasp_eval_injection_blocked",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_owasp_medium_warns_not_blocks",
-      "name": "test_owasp_medium_warns_not_blocks",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_parse_challenge_amount_too_large",
       "name": "test_parse_challenge_amount_too_large",
       "version": "0.1.0"
@@ -5741,12 +4685,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.test_parse_challenge_valid",
       "name": "test_parse_challenge_valid",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_partial_present_partial_missing",
-      "name": "test_partial_present_partial_missing",
       "version": "0.1.0"
     },
     {
@@ -5781,50 +4719,14 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_pending_persists_across_instances",
-      "name": "test_pending_persists_across_instances",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_persist_creates_file",
       "name": "test_persist_creates_file",
       "version": "0.1.0"
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_persist_principles_calls_context_memory",
-      "name": "test_persist_principles_calls_context_memory",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_persist_principles_no_lora_on_low_conviction",
-      "name": "test_persist_principles_no_lora_on_low_conviction",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_persist_principles_triggers_lora_on_high_conviction",
-      "name": "test_persist_principles_triggers_lora_on_high_conviction",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_persist_records_failure",
       "name": "test_persist_records_failure",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_persistence_io_error_does_not_crash",
-      "name": "test_persistence_io_error_does_not_crash",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_persistence_writes_jsonl",
-      "name": "test_persistence_writes_jsonl",
       "version": "0.1.0"
     },
     {
@@ -5907,26 +4809,8 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_post_with_x402_passes_through_on_200",
-      "name": "test_post_with_x402_passes_through_on_200",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_post_with_x402_raises_on_other_errors",
       "name": "test_post_with_x402_raises_on_other_errors",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_post_with_x402_raises_on_other_errors",
-      "name": "test_post_with_x402_raises_on_other_errors",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_post_with_x402_returns_payment_on_402",
-      "name": "test_post_with_x402_returns_payment_on_402",
       "version": "0.1.0"
     },
     {
@@ -5945,18 +4829,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.test_preview",
       "name": "test_preview",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_preview_does_not_modify",
-      "name": "test_preview_does_not_modify",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_preview_returns_diff",
-      "name": "test_preview_returns_diff",
       "version": "0.1.0"
     },
     {
@@ -5981,24 +4853,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.test_private_192_168_network_blocked",
       "name": "test_private_192_168_network_blocked",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_proceed_when_all_caps_present",
-      "name": "test_proceed_when_all_caps_present",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_prompt_download_happy_path",
-      "name": "test_prompt_download_happy_path",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_prompt_ethics_happy_path",
-      "name": "test_prompt_ethics_happy_path",
       "version": "0.1.0"
     },
     {
@@ -6057,18 +4911,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_quality_regression_alert",
-      "name": "test_quality_regression_alert",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_quota_status_happy_path",
-      "name": "test_quota_status_happy_path",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_range_bounded",
       "name": "test_range_bounded",
       "version": "0.1.0"
@@ -6123,30 +4965,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_ratchet_status_happy_path",
-      "name": "test_ratchet_status_happy_path",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_ratchetgate_happy_path",
-      "name": "test_ratchetgate_happy_path",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_read_file_failure_does_not_record",
-      "name": "test_read_file_failure_does_not_record",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_read_file_records_freshness",
-      "name": "test_read_file_records_freshness",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_read_full",
       "name": "test_read_full",
       "version": "0.1.0"
@@ -6195,6 +5013,12 @@
     },
     {
       "change_type": "new",
+      "id": "at.source.ass_ade.test_rebuild_preserves_existing_showcase_readme",
+      "name": "test_rebuild_preserves_existing_showcase_readme",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
       "id": "at.source.ass_ade.test_rebuild_yes_skips_confirmation",
       "name": "test_rebuild_yes_skips_confirmation",
       "version": "0.1.0"
@@ -6219,26 +5043,8 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_refine_trigger_false_on_clean_report",
-      "name": "test_refine_trigger_false_on_clean_report",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_refine_trigger_false_when_no_report",
-      "name": "test_refine_trigger_false_when_no_report",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_reject_outside_cwd",
       "name": "test_reject_outside_cwd",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_rejected_write_captures_rejection",
-      "name": "test_rejected_write_captures_rejection",
       "version": "0.1.0"
     },
     {
@@ -6291,18 +5097,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_render_local_docs_readme_contains_name",
-      "name": "test_render_local_docs_readme_contains_name",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_render_local_docs_writes_files",
-      "name": "test_render_local_docs_writes_files",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_render_markdown_contains_goal_and_steps",
       "name": "test_render_markdown_contains_goal_and_steps",
       "version": "0.1.0"
@@ -6327,32 +5121,8 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_report_structure",
-      "name": "test_report_structure",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_report_tracks_passes_failures",
-      "name": "test_report_tracks_passes_failures",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_reputation_ledger_happy_path",
-      "name": "test_reputation_ledger_happy_path",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_reputation_score",
       "name": "test_reputation_score",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_reputation_score_happy_path",
-      "name": "test_reputation_score_happy_path",
       "version": "0.1.0"
     },
     {
@@ -6495,12 +5265,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_run_returns_dict",
-      "name": "test_run_returns_dict",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_run_ruff_not_found",
       "name": "test_run_ruff_not_found",
       "version": "0.1.0"
@@ -6615,18 +5379,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_scan_source_symbols_finds_functions",
-      "name": "test_scan_source_symbols_finds_functions",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_scan_source_symbols_skips_venv",
-      "name": "test_scan_source_symbols_skips_venv",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_scan_todo_fixme_detects",
       "name": "test_scan_todo_fixme_detects",
       "version": "0.1.0"
@@ -6651,18 +5403,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_search_calls_internal_search",
-      "name": "test_search_calls_internal_search",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_search_chat_mode",
-      "name": "test_search_chat_mode",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_search_chat_mode",
       "name": "test_search_chat_mode",
       "version": "0.1.0"
@@ -6671,18 +5411,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.test_search_custom_max_results",
       "name": "test_search_custom_max_results",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_search_custom_max_results",
-      "name": "test_search_custom_max_results",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_security_compliance_happy_path",
-      "name": "test_security_compliance_happy_path",
       "version": "0.1.0"
     },
     {
@@ -6747,12 +5475,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_shell_injection_blocked",
-      "name": "test_shell_injection_blocked",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_shield_tool",
       "name": "test_shield_tool",
       "version": "0.1.0"
@@ -6767,12 +5489,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.test_shield_tool_blocked",
       "name": "test_shield_tool_blocked",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_simple_done_event",
-      "name": "test_simple_done_event",
       "version": "0.1.0"
     },
     {
@@ -6849,12 +5565,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_sla_status_happy_path",
-      "name": "test_sla_status_happy_path",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_snapshot_persistence",
       "name": "test_snapshot_persistence",
       "version": "0.1.0"
@@ -6879,12 +5589,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_status_structure",
-      "name": "test_status_structure",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_status_without_start_raises",
       "name": "test_status_without_start_raises",
       "version": "0.1.0"
@@ -6905,24 +5609,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.test_strips_whitespace",
       "name": "test_strips_whitespace",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_stubs_created_list",
-      "name": "test_stubs_created_list",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_subscriber_called_on_alert",
-      "name": "test_subscriber_called_on_alert",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_subscriber_exception_does_not_propagate",
-      "name": "test_subscriber_exception_does_not_propagate",
       "version": "0.1.0"
     },
     {
@@ -6987,18 +5673,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_syntax_error_blocked_by_cie",
-      "name": "test_syntax_error_blocked_by_cie",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_syntax_error_fails_ast",
-      "name": "test_syntax_error_fails_ast",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_syntax_error_returns_empty",
       "name": "test_syntax_error_returns_empty",
       "version": "0.1.0"
@@ -7035,18 +5709,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_testnet_mode",
-      "name": "test_testnet_mode",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_text_ai_happy_path",
-      "name": "test_text_ai_happy_path",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_text_keywords",
       "name": "test_text_keywords",
       "version": "0.1.0"
@@ -7077,12 +5739,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_tick_triggers_batch_at_interval",
-      "name": "test_tick_triggers_batch_at_interval",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_tier_agent_counts",
       "name": "test_tier_agent_counts",
       "version": "0.1.0"
@@ -7097,12 +5753,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.test_timeout",
       "name": "test_timeout",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_timeout_handling",
-      "name": "test_timeout_handling",
       "version": "0.1.0"
     },
     {
@@ -7143,26 +5793,8 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_tool_call_events",
-      "name": "test_tool_call_events",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_tool_call_then_response",
       "name": "test_tool_call_then_response",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_tool_result",
-      "name": "test_tool_result",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_tools",
-      "name": "test_tools",
       "version": "0.1.0"
     },
     {
@@ -7199,24 +5831,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.test_trust_history",
       "name": "test_trust_history",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_trust_oracle_happy_path",
-      "name": "test_trust_oracle_happy_path",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_trust_oracles_happy_path",
-      "name": "test_trust_oracles_happy_path",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_trust_oracles_validation_error",
-      "name": "test_trust_oracles_validation_error",
       "version": "0.1.0"
     },
     {
@@ -7317,18 +5931,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_valid_python_passes_ast",
-      "name": "test_valid_python_passes_ast",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_valid_python_passes_cie",
-      "name": "test_valid_python_passes_cie",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_validate_create_conflict",
       "name": "test_validate_create_conflict",
       "version": "0.1.0"
@@ -7395,20 +5997,8 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_validates_agent_id",
-      "name": "test_validates_agent_id",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_validation_report_properties",
       "name": "test_validation_report_properties",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_vanguard_happy_path",
-      "name": "test_vanguard_happy_path",
       "version": "0.1.0"
     },
     {
@@ -7419,32 +6009,8 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_veridelegate_happy_path",
-      "name": "test_veridelegate_happy_path",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_verirand_happy_path",
-      "name": "test_verirand_happy_path",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_vrf_draw",
       "name": "test_vrf_draw",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_vrf_gaming_happy_path",
-      "name": "test_vrf_gaming_happy_path",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_wallet_shows_status",
-      "name": "test_wallet_shows_status",
       "version": "0.1.0"
     },
     {
@@ -7467,12 +6033,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_wallet_testnet_on",
-      "name": "test_wallet_testnet_on",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_whitespace_only_raises",
       "name": "test_whitespace_only_raises",
       "version": "0.1.0"
@@ -7485,18 +6045,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.test_with_tool_calls",
-      "name": "test_with_tool_calls",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_write_after_read_is_allowed_in_block_mode",
-      "name": "test_write_after_read_is_allowed_in_block_mode",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.test_write_and_load_config_round_trip",
       "name": "test_write_and_load_config_round_trip",
       "version": "0.1.0"
@@ -7505,18 +6053,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.test_write_config_does_not_persist_api_keys",
       "name": "test_write_config_does_not_persist_api_keys",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_write_without_read_is_allowed_in_warn_mode",
-      "name": "test_write_without_read_is_allowed_in_warn_mode",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.test_write_without_read_is_blocked_in_block_mode",
-      "name": "test_write_without_read_is_blocked_in_block_mode",
       "version": "0.1.0"
     },
     {
@@ -7629,12 +6165,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.tier_prefix_from_id",
-      "name": "tier_prefix_from_id",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.tmp_workspace",
       "name": "tmp_workspace",
       "version": "0.1.0"
@@ -7655,6 +6185,12 @@
       "change_type": "new",
       "id": "at.source.ass_ade.to_markdown",
       "name": "to_markdown",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.ass_ade.top_level_cli_groups",
+      "name": "top_level_cli_groups",
       "version": "0.1.0"
     },
     {
@@ -7935,18 +6471,6 @@
     },
     {
       "change_type": "new",
-      "id": "at.source.ass_ade.web_research_tool_with_ai_powered_search",
-      "name": "web_research_tool_with_ai_powered_search",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.web_search_skill_to_my_project",
-      "name": "web_search_skill_to_my_project",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "at.source.ass_ade.wisdom_report",
       "name": "wisdom_report",
       "version": "0.1.0"
@@ -7967,18 +6491,6 @@
       "change_type": "new",
       "id": "at.source.ass_ade.write_default_config",
       "name": "write_default_config",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.write_project_version_file",
-      "name": "write_project_version_file",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "at.source.ass_ade.write_tier_version_file",
-      "name": "write_tier_version_file",
       "version": "0.1.0"
     }
   ],

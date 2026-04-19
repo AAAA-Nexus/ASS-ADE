@@ -1,13 +1,13 @@
 {
-  "body": "    def test_cooldown_prevents_duplicate_alerts(self) -> None:\n        b = BAS({\"bas_cooldown_s\": 3600.0})  # 1-hour cooldown\n        a1 = b.alert(\"gvu_jump\", {\"gvu_delta\": 0.5})\n        a2 = b.alert(\"gvu_jump\", {\"gvu_delta\": 0.6})\n        # second alert on cooldown\n        assert a2.cooldown_skipped\n",
-  "body_hash": "5720b19095b708b4",
+  "body": "def test_cooldown_prevents_duplicate_alerts(self) -> None:\n    b = BAS({\"bas_cooldown_s\": 3600.0})  # 1-hour cooldown\n    a1 = b.alert(\"gvu_jump\", {\"gvu_delta\": 0.5})\n    a2 = b.alert(\"gvu_jump\", {\"gvu_delta\": 0.6})\n    # second alert on cooldown\n    assert a2.cooldown_skipped\n",
+  "body_hash": "3d8f68fd43a6688f",
   "body_truncated": false,
   "callers_of": [
     "BAS",
     "alert"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:239.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:239.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_cooldown_prevents_duplicate_alerts",
@@ -35,7 +35,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:239"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:239"
   },
   "kind": "engine_molecule",
   "made_of": [],

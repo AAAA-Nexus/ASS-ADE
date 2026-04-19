@@ -1,12 +1,12 @@
 {
-  "body": "    def reputation_record(self, agent_id: str, success: bool = True, quality: float = 1.0, latency_ms: float = 0.0, **kwargs: Any) -> ReputationRecord:\n        \"\"\"/v1/reputation/record \u2014 append a reputation event. $0.008/call\"\"\"\n        return self._post_model(\"/v1/reputation/record\", ReputationRecord, {\n            \"agent_id\": agent_id, \"success\": success, \"quality\": quality, \"latency_ms\": latency_ms, **kwargs,\n        })\n",
-  "body_hash": "4b2db03633cfa0d4",
+  "body": "def reputation_record(self, agent_id: str, success: bool = True, quality: float = 1.0, latency_ms: float = 0.0, **kwargs: Any) -> ReputationRecord:\n    \"\"\"/v1/reputation/record \u2014 append a reputation event. $0.008/call\"\"\"\n    return self._post_model(\"/v1/reputation/record\", ReputationRecord, {\n        \"agent_id\": agent_id, \"success\": success, \"quality\": quality, \"latency_ms\": latency_ms, **kwargs,\n    })\n",
+  "body_hash": "21d788fe287c4683",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:575.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:575.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.reputation_record",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:575"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:575"
   },
   "kind": "engine_molecule",
   "made_of": [],

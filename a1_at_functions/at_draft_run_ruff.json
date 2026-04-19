@@ -14,13 +14,22 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_run_ruff.py:5.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/local/linter.py:84.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.run_ruff",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "re",
+    "shutil",
+    "subprocess",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.local.repo.DEFAULT_IGNORED_DIRS"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_run_ruff.py:5"
+    "source": "C:/!ass-ade/src/ass_ade/local/linter.py:84"
   },
   "kind": "pure_function",
   "made_of": [],

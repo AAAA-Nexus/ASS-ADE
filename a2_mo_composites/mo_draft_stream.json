@@ -1,6 +1,6 @@
 {
-  "body": "    def stream(self, request: CompletionRequest) -> Iterator[str]:\n        \"\"\"Streaming variant \u2014 yields text chunks.\"\"\"\n        model = request.model or self._default_model\n        body: dict[str, Any] = {\n            \"model\": model,\n            \"messages\": [self._format_message(m) for m in request.messages],\n            \"temperature\": request.temperature,\n            \"max_tokens\": request.max_tokens,\n            \"stream\": True,\n        }\n        with self._client.stream(\"POST\", \"/chat/completions\", json=body) as resp:\n            resp.raise_for_status()\n            for line in resp.iter_lines():\n                if not line or not line.startswith(\"data: \"):\n                    continue\n                payload = line[6:]\n                if payload.strip() == \"[DONE]\":\n                    break\n                try:\n                    chunk = json.loads(payload)\n                    delta = chunk[\"choices\"][0].get(\"delta\", {})\n                    if text := delta.get(\"content\"):\n                        yield text\n                except (json.JSONDecodeError, KeyError, IndexError):\n                    continue\n",
-  "body_hash": "8485c642b1e7008c",
+  "body": "def stream(self, request: CompletionRequest) -> Iterator[str]:\n    \"\"\"Streaming variant \u2014 yields text chunks.\"\"\"\n    model = request.model or self._default_model\n    body: dict[str, Any] = {\n        \"model\": model,\n        \"messages\": [self._format_message(m) for m in request.messages],\n        \"temperature\": request.temperature,\n        \"max_tokens\": request.max_tokens,\n        \"stream\": True,\n    }\n    with self._client.stream(\"POST\", \"/chat/completions\", json=body) as resp:\n        resp.raise_for_status()\n        for line in resp.iter_lines():\n            if not line or not line.startswith(\"data: \"):\n                continue\n            payload = line[6:]\n            if payload.strip() == \"[DONE]\":\n                break\n            try:\n                chunk = json.loads(payload)\n                delta = chunk[\"choices\"][0].get(\"delta\", {})\n                if text := delta.get(\"content\"):\n                    yield text\n            except (json.JSONDecodeError, KeyError, IndexError):\n                continue\n",
+  "body_hash": "0d3708f7dca7139e",
   "body_truncated": false,
   "callers_of": [
     "stream",
@@ -13,7 +13,7 @@
     "startswith"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/provider.py:120.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/provider.py:120.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.stream",
@@ -32,7 +32,7 @@
     "ass_ade.engine.types.ToolCallRequest"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/provider.py:120"
+    "source": "C:/!ass-ade/src/ass_ade/engine/provider.py:120"
   },
   "kind": "engine_molecule",
   "made_of": [

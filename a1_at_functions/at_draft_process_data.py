@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_process_data.py:5
+# Extracted from C:/!ass-ade/benchmarks/messy_demo/utils.py:6
 # Component id: at.source.ass_ade.process_data
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def process_data(data):

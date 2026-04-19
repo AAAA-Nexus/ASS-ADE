@@ -1,19 +1,30 @@
 {
-  "body": "    def test_returns_int(self):\n        assert isinstance(estimate_tokens(\"test\"), int)\n",
-  "body_hash": "c46c3d3d169a81af",
+  "body": "def test_returns_int(self):\n    assert isinstance(estimate_tokens(\"test\"), int)\n",
+  "body_hash": "3c47cd0783c9cc0c",
   "body_truncated": false,
   "callers_of": [
     "isinstance",
     "estimate_tokens"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testestimatetokens.py:26.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_tokens.py:40.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "qk.source.ass_ade.test_returns_int",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "ass_ade.engine.tokens.DEFAULT_CONTEXT_WINDOW",
+    "ass_ade.engine.tokens.RESPONSE_RESERVE",
+    "ass_ade.engine.tokens.TokenBudget",
+    "ass_ade.engine.tokens.context_window_for",
+    "ass_ade.engine.tokens.estimate_message_tokens",
+    "ass_ade.engine.tokens.estimate_tokens",
+    "ass_ade.engine.tokens.estimate_tools_tokens",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolSchema"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testestimatetokens.py:26"
+    "source": "C:/!ass-ade/tests/test_tokens.py:40"
   },
   "kind": "invariant",
   "made_of": [],

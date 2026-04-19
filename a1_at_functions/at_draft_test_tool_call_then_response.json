@@ -1,6 +1,6 @@
 {
-  "body": "    def test_tool_call_then_response(self, tmp_path):\n        provider = _MockProvider([\n            # First call: model requests a tool call\n            CompletionResponse(\n                message=Message(\n                    role=\"assistant\",\n                    content=\"\",\n                    tool_calls=[\n                        ToolCallRequest(id=\"c1\", name=\"echo\", arguments={\"text\": \"ping\"})\n                    ],\n                ),\n                finish_reason=\"tool_calls\",\n            ),\n            # Second call: model returns final text\n            CompletionResponse(\n                message=Message(role=\"assistant\", content=\"Got: echoed: ping\"),\n                finish_reason=\"stop\",\n            ),\n        ])\n        registry = ToolRegistry()\n        registry.register(_EchoTool())\n\n        loop = AgentLoop(\n            provider=provider,\n            registry=registry,\n            working_dir=str(tmp_path),\n        )\n        result = loop.step(\"Echo ping\")\n        assert \"echoed: ping\" in result\n",
-  "body_hash": "25cb678903683447",
+  "body": "def test_tool_call_then_response(self, tmp_path):\n    provider = _MockProvider([\n        # First call: model requests a tool call\n        CompletionResponse(\n            message=Message(\n                role=\"assistant\",\n                content=\"\",\n                tool_calls=[\n                    ToolCallRequest(id=\"c1\", name=\"echo\", arguments={\"text\": \"ping\"})\n                ],\n            ),\n            finish_reason=\"tool_calls\",\n        ),\n        # Second call: model returns final text\n        CompletionResponse(\n            message=Message(role=\"assistant\", content=\"Got: echoed: ping\"),\n            finish_reason=\"stop\",\n        ),\n    ])\n    registry = ToolRegistry()\n    registry.register(_EchoTool())\n\n    loop = AgentLoop(\n        provider=provider,\n        registry=registry,\n        working_dir=str(tmp_path),\n    )\n    result = loop.step(\"Echo ping\")\n    assert \"echoed: ping\" in result\n",
+  "body_hash": "29082a1b755eed29",
   "body_truncated": false,
   "callers_of": [
     "_MockProvider",
@@ -15,7 +15,7 @@
     "ToolCallRequest"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_agent.py:220.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_agent.py:220.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_tool_call_then_response",
@@ -35,7 +35,7 @@
     "ass_ade.tools.registry.ToolRegistry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_agent.py:220"
+    "source": "C:/!ass-ade/tests/test_agent.py:220"
   },
   "kind": "pure_function",
   "made_of": [],

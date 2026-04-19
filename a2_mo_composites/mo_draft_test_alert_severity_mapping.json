@@ -1,6 +1,6 @@
 {
-  "body": "    def test_alert_severity_mapping(self) -> None:\n        b = BAS({})\n        high_kinds = [\"emergent_synergy\", \"gvu_jump\", \"trust_violation\", \"budget_exhaustion\"]\n        for kind in high_kinds:\n            a = Alert(kind=kind, severity=\"\", payload={}, ts=\"\")\n            b_alert = b.alert(kind, {})\n            assert b_alert.severity == \"high\", f\"{kind} should be high severity\"\n",
-  "body_hash": "b39d3292b95d5660",
+  "body": "def test_alert_severity_mapping(self) -> None:\n    b = BAS({})\n    high_kinds = [\"emergent_synergy\", \"gvu_jump\", \"trust_violation\", \"budget_exhaustion\"]\n    for kind in high_kinds:\n        a = Alert(kind=kind, severity=\"\", payload={}, ts=\"\")\n        b_alert = b.alert(kind, {})\n        assert b_alert.severity == \"high\", f\"{kind} should be high severity\"\n",
+  "body_hash": "c8a8efdf8842f568",
   "body_truncated": false,
   "callers_of": [
     "BAS",
@@ -8,7 +8,7 @@
     "alert"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:259.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:259.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_alert_severity_mapping",
@@ -36,7 +36,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:259"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:259"
   },
   "kind": "engine_molecule",
   "made_of": [],

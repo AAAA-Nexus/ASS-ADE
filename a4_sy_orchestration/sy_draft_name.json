@@ -1,10 +1,10 @@
 {
-  "body": "    def name(self):\n        return \"echo\"\n",
-  "body_hash": "ddc686cd72f9d905",
+  "body": "def name(self):\n    return \"echo\"\n",
+  "body_hash": "7016252549be055a",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:216.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_server_streaming.py:216.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.name",
@@ -23,7 +23,7 @@
     "ass_ade.tools.registry.ToolRegistry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:216"
+    "source": "C:/!ass-ade/tests/test_mcp_server_streaming.py:216"
   },
   "kind": "ecosystem_system",
   "made_of": [],

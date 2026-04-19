@@ -13,7 +13,7 @@
     "ToolSchema"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine.py:137.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine.py:137.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.testnexusprovider",
@@ -44,7 +44,7 @@
     "ass_ade.engine.provider.MultiProvider"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine.py:137"
+    "source": "C:/!ass-ade/tests/test_engine.py:137"
   },
   "kind": "engine_molecule",
   "made_of": [],

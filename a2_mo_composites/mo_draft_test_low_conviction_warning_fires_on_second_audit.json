@@ -1,6 +1,6 @@
 {
-  "body": "    def test_low_conviction_warning_fires_on_second_audit(self) -> None:\n        w = WisdomEngine({})\n        r1 = w.run_audit({})   # first audit \u2014 no warning even if low\n        assert not any(\"low_conviction\" in warn for warn in r1.warnings)\n        r2 = w.run_audit({})   # second with still-low score \u2014 warning fires\n        assert any(\"low_conviction\" in warn for warn in r2.warnings)\n",
-  "body_hash": "11361cfc1df3fac4",
+  "body": "def test_low_conviction_warning_fires_on_second_audit(self) -> None:\n    w = WisdomEngine({})\n    r1 = w.run_audit({})   # first audit \u2014 no warning even if low\n    assert not any(\"low_conviction\" in warn for warn in r1.warnings)\n    r2 = w.run_audit({})   # second with still-low score \u2014 warning fires\n    assert any(\"low_conviction\" in warn for warn in r2.warnings)\n",
+  "body_hash": "a7516e2b2d433c62",
   "body_truncated": false,
   "callers_of": [
     "WisdomEngine",
@@ -8,7 +8,7 @@
     "any"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:106.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:106.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_low_conviction_warning_fires_on_second_audit",
@@ -36,10 +36,12 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:106"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:106"
   },
   "kind": "engine_molecule",
-  "made_of": [],
+  "made_of": [
+    "at.source.ass_ade.run_audit"
+  ],
   "name": "test_low_conviction_warning_fires_on_second_audit",
   "product_categories": [
     "SRG"

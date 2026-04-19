@@ -1,6 +1,6 @@
 {
-  "body": "    def internal_search(self, query: str, max_results: int = 10, session_token: str | None = None) -> list[dict]:\n        \"\"\"POST /internal/search \u2014 semantic search over the private knowledge base.\n\n        Requires owner session token.\n        \"\"\"\n        headers = {}\n        if session_token:\n            # Sanitize before inserting into an HTTP header (OWASP A03).\n            headers[\"X-Owner-Token\"] = sanitize_header_value(session_token.strip(), \"session_token\")\n        response = self._client.post(\n            \"/internal/search\",\n            json={\"query\": query, \"max_results\": max_results},\n            headers=headers,\n        )\n        raise_for_status(response.status_code, endpoint=\"/internal/search\")\n        return response.json()  # type: ignore[return-value]\n",
-  "body_hash": "84211d9b6ba6cb1d",
+  "body": "def internal_search(self, query: str, max_results: int = 10, session_token: str | None = None) -> list[dict]:\n    \"\"\"POST /internal/search \u2014 semantic search over the private knowledge base.\n\n    Requires owner session token.\n    \"\"\"\n    headers = {}\n    if session_token:\n        # Sanitize before inserting into an HTTP header (OWASP A03).\n        headers[\"X-Owner-Token\"] = sanitize_header_value(session_token.strip(), \"session_token\")\n    response = self._client.post(\n        \"/internal/search\",\n        json={\"query\": query, \"max_results\": max_results},\n        headers=headers,\n    )\n    raise_for_status(response.status_code, endpoint=\"/internal/search\")\n    return response.json()  # type: ignore[return-value]\n",
+  "body_hash": "f022c520023c2345",
   "body_truncated": false,
   "callers_of": [
     "post",
@@ -10,7 +10,7 @@
     "strip"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:381.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:381.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.internal_search",
@@ -164,7 +164,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:381"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:381"
   },
   "kind": "engine_molecule",
   "made_of": [

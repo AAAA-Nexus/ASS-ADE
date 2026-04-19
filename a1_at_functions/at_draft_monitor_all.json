@@ -1,6 +1,6 @@
 {
-  "body": "    def monitor_all(self, metrics: dict) -> list[Alert]:\n        \"\"\"Check all thresholds and return all alerts fired.\"\"\"\n        fired: list[Alert] = []\n\n        synergy = float(metrics.get(\"synergy\", 0.0))\n        if synergy > self._synergy_threshold:\n            a = self.alert(\"emergent_synergy\", {\"synergy\": synergy})\n            if a is not None:\n                fired.append(a)\n\n        novelty = float(metrics.get(\"novelty\", 0.0))\n        if novelty > self._novelty_threshold:\n            a = self.alert(\"novelty_spike\", {\"novelty\": novelty})\n            if a is not None:\n                fired.append(a)\n\n        gvu = float(metrics.get(\"gvu_delta\", 0.0))\n        if gvu > 0.1:\n            a = self.alert(\"gvu_jump\", {\"gvu_delta\": gvu})\n            if a is not None:\n                fired.append(a)\n\n        missing_caps = metrics.get(\"missing_capabilities\")\n        if isinstance(missing_caps, list) and len(missing_caps) > 0:\n            a = self.alert(\"capability_gap\", {\"missing_capabilities\": list(missing_caps)})\n            if a is not None:\n                fired.append(a)\n\n        trust_score = float(metrics.get(\"trust_score\", 1.0))\n        if trust_score < 0.3:\n            a = self.alert(\"trust_violation\", {\"trust_score\": trust_score})\n            if a is not None:\n                fired.append(a)\n\n        budget_pct = float(metrics.get(\"budget_pct\", 0.0))\n        if budget_pct > 0.9:\n            a = self.alert(\"budget_exhaustion\", {\"budget_pct\": budget_pct})\n            if a is not None:\n                fired.append(a)\n\n        score_delta = float(metrics.get(\"score_delta\", 0.0))\n        if score_delta < -0.2:\n            a = self.alert(\"quality_regression\", {\"score_delta\": score_delta})\n            if a is not None:\n                fired.append(a)\n\n        tool_repeat = int(metrics.get(\"tool_repeat_count\", 0))\n        if tool_repeat > 3:\n            a = self.alert(\"loop_detected\", {\"tool_repeat_count\": tool_repeat})\n            if a is not None:\n                fired.append(a)\n\n        return fired\n",
-  "body_hash": "3ceba9bc3b62c100",
+  "body": "def monitor_all(self, metrics: dict) -> list[Alert]:\n    \"\"\"Check all thresholds and return all alerts fired.\"\"\"\n    fired: list[Alert] = []\n\n    synergy = float(metrics.get(\"synergy\", 0.0))\n    if synergy > self._synergy_threshold:\n        a = self.alert(\"emergent_synergy\", {\"synergy\": synergy})\n        if a is not None:\n            fired.append(a)\n\n    novelty = float(metrics.get(\"novelty\", 0.0))\n    if novelty > self._novelty_threshold:\n        a = self.alert(\"novelty_spike\", {\"novelty\": novelty})\n        if a is not None:\n            fired.append(a)\n\n    gvu = float(metrics.get(\"gvu_delta\", 0.0))\n    if gvu > 0.1:\n        a = self.alert(\"gvu_jump\", {\"gvu_delta\": gvu})\n        if a is not None:\n            fired.append(a)\n\n    missing_caps = metrics.get(\"missing_capabilities\")\n    if isinstance(missing_caps, list) and len(missing_caps) > 0:\n        a = self.alert(\"capability_gap\", {\"missing_capabilities\": list(missing_caps)})\n        if a is not None:\n            fired.append(a)\n\n    trust_score = float(metrics.get(\"trust_score\", 1.0))\n    if trust_score < 0.3:\n        a = self.alert(\"trust_violation\", {\"trust_score\": trust_score})\n        if a is not None:\n            fired.append(a)\n\n    budget_pct = float(metrics.get(\"budget_pct\", 0.0))\n    if budget_pct > 0.9:\n        a = self.alert(\"budget_exhaustion\", {\"budget_pct\": budget_pct})\n        if a is not None:\n            fired.append(a)\n\n    score_delta = float(metrics.get(\"score_delta\", 0.0))\n    if score_delta < -0.2:\n        a = self.alert(\"quality_regression\", {\"score_delta\": score_delta})\n        if a is not None:\n            fired.append(a)\n\n    tool_repeat = int(metrics.get(\"tool_repeat_count\", 0))\n    if tool_repeat > 3:\n        a = self.alert(\"loop_detected\", {\"tool_repeat_count\": tool_repeat})\n        if a is not None:\n            fired.append(a)\n\n    return fired\n",
+  "body_hash": "3b86b2e9c0e2c7bc",
   "body_truncated": false,
   "callers_of": [
     "float",
@@ -13,13 +13,24 @@
     "list"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_bas.py:120.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/bas.py:162.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.monitor_all",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "time",
+    "collections.abc.Callable",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.UTC",
+    "datetime.datetime",
+    "pathlib.Path",
+    "typing.Any"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_bas.py:120"
+    "source": "C:/!ass-ade/src/ass_ade/agent/bas.py:162"
   },
   "kind": "pure_function",
   "made_of": [],

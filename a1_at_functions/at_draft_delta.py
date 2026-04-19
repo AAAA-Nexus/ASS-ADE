@@ -1,6 +1,8 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_simulationresult.py:22
+# Extracted from C:/!ass-ade/src/ass_ade/agent/dgm_h.py:66
 # Component id: at.source.ass_ade.delta
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
-    def delta(self) -> float:
-        return self.improvement
+def delta(self) -> float:
+    return self.improvement

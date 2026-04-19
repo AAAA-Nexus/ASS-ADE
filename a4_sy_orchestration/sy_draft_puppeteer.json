@@ -1,12 +1,12 @@
 {
-  "body": "    def puppeteer(self):\n        if self._puppeteer is None:\n            from ass_ade.agent.puppeteer import Puppeteer\n            self._puppeteer = Puppeteer(self._config, self._nexus)\n        return self._puppeteer\n",
-  "body_hash": "f9ac2434b7a11f1a",
+  "body": "def puppeteer(self):\n    if self._puppeteer is None:\n        from ass_ade.agent.puppeteer import Puppeteer\n        self._puppeteer = Puppeteer(self._config, self._nexus)\n    return self._puppeteer\n",
+  "body_hash": "6eea89e042d20895",
   "body_truncated": false,
   "callers_of": [
     "Puppeteer"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/orchestrator.py:234.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/orchestrator.py:234.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.puppeteer",
@@ -38,7 +38,7 @@
     "json"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/orchestrator.py:234"
+    "source": "C:/!ass-ade/src/ass_ade/agent/orchestrator.py:234"
   },
   "kind": "ecosystem_system",
   "made_of": [],

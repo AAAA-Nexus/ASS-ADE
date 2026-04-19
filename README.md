@@ -9,8 +9,8 @@
   Blueprint is truth. Code is artifact.
 </pre>
 
-[![Version](https://img.shields.io/badge/version-0.1.0-blue)](VERSION)
-[![Components](https://img.shields.io/badge/components-2%2C589-blueviolet)](MANIFEST.json)
+[![Version](https://img.shields.io/badge/version-0.1.1-blue)](VERSION)
+[![Components](https://img.shields.io/badge/components-2%2C196-blueviolet)](MANIFEST.json)
 [![Conformance](https://img.shields.io/badge/conformance-100%25-brightgreen)](CERTIFICATE.json)
 [![Tests](https://img.shields.io/badge/tests-3%2C800-brightgreen)](BIRTH_CERTIFICATE.md)
 [![License](https://img.shields.io/badge/license-BSL%201.1-orange)](LICENSE)
@@ -30,7 +30,7 @@ ASS-ADE inverts this. You write the **blueprint first** — a structured descrip
 
 When requirements change, you update the blueprint and rebuild. The certificate tells you exactly what changed. No archaeology. No drift. No mystery.
 
-**Then it did it to itself.** 2,589 components. 100% pass rate. Five tiers. One certificate.
+**Then it did it to itself.** 2,196 components. 100% pass rate. Five tiers. One certificate. v0.1.1 — first tracked evolution via multi-source merge.
 
 ---
 
@@ -94,11 +94,11 @@ ASS-ADE organizes all synthesized code into five tiers. **Dependencies flow stri
 
 ```mermaid
 graph TD
-    a4[a4: SY Orchestration<br/>CLI · MCP server · agents<br/>216 components] --> a3
-    a3[a3: OG Features<br/>domain logic · pipelines<br/>82 components] --> a2
-    a2[a2: MO Composites<br/>engines · clients · managers<br/>855 components] --> a1
-    a1[a1: AT Functions<br/>pure atomic transforms<br/>1,330 components] --> a0
-    a0[a0: QK Constants<br/>invariant anchors · math<br/>106 components]
+    a4[a4: SY Orchestration<br/>CLI · MCP server · agents<br/>192 components] --> a3
+    a3[a3: OG Features<br/>domain logic · pipelines<br/>57 components] --> a2
+    a2[a2: MO Composites<br/>engines · clients · managers<br/>782 components] --> a1
+    a1[a1: AT Functions<br/>pure atomic transforms<br/>1,079 components] --> a0
+    a0[a0: QK Constants<br/>invariant anchors · math<br/>87 components]
 
     style a0 fill:#1a1a2e,color:#e0e0e0
     style a1 fill:#16213e,color:#e0e0e0
@@ -109,12 +109,12 @@ graph TD
 
 | Tier | Prefix | Role | Components |
 |------|--------|------|-----------|
-| a0 | `qk_` | Invariant constants, math anchors — zero imports | 106 |
-| a1 | `at_` | Pure atomic functions — no I/O, no state | 1,330 |
-| a2 | `mo_` | Stateful compositions — engines, clients | 855 |
-| a3 | `og_` | Domain features — full behaviors, pipelines | 82 |
-| a4 | `sy_` | Orchestration — CLI, MCP server, agents | 216 |
-| **Total** | | | **2,589** |
+| a0 | `qk_` | Invariant constants, math anchors — zero imports | 87 |
+| a1 | `at_` | Pure atomic functions — no I/O, no state | 1,079 |
+| a2 | `mo_` | Stateful compositions — engines, clients | 782 |
+| a3 | `og_` | Domain features — full behaviors, pipelines | 57 |
+| a4 | `sy_` | Orchestration — CLI, MCP server, agents | 192 |
+| **Total** | | | **2,196** |
 
 **Structural invariants verified on every rebuild:**
 

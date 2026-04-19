@@ -1,12 +1,12 @@
 {
-  "body": "    def synthesize_verified_code(\n        self, spec: str, language: str = \"python\", **kwargs: Any\n    ) -> dict:\n        \"\"\"Formally-verified synthesis. Falls back to a stub with verified=False.\"\"\"\n        try:\n            return self._post_raw(\n                \"/v1/synthesis/verified\",\n                {\"spec\": spec, \"language\": language, **kwargs},\n            )\n        except Exception:\n            return {\n                \"code\": f\"# TODO unverified synthesis for: {spec[:120]}\\npass\\n\",\n                \"verified\": False,\n                \"fallback\": \"stub\",\n            }\n",
-  "body_hash": "09da514088434024",
+  "body": "def synthesize_verified_code(\n    self, spec: str, language: str = \"python\", **kwargs: Any\n) -> dict:\n    \"\"\"Formally-verified synthesis. Falls back to a stub with verified=False.\"\"\"\n    try:\n        return self._post_raw(\n            \"/v1/synthesis/verified\",\n            {\"spec\": spec, \"language\": language, **kwargs},\n        )\n    except Exception:\n        return {\n            \"code\": f\"# TODO unverified synthesis for: {spec[:120]}\\npass\\n\",\n            \"verified\": False,\n            \"fallback\": \"stub\",\n        }\n",
+  "body_hash": "01f7e097e8323e24",
   "body_truncated": false,
   "callers_of": [
     "_post_raw"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:958.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:958.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.synthesize_verified_code",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:958"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:958"
   },
   "kind": "engine_molecule",
   "made_of": [],

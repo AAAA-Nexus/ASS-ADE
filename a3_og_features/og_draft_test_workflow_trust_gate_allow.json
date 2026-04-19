@@ -1,6 +1,6 @@
 {
-  "body": "    def test_workflow_trust_gate_allow(self, tmp_path: Path, hybrid_config: Path) -> None:\n        \"\"\"Trust gate should return ALLOW verdict for trusted agent.\"\"\"\n        mock_nx = MagicMock()\n        mock_nx.trust_score.return_value = TrustScore(\n            agent_id=\"agent-trusted\",\n            score=0.95,\n            tier=\"platinum\",\n            certified_monotonic=True,\n        )\n        mock_nx.reputation_score.return_value = {\n            \"agent_id\": \"agent-trusted\",\n            \"tier\": \"gold\",\n            \"score\": 0.90,\n        }\n        \n        with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n            result = runner.invoke(\n                app,\n                [\"workflow\", \"trust-gate\", \"agent-trusted\", \"--config\", str(hybrid_config)],\n            )\n        \n        assert result.exit_code == 0\n",
-  "body_hash": "b7bf2b38360ff40b",
+  "body": "def test_workflow_trust_gate_allow(self, tmp_path: Path, hybrid_config: Path) -> None:\n    \"\"\"Trust gate should return ALLOW verdict for trusted agent.\"\"\"\n    mock_nx = MagicMock()\n    mock_nx.trust_score.return_value = TrustScore(\n        agent_id=\"agent-trusted\",\n        score=0.95,\n        tier=\"platinum\",\n        certified_monotonic=True,\n    )\n    mock_nx.reputation_score.return_value = {\n        \"agent_id\": \"agent-trusted\",\n        \"tier\": \"gold\",\n        \"score\": 0.90,\n    }\n\n    with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n        result = runner.invoke(\n            app,\n            [\"workflow\", \"trust-gate\", \"agent-trusted\", \"--config\", str(hybrid_config)],\n        )\n\n    assert result.exit_code == 0\n",
+  "body_hash": "31ee4a89a3f7d1e1",
   "body_truncated": false,
   "callers_of": [
     "MagicMock",
@@ -11,7 +11,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli_happy_path.py:578.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_cli_happy_path.py:578.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "og.source.ass_ade.test_workflow_trust_gate_allow",
@@ -36,7 +36,7 @@
     "ass_ade.pipeline.PipelineResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli_happy_path.py:578"
+    "source": "C:/!ass-ade/tests/test_cli_happy_path.py:578"
   },
   "kind": "product_organism",
   "made_of": [

@@ -1,19 +1,36 @@
 {
-  "body": "    def test_invalid_url_scheme_is_error(self) -> None:\n        data = {\"name\": \"TestAgent\", \"url\": \"ftp://bad.com\"}\n        report = validate_agent_card(data)\n        assert not report.valid\n        assert any(\"scheme\" in i.message for i in report.errors)\n",
-  "body_hash": "242c30136438e7f5",
+  "body": "def test_invalid_url_scheme_is_error(self) -> None:\n    data = {\"name\": \"TestAgent\", \"url\": \"ftp://bad.com\"}\n    report = validate_agent_card(data)\n    assert not report.valid\n    assert any(\"scheme\" in i.message for i in report.errors)\n",
+  "body_hash": "677e4b32e76e481e",
   "body_truncated": false,
   "callers_of": [
     "validate_agent_card",
     "any"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateagentcard.py:59.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_a2a.py:79.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_invalid_url_scheme_is_error",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.a2a.A2AAgentCard",
+    "ass_ade.a2a.A2AAuthentication",
+    "ass_ade.a2a.A2ASkill",
+    "ass_ade.a2a.ValidationIssue",
+    "ass_ade.a2a.ValidationReport",
+    "ass_ade.a2a.fetch_agent_card",
+    "ass_ade.a2a.local_agent_card",
+    "ass_ade.a2a.negotiate",
+    "ass_ade.a2a.validate_agent_card",
+    "httpx",
+    "httpx"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateagentcard.py:59"
+    "source": "C:/!ass-ade/tests/test_a2a.py:79"
   },
   "kind": "pure_function",
   "made_of": [],

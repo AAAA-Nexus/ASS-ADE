@@ -1,6 +1,6 @@
 {
-  "body": "def test_sync_atomadic_prompt_capabilities_replaces_generated_block(tmp_path: Path) -> None:\n    prompt_path = tmp_path / \"agents\" / \"atomadic_interpreter.md\"\n    prompt_path.parent.mkdir()\n    prompt_path.write_text(\n        \"# Atomadic\\n\\n---\\n\\n## Current Capabilities\\n\\nold stale block\\n\",\n        encoding=\"utf-8\",\n    )\n\n    result = sync_atomadic_prompt_capabilities(repo_root=tmp_path, prompt_path=prompt_path)\n\n    assert result == prompt_path\n    text = prompt_path.read_text(encoding=\"utf-8\")\n    assert \"old stale block\" not in text\n    assert \"`protocol evolution-record`\" in text\n    assert \"`prompt sync-agent`\" in text\n",
-  "body_hash": "29776bfce87a2479",
+  "body": "def test_sync_atomadic_prompt_capabilities_replaces_generated_block(tmp_path: Path) -> None:\n    prompt_path = tmp_path / \"agents\" / \"atomadic_interpreter.md\"\n    prompt_path.parent.mkdir()\n    prompt_path.write_text(\n        \"# Atomadic\\n\\n---\\n\\n## Current Capabilities\\n\\nold stale block\\n\",\n        encoding=\"utf-8\",\n    )\n\n    result = sync_atomadic_prompt_capabilities(repo_root=tmp_path, prompt_path=prompt_path)\n\n    assert result == prompt_path\n    text = prompt_path.read_text(encoding=\"utf-8\")\n    assert \"old stale block\" not in text\n    assert \"Runtime routing rules\" in text\n    assert \"`protocol evolution-record`\" in text\n    assert \"`prompt sync-agent`\" in text\n",
+  "body_hash": "9d76c4a867c38d47",
   "body_truncated": false,
   "callers_of": [
     "mkdir",
@@ -9,13 +9,24 @@
     "read_text"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_sync_atomadic_prompt_capabilities_replaces_generated_block.py:5.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_capabilities.py:110.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_sync_atomadic_prompt_capabilities_replaces_generated_block",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "ass_ade.interpreter",
+    "ass_ade.agent.capabilities.build_atomadic_intent_prompt",
+    "ass_ade.agent.capabilities.command_path_exists",
+    "ass_ade.agent.capabilities.render_atomadic_help",
+    "ass_ade.agent.capabilities.sync_atomadic_prompt_capabilities",
+    "ass_ade.agent.context.build_system_prompt",
+    "ass_ade.interpreter.Atomadic"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_sync_atomadic_prompt_capabilities_replaces_generated_block.py:5"
+    "source": "C:/!ass-ade/tests/test_capabilities.py:110"
   },
   "kind": "pure_function",
   "made_of": [],

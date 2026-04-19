@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli_happy_path.py:309
+# Extracted from C:/!ass-ade/tests/test_cli_happy_path.py:309
 # Component id: mo.source.ass_ade.testtrustscore
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class TestTrustScore:
@@ -14,12 +16,12 @@ class TestTrustScore:
             tier="gold",
             certified_monotonic=True,
         )
-        
+
         with patch("ass_ade.cli.NexusClient", return_value=_make_ctx_mgr(mock_nx)):
             result = runner.invoke(
                 app,
                 ["trust", "score", "agent-reliable-1", "--config", str(hybrid_config)],
             )
-        
+
         assert result.exit_code == 0
         assert "0.92" in result.stdout or "gold" in result.stdout

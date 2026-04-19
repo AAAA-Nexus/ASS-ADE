@@ -6,7 +6,7 @@
     "append"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/benchmarks/messy_demo/helpers.py:11.",
+  "description": "Draft candidate from C:/!ass-ade/benchmarks/messy_demo/helpers.py:11.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.datamanager",
@@ -14,7 +14,7 @@
     "utils.process_data"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/benchmarks/messy_demo/helpers.py:11"
+    "source": "C:/!ass-ade/benchmarks/messy_demo/helpers.py:11"
   },
   "kind": "engine_molecule",
   "made_of": [],

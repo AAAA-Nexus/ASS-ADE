@@ -1,12 +1,12 @@
 {
-  "body": "    def federation_verify(self, token: str, **kwargs: Any) -> FederationVerify:\n        \"\"\"/v1/federation/verify \u2014 verify nxf_ token (AIF-101). $0.020/call\"\"\"\n        return self._post_model(\"/v1/federation/verify\", FederationVerify, {\"token\": token, **kwargs})\n",
-  "body_hash": "f9287f5ed6ea5f94",
+  "body": "def federation_verify(self, token: str, **kwargs: Any) -> FederationVerify:\n    \"\"\"/v1/federation/verify \u2014 verify nxf_ token (AIF-101). $0.020/call\"\"\"\n    return self._post_model(\"/v1/federation/verify\", FederationVerify, {\"token\": token, **kwargs})\n",
+  "body_hash": "4dce25fc7c03f94f",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:845.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:845.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.federation_verify",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:845"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:845"
   },
   "kind": "engine_molecule",
   "made_of": [],

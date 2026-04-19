@@ -1,6 +1,6 @@
 {
-  "body": "    def test_close_forwards_to_all_underlying(self):\n        from ass_ade.engine.provider import MultiProvider\n        a = self._make_provider(\"a\")\n        b = self._make_provider(\"b\")\n        mp = MultiProvider(providers={\"a\": a, \"b\": b}, fallback_order=[\"a\", \"b\"])\n        mp.close()\n        a.close.assert_called_once()\n        b.close.assert_called_once()\n",
-  "body_hash": "f27ce616f45c198b",
+  "body": "def test_close_forwards_to_all_underlying(self):\n    from ass_ade.engine.provider import MultiProvider\n    a = self._make_provider(\"a\")\n    b = self._make_provider(\"b\")\n    mp = MultiProvider(providers={\"a\": a, \"b\": b}, fallback_order=[\"a\", \"b\"])\n    mp.close()\n    a.close.assert_called_once()\n    b.close.assert_called_once()\n",
+  "body_hash": "5209cd2953eef29f",
   "body_truncated": false,
   "callers_of": [
     "_make_provider",
@@ -9,7 +9,7 @@
     "assert_called_once"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:462.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:462.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_close_forwards_to_all_underlying",
@@ -88,7 +88,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:462"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:462"
   },
   "kind": "pure_function",
   "made_of": [],

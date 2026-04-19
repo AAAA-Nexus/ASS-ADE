@@ -1,6 +1,6 @@
 {
-  "body": "    def test_cloud_provider_unavailable_without_key(self, monkeypatch):\n        monkeypatch.delenv(\"GROQ_API_KEY\", raising=False)\n        p = get_provider(\"groq\")\n        assert p.is_available() is False\n",
-  "body_hash": "5028997abd57cda3",
+  "body": "def test_cloud_provider_unavailable_without_key(self, monkeypatch):\n    monkeypatch.delenv(\"GROQ_API_KEY\", raising=False)\n    p = get_provider(\"groq\")\n    assert p.is_available() is False\n",
+  "body_hash": "0d03c0ee944594aa",
   "body_truncated": false,
   "callers_of": [
     "delenv",
@@ -8,7 +8,7 @@
     "is_available"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:106.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:106.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_cloud_provider_unavailable_without_key",
@@ -87,7 +87,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:106"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:106"
   },
   "kind": "pure_function",
   "made_of": [],

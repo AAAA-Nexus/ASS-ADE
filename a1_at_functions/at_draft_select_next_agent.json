@@ -1,6 +1,6 @@
 {
-  "body": "    def select_next_agent(self, state: dict) -> AgentRef:\n        self._selections += 1\n        visited = set(state.get(\"visited\", []))\n        if self._policy_available():\n            return AgentRef(name=\"policy\", priority=1.0, reason=\"rl_policy\")\n        if not self._fallback_dag:\n            return AgentRef(name=\"noop\", priority=0.0, reason=\"no_policy_no_dag\")\n        for name, prio in self._dag:\n            if name not in visited:\n                return AgentRef(name=name, priority=prio, reason=\"dag_fallback\")\n        return AgentRef(name=\"done\", priority=0.0, reason=\"dag_exhausted\")\n",
-  "body_hash": "dc6384e910e79b18",
+  "body": "def select_next_agent(self, state: dict) -> AgentRef:\n    self._selections += 1\n    visited = set(state.get(\"visited\", []))\n    if self._policy_available():\n        return AgentRef(name=\"policy\", priority=1.0, reason=\"rl_policy\")\n    if not self._fallback_dag:\n        return AgentRef(name=\"noop\", priority=0.0, reason=\"no_policy_no_dag\")\n    for name, prio in self._dag:\n        if name not in visited:\n            return AgentRef(name=name, priority=prio, reason=\"dag_fallback\")\n    return AgentRef(name=\"done\", priority=0.0, reason=\"dag_exhausted\")\n",
+  "body_hash": "47b206d24ad6a3a8",
   "body_truncated": false,
   "callers_of": [
     "set",
@@ -9,13 +9,18 @@
     "get"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_puppeteer.py:18.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/puppeteer.py:40.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.select_next_agent",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "pathlib.Path",
+    "typing.Any"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_puppeteer.py:18"
+    "source": "C:/!ass-ade/src/ass_ade/agent/puppeteer.py:40"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -7,7 +7,7 @@
     "Argument"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/commands/providers.py:248.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/commands/providers.py:248.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.providers_disable",
@@ -38,7 +38,7 @@
     "ass_ade.config.write_default_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/commands/providers.py:248"
+    "source": "C:/!ass-ade/src/ass_ade/commands/providers.py:248"
   },
   "kind": "pure_function",
   "made_of": [],

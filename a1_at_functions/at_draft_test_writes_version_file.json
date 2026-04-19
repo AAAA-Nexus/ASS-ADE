@@ -1,6 +1,6 @@
 {
-  "body": "    def test_writes_version_file(self, tmp_path: Path):\n        tier_versions = {\n            \"a0_qk_constants\": \"0.1.0\",\n            \"a1_at_functions\": \"0.2.3\",\n        }\n        path = write_project_version_file(tmp_path, tier_versions, \"20260418_120000\")\n        assert Path(path).name == \"VERSION\"\n        lines = Path(path).read_text().splitlines()\n        assert lines[0] == \"0.2.3\"\n        assert \"rebuild_tag=20260418_120000\" in lines\n",
-  "body_hash": "24e70d8a06a20381",
+  "body": "def test_writes_version_file(self, tmp_path: Path):\n    tier_versions = {\n        \"a0_qk_constants\": \"0.1.0\",\n        \"a1_at_functions\": \"0.2.3\",\n    }\n    path = write_project_version_file(tmp_path, tier_versions, \"20260418_120000\")\n    assert Path(path).name == \"VERSION\"\n    lines = Path(path).read_text().splitlines()\n    assert lines[0] == \"0.2.3\"\n    assert \"rebuild_tag=20260418_120000\" in lines\n",
+  "body_hash": "f031b999f77a663c",
   "body_truncated": false,
   "callers_of": [
     "write_project_version_file",
@@ -9,7 +9,7 @@
     "read_text"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_version_tracker.py:268.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_version_tracker.py:268.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_writes_version_file",
@@ -30,7 +30,7 @@
     "ass_ade.engine.rebuild.version_tracker.write_tier_version_file"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_version_tracker.py:268"
+    "source": "C:/!ass-ade/tests/test_version_tracker.py:268"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,12 +1,12 @@
 {
-  "body": "    def severa(self):\n        if self._severa is None:\n            from ass_ade.agent.severa import Severa\n            self._severa = Severa(self._config, self._nexus)\n        return self._severa\n",
-  "body_hash": "4c1966ccef231d85",
+  "body": "def severa(self):\n    if self._severa is None:\n        from ass_ade.agent.severa import Severa\n        self._severa = Severa(self._config, self._nexus)\n    return self._severa\n",
+  "body_hash": "b0c9b8fcb33a1334",
   "body_truncated": false,
   "callers_of": [
     "Severa"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/orchestrator.py:255.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/orchestrator.py:255.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.severa",
@@ -38,7 +38,7 @@
     "json"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/orchestrator.py:255"
+    "source": "C:/!ass-ade/src/ass_ade/agent/orchestrator.py:255"
   },
   "kind": "ecosystem_system",
   "made_of": [],

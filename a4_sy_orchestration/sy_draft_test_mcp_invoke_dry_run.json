@@ -13,13 +13,30 @@
     "MCPTool"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_test_mcp_invoke_dry_run.py:5.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp.py:80.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.test_mcp_invoke_dry_run",
-  "imports": [],
+  "imports": [
+    "pathlib.Path",
+    "httpx",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.mcp.utils.invoke_tool",
+    "ass_ade.nexus.models.MCPManifest",
+    "ass_ade.nexus.models.MCPTool",
+    "ass_ade.nexus.models.CostEstimate",
+    "json",
+    "httpx",
+    "ass_ade.mcp.mock_server.start_server",
+    "httpx",
+    "ass_ade.mcp.mock_server._MAX_BODY_BYTES",
+    "ass_ade.mcp.mock_server.start_server"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_test_mcp_invoke_dry_run.py:5"
+    "source": "C:/!ass-ade/tests/test_mcp.py:80"
   },
   "kind": "ecosystem_system",
   "made_of": [],

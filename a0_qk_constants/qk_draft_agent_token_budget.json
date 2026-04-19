@@ -1,12 +1,12 @@
 {
-  "body": "    def agent_token_budget(self, task: str, models: list[str] | None = None, **kwargs: Any) -> TokenBudget:\n        \"\"\"/v1/agents/token-budget \u2014 cost estimate across 7 models. $0.020/request\"\"\"\n        return self._post_model(\"/v1/agents/token-budget\", TokenBudget, {\"task\": task, \"models\": models or [], **kwargs})\n",
-  "body_hash": "7ebba86eca3f317d",
+  "body": "def agent_token_budget(self, task: str, models: list[str] | None = None, **kwargs: Any) -> TokenBudget:\n    \"\"\"/v1/agents/token-budget \u2014 cost estimate across 7 models. $0.020/request\"\"\"\n    return self._post_model(\"/v1/agents/token-budget\", TokenBudget, {\"task\": task, \"models\": models or [], **kwargs})\n",
+  "body_hash": "a84423f818cbe7bf",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:644.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:644.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "qk.source.ass_ade.agent_token_budget",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:644"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:644"
   },
   "kind": "invariant",
   "made_of": [],

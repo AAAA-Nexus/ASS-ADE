@@ -9,7 +9,7 @@
     "AssAdeConfig"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_protocol.py:44.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_protocol.py:44.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_render_protocol_markdown_contains_sections",
@@ -25,7 +25,7 @@
     "ass_ade.protocol.evolution.render_branch_evolution_demo"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_protocol.py:44"
+    "source": "C:/!ass-ade/tests/test_protocol.py:44"
   },
   "kind": "pure_function",
   "made_of": [],

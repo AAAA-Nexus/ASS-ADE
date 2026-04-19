@@ -1,6 +1,6 @@
 {
-  "body": "    def test_context_pack_respects_cancellation_checkpoint(self, server: MCPServer) -> None:\n        \"\"\"Verify that context_pack checks for cancellation.\"\"\"\n        _initialize_server(server)\n\n        from ass_ade.mcp.cancellation import CancellationContext\n\n        req_id = 1001\n        args = {\"task_description\": \"test task\"}\n\n        # Create a pre-cancelled context\n        ctx = CancellationContext()\n        ctx.cancel()\n\n        # Call the tool with the cancelled context\n        resp = server._call_context_pack(req_id, args, token=None, cancellation_context=ctx)\n\n        # Should return a cancellation error\n        assert resp.get(\"error\") is not None\n        assert resp[\"error\"][\"code\"] == -32800\n",
-  "body_hash": "0782e593900041d4",
+  "body": "def test_context_pack_respects_cancellation_checkpoint(self, server: MCPServer) -> None:\n    \"\"\"Verify that context_pack checks for cancellation.\"\"\"\n    _initialize_server(server)\n\n    from ass_ade.mcp.cancellation import CancellationContext\n\n    req_id = 1001\n    args = {\"task_description\": \"test task\"}\n\n    # Create a pre-cancelled context\n    ctx = CancellationContext()\n    ctx.cancel()\n\n    # Call the tool with the cancelled context\n    resp = server._call_context_pack(req_id, args, token=None, cancellation_context=ctx)\n\n    # Should return a cancellation error\n    assert resp.get(\"error\") is not None\n    assert resp[\"error\"][\"code\"] == -32800\n",
+  "body_hash": "ebca84b7b3651dc4",
   "body_truncated": false,
   "callers_of": [
     "_initialize_server",
@@ -10,7 +10,7 @@
     "get"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_cancellation.py:157.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_cancellation.py:157.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.test_context_pack_respects_cancellation_checkpoint",
@@ -30,7 +30,7 @@
     "ass_ade.mcp.cancellation.CancellationContext"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_cancellation.py:157"
+    "source": "C:/!ass-ade/tests/test_mcp_cancellation.py:157"
   },
   "kind": "ecosystem_system",
   "made_of": [

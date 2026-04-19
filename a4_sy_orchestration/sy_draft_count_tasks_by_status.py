@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/examples/02-rebuild-a-codebase/sample_project/main.py:74
+# Extracted from C:/!ass-ade/examples/02-rebuild-a-codebase/sample_project/main.py:74
 # Component id: sy.source.ass_ade.count_tasks_by_status
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def count_tasks_by_status(tasks: List[Task]) -> dict:

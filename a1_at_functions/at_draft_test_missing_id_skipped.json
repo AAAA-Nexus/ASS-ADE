@@ -1,6 +1,6 @@
 {
-  "body": "    def test_missing_id_skipped(self, tmp_path: Path):\n        manifest = {\"components\": [{\"version\": \"0.1.0\"}]}\n        p = tmp_path / \"MANIFEST.json\"\n        p.write_text(json.dumps(manifest), encoding=\"utf-8\")\n        assert load_prev_versions(p) == {}\n",
-  "body_hash": "e997b965ab40284c",
+  "body": "def test_missing_id_skipped(self, tmp_path: Path):\n    manifest = {\"components\": [{\"version\": \"0.1.0\"}]}\n    p = tmp_path / \"MANIFEST.json\"\n    p.write_text(json.dumps(manifest), encoding=\"utf-8\")\n    assert load_prev_versions(p) == {}\n",
+  "body_hash": "a1e25c77dda4a948",
   "body_truncated": false,
   "callers_of": [
     "write_text",
@@ -8,7 +8,7 @@
     "load_prev_versions"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_version_tracker.py:224.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_version_tracker.py:224.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_missing_id_skipped",
@@ -29,7 +29,7 @@
     "ass_ade.engine.rebuild.version_tracker.write_tier_version_file"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_version_tracker.py:224"
+    "source": "C:/!ass-ade/tests/test_version_tracker.py:224"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_lse_decision_populated_after_step(self):\n        provider = _make_provider_returning_text(\"result\")\n        registry = ToolRegistry()\n        lse = LSEEngine({})\n        loop = AgentLoop(provider=provider, registry=registry, lse=lse)\n        loop.step(\"simple question\")\n        assert loop.last_lse_decision is not None\n        # Canonical tier names (catalog-aware); haiku/sonnet/opus are aliases\n        assert loop.last_lse_decision.tier in {\"fast\", \"balanced\", \"deep\"}\n",
-  "body_hash": "597bed0c864eace4",
+  "body": "def test_lse_decision_populated_after_step(self):\n    provider = _make_provider_returning_text(\"result\")\n    registry = ToolRegistry()\n    lse = LSEEngine({})\n    loop = AgentLoop(provider=provider, registry=registry, lse=lse)\n    loop.step(\"simple question\")\n    assert loop.last_lse_decision is not None\n    # Canonical tier names (catalog-aware); haiku/sonnet/opus are aliases\n    assert loop.last_lse_decision.tier in {\"fast\", \"balanced\", \"deep\"}\n",
+  "body_hash": "0ddb11b14da1ea38",
   "body_truncated": false,
   "callers_of": [
     "_make_provider_returning_text",
@@ -10,7 +10,7 @@
     "step"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase1_integration.py:119.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase1_integration.py:119.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_lse_decision_populated_after_step",
@@ -36,7 +36,7 @@
     "rich.console.Console"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase1_integration.py:119"
+    "source": "C:/!ass-ade/tests/test_phase1_integration.py:119"
   },
   "kind": "pure_function",
   "made_of": [],

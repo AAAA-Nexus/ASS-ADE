@@ -1,19 +1,27 @@
 {
-  "body": "    def test_too_long_raises(self) -> None:\n        with pytest.raises(ValueError, match=\"exceeds 256\"):\n            validate_session_id(\"x\" * 257)\n",
-  "body_hash": "14df869e2994d34e",
+  "body": "def test_too_long_raises(self) -> None:\n    with pytest.raises(ValueError, match=\"exceeds 256\"):\n        validate_agent_id(\"a\" * 257)\n",
+  "body_hash": "3a71ee5e2d58f84e",
   "body_truncated": false,
   "callers_of": [
     "raises",
-    "validate_session_id"
+    "validate_agent_id"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidatesessionid.py:13.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_validation.py:32.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_too_long_raises",
-  "imports": [],
+  "imports": [
+    "pytest",
+    "ass_ade.nexus.validation._is_private_host",
+    "ass_ade.nexus.validation.validate_agent_id",
+    "ass_ade.nexus.validation.validate_prompt",
+    "ass_ade.nexus.validation.validate_session_id",
+    "ass_ade.nexus.validation.validate_url",
+    "ass_ade.nexus.validation.validate_usdc_amount"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidatesessionid.py:13"
+    "source": "C:/!ass-ade/tests/test_validation.py:32"
   },
   "kind": "pure_function",
   "made_of": [],

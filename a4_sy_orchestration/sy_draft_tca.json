@@ -1,6 +1,6 @@
 {
-  "body": "    def tca(self):\n        if self._tca is None:\n            from ass_ade.agent.tca import TCAEngine\n            cfg = dict(self._config)\n            cfg.setdefault(\"working_dir\", self._working_dir)\n            self._tca = TCAEngine(cfg, self._nexus)\n        return self._tca\n",
-  "body_hash": "86e11fff6f104962",
+  "body": "def tca(self):\n    if self._tca is None:\n        from ass_ade.agent.tca import TCAEngine\n        cfg = dict(self._config)\n        cfg.setdefault(\"working_dir\", self._working_dir)\n        self._tca = TCAEngine(cfg, self._nexus)\n    return self._tca\n",
+  "body_hash": "291ebe543597c721",
   "body_truncated": false,
   "callers_of": [
     "dict",
@@ -8,7 +8,7 @@
     "TCAEngine"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/orchestrator.py:269.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/orchestrator.py:269.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.tca",
@@ -40,7 +40,7 @@
     "json"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/orchestrator.py:269"
+    "source": "C:/!ass-ade/src/ass_ade/agent/orchestrator.py:269"
   },
   "kind": "ecosystem_system",
   "made_of": [],

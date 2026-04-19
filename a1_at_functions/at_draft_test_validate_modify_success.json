@@ -1,6 +1,6 @@
 {
-  "body": "    def test_validate_modify_success(self, executor: EditPlanExecutor):\n        plan = EditPlan()\n        plan.add_modify(\"main.py\", \"pass\", \"print('hello')\")\n        errors = executor.validate(plan)\n        assert errors == []\n        assert plan.validated is True\n        assert plan.edits[0].diff  # diff populated\n",
-  "body_hash": "38ad20fb103731d9",
+  "body": "def test_validate_modify_success(self, executor: EditPlanExecutor):\n    plan = EditPlan()\n    plan.add_modify(\"main.py\", \"pass\", \"print('hello')\")\n    errors = executor.validate(plan)\n    assert errors == []\n    assert plan.validated is True\n    assert plan.edits[0].diff  # diff populated\n",
+  "body_hash": "98cd3704ae502a1d",
   "body_truncated": false,
   "callers_of": [
     "EditPlan",
@@ -8,13 +8,21 @@
     "validate"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditplanexecutor.py:20.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_plan.py:67.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_validate_modify_success",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.tools.history.FileHistory",
+    "ass_ade.tools.plan.EditKind",
+    "ass_ade.tools.plan.EditPlan",
+    "ass_ade.tools.plan.EditPlanExecutor"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditplanexecutor.py:20"
+    "source": "C:/!ass-ade/tests/test_plan.py:67"
   },
   "kind": "pure_function",
   "made_of": [],

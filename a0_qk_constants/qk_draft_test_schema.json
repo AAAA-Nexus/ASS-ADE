@@ -1,12 +1,12 @@
 {
-  "body": "    def test_schema(self):\n        s = ToolSchema(name=\"read_file\", description=\"Read a file\", parameters={\"type\": \"object\"})\n        assert s.name == \"read_file\"\n",
-  "body_hash": "36fe682ca976b57d",
+  "body": "def test_schema(self):\n    s = ToolSchema(name=\"read_file\", description=\"Read a file\", parameters={\"type\": \"object\"})\n    assert s.name == \"read_file\"\n",
+  "body_hash": "f6f99ffbe612520c",
   "body_truncated": false,
   "callers_of": [
     "ToolSchema"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine.py:45.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine.py:45.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "qk.source.ass_ade.test_schema",
@@ -37,7 +37,7 @@
     "ass_ade.engine.provider.MultiProvider"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine.py:45"
+    "source": "C:/!ass-ade/tests/test_engine.py:45"
   },
   "kind": "invariant",
   "made_of": [],

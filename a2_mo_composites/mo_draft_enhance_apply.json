@@ -1,12 +1,12 @@
 {
-  "body": "    def enhance_apply(\n        self,\n        improvement_ids: list[int],\n        local_report: dict[str, Any],\n        agent_id: str | None = None,\n    ) -> EnhanceApplyResult:\n        \"\"\"Apply selected enhancements: generate blueprints and trigger rebuild.\"\"\"\n        payload: dict[str, Any] = {\n            \"improvement_ids\": improvement_ids,\n            \"local_report\": local_report,\n        }\n        if agent_id:\n            payload[\"agent_id\"] = agent_id\n        return self._post_model(\"/v1/enhance/apply\", EnhanceApplyResult, payload)\n",
-  "body_hash": "f80204ecec67f85d",
+  "body": "def enhance_apply(\n    self,\n    improvement_ids: list[int],\n    local_report: dict[str, Any],\n    agent_id: str | None = None,\n) -> EnhanceApplyResult:\n    \"\"\"Apply selected enhancements: generate blueprints and trigger rebuild.\"\"\"\n    payload: dict[str, Any] = {\n        \"improvement_ids\": improvement_ids,\n        \"local_report\": local_report,\n    }\n    if agent_id:\n        payload[\"agent_id\"] = agent_id\n    return self._post_model(\"/v1/enhance/apply\", EnhanceApplyResult, payload)\n",
+  "body_hash": "e3a8ec8d9471fec3",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1473.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1473.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.enhance_apply",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1473"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1473"
   },
   "kind": "engine_molecule",
   "made_of": [],

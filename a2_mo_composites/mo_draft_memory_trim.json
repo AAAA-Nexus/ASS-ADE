@@ -1,12 +1,12 @@
 {
-  "body": "    def memory_trim(self, context: list[dict], target_tokens: int, **kwargs: Any) -> MemoryTrimResult:\n        \"\"\"/v1/memory/trim \u2014 prune context window for cost efficiency (INF-815). $0.040/call\"\"\"\n        return self._post_model(\"/v1/memory/trim\", MemoryTrimResult, {\"context\": context, \"target_tokens\": target_tokens, **kwargs})\n",
-  "body_hash": "c569ce4dbb342c57",
+  "body": "def memory_trim(self, context: list[dict], target_tokens: int, **kwargs: Any) -> MemoryTrimResult:\n    \"\"\"/v1/memory/trim \u2014 prune context window for cost efficiency (INF-815). $0.040/call\"\"\"\n    return self._post_model(\"/v1/memory/trim\", MemoryTrimResult, {\"context\": context, \"target_tokens\": target_tokens, **kwargs})\n",
+  "body_hash": "3209951b5bf10a5d",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1191.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1191.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.memory_trim",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1191"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1191"
   },
   "kind": "engine_molecule",
   "made_of": [],

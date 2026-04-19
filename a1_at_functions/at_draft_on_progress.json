@@ -1,12 +1,12 @@
 {
-  "body": "    def on_progress(name: str, status: StepStatus, current: int, total: int) -> None:\n        color = \"green\" if status == StepStatus.PASSED else \"red\"\n        if status == StepStatus.RUNNING:\n            color = \"yellow\"\n        console.print(f\"[{current}/{total}] {name}: [{color}]{status.value}[/{color}]\")\n",
-  "body_hash": "2b1a578103fe35d1",
+  "body": "def on_progress(name: str, status: StepStatus, current: int, total: int) -> None:\n    color = \"green\" if status == StepStatus.PASSED else \"red\"\n    if status == StepStatus.RUNNING:\n        color = \"yellow\"\n    console.print(f\"[{current}/{total}] {name}: [{color}]{status.value}[/{color}]\")\n",
+  "body_hash": "bf5ed653e57391e3",
   "body_truncated": false,
   "callers_of": [
     "print"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/cli.py:1312.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/cli.py:1313.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.on_progress",
@@ -20,6 +20,8 @@
     "pathlib.Path",
     "typing.Annotated",
     "typing.Any",
+    "typing.List",
+    "typing.Optional",
     "httpx",
     "typer",
     "pydantic.BaseModel",
@@ -93,7 +95,6 @@
     "ass_ade.recon.run_parallel_recon",
     "json",
     "shutil",
-    "shutil",
     "subprocess",
     "hashlib",
     "time",
@@ -122,16 +123,21 @@
     "ass_ade.agent.lora_flywheel.RG_LOOP",
     "json",
     "subprocess",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "json",
     "json",
     "shutil",
     "tempfile",
     "subprocess",
     "subprocess",
     "ass_ade.interpreter.run_interactive",
+    "os",
     "ass_ade.recon.run_parallel_recon",
     "subprocess",
     "subprocess",
     "re",
+    "subprocess",
     "torch",
     "ass_ade.agent.capabilities.sync_atomadic_prompt_capabilities",
     "json",
@@ -139,7 +145,7 @@
     "json"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/cli.py:1312"
+    "source": "C:/!ass-ade/src/ass_ade/cli.py:1313"
   },
   "kind": "pure_function",
   "made_of": [],

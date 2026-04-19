@@ -1,12 +1,12 @@
 {
-  "body": "    def forge_leaderboard(self, **kwargs: Any) -> ForgeLeaderboardResponse:\n        \"\"\"GET /v1/forge/leaderboard \u2014 Forge agent leaderboard. Free.\"\"\"\n        return self._get_model(\"/v1/forge/leaderboard\", ForgeLeaderboardResponse, **kwargs)\n",
-  "body_hash": "02ed59cb706993fd",
+  "body": "def forge_leaderboard(self, **kwargs: Any) -> ForgeLeaderboardResponse:\n    \"\"\"GET /v1/forge/leaderboard \u2014 Forge agent leaderboard. Free.\"\"\"\n    return self._get_model(\"/v1/forge/leaderboard\", ForgeLeaderboardResponse, **kwargs)\n",
+  "body_hash": "05e35b18cd9cd9a7",
   "body_truncated": false,
   "callers_of": [
     "_get_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1347.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1347.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.forge_leaderboard",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1347"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1347"
   },
   "kind": "engine_molecule",
   "made_of": [],

@@ -13,7 +13,7 @@
     "setdefault"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/probe_endpoints.py:425.",
+  "description": "Draft candidate from C:/!ass-ade/scripts/probe_endpoints.py:425.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.print_summary",
@@ -29,7 +29,7 @@
     "ass_ade.nexus.client.NexusClient"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/probe_endpoints.py:425"
+    "source": "C:/!ass-ade/scripts/probe_endpoints.py:425"
   },
   "kind": "pure_function",
   "made_of": [],

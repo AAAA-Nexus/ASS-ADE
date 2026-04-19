@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_enhancer.py:185
+# Extracted from C:/!ass-ade/tests/test_enhancer.py:185
 # Component id: at.source.ass_ade.test_rank_findings_reassigns_ids
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_rank_findings_reassigns_ids() -> None:

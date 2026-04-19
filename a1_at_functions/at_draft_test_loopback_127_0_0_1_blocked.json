@@ -1,19 +1,33 @@
 {
-  "body": "    def test_loopback_127_0_0_1_blocked(self) -> None:\n        \"\"\"Absolute URLs to 127.0.0.1 should be blocked.\"\"\"\n        with pytest.raises(ValueError, match=\"private/loopback address\"):\n            _validate_absolute_endpoint(\"https://127.0.0.1/admin\")\n",
-  "body_hash": "a047fead055fcbbf",
+  "body": "def test_loopback_127_0_0_1_blocked(self) -> None:\n    \"\"\"Absolute URLs to 127.0.0.1 should be blocked.\"\"\"\n    with pytest.raises(ValueError, match=\"private/loopback address\"):\n        _validate_absolute_endpoint(\"https://127.0.0.1/admin\")\n",
+  "body_hash": "d659edf815c3516b",
   "body_truncated": false,
   "callers_of": [
     "raises",
     "_validate_absolute_endpoint"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateabsoluteendpoint.py:25.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_ssrf_protection.py:40.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_loopback_127_0_0_1_blocked",
-  "imports": [],
+  "imports": [
+    "ipaddress",
+    "json",
+    "unittest.mock",
+    "pytest",
+    "ass_ade.a2a.fetch_agent_card",
+    "ass_ade.mcp.utils._validate_absolute_endpoint",
+    "ass_ade.nexus.models.MCPManifest",
+    "ass_ade.nexus.models.MCPTool",
+    "ass_ade.mcp.utils.invoke_tool",
+    "ass_ade.mcp.utils.invoke_tool",
+    "ass_ade.mcp.utils.simulate_invoke",
+    "ass_ade.mcp.utils.simulate_invoke",
+    "ass_ade.mcp.utils.simulate_invoke"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateabsoluteendpoint.py:25"
+    "source": "C:/!ass-ade/tests/test_ssrf_protection.py:40"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_fail_fast_skips_remaining(self) -> None:\n        pipe = Pipeline(\"ff\", fail_fast=True)\n        pipe.add(\"s1\", pass_step)\n        pipe.add(\"s2\", fail_step)\n        pipe.add(\"s3\", pass_step)\n        result = pipe.run()\n        assert not result.passed\n        assert result.steps[0].status == StepStatus.PASSED\n        assert result.steps[1].status == StepStatus.FAILED\n        assert result.steps[2].status == StepStatus.SKIPPED\n",
-  "body_hash": "1cf7ab09068bd81e",
+  "body": "def test_fail_fast_skips_remaining(self) -> None:\n    pipe = Pipeline(\"ff\", fail_fast=True)\n    pipe.add(\"s1\", pass_step)\n    pipe.add(\"s2\", fail_step)\n    pipe.add(\"s3\", pass_step)\n    result = pipe.run()\n    assert not result.passed\n    assert result.steps[0].status == StepStatus.PASSED\n    assert result.steps[1].status == StepStatus.FAILED\n    assert result.steps[2].status == StepStatus.SKIPPED\n",
+  "body_hash": "bfa406d789ed0d69",
   "body_truncated": false,
   "callers_of": [
     "Pipeline",
@@ -8,13 +8,22 @@
     "run"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testfailfast.py:6.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_pipeline.py:98.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.test_fail_fast_skips_remaining",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.pipeline.Pipeline",
+    "ass_ade.pipeline.PipelineResult",
+    "ass_ade.pipeline.StepResult",
+    "ass_ade.pipeline.StepStatus"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testfailfast.py:6"
+    "source": "C:/!ass-ade/tests/test_pipeline.py:98"
   },
   "kind": "ecosystem_system",
   "made_of": [],

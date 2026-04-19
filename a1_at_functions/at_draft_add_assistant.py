@@ -1,6 +1,8 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_conversation.py:28
+# Extracted from C:/!ass-ade/src/ass_ade/agent/conversation.py:41
 # Component id: at.source.ass_ade.add_assistant
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
-    def add_assistant(self, message: Message) -> None:
-        self._messages.append(message)
+def add_assistant(self, message: Message) -> None:
+    self._messages.append(message)

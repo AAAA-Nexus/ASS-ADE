@@ -1,5 +1,5 @@
 {
-  "body": "def test_reputation_score_happy_path():\n    \"\"\"Test reputation_score GET endpoint.\"\"\"\n    def handler(request):\n        assert \"/v1/reputation/score/\" in request.url.path\n        return httpx.Response(200, json={\"agent_id\": \"agent_1\", \"tier\": \"gold\", \"fee_multiplier\": 0.8})\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        result = client.reputation_score(agent_id=\"agent_1\")\n        assert result is not None\n",
+  "body": "def test_reputation_score_happy_path():\n    \"\"\"Test reputation_score GET endpoint.\"\"\"\n    def handler(request):\n        assert \"/v1/reputation/score/\" in request.url.path\n        return httpx.Response(200, json={\"agent_id\": \"agent_1\", \"tier\": \"gold\", \"fee_multiplier\": 0.8})\n\n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        result = client.reputation_score(agent_id=\"agent_1\")\n        assert result is not None\n",
   "body_hash": "45732170c99896da",
   "body_truncated": false,
   "callers_of": [
@@ -9,7 +9,7 @@
     "reputation_score"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:394.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_nexus_client_comprehensive.py:394.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_reputation_score_happy_path",
@@ -144,7 +144,7 @@
     "ass_ade.nexus.models.EntropyResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:394"
+    "source": "C:/!ass-ade/tests/test_nexus_client_comprehensive.py:394"
   },
   "kind": "engine_molecule",
   "made_of": [],

@@ -1,0 +1,41 @@
+{
+  "body": "def test_cli_map_terrain_accepts_string_requirement(tmp_path: Path) -> None:\n    req = tmp_path / \"requirements.json\"\n    req.write_text(json.dumps({\"tools\": \"read_file\"}), encoding=\"utf-8\")\n    result = runner.invoke(\n        app,\n        [\n            \"workflow\",\n            \"map-terrain\",\n            \"Read a file\",\n            \"--requirements-file\",\n            str(req),\n            \"--json\",\n        ],\n    )\n\n    assert result.exit_code == 0\n    assert '\"verdict\": \"PROCEED\"' in result.stdout\n",
+  "body_hash": "d8dae446b20a128c",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "invoke",
+    "dumps",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_map_terrain.py:272.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_cli_map_terrain_accepts_string_requirement",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.map_terrain.map_terrain",
+    "ass_ade.mcp.server.MCPServer"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/tests/test_map_terrain.py:272"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_cli_map_terrain_accepts_string_requirement",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_cli_map_terrain_accepts_string_requirement"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -16,7 +16,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/resilience.py:131.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/resilience.py:131.",
   "exceptions_raised": [
     "NexusCircuitOpen"
   ],
@@ -35,10 +35,11 @@
     "ass_ade.mcp.cancellation.CancellationContext"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/resilience.py:131"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/resilience.py:131"
   },
   "kind": "engine_molecule",
   "made_of": [
+    "at.source.ass_ade.clear",
     "at.source.ass_ade.handle_request"
   ],
   "name": "CircuitBreakerTransport",

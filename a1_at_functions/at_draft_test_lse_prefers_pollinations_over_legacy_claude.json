@@ -1,6 +1,6 @@
 {
-  "body": "    def test_lse_prefers_pollinations_over_legacy_claude(self, monkeypatch):\n        \"\"\"Without any free provider keys, LSE prefers the no-key pollinations\n        endpoint over the legacy Claude id (so users without an Anthropic key\n        don't hit 401s).\"\"\"\n        for p in FREE_PROVIDERS.values():\n            if p.api_key_env:\n                monkeypatch.delenv(p.api_key_env, raising=False)\n        # Disable every catalog provider EXCEPT pollinations\n        disabled = {\n            name: {\"enabled\": False}\n            for name in FREE_PROVIDERS\n            if name != \"pollinations\"\n        }\n        from ass_ade.agent.lse import LSEEngine\n\n        lse = LSEEngine({\"providers\": disabled})\n        decision = lse.select(trs_score=0.8, complexity=\"medium\")\n        assert decision.provider == \"pollinations\"\n",
-  "body_hash": "34a4017eab95518e",
+  "body": "def test_lse_prefers_pollinations_over_legacy_claude(self, monkeypatch):\n    \"\"\"Without any free provider keys, LSE prefers the no-key pollinations\n    endpoint over the legacy Claude id (so users without an Anthropic key\n    don't hit 401s).\"\"\"\n    for p in FREE_PROVIDERS.values():\n        if p.api_key_env:\n            monkeypatch.delenv(p.api_key_env, raising=False)\n    # Disable every catalog provider EXCEPT pollinations\n    disabled = {\n        name: {\"enabled\": False}\n        for name in FREE_PROVIDERS\n        if name != \"pollinations\"\n    }\n    from ass_ade.agent.lse import LSEEngine\n\n    lse = LSEEngine({\"providers\": disabled})\n    decision = lse.select(trs_score=0.8, complexity=\"medium\")\n    assert decision.provider == \"pollinations\"\n",
+  "body_hash": "bd1e6b877bd4aa9a",
   "body_truncated": false,
   "callers_of": [
     "values",
@@ -9,7 +9,7 @@
     "delenv"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:301.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:301.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_lse_prefers_pollinations_over_legacy_claude",
@@ -88,7 +88,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:301"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:301"
   },
   "kind": "pure_function",
   "made_of": [],

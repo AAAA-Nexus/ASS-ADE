@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/body_extractor.py:163
+# Extracted from C:/!ass-ade/src/ass_ade/engine/rebuild/body_extractor.py:175
 # Component id: mo.source.ass_ade.derive_made_of_graph
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def derive_made_of_graph(plan: dict[str, Any]) -> dict[str, Any]:

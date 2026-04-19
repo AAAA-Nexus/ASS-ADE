@@ -10,7 +10,7 @@
     "append"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/hf_space/app.py:46.",
+  "description": "Draft candidate from C:/!ass-ade/scripts/hf_space/app.py:46.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.run_training",
@@ -24,7 +24,7 @@
     "spaces"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/hf_space/app.py:46"
+    "source": "C:/!ass-ade/scripts/hf_space/app.py:46"
   },
   "kind": "pure_function",
   "made_of": [],

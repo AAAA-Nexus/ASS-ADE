@@ -1,12 +1,12 @@
 {
-  "body": "    def agent_semantic_diff(self, base: str, current: str, **kwargs: Any) -> SemanticDiff:\n        \"\"\"/v1/agents/semantic-diff \u2014 knowledge drift detection (Jaccard). $0.040/request\"\"\"\n        return self._post_model(\"/v1/agents/semantic-diff\", SemanticDiff, {\"base\": base, \"current\": current, **kwargs})\n",
-  "body_hash": "019e63ede84b8ffb",
+  "body": "def agent_semantic_diff(self, base: str, current: str, **kwargs: Any) -> SemanticDiff:\n    \"\"\"/v1/agents/semantic-diff \u2014 knowledge drift detection (Jaccard). $0.040/request\"\"\"\n    return self._post_model(\"/v1/agents/semantic-diff\", SemanticDiff, {\"base\": base, \"current\": current, **kwargs})\n",
+  "body_hash": "26d52fbc5c2a9dac",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:632.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:632.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.agent_semantic_diff",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:632"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:632"
   },
   "kind": "engine_molecule",
   "made_of": [],

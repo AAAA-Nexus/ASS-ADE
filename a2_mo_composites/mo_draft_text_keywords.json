@@ -1,12 +1,12 @@
 {
-  "body": "    def text_keywords(self, text: str, top_k: int = 10, **kwargs: Any) -> TextKeywords:\n        \"\"\"/v1/text/keywords \u2014 TF-IDF keyword extraction. $0.020/request\"\"\"\n        return self._post_model(\"/v1/text/keywords\", TextKeywords, {\"text\": text, \"top_k\": top_k, **kwargs})\n",
-  "body_hash": "2663e742e7455548",
+  "body": "def text_keywords(self, text: str, top_k: int = 10, **kwargs: Any) -> TextKeywords:\n    \"\"\"/v1/text/keywords \u2014 TF-IDF keyword extraction. $0.020/request\"\"\"\n    return self._post_model(\"/v1/text/keywords\", TextKeywords, {\"text\": text, \"top_k\": top_k, **kwargs})\n",
+  "body_hash": "088612750b0c750e",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1132.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1132.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.text_keywords",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1132"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1132"
   },
   "kind": "engine_molecule",
   "made_of": [],

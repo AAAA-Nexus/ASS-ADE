@@ -1,6 +1,6 @@
 {
-  "body": "    def test_lse_custom_fallback_chain_in_config(self, monkeypatch):\n        monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-a\")\n        monkeypatch.setenv(\"GEMINI_API_KEY\", \"sk-b\")\n        from ass_ade.agent.lse import LSEEngine\n        # User config puts gemini first\n        lse = LSEEngine({\"provider_fallback_chain\": [\"gemini\", \"groq\"]})\n        decision = lse.select(trs_score=0.8, complexity=\"medium\")\n        assert decision.provider == \"gemini\"\n",
-  "body_hash": "73ad77ec2e61fabd",
+  "body": "def test_lse_custom_fallback_chain_in_config(self, monkeypatch):\n    monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-a\")\n    monkeypatch.setenv(\"GEMINI_API_KEY\", \"sk-b\")\n    from ass_ade.agent.lse import LSEEngine\n    # User config puts gemini first\n    lse = LSEEngine({\"provider_fallback_chain\": [\"gemini\", \"groq\"]})\n    decision = lse.select(trs_score=0.8, complexity=\"medium\")\n    assert decision.provider == \"gemini\"\n",
+  "body_hash": "981849a490f3fbc4",
   "body_truncated": false,
   "callers_of": [
     "setenv",
@@ -8,7 +8,7 @@
     "select"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:363.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:363.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_lse_custom_fallback_chain_in_config",
@@ -87,7 +87,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:363"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:363"
   },
   "kind": "pure_function",
   "made_of": [],

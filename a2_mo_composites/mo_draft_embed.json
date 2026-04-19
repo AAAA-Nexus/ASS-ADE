@@ -1,12 +1,12 @@
 {
-  "body": "    def embed(self, values: list[float], **kwargs: Any) -> EmbedResponse:\n        \"\"\"/v1/embed \u2014 HELIX compressed embedding. $0.040/request\"\"\"\n        return self._post_model(\"/v1/embed\", EmbedResponse, {\"values\": values, **kwargs})\n",
-  "body_hash": "c3ac7ae088152d8f",
+  "body": "def embed(self, values: list[float], **kwargs: Any) -> EmbedResponse:\n    \"\"\"/v1/embed \u2014 HELIX compressed embedding. $0.040/request\"\"\"\n    return self._post_model(\"/v1/embed\", EmbedResponse, {\"values\": values, **kwargs})\n",
+  "body_hash": "a0c678d29a992ffd",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:432.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:432.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.embed",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:432"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:432"
   },
   "kind": "engine_molecule",
   "made_of": [],

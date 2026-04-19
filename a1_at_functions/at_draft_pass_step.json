@@ -6,7 +6,7 @@
     "StepResult"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:19.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_pipeline.py:19.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.pass_step",
@@ -21,7 +21,7 @@
     "ass_ade.pipeline.StepStatus"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:19"
+    "source": "C:/!ass-ade/tests/test_pipeline.py:19"
   },
   "kind": "pure_function",
   "made_of": [],

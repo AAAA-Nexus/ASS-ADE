@@ -1,6 +1,6 @@
 {
-  "body": "    def test_swarm_plan_success(self, tmp_path: Path, hybrid_config: Path) -> None:\n        \"\"\"Swarm plan should return a numbered list of steps.\"\"\"\n        mock_nx = MagicMock()\n        mock_nx.agent_plan.return_value = AgentPlan(\n            goal=\"Build a Python CLI\",\n            steps=[\n                {\"step\": 1, \"description\": \"Design command structure\"},\n                {\"step\": 2, \"description\": \"Implement core commands\"},\n                {\"step\": 3, \"description\": \"Add test coverage\"},\n                {\"step\": 4, \"description\": \"Document API\"},\n            ],\n        )\n        \n        with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n            result = runner.invoke(\n                app,\n                [\"swarm\", \"plan\", \"Build a Python CLI\", \"--config\", str(hybrid_config)],\n            )\n        \n        assert result.exit_code == 0\n",
-  "body_hash": "51a425a4e950635c",
+  "body": "def test_swarm_plan_success(self, tmp_path: Path, hybrid_config: Path) -> None:\n    \"\"\"Swarm plan should return a numbered list of steps.\"\"\"\n    mock_nx = MagicMock()\n    mock_nx.agent_plan.return_value = AgentPlan(\n        goal=\"Build a Python CLI\",\n        steps=[\n            {\"step\": 1, \"description\": \"Design command structure\"},\n            {\"step\": 2, \"description\": \"Implement core commands\"},\n            {\"step\": 3, \"description\": \"Add test coverage\"},\n            {\"step\": 4, \"description\": \"Document API\"},\n        ],\n    )\n\n    with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n        result = runner.invoke(\n            app,\n            [\"swarm\", \"plan\", \"Build a Python CLI\", \"--config\", str(hybrid_config)],\n        )\n\n    assert result.exit_code == 0\n",
+  "body_hash": "f5323d7afd39fbb2",
   "body_truncated": false,
   "callers_of": [
     "MagicMock",
@@ -11,7 +11,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli_happy_path.py:235.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_cli_happy_path.py:235.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_swarm_plan_success",
@@ -36,7 +36,7 @@
     "ass_ade.pipeline.PipelineResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli_happy_path.py:235"
+    "source": "C:/!ass-ade/tests/test_cli_happy_path.py:235"
   },
   "kind": "pure_function",
   "made_of": [],

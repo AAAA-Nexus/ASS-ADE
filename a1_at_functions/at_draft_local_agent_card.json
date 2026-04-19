@@ -14,7 +14,7 @@
     "schemas"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/a2a/__init__.py:310.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/a2a/__init__.py:310.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.local_agent_card",
@@ -36,7 +36,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/a2a/__init__.py:310"
+    "source": "C:/!ass-ade/src/ass_ade/a2a/__init__.py:310"
   },
   "kind": "pure_function",
   "made_of": [

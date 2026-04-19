@@ -1,19 +1,29 @@
 {
-  "body": "    def section(title: str) -> None:\n        if only and only.lower() not in title.lower():\n            return\n        print(f\"{CYAN}{'-' * 70}{RESET}\")\n        print(f\"{CYAN}  {title}{RESET}\")\n        print(f\"{CYAN}{'-' * 70}{RESET}\")\n",
-  "body_hash": "d07fcb6bac2da27f",
+  "body": "def section(title: str) -> None:\n    if only and only.lower() not in title.lower():\n        return\n    print(f\"{CYAN}{'-' * 70}{RESET}\")\n    print(f\"{CYAN}  {title}{RESET}\")\n    print(f\"{CYAN}{'-' * 70}{RESET}\")\n",
+  "body_hash": "af5f7d8d71979aa6",
   "body_truncated": false,
   "callers_of": [
     "print",
     "lower"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_run_all.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/scripts/probe_endpoints.py:85.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.section",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "argparse",
+    "os",
+    "sys",
+    "time",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Callable",
+    "ass_ade.nexus.client.NexusClient"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_run_all.py:7"
+    "source": "C:/!ass-ade/scripts/probe_endpoints.py:85"
   },
   "kind": "pure_function",
   "made_of": [],

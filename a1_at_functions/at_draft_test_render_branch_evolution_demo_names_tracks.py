@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_render_branch_evolution_demo_names_tracks.py:5
+# Extracted from C:/!ass-ade/tests/test_protocol.py:78
 # Component id: at.source.ass_ade.test_render_branch_evolution_demo_names_tracks
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_render_branch_evolution_demo_names_tracks(tmp_path: Path) -> None:

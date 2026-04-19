@@ -1,6 +1,6 @@
 {
-  "body": "    def server(self, tmp_path: Path) -> MCPServer:\n        (tmp_path / \"hello.py\").write_text(\"print('hi')\\n\")\n        return MCPServer(working_dir=str(tmp_path))\n",
-  "body_hash": "92d59ff5f59fba9d",
+  "body": "def server(self, tmp_path: Path) -> MCPServer:\n    (tmp_path / \"hello.py\").write_text(\"print('hi')\\n\")\n    return MCPServer(working_dir=str(tmp_path))\n",
+  "body_hash": "9f6bfe74628e7acf",
   "body_truncated": false,
   "callers_of": [
     "write_text",
@@ -8,7 +8,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:39.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_server_streaming.py:39.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.server",
@@ -27,7 +27,7 @@
     "ass_ade.tools.registry.ToolRegistry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:39"
+    "source": "C:/!ass-ade/tests/test_mcp_server_streaming.py:39"
   },
   "kind": "ecosystem_system",
   "made_of": [],

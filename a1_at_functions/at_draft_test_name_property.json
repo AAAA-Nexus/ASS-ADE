@@ -1,18 +1,27 @@
 {
-  "body": "    def test_name_property(self) -> None:\n        pipe = Pipeline(\"my-pipeline\")\n        assert pipe.name == \"my-pipeline\"\n",
-  "body_hash": "44738fcafc393c22",
+  "body": "def test_name_property(self) -> None:\n    pipe = Pipeline(\"my-pipeline\")\n    assert pipe.name == \"my-pipeline\"\n",
+  "body_hash": "c0ef1e1d61fa2459",
   "body_truncated": false,
   "callers_of": [
     "Pipeline"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_teststepnames.py:13.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_pipeline.py:278.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_name_property",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.pipeline.Pipeline",
+    "ass_ade.pipeline.PipelineResult",
+    "ass_ade.pipeline.StepResult",
+    "ass_ade.pipeline.StepStatus"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_teststepnames.py:13"
+    "source": "C:/!ass-ade/tests/test_pipeline.py:278"
   },
   "kind": "pure_function",
   "made_of": [],

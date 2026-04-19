@@ -1,13 +1,13 @@
 {
-  "body": "    def add_task(self, task: Task) -> bool:\n        \"\"\"Add a task to the collection.\"\"\"\n        if not validate_task_id(task.id):\n            return False\n        if not validate_task_title(task.title):\n            return False\n        self.tasks[task.id] = task\n        return True\n",
-  "body_hash": "a85c3371f8c88e8d",
+  "body": "def add_task(self, task: Task) -> bool:\n    \"\"\"Add a task to the collection.\"\"\"\n    if not validate_task_id(task.id):\n        return False\n    if not validate_task_title(task.title):\n        return False\n    self.tasks[task.id] = task\n    return True\n",
+  "body_hash": "4d998914bef91eb7",
   "body_truncated": false,
   "callers_of": [
     "validate_task_id",
     "validate_task_title"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/examples/02-rebuild-a-codebase/sample_project/main.py:93.",
+  "description": "Draft candidate from C:/!ass-ade/examples/02-rebuild-a-codebase/sample_project/main.py:93.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.add_task",
@@ -19,7 +19,7 @@
     "typing.Optional"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/examples/02-rebuild-a-codebase/sample_project/main.py:93"
+    "source": "C:/!ass-ade/examples/02-rebuild-a-codebase/sample_project/main.py:93"
   },
   "kind": "ecosystem_system",
   "made_of": [],

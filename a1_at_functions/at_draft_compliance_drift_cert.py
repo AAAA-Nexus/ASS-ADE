@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/cli.py:2241
+# Extracted from C:/!ass-ade/src/ass_ade/cli.py:2242
 # Component id: at.source.ass_ade.compliance_drift_cert
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def compliance_drift_cert(

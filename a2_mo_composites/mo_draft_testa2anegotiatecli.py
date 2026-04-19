@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testa2anegotiatecli.py:5
+# Extracted from C:/!ass-ade/tests/test_a2a_cli.py:92
 # Component id: mo.source.ass_ade.testa2anegotiatecli
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class TestA2ANegotiateCLI:

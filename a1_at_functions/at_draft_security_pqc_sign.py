@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/cli.py:1660
+# Extracted from C:/!ass-ade/src/ass_ade/cli.py:1661
 # Component id: at.source.ass_ade.security_pqc_sign
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def security_pqc_sign(

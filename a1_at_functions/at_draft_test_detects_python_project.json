@@ -1,6 +1,6 @@
 {
-  "body": "    def test_detects_python_project(self, tmp_path):\n        (tmp_path / \"pyproject.toml\").write_text(\"[project]\\n\")\n        prompt = build_system_prompt(str(tmp_path))\n        assert \"Python\" in prompt\n",
-  "body_hash": "1d3d5cfebb029506",
+  "body": "def test_detects_python_project(self, tmp_path):\n    (tmp_path / \"pyproject.toml\").write_text(\"[project]\\n\")\n    prompt = build_system_prompt(str(tmp_path))\n    assert \"Python\" in prompt\n",
+  "body_hash": "9101cfdee5a226bc",
   "body_truncated": false,
   "callers_of": [
     "write_text",
@@ -8,7 +8,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_agent.py:69.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_agent.py:69.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_detects_python_project",
@@ -28,7 +28,7 @@
     "ass_ade.tools.registry.ToolRegistry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_agent.py:69"
+    "source": "C:/!ass-ade/tests/test_agent.py:69"
   },
   "kind": "pure_function",
   "made_of": [],

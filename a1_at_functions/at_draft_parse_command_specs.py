@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/protocol/evolution.py:194
+# Extracted from C:/!ass-ade/src/ass_ade/protocol/evolution.py:194
 # Component id: at.source.ass_ade.parse_command_specs
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def parse_command_specs(items: Iterable[str]) -> list[EvolutionCommand]:

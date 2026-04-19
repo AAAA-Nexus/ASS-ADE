@@ -9,13 +9,20 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_lint_local_path.py:5.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_new_codebase_commands.py:77.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_lint_local_path",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_lint_local_path.py:5"
+    "source": "C:/!ass-ade/tests/test_new_codebase_commands.py:77"
   },
   "kind": "pure_function",
   "made_of": [],

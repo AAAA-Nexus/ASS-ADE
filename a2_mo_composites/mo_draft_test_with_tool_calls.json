@@ -1,6 +1,6 @@
 {
-  "body": "    def test_with_tool_calls(self):\n        tc = ToolCallRequest(id=\"c1\", name=\"read_file\", arguments={\"path\": \"a.py\"})\n        m = Message(role=\"assistant\", content=\"\", tool_calls=[tc])\n        assert len(m.tool_calls) == 1\n        assert m.tool_calls[0].name == \"read_file\"\n",
-  "body_hash": "5b9bb5dc2961477a",
+  "body": "def test_with_tool_calls(self):\n    tc = ToolCallRequest(id=\"c1\", name=\"read_file\", arguments={\"path\": \"a.py\"})\n    m = Message(role=\"assistant\", content=\"\", tool_calls=[tc])\n    assert len(m.tool_calls) == 1\n    assert m.tool_calls[0].name == \"read_file\"\n",
+  "body_hash": "d5e8c805bf3cfc57",
   "body_truncated": false,
   "callers_of": [
     "ToolCallRequest",
@@ -8,7 +8,7 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine.py:32.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine.py:32.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_with_tool_calls",
@@ -39,7 +39,7 @@
     "ass_ade.engine.provider.MultiProvider"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine.py:32"
+    "source": "C:/!ass-ade/tests/test_engine.py:32"
   },
   "kind": "engine_molecule",
   "made_of": [],

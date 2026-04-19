@@ -1,19 +1,25 @@
 {
-  "body": "    def run(self, ctx: dict) -> dict:\n        spec = self.translate(ctx.get(\"description\", \"\"))\n        return {\"name\": spec.name, \"source\": spec.source, \"has_sorry\": spec.has_sorry}\n",
-  "body_hash": "e3ea2e5ad9e0e3c2",
+  "body": "def run(self, ctx: dict) -> dict:\n    spec = self.translate(ctx.get(\"description\", \"\"))\n    return {\"name\": spec.name, \"source\": spec.source, \"has_sorry\": spec.has_sorry}\n",
+  "body_hash": "93ddbd8fdbd6810b",
   "body_truncated": false,
   "callers_of": [
     "translate",
     "get"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_proofbridge.py:41.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/proofbridge.py:56.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "qk.source.ass_ade.run",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "re",
+    "dataclasses.dataclass",
+    "typing.Any"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_proofbridge.py:41"
+    "source": "C:/!ass-ade/src/ass_ade/agent/proofbridge.py:56"
   },
   "kind": "invariant",
   "made_of": [],

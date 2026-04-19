@@ -30,7 +30,7 @@
     "time"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_train.py:101.",
+  "description": "Draft candidate from C:/!ass-ade/scripts/lora_train.py:101.",
   "exceptions_raised": [
     "RuntimeError"
   ],
@@ -65,7 +65,7 @@
     "huggingface_hub.login"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_train.py:101"
+    "source": "C:/!ass-ade/scripts/lora_train.py:101"
   },
   "kind": "pure_function",
   "made_of": [],

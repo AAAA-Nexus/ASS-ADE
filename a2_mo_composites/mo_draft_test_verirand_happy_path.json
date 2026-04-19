@@ -1,5 +1,5 @@
 {
-  "body": "def test_verirand_happy_path(method_name, response_json):\n    \"\"\"Test VeriRand RNG methods (happy path).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json=response_json)\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        if method_name == \"rng_quantum\":\n            result = client.rng_quantum(count=3)\n        else:  # rng_verify\n            result = client.rng_verify(seed_ts=\"ts_123\", numbers=\"123,456,789\", proof=\"proof_123\")\n        assert result is not None\n",
+  "body": "def test_verirand_happy_path(method_name, response_json):\n    \"\"\"Test VeriRand RNG methods (happy path).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json=response_json)\n\n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        if method_name == \"rng_quantum\":\n            result = client.rng_quantum(count=3)\n        else:  # rng_verify\n            result = client.rng_verify(seed_ts=\"ts_123\", numbers=\"123,456,789\", proof=\"proof_123\")\n        assert result is not None\n",
   "body_hash": "c34ec2aa2e6f836c",
   "body_truncated": false,
   "callers_of": [
@@ -11,7 +11,7 @@
     "rng_verify"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:219.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_nexus_client_comprehensive.py:219.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_verirand_happy_path",
@@ -146,7 +146,7 @@
     "ass_ade.nexus.models.EntropyResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:219"
+    "source": "C:/!ass-ade/tests/test_nexus_client_comprehensive.py:219"
   },
   "kind": "engine_molecule",
   "made_of": [],

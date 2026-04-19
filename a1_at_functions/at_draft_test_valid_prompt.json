@@ -1,12 +1,12 @@
 {
-  "body": "    def test_valid_prompt(self) -> None:\n        assert validate_prompt(\"Hello world\") == \"Hello world\"\n",
-  "body_hash": "927386c053d0b724",
+  "body": "def test_valid_prompt(self) -> None:\n    assert validate_prompt(\"Hello world\") == \"Hello world\"\n",
+  "body_hash": "422d201c5d3c1763",
   "body_truncated": false,
   "callers_of": [
     "validate_prompt"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_validation.py:44.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_validation.py:44.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_valid_prompt",
@@ -20,7 +20,7 @@
     "ass_ade.nexus.validation.validate_usdc_amount"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_validation.py:44"
+    "source": "C:/!ass-ade/tests/test_validation.py:44"
   },
   "kind": "pure_function",
   "made_of": [],

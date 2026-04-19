@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_docs_engine.py:35
+# Extracted from C:/!ass-ade/tests/test_docs_engine.py:35
 # Component id: mo.source.ass_ade.test_detect_languages_ignores_venv
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_detect_languages_ignores_venv(tmp_path: Path) -> None:

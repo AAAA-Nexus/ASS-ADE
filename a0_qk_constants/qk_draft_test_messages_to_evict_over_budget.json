@@ -1,6 +1,6 @@
 {
-  "body": "    def test_messages_to_evict_over_budget(self):\n        budget = TokenBudget(context_window=50, reserve=10)  # very small\n        messages = [\n            Message(role=\"system\", content=\"System prompt\"),\n            Message(role=\"user\", content=\"A\" * 200),\n            Message(role=\"assistant\", content=\"B\" * 200),\n            Message(role=\"user\", content=\"C\" * 50),\n        ]\n        evictions = budget.messages_to_evict(messages)\n        assert evictions > 0\n",
-  "body_hash": "c722a8ae27bd0151",
+  "body": "def test_messages_to_evict_over_budget(self):\n    budget = TokenBudget(context_window=50, reserve=10)  # very small\n    messages = [\n        Message(role=\"system\", content=\"System prompt\"),\n        Message(role=\"user\", content=\"A\" * 200),\n        Message(role=\"assistant\", content=\"B\" * 200),\n        Message(role=\"user\", content=\"C\" * 50),\n    ]\n    evictions = budget.messages_to_evict(messages)\n    assert evictions > 0\n",
+  "body_hash": "6a64ba259ffac578",
   "body_truncated": false,
   "callers_of": [
     "TokenBudget",
@@ -8,7 +8,7 @@
     "Message"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tokens.py:155.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_tokens.py:155.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "qk.source.ass_ade.test_messages_to_evict_over_budget",
@@ -25,7 +25,7 @@
     "ass_ade.engine.types.ToolSchema"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tokens.py:155"
+    "source": "C:/!ass-ade/tests/test_tokens.py:155"
   },
   "kind": "invariant",
   "made_of": [],

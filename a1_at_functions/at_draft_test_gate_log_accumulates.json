@@ -1,6 +1,6 @@
 {
-  "body": "    def test_gate_log_accumulates(self):\n        gates = QualityGates(_mock_nexus())\n        gates.scan_prompt(\"test\")\n        gates.check_hallucination(\"output\")\n        gates.certify(\"code\")\n        assert len(gates.gate_log) == 3\n",
-  "body_hash": "ccff4cd1dc921e0b",
+  "body": "def test_gate_log_accumulates(self):\n    gates = QualityGates(_mock_nexus())\n    gates.scan_prompt(\"test\")\n    gates.check_hallucination(\"output\")\n    gates.certify(\"code\")\n    assert len(gates.gate_log) == 3\n",
+  "body_hash": "4202bd1590067cef",
   "body_truncated": false,
   "callers_of": [
     "QualityGates",
@@ -11,7 +11,7 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:121.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_gates.py:121.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_gate_log_accumulates",
@@ -23,7 +23,7 @@
     "ass_ade.agent.gates.QualityGates"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:121"
+    "source": "C:/!ass-ade/tests/test_gates.py:121"
   },
   "kind": "pure_function",
   "made_of": [],

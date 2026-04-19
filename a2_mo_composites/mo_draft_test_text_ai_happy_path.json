@@ -1,5 +1,5 @@
 {
-  "body": "def test_text_ai_happy_path(method_name, response_json):\n    \"\"\"Test text AI methods (happy path).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json=response_json)\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        if method_name == \"text_summarize\":\n            result = client.text_summarize(text=\"long text content\")\n        elif method_name == \"text_keywords\":\n            result = client.text_keywords(text=\"text with keywords\", top_k=10)\n        else:  # text_sentiment\n            result = client.text_sentiment(text=\"positive content\")\n        assert result is not None\n",
+  "body": "def test_text_ai_happy_path(method_name, response_json):\n    \"\"\"Test text AI methods (happy path).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json=response_json)\n\n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        if method_name == \"text_summarize\":\n            result = client.text_summarize(text=\"long text content\")\n        elif method_name == \"text_keywords\":\n            result = client.text_keywords(text=\"text with keywords\", top_k=10)\n        else:  # text_sentiment\n            result = client.text_sentiment(text=\"positive content\")\n        assert result is not None\n",
   "body_hash": "88b17e1793cc5b6f",
   "body_truncated": false,
   "callers_of": [
@@ -12,7 +12,7 @@
     "text_sentiment"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:953.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_nexus_client_comprehensive.py:953.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_text_ai_happy_path",
@@ -147,7 +147,7 @@
     "ass_ade.nexus.models.EntropyResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:953"
+    "source": "C:/!ass-ade/tests/test_nexus_client_comprehensive.py:953"
   },
   "kind": "engine_molecule",
   "made_of": [],

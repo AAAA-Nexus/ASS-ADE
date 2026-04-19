@@ -1,6 +1,6 @@
 {
-  "body": "    def test_multiple_matches(self, workspace: Path):\n        (workspace / \"dup.py\").write_text(\"a\\na\\na\\n\", encoding=\"utf-8\")\n        tool = EditFileTool(str(workspace))\n        r = tool.execute(path=\"dup.py\", old_string=\"a\", new_string=\"b\")\n        assert not r.success\n        assert \"3 locations\" in (r.error or \"\")\n",
-  "body_hash": "a84e726e89b3099a",
+  "body": "def test_multiple_matches(self, workspace: Path):\n    (workspace / \"dup.py\").write_text(\"a\\na\\na\\n\", encoding=\"utf-8\")\n    tool = EditFileTool(str(workspace))\n    r = tool.execute(path=\"dup.py\", old_string=\"a\", new_string=\"b\")\n    assert not r.success\n    assert \"3 locations\" in (r.error or \"\")\n",
+  "body_hash": "df0890369d90af07",
   "body_truncated": false,
   "callers_of": [
     "write_text",
@@ -9,13 +9,26 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditfile.py:18.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_tools_builtin.py:95.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_multiple_matches",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.tools.builtin.EditFileTool",
+    "ass_ade.tools.builtin.GrepSearchTool",
+    "ass_ade.tools.builtin.ListDirectoryTool",
+    "ass_ade.tools.builtin.ReadFileTool",
+    "ass_ade.tools.builtin.RunCommandTool",
+    "ass_ade.tools.builtin.SearchFilesTool",
+    "ass_ade.tools.builtin.WriteFileTool",
+    "ass_ade.tools.registry.default_registry"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditfile.py:18"
+    "source": "C:/!ass-ade/tests/test_tools_builtin.py:95"
   },
   "kind": "pure_function",
   "made_of": [],

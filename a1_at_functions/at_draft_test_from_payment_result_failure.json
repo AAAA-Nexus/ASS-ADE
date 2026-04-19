@@ -1,13 +1,13 @@
 {
-  "body": "    def test_from_payment_result_failure(self) -> None:\n        \"\"\"PaymentProof should return None for failed PaymentResult.\"\"\"\n        result = PaymentResult(success=False, error=\"No wallet\")\n        proof = PaymentProof.from_payment_result(result)\n        assert proof is None\n",
-  "body_hash": "226269df3e956407",
+  "body": "def test_from_payment_result_failure(self) -> None:\n    \"\"\"PaymentProof should return None for failed PaymentResult.\"\"\"\n    result = PaymentResult(success=False, error=\"No wallet\")\n    proof = PaymentProof.from_payment_result(result)\n    assert proof is None\n",
+  "body_hash": "380b342793cee7a7",
   "body_truncated": false,
   "callers_of": [
     "PaymentResult",
     "from_payment_result"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:104.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_x402_flow.py:104.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_from_payment_result_failure",
@@ -33,7 +33,7 @@
     "ass_ade.nexus.x402.BASE_SEPOLIA_CHAIN_ID"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:104"
+    "source": "C:/!ass-ade/tests/test_x402_flow.py:104"
   },
   "kind": "pure_function",
   "made_of": [],

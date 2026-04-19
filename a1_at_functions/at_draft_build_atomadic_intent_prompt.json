@@ -1,12 +1,20 @@
 {
-  "body": "def build_atomadic_intent_prompt(working_dir: str | Path = \".\") -> str:\n    \"\"\"Build the live LLM intent-classifier prompt with current capabilities.\"\"\"\n    capability_section = render_capability_prompt_section(\n        working_dir,\n        max_cli=240,\n        max_tools=30,\n        max_mcp=40,\n        max_agents=20,\n    )\n    return f\"\"\"\\\nYou are Atomadic, the intelligent front door of ASS-ADE (Autonomous Sovereign\nSystem: Atomadic Development Environment), a CLI for analyzing, rebuilding,\ndocumenting, certifying, and evolving codebases.\n\nClassify the user's message and respond with ONLY a single valid JSON object.\nDo not use markdown fences. Do not add prose outside the JSON object.\n\nCore front-door intents:\n- rebuild\n- design\n- docs\n- lint\n- certify\n- enhance\n- eco-scan\n- recon\n- doctor\n- self-enhance\n- help\n- chat\n\nIf the message maps to a core front-door intent:\n  {{\"type\":\"command\",\"intent\":\"<core intent>\",\"path\":\"<input path or null>\",\"output_path\":\"<output path or null, only for rebuild>\",\"feature_desc\":\"<desc or null>\"}}\n\nIf the message maps to another known ASS-ADE CLI command from the dynamic\ninventory, dispatch it exactly through cli_args:\n  {{\"type\":\"command\",\"intent\":\"cli\",\"cli_args\":[\"protocol\",\"evolution-record\"],\"path\":null,\"output_path\":null,\"feature_desc\":null}}\n\nIf the user asks what commands are available, what you can do, or says \"help\":\n  {{\"type\":\"command\",\"intent\":\"help\",\"path\":null,\"output_path\":null,\"feature_desc\":null}}\n\nIf the message is general conversation:\n  {{\"type\":\"chat\",\"response\":\"<short conversational reply>\"}}\n\nPrefer exact CLI command paths from the inventory. Do not invent command names.\nFor file paths, preserve user-provided [datetime] or {{datetime}} tokens exactly.\n\n{capability_section}\n\"\"\"\n",
-  "body_hash": "7029b1f69b77c8b2",
+  "body": "def build_atomadic_intent_prompt(\n    working_dir: str | Path = \".\",\n    *,\n    memory_context: str | None = None,\n) -> str:\n    \"\"\"Build the live LLM intent-classifier prompt with current capabilities.\n\n    Loads agents/atomadic_interpreter.md dynamically so changes to the agent\n    definition are picked up without code modifications. Also incorporates\n    any ONBOARDING.md or RECON_REPORT.md found in working_dir.\n    \"\"\"\n    wdir = Path(working_dir).resolve()\n    repo_root = _find_repo_root(wdir)\n\n    agent_definition = _load_agent_md(repo_root)\n    context_files = _load_project_context_files(wdir)\n    capability_section = render_capability_prompt_section(\n        working_dir,\n        max_cli=240,\n        max_tools=30,\n        max_mcp=40,\n        max_agents=20,\n    )\n\n    identity_block = agent_definition if agent_definition else (\n        \"You are Atomadic, the intelligent front door of ASS-ADE (Autonomous Sovereign\\n\"\n        \"System: Atomadic Development Environment), a CLI for analyzing, rebuilding,\\n\"\n        \"documenting, certifying, and evolving codebases.\"\n    )\n\n    extra_sections: list[str] = []\n    if memory_context:\n        extra_sections.append(f\"## User Context\\n{memory_context}\")\n    if context_files:\n        extra_sections.append(f\"## Project Onboarding Context\\n{context_files}\")\n    extra_block = \"\\n\\n\".join(extra_sections)\n\n    return f\"\"\"\\\n{identity_block}\n\n{extra_block + chr(10) + chr(10) if extra_block else \"\"}\\\nClassify the user's message and respond with ONLY a single valid JSON object.\nDo not use markdown fences. Do not add prose outside the JSON object.\n\nCore front-door intents:\n- rebuild\n- design\n- docs\n- lint\n- certify\n- enhance\n- eco-scan\n- recon\n- doctor\n- self-enhance\n- help\n- chat\n\nIf the message maps to a core front-door intent:\n  {{\"type\":\"command\",\"intent\":\"<core intent>\",\"path\":\"<input path or null>\",\"output_path\":\"<output path or null, only for rebuild>\",\"feature_desc\":\"<desc or null>\"}}\n\nIf the message maps to another known ASS-ADE CLI command from the dynamic\ninventory, dispatch it exactly through cli_args:\n  {{\"type\":\"command\",\"intent\":\"cli\",\"cli_args\":[\"protocol\",\"evolution-record\"],\"path\":null,\"output_path\":null,\"feature_desc\":null}}\n\nIf the user asks what commands are available, what you can do, or says \"help\":\n  {{\"type\":\"command\",\"intent\":\"help\",\"path\":null,\"output_path\":null,\"feature_desc\":null}}\n\nIf the message is general conversation:\n  {{\"type\":\"chat\",\"response\":\"<short conversational reply>\"}}\n\nPrefer exact CLI command paths from the inventory. Do not invent command names.\nFor file paths, preserve user-provided [datetime] or {{datetime}} tokens exactly.\n\n{capability_section}\n\"\"\"\n",
+  "body_hash": "33d8b88433705a7d",
   "body_truncated": false,
   "callers_of": [
-    "render_capability_prompt_section"
+    "resolve",
+    "_find_repo_root",
+    "_load_agent_md",
+    "_load_project_context_files",
+    "render_capability_prompt_section",
+    "join",
+    "append",
+    "Path",
+    "chr"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/capabilities.py:231.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/capabilities.py:370.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.build_atomadic_intent_prompt",
@@ -25,7 +33,7 @@
     "ass_ade.mcp.server._WORKFLOW_TOOLS"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/capabilities.py:231"
+    "source": "C:/!ass-ade/src/ass_ade/agent/capabilities.py:370"
   },
   "kind": "pure_function",
   "made_of": [],

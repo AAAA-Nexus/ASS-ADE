@@ -1,6 +1,6 @@
 {
-  "body": "    def test_no_providers_falls_back_to_ollama(self, monkeypatch):\n        for key in (\"OPENAI_API_KEY\", \"ANTHROPIC_API_KEY\", \"ASS_ADE_PROVIDER_URL\"):\n            monkeypatch.delenv(key, raising=False)\n        for p in FREE_PROVIDERS.values():\n            if p.api_key_env:\n                monkeypatch.delenv(p.api_key_env, raising=False)\n        # Disable every catalog provider\n        from ass_ade.config import AssAdeConfig, ProviderOverride\n        from ass_ade.engine.router import build_provider\n        cfg = AssAdeConfig(profile=\"local\")\n        for n in FREE_PROVIDERS:\n            cfg.providers[n] = ProviderOverride(enabled=False)\n        result = build_provider(cfg)\n        # Should fall back to Ollama localhost (an OpenAICompatibleProvider)\n        from ass_ade.engine.provider import OpenAICompatibleProvider\n        assert isinstance(result, OpenAICompatibleProvider)\n",
-  "body_hash": "506c1b10d3a1f250",
+  "body": "def test_no_providers_falls_back_to_ollama(self, monkeypatch):\n    for key in (\"OPENAI_API_KEY\", \"ANTHROPIC_API_KEY\", \"ASS_ADE_PROVIDER_URL\"):\n        monkeypatch.delenv(key, raising=False)\n    for p in FREE_PROVIDERS.values():\n        if p.api_key_env:\n            monkeypatch.delenv(p.api_key_env, raising=False)\n    # Disable every catalog provider\n    from ass_ade.config import AssAdeConfig, ProviderOverride\n    from ass_ade.engine.router import build_provider\n    cfg = AssAdeConfig(profile=\"local\")\n    for n in FREE_PROVIDERS:\n        cfg.providers[n] = ProviderOverride(enabled=False)\n    result = build_provider(cfg)\n    # Should fall back to Ollama localhost (an OpenAICompatibleProvider)\n    from ass_ade.engine.provider import OpenAICompatibleProvider\n    assert isinstance(result, OpenAICompatibleProvider)\n",
+  "body_hash": "b285657432720f2c",
   "body_truncated": false,
   "callers_of": [
     "values",
@@ -11,7 +11,7 @@
     "ProviderOverride"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:527.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:527.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_no_providers_falls_back_to_ollama",
@@ -90,7 +90,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:527"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:527"
   },
   "kind": "pure_function",
   "made_of": [],

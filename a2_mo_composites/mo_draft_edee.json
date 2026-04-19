@@ -19,7 +19,7 @@
     "distill_principles"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/edee.py:24.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/edee.py:24.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.edee",
@@ -32,14 +32,15 @@
     "ass_ade.agent.exif.EXIF"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/edee.py:24"
+    "source": "C:/!ass-ade/src/ass_ade/agent/edee.py:24"
   },
   "kind": "engine_molecule",
   "made_of": [
     "at.source.ass_ade.query_vector_memory",
     "at.source.ass_ade.explore",
     "at.source.ass_ade.recall",
-    "at.source.ass_ade.capture_trace"
+    "at.source.ass_ade.capture_trace",
+    "at.source.ass_ade.distill_principles"
   ],
   "name": "EDEE",
   "product_categories": [

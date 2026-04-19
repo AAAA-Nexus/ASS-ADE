@@ -1,6 +1,6 @@
 {
-  "body": "    def test_post_with_x402_returns_payment_on_402(self) -> None:\n        \"\"\"_post_with_x402 should return payment details instead of raising on 402.\"\"\"\n        def handler(request: httpx.Request) -> httpx.Response:\n            return httpx.Response(\n                402,\n                json={\"amount\": 0.008, \"network\": \"base\", \"address\": \"0xTREASURY\"},\n            )\n\n        transport = httpx.MockTransport(handler)\n        client = NexusClient(base_url=\"https://test.atomadic.tech\", transport=transport)\n        result = client._post_with_x402(\"/v1/trust/score\", {\"agent_id\": \"test\"})\n        assert result[\"payment_required\"] is True\n        assert result[\"amount_usdc\"] == 0.008\n        client.close()\n",
-  "body_hash": "4767f20dbc44867a",
+  "body": "def test_post_with_x402_returns_payment_on_402(self) -> None:\n    \"\"\"_post_with_x402 should return payment details instead of raising on 402.\"\"\"\n    def handler(request: httpx.Request) -> httpx.Response:\n        return httpx.Response(\n            402,\n            json={\"amount\": 0.008, \"network\": \"base\", \"address\": \"0xTREASURY\"},\n        )\n\n    transport = httpx.MockTransport(handler)\n    client = NexusClient(base_url=\"https://test.atomadic.tech\", transport=transport)\n    result = client._post_with_x402(\"/v1/trust/score\", {\"agent_id\": \"test\"})\n    assert result[\"payment_required\"] is True\n    assert result[\"amount_usdc\"] == 0.008\n    client.close()\n",
+  "body_hash": "bd07d41224f8ae02",
   "body_truncated": false,
   "callers_of": [
     "MockTransport",
@@ -10,20 +10,34 @@
     "Response"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testx402paymenthandling.py:59.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_search_x402.py:165.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_post_with_x402_returns_payment_on_402",
   "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "httpx",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.nexus.client.NexusClient",
+    "ass_ade.nexus.errors.NexusPaymentRequired",
     "ass_ade.nexus.errors.NexusAuthError"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testx402paymenthandling.py:59"
+    "source": "C:/!ass-ade/tests/test_search_x402.py:165"
   },
   "kind": "pure_function",
   "made_of": [],
   "name": "test_post_with_x402_returns_payment_on_402",
   "product_categories": [
+    "DCM",
     "PAY"
   ],
   "provides": [

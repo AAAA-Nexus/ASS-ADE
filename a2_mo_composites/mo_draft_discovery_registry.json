@@ -1,12 +1,12 @@
 {
-  "body": "    def discovery_registry(self, **kwargs: Any) -> AgentRegistry:\n        \"\"\"/v1/discovery/registry \u2014 browse all registered agents. $0.020/call\"\"\"\n        return self._get_model(\"/v1/discovery/registry\", AgentRegistry, **kwargs)\n",
-  "body_hash": "792df8c4fbd6ef5c",
+  "body": "def discovery_registry(self, **kwargs: Any) -> AgentRegistry:\n    \"\"\"/v1/discovery/registry \u2014 browse all registered agents. $0.020/call\"\"\"\n    return self._get_model(\"/v1/discovery/registry\", AgentRegistry, **kwargs)\n",
+  "body_hash": "7dafc7e5a9557ec0",
   "body_truncated": false,
   "callers_of": [
     "_get_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:616.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:616.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.discovery_registry",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:616"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:616"
   },
   "kind": "engine_molecule",
   "made_of": [],

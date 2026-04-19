@@ -1,12 +1,12 @@
 {
-  "body": "    def defi_bridge_verify(\n        self,\n        bridge: str | None = None,\n        amount_usdc: float = 0.0,\n        *,\n        bridge_id: str | None = None,\n        **kwargs: Any,\n    ) -> BridgeVerify:\n        \"\"\"/v1/defi/bridge-verify \u2014 cross-chain bridge integrity (BRP-100). $0.08/verification\"\"\"\n        return self._post_model(\"/v1/defi/bridge-verify\", BridgeVerify, {\"bridge\": bridge or bridge_id or \"\", \"amount_usdc\": amount_usdc, **kwargs})\n",
-  "body_hash": "3dbd1dab867e2cdc",
+  "body": "def defi_bridge_verify(\n    self,\n    bridge: str | None = None,\n    amount_usdc: float = 0.0,\n    *,\n    bridge_id: str | None = None,\n    **kwargs: Any,\n) -> BridgeVerify:\n    \"\"\"/v1/defi/bridge-verify \u2014 cross-chain bridge integrity (BRP-100). $0.08/verification\"\"\"\n    return self._post_model(\"/v1/defi/bridge-verify\", BridgeVerify, {\"bridge\": bridge or bridge_id or \"\", \"amount_usdc\": amount_usdc, **kwargs})\n",
+  "body_hash": "e767b536a7ee97a9",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1023.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1023.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.defi_bridge_verify",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1023"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1023"
   },
   "kind": "engine_molecule",
   "made_of": [],

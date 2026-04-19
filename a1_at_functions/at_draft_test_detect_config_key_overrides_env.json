@@ -1,13 +1,13 @@
 {
-  "body": "    def test_detect_config_key_overrides_env(self, monkeypatch):\n        monkeypatch.delenv(\"GEMINI_API_KEY\", raising=False)\n        available = detect_available_providers({\"gemini\": {\"api_key\": \"config-key\"}})\n        assert \"gemini\" in {p.name for p in available}\n",
-  "body_hash": "e7d6749c0ba39248",
+  "body": "def test_detect_config_key_overrides_env(self, monkeypatch):\n    monkeypatch.delenv(\"GEMINI_API_KEY\", raising=False)\n    available = detect_available_providers({\"gemini\": {\"api_key\": \"config-key\"}})\n    assert \"gemini\" in {p.name for p in available}\n",
+  "body_hash": "8416bc82945d7a52",
   "body_truncated": false,
   "callers_of": [
     "delenv",
     "detect_available_providers"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:161.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:161.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_detect_config_key_overrides_env",
@@ -86,7 +86,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:161"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:161"
   },
   "kind": "pure_function",
   "made_of": [],

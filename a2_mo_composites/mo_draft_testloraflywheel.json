@@ -19,7 +19,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:407.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase_engines.py:407.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.testloraflywheel",
@@ -74,7 +74,7 @@
     "ass_ade.agent.orchestrator.CycleReport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:407"
+    "source": "C:/!ass-ade/tests/test_phase_engines.py:407"
   },
   "kind": "engine_molecule",
   "made_of": [

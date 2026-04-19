@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:106
+# Extracted from C:/!ass-ade/tests/test_tools_builtin.py:106
 # Component id: mo.source.ass_ade.testruncommand
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class TestRunCommand:

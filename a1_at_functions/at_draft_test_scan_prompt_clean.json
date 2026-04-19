@@ -1,6 +1,6 @@
 {
-  "body": "    def test_scan_prompt_clean(self):\n        gates = QualityGates(_mock_nexus())\n        result = gates.scan_prompt(\"What is Python?\")\n        assert result is not None\n        assert result[\"blocked\"] is False\n",
-  "body_hash": "7bba135104dc55ce",
+  "body": "def test_scan_prompt_clean(self):\n    gates = QualityGates(_mock_nexus())\n    result = gates.scan_prompt(\"What is Python?\")\n    assert result is not None\n    assert result[\"blocked\"] is False\n",
+  "body_hash": "ddbb84e15cebd65c",
   "body_truncated": false,
   "callers_of": [
     "QualityGates",
@@ -8,7 +8,7 @@
     "_mock_nexus"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:51.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_gates.py:51.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_scan_prompt_clean",
@@ -20,7 +20,7 @@
     "ass_ade.agent.gates.QualityGates"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:51"
+    "source": "C:/!ass-ade/tests/test_gates.py:51"
   },
   "kind": "pure_function",
   "made_of": [],

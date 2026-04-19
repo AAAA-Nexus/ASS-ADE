@@ -1,12 +1,12 @@
 {
-  "body": "    def routing_recommend(self, task: str | None = None, *, prompt: str | None = None, **kwargs: Any) -> RoutingRecommend:\n        \"\"\"/v1/routing/recommend \u2014 map task to optimal model + routing tier. $0.020/call\"\"\"\n        return self._post_model(\n            \"/v1/routing/recommend\",\n            RoutingRecommend,\n            {\"task\": task or prompt or \"\", **kwargs},\n        )\n",
-  "body_hash": "75efb530989c3a1a",
+  "body": "def routing_recommend(self, task: str | None = None, *, prompt: str | None = None, **kwargs: Any) -> RoutingRecommend:\n    \"\"\"/v1/routing/recommend \u2014 map task to optimal model + routing tier. $0.020/call\"\"\"\n    return self._post_model(\n        \"/v1/routing/recommend\",\n        RoutingRecommend,\n        {\"task\": task or prompt or \"\", **kwargs},\n    )\n",
+  "body_hash": "0180e7ff98b64af0",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1199.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1199.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.routing_recommend",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1199"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1199"
   },
   "kind": "engine_molecule",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_persist_principles_no_lora_on_low_conviction(self, tmp_path):\n        from ass_ade.agent.wisdom import WisdomEngine\n        from ass_ade.agent.lora_flywheel import LoRAFlywheel\n        cfg = {\n            \"lora_flywheel\": {\n                \"pending_file\": str(tmp_path / \"pending.jsonl\"),\n                \"contributions_file\": str(tmp_path / \"contributions.jsonl\"),\n                \"batch_interval\": 50,\n                \"min_confidence\": 0.5,\n            }\n        }\n        engine = WisdomEngine({})\n        engine._principles = [\"p1\", \"p2\", \"p3\"]\n        engine._conviction = 0.3  # Below 0.7\n\n        flywheel = LoRAFlywheel(cfg)\n        with patch(\"ass_ade.context_memory.store_vector_memory\"):\n            engine.persist_principles(lora_flywheel=flywheel)\n        # Low conviction \u2192 no LoRA contribution\n        assert len(flywheel._pending) == 0\n",
-  "body_hash": "a1acd30d56788fba",
+  "body": "def test_persist_principles_no_lora_on_low_conviction(self, tmp_path):\n    from ass_ade.agent.wisdom import WisdomEngine\n    from ass_ade.agent.lora_flywheel import LoRAFlywheel\n    cfg = {\n        \"lora_flywheel\": {\n            \"pending_file\": str(tmp_path / \"pending.jsonl\"),\n            \"contributions_file\": str(tmp_path / \"contributions.jsonl\"),\n            \"batch_interval\": 50,\n            \"min_confidence\": 0.5,\n        }\n    }\n    engine = WisdomEngine({})\n    engine._principles = [\"p1\", \"p2\", \"p3\"]\n    engine._conviction = 0.3  # Below 0.7\n\n    flywheel = LoRAFlywheel(cfg)\n    with patch(\"ass_ade.context_memory.store_vector_memory\"):\n        engine.persist_principles(lora_flywheel=flywheel)\n    # Low conviction \u2192 no LoRA contribution\n    assert len(flywheel._pending) == 0\n",
+  "body_hash": "7c57bfcc7daff9c5",
   "body_truncated": false,
   "callers_of": [
     "WisdomEngine",
@@ -11,7 +11,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:603.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase_engines.py:603.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_persist_principles_no_lora_on_low_conviction",
@@ -66,10 +66,12 @@
     "ass_ade.agent.orchestrator.CycleReport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:603"
+    "source": "C:/!ass-ade/tests/test_phase_engines.py:603"
   },
   "kind": "engine_molecule",
-  "made_of": [],
+  "made_of": [
+    "at.source.ass_ade.persist_principles"
+  ],
   "name": "test_persist_principles_no_lora_on_low_conviction",
   "product_categories": [
     "COR"

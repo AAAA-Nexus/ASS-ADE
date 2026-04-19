@@ -6,7 +6,7 @@
     "RuntimeError"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:34.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_pipeline.py:34.",
   "exceptions_raised": [
     "RuntimeError"
   ],
@@ -23,7 +23,7 @@
     "ass_ade.pipeline.StepStatus"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:34"
+    "source": "C:/!ass-ade/tests/test_pipeline.py:34"
   },
   "kind": "pure_function",
   "made_of": [],

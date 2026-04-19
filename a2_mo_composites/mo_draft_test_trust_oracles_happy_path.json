@@ -1,5 +1,5 @@
 {
-  "body": "def test_trust_oracles_happy_path(method_name, path, body_key, response_json):\n    \"\"\"Test trust oracle methods (happy path).\"\"\"\n    def handler(request):\n        assert request.method == \"POST\"\n        return httpx.Response(200, json=response_json)\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        method = getattr(client, method_name)\n        if method_name == \"entropy_oracle\":\n            result = method()\n        elif method_name == \"trust_decay\":\n            result = method(\"agent_1\", epochs=10)\n        elif method_name == \"trust_phase_oracle\":\n            result = method(\"agent_1\")\n        else:\n            result = method(\"test text\")\n        assert result is not None\n",
+  "body": "def test_trust_oracles_happy_path(method_name, path, body_key, response_json):\n    \"\"\"Test trust oracle methods (happy path).\"\"\"\n    def handler(request):\n        assert request.method == \"POST\"\n        return httpx.Response(200, json=response_json)\n\n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        method = getattr(client, method_name)\n        if method_name == \"entropy_oracle\":\n            result = method()\n        elif method_name == \"trust_decay\":\n            result = method(\"agent_1\", epochs=10)\n        elif method_name == \"trust_phase_oracle\":\n            result = method(\"agent_1\")\n        else:\n            result = method(\"test text\")\n        assert result is not None\n",
   "body_hash": "91ed6caf3888b58d",
   "body_truncated": false,
   "callers_of": [
@@ -11,7 +11,7 @@
     "method"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:129.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_nexus_client_comprehensive.py:129.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_trust_oracles_happy_path",
@@ -146,7 +146,7 @@
     "ass_ade.nexus.models.EntropyResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:129"
+    "source": "C:/!ass-ade/tests/test_nexus_client_comprehensive.py:129"
   },
   "kind": "engine_molecule",
   "made_of": [],

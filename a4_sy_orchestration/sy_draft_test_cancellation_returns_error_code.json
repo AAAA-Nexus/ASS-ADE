@@ -1,6 +1,6 @@
 {
-  "body": "    def test_cancellation_returns_error_code(self, server: MCPServer) -> None:\n        \"\"\"Verify that a cancelled request returns the correct error code.\"\"\"\n        _initialize_server(server)\n\n        req_id = 789\n        # Simulate a cancellation\n        server._cancelled.add(req_id)\n\n        req = {\n            \"jsonrpc\": \"2.0\",\n            \"id\": req_id,\n            \"method\": \"tools/call\",\n            \"params\": {\"name\": \"read_file\", \"arguments\": {\"path\": \"hello.py\"}},\n        }\n        resp = server._handle(req)\n\n        assert resp is not None\n        assert \"error\" in resp\n        assert resp[\"error\"][\"code\"] == -32800  # MCP error code for cancellation\n",
-  "body_hash": "ff1672f9d0569f2c",
+  "body": "def test_cancellation_returns_error_code(self, server: MCPServer) -> None:\n    \"\"\"Verify that a cancelled request returns the correct error code.\"\"\"\n    _initialize_server(server)\n\n    req_id = 789\n    # Simulate a cancellation\n    server._cancelled.add(req_id)\n\n    req = {\n        \"jsonrpc\": \"2.0\",\n        \"id\": req_id,\n        \"method\": \"tools/call\",\n        \"params\": {\"name\": \"read_file\", \"arguments\": {\"path\": \"hello.py\"}},\n    }\n    resp = server._handle(req)\n\n    assert resp is not None\n    assert \"error\" in resp\n    assert resp[\"error\"][\"code\"] == -32800  # MCP error code for cancellation\n",
+  "body_hash": "b62014b580cfd3ce",
   "body_truncated": false,
   "callers_of": [
     "_initialize_server",
@@ -8,7 +8,7 @@
     "_handle"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_cancellation.py:117.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_cancellation.py:117.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.test_cancellation_returns_error_code",
@@ -28,7 +28,7 @@
     "ass_ade.mcp.cancellation.CancellationContext"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_cancellation.py:117"
+    "source": "C:/!ass-ade/tests/test_mcp_cancellation.py:117"
   },
   "kind": "ecosystem_system",
   "made_of": [],

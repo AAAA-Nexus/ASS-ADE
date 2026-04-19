@@ -1,13 +1,13 @@
 {
-  "body": "    def rng_verify(self, seed_ts: str, numbers: str, proof: str) -> dict:\n        \"\"\"/v1/rng/verify \u2014 verify HMAC proof offline. Free\"\"\"\n        return self._get_model(  # type: ignore[return-value]\n            \"/v1/rng/verify\", RngResult, seed_ts=seed_ts, numbers=numbers, proof=proof\n        ).model_dump()\n",
-  "body_hash": "f909c2f2b487b81e",
+  "body": "def rng_verify(self, seed_ts: str, numbers: str, proof: str) -> dict:\n    \"\"\"/v1/rng/verify \u2014 verify HMAC proof offline. Free\"\"\"\n    return self._get_model(  # type: ignore[return-value]\n        \"/v1/rng/verify\", RngResult, seed_ts=seed_ts, numbers=numbers, proof=proof\n    ).model_dump()\n",
+  "body_hash": "12455fdcfa736c78",
   "body_truncated": false,
   "callers_of": [
     "model_dump",
     "_get_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:478.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:478.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.rng_verify",
@@ -161,7 +161,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:478"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:478"
   },
   "kind": "engine_molecule",
   "made_of": [],

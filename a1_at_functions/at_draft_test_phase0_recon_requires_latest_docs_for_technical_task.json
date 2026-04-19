@@ -7,7 +7,7 @@
     "phase0_recon"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_recon_context.py:47.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_recon_context.py:47.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_phase0_recon_requires_latest_docs_for_technical_task",
@@ -26,7 +26,7 @@
     "ass_ade.recon.phase0_recon"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_recon_context.py:47"
+    "source": "C:/!ass-ade/tests/test_recon_context.py:47"
   },
   "kind": "pure_function",
   "made_of": [],

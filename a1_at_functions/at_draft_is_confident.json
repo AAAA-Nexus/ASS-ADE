@@ -1,10 +1,10 @@
 {
-  "body": "    def is_confident(self) -> bool:\n        return self._conviction >= self._conviction_required\n",
-  "body_hash": "23781872f72813d4",
+  "body": "def is_confident(self) -> bool:\n    return self._conviction >= self._conviction_required\n",
+  "body_hash": "e73b856a11dcdd66",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/wisdom.py:56.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/wisdom.py:56.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.is_confident",
@@ -19,7 +19,7 @@
     "ass_ade.context_memory.store_vector_memory"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/wisdom.py:56"
+    "source": "C:/!ass-ade/src/ass_ade/agent/wisdom.py:56"
   },
   "kind": "pure_function",
   "made_of": [],

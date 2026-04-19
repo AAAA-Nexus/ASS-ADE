@@ -1,12 +1,12 @@
 {
-  "body": "    def escrow_dispute(\n        self,\n        escrow_id: str,\n        evidence: str | None = None,\n        *,\n        reason: str | None = None,\n        **kwargs: Any,\n    ) -> EscrowResult:\n        \"\"\"/v1/escrow/dispute \u2014 open dispute with evidence. $0.060/call\"\"\"\n        dispute_evidence = evidence or reason or \"\"\n        return self._post_model(\"/v1/escrow/dispute\", EscrowResult, {\"escrow_id\": escrow_id, \"evidence\": dispute_evidence, **kwargs})\n",
-  "body_hash": "7e7f7b5c7fa0a177",
+  "body": "def escrow_dispute(\n    self,\n    escrow_id: str,\n    evidence: str | None = None,\n    *,\n    reason: str | None = None,\n    **kwargs: Any,\n) -> EscrowResult:\n    \"\"\"/v1/escrow/dispute \u2014 open dispute with evidence. $0.060/call\"\"\"\n    dispute_evidence = evidence or reason or \"\"\n    return self._post_model(\"/v1/escrow/dispute\", EscrowResult, {\"escrow_id\": escrow_id, \"evidence\": dispute_evidence, **kwargs})\n",
+  "body_hash": "6eb236ded6622610",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:549.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:549.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.escrow_dispute",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:549"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:549"
   },
   "kind": "engine_molecule",
   "made_of": [],

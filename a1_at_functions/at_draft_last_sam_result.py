@@ -1,6 +1,8 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/loop.py:124
+# Extracted from C:/!ass-ade/src/ass_ade/agent/loop.py:124
 # Component id: at.source.ass_ade.last_sam_result
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
-    def last_sam_result(self) -> dict[str, Any] | None:
-        return self._last_sam_result
+def last_sam_result(self) -> dict[str, Any] | None:
+    return self._last_sam_result

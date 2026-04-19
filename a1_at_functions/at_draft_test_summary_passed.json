@@ -1,13 +1,13 @@
 {
-  "body": "    def test_summary_passed(self) -> None:\n        result = PipelineResult(\n            name=\"test\",\n            steps=[\n                StepResult(name=\"s1\", status=StepStatus.PASSED),\n                StepResult(name=\"s2\", status=StepStatus.PASSED),\n            ],\n            passed=True,\n            duration_ms=150.0,\n        )\n        assert \"[PASSED]\" in result.summary\n        assert \"2/2 passed\" in result.summary\n",
-  "body_hash": "989f4eb33d7b23f4",
+  "body": "def test_summary_passed(self) -> None:\n    result = PipelineResult(\n        name=\"test\",\n        steps=[\n            StepResult(name=\"s1\", status=StepStatus.PASSED),\n            StepResult(name=\"s2\", status=StepStatus.PASSED),\n        ],\n        passed=True,\n        duration_ms=150.0,\n    )\n    assert \"[PASSED]\" in result.summary\n    assert \"2/2 passed\" in result.summary\n",
+  "body_hash": "46f92b87e1827700",
   "body_truncated": false,
   "callers_of": [
     "PipelineResult",
     "StepResult"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:219.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_pipeline.py:219.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_summary_passed",
@@ -22,7 +22,7 @@
     "ass_ade.pipeline.StepStatus"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:219"
+    "source": "C:/!ass-ade/tests/test_pipeline.py:219"
   },
   "kind": "pure_function",
   "made_of": [],

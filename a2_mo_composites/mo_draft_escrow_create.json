@@ -1,12 +1,12 @@
 {
-  "body": "    def escrow_create(self, amount_usdc: float, sender: str, receiver: str, conditions: list[str], **kwargs: Any) -> EscrowCreated:\n        \"\"\"/v1/escrow/create \u2014 lock USDC with release conditions. $0.040/call\"\"\"\n        return self._post_model(\"/v1/escrow/create\", EscrowCreated, {\n            \"amount_usdc\": amount_usdc, \"sender\": sender, \"receiver\": receiver,\n            \"conditions\": conditions, **kwargs,\n        })\n",
-  "body_hash": "01e745c947e343c8",
+  "body": "def escrow_create(self, amount_usdc: float, sender: str, receiver: str, conditions: list[str], **kwargs: Any) -> EscrowCreated:\n    \"\"\"/v1/escrow/create \u2014 lock USDC with release conditions. $0.040/call\"\"\"\n    return self._post_model(\"/v1/escrow/create\", EscrowCreated, {\n        \"amount_usdc\": amount_usdc, \"sender\": sender, \"receiver\": receiver,\n        \"conditions\": conditions, **kwargs,\n    })\n",
+  "body_hash": "5e5a4c467ba4fa35",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:534.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:534.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.escrow_create",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:534"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:534"
   },
   "kind": "engine_molecule",
   "made_of": [],

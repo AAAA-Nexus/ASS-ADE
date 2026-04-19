@@ -1,6 +1,6 @@
 {
-  "body": "    def test_returns_none_when_no_providers(self, monkeypatch):\n        # Clear every key AND disable all providers\n        for p in FREE_PROVIDERS.values():\n            if p.api_key_env:\n                monkeypatch.delenv(p.api_key_env, raising=False)\n        disabled = {name: {\"enabled\": False} for name in FREE_PROVIDERS}\n        match = select_provider_for_tier(\"balanced\", config_providers=disabled)\n        assert match is None\n",
-  "body_hash": "b5f4f207f06e31ff",
+  "body": "def test_returns_none_when_no_providers(self, monkeypatch):\n    # Clear every key AND disable all providers\n    for p in FREE_PROVIDERS.values():\n        if p.api_key_env:\n            monkeypatch.delenv(p.api_key_env, raising=False)\n    disabled = {name: {\"enabled\": False} for name in FREE_PROVIDERS}\n    match = select_provider_for_tier(\"balanced\", config_providers=disabled)\n    assert match is None\n",
+  "body_hash": "e11ec554f5a21a90",
   "body_truncated": false,
   "callers_of": [
     "values",
@@ -8,7 +8,7 @@
     "delenv"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:243.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:243.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_returns_none_when_no_providers",
@@ -87,7 +87,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:243"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:243"
   },
   "kind": "pure_function",
   "made_of": [],

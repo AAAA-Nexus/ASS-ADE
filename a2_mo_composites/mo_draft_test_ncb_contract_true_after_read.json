@@ -1,6 +1,6 @@
 {
-  "body": "    def test_ncb_contract_true_after_read(self, tmp_path):\n        tca = self._make(tmp_path)\n        tca.record_read(\"/project/main.py\")\n        assert tca.ncb_contract(\"/project/main.py\") is True\n",
-  "body_hash": "a002e7350ff1950a",
+  "body": "def test_ncb_contract_true_after_read(self, tmp_path):\n    tca = self._make(tmp_path)\n    tca.record_read(\"/project/main.py\")\n    assert tca.ncb_contract(\"/project/main.py\") is True\n",
+  "body_hash": "4caadedfcebc3ab0",
   "body_truncated": false,
   "callers_of": [
     "_make",
@@ -8,7 +8,7 @@
     "ncb_contract"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:214.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase_engines.py:214.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_ncb_contract_true_after_read",
@@ -63,10 +63,13 @@
     "ass_ade.agent.orchestrator.CycleReport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:214"
+    "source": "C:/!ass-ade/tests/test_phase_engines.py:214"
   },
   "kind": "engine_molecule",
-  "made_of": [],
+  "made_of": [
+    "at.source.ass_ade.record_read",
+    "at.source.ass_ade.ncb_contract"
+  ],
   "name": "test_ncb_contract_true_after_read",
   "product_categories": [
     "COR"

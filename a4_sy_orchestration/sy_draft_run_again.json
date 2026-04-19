@@ -18,7 +18,7 @@
     "print"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/benchmarks/messy_demo/main.py:26.",
+  "description": "Draft candidate from C:/!ass-ade/benchmarks/messy_demo/main.py:26.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.run_again",
@@ -37,7 +37,7 @@
     "helpers.DataManager"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/benchmarks/messy_demo/main.py:26"
+    "source": "C:/!ass-ade/benchmarks/messy_demo/main.py:26"
   },
   "kind": "ecosystem_system",
   "made_of": [],

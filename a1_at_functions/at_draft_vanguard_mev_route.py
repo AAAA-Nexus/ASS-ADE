@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/cli.py:2819
+# Extracted from C:/!ass-ade/src/ass_ade/cli.py:2820
 # Component id: at.source.ass_ade.vanguard_mev_route
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def vanguard_mev_route(

@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_train.py:310
+# Extracted from C:/!ass-ade/scripts/lora_train.py:310
 # Component id: at.source.ass_ade.run_pipeline
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def run_pipeline(cfg: TrainConfig) -> int:

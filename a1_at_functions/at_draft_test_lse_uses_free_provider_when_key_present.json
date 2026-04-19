@@ -1,6 +1,6 @@
 {
-  "body": "    def test_lse_uses_free_provider_when_key_present(self, monkeypatch):\n        # Clear all keys, then give only groq\n        for p in FREE_PROVIDERS.values():\n            if p.api_key_env:\n                monkeypatch.delenv(p.api_key_env, raising=False)\n        monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-test\")\n\n        from ass_ade.agent.lse import LSEEngine\n        lse = LSEEngine({})\n        decision = lse.select(trs_score=0.8, complexity=\"medium\")\n        # Should pick the Groq balanced model\n        assert decision.provider == \"groq\"\n        expected_model = get_provider(\"groq\").models_by_tier[\"balanced\"]\n        assert decision.model == expected_model\n",
-  "body_hash": "92ec446a2dca838b",
+  "body": "def test_lse_uses_free_provider_when_key_present(self, monkeypatch):\n    # Clear all keys, then give only groq\n    for p in FREE_PROVIDERS.values():\n        if p.api_key_env:\n            monkeypatch.delenv(p.api_key_env, raising=False)\n    monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-test\")\n\n    from ass_ade.agent.lse import LSEEngine\n    lse = LSEEngine({})\n    decision = lse.select(trs_score=0.8, complexity=\"medium\")\n    # Should pick the Groq balanced model\n    assert decision.provider == \"groq\"\n    expected_model = get_provider(\"groq\").models_by_tier[\"balanced\"]\n    assert decision.model == expected_model\n",
+  "body_hash": "de7a411942993594",
   "body_truncated": false,
   "callers_of": [
     "values",
@@ -11,7 +11,7 @@
     "get_provider"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:270.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:270.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_lse_uses_free_provider_when_key_present",
@@ -90,7 +90,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:270"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:270"
   },
   "kind": "pure_function",
   "made_of": [],

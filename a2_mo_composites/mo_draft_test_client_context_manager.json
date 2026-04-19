@@ -1,5 +1,5 @@
 {
-  "body": "def test_client_context_manager():\n    \"\"\"Test that client properly closes HTTP connections.\"\"\"\n    transport = httpx.MockTransport(lambda r: httpx.Response(200, json={\"status\": \"ok\"}))\n    \n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        result = client.get_health()\n        assert result is not None\n",
+  "body": "def test_client_context_manager():\n    \"\"\"Test that client properly closes HTTP connections.\"\"\"\n    transport = httpx.MockTransport(lambda r: httpx.Response(200, json={\"status\": \"ok\"}))\n\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        result = client.get_health()\n        assert result is not None\n",
   "body_hash": "c96a437e1a5da501",
   "body_truncated": false,
   "callers_of": [
@@ -9,7 +9,7 @@
     "Response"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:1300.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_nexus_client_comprehensive.py:1300.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_client_context_manager",
@@ -144,7 +144,7 @@
     "ass_ade.nexus.models.EntropyResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:1300"
+    "source": "C:/!ass-ade/tests/test_nexus_client_comprehensive.py:1300"
   },
   "kind": "engine_molecule",
   "made_of": [],

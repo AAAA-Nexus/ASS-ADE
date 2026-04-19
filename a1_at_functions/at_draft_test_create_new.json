@@ -1,6 +1,6 @@
 {
-  "body": "    def test_create_new(self, workspace: Path):\n        tool = WriteFileTool(str(workspace))\n        r = tool.execute(path=\"new.py\", content=\"x = 1\\n\")\n        assert r.success\n        assert (workspace / \"new.py\").read_text() == \"x = 1\\n\"\n",
-  "body_hash": "3b45ec5b935760ec",
+  "body": "def test_create_new(self, workspace: Path):\n    tool = WriteFileTool(str(workspace))\n    r = tool.execute(path=\"new.py\", content=\"x = 1\\n\")\n    assert r.success\n    assert (workspace / \"new.py\").read_text() == \"x = 1\\n\"\n",
+  "body_hash": "79bdf12ae43d6bde",
   "body_truncated": false,
   "callers_of": [
     "WriteFileTool",
@@ -9,7 +9,7 @@
     "read_text"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:59.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_tools_builtin.py:59.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_create_new",
@@ -28,7 +28,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:59"
+    "source": "C:/!ass-ade/tests/test_tools_builtin.py:59"
   },
   "kind": "pure_function",
   "made_of": [],

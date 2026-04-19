@@ -9,7 +9,7 @@
     "read_text"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_docs_engine.py:200.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_docs_engine.py:200.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_render_local_docs_readme_contains_name",
@@ -27,7 +27,7 @@
     "ass_ade.local.docs_engine.scan_source_symbols"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_docs_engine.py:200"
+    "source": "C:/!ass-ade/tests/test_docs_engine.py:200"
   },
   "kind": "engine_molecule",
   "made_of": [],

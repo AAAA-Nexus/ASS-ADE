@@ -1,12 +1,12 @@
 {
-  "body": "    def execute_payment(self, challenge: PaymentChallenge) -> PaymentResult:\n        \"\"\"Submit payment for the challenge.\n\n        Returns PaymentResult with success status and details.\n        Calls the lower-level submit_payment() function.\n        \"\"\"\n        return submit_payment(challenge)\n",
-  "body_hash": "d304800d1ae443eb",
+  "body": "def execute_payment(self, challenge: PaymentChallenge) -> PaymentResult:\n    \"\"\"Submit payment for the challenge.\n\n    Returns PaymentResult with success status and details.\n    Calls the lower-level submit_payment() function.\n    \"\"\"\n    return submit_payment(challenge)\n",
+  "body_hash": "d08f4ac8b31da2f1",
   "body_truncated": false,
   "callers_of": [
     "submit_payment"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/x402.py:444.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/x402.py:444.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.execute_payment",
@@ -21,7 +21,7 @@
     "logging"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/x402.py:444"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/x402.py:444"
   },
   "kind": "pure_function",
   "made_of": [],

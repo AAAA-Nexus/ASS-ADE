@@ -1,12 +1,12 @@
 {
-  "body": "    def test_empty_old_body(self):\n        new = \"def foo(): pass\"\n        result = classify_change(\"\", new)\n        assert result in {\"minor\", \"patch\"}\n",
-  "body_hash": "d2a2ae6bb10e5133",
+  "body": "def test_empty_old_body(self):\n    new = \"def foo(): pass\"\n    result = classify_change(\"\", new)\n    assert result in {\"minor\", \"patch\"}\n",
+  "body_hash": "6f1ba85456ee07e3",
   "body_truncated": false,
   "callers_of": [
     "classify_change"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_version_tracker.py:111.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_version_tracker.py:111.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_empty_old_body",
@@ -27,7 +27,7 @@
     "ass_ade.engine.rebuild.version_tracker.write_tier_version_file"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_version_tracker.py:111"
+    "source": "C:/!ass-ade/tests/test_version_tracker.py:111"
   },
   "kind": "pure_function",
   "made_of": [],

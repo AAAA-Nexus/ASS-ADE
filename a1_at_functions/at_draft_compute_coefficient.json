@@ -1,6 +1,6 @@
 {
-  "body": "    def compute_coefficient(self) -> float:\n        history = self._state.get(\"history\") or []\n        if not history:\n            return max(1e-6, float(self._state.get(\"coefficient\", 1.0)))\n        recent = history[-20:]\n        deltas = [float(h.get(\"delta\", 0.0)) for h in recent]\n        avg = sum(deltas) / len(deltas)\n        base = float(self._state.get(\"coefficient\", 1.0))\n        coef = max(1e-6, base * (1.0 + avg))\n        self._state[\"coefficient\"] = coef\n        return coef\n",
-  "body_hash": "c59fdc7094130d5d",
+  "body": "def compute_coefficient(self) -> float:\n    history = self._state.get(\"history\") or []\n    if not history:\n        return max(1e-6, float(self._state.get(\"coefficient\", 1.0)))\n    recent = history[-20:]\n    deltas = [float(h.get(\"delta\", 0.0)) for h in recent]\n    avg = sum(deltas) / len(deltas)\n    base = float(self._state.get(\"coefficient\", 1.0))\n    coef = max(1e-6, base * (1.0 + avg))\n    self._state[\"coefficient\"] = coef\n    return coef\n",
+  "body_hash": "d73ba0ad59d18341",
   "body_truncated": false,
   "callers_of": [
     "float",
@@ -10,13 +10,20 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_gvu.py:24.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/gvu.py:32.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.compute_coefficient",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "datetime.UTC",
+    "datetime.datetime",
+    "pathlib.Path",
+    "typing.Any"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_gvu.py:24"
+    "source": "C:/!ass-ade/src/ass_ade/agent/gvu.py:32"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_get_stale_files_empty_when_all_fresh(self, tmp_path):\n        tca = self._make(tmp_path)\n        tca.record_read(\"/a.py\")\n        tca.record_read(\"/b.py\")\n        stale = tca.get_stale_files([\"/a.py\", \"/b.py\"])\n        assert len(stale) == 0\n",
-  "body_hash": "20d93360486e5f9b",
+  "body": "def test_get_stale_files_empty_when_all_fresh(self, tmp_path):\n    tca = self._make(tmp_path)\n    tca.record_read(\"/a.py\")\n    tca.record_read(\"/b.py\")\n    stale = tca.get_stale_files([\"/a.py\", \"/b.py\"])\n    assert len(stale) == 0\n",
+  "body_hash": "ec94bb8ee099b448",
   "body_truncated": false,
   "callers_of": [
     "_make",
@@ -9,7 +9,7 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:223.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase_engines.py:223.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_get_stale_files_empty_when_all_fresh",
@@ -64,10 +64,13 @@
     "ass_ade.agent.orchestrator.CycleReport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:223"
+    "source": "C:/!ass-ade/tests/test_phase_engines.py:223"
   },
   "kind": "engine_molecule",
-  "made_of": [],
+  "made_of": [
+    "at.source.ass_ade.record_read",
+    "at.source.ass_ade.get_stale_files"
+  ],
   "name": "test_get_stale_files_empty_when_all_fresh",
   "product_categories": [
     "COR"

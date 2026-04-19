@@ -1,13 +1,13 @@
 {
-  "body": "    def test_pollinations_available_via_default_key(self):\n        p = get_provider(\"pollinations\")\n        assert p.is_available() is True\n",
-  "body_hash": "fe933c4822ec3c9f",
+  "body": "def test_pollinations_available_via_default_key(self):\n    p = get_provider(\"pollinations\")\n    assert p.is_available() is True\n",
+  "body_hash": "036b6b8f6d2446ac",
   "body_truncated": false,
   "callers_of": [
     "get_provider",
     "is_available"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:116.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:116.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_pollinations_available_via_default_key",
@@ -86,7 +86,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:116"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:116"
   },
   "kind": "pure_function",
   "made_of": [],

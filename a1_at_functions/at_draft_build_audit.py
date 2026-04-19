@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_build_audit.py:5
+# Extracted from C:/!ass-ade/src/ass_ade/protocol/cycle.py:68
 # Component id: at.source.ass_ade.build_audit
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def build_audit(root: Path, settings: AssAdeConfig) -> list[ProtocolAuditCheck]:

@@ -1,12 +1,12 @@
 {
-  "body": "    def is_cancelled(self) -> bool:\n        \"\"\"Alias for check().\"\"\"\n        return self.check()\n",
-  "body_hash": "bd500d69ce6d5dd8",
+  "body": "def is_cancelled(self) -> bool:\n    \"\"\"Alias for check().\"\"\"\n    return self.check()\n",
+  "body_hash": "fb7b20ae9789142d",
   "body_truncated": false,
   "callers_of": [
     "check"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/mcp/cancellation.py:41.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/mcp/cancellation.py:41.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.is_cancelled",
@@ -16,7 +16,7 @@
     "typing.Optional"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/mcp/cancellation.py:41"
+    "source": "C:/!ass-ade/src/ass_ade/mcp/cancellation.py:41"
   },
   "kind": "ecosystem_system",
   "made_of": [],

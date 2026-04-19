@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_identity_sybil_check.py:5
+# Extracted from C:/!ass-ade/tests/test_new_commands.py:871
 # Component id: at.source.ass_ade.test_identity_sybil_check
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_identity_sybil_check(tmp_path: Path) -> None:

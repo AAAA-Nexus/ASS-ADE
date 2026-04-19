@@ -1,6 +1,6 @@
 {
-  "body": "    def update_from_turn(self, turn: \"Turn\") -> None:\n        profile = self.user_profile\n        # Tone frequency tracking\n        tones = profile.setdefault(\"tone_counts\", {})\n        tones[turn.tone] = tones.get(turn.tone, 0) + 1\n        # Dominant tone\n        profile[\"dominant_tone\"] = max(tones, key=lambda k: tones[k])\n        # Command frequency\n        cmds = profile.setdefault(\"command_counts\", {})\n        cmds[turn.intent] = cmds.get(turn.intent, 0) + 1\n        profile[\"favorite_command\"] = max(cmds, key=lambda k: cmds[k])\n        # Session count\n        profile[\"session_interactions\"] = profile.get(\"session_interactions\", 0) + 1\n\n        # Project context\n        path_key = str(Path(turn.path).resolve())\n        ctx = self.project_contexts.setdefault(path_key, {})\n        ctx.setdefault(\"first_seen\", datetime.now(timezone.utc).isoformat())\n        ctx[\"last_seen\"] = datetime.now(timezone.utc).isoformat()\n        intent_log = ctx.setdefault(\"commands_run\", [])\n        intent_log.append({\"intent\": turn.intent, \"ts\": datetime.now(timezone.utc).isoformat()})\n        ctx[\"commands_run\"] = intent_log[-50:]  # keep last 50 per project\n",
-  "body_hash": "6262d069fe2f5999",
+  "body": "def update_from_turn(self, turn: \"Turn\") -> None:\n    profile = self.user_profile\n    # Tone frequency tracking\n    tones = profile.setdefault(\"tone_counts\", {})\n    tones[turn.tone] = tones.get(turn.tone, 0) + 1\n    # Dominant tone\n    profile[\"dominant_tone\"] = max(tones, key=lambda k: tones[k])\n    # Command frequency\n    cmds = profile.setdefault(\"command_counts\", {})\n    cmds[turn.intent] = cmds.get(turn.intent, 0) + 1\n    profile[\"favorite_command\"] = max(cmds, key=lambda k: cmds[k])\n    # Session count\n    profile[\"session_interactions\"] = profile.get(\"session_interactions\", 0) + 1\n\n    # Project context\n    path_key = str(Path(turn.path).resolve())\n    ctx = self.project_contexts.setdefault(path_key, {})\n    ctx.setdefault(\"first_seen\", datetime.now(timezone.utc).isoformat())\n    ctx[\"last_seen\"] = datetime.now(timezone.utc).isoformat()\n    intent_log = ctx.setdefault(\"commands_run\", [])\n    intent_log.append({\"intent\": turn.intent, \"ts\": datetime.now(timezone.utc).isoformat()})\n    ctx[\"commands_run\"] = intent_log[-50:]  # keep last 50 per project\n",
+  "body_hash": "37f0a69388dcf121",
   "body_truncated": false,
   "callers_of": [
     "setdefault",
@@ -14,7 +14,7 @@
     "Path"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/interpreter.py:256.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/interpreter.py:298.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.update_from_turn",
@@ -34,6 +34,7 @@
     "httpx",
     "ass_ade.agent.capabilities.build_atomadic_intent_prompt",
     "ass_ade.agent.capabilities.command_path_exists",
+    "ass_ade.agent.capabilities.render_capability_prompt_section",
     "ass_ade.agent.capabilities.render_atomadic_help",
     "dotenv.load_dotenv",
     "time",
@@ -42,10 +43,11 @@
     "importlib",
     "sys",
     "rich.console.Console",
+    "rich.markdown.Markdown",
     "rich.markdown.Markdown"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/interpreter.py:256"
+    "source": "C:/!ass-ade/src/ass_ade/interpreter.py:298"
   },
   "kind": "pure_function",
   "made_of": [],

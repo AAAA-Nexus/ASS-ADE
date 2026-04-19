@@ -1,12 +1,12 @@
 {
-  "body": "    def ethics_compliance(self, system_description: str, **kwargs: Any) -> EthicsCheckResult:\n        \"\"\"/v1/ethics/compliance \u2014 Prime Axiom audit with formal proof of safety. $0.040/call\"\"\"\n        return self._post_model(\"/v1/ethics/compliance\", EthicsCheckResult, {\"system_description\": system_description, **kwargs})\n",
-  "body_hash": "87d5cb1c8b440ef5",
+  "body": "def ethics_compliance(self, system_description: str, **kwargs: Any) -> EthicsCheckResult:\n    \"\"\"/v1/ethics/compliance \u2014 Prime Axiom audit with formal proof of safety. $0.040/call\"\"\"\n    return self._post_model(\"/v1/ethics/compliance\", EthicsCheckResult, {\"system_description\": system_description, **kwargs})\n",
+  "body_hash": "f8b3e96737dcaf53",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1171.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1171.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.ethics_compliance",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1171"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1171"
   },
   "kind": "engine_molecule",
   "made_of": [],

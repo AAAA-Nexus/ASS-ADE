@@ -1,12 +1,12 @@
 {
-  "body": "    def federation_portability(self, from_platform: str, to_platform: str, **kwargs: Any) -> PortabilityCheck:\n        \"\"\"/v1/federation/portability \u2014 cross-platform capability portability (AIF-102). $0.020/call\"\"\"\n        return self._post_model(\"/v1/federation/portability\", PortabilityCheck, {\n            \"from_platform\": from_platform, \"to_platform\": to_platform, **kwargs,\n        })\n",
-  "body_hash": "0ff755e97bd5a6a5",
+  "body": "def federation_portability(self, from_platform: str, to_platform: str, **kwargs: Any) -> PortabilityCheck:\n    \"\"\"/v1/federation/portability \u2014 cross-platform capability portability (AIF-102). $0.020/call\"\"\"\n    return self._post_model(\"/v1/federation/portability\", PortabilityCheck, {\n        \"from_platform\": from_platform, \"to_platform\": to_platform, **kwargs,\n    })\n",
+  "body_hash": "988a0eb933cf03d9",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:849.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:849.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.federation_portability",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:849"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:849"
   },
   "kind": "engine_molecule",
   "made_of": [],

@@ -1,12 +1,12 @@
 {
-  "body": "    def agent_reputation(self, agent_id: str, **kwargs: Any) -> dict:\n        \"\"\"/v1/agents/reputation \u2014 A2A compliance + trust score. $0.040/request\"\"\"\n        return self._post_raw(\"/v1/agents/reputation\", {\"agent_id\": agent_id, **kwargs})\n",
-  "body_hash": "22a271431cfab9e3",
+  "body": "def agent_reputation(self, agent_id: str, **kwargs: Any) -> dict:\n    \"\"\"/v1/agents/reputation \u2014 A2A compliance + trust score. $0.040/request\"\"\"\n    return self._post_raw(\"/v1/agents/reputation\", {\"agent_id\": agent_id, **kwargs})\n",
+  "body_hash": "2778ae55fb7144f1",
   "body_truncated": false,
   "callers_of": [
     "_post_raw"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:640.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:640.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.agent_reputation",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:640"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:640"
   },
   "kind": "engine_molecule",
   "made_of": [],

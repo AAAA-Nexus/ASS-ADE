@@ -1,12 +1,12 @@
 {
-  "body": "    def routing_think(self, query: str, **kwargs: Any) -> ThinkRoute:\n        \"\"\"/v1/routing/think \u2014 classify complexity \u2192 model tier (POP-1207). $0.040/call\"\"\"\n        return self._post_model(\"/v1/routing/think\", ThinkRoute, {\"query\": query, **kwargs})\n",
-  "body_hash": "f63f558db56041d6",
+  "body": "def routing_think(self, query: str, **kwargs: Any) -> ThinkRoute:\n    \"\"\"/v1/routing/think \u2014 classify complexity \u2192 model tier (POP-1207). $0.040/call\"\"\"\n    return self._post_model(\"/v1/routing/think\", ThinkRoute, {\"query\": query, **kwargs})\n",
+  "body_hash": "a20ef5c5e72dcac8",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1195.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1195.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.routing_think",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1195"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1195"
   },
   "kind": "engine_molecule",
   "made_of": [],

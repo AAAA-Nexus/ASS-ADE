@@ -1,13 +1,13 @@
 {
-  "body": "    def test_returns_circuit_breaker_wrapping_retry(self) -> None:\n        transport = build_resilient_transport(max_retries=2)\n        assert isinstance(transport, CircuitBreakerTransport)\n        assert isinstance(transport._wrapped, RetryTransport)\n",
-  "body_hash": "dafe25f76f9417c7",
+  "body": "def test_returns_circuit_breaker_wrapping_retry(self) -> None:\n    transport = build_resilient_transport(max_retries=2)\n    assert isinstance(transport, CircuitBreakerTransport)\n    assert isinstance(transport._wrapped, RetryTransport)\n",
+  "body_hash": "ac116ccb3e9a13c1",
   "body_truncated": false,
   "callers_of": [
     "build_resilient_transport",
     "isinstance"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_resilience.py:144.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_resilience.py:144.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_returns_circuit_breaker_wrapping_retry",
@@ -23,7 +23,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_resilience.py:144"
+    "source": "C:/!ass-ade/tests/test_resilience.py:144"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_bitnetinferenceresponse.py:5
+# Extracted from C:/!ass-ade/src/ass_ade/nexus/models.py:963
 # Component id: mo.source.ass_ade.bitnetinferenceresponse
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class BitNetInferenceResponse(NexusModel):

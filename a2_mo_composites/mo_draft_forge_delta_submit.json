@@ -1,12 +1,12 @@
 {
-  "body": "    def forge_delta_submit(self, agent_id: str, delta: dict, **kwargs: Any) -> ForgeDeltaSubmitResult:\n        \"\"\"POST /v1/forge/delta/submit \u2014 submit improvement delta. Free.\"\"\"\n        return self._post_model(\"/v1/forge/delta/submit\", ForgeDeltaSubmitResult, {\"agent_id\": agent_id, \"delta\": delta, **kwargs})\n",
-  "body_hash": "2af5354edc610841",
+  "body": "def forge_delta_submit(self, agent_id: str, delta: dict, **kwargs: Any) -> ForgeDeltaSubmitResult:\n    \"\"\"POST /v1/forge/delta/submit \u2014 submit improvement delta. Free.\"\"\"\n    return self._post_model(\"/v1/forge/delta/submit\", ForgeDeltaSubmitResult, {\"agent_id\": agent_id, \"delta\": delta, **kwargs})\n",
+  "body_hash": "a33e59c2288917c6",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1359.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1359.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.forge_delta_submit",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1359"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1359"
   },
   "kind": "engine_molecule",
   "made_of": [],

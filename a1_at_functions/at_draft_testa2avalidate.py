@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli_happy_path.py:127
+# Extracted from C:/!ass-ade/tests/test_cli_happy_path.py:127
 # Component id: at.source.ass_ade.testa2avalidate
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class TestA2AValidate:
@@ -15,9 +17,9 @@ class TestA2AValidate:
         }
         card_file = tmp_path / "agent_card.json"
         card_file.write_text(json.dumps(card), encoding="utf-8")
-        
+
         result = runner.invoke(app, ["a2a", "validate", str(card_file)])
-        
+
         # Validation may pass or fail depending on schema; both acceptable
         assert result.exit_code in (0, 1)
 
@@ -30,8 +32,8 @@ class TestA2AValidate:
         }
         card_file = tmp_path / "agent_card.json"
         card_file.write_text(json.dumps(card), encoding="utf-8")
-        
+
         result = runner.invoke(app, ["a2a", "validate", str(card_file)])
-        
+
         # Command should complete (pass or fail)
         assert result.exit_code in (0, 1, 2)

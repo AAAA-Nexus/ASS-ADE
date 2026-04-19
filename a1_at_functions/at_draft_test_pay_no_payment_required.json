@@ -1,6 +1,6 @@
 {
-  "body": "    def test_pay_no_payment_required(self, tmp_path: Path) -> None:\n        \"\"\"If endpoint returns 200, pay should show results without payment.\"\"\"\n        mock_nx = MagicMock()\n        mock_nx._post_with_x402.return_value = {\"trust_score\": 0.95}\n        with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n            result = runner.invoke(\n                app,\n                [\"pay\", \"/v1/trust/score\", \"--config\", str(_hybrid_config(tmp_path))],\n            )\n        assert result.exit_code == 0\n        assert \"No payment required\" in result.stdout\n",
-  "body_hash": "43bdd8394ca1a2be",
+  "body": "def test_pay_no_payment_required(self, tmp_path: Path) -> None:\n    \"\"\"If endpoint returns 200, pay should show results without payment.\"\"\"\n    mock_nx = MagicMock()\n    mock_nx._post_with_x402.return_value = {\"trust_score\": 0.95}\n    with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n        result = runner.invoke(\n            app,\n            [\"pay\", \"/v1/trust/score\", \"--config\", str(_hybrid_config(tmp_path))],\n        )\n    assert result.exit_code == 0\n    assert \"No payment required\" in result.stdout\n",
+  "body_hash": "9f55bc0cbb0f522d",
   "body_truncated": false,
   "callers_of": [
     "MagicMock",
@@ -11,7 +11,7 @@
     "_hybrid_config"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:419.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_x402_flow.py:419.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_pay_no_payment_required",
@@ -37,7 +37,7 @@
     "ass_ade.nexus.x402.BASE_SEPOLIA_CHAIN_ID"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:419"
+    "source": "C:/!ass-ade/tests/test_x402_flow.py:419"
   },
   "kind": "pure_function",
   "made_of": [],

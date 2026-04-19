@@ -1,6 +1,6 @@
 {
-  "body": "    def test_nexus_available_when_key_set(self, monkeypatch):\n        monkeypatch.setenv(\"AAAA_NEXUS_API_KEY\", \"an_test_key\")\n        profile = get_provider(\"nexus\")\n        assert profile is not None\n        assert profile.is_available() is True\n",
-  "body_hash": "f3ede5d8db40f1c5",
+  "body": "def test_nexus_available_when_key_set(self, monkeypatch):\n    monkeypatch.setenv(\"AAAA_NEXUS_API_KEY\", \"an_test_key\")\n    profile = get_provider(\"nexus\")\n    assert profile is not None\n    assert profile.is_available() is True\n",
+  "body_hash": "fc02f35bd0883b1c",
   "body_truncated": false,
   "callers_of": [
     "setenv",
@@ -8,7 +8,7 @@
     "is_available"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:567.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:567.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_nexus_available_when_key_set",
@@ -87,7 +87,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:567"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:567"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_on_step_end_wisdom_scores(self) -> None:\n        o = EngineOrchestrator({})\n        o.on_step_start(\"task\")\n        report = o.on_step_end(\"response\", {\n            \"recon_done\": True,\n            \"atlas_used\": True,\n            \"lifr_queried\": True,\n            \"memory_consulted\": True,\n            \"budget_ok\": True,\n            \"tool_calls\": [\"read_file\"],\n        })\n        assert report.wisdom_score > 0.0\n        assert report.wisdom_passed > 0\n",
-  "body_hash": "f55bdda56c364552",
+  "body": "def test_on_step_end_wisdom_scores(self) -> None:\n    o = EngineOrchestrator({})\n    o.on_step_start(\"task\")\n    report = o.on_step_end(\"response\", {\n        \"recon_done\": True,\n        \"atlas_used\": True,\n        \"lifr_queried\": True,\n        \"memory_consulted\": True,\n        \"budget_ok\": True,\n        \"tool_calls\": [\"read_file\"],\n    })\n    assert report.wisdom_score > 0.0\n    assert report.wisdom_passed > 0\n",
+  "body_hash": "3f3e36e0426ab376",
   "body_truncated": false,
   "callers_of": [
     "EngineOrchestrator",
@@ -8,7 +8,7 @@
     "on_step_end"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:323.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:323.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_on_step_end_wisdom_scores",
@@ -36,7 +36,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:323"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:323"
   },
   "kind": "engine_molecule",
   "made_of": [],

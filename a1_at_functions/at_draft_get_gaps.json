@@ -1,10 +1,10 @@
 {
-  "body": "    def get_gaps(self) -> list[dict[str, Any]]:\n        return [\n            {\"description\": g.description, \"source\": g.source, \"ts\": g.ts}\n            for g in self._gaps\n        ]\n",
-  "body_hash": "51a0bdb32c0c9a5f",
+  "body": "def get_gaps(self) -> list[dict[str, Any]]:\n    return [\n        {\"description\": g.description, \"source\": g.source, \"ts\": g.ts}\n        for g in self._gaps\n    ]\n",
+  "body_hash": "47b1b17089545814",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/tca.py:129.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/tca.py:129.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.get_gaps",
@@ -19,7 +19,7 @@
     "typing.Any"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/tca.py:129"
+    "source": "C:/!ass-ade/src/ass_ade/agent/tca.py:129"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,12 +1,12 @@
 {
-  "body": "    def get_metrics(self) -> PlatformMetrics:\n        \"\"\"/v1/metrics \u2014 aggregated public telemetry, free\"\"\"\n        return self._get_model(\"/v1/metrics\", PlatformMetrics)\n",
-  "body_hash": "160d1cbaa662f705",
+  "body": "def get_metrics(self) -> PlatformMetrics:\n    \"\"\"/v1/metrics \u2014 aggregated public telemetry, free\"\"\"\n    return self._get_model(\"/v1/metrics\", PlatformMetrics)\n",
+  "body_hash": "7ae459b5c6f09500",
   "body_truncated": false,
   "callers_of": [
     "_get_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:297.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:297.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.get_metrics",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:297"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:297"
   },
   "kind": "engine_molecule",
   "made_of": [],

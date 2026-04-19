@@ -1,6 +1,6 @@
 {
-  "body": "    def test_single_failing_step(self) -> None:\n        pipe = Pipeline(\"fail\")\n        pipe.add(\"step1\", fail_step)\n        result = pipe.run()\n        assert not result.passed\n        assert result.steps[0].status == StepStatus.FAILED\n        assert result.steps[0].error == \"something broke\"\n",
-  "body_hash": "ccf94dd386b724b0",
+  "body": "def test_single_failing_step(self) -> None:\n    pipe = Pipeline(\"fail\")\n    pipe.add(\"step1\", fail_step)\n    result = pipe.run()\n    assert not result.passed\n    assert result.steps[0].status == StepStatus.FAILED\n    assert result.steps[0].error == \"something broke\"\n",
+  "body_hash": "7c30f3ddb69d2387",
   "body_truncated": false,
   "callers_of": [
     "Pipeline",
@@ -8,13 +8,22 @@
     "run"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpipeline.py:20.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_pipeline.py:64.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_single_failing_step",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.pipeline.Pipeline",
+    "ass_ade.pipeline.PipelineResult",
+    "ass_ade.pipeline.StepResult",
+    "ass_ade.pipeline.StepStatus"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpipeline.py:20"
+    "source": "C:/!ass-ade/tests/test_pipeline.py:64"
   },
   "kind": "pure_function",
   "made_of": [],

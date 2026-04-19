@@ -1,6 +1,6 @@
 {
-  "body": "    def test_fail_open_on_exception(self):\n        client = MagicMock()\n        client.prompt_inject_scan.side_effect = Exception(\"network error\")\n        client.hallucination_oracle.side_effect = Exception(\"network error\")\n        client.security_shield.side_effect = Exception(\"network error\")\n        client.certify_output.side_effect = Exception(\"network error\")\n        gates = QualityGates(client)\n\n        assert gates.scan_prompt(\"test\") is None\n        assert gates.check_hallucination(\"test\") is None\n        assert gates.shield_tool(\"x\", {}) is None\n        assert gates.certify(\"test\") is None\n",
-  "body_hash": "e7ce247fda2d46cd",
+  "body": "def test_fail_open_on_exception(self):\n    client = MagicMock()\n    client.prompt_inject_scan.side_effect = Exception(\"network error\")\n    client.hallucination_oracle.side_effect = Exception(\"network error\")\n    client.security_shield.side_effect = Exception(\"network error\")\n    client.certify_output.side_effect = Exception(\"network error\")\n    gates = QualityGates(client)\n\n    assert gates.scan_prompt(\"test\") is None\n    assert gates.check_hallucination(\"test\") is None\n    assert gates.shield_tool(\"x\", {}) is None\n    assert gates.certify(\"test\") is None\n",
+  "body_hash": "d73262cf33a625f9",
   "body_truncated": false,
   "callers_of": [
     "MagicMock",
@@ -12,7 +12,7 @@
     "certify"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_agent.py:134.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_agent.py:134.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_fail_open_on_exception",
@@ -32,7 +32,7 @@
     "ass_ade.tools.registry.ToolRegistry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_agent.py:134"
+    "source": "C:/!ass-ade/tests/test_agent.py:134"
   },
   "kind": "pure_function",
   "made_of": [],

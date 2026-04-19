@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_capabilities.py:35
+# Extracted from C:/!ass-ade/tests/test_capabilities.py:40
 # Component id: sy.source.ass_ade.test_agent_loop_system_prompt_uses_dynamic_inventory
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_agent_loop_system_prompt_uses_dynamic_inventory(tmp_path: Path) -> None:
@@ -8,6 +10,7 @@ def test_agent_loop_system_prompt_uses_dynamic_inventory(tmp_path: Path) -> None
     prompt = build_system_prompt(str(tmp_path))
 
     assert "Dynamic Capability Inventory" in prompt
+    assert "Capability summary" in prompt
     assert "`protocol evolution-record`" in prompt
     assert "`read_file`" in prompt
     assert "Project type: Python" in prompt

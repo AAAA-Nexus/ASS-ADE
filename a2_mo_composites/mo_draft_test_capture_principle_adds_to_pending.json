@@ -1,13 +1,13 @@
 {
-  "body": "    def test_capture_principle_adds_to_pending(self, tmp_path):\n        fly = self._make(tmp_path)\n        cid = fly.capture_principle(\"always verify before acting\", confidence=0.9)\n        assert cid != \"\"\n        assert fly._pending[0].kind == \"principle\"\n",
-  "body_hash": "8f51bedd1475f9fb",
+  "body": "def test_capture_principle_adds_to_pending(self, tmp_path):\n    fly = self._make(tmp_path)\n    cid = fly.capture_principle(\"always verify before acting\", confidence=0.9)\n    assert cid != \"\"\n    assert fly._pending[0].kind == \"principle\"\n",
+  "body_hash": "23325dc7ed38ec43",
   "body_truncated": false,
   "callers_of": [
     "_make",
     "capture_principle"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:427.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase_engines.py:427.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_capture_principle_adds_to_pending",
@@ -62,7 +62,7 @@
     "ass_ade.agent.orchestrator.CycleReport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:427"
+    "source": "C:/!ass-ade/tests/test_phase_engines.py:427"
   },
   "kind": "engine_molecule",
   "made_of": [

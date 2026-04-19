@@ -1,6 +1,6 @@
 {
-  "body": "    def test_trim_noop_when_under_limit(self):\n        c = Conversation(\"system\")\n        c.add_user(\"hello\")\n        assert c.trim(max_messages=50) == 0\n",
-  "body_hash": "9b93acb547bd7f62",
+  "body": "def test_trim_noop_when_under_limit(self):\n    c = Conversation(\"system\")\n    c.add_user(\"hello\")\n    assert c.trim(max_messages=50) == 0\n",
+  "body_hash": "68000fea181a0abd",
   "body_truncated": false,
   "callers_of": [
     "Conversation",
@@ -8,13 +8,27 @@
     "trim"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testconversation.py:36.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_agent.py:54.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_trim_noop_when_under_limit",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "unittest.mock.MagicMock",
+    "ass_ade.agent.context.build_system_prompt",
+    "ass_ade.agent.conversation.Conversation",
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.agent.loop.MAX_ROUNDS_SENTINEL",
+    "ass_ade.engine.types.CompletionRequest",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolCallRequest",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.registry.ToolRegistry"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testconversation.py:36"
+    "source": "C:/!ass-ade/tests/test_agent.py:54"
   },
   "kind": "pure_function",
   "made_of": [],

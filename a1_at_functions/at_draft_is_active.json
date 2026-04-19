@@ -1,16 +1,26 @@
 {
-  "body": "    def is_active(self) -> bool:\n        return self._started and self.session_id is not None\n",
-  "body_hash": "2595df7d14930cf5",
+  "body": "def is_active(self) -> bool:\n    return self._started and self.session_id is not None\n",
+  "body_hash": "b36451d5e1ca682a",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_nexussession.py:15.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/session.py:28.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.is_active",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "ass_ade.nexus.client.NexusClient",
+    "ass_ade.nexus.errors.NexusError",
+    "ass_ade.nexus.models.RatchetAdvance",
+    "ass_ade.nexus.models.RatchetSession",
+    "ass_ade.nexus.models.RatchetStatus",
+    "ass_ade.nexus.validation.validate_agent_id",
+    "ass_ade.nexus.validation.validate_session_id"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_nexussession.py:15"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/session.py:28"
   },
   "kind": "pure_function",
   "made_of": [],

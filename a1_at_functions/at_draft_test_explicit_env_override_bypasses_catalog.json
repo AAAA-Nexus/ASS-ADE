@@ -1,6 +1,6 @@
 {
-  "body": "    def test_explicit_env_override_bypasses_catalog(self, monkeypatch):\n        monkeypatch.setenv(\"ASS_ADE_PROVIDER_URL\", \"https://custom.example.com/v1\")\n        monkeypatch.setenv(\"ASS_ADE_PROVIDER_KEY\", \"custom-key\")\n        monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-groq\")\n\n        from ass_ade.config import AssAdeConfig\n        from ass_ade.engine.provider import OpenAICompatibleProvider\n        from ass_ade.engine.router import build_provider\n\n        cfg = AssAdeConfig(profile=\"local\")\n        result = build_provider(cfg)\n        # Explicit override wins \u2014 should be a single OpenAICompatibleProvider\n        assert isinstance(result, OpenAICompatibleProvider)\n",
-  "body_hash": "dd1117132087f925",
+  "body": "def test_explicit_env_override_bypasses_catalog(self, monkeypatch):\n    monkeypatch.setenv(\"ASS_ADE_PROVIDER_URL\", \"https://custom.example.com/v1\")\n    monkeypatch.setenv(\"ASS_ADE_PROVIDER_KEY\", \"custom-key\")\n    monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-groq\")\n\n    from ass_ade.config import AssAdeConfig\n    from ass_ade.engine.provider import OpenAICompatibleProvider\n    from ass_ade.engine.router import build_provider\n\n    cfg = AssAdeConfig(profile=\"local\")\n    result = build_provider(cfg)\n    # Explicit override wins \u2014 should be a single OpenAICompatibleProvider\n    assert isinstance(result, OpenAICompatibleProvider)\n",
+  "body_hash": "02dd612450e9b7da",
   "body_truncated": false,
   "callers_of": [
     "setenv",
@@ -9,7 +9,7 @@
     "isinstance"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:544.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:544.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_explicit_env_override_bypasses_catalog",
@@ -88,7 +88,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:544"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:544"
   },
   "kind": "pure_function",
   "made_of": [],

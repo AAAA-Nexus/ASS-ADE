@@ -1,13 +1,13 @@
 {
-  "body": "    def test_local_provider_always_available(self):\n        p = get_provider(\"ollama\")\n        assert p.local is True\n        assert p.is_available() is True  # always true for local\n",
-  "body_hash": "174c3f3547dcd023",
+  "body": "def test_local_provider_always_available(self):\n    p = get_provider(\"ollama\")\n    assert p.local is True\n    assert p.is_available() is True  # always true for local\n",
+  "body_hash": "5735a18622a31e73",
   "body_truncated": false,
   "callers_of": [
     "get_provider",
     "is_available"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:101.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:101.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_local_provider_always_available",
@@ -86,7 +86,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:101"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:101"
   },
   "kind": "pure_function",
   "made_of": [],

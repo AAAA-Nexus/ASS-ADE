@@ -1,12 +1,12 @@
 {
-  "body": "    def trust_score(self, agent_id: str, **kwargs: Any) -> TrustScore:\n        \"\"\"/v1/trust/score \u2014 TCM-100 formally bounded score in [0,1]. $0.040/query\"\"\"\n        return self._post_model(\"/v1/trust/score\", TrustScore, {\"agent_id\": agent_id, **kwargs})\n",
-  "body_hash": "38f6783ebd76c1c7",
+  "body": "def trust_score(self, agent_id: str, **kwargs: Any) -> TrustScore:\n    \"\"\"/v1/trust/score \u2014 TCM-100 formally bounded score in [0,1]. $0.040/query\"\"\"\n    return self._post_model(\"/v1/trust/score\", TrustScore, {\"agent_id\": agent_id, **kwargs})\n",
+  "body_hash": "4c34c6c16e2dd73b",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:913.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:913.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.trust_score",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:913"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:913"
   },
   "kind": "engine_molecule",
   "made_of": [],

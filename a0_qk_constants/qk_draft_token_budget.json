@@ -1,10 +1,10 @@
 {
-  "body": "    def token_budget(self) -> TokenBudget:\n        return self._conversation.budget\n",
-  "body_hash": "4e4a1e36f16760a6",
+  "body": "def token_budget(self) -> TokenBudget:\n    return self._conversation.budget\n",
+  "body_hash": "efc67302f6533076",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/loop.py:108.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/loop.py:108.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "qk.source.ass_ade.token_budget",
@@ -34,7 +34,7 @@
     "ass_ade.tools.registry.ToolRegistry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/loop.py:108"
+    "source": "C:/!ass-ade/src/ass_ade/agent/loop.py:108"
   },
   "kind": "invariant",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_step_metrics_reset_on_start(self) -> None:\n        o = EngineOrchestrator({})\n        o.on_step_start(\"first task\")\n        o.on_tool_event(\"read_file\", {}, \"\")\n        assert o._step_tool_counts.get(\"read_file\", 0) == 1\n        # Second step start should reset\n        o.on_step_start(\"second task\")\n        assert o._step_tool_counts == {}\n",
-  "body_hash": "b94f68e77973ec9f",
+  "body": "def test_step_metrics_reset_on_start(self) -> None:\n    o = EngineOrchestrator({})\n    o.on_step_start(\"first task\")\n    o.on_tool_event(\"read_file\", {}, \"\")\n    assert o._step_tool_counts.get(\"read_file\", 0) == 1\n    # Second step start should reset\n    o.on_step_start(\"second task\")\n    assert o._step_tool_counts == {}\n",
+  "body_hash": "93facb22fd99da48",
   "body_truncated": false,
   "callers_of": [
     "EngineOrchestrator",
@@ -9,7 +9,7 @@
     "get"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:351.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:351.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_step_metrics_reset_on_start",
@@ -37,7 +37,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:351"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:351"
   },
   "kind": "engine_molecule",
   "made_of": [],

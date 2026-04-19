@@ -1,29 +1,23 @@
 {
-  "body": "    def route(self, message: str) -> RoutingDecision:\n        \"\"\"Route a message using best available method.\"\"\"\n        if self._nexus is not None:\n            try:\n                result = self._nexus.routing_recommend(prompt=message)\n                confidence = _result_field(result, \"confidence\")\n                if isinstance(confidence, (int, float)):\n                    complexity = max(0.0, min(1.0, float(confidence)))\n                else:\n                    complexity = classify_complexity(message)\n\n                model_name = _result_field(result, \"model\") or _result_field(result, \"recommended_model\")\n                reason = _result_field(result, \"reason\", \"Nexus recommendation\")\n\n                decision = RoutingDecision(\n                    tier=_nexus_tier(result),\n                    complexity=complexity,\n                    recommended_model=str(model_name) if model_name else None,\n                    reason=str(reason),\n                    source=\"nexus\",\n                )\n            except Exception:\n                decision = local_route(message)\n        else:\n            decision = local_route(message)\n        self._history.append(decision)\n        return decision\n",
-  "body_hash": "fcc2444aebb24897",
+  "body": "def route(self, capability_str: str) -> ToolRef | None:\n    candidates = self.discover(capability_str, k=1)\n    return candidates[0] if candidates else None\n",
+  "body_hash": "9ff1b721968f9b58",
   "body_truncated": false,
   "callers_of": [
-    "append",
-    "local_route",
-    "routing_recommend",
-    "_result_field",
-    "isinstance",
-    "RoutingDecision",
-    "max",
-    "classify_complexity",
-    "min",
-    "_nexus_tier",
-    "str",
-    "float"
+    "discover"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_epistemicrouter.py:12.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/mcp/zero_router.py:45.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.route",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_epistemicrouter.py:12"
+    "source": "C:/!ass-ade/src/ass_ade/mcp/zero_router.py:45"
   },
   "kind": "ecosystem_system",
   "made_of": [],

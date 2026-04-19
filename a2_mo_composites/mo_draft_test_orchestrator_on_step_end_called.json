@@ -1,6 +1,6 @@
 {
-  "body": "    def test_orchestrator_on_step_end_called(self) -> None:\n        o = MagicMock(spec=EngineOrchestrator)\n        o.on_step_start.return_value = {}\n        o.on_tool_event.return_value = []\n        o.on_step_end.return_value = CycleReport(alerts=[])\n\n        loop = self._make_loop(orchestrator=o)\n        loop.step(\"Do something\")\n        o.on_step_end.assert_called_once()\n",
-  "body_hash": "0c75f2fe25647b9d",
+  "body": "def test_orchestrator_on_step_end_called(self) -> None:\n    o = MagicMock(spec=EngineOrchestrator)\n    o.on_step_start.return_value = {}\n    o.on_tool_event.return_value = []\n    o.on_step_end.return_value = CycleReport(alerts=[])\n\n    loop = self._make_loop(orchestrator=o)\n    loop.step(\"Do something\")\n    o.on_step_end.assert_called_once()\n",
+  "body_hash": "6d0774d240591706",
   "body_truncated": false,
   "callers_of": [
     "MagicMock",
@@ -10,7 +10,7 @@
     "assert_called_once"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:466.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:466.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_orchestrator_on_step_end_called",
@@ -38,7 +38,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:466"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:466"
   },
   "kind": "engine_molecule",
   "made_of": [

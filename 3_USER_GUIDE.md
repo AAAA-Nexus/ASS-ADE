@@ -86,6 +86,6 @@ Key options:
 ## This rebuild
 
 - Source: `C:\!ass-ade`
-- Components: 2589
-- Rebuild tag: `20260418_220755`
+- Components: 2860
+- Rebuild tag: `20260419_005513`
 - Structural conformant: YES

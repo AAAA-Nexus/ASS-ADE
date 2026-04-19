@@ -1,13 +1,13 @@
 {
-  "body": "    def lineage_trace(self, record_id: str | None = None, *, lineage_id: str | None = None) -> LineageTrace:\n        \"\"\"/v1/lineage/trace/{id} \u2014 retrieve + verify chain integrity (DLV-100). $0.020/call\"\"\"\n        resolved_record_id = record_id or lineage_id or \"\"\n        return self._get_model(f\"/v1/lineage/trace/{_pseg(resolved_record_id, 'record_id')}\", LineageTrace)\n",
-  "body_hash": "12d1b1ebfefef405",
+  "body": "def lineage_trace(self, record_id: str | None = None, *, lineage_id: str | None = None) -> LineageTrace:\n    \"\"\"/v1/lineage/trace/{id} \u2014 retrieve + verify chain integrity (DLV-100). $0.020/call\"\"\"\n    resolved_record_id = record_id or lineage_id or \"\"\n    return self._get_model(f\"/v1/lineage/trace/{_pseg(resolved_record_id, 'record_id')}\", LineageTrace)\n",
+  "body_hash": "947ddce4efb826ff",
   "body_truncated": false,
   "callers_of": [
     "_get_model",
     "_pseg"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:818.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:818.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.lineage_trace",
@@ -161,7 +161,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:818"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:818"
   },
   "kind": "engine_molecule",
   "made_of": [],

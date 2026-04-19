@@ -1,6 +1,6 @@
 {
-  "body": "    def test_flush_alerts_drains_buffer(self) -> None:\n        b = BAS({})\n        b.monitor_all({\"synergy\": 0.9, \"trust_score\": 0.1})\n        flushed = b.flush_alerts()\n        assert len(flushed) >= 1\n        # second flush is empty\n        assert b.flush_alerts() == []\n",
-  "body_hash": "8b48ac3ff16f6c0f",
+  "body": "def test_flush_alerts_drains_buffer(self) -> None:\n    b = BAS({})\n    b.monitor_all({\"synergy\": 0.9, \"trust_score\": 0.1})\n    flushed = b.flush_alerts()\n    assert len(flushed) >= 1\n    # second flush is empty\n    assert b.flush_alerts() == []\n",
+  "body_hash": "c1881137e9515a92",
   "body_truncated": false,
   "callers_of": [
     "BAS",
@@ -9,7 +9,7 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:231.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:231.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_flush_alerts_drains_buffer",
@@ -37,7 +37,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:231"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:231"
   },
   "kind": "engine_molecule",
   "made_of": [

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_pipeline_history_lists_workflows(self, tmp_path: Path) -> None:\n        \"\"\"Pipeline history should list recent workflows.\"\"\"\n        workflow_dir = tmp_path / \".ass-ade\" / \"workflows\"\n        workflow_dir.mkdir(parents=True, exist_ok=True)\n        \n        # Create several workflow files\n        for i in range(3):\n            workflow_data = {\n                \"name\": f\"test-workflow-{i}\",\n                \"passed\": i % 2 == 0,\n                \"duration_ms\": 500 + i * 100,\n            }\n            workflow_file = workflow_dir / f\"workflow-{i:03d}.json\"\n            workflow_file.write_text(json.dumps(workflow_data), encoding=\"utf-8\")\n        \n        with patch(\"pathlib.Path.cwd\", return_value=tmp_path):\n            result = runner.invoke(\n                app,\n                [\"pipeline\", \"history\", \"--limit\", \"5\"],\n            )\n        \n        # History should display a table with workflows\n        assert result.exit_code == 0, f\"History failed:\\n{result.stdout}\"\n        # Should show table or list of workflows\n        assert \"test-workflow\" in result.stdout or \"History\" in result.stdout or \"Workflow\" in result.stdout\n",
-  "body_hash": "97f94670bb80628a",
+  "body": "def test_pipeline_history_lists_workflows(self, tmp_path: Path) -> None:\n    \"\"\"Pipeline history should list recent workflows.\"\"\"\n    workflow_dir = tmp_path / \".ass-ade\" / \"workflows\"\n    workflow_dir.mkdir(parents=True, exist_ok=True)\n\n    # Create several workflow files\n    for i in range(3):\n        workflow_data = {\n            \"name\": f\"test-workflow-{i}\",\n            \"passed\": i % 2 == 0,\n            \"duration_ms\": 500 + i * 100,\n        }\n        workflow_file = workflow_dir / f\"workflow-{i:03d}.json\"\n        workflow_file.write_text(json.dumps(workflow_data), encoding=\"utf-8\")\n\n    with patch(\"pathlib.Path.cwd\", return_value=tmp_path):\n        result = runner.invoke(\n            app,\n            [\"pipeline\", \"history\", \"--limit\", \"5\"],\n        )\n\n    # History should display a table with workflows\n    assert result.exit_code == 0, f\"History failed:\\n{result.stdout}\"\n    # Should show table or list of workflows\n    assert \"test-workflow\" in result.stdout or \"History\" in result.stdout or \"Workflow\" in result.stdout\n",
+  "body_hash": "2b471db9f009198a",
   "body_truncated": false,
   "callers_of": [
     "mkdir",
@@ -11,13 +11,32 @@
     "dumps"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpipelinerun.py:187.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_cli_happy_path.py:514.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "og.source.ass_ade.test_pipeline_history_lists_workflows",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.nexus.models.AgentPlan",
+    "ass_ade.nexus.models.ComplianceResult",
+    "ass_ade.nexus.models.FormatConversion",
+    "ass_ade.nexus.models.InferenceResponse",
+    "ass_ade.nexus.models.IntentClassification",
+    "ass_ade.nexus.models.RatchetSession",
+    "ass_ade.nexus.models.TrustScore",
+    "ass_ade.pipeline.PipelineResult"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpipelinerun.py:187"
+    "source": "C:/!ass-ade/tests/test_cli_happy_path.py:514"
   },
   "kind": "product_organism",
   "made_of": [

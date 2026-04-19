@@ -6,7 +6,7 @@
     "_aggregate_version"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_version_tracker.py:183.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_version_tracker.py:183.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.testaggregateversion",
@@ -27,7 +27,7 @@
     "ass_ade.engine.rebuild.version_tracker.write_tier_version_file"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_version_tracker.py:183"
+    "source": "C:/!ass-ade/tests/test_version_tracker.py:183"
   },
   "kind": "engine_molecule",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_blocked_event(self, tmp_path):\n        provider = _MockProvider([])\n        mock_gates = MagicMock()\n        mock_gates.scan_prompt.return_value = {\"blocked\": True}\n\n        loop = AgentLoop(\n            provider=provider,\n            registry=ToolRegistry(),\n            working_dir=str(tmp_path),\n            quality_gates=mock_gates,\n        )\n        events = list(loop.step_stream(\"Bad input\"))\n        assert len(events) == 1\n        assert events[0].kind == \"blocked\"\n",
-  "body_hash": "8bb34f9e0a16a338",
+  "body": "def test_blocked_event(self, tmp_path):\n    provider = _MockProvider([])\n    mock_gates = MagicMock()\n    mock_gates.scan_prompt.return_value = {\"blocked\": True}\n\n    loop = AgentLoop(\n        provider=provider,\n        registry=ToolRegistry(),\n        working_dir=str(tmp_path),\n        quality_gates=mock_gates,\n    )\n    events = list(loop.step_stream(\"Bad input\"))\n    assert len(events) == 1\n    assert events[0].kind == \"blocked\"\n",
+  "body_hash": "b43f783b7dcff727",
   "body_truncated": false,
   "callers_of": [
     "_MockProvider",
@@ -13,7 +13,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:288.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_server_streaming.py:288.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.test_blocked_event",
@@ -32,7 +32,7 @@
     "ass_ade.tools.registry.ToolRegistry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:288"
+    "source": "C:/!ass-ade/tests/test_mcp_server_streaming.py:288"
   },
   "kind": "ecosystem_system",
   "made_of": [

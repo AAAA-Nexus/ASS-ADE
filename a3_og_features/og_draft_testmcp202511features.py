@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:265
+# Extracted from C:/!ass-ade/tests/test_mcp_extended.py:265
 # Component id: og.source.ass_ade.testmcp202511features
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class TestMCP202511Features:

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_context_flows_through_steps(self) -> None:\n        pipe = Pipeline(\"context\")\n        pipe.add(\"count1\", counting_step)\n        pipe.add(\"count2\", counting_step)\n        result = pipe.run()\n        assert result.passed\n        assert result.context[\"count\"] == 2\n",
-  "body_hash": "f505dbe40afc1352",
+  "body": "def test_context_flows_through_steps(self) -> None:\n    pipe = Pipeline(\"context\")\n    pipe.add(\"count1\", counting_step)\n    pipe.add(\"count2\", counting_step)\n    result = pipe.run()\n    assert result.passed\n    assert result.context[\"count\"] == 2\n",
+  "body_hash": "da926be15b504294",
   "body_truncated": false,
   "callers_of": [
     "Pipeline",
@@ -8,13 +8,22 @@
     "run"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpipeline.py:28.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_pipeline.py:72.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_context_flows_through_steps",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.pipeline.Pipeline",
+    "ass_ade.pipeline.PipelineResult",
+    "ass_ade.pipeline.StepResult",
+    "ass_ade.pipeline.StepStatus"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpipeline.py:28"
+    "source": "C:/!ass-ade/tests/test_pipeline.py:72"
   },
   "kind": "pure_function",
   "made_of": [],

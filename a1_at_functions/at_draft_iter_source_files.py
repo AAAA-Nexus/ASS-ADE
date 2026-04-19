@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_iter_source_files.py:5
+# Extracted from C:/!ass-ade/src/ass_ade/engine/rebuild/project_parser.py:66
 # Component id: at.source.ass_ade.iter_source_files
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def iter_source_files(root: Path) -> Iterable[Path]:

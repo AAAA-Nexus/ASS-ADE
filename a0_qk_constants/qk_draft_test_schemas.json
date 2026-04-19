@@ -1,6 +1,6 @@
 {
-  "body": "    def test_schemas(self, workspace: Path):\n        reg = default_registry(str(workspace))\n        schemas = reg.schemas()\n        assert len(schemas) == len(reg.list_tools())\n        assert all(s.name for s in schemas)\n",
-  "body_hash": "df23be5d105cc382",
+  "body": "def test_schemas(self, workspace: Path):\n    reg = default_registry(str(workspace))\n    schemas = reg.schemas()\n    assert len(schemas) == len(reg.list_tools())\n    assert all(s.name for s in schemas)\n",
+  "body_hash": "103af14f8c7f4684",
   "body_truncated": false,
   "callers_of": [
     "default_registry",
@@ -11,7 +11,7 @@
     "list_tools"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:203.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_tools_builtin.py:203.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "qk.source.ass_ade.test_schemas",
@@ -30,7 +30,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:203"
+    "source": "C:/!ass-ade/tests/test_tools_builtin.py:203"
   },
   "kind": "invariant",
   "made_of": [],

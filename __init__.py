@@ -1,7 +1,11 @@
 """Auto-generated rebuild package."""
 
-from . import a0_qk_constants  # noqa: F401
-from . import a1_at_functions  # noqa: F401
-from . import a2_mo_composites  # noqa: F401
-from . import a3_og_features  # noqa: F401
-from . import a4_sy_orchestration  # noqa: F401
+__version__ = "0.1.1"
+
+__all__ = [
+    "a0_qk_constants",
+    "a1_at_functions",
+    "a2_mo_composites",
+    "a3_og_features",
+    "a4_sy_orchestration",
+]

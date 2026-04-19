@@ -1,6 +1,6 @@
 {
-  "body": "    def test_lse_report_includes_provider_distribution(self, monkeypatch):\n        monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-a\")\n        from ass_ade.agent.lse import LSEEngine\n        lse = LSEEngine({})\n        lse.select(trs_score=0.9, complexity=\"medium\")\n        lse.select(trs_score=0.3, complexity=\"complex\")\n        rep = lse.report()\n        assert \"provider_distribution\" in rep\n        assert \"last_provider\" in rep\n",
-  "body_hash": "8fff927972a9f3c2",
+  "body": "def test_lse_report_includes_provider_distribution(self, monkeypatch):\n    monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-a\")\n    from ass_ade.agent.lse import LSEEngine\n    lse = LSEEngine({})\n    lse.select(trs_score=0.9, complexity=\"medium\")\n    lse.select(trs_score=0.3, complexity=\"complex\")\n    rep = lse.report()\n    assert \"provider_distribution\" in rep\n    assert \"last_provider\" in rep\n",
+  "body_hash": "572247f55f2b31b0",
   "body_truncated": false,
   "callers_of": [
     "setenv",
@@ -9,7 +9,7 @@
     "report"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:353.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:353.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_lse_report_includes_provider_distribution",
@@ -88,7 +88,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:353"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:353"
   },
   "kind": "pure_function",
   "made_of": [],

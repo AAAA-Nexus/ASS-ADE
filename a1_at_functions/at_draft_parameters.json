@@ -1,22 +1,33 @@
 {
-  "body": "    def parameters(self) -> dict[str, Any]:\n        return {\n            \"type\": \"object\",\n            \"properties\": {\n                \"pattern\": {\"type\": \"string\", \"description\": \"Regex pattern (case-insensitive).\"},\n                \"include\": {\n                    \"type\": \"string\",\n                    \"description\": \"Glob to filter files (e.g., '**/*.py'). Default: all files.\",\n                },\n            },\n            \"required\": [\"pattern\"],\n        }\n",
-  "body_hash": "86a19066a243f263",
+  "body": "def parameters(self) -> dict[str, Any]:\n    return {\n        \"type\": \"object\",\n        \"properties\": {\n            \"prompt_path\": {\"type\": \"string\", \"description\": \"Repo-relative prompt file.\"},\n            \"prompt_text\": {\"type\": \"string\", \"description\": \"Inline prompt text.\"},\n        },\n    }\n",
+  "body_hash": "99a11046bad218b1",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_grepsearchtool.py:20.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/tools/prompt.py:113.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.parameters",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.prompt_toolkit.prompt_diff",
+    "ass_ade.prompt_toolkit.prompt_hash",
+    "ass_ade.prompt_toolkit.prompt_propose",
+    "ass_ade.prompt_toolkit.prompt_section",
+    "ass_ade.prompt_toolkit.prompt_validate",
+    "ass_ade.tools.base.ToolResult"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_grepsearchtool.py:20"
+    "source": "C:/!ass-ade/src/ass_ade/tools/prompt.py:113"
   },
   "kind": "pure_function",
   "made_of": [],
   "name": "parameters",
   "product_categories": [
-    "DCM"
+    "COR"
   ],
   "provides": [
     "rebuild candidate for parameters"

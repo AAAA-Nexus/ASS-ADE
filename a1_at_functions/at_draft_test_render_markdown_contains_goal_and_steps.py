@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_planner.py:18
+# Extracted from C:/!ass-ade/tests/test_planner.py:18
 # Component id: at.source.ass_ade.test_render_markdown_contains_goal_and_steps
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_render_markdown_contains_goal_and_steps() -> None:

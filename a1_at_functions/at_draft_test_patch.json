@@ -1,12 +1,12 @@
 {
-  "body": "    def test_patch(self):\n        assert bump_version(\"0.1.3\", \"patch\") == \"0.1.4\"\n",
-  "body_hash": "6375e1449e97091c",
+  "body": "def test_patch(self):\n    assert bump_version(\"0.1.3\", \"patch\") == \"0.1.4\"\n",
+  "body_hash": "23a21094f274ccd3",
   "body_truncated": false,
   "callers_of": [
     "bump_version"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_version_tracker.py:27.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_version_tracker.py:27.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_patch",
@@ -27,7 +27,7 @@
     "ass_ade.engine.rebuild.version_tracker.write_tier_version_file"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_version_tracker.py:27"
+    "source": "C:/!ass-ade/tests/test_version_tracker.py:27"
   },
   "kind": "pure_function",
   "made_of": [],

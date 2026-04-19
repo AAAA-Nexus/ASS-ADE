@@ -1,6 +1,6 @@
 {
-  "body": "    def test_all_subclasses_inherit_from_base(self) -> None:\n        for cls in (\n            NexusConnectionError,\n            NexusTimeoutError,\n            NexusAuthError,\n            NexusPaymentRequired,\n            NexusRateLimited,\n            NexusServerError,\n            NexusValidationError,\n            NexusCircuitOpen,\n        ):\n            assert issubclass(cls, NexusError)\n            err = cls(\"test\")\n            assert isinstance(err, NexusError)\n",
-  "body_hash": "258a0e0b3c862bd2",
+  "body": "def test_all_subclasses_inherit_from_base(self) -> None:\n    for cls in (\n        NexusConnectionError,\n        NexusTimeoutError,\n        NexusAuthError,\n        NexusPaymentRequired,\n        NexusRateLimited,\n        NexusServerError,\n        NexusValidationError,\n        NexusCircuitOpen,\n    ):\n        assert issubclass(cls, NexusError)\n        err = cls(\"test\")\n        assert isinstance(err, NexusError)\n",
+  "body_hash": "a013e53c2d4bbb4a",
   "body_truncated": false,
   "callers_of": [
     "issubclass",
@@ -8,13 +8,25 @@
     "isinstance"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexuserrorhierarchy.py:14.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_errors.py:28.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_all_subclasses_inherit_from_base",
-  "imports": [],
+  "imports": [
+    "pytest",
+    "ass_ade.nexus.errors.NexusAuthError",
+    "ass_ade.nexus.errors.NexusCircuitOpen",
+    "ass_ade.nexus.errors.NexusConnectionError",
+    "ass_ade.nexus.errors.NexusError",
+    "ass_ade.nexus.errors.NexusPaymentRequired",
+    "ass_ade.nexus.errors.NexusRateLimited",
+    "ass_ade.nexus.errors.NexusServerError",
+    "ass_ade.nexus.errors.NexusTimeoutError",
+    "ass_ade.nexus.errors.NexusValidationError",
+    "ass_ade.nexus.errors.raise_for_status"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexuserrorhierarchy.py:14"
+    "source": "C:/!ass-ade/tests/test_errors.py:28"
   },
   "kind": "pure_function",
   "made_of": [],

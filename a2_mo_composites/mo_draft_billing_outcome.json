@@ -1,12 +1,12 @@
 {
-  "body": "    def billing_outcome(self, task_id: str, success: bool, metric_value: float, **kwargs: Any) -> BillingOutcome:\n        \"\"\"/v1/billing/outcome \u2014 pay only for measurably successful tasks (PAY-509). $0.040/call\"\"\"\n        return self._post_model(\"/v1/billing/outcome\", BillingOutcome, {\n            \"task_id\": task_id, \"success\": success, \"metric_value\": metric_value, **kwargs,\n        })\n",
-  "body_hash": "caa0f934408a0641",
+  "body": "def billing_outcome(self, task_id: str, success: bool, metric_value: float, **kwargs: Any) -> BillingOutcome:\n    \"\"\"/v1/billing/outcome \u2014 pay only for measurably successful tasks (PAY-509). $0.040/call\"\"\"\n    return self._post_model(\"/v1/billing/outcome\", BillingOutcome, {\n        \"task_id\": task_id, \"success\": success, \"metric_value\": metric_value, **kwargs,\n    })\n",
+  "body_hash": "c1c22b476b521214",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1181.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1181.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.billing_outcome",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1181"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1181"
   },
   "kind": "engine_molecule",
   "made_of": [],

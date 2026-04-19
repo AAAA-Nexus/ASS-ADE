@@ -1,12 +1,12 @@
 {
-  "body": "    def swarm_inbox(self, agent_id: str, **kwargs: Any) -> SwarmRelayResult:\n        \"\"\"/v1/swarm/inbox \u2014 agent message inbox. $0.008/call\"\"\"\n        return self._get_model(\"/v1/swarm/inbox\", SwarmRelayResult, agent_id=agent_id, **kwargs)\n",
-  "body_hash": "c1b328fb5c05e2ee",
+  "body": "def swarm_inbox(self, agent_id: str, **kwargs: Any) -> SwarmRelayResult:\n    \"\"\"/v1/swarm/inbox \u2014 agent message inbox. $0.008/call\"\"\"\n    return self._get_model(\"/v1/swarm/inbox\", SwarmRelayResult, agent_id=agent_id, **kwargs)\n",
+  "body_hash": "9675b1d90940f7ce",
   "body_truncated": false,
   "callers_of": [
     "_get_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:666.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:666.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.swarm_inbox",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:666"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:666"
   },
   "kind": "engine_molecule",
   "made_of": [],

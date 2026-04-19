@@ -1,13 +1,13 @@
 {
-  "body": "    def test_engine_report_aggregates_initialized_engines(self) -> None:\n        o = EngineOrchestrator({})\n        _ = o.atlas  # initialize atlas\n        _ = o.bas    # initialize bas\n        reports = o.engine_report()\n        assert \"atlas\" in reports\n        assert \"bas\" in reports\n",
-  "body_hash": "72efbac5962e18ea",
+  "body": "def test_engine_report_aggregates_initialized_engines(self) -> None:\n    o = EngineOrchestrator({})\n    _ = o.atlas  # initialize atlas\n    _ = o.bas    # initialize bas\n    reports = o.engine_report()\n    assert \"atlas\" in reports\n    assert \"bas\" in reports\n",
+  "body_hash": "696bfa5990dd7db7",
   "body_truncated": false,
   "callers_of": [
     "EngineOrchestrator",
     "engine_report"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:360.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:360.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_engine_report_aggregates_initialized_engines",
@@ -35,7 +35,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:360"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:360"
   },
   "kind": "engine_molecule",
   "made_of": [],

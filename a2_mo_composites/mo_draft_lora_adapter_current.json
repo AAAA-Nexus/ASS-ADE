@@ -1,13 +1,13 @@
 {
-  "body": "    def lora_adapter_current(self, language: str = \"python\", **kwargs: Any) -> dict[str, Any]:\n        \"\"\"GET /v1/lora/adapter/{language} \u2014 latest adapter id for a language.\"\"\"\n        return self._get_raw(f\"/v1/lora/adapter/{_pseg(language, 'language')}\", **kwargs)\n",
-  "body_hash": "e73bce632ed43f22",
+  "body": "def lora_adapter_current(self, language: str = \"python\", **kwargs: Any) -> dict[str, Any]:\n    \"\"\"GET /v1/lora/adapter/{language} \u2014 latest adapter id for a language.\"\"\"\n    return self._get_raw(f\"/v1/lora/adapter/{_pseg(language, 'language')}\", **kwargs)\n",
+  "body_hash": "6bca57ade9ac1943",
   "body_truncated": false,
   "callers_of": [
     "_get_raw",
     "_pseg"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1394.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1394.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.lora_adapter_current",
@@ -161,7 +161,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1394"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1394"
   },
   "kind": "engine_molecule",
   "made_of": [],

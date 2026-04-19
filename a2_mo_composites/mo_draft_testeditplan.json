@@ -10,7 +10,7 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:26.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_plan.py:26.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.testeditplan",
@@ -24,7 +24,7 @@
     "ass_ade.tools.plan.EditPlanExecutor"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:26"
+    "source": "C:/!ass-ade/tests/test_plan.py:26"
   },
   "kind": "engine_molecule",
   "made_of": [

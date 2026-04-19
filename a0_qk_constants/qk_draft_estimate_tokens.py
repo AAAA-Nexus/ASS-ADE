@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_estimate_tokens.py:5
+# Extracted from C:/!ass-ade/src/ass_ade/engine/tokens.py:88
 # Component id: qk.source.ass_ade.estimate_tokens
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def estimate_tokens(text: str) -> int:

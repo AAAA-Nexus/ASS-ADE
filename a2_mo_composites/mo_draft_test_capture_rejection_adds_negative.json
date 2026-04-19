@@ -1,13 +1,13 @@
 {
-  "body": "    def test_capture_rejection_adds_negative(self, tmp_path):\n        fly = self._make(tmp_path)\n        fly.capture_rejection(\"bad code\", \"A03_injection_eval\")\n        assert fly._pending[0].kind == \"rejection\"\n",
-  "body_hash": "89e4222fa925f05a",
+  "body": "def test_capture_rejection_adds_negative(self, tmp_path):\n    fly = self._make(tmp_path)\n    fly.capture_rejection(\"bad code\", \"A03_injection_eval\")\n    assert fly._pending[0].kind == \"rejection\"\n",
+  "body_hash": "b97e57f57a78165e",
   "body_truncated": false,
   "callers_of": [
     "_make",
     "capture_rejection"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:439.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase_engines.py:439.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_capture_rejection_adds_negative",
@@ -62,7 +62,7 @@
     "ass_ade.agent.orchestrator.CycleReport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:439"
+    "source": "C:/!ass-ade/tests/test_phase_engines.py:439"
   },
   "kind": "engine_molecule",
   "made_of": [

@@ -6,7 +6,7 @@
     "field"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/a2a/__init__.py:250.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/a2a/__init__.py:250.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.negotiationresult",
@@ -28,7 +28,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/a2a/__init__.py:250"
+    "source": "C:/!ass-ade/src/ass_ade/a2a/__init__.py:250"
   },
   "kind": "engine_molecule",
   "made_of": [],

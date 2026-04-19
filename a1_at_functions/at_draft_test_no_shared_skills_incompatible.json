@@ -1,13 +1,13 @@
 {
-  "body": "    def test_no_shared_skills_incompatible(self) -> None:\n        local = self._make_card(\"Local\", skills=[(\"s1\", \"Skill 1\")])\n        remote = self._make_card(\"Remote\", skills=[(\"s2\", \"Skill 2\")])\n        result = negotiate(local, remote)\n        assert not result.compatible\n        assert result.shared_skills == []\n",
-  "body_hash": "e69180bf898f2f36",
+  "body": "def test_no_shared_skills_incompatible(self) -> None:\n    local = self._make_card(\"Local\", skills=[(\"s1\", \"Skill 1\")])\n    remote = self._make_card(\"Remote\", skills=[(\"s2\", \"Skill 2\")])\n    result = negotiate(local, remote)\n    assert not result.compatible\n    assert result.shared_skills == []\n",
+  "body_hash": "aaecadf9593a5cea",
   "body_truncated": false,
   "callers_of": [
     "_make_card",
     "negotiate"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:234.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_a2a.py:234.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_no_shared_skills_incompatible",
@@ -30,7 +30,7 @@
     "httpx"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:234"
+    "source": "C:/!ass-ade/tests/test_a2a.py:234"
   },
   "kind": "pure_function",
   "made_of": [],

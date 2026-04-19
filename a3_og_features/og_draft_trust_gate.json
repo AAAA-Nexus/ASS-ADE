@@ -17,13 +17,24 @@
     "warning"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_trust_gate.py:5.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/workflows.py:70.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "og.source.ass_ade.trust_gate",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "logging",
+    "typing.Any",
+    "httpx",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "ass_ade.nexus.client.NexusClient",
+    "ass_ade.nexus.errors.NexusError",
+    "ass_ade.nexus.validation.validate_agent_id",
+    "ass_ade.nexus.validation.validate_prompt"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_trust_gate.py:5"
+    "source": "C:/!ass-ade/src/ass_ade/workflows.py:70"
   },
   "kind": "product_organism",
   "made_of": [

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_accepted_write_captures_fix(self, tmp_path, monkeypatch):\n        # Isolate LoRA state to tmp_path\n        monkeypatch.chdir(tmp_path)\n        server = _make_server(tmp_path)\n        args = {\"path\": str(tmp_path / \"module.py\"), \"content\": \"def g(): return 42\\n\"}\n        server._post_tool_hook(\"write_file\", args, MagicMock(success=True, output=\"wrote\"))\n        # Flywheel should have 1 captured fix\n        fly = server.lora_flywheel\n        if fly is not None:\n            kinds = [c.kind for c in fly._pending]\n            assert \"fix\" in kinds\n",
-  "body_hash": "88d15f0deb7e816e",
+  "body": "def test_accepted_write_captures_fix(self, tmp_path, monkeypatch):\n    # Isolate LoRA state to tmp_path\n    monkeypatch.chdir(tmp_path)\n    server = _make_server(tmp_path)\n    args = {\"path\": str(tmp_path / \"module.py\"), \"content\": \"def g(): return 42\\n\"}\n    server._post_tool_hook(\"write_file\", args, MagicMock(success=True, output=\"wrote\"))\n    # Flywheel should have 1 captured fix\n    fly = server.lora_flywheel\n    if fly is not None:\n        kinds = [c.kind for c in fly._pending]\n        assert \"fix\" in kinds\n",
+  "body_hash": "d6b099aefc8d6c7d",
   "body_truncated": false,
   "callers_of": [
     "chdir",
@@ -10,7 +10,7 @@
     "MagicMock"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_gates.py:139.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_gates.py:139.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.test_accepted_write_captures_fix",
@@ -23,7 +23,7 @@
     "ass_ade.mcp.server.MCPServer"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_gates.py:139"
+    "source": "C:/!ass-ade/tests/test_mcp_gates.py:139"
   },
   "kind": "ecosystem_system",
   "made_of": [],

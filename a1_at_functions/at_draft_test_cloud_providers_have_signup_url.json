@@ -1,12 +1,12 @@
 {
-  "body": "    def test_cloud_providers_have_signup_url(self):\n        exempt = {\"pollinations\"}  # no signup needed\n        for name, profile in FREE_PROVIDERS.items():\n            if not profile.local and name not in exempt:\n                assert profile.signup_url, f\"{name} is cloud without signup_url\"\n",
-  "body_hash": "733236d2ae929b0f",
+  "body": "def test_cloud_providers_have_signup_url(self):\n    exempt = {\"pollinations\"}  # no signup needed\n    for name, profile in FREE_PROVIDERS.items():\n        if not profile.local and name not in exempt:\n            assert profile.signup_url, f\"{name} is cloud without signup_url\"\n",
+  "body_hash": "816ef37c149b3ac2",
   "body_truncated": false,
   "callers_of": [
     "items"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:59.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:59.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_cloud_providers_have_signup_url",
@@ -85,7 +85,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:59"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:59"
   },
   "kind": "pure_function",
   "made_of": [],

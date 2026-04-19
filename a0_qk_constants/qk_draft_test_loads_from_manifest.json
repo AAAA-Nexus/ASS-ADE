@@ -1,6 +1,6 @@
 {
-  "body": "    def test_loads_from_manifest(self, tmp_path: Path):\n        manifest = {\n            \"components\": [\n                {\n                    \"id\": \"at.foo\",\n                    \"version\": \"0.2.1\",\n                    \"body_hash\": \"abc123\",\n                    \"body\": \"def foo(): pass\",\n                }\n            ]\n        }\n        p = tmp_path / \"MANIFEST.json\"\n        p.write_text(json.dumps(manifest), encoding=\"utf-8\")\n        result = load_prev_versions(p)\n        assert \"at.foo\" in result\n        assert result[\"at.foo\"][\"version\"] == \"0.2.1\"\n        assert result[\"at.foo\"][\"body_hash\"] == \"abc123\"\n",
-  "body_hash": "899adb12bdd9868b",
+  "body": "def test_loads_from_manifest(self, tmp_path: Path):\n    manifest = {\n        \"components\": [\n            {\n                \"id\": \"at.foo\",\n                \"version\": \"0.2.1\",\n                \"body_hash\": \"abc123\",\n                \"body\": \"def foo(): pass\",\n            }\n        ]\n    }\n    p = tmp_path / \"MANIFEST.json\"\n    p.write_text(json.dumps(manifest), encoding=\"utf-8\")\n    result = load_prev_versions(p)\n    assert \"at.foo\" in result\n    assert result[\"at.foo\"][\"version\"] == \"0.2.1\"\n    assert result[\"at.foo\"][\"body_hash\"] == \"abc123\"\n",
+  "body_hash": "b87f454d9560d7cf",
   "body_truncated": false,
   "callers_of": [
     "write_text",
@@ -8,13 +8,28 @@
     "dumps"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testloadprevversions.py:12.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_version_tracker.py:206.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "qk.source.ass_ade.test_loads_from_manifest",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.engine.rebuild.version_tracker.INITIAL_VERSION",
+    "ass_ade.engine.rebuild.version_tracker._aggregate_version",
+    "ass_ade.engine.rebuild.version_tracker._public_python_api",
+    "ass_ade.engine.rebuild.version_tracker.assign_version",
+    "ass_ade.engine.rebuild.version_tracker.bump_version",
+    "ass_ade.engine.rebuild.version_tracker.classify_change",
+    "ass_ade.engine.rebuild.version_tracker.content_hash",
+    "ass_ade.engine.rebuild.version_tracker.load_prev_versions",
+    "ass_ade.engine.rebuild.version_tracker.write_project_version_file",
+    "ass_ade.engine.rebuild.version_tracker.write_tier_version_file"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testloadprevversions.py:12"
+    "source": "C:/!ass-ade/tests/test_version_tracker.py:206"
   },
   "kind": "invariant",
   "made_of": [],

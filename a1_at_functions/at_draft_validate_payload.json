@@ -7,7 +7,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/mcp/utils.py:132.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/mcp/utils.py:132.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.validate_payload",
@@ -25,7 +25,7 @@
     "ass_ade.nexus.validation.validate_https_public_url"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/mcp/utils.py:132"
+    "source": "C:/!ass-ade/src/ass_ade/mcp/utils.py:132"
   },
   "kind": "pure_function",
   "made_of": [],

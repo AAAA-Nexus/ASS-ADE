@@ -1,6 +1,6 @@
 {
-  "body": "    def test_simulate_invoke_validates_absolute_endpoint(self) -> None:\n        \"\"\"simulate_invoke should validate absolute endpoints for SSRF.\"\"\"\n        from ass_ade.mcp.utils import simulate_invoke\n        \n        tool = MCPTool(\n            name=\"bad-tool\",\n            endpoint=\"https://127.0.0.1/admin\",\n            method=\"POST\",\n            paid=False,\n        )\n        \n        with pytest.raises(ValueError, match=\"blocked network address|loopback\"):\n            simulate_invoke(\"https://api.example.com\", tool)\n",
-  "body_hash": "063e9e5faf6ade74",
+  "body": "def test_simulate_invoke_validates_absolute_endpoint(self) -> None:\n    \"\"\"simulate_invoke should validate absolute endpoints for SSRF.\"\"\"\n    from ass_ade.mcp.utils import simulate_invoke\n\n    tool = MCPTool(\n        name=\"bad-tool\",\n        endpoint=\"https://127.0.0.1/admin\",\n        method=\"POST\",\n        paid=False,\n    )\n\n    with pytest.raises(ValueError, match=\"blocked network address|loopback\"):\n        simulate_invoke(\"https://api.example.com\", tool)\n",
+  "body_hash": "d8a4956149a41279",
   "body_truncated": false,
   "callers_of": [
     "MCPTool",
@@ -8,7 +8,7 @@
     "simulate_invoke"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_ssrf_protection.py:181.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_ssrf_protection.py:181.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_simulate_invoke_validates_absolute_endpoint",
@@ -28,7 +28,7 @@
     "ass_ade.mcp.utils.simulate_invoke"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_ssrf_protection.py:181"
+    "source": "C:/!ass-ade/tests/test_ssrf_protection.py:181"
   },
   "kind": "pure_function",
   "made_of": [],

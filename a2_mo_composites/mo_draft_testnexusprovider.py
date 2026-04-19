@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine.py:137
+# Extracted from C:/!ass-ade/tests/test_engine.py:137
 # Component id: mo.source.ass_ade.testnexusprovider
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class TestNexusProvider:

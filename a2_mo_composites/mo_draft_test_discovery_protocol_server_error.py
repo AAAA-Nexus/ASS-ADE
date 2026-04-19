@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:108
+# Extracted from C:/!ass-ade/tests/test_nexus_client_comprehensive.py:108
 # Component id: mo.source.ass_ade.test_discovery_protocol_server_error
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_discovery_protocol_server_error(method_name):

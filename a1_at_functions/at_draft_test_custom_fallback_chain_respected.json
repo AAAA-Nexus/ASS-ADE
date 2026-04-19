@@ -1,13 +1,13 @@
 {
-  "body": "    def test_custom_fallback_chain_respected(self, monkeypatch):\n        monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-a\")\n        monkeypatch.setenv(\"GEMINI_API_KEY\", \"sk-b\")\n        # Custom chain puts gemini first\n        match = select_provider_for_tier(\n            \"balanced\",\n            fallback_chain=[\"gemini\", \"groq\"],\n        )\n        assert match is not None\n        profile, _ = match\n        assert profile.name == \"gemini\"\n",
-  "body_hash": "077c312220b0d5b8",
+  "body": "def test_custom_fallback_chain_respected(self, monkeypatch):\n    monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-a\")\n    monkeypatch.setenv(\"GEMINI_API_KEY\", \"sk-b\")\n    # Custom chain puts gemini first\n    match = select_provider_for_tier(\n        \"balanced\",\n        fallback_chain=[\"gemini\", \"groq\"],\n    )\n    assert match is not None\n    profile, _ = match\n    assert profile.name == \"gemini\"\n",
+  "body_hash": "b61be4fdb37cf959",
   "body_truncated": false,
   "callers_of": [
     "setenv",
     "select_provider_for_tier"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:224.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:224.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_custom_fallback_chain_respected",
@@ -86,7 +86,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:224"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:224"
   },
   "kind": "pure_function",
   "made_of": [],

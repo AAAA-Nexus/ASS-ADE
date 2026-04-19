@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_new_commands.py:242
+# Extracted from C:/!ass-ade/tests/test_new_commands.py:242
 # Component id: at.source.ass_ade.test_text_summarize
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_text_summarize(tmp_path: Path) -> None:

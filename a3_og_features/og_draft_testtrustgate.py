@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_testtrustgate.py:5
+# Extracted from C:/!ass-ade/tests/test_workflows.py:62
 # Component id: og.source.ass_ade.testtrustgate
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class TestTrustGate:

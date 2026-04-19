@@ -1,12 +1,12 @@
 {
-  "body": "    def vanguard_govern_session(self, agent_id: str, session_key: str | None = None, *, wallet: str | None = None, **kwargs: Any) -> VanguardSessionResult:\n        \"\"\"POST /v1/vanguard/wallet/govern-session \u2014 UCAN wallet session control. $0.040/call\"\"\"\n        return self._post_model(\"/v1/vanguard/wallet/govern-session\", VanguardSessionResult, {\"agent_id\": agent_id, \"session_key\": session_key or wallet or \"\", **kwargs})\n",
-  "body_hash": "1c2366979049a298",
+  "body": "def vanguard_govern_session(self, agent_id: str, session_key: str | None = None, *, wallet: str | None = None, **kwargs: Any) -> VanguardSessionResult:\n    \"\"\"POST /v1/vanguard/wallet/govern-session \u2014 UCAN wallet session control. $0.040/call\"\"\"\n    return self._post_model(\"/v1/vanguard/wallet/govern-session\", VanguardSessionResult, {\"agent_id\": agent_id, \"session_key\": session_key or wallet or \"\", **kwargs})\n",
+  "body_hash": "b4911253f12d7df5",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1304.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1304.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.vanguard_govern_session",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1304"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1304"
   },
   "kind": "engine_molecule",
   "made_of": [],

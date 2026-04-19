@@ -1,6 +1,6 @@
 {
-  "body": "    def test_no_lse_falls_back_to_configured_model(self):\n        provider = _make_provider_returning_text(\"ok\")\n        registry = ToolRegistry()\n        loop = AgentLoop(\n            provider=provider,\n            registry=registry,\n            model=\"claude-sonnet-4-6\",\n        )\n        loop.step(\"any\")\n        call_args = provider.complete.call_args\n        request = call_args[0][0] if call_args[0] else call_args[1].get(\"request\")\n        assert request.model == \"claude-sonnet-4-6\"\n",
-  "body_hash": "eac639cc0210b1a6",
+  "body": "def test_no_lse_falls_back_to_configured_model(self):\n    provider = _make_provider_returning_text(\"ok\")\n    registry = ToolRegistry()\n    loop = AgentLoop(\n        provider=provider,\n        registry=registry,\n        model=\"claude-sonnet-4-6\",\n    )\n    loop.step(\"any\")\n    call_args = provider.complete.call_args\n    request = call_args[0][0] if call_args[0] else call_args[1].get(\"request\")\n    assert request.model == \"claude-sonnet-4-6\"\n",
+  "body_hash": "9eeff81bdf136fd3",
   "body_truncated": false,
   "callers_of": [
     "_make_provider_returning_text",
@@ -10,7 +10,7 @@
     "get"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase1_integration.py:142.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase1_integration.py:142.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_no_lse_falls_back_to_configured_model",
@@ -36,7 +36,7 @@
     "rich.console.Console"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase1_integration.py:142"
+    "source": "C:/!ass-ade/tests/test_phase1_integration.py:142"
   },
   "kind": "pure_function",
   "made_of": [],

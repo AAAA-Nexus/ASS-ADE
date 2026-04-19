@@ -1,6 +1,6 @@
 {
-  "body": "    def test_tools_list_includes_annotations_for_builtin_tools(self) -> None:\n        server = MCPServer(\".\")\n        _initialize_server(server)\n        response = server._handle({\n            \"jsonrpc\": \"2.0\",\n            \"id\": 1,\n            \"method\": \"tools/list\",\n            \"params\": {},\n        })\n        assert response is not None\n        tools = {t[\"name\"]: t for t in response[\"result\"][\"tools\"]}\n\n        for name in (\"read_file\", \"write_file\", \"edit_file\", \"run_command\",\n                     \"list_directory\", \"search_files\", \"grep_search\"):\n            assert \"annotations\" in tools[name], f\"{name} missing annotations\"\n",
-  "body_hash": "a0f0f4cd817aca40",
+  "body": "def test_tools_list_includes_annotations_for_builtin_tools(self) -> None:\n    server = MCPServer(\".\")\n    _initialize_server(server)\n    response = server._handle({\n        \"jsonrpc\": \"2.0\",\n        \"id\": 1,\n        \"method\": \"tools/list\",\n        \"params\": {},\n    })\n    assert response is not None\n    tools = {t[\"name\"]: t for t in response[\"result\"][\"tools\"]}\n\n    for name in (\"read_file\", \"write_file\", \"edit_file\", \"run_command\",\n                 \"list_directory\", \"search_files\", \"grep_search\"):\n        assert \"annotations\" in tools[name], f\"{name} missing annotations\"\n",
+  "body_hash": "a77a06785526de7c",
   "body_truncated": false,
   "callers_of": [
     "MCPServer",
@@ -8,7 +8,7 @@
     "_handle"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:275.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_extended.py:275.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.test_tools_list_includes_annotations_for_builtin_tools",
@@ -23,7 +23,7 @@
     "httpx"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:275"
+    "source": "C:/!ass-ade/tests/test_mcp_extended.py:275"
   },
   "kind": "ecosystem_system",
   "made_of": [],

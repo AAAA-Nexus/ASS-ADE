@@ -1,6 +1,6 @@
 {
-  "body": "    def test_compliance_check_invalid_json(self, tmp_path: Path, hybrid_config: Path) -> None:\n        \"\"\"Compliance check should error if payload is invalid JSON.\"\"\"\n        bad_json = tmp_path / \"bad.json\"\n        bad_json.write_text(\"{ invalid json }\", encoding=\"utf-8\")\n        \n        result = runner.invoke(\n            app,\n            [\"compliance\", \"check\", str(bad_json), \"--config\", str(hybrid_config)],\n        )\n        \n        assert result.exit_code != 0\n",
-  "body_hash": "afcf12a3edd12955",
+  "body": "def test_compliance_check_invalid_json(self, tmp_path: Path, hybrid_config: Path) -> None:\n    \"\"\"Compliance check should error if payload is invalid JSON.\"\"\"\n    bad_json = tmp_path / \"bad.json\"\n    bad_json.write_text(\"{ invalid json }\", encoding=\"utf-8\")\n\n    result = runner.invoke(\n        app,\n        [\"compliance\", \"check\", str(bad_json), \"--config\", str(hybrid_config)],\n    )\n\n    assert result.exit_code != 0\n",
+  "body_hash": "44fc32ec094793e3",
   "body_truncated": false,
   "callers_of": [
     "write_text",
@@ -8,13 +8,32 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testerrorhandling.py:18.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_cli_happy_path.py:727.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_compliance_check_invalid_json",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.nexus.models.AgentPlan",
+    "ass_ade.nexus.models.ComplianceResult",
+    "ass_ade.nexus.models.FormatConversion",
+    "ass_ade.nexus.models.InferenceResponse",
+    "ass_ade.nexus.models.IntentClassification",
+    "ass_ade.nexus.models.RatchetSession",
+    "ass_ade.nexus.models.TrustScore",
+    "ass_ade.pipeline.PipelineResult"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testerrorhandling.py:18"
+    "source": "C:/!ass-ade/tests/test_cli_happy_path.py:727"
   },
   "kind": "pure_function",
   "made_of": [],

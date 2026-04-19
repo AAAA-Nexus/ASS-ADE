@@ -1,6 +1,6 @@
 {
-  "body": "    def test_estimate_conversation(self):\n        budget = TokenBudget(context_window=100_000)\n        messages = [\n            Message(role=\"system\", content=\"You are a helpful assistant.\"),\n            Message(role=\"user\", content=\"Tell me about Python.\"),\n        ]\n        estimate = budget.estimate_conversation(messages)\n        assert \"message_tokens\" in estimate\n        assert \"tool_schema_tokens\" in estimate\n        assert \"reserve\" in estimate\n        assert \"total_needed\" in estimate\n        assert \"context_window\" in estimate\n        assert \"headroom\" in estimate\n        assert estimate[\"context_window\"] == 100_000\n        assert estimate[\"headroom\"] > 0\n",
-  "body_hash": "749f7fd17eea993a",
+  "body": "def test_estimate_conversation(self):\n    budget = TokenBudget(context_window=100_000)\n    messages = [\n        Message(role=\"system\", content=\"You are a helpful assistant.\"),\n        Message(role=\"user\", content=\"Tell me about Python.\"),\n    ]\n    estimate = budget.estimate_conversation(messages)\n    assert \"message_tokens\" in estimate\n    assert \"tool_schema_tokens\" in estimate\n    assert \"reserve\" in estimate\n    assert \"total_needed\" in estimate\n    assert \"context_window\" in estimate\n    assert \"headroom\" in estimate\n    assert estimate[\"context_window\"] == 100_000\n    assert estimate[\"headroom\"] > 0\n",
+  "body_hash": "87839aad90c1d16a",
   "body_truncated": false,
   "callers_of": [
     "TokenBudget",
@@ -8,7 +8,7 @@
     "Message"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tokens.py:176.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_tokens.py:176.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "qk.source.ass_ade.test_estimate_conversation",
@@ -25,7 +25,7 @@
     "ass_ade.engine.types.ToolSchema"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tokens.py:176"
+    "source": "C:/!ass-ade/tests/test_tokens.py:176"
   },
   "kind": "invariant",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def depth(self, rel_path: str) -> int:\n        \"\"\"Number of undo steps available for a file.\"\"\"\n        snap_dir = self._snapshot_dir(rel_path)\n        if not snap_dir.exists():\n            return 0\n        return len(list(snap_dir.glob(\"*.snapshot\")))\n",
-  "body_hash": "4340d508fd4fbf18",
+  "body": "def depth(self, rel_path: str) -> int:\n    \"\"\"Number of undo steps available for a file.\"\"\"\n    snap_dir = self._snapshot_dir(rel_path)\n    if not snap_dir.exists():\n        return 0\n    return len(list(snap_dir.glob(\"*.snapshot\")))\n",
+  "body_hash": "5889d9fd327e9097",
   "body_truncated": false,
   "callers_of": [
     "_snapshot_dir",
@@ -10,13 +10,20 @@
     "glob"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_filehistory.py:131.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/tools/history.py:162.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.depth",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "time",
+    "dataclasses.dataclass",
+    "pathlib.Path"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_filehistory.py:131"
+    "source": "C:/!ass-ade/src/ass_ade/tools/history.py:162"
   },
   "kind": "pure_function",
   "made_of": [],

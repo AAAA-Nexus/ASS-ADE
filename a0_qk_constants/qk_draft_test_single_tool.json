@@ -1,13 +1,13 @@
 {
-  "body": "    def test_single_tool(self):\n        tool = ToolSchema(\n            name=\"read_file\",\n            description=\"Read a file\",\n            parameters={\"type\": \"object\", \"properties\": {\"path\": {\"type\": \"string\"}}},\n        )\n        tokens = estimate_tools_tokens([tool])\n        assert tokens > 0\n",
-  "body_hash": "2adb4731933a42e8",
+  "body": "def test_single_tool(self):\n    tool = ToolSchema(\n        name=\"read_file\",\n        description=\"Read a file\",\n        parameters={\"type\": \"object\", \"properties\": {\"path\": {\"type\": \"string\"}}},\n    )\n    tokens = estimate_tools_tokens([tool])\n    assert tokens > 0\n",
+  "body_hash": "1e509fb59860ae62",
   "body_truncated": false,
   "callers_of": [
     "ToolSchema",
     "estimate_tools_tokens"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tokens.py:76.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_tokens.py:76.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "qk.source.ass_ade.test_single_tool",
@@ -24,7 +24,7 @@
     "ass_ade.engine.types.ToolSchema"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tokens.py:76"
+    "source": "C:/!ass-ade/tests/test_tokens.py:76"
   },
   "kind": "invariant",
   "made_of": [],

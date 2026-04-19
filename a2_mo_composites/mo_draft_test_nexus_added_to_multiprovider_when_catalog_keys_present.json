@@ -1,6 +1,6 @@
 {
-  "body": "    def test_nexus_added_to_multiprovider_when_catalog_keys_present(self, monkeypatch):\n        \"\"\"Premium profile + catalog keys \u2192 MultiProvider containing nexus + free providers.\"\"\"\n        self._clear_provider_env()\n        monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-groq\")\n        monkeypatch.setenv(\"AAAA_NEXUS_API_KEY\", \"an_test_key\")\n\n        from ass_ade.config import AssAdeConfig\n        from ass_ade.engine.provider import MultiProvider\n\n        cfg = AssAdeConfig(\n            profile=\"premium\",\n            nexus_api_key=\"an_test_key\",\n            nexus_base_url=\"https://atomadic.tech\",\n        )\n        provider = build_provider(cfg)\n        assert isinstance(provider, MultiProvider)\n        assert \"nexus\" in provider.providers\n        assert \"groq\" in provider.providers\n",
-  "body_hash": "2f3b5c14d5191263",
+  "body": "def test_nexus_added_to_multiprovider_when_catalog_keys_present(self, monkeypatch):\n    \"\"\"Premium profile + catalog keys \u2192 MultiProvider containing nexus + free providers.\"\"\"\n    self._clear_provider_env()\n    monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-groq\")\n    monkeypatch.setenv(\"AAAA_NEXUS_API_KEY\", \"an_test_key\")\n\n    from ass_ade.config import AssAdeConfig\n    from ass_ade.engine.provider import MultiProvider\n\n    cfg = AssAdeConfig(\n        profile=\"premium\",\n        nexus_api_key=\"an_test_key\",\n        nexus_base_url=\"https://atomadic.tech\",\n    )\n    provider = build_provider(cfg)\n    assert isinstance(provider, MultiProvider)\n    assert \"nexus\" in provider.providers\n    assert \"groq\" in provider.providers\n",
+  "body_hash": "0f217b2630959a82",
   "body_truncated": false,
   "callers_of": [
     "_clear_provider_env",
@@ -10,7 +10,7 @@
     "isinstance"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine.py:258.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine.py:258.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_nexus_added_to_multiprovider_when_catalog_keys_present",
@@ -41,7 +41,7 @@
     "ass_ade.engine.provider.MultiProvider"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine.py:258"
+    "source": "C:/!ass-ade/tests/test_engine.py:258"
   },
   "kind": "engine_molecule",
   "made_of": [],

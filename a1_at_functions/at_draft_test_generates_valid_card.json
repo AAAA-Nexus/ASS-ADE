@@ -1,6 +1,6 @@
 {
-  "body": "    def test_generates_valid_card(self, tmp_path: str) -> None:\n        card = local_agent_card(str(tmp_path) if isinstance(tmp_path, type(None)) else \".\")\n        assert card.name == \"ASS-ADE\"\n        assert card.provider is not None\n        assert card.provider.organization == \"Atomadic\"\n        assert len(card.skills) > 0\n",
-  "body_hash": "8a4901a2a9ba8099",
+  "body": "def test_generates_valid_card(self, tmp_path: str) -> None:\n    card = local_agent_card(str(tmp_path) if isinstance(tmp_path, type(None)) else \".\")\n    assert card.name == \"ASS-ADE\"\n    assert card.provider is not None\n    assert card.provider.organization == \"Atomadic\"\n    assert len(card.skills) > 0\n",
+  "body_hash": "91a450c667810016",
   "body_truncated": false,
   "callers_of": [
     "local_agent_card",
@@ -10,7 +10,7 @@
     "type"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:280.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_a2a.py:280.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_generates_valid_card",
@@ -33,7 +33,7 @@
     "httpx"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:280"
+    "source": "C:/!ass-ade/tests/test_a2a.py:280"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_preview(self, executor: EditPlanExecutor):\n        plan = EditPlan()\n        plan.add_modify(\"main.py\", \"pass\", \"print('hello')\")\n        preview = executor.preview(plan)\n        assert \"pass\" in preview or \"print\" in preview\n",
-  "body_hash": "010d9ee469e72d07",
+  "body": "def test_preview(self, executor: EditPlanExecutor):\n    plan = EditPlan()\n    plan.add_modify(\"main.py\", \"pass\", \"print('hello')\")\n    preview = executor.preview(plan)\n    assert \"pass\" in preview or \"print\" in preview\n",
+  "body_hash": "2fdfa2a6546ef2ff",
   "body_truncated": false,
   "callers_of": [
     "EditPlan",
@@ -8,7 +8,7 @@
     "preview"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:145.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_plan.py:145.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_preview",
@@ -22,7 +22,7 @@
     "ass_ade.tools.plan.EditPlanExecutor"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:145"
+    "source": "C:/!ass-ade/tests/test_plan.py:145"
   },
   "kind": "pure_function",
   "made_of": [],

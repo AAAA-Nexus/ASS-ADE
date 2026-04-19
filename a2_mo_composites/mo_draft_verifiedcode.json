@@ -6,7 +6,7 @@
     "field"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/alphaverus.py:47.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/alphaverus.py:47.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.verifiedcode",
@@ -25,7 +25,7 @@
     "radon.complexity.cc_visit"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/alphaverus.py:47"
+    "source": "C:/!ass-ade/src/ass_ade/agent/alphaverus.py:47"
   },
   "kind": "engine_molecule",
   "made_of": [],

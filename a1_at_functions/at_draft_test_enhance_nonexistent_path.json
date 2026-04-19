@@ -3,16 +3,24 @@
   "body_hash": "53dbbcdce0f51a4f",
   "body_truncated": false,
   "callers_of": [
+    "skipif",
     "invoke"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_enhance_nonexistent_path.py:5.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_enhance_cli.py:92.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_enhance_nonexistent_path",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_enhance_nonexistent_path.py:5"
+    "source": "C:/!ass-ade/tests/test_enhance_cli.py:92"
   },
   "kind": "pure_function",
   "made_of": [],

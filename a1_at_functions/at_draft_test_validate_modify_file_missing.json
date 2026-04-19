@@ -1,6 +1,6 @@
 {
-  "body": "    def test_validate_modify_file_missing(self, executor: EditPlanExecutor):\n        plan = EditPlan()\n        plan.add_modify(\"ghost.py\", \"old\", \"new\")\n        errors = executor.validate(plan)\n        assert len(errors) == 1\n",
-  "body_hash": "2ae0e26cbac0f854",
+  "body": "def test_validate_modify_file_missing(self, executor: EditPlanExecutor):\n    plan = EditPlan()\n    plan.add_modify(\"ghost.py\", \"old\", \"new\")\n    errors = executor.validate(plan)\n    assert len(errors) == 1\n",
+  "body_hash": "129a543d08f87b04",
   "body_truncated": false,
   "callers_of": [
     "EditPlan",
@@ -9,13 +9,21 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditplanexecutor.py:35.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_plan.py:82.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_validate_modify_file_missing",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.tools.history.FileHistory",
+    "ass_ade.tools.plan.EditKind",
+    "ass_ade.tools.plan.EditPlan",
+    "ass_ade.tools.plan.EditPlanExecutor"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditplanexecutor.py:35"
+    "source": "C:/!ass-ade/tests/test_plan.py:82"
   },
   "kind": "pure_function",
   "made_of": [],

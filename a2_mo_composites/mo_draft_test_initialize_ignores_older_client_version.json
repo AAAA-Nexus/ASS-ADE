@@ -1,13 +1,13 @@
 {
-  "body": "    def test_initialize_ignores_older_client_version(self) -> None:\n        \"\"\"Server always responds with its own version regardless of client request.\"\"\"\n        server = MCPServer(\".\")\n        response = server._handle({\n            \"jsonrpc\": \"2.0\",\n            \"id\": 1,\n            \"method\": \"initialize\",\n            \"params\": {\"protocolVersion\": \"2024-11-05\"},\n        })\n        assert response is not None\n        assert response[\"result\"][\"protocolVersion\"] == \"2025-11-25\"\n",
-  "body_hash": "1d8d25c20def332d",
+  "body": "def test_initialize_ignores_older_client_version(self) -> None:\n    \"\"\"Server always responds with its own version regardless of client request.\"\"\"\n    server = MCPServer(\".\")\n    response = server._handle({\n        \"jsonrpc\": \"2.0\",\n        \"id\": 1,\n        \"method\": \"initialize\",\n        \"params\": {\"protocolVersion\": \"2024-11-05\"},\n    })\n    assert response is not None\n    assert response[\"result\"][\"protocolVersion\"] == \"2025-11-25\"\n",
+  "body_hash": "da2a6d036579930f",
   "body_truncated": false,
   "callers_of": [
     "MCPServer",
     "_handle"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:249.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_extended.py:249.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_initialize_ignores_older_client_version",
@@ -22,7 +22,7 @@
     "httpx"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:249"
+    "source": "C:/!ass-ade/tests/test_mcp_extended.py:249"
   },
   "kind": "engine_molecule",
   "made_of": [],

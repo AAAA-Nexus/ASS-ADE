@@ -1,12 +1,12 @@
 {
-  "body": "    def available(self) -> int:\n        \"\"\"Tokens available for prompt content (messages + tools).\"\"\"\n        return max(0, self.context_window - self.reserve)\n",
-  "body_hash": "5b45dadcbad69661",
+  "body": "def available(self) -> int:\n    \"\"\"Tokens available for prompt content (messages + tools).\"\"\"\n    return max(0, self.context_window - self.reserve)\n",
+  "body_hash": "a86ebc391a66eb2c",
   "body_truncated": false,
   "callers_of": [
     "max"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/tokens.py:189.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/tokens.py:189.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "qk.source.ass_ade.available",
@@ -21,7 +21,7 @@
     "tiktoken"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/tokens.py:189"
+    "source": "C:/!ass-ade/src/ass_ade/engine/tokens.py:189"
   },
   "kind": "invariant",
   "made_of": [],

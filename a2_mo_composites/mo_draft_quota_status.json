@@ -1,13 +1,13 @@
 {
-  "body": "    def quota_status(self, tree_id: str) -> QuotaStatus:\n        \"\"\"/v1/quota/tree/{id}/status \u2014 remaining budget + alerts. $0.020/call\"\"\"\n        return self._get_model(f\"/v1/quota/tree/{_pseg(tree_id, 'tree_id')}/status\", QuotaStatus)\n",
-  "body_hash": "6886964644c479ba",
+  "body": "def quota_status(self, tree_id: str) -> QuotaStatus:\n    \"\"\"/v1/quota/tree/{id}/status \u2014 remaining budget + alerts. $0.020/call\"\"\"\n    return self._get_model(f\"/v1/quota/tree/{_pseg(tree_id, 'tree_id')}/status\", QuotaStatus)\n",
+  "body_hash": "514412b98c16aff1",
   "body_truncated": false,
   "callers_of": [
     "_get_model",
     "_pseg"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:877.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:877.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.quota_status",
@@ -161,7 +161,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:877"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:877"
   },
   "kind": "engine_molecule",
   "made_of": [],

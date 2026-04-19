@@ -1,6 +1,6 @@
 {
-  "body": "    def test_a2a_negotiate_invalid_remote(self) -> None:\n        import httpx as _httpx\n\n        server = MCPServer(\".\")\n        _initialize_server(server)\n        with patch(\"ass_ade.a2a.httpx.get\", side_effect=_httpx.ConnectError(\"refused\")):\n            response = server._handle({\n                \"jsonrpc\": \"2.0\",\n                \"id\": 1,\n                \"method\": \"tools/call\",\n                \"params\": {\"name\": \"a2a_negotiate\", \"arguments\": {\"remote_url\": \"https://bad.com\"}},\n            })\n\n        assert response is not None\n        assert response[\"result\"][\"isError\"]\n",
-  "body_hash": "43df30034bcbbfdf",
+  "body": "def test_a2a_negotiate_invalid_remote(self) -> None:\n    import httpx as _httpx\n\n    server = MCPServer(\".\")\n    _initialize_server(server)\n    with patch(\"ass_ade.a2a.httpx.get\", side_effect=_httpx.ConnectError(\"refused\")):\n        response = server._handle({\n            \"jsonrpc\": \"2.0\",\n            \"id\": 1,\n            \"method\": \"tools/call\",\n            \"params\": {\"name\": \"a2a_negotiate\", \"arguments\": {\"remote_url\": \"https://bad.com\"}},\n        })\n\n    assert response is not None\n    assert response[\"result\"][\"isError\"]\n",
+  "body_hash": "addbdbd26f329e78",
   "body_truncated": false,
   "callers_of": [
     "MCPServer",
@@ -10,7 +10,7 @@
     "ConnectError"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:138.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_extended.py:138.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.test_a2a_negotiate_invalid_remote",
@@ -25,7 +25,7 @@
     "httpx"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:138"
+    "source": "C:/!ass-ade/tests/test_mcp_extended.py:138"
   },
   "kind": "ecosystem_system",
   "made_of": [],

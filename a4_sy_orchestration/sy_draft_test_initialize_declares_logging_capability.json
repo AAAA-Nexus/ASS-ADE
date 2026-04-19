@@ -1,13 +1,13 @@
 {
-  "body": "    def test_initialize_declares_logging_capability(self) -> None:\n        server = MCPServer(\".\")\n        response = server._handle({\n            \"jsonrpc\": \"2.0\",\n            \"id\": 1,\n            \"method\": \"initialize\",\n            \"params\": {\"protocolVersion\": \"2025-11-25\"},\n        })\n        assert response is not None\n        caps = response[\"result\"][\"capabilities\"]\n        assert \"logging\" in caps\n        assert \"tools\" in caps\n",
-  "body_hash": "b0c99b8facdff2a5",
+  "body": "def test_initialize_declares_logging_capability(self) -> None:\n    server = MCPServer(\".\")\n    response = server._handle({\n        \"jsonrpc\": \"2.0\",\n        \"id\": 1,\n        \"method\": \"initialize\",\n        \"params\": {\"protocolVersion\": \"2025-11-25\"},\n    })\n    assert response is not None\n    caps = response[\"result\"][\"capabilities\"]\n    assert \"logging\" in caps\n    assert \"tools\" in caps\n",
+  "body_hash": "d711d0f137ca6ffc",
   "body_truncated": false,
   "callers_of": [
     "MCPServer",
     "_handle"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:236.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_extended.py:236.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.test_initialize_declares_logging_capability",
@@ -22,7 +22,7 @@
     "httpx"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:236"
+    "source": "C:/!ass-ade/tests/test_mcp_extended.py:236"
   },
   "kind": "ecosystem_system",
   "made_of": [],

@@ -1,11 +1,13 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/body_extractor.py:139
+# Extracted from C:/!ass-ade/src/ass_ade/engine/rebuild/body_extractor.py:147
 # Component id: mo.source.ass_ade.enrich_components_with_bodies
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def enrich_components_with_bodies(
     plan: dict[str, Any],
     *,
-    max_body_chars: int = 40_000,
+    max_body_chars: int | None = None,
 ) -> dict[str, Any]:
     """Attach extracted source bodies to every proposed component. Mutates ``plan``."""
     for prop in plan.get("proposed_components") or []:
@@ -18,9 +20,13 @@ def enrich_components_with_bodies(
         extracted = extract_body(src_path, name, lang)
         if extracted is None:
             continue
-        prop["body"] = extracted.body[:max_body_chars]
+        if max_body_chars is None:
+            prop["body"] = extracted.body
+            prop["body_truncated"] = False
+        else:
+            prop["body"] = extracted.body[:max_body_chars]
+            prop["body_truncated"] = len(extracted.body) > max_body_chars
         prop["imports"] = extracted.imports
         prop["callers_of"] = extracted.callers_of
         prop["exceptions_raised"] = extracted.exceptions_raised
-        prop["body_truncated"] = len(extracted.body) > max_body_chars
     return plan

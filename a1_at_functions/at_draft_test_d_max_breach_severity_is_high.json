@@ -1,12 +1,12 @@
 {
-  "body": "    def test_d_max_breach_severity_is_high(self):\n        from ass_ade.agent.bas import _SEVERITY\n        assert _SEVERITY.get(\"d_max_breach\") == \"high\"\n",
-  "body_hash": "69d6ef7813e7c2f1",
+  "body": "def test_d_max_breach_severity_is_high(self):\n    from ass_ade.agent.bas import _SEVERITY\n    assert _SEVERITY.get(\"d_max_breach\") == \"high\"\n",
+  "body_hash": "c1a75d6ece7d9616",
   "body_truncated": false,
   "callers_of": [
     "get"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase1_integration.py:188.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase1_integration.py:188.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_d_max_breach_severity_is_high",
@@ -32,7 +32,7 @@
     "rich.console.Console"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase1_integration.py:188"
+    "source": "C:/!ass-ade/tests/test_phase1_integration.py:188"
   },
   "kind": "pure_function",
   "made_of": [],

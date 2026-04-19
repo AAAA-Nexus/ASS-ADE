@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:33
+# Extracted from C:/!ass-ade/tests/test_free_providers.py:33
 # Component id: qk.source.ass_ade.testcataloginvariants
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class TestCatalogInvariants:

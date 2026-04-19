@@ -1,4 +1,4 @@
-// Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/check-python.js:5
+// Extracted from C:/!ass-ade/scripts/check-python.js:5
 // Component id: at.source.ass_ade.version  version: 0.1.0
 
 

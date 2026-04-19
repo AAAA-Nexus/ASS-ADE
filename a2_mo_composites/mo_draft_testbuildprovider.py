@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine.py:178
+# Extracted from C:/!ass-ade/tests/test_engine.py:178
 # Component id: mo.source.ass_ade.testbuildprovider
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class TestBuildProvider:

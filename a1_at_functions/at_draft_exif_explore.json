@@ -1,21 +1,26 @@
 {
-  "body": "    def exif_explore(self, missing_skill: str, env: dict | None = None):\n        return self._get_exif().explore(missing_skill, env or {\"name\": \"default\"})\n",
-  "body_hash": "805805164e6b4eba",
+  "body": "def exif_explore(self, missing_skill: str, env: dict | None = None):\n    return self._get_exif().explore(missing_skill, env or {\"name\": \"default\"})\n",
+  "body_hash": "3c1acbc82b54da95",
   "body_truncated": false,
   "callers_of": [
     "explore",
     "_get_exif"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_edee.py:66.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/edee.py:85.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.exif_explore",
   "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "ass_ade.context_memory.query_vector_memory",
+    "ass_ade.context_memory.store_vector_memory",
     "ass_ade.agent.exif.EXIF"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_edee.py:66"
+    "source": "C:/!ass-ade/src/ass_ade/agent/edee.py:85"
   },
   "kind": "pure_function",
   "made_of": [],

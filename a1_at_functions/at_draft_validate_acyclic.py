@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/cycle_detector.py:152
+# Extracted from C:/!ass-ade/src/ass_ade/engine/rebuild/cycle_detector.py:152
 # Component id: at.source.ass_ade.validate_acyclic
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def validate_acyclic(plan: dict[str, Any]) -> bool:

@@ -11,7 +11,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_recon_context.py:109.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_recon_context.py:109.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.test_mcp_phase0_recon_tool_requires_sources",
@@ -30,7 +30,7 @@
     "ass_ade.recon.phase0_recon"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_recon_context.py:109"
+    "source": "C:/!ass-ade/tests/test_recon_context.py:109"
   },
   "kind": "ecosystem_system",
   "made_of": [],

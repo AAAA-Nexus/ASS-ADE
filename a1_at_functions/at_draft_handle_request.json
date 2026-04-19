@@ -1,6 +1,6 @@
 {
-  "body": "    def handle_request(self, request: httpx.Request) -> httpx.Response:\n        last_response: httpx.Response | None = None\n        last_exc: Exception | None = None\n\n        for attempt in range(self._max_retries):\n            # Check for cancellation before each attempt\n            if self._cancellation_context and self._cancellation_context.check():\n                raise NexusConnectionError(\n                    \"Request cancelled during retry loop\",\n                    endpoint=str(request.url),\n                )\n\n            try:\n                response = self._wrapped.handle_request(request)\n            except httpx.TimeoutException as exc:\n                last_exc = exc\n                if attempt < self._max_retries - 1:\n                    self._sleep(attempt)\n                    continue\n                raise NexusTimeoutError(\n                    f\"Timeout after {self._max_retries} attempts: {exc}\",\n                    endpoint=str(request.url),\n                ) from exc\n            except httpx.ConnectError as exc:\n                last_exc = exc\n                if attempt < self._max_retries - 1:\n                    self._sleep(attempt)\n                    continue\n                raise NexusConnectionError(\n                    f\"Connection failed after {self._max_retries} attempts: {exc}\",\n                    endpoint=str(request.url),\n                ) from exc\n\n            if response.status_code not in self.RETRYABLE_STATUS:\n                return response\n\n            last_response = response\n\n            if attempt < self._max_retries - 1:\n                retry_after = self._parse_retry_after(response)\n                self._sleep(attempt, retry_after)\n\n        # All retries exhausted \u2014 return the last response so the caller can inspect\n        if last_response is not None:\n            return last_response\n\n        if last_exc is not None:\n            raise NexusConnectionError(\n                f\"All {self._max_retries} retries exhausted\",\n                endpoint=str(request.url),\n            ) from last_exc\n\n        raise NexusServerError(\"Retries exhausted with no response\", endpoint=str(request.url))\n",
-  "body_hash": "857eb64b3f3944e8",
+  "body": "def handle_request(self, request: httpx.Request) -> httpx.Response:\n    last_response: httpx.Response | None = None\n    last_exc: Exception | None = None\n\n    for attempt in range(self._max_retries):\n        # Check for cancellation before each attempt\n        if self._cancellation_context and self._cancellation_context.check():\n            raise NexusConnectionError(\n                \"Request cancelled during retry loop\",\n                endpoint=str(request.url),\n            )\n\n        try:\n            response = self._wrapped.handle_request(request)\n        except httpx.TimeoutException as exc:\n            last_exc = exc\n            if attempt < self._max_retries - 1:\n                self._sleep(attempt)\n                continue\n            raise NexusTimeoutError(\n                f\"Timeout after {self._max_retries} attempts: {exc}\",\n                endpoint=str(request.url),\n            ) from exc\n        except httpx.ConnectError as exc:\n            last_exc = exc\n            if attempt < self._max_retries - 1:\n                self._sleep(attempt)\n                continue\n            raise NexusConnectionError(\n                f\"Connection failed after {self._max_retries} attempts: {exc}\",\n                endpoint=str(request.url),\n            ) from exc\n\n        if response.status_code not in self.RETRYABLE_STATUS:\n            return response\n\n        last_response = response\n\n        if attempt < self._max_retries - 1:\n            retry_after = self._parse_retry_after(response)\n            self._sleep(attempt, retry_after)\n\n    # All retries exhausted \u2014 return the last response so the caller can inspect\n    if last_response is not None:\n        return last_response\n\n    if last_exc is not None:\n        raise NexusConnectionError(\n            f\"All {self._max_retries} retries exhausted\",\n            endpoint=str(request.url),\n        ) from last_exc\n\n    raise NexusServerError(\"Retries exhausted with no response\", endpoint=str(request.url))\n",
+  "body_hash": "c097236159808438",
   "body_truncated": false,
   "callers_of": [
     "range",
@@ -14,7 +14,7 @@
     "NexusTimeoutError"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/resilience.py:161.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/resilience.py:161.",
   "exceptions_raised": [
     "NexusServerError",
     "NexusConnectionError",
@@ -35,7 +35,7 @@
     "ass_ade.mcp.cancellation.CancellationContext"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/resilience.py:161"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/resilience.py:161"
   },
   "kind": "pure_function",
   "made_of": [],

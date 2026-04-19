@@ -1,12 +1,12 @@
 {
-  "body": "    def entropy_oracle(self, **kwargs: Any) -> EntropyResult:\n        \"\"\"/v1/oracle/entropy \u2014 session entropy measurement. $0.004/call\"\"\"\n        return self._post_model(\"/v1/oracle/entropy\", EntropyResult, kwargs or {})\n",
-  "body_hash": "1bcae638ef71f14d",
+  "body": "def entropy_oracle(self, **kwargs: Any) -> EntropyResult:\n    \"\"\"/v1/oracle/entropy \u2014 session entropy measurement. $0.004/call\"\"\"\n    return self._post_model(\"/v1/oracle/entropy\", EntropyResult, kwargs or {})\n",
+  "body_hash": "59cc03017349e176",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:446.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:446.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.entropy_oracle",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:446"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:446"
   },
   "kind": "engine_molecule",
   "made_of": [],

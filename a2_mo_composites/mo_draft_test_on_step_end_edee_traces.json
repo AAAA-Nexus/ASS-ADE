@@ -1,6 +1,6 @@
 {
-  "body": "    def test_on_step_end_edee_traces(self) -> None:\n        o = EngineOrchestrator({})\n        o.on_step_start(\"task\")\n        report = o.on_step_end(\"response\", {})\n        # EDEE should be initialized and have captured a trace\n        assert o._edee is not None\n        assert o.edee._traces >= 1\n",
-  "body_hash": "986a65e2c7a4cb14",
+  "body": "def test_on_step_end_edee_traces(self) -> None:\n    o = EngineOrchestrator({})\n    o.on_step_start(\"task\")\n    report = o.on_step_end(\"response\", {})\n    # EDEE should be initialized and have captured a trace\n    assert o._edee is not None\n    assert o.edee._traces >= 1\n",
+  "body_hash": "badfeeb69263fcfd",
   "body_truncated": false,
   "callers_of": [
     "EngineOrchestrator",
@@ -8,7 +8,7 @@
     "on_step_end"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:343.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:343.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_on_step_end_edee_traces",
@@ -36,7 +36,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:343"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:343"
   },
   "kind": "engine_molecule",
   "made_of": [],

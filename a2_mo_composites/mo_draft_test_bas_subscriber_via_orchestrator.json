@@ -1,6 +1,6 @@
 {
-  "body": "    def test_bas_subscriber_via_orchestrator(self) -> None:\n        o = EngineOrchestrator({})\n        received: list = []\n        o.bas.subscribe(lambda a: received.append(a.kind))\n        o.on_step_start(\"task\")\n        o.on_step_end(\"response\", {\"trust_score\": 0.05, \"budget_pct\": 0.99})\n        assert len(received) >= 1\n",
-  "body_hash": "76eb3a02544c230e",
+  "body": "def test_bas_subscriber_via_orchestrator(self) -> None:\n    o = EngineOrchestrator({})\n    received: list = []\n    o.bas.subscribe(lambda a: received.append(a.kind))\n    o.on_step_start(\"task\")\n    o.on_step_end(\"response\", {\"trust_score\": 0.05, \"budget_pct\": 0.99})\n    assert len(received) >= 1\n",
+  "body_hash": "f27d3f9d87bab107",
   "body_truncated": false,
   "callers_of": [
     "EngineOrchestrator",
@@ -11,7 +11,7 @@
     "append"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:378.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:378.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_bas_subscriber_via_orchestrator",
@@ -39,7 +39,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:378"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:378"
   },
   "kind": "engine_molecule",
   "made_of": [

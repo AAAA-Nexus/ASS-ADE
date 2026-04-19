@@ -1,6 +1,6 @@
 {
-  "body": "    def backup_file(path: Path) -> None:\n        if dry_run or not path.exists():\n            return\n        rel = path.relative_to(root)\n        target = backup_dir / rel\n        target.parent.mkdir(parents=True, exist_ok=True)\n        shutil.copy2(path, target)\n        files_backed_up.append(str(target))\n",
-  "body_hash": "09a2bab275f31bda",
+  "body": "def backup_file(path: Path) -> None:\n    if dry_run or not path.exists():\n        return\n    rel = path.relative_to(root)\n    target = backup_dir / rel\n    target.parent.mkdir(parents=True, exist_ok=True)\n    shutil.copy2(path, target)\n    files_backed_up.append(str(target))\n",
+  "body_hash": "47c35ce24daa2bab",
   "body_truncated": false,
   "callers_of": [
     "relative_to",
@@ -11,13 +11,31 @@
     "exists"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_bump_project_version.py:20.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/protocol/evolution.py:577.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.backup_file",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "re",
+    "shutil",
+    "subprocess",
+    "tomllib",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field",
+    "ass_ade.engine.rebuild.version_tracker.INITIAL_VERSION",
+    "ass_ade.engine.rebuild.version_tracker.bump_version"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_bump_project_version.py:20"
+    "source": "C:/!ass-ade/src/ass_ade/protocol/evolution.py:577"
   },
   "kind": "pure_function",
   "made_of": [],

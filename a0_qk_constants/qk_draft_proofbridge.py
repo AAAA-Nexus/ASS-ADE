@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/proofbridge.py:20
+# Extracted from C:/!ass-ade/src/ass_ade/agent/proofbridge.py:20
 # Component id: qk.source.ass_ade.proofbridge
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class ProofBridge:

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_reject_outside_cwd(self, workspace: Path):\n        tool = WriteFileTool(str(workspace))\n        # Try to escape up\n        r = tool.execute(path=\"../escape.py\", content=\"pwned\")\n        assert not r.success\n        assert \"outside\" in (r.error or \"\").lower()\n",
-  "body_hash": "0e9753c359c5d3b8",
+  "body": "def test_reject_outside_cwd(self, workspace: Path):\n    tool = WriteFileTool(str(workspace))\n    # Try to escape up\n    r = tool.execute(path=\"../escape.py\", content=\"pwned\")\n    assert not r.success\n    assert \"outside\" in (r.error or \"\").lower()\n",
+  "body_hash": "1eb0503d4f5c586e",
   "body_truncated": false,
   "callers_of": [
     "WriteFileTool",
@@ -9,13 +9,26 @@
     "lower"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwritefile.py:18.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_tools_builtin.py:71.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_reject_outside_cwd",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.tools.builtin.EditFileTool",
+    "ass_ade.tools.builtin.GrepSearchTool",
+    "ass_ade.tools.builtin.ListDirectoryTool",
+    "ass_ade.tools.builtin.ReadFileTool",
+    "ass_ade.tools.builtin.RunCommandTool",
+    "ass_ade.tools.builtin.SearchFilesTool",
+    "ass_ade.tools.builtin.WriteFileTool",
+    "ass_ade.tools.registry.default_registry"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwritefile.py:18"
+    "source": "C:/!ass-ade/tests/test_tools_builtin.py:71"
   },
   "kind": "pure_function",
   "made_of": [],

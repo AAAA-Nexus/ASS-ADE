@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/cli.py:2100
+# Extracted from C:/!ass-ade/src/ass_ade/cli.py:2101
 # Component id: qk.source.ass_ade.swarm_token_budget
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def swarm_token_budget(

@@ -9,7 +9,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tools/rebuild_tool.py:10.",
+  "description": "Draft candidate from C:/!ass-ade/tools/rebuild_tool.py:10.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.rebuild",
@@ -21,7 +21,7 @@
     "pathlib.Path"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tools/rebuild_tool.py:10"
+    "source": "C:/!ass-ade/tools/rebuild_tool.py:10"
   },
   "kind": "pure_function",
   "made_of": [],

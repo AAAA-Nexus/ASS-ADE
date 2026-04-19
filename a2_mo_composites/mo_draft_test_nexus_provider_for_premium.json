@@ -1,6 +1,6 @@
 {
-  "body": "    def test_nexus_provider_for_premium(self, monkeypatch):\n        self._clear_provider_env()\n        monkeypatch.setenv(\"AAAA_NEXUS_API_KEY\", \"an_test_key\")\n\n        from ass_ade.config import AssAdeConfig\n\n        cfg = self._disable_all_catalog(\n            AssAdeConfig(\n                profile=\"premium\",\n                nexus_api_key=\"an_test_key\",\n                nexus_base_url=\"https://atomadic.tech\",\n            ),\n            keep=(\"nexus\",),  # leave Nexus enabled\n        )\n        provider = build_provider(cfg)\n        # Only Nexus enabled \u2192 single return\n        assert isinstance(provider, NexusProvider)\n",
-  "body_hash": "e2c1bc5c73388ecf",
+  "body": "def test_nexus_provider_for_premium(self, monkeypatch):\n    self._clear_provider_env()\n    monkeypatch.setenv(\"AAAA_NEXUS_API_KEY\", \"an_test_key\")\n\n    from ass_ade.config import AssAdeConfig\n\n    cfg = self._disable_all_catalog(\n        AssAdeConfig(\n            profile=\"premium\",\n            nexus_api_key=\"an_test_key\",\n            nexus_base_url=\"https://atomadic.tech\",\n        ),\n        keep=(\"nexus\",),  # leave Nexus enabled\n    )\n    provider = build_provider(cfg)\n    # Only Nexus enabled \u2192 single return\n    assert isinstance(provider, NexusProvider)\n",
+  "body_hash": "2600b46ab06386fa",
   "body_truncated": false,
   "callers_of": [
     "_clear_provider_env",
@@ -11,7 +11,7 @@
     "AssAdeConfig"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine.py:240.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine.py:240.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_nexus_provider_for_premium",
@@ -42,7 +42,7 @@
     "ass_ade.engine.provider.MultiProvider"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine.py:240"
+    "source": "C:/!ass-ade/tests/test_engine.py:240"
   },
   "kind": "engine_molecule",
   "made_of": [],

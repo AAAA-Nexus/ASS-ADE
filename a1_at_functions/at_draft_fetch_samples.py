@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_fetch_samples.py:5
+# Extracted from C:/!ass-ade/scripts/lora_train.py:78
 # Component id: at.source.ass_ade.fetch_samples
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def fetch_samples(cfg: TrainConfig) -> list[dict[str, Any]]:

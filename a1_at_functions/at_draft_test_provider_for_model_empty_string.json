@@ -1,12 +1,12 @@
 {
-  "body": "    def test_provider_for_model_empty_string(self):\n        assert provider_for_model(\"\") is None\n",
-  "body_hash": "05ac2aafe77d71c1",
+  "body": "def test_provider_for_model_empty_string(self):\n    assert provider_for_model(\"\") is None\n",
+  "body_hash": "9afe6658710e8310",
   "body_truncated": false,
   "callers_of": [
     "provider_for_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:174.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:174.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_provider_for_model_empty_string",
@@ -85,7 +85,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:174"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:174"
   },
   "kind": "pure_function",
   "made_of": [],

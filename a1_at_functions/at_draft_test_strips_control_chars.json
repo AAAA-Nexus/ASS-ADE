@@ -1,12 +1,12 @@
 {
-  "body": "    def test_strips_control_chars(self) -> None:\n        result = validate_prompt(\"Hello\\x00World\\x0b!\")\n        assert \"\\x00\" not in result\n        assert \"\\x0b\" not in result\n        assert \"HelloWorld!\" == result\n",
-  "body_hash": "f97053fe25347d9d",
+  "body": "def test_strips_control_chars(self) -> None:\n    result = validate_prompt(\"Hello\\x00World\\x0b!\")\n    assert \"\\x00\" not in result\n    assert \"\\x0b\" not in result\n    assert \"HelloWorld!\" == result\n",
+  "body_hash": "1cf363ae3e87db07",
   "body_truncated": false,
   "callers_of": [
     "validate_prompt"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_validation.py:47.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_validation.py:47.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_strips_control_chars",
@@ -20,7 +20,7 @@
     "ass_ade.nexus.validation.validate_usdc_amount"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_validation.py:47"
+    "source": "C:/!ass-ade/tests/test_validation.py:47"
   },
   "kind": "pure_function",
   "made_of": [],

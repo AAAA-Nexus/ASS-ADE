@@ -1,6 +1,6 @@
 {
-  "body": "    def test_builtin_tool_still_works(self) -> None:\n        server = MCPServer(\".\")\n        _initialize_server(server)\n        response = server._handle({\n            \"jsonrpc\": \"2.0\",\n            \"id\": 1,\n            \"method\": \"tools/call\",\n            \"params\": {\"name\": \"list_directory\", \"arguments\": {\"path\": \".\"}},\n        })\n        assert response is not None\n        assert \"isError\" in response[\"result\"]\n",
-  "body_hash": "cbe876c50b780e3d",
+  "body": "def test_builtin_tool_still_works(self) -> None:\n    server = MCPServer(\".\")\n    _initialize_server(server)\n    response = server._handle({\n        \"jsonrpc\": \"2.0\",\n        \"id\": 1,\n        \"method\": \"tools/call\",\n        \"params\": {\"name\": \"list_directory\", \"arguments\": {\"path\": \".\"}},\n    })\n    assert response is not None\n    assert \"isError\" in response[\"result\"]\n",
+  "body_hash": "601c3b525d037275",
   "body_truncated": false,
   "callers_of": [
     "MCPServer",
@@ -8,7 +8,7 @@
     "_handle"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:69.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_extended.py:69.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.test_builtin_tool_still_works",
@@ -23,7 +23,7 @@
     "httpx"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:69"
+    "source": "C:/!ass-ade/tests/test_mcp_extended.py:69"
   },
   "kind": "ecosystem_system",
   "made_of": [],

@@ -1,19 +1,28 @@
 {
-  "body": "    def test_summary_failed(self) -> None:\n        result = PipelineResult(\n            name=\"test\",\n            steps=[\n                StepResult(name=\"s1\", status=StepStatus.PASSED),\n                StepResult(name=\"s2\", status=StepStatus.FAILED, error=\"x\"),\n                StepResult(name=\"s3\", status=StepStatus.SKIPPED),\n            ],\n            passed=False,\n            duration_ms=200.0,\n        )\n        assert \"[FAILED]\" in result.summary\n        assert \"1 failed\" in result.summary\n        assert \"1 skipped\" in result.summary\n",
-  "body_hash": "d1be8f8f46cca6bc",
+  "body": "def test_summary_failed(self) -> None:\n    result = PipelineResult(\n        name=\"test\",\n        steps=[\n            StepResult(name=\"s1\", status=StepStatus.PASSED),\n            StepResult(name=\"s2\", status=StepStatus.FAILED, error=\"x\"),\n            StepResult(name=\"s3\", status=StepStatus.SKIPPED),\n        ],\n        passed=False,\n        duration_ms=200.0,\n    )\n    assert \"[FAILED]\" in result.summary\n    assert \"1 failed\" in result.summary\n    assert \"1 skipped\" in result.summary\n",
+  "body_hash": "f0460313b0c2bb00",
   "body_truncated": false,
   "callers_of": [
     "PipelineResult",
     "StepResult"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpipelineresult.py:19.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_pipeline.py:232.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_summary_failed",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.pipeline.Pipeline",
+    "ass_ade.pipeline.PipelineResult",
+    "ass_ade.pipeline.StepResult",
+    "ass_ade.pipeline.StepStatus"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpipelineresult.py:19"
+    "source": "C:/!ass-ade/tests/test_pipeline.py:232"
   },
   "kind": "pure_function",
   "made_of": [],

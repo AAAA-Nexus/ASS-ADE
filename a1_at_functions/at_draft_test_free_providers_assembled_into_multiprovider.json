@@ -1,6 +1,6 @@
 {
-  "body": "    def test_free_providers_assembled_into_multiprovider(self, monkeypatch):\n        # Clear paid keys so we don't hit the legacy path\n        for key in (\"OPENAI_API_KEY\", \"ANTHROPIC_API_KEY\", \"ASS_ADE_PROVIDER_URL\"):\n            monkeypatch.delenv(key, raising=False)\n        # Clear every cloud catalog key, then set only groq\n        for p in FREE_PROVIDERS.values():\n            if p.api_key_env:\n                monkeypatch.delenv(p.api_key_env, raising=False)\n        monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-groq\")\n        monkeypatch.setenv(\"GEMINI_API_KEY\", \"sk-gemini\")\n\n        from ass_ade.config import AssAdeConfig\n        from ass_ade.engine.provider import MultiProvider\n        from ass_ade.engine.router import build_provider\n\n        cfg = AssAdeConfig(profile=\"local\")\n        result = build_provider(cfg)\n        # With multiple providers, should build a MultiProvider\n        assert isinstance(result, MultiProvider)\n        # Should contain both groq and gemini\n        names = set(result.providers.keys())\n        assert \"groq\" in names\n        assert \"gemini\" in names\n        # Pollinations (no-key) should also be present as a fallback\n        assert \"pollinations\" in names\n",
-  "body_hash": "909270f418cae40e",
+  "body": "def test_free_providers_assembled_into_multiprovider(self, monkeypatch):\n    # Clear paid keys so we don't hit the legacy path\n    for key in (\"OPENAI_API_KEY\", \"ANTHROPIC_API_KEY\", \"ASS_ADE_PROVIDER_URL\"):\n        monkeypatch.delenv(key, raising=False)\n    # Clear every cloud catalog key, then set only groq\n    for p in FREE_PROVIDERS.values():\n        if p.api_key_env:\n            monkeypatch.delenv(p.api_key_env, raising=False)\n    monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-groq\")\n    monkeypatch.setenv(\"GEMINI_API_KEY\", \"sk-gemini\")\n\n    from ass_ade.config import AssAdeConfig\n    from ass_ade.engine.provider import MultiProvider\n    from ass_ade.engine.router import build_provider\n\n    cfg = AssAdeConfig(profile=\"local\")\n    result = build_provider(cfg)\n    # With multiple providers, should build a MultiProvider\n    assert isinstance(result, MultiProvider)\n    # Should contain both groq and gemini\n    names = set(result.providers.keys())\n    assert \"groq\" in names\n    assert \"gemini\" in names\n    # Pollinations (no-key) should also be present as a fallback\n    assert \"pollinations\" in names\n",
+  "body_hash": "e22bd00a5a3a4468",
   "body_truncated": false,
   "callers_of": [
     "values",
@@ -13,7 +13,7 @@
     "keys"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:478.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:478.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_free_providers_assembled_into_multiprovider",
@@ -92,7 +92,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:478"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:478"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,19 +1,31 @@
 {
-  "body": "    def test_unknown_4xx_raises_base_error(self) -> None:\n        with pytest.raises(NexusError) as exc_info:\n            raise_for_status(418)\n        assert exc_info.value.status_code == 418\n",
-  "body_hash": "e21cb44f3a657ace",
+  "body": "def test_unknown_4xx_raises_base_error(self) -> None:\n    with pytest.raises(NexusError) as exc_info:\n        raise_for_status(418)\n    assert exc_info.value.status_code == 418\n",
+  "body_hash": "f0598ed60e3c3c62",
   "body_truncated": false,
   "callers_of": [
     "raises",
     "raise_for_status"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testraiseforstatus.py:39.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_errors.py:84.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_unknown_4xx_raises_base_error",
-  "imports": [],
+  "imports": [
+    "pytest",
+    "ass_ade.nexus.errors.NexusAuthError",
+    "ass_ade.nexus.errors.NexusCircuitOpen",
+    "ass_ade.nexus.errors.NexusConnectionError",
+    "ass_ade.nexus.errors.NexusError",
+    "ass_ade.nexus.errors.NexusPaymentRequired",
+    "ass_ade.nexus.errors.NexusRateLimited",
+    "ass_ade.nexus.errors.NexusServerError",
+    "ass_ade.nexus.errors.NexusTimeoutError",
+    "ass_ade.nexus.errors.NexusValidationError",
+    "ass_ade.nexus.errors.raise_for_status"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testraiseforstatus.py:39"
+    "source": "C:/!ass-ade/tests/test_errors.py:84"
   },
   "kind": "pure_function",
   "made_of": [],

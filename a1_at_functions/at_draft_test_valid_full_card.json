@@ -1,19 +1,36 @@
 {
-  "body": "    def test_valid_full_card(self) -> None:\n        data = {\n            \"name\": \"FullAgent\",\n            \"description\": \"A complete agent\",\n            \"url\": \"https://example.com\",\n            \"version\": \"1.0.0\",\n            \"provider\": {\"organization\": \"TestOrg\", \"url\": \"https://testorg.com\"},\n            \"capabilities\": {\"streaming\": True, \"pushNotifications\": False, \"stateTransitionHistory\": True},\n            \"authentication\": {\"schemes\": [\"bearer\"]},\n            \"skills\": [\n                {\"id\": \"skill1\", \"name\": \"Skill One\", \"description\": \"Does things\"},\n            ],\n            \"defaultInputModes\": [\"text/plain\"],\n            \"defaultOutputModes\": [\"text/plain\", \"application/json\"],\n        }\n        report = validate_agent_card(data)\n        assert report.valid\n        assert report.card is not None\n        assert report.card.name == \"FullAgent\"\n        assert report.card.capabilities.streaming is True\n        assert len(report.card.skills) == 1\n        assert report.card.skills[0].id == \"skill1\"\n",
-  "body_hash": "7daca63fb3765678",
+  "body": "def test_valid_full_card(self) -> None:\n    data = {\n        \"name\": \"FullAgent\",\n        \"description\": \"A complete agent\",\n        \"url\": \"https://example.com\",\n        \"version\": \"1.0.0\",\n        \"provider\": {\"organization\": \"TestOrg\", \"url\": \"https://testorg.com\"},\n        \"capabilities\": {\"streaming\": True, \"pushNotifications\": False, \"stateTransitionHistory\": True},\n        \"authentication\": {\"schemes\": [\"bearer\"]},\n        \"skills\": [\n            {\"id\": \"skill1\", \"name\": \"Skill One\", \"description\": \"Does things\"},\n        ],\n        \"defaultInputModes\": [\"text/plain\"],\n        \"defaultOutputModes\": [\"text/plain\", \"application/json\"],\n    }\n    report = validate_agent_card(data)\n    assert report.valid\n    assert report.card is not None\n    assert report.card.name == \"FullAgent\"\n    assert report.card.capabilities.streaming is True\n    assert len(report.card.skills) == 1\n    assert report.card.skills[0].id == \"skill1\"\n",
+  "body_hash": "70df1534ff2994b4",
   "body_truncated": false,
   "callers_of": [
     "validate_agent_card",
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateagentcard.py:13.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_a2a.py:33.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_valid_full_card",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.a2a.A2AAgentCard",
+    "ass_ade.a2a.A2AAuthentication",
+    "ass_ade.a2a.A2ASkill",
+    "ass_ade.a2a.ValidationIssue",
+    "ass_ade.a2a.ValidationReport",
+    "ass_ade.a2a.fetch_agent_card",
+    "ass_ade.a2a.local_agent_card",
+    "ass_ade.a2a.negotiate",
+    "ass_ade.a2a.validate_agent_card",
+    "httpx",
+    "httpx"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateagentcard.py:13"
+    "source": "C:/!ass-ade/tests/test_a2a.py:33"
   },
   "kind": "pure_function",
   "made_of": [],

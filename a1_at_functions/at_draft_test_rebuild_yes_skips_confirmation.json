@@ -10,7 +10,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli.py:153.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_cli.py:153.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_rebuild_yes_skips_confirmation",
@@ -24,7 +24,7 @@
     "ass_ade.cli._auto_detect_project"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli.py:153"
+    "source": "C:/!ass-ade/tests/test_cli.py:153"
   },
   "kind": "pure_function",
   "made_of": [],

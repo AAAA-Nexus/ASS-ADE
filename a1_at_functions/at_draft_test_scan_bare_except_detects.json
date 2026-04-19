@@ -8,7 +8,7 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_enhancer.py:134.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_enhancer.py:134.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_scan_bare_except_detects",
@@ -28,7 +28,7 @@
     "ass_ade.local.enhancer.scan_missing_type_hints"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_enhancer.py:134"
+    "source": "C:/!ass-ade/tests/test_enhancer.py:134"
   },
   "kind": "pure_function",
   "made_of": [],

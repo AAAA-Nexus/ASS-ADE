@@ -7,13 +7,21 @@
     "raises"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateusdcamount.py:5.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_validation.py:70.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.testvalidateusdcamount",
-  "imports": [],
+  "imports": [
+    "pytest",
+    "ass_ade.nexus.validation._is_private_host",
+    "ass_ade.nexus.validation.validate_agent_id",
+    "ass_ade.nexus.validation.validate_prompt",
+    "ass_ade.nexus.validation.validate_session_id",
+    "ass_ade.nexus.validation.validate_url",
+    "ass_ade.nexus.validation.validate_usdc_amount"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateusdcamount.py:5"
+    "source": "C:/!ass-ade/tests/test_validation.py:70"
   },
   "kind": "pure_class",
   "made_of": [],

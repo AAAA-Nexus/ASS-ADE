@@ -1,6 +1,6 @@
 {
-  "body": "    def test_pending_persists_across_instances(self, tmp_path):\n        from ass_ade.agent.lora_flywheel import LoRAFlywheel\n        cfg = {\n            \"lora_flywheel\": {\n                \"pending_file\": str(tmp_path / \"pending.jsonl\"),\n                \"contributions_file\": str(tmp_path / \"contributions.jsonl\"),\n                \"batch_interval\": 50,\n                \"min_confidence\": 0.5,\n            }\n        }\n        f1 = LoRAFlywheel(cfg, session_id=\"s1\")\n        f1.capture_fix(\"a\", \"b\")\n        f2 = LoRAFlywheel(cfg, session_id=\"s1\")\n        assert len(f2._pending) == 1\n",
-  "body_hash": "742dd96a0408fcac",
+  "body": "def test_pending_persists_across_instances(self, tmp_path):\n    from ass_ade.agent.lora_flywheel import LoRAFlywheel\n    cfg = {\n        \"lora_flywheel\": {\n            \"pending_file\": str(tmp_path / \"pending.jsonl\"),\n            \"contributions_file\": str(tmp_path / \"contributions.jsonl\"),\n            \"batch_interval\": 50,\n            \"min_confidence\": 0.5,\n        }\n    }\n    f1 = LoRAFlywheel(cfg, session_id=\"s1\")\n    f1.capture_fix(\"a\", \"b\")\n    f2 = LoRAFlywheel(cfg, session_id=\"s1\")\n    assert len(f2._pending) == 1\n",
+  "body_hash": "2ee411fe5c1ad809",
   "body_truncated": false,
   "callers_of": [
     "LoRAFlywheel",
@@ -9,7 +9,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:444.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase_engines.py:444.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_pending_persists_across_instances",
@@ -64,7 +64,7 @@
     "ass_ade.agent.orchestrator.CycleReport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:444"
+    "source": "C:/!ass-ade/tests/test_phase_engines.py:444"
   },
   "kind": "engine_molecule",
   "made_of": [

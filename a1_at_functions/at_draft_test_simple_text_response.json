@@ -1,6 +1,6 @@
 {
-  "body": "    def test_simple_text_response(self, tmp_path):\n        provider = _MockProvider([\n            CompletionResponse(\n                message=Message(role=\"assistant\", content=\"Done.\"),\n                finish_reason=\"stop\",\n            )\n        ])\n        registry = ToolRegistry()\n        loop = AgentLoop(\n            provider=provider,\n            registry=registry,\n            working_dir=str(tmp_path),\n        )\n        result = loop.step(\"Hello\")\n        assert result == \"Done.\"\n",
-  "body_hash": "4ddb7cae1af9797c",
+  "body": "def test_simple_text_response(self, tmp_path):\n    provider = _MockProvider([\n        CompletionResponse(\n            message=Message(role=\"assistant\", content=\"Done.\"),\n            finish_reason=\"stop\",\n        )\n    ])\n    registry = ToolRegistry()\n    loop = AgentLoop(\n        provider=provider,\n        registry=registry,\n        working_dir=str(tmp_path),\n    )\n    result = loop.step(\"Hello\")\n    assert result == \"Done.\"\n",
+  "body_hash": "18376101606d62e3",
   "body_truncated": false,
   "callers_of": [
     "_MockProvider",
@@ -12,7 +12,7 @@
     "Message"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_agent.py:188.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_agent.py:188.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_simple_text_response",
@@ -32,7 +32,7 @@
     "ass_ade.tools.registry.ToolRegistry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_agent.py:188"
+    "source": "C:/!ass-ade/tests/test_agent.py:188"
   },
   "kind": "pure_function",
   "made_of": [],

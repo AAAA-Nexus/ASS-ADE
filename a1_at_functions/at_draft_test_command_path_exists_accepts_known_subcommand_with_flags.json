@@ -6,13 +6,14 @@
     "command_path_exists"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_capabilities.py:27.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_capabilities.py:32.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_command_path_exists_accepts_known_subcommand_with_flags",
   "imports": [
     "__future__.annotations",
     "pathlib.Path",
+    "unittest.mock.MagicMock",
     "ass_ade.interpreter",
     "ass_ade.agent.capabilities.build_atomadic_intent_prompt",
     "ass_ade.agent.capabilities.command_path_exists",
@@ -22,7 +23,7 @@
     "ass_ade.interpreter.Atomadic"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_capabilities.py:27"
+    "source": "C:/!ass-ade/tests/test_capabilities.py:32"
   },
   "kind": "pure_function",
   "made_of": [],

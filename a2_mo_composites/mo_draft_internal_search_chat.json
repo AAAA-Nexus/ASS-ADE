@@ -1,6 +1,6 @@
 {
-  "body": "    def internal_search_chat(self, query: str, session_token: str | None = None, **kwargs: Any) -> dict:\n        \"\"\"POST /internal/search/chat \u2014 RAG search + LLM answer.\n\n        Requires owner session token.\n        \"\"\"\n        headers = {}\n        if session_token:\n            # Sanitize before inserting into an HTTP header (OWASP A03).\n            headers[\"X-Owner-Token\"] = sanitize_header_value(session_token.strip(), \"session_token\")\n        response = self._client.post(\n            \"/internal/search/chat\",\n            json={\"query\": query, **kwargs},\n            headers=headers,\n        )\n        raise_for_status(response.status_code, endpoint=\"/internal/search/chat\")\n        return response.json()  # type: ignore[return-value]\n",
-  "body_hash": "ede4c1c999477784",
+  "body": "def internal_search_chat(self, query: str, session_token: str | None = None, **kwargs: Any) -> dict:\n    \"\"\"POST /internal/search/chat \u2014 RAG search + LLM answer.\n\n    Requires owner session token.\n    \"\"\"\n    headers = {}\n    if session_token:\n        # Sanitize before inserting into an HTTP header (OWASP A03).\n        headers[\"X-Owner-Token\"] = sanitize_header_value(session_token.strip(), \"session_token\")\n    response = self._client.post(\n        \"/internal/search/chat\",\n        json={\"query\": query, **kwargs},\n        headers=headers,\n    )\n    raise_for_status(response.status_code, endpoint=\"/internal/search/chat\")\n    return response.json()  # type: ignore[return-value]\n",
+  "body_hash": "6cbbbbddffcdb270",
   "body_truncated": false,
   "callers_of": [
     "post",
@@ -10,7 +10,7 @@
     "strip"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:398.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:398.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.internal_search_chat",
@@ -164,7 +164,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:398"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:398"
   },
   "kind": "engine_molecule",
   "made_of": [

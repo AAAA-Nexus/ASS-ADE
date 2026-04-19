@@ -11,7 +11,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli.py:138.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_cli.py:138.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_rebuild_dry_run_json",
@@ -25,7 +25,7 @@
     "ass_ade.cli._auto_detect_project"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli.py:138"
+    "source": "C:/!ass-ade/tests/test_cli.py:138"
   },
   "kind": "pure_function",
   "made_of": [],

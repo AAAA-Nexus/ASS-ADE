@@ -1,12 +1,12 @@
 {
-  "body": "    def test_avg_complexity_empty(self):\n        router = EpistemicRouter()\n        assert router.avg_complexity == 0.0\n",
-  "body_hash": "9cd4d8647ffd9bb8",
+  "body": "def test_avg_complexity_empty(self):\n    router = EpistemicRouter()\n    assert router.avg_complexity == 0.0\n",
+  "body_hash": "8a473e6f93f592c8",
   "body_truncated": false,
   "callers_of": [
     "EpistemicRouter"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_routing.py:109.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_routing.py:109.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_avg_complexity_empty",
@@ -20,7 +20,7 @@
     "ass_ade.agent.routing.tier_for_complexity"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_routing.py:109"
+    "source": "C:/!ass-ade/tests/test_routing.py:109"
   },
   "kind": "pure_function",
   "made_of": [],

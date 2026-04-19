@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/tools/registry.py:46
+# Extracted from C:/!ass-ade/src/ass_ade/tools/registry.py:101
 # Component id: og.source.ass_ade.default_registry
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def default_registry(working_dir: str | None = None) -> ToolRegistry:
@@ -42,4 +44,5 @@ def default_registry(working_dir: str | None = None) -> ToolRegistry:
     registry.register(PromptSectionTool(cwd))
     registry.register(PromptDiffTool(cwd))
     registry.register(PromptProposeTool(cwd))
+    _register_generated_tools(registry, cwd)
     return registry

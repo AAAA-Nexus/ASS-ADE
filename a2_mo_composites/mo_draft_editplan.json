@@ -8,13 +8,22 @@
     "PlannedEdit"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_editplan.py:5.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/tools/plan.py:51.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.editplan",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "difflib",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "enum.Enum",
+    "pathlib.Path",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.history.FileHistory"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_editplan.py:5"
+    "source": "C:/!ass-ade/src/ass_ade/tools/plan.py:51"
   },
   "kind": "engine_molecule",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_register_adds_provider_at_runtime(self):\n        from ass_ade.engine.provider import MultiProvider\n        a = self._make_provider(\"a\")\n        mp = MultiProvider(providers={\"a\": a}, fallback_order=[\"a\"])\n        b = self._make_provider(\"b\")\n        mp.register(\"b\", b, models=[\"model-b-1\"])\n        assert \"b\" in mp.providers\n        assert \"b\" in mp._fallback_order\n        assert mp._model_to_provider[\"model-b-1\"] == \"b\"\n",
-  "body_hash": "18732eb97d34981b",
+  "body": "def test_register_adds_provider_at_runtime(self):\n    from ass_ade.engine.provider import MultiProvider\n    a = self._make_provider(\"a\")\n    mp = MultiProvider(providers={\"a\": a}, fallback_order=[\"a\"])\n    b = self._make_provider(\"b\")\n    mp.register(\"b\", b, models=[\"model-b-1\"])\n    assert \"b\" in mp.providers\n    assert \"b\" in mp._fallback_order\n    assert mp._model_to_provider[\"model-b-1\"] == \"b\"\n",
+  "body_hash": "56a2076e832b1ab6",
   "body_truncated": false,
   "callers_of": [
     "_make_provider",
@@ -8,7 +8,7 @@
     "register"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:452.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:452.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.test_register_adds_provider_at_runtime",
@@ -87,7 +87,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:452"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:452"
   },
   "kind": "ecosystem_system",
   "made_of": [],

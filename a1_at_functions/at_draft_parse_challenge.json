@@ -1,19 +1,28 @@
 {
-  "body": "    def parse_challenge(self, response_dict: dict) -> PaymentChallenge | None:\n        \"\"\"Parse a 402 response dict into a PaymentChallenge.\n\n        Returns None if parsing fails; check last_error for details.\n        \"\"\"\n        try:\n            return PaymentChallenge.from_response(response_dict)\n        except ValueError as e:\n            self.last_error = str(e)\n            return None\n",
-  "body_hash": "280d234a9af6aac2",
+  "body": "def parse_challenge(self, response_dict: dict) -> PaymentChallenge | None:\n    \"\"\"Parse a 402 response dict into a PaymentChallenge.\n\n    Returns None if parsing fails; check last_error for details.\n    \"\"\"\n    try:\n        return PaymentChallenge.from_response(response_dict)\n    except ValueError as e:\n        self.last_error = str(e)\n        return None\n",
+  "body_hash": "5393387fa74fe1c8",
   "body_truncated": false,
   "callers_of": [
     "from_response",
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_x402clientflow.py:27.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/x402.py:392.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.parse_challenge",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "time",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "eth_account.Account",
+    "web3.Web3",
+    "logging"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_x402clientflow.py:27"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/x402.py:392"
   },
   "kind": "pure_function",
   "made_of": [],

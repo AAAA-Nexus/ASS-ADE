@@ -1,13 +1,13 @@
 {
-  "body": "    def test_simple_user_message(self):\n        msg = Message(role=\"user\", content=\"Hello!\")\n        tokens = estimate_message_tokens(msg)\n        assert tokens >= 5  # 4 overhead + at least 1 content\n",
-  "body_hash": "40ee9d10950064dd",
+  "body": "def test_simple_user_message(self):\n    msg = Message(role=\"user\", content=\"Hello!\")\n    tokens = estimate_message_tokens(msg)\n    assert tokens >= 5  # 4 overhead + at least 1 content\n",
+  "body_hash": "bbd20cf4661cfd04",
   "body_truncated": false,
   "callers_of": [
     "Message",
     "estimate_message_tokens"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tokens.py:48.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_tokens.py:48.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "qk.source.ass_ade.test_simple_user_message",
@@ -24,7 +24,7 @@
     "ass_ade.engine.types.ToolSchema"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tokens.py:48"
+    "source": "C:/!ass-ade/tests/test_tokens.py:48"
   },
   "kind": "invariant",
   "made_of": [],

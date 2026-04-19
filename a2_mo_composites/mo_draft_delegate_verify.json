@@ -1,12 +1,12 @@
 {
-  "body": "    def delegate_verify(\n        self,\n        chain: list[dict] | None = None,\n        *,\n        token: str | None = None,\n        **kwargs: Any,\n    ) -> DelegationValidation:\n        \"\"\"/v1/delegate/verify \u2014 full UCAN chain validation (D_MAX=23). $0.080/call\"\"\"\n        if chain is None:\n            chain = [{\"token\": token}] if token is not None else []\n        return self._post_model(\"/v1/delegate/verify\", DelegationValidation, {\"chain\": chain, **kwargs})\n",
-  "body_hash": "8562e03d59a88e47",
+  "body": "def delegate_verify(\n    self,\n    chain: list[dict] | None = None,\n    *,\n    token: str | None = None,\n    **kwargs: Any,\n) -> DelegationValidation:\n    \"\"\"/v1/delegate/verify \u2014 full UCAN chain validation (D_MAX=23). $0.080/call\"\"\"\n    if chain is None:\n        chain = [{\"token\": token}] if token is not None else []\n    return self._post_model(\"/v1/delegate/verify\", DelegationValidation, {\"chain\": chain, **kwargs})\n",
+  "body_hash": "2b87d2ebd5895ad9",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:496.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:496.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.delegate_verify",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:496"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:496"
   },
   "kind": "engine_molecule",
   "made_of": [],

@@ -15,7 +15,7 @@
     "Request"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp.py:131.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp.py:131.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.test_mcp_invoke_redacts_sensitive_response_fields",
@@ -38,7 +38,7 @@
     "ass_ade.mcp.mock_server.start_server"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp.py:131"
+    "source": "C:/!ass-ade/tests/test_mcp.py:131"
   },
   "kind": "ecosystem_system",
   "made_of": [],

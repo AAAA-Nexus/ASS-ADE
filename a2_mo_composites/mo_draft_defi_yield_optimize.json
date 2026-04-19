@@ -1,13 +1,13 @@
 {
-  "body": "    def defi_yield_optimize(\n        self,\n        capital_usdc: float | None = None,\n        protocols: list[str] | None = None,\n        *,\n        amount_usdc: float | None = None,\n        risk_tolerance: str | None = None,\n        **kwargs: Any,\n    ) -> YieldOptimize:\n        \"\"\"/v1/defi/yield-optimize \u2014 optimal yield allocation (YLD-100). $0.04 + 2% alpha\"\"\"\n        resolved_capital = capital_usdc if capital_usdc is not None else amount_usdc or 0.0\n        resolved_protocols = protocols or []\n        if risk_tolerance is not None:\n            kwargs.setdefault(\"risk_tolerance\", risk_tolerance)\n        return self._post_model(\"/v1/defi/yield-optimize\", YieldOptimize, {\n            \"capital_usdc\": resolved_capital, \"protocols\": resolved_protocols, **kwargs,\n        })\n",
-  "body_hash": "9b70f6eba7d3847c",
+  "body": "def defi_yield_optimize(\n    self,\n    capital_usdc: float | None = None,\n    protocols: list[str] | None = None,\n    *,\n    amount_usdc: float | None = None,\n    risk_tolerance: str | None = None,\n    **kwargs: Any,\n) -> YieldOptimize:\n    \"\"\"/v1/defi/yield-optimize \u2014 optimal yield allocation (YLD-100). $0.04 + 2% alpha\"\"\"\n    resolved_capital = capital_usdc if capital_usdc is not None else amount_usdc or 0.0\n    resolved_protocols = protocols or []\n    if risk_tolerance is not None:\n        kwargs.setdefault(\"risk_tolerance\", risk_tolerance)\n    return self._post_model(\"/v1/defi/yield-optimize\", YieldOptimize, {\n        \"capital_usdc\": resolved_capital, \"protocols\": resolved_protocols, **kwargs,\n    })\n",
+  "body_hash": "3f77f6bff85aa32b",
   "body_truncated": false,
   "callers_of": [
     "_post_model",
     "setdefault"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1040.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1040.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.defi_yield_optimize",
@@ -161,7 +161,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1040"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1040"
   },
   "kind": "engine_molecule",
   "made_of": [],

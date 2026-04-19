@@ -1,13 +1,13 @@
 {
-  "body": "    def test_format_includes_amount(self) -> None:\n        c = PaymentChallenge.from_response({\n            \"amount_usdc\": \"0.008000\",\n            \"amount_micro_usdc\": 8000,\n            \"recipient\": ATOMADIC_TREASURY,\n            \"endpoint\": \"/v1/trust/score\",\n        })\n        text = format_payment_consent(c)\n        assert \"$0.008000 USDC\" in text\n        assert \"/v1/trust/score\" in text\n        assert ATOMADIC_TREASURY in text\n",
-  "body_hash": "bb30c2803c0e59f6",
+  "body": "def test_format_includes_amount(self) -> None:\n    c = PaymentChallenge.from_response({\n        \"amount_usdc\": \"0.008000\",\n        \"amount_micro_usdc\": 8000,\n        \"recipient\": ATOMADIC_TREASURY,\n        \"endpoint\": \"/v1/trust/score\",\n    })\n    text = format_payment_consent(c)\n    assert \"$0.008000 USDC\" in text\n    assert \"/v1/trust/score\" in text\n    assert ATOMADIC_TREASURY in text\n",
+  "body_hash": "adf7dc0a77a522b0",
   "body_truncated": false,
   "callers_of": [
     "from_response",
     "format_payment_consent"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:276.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_x402_flow.py:276.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_format_includes_amount",
@@ -33,7 +33,7 @@
     "ass_ade.nexus.x402.BASE_SEPOLIA_CHAIN_ID"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:276"
+    "source": "C:/!ass-ade/tests/test_x402_flow.py:276"
   },
   "kind": "pure_function",
   "made_of": [],

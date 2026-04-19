@@ -1,13 +1,13 @@
 {
-  "body": "    def contract_attestation(self, contract_id: str) -> ContractAttestation:\n        \"\"\"/v1/contract/attestation/{id} \u2014 fetch Nexus-Certified attestation (BCV-101). $0.020/call\"\"\"\n        return self._get_model(f\"/v1/contract/attestation/{_pseg(contract_id, 'contract_id')}\", ContractAttestation)\n",
-  "body_hash": "6ec35ea7d29e35a8",
+  "body": "def contract_attestation(self, contract_id: str) -> ContractAttestation:\n    \"\"\"/v1/contract/attestation/{id} \u2014 fetch Nexus-Certified attestation (BCV-101). $0.020/call\"\"\"\n    return self._get_model(f\"/v1/contract/attestation/{_pseg(contract_id, 'contract_id')}\", ContractAttestation)\n",
+  "body_hash": "eab65836e23be5f4",
   "body_truncated": false,
   "callers_of": [
     "_get_model",
     "_pseg"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:827.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:827.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.contract_attestation",
@@ -161,7 +161,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:827"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:827"
   },
   "kind": "engine_molecule",
   "made_of": [],

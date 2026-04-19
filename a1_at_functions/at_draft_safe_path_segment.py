@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/validation.py:181
+# Extracted from C:/!ass-ade/src/ass_ade/nexus/validation.py:181
 # Component id: at.source.ass_ade.safe_path_segment
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def safe_path_segment(value: str, name: str = "ID") -> str:

@@ -15,7 +15,7 @@
     "now"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/schema_materializer.py:452.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/rebuild/schema_materializer.py:466.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "qk.source.ass_ade.emit_certificate",
@@ -26,6 +26,7 @@
     "json",
     "re",
     "sys",
+    "textwrap",
     "pathlib.Path",
     "typing.Any",
     "ass_ade.engine.rebuild.version_tracker.assign_version",
@@ -36,7 +37,7 @@
     "ass_ade.engine.rebuild.version_tracker._aggregate_version"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/schema_materializer.py:452"
+    "source": "C:/!ass-ade/src/ass_ade/engine/rebuild/schema_materializer.py:466"
   },
   "kind": "invariant",
   "made_of": [],

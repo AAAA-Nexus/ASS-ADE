@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/probe_endpoints.py:425
+# Extracted from C:/!ass-ade/scripts/probe_endpoints.py:425
 # Component id: at.source.ass_ade.print_summary
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def print_summary() -> None:

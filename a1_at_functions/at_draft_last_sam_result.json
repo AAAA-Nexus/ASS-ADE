@@ -1,10 +1,10 @@
 {
-  "body": "    def last_sam_result(self) -> dict[str, Any] | None:\n        return self._last_sam_result\n",
-  "body_hash": "8a860060e0d381b1",
+  "body": "def last_sam_result(self) -> dict[str, Any] | None:\n    return self._last_sam_result\n",
+  "body_hash": "b577be6dd49e3f36",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/loop.py:124.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/loop.py:124.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.last_sam_result",
@@ -34,7 +34,7 @@
     "ass_ade.tools.registry.ToolRegistry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/loop.py:124"
+    "source": "C:/!ass-ade/src/ass_ade/agent/loop.py:124"
   },
   "kind": "pure_function",
   "made_of": [],

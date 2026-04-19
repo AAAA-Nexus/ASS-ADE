@@ -1,13 +1,13 @@
 {
-  "body": "    def aegis_mcp_proxy(\n        self,\n        tool: str | None = None,\n        tool_input: str = \"\",\n        agent_id: str | None = None,\n        *,\n        tool_name: str | None = None,\n        payload: dict[str, Any] | None = None,\n        **kwargs: Any,\n    ) -> AegisProxyResult:\n        \"\"\"/v1/aegis/mcp-proxy/execute \u2014 MCP tool-call firewall (AEG-100). $0.040/call\"\"\"\n        resolved_tool = tool or tool_name or \"\"\n        resolved_tool_input = tool_input\n        if payload is not None and not resolved_tool_input:\n            resolved_tool_input = json.dumps(payload)\n        body: dict[str, Any] = {\"tool\": resolved_tool, \"tool_input\": resolved_tool_input, **kwargs}\n        if agent_id:\n            body[\"agent_id\"] = agent_id\n        return self._post_model(\"/v1/aegis/mcp-proxy/execute\", AegisProxyResult, body)\n",
-  "body_hash": "880c285d29b11c3b",
+  "body": "def aegis_mcp_proxy(\n    self,\n    tool: str | None = None,\n    tool_input: str = \"\",\n    agent_id: str | None = None,\n    *,\n    tool_name: str | None = None,\n    payload: dict[str, Any] | None = None,\n    **kwargs: Any,\n) -> AegisProxyResult:\n    \"\"\"/v1/aegis/mcp-proxy/execute \u2014 MCP tool-call firewall (AEG-100). $0.040/call\"\"\"\n    resolved_tool = tool or tool_name or \"\"\n    resolved_tool_input = tool_input\n    if payload is not None and not resolved_tool_input:\n        resolved_tool_input = json.dumps(payload)\n    body: dict[str, Any] = {\"tool\": resolved_tool, \"tool_input\": resolved_tool_input, **kwargs}\n    if agent_id:\n        body[\"agent_id\"] = agent_id\n    return self._post_model(\"/v1/aegis/mcp-proxy/execute\", AegisProxyResult, body)\n",
+  "body_hash": "6dcd918831b180d9",
   "body_truncated": false,
   "callers_of": [
     "_post_model",
     "dumps"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:736.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:736.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.aegis_mcp_proxy",
@@ -161,7 +161,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:736"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:736"
   },
   "kind": "engine_molecule",
   "made_of": [],

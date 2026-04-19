@@ -12,7 +12,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:37.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_server_streaming.py:37.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.testmcpserver",
@@ -31,7 +31,7 @@
     "ass_ade.tools.registry.ToolRegistry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:37"
+    "source": "C:/!ass-ade/tests/test_mcp_server_streaming.py:37"
   },
   "kind": "ecosystem_system",
   "made_of": [],

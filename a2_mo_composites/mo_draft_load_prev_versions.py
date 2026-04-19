@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/version_tracker.py:222
+# Extracted from C:/!ass-ade/src/ass_ade/engine/rebuild/version_tracker.py:222
 # Component id: mo.source.ass_ade.load_prev_versions
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def load_prev_versions(prev_manifest_path: Path | None) -> dict[str, dict[str, Any]]:

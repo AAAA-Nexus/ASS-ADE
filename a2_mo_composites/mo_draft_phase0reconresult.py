@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/recon.py:110
+# Extracted from C:/!ass-ade/src/ass_ade/recon.py:110
 # Component id: mo.source.ass_ade.phase0reconresult
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class Phase0ReconResult(BaseModel):

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_post_with_x402_raises_on_other_errors(self) -> None:\n        \"\"\"_post_with_x402 should raise on non-402 errors (401, 500, etc.).\"\"\"\n        def handler(request: httpx.Request) -> httpx.Response:\n            return httpx.Response(401, json={\"error\": \"unauthorized\"})\n\n        transport = httpx.MockTransport(handler)\n        client = NexusClient(base_url=\"https://test.atomadic.tech\", transport=transport)\n        from ass_ade.nexus.errors import NexusAuthError\n        with pytest.raises(NexusAuthError):\n            client._post_with_x402(\"/v1/trust/score\")\n        client.close()\n",
-  "body_hash": "6649104bbfaee5bf",
+  "body": "def test_post_with_x402_raises_on_other_errors(self) -> None:\n    \"\"\"_post_with_x402 should raise on non-402 errors (401, 500, etc.).\"\"\"\n    def handler(request: httpx.Request) -> httpx.Response:\n        return httpx.Response(401, json={\"error\": \"unauthorized\"})\n\n    transport = httpx.MockTransport(handler)\n    client = NexusClient(base_url=\"https://test.atomadic.tech\", transport=transport)\n    from ass_ade.nexus.errors import NexusAuthError\n    with pytest.raises(NexusAuthError):\n        client._post_with_x402(\"/v1/trust/score\")\n    client.close()\n",
+  "body_hash": "f16c55b2590f1bf3",
   "body_truncated": false,
   "callers_of": [
     "MockTransport",
@@ -11,20 +11,34 @@
     "_post_with_x402"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testx402paymenthandling.py:85.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_search_x402.py:191.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_post_with_x402_raises_on_other_errors",
   "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "httpx",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.nexus.client.NexusClient",
+    "ass_ade.nexus.errors.NexusPaymentRequired",
     "ass_ade.nexus.errors.NexusAuthError"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testx402paymenthandling.py:85"
+    "source": "C:/!ass-ade/tests/test_search_x402.py:191"
   },
   "kind": "pure_function",
   "made_of": [],
   "name": "test_post_with_x402_raises_on_other_errors",
   "product_categories": [
+    "DCM",
     "PAY"
   ],
   "provides": [

@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:49
+# Extracted from C:/!ass-ade/tests/test_pipeline.py:49
 # Component id: mo.source.ass_ade.testpipeline
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class TestPipeline:

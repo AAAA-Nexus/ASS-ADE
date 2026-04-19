@@ -1,8 +1,9 @@
 {
-  "body": "def test_cli_commands_batch_happy_path(\n    command_name: str,\n    args: list[str],\n    expected_in_output: list[str],\n    tmp_path: Path,\n    hybrid_config: Path,\n) -> None:\n    \"\"\"Batch parametrized test for CLI commands with standard mocking.\"\"\"\n    mock_nx = MagicMock()\n    \n    # Set up common mock responses\n    mock_nx.agent_token_budget.return_value = {\"estimates\": []}\n    mock_nx.agent_plan.return_value = AgentPlan(goal=\"test\", steps=[{\"step\": 1, \"description\": \"step 1\"}])\n    mock_nx.trust_score.return_value = TrustScore(\n        agent_id=\"agent-x\", score=0.85, tier=\"silver\"\n    )\n    \n    with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n        result = runner.invoke(\n            app,\n            [command_name, *args, \"--config\", str(hybrid_config)],\n        )\n    \n    # Local commands should pass\n    if command_name in (\"a2a\", \"repo\", \"plan\"):\n        # May error or succeed; check exit code is reasonable\n        assert result.exit_code in (0, 1, 2)\n    else:\n        # Remote commands may succeed or require flag\n        assert result.exit_code in (0, 1, 2)\n        for expected in expected_in_output:\n            assert expected.lower() in result.stdout.lower()\n",
+  "body": "def test_cli_commands_batch_happy_path(\n    command_name: str,\n    args: list[str],\n    expected_in_output: list[str],\n    tmp_path: Path,\n    hybrid_config: Path,\n) -> None:\n    \"\"\"Batch parametrized test for CLI commands with standard mocking.\"\"\"\n    mock_nx = MagicMock()\n\n    # Set up common mock responses\n    mock_nx.agent_token_budget.return_value = {\"estimates\": []}\n    mock_nx.agent_plan.return_value = AgentPlan(goal=\"test\", steps=[{\"step\": 1, \"description\": \"step 1\"}])\n    mock_nx.trust_score.return_value = TrustScore(\n        agent_id=\"agent-x\", score=0.85, tier=\"silver\"\n    )\n\n    with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n        result = runner.invoke(\n            app,\n            [command_name, *args, \"--config\", str(hybrid_config)],\n        )\n\n    # Local commands should pass\n    if command_name in (\"a2a\", \"repo\", \"plan\"):\n        # May error or succeed; check exit code is reasonable\n        assert result.exit_code in (0, 1, 2)\n    else:\n        # Remote commands may succeed or require flag\n        assert result.exit_code in (0, 1, 2)\n        for expected in expected_in_output:\n            assert expected.lower() in result.stdout.lower()\n",
   "body_hash": "b42373997b113690",
   "body_truncated": false,
   "callers_of": [
+    "parametrize",
     "MagicMock",
     "AgentPlan",
     "TrustScore",
@@ -13,13 +14,32 @@
     "lower"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_cli_commands_batch_happy_path.py:5.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_cli_happy_path.py:675.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_cli_commands_batch_happy_path",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.nexus.models.AgentPlan",
+    "ass_ade.nexus.models.ComplianceResult",
+    "ass_ade.nexus.models.FormatConversion",
+    "ass_ade.nexus.models.InferenceResponse",
+    "ass_ade.nexus.models.IntentClassification",
+    "ass_ade.nexus.models.RatchetSession",
+    "ass_ade.nexus.models.TrustScore",
+    "ass_ade.pipeline.PipelineResult"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_cli_commands_batch_happy_path.py:5"
+    "source": "C:/!ass-ade/tests/test_cli_happy_path.py:675"
   },
   "kind": "pure_function",
   "made_of": [],

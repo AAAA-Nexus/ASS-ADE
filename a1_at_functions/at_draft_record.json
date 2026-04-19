@@ -1,6 +1,6 @@
 {
-  "body": "    def record(self, rel_path: str, content: str) -> Snapshot:\n        \"\"\"Record current file content before a mutation.\"\"\"\n        seq = self._next_seq(rel_path)\n        snap = Snapshot(\n            path=rel_path,\n            sequence=seq,\n            timestamp=time.time(),\n            content=content,\n        )\n\n        snap_dir = self._snapshot_dir(rel_path)\n        snap_dir.mkdir(parents=True, exist_ok=True)\n\n        snap_file = snap_dir / f\"{seq:06d}.snapshot\"\n        snap_file.write_text(\n            json.dumps({\n                \"path\": snap.path,\n                \"sequence\": snap.sequence,\n                \"timestamp\": snap.timestamp,\n                \"content\": snap.content,\n            }),\n            encoding=\"utf-8\",\n        )\n\n        # Prune old snapshots\n        self._prune(rel_path)\n\n        return snap\n",
-  "body_hash": "5ab9536f2a24a481",
+  "body": "def record(self, rel_path: str, content: str) -> Snapshot:\n    \"\"\"Record current file content before a mutation.\"\"\"\n    seq = self._next_seq(rel_path)\n    snap = Snapshot(\n        path=rel_path,\n        sequence=seq,\n        timestamp=time.time(),\n        content=content,\n    )\n\n    snap_dir = self._snapshot_dir(rel_path)\n    snap_dir.mkdir(parents=True, exist_ok=True)\n\n    snap_file = snap_dir / f\"{seq:06d}.snapshot\"\n    snap_file.write_text(\n        json.dumps({\n            \"path\": snap.path,\n            \"sequence\": snap.sequence,\n            \"timestamp\": snap.timestamp,\n            \"content\": snap.content,\n        }),\n        encoding=\"utf-8\",\n    )\n\n    # Prune old snapshots\n    self._prune(rel_path)\n\n    return snap\n",
+  "body_hash": "d9021ecb86429eda",
   "body_truncated": false,
   "callers_of": [
     "_next_seq",
@@ -13,13 +13,20 @@
     "time"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_filehistory.py:42.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/tools/history.py:73.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.record",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "time",
+    "dataclasses.dataclass",
+    "pathlib.Path"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_filehistory.py:42"
+    "source": "C:/!ass-ade/src/ass_ade/tools/history.py:73"
   },
   "kind": "pure_function",
   "made_of": [],

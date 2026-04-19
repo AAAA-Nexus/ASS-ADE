@@ -1,12 +1,12 @@
 {
-  "body": "    def trust_history(self, agent_id: str, **kwargs: Any) -> TrustHistory:\n        \"\"\"/v1/trust/history \u2014 TCM-101 up to 100 epochs of score trajectory. $0.040/query\"\"\"\n        return self._post_model(\"/v1/trust/history\", TrustHistory, {\"agent_id\": agent_id, **kwargs})\n",
-  "body_hash": "0fbb82f13b915a8c",
+  "body": "def trust_history(self, agent_id: str, **kwargs: Any) -> TrustHistory:\n    \"\"\"/v1/trust/history \u2014 TCM-101 up to 100 epochs of score trajectory. $0.040/query\"\"\"\n    return self._post_model(\"/v1/trust/history\", TrustHistory, {\"agent_id\": agent_id, **kwargs})\n",
+  "body_hash": "bc767cbc6a4e7768",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:917.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:917.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.trust_history",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:917"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:917"
   },
   "kind": "engine_molecule",
   "made_of": [],

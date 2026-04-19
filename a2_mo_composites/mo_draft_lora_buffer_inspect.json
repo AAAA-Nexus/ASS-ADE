@@ -1,12 +1,12 @@
 {
-  "body": "    def lora_buffer_inspect(self, **kwargs: Any) -> dict[str, Any]:\n        \"\"\"GET /v1/lora/buffer/inspect \u2014 show pending samples in the training buffer.\"\"\"\n        return self._get_raw(\"/v1/lora/buffer/inspect\", **kwargs)\n",
-  "body_hash": "21a8ee33e7ca3978",
+  "body": "def lora_buffer_inspect(self, **kwargs: Any) -> dict[str, Any]:\n    \"\"\"GET /v1/lora/buffer/inspect \u2014 show pending samples in the training buffer.\"\"\"\n    return self._get_raw(\"/v1/lora/buffer/inspect\", **kwargs)\n",
+  "body_hash": "072fcc9f4e9c0d39",
   "body_truncated": false,
   "callers_of": [
     "_get_raw"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1437.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1437.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.lora_buffer_inspect",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1437"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1437"
   },
   "kind": "engine_molecule",
   "made_of": [],

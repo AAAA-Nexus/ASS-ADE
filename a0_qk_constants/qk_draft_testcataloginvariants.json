@@ -8,7 +8,7 @@
     "keys"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:33.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:33.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "qk.source.ass_ade.testcataloginvariants",
@@ -87,7 +87,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:33"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:33"
   },
   "kind": "invariant",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_stubs_created_list(self, tmp_path):\n        from ass_ade.map_terrain import active_terrain_gate\n        result = active_terrain_gate(\n            [\"missing_engine_alpha\"],\n            working_dir=str(tmp_path),\n            write_stubs=False,  # don't write to disk in tests\n        )\n        assert len(result.stubs_created) == 1\n        assert result.stubs_created[0].capability_name == \"missing_engine_alpha\"\n",
-  "body_hash": "791bdea20970f929",
+  "body": "def test_stubs_created_list(self, tmp_path):\n    from ass_ade.map_terrain import active_terrain_gate\n    result = active_terrain_gate(\n        [\"missing_engine_alpha\"],\n        working_dir=str(tmp_path),\n        write_stubs=False,  # don't write to disk in tests\n    )\n    assert len(result.stubs_created) == 1\n    assert result.stubs_created[0].capability_name == \"missing_engine_alpha\"\n",
+  "body_hash": "dd536074cdb797fd",
   "body_truncated": false,
   "callers_of": [
     "active_terrain_gate",
@@ -8,7 +8,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:295.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase_engines.py:295.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_stubs_created_list",
@@ -63,7 +63,7 @@
     "ass_ade.agent.orchestrator.CycleReport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:295"
+    "source": "C:/!ass-ade/tests/test_phase_engines.py:295"
   },
   "kind": "engine_molecule",
   "made_of": [

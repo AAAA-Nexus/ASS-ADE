@@ -1,13 +1,13 @@
 {
-  "body": "    def test_agent_card_name_validation(self) -> None:\n        with pytest.raises(Exception):\n            A2AAgentCard(name=\"\")\n",
-  "body_hash": "3f234ee8b5934803",
+  "body": "def test_agent_card_name_validation(self) -> None:\n    with pytest.raises(Exception):\n        A2AAgentCard(name=\"\")\n",
+  "body_hash": "ac002080754844c5",
   "body_truncated": false,
   "callers_of": [
     "raises",
     "A2AAgentCard"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:298.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_a2a.py:298.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_agent_card_name_validation",
@@ -30,7 +30,7 @@
     "httpx"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:298"
+    "source": "C:/!ass-ade/tests/test_a2a.py:298"
   },
   "kind": "pure_function",
   "made_of": [],

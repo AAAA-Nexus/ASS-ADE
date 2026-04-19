@@ -1,6 +1,6 @@
 {
-  "body": "    def test_fetch_http_error(self) -> None:\n        import httpx as _httpx\n\n        mock_response = MagicMock()\n        mock_response.status_code = 404\n        error = _httpx.HTTPStatusError(\"Not Found\", request=MagicMock(), response=mock_response)\n\n        with patch(\"ass_ade.a2a.socket.getaddrinfo\", return_value=_FAKE_ADDR_INFO):\n            with patch(\"ass_ade.a2a.httpx.get\", side_effect=error):\n                report = fetch_agent_card(\"https://bad.com\")\n                assert not report.valid\n                assert any(\"404\" in i.message for i in report.errors)\n",
-  "body_hash": "dd97f9734a0f1b32",
+  "body": "def test_fetch_http_error(self) -> None:\n    import httpx as _httpx\n\n    mock_response = MagicMock()\n    mock_response.status_code = 404\n    error = _httpx.HTTPStatusError(\"Not Found\", request=MagicMock(), response=mock_response)\n\n    with patch(\"ass_ade.a2a.socket.getaddrinfo\", return_value=_FAKE_ADDR_INFO):\n        with patch(\"ass_ade.a2a.httpx.get\", side_effect=error):\n            report = fetch_agent_card(\"https://bad.com\")\n            assert not report.valid\n            assert any(\"404\" in i.message for i in report.errors)\n",
+  "body_hash": "4eb60abad883ebe8",
   "body_truncated": false,
   "callers_of": [
     "MagicMock",
@@ -10,7 +10,7 @@
     "any"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:172.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_a2a.py:172.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_fetch_http_error",
@@ -33,7 +33,7 @@
     "httpx"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:172"
+    "source": "C:/!ass-ade/tests/test_a2a.py:172"
   },
   "kind": "pure_function",
   "made_of": [],

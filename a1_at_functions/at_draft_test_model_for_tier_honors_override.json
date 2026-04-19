@@ -1,13 +1,13 @@
 {
-  "body": "    def test_model_for_tier_honors_override(self):\n        p = get_provider(\"groq\")\n        override = {\"fast\": \"my-custom-model\"}\n        assert p.model_for_tier(\"fast\", override=override) == \"my-custom-model\"\n        # Other tiers unaffected\n        assert p.model_for_tier(\"deep\", override=override) == p.models_by_tier[\"deep\"]\n",
-  "body_hash": "db3e417346c4bdf9",
+  "body": "def test_model_for_tier_honors_override(self):\n    p = get_provider(\"groq\")\n    override = {\"fast\": \"my-custom-model\"}\n    assert p.model_for_tier(\"fast\", override=override) == \"my-custom-model\"\n    # Other tiers unaffected\n    assert p.model_for_tier(\"deep\", override=override) == p.models_by_tier[\"deep\"]\n",
+  "body_hash": "3634d48c9ed4018b",
   "body_truncated": false,
   "callers_of": [
     "get_provider",
     "model_for_tier"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:120.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:120.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_model_for_tier_honors_override",
@@ -86,7 +86,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:120"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:120"
   },
   "kind": "pure_function",
   "made_of": [],

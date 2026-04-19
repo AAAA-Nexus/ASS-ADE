@@ -12,7 +12,7 @@
     "_hybrid_config"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_new_commands.py:446.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_new_commands.py:446.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_oracle_hallucination_http_error_exits_1",
@@ -71,7 +71,7 @@
     "ass_ade.nexus.models.VrfDraw"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_new_commands.py:446"
+    "source": "C:/!ass-ade/tests/test_new_commands.py:446"
   },
   "kind": "pure_function",
   "made_of": [],

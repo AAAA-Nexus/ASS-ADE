@@ -1,12 +1,12 @@
 {
-  "body": "    def mev_status(self, bundle_id: str, **kwargs: Any) -> MevStatusResult:\n        \"\"\"GET /v1/mev/status \u2014 check MEV protection status for a bundle (MEV-101). Free.\"\"\"\n        return self._get_model(\"/v1/mev/status\", MevStatusResult, bundle_id=bundle_id, **kwargs)\n",
-  "body_hash": "ee0082aecb0f2e77",
+  "body": "def mev_status(self, bundle_id: str, **kwargs: Any) -> MevStatusResult:\n    \"\"\"GET /v1/mev/status \u2014 check MEV protection status for a bundle (MEV-101). Free.\"\"\"\n    return self._get_model(\"/v1/mev/status\", MevStatusResult, bundle_id=bundle_id, **kwargs)\n",
+  "body_hash": "0a63352466c62449",
   "body_truncated": false,
   "callers_of": [
     "_get_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1341.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1341.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.mev_status",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1341"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1341"
   },
   "kind": "engine_molecule",
   "made_of": [],

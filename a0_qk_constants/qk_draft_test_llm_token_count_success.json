@@ -1,6 +1,6 @@
 {
-  "body": "    def test_llm_token_count_success(self, tmp_path: Path, hybrid_config: Path) -> None:\n        \"\"\"Token count should return cost estimates across models.\"\"\"\n        mock_nx = MagicMock()\n        mock_nx.agent_token_budget.return_value = {\n            \"task\": \"write a test\",\n            \"estimates\": [\n                {\"model\": \"gpt-4\", \"tokens\": 142, \"cost_usd\": 0.004},\n                {\"model\": \"llama-3.1-8b\", \"tokens\": 89, \"cost_usd\": 0.001},\n            ],\n        }\n        \n        with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n            result = runner.invoke(\n                app,\n                [\"llm\", \"token-count\", \"write a test\", \"--config\", str(hybrid_config)],\n            )\n        \n        assert result.exit_code == 0\n        assert \"estimates\" in result.stdout or \"token\" in result.stdout.lower()\n",
-  "body_hash": "ef6484a8cf3e5f60",
+  "body": "def test_llm_token_count_success(self, tmp_path: Path, hybrid_config: Path) -> None:\n    \"\"\"Token count should return cost estimates across models.\"\"\"\n    mock_nx = MagicMock()\n    mock_nx.agent_token_budget.return_value = {\n        \"task\": \"write a test\",\n        \"estimates\": [\n            {\"model\": \"gpt-4\", \"tokens\": 142, \"cost_usd\": 0.004},\n            {\"model\": \"llama-3.1-8b\", \"tokens\": 89, \"cost_usd\": 0.001},\n        ],\n    }\n\n    with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n        result = runner.invoke(\n            app,\n            [\"llm\", \"token-count\", \"write a test\", \"--config\", str(hybrid_config)],\n        )\n\n    assert result.exit_code == 0\n    assert \"estimates\" in result.stdout or \"token\" in result.stdout.lower()\n",
+  "body_hash": "8f5e48e44eeb391f",
   "body_truncated": false,
   "callers_of": [
     "MagicMock",
@@ -11,7 +11,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli_happy_path.py:186.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_cli_happy_path.py:186.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "qk.source.ass_ade.test_llm_token_count_success",
@@ -36,7 +36,7 @@
     "ass_ade.pipeline.PipelineResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli_happy_path.py:186"
+    "source": "C:/!ass-ade/tests/test_cli_happy_path.py:186"
   },
   "kind": "invariant",
   "made_of": [],

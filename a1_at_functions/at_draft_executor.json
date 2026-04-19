@@ -8,7 +8,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:21.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_plan.py:21.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.executor",
@@ -22,7 +22,7 @@
     "ass_ade.tools.plan.EditPlanExecutor"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:21"
+    "source": "C:/!ass-ade/tests/test_plan.py:21"
   },
   "kind": "pure_function",
   "made_of": [],

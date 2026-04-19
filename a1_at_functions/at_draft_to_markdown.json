@@ -1,6 +1,6 @@
 {
-  "body": "    def to_markdown(self) -> str:\n        lines = [\n            f\"# RECON_REPORT\",\n            f\"\",\n            f\"**Path:** `{self.root}`  \",\n            f\"**Duration:** {self.duration_ms:.0f} ms\",\n            f\"\",\n            f\"## Summary\",\n            f\"\",\n            self.summary,\n            f\"\",\n            f\"## Scout\",\n            f\"\",\n            f\"- Files: {self.scout['total_files']} ({self.scout['total_size_kb']} KB)\",\n            f\"- Source files: {self.scout['source_files']}\",\n            f\"- Max depth: {self.scout['max_depth']}\",\n            f\"- Top-level: {', '.join(self.scout['top_level'][:10])}\",\n            f\"\",\n            \"**By extension:**\",\n        ]\n        for ext, count in list(self.scout[\"by_extension\"].items())[:8]:\n            lines.append(f\"  - `{ext}`: {count}\")\n\n        lines += [\n            f\"\",\n            f\"## Dependencies\",\n            f\"\",\n            f\"- Python files: {self.dependency['python_files']}\",\n            f\"- Unique external deps: {self.dependency['unique_external_deps']}\",\n            f\"- Max import depth: {self.dependency['max_import_depth']}\",\n            f\"- Circular deps: {'YES \u2014 ' + str(self.dependency['circular_deps'][:3]) if self.dependency['has_circular_deps'] else 'none'}\",\n            f\"\",\n            f\"## Tier Distribution\",\n            f\"\",\n        ]\n        for t, count in self.tier[\"tier_distribution\"].items():\n            examples = \", \".join(self.tier[\"tier_examples\"].get(t, [])[:2])\n            lines.append(f\"- `{t}`: {count}\" + (f\" \u2014 e.g. {examples}\" if examples else \"\"))\n\n        if self.tier[\"tier_violations\"]:\n            lines += [\"\", \"**Violations:**\"]\n            for v in self.tier[\"tier_violations\"]:\n                lines.append(f\"  - {v}\")\n\n        lines += [\n            f\"\",\n            f\"## Tests\",\n            f\"\",\n            f\"- Test files: {self.test['test_files']}\",\n            f\"- Test functions: {self.test['test_functions']}\",\n            f\"- Coverage ratio: {self.test['coverage_ratio']}\",\n            f\"- Frameworks: {', '.join(self.test['frameworks']) or 'none detected'}\",\n            f\"- Untested modules: {self.test['untested_count']}\",\n        ]\n        if self.test[\"untested_modules\"]:\n            lines.append(\"\")\n            lines.append(\"**Untested (sample):**\")\n            for m in self.test[\"untested_modules\"][:8]:\n                lines.append(f\"  - `{m}`\")\n\n        lines += [\n            f\"\",\n            f\"## Documentation\",\n            f\"\",\n            f\"- README: {'yes' if self.doc['has_readme'] else 'MISSING'}\",\n            f\"- Doc files: {self.doc['doc_files']}\",\n            f\"- Public callables: {self.doc['total_public_callables']}\",\n            f\"- Documented: {self.doc['documented_callables']} ({self.doc['doc_coverage']:.0%})\",\n        ]\n        if self.doc[\"undocumented_samples\"]:\n            lines.append(\"\")\n            lines.append(\"**Missing docstrings (sample):**\")\n            for u in self.doc[\"undocumented_samples\"]:\n                lines.append(f\"  - `{u}`\")\n\n        if self.recommendations:\n            lines += [\"\", \"## Recommendations\", \"\"]\n            for i, rec in enumerate(self.recommendations, 1):\n                lines.append(f\"{i}. {rec}\")\n\n        if self.next_action:\n            lines += [\"\", f\"**Next action:** {self.next_action}\"]\n\n        return \"\\n\".join(lines) + \"\\n\"\n",
-  "body_hash": "80f53131ba55413e",
+  "body": "def to_markdown(self) -> str:\n    lines = [\n        f\"# RECON_REPORT\",\n        f\"\",\n        f\"**Path:** `{self.root}`  \",\n        f\"**Duration:** {self.duration_ms:.0f} ms\",\n        f\"\",\n        f\"## Summary\",\n        f\"\",\n        self.summary,\n        f\"\",\n        f\"## Scout\",\n        f\"\",\n        f\"- Files: {self.scout['total_files']} ({self.scout['total_size_kb']} KB)\",\n        f\"- Source files: {self.scout['source_files']}\",\n        f\"- Max depth: {self.scout['max_depth']}\",\n        f\"- Top-level: {', '.join(self.scout['top_level'][:10])}\",\n        f\"\",\n        \"**By extension:**\",\n    ]\n    for ext, count in list(self.scout[\"by_extension\"].items())[:8]:\n        lines.append(f\"  - `{ext}`: {count}\")\n\n    lines += [\n        f\"\",\n        f\"## Dependencies\",\n        f\"\",\n        f\"- Python files: {self.dependency['python_files']}\",\n        f\"- Unique external deps: {self.dependency['unique_external_deps']}\",\n        f\"- Max import depth: {self.dependency['max_import_depth']}\",\n        f\"- Circular deps: {'YES \u2014 ' + str(self.dependency['circular_deps'][:3]) if self.dependency['has_circular_deps'] else 'none'}\",\n        f\"\",\n        f\"## Tier Distribution\",\n        f\"\",\n    ]\n    for t, count in self.tier[\"tier_distribution\"].items():\n        examples = \", \".join(self.tier[\"tier_examples\"].get(t, [])[:2])\n        lines.append(f\"- `{t}`: {count}\" + (f\" \u2014 e.g. {examples}\" if examples else \"\"))\n\n    if self.tier[\"tier_violations\"]:\n        lines += [\"\", \"**Violations:**\"]\n        for v in self.tier[\"tier_violations\"]:\n            lines.append(f\"  - {v}\")\n\n    lines += [\n        f\"\",\n        f\"## Tests\",\n        f\"\",\n        f\"- Test files: {self.test['test_files']}\",\n        f\"- Test functions: {self.test['test_functions']}\",\n        f\"- Coverage ratio: {self.test['coverage_ratio']}\",\n        f\"- Frameworks: {', '.join(self.test['frameworks']) or 'none detected'}\",\n        f\"- Untested modules: {self.test['untested_count']}\",\n    ]\n    if self.test[\"untested_modules\"]:\n        lines.append(\"\")\n        lines.append(\"**Untested (sample):**\")\n        for m in self.test[\"untested_modules\"][:8]:\n            lines.append(f\"  - `{m}`\")\n\n    lines += [\n        f\"\",\n        f\"## Documentation\",\n        f\"\",\n        f\"- README: {'yes' if self.doc['has_readme'] else 'MISSING'}\",\n        f\"- Doc files: {self.doc['doc_files']}\",\n        f\"- Public callables: {self.doc['total_public_callables']}\",\n        f\"- Documented: {self.doc['documented_callables']} ({self.doc['doc_coverage']:.0%})\",\n    ]\n    if self.doc[\"undocumented_samples\"]:\n        lines.append(\"\")\n        lines.append(\"**Missing docstrings (sample):**\")\n        for u in self.doc[\"undocumented_samples\"]:\n            lines.append(f\"  - `{u}`\")\n\n    if self.recommendations:\n        lines += [\"\", \"## Recommendations\", \"\"]\n        for i, rec in enumerate(self.recommendations, 1):\n            lines.append(f\"{i}. {rec}\")\n\n    if self.next_action:\n        lines += [\"\", f\"**Next action:** {self.next_action}\"]\n\n    return \"\\n\".join(lines) + \"\\n\"\n",
+  "body_hash": "6f69d55c8281c5a9",
   "body_truncated": false,
   "callers_of": [
     "items",
@@ -12,13 +12,30 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_reconreport.py:46.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/recon.py:724.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.to_markdown",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "concurrent.futures",
+    "os",
+    "re",
+    "time",
+    "collections.defaultdict",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Literal",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "ass_ade.local.repo.DEFAULT_IGNORED_DIRS",
+    "ass_ade.local.repo.summarize_repo"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_reconreport.py:46"
+    "source": "C:/!ass-ade/src/ass_ade/recon.py:724"
   },
   "kind": "pure_function",
   "made_of": [],

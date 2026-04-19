@@ -1,6 +1,6 @@
 {
-  "body": "    def test_progress_token_extracted_from_meta(self, tmp_path) -> None:\n        \"\"\"_meta.progressToken is accepted in tools/call params without error.\"\"\"\n        # Create the server rooted at tmp_path so the file is within working dir.\n        server = MCPServer(str(tmp_path))\n        _initialize_server(server)\n        # read_file is a builtin tool; it runs synchronously without progress,\n        # but the server must accept the _meta field without error.\n        test_file = tmp_path / \"meta_test.txt\"\n        test_file.write_text(\"hello\")\n        response = server._handle({\n            \"jsonrpc\": \"2.0\",\n            \"id\": 1,\n            \"method\": \"tools/call\",\n            \"params\": {\n                \"name\": \"read_file\",\n                \"arguments\": {\"path\": \"meta_test.txt\"},\n                \"_meta\": {\"progressToken\": \"tok-1\"},\n            },\n        })\n        assert response is not None\n        assert response[\"result\"][\"isError\"] is False\n",
-  "body_hash": "8d0468507b732835",
+  "body": "def test_progress_token_extracted_from_meta(self, tmp_path) -> None:\n    \"\"\"_meta.progressToken is accepted in tools/call params without error.\"\"\"\n    # Create the server rooted at tmp_path so the file is within working dir.\n    server = MCPServer(str(tmp_path))\n    _initialize_server(server)\n    # read_file is a builtin tool; it runs synchronously without progress,\n    # but the server must accept the _meta field without error.\n    test_file = tmp_path / \"meta_test.txt\"\n    test_file.write_text(\"hello\")\n    response = server._handle({\n        \"jsonrpc\": \"2.0\",\n        \"id\": 1,\n        \"method\": \"tools/call\",\n        \"params\": {\n            \"name\": \"read_file\",\n            \"arguments\": {\"path\": \"meta_test.txt\"},\n            \"_meta\": {\"progressToken\": \"tok-1\"},\n        },\n    })\n    assert response is not None\n    assert response[\"result\"][\"isError\"] is False\n",
+  "body_hash": "7853c7214ba059de",
   "body_truncated": false,
   "callers_of": [
     "MCPServer",
@@ -10,13 +10,22 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_testmcp202511features.py:103.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_extended.py:363.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "qk.source.ass_ade.test_progress_token_extracted_from_meta",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.mcp.server._WORKFLOW_TOOLS",
+    "ass_ade.mcp.server.MCPServer",
+    "httpx"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_testmcp202511features.py:103"
+    "source": "C:/!ass-ade/tests/test_mcp_extended.py:363"
   },
   "kind": "invariant",
   "made_of": [],

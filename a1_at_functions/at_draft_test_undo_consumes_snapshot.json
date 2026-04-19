@@ -1,6 +1,6 @@
 {
-  "body": "    def test_undo_consumes_snapshot(self, history: FileHistory, tmp_workspace: Path):\n        history.record(\"hello.py\", \"v1\")\n        history.record(\"hello.py\", \"v2\")\n        assert history.depth(\"hello.py\") == 2\n\n        history.undo(\"hello.py\")\n        assert history.depth(\"hello.py\") == 1\n",
-  "body_hash": "1dddf013a749b0a0",
+  "body": "def test_undo_consumes_snapshot(self, history: FileHistory, tmp_workspace: Path):\n    history.record(\"hello.py\", \"v1\")\n    history.record(\"hello.py\", \"v2\")\n    assert history.depth(\"hello.py\") == 2\n\n    history.undo(\"hello.py\")\n    assert history.depth(\"hello.py\") == 1\n",
+  "body_hash": "055ff5cefef5a696",
   "body_truncated": false,
   "callers_of": [
     "record",
@@ -8,13 +8,18 @@
     "depth"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testfilehistory.py:41.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_history.py:61.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_undo_consumes_snapshot",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.tools.history.FileHistory"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testfilehistory.py:41"
+    "source": "C:/!ass-ade/tests/test_history.py:61"
   },
   "kind": "pure_function",
   "made_of": [],

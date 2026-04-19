@@ -31,7 +31,7 @@
     "items"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/tca.py:42.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/tca.py:42.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.tcaengine",
@@ -46,10 +46,14 @@
     "typing.Any"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/tca.py:42"
+    "source": "C:/!ass-ade/src/ass_ade/agent/tca.py:42"
   },
   "kind": "engine_molecule",
-  "made_of": [],
+  "made_of": [
+    "at.source.ass_ade.get_stale_files",
+    "at.source.ass_ade.check_freshness",
+    "at.source.ass_ade.get_gaps"
+  ],
   "name": "TCAEngine",
   "product_categories": [
     "COR"

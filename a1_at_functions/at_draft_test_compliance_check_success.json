@@ -1,6 +1,6 @@
 {
-  "body": "    def test_compliance_check_success(self, tmp_path: Path, hybrid_config: Path) -> None:\n        \"\"\"Compliance check should evaluate system against multiple frameworks.\"\"\"\n        mock_nx = MagicMock()\n        mock_nx.compliance_check.return_value = ComplianceResult(\n            system_name=\"MyAI\",\n            frameworks=[\"EU AI Act\", \"ISO 42001\", \"NIST RMF\"],\n            results=[\n                {\"framework\": \"EU AI Act\", \"status\": \"compliant\", \"score\": 0.92},\n                {\"framework\": \"ISO 42001\", \"status\": \"partial\", \"score\": 0.78},\n            ],\n            overall_verdict=\"COMPLIANT_WITH_MITIGATIONS\",\n        )\n        \n        payload_file = tmp_path / \"system.json\"\n        payload_file.write_text(json.dumps({\"name\": \"MyAI\"}), encoding=\"utf-8\")\n        \n        with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n            result = runner.invoke(\n                app,\n                [\"compliance\", \"check\", str(payload_file), \"--config\", str(hybrid_config)],\n            )\n        \n        assert result.exit_code == 0\n",
-  "body_hash": "fa910776ee853a71",
+  "body": "def test_compliance_check_success(self, tmp_path: Path, hybrid_config: Path) -> None:\n    \"\"\"Compliance check should evaluate system against multiple frameworks.\"\"\"\n    mock_nx = MagicMock()\n    mock_nx.compliance_check.return_value = ComplianceResult(\n        system_name=\"MyAI\",\n        frameworks=[\"EU AI Act\", \"ISO 42001\", \"NIST RMF\"],\n        results=[\n            {\"framework\": \"EU AI Act\", \"status\": \"compliant\", \"score\": 0.92},\n            {\"framework\": \"ISO 42001\", \"status\": \"partial\", \"score\": 0.78},\n        ],\n        overall_verdict=\"COMPLIANT_WITH_MITIGATIONS\",\n    )\n\n    payload_file = tmp_path / \"system.json\"\n    payload_file.write_text(json.dumps({\"name\": \"MyAI\"}), encoding=\"utf-8\")\n\n    with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n        result = runner.invoke(\n            app,\n            [\"compliance\", \"check\", str(payload_file), \"--config\", str(hybrid_config)],\n        )\n\n    assert result.exit_code == 0\n",
+  "body_hash": "4d96ef840601c8ce",
   "body_truncated": false,
   "callers_of": [
     "MagicMock",
@@ -13,7 +13,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli_happy_path.py:284.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_cli_happy_path.py:284.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_compliance_check_success",
@@ -38,7 +38,7 @@
     "ass_ade.pipeline.PipelineResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli_happy_path.py:284"
+    "source": "C:/!ass-ade/tests/test_cli_happy_path.py:284"
   },
   "kind": "pure_function",
   "made_of": [],

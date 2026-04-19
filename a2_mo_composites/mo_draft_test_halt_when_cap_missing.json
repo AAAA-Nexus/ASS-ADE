@@ -1,13 +1,13 @@
 {
-  "body": "    def test_halt_when_cap_missing(self, tmp_path):\n        from ass_ade.map_terrain import active_terrain_gate\n        result = active_terrain_gate(\n            [\"nonexistent_capability_xyz_abc\"],\n            working_dir=str(tmp_path),\n            write_stubs=False,\n        )\n        assert result.verdict == \"HALT_AND_INVENT\"\n        assert \"nonexistent_capability_xyz_abc\" in result.capabilities_missing\n",
-  "body_hash": "07a208f23901f9b7",
+  "body": "def test_halt_when_cap_missing(self, tmp_path):\n    from ass_ade.map_terrain import active_terrain_gate\n    result = active_terrain_gate(\n        [\"nonexistent_capability_xyz_abc\"],\n        working_dir=str(tmp_path),\n        write_stubs=False,\n    )\n    assert result.verdict == \"HALT_AND_INVENT\"\n    assert \"nonexistent_capability_xyz_abc\" in result.capabilities_missing\n",
+  "body_hash": "aefee14aea788113",
   "body_truncated": false,
   "callers_of": [
     "active_terrain_gate",
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:285.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase_engines.py:285.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_halt_when_cap_missing",
@@ -62,7 +62,7 @@
     "ass_ade.agent.orchestrator.CycleReport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:285"
+    "source": "C:/!ass-ade/tests/test_phase_engines.py:285"
   },
   "kind": "engine_molecule",
   "made_of": [

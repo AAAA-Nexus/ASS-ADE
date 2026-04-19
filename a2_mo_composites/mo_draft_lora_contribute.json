@@ -1,13 +1,13 @@
 {
-  "body": "    def lora_contribute(\n        self,\n        samples: list[dict[str, Any]],\n        *,\n        agent_id: str | None = None,\n        trust_floor_threshold: float | None = None,\n        **kwargs: Any,\n    ) -> dict[str, Any]:\n        \"\"\"POST /v1/lora/contribute \u2014 submit batch of privacy-scrubbed code fixes.\n\n        Each sample: {digest, bad, good, lint_delta, language, size, ts}.\n        Returns: {accepted, rejected, batch_size, agent_id, tau_threshold_used, reject_summary}.\n        \"\"\"\n        payload: dict[str, Any] = {\"samples\": samples}\n        if agent_id is not None:\n            payload[\"agent_id\"] = agent_id\n        if trust_floor_threshold is not None:\n            payload[\"trust_floor_threshold\"] = trust_floor_threshold\n        payload.update(kwargs)\n        return self._post_raw(\"/v1/lora/contribute\", payload)\n",
-  "body_hash": "fb25439de3835fae",
+  "body": "def lora_contribute(\n    self,\n    samples: list[dict[str, Any]],\n    *,\n    agent_id: str | None = None,\n    trust_floor_threshold: float | None = None,\n    **kwargs: Any,\n) -> dict[str, Any]:\n    \"\"\"POST /v1/lora/contribute \u2014 submit batch of privacy-scrubbed code fixes.\n\n    Each sample: {digest, bad, good, lint_delta, language, size, ts}.\n    Returns: {accepted, rejected, batch_size, agent_id, tau_threshold_used, reject_summary}.\n    \"\"\"\n    payload: dict[str, Any] = {\"samples\": samples}\n    if agent_id is not None:\n        payload[\"agent_id\"] = agent_id\n    if trust_floor_threshold is not None:\n        payload[\"trust_floor_threshold\"] = trust_floor_threshold\n    payload.update(kwargs)\n    return self._post_raw(\"/v1/lora/contribute\", payload)\n",
+  "body_hash": "d718e4114936e8bc",
   "body_truncated": false,
   "callers_of": [
     "update",
     "_post_raw"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1369.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1369.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.lora_contribute",
@@ -161,7 +161,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1369"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1369"
   },
   "kind": "engine_molecule",
   "made_of": [

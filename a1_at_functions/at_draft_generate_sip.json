@@ -1,19 +1,24 @@
 {
-  "body": "    def generate_sip(self, top: list[Candidate]) -> SIP:\n        head = top[:3]\n        summary = \"; \".join(f\"{c.id}@{c.fitness:.2f}\" for c in head)\n        return SIP(top=head, summary=summary)\n",
-  "body_hash": "51477e9db800b08c",
+  "body": "def generate_sip(self, top: list[Candidate]) -> SIP:\n    head = top[:3]\n    summary = \"; \".join(f\"{c.id}@{c.fitness:.2f}\" for c in head)\n    return SIP(top=head, summary=summary)\n",
+  "body_hash": "53d03851c0397fd2",
   "body_truncated": false,
   "callers_of": [
     "join",
     "SIP"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_ide.py:34.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/ide.py:51.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.generate_sip",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_ide.py:34"
+    "source": "C:/!ass-ade/src/ass_ade/agent/ide.py:51"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,12 +1,19 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_test_map_terrain_sees_extended_mcp_workflow_tools.py:5
+# Extracted from C:/!ass-ade/tests/test_map_terrain.py:106
 # Component id: og.source.ass_ade.test_map_terrain_sees_extended_mcp_workflow_tools
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_map_terrain_sees_extended_mcp_workflow_tools(tmp_path: Path) -> None:
     result = map_terrain(
         task_description="Store and query context through MCP.",
         required_capabilities={
-            "tools": ["phase0_recon", "context_memory_store", "context_memory_query", "map_terrain"],
+            "tools": [
+                "phase0_recon",
+                "context_memory_store",
+                "context_memory_query",
+                "map_terrain",
+            ],
         },
         working_dir=tmp_path,
     )

@@ -1,12 +1,12 @@
 {
-  "body": "    def test_new_artifact(self):\n        version, change_type = assign_version(\"at.foo\", \"\", \"python\", {})\n        assert version == INITIAL_VERSION\n        assert change_type == \"new\"\n",
-  "body_hash": "84319810cc0e1ae5",
+  "body": "def test_new_artifact(self):\n    version, change_type = assign_version(\"at.foo\", \"\", \"python\", {})\n    assert version == INITIAL_VERSION\n    assert change_type == \"new\"\n",
+  "body_hash": "e3981891e394a23c",
   "body_truncated": false,
   "callers_of": [
     "assign_version"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_version_tracker.py:120.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_version_tracker.py:120.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_new_artifact",
@@ -27,7 +27,7 @@
     "ass_ade.engine.rebuild.version_tracker.write_tier_version_file"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_version_tracker.py:120"
+    "source": "C:/!ass-ade/tests/test_version_tracker.py:120"
   },
   "kind": "pure_function",
   "made_of": [],

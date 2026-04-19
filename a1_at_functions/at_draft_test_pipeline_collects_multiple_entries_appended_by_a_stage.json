@@ -1,6 +1,6 @@
 {
-  "body": "    def test_pipeline_collects_multiple_entries_appended_by_a_stage(self):\n        gates = QualityGates(_mock_nexus())\n\n        original_scan = gates.scan_prompt\n\n        def scan_with_extra(text: str):\n            result = original_scan(text)\n            gates._gate_log.append(GateResult(gate=\"scan_extra\", passed=True, confidence=1.0))\n            return result\n\n        gates.scan_prompt = scan_with_extra  # type: ignore[method-assign]\n        results = gates.run_pipeline(prompt=\"safe\", output=\"safe\")\n\n        names = [r.gate for r in results]\n        assert \"prompt_scan\" in names\n        assert \"scan_extra\" in names\n",
-  "body_hash": "4d983d3cef1bc8fe",
+  "body": "def test_pipeline_collects_multiple_entries_appended_by_a_stage(self):\n    gates = QualityGates(_mock_nexus())\n\n    original_scan = gates.scan_prompt\n\n    def scan_with_extra(text: str):\n        result = original_scan(text)\n        gates._gate_log.append(GateResult(gate=\"scan_extra\", passed=True, confidence=1.0))\n        return result\n\n    gates.scan_prompt = scan_with_extra  # type: ignore[method-assign]\n    results = gates.run_pipeline(prompt=\"safe\", output=\"safe\")\n\n    names = [r.gate for r in results]\n    assert \"prompt_scan\" in names\n    assert \"scan_extra\" in names\n",
+  "body_hash": "84d3674537b14add",
   "body_truncated": false,
   "callers_of": [
     "QualityGates",
@@ -11,7 +11,7 @@
     "GateResult"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:163.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_gates.py:163.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_pipeline_collects_multiple_entries_appended_by_a_stage",
@@ -23,7 +23,7 @@
     "ass_ade.agent.gates.QualityGates"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:163"
+    "source": "C:/!ass-ade/tests/test_gates.py:163"
   },
   "kind": "pure_function",
   "made_of": [],

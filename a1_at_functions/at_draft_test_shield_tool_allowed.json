@@ -1,6 +1,6 @@
 {
-  "body": "    def test_shield_tool_allowed(self):\n        gates = QualityGates(_mock_nexus())\n        result = gates.shield_tool(\"read_file\", {\"path\": \"test.py\"})\n        assert result is not None\n        assert result[\"blocked\"] is False\n",
-  "body_hash": "ae1647a8139f76ec",
+  "body": "def test_shield_tool_allowed(self):\n    gates = QualityGates(_mock_nexus())\n    result = gates.shield_tool(\"read_file\", {\"path\": \"test.py\"})\n    assert result is not None\n    assert result[\"blocked\"] is False\n",
+  "body_hash": "aec1e92416f1bb03",
   "body_truncated": false,
   "callers_of": [
     "QualityGates",
@@ -8,13 +8,19 @@
     "_mock_nexus"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testqualitygates.py:38.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_gates.py:83.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_shield_tool_allowed",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "unittest.mock.MagicMock",
+    "ass_ade.agent.gates.GateResult",
+    "ass_ade.agent.gates.QualityGates"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testqualitygates.py:38"
+    "source": "C:/!ass-ade/tests/test_gates.py:83"
   },
   "kind": "pure_function",
   "made_of": [],

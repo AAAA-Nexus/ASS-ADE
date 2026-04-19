@@ -11,13 +11,23 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_probe.py:5.",
+  "description": "Draft candidate from C:/!ass-ade/scripts/probe_endpoints.py:66.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.probe",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "argparse",
+    "os",
+    "sys",
+    "time",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Callable",
+    "ass_ade.nexus.client.NexusClient"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_probe.py:5"
+    "source": "C:/!ass-ade/scripts/probe_endpoints.py:66"
   },
   "kind": "pure_function",
   "made_of": [],

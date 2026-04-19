@@ -1,6 +1,6 @@
 {
-  "body": "    def test_pipeline_status_workflow_found(self, tmp_path: Path) -> None:\n        \"\"\"Pipeline status should display workflow status when file exists.\"\"\"\n        # Create a workflows directory with a sample workflow file\n        workflow_dir = tmp_path / \".ass-ade\" / \"workflows\"\n        workflow_dir.mkdir(parents=True, exist_ok=True)\n        \n        workflow_data = {\n            \"name\": \"trust-gate-agent-001\",\n            \"passed\": True,\n            \"duration_ms\": 1234.5,\n            \"summary\": \"Trust gate: ALLOW verdict\"\n        }\n        workflow_file = workflow_dir / \"trust-gate-20250417-120000.json\"\n        workflow_file.write_text(json.dumps(workflow_data), encoding=\"utf-8\")\n        \n        # Mock the working directory to use tmp_path\n        with patch(\"pathlib.Path.cwd\", return_value=tmp_path):\n            result = runner.invoke(\n                app,\n                [\"pipeline\", \"status\", \"trust-gate-20250417-120000.json\"],\n            )\n        \n        # Status command should succeed and output JSON\n        assert result.exit_code == 0, f\"Status failed:\\n{result.stdout}\"\n        assert \"trust-gate-agent-001\" in result.stdout\n",
-  "body_hash": "4db47e45304e8ebb",
+  "body": "def test_pipeline_status_workflow_found(self, tmp_path: Path) -> None:\n    \"\"\"Pipeline status should display workflow status when file exists.\"\"\"\n    # Create a workflows directory with a sample workflow file\n    workflow_dir = tmp_path / \".ass-ade\" / \"workflows\"\n    workflow_dir.mkdir(parents=True, exist_ok=True)\n\n    workflow_data = {\n        \"name\": \"trust-gate-agent-001\",\n        \"passed\": True,\n        \"duration_ms\": 1234.5,\n        \"summary\": \"Trust gate: ALLOW verdict\"\n    }\n    workflow_file = workflow_dir / \"trust-gate-20250417-120000.json\"\n    workflow_file.write_text(json.dumps(workflow_data), encoding=\"utf-8\")\n\n    # Mock the working directory to use tmp_path\n    with patch(\"pathlib.Path.cwd\", return_value=tmp_path):\n        result = runner.invoke(\n            app,\n            [\"pipeline\", \"status\", \"trust-gate-20250417-120000.json\"],\n        )\n\n    # Status command should succeed and output JSON\n    assert result.exit_code == 0, f\"Status failed:\\n{result.stdout}\"\n    assert \"trust-gate-agent-001\" in result.stdout\n",
+  "body_hash": "803f35b65f7206cd",
   "body_truncated": false,
   "callers_of": [
     "mkdir",
@@ -10,13 +10,32 @@
     "invoke"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpipelinerun.py:147.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_cli_happy_path.py:474.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "og.source.ass_ade.test_pipeline_status_workflow_found",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.nexus.models.AgentPlan",
+    "ass_ade.nexus.models.ComplianceResult",
+    "ass_ade.nexus.models.FormatConversion",
+    "ass_ade.nexus.models.InferenceResponse",
+    "ass_ade.nexus.models.IntentClassification",
+    "ass_ade.nexus.models.RatchetSession",
+    "ass_ade.nexus.models.TrustScore",
+    "ass_ade.pipeline.PipelineResult"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpipelinerun.py:147"
+    "source": "C:/!ass-ade/tests/test_cli_happy_path.py:474"
   },
   "kind": "product_organism",
   "made_of": [

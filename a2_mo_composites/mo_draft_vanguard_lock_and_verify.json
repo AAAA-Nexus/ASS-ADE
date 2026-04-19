@@ -1,13 +1,13 @@
 {
-  "body": "    def vanguard_lock_and_verify(\n        self,\n        payer_agent_id: str | None = None,\n        payee_agent_id: str | None = None,\n        amount_micro_usdc: int | None = None,\n        *,\n        agent_id: str | None = None,\n        amount_usdc: float | None = None,\n        **kwargs: Any,\n    ) -> VanguardEscrowResult:\n        \"\"\"POST /v1/vanguard/escrow/lock-and-verify \u2014 lock + verify escrow (Vanguard). $0.040/call\"\"\"\n        resolved_payer = payer_agent_id or agent_id or \"\"\n        resolved_payee = payee_agent_id or agent_id or \"\"\n        resolved_amount = amount_micro_usdc\n        if resolved_amount is None:\n            resolved_amount = int((amount_usdc or 0.0) * 1_000_000)\n        return self._post_model(\"/v1/vanguard/escrow/lock-and-verify\", VanguardEscrowResult, {\n            \"payer_agent_id\": resolved_payer,\n            \"payee_agent_id\": resolved_payee,\n            \"amount_micro_usdc\": resolved_amount,\n            **kwargs,\n        })\n",
-  "body_hash": "f63035dd02d3df27",
+  "body": "def vanguard_lock_and_verify(\n    self,\n    payer_agent_id: str | None = None,\n    payee_agent_id: str | None = None,\n    amount_micro_usdc: int | None = None,\n    *,\n    agent_id: str | None = None,\n    amount_usdc: float | None = None,\n    **kwargs: Any,\n) -> VanguardEscrowResult:\n    \"\"\"POST /v1/vanguard/escrow/lock-and-verify \u2014 lock + verify escrow (Vanguard). $0.040/call\"\"\"\n    resolved_payer = payer_agent_id or agent_id or \"\"\n    resolved_payee = payee_agent_id or agent_id or \"\"\n    resolved_amount = amount_micro_usdc\n    if resolved_amount is None:\n        resolved_amount = int((amount_usdc or 0.0) * 1_000_000)\n    return self._post_model(\"/v1/vanguard/escrow/lock-and-verify\", VanguardEscrowResult, {\n        \"payer_agent_id\": resolved_payer,\n        \"payee_agent_id\": resolved_payee,\n        \"amount_micro_usdc\": resolved_amount,\n        **kwargs,\n    })\n",
+  "body_hash": "785b148c35ac6226",
   "body_truncated": false,
   "callers_of": [
     "_post_model",
     "int"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1312.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1312.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.vanguard_lock_and_verify",
@@ -161,7 +161,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1312"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1312"
   },
   "kind": "engine_molecule",
   "made_of": [],

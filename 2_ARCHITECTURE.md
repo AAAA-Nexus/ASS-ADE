@@ -17,12 +17,12 @@ No tier may import from a tier above it.
 
 | Tier | Count |
 |------|-------|
-| `a0_qk_constants` | 106 |
-| `a1_at_functions` | 1330 |
+| `a0_qk_constants` | 123 |
+| `a1_at_functions` | 1582 |
 | `a2_mo_composites` | 855 |
 | `a3_og_features` | 82 |
-| `a4_sy_orchestration` | 216 |
-| **Total** | **2589** |
+| `a4_sy_orchestration` | 218 |
+| **Total** | **2860** |
 
 ## Dependency graph
 
@@ -37,7 +37,7 @@ No tier may import from a tier above it.
 | D_max (max depth) | ? / 23 | YES |
 | epsilon_KL (dup fraction) | 0.00e+00 | YES |
 | tau_trust (pass rate) | 1820/1823 | YES |
-| G_18 (structural parity) | 2589 components | — |
+| G_18 (structural parity) | 2860 components | — |
 
 ## Schema
 

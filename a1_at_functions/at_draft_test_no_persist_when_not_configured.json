@@ -1,6 +1,6 @@
 {
-  "body": "    def test_no_persist_when_not_configured(self, tmp_path: Path) -> None:\n        pipe = Pipeline(\"nopersist\")\n        pipe.add(\"s1\", pass_step)\n        pipe.run()\n        # No files created anywhere \u2014 this is just a sanity check\n        assert not list(tmp_path.glob(\"*.json\"))\n",
-  "body_hash": "31b2b28d2188c625",
+  "body": "def test_no_persist_when_not_configured(self, tmp_path: Path) -> None:\n    pipe = Pipeline(\"nopersist\")\n    pipe.add(\"s1\", pass_step)\n    pipe.run()\n    # No files created anywhere \u2014 this is just a sanity check\n    assert not list(tmp_path.glob(\"*.json\"))\n",
+  "body_hash": "23bc59635684c5dc",
   "body_truncated": false,
   "callers_of": [
     "Pipeline",
@@ -10,7 +10,7 @@
     "glob"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:207.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_pipeline.py:207.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_no_persist_when_not_configured",
@@ -25,7 +25,7 @@
     "ass_ade.pipeline.StepStatus"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:207"
+    "source": "C:/!ass-ade/tests/test_pipeline.py:207"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,12 +1,12 @@
 {
-  "body": "    def test_all_profiles_have_all_three_tiers(self):\n        for name, profile in FREE_PROVIDERS.items():\n            for tier in ALL_TIERS:\n                assert tier in profile.models_by_tier, f\"{name} missing {tier} tier\"\n                assert profile.models_by_tier[tier], f\"{name} {tier} is empty\"\n",
-  "body_hash": "5204d809f44af310",
+  "body": "def test_all_profiles_have_all_three_tiers(self):\n    for name, profile in FREE_PROVIDERS.items():\n        for tier in ALL_TIERS:\n            assert tier in profile.models_by_tier, f\"{name} missing {tier} tier\"\n            assert profile.models_by_tier[tier], f\"{name} {tier} is empty\"\n",
+  "body_hash": "c195d9544b284875",
   "body_truncated": false,
   "callers_of": [
     "items"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:44.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:44.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_all_profiles_have_all_three_tiers",
@@ -85,7 +85,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:44"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:44"
   },
   "kind": "pure_function",
   "made_of": [],

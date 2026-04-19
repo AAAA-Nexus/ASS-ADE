@@ -1,19 +1,27 @@
 {
-  "body": "    def test_zero_raises(self) -> None:\n        with pytest.raises(ValueError, match=\"positive\"):\n            validate_usdc_amount(0.0)\n",
-  "body_hash": "6981f1834fc81860",
+  "body": "def test_zero_raises(self) -> None:\n    with pytest.raises(ValueError, match=\"positive\"):\n        validate_usdc_amount(0.0)\n",
+  "body_hash": "8edefe97d838e2cc",
   "body_truncated": false,
   "callers_of": [
     "raises",
     "validate_usdc_amount"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateusdcamount.py:10.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_validation.py:75.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_zero_raises",
-  "imports": [],
+  "imports": [
+    "pytest",
+    "ass_ade.nexus.validation._is_private_host",
+    "ass_ade.nexus.validation.validate_agent_id",
+    "ass_ade.nexus.validation.validate_prompt",
+    "ass_ade.nexus.validation.validate_session_id",
+    "ass_ade.nexus.validation.validate_url",
+    "ass_ade.nexus.validation.validate_usdc_amount"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateusdcamount.py:10"
+    "source": "C:/!ass-ade/tests/test_validation.py:75"
   },
   "kind": "pure_function",
   "made_of": [],

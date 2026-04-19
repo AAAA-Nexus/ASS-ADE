@@ -12,7 +12,7 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:185.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_tools_builtin.py:185.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "og.source.ass_ade.testregistry",
@@ -31,7 +31,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:185"
+    "source": "C:/!ass-ade/tests/test_tools_builtin.py:185"
   },
   "kind": "product_organism",
   "made_of": [],

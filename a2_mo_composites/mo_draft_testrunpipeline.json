@@ -14,7 +14,7 @@
     "GateResult"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:145.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_gates.py:145.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.testrunpipeline",
@@ -26,7 +26,7 @@
     "ass_ade.agent.gates.QualityGates"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:145"
+    "source": "C:/!ass-ade/tests/test_gates.py:145"
   },
   "kind": "engine_molecule",
   "made_of": [

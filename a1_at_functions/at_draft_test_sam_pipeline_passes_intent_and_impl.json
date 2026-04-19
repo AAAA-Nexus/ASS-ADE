@@ -1,6 +1,6 @@
 {
-  "body": "    def test_sam_pipeline_passes_intent_and_impl(self):\n        nexus = _make_nexus_mock()\n        gates = QualityGates(nexus, config={})\n        with patch(\"ass_ade.context_memory.vector_embed\", return_value=[0.5, 0.5, 0.5]):\n            results = gates.run_pipeline(\n                prompt=\"add input validation\",\n                output=\"def f(x): assert x\",\n                intent=\"add input validation\",\n                impl=\"def f(x): assert x\",\n            )\n        sam_result = next((r for r in results if r.gate == \"sam\"), None)\n        assert sam_result is not None\n        assert sam_result.details is not None\n        assert \"trs\" in sam_result.details\n        assert \"g23\" in sam_result.details\n",
-  "body_hash": "8a5fc234370d57ae",
+  "body": "def test_sam_pipeline_passes_intent_and_impl(self):\n    nexus = _make_nexus_mock()\n    gates = QualityGates(nexus, config={})\n    with patch(\"ass_ade.context_memory.vector_embed\", return_value=[0.5, 0.5, 0.5]):\n        results = gates.run_pipeline(\n            prompt=\"add input validation\",\n            output=\"def f(x): assert x\",\n            intent=\"add input validation\",\n            impl=\"def f(x): assert x\",\n        )\n    sam_result = next((r for r in results if r.gate == \"sam\"), None)\n    assert sam_result is not None\n    assert sam_result.details is not None\n    assert \"trs\" in sam_result.details\n    assert \"g23\" in sam_result.details\n",
+  "body_hash": "180a035c38601e1f",
   "body_truncated": false,
   "callers_of": [
     "_make_nexus_mock",
@@ -10,13 +10,33 @@
     "run_pipeline"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testsaminpipeline.py:16.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase1_integration.py:63.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_sam_pipeline_passes_intent_and_impl",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.agent.loop.D_MAX",
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.agent.orchestrator.EngineOrchestrator",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.tools.registry.ToolRegistry",
+    "ass_ade.agent.bas._SEVERITY",
+    "ass_ade.commands.agent._render_phase1_header",
+    "io.StringIO",
+    "rich.console.Console",
+    "ass_ade.commands.agent._render_phase1_header",
+    "io.StringIO",
+    "rich.console.Console"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testsaminpipeline.py:16"
+    "source": "C:/!ass-ade/tests/test_phase1_integration.py:63"
   },
   "kind": "pure_function",
   "made_of": [],

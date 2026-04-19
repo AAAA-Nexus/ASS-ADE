@@ -11,7 +11,7 @@
     "time"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_train.py:283.",
+  "description": "Draft candidate from C:/!ass-ade/scripts/lora_train.py:283.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.promote_adapter",
@@ -44,7 +44,7 @@
     "huggingface_hub.login"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_train.py:283"
+    "source": "C:/!ass-ade/scripts/lora_train.py:283"
   },
   "kind": "pure_function",
   "made_of": [],

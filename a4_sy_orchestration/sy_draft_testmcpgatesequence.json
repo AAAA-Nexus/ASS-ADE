@@ -13,7 +13,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_gates.py:167.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_gates.py:167.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.testmcpgatesequence",
@@ -26,7 +26,7 @@
     "ass_ade.mcp.server.MCPServer"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_gates.py:167"
+    "source": "C:/!ass-ade/tests/test_mcp_gates.py:167"
   },
   "kind": "ecosystem_system",
   "made_of": [],

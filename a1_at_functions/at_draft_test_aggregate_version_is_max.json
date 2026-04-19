@@ -1,6 +1,6 @@
 {
-  "body": "    def test_aggregate_version_is_max(self, tmp_path: Path):\n        tier_dir = tmp_path / \"a2_mo_composites\"\n        tier_dir.mkdir()\n        modules = [\n            {\"id\": \"mo.x\", \"name\": \"x\", \"version\": \"1.0.0\", \"change_type\": \"major\"},\n            {\"id\": \"mo.y\", \"name\": \"y\", \"version\": \"0.5.0\", \"change_type\": \"minor\"},\n        ]\n        path = write_tier_version_file(tier_dir, \"a2_mo_composites\", modules)\n        data = json.loads(Path(path).read_text())\n        assert data[\"tier_version\"] == \"1.0.0\"\n",
-  "body_hash": "92a88da8d6d3cf43",
+  "body": "def test_aggregate_version_is_max(self, tmp_path: Path):\n    tier_dir = tmp_path / \"a2_mo_composites\"\n    tier_dir.mkdir()\n    modules = [\n        {\"id\": \"mo.x\", \"name\": \"x\", \"version\": \"1.0.0\", \"change_type\": \"major\"},\n        {\"id\": \"mo.y\", \"name\": \"y\", \"version\": \"0.5.0\", \"change_type\": \"minor\"},\n    ]\n    path = write_tier_version_file(tier_dir, \"a2_mo_composites\", modules)\n    data = json.loads(Path(path).read_text())\n    assert data[\"tier_version\"] == \"1.0.0\"\n",
+  "body_hash": "e73c09e1e6bd1753",
   "body_truncated": false,
   "callers_of": [
     "mkdir",
@@ -10,13 +10,28 @@
     "Path"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwritetierversionfile.py:20.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_version_tracker.py:253.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_aggregate_version_is_max",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.engine.rebuild.version_tracker.INITIAL_VERSION",
+    "ass_ade.engine.rebuild.version_tracker._aggregate_version",
+    "ass_ade.engine.rebuild.version_tracker._public_python_api",
+    "ass_ade.engine.rebuild.version_tracker.assign_version",
+    "ass_ade.engine.rebuild.version_tracker.bump_version",
+    "ass_ade.engine.rebuild.version_tracker.classify_change",
+    "ass_ade.engine.rebuild.version_tracker.content_hash",
+    "ass_ade.engine.rebuild.version_tracker.load_prev_versions",
+    "ass_ade.engine.rebuild.version_tracker.write_project_version_file",
+    "ass_ade.engine.rebuild.version_tracker.write_tier_version_file"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwritetierversionfile.py:20"
+    "source": "C:/!ass-ade/tests/test_version_tracker.py:253"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -6,7 +6,7 @@
     "get_value"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/benchmarks/messy_demo/config.py:13.",
+  "description": "Draft candidate from C:/!ass-ade/benchmarks/messy_demo/config.py:13.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.load_config_again",
@@ -14,7 +14,7 @@
     "utils.get_value"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/benchmarks/messy_demo/config.py:13"
+    "source": "C:/!ass-ade/benchmarks/messy_demo/config.py:13"
   },
   "kind": "pure_function",
   "made_of": [],

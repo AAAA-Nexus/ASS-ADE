@@ -1,6 +1,6 @@
 {
-  "body": "    def test_unknown_tool_returns_error(self) -> None:\n        server = MCPServer(\".\")\n        _initialize_server(server)\n        response = server._handle({\n            \"jsonrpc\": \"2.0\",\n            \"id\": 1,\n            \"method\": \"tools/call\",\n            \"params\": {\"name\": \"nonexistent_tool\", \"arguments\": {}},\n        })\n        assert response is not None\n        assert response[\"result\"][\"isError\"]\n",
-  "body_hash": "f331943c92d625de",
+  "body": "def test_unknown_tool_returns_error(self) -> None:\n    server = MCPServer(\".\")\n    _initialize_server(server)\n    response = server._handle({\n        \"jsonrpc\": \"2.0\",\n        \"id\": 1,\n        \"method\": \"tools/call\",\n        \"params\": {\"name\": \"nonexistent_tool\", \"arguments\": {}},\n    })\n    assert response is not None\n    assert response[\"result\"][\"isError\"]\n",
+  "body_hash": "eb5cc1655fb19f93",
   "body_truncated": false,
   "callers_of": [
     "MCPServer",
@@ -8,7 +8,7 @@
     "_handle"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:81.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_extended.py:81.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.test_unknown_tool_returns_error",
@@ -23,7 +23,7 @@
     "httpx"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:81"
+    "source": "C:/!ass-ade/tests/test_mcp_extended.py:81"
   },
   "kind": "ecosystem_system",
   "made_of": [],

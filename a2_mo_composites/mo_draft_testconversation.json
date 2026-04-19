@@ -13,7 +13,7 @@
     "Message"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_agent.py:23.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_agent.py:23.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.testconversation",
@@ -33,7 +33,7 @@
     "ass_ade.tools.registry.ToolRegistry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_agent.py:23"
+    "source": "C:/!ass-ade/tests/test_agent.py:23"
   },
   "kind": "engine_molecule",
   "made_of": [

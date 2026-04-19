@@ -9,7 +9,7 @@
     "load_config"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_config.py:10.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_config.py:10.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_write_and_load_config_round_trip",
@@ -21,7 +21,7 @@
     "ass_ade.config.write_default_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_config.py:10"
+    "source": "C:/!ass-ade/tests/test_config.py:10"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,19 +1,33 @@
 {
-  "body": "    def test_add_tool_result(self):\n        c = Conversation()\n        c.add_tool_result(\"c1\", \"read_file\", \"file data\")\n        m = c.messages[-1]\n        assert m.role == \"tool\"\n        assert m.tool_call_id == \"c1\"\n        assert m.name == \"read_file\"\n",
-  "body_hash": "e6ea468063081167",
+  "body": "def test_add_tool_result(self):\n    c = Conversation()\n    c.add_tool_result(\"c1\", \"read_file\", \"file data\")\n    m = c.messages[-1]\n    assert m.role == \"tool\"\n    assert m.tool_call_id == \"c1\"\n    assert m.name == \"read_file\"\n",
+  "body_hash": "c44825c8637505b4",
   "body_truncated": false,
   "callers_of": [
     "Conversation",
     "add_tool_result"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testconversation.py:17.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_agent.py:35.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_add_tool_result",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "unittest.mock.MagicMock",
+    "ass_ade.agent.context.build_system_prompt",
+    "ass_ade.agent.conversation.Conversation",
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.agent.loop.MAX_ROUNDS_SENTINEL",
+    "ass_ade.engine.types.CompletionRequest",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolCallRequest",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.registry.ToolRegistry"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testconversation.py:17"
+    "source": "C:/!ass-ade/tests/test_agent.py:35"
   },
   "kind": "pure_function",
   "made_of": [],

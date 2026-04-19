@@ -1,13 +1,13 @@
 {
-  "body": "    def test_quality_regression_alert(self) -> None:\n        b = BAS({})\n        alerts = b.monitor_all({\"score_delta\": -0.5})\n        kinds = {a.kind for a in alerts}\n        assert \"quality_regression\" in kinds\n",
-  "body_hash": "bf612c8a397ac30a",
+  "body": "def test_quality_regression_alert(self) -> None:\n    b = BAS({})\n    alerts = b.monitor_all({\"score_delta\": -0.5})\n    kinds = {a.kind for a in alerts}\n    assert \"quality_regression\" in kinds\n",
+  "body_hash": "dd45a8679f426a8a",
   "body_truncated": false,
   "callers_of": [
     "BAS",
     "monitor_all"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:205.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:205.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_quality_regression_alert",
@@ -35,7 +35,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:205"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:205"
   },
   "kind": "engine_molecule",
   "made_of": [

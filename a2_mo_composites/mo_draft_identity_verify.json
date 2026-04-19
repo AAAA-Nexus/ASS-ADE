@@ -1,12 +1,12 @@
 {
-  "body": "    def identity_verify(self, actor: str | None = None, *, agent_id: str | None = None, **kwargs: Any) -> IdentityVerification:\n        \"\"\"/v1/identity/verify \u2014 topology-grounded identity proof. $0.080/request\"\"\"\n        return self._post_model(\"/v1/identity/verify\", IdentityVerification, {\"actor\": actor or agent_id or \"\", **kwargs})\n",
-  "body_hash": "45b1f5b21e693ee6",
+  "body": "def identity_verify(self, actor: str | None = None, *, agent_id: str | None = None, **kwargs: Any) -> IdentityVerification:\n    \"\"\"/v1/identity/verify \u2014 topology-grounded identity proof. $0.080/request\"\"\"\n    return self._post_model(\"/v1/identity/verify\", IdentityVerification, {\"actor\": actor or agent_id or \"\", **kwargs})\n",
+  "body_hash": "8debde20c7372d18",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:518.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:518.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.identity_verify",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:518"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:518"
   },
   "kind": "engine_molecule",
   "made_of": [],

@@ -1,12 +1,12 @@
 {
-  "body": "    def sam(self):\n        if self._sam is None:\n            from ass_ade.agent.sam import SAM\n            self._sam = SAM(self._config, self._nexus)\n        return self._sam\n",
-  "body_hash": "100afa1770539048",
+  "body": "def sam(self):\n    if self._sam is None:\n        from ass_ade.agent.sam import SAM\n        self._sam = SAM(self._config, self._nexus)\n    return self._sam\n",
+  "body_hash": "a34d71d381fee3cf",
   "body_truncated": false,
   "callers_of": [
     "SAM"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/orchestrator.py:241.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/orchestrator.py:241.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.sam",
@@ -38,7 +38,7 @@
     "json"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/orchestrator.py:241"
+    "source": "C:/!ass-ade/src/ass_ade/agent/orchestrator.py:241"
   },
   "kind": "ecosystem_system",
   "made_of": [],

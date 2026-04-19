@@ -1,6 +1,6 @@
 {
-  "body": "    def test_state_persists_across_instances(self, tmp_path):\n        from ass_ade.agent.tca import TCAEngine\n        cfg = {\"tca\": {\"state_file\": str(tmp_path / \"tca_reads.json\"), \"freshness_hours\": 24.0}}\n        tca1 = TCAEngine(cfg)\n        tca1.record_read(\"/persistent.py\")\n        tca2 = TCAEngine(cfg)\n        assert tca2.ncb_contract(\"/persistent.py\") is True\n",
-  "body_hash": "8b3c397bfd7142fa",
+  "body": "def test_state_persists_across_instances(self, tmp_path):\n    from ass_ade.agent.tca import TCAEngine\n    cfg = {\"tca\": {\"state_file\": str(tmp_path / \"tca_reads.json\"), \"freshness_hours\": 24.0}}\n    tca1 = TCAEngine(cfg)\n    tca1.record_read(\"/persistent.py\")\n    tca2 = TCAEngine(cfg)\n    assert tca2.ncb_contract(\"/persistent.py\") is True\n",
+  "body_hash": "3a1eac0241a00e11",
   "body_truncated": false,
   "callers_of": [
     "TCAEngine",
@@ -9,7 +9,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:252.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase_engines.py:252.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_state_persists_across_instances",
@@ -64,10 +64,13 @@
     "ass_ade.agent.orchestrator.CycleReport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:252"
+    "source": "C:/!ass-ade/tests/test_phase_engines.py:252"
   },
   "kind": "engine_molecule",
-  "made_of": [],
+  "made_of": [
+    "at.source.ass_ade.record_read",
+    "at.source.ass_ade.ncb_contract"
+  ],
   "name": "test_state_persists_across_instances",
   "product_categories": [
     "COR"

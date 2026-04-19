@@ -1,6 +1,6 @@
 {
-  "body": "    def test_subscriber_called_on_alert(self) -> None:\n        b = BAS({})\n        received: list[Alert] = []\n        b.subscribe(lambda a: received.append(a))\n        b.monitor_all({\"synergy\": 0.9})\n        assert len(received) >= 1\n        assert received[0].kind == \"emergent_synergy\"\n",
-  "body_hash": "44703b5a387be77a",
+  "body": "def test_subscriber_called_on_alert(self) -> None:\n    b = BAS({})\n    received: list[Alert] = []\n    b.subscribe(lambda a: received.append(a))\n    b.monitor_all({\"synergy\": 0.9})\n    assert len(received) >= 1\n    assert received[0].kind == \"emergent_synergy\"\n",
+  "body_hash": "36211f40a59cfd11",
   "body_truncated": false,
   "callers_of": [
     "BAS",
@@ -10,7 +10,7 @@
     "append"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:217.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:217.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_subscriber_called_on_alert",
@@ -38,7 +38,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:217"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:217"
   },
   "kind": "engine_molecule",
   "made_of": [

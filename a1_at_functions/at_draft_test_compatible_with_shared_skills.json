@@ -1,19 +1,36 @@
 {
-  "body": "    def test_compatible_with_shared_skills(self) -> None:\n        local = self._make_card(\"Local\", skills=[(\"s1\", \"Skill 1\"), (\"s2\", \"Skill 2\")])\n        remote = self._make_card(\"Remote\", skills=[(\"s2\", \"Skill 2\"), (\"s3\", \"Skill 3\")])\n        result = negotiate(local, remote)\n        assert result.compatible\n        assert result.shared_skills == [\"s2\"]\n        assert result.local_only == [\"s1\"]\n        assert result.remote_only == [\"s3\"]\n",
-  "body_hash": "15d75a1e857c2646",
+  "body": "def test_compatible_with_shared_skills(self) -> None:\n    local = self._make_card(\"Local\", skills=[(\"s1\", \"Skill 1\"), (\"s2\", \"Skill 2\")])\n    remote = self._make_card(\"Remote\", skills=[(\"s2\", \"Skill 2\"), (\"s3\", \"Skill 3\")])\n    result = negotiate(local, remote)\n    assert result.compatible\n    assert result.shared_skills == [\"s2\"]\n    assert result.local_only == [\"s1\"]\n    assert result.remote_only == [\"s3\"]\n",
+  "body_hash": "b5ef156fabc35808",
   "body_truncated": false,
   "callers_of": [
     "_make_card",
     "negotiate"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnegotiate.py:22.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_a2a.py:225.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_compatible_with_shared_skills",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.a2a.A2AAgentCard",
+    "ass_ade.a2a.A2AAuthentication",
+    "ass_ade.a2a.A2ASkill",
+    "ass_ade.a2a.ValidationIssue",
+    "ass_ade.a2a.ValidationReport",
+    "ass_ade.a2a.fetch_agent_card",
+    "ass_ade.a2a.local_agent_card",
+    "ass_ade.a2a.negotiate",
+    "ass_ade.a2a.validate_agent_card",
+    "httpx",
+    "httpx"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnegotiate.py:22"
+    "source": "C:/!ass-ade/tests/test_a2a.py:225"
   },
   "kind": "pure_function",
   "made_of": [],

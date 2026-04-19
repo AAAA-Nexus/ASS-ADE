@@ -1,19 +1,36 @@
 {
-  "body": "    def test_no_skills_is_warning(self) -> None:\n        data = {\"name\": \"TestAgent\", \"url\": \"https://example.com\", \"version\": \"1.0\", \"description\": \"desc\"}\n        report = validate_agent_card(data)\n        assert any(i.severity == \"warning\" and i.field == \"skills\" for i in report.issues)\n",
-  "body_hash": "394acdbbc8cf0d07",
+  "body": "def test_no_skills_is_warning(self) -> None:\n    data = {\"name\": \"TestAgent\", \"url\": \"https://example.com\", \"version\": \"1.0\", \"description\": \"desc\"}\n    report = validate_agent_card(data)\n    assert any(i.severity == \"warning\" and i.field == \"skills\" for i in report.issues)\n",
+  "body_hash": "63f5e076c6a9eb52",
   "body_truncated": false,
   "callers_of": [
     "validate_agent_card",
     "any"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateagentcard.py:70.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_a2a.py:90.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_no_skills_is_warning",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.a2a.A2AAgentCard",
+    "ass_ade.a2a.A2AAuthentication",
+    "ass_ade.a2a.A2ASkill",
+    "ass_ade.a2a.ValidationIssue",
+    "ass_ade.a2a.ValidationReport",
+    "ass_ade.a2a.fetch_agent_card",
+    "ass_ade.a2a.local_agent_card",
+    "ass_ade.a2a.negotiate",
+    "ass_ade.a2a.validate_agent_card",
+    "httpx",
+    "httpx"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateagentcard.py:70"
+    "source": "C:/!ass-ade/tests/test_a2a.py:90"
   },
   "kind": "pure_function",
   "made_of": [],

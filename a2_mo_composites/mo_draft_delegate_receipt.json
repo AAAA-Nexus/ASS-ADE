@@ -1,13 +1,13 @@
 {
-  "body": "    def delegate_receipt(self, receipt_id: str) -> DelegateReceipt:\n        \"\"\"/v1/delegate/receipt/{id} \u2014 signed delegation receipt. $0.020/call\"\"\"\n        return self._get_model(f\"/v1/delegate/receipt/{_pseg(receipt_id, 'receipt_id')}\", DelegateReceipt)\n",
-  "body_hash": "0cec55597363d630",
+  "body": "def delegate_receipt(self, receipt_id: str) -> DelegateReceipt:\n    \"\"\"/v1/delegate/receipt/{id} \u2014 signed delegation receipt. $0.020/call\"\"\"\n    return self._get_model(f\"/v1/delegate/receipt/{_pseg(receipt_id, 'receipt_id')}\", DelegateReceipt)\n",
+  "body_hash": "adc6a178bcbb3506",
   "body_truncated": false,
   "callers_of": [
     "_get_model",
     "_pseg"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:508.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:508.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.delegate_receipt",
@@ -161,7 +161,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:508"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:508"
   },
   "kind": "engine_molecule",
   "made_of": [],

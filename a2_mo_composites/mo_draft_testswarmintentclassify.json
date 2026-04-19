@@ -1,5 +1,5 @@
 {
-  "body": "class TestSwarmIntentClassify:\n    \"\"\"Test `swarm intent-classify` command \u2014 classify user intent.\"\"\"\n\n    def test_swarm_intent_classify_success(self, tmp_path: Path, hybrid_config: Path) -> None:\n        \"\"\"Intent classification should return top intents with confidence.\"\"\"\n        mock_nx = MagicMock()\n        mock_nx.agent_intent_classify.return_value = IntentClassification(\n            text=\"Please analyze this code for bugs\",\n            intents=[\n                {\"intent\": \"code_review\", \"confidence\": 0.98},\n                {\"intent\": \"testing\", \"confidence\": 0.72},\n                {\"intent\": \"debugging\", \"confidence\": 0.65},\n            ],\n        )\n        \n        with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n            result = runner.invoke(\n                app,\n                [\"swarm\", \"intent-classify\", \"analyze code for bugs\", \"--config\", str(hybrid_config)],\n            )\n        \n        assert result.exit_code == 0\n",
+  "body": "class TestSwarmIntentClassify:\n    \"\"\"Test `swarm intent-classify` command \u2014 classify user intent.\"\"\"\n\n    def test_swarm_intent_classify_success(self, tmp_path: Path, hybrid_config: Path) -> None:\n        \"\"\"Intent classification should return top intents with confidence.\"\"\"\n        mock_nx = MagicMock()\n        mock_nx.agent_intent_classify.return_value = IntentClassification(\n            text=\"Please analyze this code for bugs\",\n            intents=[\n                {\"intent\": \"code_review\", \"confidence\": 0.98},\n                {\"intent\": \"testing\", \"confidence\": 0.72},\n                {\"intent\": \"debugging\", \"confidence\": 0.65},\n            ],\n        )\n\n        with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n            result = runner.invoke(\n                app,\n                [\"swarm\", \"intent-classify\", \"analyze code for bugs\", \"--config\", str(hybrid_config)],\n            )\n\n        assert result.exit_code == 0\n",
   "body_hash": "20abdad69865d9f6",
   "body_truncated": false,
   "callers_of": [
@@ -11,7 +11,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli_happy_path.py:257.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_cli_happy_path.py:257.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.testswarmintentclassify",
@@ -36,7 +36,7 @@
     "ass_ade.pipeline.PipelineResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli_happy_path.py:257"
+    "source": "C:/!ass-ade/tests/test_cli_happy_path.py:257"
   },
   "kind": "engine_molecule",
   "made_of": [],

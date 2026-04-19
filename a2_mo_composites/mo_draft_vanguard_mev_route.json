@@ -1,12 +1,12 @@
 {
-  "body": "    def vanguard_mev_route(self, agent_id: str, intent: dict | None = None, **kwargs: Any) -> VanguardMevRouteResult:\n        \"\"\"POST /v1/vanguard/mev/route-intent \u2014 MEV route governance. $0.040/call\"\"\"\n        return self._post_model(\"/v1/vanguard/mev/route-intent\", VanguardMevRouteResult, {\"agent_id\": agent_id, \"intent\": intent or {}, **kwargs})\n",
-  "body_hash": "d6597fc321629cf8",
+  "body": "def vanguard_mev_route(self, agent_id: str, intent: dict | None = None, **kwargs: Any) -> VanguardMevRouteResult:\n    \"\"\"POST /v1/vanguard/mev/route-intent \u2014 MEV route governance. $0.040/call\"\"\"\n    return self._post_model(\"/v1/vanguard/mev/route-intent\", VanguardMevRouteResult, {\"agent_id\": agent_id, \"intent\": intent or {}, **kwargs})\n",
+  "body_hash": "d7f191a5330ed983",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1300.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1300.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.vanguard_mev_route",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1300"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1300"
   },
   "kind": "engine_molecule",
   "made_of": [],

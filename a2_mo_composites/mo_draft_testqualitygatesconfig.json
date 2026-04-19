@@ -10,7 +10,7 @@
     "assert_called_once_with"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:389.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:389.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.testqualitygatesconfig",
@@ -38,7 +38,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:389"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:389"
   },
   "kind": "engine_molecule",
   "made_of": [],

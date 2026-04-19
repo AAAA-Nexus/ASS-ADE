@@ -1,13 +1,13 @@
 {
-  "body": "    def certify_output_verify(self, certificate_id: str) -> CertifiedOutput:\n        \"\"\"/v1/certify/output/{id}/verify \u2014 verify output certificate. $0.020/call\"\"\"\n        return self._get_model(f\"/v1/certify/output/{_pseg(certificate_id, 'certificate_id')}/verify\", CertifiedOutput)\n",
-  "body_hash": "181224ebddb55265",
+  "body": "def certify_output_verify(self, certificate_id: str) -> CertifiedOutput:\n    \"\"\"/v1/certify/output/{id}/verify \u2014 verify output certificate. $0.020/call\"\"\"\n    return self._get_model(f\"/v1/certify/output/{_pseg(certificate_id, 'certificate_id')}/verify\", CertifiedOutput)\n",
+  "body_hash": "fd9c2a8c1247ba4d",
   "body_truncated": false,
   "callers_of": [
     "_get_model",
     "_pseg"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:885.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:885.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.certify_output_verify",
@@ -161,7 +161,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:885"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:885"
   },
   "kind": "engine_molecule",
   "made_of": [],

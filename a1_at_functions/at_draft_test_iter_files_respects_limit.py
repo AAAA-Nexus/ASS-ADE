@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_parallel_recon.py:138
+# Extracted from C:/!ass-ade/tests/test_parallel_recon.py:138
 # Component id: at.source.ass_ade.test_iter_files_respects_limit
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_iter_files_respects_limit(tmp_path: Path) -> None:

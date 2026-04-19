@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_load_prompt_artifact.py:5
+# Extracted from C:/!ass-ade/src/ass_ade/prompt_toolkit.py:89
 # Component id: at.source.ass_ade.load_prompt_artifact
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def load_prompt_artifact(

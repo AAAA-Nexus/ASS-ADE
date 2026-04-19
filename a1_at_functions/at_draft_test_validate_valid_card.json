@@ -1,6 +1,6 @@
 {
-  "body": "    def test_validate_valid_card(self, tmp_path: Path) -> None:\n        card_file = tmp_path / \"agent.json\"\n        card_file.write_text(json.dumps({\n            \"name\": \"TestAgent\",\n            \"description\": \"A test agent\",\n            \"url\": \"https://test.com\",\n            \"version\": \"1.0.0\",\n            \"skills\": [{\"id\": \"skill1\", \"name\": \"Test Skill\"}],\n        }), encoding=\"utf-8\")\n\n        result = runner.invoke(app, [\"a2a\", \"validate\", str(card_file)])\n        assert result.exit_code == 0\n        assert \"Valid\" in result.stdout or \"TestAgent\" in result.stdout\n",
-  "body_hash": "55f5402d44e046e0",
+  "body": "def test_validate_valid_card(self, tmp_path: Path) -> None:\n    card_file = tmp_path / \"agent.json\"\n    card_file.write_text(json.dumps({\n        \"name\": \"TestAgent\",\n        \"description\": \"A test agent\",\n        \"url\": \"https://test.com\",\n        \"version\": \"1.0.0\",\n        \"skills\": [{\"id\": \"skill1\", \"name\": \"Test Skill\"}],\n    }), encoding=\"utf-8\")\n\n    result = runner.invoke(app, [\"a2a\", \"validate\", str(card_file)])\n    assert result.exit_code == 0\n    assert \"Valid\" in result.stdout or \"TestAgent\" in result.stdout\n",
+  "body_hash": "1e52d69746970e66",
   "body_truncated": false,
   "callers_of": [
     "write_text",
@@ -9,7 +9,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a_cli.py:42.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_a2a_cli.py:42.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_validate_valid_card",
@@ -29,7 +29,7 @@
     "ass_ade.a2a.NegotiationResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a_cli.py:42"
+    "source": "C:/!ass-ade/tests/test_a2a_cli.py:42"
   },
   "kind": "pure_function",
   "made_of": [],

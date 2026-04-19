@@ -1,6 +1,6 @@
 {
-  "body": "    def test_tool_call_callbacks(self, tmp_path):\n        provider = _MockProvider([\n            CompletionResponse(\n                message=Message(\n                    role=\"assistant\",\n                    content=\"\",\n                    tool_calls=[\n                        ToolCallRequest(id=\"c1\", name=\"echo\", arguments={\"text\": \"x\"})\n                    ],\n                ),\n                finish_reason=\"tool_calls\",\n            ),\n            CompletionResponse(\n                message=Message(role=\"assistant\", content=\"Done\"),\n                finish_reason=\"stop\",\n            ),\n        ])\n        registry = ToolRegistry()\n        registry.register(_EchoTool())\n\n        calls: list[str] = []\n\n        loop = AgentLoop(\n            provider=provider,\n            registry=registry,\n            working_dir=str(tmp_path),\n            on_tool_call=lambda name, args: calls.append(name),\n        )\n        loop.step(\"Echo x\")\n        assert \"echo\" in calls\n",
-  "body_hash": "4a6c45865104a397",
+  "body": "def test_tool_call_callbacks(self, tmp_path):\n    provider = _MockProvider([\n        CompletionResponse(\n            message=Message(\n                role=\"assistant\",\n                content=\"\",\n                tool_calls=[\n                    ToolCallRequest(id=\"c1\", name=\"echo\", arguments={\"text\": \"x\"})\n                ],\n            ),\n            finish_reason=\"tool_calls\",\n        ),\n        CompletionResponse(\n            message=Message(role=\"assistant\", content=\"Done\"),\n            finish_reason=\"stop\",\n        ),\n    ])\n    registry = ToolRegistry()\n    registry.register(_EchoTool())\n\n    calls: list[str] = []\n\n    loop = AgentLoop(\n        provider=provider,\n        registry=registry,\n        working_dir=str(tmp_path),\n        on_tool_call=lambda name, args: calls.append(name),\n    )\n    loop.step(\"Echo x\")\n    assert \"echo\" in calls\n",
+  "body_hash": "1e578458464dcf0c",
   "body_truncated": false,
   "callers_of": [
     "_MockProvider",
@@ -16,7 +16,7 @@
     "ToolCallRequest"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_agent.py:250.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_agent.py:250.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_tool_call_callbacks",
@@ -36,7 +36,7 @@
     "ass_ade.tools.registry.ToolRegistry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_agent.py:250"
+    "source": "C:/!ass-ade/tests/test_agent.py:250"
   },
   "kind": "pure_function",
   "made_of": [],

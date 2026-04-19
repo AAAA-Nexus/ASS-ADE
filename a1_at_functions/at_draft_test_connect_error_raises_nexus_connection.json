@@ -1,6 +1,6 @@
 {
-  "body": "    def test_connect_error_raises_nexus_connection(self) -> None:\n        inner = _FailingTransport(httpx.ConnectError(\"refused\"))\n        transport = RetryTransport(inner, max_retries=2, backoff_base=0.0)\n        with pytest.raises(NexusConnectionError):\n            transport.handle_request(httpx.Request(\"GET\", \"https://example.com\"))\n        assert inner.call_count == 2\n",
-  "body_hash": "2cc5e81d5846b43c",
+  "body": "def test_connect_error_raises_nexus_connection(self) -> None:\n    inner = _FailingTransport(httpx.ConnectError(\"refused\"))\n    transport = RetryTransport(inner, max_retries=2, backoff_base=0.0)\n    with pytest.raises(NexusConnectionError):\n        transport.handle_request(httpx.Request(\"GET\", \"https://example.com\"))\n    assert inner.call_count == 2\n",
+  "body_hash": "ce3236447deebf93",
   "body_truncated": false,
   "callers_of": [
     "_FailingTransport",
@@ -11,13 +11,23 @@
     "Request"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testretrytransport.py:50.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_resilience.py:91.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_connect_error_raises_nexus_connection",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "httpx",
+    "pytest",
+    "ass_ade.nexus.errors.NexusCircuitOpen",
+    "ass_ade.nexus.errors.NexusConnectionError",
+    "ass_ade.nexus.errors.NexusTimeoutError",
+    "ass_ade.nexus.resilience.CircuitBreakerTransport",
+    "ass_ade.nexus.resilience.RetryTransport",
+    "ass_ade.nexus.resilience.build_resilient_transport"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testretrytransport.py:50"
+    "source": "C:/!ass-ade/tests/test_resilience.py:91"
   },
   "kind": "pure_function",
   "made_of": [],

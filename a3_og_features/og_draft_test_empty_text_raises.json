@@ -1,6 +1,6 @@
 {
-  "body": "    def test_empty_text_raises(self) -> None:\n        with pytest.raises(ValueError, match=\"must not be empty\"):\n            certify_output(_mock_client(), \"\")\n",
-  "body_hash": "5f5932dc541fabb8",
+  "body": "def test_empty_text_raises(self) -> None:\n    with pytest.raises(ValueError, match=\"must not be empty\"):\n        certify_output(_mock_client(), \"\")\n",
+  "body_hash": "7c66d6668f4fd3ca",
   "body_truncated": false,
   "callers_of": [
     "raises",
@@ -8,7 +8,7 @@
     "_mock_client"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_workflows.py:164.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_workflows.py:164.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "og.source.ass_ade.test_empty_text_raises",
@@ -35,7 +35,7 @@
     "ass_ade.workflows.trust_gate"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_workflows.py:164"
+    "source": "C:/!ass-ade/tests/test_workflows.py:164"
   },
   "kind": "product_organism",
   "made_of": [],

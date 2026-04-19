@@ -6,7 +6,7 @@
     "render_capability_prompt_section"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/capabilities.py:363.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/capabilities.py:534.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.render_markdown_capability_section",
@@ -25,7 +25,7 @@
     "ass_ade.mcp.server._WORKFLOW_TOOLS"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/capabilities.py:363"
+    "source": "C:/!ass-ade/src/ass_ade/agent/capabilities.py:534"
   },
   "kind": "pure_function",
   "made_of": [],

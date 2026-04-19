@@ -1,6 +1,6 @@
 {
-  "body": "    def advance(self) -> RatchetAdvance:\n        \"\"\"Advance the session epoch and re-key.\"\"\"\n        if not self.is_active:\n            raise RuntimeError(\"No active session. Call start() first.\")\n        if self.session_id is None:\n            raise RuntimeError(\"session_id must not be None\")\n        validate_session_id(self.session_id)\n        result = self._client.ratchet_advance(self.session_id)\n        self.epoch = result.new_epoch or self.epoch + 1\n        return result\n",
-  "body_hash": "6e011018701696bf",
+  "body": "def advance(self) -> RatchetAdvance:\n    \"\"\"Advance the session epoch and re-key.\"\"\"\n    if not self.is_active:\n        raise RuntimeError(\"No active session. Call start() first.\")\n    if self.session_id is None:\n        raise RuntimeError(\"session_id must not be None\")\n    validate_session_id(self.session_id)\n    result = self._client.ratchet_advance(self.session_id)\n    self.epoch = result.new_epoch or self.epoch + 1\n    return result\n",
+  "body_hash": "680817e7af5b5a12",
   "body_truncated": false,
   "callers_of": [
     "validate_session_id",
@@ -8,15 +8,25 @@
     "RuntimeError"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_nexussession.py:33.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/session.py:46.",
   "exceptions_raised": [
     "RuntimeError"
   ],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.advance",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "ass_ade.nexus.client.NexusClient",
+    "ass_ade.nexus.errors.NexusError",
+    "ass_ade.nexus.models.RatchetAdvance",
+    "ass_ade.nexus.models.RatchetSession",
+    "ass_ade.nexus.models.RatchetStatus",
+    "ass_ade.nexus.validation.validate_agent_id",
+    "ass_ade.nexus.validation.validate_session_id"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_nexussession.py:33"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/session.py:46"
   },
   "kind": "pure_function",
   "made_of": [],

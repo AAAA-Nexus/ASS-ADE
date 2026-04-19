@@ -1,12 +1,12 @@
 {
-  "body": "    def lora_capture_fix(self, *args: Any, **kwargs: Any) -> dict[str, Any]:\n        \"\"\"Alias for lora_buffer_capture \u2014 single (bad, good) sample.\"\"\"\n        return self.lora_buffer_capture(*args, **kwargs)\n",
-  "body_hash": "50b82580182a9640",
+  "body": "def lora_capture_fix(self, *args: Any, **kwargs: Any) -> dict[str, Any]:\n    \"\"\"Alias for lora_buffer_capture \u2014 single (bad, good) sample.\"\"\"\n    return self.lora_buffer_capture(*args, **kwargs)\n",
+  "body_hash": "4fce1b53bafb7e31",
   "body_truncated": false,
   "callers_of": [
     "lora_buffer_capture"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1456.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1456.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.lora_capture_fix",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1456"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1456"
   },
   "kind": "engine_molecule",
   "made_of": [],

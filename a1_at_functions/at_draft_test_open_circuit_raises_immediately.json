@@ -1,6 +1,6 @@
 {
-  "body": "    def test_open_circuit_raises_immediately(self) -> None:\n        inner = _CountingTransport([httpx.Response(500)] * 10)\n        cb = CircuitBreakerTransport(inner, failure_threshold=2, window_s=60, recovery_s=30)\n        for _ in range(2):\n            cb.handle_request(httpx.Request(\"GET\", \"https://example.com\"))\n        with pytest.raises(NexusCircuitOpen):\n            cb.handle_request(httpx.Request(\"GET\", \"https://example.com\"))\n",
-  "body_hash": "dca6cedd23113db1",
+  "body": "def test_open_circuit_raises_immediately(self) -> None:\n    inner = _CountingTransport([httpx.Response(500)] * 10)\n    cb = CircuitBreakerTransport(inner, failure_threshold=2, window_s=60, recovery_s=30)\n    for _ in range(2):\n        cb.handle_request(httpx.Request(\"GET\", \"https://example.com\"))\n    with pytest.raises(NexusCircuitOpen):\n        cb.handle_request(httpx.Request(\"GET\", \"https://example.com\"))\n",
+  "body_hash": "34dd7822e5ca7793",
   "body_truncated": false,
   "callers_of": [
     "_CountingTransport",
@@ -12,7 +12,7 @@
     "Response"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_resilience.py:124.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_resilience.py:124.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_open_circuit_raises_immediately",
@@ -28,7 +28,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_resilience.py:124"
+    "source": "C:/!ass-ade/tests/test_resilience.py:124"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,13 +1,13 @@
 {
-  "body": "    def test_default_config_is_empty_dict(self) -> None:\n        mock_client = MagicMock()\n        gates = QualityGates(mock_client)\n        assert gates._v18_config == {}\n",
-  "body_hash": "1b4ef1b1b960ad06",
+  "body": "def test_default_config_is_empty_dict(self) -> None:\n    mock_client = MagicMock()\n    gates = QualityGates(mock_client)\n    assert gates._v18_config == {}\n",
+  "body_hash": "afddc781b50236fa",
   "body_truncated": false,
   "callers_of": [
     "MagicMock",
     "QualityGates"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:390.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:390.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_default_config_is_empty_dict",
@@ -35,7 +35,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:390"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:390"
   },
   "kind": "engine_molecule",
   "made_of": [],

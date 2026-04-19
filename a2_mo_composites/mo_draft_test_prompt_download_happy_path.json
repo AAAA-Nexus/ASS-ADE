@@ -1,5 +1,5 @@
 {
-  "body": "def test_prompt_download_happy_path():\n    \"\"\"Test prompt_download GET endpoint (returns raw dict).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json={\"prompts\": [{\"name\": \"prompt1\", \"text\": \"...\"}]})\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        result = client.prompt_download()\n        assert isinstance(result, dict)\n        assert \"prompts\" in result\n",
+  "body": "def test_prompt_download_happy_path():\n    \"\"\"Test prompt_download GET endpoint (returns raw dict).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json={\"prompts\": [{\"name\": \"prompt1\", \"text\": \"...\"}]})\n\n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        result = client.prompt_download()\n        assert isinstance(result, dict)\n        assert \"prompts\" in result\n",
   "body_hash": "cde0d0e264724c74",
   "body_truncated": false,
   "callers_of": [
@@ -10,7 +10,7 @@
     "isinstance"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:575.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_nexus_client_comprehensive.py:575.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_prompt_download_happy_path",
@@ -145,7 +145,7 @@
     "ass_ade.nexus.models.EntropyResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:575"
+    "source": "C:/!ass-ade/tests/test_nexus_client_comprehensive.py:575"
   },
   "kind": "engine_molecule",
   "made_of": [],

@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_context_packet_includes_file_hashes.py:5
+# Extracted from C:/!ass-ade/tests/test_recon_context.py:74
 # Component id: at.source.ass_ade.test_context_packet_includes_file_hashes
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_context_packet_includes_file_hashes(tmp_path: Path) -> None:

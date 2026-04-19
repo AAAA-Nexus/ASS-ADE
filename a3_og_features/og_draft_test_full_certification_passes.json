@@ -1,13 +1,13 @@
 {
-  "body": "    def test_full_certification_passes(self) -> None:\n        result = certify_output(_mock_client(), \"This is a safe output.\")\n        assert result.passed is True\n        assert result.certificate_id == \"cert-123\"\n        assert result.lineage_id == \"lin-456\"\n",
-  "body_hash": "6a1d2dfac59f3cdf",
+  "body": "def test_full_certification_passes(self) -> None:\n    result = certify_output(_mock_client(), \"This is a safe output.\")\n    assert result.passed is True\n    assert result.certificate_id == \"cert-123\"\n    assert result.lineage_id == \"lin-456\"\n",
+  "body_hash": "e38026d3487af5ba",
   "body_truncated": false,
   "callers_of": [
     "certify_output",
     "_mock_client"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_workflows.py:152.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_workflows.py:152.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "og.source.ass_ade.test_full_certification_passes",
@@ -34,7 +34,7 @@
     "ass_ade.workflows.trust_gate"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_workflows.py:152"
+    "source": "C:/!ass-ade/tests/test_workflows.py:152"
   },
   "kind": "product_organism",
   "made_of": [],

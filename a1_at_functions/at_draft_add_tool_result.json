@@ -1,19 +1,25 @@
 {
-  "body": "    def add_tool_result(self, tool_call_id: str, name: str, content: str) -> None:\n        self._messages.append(\n            Message(\n                role=\"tool\",\n                content=content,\n                tool_call_id=tool_call_id,\n                name=name,\n            )\n        )\n",
-  "body_hash": "350caaaf4bc196f2",
+  "body": "def add_tool_result(self, tool_call_id: str, name: str, content: str) -> None:\n    self._messages.append(\n        Message(\n            role=\"tool\",\n            content=content,\n            tool_call_id=tool_call_id,\n            name=name,\n        )\n    )\n",
+  "body_hash": "1a1f8aa4276932d0",
   "body_truncated": false,
   "callers_of": [
     "append",
     "Message"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_conversation.py:31.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/conversation.py:44.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.add_tool_result",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "ass_ade.engine.tokens.TokenBudget",
+    "ass_ade.engine.tokens.estimate_message_tokens",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolSchema"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_conversation.py:31"
+    "source": "C:/!ass-ade/src/ass_ade/agent/conversation.py:44"
   },
   "kind": "pure_function",
   "made_of": [],

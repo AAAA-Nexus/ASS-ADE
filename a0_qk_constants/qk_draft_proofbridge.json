@@ -21,7 +21,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/proofbridge.py:20.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/proofbridge.py:20.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "qk.source.ass_ade.proofbridge",
@@ -33,7 +33,7 @@
     "typing.Any"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/proofbridge.py:20"
+    "source": "C:/!ass-ade/src/ass_ade/agent/proofbridge.py:20"
   },
   "kind": "invariant",
   "made_of": [],

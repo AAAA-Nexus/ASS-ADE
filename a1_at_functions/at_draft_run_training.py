@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/hf_space/app.py:46
+# Extracted from C:/!ass-ade/scripts/hf_space/app.py:46
 # Component id: at.source.ass_ade.run_training
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def run_training(language: str, profile: str, epochs: int, max_samples: int, hf_repo: str) -> str:

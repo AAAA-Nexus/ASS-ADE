@@ -1,12 +1,12 @@
 {
-  "body": "    def design_blueprint(\n        self,\n        description: str,\n        context: dict[str, Any] | None = None,\n        agent_id: str | None = None,\n    ) -> DesignBlueprint:\n        \"\"\"Generate an AAAA-SPEC-004 blueprint from a natural language description.\"\"\"\n        payload: dict[str, Any] = {\"description\": description}\n        if context:\n            payload[\"context\"] = context\n        if agent_id:\n            payload[\"agent_id\"] = agent_id\n        return self._post_model(\"/v1/uep/design\", DesignBlueprint, payload)\n",
-  "body_hash": "6d1d1b1c80b1c1e9",
+  "body": "def design_blueprint(\n    self,\n    description: str,\n    context: dict[str, Any] | None = None,\n    agent_id: str | None = None,\n) -> DesignBlueprint:\n    \"\"\"Generate an AAAA-SPEC-004 blueprint from a natural language description.\"\"\"\n    payload: dict[str, Any] = {\"description\": description}\n    if context:\n        payload[\"context\"] = context\n    if agent_id:\n        payload[\"agent_id\"] = agent_id\n    return self._post_model(\"/v1/uep/design\", DesignBlueprint, payload)\n",
+  "body_hash": "7b84c50d553ab500",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1250.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1250.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.design_blueprint",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1250"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1250"
   },
   "kind": "engine_molecule",
   "made_of": [],

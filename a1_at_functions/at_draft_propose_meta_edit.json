@@ -1,6 +1,6 @@
 {
-  "body": "    def propose_meta_edit(self) -> MetaEdit:\n        mid = hashlib.sha256(f\"meta:{self._proposals}\".encode()).hexdigest()[:12]\n        return MetaEdit(id=mid, procedure=\"propose_patch\", description=\"tighten search heuristic\")\n",
-  "body_hash": "e3dfaaf6008d8651",
+  "body": "def propose_meta_edit(self) -> MetaEdit:\n    mid = hashlib.sha256(f\"meta:{self._proposals}\".encode()).hexdigest()[:12]\n    return MetaEdit(id=mid, procedure=\"propose_patch\", description=\"tighten search heuristic\")\n",
+  "body_hash": "d46b3230856157f6",
   "body_truncated": false,
   "callers_of": [
     "MetaEdit",
@@ -9,7 +9,7 @@
     "encode"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/dgm_h.py:149.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/dgm_h.py:149.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.propose_meta_edit",
@@ -29,7 +29,7 @@
     "ass_ade.agent.golden_runner.run_golden"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/dgm_h.py:149"
+    "source": "C:/!ass-ade/src/ass_ade/agent/dgm_h.py:149"
   },
   "kind": "pure_function",
   "made_of": [],

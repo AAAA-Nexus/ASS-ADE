@@ -1,12 +1,12 @@
 {
-  "body": "    def agent_intent_classify(self, text: str, **kwargs: Any) -> IntentClassification:\n        \"\"\"/v1/agents/intent-classify \u2014 top-3 intents with confidence. $0.020/request\"\"\"\n        return self._post_model(\"/v1/agents/intent-classify\", IntentClassification, {\"text\": text, **kwargs})\n",
-  "body_hash": "930ba51a796a7590",
+  "body": "def agent_intent_classify(self, text: str, **kwargs: Any) -> IntentClassification:\n    \"\"\"/v1/agents/intent-classify \u2014 top-3 intents with confidence. $0.020/request\"\"\"\n    return self._post_model(\"/v1/agents/intent-classify\", IntentClassification, {\"text\": text, **kwargs})\n",
+  "body_hash": "b2b4ba85ff7703b8",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:636.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:636.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.agent_intent_classify",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:636"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:636"
   },
   "kind": "engine_molecule",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_on_step_end_returns_cycle_report(self) -> None:\n        o = EngineOrchestrator({})\n        o.on_step_start(\"do something\")\n        report = o.on_step_end(\"done\", {\"recon_done\": True, \"tool_calls\": [\"read_file\"]})\n        assert isinstance(report, CycleReport)\n        assert isinstance(report.wisdom_score, float)\n        assert isinstance(report.conviction, float)\n        assert isinstance(report.alerts, list)\n        assert isinstance(report.principles, list)\n        assert isinstance(report.engine_reports, dict)\n",
-  "body_hash": "d0d6d696afc98fff",
+  "body": "def test_on_step_end_returns_cycle_report(self) -> None:\n    o = EngineOrchestrator({})\n    o.on_step_start(\"do something\")\n    report = o.on_step_end(\"done\", {\"recon_done\": True, \"tool_calls\": [\"read_file\"]})\n    assert isinstance(report, CycleReport)\n    assert isinstance(report.wisdom_score, float)\n    assert isinstance(report.conviction, float)\n    assert isinstance(report.alerts, list)\n    assert isinstance(report.principles, list)\n    assert isinstance(report.engine_reports, dict)\n",
+  "body_hash": "d83b962506dc64ba",
   "body_truncated": false,
   "callers_of": [
     "EngineOrchestrator",
@@ -9,7 +9,7 @@
     "isinstance"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:312.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:312.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_on_step_end_returns_cycle_report",
@@ -37,7 +37,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:312"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:312"
   },
   "kind": "engine_molecule",
   "made_of": [],

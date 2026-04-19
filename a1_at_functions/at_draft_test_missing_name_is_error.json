@@ -1,19 +1,36 @@
 {
-  "body": "    def test_missing_name_is_error(self) -> None:\n        data = {\"description\": \"no name\"}\n        report = validate_agent_card(data)\n        assert not report.valid\n        assert any(i.severity == \"error\" for i in report.issues)\n",
-  "body_hash": "55f8bcc8edd83101",
+  "body": "def test_missing_name_is_error(self) -> None:\n    data = {\"description\": \"no name\"}\n    report = validate_agent_card(data)\n    assert not report.valid\n    assert any(i.severity == \"error\" for i in report.issues)\n",
+  "body_hash": "bbd130e966dcff14",
   "body_truncated": false,
   "callers_of": [
     "validate_agent_card",
     "any"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateagentcard.py:36.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_a2a.py:56.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_missing_name_is_error",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.a2a.A2AAgentCard",
+    "ass_ade.a2a.A2AAuthentication",
+    "ass_ade.a2a.A2ASkill",
+    "ass_ade.a2a.ValidationIssue",
+    "ass_ade.a2a.ValidationReport",
+    "ass_ade.a2a.fetch_agent_card",
+    "ass_ade.a2a.local_agent_card",
+    "ass_ade.a2a.negotiate",
+    "ass_ade.a2a.validate_agent_card",
+    "httpx",
+    "httpx"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateagentcard.py:36"
+    "source": "C:/!ass-ade/tests/test_a2a.py:56"
   },
   "kind": "pure_function",
   "made_of": [],

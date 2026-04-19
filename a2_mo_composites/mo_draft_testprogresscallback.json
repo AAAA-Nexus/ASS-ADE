@@ -10,7 +10,7 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:146.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_pipeline.py:146.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.testprogresscallback",
@@ -25,7 +25,7 @@
     "ass_ade.pipeline.StepStatus"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:146"
+    "source": "C:/!ass-ade/tests/test_pipeline.py:146"
   },
   "kind": "engine_molecule",
   "made_of": [

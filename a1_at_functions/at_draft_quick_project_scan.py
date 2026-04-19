@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/src/ass_ade/interpreter.py:1454
+# Extracted from C:/!ass-ade/src/ass_ade/interpreter.py:1470
 # Component id: at.source.ass_ade.quick_project_scan
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def quick_project_scan(path: Path) -> dict:

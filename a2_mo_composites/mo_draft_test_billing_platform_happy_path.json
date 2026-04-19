@@ -1,5 +1,5 @@
 {
-  "body": "def test_billing_platform_happy_path(method_name, response_json):\n    \"\"\"Test advanced platform & billing methods (happy path).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json=response_json)\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        if method_name == \"efficiency_capture\":\n            result = client.efficiency_capture(interactions=[{\"agent_id\": \"agent_1\"}])\n        elif method_name == \"billing_outcome\":\n            result = client.billing_outcome(task_id=\"task_123\", success=True, metric_value=0.9)\n        elif method_name == \"costs_attribute\":\n            result = client.costs_attribute(run_id=\"run_123\")\n        elif method_name == \"memory_trim\":\n            result = client.memory_trim(context=[{\"role\": \"user\"}], target_tokens=500)\n        elif method_name == \"routing_think\":\n            result = client.routing_think(query=\"complex query about agents\")\n        else:  # routing_recommend\n            result = client.routing_recommend(task=\"analyze large dataset\")\n        assert result is not None\n",
+  "body": "def test_billing_platform_happy_path(method_name, response_json):\n    \"\"\"Test advanced platform & billing methods (happy path).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json=response_json)\n\n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        if method_name == \"efficiency_capture\":\n            result = client.efficiency_capture(interactions=[{\"agent_id\": \"agent_1\"}])\n        elif method_name == \"billing_outcome\":\n            result = client.billing_outcome(task_id=\"task_123\", success=True, metric_value=0.9)\n        elif method_name == \"costs_attribute\":\n            result = client.costs_attribute(run_id=\"run_123\")\n        elif method_name == \"memory_trim\":\n            result = client.memory_trim(context=[{\"role\": \"user\"}], target_tokens=500)\n        elif method_name == \"routing_think\":\n            result = client.routing_think(query=\"complex query about agents\")\n        else:  # routing_recommend\n            result = client.routing_recommend(task=\"analyze large dataset\")\n        assert result is not None\n",
   "body_hash": "ba18d17848cb67e9",
   "body_truncated": false,
   "callers_of": [
@@ -15,7 +15,7 @@
     "routing_recommend"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:1062.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_nexus_client_comprehensive.py:1062.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_billing_platform_happy_path",
@@ -150,7 +150,7 @@
     "ass_ade.nexus.models.EntropyResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:1062"
+    "source": "C:/!ass-ade/tests/test_nexus_client_comprehensive.py:1062"
   },
   "kind": "engine_molecule",
   "made_of": [],

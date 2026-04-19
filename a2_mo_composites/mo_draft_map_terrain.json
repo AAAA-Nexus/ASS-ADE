@@ -1,12 +1,12 @@
 {
-  "body": "    def map_terrain(self, required_capabilities: list, **kwargs: Any) -> dict:\n        \"\"\"Capability gap detection. Verdict PROCEED or HALT_AND_INVENT.\"\"\"\n        try:\n            return self._post_raw(\n                \"/v1/map/terrain\",\n                {\"required_capabilities\": required_capabilities, **kwargs},\n            )\n        except Exception:\n            return {\n                \"verdict\": \"PROCEED\",\n                \"missing\": [],\n                \"fallback\": \"local_assume_present\",\n            }\n",
-  "body_hash": "3da9cdc9e9e38005",
+  "body": "def map_terrain(self, required_capabilities: list, **kwargs: Any) -> dict:\n    \"\"\"Capability gap detection. Verdict PROCEED or HALT_AND_INVENT.\"\"\"\n    try:\n        return self._post_raw(\n            \"/v1/map/terrain\",\n            {\"required_capabilities\": required_capabilities, **kwargs},\n        )\n    except Exception:\n        return {\n            \"verdict\": \"PROCEED\",\n            \"missing\": [],\n            \"fallback\": \"local_assume_present\",\n        }\n",
+  "body_hash": "96e6c0c5cf574863",
   "body_truncated": false,
   "callers_of": [
     "_post_raw"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:944.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:944.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.map_terrain",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:944"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:944"
   },
   "kind": "engine_molecule",
   "made_of": [],

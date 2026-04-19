@@ -1,12 +1,12 @@
 {
-  "body": "    def test_local_providers_have_no_api_key_env(self):\n        for name, profile in FREE_PROVIDERS.items():\n            if profile.local:\n                assert profile.api_key_env is None, f\"{name} is local but has api_key_env\"\n",
-  "body_hash": "da1626408201fa06",
+  "body": "def test_local_providers_have_no_api_key_env(self):\n    for name, profile in FREE_PROVIDERS.items():\n        if profile.local:\n            assert profile.api_key_env is None, f\"{name} is local but has api_key_env\"\n",
+  "body_hash": "24a635b276fb8bed",
   "body_truncated": false,
   "callers_of": [
     "items"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:54.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:54.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_local_providers_have_no_api_key_env",
@@ -85,7 +85,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:54"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:54"
   },
   "kind": "pure_function",
   "made_of": [],

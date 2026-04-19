@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/context_memory.py:224
+# Extracted from C:/!ass-ade/src/ass_ade/context_memory.py:224
 # Component id: at.source.ass_ade.query_vector_memory
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def query_vector_memory(

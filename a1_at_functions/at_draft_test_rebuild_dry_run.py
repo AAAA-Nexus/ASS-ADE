@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli.py:125
+# Extracted from C:/!ass-ade/tests/test_cli.py:125
 # Component id: at.source.ass_ade.test_rebuild_dry_run
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_rebuild_dry_run(tmp_path: Path) -> None:

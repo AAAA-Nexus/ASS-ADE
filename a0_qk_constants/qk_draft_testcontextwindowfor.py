@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testcontextwindowfor.py:5
+# Extracted from C:/!ass-ade/tests/test_tokens.py:97
 # Component id: qk.source.ass_ade.testcontextwindowfor
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class TestContextWindowFor:

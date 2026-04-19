@@ -1,19 +1,27 @@
 {
-  "body": "    def test_whitespace_only_raises(self) -> None:\n        with pytest.raises(ValueError, match=\"must not be empty\"):\n            validate_agent_id(\"   \")\n",
-  "body_hash": "447addffed781b27",
+  "body": "def test_whitespace_only_raises(self) -> None:\n    with pytest.raises(ValueError, match=\"must not be empty\"):\n        validate_agent_id(\"   \")\n",
+  "body_hash": "484d4c679801e899",
   "body_truncated": false,
   "callers_of": [
     "raises",
     "validate_agent_id"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateagentid.py:18.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_validation.py:28.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_whitespace_only_raises",
-  "imports": [],
+  "imports": [
+    "pytest",
+    "ass_ade.nexus.validation._is_private_host",
+    "ass_ade.nexus.validation.validate_agent_id",
+    "ass_ade.nexus.validation.validate_prompt",
+    "ass_ade.nexus.validation.validate_session_id",
+    "ass_ade.nexus.validation.validate_url",
+    "ass_ade.nexus.validation.validate_usdc_amount"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateagentid.py:18"
+    "source": "C:/!ass-ade/tests/test_validation.py:28"
   },
   "kind": "pure_function",
   "made_of": [],

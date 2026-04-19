@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/context.py:36
+# Extracted from C:/!ass-ade/src/ass_ade/agent/context.py:42
 # Component id: sy.source.ass_ade.build_system_prompt
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def build_system_prompt(working_dir: str = ".") -> str:

@@ -20,7 +20,7 @@
     "now"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/project_parser.py:211.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/rebuild/project_parser.py:215.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.ingest_project",
@@ -40,7 +40,7 @@
     "ass_ade.engine.rebuild.tiers.TIERS"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/project_parser.py:211"
+    "source": "C:/!ass-ade/src/ass_ade/engine/rebuild/project_parser.py:215"
   },
   "kind": "pure_function",
   "made_of": [],

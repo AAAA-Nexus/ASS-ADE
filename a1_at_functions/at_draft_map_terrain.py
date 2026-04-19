@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/map_terrain.py:299
+# Extracted from C:/!ass-ade/src/ass_ade/map_terrain.py:1047
 # Component id: at.source.ass_ade.map_terrain
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def map_terrain(
@@ -34,25 +36,32 @@ def map_terrain(
             name = str(raw_name)
             normalized_name = _slug(name)
             exists = normalized_name in inventory[cap_type]
-            if not exists and cap_type == "tools" and normalized_name.startswith("nexus_"):
+            if (
+                not exists
+                and cap_type == "tools"
+                and normalized_name.startswith("nexus_")
+            ):
                 exists = normalized_name[6:] in inventory[cap_type]
             inventory_check[cap_type][name] = "exists" if exists else "missing"
             if exists:
                 continue
-            missing.append(MissingCapability(
-                name=name,
-                type=cap_type[:-1].title(),
-                specification=_specification(
-                    task_description=task_description,
-                    cap_type=cap_type,
+            missing.append(
+                MissingCapability(
                     name=name,
-                    constraints=constraints,
-                ),
-                recommended_creation_tool=_CREATION_TOOL_BY_TYPE[cap_type],
-                estimated_fuel_cost=_FUEL_BY_TYPE[cap_type],
-                verification_criteria=_verification_criteria(cap_type, constraints),
-                human_approval_required=cap_type in {"agents", "harnesses"},
-            ))
+                    type=cap_type[:-1].title(),
+                    type_key=cap_type,
+                    specification=_specification(
+                        task_description=task_description,
+                        cap_type=cap_type,
+                        name=name,
+                        constraints=constraints,
+                    ),
+                    recommended_creation_tool=_CREATION_TOOL_BY_TYPE[cap_type],
+                    estimated_fuel_cost=_FUEL_BY_TYPE[cap_type],
+                    verification_criteria=_verification_criteria(cap_type, constraints),
+                    human_approval_required=cap_type in {"agents", "harnesses"},
+                )
+            )
 
     if invalid_requirements:
         inventory_check["requirements"] = invalid_requirements
@@ -79,18 +88,18 @@ def map_terrain(
         )
 
     total_cost = sum(item.estimated_fuel_cost for item in missing)
-    auto_allowed = (
-        auto_invent_if_missing
-        and total_cost <= max_development_budget_usdc
-        and all(item.type.lower() in {"tool", "skill"} for item in missing)
-    )
+    auto_allowed = auto_invent_if_missing and total_cost <= max_development_budget_usdc
     created_assets: list[str] = []
     if auto_allowed:
-        created_assets = _persist_development_plan(
-            working_dir=root,
-            task_description=task_description,
-            missing=missing,
-        )
+        for item in missing:
+            created_assets.extend(
+                _materialize_capability_asset(
+                    agent_id=agent_id,
+                    working_dir=root,
+                    task_description=task_description,
+                    item=item,
+                )
+            )
 
     return MapTerrainResult(
         verdict="HALT_AND_INVENT",
@@ -98,15 +107,19 @@ def map_terrain(
         inventory_check=inventory_check,
         development_plan=DevelopmentPlan(
             steps=[
-                "1. Synthesize capability specification.",
-                "2. Generate implementation candidate.",
-                "3. Run sandbox and fixture verification.",
-                "4. Register verified asset in Asset Memory.",
-                "5. Retry original task from Phase 2.",
+                "1. Synthesize capability blueprint and repo-native asset contract.",
+                "2. Materialize the tiered rebuild packet (qk/at/mo/og/sy).",
+                "3. Run rebuild audit and certificate issuance.",
+                "4. Run the enhancement scanner and review follow-up findings.",
+                "5. Register the asset in Asset Memory and retry the original task.",
             ],
-            total_estimated_time_seconds=max(30, len(missing) * 60),
+            total_estimated_time_seconds=max(45, len(missing) * 90),
             auto_invent_triggered=auto_allowed,
             created_assets=created_assets,
         ),
-        next_action="Execute development plan before retrying original task.",
+        next_action=(
+            f"Review generated capability packet(s) for agent {agent_id} and rerun MAP = TERRAIN."
+            if auto_allowed
+            else "Execute the capability development plan before retrying the original task."
+        ),
     )

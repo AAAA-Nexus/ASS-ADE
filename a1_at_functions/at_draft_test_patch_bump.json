@@ -1,13 +1,13 @@
 {
-  "body": "    def test_patch_bump(self):\n        old_body = \"def foo():\\n    return 1\"\n        new_body = \"def foo():\\n    return 2\"\n        prev = {\n            \"at.foo\": {\n                \"version\": \"0.1.3\",\n                \"body_hash\": content_hash(old_body),\n                \"body\": old_body,\n            }\n        }\n        version, change_type = assign_version(\"at.foo\", new_body, \"python\", prev)\n        assert version == \"0.1.4\"\n        assert change_type == \"patch\"\n",
-  "body_hash": "94d9d12c5f019090",
+  "body": "def test_patch_bump(self):\n    old_body = \"def foo():\\n    return 1\"\n    new_body = \"def foo():\\n    return 2\"\n    prev = {\n        \"at.foo\": {\n            \"version\": \"0.1.3\",\n            \"body_hash\": content_hash(old_body),\n            \"body\": old_body,\n        }\n    }\n    version, change_type = assign_version(\"at.foo\", new_body, \"python\", prev)\n    assert version == \"0.1.4\"\n    assert change_type == \"patch\"\n",
+  "body_hash": "f2b587996bcd1fc6",
   "body_truncated": false,
   "callers_of": [
     "assign_version",
     "content_hash"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_version_tracker.py:138.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_version_tracker.py:138.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_patch_bump",
@@ -28,7 +28,7 @@
     "ass_ade.engine.rebuild.version_tracker.write_tier_version_file"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_version_tracker.py:138"
+    "source": "C:/!ass-ade/tests/test_version_tracker.py:138"
   },
   "kind": "pure_function",
   "made_of": [],

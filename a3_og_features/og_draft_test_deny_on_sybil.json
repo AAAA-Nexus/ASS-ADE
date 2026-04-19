@@ -1,6 +1,6 @@
 {
-  "body": "    def test_deny_on_sybil(self) -> None:\n        client = _mock_client()\n        client.sybil_check.return_value = SybilCheckResult(sybil_risk=\"high\", score=0.9)\n        result = trust_gate(client, \"agent-sybil\")\n        assert result.verdict == \"DENY\"\n",
-  "body_hash": "c0edf53008ffc529",
+  "body": "def test_deny_on_sybil(self) -> None:\n    client = _mock_client()\n    client.sybil_check.return_value = SybilCheckResult(sybil_risk=\"high\", score=0.9)\n    result = trust_gate(client, \"agent-sybil\")\n    assert result.verdict == \"DENY\"\n",
+  "body_hash": "0736e5bd364ece06",
   "body_truncated": false,
   "callers_of": [
     "_mock_client",
@@ -8,13 +8,34 @@
     "trust_gate"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_testtrustgate.py:19.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_workflows.py:76.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "og.source.ass_ade.test_deny_on_sybil",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "unittest.mock.MagicMock",
+    "pytest",
+    "ass_ade.nexus.errors.NexusServerError",
+    "ass_ade.nexus.models.AegisProxyResult",
+    "ass_ade.nexus.models.CertifiedOutput",
+    "ass_ade.nexus.models.ComplianceResult",
+    "ass_ade.nexus.models.EthicsCheckResult",
+    "ass_ade.nexus.models.HallucinationResult",
+    "ass_ade.nexus.models.IdentityVerification",
+    "ass_ade.nexus.models.LineageRecord",
+    "ass_ade.nexus.models.PromptScanResult",
+    "ass_ade.nexus.models.ReputationScore",
+    "ass_ade.nexus.models.ShieldResult",
+    "ass_ade.nexus.models.SybilCheckResult",
+    "ass_ade.nexus.models.TrustScore",
+    "ass_ade.workflows.certify_output",
+    "ass_ade.workflows.safe_execute",
+    "ass_ade.workflows.trust_gate"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_testtrustgate.py:19"
+    "source": "C:/!ass-ade/tests/test_workflows.py:76"
   },
   "kind": "product_organism",
   "made_of": [
@@ -22,7 +43,7 @@
   ],
   "name": "test_deny_on_sybil",
   "product_categories": [
-    "IDT"
+    "COR"
   ],
   "provides": [
     "rebuild candidate for test_deny_on_sybil"

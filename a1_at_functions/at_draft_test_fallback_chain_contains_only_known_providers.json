@@ -1,13 +1,13 @@
 {
-  "body": "    def test_fallback_chain_contains_only_known_providers(self):\n        known = set(FREE_PROVIDERS.keys())\n        for name in DEFAULT_FALLBACK_CHAIN:\n            assert name in known, f\"fallback chain references unknown provider {name}\"\n",
-  "body_hash": "b4c8278a409a6165",
+  "body": "def test_fallback_chain_contains_only_known_providers(self):\n    known = set(FREE_PROVIDERS.keys())\n    for name in DEFAULT_FALLBACK_CHAIN:\n        assert name in known, f\"fallback chain references unknown provider {name}\"\n",
+  "body_hash": "fd68ffb383a4cac4",
   "body_truncated": false,
   "callers_of": [
     "set",
     "keys"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:65.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:65.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_fallback_chain_contains_only_known_providers",
@@ -86,7 +86,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:65"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:65"
   },
   "kind": "pure_function",
   "made_of": [],

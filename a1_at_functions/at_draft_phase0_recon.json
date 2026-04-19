@@ -24,7 +24,7 @@
     "replace"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/recon.py:186.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/recon.py:186.",
   "exceptions_raised": [
     "ValueError"
   ],
@@ -49,7 +49,7 @@
     "ass_ade.local.repo.summarize_repo"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/recon.py:186"
+    "source": "C:/!ass-ade/src/ass_ade/recon.py:186"
   },
   "kind": "pure_function",
   "made_of": [],

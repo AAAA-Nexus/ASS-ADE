@@ -1,5 +1,5 @@
 {
-  "body": "def test_governance_happy_path(method_name, response_json):\n    \"\"\"Test governance methods (happy path).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json=response_json)\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        if method_name == \"governance_vote\":\n            result = client.governance_vote(agent_id=\"agent_1\", proposal_id=\"prop_123\", vote=\"yes\", weight=1.0)\n        else:  # ethics_compliance\n            result = client.ethics_compliance(system_description=\"system desc\")\n        assert result is not None\n",
+  "body": "def test_governance_happy_path(method_name, response_json):\n    \"\"\"Test governance methods (happy path).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json=response_json)\n\n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        if method_name == \"governance_vote\":\n            result = client.governance_vote(agent_id=\"agent_1\", proposal_id=\"prop_123\", vote=\"yes\", weight=1.0)\n        else:  # ethics_compliance\n            result = client.ethics_compliance(system_description=\"system desc\")\n        assert result is not None\n",
   "body_hash": "b63de9cb34be05c2",
   "body_truncated": false,
   "callers_of": [
@@ -11,7 +11,7 @@
     "ethics_compliance"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:1008.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_nexus_client_comprehensive.py:1008.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_governance_happy_path",
@@ -146,7 +146,7 @@
     "ass_ade.nexus.models.EntropyResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:1008"
+    "source": "C:/!ass-ade/tests/test_nexus_client_comprehensive.py:1008"
   },
   "kind": "engine_molecule",
   "made_of": [],

@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:28
+# Extracted from C:/!ass-ade/tests/test_pipeline.py:28
 # Component id: at.source.ass_ade.counting_step
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def counting_step(ctx: dict[str, Any]) -> StepResult:

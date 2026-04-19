@@ -1,6 +1,6 @@
 {
-  "body": "    def test_whitespace_only_text_response_is_preserved(self, tmp_path):\n        provider = _MockProvider([\n            CompletionResponse(\n                message=Message(role=\"assistant\", content=\"   \"),\n                finish_reason=\"stop\",\n            )\n        ])\n        registry = ToolRegistry()\n        loop = AgentLoop(\n            provider=provider,\n            registry=registry,\n            working_dir=str(tmp_path),\n        )\n        result = loop.step(\"Hello\")\n        assert result == \"   \"\n",
-  "body_hash": "3850edfab72b6c8d",
+  "body": "def test_whitespace_only_text_response_is_preserved(self, tmp_path):\n    provider = _MockProvider([\n        CompletionResponse(\n            message=Message(role=\"assistant\", content=\"   \"),\n            finish_reason=\"stop\",\n        )\n    ])\n    registry = ToolRegistry()\n    loop = AgentLoop(\n        provider=provider,\n        registry=registry,\n        working_dir=str(tmp_path),\n    )\n    result = loop.step(\"Hello\")\n    assert result == \"   \"\n",
+  "body_hash": "32d5ec25a443be14",
   "body_truncated": false,
   "callers_of": [
     "_MockProvider",
@@ -12,7 +12,7 @@
     "Message"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_agent.py:204.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_agent.py:204.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_whitespace_only_text_response_is_preserved",
@@ -32,7 +32,7 @@
     "ass_ade.tools.registry.ToolRegistry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_agent.py:204"
+    "source": "C:/!ass-ade/tests/test_agent.py:204"
   },
   "kind": "pure_function",
   "made_of": [],

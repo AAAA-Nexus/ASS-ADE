@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli.py:237
+# Extracted from C:/!ass-ade/tests/test_cli.py:254
 # Component id: mo.source.ass_ade.test_rollback_restores_backup
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_rollback_restores_backup(tmp_path: Path) -> None:

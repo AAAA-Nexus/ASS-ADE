@@ -10,7 +10,7 @@
     "append"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/providers.py:355.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/providers.py:355.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.detect_available_providers",
@@ -22,7 +22,7 @@
     "typing.Any"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/providers.py:355"
+    "source": "C:/!ass-ade/src/ass_ade/agent/providers.py:355"
   },
   "kind": "pure_function",
   "made_of": [],

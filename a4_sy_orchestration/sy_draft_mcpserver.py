@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/mcp/server.py:441
+# Extracted from C:/!ass-ade/src/ass_ade/mcp/server.py:456
 # Component id: sy.source.ass_ade.mcpserver
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class MCPServer:
@@ -48,6 +50,7 @@ class MCPServer:
     def tca(self) -> Any:
         if self._tca is None:
             from ass_ade.agent.tca import TCAEngine
+
             self._tca = TCAEngine({"working_dir": self._working_dir})
         return self._tca
 
@@ -55,6 +58,7 @@ class MCPServer:
     def cie(self) -> Any:
         if self._cie is None:
             from ass_ade.agent.cie import CIEPipeline
+
             self._cie = CIEPipeline()
         return self._cie
 
@@ -65,6 +69,7 @@ class MCPServer:
                 from ass_ade.agent.lora_flywheel import LoRAFlywheel
                 from ass_ade.config import load_config
                 from ass_ade.nexus.client import NexusClient
+
                 settings = load_config()
                 nexus = None
                 if settings.profile in {"hybrid", "premium"} and settings.nexus_api_key:
@@ -74,7 +79,9 @@ class MCPServer:
                         api_key=settings.nexus_api_key,
                         agent_id=settings.agent_id,
                     )
-                self._lora_flywheel = LoRAFlywheel(nexus=nexus, session_id=f"mcp:{id(self)}")
+                self._lora_flywheel = LoRAFlywheel(
+                    nexus=nexus, session_id=f"mcp:{id(self)}"
+                )
             except Exception as exc:
                 _LOG.debug("LoRA flywheel init skipped: %s", exc)
                 return None
@@ -131,7 +138,13 @@ class MCPServer:
         if name in ("write_file", "edit_file"):
             path = arguments.get("path") or arguments.get("file_path") or ""
             code = arguments.get("content") or arguments.get("new_content") or ""
-            language = "python" if path.endswith(".py") else "typescript" if path.endswith((".ts", ".tsx")) else "text"
+            language = (
+                "python"
+                if path.endswith(".py")
+                else "typescript"
+                if path.endswith((".ts", ".tsx"))
+                else "text"
+            )
             if code and language != "text":
                 try:
                     cie_result = self.cie.run(code, language=language)
@@ -146,7 +159,9 @@ class MCPServer:
                             try:
                                 self.lora_flywheel.capture_rejection(
                                     candidate=code[:2000],
-                                    reason="; ".join(cie_result.errors + cie_result.owasp_findings)[:200],
+                                    reason="; ".join(
+                                        cie_result.errors + cie_result.owasp_findings
+                                    )[:200],
                                 )
                             except Exception:
                                 pass
@@ -158,6 +173,7 @@ class MCPServer:
                             f"owasp={cie_result.owasp_findings[:3]}"
                         )
                         from ass_ade.tools.base import ToolResult
+
                         return ToolResult(error=err_msg, success=False)
                     # Passed: capture as accepted fix for LoRA training.
                     # Only capture if the content actually changed — trivial
@@ -167,7 +183,11 @@ class MCPServer:
                             self.lora_flywheel.capture_fix(
                                 original=pre_write_content,
                                 fixed=code,
-                                context={"path": path, "language": language, "tool": name},
+                                context={
+                                    "path": path,
+                                    "language": language,
+                                    "tool": name,
+                                },
                             )
                         except Exception:
                             pass
@@ -179,14 +199,20 @@ class MCPServer:
 
     def run(self) -> None:
         """Run the stdio JSON-RPC loop. Reads from stdin, writes to stdout.
-        
+
         Dispatches tool calls to a thread pool to keep stdin responsive during
         long-running operations (e.g., agent loops, Nexus API calls).
         """
         for line in sys.stdin:
             raw_bytes = len(line.encode("utf-8", errors="replace"))
             if raw_bytes > _MAX_LINE_BYTES:
-                self._write({"jsonrpc": "2.0", "id": None, "error": {"code": -32700, "message": "Request too large"}})
+                self._write(
+                    {
+                        "jsonrpc": "2.0",
+                        "id": None,
+                        "error": {"code": -32700, "message": "Request too large"},
+                    }
+                )
                 continue
             line = line.strip()
             if not line:
@@ -202,7 +228,7 @@ class MCPServer:
             # This keeps stdin responsive for new requests and cancellations.
             req_id = request.get("id")
             future = self._executor.submit(self._handle_worker, request)
-            
+
             # Track the future for cancellation support
             if req_id is not None:
                 with self._lock:
@@ -210,7 +236,7 @@ class MCPServer:
 
     def _handle_worker(self, request: dict[str, Any]) -> None:
         """Worker thread entry point. Calls _handle_sync and writes the response.
-        
+
         Runs in the thread pool executor. Handles any exceptions and ensures
         the response is written with proper serialization via _write_lock.
         """
@@ -231,7 +257,7 @@ class MCPServer:
 
     def _handle_sync(self, request: dict[str, Any]) -> dict[str, Any] | None:
         """Synchronous request handler. Can be called directly from tests or from worker threads.
-        
+
         Returns the response dict, or None for notifications.
         """
         req_id = request.get("id")
@@ -261,7 +287,9 @@ class MCPServer:
 
         NON_INIT_METHODS = {"initialize", "ping", "notifications/initialized"}
         if not self._initialized and method not in NON_INIT_METHODS:
-            return self._error(req_id, -32002, "Server not initialized. Send 'initialize' first.")
+            return self._error(
+                req_id, -32002, "Server not initialized. Send 'initialize' first."
+            )
 
         if method == "initialize":
             return self._handle_initialize(req_id, params)
@@ -276,33 +304,32 @@ class MCPServer:
 
     def _handle(self, request: dict[str, Any]) -> dict[str, Any] | None:
         """Public request handler. Delegates to _handle_sync for synchronous execution.
-        
+
         Used by tests and any callers that expect synchronous responses.
         In production (run() method), requests are dispatched via thread pool instead.
         """
         return self._handle_sync(request)
 
-    def _handle_initialize(
-        self, req_id: Any, params: dict[str, Any]
-    ) -> dict[str, Any]:
+    def _handle_initialize(self, req_id: Any, params: dict[str, Any]) -> dict[str, Any]:
         # MCP 2025-11-25: always respond with our supported version.
         # The client's requested version (params.get("protocolVersion")) is
         # informational; we do not downgrade.
-        return self._result(req_id, {
-            "protocolVersion": self.PROTOCOL_VERSION,
-            "capabilities": {
-                "logging": {},
-                "tools": {"listChanged": False},
+        return self._result(
+            req_id,
+            {
+                "protocolVersion": self.PROTOCOL_VERSION,
+                "capabilities": {
+                    "logging": {},
+                    "tools": {"listChanged": False},
+                },
+                "serverInfo": {
+                    "name": self.SERVER_NAME,
+                    "version": self.SERVER_VERSION,
+                },
             },
-            "serverInfo": {
-                "name": self.SERVER_NAME,
-                "version": self.SERVER_VERSION,
-            },
-        })
+        )
 
-    def _handle_tools_list(
-        self, req_id: Any, params: dict[str, Any]
-    ) -> dict[str, Any]:
+    def _handle_tools_list(self, req_id: Any, params: dict[str, Any]) -> dict[str, Any]:
         # MCP 2025-11-25: support cursor-based pagination.
         # All our tools fit in one page, so nextCursor is always absent.
         # We accept but ignore any incoming cursor.
@@ -324,9 +351,7 @@ class MCPServer:
 
         return self._result(req_id, {"tools": tools})
 
-    def _handle_tools_call(
-        self, req_id: Any, params: dict[str, Any]
-    ) -> dict[str, Any]:
+    def _handle_tools_call(self, req_id: Any, params: dict[str, Any]) -> dict[str, Any]:
         # Check if this request was already cancelled
         with self._lock:
             if req_id in self._cancelled:
@@ -347,15 +372,20 @@ class MCPServer:
             # Route workflow / agent / A2A tools
             workflow_names = {t["name"] for t in _WORKFLOW_TOOLS}
             if name in workflow_names:
-                return self._handle_extended_call(req_id, name, arguments, progress_token, ctx)
+                return self._handle_extended_call(
+                    req_id, name, arguments, progress_token, ctx
+                )
 
             # Phase 2: pre-execution NCB gate for write/edit tools
             allow, reason = self._pre_tool_hook(name, arguments)
             if not allow:
-                return self._result(req_id, {
-                    "content": [{"type": "text", "text": reason}],
-                    "isError": True,
-                })
+                return self._result(
+                    req_id,
+                    {
+                        "content": [{"type": "text", "text": reason}],
+                        "isError": True,
+                    },
+                )
 
             # Snapshot pre-write content so LoRA gets a real bad→good sample
             pre_write_content = ""
@@ -364,57 +394,88 @@ class MCPServer:
                 if snap_path:
                     try:
                         from pathlib import Path as _P
+
                         p = _P(snap_path)
                         if p.exists() and p.is_file() and p.stat().st_size < 512_000:
-                            pre_write_content = p.read_text(encoding="utf-8", errors="replace")
+                            pre_write_content = p.read_text(
+                                encoding="utf-8", errors="replace"
+                            )
                     except Exception:
                         pass
 
             result = self._registry.execute(name, **arguments)
 
             # Phase 2/3/5: post-execution gates (TCA record, CIE validate, LoRA capture)
-            result = self._post_tool_hook(name, arguments, result, pre_write_content=pre_write_content)
+            result = self._post_tool_hook(
+                name, arguments, result, pre_write_content=pre_write_content
+            )
 
             content: list[dict[str, str]] = []
             if result.success:
                 content.append({"type": "text", "text": result.output})
             else:
-                content.append({"type": "text", "text": result.error or "Unknown error"})
+                content.append(
+                    {"type": "text", "text": result.error or "Unknown error"}
+                )
 
-            return self._result(req_id, {
-                "content": content,
-                "isError": not result.success,
-            })
+            return self._result(
+                req_id,
+                {
+                    "content": content,
+                    "isError": not result.success,
+                },
+            )
         finally:
             # Clean up cancellation context
             with self._lock:
                 self._cancellation_contexts.pop(req_id, None)
 
     def _handle_extended_call(
-        self, req_id: Any, name: str, arguments: dict[str, Any],
+        self,
+        req_id: Any,
+        name: str,
+        arguments: dict[str, Any],
         progress_token: Any = None,
         cancellation_context: CancellationContext | None = None,
     ) -> dict[str, Any]:
         """Handle workflow, agent, and A2A tool calls with optional progress reporting and cancellation."""
         try:
             if name == "phase0_recon":
-                return self._call_phase0_recon(req_id, arguments, progress_token, cancellation_context)
+                return self._call_phase0_recon(
+                    req_id, arguments, progress_token, cancellation_context
+                )
             elif name == "context_pack":
-                return self._call_context_pack(req_id, arguments, progress_token, cancellation_context)
+                return self._call_context_pack(
+                    req_id, arguments, progress_token, cancellation_context
+                )
             elif name == "context_memory_store":
-                return self._call_context_memory_store(req_id, arguments, progress_token, cancellation_context)
+                return self._call_context_memory_store(
+                    req_id, arguments, progress_token, cancellation_context
+                )
             elif name == "context_memory_query":
-                return self._call_context_memory_query(req_id, arguments, progress_token, cancellation_context)
+                return self._call_context_memory_query(
+                    req_id, arguments, progress_token, cancellation_context
+                )
             elif name == "map_terrain":
-                return self._call_map_terrain(req_id, arguments, progress_token, cancellation_context)
+                return self._call_map_terrain(
+                    req_id, arguments, progress_token, cancellation_context
+                )
             elif name == "trust_gate":
-                return self._call_trust_gate(req_id, arguments, progress_token, cancellation_context)
+                return self._call_trust_gate(
+                    req_id, arguments, progress_token, cancellation_context
+                )
             elif name == "certify_output":
-                return self._call_certify_output(req_id, arguments, progress_token, cancellation_context)
+                return self._call_certify_output(
+                    req_id, arguments, progress_token, cancellation_context
+                )
             elif name == "safe_execute":
-                return self._call_safe_execute(req_id, arguments, progress_token, cancellation_context)
+                return self._call_safe_execute(
+                    req_id, arguments, progress_token, cancellation_context
+                )
             elif name == "ask_agent":
-                return self._call_ask_agent(req_id, arguments, progress_token, cancellation_context)
+                return self._call_ask_agent(
+                    req_id, arguments, progress_token, cancellation_context
+                )
             elif name == "a2a_validate":
                 return self._call_a2a_validate(req_id, arguments)
             elif name == "a2a_negotiate":
@@ -423,10 +484,18 @@ class MCPServer:
                 return self._error(req_id, -32602, f"Unknown extended tool: {name}")
         except Exception:
             _LOG.exception("Tool call failed: %s", name)
-            return self._result(req_id, {
-                "content": [{"type": "text", "text": "Tool execution failed. Check server logs for details."}],
-                "isError": True,
-            })
+            return self._result(
+                req_id,
+                {
+                    "content": [
+                        {
+                            "type": "text",
+                            "text": "Tool execution failed. Check server logs for details.",
+                        }
+                    ],
+                    "isError": True,
+                },
+            )
 
     # ── Progress helpers ──────────────────────────────────────────────────────
 
@@ -455,21 +524,27 @@ class MCPServer:
 
     def _emit_log(self, level: str, message: str) -> None:
         """Emit a notifications/message log entry (MCP 2025-11-25 logging capability)."""
-        self._write({
-            "jsonrpc": "2.0",
-            "method": "notifications/message",
-            "params": {"level": level, "data": message},
-        })
+        self._write(
+            {
+                "jsonrpc": "2.0",
+                "method": "notifications/message",
+                "params": {"level": level, "data": message},
+            }
+        )
 
     # ── Tool implementations ──────────────────────────────────────────────────
 
     def _get_nexus_client(self) -> Any:
         """Create a NexusClient from config, or raise if unavailable."""
         from ass_ade.config import load_config
+
         cfg = load_config()
         if cfg.profile == "local":
-            raise RuntimeError("Workflow tools require hybrid or premium profile (current: local)")
+            raise RuntimeError(
+                "Workflow tools require hybrid or premium profile (current: local)"
+            )
         from ass_ade.nexus.client import NexusClient
+
         return NexusClient(
             base_url=cfg.nexus_base_url or "https://atomadic.tech",
             timeout=cfg.request_timeout_s,
@@ -477,7 +552,10 @@ class MCPServer:
         )
 
     def _call_map_terrain(
-        self, req_id: Any, args: dict[str, Any], token: Any = None,
+        self,
+        req_id: Any,
+        args: dict[str, Any],
+        token: Any = None,
         cancellation_context: CancellationContext | None = None,
     ) -> dict[str, Any]:
         task_description = args.get("task_description", "")
@@ -485,14 +563,16 @@ class MCPServer:
         if not task_description:
             return self._error(req_id, -32602, "task_description is required")
         if not isinstance(required, dict):
-            return self._error(req_id, -32602, "required_capabilities must be an object")
+            return self._error(
+                req_id, -32602, "required_capabilities must be an object"
+            )
 
         self._emit_progress(token, 0.0, message="Mapping required capabilities...")
-        
+
         # Cancellation checkpoint
         if cancellation_context and cancellation_context.check():
             return self._error(req_id, -32800, "Request cancelled")
-        
+
         hosted_tools: list[str] = []
         try:
             client = self._get_nexus_client()
@@ -502,28 +582,40 @@ class MCPServer:
         except Exception:
             hosted_tools = []
 
-        self._emit_progress(token, 0.5, message="Checking local assets and hosted MCP tools...")
+        self._emit_progress(
+            token, 0.5, message="Checking local assets and hosted MCP tools..."
+        )
         from ass_ade.map_terrain import map_terrain
 
         result = map_terrain(
             task_description=task_description,
             required_capabilities=required,
             agent_id=args.get("agent_id", "ass-ade-local"),
-            max_development_budget_usdc=float(args.get("max_development_budget_usdc", 1.0)),
+            max_development_budget_usdc=float(
+                args.get("max_development_budget_usdc", 1.0)
+            ),
             auto_invent_if_missing=bool(args.get("auto_invent_if_missing", False)),
             invention_constraints=args.get("invention_constraints") or {},
             working_dir=self._working_dir,
             hosted_tools=hosted_tools,
         )
-        self._emit_progress(token, 1.0, message=f"MAP = TERRAIN verdict: {result.verdict}")
+        self._emit_progress(
+            token, 1.0, message=f"MAP = TERRAIN verdict: {result.verdict}"
+        )
         text = json.dumps(result.model_dump(), indent=2)
-        return self._result(req_id, {
-            "content": [{"type": "text", "text": text}],
-            "isError": result.verdict == "HALT_AND_INVENT",
-        })
+        return self._result(
+            req_id,
+            {
+                "content": [{"type": "text", "text": text}],
+                "isError": result.verdict == "HALT_AND_INVENT",
+            },
+        )
 
     def _call_phase0_recon(
-        self, req_id: Any, args: dict[str, Any], token: Any = None,
+        self,
+        req_id: Any,
+        args: dict[str, Any],
+        token: Any = None,
         cancellation_context: CancellationContext | None = None,
     ) -> dict[str, Any]:
         task_description = args.get("task_description", "")
@@ -540,11 +632,11 @@ class MCPServer:
             return self._error(req_id, -32602, "max_relevant_files must be an integer")
 
         self._emit_progress(token, 0.0, message="Running Phase 0 codebase recon...")
-        
+
         # Cancellation checkpoint
         if cancellation_context and cancellation_context.check():
             return self._error(req_id, -32800, "Request cancelled")
-        
+
         from ass_ade.recon import phase0_recon
 
         result = phase0_recon(
@@ -553,15 +645,23 @@ class MCPServer:
             provided_sources=[str(source) for source in provided_sources],
             max_relevant_files=max_relevant_files,
         )
-        self._emit_progress(token, 1.0, message=f"Phase 0 recon verdict: {result.verdict}")
+        self._emit_progress(
+            token, 1.0, message=f"Phase 0 recon verdict: {result.verdict}"
+        )
         text = json.dumps(result.model_dump(), indent=2)
-        return self._result(req_id, {
-            "content": [{"type": "text", "text": text}],
-            "isError": result.verdict == "RECON_REQUIRED",
-        })
+        return self._result(
+            req_id,
+            {
+                "content": [{"type": "text", "text": text}],
+                "isError": result.verdict == "RECON_REQUIRED",
+            },
+        )
 
     def _call_context_pack(
-        self, req_id: Any, args: dict[str, Any], token: Any = None,
+        self,
+        req_id: Any,
+        args: dict[str, Any],
+        token: Any = None,
         cancellation_context: CancellationContext | None = None,
     ) -> dict[str, Any]:
         task_description = args.get("task_description", "")
@@ -576,11 +676,11 @@ class MCPServer:
             return self._error(req_id, -32602, "source_urls must be an array")
 
         self._emit_progress(token, 0.0, message="Building context packet...")
-        
+
         # Cancellation checkpoint
         if cancellation_context and cancellation_context.check():
             return self._error(req_id, -32800, "Request cancelled")
-        
+
         from ass_ade.context_memory import build_context_packet
 
         packet = build_context_packet(
@@ -593,13 +693,19 @@ class MCPServer:
         )
         self._emit_progress(token, 1.0, message="Context packet ready.")
         text = json.dumps(packet.model_dump(), indent=2)
-        return self._result(req_id, {
-            "content": [{"type": "text", "text": text}],
-            "isError": packet.recon_verdict == "RECON_REQUIRED",
-        })
+        return self._result(
+            req_id,
+            {
+                "content": [{"type": "text", "text": text}],
+                "isError": packet.recon_verdict == "RECON_REQUIRED",
+            },
+        )
 
     def _call_context_memory_store(
-        self, req_id: Any, args: dict[str, Any], token: Any = None,
+        self,
+        req_id: Any,
+        args: dict[str, Any],
+        token: Any = None,
         cancellation_context: CancellationContext | None = None,
     ) -> dict[str, Any]:
         text_value = args.get("text", "")
@@ -610,11 +716,11 @@ class MCPServer:
             return self._error(req_id, -32602, "metadata must be an object")
 
         self._emit_progress(token, 0.0, message="Storing vector memory...")
-        
+
         # Cancellation checkpoint
         if cancellation_context and cancellation_context.check():
             return self._error(req_id, -32800, "Request cancelled")
-        
+
         from ass_ade.context_memory import store_vector_memory
 
         result = store_vector_memory(
@@ -625,13 +731,19 @@ class MCPServer:
         )
         self._emit_progress(token, 1.0, message="Vector memory stored.")
         text = json.dumps(result.model_dump(), indent=2)
-        return self._result(req_id, {
-            "content": [{"type": "text", "text": text}],
-            "isError": False,
-        })
+        return self._result(
+            req_id,
+            {
+                "content": [{"type": "text", "text": text}],
+                "isError": False,
+            },
+        )
 
     def _call_context_memory_query(
-        self, req_id: Any, args: dict[str, Any], token: Any = None,
+        self,
+        req_id: Any,
+        args: dict[str, Any],
+        token: Any = None,
         cancellation_context: CancellationContext | None = None,
     ) -> dict[str, Any]:
         query = args.get("query", "")
@@ -639,11 +751,11 @@ class MCPServer:
             return self._error(req_id, -32602, "query is required")
 
         self._emit_progress(token, 0.0, message="Querying vector memory...")
-        
+
         # Cancellation checkpoint
         if cancellation_context and cancellation_context.check():
             return self._error(req_id, -32800, "Request cancelled")
-        
+
         from ass_ade.context_memory import query_vector_memory
 
         result = query_vector_memory(
@@ -654,25 +766,32 @@ class MCPServer:
         )
         self._emit_progress(token, 1.0, message="Vector memory query complete.")
         text = json.dumps(result.model_dump(), indent=2)
-        return self._result(req_id, {
-            "content": [{"type": "text", "text": text}],
-            "isError": False,
-        })
+        return self._result(
+            req_id,
+            {
+                "content": [{"type": "text", "text": text}],
+                "isError": False,
+            },
+        )
 
     def _call_trust_gate(
-        self, req_id: Any, args: dict[str, Any], token: Any = None,
+        self,
+        req_id: Any,
+        args: dict[str, Any],
+        token: Any = None,
         cancellation_context: CancellationContext | None = None,
     ) -> dict[str, Any]:
         agent_id = args.get("agent_id", "")
         if not agent_id:
             return self._error(req_id, -32602, "agent_id is required")
         self._emit_progress(token, 0.0, message="Starting trust gate evaluation...")
-        
+
         # Cancellation checkpoint
         if cancellation_context and cancellation_context.check():
             return self._error(req_id, -32800, "Request cancelled")
-        
+
         from ass_ade.workflows import trust_gate
+
         client = self._get_nexus_client()
         self._emit_progress(token, 0.2, message="Verifying identity...")
         with client:
@@ -680,39 +799,54 @@ class MCPServer:
             result = trust_gate(client, agent_id)
         self._emit_progress(token, 1.0, message="Trust gate complete.")
         text = json.dumps(result.model_dump(), indent=2)
-        return self._result(req_id, {
-            "content": [{"type": "text", "text": text}],
-            "isError": result.verdict == "DENY",
-        })
+        return self._result(
+            req_id,
+            {
+                "content": [{"type": "text", "text": text}],
+                "isError": result.verdict == "DENY",
+            },
+        )
 
     def _call_certify_output(
-        self, req_id: Any, args: dict[str, Any], token: Any = None,
+        self,
+        req_id: Any,
+        args: dict[str, Any],
+        token: Any = None,
         cancellation_context: CancellationContext | None = None,
     ) -> dict[str, Any]:
         text = args.get("text", "")
         if not text:
             return self._error(req_id, -32602, "text is required")
         self._emit_progress(token, 0.0, message="Starting output certification...")
-        
+
         # Cancellation checkpoint
         if cancellation_context and cancellation_context.check():
             return self._error(req_id, -32800, "Request cancelled")
-        
+
         from ass_ade.workflows import certify_output
+
         client = self._get_nexus_client()
         self._emit_progress(token, 0.2, message="Running hallucination oracle...")
         with client:
-            self._emit_progress(token, 0.5, message="Running ethics and compliance checks...")
+            self._emit_progress(
+                token, 0.5, message="Running ethics and compliance checks..."
+            )
             result = certify_output(client, text)
         self._emit_progress(token, 1.0, message="Certification complete.")
         out = json.dumps(result.model_dump(), indent=2)
-        return self._result(req_id, {
-            "content": [{"type": "text", "text": out}],
-            "isError": not result.passed,
-        })
+        return self._result(
+            req_id,
+            {
+                "content": [{"type": "text", "text": out}],
+                "isError": not result.passed,
+            },
+        )
 
     def _call_safe_execute(
-        self, req_id: Any, args: dict[str, Any], token: Any = None,
+        self,
+        req_id: Any,
+        args: dict[str, Any],
+        token: Any = None,
         cancellation_context: CancellationContext | None = None,
     ) -> dict[str, Any]:
         tool_name = args.get("tool_name", "")
@@ -727,26 +861,35 @@ class MCPServer:
         except json.JSONDecodeError:
             return self._error(req_id, -32602, "tool_input must be valid JSON")
         self._emit_progress(token, 0.0, message="Starting AEGIS safe execute...")
-        
+
         # Cancellation checkpoint
         if cancellation_context and cancellation_context.check():
             return self._error(req_id, -32800, "Request cancelled")
-        
+
         from ass_ade.workflows import safe_execute
+
         client = self._get_nexus_client()
-        self._emit_progress(token, 0.3, message="Running security shield and prompt scan...")
+        self._emit_progress(
+            token, 0.3, message="Running security shield and prompt scan..."
+        )
         with client:
             self._emit_progress(token, 0.6, message="Executing via AEGIS proxy...")
             result = safe_execute(client, tool_name, tool_input)
         self._emit_progress(token, 1.0, message="Safe execute complete.")
         out = json.dumps(result.model_dump(), indent=2)
-        return self._result(req_id, {
-            "content": [{"type": "text", "text": out}],
-            "isError": not result.shield_passed,
-        })
+        return self._result(
+            req_id,
+            {
+                "content": [{"type": "text", "text": out}],
+                "isError": not result.shield_passed,
+            },
+        )
 
     def _call_ask_agent(
-        self, req_id: Any, args: dict[str, Any], token: Any = None,
+        self,
+        req_id: Any,
+        args: dict[str, Any],
+        token: Any = None,
         cancellation_context: CancellationContext | None = None,
     ) -> dict[str, Any]:
         task = args.get("task", "")
@@ -762,6 +905,7 @@ class MCPServer:
         from ass_ade.agent.loop import AgentLoop
         from ass_ade.config import load_config
         from ass_ade.engine.router import build_provider
+
         cfg = load_config()
         provider = build_provider(cfg)
         try:
@@ -774,10 +918,13 @@ class MCPServer:
             self._emit_progress(token, 0.3, message="Agent planning...")
             text = loop.step(task)
             text = text if text else "(no response)"
-            return self._result(req_id, {
-                "content": [{"type": "text", "text": text}],
-                "isError": False,
-            })
+            return self._result(
+                req_id,
+                {
+                    "content": [{"type": "text", "text": text}],
+                    "isError": False,
+                },
+            )
         finally:
             provider.close()
 
@@ -786,68 +933,93 @@ class MCPServer:
         if not url:
             return self._error(req_id, -32602, "url is required")
         from ass_ade.nexus.validation import validate_url
+
         try:
             validate_url(url)
         except ValueError as e:
-            return self._result(req_id, {
-                "content": [{"type": "text", "text": f"Blocked: {e}"}],
-                "isError": True,
-            })
+            return self._result(
+                req_id,
+                {
+                    "content": [{"type": "text", "text": f"Blocked: {e}"}],
+                    "isError": True,
+                },
+            )
         from ass_ade.a2a import fetch_agent_card
+
         report = fetch_agent_card(url)
         issues = [
             {"severity": i.severity, "field": i.field, "message": i.message}
             for i in report.issues
         ]
-        out = json.dumps({
-            "valid": report.valid,
-            "issues": issues,
-            "card": report.card.model_dump() if report.card else None,
-        }, indent=2)
-        return self._result(req_id, {
-            "content": [{"type": "text", "text": out}],
-            "isError": not report.valid,
-        })
+        out = json.dumps(
+            {
+                "valid": report.valid,
+                "issues": issues,
+                "card": report.card.model_dump() if report.card else None,
+            },
+            indent=2,
+        )
+        return self._result(
+            req_id,
+            {
+                "content": [{"type": "text", "text": out}],
+                "isError": not report.valid,
+            },
+        )
 
     def _call_a2a_negotiate(self, req_id: Any, args: dict[str, Any]) -> dict[str, Any]:
         remote_url = args.get("remote_url", "")
         if not remote_url:
             return self._error(req_id, -32602, "remote_url is required")
         from ass_ade.nexus.validation import validate_url
+
         try:
             validate_url(remote_url)
         except ValueError as e:
-            return self._result(req_id, {
-                "content": [{"type": "text", "text": f"Blocked: {e}"}],
-                "isError": True,
-            })
+            return self._result(
+                req_id,
+                {
+                    "content": [{"type": "text", "text": f"Blocked: {e}"}],
+                    "isError": True,
+                },
+            )
         from ass_ade.a2a import fetch_agent_card, local_agent_card, negotiate
+
         local = local_agent_card(self._working_dir)
         report = fetch_agent_card(remote_url)
         if not report.valid or not report.card:
             messages = [issue.message for issue in report.errors]
-            return self._result(req_id, {
-                "content": [
-                    {
-                        "type": "text",
-                        "text": f"Remote agent card is invalid: {messages}",
-                    }
-                ],
-                "isError": True,
-            })
+            return self._result(
+                req_id,
+                {
+                    "content": [
+                        {
+                            "type": "text",
+                            "text": f"Remote agent card is invalid: {messages}",
+                        }
+                    ],
+                    "isError": True,
+                },
+            )
         result = negotiate(local, report.card)
-        out = json.dumps({
-            "compatible": result.compatible,
-            "shared_skills": result.shared_skills,
-            "local_only": result.local_only,
-            "remote_only": result.remote_only,
-            "auth_compatible": result.auth_compatible,
-            "notes": result.notes,
-        }, indent=2)
-        return self._result(req_id, {
-            "content": [{"type": "text", "text": out}],
-            "isError": not result.compatible,
-        })
+        out = json.dumps(
+            {
+                "compatible": result.compatible,
+                "shared_skills": result.shared_skills,
+                "local_only": result.local_only,
+                "remote_only": result.remote_only,
+                "auth_compatible": result.auth_compatible,
+                "notes": result.notes,
+            },
+            indent=2,
+        )
+        return self._result(
+            req_id,
+            {
+                "content": [{"type": "text", "text": out}],
+                "isError": not result.compatible,
+            },
+        )
 
     # ── JSON-RPC helpers ──────────────────────────────────────────────────────
 
@@ -857,7 +1029,11 @@ class MCPServer:
 
     @staticmethod
     def _error(req_id: Any, code: int, message: str) -> dict[str, Any]:
-        return {"jsonrpc": "2.0", "id": req_id, "error": {"code": code, "message": message}}
+        return {
+            "jsonrpc": "2.0",
+            "id": req_id,
+            "error": {"code": code, "message": message},
+        }
 
     def _write(self, message: dict[str, Any]) -> None:
         data = json.dumps(message) + "\n"

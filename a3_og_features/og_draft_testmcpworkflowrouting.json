@@ -8,13 +8,22 @@
     "_handle"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_testmcpworkflowrouting.py:5.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_extended.py:68.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "og.source.ass_ade.testmcpworkflowrouting",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.mcp.server._WORKFLOW_TOOLS",
+    "ass_ade.mcp.server.MCPServer",
+    "httpx"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_testmcpworkflowrouting.py:5"
+    "source": "C:/!ass-ade/tests/test_mcp_extended.py:68"
   },
   "kind": "product_organism",
   "made_of": [],

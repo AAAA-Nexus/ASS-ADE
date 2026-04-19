@@ -26,7 +26,7 @@
     "input"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/commands/agent.py:41.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/commands/agent.py:41.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.agent_chat",
@@ -55,7 +55,7 @@
     "ass_ade.nexus.client.NexusClient"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/commands/agent.py:41"
+    "source": "C:/!ass-ade/src/ass_ade/commands/agent.py:41"
   },
   "kind": "pure_function",
   "made_of": [],

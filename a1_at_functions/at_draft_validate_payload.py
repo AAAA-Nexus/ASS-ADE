@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/mcp/utils.py:132
+# Extracted from C:/!ass-ade/src/ass_ade/mcp/utils.py:132
 # Component id: at.source.ass_ade.validate_payload
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def validate_payload(schema: dict | None, payload: Any | None) -> tuple[bool, str | None]:

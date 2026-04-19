@@ -1,6 +1,6 @@
 {
-  "body": "    def identity_step(ctx: dict[str, Any]) -> StepResult:\n        try:\n            result = client.identity_verify(aid)\n            raw = result.model_dump() if hasattr(result, \"model_dump\") else {}\n            passed = raw.get(\"decision\", \"allow\") != \"deny\"\n            ctx[\"identity_passed\"] = passed\n            return StepResult(name=\"identity_verify\", status=StepStatus.PASSED if passed else StepStatus.FAILED, output=raw)\n        except Exception as exc:\n            return StepResult(name=\"identity_verify\", status=StepStatus.FAILED, error=str(exc))\n",
-  "body_hash": "f8d5a80844d75b7b",
+  "body": "def identity_step(ctx: dict[str, Any]) -> StepResult:\n    try:\n        result = client.identity_verify(aid)\n        raw = result.model_dump() if hasattr(result, \"model_dump\") else {}\n        passed = raw.get(\"decision\", \"allow\") != \"deny\"\n        ctx[\"identity_passed\"] = passed\n        return StepResult(name=\"identity_verify\", status=StepStatus.PASSED if passed else StepStatus.FAILED, output=raw)\n    except Exception as exc:\n        return StepResult(name=\"identity_verify\", status=StepStatus.FAILED, error=str(exc))\n",
+  "body_hash": "d2c5c98b7a3c8fad",
   "body_truncated": false,
   "callers_of": [
     "identity_verify",
@@ -11,15 +11,25 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_trust_gate_pipeline.py:20.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/pipeline.py:245.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.identity_step",
   "imports": [
+    "__future__.annotations",
+    "json",
+    "time",
+    "collections.abc.Callable",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "enum.Enum",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Protocol",
     "ass_ade.nexus.validation.validate_agent_id"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_trust_gate_pipeline.py:20"
+    "source": "C:/!ass-ade/src/ass_ade/pipeline.py:245"
   },
   "kind": "pure_function",
   "made_of": [],

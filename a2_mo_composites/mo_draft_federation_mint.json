@@ -1,12 +1,12 @@
 {
-  "body": "    def federation_mint(\n        self,\n        identity: dict | None = None,\n        platforms: list[str] | None = None,\n        *,\n        agent_id: str | None = None,\n        scope: str | None = None,\n        **kwargs: Any,\n    ) -> FederationToken:\n        \"\"\"/v1/federation/mint \u2014 cross-platform nxf_ identity token (AIF-100). $0.040/call\"\"\"\n        resolved_identity = identity or ({\"agent_id\": agent_id} if agent_id else {})\n        resolved_platforms = platforms or ([scope] if scope else [])\n        return self._post_model(\"/v1/federation/mint\", FederationToken, {\"identity\": resolved_identity, \"platforms\": resolved_platforms, **kwargs})\n",
-  "body_hash": "cac74541870416a1",
+  "body": "def federation_mint(\n    self,\n    identity: dict | None = None,\n    platforms: list[str] | None = None,\n    *,\n    agent_id: str | None = None,\n    scope: str | None = None,\n    **kwargs: Any,\n) -> FederationToken:\n    \"\"\"/v1/federation/mint \u2014 cross-platform nxf_ identity token (AIF-100). $0.040/call\"\"\"\n    resolved_identity = identity or ({\"agent_id\": agent_id} if agent_id else {})\n    resolved_platforms = platforms or ([scope] if scope else [])\n    return self._post_model(\"/v1/federation/mint\", FederationToken, {\"identity\": resolved_identity, \"platforms\": resolved_platforms, **kwargs})\n",
+  "body_hash": "d132e7858d99869b",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:831.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:831.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.federation_mint",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:831"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:831"
   },
   "kind": "engine_molecule",
   "made_of": [],

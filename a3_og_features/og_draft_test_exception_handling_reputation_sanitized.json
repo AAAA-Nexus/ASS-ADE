@@ -1,6 +1,6 @@
 {
-  "body": "    def test_exception_handling_reputation_sanitized(self) -> None:\n        \"\"\"Exception in reputation_score should not leak raw exception to caller.\"\"\"\n        client = _mock_client()\n        client.reputation_score.side_effect = NexusServerError(\"Internal server error: 500\")\n        result = trust_gate(client, \"agent-server-err\")\n        rep_step = next(s for s in result.steps if s.name == \"reputation_score\")\n        assert rep_step.detail == \"step_failed\"\n        assert \"Internal\" not in rep_step.detail\n        assert \"500\" not in rep_step.detail\n",
-  "body_hash": "34bf758400ec78b6",
+  "body": "def test_exception_handling_reputation_sanitized(self) -> None:\n    \"\"\"Exception in reputation_score should not leak raw exception to caller.\"\"\"\n    client = _mock_client()\n    client.reputation_score.side_effect = NexusServerError(\"Internal server error: 500\")\n    result = trust_gate(client, \"agent-server-err\")\n    rep_step = next(s for s in result.steps if s.name == \"reputation_score\")\n    assert rep_step.detail == \"step_failed\"\n    assert \"Internal\" not in rep_step.detail\n    assert \"500\" not in rep_step.detail\n",
+  "body_hash": "729803fda1110054",
   "body_truncated": false,
   "callers_of": [
     "_mock_client",
@@ -9,19 +9,40 @@
     "next"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_testtrustgate.py:81.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_workflows.py:138.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "og.source.ass_ade.test_exception_handling_reputation_sanitized",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "unittest.mock.MagicMock",
+    "pytest",
+    "ass_ade.nexus.errors.NexusServerError",
+    "ass_ade.nexus.models.AegisProxyResult",
+    "ass_ade.nexus.models.CertifiedOutput",
+    "ass_ade.nexus.models.ComplianceResult",
+    "ass_ade.nexus.models.EthicsCheckResult",
+    "ass_ade.nexus.models.HallucinationResult",
+    "ass_ade.nexus.models.IdentityVerification",
+    "ass_ade.nexus.models.LineageRecord",
+    "ass_ade.nexus.models.PromptScanResult",
+    "ass_ade.nexus.models.ReputationScore",
+    "ass_ade.nexus.models.ShieldResult",
+    "ass_ade.nexus.models.SybilCheckResult",
+    "ass_ade.nexus.models.TrustScore",
+    "ass_ade.workflows.certify_output",
+    "ass_ade.workflows.safe_execute",
+    "ass_ade.workflows.trust_gate"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_testtrustgate.py:81"
+    "source": "C:/!ass-ade/tests/test_workflows.py:138"
   },
   "kind": "product_organism",
   "made_of": [],
   "name": "test_exception_handling_reputation_sanitized",
   "product_categories": [
-    "IDT"
+    "COR"
   ],
   "provides": [
     "rebuild candidate for test_exception_handling_reputation_sanitized"

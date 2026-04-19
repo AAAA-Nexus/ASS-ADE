@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_train.py:217
+# Extracted from C:/!ass-ade/scripts/lora_train.py:217
 # Component id: at.source.ass_ade.upload_adapter
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def upload_adapter(cfg: TrainConfig, adapter_dir: Path) -> tuple[str, str]:

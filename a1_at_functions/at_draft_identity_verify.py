@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/cli.py:2587
+# Extracted from C:/!ass-ade/src/ass_ade/cli.py:2588
 # Component id: at.source.ass_ade.identity_verify
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def identity_verify(

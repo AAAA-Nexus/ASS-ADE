@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_repo_summary.py:5
+# Extracted from C:/!ass-ade/src/ass_ade/cli.py:590
 # Component id: at.source.ass_ade.repo_summary
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def repo_summary(

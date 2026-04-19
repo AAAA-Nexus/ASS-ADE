@@ -1,6 +1,6 @@
 {
-  "body": "    def request_with_payment_headers(\n        self,\n        path: str,\n        body: dict | None = None,\n        *,\n        payment_headers: dict[str, str],\n    ) -> httpx.Response:\n        \"\"\"POST to *path* with *payment_headers* merged in.\n\n        Use this for the second leg of an x402 payment flow, where the\n        payment proof headers (from the wallet) must accompany the actual request.\n        \"\"\"\n        # Sanitize all header values before forwarding to prevent header injection\n        # when this method is called with user-controlled payment proof headers (OWASP A03).\n        safe_headers = {\n            k: sanitize_header_value(str(v), f\"payment_headers[{k!r}]\")\n            for k, v in payment_headers.items()\n        }\n        return self._client.post(path, json=body or {}, headers=safe_headers)\n",
-  "body_hash": "04b9019003041731",
+  "body": "def request_with_payment_headers(\n    self,\n    path: str,\n    body: dict | None = None,\n    *,\n    payment_headers: dict[str, str],\n) -> httpx.Response:\n    \"\"\"POST to *path* with *payment_headers* merged in.\n\n    Use this for the second leg of an x402 payment flow, where the\n    payment proof headers (from the wallet) must accompany the actual request.\n    \"\"\"\n    # Sanitize all header values before forwarding to prevent header injection\n    # when this method is called with user-controlled payment proof headers (OWASP A03).\n    safe_headers = {\n        k: sanitize_header_value(str(v), f\"payment_headers[{k!r}]\")\n        for k, v in payment_headers.items()\n    }\n    return self._client.post(path, json=body or {}, headers=safe_headers)\n",
+  "body_hash": "a450662855ef5512",
   "body_truncated": false,
   "callers_of": [
     "post",
@@ -9,7 +9,7 @@
     "items"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:359.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:359.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.request_with_payment_headers",
@@ -163,7 +163,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:359"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:359"
   },
   "kind": "engine_molecule",
   "made_of": [

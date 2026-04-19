@@ -1,6 +1,6 @@
 {
-  "body": "    def test_apply_create(self, executor: EditPlanExecutor, workspace: Path):\n        plan = EditPlan()\n        plan.add_create(\"created.py\", \"print('created')\\n\")\n        executor.validate(plan)\n        result = executor.apply(plan)\n        assert result.success\n        assert (workspace / \"created.py\").read_text(encoding=\"utf-8\") == \"print('created')\\n\"\n        assert plan.applied is True\n",
-  "body_hash": "abc396f1024cccae",
+  "body": "def test_apply_create(self, executor: EditPlanExecutor, workspace: Path):\n    plan = EditPlan()\n    plan.add_create(\"created.py\", \"print('created')\\n\")\n    executor.validate(plan)\n    result = executor.apply(plan)\n    assert result.success\n    assert (workspace / \"created.py\").read_text(encoding=\"utf-8\") == \"print('created')\\n\"\n    assert plan.applied is True\n",
+  "body_hash": "c118d01c29a30256",
   "body_truncated": false,
   "callers_of": [
     "EditPlan",
@@ -10,7 +10,7 @@
     "read_text"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:100.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_plan.py:100.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_apply_create",
@@ -24,7 +24,7 @@
     "ass_ade.tools.plan.EditPlanExecutor"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:100"
+    "source": "C:/!ass-ade/tests/test_plan.py:100"
   },
   "kind": "pure_function",
   "made_of": [],

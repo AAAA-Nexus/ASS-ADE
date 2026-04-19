@@ -1,6 +1,6 @@
 {
-  "body": "    def test_parse_challenge_amount_too_large(self) -> None:\n        \"\"\"Oversized challenges should be rejected during parsing.\"\"\"\n        flow = X402ClientFlow()\n        challenge = flow.parse_challenge({\n            \"recipient\": \"0xCBd9e4c44958ee76E0F941106Ea960D476c48FD9\",\n            \"amount_micro_usdc\": 100_000_000_000,\n            \"expires\": 9999999999,\n        })\n        assert challenge is None\n        assert \"range\" in flow.last_error.lower()\n",
-  "body_hash": "36f470429d40f89b",
+  "body": "def test_parse_challenge_amount_too_large(self) -> None:\n    \"\"\"Oversized challenges should be rejected during parsing.\"\"\"\n    flow = X402ClientFlow()\n    challenge = flow.parse_challenge({\n        \"recipient\": \"0xCBd9e4c44958ee76E0F941106Ea960D476c48FD9\",\n        \"amount_micro_usdc\": 100_000_000_000,\n        \"expires\": 9999999999,\n    })\n    assert challenge is None\n    assert \"range\" in flow.last_error.lower()\n",
+  "body_hash": "125a813abefdd83d",
   "body_truncated": false,
   "callers_of": [
     "X402ClientFlow",
@@ -8,7 +8,7 @@
     "lower"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:184.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_x402_flow.py:184.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_parse_challenge_amount_too_large",
@@ -34,7 +34,7 @@
     "ass_ade.nexus.x402.BASE_SEPOLIA_CHAIN_ID"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:184"
+    "source": "C:/!ass-ade/tests/test_x402_flow.py:184"
   },
   "kind": "pure_function",
   "made_of": [],

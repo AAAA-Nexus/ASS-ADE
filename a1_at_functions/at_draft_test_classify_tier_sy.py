@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_parallel_recon.py:234
+# Extracted from C:/!ass-ade/tests/test_parallel_recon.py:234
 # Component id: at.source.ass_ade.test_classify_tier_sy
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_classify_tier_sy(tmp_path: Path) -> None:

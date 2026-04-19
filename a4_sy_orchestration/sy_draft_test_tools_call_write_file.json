@@ -1,6 +1,6 @@
 {
-  "body": "    def test_tools_call_write_file(self, server: MCPServer, tmp_path: Path):\n        _initialize_server(server)\n        req = {\n            \"jsonrpc\": \"2.0\",\n            \"id\": 7,\n            \"method\": \"tools/call\",\n            \"params\": {\n                \"name\": \"write_file\",\n                \"arguments\": {\"path\": \"new.py\", \"content\": \"x = 1\\n\"},\n            },\n        }\n        resp = server._handle(req)\n        assert resp[\"result\"][\"isError\"] is False\n        assert (tmp_path / \"new.py\").read_text() == \"x = 1\\n\"\n",
-  "body_hash": "b3ca03b532e16c07",
+  "body": "def test_tools_call_write_file(self, server: MCPServer, tmp_path: Path):\n    _initialize_server(server)\n    req = {\n        \"jsonrpc\": \"2.0\",\n        \"id\": 7,\n        \"method\": \"tools/call\",\n        \"params\": {\n            \"name\": \"write_file\",\n            \"arguments\": {\"path\": \"new.py\", \"content\": \"x = 1\\n\"},\n        },\n    }\n    resp = server._handle(req)\n    assert resp[\"result\"][\"isError\"] is False\n    assert (tmp_path / \"new.py\").read_text() == \"x = 1\\n\"\n",
+  "body_hash": "d8b0b8bd423c57f0",
   "body_truncated": false,
   "callers_of": [
     "_initialize_server",
@@ -8,7 +8,7 @@
     "read_text"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:121.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_server_streaming.py:121.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.test_tools_call_write_file",
@@ -27,7 +27,7 @@
     "ass_ade.tools.registry.ToolRegistry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:121"
+    "source": "C:/!ass-ade/tests/test_mcp_server_streaming.py:121"
   },
   "kind": "ecosystem_system",
   "made_of": [],

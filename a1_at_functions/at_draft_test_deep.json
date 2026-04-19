@@ -1,18 +1,26 @@
 {
-  "body": "    def test_deep(self):\n        assert tier_for_complexity(0.8) == ModelTier.DEEP\n",
-  "body_hash": "8f704856664d6bae",
+  "body": "def test_deep(self):\n    assert tier_for_complexity(0.8) == ModelTier.DEEP\n",
+  "body_hash": "aeaa6bebe66a2849",
   "body_truncated": false,
   "callers_of": [
     "tier_for_complexity"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testtierforcomplexity.py:12.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_routing.py:60.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_deep",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "ass_ade.agent.routing.EpistemicRouter",
+    "ass_ade.agent.routing.ModelTier",
+    "ass_ade.agent.routing.RoutingDecision",
+    "ass_ade.agent.routing.classify_complexity",
+    "ass_ade.agent.routing.local_route",
+    "ass_ade.agent.routing.tier_for_complexity"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testtierforcomplexity.py:12"
+    "source": "C:/!ass-ade/tests/test_routing.py:60"
   },
   "kind": "pure_function",
   "made_of": [],

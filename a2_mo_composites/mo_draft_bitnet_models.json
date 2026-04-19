@@ -1,12 +1,12 @@
 {
-  "body": "    def bitnet_models(self, **kwargs: Any) -> BitNetModelsResponse:\n        \"\"\"GET /v1/bitnet/models \u2014 list available 1.58-bit models (BIT-102). Free.\"\"\"\n        return self._get_model(\"/v1/bitnet/models\", BitNetModelsResponse, **kwargs)\n",
-  "body_hash": "9d5e61e4fce0cb03",
+  "body": "def bitnet_models(self, **kwargs: Any) -> BitNetModelsResponse:\n    \"\"\"GET /v1/bitnet/models \u2014 list available 1.58-bit models (BIT-102). Free.\"\"\"\n    return self._get_model(\"/v1/bitnet/models\", BitNetModelsResponse, **kwargs)\n",
+  "body_hash": "6b33d588bf063fa6",
   "body_truncated": false,
   "callers_of": [
     "_get_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1266.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1266.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.bitnet_models",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1266"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1266"
   },
   "kind": "engine_molecule",
   "made_of": [],

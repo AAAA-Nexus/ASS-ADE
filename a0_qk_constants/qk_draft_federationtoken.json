@@ -6,13 +6,19 @@
     "Field"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_federationtoken.py:5.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/models.py:591.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "qk.source.ass_ade.federationtoken",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_federationtoken.py:5"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/models.py:591"
   },
   "kind": "invariant",
   "made_of": [],

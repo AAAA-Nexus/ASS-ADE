@@ -1,13 +1,13 @@
 {
-  "body": "    def test_non_python_skips_ast(self):\n        from ass_ade.agent.cie import CIEPipeline\n        cie = CIEPipeline({\"cie\": {\"enable_lint\": False}})\n        result = cie.run(\"const x = 1;\", \"typescript\")\n        assert result.language == \"typescript\"\n        # Non-python: ast_valid stays default True (no check performed)\n        assert result.ast_valid is True\n",
-  "body_hash": "db93b6ce54c8a439",
+  "body": "def test_non_python_skips_ast(self):\n    from ass_ade.agent.cie import CIEPipeline\n    cie = CIEPipeline({\"cie\": {\"enable_lint\": False}})\n    result = cie.run(\"const x = 1;\", \"typescript\")\n    assert result.language == \"typescript\"\n    # Non-python: ast_valid stays default True (no check performed)\n    assert result.ast_valid is True\n",
+  "body_hash": "91ac9876fd2ed639",
   "body_truncated": false,
   "callers_of": [
     "CIEPipeline",
     "run"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:376.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase_engines.py:376.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_non_python_skips_ast",
@@ -62,7 +62,7 @@
     "ass_ade.agent.orchestrator.CycleReport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:376"
+    "source": "C:/!ass-ade/tests/test_phase_engines.py:376"
   },
   "kind": "engine_molecule",
   "made_of": [],

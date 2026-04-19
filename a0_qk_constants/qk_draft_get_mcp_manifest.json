@@ -1,10 +1,10 @@
 {
-  "body": "        def get_mcp_manifest(self):\n            return manifest\n",
-  "body_hash": "53406ed8e1c1bd79",
+  "body": "def get_mcp_manifest(self):\n    return manifest\n",
+  "body_hash": "8d17f07ef333adf1",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp.py:178.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp.py:178.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "qk.source.ass_ade.get_mcp_manifest",
@@ -27,7 +27,7 @@
     "ass_ade.mcp.mock_server.start_server"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp.py:178"
+    "source": "C:/!ass-ade/tests/test_mcp.py:178"
   },
   "kind": "invariant",
   "made_of": [],

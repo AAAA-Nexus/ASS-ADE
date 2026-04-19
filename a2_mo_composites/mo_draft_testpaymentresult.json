@@ -7,7 +7,7 @@
     "build_payment_header"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:306.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_x402_flow.py:306.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.testpaymentresult",
@@ -33,7 +33,7 @@
     "ass_ade.nexus.x402.BASE_SEPOLIA_CHAIN_ID"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:306"
+    "source": "C:/!ass-ade/tests/test_x402_flow.py:306"
   },
   "kind": "engine_molecule",
   "made_of": [

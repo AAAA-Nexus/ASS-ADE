@@ -1,18 +1,23 @@
 {
-  "body": "    def test_list_snapshots_empty(self, history: FileHistory):\n        assert history.list_snapshots(\"nonexistent.py\") == []\n",
-  "body_hash": "c45f0cb971c0c944",
+  "body": "def test_list_snapshots_empty(self, history: FileHistory):\n    assert history.list_snapshots(\"nonexistent.py\") == []\n",
+  "body_hash": "9a6f07afd0ea6c4b",
   "body_truncated": false,
   "callers_of": [
     "list_snapshots"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testfilehistory.py:58.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_history.py:78.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_list_snapshots_empty",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.tools.history.FileHistory"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testfilehistory.py:58"
+    "source": "C:/!ass-ade/tests/test_history.py:78"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_gates.py:167
+# Extracted from C:/!ass-ade/tests/test_mcp_gates.py:167
 # Component id: sy.source.ass_ade.testmcpgatesequence
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class TestMCPGateSequence:

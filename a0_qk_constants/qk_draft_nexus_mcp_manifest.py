@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_nexus_mcp_manifest.py:5
+# Extracted from C:/!ass-ade/src/ass_ade/cli.py:852
 # Component id: qk.source.ass_ade.nexus_mcp_manifest
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def nexus_mcp_manifest(

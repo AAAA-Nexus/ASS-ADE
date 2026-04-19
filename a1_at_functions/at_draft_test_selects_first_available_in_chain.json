@@ -1,6 +1,6 @@
 {
-  "body": "    def test_selects_first_available_in_chain(self, monkeypatch):\n        # Clear all cloud keys\n        for p in FREE_PROVIDERS.values():\n            if p.api_key_env:\n                monkeypatch.delenv(p.api_key_env, raising=False)\n        # Give only groq a key\n        monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-test\")\n        match = select_provider_for_tier(\"balanced\")\n        assert match is not None\n        profile, model = match\n        assert profile.name == \"groq\"\n        assert model == profile.models_by_tier[\"balanced\"]\n",
-  "body_hash": "882b1626fe442e5b",
+  "body": "def test_selects_first_available_in_chain(self, monkeypatch):\n    # Clear all cloud keys\n    for p in FREE_PROVIDERS.values():\n        if p.api_key_env:\n            monkeypatch.delenv(p.api_key_env, raising=False)\n    # Give only groq a key\n    monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-test\")\n    match = select_provider_for_tier(\"balanced\")\n    assert match is not None\n    profile, model = match\n    assert profile.name == \"groq\"\n    assert model == profile.models_by_tier[\"balanced\"]\n",
+  "body_hash": "2debbfe9aacd4ddc",
   "body_truncated": false,
   "callers_of": [
     "values",
@@ -9,7 +9,7 @@
     "delenv"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:184.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:184.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_selects_first_available_in_chain",
@@ -88,7 +88,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:184"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:184"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,19 +1,28 @@
 {
-  "body": "    def add_create(self, path: str, content: str, description: str = \"\") -> None:\n        self.edits.append(PlannedEdit(\n            kind=EditKind.CREATE,\n            path=path,\n            new_string=content,\n            description=description or f\"Create {path}\",\n        ))\n        self.validated = False\n",
-  "body_hash": "ec6be31911222039",
+  "body": "def add_create(self, path: str, content: str, description: str = \"\") -> None:\n    self.edits.append(PlannedEdit(\n        kind=EditKind.CREATE,\n        path=path,\n        new_string=content,\n        description=description or f\"Create {path}\",\n    ))\n    self.validated = False\n",
+  "body_hash": "161108e9ac1ab314",
   "body_truncated": false,
   "callers_of": [
     "append",
     "PlannedEdit"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_editplan.py:13.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/tools/plan.py:59.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.add_create",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "difflib",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "enum.Enum",
+    "pathlib.Path",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.history.FileHistory"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_editplan.py:13"
+    "source": "C:/!ass-ade/src/ass_ade/tools/plan.py:59"
   },
   "kind": "pure_function",
   "made_of": [],

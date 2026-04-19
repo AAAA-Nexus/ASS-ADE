@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/hooks/post_rebuild.py:15
+# Extracted from C:/!ass-ade/hooks/post_rebuild.py:15
 # Component id: mo.source.ass_ade.run
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def run(path: str) -> dict:

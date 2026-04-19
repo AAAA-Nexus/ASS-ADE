@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_validate_task_id.py:5
+# Extracted from C:/!ass-ade/examples/02-rebuild-a-codebase/sample_project/main.py:54
 # Component id: at.source.ass_ade.validate_task_id
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def validate_task_id(task_id: str) -> bool:

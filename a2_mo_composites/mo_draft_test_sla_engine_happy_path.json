@@ -1,5 +1,5 @@
 {
-  "body": "def test_sla_engine_happy_path(method_name, response_json):\n    \"\"\"Test SLA engine methods (happy path).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json=response_json)\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        if method_name == \"sla_register\":\n            result = client.sla_register(\n                agent_id=\"agent_1\", latency_ms=50.0, uptime_pct=99.5,\n                error_rate=0.01, bond_usdc=100.0\n            )\n        elif method_name == \"sla_report\":\n            result = client.sla_report(sla_id=\"sla_123\", metric=\"latency_ms\", value=45.2)\n        else:  # sla_breach\n            result = client.sla_breach(sla_id=\"sla_123\", severity=\"high\")\n        assert result is not None\n",
+  "body": "def test_sla_engine_happy_path(method_name, response_json):\n    \"\"\"Test SLA engine methods (happy path).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json=response_json)\n\n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        if method_name == \"sla_register\":\n            result = client.sla_register(\n                agent_id=\"agent_1\", latency_ms=50.0, uptime_pct=99.5,\n                error_rate=0.01, bond_usdc=100.0\n            )\n        elif method_name == \"sla_report\":\n            result = client.sla_report(sla_id=\"sla_123\", metric=\"latency_ms\", value=45.2)\n        else:  # sla_breach\n            result = client.sla_breach(sla_id=\"sla_123\", severity=\"high\")\n        assert result is not None\n",
   "body_hash": "251e15a3bba3a54e",
   "body_truncated": false,
   "callers_of": [
@@ -12,7 +12,7 @@
     "sla_breach"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:418.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_nexus_client_comprehensive.py:418.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_sla_engine_happy_path",
@@ -147,7 +147,7 @@
     "ass_ade.nexus.models.EntropyResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:418"
+    "source": "C:/!ass-ade/tests/test_nexus_client_comprehensive.py:418"
   },
   "kind": "engine_molecule",
   "made_of": [],

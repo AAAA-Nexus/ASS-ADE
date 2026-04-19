@@ -1,6 +1,6 @@
 {
-  "body": "    def test_discover_requires_remote(self, tmp_path: Path) -> None:\n        config_path = tmp_path / \".ass-ade\" / \"config.json\"\n        write_default_config(config_path, config=AssAdeConfig(profile=\"local\"), overwrite=True)\n        result = runner.invoke(app, [\"a2a\", \"discover\", \"search\", \"--config\", str(config_path)])\n        assert result.exit_code == 2\n        assert \"disabled in the local profile\" in result.stdout\n",
-  "body_hash": "2bd5e981beb7d100",
+  "body": "def test_discover_requires_remote(self, tmp_path: Path) -> None:\n    config_path = tmp_path / \".ass-ade\" / \"config.json\"\n    write_default_config(config_path, config=AssAdeConfig(profile=\"local\"), overwrite=True)\n    result = runner.invoke(app, [\"a2a\", \"discover\", \"search\", \"--config\", str(config_path)])\n    assert result.exit_code == 2\n    assert \"disabled in the local profile\" in result.stdout\n",
+  "body_hash": "32ca17e49b8003d4",
   "body_truncated": false,
   "callers_of": [
     "write_default_config",
@@ -9,13 +9,27 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testa2adiscovercli.py:21.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_a2a_cli.py:84.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_discover_requires_remote",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.nexus.models.DiscoveryResult",
+    "ass_ade.nexus.models.DiscoveredAgent",
+    "ass_ade.a2a.A2AAgentCard",
+    "ass_ade.a2a.NegotiationResult"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testa2adiscovercli.py:21"
+    "source": "C:/!ass-ade/tests/test_a2a_cli.py:84"
   },
   "kind": "pure_function",
   "made_of": [],

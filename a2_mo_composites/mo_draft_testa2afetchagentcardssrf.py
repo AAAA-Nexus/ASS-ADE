@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testa2afetchagentcardssrf.py:5
+# Extracted from C:/!ass-ade/tests/test_ssrf_protection.py:82
 # Component id: mo.source.ass_ade.testa2afetchagentcardssrf
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class TestA2AFetchAgentCardSSRF:
@@ -25,18 +27,18 @@ class TestA2AFetchAgentCardSSRF:
             mock_response = mock.MagicMock()
             mock_response.json.return_value = {"name": "TestAgent"}
             mock_get.return_value = mock_response
-            
+
             # This should work and return valid=False because the JSON is incomplete
             # but we mainly care about the URL transformation
             fetch_agent_card("https://example.com")
-            
+
             # Verify that the .well-known path was appended
             called_url = mock_get.call_args[0][0]
             assert called_url.endswith("/.well-known/agent.json")
 
     def test_immediate_ssrf_validation_before_request(self) -> None:
         """SSRF validation should happen immediately before the network request.
-        
+
         This tests that we don't have a TOCTOU window where DNS could change
         between validation and the actual request.
         """
@@ -47,9 +49,9 @@ class TestA2AFetchAgentCardSSRF:
                 mock_response = mock.MagicMock()
                 mock_response.json.return_value = {"name": "TestAgent"}
                 mock_get.return_value = mock_response
-                
+
                 # Call fetch_agent_card
                 fetch_agent_card("https://example.com")
-                
+
                 # Verify _check_ssrf was called (it's called immediately before request)
                 assert mock_check_ssrf.called

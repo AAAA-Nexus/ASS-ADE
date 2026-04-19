@@ -9,7 +9,7 @@
     "_extract_regex_symbols"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/project_parser.py:116.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/rebuild/project_parser.py:120.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.extract_symbols",
@@ -29,7 +29,7 @@
     "ass_ade.engine.rebuild.tiers.TIERS"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/project_parser.py:116"
+    "source": "C:/!ass-ade/src/ass_ade/engine/rebuild/project_parser.py:120"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_trust_gate_requires_agent_id(self) -> None:\n        server = MCPServer(\".\")\n        _initialize_server(server)\n        response = server._handle({\n            \"jsonrpc\": \"2.0\",\n            \"id\": 1,\n            \"method\": \"tools/call\",\n            \"params\": {\"name\": \"trust_gate\", \"arguments\": {\"agent_id\": \"\"}},\n        })\n        assert response is not None\n        assert response[\"error\"][\"code\"] == -32602\n",
-  "body_hash": "fed286e5f8017a06",
+  "body": "def test_trust_gate_requires_agent_id(self) -> None:\n    server = MCPServer(\".\")\n    _initialize_server(server)\n    response = server._handle({\n        \"jsonrpc\": \"2.0\",\n        \"id\": 1,\n        \"method\": \"tools/call\",\n        \"params\": {\"name\": \"trust_gate\", \"arguments\": {\"agent_id\": \"\"}},\n    })\n    assert response is not None\n    assert response[\"error\"][\"code\"] == -32602\n",
+  "body_hash": "d61241b23c06ac71",
   "body_truncated": false,
   "callers_of": [
     "MCPServer",
@@ -8,7 +8,7 @@
     "_handle"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:159.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_extended.py:159.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.test_trust_gate_requires_agent_id",
@@ -23,7 +23,7 @@
     "httpx"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:159"
+    "source": "C:/!ass-ade/tests/test_mcp_extended.py:159"
   },
   "kind": "ecosystem_system",
   "made_of": [],

@@ -1,12 +1,12 @@
 {
-  "body": "    def compliance_lineage(self, dataset_stages: list[dict], **kwargs: Any) -> LineageProof:\n        \"\"\"/v1/compliance/lineage \u2014 SHA-256 hash chain across dataset (LIN-100). $0.040/call\"\"\"\n        return self._post_model(\"/v1/compliance/lineage\", LineageProof, {\"dataset_stages\": dataset_stages, **kwargs})\n",
-  "body_hash": "69e9c65c01665ce0",
+  "body": "def compliance_lineage(self, dataset_stages: list[dict], **kwargs: Any) -> LineageProof:\n    \"\"\"/v1/compliance/lineage \u2014 SHA-256 hash chain across dataset (LIN-100). $0.040/call\"\"\"\n    return self._post_model(\"/v1/compliance/lineage\", LineageProof, {\"dataset_stages\": dataset_stages, **kwargs})\n",
+  "body_hash": "b0e342df18a64c24",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1068.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1068.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.compliance_lineage",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1068"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1068"
   },
   "kind": "engine_molecule",
   "made_of": [],

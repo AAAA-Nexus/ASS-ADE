@@ -1,6 +1,6 @@
 {
-  "body": "    def test_conviction_ema(self) -> None:\n        w = WisdomEngine({})\n        r1 = w.run_audit({})  # score 0, conviction = 0.5*0.5 + 0.5*0 = 0.25\n        assert abs(w.conviction - 0.25) < 0.01\n        assert not w.is_confident  # well below 0.85\n",
-  "body_hash": "da2a12b26467f57c",
+  "body": "def test_conviction_ema(self) -> None:\n    w = WisdomEngine({})\n    r1 = w.run_audit({})  # score 0, conviction = 0.5*0.5 + 0.5*0 = 0.25\n    assert abs(w.conviction - 0.25) < 0.01\n    assert not w.is_confident  # well below 0.85\n",
+  "body_hash": "89a31b33dddf8b35",
   "body_truncated": false,
   "callers_of": [
     "WisdomEngine",
@@ -8,16 +8,40 @@
     "abs"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwisdomengine.py:42.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:93.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_conviction_ema",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "time",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.agent.audit_questions.AUDIT_QUESTIONS",
+    "ass_ade.agent.bas.BAS",
+    "ass_ade.agent.bas.Alert",
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.orchestrator.CycleReport",
+    "ass_ade.agent.orchestrator.EngineOrchestrator",
+    "ass_ade.agent.wisdom.AuditReport",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "collections.Counter",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.engine.provider.ModelProvider",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.tools.registry.default_registry"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwisdomengine.py:42"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:93"
   },
   "kind": "engine_molecule",
-  "made_of": [],
+  "made_of": [
+    "at.source.ass_ade.run_audit"
+  ],
   "name": "test_conviction_ema",
   "product_categories": [
     "COR"

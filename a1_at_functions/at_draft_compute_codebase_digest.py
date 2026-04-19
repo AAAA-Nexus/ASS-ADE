@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/local/certifier.py:45
+# Extracted from C:/!ass-ade/src/ass_ade/local/certifier.py:45
 # Component id: at.source.ass_ade.compute_codebase_digest
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def compute_codebase_digest(root: Path) -> dict[str, Any]:

@@ -1,12 +1,12 @@
 {
-  "body": "    def get_agent_card(self) -> AgentCard:\n        \"\"\"/.well-known/agent.json \u2014 A2A capability manifest, free\"\"\"\n        return self._get_model(\"/.well-known/agent.json\", AgentCard)\n",
-  "body_hash": "bb013291af6550ac",
+  "body": "def get_agent_card(self) -> AgentCard:\n    \"\"\"/.well-known/agent.json \u2014 A2A capability manifest, free\"\"\"\n    return self._get_model(\"/.well-known/agent.json\", AgentCard)\n",
+  "body_hash": "fa177a21dced9f3e",
   "body_truncated": false,
   "callers_of": [
     "_get_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:281.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:281.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.get_agent_card",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:281"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:281"
   },
   "kind": "engine_molecule",
   "made_of": [],

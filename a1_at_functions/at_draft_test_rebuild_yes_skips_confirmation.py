@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli.py:153
+# Extracted from C:/!ass-ade/tests/test_cli.py:153
 # Component id: at.source.ass_ade.test_rebuild_yes_skips_confirmation
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_rebuild_yes_skips_confirmation(tmp_path: Path) -> None:

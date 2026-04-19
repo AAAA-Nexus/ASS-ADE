@@ -1,6 +1,6 @@
 {
-  "body": "    def test_cloud_provider_available_with_env_key(self, monkeypatch):\n        monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-test\")\n        p = get_provider(\"groq\")\n        assert p.is_available() is True\n",
-  "body_hash": "b3d59db31ece79a0",
+  "body": "def test_cloud_provider_available_with_env_key(self, monkeypatch):\n    monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-test\")\n    p = get_provider(\"groq\")\n    assert p.is_available() is True\n",
+  "body_hash": "3a08566d141e146d",
   "body_truncated": false,
   "callers_of": [
     "setenv",
@@ -8,7 +8,7 @@
     "is_available"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:111.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:111.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_cloud_provider_available_with_env_key",
@@ -87,7 +87,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:111"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:111"
   },
   "kind": "pure_function",
   "made_of": [],

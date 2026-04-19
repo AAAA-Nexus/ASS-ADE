@@ -1,13 +1,13 @@
 {
-  "body": "    def test_custom_rpc(self) -> None:\n        with patch.dict(\"os.environ\", {\"BASE_RPC_URL\": \"https://custom.rpc\"}, clear=False):\n            config = get_chain_config()\n        assert config[\"rpc_url\"] == \"https://custom.rpc\"\n",
-  "body_hash": "01ad6723d63e275c",
+  "body": "def test_custom_rpc(self) -> None:\n    with patch.dict(\"os.environ\", {\"BASE_RPC_URL\": \"https://custom.rpc\"}, clear=False):\n        config = get_chain_config()\n    assert config[\"rpc_url\"] == \"https://custom.rpc\"\n",
+  "body_hash": "a1f41f0b419ac913",
   "body_truncated": false,
   "callers_of": [
     "dict",
     "get_chain_config"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:264.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_x402_flow.py:264.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_custom_rpc",
@@ -33,7 +33,7 @@
     "ass_ade.nexus.x402.BASE_SEPOLIA_CHAIN_ID"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:264"
+    "source": "C:/!ass-ade/tests/test_x402_flow.py:264"
   },
   "kind": "pure_function",
   "made_of": [],

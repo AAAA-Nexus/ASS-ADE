@@ -1,11 +1,13 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_atomadic_dispatches_dynamic_cli_args.py:5
+# Extracted from C:/!ass-ade/tests/test_capabilities.py:128
 # Component id: at.source.ass_ade.test_atomadic_dispatches_dynamic_cli_args
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_atomadic_dispatches_dynamic_cli_args(monkeypatch, tmp_path: Path) -> None:
     captured: dict[str, list[str]] = {}
 
-    def fake_call_llm(_text: str, _working_dir: Path | str | None = None) -> dict:
+    def fake_call_llm(_text: str, _working_dir: Path | str | None = None, _memory_context: str | None = None) -> dict:
         return {
             "type": "command",
             "intent": "cli",

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_shield_failure_blocks_cert(self) -> None:\n        client = _mock_client()\n        client.security_shield.return_value = ShieldResult(sanitized=False, blocked=True)\n        result = safe_execute(client, \"dangerous_tool\", \"rm -rf /\")\n        assert result.shield_passed is False\n        # Certificate should not be generated when shield fails\n        assert result.certificate_id is None\n",
-  "body_hash": "745aa5dd21bbf6df",
+  "body": "def test_shield_failure_blocks_cert(self) -> None:\n    client = _mock_client()\n    client.security_shield.return_value = ShieldResult(sanitized=False, blocked=True)\n    result = safe_execute(client, \"dangerous_tool\", \"rm -rf /\")\n    assert result.shield_passed is False\n    # Certificate should not be generated when shield fails\n    assert result.certificate_id is None\n",
+  "body_hash": "1897aefad848cf79",
   "body_truncated": false,
   "callers_of": [
     "_mock_client",
@@ -8,13 +8,34 @@
     "safe_execute"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_testsafeexecute.py:11.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_workflows.py:182.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "og.source.ass_ade.test_shield_failure_blocks_cert",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "unittest.mock.MagicMock",
+    "pytest",
+    "ass_ade.nexus.errors.NexusServerError",
+    "ass_ade.nexus.models.AegisProxyResult",
+    "ass_ade.nexus.models.CertifiedOutput",
+    "ass_ade.nexus.models.ComplianceResult",
+    "ass_ade.nexus.models.EthicsCheckResult",
+    "ass_ade.nexus.models.HallucinationResult",
+    "ass_ade.nexus.models.IdentityVerification",
+    "ass_ade.nexus.models.LineageRecord",
+    "ass_ade.nexus.models.PromptScanResult",
+    "ass_ade.nexus.models.ReputationScore",
+    "ass_ade.nexus.models.ShieldResult",
+    "ass_ade.nexus.models.SybilCheckResult",
+    "ass_ade.nexus.models.TrustScore",
+    "ass_ade.workflows.certify_output",
+    "ass_ade.workflows.safe_execute",
+    "ass_ade.workflows.trust_gate"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_testsafeexecute.py:11"
+    "source": "C:/!ass-ade/tests/test_workflows.py:182"
   },
   "kind": "product_organism",
   "made_of": [
@@ -22,7 +43,7 @@
   ],
   "name": "test_shield_failure_blocks_cert",
   "product_categories": [
-    "PAY"
+    "COR"
   ],
   "provides": [
     "rebuild candidate for test_shield_failure_blocks_cert"

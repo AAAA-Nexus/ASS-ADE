@@ -1,12 +1,12 @@
 {
-  "body": "    def lse(self):\n        if self._lse is None:\n            from ass_ade.agent.lse import LSEEngine\n            self._lse = LSEEngine(self._config, self._nexus)\n        return self._lse\n",
-  "body_hash": "aa607bb0251fe0f8",
+  "body": "def lse(self):\n    if self._lse is None:\n        from ass_ade.agent.lse import LSEEngine\n        self._lse = LSEEngine(self._config, self._nexus)\n    return self._lse\n",
+  "body_hash": "8084371166fd4ae1",
   "body_truncated": false,
   "callers_of": [
     "LSEEngine"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/orchestrator.py:262.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/orchestrator.py:262.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.lse",
@@ -38,7 +38,7 @@
     "json"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/orchestrator.py:262"
+    "source": "C:/!ass-ade/src/ass_ade/agent/orchestrator.py:262"
   },
   "kind": "ecosystem_system",
   "made_of": [],

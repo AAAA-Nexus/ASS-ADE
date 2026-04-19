@@ -1,13 +1,13 @@
 {
-  "body": "    def test_claude_tier_alias_works(self, monkeypatch):\n        monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-a\")\n        match = select_provider_for_tier(\"haiku\")  # alias for \"fast\"\n        assert match is not None\n        profile, model = match\n        assert model == profile.models_by_tier[\"fast\"]\n",
-  "body_hash": "eac77ff514c07f6a",
+  "body": "def test_claude_tier_alias_works(self, monkeypatch):\n    monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-a\")\n    match = select_provider_for_tier(\"haiku\")  # alias for \"fast\"\n    assert match is not None\n    profile, model = match\n    assert model == profile.models_by_tier[\"fast\"]\n",
+  "body_hash": "ed7f486ff2fd2a56",
   "body_truncated": false,
   "callers_of": [
     "setenv",
     "select_provider_for_tier"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:236.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:236.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_claude_tier_alias_works",
@@ -86,7 +86,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:236"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:236"
   },
   "kind": "pure_function",
   "made_of": [],

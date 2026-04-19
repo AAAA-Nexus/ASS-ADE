@@ -1,6 +1,6 @@
 {
-  "body": "    def test_sam_gate_runs_per_step_and_populates_last_result(self):\n        nexus = _make_nexus_mock()\n        gates = QualityGates(nexus, config={})\n        provider = _make_provider_returning_text(\"hello\")\n        registry = ToolRegistry()\n\n        loop = AgentLoop(\n            provider=provider,\n            registry=registry,\n            quality_gates=gates,\n        )\n\n        with patch(\"ass_ade.context_memory.vector_embed\", return_value=[0.1, 0.2, 0.3]):\n            loop.step(\"What is 1+1?\")\n\n        assert loop.last_sam_result is not None\n        assert \"trs\" in loop.last_sam_result\n        assert \"composite\" in loop.last_sam_result\n",
-  "body_hash": "33845bdaa3561007",
+  "body": "def test_sam_gate_runs_per_step_and_populates_last_result(self):\n    nexus = _make_nexus_mock()\n    gates = QualityGates(nexus, config={})\n    provider = _make_provider_returning_text(\"hello\")\n    registry = ToolRegistry()\n\n    loop = AgentLoop(\n        provider=provider,\n        registry=registry,\n        quality_gates=gates,\n    )\n\n    with patch(\"ass_ade.context_memory.vector_embed\", return_value=[0.1, 0.2, 0.3]):\n        loop.step(\"What is 1+1?\")\n\n    assert loop.last_sam_result is not None\n    assert \"trs\" in loop.last_sam_result\n    assert \"composite\" in loop.last_sam_result\n",
+  "body_hash": "0b2bbeb8cdc6e682",
   "body_truncated": false,
   "callers_of": [
     "_make_nexus_mock",
@@ -12,13 +12,33 @@
     "step"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testsaminagentloop.py:6.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase1_integration.py:86.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_sam_gate_runs_per_step_and_populates_last_result",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.agent.loop.D_MAX",
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.agent.orchestrator.EngineOrchestrator",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.tools.registry.ToolRegistry",
+    "ass_ade.agent.bas._SEVERITY",
+    "ass_ade.commands.agent._render_phase1_header",
+    "io.StringIO",
+    "rich.console.Console",
+    "ass_ade.commands.agent._render_phase1_header",
+    "io.StringIO",
+    "rich.console.Console"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testsaminagentloop.py:6"
+    "source": "C:/!ass-ade/tests/test_phase1_integration.py:86"
   },
   "kind": "pure_function",
   "made_of": [],

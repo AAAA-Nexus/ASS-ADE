@@ -1,13 +1,13 @@
 {
-  "body": "    def saga_compensate(self, saga_id: str, **kwargs: Any) -> CompensationResult:\n        \"\"\"/v1/rollback/saga/{id}/compensate \u2014 LIFO rollback (RBK-100). $0.040/call\"\"\"\n        return self._post_model(f\"/v1/rollback/saga/{_pseg(saga_id, 'saga_id')}/compensate\", CompensationResult, kwargs or {})\n",
-  "body_hash": "69f65da34d7c3e0c",
+  "body": "def saga_compensate(self, saga_id: str, **kwargs: Any) -> CompensationResult:\n    \"\"\"/v1/rollback/saga/{id}/compensate \u2014 LIFO rollback (RBK-100). $0.040/call\"\"\"\n    return self._post_model(f\"/v1/rollback/saga/{_pseg(saga_id, 'saga_id')}/compensate\", CompensationResult, kwargs or {})\n",
+  "body_hash": "d34e3153754790d4",
   "body_truncated": false,
   "callers_of": [
     "_post_model",
     "_pseg"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:899.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:899.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.saga_compensate",
@@ -161,7 +161,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:899"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:899"
   },
   "kind": "engine_molecule",
   "made_of": [],

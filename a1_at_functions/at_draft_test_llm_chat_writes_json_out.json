@@ -14,7 +14,7 @@
     "_hybrid_config"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_new_commands.py:387.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_new_commands.py:387.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_llm_chat_writes_json_out",
@@ -73,7 +73,7 @@
     "ass_ade.nexus.models.VrfDraw"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_new_commands.py:387"
+    "source": "C:/!ass-ade/tests/test_new_commands.py:387"
   },
   "kind": "pure_function",
   "made_of": [],

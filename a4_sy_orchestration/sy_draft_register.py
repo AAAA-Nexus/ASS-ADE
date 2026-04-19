@@ -1,6 +1,8 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_mcpzerorouter.py:12
+# Extracted from C:/!ass-ade/src/ass_ade/mcp/zero_router.py:23
 # Component id: sy.source.ass_ade.register
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
-    def register(self, tool: ToolRef) -> None:
-        self._catalog.append(tool)
+def register(self, tool: ToolRef) -> None:
+    self._catalog.append(tool)

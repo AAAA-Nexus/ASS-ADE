@@ -1,6 +1,6 @@
 {
-  "body": "    def test_exception_handling_trust_sanitized(self) -> None:\n        \"\"\"Exception in trust_score should not leak raw exception to caller.\"\"\"\n        client = _mock_client()\n        client.trust_score.side_effect = OSError(\"Network unreachable\")\n        result = trust_gate(client, \"agent-net-fail\")\n        trust_step = next(s for s in result.steps if s.name == \"trust_score\")\n        assert trust_step.detail == \"step_failed\"\n        assert \"Network\" not in trust_step.detail\n        assert \"unreachable\" not in trust_step.detail\n",
-  "body_hash": "f3c7c10fc50588da",
+  "body": "def test_exception_handling_trust_sanitized(self) -> None:\n    \"\"\"Exception in trust_score should not leak raw exception to caller.\"\"\"\n    client = _mock_client()\n    client.trust_score.side_effect = OSError(\"Network unreachable\")\n    result = trust_gate(client, \"agent-net-fail\")\n    trust_step = next(s for s in result.steps if s.name == \"trust_score\")\n    assert trust_step.detail == \"step_failed\"\n    assert \"Network\" not in trust_step.detail\n    assert \"unreachable\" not in trust_step.detail\n",
+  "body_hash": "314dff278713e5f4",
   "body_truncated": false,
   "callers_of": [
     "_mock_client",
@@ -9,7 +9,7 @@
     "next"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_workflows.py:128.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_workflows.py:128.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "og.source.ass_ade.test_exception_handling_trust_sanitized",
@@ -36,7 +36,7 @@
     "ass_ade.workflows.trust_gate"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_workflows.py:128"
+    "source": "C:/!ass-ade/tests/test_workflows.py:128"
   },
   "kind": "product_organism",
   "made_of": [],

@@ -1,19 +1,25 @@
 {
-  "body": "    def add_user(self, content: str) -> None:\n        self._messages.append(Message(role=\"user\", content=content))\n",
-  "body_hash": "228d0e05016a9f2f",
+  "body": "def add_user(self, content: str) -> None:\n    self._messages.append(Message(role=\"user\", content=content))\n",
+  "body_hash": "57003b3df4ff1011",
   "body_truncated": false,
   "callers_of": [
     "append",
     "Message"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_conversation.py:25.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/conversation.py:38.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.add_user",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "ass_ade.engine.tokens.TokenBudget",
+    "ass_ade.engine.tokens.estimate_message_tokens",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolSchema"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_conversation.py:25"
+    "source": "C:/!ass-ade/src/ass_ade/agent/conversation.py:38"
   },
   "kind": "pure_function",
   "made_of": [],

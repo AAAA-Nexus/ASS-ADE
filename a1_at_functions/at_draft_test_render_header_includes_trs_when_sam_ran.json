@@ -1,6 +1,6 @@
 {
-  "body": "    def test_render_header_includes_trs_when_sam_ran(self):\n        from ass_ade.commands.agent import _render_phase1_header\n        from io import StringIO\n        from rich.console import Console as RichConsole\n\n        # Patch the module's console to capture\n        agent_mock = MagicMock()\n        agent_mock.last_sam_result = {\"composite\": 0.85, \"g23\": True, \"trs\": {}}\n        agent_mock.last_lse_decision = MagicMock(tier=\"sonnet\")\n        agent_mock.delegation_depth = 0\n        agent_mock.last_cycle_report = None\n\n        capture = StringIO()\n        with patch(\"ass_ade.commands.agent.console\", RichConsole(file=capture, force_terminal=False)):\n            _render_phase1_header(agent_mock)\n        output = capture.getvalue()\n        assert \"TRS=0.85\" in output\n        assert \"LSE=sonnet\" in output\n",
-  "body_hash": "eb3726aeea7b41a1",
+  "body": "def test_render_header_includes_trs_when_sam_ran(self):\n    from ass_ade.commands.agent import _render_phase1_header\n    from io import StringIO\n    from rich.console import Console as RichConsole\n\n    # Patch the module's console to capture\n    agent_mock = MagicMock()\n    agent_mock.last_sam_result = {\"composite\": 0.85, \"g23\": True, \"trs\": {}}\n    agent_mock.last_lse_decision = MagicMock(tier=\"sonnet\")\n    agent_mock.delegation_depth = 0\n    agent_mock.last_cycle_report = None\n\n    capture = StringIO()\n    with patch(\"ass_ade.commands.agent.console\", RichConsole(file=capture, force_terminal=False)):\n        _render_phase1_header(agent_mock)\n    output = capture.getvalue()\n    assert \"TRS=0.85\" in output\n    assert \"LSE=sonnet\" in output\n",
+  "body_hash": "7753eb285c91468a",
   "body_truncated": false,
   "callers_of": [
     "MagicMock",
@@ -11,7 +11,7 @@
     "RichConsole"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase1_integration.py:211.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase1_integration.py:211.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_render_header_includes_trs_when_sam_ran",
@@ -37,7 +37,7 @@
     "rich.console.Console"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase1_integration.py:211"
+    "source": "C:/!ass-ade/tests/test_phase1_integration.py:211"
   },
   "kind": "pure_function",
   "made_of": [],

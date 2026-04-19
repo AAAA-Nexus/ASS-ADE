@@ -1,6 +1,6 @@
 {
-  "body": "    def test_subscriber_exception_does_not_propagate(self) -> None:\n        b = BAS({})\n        b.subscribe(lambda a: (_ for _ in ()).throw(RuntimeError(\"boom\")))\n        # Should not raise\n        b.monitor_all({\"synergy\": 0.9})\n",
-  "body_hash": "996a51d2a243056c",
+  "body": "def test_subscriber_exception_does_not_propagate(self) -> None:\n    b = BAS({})\n    b.subscribe(lambda a: (_ for _ in ()).throw(RuntimeError(\"boom\")))\n    # Should not raise\n    b.monitor_all({\"synergy\": 0.9})\n",
+  "body_hash": "af50860778e444e8",
   "body_truncated": false,
   "callers_of": [
     "BAS",
@@ -10,7 +10,7 @@
     "RuntimeError"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:225.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:225.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_subscriber_exception_does_not_propagate",
@@ -38,7 +38,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:225"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:225"
   },
   "kind": "engine_molecule",
   "made_of": [

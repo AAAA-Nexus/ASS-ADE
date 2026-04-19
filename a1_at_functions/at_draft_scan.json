@@ -12,7 +12,7 @@
     "get"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tools/enhance_tool.py:10.",
+  "description": "Draft candidate from C:/!ass-ade/tools/enhance_tool.py:10.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.scan",
@@ -24,7 +24,7 @@
     "pathlib.Path"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tools/enhance_tool.py:10"
+    "source": "C:/!ass-ade/tools/enhance_tool.py:10"
   },
   "kind": "pure_function",
   "made_of": [],

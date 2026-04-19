@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_safeexecuteresult.py:5
+# Extracted from C:/!ass-ade/src/ass_ade/workflows.py:57
 # Component id: og.source.ass_ade.safeexecuteresult
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class SafeExecuteResult(BaseModel):

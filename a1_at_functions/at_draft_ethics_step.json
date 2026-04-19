@@ -1,6 +1,6 @@
 {
-  "body": "    def ethics_step(ctx: dict[str, Any]) -> StepResult:\n        try:\n            result = client.ethics_check(text)\n            raw = result.model_dump() if hasattr(result, \"model_dump\") else {}\n            passed = raw.get(\"safe\", False)\n            return StepResult(name=\"ethics_check\", status=StepStatus.PASSED if passed else StepStatus.FAILED, output=raw)\n        except Exception as exc:\n            return StepResult(name=\"ethics_check\", status=StepStatus.FAILED, error=str(exc))\n",
-  "body_hash": "f48f41fc29aef684",
+  "body": "def ethics_step(ctx: dict[str, Any]) -> StepResult:\n    try:\n        result = client.ethics_check(text)\n        raw = result.model_dump() if hasattr(result, \"model_dump\") else {}\n        passed = raw.get(\"safe\", False)\n        return StepResult(name=\"ethics_check\", status=StepStatus.PASSED if passed else StepStatus.FAILED, output=raw)\n    except Exception as exc:\n        return StepResult(name=\"ethics_check\", status=StepStatus.FAILED, error=str(exc))\n",
+  "body_hash": "dd2cc820884a33e2",
   "body_truncated": false,
   "callers_of": [
     "ethics_check",
@@ -11,13 +11,25 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_certify_pipeline.py:25.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/pipeline.py:343.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.ethics_step",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "time",
+    "collections.abc.Callable",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "enum.Enum",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Protocol",
+    "ass_ade.nexus.validation.validate_agent_id"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_certify_pipeline.py:25"
+    "source": "C:/!ass-ade/src/ass_ade/pipeline.py:343"
   },
   "kind": "pure_function",
   "made_of": [],

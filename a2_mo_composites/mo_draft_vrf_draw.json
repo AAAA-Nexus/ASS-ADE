@@ -1,12 +1,12 @@
 {
-  "body": "    def vrf_draw(self, range_min: int, range_max: int, count: int = 1, **kwargs: Any) -> VrfDraw:\n        \"\"\"/v1/vrf/draw \u2014 VRF random draw with on-chain proof. $0.01 + 0.5% of pot\"\"\"\n        return self._post_model(\"/v1/vrf/draw\", VrfDraw, {\"range_min\": range_min, \"range_max\": range_max, \"count\": count, **kwargs})\n",
-  "body_hash": "be36ff2612ab7333",
+  "body": "def vrf_draw(self, range_min: int, range_max: int, count: int = 1, **kwargs: Any) -> VrfDraw:\n    \"\"\"/v1/vrf/draw \u2014 VRF random draw with on-chain proof. $0.01 + 0.5% of pot\"\"\"\n    return self._post_model(\"/v1/vrf/draw\", VrfDraw, {\"range_min\": range_min, \"range_max\": range_max, \"count\": count, **kwargs})\n",
+  "body_hash": "326b0722bfcf8309",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:486.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:486.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.vrf_draw",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:486"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:486"
   },
   "kind": "engine_molecule",
   "made_of": [],

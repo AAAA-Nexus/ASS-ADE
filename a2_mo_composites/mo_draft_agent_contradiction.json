@@ -1,12 +1,12 @@
 {
-  "body": "    def agent_contradiction(self, statement_a: str, statement_b: str, **kwargs: Any) -> ContradictionResult:\n        \"\"\"/v1/agents/contradiction \u2014 NLI fact-checker for two statements. $0.020/request\"\"\"\n        return self._post_model(\"/v1/agents/contradiction\", ContradictionResult, {\n            \"statement_a\": statement_a, \"statement_b\": statement_b, **kwargs,\n        })\n",
-  "body_hash": "e32f6b0a8aa8de22",
+  "body": "def agent_contradiction(self, statement_a: str, statement_b: str, **kwargs: Any) -> ContradictionResult:\n    \"\"\"/v1/agents/contradiction \u2014 NLI fact-checker for two statements. $0.020/request\"\"\"\n    return self._post_model(\"/v1/agents/contradiction\", ContradictionResult, {\n        \"statement_a\": statement_a, \"statement_b\": statement_b, **kwargs,\n    })\n",
+  "body_hash": "ccfb4fcd95e8cca3",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:648.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:648.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.agent_contradiction",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:648"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:648"
   },
   "kind": "engine_molecule",
   "made_of": [],

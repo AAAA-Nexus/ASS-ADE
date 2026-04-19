@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/tools/builtin.py:105
+# Extracted from C:/!ass-ade/src/ass_ade/tools/builtin.py:105
 # Component id: mo.source.ass_ade.writefiletool
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class WriteFileTool:

@@ -1,12 +1,12 @@
 {
-  "body": "    def drift_certificate(self, check_id: str | None = None, *, model_id: str | None = None) -> DriftCertificate:\n        \"\"\"/v1/drift/certificate \u2014 signed drift compliance cert (DRG-101). $0.010/cert\"\"\"\n        return self._get_model(\"/v1/drift/certificate\", DriftCertificate, check_id=check_id or model_id or \"\")\n",
-  "body_hash": "6de7a8486c13350b",
+  "body": "def drift_certificate(self, check_id: str | None = None, *, model_id: str | None = None) -> DriftCertificate:\n    \"\"\"/v1/drift/certificate \u2014 signed drift compliance cert (DRG-101). $0.010/cert\"\"\"\n    return self._get_model(\"/v1/drift/certificate\", DriftCertificate, check_id=check_id or model_id or \"\")\n",
+  "body_hash": "c7b76f2648225257",
   "body_truncated": false,
   "callers_of": [
     "_get_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1122.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1122.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.drift_certificate",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1122"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1122"
   },
   "kind": "engine_molecule",
   "made_of": [],

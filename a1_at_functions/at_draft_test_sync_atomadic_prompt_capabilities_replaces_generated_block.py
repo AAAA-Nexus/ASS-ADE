@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_sync_atomadic_prompt_capabilities_replaces_generated_block.py:5
+# Extracted from C:/!ass-ade/tests/test_capabilities.py:110
 # Component id: at.source.ass_ade.test_sync_atomadic_prompt_capabilities_replaces_generated_block
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_sync_atomadic_prompt_capabilities_replaces_generated_block(tmp_path: Path) -> None:
@@ -15,5 +17,6 @@ def test_sync_atomadic_prompt_capabilities_replaces_generated_block(tmp_path: Pa
     assert result == prompt_path
     text = prompt_path.read_text(encoding="utf-8")
     assert "old stale block" not in text
+    assert "Runtime routing rules" in text
     assert "`protocol evolution-record`" in text
     assert "`prompt sync-agent`" in text

@@ -1,18 +1,23 @@
 {
-  "body": "    def complexity_score(spec: str, fan_out: int = 0) -> float:\n        return len(spec) / 1000.0 + fan_out / 10.0\n",
-  "body_hash": "4abe73457c46c528",
+  "body": "def complexity_score(spec: str, fan_out: int = 0) -> float:\n    return len(spec) / 1000.0 + fan_out / 10.0\n",
+  "body_hash": "fc6cc30704378b5e",
   "body_truncated": false,
   "callers_of": [
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_atlas.py:13.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/atlas.py:24.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.complexity_score",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_atlas.py:13"
+    "source": "C:/!ass-ade/src/ass_ade/agent/atlas.py:24"
   },
   "kind": "pure_function",
   "made_of": [],

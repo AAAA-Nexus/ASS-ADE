@@ -1,6 +1,6 @@
 {
-  "body": "    def generate(self, prompt: str, max_new_tokens: int = 256, temperature: float = 0.7) -> str:\n        import torch\n\n        self.ensure_loaded()\n        assert self._model is not None and self._tokenizer is not None\n\n        inputs = self._tokenizer(prompt, return_tensors=\"pt\")\n        use_gpu = next(self._model.parameters()).is_cuda\n        if use_gpu:\n            inputs = {k: v.cuda() for k, v in inputs.items()}\n\n        with torch.no_grad():\n            out = self._model.generate(\n                **inputs,\n                max_new_tokens=max_new_tokens,\n                temperature=max(temperature, 1e-3),\n                do_sample=temperature > 0,\n                pad_token_id=self._tokenizer.eos_token_id,\n            )\n        new_tokens = out[0][inputs[\"input_ids\"].shape[-1]:]\n        return self._tokenizer.decode(new_tokens, skip_special_tokens=True)\n",
-  "body_hash": "a6e24b65c6709e5f",
+  "body": "def generate(self, prompt: str, max_new_tokens: int = 256, temperature: float = 0.7) -> str:\n    import torch\n\n    self.ensure_loaded()\n    assert self._model is not None and self._tokenizer is not None\n\n    inputs = self._tokenizer(prompt, return_tensors=\"pt\")\n    use_gpu = next(self._model.parameters()).is_cuda\n    if use_gpu:\n        inputs = {k: v.cuda() for k, v in inputs.items()}\n\n    with torch.no_grad():\n        out = self._model.generate(\n            **inputs,\n            max_new_tokens=max_new_tokens,\n            temperature=max(temperature, 1e-3),\n            do_sample=temperature > 0,\n            pad_token_id=self._tokenizer.eos_token_id,\n        )\n    new_tokens = out[0][inputs[\"input_ids\"].shape[-1]:]\n    return self._tokenizer.decode(new_tokens, skip_special_tokens=True)\n",
+  "body_hash": "4306155165804122",
   "body_truncated": false,
   "callers_of": [
     "ensure_loaded",
@@ -15,7 +15,7 @@
     "max"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_training/serve_lora.py:80.",
+  "description": "Draft candidate from C:/!ass-ade/scripts/lora_training/serve_lora.py:80.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.generate",
@@ -39,7 +39,7 @@
     "transformers"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_training/serve_lora.py:80"
+    "source": "C:/!ass-ade/scripts/lora_training/serve_lora.py:80"
   },
   "kind": "pure_function",
   "made_of": [],

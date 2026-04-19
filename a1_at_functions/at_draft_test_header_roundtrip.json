@@ -1,6 +1,6 @@
 {
-  "body": "    def test_header_roundtrip(self) -> None:\n        \"\"\"PaymentProof should roundtrip through header format.\"\"\"\n        original = PaymentProof(\n            signature=\"sig456\",\n            wallet_address=\"0xabcdef\",\n            transaction_id=\"0x9876\",\n            amount_micro_usdc=5000,\n        )\n        header = original.to_header_value()\n        restored = PaymentProof.from_header_value(header)\n        assert restored == original\n",
-  "body_hash": "51dd49954d3b7fd6",
+  "body": "def test_header_roundtrip(self) -> None:\n    \"\"\"PaymentProof should roundtrip through header format.\"\"\"\n    original = PaymentProof(\n        signature=\"sig456\",\n        wallet_address=\"0xabcdef\",\n        transaction_id=\"0x9876\",\n        amount_micro_usdc=5000,\n    )\n    header = original.to_header_value()\n    restored = PaymentProof.from_header_value(header)\n    assert restored == original\n",
+  "body_hash": "29fea37484c249f7",
   "body_truncated": false,
   "callers_of": [
     "PaymentProof",
@@ -8,7 +8,7 @@
     "from_header_value"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:131.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_x402_flow.py:131.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_header_roundtrip",
@@ -34,7 +34,7 @@
     "ass_ade.nexus.x402.BASE_SEPOLIA_CHAIN_ID"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:131"
+    "source": "C:/!ass-ade/tests/test_x402_flow.py:131"
   },
   "kind": "pure_function",
   "made_of": [

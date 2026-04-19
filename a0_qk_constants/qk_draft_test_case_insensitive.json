@@ -1,12 +1,12 @@
 {
-  "body": "    def test_case_insensitive(self):\n        assert context_window_for(\"GPT-4O\") == 128_000\n",
-  "body_hash": "465a67c95055b3f2",
+  "body": "def test_case_insensitive(self):\n    assert context_window_for(\"GPT-4O\") == 128_000\n",
+  "body_hash": "b8b5b09704e9baf6",
   "body_truncated": false,
   "callers_of": [
     "context_window_for"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tokens.py:114.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_tokens.py:114.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "qk.source.ass_ade.test_case_insensitive",
@@ -23,7 +23,7 @@
     "ass_ade.engine.types.ToolSchema"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tokens.py:114"
+    "source": "C:/!ass-ade/tests/test_tokens.py:114"
   },
   "kind": "invariant",
   "made_of": [],

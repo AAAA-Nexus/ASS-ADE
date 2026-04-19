@@ -1,6 +1,6 @@
 {
-  "body": "    def test_timeout(self, workspace: Path):\n        tool = RunCommandTool(str(workspace))\n        r = tool.execute(command=\"python -c \\\"import time; time.sleep(10)\\\"\", timeout=1)\n        assert not r.success\n        assert \"timed out\" in (r.error or \"\").lower()\n",
-  "body_hash": "61cdb0f630cdd9c7",
+  "body": "def test_timeout(self, workspace: Path):\n    tool = RunCommandTool(str(workspace))\n    r = tool.execute(command=\"python -c \\\"import time; time.sleep(10)\\\"\", timeout=1)\n    assert not r.success\n    assert \"timed out\" in (r.error or \"\").lower()\n",
+  "body_hash": "c77ddefe2fc2c083",
   "body_truncated": false,
   "callers_of": [
     "RunCommandTool",
@@ -9,7 +9,7 @@
     "lower"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:119.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_tools_builtin.py:119.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_timeout",
@@ -28,7 +28,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:119"
+    "source": "C:/!ass-ade/tests/test_tools_builtin.py:119"
   },
   "kind": "pure_function",
   "made_of": [],

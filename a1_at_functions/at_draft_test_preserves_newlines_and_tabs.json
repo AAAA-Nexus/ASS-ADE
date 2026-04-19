@@ -1,18 +1,26 @@
 {
-  "body": "    def test_preserves_newlines_and_tabs(self) -> None:\n        text = \"Hello\\nWorld\\tFoo\"\n        assert validate_prompt(text) == text\n",
-  "body_hash": "37357aa4a40dd511",
+  "body": "def test_preserves_newlines_and_tabs(self) -> None:\n    text = \"Hello\\nWorld\\tFoo\"\n    assert validate_prompt(text) == text\n",
+  "body_hash": "d0a85f367a9d1349",
   "body_truncated": false,
   "callers_of": [
     "validate_prompt"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateprompt.py:15.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_validation.py:53.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_preserves_newlines_and_tabs",
-  "imports": [],
+  "imports": [
+    "pytest",
+    "ass_ade.nexus.validation._is_private_host",
+    "ass_ade.nexus.validation.validate_agent_id",
+    "ass_ade.nexus.validation.validate_prompt",
+    "ass_ade.nexus.validation.validate_session_id",
+    "ass_ade.nexus.validation.validate_url",
+    "ass_ade.nexus.validation.validate_usdc_amount"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateprompt.py:15"
+    "source": "C:/!ass-ade/tests/test_validation.py:53"
   },
   "kind": "pure_function",
   "made_of": [],

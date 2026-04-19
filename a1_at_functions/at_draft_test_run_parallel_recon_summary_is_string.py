@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_parallel_recon.py:342
+# Extracted from C:/!ass-ade/tests/test_parallel_recon.py:342
 # Component id: at.source.ass_ade.test_run_parallel_recon_summary_is_string
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_run_parallel_recon_summary_is_string(tmp_path: Path) -> None:

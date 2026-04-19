@@ -1,12 +1,12 @@
 {
-  "body": "    def drift_check(\n        self,\n        model_id: str,\n        reference_data: dict | None = None,\n        current_data: dict | None = None,\n        **kwargs: Any,\n    ) -> DriftCheck:\n        \"\"\"/v1/drift/check \u2014 PSI drift detection \u22640.20 (DRG-100). $0.010/check\"\"\"\n        return self._post_model(\"/v1/drift/check\", DriftCheck, {\n            \"model_id\": model_id,\n            \"reference_data\": reference_data or {},\n            \"current_data\": current_data or {},\n            **kwargs,\n        })\n",
-  "body_hash": "3494a8166196b79b",
+  "body": "def drift_check(\n    self,\n    model_id: str,\n    reference_data: dict | None = None,\n    current_data: dict | None = None,\n    **kwargs: Any,\n) -> DriftCheck:\n    \"\"\"/v1/drift/check \u2014 PSI drift detection \u22640.20 (DRG-100). $0.010/check\"\"\"\n    return self._post_model(\"/v1/drift/check\", DriftCheck, {\n        \"model_id\": model_id,\n        \"reference_data\": reference_data or {},\n        \"current_data\": current_data or {},\n        **kwargs,\n    })\n",
+  "body_hash": "d1e8928be30dba52",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1107.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1107.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.drift_check",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1107"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1107"
   },
   "kind": "engine_molecule",
   "made_of": [],

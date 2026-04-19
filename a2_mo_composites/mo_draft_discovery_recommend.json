@@ -1,12 +1,12 @@
 {
-  "body": "    def discovery_recommend(self, task: str, **kwargs: Any) -> DiscoveryResult:\n        \"\"\"/v1/discovery/recommend \u2014 AI-ranked recommendations from task description. $0.040/call\"\"\"\n        return self._post_model(\"/v1/discovery/recommend\", DiscoveryResult, {\"task\": task, **kwargs})\n",
-  "body_hash": "47d09aa072e5ab6a",
+  "body": "def discovery_recommend(self, task: str, **kwargs: Any) -> DiscoveryResult:\n    \"\"\"/v1/discovery/recommend \u2014 AI-ranked recommendations from task description. $0.040/call\"\"\"\n    return self._post_model(\"/v1/discovery/recommend\", DiscoveryResult, {\"task\": task, **kwargs})\n",
+  "body_hash": "6342d676611fd71c",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:612.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:612.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.discovery_recommend",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:612"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:612"
   },
   "kind": "engine_molecule",
   "made_of": [],

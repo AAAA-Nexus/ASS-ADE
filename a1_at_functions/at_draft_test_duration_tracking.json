@@ -1,6 +1,6 @@
 {
-  "body": "    def test_duration_tracking(self) -> None:\n        pipe = Pipeline(\"dur\")\n        pipe.add(\"s1\", pass_step)\n        result = pipe.run()\n        assert result.duration_ms >= 0\n        assert result.steps[0].duration_ms >= 0\n",
-  "body_hash": "511d7558599b5b0a",
+  "body": "def test_duration_tracking(self) -> None:\n    pipe = Pipeline(\"dur\")\n    pipe.add(\"s1\", pass_step)\n    result = pipe.run()\n    assert result.duration_ms >= 0\n    assert result.steps[0].duration_ms >= 0\n",
+  "body_hash": "93d913c3d36210b1",
   "body_truncated": false,
   "callers_of": [
     "Pipeline",
@@ -8,7 +8,7 @@
     "run"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:259.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_pipeline.py:259.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_duration_tracking",
@@ -23,7 +23,7 @@
     "ass_ade.pipeline.StepStatus"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:259"
+    "source": "C:/!ass-ade/tests/test_pipeline.py:259"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,12 +1,12 @@
 {
-  "body": "    def dev_starter(self, project_name: str, language: str = \"python\", **kwargs: Any) -> StarterKit:\n        \"\"\"/v1/dev/starter \u2014 scaffold agent project with x402 wiring (DEV-601). $0.040/call\"\"\"\n        return self._post_model(\"/v1/dev/starter\", StarterKit, {\"project_name\": project_name, \"language\": language, **kwargs})\n",
-  "body_hash": "808ab98cc3ebb4bd",
+  "body": "def dev_starter(self, project_name: str, language: str = \"python\", **kwargs: Any) -> StarterKit:\n    \"\"\"/v1/dev/starter \u2014 scaffold agent project with x402 wiring (DEV-601). $0.040/call\"\"\"\n    return self._post_model(\"/v1/dev/starter\", StarterKit, {\"project_name\": project_name, \"language\": language, **kwargs})\n",
+  "body_hash": "1c15e444bb244275",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1213.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1213.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.dev_starter",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1213"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1213"
   },
   "kind": "engine_molecule",
   "made_of": [],

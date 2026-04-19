@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_run_all.py:5
+# Extracted from C:/!ass-ade/scripts/probe_endpoints.py:83
 # Component id: at.source.ass_ade.run_all
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def run_all(nx: NexusClient, only: str | None = None) -> None:

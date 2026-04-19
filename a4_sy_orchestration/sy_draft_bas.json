@@ -1,12 +1,12 @@
 {
-  "body": "    def bas(self):\n        if self._bas is None:\n            from ass_ade.agent.bas import BAS\n            self._bas = BAS(self._config, self._nexus)\n        return self._bas\n",
-  "body_hash": "508cc6b4a5e2ec9f",
+  "body": "def bas(self):\n    if self._bas is None:\n        from ass_ade.agent.bas import BAS\n        self._bas = BAS(self._config, self._nexus)\n    return self._bas\n",
+  "body_hash": "6f23d8e798d48fb1",
   "body_truncated": false,
   "callers_of": [
     "BAS"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/orchestrator.py:136.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/orchestrator.py:136.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.bas",
@@ -38,7 +38,7 @@
     "json"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/orchestrator.py:136"
+    "source": "C:/!ass-ade/src/ass_ade/agent/orchestrator.py:136"
   },
   "kind": "ecosystem_system",
   "made_of": [],

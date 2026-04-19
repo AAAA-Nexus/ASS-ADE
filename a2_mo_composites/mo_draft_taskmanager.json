@@ -16,13 +16,19 @@
     "_calculate_completion_rate"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_taskmanager.py:5.",
+  "description": "Draft candidate from C:/!ass-ade/examples/02-rebuild-a-codebase/sample_project/main.py:86.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.taskmanager",
-  "imports": [],
+  "imports": [
+    "enum.Enum",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.List",
+    "typing.Optional"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_taskmanager.py:5"
+    "source": "C:/!ass-ade/examples/02-rebuild-a-codebase/sample_project/main.py:86"
   },
   "kind": "engine_molecule",
   "made_of": [

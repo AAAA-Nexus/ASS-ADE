@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli.py:180
+# Extracted from C:/!ass-ade/tests/test_cli.py:180
 # Component id: at.source.ass_ade.test_rebuild_backs_up_existing_output
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_rebuild_backs_up_existing_output(tmp_path: Path) -> None:

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_text_preview_truncated(self) -> None:\n        long_text = \"A\" * 200\n        result = certify_output(_mock_client(), long_text)\n        assert len(result.text_preview) == 120\n",
-  "body_hash": "064aef0aa11b1c25",
+  "body": "def test_text_preview_truncated(self) -> None:\n    long_text = \"A\" * 200\n    result = certify_output(_mock_client(), long_text)\n    assert len(result.text_preview) == 120\n",
+  "body_hash": "726dcb38cf134fe8",
   "body_truncated": false,
   "callers_of": [
     "certify_output",
@@ -8,7 +8,7 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_workflows.py:168.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_workflows.py:168.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "og.source.ass_ade.test_text_preview_truncated",
@@ -35,7 +35,7 @@
     "ass_ade.workflows.trust_gate"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_workflows.py:168"
+    "source": "C:/!ass-ade/tests/test_workflows.py:168"
   },
   "kind": "product_organism",
   "made_of": [],

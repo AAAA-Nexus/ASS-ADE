@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli_happy_path.py:162
+# Extracted from C:/!ass-ade/tests/test_cli_happy_path.py:162
 # Component id: mo.source.ass_ade.testa2adiscover
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class TestA2ADiscover:
@@ -12,12 +14,12 @@ class TestA2ADiscover:
         mock_result.results = [{"id": "agent-1", "name": "Reasoner"}]
         mock_result.model_dump = MagicMock(return_value={"results": [{"id": "agent-1"}]})
         mock_nx.discovery_search.return_value = mock_result
-        
+
         with patch("ass_ade.cli.NexusClient", return_value=_make_ctx_mgr(mock_nx)):
             result = runner.invoke(
                 app,
                 ["a2a", "discover", "write-skill", "--config", str(hybrid_config)],
             )
-        
+
         # Test passes if exit code is successful
         assert result.exit_code in (0, 1, 2)

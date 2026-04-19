@@ -4,7 +4,7 @@
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/workflows.py:47.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/workflows.py:47.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "og.source.ass_ade.certifyresult",
@@ -21,7 +21,7 @@
     "ass_ade.nexus.validation.validate_prompt"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/workflows.py:47"
+    "source": "C:/!ass-ade/src/ass_ade/workflows.py:47"
   },
   "kind": "product_organism",
   "made_of": [],

@@ -8,7 +8,7 @@
     "render_certificate_text"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_certifier.py:118.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_certifier.py:118.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_render_certificate_text_contains_digest",
@@ -23,7 +23,7 @@
     "ass_ade.local.certifier.render_certificate_text"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_certifier.py:118"
+    "source": "C:/!ass-ade/tests/test_certifier.py:118"
   },
   "kind": "pure_function",
   "made_of": [],

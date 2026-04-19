@@ -1,13 +1,13 @@
 {
-  "body": "    def defi_liquidation_check(self, position: dict | None = None, **kwargs: Any) -> LiquidationCheck:\n        \"\"\"/v1/defi/liquidation-check \u2014 health factor + time-to-liquidation (LQS-100). $0.04 + 1% equity\"\"\"\n        resolved_position = position or {\n            \"position_id\": kwargs.pop(\"position_id\", None),\n            \"collateral_value\": kwargs.pop(\"collateral_value\", None),\n            \"debt_value\": kwargs.pop(\"debt_value\", None),\n            \"collateral_factor\": kwargs.pop(\"collateral_factor\", None),\n        }\n        return self._post_model(\"/v1/defi/liquidation-check\", LiquidationCheck, {\"position\": resolved_position, **kwargs})\n",
-  "body_hash": "e65c696e6a58e20f",
+  "body": "def defi_liquidation_check(self, position: dict | None = None, **kwargs: Any) -> LiquidationCheck:\n    \"\"\"/v1/defi/liquidation-check \u2014 health factor + time-to-liquidation (LQS-100). $0.04 + 1% equity\"\"\"\n    resolved_position = position or {\n        \"position_id\": kwargs.pop(\"position_id\", None),\n        \"collateral_value\": kwargs.pop(\"collateral_value\", None),\n        \"debt_value\": kwargs.pop(\"debt_value\", None),\n        \"collateral_factor\": kwargs.pop(\"collateral_factor\", None),\n    }\n    return self._post_model(\"/v1/defi/liquidation-check\", LiquidationCheck, {\"position\": resolved_position, **kwargs})\n",
+  "body_hash": "e8176fbbfb760c4a",
   "body_truncated": false,
   "callers_of": [
     "_post_model",
     "pop"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1013.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1013.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.defi_liquidation_check",
@@ -161,7 +161,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1013"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1013"
   },
   "kind": "engine_molecule",
   "made_of": [],

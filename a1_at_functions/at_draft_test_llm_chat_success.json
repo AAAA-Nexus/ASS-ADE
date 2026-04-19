@@ -1,6 +1,6 @@
 {
-  "body": "    def test_llm_chat_success(self, tmp_path: Path, hybrid_config: Path) -> None:\n        \"\"\"LLM chat should return inference result.\"\"\"\n        mock_nx = MagicMock()\n        mock_nx.inference.return_value = InferenceResponse(\n            result=\"The capital of France is Paris.\",\n            tokens_used=15,\n            model=\"llama-3.1-8b\",\n        )\n        \n        with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n            result = runner.invoke(\n                app,\n                [\"llm\", \"chat\", \"What is the capital of France?\", \"--config\", str(hybrid_config)],\n            )\n        \n        assert result.exit_code == 0\n        assert \"Paris\" in result.stdout or \"capital\" in result.stdout\n",
-  "body_hash": "eb3b5cc51f1f8868",
+  "body": "def test_llm_chat_success(self, tmp_path: Path, hybrid_config: Path) -> None:\n    \"\"\"LLM chat should return inference result.\"\"\"\n    mock_nx = MagicMock()\n    mock_nx.inference.return_value = InferenceResponse(\n        result=\"The capital of France is Paris.\",\n        tokens_used=15,\n        model=\"llama-3.1-8b\",\n    )\n\n    with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n        result = runner.invoke(\n            app,\n            [\"llm\", \"chat\", \"What is the capital of France?\", \"--config\", str(hybrid_config)],\n        )\n\n    assert result.exit_code == 0\n    assert \"Paris\" in result.stdout or \"capital\" in result.stdout\n",
+  "body_hash": "7fbe4b631cb20786",
   "body_truncated": false,
   "callers_of": [
     "MagicMock",
@@ -11,7 +11,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli_happy_path.py:556.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_cli_happy_path.py:556.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_llm_chat_success",
@@ -36,7 +36,7 @@
     "ass_ade.pipeline.PipelineResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli_happy_path.py:556"
+    "source": "C:/!ass-ade/tests/test_cli_happy_path.py:556"
   },
   "kind": "pure_function",
   "made_of": [],

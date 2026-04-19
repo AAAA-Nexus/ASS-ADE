@@ -1,16 +1,34 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/commands/workflow.py:211
+# Extracted from C:/!ass-ade/src/ass_ade/commands/workflow.py:228
 # Component id: og.source.ass_ade.workflow_map_terrain
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def workflow_map_terrain(
-    task_description: str = typer.Argument(..., help="Task to validate before execution."),
+    task_description: str = typer.Argument(
+        ..., help="Task to validate before execution."
+    ),
     agent: list[str] = typer.Option([], "--agent", help="Required agent capability."),
     hook: list[str] = typer.Option([], "--hook", help="Required hook capability."),
     skill: list[str] = typer.Option([], "--skill", help="Required skill capability."),
     tool: list[str] = typer.Option([], "--tool", help="Required tool capability."),
-    harness: list[str] = typer.Option([], "--harness", help="Required harness capability."),
-    requirements_file: Path | None = typer.Option(None, help="JSON file with grouped required_capabilities."),
-    auto_invent: bool = typer.Option(False, "--auto-invent", help="Persist development-plan assets for eligible Tool/Skill gaps."),
+    harness: list[str] = typer.Option(
+        [], "--harness", help="Required harness capability."
+    ),
+    prompt: list[str] = typer.Option(
+        [], "--prompt", help="Required prompt capability."
+    ),
+    instruction: list[str] = typer.Option(
+        [], "--instruction", help="Required instruction capability."
+    ),
+    requirements_file: Path | None = typer.Option(
+        None, help="JSON file with grouped required_capabilities."
+    ),
+    auto_invent: bool = typer.Option(
+        False,
+        "--auto-invent",
+        help="Generate repo-native assets plus certified rebuild packets for missing capabilities within budget.",
+    ),
     max_budget: float = typer.Option(1.0, help="Maximum development budget in USDC."),
     config: Path | None = CONFIG_OPTION,
     allow_remote: bool = ALLOW_REMOTE_OPTION,
@@ -26,6 +44,8 @@ def workflow_map_terrain(
         "skills": list(skill),
         "tools": list(tool),
         "harnesses": list(harness),
+        "prompts": list(prompt),
+        "instructions": list(instruction),
     }
     if requirements_file is not None:
         try:
@@ -39,8 +59,12 @@ def workflow_map_terrain(
             console.print("[red]Requirements file must contain an object.[/red]")
             raise typer.Exit(code=4)
         for key, value in loaded.items():
-            if isinstance(value, list):
-                required[key] = [str(item) for item in value]
+            if value is None:
+                continue
+            if isinstance(value, str):
+                required[key] = [value] if value.strip() else []
+            elif isinstance(value, (list, tuple, set)):
+                required[key] = [str(item) for item in value if str(item).strip()]
 
     hosted_tools: list[str] = []
     if settings.profile != "local" or allow_remote:
@@ -74,7 +98,9 @@ def workflow_map_terrain(
     if result.missing_capabilities:
         console.print("[bold]Missing capabilities:[/bold]")
         for item in result.missing_capabilities:
-            console.print(f"  - {item.type}: {item.name} via {item.recommended_creation_tool}")
+            console.print(
+                f"  - {item.type}: {item.name} via {item.recommended_creation_tool}"
+            )
     console.print(f"Next: {result.next_action}")
     if result.development_plan and result.development_plan.created_assets:
         console.print("[bold]Created development-plan assets:[/bold]")

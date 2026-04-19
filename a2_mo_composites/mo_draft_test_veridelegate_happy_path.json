@@ -1,5 +1,5 @@
 {
-  "body": "def test_veridelegate_happy_path(method_name, response_json):\n    \"\"\"Test VeriDelegate UCAN methods (happy path).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json=response_json)\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        if method_name == \"delegate_verify\":\n            result = client.delegate_verify(chain=[{\"token\": \"token_123\"}])\n        else:  # delegation_validate\n            result = client.delegation_validate(chain=[{\"token\": \"token_123\"}])\n        assert result is not None\n",
+  "body": "def test_veridelegate_happy_path(method_name, response_json):\n    \"\"\"Test VeriDelegate UCAN methods (happy path).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json=response_json)\n\n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        if method_name == \"delegate_verify\":\n            result = client.delegate_verify(chain=[{\"token\": \"token_123\"}])\n        else:  # delegation_validate\n            result = client.delegation_validate(chain=[{\"token\": \"token_123\"}])\n        assert result is not None\n",
   "body_hash": "a78995b50d4c2e9f",
   "body_truncated": false,
   "callers_of": [
@@ -11,7 +11,7 @@
     "delegation_validate"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:269.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_nexus_client_comprehensive.py:269.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_veridelegate_happy_path",
@@ -146,7 +146,7 @@
     "ass_ade.nexus.models.EntropyResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:269"
+    "source": "C:/!ass-ade/tests/test_nexus_client_comprehensive.py:269"
   },
   "kind": "engine_molecule",
   "made_of": [

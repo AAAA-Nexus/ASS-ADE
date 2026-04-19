@@ -10,15 +10,33 @@
     "match"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_calculate_next_version.py:5.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/protocol/evolution.py:550.",
   "exceptions_raised": [
     "ValueError"
   ],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.calculate_next_version",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "re",
+    "shutil",
+    "subprocess",
+    "tomllib",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field",
+    "ass_ade.engine.rebuild.version_tracker.INITIAL_VERSION",
+    "ass_ade.engine.rebuild.version_tracker.bump_version"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_calculate_next_version.py:5"
+    "source": "C:/!ass-ade/src/ass_ade/protocol/evolution.py:550"
   },
   "kind": "pure_function",
   "made_of": [],

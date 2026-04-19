@@ -1,24 +1,43 @@
 {
-  "body": "    def test_at_least_15_happy_path_tests_defined(self) -> None:\n        \"\"\"This module should contain at least 15 test methods for happy paths.\"\"\"\n        # Count test methods (simple verification)\n        test_classes = [\n            TestAgentRun,\n            TestA2AValidate,\n            TestA2ADiscover,\n            TestInferenceTokenCount,\n            TestDataConvert,\n            TestSwarmPlan,\n            TestSwarmIntentClassify,\n            TestComplianceCheck,\n            TestTrustScore,\n            TestPipelineRun,\n            TestLLMChat,\n            TestWorkflowTrustGate,\n            TestWorkflowPhase0Recon,\n            TestWallet,\n            TestRatchetRegister,\n        ]\n        assert len(test_classes) == 15\n",
-  "body_hash": "6e57bae6d3f44b87",
+  "body": "def test_at_least_15_happy_path_tests_defined(self) -> None:\n    \"\"\"This module should contain at least 15 test methods for happy paths.\"\"\"\n    # Count test methods (simple verification)\n    test_classes = [\n        TestAgentRun,\n        TestA2AValidate,\n        TestA2ADiscover,\n        TestInferenceTokenCount,\n        TestDataConvert,\n        TestSwarmPlan,\n        TestSwarmIntentClassify,\n        TestComplianceCheck,\n        TestTrustScore,\n        TestPipelineRun,\n        TestLLMChat,\n        TestWorkflowTrustGate,\n        TestWorkflowPhase0Recon,\n        TestWallet,\n        TestRatchetRegister,\n    ]\n    assert len(test_classes) == 15\n",
+  "body_hash": "dc18bd5eeb15b598",
   "body_truncated": false,
   "callers_of": [
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testcoverageverification.py:8.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_cli_happy_path.py:748.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_at_least_15_happy_path_tests_defined",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.nexus.models.AgentPlan",
+    "ass_ade.nexus.models.ComplianceResult",
+    "ass_ade.nexus.models.FormatConversion",
+    "ass_ade.nexus.models.InferenceResponse",
+    "ass_ade.nexus.models.IntentClassification",
+    "ass_ade.nexus.models.RatchetSession",
+    "ass_ade.nexus.models.TrustScore",
+    "ass_ade.pipeline.PipelineResult"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testcoverageverification.py:8"
+    "source": "C:/!ass-ade/tests/test_cli_happy_path.py:748"
   },
   "kind": "pure_function",
   "made_of": [],
   "name": "test_at_least_15_happy_path_tests_defined",
   "product_categories": [
-    "DCM"
+    "COR"
   ],
   "provides": [
     "rebuild candidate for test_at_least_15_happy_path_tests_defined"

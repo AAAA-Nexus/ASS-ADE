@@ -9,13 +9,22 @@
     "encode"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_estimate_tokens.py:5.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/tokens.py:88.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "qk.source.ass_ade.estimate_tokens",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "math",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolSchema",
+    "tiktoken"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_estimate_tokens.py:5"
+    "source": "C:/!ass-ade/src/ass_ade/engine/tokens.py:88"
   },
   "kind": "invariant",
   "made_of": [],

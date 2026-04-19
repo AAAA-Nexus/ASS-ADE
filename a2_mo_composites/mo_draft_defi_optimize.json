@@ -1,13 +1,13 @@
 {
-  "body": "    def defi_optimize(\n        self,\n        protocol: str | None = None,\n        position_size_usdc: float | None = None,\n        *,\n        payload: dict | None = None,\n        **kwargs: Any,\n    ) -> DefiOptimize:\n        \"\"\"/v1/defi/optimize \u2014 optimal LP parameters (DFP-100). $0.08 + 0.2% of position\"\"\"\n        if payload is not None:\n            protocol = protocol or payload.get(\"protocol\") or payload.get(\"pool\") or payload.get(\"market\")\n            position_size_usdc = (\n                position_size_usdc\n                if position_size_usdc is not None\n                else payload.get(\"position_size_usdc\")\n                or payload.get(\"amount_usdc\")\n                or payload.get(\"capital_usdc\")\n            )\n        return self._post_model(\"/v1/defi/optimize\", DefiOptimize, {\n            \"protocol\": protocol or \"\", \"position_size_usdc\": position_size_usdc or 0.0, **kwargs,\n        })\n",
-  "body_hash": "45138c0264f39d9b",
+  "body": "def defi_optimize(\n    self,\n    protocol: str | None = None,\n    position_size_usdc: float | None = None,\n    *,\n    payload: dict | None = None,\n    **kwargs: Any,\n) -> DefiOptimize:\n    \"\"\"/v1/defi/optimize \u2014 optimal LP parameters (DFP-100). $0.08 + 0.2% of position\"\"\"\n    if payload is not None:\n        protocol = protocol or payload.get(\"protocol\") or payload.get(\"pool\") or payload.get(\"market\")\n        position_size_usdc = (\n            position_size_usdc\n            if position_size_usdc is not None\n            else payload.get(\"position_size_usdc\")\n            or payload.get(\"amount_usdc\")\n            or payload.get(\"capital_usdc\")\n        )\n    return self._post_model(\"/v1/defi/optimize\", DefiOptimize, {\n        \"protocol\": protocol or \"\", \"position_size_usdc\": position_size_usdc or 0.0, **kwargs,\n    })\n",
+  "body_hash": "abc9cbf17aedd588",
   "body_truncated": false,
   "callers_of": [
     "_post_model",
     "get"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:976.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:976.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.defi_optimize",
@@ -161,7 +161,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:976"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:976"
   },
   "kind": "engine_molecule",
   "made_of": [],

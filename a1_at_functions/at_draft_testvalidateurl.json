@@ -10,7 +10,7 @@
     "_is_private_host"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_validation.py:101.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_validation.py:101.",
   "exceptions_raised": [
     "OSError"
   ],
@@ -26,7 +26,7 @@
     "ass_ade.nexus.validation.validate_usdc_amount"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_validation.py:101"
+    "source": "C:/!ass-ade/tests/test_validation.py:101"
   },
   "kind": "pure_class",
   "made_of": [],

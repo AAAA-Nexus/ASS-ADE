@@ -1,13 +1,13 @@
 {
-  "body": "    def test_report_structure(self, tmp_path):\n        tca = self._make(tmp_path)\n        rep = tca.report()\n        assert rep[\"engine\"] == \"tca\"\n        assert \"tracked_files\" in rep\n        assert \"threshold_hours\" in rep\n",
-  "body_hash": "b0cdbef30f14df52",
+  "body": "def test_report_structure(self, tmp_path):\n    tca = self._make(tmp_path)\n    rep = tca.report()\n    assert rep[\"engine\"] == \"tca\"\n    assert \"tracked_files\" in rep\n    assert \"threshold_hours\" in rep\n",
+  "body_hash": "ebb5a972d7cf3899",
   "body_truncated": false,
   "callers_of": [
     "_make",
     "report"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:260.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase_engines.py:260.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_report_structure",
@@ -62,7 +62,7 @@
     "ass_ade.agent.orchestrator.CycleReport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:260"
+    "source": "C:/!ass-ade/tests/test_phase_engines.py:260"
   },
   "kind": "engine_molecule",
   "made_of": [],

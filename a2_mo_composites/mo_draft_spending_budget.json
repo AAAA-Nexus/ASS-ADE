@@ -1,12 +1,12 @@
 {
-  "body": "    def spending_budget(\n        self,\n        chain: list[dict] | None = None,\n        total_usdc: float = 0.0,\n        *,\n        agent_id: str | None = None,\n        **kwargs: Any,\n    ) -> SpendingBudgetResult:\n        \"\"\"/v1/spending/budget \u2014 multi-hop chain budget (SPG-101). $0.040/call\"\"\"\n        resolved_chain = chain or ([{\"agent_id\": agent_id}] if agent_id else [])\n        return self._post_model(\"/v1/spending/budget\", SpendingBudgetResult, {\"chain\": resolved_chain, \"total_usdc\": total_usdc, **kwargs})\n",
-  "body_hash": "cc0d953ce295ec69",
+  "body": "def spending_budget(\n    self,\n    chain: list[dict] | None = None,\n    total_usdc: float = 0.0,\n    *,\n    agent_id: str | None = None,\n    **kwargs: Any,\n) -> SpendingBudgetResult:\n    \"\"\"/v1/spending/budget \u2014 multi-hop chain budget (SPG-101). $0.040/call\"\"\"\n    resolved_chain = chain or ([{\"agent_id\": agent_id}] if agent_id else [])\n    return self._post_model(\"/v1/spending/budget\", SpendingBudgetResult, {\"chain\": resolved_chain, \"total_usdc\": total_usdc, **kwargs})\n",
+  "body_hash": "30ad1f06bf9d2d2a",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:788.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:788.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.spending_budget",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:788"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:788"
   },
   "kind": "engine_molecule",
   "made_of": [],

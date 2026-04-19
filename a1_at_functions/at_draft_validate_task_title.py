@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/examples/02-rebuild-a-codebase/sample_project/main.py:49
+# Extracted from C:/!ass-ade/examples/02-rebuild-a-codebase/sample_project/main.py:49
 # Component id: at.source.ass_ade.validate_task_title
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def validate_task_title(title: str) -> bool:

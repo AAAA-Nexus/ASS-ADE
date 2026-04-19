@@ -1,12 +1,12 @@
 {
-  "body": "    def data_validate_json(\n        self,\n        data: dict | None = None,\n        schema: dict | None = None,\n        *,\n        payload: dict | None = None,\n        **kwargs: Any,\n    ) -> DataValidation:\n        \"\"\"/v1/data/validate-json \u2014 JSON schema validation with error paths. $0.012/request\"\"\"\n        return self._post_model(\"/v1/data/validate-json\", DataValidation, {\"data\": data or payload or {}, \"schema\": schema or {}, **kwargs})\n",
-  "body_hash": "2d10160f98332983",
+  "body": "def data_validate_json(\n    self,\n    data: dict | None = None,\n    schema: dict | None = None,\n    *,\n    payload: dict | None = None,\n    **kwargs: Any,\n) -> DataValidation:\n    \"\"\"/v1/data/validate-json \u2014 JSON schema validation with error paths. $0.012/request\"\"\"\n    return self._post_model(\"/v1/data/validate-json\", DataValidation, {\"data\": data or payload or {}, \"schema\": schema or {}, **kwargs})\n",
+  "body_hash": "a432fa518664b079",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1142.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1142.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.data_validate_json",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1142"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1142"
   },
   "kind": "pure_function",
   "made_of": [],

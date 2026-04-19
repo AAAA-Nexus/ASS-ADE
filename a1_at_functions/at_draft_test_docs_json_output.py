@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_docs_json_output.py:5
+# Extracted from C:/!ass-ade/tests/test_new_codebase_commands.py:56
 # Component id: at.source.ass_ade.test_docs_json_output
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_docs_json_output(tmp_path: Path) -> None:

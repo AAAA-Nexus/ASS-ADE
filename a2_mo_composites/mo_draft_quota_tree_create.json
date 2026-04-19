@@ -1,12 +1,12 @@
 {
-  "body": "    def quota_tree_create(self, total_budget: int, children: list[str], **kwargs: Any) -> QuotaTree:\n        \"\"\"/v1/quota/tree \u2014 create budget tree (QME-100). $0.040/call\"\"\"\n        return self._post_model(\"/v1/quota/tree\", QuotaTree, {\"total_budget\": total_budget, \"children\": children, **kwargs})\n",
-  "body_hash": "bcce96cdc8b05b52",
+  "body": "def quota_tree_create(self, total_budget: int, children: list[str], **kwargs: Any) -> QuotaTree:\n    \"\"\"/v1/quota/tree \u2014 create budget tree (QME-100). $0.040/call\"\"\"\n    return self._post_model(\"/v1/quota/tree\", QuotaTree, {\"total_budget\": total_budget, \"children\": children, **kwargs})\n",
+  "body_hash": "a39ddadb5febba4b",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:867.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:867.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.quota_tree_create",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:867"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:867"
   },
   "kind": "engine_molecule",
   "made_of": [],

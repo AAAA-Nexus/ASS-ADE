@@ -1,6 +1,6 @@
 {
-  "body": "    def test_on_tool_event_tracks_repeat(self) -> None:\n        o = EngineOrchestrator({})\n        o.on_step_start(\"task\")\n        for _ in range(4):\n            o.on_tool_event(\"read_file\", {\"path\": \"x\"}, \"ok\")\n        # After 4 repeats, loop_detected should fire\n        # Check _step_tool_counts\n        assert o._step_tool_counts.get(\"read_file\", 0) == 4\n",
-  "body_hash": "4457f3910ce906f4",
+  "body": "def test_on_tool_event_tracks_repeat(self) -> None:\n    o = EngineOrchestrator({})\n    o.on_step_start(\"task\")\n    for _ in range(4):\n        o.on_tool_event(\"read_file\", {\"path\": \"x\"}, \"ok\")\n    # After 4 repeats, loop_detected should fire\n    # Check _step_tool_counts\n    assert o._step_tool_counts.get(\"read_file\", 0) == 4\n",
+  "body_hash": "5eb78594c66a971b",
   "body_truncated": false,
   "callers_of": [
     "EngineOrchestrator",
@@ -10,13 +10,35 @@
     "get"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testengineorchestrator.py:24.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:303.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_on_tool_event_tracks_repeat",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "time",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.agent.audit_questions.AUDIT_QUESTIONS",
+    "ass_ade.agent.bas.BAS",
+    "ass_ade.agent.bas.Alert",
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.orchestrator.CycleReport",
+    "ass_ade.agent.orchestrator.EngineOrchestrator",
+    "ass_ade.agent.wisdom.AuditReport",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "collections.Counter",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.engine.provider.ModelProvider",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.tools.registry.default_registry"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testengineorchestrator.py:24"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:303"
   },
   "kind": "engine_molecule",
   "made_of": [],

@@ -1,0 +1,36 @@
+{
+  "body": "def test_detect_tool_uses_resolved_executable(monkeypatch) -> None:\n    calls = []\n\n    monkeypatch.setattr(system, \"which\", lambda name: \"C:/Program Files/nodejs/npm.CMD\")\n\n    def fake_run(args, **kwargs):\n        calls.append(args)\n        return subprocess.CompletedProcess(args=args, returncode=0, stdout=\"11.9.0\\n\", stderr=\"\")\n\n    monkeypatch.setattr(system.subprocess, \"run\", fake_run)\n\n    status = system.detect_tool(\"npm\")\n\n    assert status.available is True\n    assert status.version == \"11.9.0\"\n    assert calls == [[\"C:/Program Files/nodejs/npm.CMD\", \"--version\"]]\n",
+  "body_hash": "2b26b4f502c267a0",
+  "body_truncated": false,
+  "callers_of": [
+    "setattr",
+    "detect_tool",
+    "append",
+    "CompletedProcess"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_system.py:6.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_detect_tool_uses_resolved_executable",
+  "imports": [
+    "subprocess",
+    "ass_ade.system"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/tests/test_system.py:6"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "test_detect_tool_uses_resolved_executable",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_detect_tool_uses_resolved_executable"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

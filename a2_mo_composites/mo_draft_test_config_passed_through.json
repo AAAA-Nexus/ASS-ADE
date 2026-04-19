@@ -1,13 +1,13 @@
 {
-  "body": "    def test_config_passed_through(self) -> None:\n        mock_client = MagicMock()\n        config = {\"alphaverus\": {\"beam_width\": 8}, \"dgm_h\": {\"simulation_cycles\": 20}}\n        gates = QualityGates(mock_client, config=config)\n        assert gates._v18_config == config\n",
-  "body_hash": "726902ad7d5ecb73",
+  "body": "def test_config_passed_through(self) -> None:\n    mock_client = MagicMock()\n    config = {\"alphaverus\": {\"beam_width\": 8}, \"dgm_h\": {\"simulation_cycles\": 20}}\n    gates = QualityGates(mock_client, config=config)\n    assert gates._v18_config == config\n",
+  "body_hash": "019bb2f2012f3dfe",
   "body_truncated": false,
   "callers_of": [
     "MagicMock",
     "QualityGates"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:395.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:395.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_config_passed_through",
@@ -35,7 +35,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:395"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:395"
   },
   "kind": "engine_molecule",
   "made_of": [],

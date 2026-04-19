@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_recon_context.py:47
+# Extracted from C:/!ass-ade/tests/test_recon_context.py:47
 # Component id: at.source.ass_ade.test_phase0_recon_requires_latest_docs_for_technical_task
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_phase0_recon_requires_latest_docs_for_technical_task(tmp_path: Path) -> None:

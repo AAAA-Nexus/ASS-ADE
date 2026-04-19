@@ -1,12 +1,12 @@
 {
-  "body": "    def sla_register(self, agent_id: str, latency_ms: float, uptime_pct: float, error_rate: float, bond_usdc: float, **kwargs: Any) -> SlaRegistration:\n        \"\"\"/v1/sla/register \u2014 commit to SLA with bond. $0.080/call\"\"\"\n        return self._post_model(\"/v1/sla/register\", SlaRegistration, {\n            \"agent_id\": agent_id, \"latency_ms\": latency_ms, \"uptime_pct\": uptime_pct,\n            \"error_rate\": error_rate, \"bond_usdc\": bond_usdc, **kwargs,\n        })\n",
-  "body_hash": "895fa79d9d5f1417",
+  "body": "def sla_register(self, agent_id: str, latency_ms: float, uptime_pct: float, error_rate: float, bond_usdc: float, **kwargs: Any) -> SlaRegistration:\n    \"\"\"/v1/sla/register \u2014 commit to SLA with bond. $0.080/call\"\"\"\n    return self._post_model(\"/v1/sla/register\", SlaRegistration, {\n        \"agent_id\": agent_id, \"latency_ms\": latency_ms, \"uptime_pct\": uptime_pct,\n        \"error_rate\": error_rate, \"bond_usdc\": bond_usdc, **kwargs,\n    })\n",
+  "body_hash": "78da06094d6ba677",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:587.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:587.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.sla_register",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:587"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:587"
   },
   "kind": "engine_molecule",
   "made_of": [],

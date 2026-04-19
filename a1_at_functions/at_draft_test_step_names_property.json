@@ -1,13 +1,13 @@
 {
-  "body": "    def test_step_names_property(self) -> None:\n        pipe = Pipeline(\"names\")\n        pipe.add(\"alpha\", pass_step)\n        pipe.add(\"beta\", pass_step)\n        pipe.add(\"gamma\", fail_step)\n        assert pipe.step_names == [\"alpha\", \"beta\", \"gamma\"]\n",
-  "body_hash": "e018d96f99eb2a38",
+  "body": "def test_step_names_property(self) -> None:\n    pipe = Pipeline(\"names\")\n    pipe.add(\"alpha\", pass_step)\n    pipe.add(\"beta\", pass_step)\n    pipe.add(\"gamma\", fail_step)\n    assert pipe.step_names == [\"alpha\", \"beta\", \"gamma\"]\n",
+  "body_hash": "2d72c838d140483b",
   "body_truncated": false,
   "callers_of": [
     "Pipeline",
     "add"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:271.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_pipeline.py:271.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_step_names_property",
@@ -22,7 +22,7 @@
     "ass_ade.pipeline.StepStatus"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:271"
+    "source": "C:/!ass-ade/tests/test_pipeline.py:271"
   },
   "kind": "pure_function",
   "made_of": [],

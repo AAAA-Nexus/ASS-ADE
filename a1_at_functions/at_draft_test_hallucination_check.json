@@ -1,6 +1,6 @@
 {
-  "body": "    def test_hallucination_check(self):\n        gates = QualityGates(self._mock_client())\n        result = gates.check_hallucination(\"The file has been fixed.\")\n        assert result is not None\n        assert result[\"verdict\"] == \"safe\"\n",
-  "body_hash": "3305ad9cd07c5059",
+  "body": "def test_hallucination_check(self):\n    gates = QualityGates(self._mock_client())\n    result = gates.check_hallucination(\"The file has been fixed.\")\n    assert result is not None\n    assert result[\"verdict\"] == \"safe\"\n",
+  "body_hash": "1c544874116a5287",
   "body_truncated": false,
   "callers_of": [
     "QualityGates",
@@ -8,7 +8,7 @@
     "_mock_client"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_agent.py:116.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_agent.py:116.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_hallucination_check",
@@ -28,7 +28,7 @@
     "ass_ade.tools.registry.ToolRegistry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_agent.py:116"
+    "source": "C:/!ass-ade/tests/test_agent.py:116"
   },
   "kind": "pure_function",
   "made_of": [],

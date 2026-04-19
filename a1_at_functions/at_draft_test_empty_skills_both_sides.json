@@ -1,13 +1,13 @@
 {
-  "body": "    def test_empty_skills_both_sides(self) -> None:\n        local = self._make_card(\"Local\")\n        remote = self._make_card(\"Remote\")\n        result = negotiate(local, remote)\n        assert not result.compatible\n        assert result.shared_skills == []\n",
-  "body_hash": "32ed26b2ec26afe7",
+  "body": "def test_empty_skills_both_sides(self) -> None:\n    local = self._make_card(\"Local\")\n    remote = self._make_card(\"Remote\")\n    result = negotiate(local, remote)\n    assert not result.compatible\n    assert result.shared_skills == []\n",
+  "body_hash": "cc2a49c2165fc330",
   "body_truncated": false,
   "callers_of": [
     "_make_card",
     "negotiate"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:262.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_a2a.py:262.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_empty_skills_both_sides",
@@ -30,7 +30,7 @@
     "httpx"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:262"
+    "source": "C:/!ass-ade/tests/test_a2a.py:262"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_detect_returns_at_least_local_providers(self, monkeypatch):\n        # Clear every cloud key\n        for p in FREE_PROVIDERS.values():\n            if p.api_key_env:\n                monkeypatch.delenv(p.api_key_env, raising=False)\n        available = detect_available_providers({})\n        names = {p.name for p in available}\n        # Local providers + pollinations (no-key) must be available\n        assert \"ollama\" in names\n        assert \"pollinations\" in names\n",
-  "body_hash": "abb08f0a2e367f36",
+  "body": "def test_detect_returns_at_least_local_providers(self, monkeypatch):\n    # Clear every cloud key\n    for p in FREE_PROVIDERS.values():\n        if p.api_key_env:\n            monkeypatch.delenv(p.api_key_env, raising=False)\n    available = detect_available_providers({})\n    names = {p.name for p in available}\n    # Local providers + pollinations (no-key) must be available\n    assert \"ollama\" in names\n    assert \"pollinations\" in names\n",
+  "body_hash": "d4953d5c6f646a51",
   "body_truncated": false,
   "callers_of": [
     "values",
@@ -8,7 +8,7 @@
     "delenv"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:140.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:140.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_detect_returns_at_least_local_providers",
@@ -87,7 +87,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:140"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:140"
   },
   "kind": "pure_function",
   "made_of": [],

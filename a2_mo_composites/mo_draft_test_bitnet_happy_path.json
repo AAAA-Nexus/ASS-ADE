@@ -1,5 +1,5 @@
 {
-  "body": "def test_bitnet_happy_path(method_name, response_json):\n    \"\"\"Test BitNet 1.58-bit inference methods (happy path).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json=response_json)\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        if method_name == \"bitnet_models\":\n            result = client.bitnet_models()\n        elif method_name == \"bitnet_inference\":\n            result = client.bitnet_inference(prompt=\"test prompt\")\n        elif method_name == \"bitnet_benchmark\":\n            result = client.bitnet_benchmark(model=\"bitnet-b1.58-2B-4T\", n_tokens=100)\n        elif method_name == \"bitnet_quantize\":\n            result = client.bitnet_quantize(model_id=\"model_1\")\n        else:  # bitnet_status\n            result = client.bitnet_status()\n        assert result is not None\n",
+  "body": "def test_bitnet_happy_path(method_name, response_json):\n    \"\"\"Test BitNet 1.58-bit inference methods (happy path).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json=response_json)\n\n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        if method_name == \"bitnet_models\":\n            result = client.bitnet_models()\n        elif method_name == \"bitnet_inference\":\n            result = client.bitnet_inference(prompt=\"test prompt\")\n        elif method_name == \"bitnet_benchmark\":\n            result = client.bitnet_benchmark(model=\"bitnet-b1.58-2B-4T\", n_tokens=100)\n        elif method_name == \"bitnet_quantize\":\n            result = client.bitnet_quantize(model_id=\"model_1\")\n        else:  # bitnet_status\n            result = client.bitnet_status()\n        assert result is not None\n",
   "body_hash": "8c3a7a1c9e72ea84",
   "body_truncated": false,
   "callers_of": [
@@ -14,7 +14,7 @@
     "bitnet_status"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:1098.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_nexus_client_comprehensive.py:1098.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_bitnet_happy_path",
@@ -149,7 +149,7 @@
     "ass_ade.nexus.models.EntropyResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:1098"
+    "source": "C:/!ass-ade/tests/test_nexus_client_comprehensive.py:1098"
   },
   "kind": "engine_molecule",
   "made_of": [],

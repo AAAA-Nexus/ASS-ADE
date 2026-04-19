@@ -1,18 +1,29 @@
 {
-  "body": "    def close(self) -> None:\n        self._wrapped.close()\n",
-  "body_hash": "6758b5c18db43dfb",
+  "body": "def close(self) -> None:\n    self._wrapped.close()\n",
+  "body_hash": "1bdb7622ec08c70a",
   "body_truncated": false,
   "callers_of": [
     "close"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_retrytransport.py:101.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/resilience.py:127.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.close",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "random",
+    "time",
+    "typing.TYPE_CHECKING",
+    "httpx",
+    "ass_ade.nexus.errors.NexusCircuitOpen",
+    "ass_ade.nexus.errors.NexusConnectionError",
+    "ass_ade.nexus.errors.NexusServerError",
+    "ass_ade.nexus.errors.NexusTimeoutError",
+    "ass_ade.mcp.cancellation.CancellationContext"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_retrytransport.py:101"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/resilience.py:127"
   },
   "kind": "pure_function",
   "made_of": [],

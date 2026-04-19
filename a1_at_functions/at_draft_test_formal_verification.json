@@ -1,18 +1,26 @@
 {
-  "body": "    def test_formal_verification(self):\n        c = classify_complexity(\n            \"Write a formal proof that this invariant holds across all states\"\n        )\n        assert c >= 0.2  # formal keywords detected\n",
-  "body_hash": "17043e59ea44c8b9",
+  "body": "def test_formal_verification(self):\n    c = classify_complexity(\n        \"Write a formal proof that this invariant holds across all states\"\n    )\n    assert c >= 0.2  # formal keywords detected\n",
+  "body_hash": "210c1c8a04fa5d40",
   "body_truncated": false,
   "callers_of": [
     "classify_complexity"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testclassifycomplexity.py:21.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_routing.py:31.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_formal_verification",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "ass_ade.agent.routing.EpistemicRouter",
+    "ass_ade.agent.routing.ModelTier",
+    "ass_ade.agent.routing.RoutingDecision",
+    "ass_ade.agent.routing.classify_complexity",
+    "ass_ade.agent.routing.local_route",
+    "ass_ade.agent.routing.tier_for_complexity"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testclassifycomplexity.py:21"
+    "source": "C:/!ass-ade/tests/test_routing.py:31"
   },
   "kind": "pure_function",
   "made_of": [],

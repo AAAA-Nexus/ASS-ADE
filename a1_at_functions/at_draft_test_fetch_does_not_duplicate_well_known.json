@@ -1,6 +1,6 @@
 {
-  "body": "    def test_fetch_does_not_duplicate_well_known(self) -> None:\n        mock_response = MagicMock()\n        mock_response.json.return_value = {\"name\": \"Test\"}\n\n        with patch(\"ass_ade.a2a.socket.getaddrinfo\", return_value=_FAKE_ADDR_INFO):\n            with patch(\"ass_ade.a2a.httpx.get\", return_value=mock_response) as mock_get:\n                fetch_agent_card(\"https://example.com/.well-known/agent.json\")\n                mock_get.assert_called_once_with(\n                    \"https://example.com/.well-known/agent.json\",\n                    timeout=10.0,\n                    follow_redirects=False,\n                )\n",
-  "body_hash": "344bec427d36084c",
+  "body": "def test_fetch_does_not_duplicate_well_known(self) -> None:\n    mock_response = MagicMock()\n    mock_response.json.return_value = {\"name\": \"Test\"}\n\n    with patch(\"ass_ade.a2a.socket.getaddrinfo\", return_value=_FAKE_ADDR_INFO):\n        with patch(\"ass_ade.a2a.httpx.get\", return_value=mock_response) as mock_get:\n            fetch_agent_card(\"https://example.com/.well-known/agent.json\")\n            mock_get.assert_called_once_with(\n                \"https://example.com/.well-known/agent.json\",\n                timeout=10.0,\n                follow_redirects=False,\n            )\n",
+  "body_hash": "c681778cd115631d",
   "body_truncated": false,
   "callers_of": [
     "MagicMock",
@@ -9,7 +9,7 @@
     "assert_called_once_with"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:159.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_a2a.py:159.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_fetch_does_not_duplicate_well_known",
@@ -32,7 +32,7 @@
     "httpx"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:159"
+    "source": "C:/!ass-ade/tests/test_a2a.py:159"
   },
   "kind": "pure_function",
   "made_of": [],

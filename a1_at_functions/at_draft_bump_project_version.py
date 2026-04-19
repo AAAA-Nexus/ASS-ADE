@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_bump_project_version.py:5
+# Extracted from C:/!ass-ade/src/ass_ade/protocol/evolution.py:562
 # Component id: at.source.ass_ade.bump_project_version
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def bump_project_version(
@@ -44,11 +46,13 @@ def bump_project_version(
 
     readme = root / "README.md"
     if readme.exists():
-        backup_file(readme)
-        updated = _replace_readme_version(readme.read_text(encoding="utf-8"), target_version)
-        if not dry_run:
-            readme.write_text(updated, encoding="utf-8")
-        files_updated.append(str(readme))
+        original = readme.read_text(encoding="utf-8")
+        updated = _replace_readme_version(original, target_version)
+        if updated != original:
+            backup_file(readme)
+            if not dry_run:
+                readme.write_text(updated, encoding="utf-8")
+            files_updated.append(str(readme))
 
     changelog = root / "CHANGELOG.md"
     if changelog.exists():

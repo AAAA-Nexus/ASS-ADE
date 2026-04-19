@@ -1,6 +1,6 @@
 {
-  "body": "    def test_run_command_is_open_world(self) -> None:\n        server = MCPServer(\".\")\n        _initialize_server(server)\n        response = server._handle({\n            \"jsonrpc\": \"2.0\", \"id\": 1, \"method\": \"tools/list\", \"params\": {},\n        })\n        tools = {t[\"name\"]: t for t in response[\"result\"][\"tools\"]}\n        assert tools[\"run_command\"][\"annotations\"][\"openWorldHint\"] is True\n",
-  "body_hash": "cf9b1e5a149ca80c",
+  "body": "def test_run_command_is_open_world(self) -> None:\n    server = MCPServer(\".\")\n    _initialize_server(server)\n    response = server._handle({\n        \"jsonrpc\": \"2.0\", \"id\": 1, \"method\": \"tools/list\", \"params\": {},\n    })\n    tools = {t[\"name\"]: t for t in response[\"result\"][\"tools\"]}\n    assert tools[\"run_command\"][\"annotations\"][\"openWorldHint\"] is True\n",
+  "body_hash": "9f295aa842a9e378",
   "body_truncated": false,
   "callers_of": [
     "MCPServer",
@@ -8,7 +8,7 @@
     "_handle"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:311.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_extended.py:311.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.test_run_command_is_open_world",
@@ -23,7 +23,7 @@
     "httpx"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:311"
+    "source": "C:/!ass-ade/tests/test_mcp_extended.py:311"
   },
   "kind": "ecosystem_system",
   "made_of": [],

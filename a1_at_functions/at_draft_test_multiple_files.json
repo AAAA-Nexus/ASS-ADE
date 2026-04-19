@@ -1,6 +1,6 @@
 {
-  "body": "    def test_multiple_files(self, history: FileHistory, tmp_workspace: Path):\n        (tmp_workspace / \"other.py\").write_text(\"other\", encoding=\"utf-8\")\n        history.record(\"hello.py\", \"h1\")\n        history.record(\"other.py\", \"o1\")\n\n        assert history.depth(\"hello.py\") == 1\n        assert history.depth(\"other.py\") == 1\n",
-  "body_hash": "ca062c122f5c1c64",
+  "body": "def test_multiple_files(self, history: FileHistory, tmp_workspace: Path):\n    (tmp_workspace / \"other.py\").write_text(\"other\", encoding=\"utf-8\")\n    history.record(\"hello.py\", \"h1\")\n    history.record(\"other.py\", \"o1\")\n\n    assert history.depth(\"hello.py\") == 1\n    assert history.depth(\"other.py\") == 1\n",
+  "body_hash": "d2cb3b80088c416a",
   "body_truncated": false,
   "callers_of": [
     "write_text",
@@ -8,13 +8,18 @@
     "depth"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testfilehistory.py:73.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_history.py:93.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_multiple_files",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.tools.history.FileHistory"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testfilehistory.py:73"
+    "source": "C:/!ass-ade/tests/test_history.py:93"
   },
   "kind": "pure_function",
   "made_of": [],

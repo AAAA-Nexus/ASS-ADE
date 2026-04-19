@@ -1,5 +1,5 @@
 {
-  "body": "def test_bitnet_stream_happy_path():\n    \"\"\"Test bitnet_stream (streaming endpoint).\"\"\"\n    def handler(request):\n        assert request.method == \"POST\"\n        # Return streaming response\n        return httpx.Response(200, text=\"chunk1\\nchunk2\\nchunk3\\n\")\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        chunks = list(client.bitnet_stream(prompt=\"test prompt\"))\n        assert len(chunks) > 0\n",
+  "body": "def test_bitnet_stream_happy_path():\n    \"\"\"Test bitnet_stream (streaming endpoint).\"\"\"\n    def handler(request):\n        assert request.method == \"POST\"\n        # Return streaming response\n        return httpx.Response(200, text=\"chunk1\\nchunk2\\nchunk3\\n\")\n\n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        chunks = list(client.bitnet_stream(prompt=\"test prompt\"))\n        assert len(chunks) > 0\n",
   "body_hash": "e16f949a63411828",
   "body_truncated": false,
   "callers_of": [
@@ -11,7 +11,7 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:1118.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_nexus_client_comprehensive.py:1118.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_bitnet_stream_happy_path",
@@ -146,7 +146,7 @@
     "ass_ade.nexus.models.EntropyResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:1118"
+    "source": "C:/!ass-ade/tests/test_nexus_client_comprehensive.py:1118"
   },
   "kind": "engine_molecule",
   "made_of": [],

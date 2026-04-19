@@ -1,6 +1,6 @@
 {
-  "body": "    def test_get_proof(self) -> None:\n        \"\"\"X402ClientFlow should extract PaymentProof from result.\"\"\"\n        flow = X402ClientFlow()\n        result = PaymentResult(\n            success=True,\n            txid=\"0xabc\",\n            signature_header=\"sig;0x1234;0xabc;5000\",\n        )\n        proof = flow.get_proof(result)\n        assert proof is not None\n        assert proof.wallet_address == \"0x1234\"\n",
-  "body_hash": "7c7bb097ab39dc6d",
+  "body": "def test_get_proof(self) -> None:\n    \"\"\"X402ClientFlow should extract PaymentProof from result.\"\"\"\n    flow = X402ClientFlow()\n    result = PaymentResult(\n        success=True,\n        txid=\"0xabc\",\n        signature_header=\"sig;0x1234;0xabc;5000\",\n    )\n    proof = flow.get_proof(result)\n    assert proof is not None\n    assert proof.wallet_address == \"0x1234\"\n",
+  "body_hash": "4257171007ac11c1",
   "body_truncated": false,
   "callers_of": [
     "X402ClientFlow",
@@ -8,7 +8,7 @@
     "get_proof"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:231.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_x402_flow.py:231.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "qk.source.ass_ade.test_get_proof",
@@ -34,7 +34,7 @@
     "ass_ade.nexus.x402.BASE_SEPOLIA_CHAIN_ID"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:231"
+    "source": "C:/!ass-ade/tests/test_x402_flow.py:231"
   },
   "kind": "invariant",
   "made_of": [],

@@ -19,7 +19,7 @@
     "round"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/context_memory.py:224.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/context_memory.py:224.",
   "exceptions_raised": [
     "ValueError"
   ],
@@ -40,7 +40,7 @@
     "ass_ade.recon.phase0_recon"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/context_memory.py:224"
+    "source": "C:/!ass-ade/src/ass_ade/context_memory.py:224"
   },
   "kind": "pure_function",
   "made_of": [],

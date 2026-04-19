@@ -1,12 +1,12 @@
 {
-  "body": "    def mev_protect(self, tx_bundle: list[str], **kwargs: Any) -> MevProtectResult:\n        \"\"\"POST /v1/mev/protect \u2014 MEV protection for a transaction bundle (MEV-100). $0.020/tx\"\"\"\n        return self._post_model(\"/v1/mev/protect\", MevProtectResult, {\"tx_bundle\": tx_bundle, **kwargs})\n",
-  "body_hash": "6edd4a9d6b8cad50",
+  "body": "def mev_protect(self, tx_bundle: list[str], **kwargs: Any) -> MevProtectResult:\n    \"\"\"POST /v1/mev/protect \u2014 MEV protection for a transaction bundle (MEV-100). $0.020/tx\"\"\"\n    return self._post_model(\"/v1/mev/protect\", MevProtectResult, {\"tx_bundle\": tx_bundle, **kwargs})\n",
+  "body_hash": "3588c83a36c91c0c",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1337.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1337.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.mev_protect",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1337"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1337"
   },
   "kind": "engine_molecule",
   "made_of": [],

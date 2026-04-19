@@ -1,12 +1,12 @@
 {
-  "body": "    def atlas(self):\n        if self._atlas is None:\n            from ass_ade.agent.atlas import Atlas\n            self._atlas = Atlas(self._config, self._nexus)\n        return self._atlas\n",
-  "body_hash": "94d900375c242a14",
+  "body": "def atlas(self):\n    if self._atlas is None:\n        from ass_ade.agent.atlas import Atlas\n        self._atlas = Atlas(self._config, self._nexus)\n    return self._atlas\n",
+  "body_hash": "b6cd8f6a487bfbf1",
   "body_truncated": false,
   "callers_of": [
     "Atlas"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/orchestrator.py:129.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/orchestrator.py:129.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.atlas",
@@ -38,7 +38,7 @@
     "json"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/orchestrator.py:129"
+    "source": "C:/!ass-ade/src/ass_ade/agent/orchestrator.py:129"
   },
   "kind": "ecosystem_system",
   "made_of": [],

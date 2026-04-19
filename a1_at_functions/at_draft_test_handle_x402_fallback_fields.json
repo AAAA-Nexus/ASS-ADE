@@ -1,6 +1,6 @@
 {
-  "body": "    def test_handle_x402_fallback_fields(self) -> None:\n        \"\"\"handle_x402 should handle alternative field names.\"\"\"\n        client = self._make_client()\n        mock_response = httpx.Response(\n            402,\n            json={\n                \"price_usdc\": 0.04,\n                \"treasury\": \"0xABC123\",\n                \"message\": \"Insufficient credits\",\n            },\n        )\n        result = client.handle_x402(mock_response)\n        assert result[\"payment_required\"] is True\n        assert result[\"amount_usdc\"] == 0.04\n        assert result[\"treasury\"] == \"0xABC123\"\n        assert result[\"detail\"] == \"Insufficient credits\"\n        client.close()\n",
-  "body_hash": "74089b811d36fad9",
+  "body": "def test_handle_x402_fallback_fields(self) -> None:\n    \"\"\"handle_x402 should handle alternative field names.\"\"\"\n    client = self._make_client()\n    mock_response = httpx.Response(\n        402,\n        json={\n            \"price_usdc\": 0.04,\n            \"treasury\": \"0xABC123\",\n            \"message\": \"Insufficient credits\",\n        },\n    )\n    result = client.handle_x402(mock_response)\n    assert result[\"payment_required\"] is True\n    assert result[\"amount_usdc\"] == 0.04\n    assert result[\"treasury\"] == \"0xABC123\"\n    assert result[\"detail\"] == \"Insufficient credits\"\n    client.close()\n",
+  "body_hash": "48066b758e71efe4",
   "body_truncated": false,
   "callers_of": [
     "_make_client",
@@ -9,20 +9,34 @@
     "close"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testx402paymenthandling.py:31.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_search_x402.py:137.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_handle_x402_fallback_fields",
   "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "httpx",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.nexus.client.NexusClient",
+    "ass_ade.nexus.errors.NexusPaymentRequired",
     "ass_ade.nexus.errors.NexusAuthError"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testx402paymenthandling.py:31"
+    "source": "C:/!ass-ade/tests/test_search_x402.py:137"
   },
   "kind": "pure_function",
   "made_of": [],
   "name": "test_handle_x402_fallback_fields",
   "product_categories": [
+    "DCM",
     "PAY"
   ],
   "provides": [

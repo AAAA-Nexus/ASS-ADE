@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a_cli.py:41
+# Extracted from C:/!ass-ade/tests/test_a2a_cli.py:41
 # Component id: at.source.ass_ade.testa2avalidatecli
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class TestA2AValidateCLI:

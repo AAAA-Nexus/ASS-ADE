@@ -1,10 +1,10 @@
 {
-  "body": "    def test_tier_aliases_include_canonical_and_claude(self):\n        assert TIER_ALIASES[\"haiku\"] == TIER_FAST\n        assert TIER_ALIASES[\"sonnet\"] == TIER_BALANCED\n        assert TIER_ALIASES[\"opus\"] == TIER_DEEP\n        assert TIER_ALIASES[TIER_FAST] == TIER_FAST\n        assert TIER_ALIASES[TIER_BALANCED] == TIER_BALANCED\n        assert TIER_ALIASES[TIER_DEEP] == TIER_DEEP\n",
-  "body_hash": "3acd4e2a90e34f62",
+  "body": "def test_tier_aliases_include_canonical_and_claude(self):\n    assert TIER_ALIASES[\"haiku\"] == TIER_FAST\n    assert TIER_ALIASES[\"sonnet\"] == TIER_BALANCED\n    assert TIER_ALIASES[\"opus\"] == TIER_DEEP\n    assert TIER_ALIASES[TIER_FAST] == TIER_FAST\n    assert TIER_ALIASES[TIER_BALANCED] == TIER_BALANCED\n    assert TIER_ALIASES[TIER_DEEP] == TIER_DEEP\n",
+  "body_hash": "8710499d44c16b30",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:70.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:70.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_tier_aliases_include_canonical_and_claude",
@@ -83,7 +83,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:70"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:70"
   },
   "kind": "pure_function",
   "made_of": [],

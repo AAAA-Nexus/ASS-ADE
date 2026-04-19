@@ -1,13 +1,13 @@
 {
-  "body": "    def test_valid_http(self) -> None:\n        with pytest.raises(ValueError, match=\"private/loopback\"):\n            validate_url(\"http://localhost:8787\")\n",
-  "body_hash": "30ad01a33d8afa3c",
+  "body": "def test_valid_http(self) -> None:\n    with pytest.raises(ValueError, match=\"private/loopback\"):\n        validate_url(\"http://localhost:8787\")\n",
+  "body_hash": "459a7aa18aa2fc9d",
   "body_truncated": false,
   "callers_of": [
     "raises",
     "validate_url"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_validation.py:105.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_validation.py:105.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_valid_http",
@@ -21,7 +21,7 @@
     "ass_ade.nexus.validation.validate_usdc_amount"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_validation.py:105"
+    "source": "C:/!ass-ade/tests/test_validation.py:105"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,0 +1,41 @@
+{
+  "body": "def fake_post(url: str, **kwargs):\n    captured[\"url\"] = url\n    captured[\"json\"] = kwargs[\"json\"]\n    response = MagicMock()\n    response.json.return_value = {\n        \"choices\": [\n            {\n                \"message\": {\n                    \"content\": (\n                        '{\"type\":\"command\",\"intent\":\"help\",\"path\":null,'\n                        '\"output_path\":null,\"feature_desc\":null}'\n                    )\n                }\n            }\n        ]\n    }\n    response.raise_for_status.return_value = None\n    return response\n",
+  "body_hash": "922a78229f759fd8",
+  "body_truncated": false,
+  "callers_of": [
+    "MagicMock"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_capabilities.py:72.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.fake_post",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "ass_ade.interpreter",
+    "ass_ade.agent.capabilities.build_atomadic_intent_prompt",
+    "ass_ade.agent.capabilities.command_path_exists",
+    "ass_ade.agent.capabilities.render_atomadic_help",
+    "ass_ade.agent.capabilities.sync_atomadic_prompt_capabilities",
+    "ass_ade.agent.context.build_system_prompt",
+    "ass_ade.interpreter.Atomadic"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/tests/test_capabilities.py:72"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "fake_post",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for fake_post"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,12 +1,12 @@
 {
-  "body": "    def test_count_is_50(self) -> None:\n        assert len(AUDIT_QUESTIONS) == 50\n",
-  "body_hash": "7157c656c6eee520",
+  "body": "def test_count_is_50(self) -> None:\n    assert len(AUDIT_QUESTIONS) == 50\n",
+  "body_hash": "72d0699a0974c222",
   "body_truncated": false,
   "callers_of": [
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:31.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:31.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_count_is_50",
@@ -34,7 +34,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:31"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:31"
   },
   "kind": "engine_molecule",
   "made_of": [],

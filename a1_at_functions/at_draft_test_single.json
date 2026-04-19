@@ -1,18 +1,33 @@
 {
-  "body": "    def test_single(self):\n        assert _aggregate_version([\"1.3.7\"]) == \"1.3.7\"\n",
-  "body_hash": "1df4252b5fe59ee5",
+  "body": "def test_single(self):\n    assert _aggregate_version([\"1.3.7\"]) == \"1.3.7\"\n",
+  "body_hash": "b0591f53022fe5f7",
   "body_truncated": false,
   "callers_of": [
     "_aggregate_version"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testaggregateversion.py:12.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_version_tracker.py:190.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_single",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.engine.rebuild.version_tracker.INITIAL_VERSION",
+    "ass_ade.engine.rebuild.version_tracker._aggregate_version",
+    "ass_ade.engine.rebuild.version_tracker._public_python_api",
+    "ass_ade.engine.rebuild.version_tracker.assign_version",
+    "ass_ade.engine.rebuild.version_tracker.bump_version",
+    "ass_ade.engine.rebuild.version_tracker.classify_change",
+    "ass_ade.engine.rebuild.version_tracker.content_hash",
+    "ass_ade.engine.rebuild.version_tracker.load_prev_versions",
+    "ass_ade.engine.rebuild.version_tracker.write_project_version_file",
+    "ass_ade.engine.rebuild.version_tracker.write_tier_version_file"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testaggregateversion.py:12"
+    "source": "C:/!ass-ade/tests/test_version_tracker.py:190"
   },
   "kind": "pure_function",
   "made_of": [],

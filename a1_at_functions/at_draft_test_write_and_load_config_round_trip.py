@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_config.py:10
+# Extracted from C:/!ass-ade/tests/test_config.py:10
 # Component id: at.source.ass_ade.test_write_and_load_config_round_trip
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_write_and_load_config_round_trip(tmp_path: Path, monkeypatch) -> None:

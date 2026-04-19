@@ -1,0 +1,34 @@
+{
+  "body": "def fake_run(args, **kwargs):\n    calls.append(args)\n    return subprocess.CompletedProcess(args=args, returncode=0, stdout=\"11.9.0\\n\", stderr=\"\")\n",
+  "body_hash": "17f6f193786264cf",
+  "body_truncated": false,
+  "callers_of": [
+    "append",
+    "CompletedProcess"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_system.py:11.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.fake_run",
+  "imports": [
+    "subprocess",
+    "ass_ade.system"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/tests/test_system.py:11"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "fake_run",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for fake_run"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

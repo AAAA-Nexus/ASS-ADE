@@ -1,12 +1,12 @@
 {
-  "body": "    def defi_oracle_verify(\n        self,\n        pool: str | None = None,\n        tvl_usdc: float = 0.0,\n        *,\n        oracle_id: str | None = None,\n        **kwargs: Any,\n    ) -> DefiOracleVerify:\n        \"\"\"/v1/defi/oracle-verify \u2014 flash loan + TWAP attack scoring (OGD-100). $0.04 + 0.1% TVL\"\"\"\n        return self._post_model(\"/v1/defi/oracle-verify\", DefiOracleVerify, {\"pool\": pool or oracle_id or \"\", \"tvl_usdc\": tvl_usdc, **kwargs})\n",
-  "body_hash": "d797796eddf188dd",
+  "body": "def defi_oracle_verify(\n    self,\n    pool: str | None = None,\n    tvl_usdc: float = 0.0,\n    *,\n    oracle_id: str | None = None,\n    **kwargs: Any,\n) -> DefiOracleVerify:\n    \"\"\"/v1/defi/oracle-verify \u2014 flash loan + TWAP attack scoring (OGD-100). $0.04 + 0.1% TVL\"\"\"\n    return self._post_model(\"/v1/defi/oracle-verify\", DefiOracleVerify, {\"pool\": pool or oracle_id or \"\", \"tvl_usdc\": tvl_usdc, **kwargs})\n",
+  "body_hash": "191089040a87b7b3",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1002.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1002.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.defi_oracle_verify",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1002"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1002"
   },
   "kind": "engine_molecule",
   "made_of": [],

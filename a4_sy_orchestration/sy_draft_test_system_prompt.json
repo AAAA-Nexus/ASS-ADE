@@ -1,13 +1,13 @@
 {
-  "body": "    def test_system_prompt(self):\n        c = Conversation(\"You are helpful.\")\n        assert c.count() == 1\n        assert c.messages[0].role == \"system\"\n",
-  "body_hash": "fa6d75a86b6f63c2",
+  "body": "def test_system_prompt(self):\n    c = Conversation(\"You are helpful.\")\n    assert c.count() == 1\n    assert c.messages[0].role == \"system\"\n",
+  "body_hash": "1b046d53322856a9",
   "body_truncated": false,
   "callers_of": [
     "Conversation",
     "count"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_agent.py:24.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_agent.py:24.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.test_system_prompt",
@@ -27,7 +27,7 @@
     "ass_ade.tools.registry.ToolRegistry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_agent.py:24"
+    "source": "C:/!ass-ade/tests/test_agent.py:24"
   },
   "kind": "ecosystem_system",
   "made_of": [],

@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/benchmarks/messy_demo/utils.py:12
+# Extracted from C:/!ass-ade/benchmarks/messy_demo/utils.py:12
 # Component id: at.source.ass_ade.process_data_copy
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def process_data_copy(data):

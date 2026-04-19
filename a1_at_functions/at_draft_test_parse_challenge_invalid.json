@@ -1,13 +1,13 @@
 {
-  "body": "    def test_parse_challenge_invalid(self) -> None:\n        \"\"\"X402ClientFlow should set last_error on parse failure.\"\"\"\n        flow = X402ClientFlow()\n        challenge = flow.parse_challenge({})  # Missing required fields\n        assert challenge is None\n        assert flow.last_error  # Error should be set\n",
-  "body_hash": "ce62b1154f026450",
+  "body": "def test_parse_challenge_invalid(self) -> None:\n    \"\"\"X402ClientFlow should set last_error on parse failure.\"\"\"\n    flow = X402ClientFlow()\n    challenge = flow.parse_challenge({})  # Missing required fields\n    assert challenge is None\n    assert flow.last_error  # Error should be set\n",
+  "body_hash": "a666d786ae3d2188",
   "body_truncated": false,
   "callers_of": [
     "X402ClientFlow",
     "parse_challenge"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:166.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_x402_flow.py:166.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_parse_challenge_invalid",
@@ -33,7 +33,7 @@
     "ass_ade.nexus.x402.BASE_SEPOLIA_CHAIN_ID"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:166"
+    "source": "C:/!ass-ade/tests/test_x402_flow.py:166"
   },
   "kind": "pure_function",
   "made_of": [],

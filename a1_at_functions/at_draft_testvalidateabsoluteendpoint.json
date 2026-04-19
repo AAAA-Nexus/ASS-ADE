@@ -7,7 +7,7 @@
     "raises"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_ssrf_protection.py:20.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_ssrf_protection.py:20.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.testvalidateabsoluteendpoint",
@@ -27,7 +27,7 @@
     "ass_ade.mcp.utils.simulate_invoke"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_ssrf_protection.py:20"
+    "source": "C:/!ass-ade/tests/test_ssrf_protection.py:20"
   },
   "kind": "pure_class",
   "made_of": [],

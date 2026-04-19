@@ -1,6 +1,6 @@
 {
-  "body": "    def test_echo(self, workspace: Path):\n        tool = RunCommandTool(str(workspace))\n        r = tool.execute(command='python -c \"print(\\'hello\\')\"')\n        assert r.success\n        assert \"hello\" in r.output\n",
-  "body_hash": "426db119cf8be042",
+  "body": "def test_echo(self, workspace: Path):\n    tool = RunCommandTool(str(workspace))\n    r = tool.execute(command='python -c \"print(\\'hello\\')\"')\n    assert r.success\n    assert \"hello\" in r.output\n",
+  "body_hash": "739c0adab3cd51c6",
   "body_truncated": false,
   "callers_of": [
     "RunCommandTool",
@@ -8,7 +8,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:107.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_tools_builtin.py:107.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_echo",
@@ -27,7 +27,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:107"
+    "source": "C:/!ass-ade/tests/test_tools_builtin.py:107"
   },
   "kind": "pure_function",
   "made_of": [],

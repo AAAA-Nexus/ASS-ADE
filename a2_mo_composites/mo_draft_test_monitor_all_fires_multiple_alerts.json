@@ -1,13 +1,13 @@
 {
-  "body": "    def test_monitor_all_fires_multiple_alerts(self) -> None:\n        b = BAS({})\n        alerts = b.monitor_all({\n            \"synergy\": 0.9,\n            \"novelty\": 0.9,\n            \"trust_score\": 0.1,\n            \"budget_pct\": 0.95,\n            \"gvu_delta\": 0.0,\n        })\n        kinds = {a.kind for a in alerts}\n        assert \"emergent_synergy\" in kinds\n        assert \"trust_violation\" in kinds\n        assert \"budget_exhaustion\" in kinds\n",
-  "body_hash": "65450d18b0c2fa14",
+  "body": "def test_monitor_all_fires_multiple_alerts(self) -> None:\n    b = BAS({})\n    alerts = b.monitor_all({\n        \"synergy\": 0.9,\n        \"novelty\": 0.9,\n        \"trust_score\": 0.1,\n        \"budget_pct\": 0.95,\n        \"gvu_delta\": 0.0,\n    })\n    kinds = {a.kind for a in alerts}\n    assert \"emergent_synergy\" in kinds\n    assert \"trust_violation\" in kinds\n    assert \"budget_exhaustion\" in kinds\n",
+  "body_hash": "9192a3da07881f29",
   "body_truncated": false,
   "callers_of": [
     "BAS",
     "monitor_all"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:185.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:185.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_monitor_all_fires_multiple_alerts",
@@ -35,7 +35,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:185"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:185"
   },
   "kind": "engine_molecule",
   "made_of": [

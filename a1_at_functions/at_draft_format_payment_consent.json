@@ -8,7 +8,7 @@
     "append"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/x402.py:199.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/x402.py:199.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.format_payment_consent",
@@ -23,7 +23,7 @@
     "logging"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/x402.py:199"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/x402.py:199"
   },
   "kind": "pure_function",
   "made_of": [],

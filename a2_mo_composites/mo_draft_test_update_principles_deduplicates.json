@@ -1,6 +1,6 @@
 {
-  "body": "    def test_update_principles_deduplicates(self) -> None:\n        w = WisdomEngine({})\n        w.update_principles([\"prefer reuse over regeneration\"])\n        w.update_principles([\"prefer reuse over regeneration\", \"new principle\"])\n        assert w._principles.count(\"prefer reuse over regeneration\") == 1\n        assert \"new principle\" in w._principles\n",
-  "body_hash": "629d23f692d7357a",
+  "body": "def test_update_principles_deduplicates(self) -> None:\n    w = WisdomEngine({})\n    w.update_principles([\"prefer reuse over regeneration\"])\n    w.update_principles([\"prefer reuse over regeneration\", \"new principle\"])\n    assert w._principles.count(\"prefer reuse over regeneration\") == 1\n    assert \"new principle\" in w._principles\n",
+  "body_hash": "1193c71d18ca96df",
   "body_truncated": false,
   "callers_of": [
     "WisdomEngine",
@@ -8,7 +8,7 @@
     "count"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:139.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:139.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_update_principles_deduplicates",
@@ -36,10 +36,11 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:139"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:139"
   },
   "kind": "engine_molecule",
   "made_of": [
+    "at.source.ass_ade.update_principles",
     "at.source.ass_ade.count"
   ],
   "name": "test_update_principles_deduplicates",

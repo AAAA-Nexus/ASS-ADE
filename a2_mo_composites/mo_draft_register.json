@@ -1,12 +1,12 @@
 {
-  "body": "    def register(self, name: str, provider: \"ModelProvider\", models: list[str] | None = None) -> None:\n        \"\"\"Add a provider to the router at runtime.\"\"\"\n        self._providers[name] = provider\n        if name not in self._fallback_order:\n            self._fallback_order.append(name)\n        for m in models or []:\n            self._model_to_provider[m] = name\n",
-  "body_hash": "9001b0b0297d3e13",
+  "body": "def register(self, name: str, provider: \"ModelProvider\", models: list[str] | None = None) -> None:\n    \"\"\"Add a provider to the router at runtime.\"\"\"\n    self._providers[name] = provider\n    if name not in self._fallback_order:\n        self._fallback_order.append(name)\n    for m in models or []:\n        self._model_to_provider[m] = name\n",
+  "body_hash": "736c7144fef9ac8c",
   "body_truncated": false,
   "callers_of": [
     "append"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/provider.py:322.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/provider.py:322.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.register",
@@ -25,7 +25,7 @@
     "ass_ade.engine.types.ToolCallRequest"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/provider.py:322"
+    "source": "C:/!ass-ade/src/ass_ade/engine/provider.py:322"
   },
   "kind": "engine_molecule",
   "made_of": [],

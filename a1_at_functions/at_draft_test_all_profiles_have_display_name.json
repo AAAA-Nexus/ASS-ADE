@@ -1,12 +1,12 @@
 {
-  "body": "    def test_all_profiles_have_display_name(self):\n        for name, profile in FREE_PROVIDERS.items():\n            assert profile.display_name, f\"{name} has no display_name\"\n",
-  "body_hash": "995f54ea2ceaca45",
+  "body": "def test_all_profiles_have_display_name(self):\n    for name, profile in FREE_PROVIDERS.items():\n        assert profile.display_name, f\"{name} has no display_name\"\n",
+  "body_hash": "816cc175cc9351de",
   "body_truncated": false,
   "callers_of": [
     "items"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:50.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:50.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_all_profiles_have_display_name",
@@ -85,7 +85,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:50"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:50"
   },
   "kind": "pure_function",
   "made_of": [],

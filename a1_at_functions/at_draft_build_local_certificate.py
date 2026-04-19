@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_build_local_certificate.py:5
+# Extracted from C:/!ass-ade/src/ass_ade/local/certifier.py:75
 # Component id: at.source.ass_ade.build_local_certificate
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def build_local_certificate(root: Path, version: str | None = None) -> dict[str, Any]:

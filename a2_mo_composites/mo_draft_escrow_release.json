@@ -1,12 +1,12 @@
 {
-  "body": "    def escrow_release(self, escrow_id: str, proof: str, **kwargs: Any) -> EscrowResult:\n        \"\"\"/v1/escrow/release \u2014 release funds with completion proof. $0.020/call\"\"\"\n        return self._post_model(\"/v1/escrow/release\", EscrowResult, {\"escrow_id\": escrow_id, \"proof\": proof, **kwargs})\n",
-  "body_hash": "9254f05737a6282e",
+  "body": "def escrow_release(self, escrow_id: str, proof: str, **kwargs: Any) -> EscrowResult:\n    \"\"\"/v1/escrow/release \u2014 release funds with completion proof. $0.020/call\"\"\"\n    return self._post_model(\"/v1/escrow/release\", EscrowResult, {\"escrow_id\": escrow_id, \"proof\": proof, **kwargs})\n",
+  "body_hash": "c7b6d2ae1c5bad2a",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:541.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:541.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.escrow_release",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:541"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:541"
   },
   "kind": "engine_molecule",
   "made_of": [],

@@ -8,13 +8,27 @@
     "lower"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_iter_source_files.py:5.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/rebuild/project_parser.py:66.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.iter_source_files",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "datetime",
+    "json",
+    "os",
+    "re",
+    "dataclasses.asdict",
+    "dataclasses.dataclass",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "ass_ade.engine.rebuild.tiers.TIER_PREFIX",
+    "ass_ade.engine.rebuild.tiers.TIERS"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_iter_source_files.py:5"
+    "source": "C:/!ass-ade/src/ass_ade/engine/rebuild/project_parser.py:66"
   },
   "kind": "pure_function",
   "made_of": [],

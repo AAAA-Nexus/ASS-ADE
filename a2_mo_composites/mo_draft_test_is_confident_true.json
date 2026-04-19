@@ -1,6 +1,6 @@
 {
-  "body": "    def test_is_confident_true(self) -> None:\n        w = WisdomEngine({\"sde\": {\"conviction_required\": 0.1}})\n        # full state\n        full = {f\"q{i}\": True for i in range(1, 51)}\n        w.run_audit(full)\n        assert w.is_confident\n",
-  "body_hash": "a021115553dff138",
+  "body": "def test_is_confident_true(self) -> None:\n    w = WisdomEngine({\"sde\": {\"conviction_required\": 0.1}})\n    # full state\n    full = {f\"q{i}\": True for i in range(1, 51)}\n    w.run_audit(full)\n    assert w.is_confident\n",
+  "body_hash": "26fe9a7fb2948c41",
   "body_truncated": false,
   "callers_of": [
     "WisdomEngine",
@@ -8,16 +8,40 @@
     "range"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwisdomengine.py:48.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:99.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_is_confident_true",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "time",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.agent.audit_questions.AUDIT_QUESTIONS",
+    "ass_ade.agent.bas.BAS",
+    "ass_ade.agent.bas.Alert",
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.orchestrator.CycleReport",
+    "ass_ade.agent.orchestrator.EngineOrchestrator",
+    "ass_ade.agent.wisdom.AuditReport",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "collections.Counter",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.engine.provider.ModelProvider",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.tools.registry.default_registry"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwisdomengine.py:48"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:99"
   },
   "kind": "engine_molecule",
-  "made_of": [],
+  "made_of": [
+    "at.source.ass_ade.run_audit"
+  ],
   "name": "test_is_confident_true",
   "product_categories": [
     "COR"

@@ -7,13 +7,19 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_validate_task_id.py:5.",
+  "description": "Draft candidate from C:/!ass-ade/examples/02-rebuild-a-codebase/sample_project/main.py:54.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.validate_task_id",
-  "imports": [],
+  "imports": [
+    "enum.Enum",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.List",
+    "typing.Optional"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_validate_task_id.py:5"
+    "source": "C:/!ass-ade/examples/02-rebuild-a-codebase/sample_project/main.py:54"
   },
   "kind": "pure_function",
   "made_of": [],

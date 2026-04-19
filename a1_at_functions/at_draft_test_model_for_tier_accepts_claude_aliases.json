@@ -1,13 +1,13 @@
 {
-  "body": "    def test_model_for_tier_accepts_claude_aliases(self):\n        p = get_provider(\"groq\")\n        assert p.model_for_tier(\"haiku\") == p.models_by_tier[\"fast\"]\n        assert p.model_for_tier(\"sonnet\") == p.models_by_tier[\"balanced\"]\n        assert p.model_for_tier(\"opus\") == p.models_by_tier[\"deep\"]\n",
-  "body_hash": "37fa4cf3928f984e",
+  "body": "def test_model_for_tier_accepts_claude_aliases(self):\n    p = get_provider(\"groq\")\n    assert p.model_for_tier(\"haiku\") == p.models_by_tier[\"fast\"]\n    assert p.model_for_tier(\"sonnet\") == p.models_by_tier[\"balanced\"]\n    assert p.model_for_tier(\"opus\") == p.models_by_tier[\"deep\"]\n",
+  "body_hash": "827ba2a53f95bcb1",
   "body_truncated": false,
   "callers_of": [
     "get_provider",
     "model_for_tier"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:127.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:127.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_model_for_tier_accepts_claude_aliases",
@@ -86,7 +86,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:127"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:127"
   },
   "kind": "pure_function",
   "made_of": [],

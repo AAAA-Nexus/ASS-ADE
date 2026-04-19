@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli_happy_path.py:257
+# Extracted from C:/!ass-ade/tests/test_cli_happy_path.py:257
 # Component id: mo.source.ass_ade.testswarmintentclassify
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class TestSwarmIntentClassify:
@@ -16,11 +18,11 @@ class TestSwarmIntentClassify:
                 {"intent": "debugging", "confidence": 0.65},
             ],
         )
-        
+
         with patch("ass_ade.cli.NexusClient", return_value=_make_ctx_mgr(mock_nx)):
             result = runner.invoke(
                 app,
                 ["swarm", "intent-classify", "analyze code for bugs", "--config", str(hybrid_config)],
             )
-        
+
         assert result.exit_code == 0

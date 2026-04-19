@@ -1,12 +1,12 @@
 {
-  "body": "    def aegis_certify_epoch(self, system_id: str | None = None, *, agent_id: str | None = None, **kwargs: Any) -> ComplianceCert:\n        \"\"\"/v1/aegis/certify-epoch \u2014 47-epoch drift + EU AI Act cert (AEG-102). $0.060/call\"\"\"\n        return self._post_model(\"/v1/aegis/certify-epoch\", ComplianceCert, {\"system_id\": system_id or agent_id or \"\", **kwargs})\n",
-  "body_hash": "40d94ffc873556a8",
+  "body": "def aegis_certify_epoch(self, system_id: str | None = None, *, agent_id: str | None = None, **kwargs: Any) -> ComplianceCert:\n    \"\"\"/v1/aegis/certify-epoch \u2014 47-epoch drift + EU AI Act cert (AEG-102). $0.060/call\"\"\"\n    return self._post_model(\"/v1/aegis/certify-epoch\", ComplianceCert, {\"system_id\": system_id or agent_id or \"\", **kwargs})\n",
+  "body_hash": "4596963b5a1a39b6",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:770.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:770.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.aegis_certify_epoch",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:770"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:770"
   },
   "kind": "engine_molecule",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_glob_py(self, workspace: Path):\n        tool = SearchFilesTool(str(workspace))\n        r = tool.execute(pattern=\"**/*.py\")\n        assert r.success\n        assert \"hello.py\" in r.output\n",
-  "body_hash": "1828c9d30589fa13",
+  "body": "def test_glob_py(self, workspace: Path):\n    tool = SearchFilesTool(str(workspace))\n    r = tool.execute(pattern=\"**/*.py\")\n    assert r.success\n    assert \"hello.py\" in r.output\n",
+  "body_hash": "2600ad58d4f9b8c7",
   "body_truncated": false,
   "callers_of": [
     "SearchFilesTool",
@@ -8,19 +8,32 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testsearchfiles.py:6.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_tools_builtin.py:148.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_glob_py",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.tools.builtin.EditFileTool",
+    "ass_ade.tools.builtin.GrepSearchTool",
+    "ass_ade.tools.builtin.ListDirectoryTool",
+    "ass_ade.tools.builtin.ReadFileTool",
+    "ass_ade.tools.builtin.RunCommandTool",
+    "ass_ade.tools.builtin.SearchFilesTool",
+    "ass_ade.tools.builtin.WriteFileTool",
+    "ass_ade.tools.registry.default_registry"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testsearchfiles.py:6"
+    "source": "C:/!ass-ade/tests/test_tools_builtin.py:148"
   },
   "kind": "pure_function",
   "made_of": [],
   "name": "test_glob_py",
   "product_categories": [
-    "DCM"
+    "COR"
   ],
   "provides": [
     "rebuild candidate for test_glob_py"

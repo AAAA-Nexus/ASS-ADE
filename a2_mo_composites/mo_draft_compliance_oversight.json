@@ -1,12 +1,12 @@
 {
-  "body": "    def compliance_oversight(self, reviewer: str, decision: str, **kwargs: Any) -> OversightEvent:\n        \"\"\"/v1/compliance/oversight \u2014 HITL review attestation (OVS-100). $0.020/event\"\"\"\n        return self._post_model(\"/v1/compliance/oversight\", OversightEvent, {\"reviewer\": reviewer, \"decision\": decision, **kwargs})\n",
-  "body_hash": "cac9e3f053afe8b6",
+  "body": "def compliance_oversight(self, reviewer: str, decision: str, **kwargs: Any) -> OversightEvent:\n    \"\"\"/v1/compliance/oversight \u2014 HITL review attestation (OVS-100). $0.020/event\"\"\"\n    return self._post_model(\"/v1/compliance/oversight\", OversightEvent, {\"reviewer\": reviewer, \"decision\": decision, **kwargs})\n",
+  "body_hash": "69ae28bb9891d38b",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1072.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1072.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.compliance_oversight",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1072"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1072"
   },
   "kind": "engine_molecule",
   "made_of": [],

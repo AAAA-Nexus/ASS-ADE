@@ -1,6 +1,6 @@
 {
-  "body": "    def test_scan_prompt_exception(self):\n        client = MagicMock()\n        client.prompt_inject_scan.side_effect = Exception(\"network error\")\n        gates = QualityGates(client)\n        assert gates.scan_prompt(\"test\") is None\n",
-  "body_hash": "ca1262247272d1d3",
+  "body": "def test_scan_prompt_exception(self):\n    client = MagicMock()\n    client.prompt_inject_scan.side_effect = Exception(\"network error\")\n    gates = QualityGates(client)\n    assert gates.scan_prompt(\"test\") is None\n",
+  "body_hash": "e4e526ccf43453e2",
   "body_truncated": false,
   "callers_of": [
     "MagicMock",
@@ -9,13 +9,19 @@
     "scan_prompt"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testqualitygates.py:19.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_gates.py:64.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_scan_prompt_exception",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "unittest.mock.MagicMock",
+    "ass_ade.agent.gates.GateResult",
+    "ass_ade.agent.gates.QualityGates"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testqualitygates.py:19"
+    "source": "C:/!ass-ade/tests/test_gates.py:64"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def record_read(self, path: str | Path) -> None:\n        \"\"\"Mark a file as freshly read. Call this from MCP read_file handler.\"\"\"\n        key = str(Path(path).resolve())\n        self._reads[key] = time.time()\n        self._save_state()\n",
-  "body_hash": "90a5433200888eff",
+  "body": "def record_read(self, path: str | Path) -> None:\n    \"\"\"Mark a file as freshly read. Call this from MCP read_file handler.\"\"\"\n    key = str(Path(path).resolve())\n    self._reads[key] = time.time()\n    self._save_state()\n",
+  "body_hash": "72e4405a76ee7c49",
   "body_truncated": false,
   "callers_of": [
     "str",
@@ -10,7 +10,7 @@
     "Path"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/tca.py:82.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/tca.py:82.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.record_read",
@@ -25,7 +25,7 @@
     "typing.Any"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/tca.py:82"
+    "source": "C:/!ass-ade/src/ass_ade/agent/tca.py:82"
   },
   "kind": "pure_function",
   "made_of": [],

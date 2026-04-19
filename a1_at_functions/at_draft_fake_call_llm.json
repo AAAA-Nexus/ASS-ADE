@@ -1,16 +1,17 @@
 {
-  "body": "    def fake_call_llm(_text: str, _working_dir: Path | str | None = None) -> dict:\n        return {\n            \"type\": \"command\",\n            \"intent\": \"cli\",\n            \"cli_args\": [\"doctor\", \"--json\"],\n            \"path\": None,\n            \"output_path\": None,\n            \"feature_desc\": None,\n        }\n",
-  "body_hash": "fb8b71797899c404",
+  "body": "def fake_call_llm(_text: str, _working_dir: Path | str | None = None, _memory_context: str | None = None) -> dict:\n    return {\n        \"type\": \"command\",\n        \"intent\": \"cli\",\n        \"cli_args\": [\"doctor\", \"--json\"],\n        \"path\": None,\n        \"output_path\": None,\n        \"feature_desc\": None,\n    }\n",
+  "body_hash": "3f6c7521c79dc7fa",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_capabilities.py:74.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_capabilities.py:131.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.fake_call_llm",
   "imports": [
     "__future__.annotations",
     "pathlib.Path",
+    "unittest.mock.MagicMock",
     "ass_ade.interpreter",
     "ass_ade.agent.capabilities.build_atomadic_intent_prompt",
     "ass_ade.agent.capabilities.command_path_exists",
@@ -20,7 +21,7 @@
     "ass_ade.interpreter.Atomadic"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_capabilities.py:74"
+    "source": "C:/!ass-ade/tests/test_capabilities.py:131"
   },
   "kind": "pure_function",
   "made_of": [],

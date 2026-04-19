@@ -1,12 +1,12 @@
 {
-  "body": "    def test_relative_endpoint_passthrough(self) -> None:\n        \"\"\"Relative endpoints should pass through without validation.\"\"\"\n        assert _validate_absolute_endpoint(\"/api/tool\") == \"/api/tool\"\n        assert _validate_absolute_endpoint(\"api/tool\") == \"api/tool\"\n        assert _validate_absolute_endpoint(\"\") == \"\"\n",
-  "body_hash": "cfb4fa09b4e1c460",
+  "body": "def test_relative_endpoint_passthrough(self) -> None:\n    \"\"\"Relative endpoints should pass through without validation.\"\"\"\n    assert _validate_absolute_endpoint(\"/api/tool\") == \"/api/tool\"\n    assert _validate_absolute_endpoint(\"api/tool\") == \"api/tool\"\n    assert _validate_absolute_endpoint(\"\") == \"\"\n",
+  "body_hash": "4d9e8d0bcf85d664",
   "body_truncated": false,
   "callers_of": [
     "_validate_absolute_endpoint"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_ssrf_protection.py:23.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_ssrf_protection.py:23.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_relative_endpoint_passthrough",
@@ -26,7 +26,7 @@
     "ass_ade.mcp.utils.simulate_invoke"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_ssrf_protection.py:23"
+    "source": "C:/!ass-ade/tests/test_ssrf_protection.py:23"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,12 +1,12 @@
 {
-  "body": "    def ratchet_register(self, agent_id: int, **kwargs: Any) -> RatchetSession:\n        \"\"\"/v1/ratchet/register \u2014 new session with epoch counter. agent_id must be a multiple of G_18 (324). $0.008/call\"\"\"\n        return self._post_model(\"/v1/ratchet/register\", RatchetSession, {\"agent_id\": agent_id, **kwargs})\n",
-  "body_hash": "2f90f42c78df7105",
+  "body": "def ratchet_register(self, agent_id: int, **kwargs: Any) -> RatchetSession:\n    \"\"\"/v1/ratchet/register \u2014 new session with epoch counter. agent_id must be a multiple of G_18 (324). $0.008/call\"\"\"\n    return self._post_model(\"/v1/ratchet/register\", RatchetSession, {\"agent_id\": agent_id, **kwargs})\n",
+  "body_hash": "ee60c4b2a73ab168",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:456.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:456.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.ratchet_register",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:456"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:456"
   },
   "kind": "engine_molecule",
   "made_of": [],

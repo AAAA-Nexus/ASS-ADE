@@ -1,6 +1,6 @@
 {
-  "body": "    def test_blocked_dangerous(self, workspace: Path):\n        tool = RunCommandTool(str(workspace))\n        r = tool.execute(command=\"rm -rf /\")\n        assert not r.success\n        assert \"blocked\" in (r.error or \"\").lower()\n",
-  "body_hash": "b2fafcb2a63bd2af",
+  "body": "def test_blocked_dangerous(self, workspace: Path):\n    tool = RunCommandTool(str(workspace))\n    r = tool.execute(command=\"rm -rf /\")\n    assert not r.success\n    assert \"blocked\" in (r.error or \"\").lower()\n",
+  "body_hash": "51a4178db80f0ee6",
   "body_truncated": false,
   "callers_of": [
     "RunCommandTool",
@@ -9,7 +9,7 @@
     "lower"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:113.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_tools_builtin.py:113.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_blocked_dangerous",
@@ -28,7 +28,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:113"
+    "source": "C:/!ass-ade/tests/test_tools_builtin.py:113"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_consecutive_5xx_trips_circuit(self) -> None:\n        inner = _CountingTransport([httpx.Response(500)] * 10)\n        cb = CircuitBreakerTransport(inner, failure_threshold=3, window_s=60, recovery_s=30)\n        for _ in range(3):\n            cb.handle_request(httpx.Request(\"GET\", \"https://example.com\"))\n        assert cb.is_open\n",
-  "body_hash": "285f1217cf10cfa3",
+  "body": "def test_consecutive_5xx_trips_circuit(self) -> None:\n    inner = _CountingTransport([httpx.Response(500)] * 10)\n    cb = CircuitBreakerTransport(inner, failure_threshold=3, window_s=60, recovery_s=30)\n    for _ in range(3):\n        cb.handle_request(httpx.Request(\"GET\", \"https://example.com\"))\n    assert cb.is_open\n",
+  "body_hash": "9070614af8f159b2",
   "body_truncated": false,
   "callers_of": [
     "_CountingTransport",
@@ -11,7 +11,7 @@
     "Response"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_resilience.py:117.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_resilience.py:117.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_consecutive_5xx_trips_circuit",
@@ -27,7 +27,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_resilience.py:117"
+    "source": "C:/!ass-ade/tests/test_resilience.py:117"
   },
   "kind": "pure_function",
   "made_of": [],

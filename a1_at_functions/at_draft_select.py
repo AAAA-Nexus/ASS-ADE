@@ -1,33 +1,35 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/lse.py:98
+# Extracted from C:/!ass-ade/src/ass_ade/agent/lse.py:98
 # Component id: at.source.ass_ade.select
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
-    def select(
-        self,
-        *,
-        trs_score: float = 0.8,
-        complexity: str = "medium",
-        budget_remaining: int = 8000,
-        user_model_override: str | None = None,
-    ) -> LSEDecision:
-        """Select the optimal model for a step.
+def select(
+    self,
+    *,
+    trs_score: float = 0.8,
+    complexity: str = "medium",
+    budget_remaining: int = 8000,
+    user_model_override: str | None = None,
+) -> LSEDecision:
+    """Select the optimal model for a step.
 
-        Args:
-            trs_score: SAM TRS composite score [0,1].
-            complexity: EpistemicRouter complexity bucket.
-            budget_remaining: Estimated remaining output tokens.
-            user_model_override: Explicit model from CLI/config (always wins).
-        """
-        try:
-            return self._select_inner(trs_score, complexity, budget_remaining, user_model_override)
-        except Exception as exc:
-            _log.warning("LSE selection failed (fail-open): %s", exc)
-            legacy = _LEGACY_TIER_TO_MODEL.get(self._default_tier, _LEGACY_TIER_TO_MODEL[TIER_BALANCED])
-            return LSEDecision(
-                model=legacy,
-                tier=self._default_tier,
-                reason="fallback",
-                trs_score=trs_score,
-                complexity=complexity,
-                provider=None,
-            )
+    Args:
+        trs_score: SAM TRS composite score [0,1].
+        complexity: EpistemicRouter complexity bucket.
+        budget_remaining: Estimated remaining output tokens.
+        user_model_override: Explicit model from CLI/config (always wins).
+    """
+    try:
+        return self._select_inner(trs_score, complexity, budget_remaining, user_model_override)
+    except Exception as exc:
+        _log.warning("LSE selection failed (fail-open): %s", exc)
+        legacy = _LEGACY_TIER_TO_MODEL.get(self._default_tier, _LEGACY_TIER_TO_MODEL[TIER_BALANCED])
+        return LSEDecision(
+            model=legacy,
+            tier=self._default_tier,
+            reason="fallback",
+            trs_score=trs_score,
+            complexity=complexity,
+            provider=None,
+        )

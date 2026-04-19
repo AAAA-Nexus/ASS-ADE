@@ -1,19 +1,24 @@
 {
-  "body": "    def search(self) -> list[Arch]:\n        self._searches += 1\n        base = [\n            Arch(name=\"linear\", score=0.5, traits=[\"simple\"]),\n            Arch(name=\"tree\", score=0.7, traits=[\"recursive\"]),\n            Arch(name=\"graph\", score=0.8, traits=[\"emergent\"]),\n        ]\n        return sorted(base, key=lambda a: a.score, reverse=True)\n",
-  "body_hash": "9fb0bb139eb5cc7b",
+  "body": "def search(self) -> list[Arch]:\n    self._searches += 1\n    base = [\n        Arch(name=\"linear\", score=0.5, traits=[\"simple\"]),\n        Arch(name=\"tree\", score=0.7, traits=[\"recursive\"]),\n        Arch(name=\"graph\", score=0.8, traits=[\"emergent\"]),\n    ]\n    return sorted(base, key=lambda a: a.score, reverse=True)\n",
+  "body_hash": "6a93bf9d1e4e2c21",
   "body_truncated": false,
   "callers_of": [
     "sorted",
     "Arch"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_severa.py:11.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/severa.py:28.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.search",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_severa.py:11"
+    "source": "C:/!ass-ade/src/ass_ade/agent/severa.py:28"
   },
   "kind": "pure_function",
   "made_of": [],

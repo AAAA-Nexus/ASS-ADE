@@ -11,7 +11,7 @@
     "ConnectionError"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_workflows.py:176.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_workflows.py:176.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "og.source.ass_ade.testsafeexecute",
@@ -38,7 +38,7 @@
     "ass_ade.workflows.trust_gate"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_workflows.py:176"
+    "source": "C:/!ass-ade/tests/test_workflows.py:176"
   },
   "kind": "product_organism",
   "made_of": [

@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/x402.py:218
+# Extracted from C:/!ass-ade/src/ass_ade/nexus/x402.py:218
 # Component id: at.source.ass_ade.submit_payment
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def submit_payment(challenge: PaymentChallenge) -> PaymentResult:

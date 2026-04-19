@@ -1,6 +1,6 @@
 {
-  "body": "    def test_default_registry_has_all_tools(self, workspace: Path):\n        reg = default_registry(str(workspace))\n        names = reg.list_tools()\n        assert \"read_file\" in names\n        assert \"write_file\" in names\n        assert \"edit_file\" in names\n        assert \"run_command\" in names\n        assert \"list_directory\" in names\n        assert \"search_files\" in names\n        assert \"grep_search\" in names\n",
-  "body_hash": "cdee21aedcc0d3d1",
+  "body": "def test_default_registry_has_all_tools(self, workspace: Path):\n    reg = default_registry(str(workspace))\n    names = reg.list_tools()\n    assert \"read_file\" in names\n    assert \"write_file\" in names\n    assert \"edit_file\" in names\n    assert \"run_command\" in names\n    assert \"list_directory\" in names\n    assert \"search_files\" in names\n    assert \"grep_search\" in names\n",
+  "body_hash": "1e5b76c07fcab3a0",
   "body_truncated": false,
   "callers_of": [
     "default_registry",
@@ -8,7 +8,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:186.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_tools_builtin.py:186.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "og.source.ass_ade.test_default_registry_has_all_tools",
@@ -27,7 +27,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:186"
+    "source": "C:/!ass-ade/tests/test_tools_builtin.py:186"
   },
   "kind": "product_organism",
   "made_of": [],

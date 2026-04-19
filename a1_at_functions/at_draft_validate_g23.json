@@ -1,6 +1,6 @@
 {
-  "body": "    def validate_g23(self, intent: str, impl: str) -> bool:\n        vi = vector_embed(intent)\n        vc = vector_embed(impl)\n        sim = _cosine(vi, vc)\n        distance = max(0.0, 1.0 - sim) * 10.0\n        return distance <= self._g23_threshold\n",
-  "body_hash": "cd55d1f8ed36414d",
+  "body": "def validate_g23(self, intent: str, impl: str) -> bool:\n    vi = vector_embed(intent)\n    vc = vector_embed(impl)\n    sim = _cosine(vi, vc)\n    distance = max(0.0, 1.0 - sim) * 10.0\n    return distance <= self._g23_threshold\n",
+  "body_hash": "442bd79694a7497b",
   "body_truncated": false,
   "callers_of": [
     "vector_embed",
@@ -8,13 +8,18 @@
     "max"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_sam.py:30.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/sam.py:50.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.validate_g23",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "ass_ade.context_memory.vector_embed"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_sam.py:30"
+    "source": "C:/!ass-ade/src/ass_ade/agent/sam.py:50"
   },
   "kind": "pure_function",
   "made_of": [],

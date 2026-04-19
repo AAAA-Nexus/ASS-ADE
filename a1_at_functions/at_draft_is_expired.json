@@ -1,12 +1,12 @@
 {
-  "body": "    def is_expired(self) -> bool:\n        return time.time() > self.expires if self.expires else False\n",
-  "body_hash": "32a6ff328571f49c",
+  "body": "def is_expired(self) -> bool:\n    return time.time() > self.expires if self.expires else False\n",
+  "body_hash": "a5582effa1786b9a",
   "body_truncated": false,
   "callers_of": [
     "time"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/x402.py:102.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/x402.py:102.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.is_expired",
@@ -21,7 +21,7 @@
     "logging"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/x402.py:102"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/x402.py:102"
   },
   "kind": "pure_function",
   "made_of": [],

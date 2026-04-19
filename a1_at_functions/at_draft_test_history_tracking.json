@@ -1,6 +1,6 @@
 {
-  "body": "    def test_history_tracking(self):\n        router = EpistemicRouter()\n        router.route(\"Hello\")\n        router.route(\"Write a complex algorithm with formal proof\")\n        assert len(router.history) == 2\n",
-  "body_hash": "5c254abab46611f0",
+  "body": "def test_history_tracking(self):\n    router = EpistemicRouter()\n    router.route(\"Hello\")\n    router.route(\"Write a complex algorithm with formal proof\")\n    assert len(router.history) == 2\n",
+  "body_hash": "11d80d919f116d5c",
   "body_truncated": false,
   "callers_of": [
     "EpistemicRouter",
@@ -8,7 +8,7 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_routing.py:96.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_routing.py:96.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_history_tracking",
@@ -22,7 +22,7 @@
     "ass_ade.agent.routing.tier_for_complexity"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_routing.py:96"
+    "source": "C:/!ass-ade/tests/test_routing.py:96"
   },
   "kind": "pure_function",
   "made_of": [],

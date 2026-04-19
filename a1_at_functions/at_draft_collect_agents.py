@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/capabilities.py:140
+# Extracted from C:/!ass-ade/src/ass_ade/agent/capabilities.py:154
 # Component id: at.source.ass_ade.collect_agents
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def collect_agents(working_dir: str | Path = ".") -> list[CapabilityEntry]:

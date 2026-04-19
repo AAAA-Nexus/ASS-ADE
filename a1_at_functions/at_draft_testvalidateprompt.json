@@ -7,7 +7,7 @@
     "raises"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_validation.py:43.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_validation.py:43.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.testvalidateprompt",
@@ -21,7 +21,7 @@
     "ass_ade.nexus.validation.validate_usdc_amount"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_validation.py:43"
+    "source": "C:/!ass-ade/tests/test_validation.py:43"
   },
   "kind": "pure_class",
   "made_of": [],

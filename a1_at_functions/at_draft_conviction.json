@@ -1,10 +1,10 @@
 {
-  "body": "    def conviction(self) -> float:\n        return self._conviction\n",
-  "body_hash": "76b12d86cdbab32f",
+  "body": "def conviction(self) -> float:\n    return self._conviction\n",
+  "body_hash": "731390bb6f0ac51f",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/wisdom.py:52.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/wisdom.py:52.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.conviction",
@@ -19,7 +19,7 @@
     "ass_ade.context_memory.store_vector_memory"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/wisdom.py:52"
+    "source": "C:/!ass-ade/src/ass_ade/agent/wisdom.py:52"
   },
   "kind": "pure_function",
   "made_of": [],

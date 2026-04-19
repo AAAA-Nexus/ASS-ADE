@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_scan_long_functions.py:5
+# Extracted from C:/!ass-ade/src/ass_ade/local/enhancer.py:77
 # Component id: at.source.ass_ade.scan_long_functions
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def scan_long_functions(root: Path) -> list[dict[str, Any]]:

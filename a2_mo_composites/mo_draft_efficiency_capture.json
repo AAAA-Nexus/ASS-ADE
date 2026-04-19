@@ -1,12 +1,12 @@
 {
-  "body": "    def efficiency_capture(self, interactions: list[dict], **kwargs: Any) -> EfficiencyResult:\n        \"\"\"/v1/efficiency \u2014 ROI signal across agent interactions (PAY-506). $0.040/call\"\"\"\n        return self._post_model(\"/v1/efficiency\", EfficiencyResult, {\"interactions\": interactions, **kwargs})\n",
-  "body_hash": "8a0149f4c5386897",
+  "body": "def efficiency_capture(self, interactions: list[dict], **kwargs: Any) -> EfficiencyResult:\n    \"\"\"/v1/efficiency \u2014 ROI signal across agent interactions (PAY-506). $0.040/call\"\"\"\n    return self._post_model(\"/v1/efficiency\", EfficiencyResult, {\"interactions\": interactions, **kwargs})\n",
+  "body_hash": "bcd8ff1dd94cebf1",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1177.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1177.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.efficiency_capture",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1177"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1177"
   },
   "kind": "engine_molecule",
   "made_of": [],

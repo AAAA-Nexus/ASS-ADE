@@ -14,7 +14,7 @@
     "MCPTool"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp.py:211.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp.py:211.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.test_mcp_estimate_cost_free_tool",
@@ -37,7 +37,7 @@
     "ass_ade.mcp.mock_server.start_server"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp.py:211"
+    "source": "C:/!ass-ade/tests/test_mcp.py:211"
   },
   "kind": "ecosystem_system",
   "made_of": [],

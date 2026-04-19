@@ -1,12 +1,12 @@
 {
-  "body": "    def security_zero_day(self, payload: dict, **kwargs: Any) -> ZeroDayResult:\n        \"\"\"/v1/security/zero-day \u2014 zero-day pattern detector for agent payloads. $0.040/request\"\"\"\n        return self._post_model(\"/v1/security/zero-day\", ZeroDayResult, {\"payload\": payload, **kwargs})\n",
-  "body_hash": "b239574c969667ec",
+  "body": "def security_zero_day(self, payload: dict, **kwargs: Any) -> ZeroDayResult:\n    \"\"\"/v1/security/zero-day \u2014 zero-day pattern detector for agent payloads. $0.040/request\"\"\"\n    return self._post_model(\"/v1/security/zero-day\", ZeroDayResult, {\"payload\": payload, **kwargs})\n",
+  "body_hash": "0e8ea003987c4a77",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:692.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:692.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.security_zero_day",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:692"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:692"
   },
   "kind": "engine_molecule",
   "made_of": [],

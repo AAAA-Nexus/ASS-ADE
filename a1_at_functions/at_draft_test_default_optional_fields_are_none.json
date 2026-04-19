@@ -1,18 +1,30 @@
 {
-  "body": "    def test_default_optional_fields_are_none(self) -> None:\n        err = NexusError(\"minimal\")\n        assert err.status_code is None\n        assert err.endpoint is None\n        assert err.retry_after is None\n",
-  "body_hash": "859ebbcff5921d58",
+  "body": "def test_default_optional_fields_are_none(self) -> None:\n    err = NexusError(\"minimal\")\n    assert err.status_code is None\n    assert err.endpoint is None\n    assert err.retry_after is None\n",
+  "body_hash": "9a4f7eb53d2f9b2c",
   "body_truncated": false,
   "callers_of": [
     "NexusError"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexuserrorhierarchy.py:29.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_errors.py:43.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_default_optional_fields_are_none",
-  "imports": [],
+  "imports": [
+    "pytest",
+    "ass_ade.nexus.errors.NexusAuthError",
+    "ass_ade.nexus.errors.NexusCircuitOpen",
+    "ass_ade.nexus.errors.NexusConnectionError",
+    "ass_ade.nexus.errors.NexusError",
+    "ass_ade.nexus.errors.NexusPaymentRequired",
+    "ass_ade.nexus.errors.NexusRateLimited",
+    "ass_ade.nexus.errors.NexusServerError",
+    "ass_ade.nexus.errors.NexusTimeoutError",
+    "ass_ade.nexus.errors.NexusValidationError",
+    "ass_ade.nexus.errors.raise_for_status"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexuserrorhierarchy.py:29"
+    "source": "C:/!ass-ade/tests/test_errors.py:43"
   },
   "kind": "pure_function",
   "made_of": [],

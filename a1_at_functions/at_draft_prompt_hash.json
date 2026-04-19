@@ -12,7 +12,7 @@
     "sha256"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/prompt_toolkit.py:110.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/prompt_toolkit.py:110.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.prompt_hash",
@@ -28,7 +28,7 @@
     "pydantic.Field"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/prompt_toolkit.py:110"
+    "source": "C:/!ass-ade/src/ass_ade/prompt_toolkit.py:110"
   },
   "kind": "pure_function",
   "made_of": [],

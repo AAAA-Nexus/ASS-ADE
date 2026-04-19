@@ -1,20 +1,28 @@
 {
-  "body": "    def tick(self) -> BatchResult | None:\n        \"\"\"Advance step counter. Returns BatchResult if batch was submitted.\"\"\"\n        self._step_count += 1\n        if self._step_count % self._batch_interval == 0 and self._pending:\n            return self.contribute_batch()\n        return None\n",
-  "body_hash": "d500bd597b8346d3",
+  "body": "def tick(self) -> BatchResult | None:\n    \"\"\"Advance step counter. Returns BatchResult if batch was submitted.\"\"\"\n    self._step_count += 1\n    if self._step_count % self._batch_interval == 0 and self._pending:\n        return self.contribute_batch()\n    return None\n",
+  "body_hash": "ee2daf15e616a201",
   "body_truncated": false,
   "callers_of": [
     "contribute_batch"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_loraflywheel.py:132.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/lora_flywheel.py:191.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.tick",
   "imports": [
+    "__future__.annotations",
+    "json",
+    "logging",
+    "time",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "pathlib.Path",
+    "typing.Any",
     "hashlib"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_loraflywheel.py:132"
+    "source": "C:/!ass-ade/src/ass_ade/agent/lora_flywheel.py:191"
   },
   "kind": "pure_function",
   "made_of": [],

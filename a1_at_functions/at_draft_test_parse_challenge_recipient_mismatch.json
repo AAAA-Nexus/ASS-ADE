@@ -1,6 +1,6 @@
 {
-  "body": "    def test_parse_challenge_recipient_mismatch(self) -> None:\n        \"\"\"Recipient mismatches should be rejected before consent.\"\"\"\n        flow = X402ClientFlow()\n        challenge = flow.parse_challenge({\n            \"recipient\": \"0x0000000000000000000000000000000000000001\",\n            \"amount_micro_usdc\": 1000,\n            \"expires\": 9999999999,\n        })\n        assert challenge is None\n        assert \"treasury\" in flow.last_error.lower()\n",
-  "body_hash": "5e892e778b02cdeb",
+  "body": "def test_parse_challenge_recipient_mismatch(self) -> None:\n    \"\"\"Recipient mismatches should be rejected before consent.\"\"\"\n    flow = X402ClientFlow()\n    challenge = flow.parse_challenge({\n        \"recipient\": \"0x0000000000000000000000000000000000000001\",\n        \"amount_micro_usdc\": 1000,\n        \"expires\": 9999999999,\n    })\n    assert challenge is None\n    assert \"treasury\" in flow.last_error.lower()\n",
+  "body_hash": "c04002f4d0b946f2",
   "body_truncated": false,
   "callers_of": [
     "X402ClientFlow",
@@ -8,7 +8,7 @@
     "lower"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:195.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_x402_flow.py:195.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_parse_challenge_recipient_mismatch",
@@ -34,7 +34,7 @@
     "ass_ade.nexus.x402.BASE_SEPOLIA_CHAIN_ID"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:195"
+    "source": "C:/!ass-ade/tests/test_x402_flow.py:195"
   },
   "kind": "pure_function",
   "made_of": [],

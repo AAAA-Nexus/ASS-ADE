@@ -1,6 +1,6 @@
 {
-  "body": "    def test_wallet_testnet_on(self, tmp_path: Path) -> None:\n        result = runner.invoke(\n            app, [\"wallet\", \"--config\", str(_hybrid_config(tmp_path))],\n            env={\"ATOMADIC_X402_TESTNET\": \"1\"},\n        )\n        assert result.exit_code == 0\n",
-  "body_hash": "f2afdf96193eb287",
+  "body": "def test_wallet_testnet_on(self, tmp_path: Path) -> None:\n    result = runner.invoke(\n        app, [\"wallet\", \"--config\", str(_hybrid_config(tmp_path))],\n        env={\"ATOMADIC_X402_TESTNET\": \"1\"},\n    )\n    assert result.exit_code == 0\n",
+  "body_hash": "f50cb76e00de7199",
   "body_truncated": false,
   "callers_of": [
     "invoke",
@@ -8,7 +8,7 @@
     "_hybrid_config"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:405.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_x402_flow.py:405.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_wallet_testnet_on",
@@ -34,7 +34,7 @@
     "ass_ade.nexus.x402.BASE_SEPOLIA_CHAIN_ID"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:405"
+    "source": "C:/!ass-ade/tests/test_x402_flow.py:405"
   },
   "kind": "pure_function",
   "made_of": [],

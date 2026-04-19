@@ -1,6 +1,6 @@
 {
-  "body": "    def simulate(self, patch: Any, cycles: int | None = None) -> SimulationResult:\n        \"\"\"Real DGM-H simulation. Accepts Patch or dict (spec-compliant).\"\"\"\n        p = _coerce_patch(patch)\n        n = cycles if cycles is not None else self._sim_cycles\n\n        # Sovereign invariant check first; early halt on violation.\n        violations = self._check_violations(p)\n        constitutional = bool(violations)\n\n        # Deterministic seeds so the same patch id reproduces.\n        seed_before = int(hashlib.sha256((p.id + \"|before\").encode()).hexdigest()[:8], 16)\n        seed_after = int(hashlib.sha256((p.id + \"|after\").encode()).hexdigest()[:8], 16)\n\n        before = self._run_one(p, suffix=\"\", seed=seed_before, cycles=n)\n        suffix = _patch_prompt_suffix(p)\n        after = self._run_one(p, suffix=suffix, seed=seed_after, cycles=n)\n\n        weighted_before = before[\"weighted\"]\n        weighted_after = after[\"weighted\"]\n        denom = abs(weighted_before) if abs(weighted_before) > 1e-9 else 1e-9\n        improvement = (weighted_after - weighted_before) / denom\n\n        noise_sigma = max(before[\"noise_sigma\"], after[\"noise_sigma\"], 1e-6)\n        # Require improvement to exceed both threshold and 2\u03c3 of noise.\n        meaningful = improvement >= self._threshold and improvement > (2.0 * noise_sigma)\n        if not meaningful and not suffix:\n            # Opaque patch: no prompt-level change \u2192 treat as no improvement.\n            improvement = min(improvement, 0.0)\n\n        per_cycle_metrics: list[dict[str, Any]] = [\n            {\"phase\": \"before\", **{k: v for k, v in before.items() if k != \"per_task\"}},\n            {\"phase\": \"after\", **{k: v for k, v in after.items() if k != \"per_task\"}},\n        ]\n\n        result = SimulationResult(\n            patch_id=p.id,\n            cycles=n,\n            improvement=improvement,\n            weighted_before=weighted_before,\n            weighted_after=weighted_after,\n            noise_sigma=noise_sigma,\n            constitutional_violation=constitutional,\n            per_cycle_metrics=per_cycle_metrics,\n            violations=violations,\n            threshold=self._threshold,\n        )\n\n        # Persist artifact.\n        try:\n            self._state_dir.mkdir(parents=True, exist_ok=True)\n            ts = datetime.now(UTC).strftime(\"%Y%m%dT%H%M%S%f\")\n            artifact = self._state_dir / f\"{ts}_{p.id}.json\"\n            artifact.write_text(\n                json.dumps(asdict(result), indent=2, default=str),\n                encoding=\"utf-8\",\n            )\n            result.artifact_path = str(artifact)\n        except OSError:\n            # Never fail the sim due to disk issues.\n            pass\n        return result\n",
-  "body_hash": "cfa0be85f79cba63",
+  "body": "def simulate(self, patch: Any, cycles: int | None = None) -> SimulationResult:\n    \"\"\"Real DGM-H simulation. Accepts Patch or dict (spec-compliant).\"\"\"\n    p = _coerce_patch(patch)\n    n = cycles if cycles is not None else self._sim_cycles\n\n    # Sovereign invariant check first; early halt on violation.\n    violations = self._check_violations(p)\n    constitutional = bool(violations)\n\n    # Deterministic seeds so the same patch id reproduces.\n    seed_before = int(hashlib.sha256((p.id + \"|before\").encode()).hexdigest()[:8], 16)\n    seed_after = int(hashlib.sha256((p.id + \"|after\").encode()).hexdigest()[:8], 16)\n\n    before = self._run_one(p, suffix=\"\", seed=seed_before, cycles=n)\n    suffix = _patch_prompt_suffix(p)\n    after = self._run_one(p, suffix=suffix, seed=seed_after, cycles=n)\n\n    weighted_before = before[\"weighted\"]\n    weighted_after = after[\"weighted\"]\n    denom = abs(weighted_before) if abs(weighted_before) > 1e-9 else 1e-9\n    improvement = (weighted_after - weighted_before) / denom\n\n    noise_sigma = max(before[\"noise_sigma\"], after[\"noise_sigma\"], 1e-6)\n    # Require improvement to exceed both threshold and 2\u03c3 of noise.\n    meaningful = improvement >= self._threshold and improvement > (2.0 * noise_sigma)\n    if not meaningful and not suffix:\n        # Opaque patch: no prompt-level change \u2192 treat as no improvement.\n        improvement = min(improvement, 0.0)\n\n    per_cycle_metrics: list[dict[str, Any]] = [\n        {\"phase\": \"before\", **{k: v for k, v in before.items() if k != \"per_task\"}},\n        {\"phase\": \"after\", **{k: v for k, v in after.items() if k != \"per_task\"}},\n    ]\n\n    result = SimulationResult(\n        patch_id=p.id,\n        cycles=n,\n        improvement=improvement,\n        weighted_before=weighted_before,\n        weighted_after=weighted_after,\n        noise_sigma=noise_sigma,\n        constitutional_violation=constitutional,\n        per_cycle_metrics=per_cycle_metrics,\n        violations=violations,\n        threshold=self._threshold,\n    )\n\n    # Persist artifact.\n    try:\n        self._state_dir.mkdir(parents=True, exist_ok=True)\n        ts = datetime.now(UTC).strftime(\"%Y%m%dT%H%M%S%f\")\n        artifact = self._state_dir / f\"{ts}_{p.id}.json\"\n        artifact.write_text(\n            json.dumps(asdict(result), indent=2, default=str),\n            encoding=\"utf-8\",\n        )\n        result.artifact_path = str(artifact)\n    except OSError:\n        # Never fail the sim due to disk issues.\n        pass\n    return result\n",
+  "body_hash": "b5b1a5872be4cf27",
   "body_truncated": false,
   "callers_of": [
     "_coerce_patch",
@@ -26,15 +26,27 @@
     "encode"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_dgmh.py:124.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/dgm_h.py:246.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.simulate",
   "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "math",
+    "random",
+    "dataclasses.asdict",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.UTC",
+    "datetime.datetime",
+    "pathlib.Path",
+    "typing.Any",
     "ass_ade.agent.golden_runner.run_golden"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_dgmh.py:124"
+    "source": "C:/!ass-ade/src/ass_ade/agent/dgm_h.py:246"
   },
   "kind": "pure_function",
   "made_of": [],

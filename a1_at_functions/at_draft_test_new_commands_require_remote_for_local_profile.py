@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_new_commands_require_remote_for_local_profile.py:5
+# Extracted from C:/!ass-ade/tests/test_new_commands.py:85
 # Component id: at.source.ass_ade.test_new_commands_require_remote_for_local_profile
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_new_commands_require_remote_for_local_profile(

@@ -1,12 +1,12 @@
 {
-  "body": "    def compliance_check(self, system_description: str, **kwargs: Any) -> ComplianceResult:\n        \"\"\"/v1/compliance/check \u2014 EU AI Act / NIST AI RMF / ISO 42001 (CMP-100). $0.040/check\"\"\"\n        return self._post_model(\"/v1/compliance/check\", ComplianceResult, {\"system_description\": system_description, **kwargs})\n",
-  "body_hash": "4273b4f5353b0bd3",
+  "body": "def compliance_check(self, system_description: str, **kwargs: Any) -> ComplianceResult:\n    \"\"\"/v1/compliance/check \u2014 EU AI Act / NIST AI RMF / ISO 42001 (CMP-100). $0.040/check\"\"\"\n    return self._post_model(\"/v1/compliance/check\", ComplianceResult, {\"system_description\": system_description, **kwargs})\n",
+  "body_hash": "8c6b75d37f4fbec7",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:710.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:710.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.compliance_check",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:710"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:710"
   },
   "kind": "engine_molecule",
   "made_of": [],

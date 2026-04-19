@@ -1,13 +1,13 @@
 {
-  "body": "    def forge_badge(self, badge_id: str, **kwargs: Any) -> ForgeBadgeResult:\n        \"\"\"GET /v1/forge/badge/{id} \u2014 retrieve Forge badge metadata. Free.\"\"\"\n        return self._get_model(f\"/v1/forge/badge/{_pseg(badge_id, 'badge_id')}\", ForgeBadgeResult, **kwargs)\n",
-  "body_hash": "be1baf8e696acefe",
+  "body": "def forge_badge(self, badge_id: str, **kwargs: Any) -> ForgeBadgeResult:\n    \"\"\"GET /v1/forge/badge/{id} \u2014 retrieve Forge badge metadata. Free.\"\"\"\n    return self._get_model(f\"/v1/forge/badge/{_pseg(badge_id, 'badge_id')}\", ForgeBadgeResult, **kwargs)\n",
+  "body_hash": "5b4ccc2be4381097",
   "body_truncated": false,
   "callers_of": [
     "_get_model",
     "_pseg"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1363.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1363.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.forge_badge",
@@ -161,7 +161,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1363"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1363"
   },
   "kind": "engine_molecule",
   "made_of": [],

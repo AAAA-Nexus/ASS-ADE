@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_train.py:101
+# Extracted from C:/!ass-ade/scripts/lora_train.py:101
 # Component id: at.source.ass_ade.train_adapter
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def train_adapter(cfg: TrainConfig, samples: list[dict[str, Any]]) -> Path:

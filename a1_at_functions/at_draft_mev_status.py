@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/cli.py:2907
+# Extracted from C:/!ass-ade/src/ass_ade/cli.py:2908
 # Component id: at.source.ass_ade.mev_status
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def mev_status(

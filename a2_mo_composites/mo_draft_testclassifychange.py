@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testclassifychange.py:5
+# Extracted from C:/!ass-ade/tests/test_version_tracker.py:88
 # Component id: mo.source.ass_ade.testclassifychange
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class TestClassifyChange:

@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_collect_git_state.py:5
+# Extracted from C:/!ass-ade/src/ass_ade/protocol/evolution.py:99
 # Component id: at.source.ass_ade.collect_git_state
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def collect_git_state(root: Path) -> EvolutionGitState:

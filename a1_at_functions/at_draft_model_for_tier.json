@@ -1,18 +1,24 @@
 {
-  "body": "    def model_for_tier(self, tier: str, override: dict[str, str] | None = None) -> str | None:\n        \"\"\"Get the model id for a tier, honoring config overrides.\"\"\"\n        tier = TIER_ALIASES.get(tier, tier)\n        if override and tier in override:\n            return override[tier]\n        return self.models_by_tier.get(tier)\n",
-  "body_hash": "8a2f5eab5d650c1d",
+  "body": "def model_for_tier(self, tier: str, override: dict[str, str] | None = None) -> str | None:\n    \"\"\"Get the model id for a tier, honoring config overrides.\"\"\"\n    tier = TIER_ALIASES.get(tier, tier)\n    if override and tier in override:\n        return override[tier]\n    return self.models_by_tier.get(tier)\n",
+  "body_hash": "ae9edff433fab6d1",
   "body_truncated": false,
   "callers_of": [
     "get"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_providerprofile.py:34.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/providers.py:73.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.model_for_tier",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_providerprofile.py:34"
+    "source": "C:/!ass-ade/src/ass_ade/agent/providers.py:73"
   },
   "kind": "pure_function",
   "made_of": [],

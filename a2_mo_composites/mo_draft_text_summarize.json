@@ -1,12 +1,12 @@
 {
-  "body": "    def text_summarize(self, text: str, **kwargs: Any) -> TextSummary:\n        \"\"\"/v1/text/summarize \u2014 1-3 sentence extractive summary. $0.040/request\"\"\"\n        return self._post_model(\"/v1/text/summarize\", TextSummary, {\"text\": text, **kwargs})\n",
-  "body_hash": "36f00b47ab3ee262",
+  "body": "def text_summarize(self, text: str, **kwargs: Any) -> TextSummary:\n    \"\"\"/v1/text/summarize \u2014 1-3 sentence extractive summary. $0.040/request\"\"\"\n    return self._post_model(\"/v1/text/summarize\", TextSummary, {\"text\": text, **kwargs})\n",
+  "body_hash": "d3048fabf953c322",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1128.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1128.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.text_summarize",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1128"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1128"
   },
   "kind": "engine_molecule",
   "made_of": [],

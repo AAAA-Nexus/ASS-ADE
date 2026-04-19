@@ -1,6 +1,6 @@
 {
-  "body": "    def test_multiple_tools(self):\n        tools = [\n            ToolSchema(name=f\"tool_{i}\", description=f\"Tool number {i}\", parameters={\"type\": \"object\"})\n            for i in range(5)\n        ]\n        tokens = estimate_tools_tokens(tools)\n        assert tokens > estimate_tools_tokens(tools[:1])\n",
-  "body_hash": "2bbd5522d477789e",
+  "body": "def test_multiple_tools(self):\n    tools = [\n        ToolSchema(name=f\"tool_{i}\", description=f\"Tool number {i}\", parameters={\"type\": \"object\"})\n        for i in range(5)\n    ]\n    tokens = estimate_tools_tokens(tools)\n    assert tokens > estimate_tools_tokens(tools[:1])\n",
+  "body_hash": "d63cc78f98ac7152",
   "body_truncated": false,
   "callers_of": [
     "estimate_tools_tokens",
@@ -8,13 +8,24 @@
     "range"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testestimatetoolstokens.py:18.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_tokens.py:85.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "qk.source.ass_ade.test_multiple_tools",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "ass_ade.engine.tokens.DEFAULT_CONTEXT_WINDOW",
+    "ass_ade.engine.tokens.RESPONSE_RESERVE",
+    "ass_ade.engine.tokens.TokenBudget",
+    "ass_ade.engine.tokens.context_window_for",
+    "ass_ade.engine.tokens.estimate_message_tokens",
+    "ass_ade.engine.tokens.estimate_tokens",
+    "ass_ade.engine.tokens.estimate_tools_tokens",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolSchema"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testestimatetoolstokens.py:18"
+    "source": "C:/!ass-ade/tests/test_tokens.py:85"
   },
   "kind": "invariant",
   "made_of": [],

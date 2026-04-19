@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp.py:107
+# Extracted from C:/!ass-ade/tests/test_mcp.py:107
 # Component id: sy.source.ass_ade.test_invoke_tool_forwards_api_key
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_invoke_tool_forwards_api_key() -> None:

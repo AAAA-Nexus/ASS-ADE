@@ -1,18 +1,26 @@
 {
-  "body": "    def test_strips_whitespace(self) -> None:\n        assert validate_agent_id(\"  agent-1  \") == \"agent-1\"\n",
-  "body_hash": "8c1091d77e339c52",
+  "body": "def test_strips_whitespace(self) -> None:\n    assert validate_agent_id(\"  agent-1  \") == \"agent-1\"\n",
+  "body_hash": "1ea9c0a5297432ef",
   "body_truncated": false,
   "callers_of": [
     "validate_agent_id"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateagentid.py:11.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_validation.py:21.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_strips_whitespace",
-  "imports": [],
+  "imports": [
+    "pytest",
+    "ass_ade.nexus.validation._is_private_host",
+    "ass_ade.nexus.validation.validate_agent_id",
+    "ass_ade.nexus.validation.validate_prompt",
+    "ass_ade.nexus.validation.validate_session_id",
+    "ass_ade.nexus.validation.validate_url",
+    "ass_ade.nexus.validation.validate_usdc_amount"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateagentid.py:11"
+    "source": "C:/!ass-ade/tests/test_validation.py:21"
   },
   "kind": "pure_function",
   "made_of": [],

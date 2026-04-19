@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_parallel_recon.py:304
+# Extracted from C:/!ass-ade/tests/test_parallel_recon.py:304
 # Component id: at.source.ass_ade.test_doc_agent_coverage
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_doc_agent_coverage(tmp_path: Path) -> None:

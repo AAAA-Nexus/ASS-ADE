@@ -1,10 +1,10 @@
 {
-  "body": "    def test_catalog_includes_groq_chutes_nexus(self):\n        \"\"\"The three most important providers for a no-budget user must be in the catalog.\"\"\"\n        assert \"groq\" in FREE_PROVIDERS\n        assert \"chutes\" in FREE_PROVIDERS\n        assert \"nexus\" in FREE_PROVIDERS\n",
-  "body_hash": "53d9bd46a176b1d2",
+  "body": "def test_catalog_includes_groq_chutes_nexus(self):\n    \"\"\"The three most important providers for a no-budget user must be in the catalog.\"\"\"\n    assert \"groq\" in FREE_PROVIDERS\n    assert \"chutes\" in FREE_PROVIDERS\n    assert \"nexus\" in FREE_PROVIDERS\n",
+  "body_hash": "dced6b928ca2365f",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:34.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:34.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_catalog_includes_groq_chutes_nexus",
@@ -83,7 +83,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:34"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:34"
   },
   "kind": "pure_function",
   "made_of": [],

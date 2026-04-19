@@ -1,12 +1,12 @@
 {
-  "body": "    def inference(self, prompt: str, **kwargs: Any) -> InferenceResponse:\n        \"\"\"/v1/inference \u2014 Llama 3.1 8B via Cloudflare Workers AI. $0.060/call\"\"\"\n        return self._post_model(\"/v1/inference\", InferenceResponse, {\"prompt\": prompt, **kwargs})\n",
-  "body_hash": "b6394e5d5061dd4a",
+  "body": "def inference(self, prompt: str, **kwargs: Any) -> InferenceResponse:\n    \"\"\"/v1/inference \u2014 Llama 3.1 8B via Cloudflare Workers AI. $0.060/call\"\"\"\n    return self._post_model(\"/v1/inference\", InferenceResponse, {\"prompt\": prompt, **kwargs})\n",
+  "body_hash": "a29142496678ac49",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:417.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:417.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.inference",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:417"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:417"
   },
   "kind": "engine_molecule",
   "made_of": [],

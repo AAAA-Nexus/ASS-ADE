@@ -1,6 +1,6 @@
 {
-  "body": "    def test_gate_action_blocks_below_conviction(self) -> None:\n        w = WisdomEngine({})\n        w.run_audit({})  # conviction \u2192 0.25\n        ok, reason = w.gate_action(\"deploy_to_prod\", {})\n        assert not ok\n        assert \"conviction\" in reason\n",
-  "body_hash": "2eb77dd038cd3aef",
+  "body": "def test_gate_action_blocks_below_conviction(self) -> None:\n    w = WisdomEngine({})\n    w.run_audit({})  # conviction \u2192 0.25\n    ok, reason = w.gate_action(\"deploy_to_prod\", {})\n    assert not ok\n    assert \"conviction\" in reason\n",
+  "body_hash": "1fd74d499c38943b",
   "body_truncated": false,
   "callers_of": [
     "WisdomEngine",
@@ -8,7 +8,7 @@
     "gate_action"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:113.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:113.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_gate_action_blocks_below_conviction",
@@ -36,10 +36,13 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:113"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:113"
   },
   "kind": "engine_molecule",
-  "made_of": [],
+  "made_of": [
+    "at.source.ass_ade.run_audit",
+    "at.source.ass_ade.gate_action"
+  ],
   "name": "test_gate_action_blocks_below_conviction",
   "product_categories": [
     "COR"

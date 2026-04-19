@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_workflows.py:176
+# Extracted from C:/!ass-ade/tests/test_workflows.py:176
 # Component id: og.source.ass_ade.testsafeexecute
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class TestSafeExecute:

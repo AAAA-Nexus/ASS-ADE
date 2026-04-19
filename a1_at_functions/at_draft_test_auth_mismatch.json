@@ -1,6 +1,6 @@
 {
-  "body": "    def test_auth_mismatch(self) -> None:\n        local = self._make_card(\"Local\", skills=[(\"s1\", \"S1\")], auth_schemes=[\"api_key\"])\n        remote = self._make_card(\"Remote\", skills=[(\"s1\", \"S1\")], auth_schemes=[\"bearer\"])\n        result = negotiate(local, remote)\n        assert not result.compatible\n        assert not result.auth_compatible\n        assert any(\"Auth mismatch\" in n for n in result.notes)\n",
-  "body_hash": "8e10e0072eebf4af",
+  "body": "def test_auth_mismatch(self) -> None:\n    local = self._make_card(\"Local\", skills=[(\"s1\", \"S1\")], auth_schemes=[\"api_key\"])\n    remote = self._make_card(\"Remote\", skills=[(\"s1\", \"S1\")], auth_schemes=[\"bearer\"])\n    result = negotiate(local, remote)\n    assert not result.compatible\n    assert not result.auth_compatible\n    assert any(\"Auth mismatch\" in n for n in result.notes)\n",
+  "body_hash": "54b7de94a42bf00c",
   "body_truncated": false,
   "callers_of": [
     "_make_card",
@@ -8,7 +8,7 @@
     "any"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:241.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_a2a.py:241.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_auth_mismatch",
@@ -31,7 +31,7 @@
     "httpx"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:241"
+    "source": "C:/!ass-ade/tests/test_a2a.py:241"
   },
   "kind": "pure_function",
   "made_of": [],

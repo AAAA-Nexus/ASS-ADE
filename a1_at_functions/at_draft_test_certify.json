@@ -1,6 +1,6 @@
 {
-  "body": "    def test_certify(self):\n        gates = QualityGates(self._mock_client())\n        result = gates.certify(\"Here is the fixed code.\")\n        assert result is not None\n        assert result[\"certificate_id\"] == \"cert-123\"\n",
-  "body_hash": "0118d313e115cfbd",
+  "body": "def test_certify(self):\n    gates = QualityGates(self._mock_client())\n    result = gates.certify(\"Here is the fixed code.\")\n    assert result is not None\n    assert result[\"certificate_id\"] == \"cert-123\"\n",
+  "body_hash": "bc0398661a325d87",
   "body_truncated": false,
   "callers_of": [
     "QualityGates",
@@ -8,7 +8,7 @@
     "_mock_client"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_agent.py:128.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_agent.py:128.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_certify",
@@ -28,7 +28,7 @@
     "ass_ade.tools.registry.ToolRegistry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_agent.py:128"
+    "source": "C:/!ass-ade/tests/test_agent.py:128"
   },
   "kind": "pure_function",
   "made_of": [],

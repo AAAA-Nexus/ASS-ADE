@@ -1,5 +1,5 @@
 {
-  "module_count": 216,
+  "module_count": 191,
   "modules": [
     {
       "change_type": "new",
@@ -17,12 +17,6 @@
       "change_type": "new",
       "id": "sy.source.ass_ade.atlas",
       "name": "atlas",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.avg_complexity",
-      "name": "avg_complexity",
       "version": "0.1.0"
     },
     {
@@ -207,6 +201,12 @@
     },
     {
       "change_type": "new",
+      "id": "sy.source.ass_ade.fake_run",
+      "name": "fake_run",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
       "id": "sy.source.ass_ade.filter_tasks_by_priority",
       "name": "filter_tasks_by_priority",
       "version": "0.1.0"
@@ -291,12 +291,6 @@
     },
     {
       "change_type": "new",
-      "id": "sy.source.ass_ade.history",
-      "name": "history",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "sy.source.ass_ade.ide",
       "name": "ide",
       "version": "0.1.0"
@@ -323,12 +317,6 @@
       "change_type": "new",
       "id": "sy.source.ass_ade.list_all_tasks",
       "name": "list_all_tasks",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.list_tools",
-      "name": "list_tools",
       "version": "0.1.0"
     },
     {
@@ -585,18 +573,6 @@
     },
     {
       "change_type": "new",
-      "id": "sy.source.ass_ade.test_absolute_localhost_endpoint_raises",
-      "name": "test_absolute_localhost_endpoint_raises",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_absolute_private_ip_endpoint_raises",
-      "name": "test_absolute_private_ip_endpoint_raises",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "sy.source.ass_ade.test_accepted_write_captures_fix",
       "name": "test_accepted_write_captures_fix",
       "version": "0.1.0"
@@ -611,18 +587,6 @@
       "change_type": "new",
       "id": "sy.source.ass_ade.test_apply_includes_diff",
       "name": "test_apply_includes_diff",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_avg_complexity",
-      "name": "test_avg_complexity",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_avg_complexity_empty",
-      "name": "test_avg_complexity_empty",
       "version": "0.1.0"
     },
     {
@@ -687,38 +651,14 @@
     },
     {
       "change_type": "new",
-      "id": "sy.source.ass_ade.test_contains_working_dir",
-      "name": "test_contains_working_dir",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "sy.source.ass_ade.test_context_pack_respects_cancellation_checkpoint",
       "name": "test_context_pack_respects_cancellation_checkpoint",
       "version": "0.1.0"
     },
     {
       "change_type": "new",
-      "id": "sy.source.ass_ade.test_detects_node_project",
-      "name": "test_detects_node_project",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_detects_python_project",
-      "name": "test_detects_python_project",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_discovery_protocol_server_error",
-      "name": "test_discovery_protocol_server_error",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_ecosystem_coordination_happy_path",
-      "name": "test_ecosystem_coordination_happy_path",
+      "id": "sy.source.ass_ade.test_detect_tool_uses_resolved_executable",
+      "name": "test_detect_tool_uses_resolved_executable",
       "version": "0.1.0"
     },
     {
@@ -731,12 +671,6 @@
       "change_type": "new",
       "id": "sy.source.ass_ade.test_failed_write_is_not_cie_gated",
       "name": "test_failed_write_is_not_cie_gated",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_history_tracking",
-      "name": "test_history_tracking",
       "version": "0.1.0"
     },
     {
@@ -759,26 +693,8 @@
     },
     {
       "change_type": "new",
-      "id": "sy.source.ass_ade.test_last_cycle_report_none_before_step",
-      "name": "test_last_cycle_report_none_before_step",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_last_cycle_report_set_after_step",
-      "name": "test_last_cycle_report_set_after_step",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_loop_accepts_orchestrator_param",
-      "name": "test_loop_accepts_orchestrator_param",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_mainnet_by_default",
-      "name": "test_mainnet_by_default",
+      "id": "sy.source.ass_ade.test_llm_router_sends_dynamic_capability_prompt",
+      "name": "test_llm_router_sends_dynamic_capability_prompt",
       "version": "0.1.0"
     },
     {
@@ -897,24 +813,6 @@
     },
     {
       "change_type": "new",
-      "id": "sy.source.ass_ade.test_orchestrator_error_does_not_block_loop",
-      "name": "test_orchestrator_error_does_not_block_loop",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_orchestrator_on_step_end_called",
-      "name": "test_orchestrator_on_step_end_called",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_orchestrator_on_step_start_called",
-      "name": "test_orchestrator_on_step_start_called",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "sy.source.ass_ade.test_owasp_eval_injection_blocked",
       "name": "test_owasp_eval_injection_blocked",
       "version": "0.1.0"
@@ -941,12 +839,6 @@
       "change_type": "new",
       "id": "sy.source.ass_ade.test_preview_returns_diff",
       "name": "test_preview_returns_diff",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_public_absolute_endpoint_allowed_in_simulate",
-      "name": "test_public_absolute_endpoint_allowed_in_simulate",
       "version": "0.1.0"
     },
     {
@@ -987,30 +879,6 @@
     },
     {
       "change_type": "new",
-      "id": "sy.source.ass_ade.test_relative_endpoint_uses_base_url",
-      "name": "test_relative_endpoint_uses_base_url",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_route_with_nexus_exception_falls_back_local",
-      "name": "test_route_with_nexus_exception_falls_back_local",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_route_with_nexus_recommendation",
-      "name": "test_route_with_nexus_recommendation",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_route_without_nexus",
-      "name": "test_route_without_nexus",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "sy.source.ass_ade.test_run_command_is_open_world",
       "name": "test_run_command_is_open_world",
       "version": "0.1.0"
@@ -1019,12 +887,6 @@
       "change_type": "new",
       "id": "sy.source.ass_ade.test_simple_done_event",
       "name": "test_simple_done_event",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_step_without_orchestrator_still_works",
-      "name": "test_step_without_orchestrator_still_works",
       "version": "0.1.0"
     },
     {
@@ -1043,12 +905,6 @@
       "change_type": "new",
       "id": "sy.source.ass_ade.test_tool_call_events",
       "name": "test_tool_call_events",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_tools",
-      "name": "test_tools",
       "version": "0.1.0"
     },
     {
@@ -1157,12 +1013,6 @@
       "change_type": "new",
       "id": "sy.source.ass_ade.test_write_without_read_is_blocked_in_block_mode",
       "name": "test_write_without_read_is_blocked_in_block_mode",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.testagentlooporchestrator",
-      "name": "TestAgentLoopOrchestrator",
       "version": "0.1.0"
     },
     {

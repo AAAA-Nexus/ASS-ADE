@@ -6,7 +6,7 @@
     "rank_findings"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_enhancer.py:185.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_enhancer.py:185.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_rank_findings_reassigns_ids",
@@ -26,7 +26,7 @@
     "ass_ade.local.enhancer.scan_missing_type_hints"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_enhancer.py:185"
+    "source": "C:/!ass-ade/tests/test_enhancer.py:185"
   },
   "kind": "pure_function",
   "made_of": [],

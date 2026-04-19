@@ -1,6 +1,6 @@
 {
-  "body": "    def test_validate_delete_success(self, executor: EditPlanExecutor):\n        plan = EditPlan()\n        plan.add_delete(\"main.py\")\n        errors = executor.validate(plan)\n        assert errors == []\n",
-  "body_hash": "281481cfa987086c",
+  "body": "def test_validate_delete_success(self, executor: EditPlanExecutor):\n    plan = EditPlan()\n    plan.add_delete(\"main.py\")\n    errors = executor.validate(plan)\n    assert errors == []\n",
+  "body_hash": "b94d117ebb353239",
   "body_truncated": false,
   "callers_of": [
     "EditPlan",
@@ -8,13 +8,21 @@
     "validate"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditplanexecutor.py:41.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_plan.py:88.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_validate_delete_success",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.tools.history.FileHistory",
+    "ass_ade.tools.plan.EditKind",
+    "ass_ade.tools.plan.EditPlan",
+    "ass_ade.tools.plan.EditPlanExecutor"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditplanexecutor.py:41"
+    "source": "C:/!ass-ade/tests/test_plan.py:88"
   },
   "kind": "pure_function",
   "made_of": [],

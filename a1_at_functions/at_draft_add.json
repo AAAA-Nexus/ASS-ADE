@@ -1,13 +1,13 @@
 {
-  "body": "    def add(self, name: str, fn: StepFunction) -> Pipeline:\n        \"\"\"Add a step to the pipeline. Returns self for chaining.\"\"\"\n        self._steps.append(_StepEntry(name=name, fn=fn))\n        return self\n",
-  "body_hash": "b9330ec0815545c8",
+  "body": "def add(self, name: str, fn: StepFunction) -> Pipeline:\n    \"\"\"Add a step to the pipeline. Returns self for chaining.\"\"\"\n    self._steps.append(_StepEntry(name=name, fn=fn))\n    return self\n",
+  "body_hash": "99f931f8c6fd6360",
   "body_truncated": false,
   "callers_of": [
     "append",
     "_StepEntry"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/pipeline.py:131.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/pipeline.py:131.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.add",
@@ -25,7 +25,7 @@
     "ass_ade.nexus.validation.validate_agent_id"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/pipeline.py:131"
+    "source": "C:/!ass-ade/src/ass_ade/pipeline.py:131"
   },
   "kind": "pure_function",
   "made_of": [],

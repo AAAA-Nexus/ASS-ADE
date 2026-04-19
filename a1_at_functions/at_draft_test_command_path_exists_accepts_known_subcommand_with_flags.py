@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_capabilities.py:27
+# Extracted from C:/!ass-ade/tests/test_capabilities.py:32
 # Component id: at.source.ass_ade.test_command_path_exists_accepts_known_subcommand_with_flags
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_command_path_exists_accepts_known_subcommand_with_flags(tmp_path: Path) -> None:

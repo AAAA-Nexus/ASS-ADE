@@ -1,12 +1,12 @@
 {
-  "body": "    def lint_analyze(\n        self,\n        path_analysis: dict[str, Any],\n        agent_id: str | None = None,\n    ) -> LintResult:\n        \"\"\"Run monadic lint analysis via AAAA-Nexus synthesis engine.\"\"\"\n        payload: dict[str, Any] = {\"path_analysis\": path_analysis}\n        if agent_id:\n            payload[\"agent_id\"] = agent_id\n        return self._post_model(\"/v1/lint/analyze\", LintResult, payload)\n",
-  "body_hash": "a3c7f55d170bbb10",
+  "body": "def lint_analyze(\n    self,\n    path_analysis: dict[str, Any],\n    agent_id: str | None = None,\n) -> LintResult:\n    \"\"\"Run monadic lint analysis via AAAA-Nexus synthesis engine.\"\"\"\n    payload: dict[str, Any] = {\"path_analysis\": path_analysis}\n    if agent_id:\n        payload[\"agent_id\"] = agent_id\n    return self._post_model(\"/v1/lint/analyze\", LintResult, payload)\n",
+  "body_hash": "68162aa02ff31dea",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1228.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1228.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.lint_analyze",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1228"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1228"
   },
   "kind": "engine_molecule",
   "made_of": [],

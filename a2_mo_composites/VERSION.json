@@ -1,5 +1,5 @@
 {
-  "module_count": 855,
+  "module_count": 781,
   "modules": [
     {
       "change_type": "new",
@@ -35,12 +35,6 @@
       "change_type": "new",
       "id": "mo.source.ass_ade.activeterrainverdict",
       "name": "ActiveTerrainVerdict",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.add_task",
-      "name": "add_task",
       "version": "0.1.0"
     },
     {
@@ -185,12 +179,6 @@
       "change_type": "new",
       "id": "mo.source.ass_ade.anthropicprovider",
       "name": "AnthropicProvider",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.append_history",
-      "name": "append_history",
       "version": "0.1.0"
     },
     {
@@ -363,12 +351,6 @@
     },
     {
       "change_type": "new",
-      "id": "mo.source.ass_ade.boundhandler",
-      "name": "BoundHandler",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "mo.source.ass_ade.break_cycles",
       "name": "break_cycles",
       "version": "0.1.0"
@@ -395,18 +377,6 @@
       "change_type": "new",
       "id": "mo.source.ass_ade.bump_version",
       "name": "bump_version",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.can_pay",
-      "name": "can_pay",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.cancellationcontext",
-      "name": "CancellationContext",
       "version": "0.1.0"
     },
     {
@@ -465,26 +435,8 @@
     },
     {
       "change_type": "new",
-      "id": "mo.source.ass_ade.check_conviction_gate",
-      "name": "check_conviction_gate",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.check_freshness",
-      "name": "check_freshness",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "mo.source.ass_ade.check_tier_purity",
       "name": "check_tier_purity",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.cie",
-      "name": "cie",
       "version": "0.1.0"
     },
     {
@@ -509,12 +461,6 @@
       "change_type": "new",
       "id": "mo.source.ass_ade.classify_change",
       "name": "classify_change",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.clear",
-      "name": "clear",
       "version": "0.1.0"
     },
     {
@@ -705,12 +651,6 @@
     },
     {
       "change_type": "new",
-      "id": "mo.source.ass_ade.conviction",
-      "name": "conviction",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "mo.source.ass_ade.costattribution",
       "name": "CostAttribution",
       "version": "0.1.0"
@@ -731,12 +671,6 @@
       "change_type": "new",
       "id": "mo.source.ass_ade.crypto_toolkit",
       "name": "crypto_toolkit",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.cyclereport",
-      "name": "CycleReport",
       "version": "0.1.0"
     },
     {
@@ -815,12 +749,6 @@
       "change_type": "new",
       "id": "mo.source.ass_ade.delegationvalidation",
       "name": "DelegationValidation",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.delete_task",
-      "name": "delete_task",
       "version": "0.1.0"
     },
     {
@@ -905,24 +833,6 @@
       "change_type": "new",
       "id": "mo.source.ass_ade.discoveryresult",
       "name": "DiscoveryResult",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.distill_principles",
-      "name": "distill_principles",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.do_thing",
-      "name": "do_thing",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.do_thing_2",
-      "name": "do_thing_2",
       "version": "0.1.0"
     },
     {
@@ -1155,12 +1065,6 @@
     },
     {
       "change_type": "new",
-      "id": "mo.source.ass_ade.execute_payment",
-      "name": "execute_payment",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "mo.source.ass_ade.exif",
       "name": "EXIF",
       "version": "0.1.0"
@@ -1293,12 +1197,6 @@
     },
     {
       "change_type": "new",
-      "id": "mo.source.ass_ade.gate_action",
-      "name": "gate_action",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "mo.source.ass_ade.gateresult",
       "name": "GateResult",
       "version": "0.1.0"
@@ -1307,12 +1205,6 @@
       "change_type": "new",
       "id": "mo.source.ass_ade.get_agent_card",
       "name": "get_agent_card",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.get_gaps",
-      "name": "get_gaps",
       "version": "0.1.0"
     },
     {
@@ -1341,32 +1233,8 @@
     },
     {
       "change_type": "new",
-      "id": "mo.source.ass_ade.get_stale_files",
-      "name": "get_stale_files",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.get_statistics",
-      "name": "get_statistics",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.get_task",
-      "name": "get_task",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "mo.source.ass_ade.governance_vote",
       "name": "governance_vote",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.greeting",
-      "name": "greeting",
       "version": "0.1.0"
     },
     {
@@ -1397,12 +1265,6 @@
       "change_type": "new",
       "id": "mo.source.ass_ade.handle_x402",
       "name": "handle_x402",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.handler",
-      "name": "handler",
       "version": "0.1.0"
     },
     {
@@ -1463,12 +1325,6 @@
       "change_type": "new",
       "id": "mo.source.ass_ade.hook_verispec_synthesize",
       "name": "hook_verispec_synthesize",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.hydrate_from_memory",
-      "name": "hydrate_from_memory",
       "version": "0.1.0"
     },
     {
@@ -1539,20 +1395,8 @@
     },
     {
       "change_type": "new",
-      "id": "mo.source.ass_ade.is_confident",
-      "name": "is_confident",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "mo.source.ass_ade.last_provider_name",
       "name": "last_provider_name",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.lifr",
-      "name": "lifr",
       "version": "0.1.0"
     },
     {
@@ -1593,20 +1437,8 @@
     },
     {
       "change_type": "new",
-      "id": "mo.source.ass_ade.list_all_tasks",
-      "name": "list_all_tasks",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "mo.source.ass_ade.listdirectorytool",
       "name": "ListDirectoryTool",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.load",
-      "name": "load",
       "version": "0.1.0"
     },
     {
@@ -1659,12 +1491,6 @@
     },
     {
       "change_type": "new",
-      "id": "mo.source.ass_ade.lora_flywheel",
-      "name": "lora_flywheel",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "mo.source.ass_ade.lora_reward_claim",
       "name": "lora_reward_claim",
       "version": "0.1.0"
@@ -1677,8 +1503,8 @@
     },
     {
       "change_type": "new",
-      "id": "mo.source.ass_ade.lse",
-      "name": "lse",
+      "id": "mo.source.ass_ade.loraflywheel",
+      "name": "LoRAFlywheel",
       "version": "0.1.0"
     },
     {
@@ -1815,12 +1641,6 @@
     },
     {
       "change_type": "new",
-      "id": "mo.source.ass_ade.ncb_contract",
-      "name": "ncb_contract",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "mo.source.ass_ade.negotiationresult",
       "name": "NegotiationResult",
       "version": "0.1.0"
@@ -1899,30 +1719,6 @@
     },
     {
       "change_type": "new",
-      "id": "mo.source.ass_ade.nullcancellationcontext",
-      "name": "NullCancellationContext",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.on_step_end",
-      "name": "on_step_end",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.on_step_start",
-      "name": "on_step_start",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.on_tool_event",
-      "name": "on_tool_event",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "mo.source.ass_ade.openaicompatibleprovider",
       "name": "OpenAICompatibleProvider",
       "version": "0.1.0"
@@ -1971,12 +1767,6 @@
     },
     {
       "change_type": "new",
-      "id": "mo.source.ass_ade.persist_principles",
-      "name": "persist_principles",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "mo.source.ass_ade.phase0reconresult",
       "name": "Phase0ReconResult",
       "version": "0.1.0"
@@ -2021,12 +1811,6 @@
       "change_type": "new",
       "id": "mo.source.ass_ade.pqcsignresult",
       "name": "PqcSignResult",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.pre_synthesis_check",
-      "name": "pre_synthesis_check",
       "version": "0.1.0"
     },
     {
@@ -2265,26 +2049,8 @@
     },
     {
       "change_type": "new",
-      "id": "mo.source.ass_ade.recent_history",
-      "name": "recent_history",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "mo.source.ass_ade.reconreport",
       "name": "ReconReport",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.record_gap",
-      "name": "record_gap",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.record_read",
-      "name": "record_read",
       "version": "0.1.0"
     },
     {
@@ -2303,12 +2069,6 @@
       "change_type": "new",
       "id": "mo.source.ass_ade.render_rebuild_summary",
       "name": "render_rebuild_summary",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.report",
-      "name": "report",
       "version": "0.1.0"
     },
     {
@@ -2409,12 +2169,6 @@
     },
     {
       "change_type": "new",
-      "id": "mo.source.ass_ade.run_audit",
-      "name": "run_audit",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "mo.source.ass_ade.runcommandtool",
       "name": "RunCommandTool",
       "version": "0.1.0"
@@ -2451,12 +2205,6 @@
     },
     {
       "change_type": "new",
-      "id": "mo.source.ass_ade.save",
-      "name": "save",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "mo.source.ass_ade.scan_source_symbols",
       "name": "scan_source_symbols",
       "version": "0.1.0"
@@ -2489,12 +2237,6 @@
       "change_type": "new",
       "id": "mo.source.ass_ade.security_zero_day",
       "name": "security_zero_day",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.select",
-      "name": "select",
       "version": "0.1.0"
     },
     {
@@ -2573,6 +2315,12 @@
       "change_type": "new",
       "id": "mo.source.ass_ade.smartcontractaudit",
       "name": "SmartContractAudit",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.smoketesttooltool",
+      "name": "SmokeTestToolTool",
       "version": "0.1.0"
     },
     {
@@ -2673,12 +2421,6 @@
     },
     {
       "change_type": "new",
-      "id": "mo.source.ass_ade.summarize",
-      "name": "summarize",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "mo.source.ass_ade.swarm_inbox",
       "name": "swarm_inbox",
       "version": "0.1.0"
@@ -2709,12 +2451,6 @@
     },
     {
       "change_type": "new",
-      "id": "mo.source.ass_ade.symbol",
-      "name": "Symbol",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "mo.source.ass_ade.synthesize_missing_components",
       "name": "synthesize_missing_components",
       "version": "0.1.0"
@@ -2727,44 +2463,8 @@
     },
     {
       "change_type": "new",
-      "id": "mo.source.ass_ade.task",
-      "name": "Task",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.taskfilter",
-      "name": "TaskFilter",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "mo.source.ass_ade.taskmanager",
       "name": "TaskManager",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.taskpriority",
-      "name": "TaskPriority",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.taskreporter",
-      "name": "TaskReporter",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.taskstatus",
-      "name": "TaskStatus",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.tca",
-      "name": "tca",
       "version": "0.1.0"
     },
     {
@@ -2909,18 +2609,6 @@
       "change_type": "new",
       "id": "mo.source.ass_ade.test_build_local_analysis_returns_dict",
       "name": "test_build_local_analysis_returns_dict",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.test_can_pay_expired",
-      "name": "test_can_pay_expired",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.test_can_pay_valid",
-      "name": "test_can_pay_valid",
       "version": "0.1.0"
     },
     {
@@ -3327,12 +3015,6 @@
     },
     {
       "change_type": "new",
-      "id": "mo.source.ass_ade.test_get_nexus_client_uses_configured_api_key",
-      "name": "test_get_nexus_client_uses_configured_api_key",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "mo.source.ass_ade.test_get_stale_files_empty_when_all_fresh",
       "name": "test_get_stale_files_empty_when_all_fresh",
       "version": "0.1.0"
@@ -3389,12 +3071,6 @@
       "change_type": "new",
       "id": "mo.source.ass_ade.test_initialize_ignores_older_client_version",
       "name": "test_initialize_ignores_older_client_version",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.test_internal_search_chat_sends_query",
-      "name": "test_internal_search_chat_sends_query",
       "version": "0.1.0"
     },
     {
@@ -4167,18 +3843,6 @@
     },
     {
       "change_type": "new",
-      "id": "mo.source.ass_ade.testcancellationcontext",
-      "name": "TestCancellationContext",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.testchainconfig",
-      "name": "TestChainConfig",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "mo.source.ass_ade.testchainconfig",
       "name": "TestChainConfig",
       "version": "0.1.0"
@@ -4187,12 +3851,6 @@
       "change_type": "new",
       "id": "mo.source.ass_ade.testchutesprovider",
       "name": "TestChutesProvider",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.testciegateonwrite",
-      "name": "TestCIEGateOnWrite",
       "version": "0.1.0"
     },
     {
@@ -4271,12 +3929,6 @@
       "change_type": "new",
       "id": "mo.source.ass_ade.testdetection",
       "name": "TestDetection",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.testdiffpreview",
-      "name": "TestDiffPreview",
       "version": "0.1.0"
     },
     {
@@ -4383,12 +4035,6 @@
     },
     {
       "change_type": "new",
-      "id": "mo.source.ass_ade.testloracaptureonwrite",
-      "name": "TestLoRACaptureOnWrite",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "mo.source.ass_ade.testloraflywheel",
       "name": "TestLoRAFlywheel",
       "version": "0.1.0"
@@ -4431,12 +4077,6 @@
     },
     {
       "change_type": "new",
-      "id": "mo.source.ass_ade.testncbenforcement",
-      "name": "TestNCBEnforcement",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "mo.source.ass_ade.testnegotiate",
       "name": "TestNegotiate",
       "version": "0.1.0"
@@ -4445,12 +4085,6 @@
       "change_type": "new",
       "id": "mo.source.ass_ade.testnexusasprovider",
       "name": "TestNexusAsProvider",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.testnexusclientsearch",
-      "name": "TestNexusClientSearch",
       "version": "0.1.0"
     },
     {
@@ -4635,12 +4269,6 @@
     },
     {
       "change_type": "new",
-      "id": "mo.source.ass_ade.testsearchcommand",
-      "name": "TestSearchCommand",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "mo.source.ass_ade.testsearchfiles",
       "name": "TestSearchFiles",
       "version": "0.1.0"
@@ -4655,12 +4283,6 @@
       "change_type": "new",
       "id": "mo.source.ass_ade.teststepnames",
       "name": "TestStepNames",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.teststepstream",
-      "name": "TestStepStream",
       "version": "0.1.0"
     },
     {
@@ -4683,12 +4305,6 @@
     },
     {
       "change_type": "new",
-      "id": "mo.source.ass_ade.testtcarecordonreadfile",
-      "name": "TestTCARecordOnReadFile",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "mo.source.ass_ade.testtierforcomplexity",
       "name": "TestTierForComplexity",
       "version": "0.1.0"
@@ -4703,12 +4319,6 @@
       "change_type": "new",
       "id": "mo.source.ass_ade.testwallet",
       "name": "TestWallet",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.testwalletcommand",
-      "name": "TestWalletCommand",
       "version": "0.1.0"
     },
     {
@@ -4767,12 +4377,6 @@
     },
     {
       "change_type": "new",
-      "id": "mo.source.ass_ade.testx402paymenthandling",
-      "name": "TestX402PaymentHandling",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "mo.source.ass_ade.text_keywords",
       "name": "text_keywords",
       "version": "0.1.0"
@@ -4815,12 +4419,6 @@
     },
     {
       "change_type": "new",
-      "id": "mo.source.ass_ade.to_dict",
-      "name": "to_dict",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "mo.source.ass_ade.tool",
       "name": "Tool",
       "version": "0.1.0"
@@ -4833,20 +4431,8 @@
     },
     {
       "change_type": "new",
-      "id": "mo.source.ass_ade.toolref",
-      "name": "ToolRef",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "mo.source.ass_ade.toolresult",
       "name": "ToolResult",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.toolstatus",
-      "name": "ToolStatus",
       "version": "0.1.0"
     },
     {
@@ -4931,30 +4517,6 @@
       "change_type": "new",
       "id": "mo.source.ass_ade.undoedittool",
       "name": "UndoEditTool",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.update_conviction",
-      "name": "update_conviction",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.update_from_turn",
-      "name": "update_from_turn",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.update_principles",
-      "name": "update_principles",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.update_task_status",
-      "name": "update_task_status",
       "version": "0.1.0"
     },
     {
@@ -5069,12 +4631,6 @@
       "change_type": "new",
       "id": "mo.source.ass_ade.vrfverify",
       "name": "VrfVerify",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "mo.source.ass_ade.wisdom",
-      "name": "wisdom",
       "version": "0.1.0"
     },
     {

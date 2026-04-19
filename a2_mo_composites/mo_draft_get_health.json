@@ -1,12 +1,12 @@
 {
-  "body": "    def get_health(self) -> HealthStatus:\n        \"\"\"/health \u2014 free\"\"\"\n        return self._get_model(\"/health\", HealthStatus)\n",
-  "body_hash": "ec6286e19295a6e9",
+  "body": "def get_health(self) -> HealthStatus:\n    \"\"\"/health \u2014 free\"\"\"\n    return self._get_model(\"/health\", HealthStatus)\n",
+  "body_hash": "8e4d6aab9a68737c",
   "body_truncated": false,
   "callers_of": [
     "_get_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:273.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:273.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.get_health",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:273"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:273"
   },
   "kind": "engine_molecule",
   "made_of": [],

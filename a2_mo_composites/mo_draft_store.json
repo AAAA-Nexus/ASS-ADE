@@ -1,19 +1,28 @@
 {
-  "body": "    def store(self, spec: str, code: str, proof: str, metadata: dict | None = None) -> str:\n        payload = {\n            \"spec\": spec,\n            \"code\": code,\n            \"proof\": proof,\n            \"metadata\": metadata or {},\n        }\n        meta = dict(metadata or {})\n        meta[\"tier\"] = \"lifr\"\n        meta[\"payload\"] = payload\n        result = store_vector_memory(\n            text=spec,\n            namespace=self._namespace,\n            metadata=meta,\n            working_dir=self._working_dir,\n        )\n        self._writes += 1\n        return result.id\n",
-  "body_hash": "67c5c097afd14004",
+  "body": "def store(self, spec: str, code: str, proof: str, metadata: dict | None = None) -> str:\n    payload = {\n        \"spec\": spec,\n        \"code\": code,\n        \"proof\": proof,\n        \"metadata\": metadata or {},\n    }\n    meta = dict(metadata or {})\n    meta[\"tier\"] = \"lifr\"\n    meta[\"payload\"] = payload\n    result = store_vector_memory(\n        text=spec,\n        namespace=self._namespace,\n        metadata=meta,\n        working_dir=self._working_dir,\n    )\n    self._writes += 1\n    return result.id\n",
+  "body_hash": "f96601725d9cf1ff",
   "body_truncated": false,
   "callers_of": [
     "dict",
     "store_vector_memory"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_lifrgraph.py:16.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/lifr_graph.py:37.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.store",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "dataclasses.dataclass",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.context_memory.VectorMemoryMatch",
+    "ass_ade.context_memory.query_vector_memory",
+    "ass_ade.context_memory.store_vector_memory"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_lifrgraph.py:16"
+    "source": "C:/!ass-ade/src/ass_ade/agent/lifr_graph.py:37"
   },
   "kind": "engine_molecule",
   "made_of": [],

@@ -1,10 +1,10 @@
 {
-  "body": "    def warnings(self) -> list[ValidationIssue]:\n        return [i for i in self.issues if i.severity == \"warning\"]\n",
-  "body_hash": "afffd39e39906e75",
+  "body": "def warnings(self) -> list[ValidationIssue]:\n    return [i for i in self.issues if i.severity == \"warning\"]\n",
+  "body_hash": "0984d210aa7fe99f",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/a2a/__init__.py:133.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/a2a/__init__.py:133.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.warnings",
@@ -26,7 +26,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/a2a/__init__.py:133"
+    "source": "C:/!ass-ade/src/ass_ade/a2a/__init__.py:133"
   },
   "kind": "pure_function",
   "made_of": [],

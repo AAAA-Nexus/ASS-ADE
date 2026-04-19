@@ -11,7 +11,7 @@
     "patch"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:100.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_extended.py:100.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.testmcpa2avalidate",
@@ -26,7 +26,7 @@
     "httpx"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:100"
+    "source": "C:/!ass-ade/tests/test_mcp_extended.py:100"
   },
   "kind": "pure_class",
   "made_of": [],

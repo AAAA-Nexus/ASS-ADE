@@ -1,6 +1,6 @@
 {
-  "body": "    def test_certify_passed(self):\n        gates = QualityGates(_mock_nexus())\n        result = gates.certify(\"def add(a, b): return a + b\")\n        assert result is not None\n        assert result[\"passed\"] is True\n        assert result[\"certificate_id\"] == \"cert-123\"\n",
-  "body_hash": "8f8556451b739b3c",
+  "body": "def test_certify_passed(self):\n    gates = QualityGates(_mock_nexus())\n    result = gates.certify(\"def add(a, b): return a + b\")\n    assert result is not None\n    assert result[\"passed\"] is True\n    assert result[\"certificate_id\"] == \"cert-123\"\n",
+  "body_hash": "7c4b83caa4287a71",
   "body_truncated": false,
   "callers_of": [
     "QualityGates",
@@ -8,13 +8,19 @@
     "_mock_nexus"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testqualitygates.py:50.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_gates.py:95.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_certify_passed",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "unittest.mock.MagicMock",
+    "ass_ade.agent.gates.GateResult",
+    "ass_ade.agent.gates.QualityGates"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testqualitygates.py:50"
+    "source": "C:/!ass-ade/tests/test_gates.py:95"
   },
   "kind": "pure_function",
   "made_of": [],

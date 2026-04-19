@@ -6,7 +6,7 @@
     "map_terrain"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_map_terrain.py:26.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_map_terrain.py:28.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_map_terrain_proceed_for_existing_local_and_hosted_tool",
@@ -20,7 +20,7 @@
     "ass_ade.mcp.server.MCPServer"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_map_terrain.py:26"
+    "source": "C:/!ass-ade/tests/test_map_terrain.py:28"
   },
   "kind": "pure_function",
   "made_of": [],

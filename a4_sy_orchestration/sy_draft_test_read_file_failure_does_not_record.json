@@ -1,6 +1,6 @@
 {
-  "body": "    def test_read_file_failure_does_not_record(self, tmp_path):\n        target = tmp_path / \"missing.py\"\n        server = _make_server(tmp_path)\n        result = MagicMock(success=False, error=\"not found\")\n        server._post_tool_hook(\"read_file\", _mk_args(target), result)\n        assert server.tca.ncb_contract(target) is False\n",
-  "body_hash": "c780b7a449a3ce42",
+  "body": "def test_read_file_failure_does_not_record(self, tmp_path):\n    target = tmp_path / \"missing.py\"\n    server = _make_server(tmp_path)\n    result = MagicMock(success=False, error=\"not found\")\n    server._post_tool_hook(\"read_file\", _mk_args(target), result)\n    assert server.tca.ncb_contract(target) is False\n",
+  "body_hash": "7e9dfbd05ea78659",
   "body_truncated": false,
   "callers_of": [
     "_make_server",
@@ -10,7 +10,7 @@
     "ncb_contract"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_gates.py:37.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_gates.py:37.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.test_read_file_failure_does_not_record",
@@ -23,7 +23,7 @@
     "ass_ade.mcp.server.MCPServer"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_gates.py:37"
+    "source": "C:/!ass-ade/tests/test_mcp_gates.py:37"
   },
   "kind": "ecosystem_system",
   "made_of": [],

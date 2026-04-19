@@ -1,12 +1,12 @@
 {
-  "body": "    def get_proof(self, payment: PaymentResult) -> PaymentProof | None:\n        \"\"\"Extract structured PaymentProof from a payment result.\"\"\"\n        return PaymentProof.from_payment_result(payment)\n",
-  "body_hash": "bd22b277bf859710",
+  "body": "def get_proof(self, payment: PaymentResult) -> PaymentProof | None:\n    \"\"\"Extract structured PaymentProof from a payment result.\"\"\"\n    return PaymentProof.from_payment_result(payment)\n",
+  "body_hash": "5ee8238b41f49c5f",
   "body_truncated": false,
   "callers_of": [
     "from_payment_result"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/x402.py:456.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/x402.py:456.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "qk.source.ass_ade.get_proof",
@@ -21,7 +21,7 @@
     "logging"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/x402.py:456"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/x402.py:456"
   },
   "kind": "invariant",
   "made_of": [],

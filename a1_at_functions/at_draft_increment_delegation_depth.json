@@ -1,10 +1,10 @@
 {
-  "body": "    def increment_delegation_depth(self) -> bool:\n        \"\"\"Increment delegation depth. Returns False if D_MAX=23 exceeded.\"\"\"\n        self._delegation_depth += 1\n        return self._delegation_depth <= D_MAX\n",
-  "body_hash": "4e2821a2b69cef3c",
+  "body": "def increment_delegation_depth(self) -> bool:\n    \"\"\"Increment delegation depth. Returns False if D_MAX=23 exceeded.\"\"\"\n    self._delegation_depth += 1\n    return self._delegation_depth <= D_MAX\n",
+  "body_hash": "b21099839b8916f2",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/loop.py:143.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/loop.py:143.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.increment_delegation_depth",
@@ -34,7 +34,7 @@
     "ass_ade.tools.registry.ToolRegistry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/loop.py:143"
+    "source": "C:/!ass-ade/src/ass_ade/agent/loop.py:143"
   },
   "kind": "pure_function",
   "made_of": [],

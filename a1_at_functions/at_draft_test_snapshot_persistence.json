@@ -1,6 +1,6 @@
 {
-  "body": "    def test_snapshot_persistence(self, tmp_workspace: Path):\n        h1 = FileHistory(str(tmp_workspace))\n        h1.record(\"hello.py\", \"persistent content\")\n\n        # New history instance should find existing snapshots\n        h2 = FileHistory(str(tmp_workspace))\n        assert h2.depth(\"hello.py\") == 1\n        snaps = h2.list_snapshots(\"hello.py\")\n        assert snaps[0].content == \"persistent content\"\n",
-  "body_hash": "55de5ce7fea6f334",
+  "body": "def test_snapshot_persistence(self, tmp_workspace: Path):\n    h1 = FileHistory(str(tmp_workspace))\n    h1.record(\"hello.py\", \"persistent content\")\n\n    # New history instance should find existing snapshots\n    h2 = FileHistory(str(tmp_workspace))\n    assert h2.depth(\"hello.py\") == 1\n    snaps = h2.list_snapshots(\"hello.py\")\n    assert snaps[0].content == \"persistent content\"\n",
+  "body_hash": "446c503bbcdbd1cd",
   "body_truncated": false,
   "callers_of": [
     "FileHistory",
@@ -10,7 +10,7 @@
     "depth"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_history.py:101.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_history.py:101.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_snapshot_persistence",
@@ -21,7 +21,7 @@
     "ass_ade.tools.history.FileHistory"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_history.py:101"
+    "source": "C:/!ass-ade/tests/test_history.py:101"
   },
   "kind": "pure_function",
   "made_of": [],

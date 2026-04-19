@@ -1,6 +1,6 @@
 {
-  "body": "    def test_trust_gate_local_profile_blocked(self) -> None:\n\n        server = MCPServer(\".\")\n        _initialize_server(server)\n        # Mock load_config to return local profile\n        with patch(\"ass_ade.mcp.server.MCPServer._get_nexus_client\", side_effect=RuntimeError(\"local\")):\n            response = server._handle({\n                \"jsonrpc\": \"2.0\",\n                \"id\": 1,\n                \"method\": \"tools/call\",\n                \"params\": {\"name\": \"trust_gate\", \"arguments\": {\"agent_id\": \"test-agent\"}},\n            })\n        assert response is not None\n        assert response[\"result\"][\"isError\"]\n",
-  "body_hash": "9461bcd6638eafa9",
+  "body": "def test_trust_gate_local_profile_blocked(self) -> None:\n\n    server = MCPServer(\".\")\n    _initialize_server(server)\n    # Mock load_config to return local profile\n    with patch(\"ass_ade.mcp.server.MCPServer._get_nexus_client\", side_effect=RuntimeError(\"local\")):\n        response = server._handle({\n            \"jsonrpc\": \"2.0\",\n            \"id\": 1,\n            \"method\": \"tools/call\",\n            \"params\": {\"name\": \"trust_gate\", \"arguments\": {\"agent_id\": \"test-agent\"}},\n        })\n    assert response is not None\n    assert response[\"result\"][\"isError\"]\n",
+  "body_hash": "a9a116201704079e",
   "body_truncated": false,
   "callers_of": [
     "MCPServer",
@@ -10,7 +10,7 @@
     "RuntimeError"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:171.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_extended.py:171.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.test_trust_gate_local_profile_blocked",
@@ -25,7 +25,7 @@
     "httpx"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:171"
+    "source": "C:/!ass-ade/tests/test_mcp_extended.py:171"
   },
   "kind": "ecosystem_system",
   "made_of": [],

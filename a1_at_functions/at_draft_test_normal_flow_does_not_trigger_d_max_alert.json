@@ -1,6 +1,6 @@
 {
-  "body": "    def test_normal_flow_does_not_trigger_d_max_alert(self):\n        provider = _make_provider_returning_text(\"ok\")\n        registry = ToolRegistry()\n        orchestrator = EngineOrchestrator({})\n        loop = AgentLoop(provider=provider, registry=registry, orchestrator=orchestrator)\n\n        # Normal step (depth = 0)\n        loop.step(\"normal request\")\n        alerts = orchestrator.bas._alerts\n        kinds = [a.kind for a in alerts]\n        assert \"d_max_breach\" not in kinds\n",
-  "body_hash": "ed89cf9393a465dc",
+  "body": "def test_normal_flow_does_not_trigger_d_max_alert(self):\n    provider = _make_provider_returning_text(\"ok\")\n    registry = ToolRegistry()\n    orchestrator = EngineOrchestrator({})\n    loop = AgentLoop(provider=provider, registry=registry, orchestrator=orchestrator)\n\n    # Normal step (depth = 0)\n    loop.step(\"normal request\")\n    alerts = orchestrator.bas._alerts\n    kinds = [a.kind for a in alerts]\n    assert \"d_max_breach\" not in kinds\n",
+  "body_hash": "cb21a137c339cb2b",
   "body_truncated": false,
   "callers_of": [
     "_make_provider_returning_text",
@@ -10,7 +10,7 @@
     "step"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase1_integration.py:192.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase1_integration.py:192.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_normal_flow_does_not_trigger_d_max_alert",
@@ -36,7 +36,7 @@
     "rich.console.Console"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase1_integration.py:192"
+    "source": "C:/!ass-ade/tests/test_phase1_integration.py:192"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,12 +1,12 @@
 {
-  "body": "    def enhance_scan(\n        self,\n        local_report: dict[str, Any],\n        agent_id: str | None = None,\n    ) -> EnhanceScanResult:\n        \"\"\"Deep enhancement scan and blueprint generation via AAAA-Nexus.\"\"\"\n        payload: dict[str, Any] = {\"local_report\": local_report}\n        if agent_id:\n            payload[\"agent_id\"] = agent_id\n        return self._post_model(\"/v1/enhance/scan\", EnhanceScanResult, payload)\n",
-  "body_hash": "99f3b659f305ff14",
+  "body": "def enhance_scan(\n    self,\n    local_report: dict[str, Any],\n    agent_id: str | None = None,\n) -> EnhanceScanResult:\n    \"\"\"Deep enhancement scan and blueprint generation via AAAA-Nexus.\"\"\"\n    payload: dict[str, Any] = {\"local_report\": local_report}\n    if agent_id:\n        payload[\"agent_id\"] = agent_id\n    return self._post_model(\"/v1/enhance/scan\", EnhanceScanResult, payload)\n",
+  "body_hash": "eb752b8e580d988d",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1462.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1462.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.enhance_scan",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1462"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1462"
   },
   "kind": "engine_molecule",
   "made_of": [],

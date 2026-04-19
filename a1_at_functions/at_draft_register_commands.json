@@ -6,18 +6,20 @@
     "register"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_register_commands.py:5.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/commands/__init__.py:8.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.register_commands",
   "imports": [
+    "__future__.annotations",
+    "typer",
     "agent",
     "a2a",
     "workflow",
     "providers"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_register_commands.py:5"
+    "source": "C:/!ass-ade/src/ass_ade/commands/__init__.py:8"
   },
   "kind": "pure_function",
   "made_of": [],

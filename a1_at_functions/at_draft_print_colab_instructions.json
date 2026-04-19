@@ -7,7 +7,7 @@
     "print"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_training/train_lora.py:210.",
+  "description": "Draft candidate from C:/!ass-ade/scripts/lora_training/train_lora.py:210.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.print_colab_instructions",
@@ -31,7 +31,7 @@
     "transformers.TrainingArguments"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_training/train_lora.py:210"
+    "source": "C:/!ass-ade/scripts/lora_training/train_lora.py:210"
   },
   "kind": "pure_function",
   "made_of": [],

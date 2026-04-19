@@ -1,12 +1,12 @@
 {
-  "body": "    def agent_topology(self, **kwargs: Any) -> AgentTopology:\n        \"\"\"/v1/agents/topology \u2014 global swarm topology. $0.008/call\"\"\"\n        return self._get_model(\"/v1/agents/topology\", AgentTopology, **kwargs)\n",
-  "body_hash": "b51b98daa7733b0e",
+  "body": "def agent_topology(self, **kwargs: Any) -> AgentTopology:\n    \"\"\"/v1/agents/topology \u2014 global swarm topology. $0.008/call\"\"\"\n    return self._get_model(\"/v1/agents/topology\", AgentTopology, **kwargs)\n",
+  "body_hash": "f588db7b67ae1a4e",
   "body_truncated": false,
   "callers_of": [
     "_get_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:628.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:628.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.agent_topology",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:628"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:628"
   },
   "kind": "engine_molecule",
   "made_of": [],

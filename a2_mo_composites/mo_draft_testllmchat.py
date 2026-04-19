@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testllmchat.py:5
+# Extracted from C:/!ass-ade/tests/test_cli_happy_path.py:553
 # Component id: mo.source.ass_ade.testllmchat
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class TestLLMChat:
@@ -13,12 +15,12 @@ class TestLLMChat:
             tokens_used=15,
             model="llama-3.1-8b",
         )
-        
+
         with patch("ass_ade.cli.NexusClient", return_value=_make_ctx_mgr(mock_nx)):
             result = runner.invoke(
                 app,
                 ["llm", "chat", "What is the capital of France?", "--config", str(hybrid_config)],
             )
-        
+
         assert result.exit_code == 0
         assert "Paris" in result.stdout or "capital" in result.stdout

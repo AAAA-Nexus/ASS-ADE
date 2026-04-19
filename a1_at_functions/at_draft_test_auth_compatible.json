@@ -1,13 +1,13 @@
 {
-  "body": "    def test_auth_compatible(self) -> None:\n        local = self._make_card(\"Local\", skills=[(\"s1\", \"S1\")], auth_schemes=[\"bearer\"])\n        remote = self._make_card(\"Remote\", skills=[(\"s1\", \"S1\")], auth_schemes=[\"bearer\"])\n        result = negotiate(local, remote)\n        assert result.compatible\n        assert result.auth_compatible\n",
-  "body_hash": "111a49b32ead6fbe",
+  "body": "def test_auth_compatible(self) -> None:\n    local = self._make_card(\"Local\", skills=[(\"s1\", \"S1\")], auth_schemes=[\"bearer\"])\n    remote = self._make_card(\"Remote\", skills=[(\"s1\", \"S1\")], auth_schemes=[\"bearer\"])\n    result = negotiate(local, remote)\n    assert result.compatible\n    assert result.auth_compatible\n",
+  "body_hash": "615c84dccb4653e2",
   "body_truncated": false,
   "callers_of": [
     "_make_card",
     "negotiate"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:249.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_a2a.py:249.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_auth_compatible",
@@ -30,7 +30,7 @@
     "httpx"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:249"
+    "source": "C:/!ass-ade/tests/test_a2a.py:249"
   },
   "kind": "pure_function",
   "made_of": [],

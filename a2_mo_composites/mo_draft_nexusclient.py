@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:202
+# Extracted from C:/!ass-ade/src/ass_ade/nexus/client.py:202
 # Component id: mo.source.ass_ade.nexusclient
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class NexusClient:
@@ -731,4 +733,580 @@ class NexusClient:
             return self._post_raw(
                 "/v1/trust/gate",
                 {"agent_id": agent_id, "action": action, **kwargs},
-        
+            )
+        except Exception:
+            try:
+                score = self.trust_score(agent_id, **kwargs)
+                score_val = float(getattr(score, "score", 0.0))
+                return {
+                    "allowed": score_val >= 0.998354361,
+                    "score": score_val,
+                    "fallback": "trust_score",
+                }
+            except Exception:
+                return {"allowed": False, "score": 0.0, "fallback": "unavailable"}
+
+    def map_terrain(self, required_capabilities: list, **kwargs: Any) -> dict:
+        """Capability gap detection. Verdict PROCEED or HALT_AND_INVENT."""
+        try:
+            return self._post_raw(
+                "/v1/map/terrain",
+                {"required_capabilities": required_capabilities, **kwargs},
+            )
+        except Exception:
+            return {
+                "verdict": "PROCEED",
+                "missing": [],
+                "fallback": "local_assume_present",
+            }
+
+    def synthesize_verified_code(
+        self, spec: str, language: str = "python", **kwargs: Any
+    ) -> dict:
+        """Formally-verified synthesis. Falls back to a stub with verified=False."""
+        try:
+            return self._post_raw(
+                "/v1/synthesis/verified",
+                {"spec": spec, "language": language, **kwargs},
+            )
+        except Exception:
+            return {
+                "code": f"# TODO unverified synthesis for: {spec[:120]}\npass\n",
+                "verified": False,
+                "fallback": "stub",
+            }
+
+    # ── DeFi Suite ────────────────────────────────────────────────────────────
+
+    def defi_optimize(
+        self,
+        protocol: str | None = None,
+        position_size_usdc: float | None = None,
+        *,
+        payload: dict | None = None,
+        **kwargs: Any,
+    ) -> DefiOptimize:
+        """/v1/defi/optimize — optimal LP parameters (DFP-100). $0.08 + 0.2% of position"""
+        if payload is not None:
+            protocol = protocol or payload.get("protocol") or payload.get("pool") or payload.get("market")
+            position_size_usdc = (
+                position_size_usdc
+                if position_size_usdc is not None
+                else payload.get("position_size_usdc")
+                or payload.get("amount_usdc")
+                or payload.get("capital_usdc")
+            )
+        return self._post_model("/v1/defi/optimize", DefiOptimize, {
+            "protocol": protocol or "", "position_size_usdc": position_size_usdc or 0.0, **kwargs,
+        })
+
+    def defi_risk_score(self, protocol: str, position: dict | None = None, **kwargs: Any) -> DefiRiskScore:
+        """/v1/defi/risk-score — risk + max drawdown bound 12.5% (DFI-101). $0.08/call"""
+        return self._post_model("/v1/defi/risk-score", DefiRiskScore, {"protocol": protocol, "position": position or {}, **kwargs})
+
+    def defi_oracle_verify(
+        self,
+        pool: str | None = None,
+        tvl_usdc: float = 0.0,
+        *,
+        oracle_id: str | None = None,
+        **kwargs: Any,
+    ) -> DefiOracleVerify:
+        """/v1/defi/oracle-verify — flash loan + TWAP attack scoring (OGD-100). $0.04 + 0.1% TVL"""
+        return self._post_model("/v1/defi/oracle-verify", DefiOracleVerify, {"pool": pool or oracle_id or "", "tvl_usdc": tvl_usdc, **kwargs})
+
+    def defi_liquidation_check(self, position: dict | None = None, **kwargs: Any) -> LiquidationCheck:
+        """/v1/defi/liquidation-check — health factor + time-to-liquidation (LQS-100). $0.04 + 1% equity"""
+        resolved_position = position or {
+            "position_id": kwargs.pop("position_id", None),
+            "collateral_value": kwargs.pop("collateral_value", None),
+            "debt_value": kwargs.pop("debt_value", None),
+            "collateral_factor": kwargs.pop("collateral_factor", None),
+        }
+        return self._post_model("/v1/defi/liquidation-check", LiquidationCheck, {"position": resolved_position, **kwargs})
+
+    def defi_bridge_verify(
+        self,
+        bridge: str | None = None,
+        amount_usdc: float = 0.0,
+        *,
+        bridge_id: str | None = None,
+        **kwargs: Any,
+    ) -> BridgeVerify:
+        """/v1/defi/bridge-verify — cross-chain bridge integrity (BRP-100). $0.08/verification"""
+        return self._post_model("/v1/defi/bridge-verify", BridgeVerify, {"bridge": bridge or bridge_id or "", "amount_usdc": amount_usdc, **kwargs})
+
+    def defi_contract_audit(self, contract_address: str, source_code: str | None = None, **kwargs: Any) -> SmartContractAudit:
+        """/v1/defi/contract-audit — 30-pattern smart contract audit cert (CVR-100). $0.15/audit"""
+        return self._post_model("/v1/defi/contract-audit", SmartContractAudit, {
+            "contract_address": contract_address, "source_code": source_code, **kwargs,
+        })
+
+    def defi_yield_optimize(
+        self,
+        capital_usdc: float | None = None,
+        protocols: list[str] | None = None,
+        *,
+        amount_usdc: float | None = None,
+        risk_tolerance: str | None = None,
+        **kwargs: Any,
+    ) -> YieldOptimize:
+        """/v1/defi/yield-optimize — optimal yield allocation (YLD-100). $0.04 + 2% alpha"""
+        resolved_capital = capital_usdc if capital_usdc is not None else amount_usdc or 0.0
+        resolved_protocols = protocols or []
+        if risk_tolerance is not None:
+            kwargs.setdefault("risk_tolerance", risk_tolerance)
+        return self._post_model("/v1/defi/yield-optimize", YieldOptimize, {
+            "capital_usdc": resolved_capital, "protocols": resolved_protocols, **kwargs,
+        })
+
+    # ── Compliance Products ───────────────────────────────────────────────────
+
+    def compliance_fairness(self, dataset_description: str | None = None, *, model_id: str | None = None, **kwargs: Any) -> FairnessProof:
+        """/v1/compliance/fairness — disparate impact ratio (FNS-100). $0.040/check"""
+        return self._post_model("/v1/compliance/fairness", FairnessProof, {"dataset_description": dataset_description or model_id or "", **kwargs})
+
+    def compliance_explain(self, output: str, input_features: dict, **kwargs: Any) -> ExplainCert:
+        """/v1/compliance/explain — GDPR Art.22 explainability cert (XPL-100). $0.040/call"""
+        return self._post_model("/v1/compliance/explain", ExplainCert, {"output": output, "input_features": input_features, **kwargs})
+
+    def compliance_lineage(self, dataset_stages: list[dict], **kwargs: Any) -> LineageProof:
+        """/v1/compliance/lineage — SHA-256 hash chain across dataset (LIN-100). $0.040/call"""
+        return self._post_model("/v1/compliance/lineage", LineageProof, {"dataset_stages": dataset_stages, **kwargs})
+
+    def compliance_oversight(self, reviewer: str, decision: str, **kwargs: Any) -> OversightEvent:
+        """/v1/compliance/oversight — HITL review attestation (OVS-100). $0.020/event"""
+        return self._post_model("/v1/compliance/oversight", OversightEvent, {"reviewer": reviewer, "decision": decision, **kwargs})
+
+    def compliance_oversight_history(self, system_id: str, **kwargs: Any) -> dict:
+        """/v1/compliance/oversight/history — paginated signed history (OVS-101). $0.020/query"""
+        return self._get_raw("/v1/compliance/oversight/history", system_id=system_id, **kwargs)
+
+    def compliance_incident(
+        self,
+        system_id: str | None = None,
+        description: str | None = None,
+        severity: str | None = None,
+        *,
+        incident_id: str | None = None,
+        **kwargs: Any,
+    ) -> IncidentReport:
+        """/v1/compliance/incident — EU AI Act Art.73 incident report (INC-100). $0.020/report"""
+        return self._post_model("/v1/compliance/incident", IncidentReport, {
+            "system_id": system_id or incident_id or "",
+            "description": description or "CLI incident report",
+            "severity": severity or "medium",
+            **kwargs,
+        })
+
+    def compliance_incidents(self, system_id: str, **kwargs: Any) -> dict:
+        """/v1/compliance/incidents — incident registry query (INC-101). $0.020/query"""
+        return self._get_raw("/v1/compliance/incidents", system_id=system_id, **kwargs)
+
+    def compliance_transparency(self, system_id: str, period: str, **kwargs: Any) -> TransparencyReport:
+        """/v1/compliance/transparency — quarterly transparency report (TRP-100). $0.080/report"""
+        return self._post_model("/v1/compliance/transparency", TransparencyReport, {
+            "system_id": system_id, "period": period, **kwargs,
+        })
+
+    def drift_check(
+        self,
+        model_id: str,
+        reference_data: dict | None = None,
+        current_data: dict | None = None,
+        **kwargs: Any,
+    ) -> DriftCheck:
+        """/v1/drift/check — PSI drift detection ≤0.20 (DRG-100). $0.010/check"""
+        return self._post_model("/v1/drift/check", DriftCheck, {
+            "model_id": model_id,
+            "reference_data": reference_data or {},
+            "current_data": current_data or {},
+            **kwargs,
+        })
+
+    def drift_certificate(self, check_id: str | None = None, *, model_id: str | None = None) -> DriftCertificate:
+        """/v1/drift/certificate — signed drift compliance cert (DRG-101). $0.010/cert"""
+        return self._get_model("/v1/drift/certificate", DriftCertificate, check_id=check_id or model_id or "")
+
+    # ── Text AI ───────────────────────────────────────────────────────────────
+
+    def text_summarize(self, text: str, **kwargs: Any) -> TextSummary:
+        """/v1/text/summarize — 1-3 sentence extractive summary. $0.040/request"""
+        return self._post_model("/v1/text/summarize", TextSummary, {"text": text, **kwargs})
+
+    def text_keywords(self, text: str, top_k: int = 10, **kwargs: Any) -> TextKeywords:
+        """/v1/text/keywords — TF-IDF keyword extraction. $0.020/request"""
+        return self._post_model("/v1/text/keywords", TextKeywords, {"text": text, "top_k": top_k, **kwargs})
+
+    def text_sentiment(self, text: str, **kwargs: Any) -> TextSentiment:
+        """/v1/text/sentiment — positive / negative / neutral. $0.020/request"""
+        return self._post_model("/v1/text/sentiment", TextSentiment, {"text": text, **kwargs})
+
+    # ── Data Tools ────────────────────────────────────────────────────────────
+
+    def data_validate_json(
+        self,
+        data: dict | None = None,
+        schema: dict | None = None,
+        *,
+        payload: dict | None = None,
+        **kwargs: Any,
+    ) -> DataValidation:
+        """/v1/data/validate-json — JSON schema validation with error paths. $0.012/request"""
+        return self._post_model("/v1/data/validate-json", DataValidation, {"data": data or payload or {}, "schema": schema or {}, **kwargs})
+
+    def data_format_convert(self, data: str, from_format: str, to_format: str, **kwargs: Any) -> FormatConversion:
+        """/v1/data/format-convert — JSON ↔ CSV transformation. $0.020/request"""
+        return self._post_model("/v1/data/format-convert", FormatConversion, {
+            "data": data, "from_format": from_format, "to_format": to_format, **kwargs,
+        })
+
+    def data_convert(self, content: str, target_format: str, **kwargs: Any) -> dict:
+        """/v1/data/convert — Convert text content to a target format. $0.020/request"""
+        return self._post_raw("/v1/data/convert", {"content": content, "target_format": target_format, **kwargs})
+
+    # ── Governance ────────────────────────────────────────────────────────────
+
+    def governance_vote(self, agent_id: str, proposal_id: str, vote: str, weight: float = 1.0, **kwargs: Any) -> GovernanceVote:
+        """/v1/governance/vote — on-chain governance vote (GOV-112). $0.040/call"""
+        return self._post_model("/v1/governance/vote", GovernanceVote, {
+            "agent_id": agent_id, "proposal_id": proposal_id, "vote": vote, "weight": weight, **kwargs,
+        })
+
+    def ethics_compliance(self, system_description: str, **kwargs: Any) -> EthicsCheckResult:
+        """/v1/ethics/compliance — Prime Axiom audit with formal proof of safety. $0.040/call"""
+        return self._post_model("/v1/ethics/compliance", EthicsCheckResult, {"system_description": system_description, **kwargs})
+
+    # ── Advanced Platform / Billing ───────────────────────────────────────────
+
+    def efficiency_capture(self, interactions: list[dict], **kwargs: Any) -> EfficiencyResult:
+        """/v1/efficiency — ROI signal across agent interactions (PAY-506). $0.040/call"""
+        return self._post_model("/v1/efficiency", EfficiencyResult, {"interactions": interactions, **kwargs})
+
+    def billing_outcome(self, task_id: str, success: bool, metric_value: float, **kwargs: Any) -> BillingOutcome:
+        """/v1/billing/outcome — pay only for measurably successful tasks (PAY-509). $0.040/call"""
+        return self._post_model("/v1/billing/outcome", BillingOutcome, {
+            "task_id": task_id, "success": success, "metric_value": metric_value, **kwargs,
+        })
+
+    def costs_attribute(self, run_id: str, **kwargs: Any) -> CostAttribution:
+        """/v1/costs/attribute — token spend by agent/task/model (DEV-603). $0.040/call"""
+        return self._post_model("/v1/costs/attribute", CostAttribution, {"run_id": run_id, **kwargs})
+
+    def memory_trim(self, context: list[dict], target_tokens: int, **kwargs: Any) -> MemoryTrimResult:
+        """/v1/memory/trim — prune context window for cost efficiency (INF-815). $0.040/call"""
+        return self._post_model("/v1/memory/trim", MemoryTrimResult, {"context": context, "target_tokens": target_tokens, **kwargs})
+
+    def routing_think(self, query: str, **kwargs: Any) -> ThinkRoute:
+        """/v1/routing/think — classify complexity → model tier (POP-1207). $0.040/call"""
+        return self._post_model("/v1/routing/think", ThinkRoute, {"query": query, **kwargs})
+
+    def routing_recommend(self, task: str | None = None, *, prompt: str | None = None, **kwargs: Any) -> RoutingRecommend:
+        """/v1/routing/recommend — map task to optimal model + routing tier. $0.020/call"""
+        return self._post_model(
+            "/v1/routing/recommend",
+            RoutingRecommend,
+            {"task": task or prompt or "", **kwargs},
+        )
+
+    # ── Developer Tools ───────────────────────────────────────────────────────
+
+    def crypto_toolkit(self, data: str, **kwargs: Any) -> CryptoToolkit:
+        """/v1/dcm/crypto-toolkit — BLAKE3 + Merkle proof + nonce (DCM-1018). $0.020/call"""
+        return self._post_model("/v1/dcm/crypto-toolkit", CryptoToolkit, {"data": data, **kwargs})
+
+    def dev_starter(self, project_name: str, language: str = "python", **kwargs: Any) -> StarterKit:
+        """/v1/dev/starter — scaffold agent project with x402 wiring (DEV-601). $0.040/call"""
+        return self._post_model("/v1/dev/starter", StarterKit, {"project_name": project_name, "language": language, **kwargs})
+
+    def docs_generate(
+        self,
+        path_analysis: dict[str, Any],
+        agent_id: str | None = None,
+    ) -> DocsResult:
+        """Generate documentation suite via AAAA-Nexus synthesis engine."""
+        payload: dict[str, Any] = {"path_analysis": path_analysis}
+        if agent_id:
+            payload["agent_id"] = agent_id
+        return self._post_model("/v1/docs/generate", DocsResult, payload)
+
+    def lint_analyze(
+        self,
+        path_analysis: dict[str, Any],
+        agent_id: str | None = None,
+    ) -> LintResult:
+        """Run monadic lint analysis via AAAA-Nexus synthesis engine."""
+        payload: dict[str, Any] = {"path_analysis": path_analysis}
+        if agent_id:
+            payload["agent_id"] = agent_id
+        return self._post_model("/v1/lint/analyze", LintResult, payload)
+
+    def certify_codebase(
+        self,
+        local_certificate: dict[str, Any],
+        agent_id: str | None = None,
+    ) -> CertifyResult:
+        """Sign and certify a codebase via AAAA-Nexus PQC signing."""
+        payload: dict[str, Any] = {"certificate": local_certificate}
+        if agent_id:
+            payload["agent_id"] = agent_id
+        return self._post_model("/v1/certify/codebase", CertifyResult, payload)
+
+    def design_blueprint(
+        self,
+        description: str,
+        context: dict[str, Any] | None = None,
+        agent_id: str | None = None,
+    ) -> DesignBlueprint:
+        """Generate an AAAA-SPEC-004 blueprint from a natural language description."""
+        payload: dict[str, Any] = {"description": description}
+        if context:
+            payload["context"] = context
+        if agent_id:
+            payload["agent_id"] = agent_id
+        return self._post_model("/v1/uep/design", DesignBlueprint, payload)
+
+    # ── BitNet 1.58-bit Inference ─────────────────────────────────────────────
+
+    def bitnet_models(self, **kwargs: Any) -> BitNetModelsResponse:
+        """GET /v1/bitnet/models — list available 1.58-bit models (BIT-102). Free."""
+        return self._get_model("/v1/bitnet/models", BitNetModelsResponse, **kwargs)
+
+    def bitnet_inference(self, prompt: str, model: str = "bitnet-b1.58-2B-4T", **kwargs: Any) -> BitNetInferenceResponse:
+        """POST /v1/bitnet/inference — 1-bit chat completion (BIT-100). $0.020/call"""
+        return self._post_model("/v1/bitnet/inference", BitNetInferenceResponse, {"prompt": prompt, "model": model, **kwargs})
+
+    def bitnet_stream(self, prompt: str, model: str = "bitnet-b1.58-2B-4T", **kwargs: Any) -> Iterator[str]:
+        """POST /v1/bitnet/inference/stream — streaming 1-bit CoT (BIT-101). $0.040/call"""
+        with self._client.stream("POST", "/v1/bitnet/inference/stream", json={"prompt": prompt, "model": model, **kwargs}) as r:
+            r.raise_for_status()
+            for chunk in r.iter_text():
+                if chunk:
+                    yield chunk
+
+    def bitnet_benchmark(self, model: str, n_tokens: int = 100, **kwargs: Any) -> BitNetBenchmarkResponse:
+        """POST /v1/bitnet/benchmark — inference benchmark for a 1-bit model (BIT-103). $0.020/call"""
+        return self._post_model("/v1/bitnet/benchmark", BitNetBenchmarkResponse, {"model": model, "n_tokens": n_tokens, **kwargs})
+
+    def bitnet_quantize(self, model_id: str, **kwargs: Any) -> BitNetQuantizeResponse:
+        """POST /v1/bitnet/quantize — convert model to 1.58-bit ternary weights (BIT-104). $0.100/call"""
+        return self._post_model("/v1/bitnet/quantize", BitNetQuantizeResponse, {"model_id": model_id, **kwargs})
+
+    def bitnet_status(self, **kwargs: Any) -> BitNetStatus:
+        """GET /v1/bitnet/status — BitNet engine health and metrics (BIT-105). Free."""
+        return self._get_model("/v1/bitnet/status", BitNetStatus, **kwargs)
+
+    # ── VANGUARD ─────────────────────────────────────────────────────────────
+
+    def vanguard_redteam(self, agent_id: str, target: str, **kwargs: Any) -> VanguardRedTeamResult:
+        """POST /v1/vanguard/continuous-redteam — orchestrated red-team audit. $0.100/run"""
+        return self._post_model("/v1/vanguard/continuous-redteam", VanguardRedTeamResult, {"agent_id": agent_id, "target": target, **kwargs})
+
+    def vanguard_mev_route(self, agent_id: str, intent: dict | None = None, **kwargs: Any) -> VanguardMevRouteResult:
+        """POST /v1/vanguard/mev/route-intent — MEV route governance. $0.040/call"""
+        return self._post_model("/v1/vanguard/mev/route-intent", VanguardMevRouteResult, {"agent_id": agent_id, "intent": intent or {}, **kwargs})
+
+    def vanguard_govern_session(self, agent_id: str, session_key: str | None = None, *, wallet: str | None = None, **kwargs: Any) -> VanguardSessionResult:
+        """POST /v1/vanguard/wallet/govern-session — UCAN wallet session control. $0.040/call"""
+        return self._post_model("/v1/vanguard/wallet/govern-session", VanguardSessionResult, {"agent_id": agent_id, "session_key": session_key or wallet or "", **kwargs})
+
+    def vanguard_start_session(self, agent_id: str, **kwargs: Any) -> VanguardSessionResult:
+        """POST /v1/vanguard/session/start — start a VANGUARD wallet session. $0.040/call"""
+        return self._post_model("/v1/vanguard/session/start", VanguardSessionResult, {"agent_id": agent_id, **kwargs})
+
+    def vanguard_lock_and_verify(
+        self,
+        payer_agent_id: str | None = None,
+        payee_agent_id: str | None = None,
+        amount_micro_usdc: int | None = None,
+        *,
+        agent_id: str | None = None,
+        amount_usdc: float | None = None,
+        **kwargs: Any,
+    ) -> VanguardEscrowResult:
+        """POST /v1/vanguard/escrow/lock-and-verify — lock + verify escrow (Vanguard). $0.040/call"""
+        resolved_payer = payer_agent_id or agent_id or ""
+        resolved_payee = payee_agent_id or agent_id or ""
+        resolved_amount = amount_micro_usdc
+        if resolved_amount is None:
+            resolved_amount = int((amount_usdc or 0.0) * 1_000_000)
+        return self._post_model("/v1/vanguard/escrow/lock-and-verify", VanguardEscrowResult, {
+            "payer_agent_id": resolved_payer,
+            "payee_agent_id": resolved_payee,
+            "amount_micro_usdc": resolved_amount,
+            **kwargs,
+        })
+
+    # ── MEV Shield ────────────────────────────────────────────────────────────
+
+    def mev_protect(self, tx_bundle: list[str], **kwargs: Any) -> MevProtectResult:
+        """POST /v1/mev/protect — MEV protection for a transaction bundle (MEV-100). $0.020/tx"""
+        return self._post_model("/v1/mev/protect", MevProtectResult, {"tx_bundle": tx_bundle, **kwargs})
+
+    def mev_status(self, bundle_id: str, **kwargs: Any) -> MevStatusResult:
+        """GET /v1/mev/status — check MEV protection status for a bundle (MEV-101). Free."""
+        return self._get_model("/v1/mev/status", MevStatusResult, bundle_id=bundle_id, **kwargs)
+
+    # ── Forge Marketplace ─────────────────────────────────────────────────────
+
+    def forge_leaderboard(self, **kwargs: Any) -> ForgeLeaderboardResponse:
+        """GET /v1/forge/leaderboard — Forge agent leaderboard. Free."""
+        return self._get_model("/v1/forge/leaderboard", ForgeLeaderboardResponse, **kwargs)
+
+    def forge_verify(self, agent_id: str, **kwargs: Any) -> ForgeVerifyResult:
+        """POST /v1/forge/verify — verify an agent for Forge badge. Free."""
+        return self._post_model("/v1/forge/verify", ForgeVerifyResult, {"agent_id": agent_id, **kwargs})
+
+    def forge_quarantine(self, model_id: str = "", reason: str = "probe", **kwargs: Any) -> ForgeQuarantineResponse:
+        """POST /v1/forge/quarantine — quarantine a model. Free."""
+        return self._post_model("/v1/forge/quarantine", ForgeQuarantineResponse, {"model_id": model_id, "reason": reason, **kwargs})
+
+    def forge_delta_submit(self, agent_id: str, delta: dict, **kwargs: Any) -> ForgeDeltaSubmitResult:
+        """POST /v1/forge/delta/submit — submit improvement delta. Free."""
+        return self._post_model("/v1/forge/delta/submit", ForgeDeltaSubmitResult, {"agent_id": agent_id, "delta": delta, **kwargs})
+
+    def forge_badge(self, badge_id: str, **kwargs: Any) -> ForgeBadgeResult:
+        """GET /v1/forge/badge/{id} — retrieve Forge badge metadata. Free."""
+        return self._get_model(f"/v1/forge/badge/{_pseg(badge_id, 'badge_id')}", ForgeBadgeResult, **kwargs)
+
+    # ── LoRA federated-training endpoints ────────────────────────────────────
+
+    def lora_contribute(
+        self,
+        samples: list[dict[str, Any]],
+        *,
+        agent_id: str | None = None,
+        trust_floor_threshold: float | None = None,
+        **kwargs: Any,
+    ) -> dict[str, Any]:
+        """POST /v1/lora/contribute — submit batch of privacy-scrubbed code fixes.
+
+        Each sample: {digest, bad, good, lint_delta, language, size, ts}.
+        Returns: {accepted, rejected, batch_size, agent_id, tau_threshold_used, reject_summary}.
+        """
+        payload: dict[str, Any] = {"samples": samples}
+        if agent_id is not None:
+            payload["agent_id"] = agent_id
+        if trust_floor_threshold is not None:
+            payload["trust_floor_threshold"] = trust_floor_threshold
+        payload.update(kwargs)
+        return self._post_raw("/v1/lora/contribute", payload)
+
+    def lora_status(self, **kwargs: Any) -> dict[str, Any]:
+        """GET /v1/lora/status — current training-run info."""
+        return self._get_raw("/v1/lora/status", **kwargs)
+
+    def lora_adapter_current(self, language: str = "python", **kwargs: Any) -> dict[str, Any]:
+        """GET /v1/lora/adapter/{language} — latest adapter id for a language."""
+        return self._get_raw(f"/v1/lora/adapter/{_pseg(language, 'language')}", **kwargs)
+
+    def lora_reward_claim(
+        self,
+        agent_id: str | None = None,
+        *,
+        contribution_id: str | None = None,
+        **kwargs: Any,
+    ) -> dict[str, Any]:
+        """POST /v1/lora/reward/claim — claim USDC payout for accepted samples."""
+        payload: dict[str, Any] = {}
+        if agent_id is not None:
+            payload["agent_id"] = agent_id
+        if contribution_id is not None:
+            payload["contribution_id"] = contribution_id
+        payload.update(kwargs)
+        return self._post_raw("/v1/lora/reward/claim", payload)
+
+    def lora_buffer_capture(
+        self,
+        bad: str,
+        good: str,
+        *,
+        language: str = "python",
+        lint_delta: float = 0.0,
+        **kwargs: Any,
+    ) -> dict[str, Any]:
+        """POST /v1/lora/buffer/capture — stream a single (bad, good) pair to the training buffer.
+
+        Preferred over lora_contribute() for single-sample streaming. The server
+        batches samples internally and runs periodic training.
+        """
+        payload: dict[str, Any] = {
+            "bad": bad,
+            "good": good,
+            "language": language,
+            "lint_delta": lint_delta,
+        }
+        payload.update(kwargs)
+        return self._post_raw("/v1/lora/buffer/capture", payload)
+
+    def lora_buffer_inspect(self, **kwargs: Any) -> dict[str, Any]:
+        """GET /v1/lora/buffer/inspect — show pending samples in the training buffer."""
+        return self._get_raw("/v1/lora/buffer/inspect", **kwargs)
+
+    def lora_credit_balance(self, agent_id: str | None = None, **kwargs: Any) -> dict[str, Any]:
+        """GET /v1/lora/credit/balance — current Nexus credit balance for an agent.
+
+        Returns: {agent_id, balance_micro_usdc, balance_usdc, reward_model}.
+        """
+        headers = {"X-Agent-Id": agent_id} if agent_id else {}
+        if headers:
+            # One-off header override; use the underlying client directly
+            response = self._client.get("/v1/lora/credit/balance", headers=headers, params=kwargs)
+        else:
+            response = self._client.get("/v1/lora/credit/balance", params=kwargs)
+        response.raise_for_status()
+        return response.json()
+
+    # Alias kept for compatibility with older callers (LoRAFlywheel)
+    def lora_capture_fix(self, *args: Any, **kwargs: Any) -> dict[str, Any]:
+        """Alias for lora_buffer_capture — single (bad, good) sample."""
+        return self.lora_buffer_capture(*args, **kwargs)
+
+    # ── Enhancement Engine ────────────────────────────────────────────────────
+
+    def enhance_scan(
+        self,
+        local_report: dict[str, Any],
+        agent_id: str | None = None,
+    ) -> EnhanceScanResult:
+        """Deep enhancement scan and blueprint generation via AAAA-Nexus."""
+        payload: dict[str, Any] = {"local_report": local_report}
+        if agent_id:
+            payload["agent_id"] = agent_id
+        return self._post_model("/v1/enhance/scan", EnhanceScanResult, payload)
+
+    def enhance_apply(
+        self,
+        improvement_ids: list[int],
+        local_report: dict[str, Any],
+        agent_id: str | None = None,
+    ) -> EnhanceApplyResult:
+        """Apply selected enhancements: generate blueprints and trigger rebuild."""
+        payload: dict[str, Any] = {
+            "improvement_ids": improvement_ids,
+            "local_report": local_report,
+        }
+        if agent_id:
+            payload["agent_id"] = agent_id
+        return self._post_model("/v1/enhance/apply", EnhanceApplyResult, payload)
+
+    # ── Factory ───────────────────────────────────────────────────────────────
+
+    @classmethod
+    def resilient(
+        cls,
+        *,
+        base_url: str,
+        timeout: float = 20.0,
+        api_key: str | None = None,
+        max_retries: int = 3,
+        circuit_failure_threshold: int = 5,
+    ) -> NexusClient:
+        """Create a client pre-configured with retry + circuit-breaker transports."""
+        from ass_ade.nexus.resilience import build_resilient_transport
+
+        transport = build_resilient_transport(
+            max_retries=max_retries,
+            circuit_failure_threshold=circuit_failure_threshold,
+        )
+        return cls(base_url=base_url, timeout=timeout, transport=transport, api_key=api_key)

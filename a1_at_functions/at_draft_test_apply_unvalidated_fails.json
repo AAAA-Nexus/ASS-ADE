@@ -1,6 +1,6 @@
 {
-  "body": "    def test_apply_unvalidated_fails(self, executor: EditPlanExecutor):\n        plan = EditPlan()\n        plan.add_create(\"x.py\", \"x\")\n        result = executor.apply(plan)\n        assert not result.success\n        assert \"validated\" in result.error.lower()\n",
-  "body_hash": "dcc3d0074e32a5d9",
+  "body": "def test_apply_unvalidated_fails(self, executor: EditPlanExecutor):\n    plan = EditPlan()\n    plan.add_create(\"x.py\", \"x\")\n    result = executor.apply(plan)\n    assert not result.success\n    assert \"validated\" in result.error.lower()\n",
+  "body_hash": "14e578d4d04c2fd2",
   "body_truncated": false,
   "callers_of": [
     "EditPlan",
@@ -9,7 +9,7 @@
     "lower"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:126.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_plan.py:126.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_apply_unvalidated_fails",
@@ -23,7 +23,7 @@
     "ass_ade.tools.plan.EditPlanExecutor"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:126"
+    "source": "C:/!ass-ade/tests/test_plan.py:126"
   },
   "kind": "pure_function",
   "made_of": [],

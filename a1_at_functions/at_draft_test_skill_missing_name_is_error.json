@@ -1,12 +1,12 @@
 {
-  "body": "    def test_skill_missing_name_is_error(self) -> None:\n        data = {\n            \"name\": \"TestAgent\",\n            \"url\": \"https://example.com\",\n            \"version\": \"1.0\",\n            \"skills\": [{\"id\": \"s1\", \"name\": \"\"}],\n        }\n        report = validate_agent_card(data)\n        assert not report.valid\n",
-  "body_hash": "95d086c1fdd99976",
+  "body": "def test_skill_missing_name_is_error(self) -> None:\n    data = {\n        \"name\": \"TestAgent\",\n        \"url\": \"https://example.com\",\n        \"version\": \"1.0\",\n        \"skills\": [{\"id\": \"s1\", \"name\": \"\"}],\n    }\n    report = validate_agent_card(data)\n    assert not report.valid\n",
+  "body_hash": "5154bfc3415d716d",
   "body_truncated": false,
   "callers_of": [
     "validate_agent_card"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:105.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_a2a.py:105.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_skill_missing_name_is_error",
@@ -29,7 +29,7 @@
     "httpx"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:105"
+    "source": "C:/!ass-ade/tests/test_a2a.py:105"
   },
   "kind": "pure_function",
   "made_of": [],

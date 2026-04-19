@@ -1,13 +1,13 @@
 {
-  "body": "    def test_provider_for_model_reverse_lookup(self):\n        # groq's balanced tier model\n        groq_balanced = get_provider(\"groq\").models_by_tier[\"balanced\"]\n        assert provider_for_model(groq_balanced) == \"groq\"\n",
-  "body_hash": "2592a3bdae1fe3e0",
+  "body": "def test_provider_for_model_reverse_lookup(self):\n    # groq's balanced tier model\n    groq_balanced = get_provider(\"groq\").models_by_tier[\"balanced\"]\n    assert provider_for_model(groq_balanced) == \"groq\"\n",
+  "body_hash": "f11dd44d2f556c0d",
   "body_truncated": false,
   "callers_of": [
     "provider_for_model",
     "get_provider"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:166.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:166.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_provider_for_model_reverse_lookup",
@@ -86,7 +86,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:166"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:166"
   },
   "kind": "pure_function",
   "made_of": [],

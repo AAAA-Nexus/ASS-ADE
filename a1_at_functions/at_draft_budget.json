@@ -1,16 +1,22 @@
 {
-  "body": "    def budget(self) -> TokenBudget:\n        return self._budget\n",
-  "body_hash": "697453c3060dc01a",
+  "body": "def budget(self) -> TokenBudget:\n    return self._budget\n",
+  "body_hash": "bfbac57fe8a38a4a",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_conversation.py:19.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/conversation.py:32.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.budget",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "ass_ade.engine.tokens.TokenBudget",
+    "ass_ade.engine.tokens.estimate_message_tokens",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolSchema"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_conversation.py:19"
+    "source": "C:/!ass-ade/src/ass_ade/agent/conversation.py:32"
   },
   "kind": "pure_function",
   "made_of": [],

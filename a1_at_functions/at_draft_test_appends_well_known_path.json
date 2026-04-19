@@ -1,6 +1,6 @@
 {
-  "body": "    def test_appends_well_known_path(self) -> None:\n        \"\"\"Fetching from a URL without /.well-known/agent.json should auto-append it.\"\"\"\n        # Mock httpx.get to verify the right URL is called\n        with mock.patch(\"ass_ade.a2a.httpx.get\") as mock_get:\n            mock_response = mock.MagicMock()\n            mock_response.json.return_value = {\"name\": \"TestAgent\"}\n            mock_get.return_value = mock_response\n            \n            # This should work and return valid=False because the JSON is incomplete\n            # but we mainly care about the URL transformation\n            fetch_agent_card(\"https://example.com\")\n            \n            # Verify that the .well-known path was appended\n            called_url = mock_get.call_args[0][0]\n            assert called_url.endswith(\"/.well-known/agent.json\")\n",
-  "body_hash": "361f0fc51c5a48e0",
+  "body": "def test_appends_well_known_path(self) -> None:\n    \"\"\"Fetching from a URL without /.well-known/agent.json should auto-append it.\"\"\"\n    # Mock httpx.get to verify the right URL is called\n    with mock.patch(\"ass_ade.a2a.httpx.get\") as mock_get:\n        mock_response = mock.MagicMock()\n        mock_response.json.return_value = {\"name\": \"TestAgent\"}\n        mock_get.return_value = mock_response\n\n        # This should work and return valid=False because the JSON is incomplete\n        # but we mainly care about the URL transformation\n        fetch_agent_card(\"https://example.com\")\n\n        # Verify that the .well-known path was appended\n        called_url = mock_get.call_args[0][0]\n        assert called_url.endswith(\"/.well-known/agent.json\")\n",
+  "body_hash": "de3ca1fd8ec2e9ef",
   "body_truncated": false,
   "callers_of": [
     "patch",
@@ -9,13 +9,27 @@
     "endswith"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testa2afetchagentcardssrf.py:21.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_ssrf_protection.py:98.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_appends_well_known_path",
-  "imports": [],
+  "imports": [
+    "ipaddress",
+    "json",
+    "unittest.mock",
+    "pytest",
+    "ass_ade.a2a.fetch_agent_card",
+    "ass_ade.mcp.utils._validate_absolute_endpoint",
+    "ass_ade.nexus.models.MCPManifest",
+    "ass_ade.nexus.models.MCPTool",
+    "ass_ade.mcp.utils.invoke_tool",
+    "ass_ade.mcp.utils.invoke_tool",
+    "ass_ade.mcp.utils.simulate_invoke",
+    "ass_ade.mcp.utils.simulate_invoke",
+    "ass_ade.mcp.utils.simulate_invoke"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testa2afetchagentcardssrf.py:21"
+    "source": "C:/!ass-ade/tests/test_ssrf_protection.py:98"
   },
   "kind": "pure_function",
   "made_of": [],

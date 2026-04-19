@@ -1,5 +1,5 @@
 {
-  "body": "def test_api_key_header_injection():\n    \"\"\"Test that api_key is safely injected into headers.\"\"\"\n    api_key = \"test_api_key_123\"\n    \n    def handler(request):\n        assert \"Authorization\" in request.headers\n        assert request.headers[\"Authorization\"] == f\"Bearer {api_key}\"\n        assert request.headers[\"X-API-Key\"] == api_key\n        return httpx.Response(200, json={\"status\": \"ok\"})\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", api_key=api_key, transport=transport) as client:\n        result = client.get_health()\n        assert result is not None\n",
+  "body": "def test_api_key_header_injection():\n    \"\"\"Test that api_key is safely injected into headers.\"\"\"\n    api_key = \"test_api_key_123\"\n\n    def handler(request):\n        assert \"Authorization\" in request.headers\n        assert request.headers[\"Authorization\"] == f\"Bearer {api_key}\"\n        assert request.headers[\"X-API-Key\"] == api_key\n        return httpx.Response(200, json={\"status\": \"ok\"})\n\n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", api_key=api_key, transport=transport) as client:\n        result = client.get_health()\n        assert result is not None\n",
   "body_hash": "5c91445e7d38a638",
   "body_truncated": false,
   "callers_of": [
@@ -9,7 +9,7 @@
     "get_health"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:1319.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_nexus_client_comprehensive.py:1319.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_api_key_header_injection",
@@ -144,7 +144,7 @@
     "ass_ade.nexus.models.EntropyResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:1319"
+    "source": "C:/!ass-ade/tests/test_nexus_client_comprehensive.py:1319"
   },
   "kind": "engine_molecule",
   "made_of": [],

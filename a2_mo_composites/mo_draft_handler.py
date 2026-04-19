@@ -1,7 +1,8 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexusclientsearch.py:10
+# Extracted from C:/!ass-ade/tests/test_nexus_client_comprehensive.py:1010
 # Component id: mo.source.ass_ade.handler
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
-        def handler(request: httpx.Request) -> httpx.Response:
-            requests_made.append(request)
-            return httpx.Response(200, json={"success": True, "result": {}})
+def handler(request):
+    return httpx.Response(200, json=response_json)

@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_test_mcp_invoke_dry_run.py:5
+# Extracted from C:/!ass-ade/tests/test_mcp.py:80
 # Component id: sy.source.ass_ade.test_mcp_invoke_dry_run
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_mcp_invoke_dry_run(monkeypatch, tmp_path: Path) -> None:

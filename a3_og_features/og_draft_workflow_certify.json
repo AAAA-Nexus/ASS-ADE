@@ -1,6 +1,6 @@
 {
-  "body": "def workflow_certify(\n    text: str = typer.Argument(..., help=\"Text to certify.\"),\n    config: Path | None = CONFIG_OPTION,\n    allow_remote: bool = ALLOW_REMOTE_OPTION,\n    json_out: bool = typer.Option(False, \"--json\", help=\"Output raw JSON.\"),\n) -> None:\n    \"\"\"Multi-step output certification: hallucination \u2192 ethics \u2192 compliance \u2192 certify \u2192 lineage.\"\"\"\n    from ass_ade.nexus.errors import NexusError\n    from ass_ade.workflows import certify_output\n\n    _, settings = _resolve_config(config)\n    _require_remote_access(settings, allow_remote)\n    try:\n        with NexusClient(base_url=settings.nexus_base_url, timeout=settings.request_timeout_s, api_key=settings.nexus_api_key) as client:\n            result = certify_output(client, text)\n    except NexusError as exc:\n        console.print(f\"[red]Workflow error: {exc.detail}[/red]\")\n        raise typer.Exit(code=3) from exc\n    except httpx.HTTPError as exc:\n        _nexus_err(exc)\n        return\n    if json_out:\n        _print_json(result.model_dump())\n    else:\n        color = \"green\" if result.passed else \"red\"\n        console.print(f\"[{color}]Passed: {result.passed}[/{color}]\")\n        console.print(f\"  Certificate: {result.certificate_id or 'none'}\")\n        console.print(f\"  Lineage: {result.lineage_id or 'none'}\")\n        console.print(f\"  Hallucination: {result.hallucination_verdict}\")\n        console.print(f\"  Ethics: {result.ethics_verdict}\")\n        console.print(f\"  Compliance: {result.compliance_verdict}\")\n",
-  "body_hash": "ca78cad856f575de",
+  "body": "def workflow_certify(\n    text: str = typer.Argument(..., help=\"Text to certify.\"),\n    config: Path | None = CONFIG_OPTION,\n    allow_remote: bool = ALLOW_REMOTE_OPTION,\n    json_out: bool = typer.Option(False, \"--json\", help=\"Output raw JSON.\"),\n) -> None:\n    \"\"\"Multi-step output certification: hallucination \u2192 ethics \u2192 compliance \u2192 certify \u2192 lineage.\"\"\"\n    from ass_ade.nexus.errors import NexusError\n    from ass_ade.workflows import certify_output\n\n    _, settings = _resolve_config(config)\n    _require_remote_access(settings, allow_remote)\n    try:\n        with NexusClient(\n            base_url=settings.nexus_base_url,\n            timeout=settings.request_timeout_s,\n            api_key=settings.nexus_api_key,\n        ) as client:\n            result = certify_output(client, text)\n    except NexusError as exc:\n        console.print(f\"[red]Workflow error: {exc.detail}[/red]\")\n        raise typer.Exit(code=3) from exc\n    except httpx.HTTPError as exc:\n        _nexus_err(exc)\n        return\n    if json_out:\n        _print_json(result.model_dump())\n    else:\n        color = \"green\" if result.passed else \"red\"\n        console.print(f\"[{color}]Passed: {result.passed}[/{color}]\")\n        console.print(f\"  Certificate: {result.certificate_id or 'none'}\")\n        console.print(f\"  Lineage: {result.lineage_id or 'none'}\")\n        console.print(f\"  Hallucination: {result.hallucination_verdict}\")\n        console.print(f\"  Ethics: {result.ethics_verdict}\")\n        console.print(f\"  Compliance: {result.compliance_verdict}\")\n",
+  "body_hash": "cf590476694a0f75",
   "body_truncated": false,
   "callers_of": [
     "Argument",
@@ -16,7 +16,7 @@
     "model_dump"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/commands/workflow.py:146.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/commands/workflow.py:155.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "og.source.ass_ade.workflow_certify",
@@ -24,7 +24,6 @@
     "__future__.annotations",
     "json",
     "pathlib.Path",
-    "typing.Annotated",
     "typing.Any",
     "httpx",
     "typer",
@@ -42,7 +41,7 @@
     "ass_ade.map_terrain.map_terrain"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/commands/workflow.py:146"
+    "source": "C:/!ass-ade/src/ass_ade/commands/workflow.py:155"
   },
   "kind": "product_organism",
   "made_of": [

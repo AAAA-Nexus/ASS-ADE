@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp.py:275
+# Extracted from C:/!ass-ade/tests/test_mcp.py:275
 # Component id: sy.source.ass_ade.test_mock_server_oversized_body_returns_413_with_content_length
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_mock_server_oversized_body_returns_413_with_content_length() -> None:

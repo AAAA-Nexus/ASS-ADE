@@ -1,12 +1,12 @@
 {
-  "body": "    def swarm_relay(self, from_id: str, to: str, message: dict, ttl: int = 3600, **kwargs: Any) -> SwarmRelayResult:\n        \"\"\"/v1/swarm/relay \u2014 A2A-ENT message relay across swarm. $0.008/call\"\"\"\n        return self._post_model(\"/v1/swarm/relay\", SwarmRelayResult, {\"from\": from_id, \"to\": to, \"message\": message, \"ttl\": ttl, **kwargs})\n",
-  "body_hash": "46476b8c0b46fa06",
+  "body": "def swarm_relay(self, from_id: str, to: str, message: dict, ttl: int = 3600, **kwargs: Any) -> SwarmRelayResult:\n    \"\"\"/v1/swarm/relay \u2014 A2A-ENT message relay across swarm. $0.008/call\"\"\"\n    return self._post_model(\"/v1/swarm/relay\", SwarmRelayResult, {\"from\": from_id, \"to\": to, \"message\": message, \"ttl\": ttl, **kwargs})\n",
+  "body_hash": "1b63e2fa0150e774",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:662.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:662.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.swarm_relay",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:662"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:662"
   },
   "kind": "engine_molecule",
   "made_of": [],

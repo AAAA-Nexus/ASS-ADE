@@ -1,6 +1,8 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/a2a/__init__.py:133
+# Extracted from C:/!ass-ade/src/ass_ade/a2a/__init__.py:133
 # Component id: at.source.ass_ade.warnings
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
-    def warnings(self) -> list[ValidationIssue]:
-        return [i for i in self.issues if i.severity == "warning"]
+def warnings(self) -> list[ValidationIssue]:
+    return [i for i in self.issues if i.severity == "warning"]

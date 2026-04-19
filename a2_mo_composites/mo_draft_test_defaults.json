@@ -1,13 +1,13 @@
 {
-  "body": "    def test_defaults(self):\n        r = CompletionRequest(messages=[Message(role=\"user\", content=\"hi\")])\n        assert r.temperature == 0.0\n        assert r.max_tokens == 4096\n        assert r.tools == []\n        assert r.model is None\n",
-  "body_hash": "94526667163c5e81",
+  "body": "def test_defaults(self):\n    r = CompletionRequest(messages=[Message(role=\"user\", content=\"hi\")])\n    assert r.temperature == 0.0\n    assert r.max_tokens == 4096\n    assert r.tools == []\n    assert r.model is None\n",
+  "body_hash": "8e71504d4e933940",
   "body_truncated": false,
   "callers_of": [
     "CompletionRequest",
     "Message"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine.py:51.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine.py:51.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_defaults",
@@ -38,7 +38,7 @@
     "ass_ade.engine.provider.MultiProvider"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine.py:51"
+    "source": "C:/!ass-ade/tests/test_engine.py:51"
   },
   "kind": "engine_molecule",
   "made_of": [],

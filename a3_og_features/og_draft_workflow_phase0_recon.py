@@ -1,10 +1,14 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_workflow_phase0_recon.py:5
+# Extracted from C:/!ass-ade/src/ass_ade/commands/workflow.py:74
 # Component id: og.source.ass_ade.workflow_phase0_recon
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def workflow_phase0_recon(
     task_description: str = typer.Argument(..., help="Task to recon before execution."),
-    source: list[str] = typer.Option([], "--source", help="Official source URL already researched."),
+    source: list[str] = typer.Option(
+        [], "--source", help="Official source URL already researched."
+    ),
     path: Path = REPO_PATH_OPTION,
     max_files: int = typer.Option(20, help="Maximum relevant files to return."),
     json_out: bool = typer.Option(False, "--json", help="Output raw JSON."),

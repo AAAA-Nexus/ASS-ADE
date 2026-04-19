@@ -1,5 +1,5 @@
 {
-  "module_count": 106,
+  "module_count": 86,
   "modules": [
     {
       "change_type": "new",
@@ -69,12 +69,6 @@
     },
     {
       "change_type": "new",
-      "id": "qk.source.ass_ade.fakeclient",
-      "name": "FakeClient",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "qk.source.ass_ade.federationtoken",
       "name": "FederationToken",
       "version": "0.1.0"
@@ -83,18 +77,6 @@
       "change_type": "new",
       "id": "qk.source.ass_ade.for_model",
       "name": "for_model",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.ass_ade.from_header_value",
-      "name": "from_header_value",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.ass_ade.from_payment_result",
-      "name": "from_payment_result",
       "version": "0.1.0"
     },
     {
@@ -119,12 +101,6 @@
       "change_type": "new",
       "id": "qk.source.ass_ade.inference_token_count",
       "name": "inference_token_count",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.ass_ade.lean4spec",
-      "name": "Lean4Spec",
       "version": "0.1.0"
     },
     {
@@ -207,18 +183,6 @@
     },
     {
       "change_type": "new",
-      "id": "qk.source.ass_ade.test_all_profiles_have_all_three_tiers",
-      "name": "test_all_profiles_have_all_three_tiers",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.ass_ade.test_all_profiles_have_display_name",
-      "name": "test_all_profiles_have_display_name",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "qk.source.ass_ade.test_available",
       "name": "test_available",
       "version": "0.1.0"
@@ -237,20 +201,8 @@
     },
     {
       "change_type": "new",
-      "id": "qk.source.ass_ade.test_catalog_includes_groq_chutes_nexus",
-      "name": "test_catalog_includes_groq_chutes_nexus",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "qk.source.ass_ade.test_claude_model",
       "name": "test_claude_model",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.ass_ade.test_cloud_providers_have_signup_url",
-      "name": "test_cloud_providers_have_signup_url",
       "version": "0.1.0"
     },
     {
@@ -291,32 +243,8 @@
     },
     {
       "change_type": "new",
-      "id": "qk.source.ass_ade.test_fallback_chain_contains_only_known_providers",
-      "name": "test_fallback_chain_contains_only_known_providers",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "qk.source.ass_ade.test_for_model",
       "name": "test_for_model",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.ass_ade.test_from_header_value",
-      "name": "test_from_header_value",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.ass_ade.test_from_payment_result_failure",
-      "name": "test_from_payment_result_failure",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.ass_ade.test_from_payment_result_success",
-      "name": "test_from_payment_result_success",
       "version": "0.1.0"
     },
     {
@@ -329,18 +257,6 @@
       "change_type": "new",
       "id": "qk.source.ass_ade.test_get_proof",
       "name": "test_get_proof",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.ass_ade.test_header_roundtrip",
-      "name": "test_header_roundtrip",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.ass_ade.test_internal_search_sends_session_token",
-      "name": "test_internal_search_sends_session_token",
       "version": "0.1.0"
     },
     {
@@ -365,12 +281,6 @@
       "change_type": "new",
       "id": "qk.source.ass_ade.test_loads_from_manifest",
       "name": "test_loads_from_manifest",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.ass_ade.test_local_providers_have_no_api_key_env",
-      "name": "test_local_providers_have_no_api_key_env",
       "version": "0.1.0"
     },
     {
@@ -413,12 +323,6 @@
       "change_type": "new",
       "id": "qk.source.ass_ade.test_multiple_tools",
       "name": "test_multiple_tools",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.ass_ade.test_nexus_is_marked_special",
-      "name": "test_nexus_is_marked_special",
       "version": "0.1.0"
     },
     {
@@ -471,12 +375,6 @@
     },
     {
       "change_type": "new",
-      "id": "qk.source.ass_ade.test_search_requires_session_token",
-      "name": "test_search_requires_session_token",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "qk.source.ass_ade.test_short_text",
       "name": "test_short_text",
       "version": "0.1.0"
@@ -503,18 +401,6 @@
       "change_type": "new",
       "id": "qk.source.ass_ade.test_system_messages_not_evicted",
       "name": "test_system_messages_not_evicted",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.ass_ade.test_tier_aliases_include_canonical_and_claude",
-      "name": "test_tier_aliases_include_canonical_and_claude",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.ass_ade.test_to_header_value",
-      "name": "test_to_header_value",
       "version": "0.1.0"
     },
     {
@@ -593,12 +479,6 @@
       "change_type": "new",
       "id": "qk.source.ass_ade.testtoolschema",
       "name": "TestToolSchema",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.ass_ade.to_header_value",
-      "name": "to_header_value",
       "version": "0.1.0"
     },
     {

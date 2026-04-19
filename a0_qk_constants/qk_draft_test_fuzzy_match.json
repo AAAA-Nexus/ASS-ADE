@@ -1,12 +1,12 @@
 {
-  "body": "    def test_fuzzy_match(self):\n        # Should match \"llama-3.1-8b\" as substring\n        assert context_window_for(\"ollama/llama-3.1-8b\") == 128_000\n",
-  "body_hash": "4d39565b3a98f19c",
+  "body": "def test_fuzzy_match(self):\n    # Should match \"llama-3.1-8b\" as substring\n    assert context_window_for(\"ollama/llama-3.1-8b\") == 128_000\n",
+  "body_hash": "190adcea1a5c98d3",
   "body_truncated": false,
   "callers_of": [
     "context_window_for"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tokens.py:110.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_tokens.py:110.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "qk.source.ass_ade.test_fuzzy_match",
@@ -23,7 +23,7 @@
     "ass_ade.engine.types.ToolSchema"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tokens.py:110"
+    "source": "C:/!ass-ade/tests/test_tokens.py:110"
   },
   "kind": "invariant",
   "made_of": [],

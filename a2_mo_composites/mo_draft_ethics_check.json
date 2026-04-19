@@ -1,12 +1,12 @@
 {
-  "body": "    def ethics_check(self, text: str, **kwargs: Any) -> EthicsCheckResult:\n        \"\"\"/v1/ethics/check \u2014 Prime Axiom ethical oracle (DCM-1017). $0.040/request\"\"\"\n        return self._post_model(\"/v1/ethics/check\", EthicsCheckResult, {\"text\": text, **kwargs})\n",
-  "body_hash": "2181998462e6d4af",
+  "body": "def ethics_check(self, text: str, **kwargs: Any) -> EthicsCheckResult:\n    \"\"\"/v1/ethics/check \u2014 Prime Axiom ethical oracle (DCM-1017). $0.040/request\"\"\"\n    return self._post_model(\"/v1/ethics/check\", EthicsCheckResult, {\"text\": text, **kwargs})\n",
+  "body_hash": "f8799146cf3b8773",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:688.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:688.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.ethics_check",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:688"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:688"
   },
   "kind": "engine_molecule",
   "made_of": [],

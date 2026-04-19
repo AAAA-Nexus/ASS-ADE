@@ -1,33 +1,36 @@
 {
-  "body": "    def execute(self, **kwargs: Any) -> ToolResult:\n        pattern = kwargs[\"pattern\"]\n        matches = sorted(self._cwd.glob(pattern))\n\n        filtered = [\n            m\n            for m in matches\n            if m.is_file()\n            and not any(p in _SKIP_DIRS for p in m.relative_to(self._cwd).parts)\n        ]\n\n        if not filtered:\n            return ToolResult(output=\"No matches found.\")\n\n        lines = [str(m.relative_to(self._cwd)) for m in filtered[:_MAX_GLOB_RESULTS]]\n        if len(filtered) > _MAX_GLOB_RESULTS:\n            lines.append(f\"... and {len(filtered) - _MAX_GLOB_RESULTS} more matches\")\n\n        return ToolResult(output=\"\\n\".join(lines))\n",
-  "body_hash": "f0f099080231d537",
+  "body": "def execute(self, **kwargs: Any) -> ToolResult:\n    return self._json(prompt_hash(working_dir=self._cwd, **kwargs))\n",
+  "body_hash": "5a515a1052adfdc1",
   "body_truncated": false,
   "callers_of": [
-    "sorted",
-    "ToolResult",
-    "glob",
-    "str",
-    "len",
-    "append",
-    "relative_to",
-    "join",
-    "is_file",
-    "any"
+    "_json",
+    "prompt_hash"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_searchfilestool.py:29.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/tools/prompt.py:126.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.execute",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.prompt_toolkit.prompt_diff",
+    "ass_ade.prompt_toolkit.prompt_hash",
+    "ass_ade.prompt_toolkit.prompt_propose",
+    "ass_ade.prompt_toolkit.prompt_section",
+    "ass_ade.prompt_toolkit.prompt_validate",
+    "ass_ade.tools.base.ToolResult"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_searchfilestool.py:29"
+    "source": "C:/!ass-ade/src/ass_ade/tools/prompt.py:126"
   },
   "kind": "pure_function",
   "made_of": [],
   "name": "execute",
   "product_categories": [
-    "DCM"
+    "COR"
   ],
   "provides": [
     "rebuild candidate for execute"

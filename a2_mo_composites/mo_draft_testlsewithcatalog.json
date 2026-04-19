@@ -12,7 +12,7 @@
     "get_provider"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:269.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:269.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.testlsewithcatalog",
@@ -91,10 +91,11 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:269"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:269"
   },
   "kind": "engine_molecule",
   "made_of": [
+    "at.source.ass_ade.select",
     "at.source.ass_ade.get_provider"
   ],
   "name": "TestLSEWithCatalog",

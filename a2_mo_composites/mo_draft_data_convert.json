@@ -1,12 +1,12 @@
 {
-  "body": "    def data_convert(self, content: str, target_format: str, **kwargs: Any) -> dict:\n        \"\"\"/v1/data/convert \u2014 Convert text content to a target format. $0.020/request\"\"\"\n        return self._post_raw(\"/v1/data/convert\", {\"content\": content, \"target_format\": target_format, **kwargs})\n",
-  "body_hash": "363dadb6d92e35dd",
+  "body": "def data_convert(self, content: str, target_format: str, **kwargs: Any) -> dict:\n    \"\"\"/v1/data/convert \u2014 Convert text content to a target format. $0.020/request\"\"\"\n    return self._post_raw(\"/v1/data/convert\", {\"content\": content, \"target_format\": target_format, **kwargs})\n",
+  "body_hash": "1bb09b6c198d57b5",
   "body_truncated": false,
   "callers_of": [
     "_post_raw"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1159.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1159.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.data_convert",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1159"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1159"
   },
   "kind": "engine_molecule",
   "made_of": [],

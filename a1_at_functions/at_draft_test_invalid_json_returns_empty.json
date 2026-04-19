@@ -1,13 +1,13 @@
 {
-  "body": "    def test_invalid_json_returns_empty(self, tmp_path: Path):\n        p = tmp_path / \"MANIFEST.json\"\n        p.write_text(\"not json\", encoding=\"utf-8\")\n        assert load_prev_versions(p) == {}\n",
-  "body_hash": "138c38bb2665f832",
+  "body": "def test_invalid_json_returns_empty(self, tmp_path: Path):\n    p = tmp_path / \"MANIFEST.json\"\n    p.write_text(\"not json\", encoding=\"utf-8\")\n    assert load_prev_versions(p) == {}\n",
+  "body_hash": "24c555bc30e88d67",
   "body_truncated": false,
   "callers_of": [
     "write_text",
     "load_prev_versions"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_version_tracker.py:230.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_version_tracker.py:230.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_invalid_json_returns_empty",
@@ -28,7 +28,7 @@
     "ass_ade.engine.rebuild.version_tracker.write_tier_version_file"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_version_tracker.py:230"
+    "source": "C:/!ass-ade/tests/test_version_tracker.py:230"
   },
   "kind": "pure_function",
   "made_of": [],

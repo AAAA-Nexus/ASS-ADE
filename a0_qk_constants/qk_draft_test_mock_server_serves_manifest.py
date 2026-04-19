@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp.py:260
+# Extracted from C:/!ass-ade/tests/test_mcp.py:260
 # Component id: qk.source.ass_ade.test_mock_server_serves_manifest
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_mock_server_serves_manifest() -> None:

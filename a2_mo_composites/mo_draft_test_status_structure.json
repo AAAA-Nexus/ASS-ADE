@@ -1,6 +1,6 @@
 {
-  "body": "    def test_status_structure(self, tmp_path):\n        fly = self._make(tmp_path)\n        status = fly.status()\n        assert hasattr(status, \"adapter_version\")\n        assert hasattr(status, \"contribution_count\")\n        assert hasattr(status, \"ratchet_epoch\")\n        assert hasattr(status, \"pending_count\")\n",
-  "body_hash": "22788c3b90a8517c",
+  "body": "def test_status_structure(self, tmp_path):\n    fly = self._make(tmp_path)\n    status = fly.status()\n    assert hasattr(status, \"adapter_version\")\n    assert hasattr(status, \"contribution_count\")\n    assert hasattr(status, \"ratchet_epoch\")\n    assert hasattr(status, \"pending_count\")\n",
+  "body_hash": "7378f71caadd1272",
   "body_truncated": false,
   "callers_of": [
     "_make",
@@ -8,7 +8,7 @@
     "hasattr"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:537.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase_engines.py:537.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_status_structure",
@@ -63,7 +63,7 @@
     "ass_ade.agent.orchestrator.CycleReport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:537"
+    "source": "C:/!ass-ade/tests/test_phase_engines.py:537"
   },
   "kind": "engine_molecule",
   "made_of": [

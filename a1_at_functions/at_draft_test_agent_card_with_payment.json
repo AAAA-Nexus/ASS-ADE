@@ -1,18 +1,35 @@
 {
-  "body": "    def test_agent_card_with_payment(self) -> None:\n        card = A2AAgentCard(name=\"Paid\", payment={\"type\": \"x402\"})\n        assert card.payment == {\"type\": \"x402\"}\n",
-  "body_hash": "cbb45dbedbf39620",
+  "body": "def test_agent_card_with_payment(self) -> None:\n    card = A2AAgentCard(name=\"Paid\", payment={\"type\": \"x402\"})\n    assert card.payment == {\"type\": \"x402\"}\n",
+  "body_hash": "916b8679212a7732",
   "body_truncated": false,
   "callers_of": [
     "A2AAgentCard"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testmodels.py:10.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_a2a.py:302.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_agent_card_with_payment",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.a2a.A2AAgentCard",
+    "ass_ade.a2a.A2AAuthentication",
+    "ass_ade.a2a.A2ASkill",
+    "ass_ade.a2a.ValidationIssue",
+    "ass_ade.a2a.ValidationReport",
+    "ass_ade.a2a.fetch_agent_card",
+    "ass_ade.a2a.local_agent_card",
+    "ass_ade.a2a.negotiate",
+    "ass_ade.a2a.validate_agent_card",
+    "httpx",
+    "httpx"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testmodels.py:10"
+    "source": "C:/!ass-ade/tests/test_a2a.py:302"
   },
   "kind": "pure_function",
   "made_of": [],

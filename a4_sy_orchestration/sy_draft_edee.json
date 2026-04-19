@@ -1,6 +1,6 @@
 {
-  "body": "    def edee(self):\n        if self._edee is None:\n            from ass_ade.agent.edee import EDEE\n            cfg = dict(self._config)\n            cfg.setdefault(\"working_dir\", self._working_dir)\n            self._edee = EDEE(cfg, self._nexus)\n        return self._edee\n",
-  "body_hash": "e744217d4f605937",
+  "body": "def edee(self):\n    if self._edee is None:\n        from ass_ade.agent.edee import EDEE\n        cfg = dict(self._config)\n        cfg.setdefault(\"working_dir\", self._working_dir)\n        self._edee = EDEE(cfg, self._nexus)\n    return self._edee\n",
+  "body_hash": "667c94f804f2232d",
   "body_truncated": false,
   "callers_of": [
     "dict",
@@ -8,7 +8,7 @@
     "EDEE"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/orchestrator.py:216.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/orchestrator.py:216.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.edee",
@@ -40,7 +40,7 @@
     "json"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/orchestrator.py:216"
+    "source": "C:/!ass-ade/src/ass_ade/agent/orchestrator.py:216"
   },
   "kind": "ecosystem_system",
   "made_of": [],

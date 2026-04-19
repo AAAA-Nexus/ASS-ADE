@@ -8,7 +8,7 @@
     "_doc_agent"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_parallel_recon.py:290.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_parallel_recon.py:290.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_doc_agent_finds_readme",
@@ -34,7 +34,7 @@
     "json"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_parallel_recon.py:290"
+    "source": "C:/!ass-ade/tests/test_parallel_recon.py:290"
   },
   "kind": "pure_function",
   "made_of": [],

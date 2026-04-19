@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/tools/registry.py:11
+# Extracted from C:/!ass-ade/src/ass_ade/tools/registry.py:14
 # Component id: og.source.ass_ade.toolregistry
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class ToolRegistry:
@@ -33,5 +35,12 @@ class ToolRegistry:
             return ToolResult(output="", error=f"Unknown tool: {name}", success=False)
         try:
             return tool.execute(**kwargs)
-        except Exception as exc:
+        except (
+            AttributeError,
+            LookupError,
+            OSError,
+            RuntimeError,
+            TypeError,
+            ValueError,
+        ) as exc:
             return ToolResult(output="", error=str(exc), success=False)

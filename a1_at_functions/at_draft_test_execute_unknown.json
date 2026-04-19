@@ -1,6 +1,6 @@
 {
-  "body": "    def test_execute_unknown(self, workspace: Path):\n        reg = default_registry(str(workspace))\n        r = reg.execute(\"no_such_tool\")\n        assert not r.success\n        assert \"Unknown tool\" in (r.error or \"\")\n",
-  "body_hash": "82f325a51565f963",
+  "body": "def test_execute_unknown(self, workspace: Path):\n    reg = default_registry(str(workspace))\n    r = reg.execute(\"no_such_tool\")\n    assert not r.success\n    assert \"Unknown tool\" in (r.error or \"\")\n",
+  "body_hash": "702bad2d4240b975",
   "body_truncated": false,
   "callers_of": [
     "default_registry",
@@ -8,7 +8,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:197.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_tools_builtin.py:197.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_execute_unknown",
@@ -27,7 +27,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:197"
+    "source": "C:/!ass-ade/tests/test_tools_builtin.py:197"
   },
   "kind": "pure_function",
   "made_of": [],

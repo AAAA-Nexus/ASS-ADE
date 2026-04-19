@@ -1,13 +1,13 @@
 {
-  "body": "    def test_proceed_when_all_caps_present(self, tmp_path):\n        from ass_ade.map_terrain import active_terrain_gate\n        # Use capabilities we know exist in the base inventory\n        result = active_terrain_gate(\n            [\"ass_ade_agent\"],\n            working_dir=str(tmp_path),\n            write_stubs=False,\n        )\n        assert result.verdict == \"PROCEED\"\n        assert \"ass_ade_agent\" in result.capabilities_present\n",
-  "body_hash": "e42c5833361fdae4",
+  "body": "def test_proceed_when_all_caps_present(self, tmp_path):\n    from ass_ade.map_terrain import active_terrain_gate\n    # Use capabilities we know exist in the base inventory\n    result = active_terrain_gate(\n        [\"ass_ade_agent\"],\n        working_dir=str(tmp_path),\n        write_stubs=False,\n    )\n    assert result.verdict == \"PROCEED\"\n    assert \"ass_ade_agent\" in result.capabilities_present\n",
+  "body_hash": "94ebf16cec1856e1",
   "body_truncated": false,
   "callers_of": [
     "active_terrain_gate",
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:274.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase_engines.py:274.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_proceed_when_all_caps_present",
@@ -62,7 +62,7 @@
     "ass_ade.agent.orchestrator.CycleReport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:274"
+    "source": "C:/!ass-ade/tests/test_phase_engines.py:274"
   },
   "kind": "engine_molecule",
   "made_of": [

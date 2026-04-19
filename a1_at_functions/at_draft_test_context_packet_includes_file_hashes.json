@@ -8,13 +8,26 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_context_packet_includes_file_hashes.py:5.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_recon_context.py:74.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_context_packet_includes_file_hashes",
-  "imports": [],
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.context_memory.VECTOR_DIMENSIONS",
+    "ass_ade.context_memory.build_context_packet",
+    "ass_ade.context_memory.query_vector_memory",
+    "ass_ade.context_memory.store_vector_memory",
+    "ass_ade.context_memory.vector_embed",
+    "ass_ade.mcp.server.MCPServer",
+    "ass_ade.recon.phase0_recon"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_context_packet_includes_file_hashes.py:5"
+    "source": "C:/!ass-ade/tests/test_recon_context.py:74"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/capabilities.py:363
+# Extracted from C:/!ass-ade/src/ass_ade/agent/capabilities.py:534
 # Component id: at.source.ass_ade.render_markdown_capability_section
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def render_markdown_capability_section(working_dir: str | Path = ".") -> str:

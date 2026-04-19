@@ -1,12 +1,12 @@
 {
-  "body": "    def test_local_card_displays(self) -> None:\n        result = runner.invoke(app, [\"a2a\", \"local-card\"])\n        assert result.exit_code == 0\n        assert \"ASS-ADE\" in result.stdout\n",
-  "body_hash": "9a680e9542026266",
+  "body": "def test_local_card_displays(self) -> None:\n    result = runner.invoke(app, [\"a2a\", \"local-card\"])\n    assert result.exit_code == 0\n    assert \"ASS-ADE\" in result.stdout\n",
+  "body_hash": "bfcec9fc7607559b",
   "body_truncated": false,
   "callers_of": [
     "invoke"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a_cli.py:140.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_a2a_cli.py:140.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_local_card_displays",
@@ -26,7 +26,7 @@
     "ass_ade.a2a.NegotiationResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a_cli.py:140"
+    "source": "C:/!ass-ade/tests/test_a2a_cli.py:140"
   },
   "kind": "pure_function",
   "made_of": [],

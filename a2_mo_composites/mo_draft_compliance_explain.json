@@ -1,12 +1,12 @@
 {
-  "body": "    def compliance_explain(self, output: str, input_features: dict, **kwargs: Any) -> ExplainCert:\n        \"\"\"/v1/compliance/explain \u2014 GDPR Art.22 explainability cert (XPL-100). $0.040/call\"\"\"\n        return self._post_model(\"/v1/compliance/explain\", ExplainCert, {\"output\": output, \"input_features\": input_features, **kwargs})\n",
-  "body_hash": "b6a6a0bc3ff500f5",
+  "body": "def compliance_explain(self, output: str, input_features: dict, **kwargs: Any) -> ExplainCert:\n    \"\"\"/v1/compliance/explain \u2014 GDPR Art.22 explainability cert (XPL-100). $0.040/call\"\"\"\n    return self._post_model(\"/v1/compliance/explain\", ExplainCert, {\"output\": output, \"input_features\": input_features, **kwargs})\n",
+  "body_hash": "05fdaa5724d2118b",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1064.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1064.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.compliance_explain",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1064"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1064"
   },
   "kind": "engine_molecule",
   "made_of": [],

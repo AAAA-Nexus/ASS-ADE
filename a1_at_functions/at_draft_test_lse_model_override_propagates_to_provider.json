@@ -1,6 +1,6 @@
 {
-  "body": "    def test_lse_model_override_propagates_to_provider(self):\n        provider = _make_provider_returning_text(\"ok\")\n        registry = ToolRegistry()\n        lse = LSEEngine({})\n        loop = AgentLoop(provider=provider, registry=registry, lse=lse)\n        loop.step(\"trivial task\")\n        # Provider was called with a model name from LSE\n        call_args = provider.complete.call_args\n        assert call_args is not None\n        request = call_args[0][0] if call_args[0] else call_args[1].get(\"request\")\n        # The request should have a model set (either from LSE or None)\n        assert hasattr(request, \"model\")\n",
-  "body_hash": "5df55efe661ddc69",
+  "body": "def test_lse_model_override_propagates_to_provider(self):\n    provider = _make_provider_returning_text(\"ok\")\n    registry = ToolRegistry()\n    lse = LSEEngine({})\n    loop = AgentLoop(provider=provider, registry=registry, lse=lse)\n    loop.step(\"trivial task\")\n    # Provider was called with a model name from LSE\n    call_args = provider.complete.call_args\n    assert call_args is not None\n    request = call_args[0][0] if call_args[0] else call_args[1].get(\"request\")\n    # The request should have a model set (either from LSE or None)\n    assert hasattr(request, \"model\")\n",
+  "body_hash": "9a079c941bce7cf5",
   "body_truncated": false,
   "callers_of": [
     "_make_provider_returning_text",
@@ -12,7 +12,7 @@
     "get"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase1_integration.py:129.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase1_integration.py:129.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_lse_model_override_propagates_to_provider",
@@ -38,7 +38,7 @@
     "rich.console.Console"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase1_integration.py:129"
+    "source": "C:/!ass-ade/tests/test_phase1_integration.py:129"
   },
   "kind": "pure_function",
   "made_of": [],

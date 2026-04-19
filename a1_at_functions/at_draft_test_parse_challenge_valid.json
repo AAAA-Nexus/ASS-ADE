@@ -1,13 +1,13 @@
 {
-  "body": "    def test_parse_challenge_valid(self) -> None:\n        \"\"\"X402ClientFlow should parse a valid challenge response.\"\"\"\n        flow = X402ClientFlow()\n        body = {\n            \"amount_micro_usdc\": 5000,\n            \"amount_usdc\": 0.005,\n            \"recipient\": ATOMADIC_TREASURY,\n            \"nonce\": \"abc\",\n            \"expires\": 9999999999,\n            \"chain_id\": BASE_MAINNET_CHAIN_ID,\n            \"endpoint\": \"/v1/trust/score\",\n        }\n        challenge = flow.parse_challenge(body)\n        assert challenge is not None\n        assert challenge.amount_micro_usdc == 5000\n",
-  "body_hash": "2b14faec545566a3",
+  "body": "def test_parse_challenge_valid(self) -> None:\n    \"\"\"X402ClientFlow should parse a valid challenge response.\"\"\"\n    flow = X402ClientFlow()\n    body = {\n        \"amount_micro_usdc\": 5000,\n        \"amount_usdc\": 0.005,\n        \"recipient\": ATOMADIC_TREASURY,\n        \"nonce\": \"abc\",\n        \"expires\": 9999999999,\n        \"chain_id\": BASE_MAINNET_CHAIN_ID,\n        \"endpoint\": \"/v1/trust/score\",\n    }\n    challenge = flow.parse_challenge(body)\n    assert challenge is not None\n    assert challenge.amount_micro_usdc == 5000\n",
+  "body_hash": "2a2c26996f760a51",
   "body_truncated": false,
   "callers_of": [
     "X402ClientFlow",
     "parse_challenge"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:150.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_x402_flow.py:150.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_parse_challenge_valid",
@@ -33,7 +33,7 @@
     "ass_ade.nexus.x402.BASE_SEPOLIA_CHAIN_ID"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:150"
+    "source": "C:/!ass-ade/tests/test_x402_flow.py:150"
   },
   "kind": "pure_function",
   "made_of": [],

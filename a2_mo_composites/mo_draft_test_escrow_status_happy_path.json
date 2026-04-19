@@ -1,5 +1,5 @@
 {
-  "body": "def test_escrow_status_happy_path():\n    \"\"\"Test escrow_status GET endpoint.\"\"\"\n    def handler(request):\n        assert \"/v1/escrow/status/\" in request.url.path\n        return httpx.Response(200, json={\"escrow_id\": \"escrow_123\", \"status\": \"locked\", \"amount\": 100.0})\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        result = client.escrow_status(escrow_id=\"escrow_123\")\n        assert result is not None\n",
+  "body": "def test_escrow_status_happy_path():\n    \"\"\"Test escrow_status GET endpoint.\"\"\"\n    def handler(request):\n        assert \"/v1/escrow/status/\" in request.url.path\n        return httpx.Response(200, json={\"escrow_id\": \"escrow_123\", \"status\": \"locked\", \"amount\": 100.0})\n\n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        result = client.escrow_status(escrow_id=\"escrow_123\")\n        assert result is not None\n",
   "body_hash": "004e6a6a10764438",
   "body_truncated": false,
   "callers_of": [
@@ -9,7 +9,7 @@
     "escrow_status"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:357.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_nexus_client_comprehensive.py:357.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_escrow_status_happy_path",
@@ -144,7 +144,7 @@
     "ass_ade.nexus.models.EntropyResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:357"
+    "source": "C:/!ass-ade/tests/test_nexus_client_comprehensive.py:357"
   },
   "kind": "engine_molecule",
   "made_of": [],

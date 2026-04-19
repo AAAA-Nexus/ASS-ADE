@@ -1,12 +1,12 @@
 {
-  "body": "    def aegis_epistemic_route(\n        self,\n        prompt: str | None = None,\n        max_tokens: int = 256,\n        model: str = \"auto\",\n        *,\n        query: str | None = None,\n        **kwargs: Any,\n    ) -> EpistemicRouteResult:\n        \"\"\"/v1/aegis/router/epistemic-bound \u2014 epistemic-aware routing (AEG-101). $0.040/call\"\"\"\n        return self._post_model(\"/v1/aegis/router/epistemic-bound\", EpistemicRouteResult, {\n            \"prompt\": prompt or query or \"\", \"max_tokens\": max_tokens, \"model\": model, **kwargs,\n        })\n",
-  "body_hash": "e7b6cbf25c4dc476",
+  "body": "def aegis_epistemic_route(\n    self,\n    prompt: str | None = None,\n    max_tokens: int = 256,\n    model: str = \"auto\",\n    *,\n    query: str | None = None,\n    **kwargs: Any,\n) -> EpistemicRouteResult:\n    \"\"\"/v1/aegis/router/epistemic-bound \u2014 epistemic-aware routing (AEG-101). $0.040/call\"\"\"\n    return self._post_model(\"/v1/aegis/router/epistemic-bound\", EpistemicRouteResult, {\n        \"prompt\": prompt or query or \"\", \"max_tokens\": max_tokens, \"model\": model, **kwargs,\n    })\n",
+  "body_hash": "9a965bf7730ef4e7",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:756.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:756.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.aegis_epistemic_route",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:756"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:756"
   },
   "kind": "engine_molecule",
   "made_of": [],

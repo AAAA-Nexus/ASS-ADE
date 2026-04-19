@@ -1,12 +1,12 @@
 {
-  "body": "    def build_proof_headers(self, payment: PaymentResult) -> dict[str, str]:\n        \"\"\"Build HTTP headers from a successful payment for request retry.\"\"\"\n        return build_payment_header(payment)\n",
-  "body_hash": "df64457fbfb5ab95",
+  "body": "def build_proof_headers(self, payment: PaymentResult) -> dict[str, str]:\n    \"\"\"Build HTTP headers from a successful payment for request retry.\"\"\"\n    return build_payment_header(payment)\n",
+  "body_hash": "7fbb665dffcdef00",
   "body_truncated": false,
   "callers_of": [
     "build_payment_header"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/x402.py:452.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/x402.py:452.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "qk.source.ass_ade.build_proof_headers",
@@ -21,7 +21,7 @@
     "logging"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/x402.py:452"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/x402.py:452"
   },
   "kind": "invariant",
   "made_of": [],

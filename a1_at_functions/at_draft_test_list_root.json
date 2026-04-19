@@ -1,6 +1,6 @@
 {
-  "body": "    def test_list_root(self, workspace: Path):\n        tool = ListDirectoryTool(str(workspace))\n        r = tool.execute()\n        assert r.success\n        assert \"hello.py\" in r.output\n        assert \"sub/\" in r.output\n",
-  "body_hash": "9cc2a89765fe3ba8",
+  "body": "def test_list_root(self, workspace: Path):\n    tool = ListDirectoryTool(str(workspace))\n    r = tool.execute()\n    assert r.success\n    assert \"hello.py\" in r.output\n    assert \"sub/\" in r.output\n",
+  "body_hash": "f4a2bb43c8e4bd60",
   "body_truncated": false,
   "callers_of": [
     "ListDirectoryTool",
@@ -8,7 +8,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:130.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_tools_builtin.py:130.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_list_root",
@@ -27,7 +27,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:130"
+    "source": "C:/!ass-ade/tests/test_tools_builtin.py:130"
   },
   "kind": "pure_function",
   "made_of": [],

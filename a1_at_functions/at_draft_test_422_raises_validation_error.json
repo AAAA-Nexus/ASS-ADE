@@ -1,19 +1,31 @@
 {
-  "body": "    def test_422_raises_validation_error(self) -> None:\n        with pytest.raises(NexusValidationError):\n            raise_for_status(422, detail=\"bad input\")\n",
-  "body_hash": "2cc7b5ae143b7479",
+  "body": "def test_422_raises_validation_error(self) -> None:\n    with pytest.raises(NexusValidationError):\n        raise_for_status(422, detail=\"bad input\")\n",
+  "body_hash": "6c53d467e31852a9",
   "body_truncated": false,
   "callers_of": [
     "raises",
     "raise_for_status"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testraiseforstatus.py:24.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_errors.py:69.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_422_raises_validation_error",
-  "imports": [],
+  "imports": [
+    "pytest",
+    "ass_ade.nexus.errors.NexusAuthError",
+    "ass_ade.nexus.errors.NexusCircuitOpen",
+    "ass_ade.nexus.errors.NexusConnectionError",
+    "ass_ade.nexus.errors.NexusError",
+    "ass_ade.nexus.errors.NexusPaymentRequired",
+    "ass_ade.nexus.errors.NexusRateLimited",
+    "ass_ade.nexus.errors.NexusServerError",
+    "ass_ade.nexus.errors.NexusTimeoutError",
+    "ass_ade.nexus.errors.NexusValidationError",
+    "ass_ade.nexus.errors.raise_for_status"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testraiseforstatus.py:24"
+    "source": "C:/!ass-ade/tests/test_errors.py:69"
   },
   "kind": "pure_function",
   "made_of": [],

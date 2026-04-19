@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_validate_prompt.py:5
+# Extracted from C:/!ass-ade/src/ass_ade/nexus/validation.py:95
 # Component id: at.source.ass_ade.validate_prompt
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def validate_prompt(value: str) -> str:

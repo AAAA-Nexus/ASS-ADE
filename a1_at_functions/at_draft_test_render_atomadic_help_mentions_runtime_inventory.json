@@ -1,18 +1,19 @@
 {
-  "body": "def test_render_atomadic_help_mentions_runtime_inventory(tmp_path: Path) -> None:\n    help_text = render_atomadic_help(tmp_path)\n\n    assert \"runtime\" in help_text\n    assert \"`protocol evolution-record`\" in help_text\n    assert \"`context pack`\" in help_text\n",
-  "body_hash": "0095a5071e8ae93b",
+  "body": "def test_render_atomadic_help_mentions_runtime_inventory(tmp_path: Path) -> None:\n    help_text = render_atomadic_help(tmp_path)\n\n    assert \"runtime\" in help_text\n    assert \"Capability counts\" in help_text\n    assert \"`protocol evolution-record`\" in help_text\n    assert \"`context pack`\" in help_text\n",
+  "body_hash": "a3e2aa5e26dc24a7",
   "body_truncated": false,
   "callers_of": [
     "render_atomadic_help"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_capabilities.py:46.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_capabilities.py:52.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_render_atomadic_help_mentions_runtime_inventory",
   "imports": [
     "__future__.annotations",
     "pathlib.Path",
+    "unittest.mock.MagicMock",
     "ass_ade.interpreter",
     "ass_ade.agent.capabilities.build_atomadic_intent_prompt",
     "ass_ade.agent.capabilities.command_path_exists",
@@ -22,7 +23,7 @@
     "ass_ade.interpreter.Atomadic"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_capabilities.py:46"
+    "source": "C:/!ass-ade/tests/test_capabilities.py:52"
   },
   "kind": "pure_function",
   "made_of": [],

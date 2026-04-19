@@ -1,13 +1,13 @@
 {
-  "body": "    def test_cancellation_context_defaults_to_not_cancelled(self) -> None:\n        ctx = CancellationContext()\n        assert ctx.check() is False\n        assert ctx.is_cancelled is False\n",
-  "body_hash": "b0154d6a46079a98",
+  "body": "def test_cancellation_context_defaults_to_not_cancelled(self) -> None:\n    ctx = CancellationContext()\n    assert ctx.check() is False\n    assert ctx.is_cancelled is False\n",
+  "body_hash": "8f8262819f5fdded",
   "body_truncated": false,
   "callers_of": [
     "CancellationContext",
     "check"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_cancellation.py:30.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_cancellation.py:30.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.test_cancellation_context_defaults_to_not_cancelled",
@@ -27,7 +27,7 @@
     "ass_ade.mcp.cancellation.CancellationContext"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_cancellation.py:30"
+    "source": "C:/!ass-ade/tests/test_mcp_cancellation.py:30"
   },
   "kind": "ecosystem_system",
   "made_of": [],

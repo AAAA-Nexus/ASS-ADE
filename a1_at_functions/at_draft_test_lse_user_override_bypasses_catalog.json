@@ -1,13 +1,13 @@
 {
-  "body": "    def test_lse_user_override_bypasses_catalog(self):\n        from ass_ade.agent.lse import LSEEngine\n        lse = LSEEngine({})\n        decision = lse.select(\n            trs_score=0.8, complexity=\"medium\", user_model_override=\"my-fixed-model\",\n        )\n        assert decision.model == \"my-fixed-model\"\n        assert decision.provider is None\n        assert decision.reason == \"user_override\"\n",
-  "body_hash": "a8c3de903132b6b4",
+  "body": "def test_lse_user_override_bypasses_catalog(self):\n    from ass_ade.agent.lse import LSEEngine\n    lse = LSEEngine({})\n    decision = lse.select(\n        trs_score=0.8, complexity=\"medium\", user_model_override=\"my-fixed-model\",\n    )\n    assert decision.model == \"my-fixed-model\"\n    assert decision.provider is None\n    assert decision.reason == \"user_override\"\n",
+  "body_hash": "8167a30a1a5d6f9a",
   "body_truncated": false,
   "callers_of": [
     "LSEEngine",
     "select"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:343.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:343.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_lse_user_override_bypasses_catalog",
@@ -86,7 +86,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:343"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:343"
   },
   "kind": "pure_function",
   "made_of": [],

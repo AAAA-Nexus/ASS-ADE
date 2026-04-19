@@ -12,7 +12,7 @@
     "lower"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase1_integration.py:161.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase1_integration.py:161.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.testbasondmaxbreach",
@@ -38,7 +38,7 @@
     "rich.console.Console"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase1_integration.py:161"
+    "source": "C:/!ass-ade/tests/test_phase1_integration.py:161"
   },
   "kind": "engine_molecule",
   "made_of": [

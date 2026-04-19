@@ -1,5 +1,5 @@
 {
-  "body": "def test_http_errors_raise_exception(status_code, expected_exception):\n    \"\"\"Test that HTTP errors raise exceptions.\"\"\"\n    def handler(request):\n        return httpx.Response(status_code, json={\"error\": f\"Error {status_code}\"})\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        with pytest.raises(expected_exception):\n            client.get_health()\n",
+  "body": "def test_http_errors_raise_exception(status_code, expected_exception):\n    \"\"\"Test that HTTP errors raise exceptions.\"\"\"\n    def handler(request):\n        return httpx.Response(status_code, json={\"error\": f\"Error {status_code}\"})\n\n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        with pytest.raises(expected_exception):\n            client.get_health()\n",
   "body_hash": "dc0a46e68462cade",
   "body_truncated": false,
   "callers_of": [
@@ -11,7 +11,7 @@
     "get_health"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:1274.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_nexus_client_comprehensive.py:1274.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_http_errors_raise_exception",
@@ -146,7 +146,7 @@
     "ass_ade.nexus.models.EntropyResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:1274"
+    "source": "C:/!ass-ade/tests/test_nexus_client_comprehensive.py:1274"
   },
   "kind": "engine_molecule",
   "made_of": [],

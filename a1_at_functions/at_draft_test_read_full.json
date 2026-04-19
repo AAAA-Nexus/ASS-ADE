@@ -1,6 +1,6 @@
 {
-  "body": "    def test_read_full(self, workspace: Path):\n        tool = ReadFileTool(str(workspace))\n        r = tool.execute(path=\"hello.py\")\n        assert r.success\n        assert \"hello world\" in r.output\n",
-  "body_hash": "fd49ac2a4763d802",
+  "body": "def test_read_full(self, workspace: Path):\n    tool = ReadFileTool(str(workspace))\n    r = tool.execute(path=\"hello.py\")\n    assert r.success\n    assert \"hello world\" in r.output\n",
+  "body_hash": "e5219ef86409f9ed",
   "body_truncated": false,
   "callers_of": [
     "ReadFileTool",
@@ -8,7 +8,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:36.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_tools_builtin.py:36.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_read_full",
@@ -27,7 +27,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:36"
+    "source": "C:/!ass-ade/tests/test_tools_builtin.py:36"
   },
   "kind": "pure_function",
   "made_of": [],

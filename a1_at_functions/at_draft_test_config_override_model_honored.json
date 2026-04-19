@@ -1,13 +1,13 @@
 {
-  "body": "    def test_config_override_model_honored(self, monkeypatch):\n        monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-a\")\n        match = select_provider_for_tier(\n            \"balanced\",\n            config_providers={\"groq\": {\"models_by_tier\": {\"balanced\": \"my-tuned-model\"}}},\n        )\n        assert match is not None\n        profile, model = match\n        assert profile.name == \"groq\"\n        assert model == \"my-tuned-model\"\n",
-  "body_hash": "8758f032f70b5ae2",
+  "body": "def test_config_override_model_honored(self, monkeypatch):\n    monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-a\")\n    match = select_provider_for_tier(\n        \"balanced\",\n        config_providers={\"groq\": {\"models_by_tier\": {\"balanced\": \"my-tuned-model\"}}},\n    )\n    assert match is not None\n    profile, model = match\n    assert profile.name == \"groq\"\n    assert model == \"my-tuned-model\"\n",
+  "body_hash": "17da7310c083081f",
   "body_truncated": false,
   "callers_of": [
     "setenv",
     "select_provider_for_tier"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:252.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:252.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_config_override_model_honored",
@@ -86,7 +86,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:252"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:252"
   },
   "kind": "pure_function",
   "made_of": [],

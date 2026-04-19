@@ -8,13 +8,16 @@
     "summarize_repo"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_repo_summary_counts_files_and_skips_ignored_dirs.py:5.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_repo_summary.py:6.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_repo_summary_counts_files_and_skips_ignored_dirs",
-  "imports": [],
+  "imports": [
+    "pathlib.Path",
+    "ass_ade.local.repo.summarize_repo"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_repo_summary_counts_files_and_skips_ignored_dirs.py:5"
+    "source": "C:/!ass-ade/tests/test_repo_summary.py:6"
   },
   "kind": "pure_function",
   "made_of": [],

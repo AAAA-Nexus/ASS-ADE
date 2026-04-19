@@ -1,6 +1,6 @@
 {
-  "body": "    def do_POST(self) -> None:  # noqa: N802\n        try:\n            raw_length = int(self.headers.get(\"Content-Length\", \"0\"))\n        except ValueError:\n            self._send_json(400, {\"error\": \"invalid Content-Length\"})\n            return\n        if raw_length > _MAX_BODY_BYTES:\n            # Drain the announced body so the connection can be closed cleanly.\n            remaining = raw_length\n            while remaining > 0:\n                chunk = self.rfile.read(min(65536, remaining))\n                if not chunk:\n                    break\n                remaining -= len(chunk)\n            self._send_json(413, {\"error\": \"request entity too large\"})\n            return\n        length = raw_length\n        body: Any = {}\n        if length:\n            try:\n                body = json.loads(self.rfile.read(length).decode(\"utf-8\"))\n            except Exception:\n                self._send_json(400, {\"error\": \"invalid JSON\"})\n                return\n        # Echo back the payload with the matched path\n        self._send_json(200, {\"echo\": body, \"path\": self.path})\n",
-  "body_hash": "5c262de46c05e4f5",
+  "body": "def do_POST(self) -> None:  # noqa: N802\n    try:\n        raw_length = int(self.headers.get(\"Content-Length\", \"0\"))\n    except ValueError:\n        self._send_json(400, {\"error\": \"invalid Content-Length\"})\n        return\n    if raw_length > _MAX_BODY_BYTES:\n        # Drain the announced body so the connection can be closed cleanly.\n        remaining = raw_length\n        while remaining > 0:\n            chunk = self.rfile.read(min(65536, remaining))\n            if not chunk:\n                break\n            remaining -= len(chunk)\n        self._send_json(413, {\"error\": \"request entity too large\"})\n        return\n    length = raw_length\n    body: Any = {}\n    if length:\n        try:\n            body = json.loads(self.rfile.read(length).decode(\"utf-8\"))\n        except Exception:\n            self._send_json(400, {\"error\": \"invalid JSON\"})\n            return\n    # Echo back the payload with the matched path\n    self._send_json(200, {\"echo\": body, \"path\": self.path})\n",
+  "body_hash": "0a890a2ba499698f",
   "body_truncated": false,
   "callers_of": [
     "_send_json",
@@ -13,7 +13,7 @@
     "decode"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/mcp/mock_server.py:59.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/mcp/mock_server.py:59.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.do_post",
@@ -27,7 +27,7 @@
     "typing.Any"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/mcp/mock_server.py:59"
+    "source": "C:/!ass-ade/src/ass_ade/mcp/mock_server.py:59"
   },
   "kind": "ecosystem_system",
   "made_of": [

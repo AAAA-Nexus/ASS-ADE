@@ -1,6 +1,6 @@
 {
-  "body": "    def test_lse_tier_policy_respected(self, monkeypatch):\n        monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-a\")\n        monkeypatch.setenv(\"GEMINI_API_KEY\", \"sk-b\")\n        from ass_ade.agent.lse import LSEEngine\n        # Force gemini for balanced, groq for fast\n        lse = LSEEngine({\n            \"tier_policy\": {\"balanced\": \"gemini\", \"fast\": \"groq\"},\n        })\n        d1 = lse.select(trs_score=0.8, complexity=\"medium\")\n        assert d1.provider == \"gemini\"\n        d2 = lse.select(trs_score=0.95, complexity=\"simple\")\n        assert d2.provider == \"groq\"\n",
-  "body_hash": "2504f36dec73aa09",
+  "body": "def test_lse_tier_policy_respected(self, monkeypatch):\n    monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-a\")\n    monkeypatch.setenv(\"GEMINI_API_KEY\", \"sk-b\")\n    from ass_ade.agent.lse import LSEEngine\n    # Force gemini for balanced, groq for fast\n    lse = LSEEngine({\n        \"tier_policy\": {\"balanced\": \"gemini\", \"fast\": \"groq\"},\n    })\n    d1 = lse.select(trs_score=0.8, complexity=\"medium\")\n    assert d1.provider == \"gemini\"\n    d2 = lse.select(trs_score=0.95, complexity=\"simple\")\n    assert d2.provider == \"groq\"\n",
+  "body_hash": "4ace990af581176c",
   "body_truncated": false,
   "callers_of": [
     "setenv",
@@ -8,7 +8,7 @@
     "select"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:320.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_free_providers.py:320.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_lse_tier_policy_respected",
@@ -87,7 +87,7 @@
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_free_providers.py:320"
+    "source": "C:/!ass-ade/tests/test_free_providers.py:320"
   },
   "kind": "pure_function",
   "made_of": [],

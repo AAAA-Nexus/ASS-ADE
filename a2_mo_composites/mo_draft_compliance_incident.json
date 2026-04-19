@@ -1,12 +1,12 @@
 {
-  "body": "    def compliance_incident(\n        self,\n        system_id: str | None = None,\n        description: str | None = None,\n        severity: str | None = None,\n        *,\n        incident_id: str | None = None,\n        **kwargs: Any,\n    ) -> IncidentReport:\n        \"\"\"/v1/compliance/incident \u2014 EU AI Act Art.73 incident report (INC-100). $0.020/report\"\"\"\n        return self._post_model(\"/v1/compliance/incident\", IncidentReport, {\n            \"system_id\": system_id or incident_id or \"\",\n            \"description\": description or \"CLI incident report\",\n            \"severity\": severity or \"medium\",\n            **kwargs,\n        })\n",
-  "body_hash": "ba4b381e157546a6",
+  "body": "def compliance_incident(\n    self,\n    system_id: str | None = None,\n    description: str | None = None,\n    severity: str | None = None,\n    *,\n    incident_id: str | None = None,\n    **kwargs: Any,\n) -> IncidentReport:\n    \"\"\"/v1/compliance/incident \u2014 EU AI Act Art.73 incident report (INC-100). $0.020/report\"\"\"\n    return self._post_model(\"/v1/compliance/incident\", IncidentReport, {\n        \"system_id\": system_id or incident_id or \"\",\n        \"description\": description or \"CLI incident report\",\n        \"severity\": severity or \"medium\",\n        **kwargs,\n    })\n",
+  "body_hash": "1de103e751d7b60b",
   "body_truncated": false,
   "callers_of": [
     "_post_model"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1080.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:1080.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.compliance_incident",
@@ -160,7 +160,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1080"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:1080"
   },
   "kind": "engine_molecule",
   "made_of": [],

@@ -1,19 +1,33 @@
 {
-  "body": "    def test_invalid_hostname_rejected(self) -> None:\n        \"\"\"Absolute URLs with invalid hostnames should be rejected.\"\"\"\n        with pytest.raises(ValueError, match=\"valid host\"):\n            _validate_absolute_endpoint(\"https:///api\")\n",
-  "body_hash": "2c8b7fbb3abaabac",
+  "body": "def test_invalid_hostname_rejected(self) -> None:\n    \"\"\"Absolute URLs with invalid hostnames should be rejected.\"\"\"\n    with pytest.raises(ValueError, match=\"valid host\"):\n        _validate_absolute_endpoint(\"https:///api\")\n",
+  "body_hash": "42b17a76a8c899c5",
   "body_truncated": false,
   "callers_of": [
     "raises",
     "_validate_absolute_endpoint"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateabsoluteendpoint.py:55.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_ssrf_protection.py:70.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_invalid_hostname_rejected",
-  "imports": [],
+  "imports": [
+    "ipaddress",
+    "json",
+    "unittest.mock",
+    "pytest",
+    "ass_ade.a2a.fetch_agent_card",
+    "ass_ade.mcp.utils._validate_absolute_endpoint",
+    "ass_ade.nexus.models.MCPManifest",
+    "ass_ade.nexus.models.MCPTool",
+    "ass_ade.mcp.utils.invoke_tool",
+    "ass_ade.mcp.utils.invoke_tool",
+    "ass_ade.mcp.utils.simulate_invoke",
+    "ass_ade.mcp.utils.simulate_invoke",
+    "ass_ade.mcp.utils.simulate_invoke"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateabsoluteendpoint.py:55"
+    "source": "C:/!ass-ade/tests/test_ssrf_protection.py:70"
   },
   "kind": "pure_function",
   "made_of": [],

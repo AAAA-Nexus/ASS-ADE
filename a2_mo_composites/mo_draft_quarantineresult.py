@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_quarantineresult.py:5
+# Extracted from C:/!ass-ade/src/ass_ade/nexus/models.py:504
 # Component id: mo.source.ass_ade.quarantineresult
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class QuarantineResult(NexusModel):

@@ -1,12 +1,12 @@
 {
-  "body": "    def test_valid_https(self) -> None:\n        assert validate_url(\"https://atomadic.tech\") == \"https://atomadic.tech\"\n",
-  "body_hash": "b113139819f4ea6b",
+  "body": "def test_valid_https(self) -> None:\n    assert validate_url(\"https://atomadic.tech\") == \"https://atomadic.tech\"\n",
+  "body_hash": "02ebf602920d765a",
   "body_truncated": false,
   "callers_of": [
     "validate_url"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_validation.py:102.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_validation.py:102.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_valid_https",
@@ -20,7 +20,7 @@
     "ass_ade.nexus.validation.validate_usdc_amount"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_validation.py:102"
+    "source": "C:/!ass-ade/tests/test_validation.py:102"
   },
   "kind": "pure_function",
   "made_of": [],

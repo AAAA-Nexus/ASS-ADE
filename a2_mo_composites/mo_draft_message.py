@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/types.py:18
+# Extracted from C:/!ass-ade/src/ass_ade/engine/types.py:18
 # Component id: mo.source.ass_ade.message
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class Message(BaseModel):

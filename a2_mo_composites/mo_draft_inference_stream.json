@@ -1,6 +1,6 @@
 {
-  "body": "    def inference_stream(self, prompt: str, **kwargs: Any) -> Iterator[str]:\n        \"\"\"/v1/inference/stream \u2014 streaming CoT inference. $0.100/call\n\n        Yields text chunks as they arrive via SSE / chunked response.\n        \"\"\"\n        with self._client.stream(\"POST\", \"/v1/inference/stream\", json={\"prompt\": prompt, **kwargs}) as r:\n            r.raise_for_status()\n            for chunk in r.iter_text():\n                if chunk:\n                    yield chunk\n",
-  "body_hash": "fdb4594867217664",
+  "body": "def inference_stream(self, prompt: str, **kwargs: Any) -> Iterator[str]:\n    \"\"\"/v1/inference/stream \u2014 streaming CoT inference. $0.100/call\n\n    Yields text chunks as they arrive via SSE / chunked response.\n    \"\"\"\n    with self._client.stream(\"POST\", \"/v1/inference/stream\", json={\"prompt\": prompt, **kwargs}) as r:\n        r.raise_for_status()\n        for chunk in r.iter_text():\n            if chunk:\n                yield chunk\n",
+  "body_hash": "76ef9c36188ab989",
   "body_truncated": false,
   "callers_of": [
     "stream",
@@ -8,7 +8,7 @@
     "iter_text"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:421.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/client.py:421.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.inference_stream",
@@ -162,7 +162,7 @@
     "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:421"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/client.py:421"
   },
   "kind": "engine_molecule",
   "made_of": [
