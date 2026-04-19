@@ -1,11 +1,10 @@
-name: Auto-Evolution — Performance
+name: Auto-Evolution -- Performance
 on:
   schedule:
     - cron: '*/12 * * * *'
   workflow_dispatch: {}
 
-# Personality: aggressive/optimizing — target complexity, long functions, nested logic.
-# Applies top 3 performance-focused changes per cycle without hesitation.
+# Personality: aggressive/optimizing -- target complexity, long functions, nested logic.
 
 jobs:
   evolve-performance:
@@ -25,16 +24,13 @@ jobs:
       - name: Install ASS-ADE
         run: pip install -e ".[dev]"
 
-      # Phase 0 — Bootstrap recon
-      - name: Phase 0 — Bootstrap recon
+      - name: Phase 0 - Bootstrap recon
         run: ass-ade recon . --json > recon_before.json 2>&1 || true
 
-      # Phase 1 — Assessment scan (full)
-      - name: Phase 1 — Assessment scan
+      - name: Phase 1 - Assessment scan
         run: ass-ade enhance . --json > enhance_scan_raw.json 2>&1 || true
 
-      # Phase 2 — Context filter: performance track (aggressive/optimizing)
-      - name: Phase 2 — Context filter (performance track)
+      - name: Phase 2 - Context filter (performance track)
         run: |
           python3 -c "
           import json
@@ -43,13 +39,11 @@ jobs:
               performance_types = {
                   'long_function', 'complex_function', 'nested_loop', 'performance',
                   'inefficient_loop', 'redundant_computation', 'unnecessary_copy',
-                  'missing_cache', 'n_plus_one', 'quadratic_complexity',
-                  'deep_nesting', 'large_class',
+                  'missing_cache', 'quadratic_complexity', 'deep_nesting', 'large_class',
               }
               opps = d.get('opportunities', [])
               perf_opps = [o for o in opps if any(t in o.get('type','').lower() for t in performance_types)]
               if not perf_opps:
-                  # aggressive fallback: target longest/most complex regardless of label
                   perf_opps = opps[:3]
               d['opportunities'] = perf_opps
               d['total_found'] = len(perf_opps)
@@ -86,8 +80,7 @@ jobs:
           git checkout -b $BRANCH
           echo "BRANCH=$BRANCH" >> $GITHUB_ENV
 
-      # Phase 3 — Synthesis: aggressive top-3 performance optimization
-      - name: Phase 3 — Synthesis (aggressive performance optimize)
+      - name: Phase 3 - Synthesis (aggressive performance optimize)
         run: |
           COUNT=$(python3 -c "
           import json
@@ -98,23 +91,20 @@ jobs:
             echo "Applying top 3 performance optimizations (aggressive mode)"
             ass-ade enhance . --apply 1,2,3 2>&1 || true
           else
-            echo "No performance targets — skipping"
+            echo "No performance targets -- skipping"
             exit 0
           fi
 
-      # Phase 4 — Audit recon
-      - name: Phase 4 — Audit recon
+      - name: Phase 4 - Audit recon
         run: ass-ade recon . --json > recon_after.json 2>&1 || true
 
-      # Phase 5 — Autopoiesis validate (measure complexity delta)
-      - name: Phase 5 — Autopoiesis validate
+      - name: Phase 5 - Autopoiesis validate
         run: |
           COMPLEXITY_DELTA=$(python3 -c "
           import json
           try:
               before = json.load(open('recon_before.json'))
               after  = json.load(open('recon_after.json'))
-              # lower complexity is better — negative delta = improvement
               b = before.get('avg_complexity', before.get('total_py_files', 0))
               a = after.get('avg_complexity', after.get('total_py_files', 0))
               print(round(a - b, 2))
@@ -162,14 +152,14 @@ jobs:
             | wc -l | tr -d ' ')
           cat >> EVOLUTION_LOG.md << EOF
 
-## Evolution #${{ env.CYCLE_NUM }} [PERFORMANCE] — $(date -u '+%Y-%m-%d %H:%M UTC')
-**Enhancement:** ${{ env.ENHANCEMENT }}
-**Lane:** performance — long functions, complexity reduction, loop optimization
-**Personality:** aggressive/optimizing (top 3 per cycle, no hesitation)
-**Complexity delta:** ${{ env.COMPLEXITY_DELTA }}
-**Files changed:** ${FILES_CHANGED}
-**Version:** ${{ env.NEW_VERSION }}
-EOF
+          ## Evolution #${{ env.CYCLE_NUM }} [PERFORMANCE] -- $(date -u '+%Y-%m-%d %H:%M UTC')
+          **Enhancement:** ${{ env.ENHANCEMENT }}
+          **Lane:** performance -- long functions, complexity reduction, loop optimization
+          **Personality:** aggressive/optimizing (top 3 per cycle, no hesitation)
+          **Complexity delta:** ${{ env.COMPLEXITY_DELTA }}
+          **Files changed:** ${FILES_CHANGED}
+          **Version:** ${{ env.NEW_VERSION }}
+          EOF
 
       - name: Commit and push branch
         run: |
@@ -180,7 +170,7 @@ EOF
             | grep -vE '^(enhance_scan.*\.json)$' \
             | wc -l | tr -d ' ')
           if [ "$PY_CHANGES" -eq 0 ]; then
-            echo "No performance changes — skipping"
+            echo "No performance changes -- skipping"
             exit 0
           fi
           git commit -m "evolution/performance: ${{ env.ENHANCEMENT }} (v${{ env.NEW_VERSION }})"
@@ -222,22 +212,22 @@ EOF
           gh pr create \
             --title "[PERFORMANCE] evolution: ${{ env.ENHANCEMENT }} (v${{ env.NEW_VERSION }})" \
             --body "$(cat <<PRBODY
-## Performance Evolution Cycle #${{ env.CYCLE_NUM }} — $(date -u '+%Y-%m-%d %H:%M UTC')
+          ## Performance Evolution Cycle #${{ env.CYCLE_NUM }} -- $(date -u '+%Y-%m-%d %H:%M UTC')
 
-**Version:** → v${{ env.NEW_VERSION }}
-**Lane:** PERFORMANCE — long functions, complexity reduction, loop optimization
-**Personality:** aggressive/optimizing — top 3 per cycle, no hesitation
-**Complexity delta:** ${{ env.COMPLEXITY_DELTA }}
+          **Version:** v${{ env.NEW_VERSION }}
+          **Lane:** PERFORMANCE -- long functions, complexity reduction, loop optimization
+          **Personality:** aggressive/optimizing -- top 3 per cycle, no hesitation
+          **Complexity delta:** ${{ env.COMPLEXITY_DELTA }}
 
-## Performance targets
-${SCAN_SUMMARY}
+          ## Performance targets
+          ${SCAN_SUMMARY}
 
-## Before / After
-- Before: ${RECON_BEFORE}
-- After: ${RECON_AFTER}
+          ## Before / After
+          - Before: ${RECON_BEFORE}
+          - After: ${RECON_AFTER}
 
-> Part of the ASS-ADE five-lane evolution system (general / security / quality / features / performance).
-PRBODY
+          > Part of the ASS-ADE five-lane evolution system.
+          PRBODY
           )" \
             --base main \
             --head ${{ env.BRANCH }} || true

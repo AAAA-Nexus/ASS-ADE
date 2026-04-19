@@ -1,11 +1,10 @@
-name: Auto-Evolution — Features
+name: Auto-Evolution -- Features
 on:
   schedule:
     - cron: '*/8 * * * *'
   workflow_dispatch: {}
 
-# Personality: creative/additive — uses blueprint design to propose new capabilities,
-# favors generative improvements over pure cleanup.
+# Personality: creative/additive -- design-first, favors generative improvements.
 
 jobs:
   evolve-features:
@@ -25,29 +24,24 @@ jobs:
       - name: Install ASS-ADE
         run: pip install -e ".[dev]"
 
-      # Phase 0 — Bootstrap recon
-      - name: Phase 0 — Bootstrap recon
+      - name: Phase 0 - Bootstrap recon
         run: ass-ade recon . --json > recon_before.json 2>&1 || true
 
-      # Phase 1 — Assessment scan (full)
-      - name: Phase 1 — Assessment scan
+      - name: Phase 1 - Assessment scan
         run: ass-ade enhance . --json > enhance_scan_raw.json 2>&1 || true
 
-      # Phase 2 — Context: creative feature synthesis
-      - name: Phase 2 — Context (features track)
+      - name: Phase 2 - Context (features track)
         run: |
           python3 -c "
           import json
           try:
               d = json.load(open('enhance_scan_raw.json'))
-              # features track: prefer opportunities that add capability
               feature_types = {
                   'missing_feature', 'incomplete_implementation', 'enhancement_opportunity',
                   'missing_method', 'stub_implementation', 'todo', 'fixme',
               }
               opps = d.get('opportunities', [])
               feat_opps = [o for o in opps if any(t in o.get('type','').lower() for t in feature_types)]
-              # creative fallback: use all opportunities for design-driven improvement
               if not feat_opps:
                   feat_opps = opps
               d['opportunities'] = feat_opps
@@ -79,7 +73,6 @@ jobs:
           " 2>&1 || echo "0")
           echo "TOTAL_FOUND=$TOTAL_FOUND" >> $GITHUB_ENV
 
-          # Synthesize a creative improvement goal from top findings
           DESIGN_GOAL=$(python3 -c "
           import json
           try:
@@ -102,20 +95,17 @@ jobs:
           git checkout -b $BRANCH
           echo "BRANCH=$BRANCH" >> $GITHUB_ENV
 
-      # Phase 3 — Synthesis: design-first feature addition
-      - name: Phase 3 — Synthesis (creative feature design + apply)
+      - name: Phase 3 - Synthesis (creative design + apply)
         run: |
-          echo "Running blueprint design: ${{ env.DESIGN_GOAL }}"
+          echo "Blueprint design goal: ${{ env.DESIGN_GOAL }}"
           ass-ade design "${{ env.DESIGN_GOAL }}" 2>&1 || true
-          echo "Applying top 2 feature enhancements"
+          echo "Applying top 2 enhancements"
           ass-ade enhance . --apply 1,2 2>&1 || true
 
-      # Phase 4 — Audit recon
-      - name: Phase 4 — Audit recon
+      - name: Phase 4 - Audit recon
         run: ass-ade recon . --json > recon_after.json 2>&1 || true
 
-      # Phase 5 — Autopoiesis validate
-      - name: Phase 5 — Autopoiesis validate
+      - name: Phase 5 - Autopoiesis validate
         run: |
           ENHANCEMENT=$(python3 -c "
           import json
@@ -156,14 +146,14 @@ jobs:
             | wc -l | tr -d ' ')
           cat >> EVOLUTION_LOG.md << EOF
 
-## Evolution #${{ env.CYCLE_NUM }} [FEATURES] — $(date -u '+%Y-%m-%d %H:%M UTC')
-**Enhancement:** ${{ env.ENHANCEMENT }}
-**Design goal:** ${{ env.DESIGN_GOAL }}
-**Lane:** features — blueprint design, new capabilities, extensibility
-**Personality:** creative/additive (design-first, top 2 per cycle)
-**Files changed:** ${FILES_CHANGED}
-**Version:** ${{ env.NEW_VERSION }}
-EOF
+          ## Evolution #${{ env.CYCLE_NUM }} [FEATURES] -- $(date -u '+%Y-%m-%d %H:%M UTC')
+          **Enhancement:** ${{ env.ENHANCEMENT }}
+          **Design goal:** ${{ env.DESIGN_GOAL }}
+          **Lane:** features -- blueprint design, new capabilities, extensibility
+          **Personality:** creative/additive (design-first, top 2 per cycle)
+          **Files changed:** ${FILES_CHANGED}
+          **Version:** ${{ env.NEW_VERSION }}
+          EOF
 
       - name: Commit and push branch
         run: |
@@ -174,7 +164,7 @@ EOF
             | grep -vE '^(enhance_scan.*\.json)$' \
             | wc -l | tr -d ' ')
           if [ "$PY_CHANGES" -eq 0 ]; then
-            echo "No feature changes generated — skipping"
+            echo "No feature changes -- skipping"
             exit 0
           fi
           git commit -m "evolution/features: ${{ env.ENHANCEMENT }} (v${{ env.NEW_VERSION }})"
@@ -216,24 +206,24 @@ EOF
           gh pr create \
             --title "[FEATURES] evolution: ${{ env.ENHANCEMENT }} (v${{ env.NEW_VERSION }})" \
             --body "$(cat <<PRBODY
-## Features Evolution Cycle #${{ env.CYCLE_NUM }} — $(date -u '+%Y-%m-%d %H:%M UTC')
+          ## Features Evolution Cycle #${{ env.CYCLE_NUM }} -- $(date -u '+%Y-%m-%d %H:%M UTC')
 
-**Version:** → v${{ env.NEW_VERSION }}
-**Lane:** FEATURES — blueprint design, new capabilities, extensibility improvements
-**Personality:** creative/additive — design-first approach, top 2 per cycle
+          **Version:** v${{ env.NEW_VERSION }}
+          **Lane:** FEATURES -- blueprint design, new capabilities, extensibility
+          **Personality:** creative/additive -- design-first, top 2 per cycle
 
-## Design goal
-${{ env.DESIGN_GOAL }}
+          ## Design goal
+          ${{ env.DESIGN_GOAL }}
 
-## Feature opportunities targeted
-${SCAN_SUMMARY}
+          ## Feature opportunities
+          ${SCAN_SUMMARY}
 
-## Before / After
-- Before: ${RECON_BEFORE}
-- After: ${RECON_AFTER}
+          ## Before / After
+          - Before: ${RECON_BEFORE}
+          - After: ${RECON_AFTER}
 
-> Part of the ASS-ADE five-lane evolution system (general / security / quality / features / performance).
-PRBODY
+          > Part of the ASS-ADE five-lane evolution system.
+          PRBODY
           )" \
             --base main \
             --head ${{ env.BRANCH }} || true
