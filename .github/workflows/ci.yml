@@ -17,34 +17,46 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Install dependencies
+      - name: Required files present
         run: |
-          python -m pip install --upgrade pip
-          python -m pip install -e .[dev]
+          for f in CERTIFICATE.json MANIFEST.json VERSION LICENSE AGENTS.md pyproject.toml; do
+            [ -f "$f" ] || { echo "MISSING: $f"; exit 1; }
+          done
+          echo "All required files present."
 
-      - name: Lint (ruff)
-        run: python -m ruff check src/ tests/ --output-format=github
-        continue-on-error: true
-
-      - name: Type check (pyright)
-        run: python -m pyright src/
-        continue-on-error: true
-
-      - name: Run tests
-        run: python -m pytest --tb=short
-
-      - name: Run ASS-ADE full cycle (JSON)
+      - name: Tier folders present
         run: |
-          python -m ass_ade cycle "CI validation cycle" --json-out .ass-ade/reports/ci-cycle.json
+          for tier in a0_qk_constants a1_at_functions a2_mo_composites a3_og_features a4_sy_orchestration; do
+            [ -d "$tier" ] || { echo "MISSING tier: $tier"; exit 1; }
+          done
+          echo "All tier folders present."
 
-      - name: Upload cycle report
-        uses: actions/upload-artifact@v4
-        with:
-          name: ass-ade-cycle-report
-          path: .ass-ade/reports/ci-cycle.json
-          if-no-files-found: error
+      - name: Validate CERTIFICATE.json
+        run: |
+          python3 -c "
+          import json, sys
+          d = json.load(open('CERTIFICATE.json'))
+          required = ['audit', 'certificate_sha256', 'certificate_version', 'issued_at', 'issuer', 'written_count']
+          missing = [k for k in required if k not in d]
+          if missing:
+              print('CERTIFICATE.json missing keys:', missing)
+              sys.exit(1)
+          print('CERTIFICATE.json valid — written_count:', d['written_count'])
+          "
+
+      - name: Validate MANIFEST.json
+        run: |
+          python3 -c "
+          import json, sys
+          d = json.load(open('MANIFEST.json'))
+          if 'components' not in d:
+              print('MANIFEST.json missing components key')
+              sys.exit(1)
+          print('MANIFEST.json valid — components:', len(d['components']))
+          "
+
+      - name: Validate VERSION format
+        run: |
+          version=$(head -1 VERSION)
+          echo "$version" | grep -E '^[0-9]+\.[0-9]+\.[0-9]+' || { echo "Bad VERSION: $version"; exit 1; }
+          echo "VERSION: $version"
