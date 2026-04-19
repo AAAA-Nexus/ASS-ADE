@@ -1,21 +1,27 @@
 {
-  "body": "def test_empty_raises(self) -> None:\n    with pytest.raises(ValueError, match=\"must not be empty\"):\n        validate_session_id(\"\")\n",
-  "body_hash": "e0065aa84489451e",
+  "body": "def test_empty_raises(self) -> None:\n    with pytest.raises(ValueError, match=\"must not be empty\"):\n        validate_agent_id(\"\")\n",
+  "body_hash": "803b9f91cc1daff5",
   "body_truncated": false,
   "callers_of": [
     "raises",
-    "validate_session_id"
+    "validate_agent_id"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testvalidatesessionid.py:11.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_validation.py:24.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.test_empty_raises",
+  "id": "at.source.ass_ade.test_empty_raises",
   "imports": [
-    "__future__.annotations"
+    "pytest",
+    "ass_ade.nexus.validation._is_private_host",
+    "ass_ade.nexus.validation.validate_agent_id",
+    "ass_ade.nexus.validation.validate_prompt",
+    "ass_ade.nexus.validation.validate_session_id",
+    "ass_ade.nexus.validation.validate_url",
+    "ass_ade.nexus.validation.validate_usdc_amount"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testvalidatesessionid.py:11"
+    "source": "C:/!ass-ade/tests/test_validation.py:24"
   },
   "kind": "pure_function",
   "made_of": [],

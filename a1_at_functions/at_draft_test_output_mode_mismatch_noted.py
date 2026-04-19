@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_output_mode_mismatch_noted.py:7
-# Component id: at.source.a1_at_functions.test_output_mode_mismatch_noted
+# Extracted from C:/!ass-ade/tests/test_a2a.py:256
+# Component id: at.source.ass_ade.test_output_mode_mismatch_noted
 from __future__ import annotations
 
 __version__ = "0.1.0"

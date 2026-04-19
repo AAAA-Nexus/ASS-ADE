@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_pipeline_collects_multiple_entries_appended_by_a_stage.py:12
-# Component id: at.source.a1_at_functions.scan_with_extra
+# Extracted from C:/!ass-ade/tests/test_gates.py:168
+# Component id: at.source.ass_ade.scan_with_extra
 from __future__ import annotations
 
 __version__ = "0.1.0"

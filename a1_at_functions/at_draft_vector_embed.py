@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_vector_embed.py:7
-# Component id: at.source.a1_at_functions.vector_embed
+# Extracted from C:/!ass-ade/src/ass_ade/context_memory.py:79
+# Component id: at.source.ass_ade.vector_embed
 from __future__ import annotations
 
 __version__ = "0.1.0"

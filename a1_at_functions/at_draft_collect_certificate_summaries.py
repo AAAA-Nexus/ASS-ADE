@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_collect_certificate_summaries.py:7
-# Component id: at.source.a1_at_functions.collect_certificate_summaries
+# Extracted from C:/!ass-ade/src/ass_ade/protocol/evolution.py:245
+# Component id: at.source.ass_ade.collect_certificate_summaries
 from __future__ import annotations
 
 __version__ = "0.1.0"

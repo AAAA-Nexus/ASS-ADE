@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_skillartifact.py:7
-# Component id: mo.source.a2_mo_composites.skillartifact
+# Extracted from C:/!ass-ade/src/ass_ade/agent/exif.py:11
+# Component id: mo.source.ass_ade.skillartifact
 from __future__ import annotations
 
 __version__ = "0.1.0"

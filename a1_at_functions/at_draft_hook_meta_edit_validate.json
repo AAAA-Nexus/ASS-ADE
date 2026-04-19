@@ -23,20 +23,32 @@
     "min"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_hook_meta_edit_validate.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/gates.py:349.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.hook_meta_edit_validate",
+  "id": "at.source.ass_ade.hook_meta_edit_validate",
   "imports": [
     "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "ast",
+    "re",
     "json",
     "datetime.UTC",
     "datetime.datetime",
     "pathlib.Path",
-    "ass_ade.agent.golden_runner.run_golden"
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "ass_ade.agent.trust_gate.TrustVerificationGate",
+    "ass_ade.agent.proofbridge.ProofBridge",
+    "ass_ade.agent.alphaverus.AlphaVerus",
+    "ass_ade.agent.dgm_h.DGMH",
+    "ass_ade.agent.dgm_h.Patch",
+    "ass_ade.agent.golden_runner.run_golden",
+    "ass_ade.agent.sam.SAM"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_hook_meta_edit_validate.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/agent/gates.py:349"
   },
   "kind": "pure_function",
   "made_of": [],

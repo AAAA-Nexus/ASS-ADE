@@ -6,16 +6,26 @@
     "close"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_nexusclient.py:45.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/provider.py:193.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.close",
+  "id": "mo.source.ass_ade.close",
   "imports": [
     "__future__.annotations",
-    "ass_ade.nexus.resilience.build_resilient_transport"
+    "json",
+    "uuid",
+    "collections.abc.Iterator",
+    "typing.Any",
+    "typing.Protocol",
+    "typing.runtime_checkable",
+    "httpx",
+    "ass_ade.engine.types.CompletionRequest",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolCallRequest"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_nexusclient.py:45"
+    "source": "C:/!ass-ade/src/ass_ade/engine/provider.py:193"
   },
   "kind": "engine_molecule",
   "made_of": [],

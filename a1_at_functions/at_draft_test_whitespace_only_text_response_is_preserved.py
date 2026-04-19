@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_whitespace_only_text_response_is_preserved.py:7
-# Component id: at.source.a1_at_functions.test_whitespace_only_text_response_is_preserved
+# Extracted from C:/!ass-ade/tests/test_agent.py:204
+# Component id: at.source.ass_ade.test_whitespace_only_text_response_is_preserved
 from __future__ import annotations
 
 __version__ = "0.1.0"

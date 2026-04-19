@@ -9,19 +9,26 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testpipeline.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_pipeline.py:49.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.testpipeline",
+  "id": "mo.source.ass_ade.testpipeline",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.pipeline.Pipeline",
+    "ass_ade.pipeline.PipelineResult",
+    "ass_ade.pipeline.StepResult",
+    "ass_ade.pipeline.StepStatus"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testpipeline.py:7"
+    "source": "C:/!ass-ade/tests/test_pipeline.py:49"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.a1_at_functions.add"
+    "at.source.ass_ade.add"
   ],
   "name": "TestPipeline",
   "product_categories": [

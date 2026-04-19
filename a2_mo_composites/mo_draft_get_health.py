@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_nexusclient.py:78
-# Component id: mo.source.a2_mo_composites.get_health
+# Extracted from C:/!ass-ade/src/ass_ade/nexus/client.py:273
+# Component id: mo.source.ass_ade.get_health
 from __future__ import annotations
 
 __version__ = "0.1.0"

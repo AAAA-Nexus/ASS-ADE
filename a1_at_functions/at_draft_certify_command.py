@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_certify_command.py:7
-# Component id: at.source.a1_at_functions.certify_command
+# Extracted from C:/!ass-ade/src/ass_ade/cli.py:6265
+# Component id: at.source.ass_ade.certify_command
 from __future__ import annotations
 
 __version__ = "0.1.0"
@@ -53,7 +53,7 @@ def certify_command(
         try:
             with NexusClient(
                 base_url=settings.nexus_base_url,
-                api_key=getattr(settings, "api_key", None),
+                api_key=settings.nexus_api_key,
                 agent_id=str(settings.agent_id) if settings.agent_id else None,
                 timeout=60.0,
             ) as nx:
@@ -71,8 +71,24 @@ def certify_command(
                     if result.lora_captured:
                         console.print("[dim]LoRA flywheel: sample captured.[/dim]")
         except Exception as exc:
-            console.print(f"[yellow]Remote signing unavailable:[/yellow] {exc}")
-            console.print("[dim]Certificate is local-only (not third-party verifiable).[/dim]")
+            exc_str = str(exc)
+            if "402" in exc_str:
+                console.print("[yellow]Remote signing requires credits.[/yellow]")
+                console.print(
+                    "[dim]Get credits at [bold]https://atomadic.tech/pay[/bold] "
+                    "then set [bold]AAAA_NEXUS_API_KEY[/bold] in your .env file.[/dim]"
+                )
+            elif "401" in exc_str or "403" in exc_str:
+                console.print(
+                    "[yellow]Remote signing failed — API key invalid or missing.[/yellow]"
+                )
+                console.print(
+                    "[dim]Set [bold]AAAA_NEXUS_API_KEY=your_key[/bold] in your project .env file "
+                    "([bold]C:\\!ass-ade\\.env[/bold]).[/dim]"
+                )
+            else:
+                console.print(f"[yellow]Remote signing unavailable:[/yellow] {exc}")
+            console.print("[dim]Certificate written as local-only (not third-party verifiable).[/dim]")
 
     cert_path = out or (target / "CERTIFICATE.json")
     import json as _json

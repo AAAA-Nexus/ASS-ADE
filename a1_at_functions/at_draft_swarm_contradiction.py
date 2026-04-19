@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_swarm_contradiction.py:7
-# Component id: at.source.a1_at_functions.swarm_contradiction
+# Extracted from C:/!ass-ade/src/ass_ade/cli.py:2119
+# Component id: at.source.ass_ade.swarm_contradiction
 from __future__ import annotations
 
 __version__ = "0.1.0"

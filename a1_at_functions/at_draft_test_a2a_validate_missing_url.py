@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testmcpa2avalidate.py:28
-# Component id: at.source.a1_at_functions.test_a2a_validate_missing_url
+# Extracted from C:/!ass-ade/tests/test_mcp_extended.py:121
+# Component id: at.source.ass_ade.test_a2a_validate_missing_url
 from __future__ import annotations
 
 __version__ = "0.1.0"

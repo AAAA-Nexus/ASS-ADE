@@ -6,15 +6,31 @@
     "Field"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_versionbumpresult.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/protocol/evolution.py:73.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.versionbumpresult",
+  "id": "mo.source.ass_ade.versionbumpresult",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "re",
+    "shutil",
+    "subprocess",
+    "tomllib",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field",
+    "ass_ade.engine.rebuild.version_tracker.INITIAL_VERSION",
+    "ass_ade.engine.rebuild.version_tracker.bump_version"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_versionbumpresult.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/protocol/evolution.py:73"
   },
   "kind": "engine_molecule",
   "made_of": [],

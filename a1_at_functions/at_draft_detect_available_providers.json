@@ -10,15 +10,19 @@
     "append"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_detect_available_providers.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/providers.py:355.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.detect_available_providers",
+  "id": "at.source.ass_ade.detect_available_providers",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "os",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_detect_available_providers.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/agent/providers.py:355"
   },
   "kind": "pure_function",
   "made_of": [],

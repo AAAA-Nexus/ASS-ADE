@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_nexusclient.py:477
-# Component id: mo.source.a2_mo_composites.prompt_inject_scan
+# Extracted from C:/!ass-ade/src/ass_ade/nexus/client.py:672
+# Component id: mo.source.ass_ade.prompt_inject_scan
 from __future__ import annotations
 
 __version__ = "0.1.0"

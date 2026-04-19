@@ -6,19 +6,25 @@
     "tier_for_complexity"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testtierforcomplexity.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_routing.py:53.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.testtierforcomplexity",
+  "id": "mo.source.ass_ade.testtierforcomplexity",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "ass_ade.agent.routing.EpistemicRouter",
+    "ass_ade.agent.routing.ModelTier",
+    "ass_ade.agent.routing.RoutingDecision",
+    "ass_ade.agent.routing.classify_complexity",
+    "ass_ade.agent.routing.local_route",
+    "ass_ade.agent.routing.tier_for_complexity"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testtierforcomplexity.py:7"
+    "source": "C:/!ass-ade/tests/test_routing.py:53"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.a1_at_functions.tier_for_complexity"
+    "at.source.ass_ade.tier_for_complexity"
   ],
   "name": "TestTierForComplexity",
   "product_categories": [

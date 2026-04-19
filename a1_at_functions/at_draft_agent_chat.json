@@ -26,12 +26,26 @@
     "input"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_agent_chat.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/commands/agent.py:41.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.agent_chat",
+  "id": "at.source.ass_ade.agent_chat",
   "imports": [
     "__future__.annotations",
+    "pathlib.Path",
+    "typing.Annotated",
+    "typing.Any",
+    "typer",
+    "rich.console.Console",
+    "ass_ade.config.default_config_path",
+    "ass_ade.config.load_config",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.agent.orchestrator.EngineOrchestrator",
+    "ass_ade.engine.router.build_provider",
+    "ass_ade.tools.registry.default_registry",
+    "ass_ade.nexus.client.NexusClient",
     "ass_ade.agent.loop.AgentLoop",
     "ass_ade.agent.gates.QualityGates",
     "ass_ade.agent.lse.LSEEngine",
@@ -41,7 +55,7 @@
     "ass_ade.nexus.client.NexusClient"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_agent_chat.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/commands/agent.py:41"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testtcaengine.py:35
-# Component id: mo.source.a2_mo_composites.test_get_stale_files_empty_when_all_fresh
+# Extracted from C:/!ass-ade/tests/test_phase_engines.py:223
+# Component id: mo.source.ass_ade.test_get_stale_files_empty_when_all_fresh
 from __future__ import annotations
 
 __version__ = "0.1.0"

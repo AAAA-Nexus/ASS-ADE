@@ -6,15 +6,22 @@
     "time"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_paymentchallenge.py:59.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/x402.py:102.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a2_mo_composites.is_expired",
+  "id": "at.source.ass_ade.is_expired",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "os",
+    "time",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "eth_account.Account",
+    "web3.Web3",
+    "logging"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_paymentchallenge.py:59"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/x402.py:102"
   },
   "kind": "pure_function",
   "made_of": [],

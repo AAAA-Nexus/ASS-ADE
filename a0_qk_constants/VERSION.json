@@ -1,724 +1,106 @@
 {
-  "module_count": 123,
+  "module_count": 86,
   "modules": [
     {
       "change_type": "new",
-      "id": "qk.source.a0_qk_constants.agent_token_budget",
+      "id": "qk.source.ass_ade.agent_token_budget",
       "name": "agent_token_budget",
       "version": "0.1.0"
     },
     {
       "change_type": "new",
-      "id": "qk.source.a0_qk_constants.available",
+      "id": "qk.source.ass_ade.available",
       "name": "available",
       "version": "0.1.0"
     },
     {
       "change_type": "new",
-      "id": "qk.source.a0_qk_constants.build_proof_headers",
+      "id": "qk.source.ass_ade.build_proof_headers",
       "name": "build_proof_headers",
       "version": "0.1.0"
     },
     {
       "change_type": "new",
-      "id": "qk.source.a0_qk_constants.context_window_for",
+      "id": "qk.source.ass_ade.context_window_for",
       "name": "context_window_for",
       "version": "0.1.0"
     },
     {
       "change_type": "new",
-      "id": "qk.source.a0_qk_constants.emit_certificate",
+      "id": "qk.source.ass_ade.emit_certificate",
       "name": "emit_certificate",
       "version": "0.1.0"
     },
     {
       "change_type": "new",
-      "id": "qk.source.a0_qk_constants.estimate_conversation",
+      "id": "qk.source.ass_ade.estimate_conversation",
       "name": "estimate_conversation",
       "version": "0.1.0"
     },
     {
       "change_type": "new",
-      "id": "qk.source.a0_qk_constants.estimate_message_tokens",
+      "id": "qk.source.ass_ade.estimate_message_tokens",
       "name": "estimate_message_tokens",
       "version": "0.1.0"
     },
     {
       "change_type": "new",
-      "id": "qk.source.a0_qk_constants.estimate_tokens",
+      "id": "qk.source.ass_ade.estimate_tokens",
       "name": "estimate_tokens",
       "version": "0.1.0"
     },
     {
       "change_type": "new",
-      "id": "qk.source.a0_qk_constants.estimate_tools_tokens",
+      "id": "qk.source.ass_ade.estimate_tools_tokens",
       "name": "estimate_tools_tokens",
       "version": "0.1.0"
     },
     {
       "change_type": "new",
-      "id": "qk.source.a0_qk_constants.estimated_tokens",
+      "id": "qk.source.ass_ade.estimated_tokens",
       "name": "estimated_tokens",
       "version": "0.1.0"
     },
     {
       "change_type": "new",
-      "id": "qk.source.a0_qk_constants.fairnessproof",
+      "id": "qk.source.ass_ade.fairnessproof",
       "name": "FairnessProof",
       "version": "0.1.0"
     },
     {
       "change_type": "new",
-      "id": "qk.source.a0_qk_constants.fakeclient",
-      "name": "FakeClient",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.federationtoken",
+      "id": "qk.source.ass_ade.federationtoken",
       "name": "FederationToken",
       "version": "0.1.0"
     },
     {
       "change_type": "new",
-      "id": "qk.source.a0_qk_constants.for_model",
+      "id": "qk.source.ass_ade.for_model",
       "name": "for_model",
       "version": "0.1.0"
     },
     {
       "change_type": "new",
-      "id": "qk.source.a0_qk_constants.from_header_value",
-      "name": "from_header_value",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.from_header_value",
-      "name": "from_header_value",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.from_payment_result",
-      "name": "from_payment_result",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.from_payment_result",
-      "name": "from_payment_result",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.get_mcp_manifest",
+      "id": "qk.source.ass_ade.get_mcp_manifest",
       "name": "get_mcp_manifest",
       "version": "0.1.0"
     },
     {
       "change_type": "new",
-      "id": "qk.source.a0_qk_constants.get_pricing_manifest",
+      "id": "qk.source.ass_ade.get_pricing_manifest",
       "name": "get_pricing_manifest",
       "version": "0.1.0"
     },
     {
       "change_type": "new",
-      "id": "qk.source.a0_qk_constants.get_proof",
+      "id": "qk.source.ass_ade.get_proof",
       "name": "get_proof",
       "version": "0.1.0"
     },
     {
       "change_type": "new",
-      "id": "qk.source.a0_qk_constants.handler",
-      "name": "handler",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.handler",
-      "name": "handler",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.inference_token_count",
+      "id": "qk.source.ass_ade.inference_token_count",
       "name": "inference_token_count",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.lean4spec",
-      "name": "Lean4Spec",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.lineageproof",
-      "name": "LineageProof",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.materialize_plan",
-      "name": "materialize_plan",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.mcpmanifest",
-      "name": "MCPManifest",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.messages_to_evict",
-      "name": "messages_to_evict",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.nexus_mcp_manifest",
-      "name": "nexus_mcp_manifest",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.paymentproof",
-      "name": "PaymentProof",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.pricingmanifest",
-      "name": "PricingManifest",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.proofbridge",
-      "name": "ProofBridge",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.report",
-      "name": "report",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.report",
-      "name": "report",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.run",
-      "name": "run",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.run",
-      "name": "run",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.schemas",
-      "name": "schemas",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.swarm_token_budget",
-      "name": "swarm_token_budget",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_all_profiles_have_all_three_tiers",
-      "name": "test_all_profiles_have_all_three_tiers",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_all_profiles_have_display_name",
-      "name": "test_all_profiles_have_display_name",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_available",
-      "name": "test_available",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_build_proof_headers",
-      "name": "test_build_proof_headers",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_case_insensitive",
-      "name": "test_case_insensitive",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_catalog_includes_groq_chutes_nexus",
-      "name": "test_catalog_includes_groq_chutes_nexus",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_claude_model",
-      "name": "test_claude_model",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_cloud_providers_have_signup_url",
-      "name": "test_cloud_providers_have_signup_url",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_code_block",
-      "name": "test_code_block",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_empty_content",
-      "name": "test_empty_content",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_empty_list",
-      "name": "test_empty_list",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_empty_string",
-      "name": "test_empty_string",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_estimate_conversation",
-      "name": "test_estimate_conversation",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_extended_tools_have_schemas",
-      "name": "test_extended_tools_have_schemas",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_fallback_chain_contains_only_known_providers",
-      "name": "test_fallback_chain_contains_only_known_providers",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_for_model",
-      "name": "test_for_model",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_from_header_value",
-      "name": "test_from_header_value",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_from_header_value",
-      "name": "test_from_header_value",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_from_payment_result_failure",
-      "name": "test_from_payment_result_failure",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_from_payment_result_failure",
-      "name": "test_from_payment_result_failure",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_from_payment_result_success",
-      "name": "test_from_payment_result_success",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_from_payment_result_success",
-      "name": "test_from_payment_result_success",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_fuzzy_match",
-      "name": "test_fuzzy_match",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_get_proof",
-      "name": "test_get_proof",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_header_roundtrip",
-      "name": "test_header_roundtrip",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_header_roundtrip",
-      "name": "test_header_roundtrip",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_internal_search_sends_session_token",
-      "name": "test_internal_search_sends_session_token",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_known_model",
-      "name": "test_known_model",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_llm_token_count_success",
-      "name": "test_llm_token_count_success",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_loads_from_manifest",
-      "name": "test_loads_from_manifest",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_local_providers_have_no_api_key_env",
-      "name": "test_local_providers_have_no_api_key_env",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_long_text",
-      "name": "test_long_text",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_mcp_invoke_schema_validate_fails",
-      "name": "test_mcp_invoke_schema_validate_fails",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_message_with_name",
-      "name": "test_message_with_name",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_messages_to_evict_over_budget",
-      "name": "test_messages_to_evict_over_budget",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_messages_to_evict_within_budget",
-      "name": "test_messages_to_evict_within_budget",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_mock_server_serves_manifest",
-      "name": "test_mock_server_serves_manifest",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_multiple_tools",
-      "name": "test_multiple_tools",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_nexus_is_marked_special",
-      "name": "test_nexus_is_marked_special",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_none_model",
-      "name": "test_none_model",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_progress_token_extracted_from_meta",
-      "name": "test_progress_token_extracted_from_meta",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_rebuild_incremental_no_manifest",
-      "name": "test_rebuild_incremental_no_manifest",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_returns_int",
-      "name": "test_returns_int",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_rg_loop_constant_is_47",
-      "name": "test_rg_loop_constant_is_47",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_schema",
-      "name": "test_schema",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_schemas",
-      "name": "test_schemas",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_search_requires_session_token",
-      "name": "test_search_requires_session_token",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_short_text",
-      "name": "test_short_text",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_simple_user_message",
-      "name": "test_simple_user_message",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_single_tool",
-      "name": "test_single_tool",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_system_message",
-      "name": "test_system_message",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_system_messages_not_evicted",
-      "name": "test_system_messages_not_evicted",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_tier_aliases_include_canonical_and_claude",
-      "name": "test_tier_aliases_include_canonical_and_claude",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_to_header_value",
-      "name": "test_to_header_value",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_to_header_value",
-      "name": "test_to_header_value",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_unknown_model",
-      "name": "test_unknown_model",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_update_none_usage",
-      "name": "test_update_none_usage",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_utilization_after_update",
-      "name": "test_utilization_after_update",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.test_utilization_zero",
-      "name": "test_utilization_zero",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.testcataloginvariants",
-      "name": "TestCatalogInvariants",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.testcontextwindowfor",
-      "name": "TestContextWindowFor",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.testestimatemessagetokens",
-      "name": "TestEstimateMessageTokens",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.testestimatetokens",
-      "name": "TestEstimateTokens",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.testestimatetoolstokens",
-      "name": "TestEstimateToolsTokens",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.testinferencetokencount",
-      "name": "TestInferenceTokenCount",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.testpaymentproof",
-      "name": "TestPaymentProof",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.testtokenbudget",
-      "name": "TestTokenBudget",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.testtoolschema",
-      "name": "TestToolSchema",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.to_header_value",
-      "name": "to_header_value",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.to_header_value",
-      "name": "to_header_value",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.token_budget",
-      "name": "token_budget",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.toolschema",
-      "name": "ToolSchema",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.translate",
-      "name": "translate",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.translate",
-      "name": "translate",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.update_from_usage",
-      "name": "update_from_usage",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.utilization",
-      "name": "utilization",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a0_qk_constants.validate_rebuild",
-      "name": "validate_rebuild",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a2_mo_composites.build_proof_headers",
-      "name": "build_proof_headers",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a2_mo_composites.get_proof",
-      "name": "get_proof",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a2_mo_composites.test_build_proof_headers",
-      "name": "test_build_proof_headers",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "qk.source.a2_mo_composites.test_get_proof",
-      "name": "test_get_proof",
       "version": "0.1.0"
     },
     {
@@ -729,14 +111,410 @@
     },
     {
       "change_type": "new",
+      "id": "qk.source.ass_ade.lineageproof",
+      "name": "LineageProof",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.materialize_plan",
+      "name": "materialize_plan",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.mcpmanifest",
+      "name": "MCPManifest",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.messages_to_evict",
+      "name": "messages_to_evict",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.nexus_mcp_manifest",
+      "name": "nexus_mcp_manifest",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.paymentproof",
+      "name": "PaymentProof",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.pricingmanifest",
+      "name": "PricingManifest",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.proofbridge",
+      "name": "ProofBridge",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.report",
+      "name": "report",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.run",
+      "name": "run",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.schemas",
+      "name": "schemas",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.swarm_token_budget",
+      "name": "swarm_token_budget",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_available",
+      "name": "test_available",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_build_proof_headers",
+      "name": "test_build_proof_headers",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_case_insensitive",
+      "name": "test_case_insensitive",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_claude_model",
+      "name": "test_claude_model",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_code_block",
+      "name": "test_code_block",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_empty_content",
+      "name": "test_empty_content",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_empty_list",
+      "name": "test_empty_list",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_empty_string",
+      "name": "test_empty_string",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_estimate_conversation",
+      "name": "test_estimate_conversation",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_extended_tools_have_schemas",
+      "name": "test_extended_tools_have_schemas",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_for_model",
+      "name": "test_for_model",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_fuzzy_match",
+      "name": "test_fuzzy_match",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_get_proof",
+      "name": "test_get_proof",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
       "id": "qk.source.ass_ade.test_internal_search_sends_session_token",
       "name": "test_internal_search_sends_session_token",
       "version": "0.1.0"
     },
     {
       "change_type": "new",
+      "id": "qk.source.ass_ade.test_known_model",
+      "name": "test_known_model",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_llm_token_count_success",
+      "name": "test_llm_token_count_success",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_loads_from_manifest",
+      "name": "test_loads_from_manifest",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_long_text",
+      "name": "test_long_text",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_mcp_invoke_schema_validate_fails",
+      "name": "test_mcp_invoke_schema_validate_fails",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_message_with_name",
+      "name": "test_message_with_name",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_messages_to_evict_over_budget",
+      "name": "test_messages_to_evict_over_budget",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_messages_to_evict_within_budget",
+      "name": "test_messages_to_evict_within_budget",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_mock_server_serves_manifest",
+      "name": "test_mock_server_serves_manifest",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_multiple_tools",
+      "name": "test_multiple_tools",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_none_model",
+      "name": "test_none_model",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_progress_token_extracted_from_meta",
+      "name": "test_progress_token_extracted_from_meta",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_rebuild_incremental_no_manifest",
+      "name": "test_rebuild_incremental_no_manifest",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_returns_int",
+      "name": "test_returns_int",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_rg_loop_constant_is_47",
+      "name": "test_rg_loop_constant_is_47",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_schema",
+      "name": "test_schema",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_schemas",
+      "name": "test_schemas",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
       "id": "qk.source.ass_ade.test_search_requires_session_token",
       "name": "test_search_requires_session_token",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_short_text",
+      "name": "test_short_text",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_simple_user_message",
+      "name": "test_simple_user_message",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_single_tool",
+      "name": "test_single_tool",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_system_message",
+      "name": "test_system_message",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_system_messages_not_evicted",
+      "name": "test_system_messages_not_evicted",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_unknown_model",
+      "name": "test_unknown_model",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_update_none_usage",
+      "name": "test_update_none_usage",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_utilization_after_update",
+      "name": "test_utilization_after_update",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.test_utilization_zero",
+      "name": "test_utilization_zero",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.testcataloginvariants",
+      "name": "TestCatalogInvariants",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.testcontextwindowfor",
+      "name": "TestContextWindowFor",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.testestimatemessagetokens",
+      "name": "TestEstimateMessageTokens",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.testestimatetokens",
+      "name": "TestEstimateTokens",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.testestimatetoolstokens",
+      "name": "TestEstimateToolsTokens",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.testinferencetokencount",
+      "name": "TestInferenceTokenCount",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.testpaymentproof",
+      "name": "TestPaymentProof",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.testtokenbudget",
+      "name": "TestTokenBudget",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.testtoolschema",
+      "name": "TestToolSchema",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.token_budget",
+      "name": "token_budget",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.toolschema",
+      "name": "ToolSchema",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.translate",
+      "name": "translate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.update_from_usage",
+      "name": "update_from_usage",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.utilization",
+      "name": "utilization",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.validate_rebuild",
+      "name": "validate_rebuild",
       "version": "0.1.0"
     }
   ],

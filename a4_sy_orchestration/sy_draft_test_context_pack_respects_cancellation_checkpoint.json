@@ -10,22 +10,31 @@
     "get"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_testmcpcancellation.py:92.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_cancellation.py:157.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "sy.source.a4_sy_orchestration.test_context_pack_respects_cancellation_checkpoint",
+  "id": "sy.source.ass_ade.test_context_pack_respects_cancellation_checkpoint",
   "imports": [
     "__future__.annotations",
+    "threading",
+    "time",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.mcp.cancellation.CancellationContext",
+    "ass_ade.mcp.cancellation.NullCancellationContext",
+    "ass_ade.mcp.server.MCPServer",
     "ass_ade.mcp.cancellation.CancellationContext",
     "ass_ade.mcp.cancellation.CancellationContext",
     "ass_ade.mcp.cancellation.CancellationContext"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_testmcpcancellation.py:92"
+    "source": "C:/!ass-ade/tests/test_mcp_cancellation.py:157"
   },
   "kind": "ecosystem_system",
   "made_of": [
-    "og.source.a3_og_features.get"
+    "og.source.ass_ade.get"
   ],
   "name": "test_context_pack_respects_cancellation_checkpoint",
   "product_categories": [

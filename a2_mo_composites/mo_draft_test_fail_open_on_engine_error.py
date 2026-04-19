@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_test_fail_open_on_engine_error.py:7
-# Component id: mo.source.a2_mo_composites.test_fail_open_on_engine_error
+# Extracted from C:/!ass-ade/tests/test_engine_integration.py:368
+# Component id: mo.source.ass_ade.test_fail_open_on_engine_error
 from __future__ import annotations
 
 __version__ = "0.1.0"

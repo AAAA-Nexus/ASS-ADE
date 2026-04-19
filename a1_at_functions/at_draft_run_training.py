@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_run_training.py:7
-# Component id: at.source.a1_at_functions.run_training
+# Extracted from C:/!ass-ade/scripts/hf_space/app.py:46
+# Component id: at.source.ass_ade.run_training
 from __future__ import annotations
 
 __version__ = "0.1.0"

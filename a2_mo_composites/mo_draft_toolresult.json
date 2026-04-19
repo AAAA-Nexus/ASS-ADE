@@ -4,15 +4,19 @@
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_toolresult.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/tools/base.py:10.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.toolresult",
+  "id": "mo.source.ass_ade.toolresult",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "typing.Any",
+    "typing.Protocol",
+    "typing.runtime_checkable",
+    "pydantic.BaseModel"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_toolresult.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/tools/base.py:10"
   },
   "kind": "engine_molecule",
   "made_of": [],

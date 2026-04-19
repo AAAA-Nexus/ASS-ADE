@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_test_progress_token_extracted_from_meta.py:7
-# Component id: qk.source.a0_qk_constants.test_progress_token_extracted_from_meta
+# Extracted from C:/!ass-ade/tests/test_mcp_extended.py:363
+# Component id: qk.source.ass_ade.test_progress_token_extracted_from_meta
 from __future__ import annotations
 
 __version__ = "0.1.0"

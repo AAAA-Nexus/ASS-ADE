@@ -8,15 +8,16 @@
     "summarize_repo"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_repo_summary_counts_files_and_skips_ignored_dirs.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_repo_summary.py:6.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.test_repo_summary_counts_files_and_skips_ignored_dirs",
+  "id": "at.source.ass_ade.test_repo_summary_counts_files_and_skips_ignored_dirs",
   "imports": [
-    "__future__.annotations"
+    "pathlib.Path",
+    "ass_ade.local.repo.summarize_repo"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_repo_summary_counts_files_and_skips_ignored_dirs.py:7"
+    "source": "C:/!ass-ade/tests/test_repo_summary.py:6"
   },
   "kind": "pure_function",
   "made_of": [],

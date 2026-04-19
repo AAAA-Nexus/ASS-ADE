@@ -7,15 +7,23 @@
     "render_branch_evolution_demo"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_render_branch_evolution_demo_names_tracks.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_protocol.py:78.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.test_render_branch_evolution_demo_names_tracks",
+  "id": "at.source.ass_ade.test_render_branch_evolution_demo_names_tracks",
   "imports": [
-    "__future__.annotations"
+    "pathlib.Path",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.protocol.cycle.render_protocol_markdown",
+    "ass_ade.protocol.cycle.run_protocol",
+    "ass_ade.protocol.evolution.bump_project_version",
+    "ass_ade.protocol.evolution.record_evolution_event",
+    "ass_ade.protocol.evolution.render_branch_evolution_demo"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_render_branch_evolution_demo_names_tracks.py:7"
+    "source": "C:/!ass-ade/tests/test_protocol.py:78"
   },
   "kind": "pure_function",
   "made_of": [],

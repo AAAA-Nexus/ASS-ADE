@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_atomadic.py:25
-# Component id: at.source.a1_at_functions.process
+# Extracted from C:/!ass-ade/src/ass_ade/interpreter.py:537
+# Component id: at.source.ass_ade.process
 from __future__ import annotations
 
 __version__ = "0.1.0"
@@ -18,9 +18,115 @@ def process(self, user_input: str) -> str:
         return ""
 
     tone = _detect_tone(text)
+    lower_text = text.lower()
+
+    # ── Startup suggestion number dispatch ────────────────────────────────
+    if self._startup_suggestions and re.fullmatch(r"[1-9]", text):
+        idx = int(text) - 1
+        if 0 <= idx < len(self._startup_suggestions):
+            label = self._startup_suggestions[idx]
+            # Translate suggestion label into a concrete user utterance and recurse
+            _suggestion_intents = {
+                "Fix": "lint .",
+                "Add tests": "lint .",
+                "Consider a rebuild": "rebuild .",
+            }
+            mapped = next(
+                (v for k, v in _suggestion_intents.items() if label.startswith(k)),
+                label,
+            )
+            self._startup_suggestions = []  # consume once
+            return self.process(mapped)
+
+    # ── Design approval gate ──────────────────────────────────────────────
+    if self._pending_design_approval:
+        approve_words = {"yes", "add it", "create it", "build it", "apply",
+                         "go", "do it", "proceed", "yep", "yeah", "sure",
+                         "ok", "looks good", "create the files"}
+        reject_words = {"no", "cancel", "stop", "skip", "not now", "nope",
+                        "don't", "hold off"}
+        words = set(lower_text.split())
+        if words & approve_words or any(p in lower_text for p in
+                                        ("build it", "do it", "looks good", "add it", "create it")):
+            self._pending_design_approval = False
+            feature = self._pending_design_feature or "feature"
+            path = str(self.working_dir)
+            raw_output, cmd = self._dispatch("add-feature", path, feature, tone, feature_desc=feature)
+            response = self._postlude("add-feature", path, raw_output, tone)
+            turn = Turn(user=text, tone=tone, intent="add-feature", path=path,
+                        command=cmd, output=raw_output, response=response)
+            self.history.append(turn)
+            self.memory.update_from_turn(turn)
+            self.memory.append_history(turn)
+            self.memory.save()
+            return response
+        if words & reject_words or any(p in lower_text for p in ("not now", "hold off")):
+            self._pending_design_approval = False
+            msg = ("Got it — blueprint saved but not applied. "
+                   "Run `ass-ade rebuild` to materialize it whenever you're ready.")
+            return msg
+
+    # ── Add-feature — intercept before LLM (LLM doesn't know this intent) ──
+    _add_feature_triggers = (
+        "add a tool", "add a skill", "add a feature", "new tool",
+        "new skill", "create a tool", "create a skill",
+        "add web search", "add search tool", "new feature",
+        "add feature", "add a web", "add an ", "create a new",
+    )
+    if any(t in lower_text for t in _add_feature_triggers):
+        feature = self._extract_feature_desc(text) or text.strip()
+        raw_output, cmd = self._dispatch(
+            "add-feature", str(self.working_dir), text, tone, feature_desc=feature
+        )
+        response = self._postlude("add-feature", str(self.working_dir), raw_output, tone)
+        turn = Turn(user=text, tone=tone, intent="add-feature",
+                    path=str(self.working_dir), command=cmd,
+                    output=raw_output, response=response)
+        self.history.append(turn)
+        self.memory.update_from_turn(turn)
+        self.memory.append_history(turn)
+        self.memory.save()
+        return response
+
+    # ── Memory save — intercept before LLM (LLM doesn't know this intent) ──
+    _memory_triggers = (
+        "remember my", "save that", "my name is", "call me ",
+        "remember me as", "my email is", "my role is", "i'm a ",
+        "i am a ", "i work as", "remember that", "note that",
+        "don't forget", "save my",
+    )
+    if any(t in lower_text for t in _memory_triggers):
+        raw_output, _cmd = self._dispatch("memory", str(self.working_dir), text, tone)
+        response = self._postlude("memory", str(self.working_dir), raw_output, tone)
+        turn = Turn(user=text, tone=tone, intent="memory", path=str(self.working_dir),
+                    command=[], output=raw_output, response=response)
+        self.history.append(turn)
+        self.memory.update_from_turn(turn)
+        self.memory.append_history(turn)
+        self.memory.save()
+        return response
+
+    # ── Enhance apply-all conversational shortcut ─────────────────────────
+    enhance_apply_ids = self._parse_enhance_apply(lower_text)
+    if enhance_apply_ids is not None:
+        path = self._last_scan_path or str(self.working_dir)
+        ids_str = ",".join(str(i) for i in enhance_apply_ids)
+        cmd = [sys.executable, "-m", "ass_ade", "enhance", path, "--apply", ids_str]
+        self._print_dispatch("enhance", cmd)
+        print(f"Applying {len(enhance_apply_ids)} enhancement(s): {ids_str}", flush=True)
+        print(flush=True)
+        raw_output = self._execute(cmd)
+        response = self._postlude("enhance", path, raw_output, tone)
+        turn = Turn(user=text, tone=tone, intent="enhance", path=path,
+                    command=cmd, output=raw_output, response=response)
+        self.history.append(turn)
+        self.memory.update_from_turn(turn)
+        self.memory.append_history(turn)
+        self.memory.save()
+        return response
 
     # ── LLM-first path ────────────────────────────────────────────────────
-    llm_result = _call_llm(text, self.working_dir)
+    llm_result = _call_llm(text, self.working_dir, _summarize_memory(self.memory))
     if llm_result is not None:
         if llm_result.get("type") == "chat":
             reply = llm_result.get("response", "")

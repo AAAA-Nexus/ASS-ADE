@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_testmcpprotocol.py:31
-# Component id: sy.source.a4_sy_orchestration.test_initialize_declares_logging_capability
+# Extracted from C:/!ass-ade/tests/test_mcp_extended.py:236
+# Component id: sy.source.ass_ade.test_initialize_declares_logging_capability
 from __future__ import annotations
 
 __version__ = "0.1.0"

@@ -1,8 +1,11 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_callback_is_called.py:10
-# Component id: at.source.a1_at_functions.on_progress
+# Extracted from C:/!ass-ade/src/ass_ade/cli.py:1313
+# Component id: at.source.ass_ade.on_progress
 from __future__ import annotations
 
 __version__ = "0.1.0"
 
 def on_progress(name: str, status: StepStatus, current: int, total: int) -> None:
-    calls.append((name, status, current, total))
+    color = "green" if status == StepStatus.PASSED else "red"
+    if status == StepStatus.RUNNING:
+        color = "yellow"
+    console.print(f"[{current}/{total}] {name}: [{color}]{status.value}[/{color}]")

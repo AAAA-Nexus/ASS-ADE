@@ -7,15 +7,22 @@
     "_handle"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_test_initialize_ignores_older_client_version.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_extended.py:249.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.test_initialize_ignores_older_client_version",
+  "id": "mo.source.ass_ade.test_initialize_ignores_older_client_version",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "json",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.mcp.server._WORKFLOW_TOOLS",
+    "ass_ade.mcp.server.MCPServer",
+    "httpx"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_test_initialize_ignores_older_client_version.py:7"
+    "source": "C:/!ass-ade/tests/test_mcp_extended.py:249"
   },
   "kind": "engine_molecule",
   "made_of": [],

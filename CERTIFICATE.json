@@ -18,11 +18,11 @@
         "observed": 1.0
       },
       "tier_distribution": {
-        "a0_qk_constants": 105,
-        "a1_at_functions": 1517,
-        "a2_mo_composites": 849,
-        "a3_og_features": 74,
-        "a4_sy_orchestration": 218
+        "a0_qk_constants": 87,
+        "a1_at_functions": 1079,
+        "a2_mo_composites": 782,
+        "a3_og_features": 57,
+        "a4_sy_orchestration": 192
       }
     },
     "summary": {
@@ -32,16 +32,16 @@
       "pass_rate": 1.0,
       "structure_conformant": true
     },
-    "total": 2758,
-    "valid": 2758
+    "total": 2192,
+    "valid": 2192
   },
-  "certificate_sha256": "cd09e680426deec6df18efd5ffc3a6e6f9a488ebf13b3ed65aa2bad9930a4e8f",
+  "certificate_sha256": "1de2979e1fc0bef949d9cf18d4ff3e42861f6b55077a96c24c447290efcfbd98",
   "certificate_version": "ASSADE-SPEC-CERT-1",
-  "issued_at": "2026-04-19T07:55:48.280808+00:00",
+  "issued_at": "2026-04-19T09:22:18.940611+00:00",
   "issuer": "ass_ade.engine.schema_rebuilder",
-  "rebuild_tag": "20260419_005513",
+  "rebuild_tag": "20260419_022147",
   "schema_covered": "ASSADE-SPEC-003",
-  "source_plan_digest": "ea55c602acdeff07",
-  "target_root": "C:/!ass-ade",
-  "written_count": 2860
+  "source_plan_digest": "109e94f0b307096a",
+  "target_root": "C:/!ass-ade-v0.1.1",
+  "written_count": 2196
 }

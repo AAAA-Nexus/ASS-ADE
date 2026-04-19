@@ -37,7 +37,7 @@
   },
   "kind": "ecosystem_system",
   "made_of": [
-    "og.source.a3_og_features.get"
+    "og.source.ass_ade.get"
   ],
   "name": "test_invoke_tool_forwards_api_key",
   "product_categories": [

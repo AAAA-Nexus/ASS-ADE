@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_full_phase1_stack_runs_a_step.py:7
-# Component id: at.source.a1_at_functions.test_full_phase1_stack_runs_a_step
+# Extracted from C:/!ass-ade/tests/test_phase1_integration.py:254
+# Component id: at.source.ass_ade.test_full_phase1_stack_runs_a_step
 from __future__ import annotations
 
 __version__ = "0.1.0"

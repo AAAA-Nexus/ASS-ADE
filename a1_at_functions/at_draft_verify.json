@@ -11,15 +11,26 @@
     "bool"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_verify.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/alphaverus.py:179.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.verify",
+  "id": "at.source.ass_ade.verify",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "ast",
+    "os",
+    "re",
+    "subprocess",
+    "sys",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Optional",
+    "radon.complexity.cc_visit"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_verify.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/agent/alphaverus.py:179"
   },
   "kind": "pure_function",
   "made_of": [],

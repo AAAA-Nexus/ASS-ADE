@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_testmcpserver.py:72
-# Component id: sy.source.a4_sy_orchestration.test_unknown_method
+# Extracted from C:/!ass-ade/tests/test_mcp_server_streaming.py:102
+# Component id: sy.source.ass_ade.test_unknown_method
 from __future__ import annotations
 
 __version__ = "0.1.0"

@@ -16,20 +16,24 @@
     "_calculate_completion_rate"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_taskmanager.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/examples/02-rebuild-a-codebase/sample_project/main.py:86.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.taskmanager",
+  "id": "mo.source.ass_ade.taskmanager",
   "imports": [
-    "__future__.annotations"
+    "enum.Enum",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.List",
+    "typing.Optional"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_taskmanager.py:7"
+    "source": "C:/!ass-ade/examples/02-rebuild-a-codebase/sample_project/main.py:86"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.a1_at_functions.validate_task_id",
-    "at.source.a1_at_functions.validate_task_title"
+    "at.source.ass_ade.validate_task_id",
+    "at.source.ass_ade.validate_task_title"
   ],
   "name": "TaskManager",
   "product_categories": [

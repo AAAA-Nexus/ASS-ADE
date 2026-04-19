@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testgatelog.py:7
-# Component id: mo.source.a2_mo_composites.testgatelog
+# Extracted from C:/!ass-ade/tests/test_gates.py:120
+# Component id: mo.source.ass_ade.testgatelog
 from __future__ import annotations
 
 __version__ = "0.1.0"

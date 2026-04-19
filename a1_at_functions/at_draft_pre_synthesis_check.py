@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_pre_synthesis_check.py:7
-# Component id: at.source.a1_at_functions.pre_synthesis_check
+# Extracted from C:/!ass-ade/src/ass_ade/agent/tca.py:135
+# Component id: at.source.ass_ade.pre_synthesis_check
 from __future__ import annotations
 
 __version__ = "0.1.0"

@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testmultiprovider.py:81
-# Component id: sy.source.a2_mo_composites.test_register_adds_provider_at_runtime
+# Extracted from C:/!ass-ade/tests/test_free_providers.py:452
+# Component id: sy.source.ass_ade.test_register_adds_provider_at_runtime
 from __future__ import annotations
 
 __version__ = "0.1.0"

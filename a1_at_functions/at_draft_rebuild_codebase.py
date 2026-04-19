@@ -1,14 +1,23 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_rebuild_codebase.py:7
-# Component id: at.source.a1_at_functions.rebuild_codebase
+# Extracted from C:/!ass-ade/src/ass_ade/cli.py:5063
+# Component id: at.source.ass_ade.rebuild_codebase
 from __future__ import annotations
 
 __version__ = "0.1.0"
 
 def rebuild_codebase(
-    path: Path = typer.Argument(..., help="Input folder to rebuild (or in-place rebuild if output omitted)."),
-    output: Path | None = typer.Argument(
+    paths: List[Path] = typer.Argument(
+        ...,
+        help=(
+            "One or more source directories to rebuild. When multiple paths are given "
+            "their symbol pools are merged into one unified output (newer sources win on conflicts)."
+        ),
+    ),
+    output: Optional[Path] = typer.Option(
         None,
-        help="Output directory. Omit to auto-name a versioned sibling folder: {source}-v{version}-{timestamp}.",
+        "--output",
+        "-o",
+        help="Output directory. Required when merging multiple sources. "
+             "Omit for single-source to auto-name: {source}-v{version}-{timestamp}.",
     ),
     premium: bool = typer.Option(False, help="Enable synthesis of missing blueprint components via AAAA-Nexus. Paid."),
     no_certify: bool = typer.Option(False, "--no-certify", help="Skip automatic certify step after rebuild."),
@@ -32,13 +41,20 @@ def rebuild_codebase(
 ) -> None:
     """Rebuild any codebase into a clean tier-partitioned modular folder.
 
-    Full rebuild (first time):
-        ass-ade rebuild ./messy-repo ./clean-repo
+    Single-source rebuild (first time):
+
+        ass-ade rebuild ./messy-repo --output ./clean-repo
+
+    Merge-rebuild (multiple sources into one unified output):
+
+        ass-ade rebuild ./source-a ./source-b ./source-c --output ./unified --yes
 
     Dry-run preview (no writes):
-        ass-ade rebuild ./messy-repo ./clean-repo --dry-run
+
+        ass-ade rebuild ./messy-repo --output ./clean-repo --dry-run
 
     Incremental (only changed files):
+
         ass-ade rebuild ./clean-repo --incremental
 
     ASS-ADE's heavy-hitter: point it at a spaghetti codebase, get a brand-new
@@ -58,15 +74,67 @@ def rebuild_codebase(
     from ass_ade.engine.rebuild.project_parser import ingest_project as _ingest_project
     from ass_ade.engine.rebuild.project_parser import iter_source_files as _iter_source_files
 
-    target = path.resolve()
-    if not target.exists():
-        console.print(f"[red]Path does not exist:[/red] {target}")
+    # Backward compatibility: older CLI usage accepted
+    # ``ass-ade rebuild <source> <output>`` before multi-source rebuilds moved
+    # output to ``--output``. Keep that form working when the second positional
+    # path is absent or does not look like another source tree.
+    if output is None and len(paths) == 2:
+        legacy_source, legacy_output = paths
+        legacy_output_resolved = legacy_output.resolve()
+        second_path_is_output = not legacy_output_resolved.exists()
+        if legacy_output_resolved.exists() and legacy_output_resolved.is_dir():
+            second_path_is_output = not any(_iter_source_files(legacy_output_resolved))
+        if second_path_is_output:
+            output = legacy_output
+            paths = [legacy_source]
+
+    # ── Validate all source paths ─────────────────────────────────────────────
+    if not paths:
+        console.print("[red]At least one source directory is required.[/red]")
+        raise typer.Exit(code=1)
+
+    all_targets: list[Path] = []
+    for _p in paths:
+        _t = _p.resolve()
+        if not _t.exists():
+            console.print(f"[red]Source directory does not exist:[/red] {_t}")
+            raise typer.Exit(code=1)
+        if not _t.is_dir():
+            console.print(f"[red]Source path is not a directory:[/red] {_t}")
+            raise typer.Exit(code=1)
+        try:
+            next(_t.iterdir(), None)
+        except (PermissionError, OSError) as _e:
+            console.print(f"[red]Source directory is not readable:[/red] {_t}\n{_e}")
+            raise typer.Exit(code=1)
+        all_targets.append(_t)
+
+    # Primary target for backward-compat single-source operations
+    target = all_targets[0]
+    _multi_source = len(all_targets) > 1
+
+    if _multi_source and output is None:
+        console.print(
+            "[red]--output is required when merging multiple source directories.[/red]\n"
+            "  Example: ass-ade rebuild src1 src2 src3 --output ./unified"
+        )
         raise typer.Exit(code=1)
 
     dest = output.resolve() if output else target
     in_place = output is None
     # When output is omitted, dest will be replaced with a versioned sibling after the rebuild completes.
     _auto_versioned_dest = in_place
+
+    if output and not dest.parent.exists():
+        console.print(f"[red]Output parent directory does not exist:[/red] {dest.parent}")
+        raise typer.Exit(code=1)
+    if output and dest.parent.exists():
+        import os as _os
+        if not _os.access(dest.parent, _os.W_OK):
+            console.print(f"[red]Output directory is not writable:[/red] {dest.parent}")
+            raise typer.Exit(code=1)
+
+    _first_rebuild = not (dest / "MANIFEST.json").exists()
 
     # ── Incremental: find changed files since last MANIFEST.json ─────────────
     changed_files: set[str] | None = None
@@ -105,43 +173,87 @@ def rebuild_codebase(
             _draw_progress_bar("Ingest", current, total, _t0_ingest)
 
     if not json_out:
-        console.print(f"[dim]Analysing {target} …[/dim]")
-    preview_result = _ingest_project(
-        target,
-        root_id=target.name,
-        progress_callback=_progress_cb,
-    )
+        _src_label_preview = (
+            " + ".join(str(t) for t in all_targets)
+            if _multi_source else str(target)
+        )
+        console.print(f"[dim]Analysing {_src_label_preview} …[/dim]")
+
+    # For preview ingest, run on all sources and merge the summaries
+    _all_preview_results = []
+    for _pt in all_targets:
+        _pr = _ingest_project(_pt, root_id=_pt.name, progress_callback=_progress_cb if _pt is target else None)
+        _all_preview_results.append(_pr)
+
     if not json_out and _ingest_progress_state[1] > 0:
         _finish_progress_bar("Ingest", _ingest_progress_state[1],
                              _time.monotonic() - _t0_ingest)
 
-    ingest_summary = preview_result.get("summary", {})
-    by_tier: dict[str, int] = ingest_summary.get("by_tier", {})
-    total_files_count = ingest_summary.get("files_scanned", 0)
-    violations = preview_result.get("gaps", [])
-    violation_count = len(violations)
+    preview_result = _all_preview_results[0]
+    by_tier: dict[str, int] = {}
+    total_files_count = 0
+    violation_count = 0
+    for _pr in _all_preview_results:
+        _s = _pr.get("summary", {})
+        total_files_count += _s.get("files_scanned", 0)
+        violation_count += len(_pr.get("gaps", []))
+        for _tier, _cnt in _s.get("by_tier", {}).items():
+            by_tier[_tier] = by_tier.get(_tier, 0) + _cnt
     est_seconds = max(5, total_files_count // 10)
 
-    # ── Dry-run preview output ────────────────────────────────────────────────
+    # ── Build tier preview lines (aligned) ───────────────────────────────────
     tier_order = [
-        "a1_at_functions", "a2_mo_composites", "a0_qk_constants",
+        "a0_qk_constants", "a1_at_functions", "a2_mo_composites",
         "a3_og_features", "a4_sy_orchestration",
     ]
+    _max_tier_len = max((len(t) for t in tier_order), default=20)
     tier_preview_lines = []
     for tier in tier_order:
         count = by_tier.get(tier, 0)
         if count > 0:
-            tier_preview_lines.append(f"  {count:3d} files → {tier}")
+            tier_preview_lines.append(f"    {tier:<{_max_tier_len}}  {count:>5} files")
     for tier, count in sorted(by_tier.items()):
         if tier not in tier_order and count > 0:
-            tier_preview_lines.append(f"  {count:3d} files → {tier}")
+            tier_preview_lines.append(f"    {tier:<{_max_tier_len}}  {count:>5} files")
 
-    preview_text = (
-        "Dry-run preview:\n"
-        + "\n".join(tier_preview_lines or ["  (no source files classified)"])
-        + f"\n   {violation_count} gap(s) will be proposed as new components"
-        + f"\n   Estimated time: ~{est_seconds}s"
-    )
+    # Detect project language hint
+    _lang_hints = [
+        ("pyproject.toml", "Python"), ("package.json", "Node.js"),
+        ("Cargo.toml", "Rust"), ("go.mod", "Go"),
+    ]
+    _lang = next((l for m, l in _lang_hints if (target / m).exists()), "")
+    if _multi_source:
+        _src_label = f"{len(all_targets)} sources merged ({total_files_count} total files)"
+    else:
+        _src_label = f"{target}" + (f" ({total_files_count} files, {_lang})" if _lang else f" ({total_files_count} files)")
+
+    # Rich first-time plan vs. short follow-up diff preview
+    if _first_rebuild and not dry_run:
+        _src_lines = (
+            "\n".join(f"            {t}" for t in all_targets) if _multi_source
+            else f"  [dim]Source:[/dim]  {_src_label}"
+        )
+        preview_text = (
+            "\n[bold]Merge-Rebuild Plan[/bold]\n" if _multi_source else "\n[bold]Rebuild Plan[/bold]\n"
+        )
+        if _multi_source:
+            preview_text += f"  [dim]Sources ({len(all_targets)}):[/dim]\n{_src_lines}\n"
+        else:
+            preview_text += f"  [dim]Source:[/dim]  {_src_label}\n"
+        preview_text += (
+            f"  [dim]Output:[/dim]  {dest}\n\n"
+            "  [bold]Tier Distribution:[/bold]\n"
+            + "\n".join(tier_preview_lines or ["    (no source files classified)"])
+            + f"\n\n  Gaps to fill:     {violation_count}"
+            + f"\n  Estimated time:   ~{est_seconds}s"
+        )
+    else:
+        preview_text = (
+            "Dry-run preview:\n"
+            + "\n".join(tier_preview_lines or ["  (no source files classified)"])
+            + f"\n   {violation_count} gap(s) will be proposed as new components"
+            + f"\n   Estimated time: ~{est_seconds}s"
+        )
 
     if dry_run:
         if json_out:
@@ -161,10 +273,35 @@ def rebuild_codebase(
     # ── Confirmation prompt (unless --yes) ────────────────────────────────────
     if not yes and not json_out:
         console.print(preview_text)
-        confirm = typer.confirm("Proceed?", default=True)
-        if not confirm:
-            console.print("[dim]Rebuild cancelled.[/dim]")
-            raise typer.Exit(code=0)
+        if _first_rebuild:
+            # Three-option prompt for first-time rebuilds
+            console.print("\n  [bold][P][/bold]roceed  [bold][E][/bold]dit plan  [bold][C][/bold]ancel\n")
+            _choice = (typer.prompt("  Choice", default="P")).strip().upper()
+            if _choice == "C":
+                console.print("[dim]Rebuild cancelled.[/dim]")
+                raise typer.Exit(code=0)
+            if _choice == "E":
+                _plan_path = target / ".ass-ade" / "rebuild-plan.json"
+                _plan_path.parent.mkdir(parents=True, exist_ok=True)
+                _plan_data = {
+                    "source": str(target),
+                    "output": str(dest),
+                    "tier_distribution": by_tier,
+                    "gaps": violation_count,
+                    "estimated_seconds": est_seconds,
+                }
+                _plan_path.write_text(
+                    json.dumps(_plan_data, indent=2), encoding="utf-8"
+                )
+                console.print(f"[dim]Plan saved to:[/dim] {_plan_path}")
+                console.print("[dim]Edit the plan, then re-run with --yes to proceed.[/dim]")
+                raise typer.Exit(code=0)
+            # "P" or anything else → proceed
+        else:
+            confirm = typer.confirm("Proceed?", default=True)
+            if not confirm:
+                console.print("[dim]Rebuild cancelled.[/dim]")
+                raise typer.Exit(code=0)
 
     # ── Recon before rebuild ──────────────────────────────────────────────────
     if not json_out:
@@ -192,11 +329,14 @@ def rebuild_codebase(
         if not json_out:
             console.print(f"[dim]Recon skipped: {_recon_exc}[/dim]")
 
-    label = "Premium rebuild" if premium else "Rebuilding"
+    label = "Premium merge-rebuild" if (premium and _multi_source) else "Merge-rebuild" if _multi_source else ("Premium rebuild" if premium else "Rebuilding")
     if not json_out:
-        console.print(f"[bold]{label}[/bold] {target}")
-        if output:
-            console.print(f"[dim]Output → {dest}[/dim]")
+        if _multi_source:
+            console.print(f"[bold]{label}[/bold] {len(all_targets)} sources → {dest}")
+        else:
+            console.print(f"[bold]{label}[/bold] {target}")
+            if output:
+                console.print(f"[dim]Output → {dest}[/dim]")
         console.print()
 
     staging_dir = dest.parent / f".{dest.name}_rebuild_staging"
@@ -210,7 +350,7 @@ def rebuild_codebase(
     _t0_rebuild = _time.monotonic()
     try:
         result = _rebuild_project(
-            source_path=target,
+            source_path=all_targets if _multi_source else target,
             output_dir=staging_dir,
             synthesize_gaps=premium,
         )
@@ -301,6 +441,15 @@ def rebuild_codebase(
             _birth_cert_content = _birth_cert_path.read_text(encoding="utf-8")
         except OSError:
             pass
+    # Preserve README.md across rebuilds so generated docs do not overwrite the
+    # showcase README when a rebuild is promoted into an existing output.
+    _readme_content: bytes | None = None
+    _readme_path = dest / "README.md"
+    if _readme_path.exists():
+        try:
+            _readme_content = _readme_path.read_bytes()
+        except OSError:
+            pass
     _env_handoff_path: str | None = None
     _env_handoff_error: str | None = None
 
@@ -308,9 +457,53 @@ def rebuild_codebase(
         _shutil.rmtree(dest, ignore_errors=True)
     _shutil.copytree(str(rebuilt_root), str(dest), dirs_exist_ok=True)
 
+    def _rebase_rebuild_metadata(final_root: Path, staged_root: Path) -> None:
+        staged_prefix = staged_root.as_posix()
+        final_prefix = final_root.as_posix()
+
+        def _rebase_value(value: Any) -> Any:
+            if isinstance(value, str) and value.startswith(staged_prefix):
+                return final_prefix + value[len(staged_prefix):]
+            if isinstance(value, list):
+                return [_rebase_value(item) for item in value]
+            if isinstance(value, dict):
+                return {key: _rebase_value(item) for key, item in value.items()}
+            return value
+
+        manifest_path = final_root / "MANIFEST.json"
+        if manifest_path.exists():
+            try:
+                manifest = _json.loads(manifest_path.read_text(encoding="utf-8"))
+                manifest = _rebase_value(manifest)
+                manifest_path.write_text(_json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+            except Exception:
+                pass
+
+        cert_path = final_root / "CERTIFICATE.json"
+        if cert_path.exists():
+            try:
+                cert = _json.loads(cert_path.read_text(encoding="utf-8"))
+                cert = _rebase_value(cert)
+                cert["target_root"] = final_prefix
+                cert.pop("certificate_sha256", None)
+                blob = _json.dumps(cert, sort_keys=True).encode("utf-8")
+                cert["certificate_sha256"] = hashlib.sha256(blob).hexdigest()
+                cert_path.write_text(_json.dumps(cert, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+                phases.setdefault("certificate", {})["certificate_sha256"] = cert["certificate_sha256"]
+                phases["certificate"]["certificate_path"] = cert_path.as_posix()
+            except Exception:
+                pass
+
+    _rebase_rebuild_metadata(dest, rebuilt_root)
+
     if _birth_cert_content is not None:
         try:
             (dest / "BIRTH_CERTIFICATE.md").write_text(_birth_cert_content, encoding="utf-8")
+        except OSError:
+            pass
+    if _readme_content is not None:
+        try:
+            (dest / "README.md").write_bytes(_readme_content)
         except OSError:
             pass
 
@@ -332,10 +525,11 @@ def rebuild_codebase(
         existing_manifest: dict = {}
         if existing_manifest_path.exists():
             existing_manifest = _json.loads(existing_manifest_path.read_text(encoding="utf-8"))
-        file_mtimes_snapshot = {
-            str(f.relative_to(target)): f.stat().st_mtime
-            for f in _iter_source_files(target)
-        }
+        file_mtimes_snapshot: dict[str, float] = {}
+        for _st in all_targets:
+            for f in _iter_source_files(_st):
+                _rel_key = f"{_st.name}/{f.relative_to(_st)}" if _multi_source else str(f.relative_to(_st))
+                file_mtimes_snapshot[_rel_key] = f.stat().st_mtime
         existing_manifest["file_mtimes"] = file_mtimes_snapshot
         existing_manifest_path.write_text(
             _json.dumps(existing_manifest, indent=2), encoding="utf-8"
@@ -380,7 +574,12 @@ def rebuild_codebase(
         }
     except Exception:
         pass
-    _generate_rebuild_docs(dest, target, recon_data=_recon_stats)
+    _generate_rebuild_docs(
+        dest,
+        target,
+        recon_data=_recon_stats,
+        preserve_readme=_readme_content is not None,
+    )
     if not json_out:
         console.print("[green][OK][/green] Docs generated.")
 

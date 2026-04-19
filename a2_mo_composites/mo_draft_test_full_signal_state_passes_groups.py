@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testwisdomengine.py:15
-# Component id: mo.source.a2_mo_composites.test_full_signal_state_passes_groups
+# Extracted from C:/!ass-ade/tests/test_engine_integration.py:64
+# Component id: mo.source.ass_ade.test_full_signal_state_passes_groups
 from __future__ import annotations
 
 __version__ = "0.1.0"

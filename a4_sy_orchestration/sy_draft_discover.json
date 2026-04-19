@@ -15,19 +15,22 @@
     "float"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_mcpzerorouter.py:17.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/mcp/zero_router.py:26.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "sy.source.a4_sy_orchestration.discover",
+  "id": "sy.source.ass_ade.discover",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_mcpzerorouter.py:17"
+    "source": "C:/!ass-ade/src/ass_ade/mcp/zero_router.py:26"
   },
   "kind": "ecosystem_system",
   "made_of": [
-    "og.source.a3_og_features.get"
+    "og.source.ass_ade.get"
   ],
   "name": "discover",
   "product_categories": [

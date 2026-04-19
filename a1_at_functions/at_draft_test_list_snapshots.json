@@ -8,15 +8,18 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_list_snapshots.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_history.py:69.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.test_list_snapshots",
+  "id": "at.source.ass_ade.test_list_snapshots",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.tools.history.FileHistory"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_list_snapshots.py:7"
+    "source": "C:/!ass-ade/tests/test_history.py:69"
   },
   "kind": "pure_function",
   "made_of": [],

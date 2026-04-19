@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_build_payment_header.py:7
-# Component id: at.source.a1_at_functions.build_payment_header
+# Extracted from C:/!ass-ade/src/ass_ade/nexus/x402.py:358
+# Component id: at.source.ass_ade.build_payment_header
 from __future__ import annotations
 
 __version__ = "0.1.0"

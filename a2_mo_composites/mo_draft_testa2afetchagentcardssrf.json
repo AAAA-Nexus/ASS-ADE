@@ -10,19 +10,31 @@
     "endswith"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testa2afetchagentcardssrf.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_ssrf_protection.py:82.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.testa2afetchagentcardssrf",
+  "id": "mo.source.ass_ade.testa2afetchagentcardssrf",
   "imports": [
-    "__future__.annotations"
+    "ipaddress",
+    "json",
+    "unittest.mock",
+    "pytest",
+    "ass_ade.a2a.fetch_agent_card",
+    "ass_ade.mcp.utils._validate_absolute_endpoint",
+    "ass_ade.nexus.models.MCPManifest",
+    "ass_ade.nexus.models.MCPTool",
+    "ass_ade.mcp.utils.invoke_tool",
+    "ass_ade.mcp.utils.invoke_tool",
+    "ass_ade.mcp.utils.simulate_invoke",
+    "ass_ade.mcp.utils.simulate_invoke",
+    "ass_ade.mcp.utils.simulate_invoke"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testa2afetchagentcardssrf.py:7"
+    "source": "C:/!ass-ade/tests/test_ssrf_protection.py:82"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.a1_at_functions.fetch_agent_card"
+    "at.source.ass_ade.fetch_agent_card"
   ],
   "name": "TestA2AFetchAgentCardSSRF",
   "product_categories": [

@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_build_resilient_transport.py:7
-# Component id: at.source.a1_at_functions.build_resilient_transport
+# Extracted from C:/!ass-ade/src/ass_ade/nexus/resilience.py:196
+# Component id: at.source.ass_ade.build_resilient_transport
 from __future__ import annotations
 
 __version__ = "0.1.0"

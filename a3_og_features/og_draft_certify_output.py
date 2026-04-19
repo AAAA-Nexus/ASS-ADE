@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_certify_output.py:7
-# Component id: og.source.a3_og_features.certify_output
+# Extracted from C:/!ass-ade/src/ass_ade/workflows.py:164
+# Component id: og.source.ass_ade.certify_output
 from __future__ import annotations
 
 __version__ = "0.1.0"

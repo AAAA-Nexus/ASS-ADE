@@ -7,15 +7,24 @@
     "update_from_usage"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_testtokenbudget.py:21.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_tokens.py:135.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "qk.source.a0_qk_constants.test_utilization_after_update",
+  "id": "qk.source.ass_ade.test_utilization_after_update",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "ass_ade.engine.tokens.DEFAULT_CONTEXT_WINDOW",
+    "ass_ade.engine.tokens.RESPONSE_RESERVE",
+    "ass_ade.engine.tokens.TokenBudget",
+    "ass_ade.engine.tokens.context_window_for",
+    "ass_ade.engine.tokens.estimate_message_tokens",
+    "ass_ade.engine.tokens.estimate_tokens",
+    "ass_ade.engine.tokens.estimate_tools_tokens",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolSchema"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_testtokenbudget.py:21"
+    "source": "C:/!ass-ade/tests/test_tokens.py:135"
   },
   "kind": "invariant",
   "made_of": [],

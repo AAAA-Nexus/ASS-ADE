@@ -136,21 +136,29 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_run_all.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/scripts/probe_endpoints.py:83.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.run_all",
+  "id": "at.source.ass_ade.run_all",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "argparse",
+    "os",
+    "sys",
+    "time",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Callable",
+    "ass_ade.nexus.client.NexusClient"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_run_all.py:7"
+    "source": "C:/!ass-ade/scripts/probe_endpoints.py:83"
   },
   "kind": "pure_function",
   "made_of": [
-    "qk.source.a0_qk_constants.get_mcp_manifest",
-    "qk.source.a0_qk_constants.get_pricing_manifest",
-    "qk.source.a0_qk_constants.agent_token_budget"
+    "qk.source.ass_ade.get_mcp_manifest",
+    "qk.source.ass_ade.get_pricing_manifest",
+    "qk.source.ass_ade.agent_token_budget"
   ],
   "name": "run_all",
   "product_categories": [

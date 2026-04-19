@@ -7,15 +7,27 @@
     "raises"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testvalidateabsoluteendpoint.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_ssrf_protection.py:20.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.testvalidateabsoluteendpoint",
+  "id": "at.source.ass_ade.testvalidateabsoluteendpoint",
   "imports": [
-    "__future__.annotations"
+    "ipaddress",
+    "json",
+    "unittest.mock",
+    "pytest",
+    "ass_ade.a2a.fetch_agent_card",
+    "ass_ade.mcp.utils._validate_absolute_endpoint",
+    "ass_ade.nexus.models.MCPManifest",
+    "ass_ade.nexus.models.MCPTool",
+    "ass_ade.mcp.utils.invoke_tool",
+    "ass_ade.mcp.utils.invoke_tool",
+    "ass_ade.mcp.utils.simulate_invoke",
+    "ass_ade.mcp.utils.simulate_invoke",
+    "ass_ade.mcp.utils.simulate_invoke"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testvalidateabsoluteendpoint.py:7"
+    "source": "C:/!ass-ade/tests/test_ssrf_protection.py:20"
   },
   "kind": "pure_class",
   "made_of": [],

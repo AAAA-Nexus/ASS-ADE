@@ -15,22 +15,25 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testfilehistory.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_history.py:25.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.testfilehistory",
+  "id": "mo.source.ass_ade.testfilehistory",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.tools.history.FileHistory"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testfilehistory.py:7"
+    "source": "C:/!ass-ade/tests/test_history.py:25"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.a1_at_functions.record",
-    "at.source.a1_at_functions.undo",
-    "at.source.a1_at_functions.list_snapshots",
-    "at.source.a1_at_functions.depth"
+    "at.source.ass_ade.record",
+    "at.source.ass_ade.undo",
+    "at.source.ass_ade.list_snapshots",
+    "at.source.ass_ade.depth"
   ],
   "name": "TestFileHistory",
   "product_categories": [

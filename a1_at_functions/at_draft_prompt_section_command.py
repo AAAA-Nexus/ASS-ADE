@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_prompt_section_command.py:7
-# Component id: at.source.a1_at_functions.prompt_section_command
+# Extracted from C:/!ass-ade/src/ass_ade/cli.py:3213
+# Component id: at.source.ass_ade.prompt_section_command
 from __future__ import annotations
 
 __version__ = "0.1.0"

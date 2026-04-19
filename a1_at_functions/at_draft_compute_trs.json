@@ -10,15 +10,18 @@
     "getattr"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_compute_trs.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/sam.py:33.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.compute_trs",
+  "id": "at.source.ass_ade.compute_trs",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "ass_ade.context_memory.vector_embed"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_compute_trs.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/agent/sam.py:33"
   },
   "kind": "pure_function",
   "made_of": [],

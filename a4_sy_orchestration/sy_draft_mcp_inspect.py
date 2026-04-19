@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_mcp_inspect.py:7
-# Component id: sy.source.a4_sy_orchestration.mcp_inspect
+# Extracted from C:/!ass-ade/src/ass_ade/cli.py:902
+# Component id: sy.source.ass_ade.mcp_inspect
 from __future__ import annotations
 
 __version__ = "0.1.0"

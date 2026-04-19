@@ -12,15 +12,22 @@
     "encode"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_start_non_numeric_agent_id_uses_deterministic_sha256_int.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_session.py:66.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.test_start_non_numeric_agent_id_uses_deterministic_sha256_int",
+  "id": "at.source.ass_ade.test_start_non_numeric_agent_id_uses_deterministic_sha256_int",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "hashlib",
+    "unittest.mock.MagicMock",
+    "pytest",
+    "ass_ade.nexus.models.RatchetAdvance",
+    "ass_ade.nexus.models.RatchetSession",
+    "ass_ade.nexus.models.RatchetStatus",
+    "ass_ade.nexus.session.NexusSession"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_start_non_numeric_agent_id_uses_deterministic_sha256_int.py:7"
+    "source": "C:/!ass-ade/tests/test_session.py:66"
   },
   "kind": "pure_function",
   "made_of": [],

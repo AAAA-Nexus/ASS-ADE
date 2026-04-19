@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testx402clientflow.py:53
-# Component id: at.source.a2_mo_composites.test_parse_challenge_recipient_mismatch
+# Extracted from C:/!ass-ade/tests/test_x402_flow.py:195
+# Component id: at.source.ass_ade.test_parse_challenge_recipient_mismatch
 from __future__ import annotations
 
 __version__ = "0.1.0"

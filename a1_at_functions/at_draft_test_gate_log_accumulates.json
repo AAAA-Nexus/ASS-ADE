@@ -11,15 +11,19 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_gate_log_accumulates.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_gates.py:121.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.test_gate_log_accumulates",
+  "id": "at.source.ass_ade.test_gate_log_accumulates",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "typing.Any",
+    "unittest.mock.MagicMock",
+    "ass_ade.agent.gates.GateResult",
+    "ass_ade.agent.gates.QualityGates"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_gate_log_accumulates.py:7"
+    "source": "C:/!ass-ade/tests/test_gates.py:121"
   },
   "kind": "pure_function",
   "made_of": [],

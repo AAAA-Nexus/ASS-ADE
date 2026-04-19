@@ -25,23 +25,34 @@
     "model_for_tier"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_lseengine.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/lse.py:70.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.lseengine",
+  "id": "mo.source.ass_ade.lseengine",
   "imports": [
     "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "ass_ade.agent.providers.ALL_TIERS",
+    "ass_ade.agent.providers.TIER_ALIASES",
+    "ass_ade.agent.providers.TIER_BALANCED",
+    "ass_ade.agent.providers.TIER_DEEP",
+    "ass_ade.agent.providers.TIER_FAST",
+    "ass_ade.agent.providers.ProviderProfile",
+    "ass_ade.agent.providers.resolve_tier",
+    "ass_ade.agent.providers.select_provider_for_tier",
     "ass_ade.agent.providers.get_provider"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_lseengine.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/agent/lse.py:70"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.a1_at_functions.resolve_tier",
-    "at.source.a1_at_functions.select_provider_for_tier",
-    "at.source.a1_at_functions.get_provider",
-    "at.source.a1_at_functions.model_for_tier"
+    "at.source.ass_ade.resolve_tier",
+    "at.source.ass_ade.select_provider_for_tier",
+    "at.source.ass_ade.get_provider",
+    "at.source.ass_ade.model_for_tier"
   ],
   "name": "LSEEngine",
   "product_categories": [

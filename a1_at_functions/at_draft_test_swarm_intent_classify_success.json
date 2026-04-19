@@ -11,15 +11,32 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_swarm_intent_classify_success.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_cli_happy_path.py:260.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.test_swarm_intent_classify_success",
+  "id": "at.source.ass_ade.test_swarm_intent_classify_success",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.nexus.models.AgentPlan",
+    "ass_ade.nexus.models.ComplianceResult",
+    "ass_ade.nexus.models.FormatConversion",
+    "ass_ade.nexus.models.InferenceResponse",
+    "ass_ade.nexus.models.IntentClassification",
+    "ass_ade.nexus.models.RatchetSession",
+    "ass_ade.nexus.models.TrustScore",
+    "ass_ade.pipeline.PipelineResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_swarm_intent_classify_success.py:7"
+    "source": "C:/!ass-ade/tests/test_cli_happy_path.py:260"
   },
   "kind": "pure_function",
   "made_of": [],

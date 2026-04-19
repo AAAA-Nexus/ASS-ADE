@@ -13,15 +13,17 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_scan_bare_except.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/local/enhancer.py:234.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.scan_bare_except",
+  "id": "at.source.ass_ade.scan_bare_except",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "pathlib.Path",
+    "typing.Any"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_scan_bare_except.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/local/enhancer.py:234"
   },
   "kind": "pure_function",
   "made_of": [],

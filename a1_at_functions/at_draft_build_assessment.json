@@ -10,15 +10,23 @@
     "_tool_status_payload"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_build_assessment.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/protocol/cycle.py:52.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.build_assessment",
+  "id": "at.source.ass_ade.build_assessment",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "pathlib.Path",
+    "pydantic.BaseModel",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.local.planner.draft_plan",
+    "ass_ade.local.repo.RepoSummary",
+    "ass_ade.local.repo.summarize_repo",
+    "ass_ade.system.ToolStatus",
+    "ass_ade.system.collect_tool_status"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_build_assessment.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/protocol/cycle.py:52"
   },
   "kind": "pure_function",
   "made_of": [],

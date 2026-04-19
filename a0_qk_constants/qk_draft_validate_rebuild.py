@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_validate_rebuild.py:7
-# Component id: qk.source.a0_qk_constants.validate_rebuild
+# Extracted from C:/!ass-ade/src/ass_ade/engine/rebuild/schema_materializer.py:254
+# Component id: qk.source.ass_ade.validate_rebuild
 from __future__ import annotations
 
 __version__ = "0.1.0"

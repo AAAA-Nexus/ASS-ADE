@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_editplanexecutor.py:7
-# Component id: mo.source.a2_mo_composites.editplanexecutor
+# Extracted from C:/!ass-ade/src/ass_ade/tools/plan.py:89
+# Component id: mo.source.ass_ade.editplanexecutor
 from __future__ import annotations
 
 __version__ = "0.1.0"

@@ -7,15 +7,23 @@
     "isinstance"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_detect_linters_empty_dir.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_linter.py:30.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.test_detect_linters_empty_dir",
+  "id": "at.source.ass_ade.test_detect_linters_empty_dir",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "subprocess",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.local.linter.detect_linters",
+    "ass_ade.local.linter.run_linters",
+    "ass_ade.local.linter.run_ruff"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_detect_linters_empty_dir.py:7"
+    "source": "C:/!ass-ade/tests/test_linter.py:30"
   },
   "kind": "pure_function",
   "made_of": [],

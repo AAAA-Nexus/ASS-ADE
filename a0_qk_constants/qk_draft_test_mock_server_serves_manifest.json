@@ -9,17 +9,30 @@
     "shutdown"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_test_mock_server_serves_manifest.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp.py:260.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "qk.source.a0_qk_constants.test_mock_server_serves_manifest",
+  "id": "qk.source.ass_ade.test_mock_server_serves_manifest",
   "imports": [
-    "__future__.annotations",
+    "pathlib.Path",
     "httpx",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.mcp.utils.invoke_tool",
+    "ass_ade.nexus.models.MCPManifest",
+    "ass_ade.nexus.models.MCPTool",
+    "ass_ade.nexus.models.CostEstimate",
+    "json",
+    "httpx",
+    "ass_ade.mcp.mock_server.start_server",
+    "httpx",
+    "ass_ade.mcp.mock_server._MAX_BODY_BYTES",
     "ass_ade.mcp.mock_server.start_server"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_test_mock_server_serves_manifest.py:7"
+    "source": "C:/!ass-ade/tests/test_mcp.py:260"
   },
   "kind": "invariant",
   "made_of": [],

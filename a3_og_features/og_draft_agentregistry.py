@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_agentregistry.py:7
-# Component id: og.source.a3_og_features.agentregistry
+# Extracted from C:/!ass-ade/src/ass_ade/nexus/models.py:350
+# Component id: og.source.ass_ade.agentregistry
 from __future__ import annotations
 
 __version__ = "0.1.0"

@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_grepsearchtool.py:7
-# Component id: mo.source.a2_mo_composites.grepsearchtool
+# Extracted from C:/!ass-ade/src/ass_ade/tools/builtin.py:428
+# Component id: mo.source.ass_ade.grepsearchtool
 from __future__ import annotations
 
 __version__ = "0.1.0"

@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_prompt_propose_command.py:7
-# Component id: at.source.a1_at_functions.prompt_propose_command
+# Extracted from C:/!ass-ade/src/ass_ade/cli.py:3275
+# Component id: at.source.ass_ade.prompt_propose_command
 from __future__ import annotations
 
 __version__ = "0.1.0"

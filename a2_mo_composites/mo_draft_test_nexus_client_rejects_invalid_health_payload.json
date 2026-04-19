@@ -10,15 +10,17 @@
     "get_health"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_test_nexus_client_rejects_invalid_health_payload.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_nexus_client.py:26.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.test_nexus_client_rejects_invalid_health_payload",
+  "id": "mo.source.ass_ade.test_nexus_client_rejects_invalid_health_payload",
   "imports": [
-    "__future__.annotations"
+    "httpx",
+    "pytest",
+    "ass_ade.nexus.client.NexusClient"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_test_nexus_client_rejects_invalid_health_payload.py:7"
+    "source": "C:/!ass-ade/tests/test_nexus_client.py:26"
   },
   "kind": "engine_molecule",
   "made_of": [],

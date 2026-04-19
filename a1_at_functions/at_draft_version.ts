@@ -1,5 +1,6 @@
-// Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_version.ts:5
-// Component id: at.source.a1_at_functions.version  version: 0.1.0
+// Extracted from C:/!ass-ade/scripts/check-python.js:5
+// Component id: at.source.ass_ade.version  version: 0.1.0
+
 
 try {
   const version = execSync('python --version', { encoding: 'utf8' }).trim();

@@ -1,20 +1,29 @@
 {
-  "body": "def test_dynamic_prompt_includes_protocol_evolution_commands(tmp_path: Path) -> None:\n    prompt = build_atomadic_intent_prompt(tmp_path)\n\n    assert \"Dynamic Capability Inventory\" in prompt\n    assert \"`protocol evolution-record`\" in prompt\n    assert \"`protocol evolution-demo`\" in prompt\n    assert \"`protocol version-bump`\" in prompt\n    assert \"`prompt sync-agent`\" in prompt\n    assert \"`prompt_hash`\" in prompt\n",
-  "body_hash": "063cae11849b8081",
+  "body": "def test_dynamic_prompt_includes_protocol_evolution_commands(tmp_path: Path) -> None:\n    prompt = build_atomadic_intent_prompt(tmp_path)\n\n    assert \"Dynamic Capability Inventory\" in prompt\n    assert \"Capability summary\" in prompt\n    assert \"Runtime routing rules\" in prompt\n    assert \"Hosted Nexus MCP tools discovered in this session\" in prompt\n    assert \"`protocol evolution-record`\" in prompt\n    assert \"`protocol evolution-demo`\" in prompt\n    assert \"`protocol version-bump`\" in prompt\n    assert \"`prompt sync-agent`\" in prompt\n    assert \"`prompt_hash`\" in prompt\n    assert \"Generated at:\" in prompt\n",
+  "body_hash": "8a80a037b8468ee0",
   "body_truncated": false,
   "callers_of": [
     "build_atomadic_intent_prompt"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_dynamic_prompt_includes_protocol_evolution_commands.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_capabilities.py:17.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.test_dynamic_prompt_includes_protocol_evolution_commands",
+  "id": "at.source.ass_ade.test_dynamic_prompt_includes_protocol_evolution_commands",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "ass_ade.interpreter",
+    "ass_ade.agent.capabilities.build_atomadic_intent_prompt",
+    "ass_ade.agent.capabilities.command_path_exists",
+    "ass_ade.agent.capabilities.render_atomadic_help",
+    "ass_ade.agent.capabilities.sync_atomadic_prompt_capabilities",
+    "ass_ade.agent.context.build_system_prompt",
+    "ass_ade.interpreter.Atomadic"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_dynamic_prompt_includes_protocol_evolution_commands.py:7"
+    "source": "C:/!ass-ade/tests/test_capabilities.py:17"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_nexusclient.py:1261
-# Component id: mo.source.a2_mo_composites.lora_capture_fix
+# Extracted from C:/!ass-ade/src/ass_ade/nexus/client.py:1456
+# Component id: mo.source.ass_ade.lora_capture_fix
 from __future__ import annotations
 
 __version__ = "0.1.0"

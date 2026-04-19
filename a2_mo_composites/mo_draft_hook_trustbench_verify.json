@@ -13,12 +13,15 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_qualitygates.py:176.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/gates.py:204.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.hook_trustbench_verify",
+  "id": "mo.source.ass_ade.hook_trustbench_verify",
   "imports": [
     "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "typing.Any",
     "ast",
     "re",
     "json",
@@ -35,11 +38,11 @@
     "ass_ade.agent.sam.SAM"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_qualitygates.py:176"
+    "source": "C:/!ass-ade/src/ass_ade/agent/gates.py:204"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.a2_mo_composites.pre_action_verify"
+    "at.source.ass_ade.pre_action_verify"
   ],
   "name": "hook_trustbench_verify",
   "product_categories": [

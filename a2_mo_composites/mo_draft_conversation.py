@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_conversation.py:7
-# Component id: mo.source.a2_mo_composites.conversation
+# Extracted from C:/!ass-ade/src/ass_ade/agent/conversation.py:18
+# Component id: mo.source.ass_ade.conversation
 from __future__ import annotations
 
 __version__ = "0.1.0"

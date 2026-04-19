@@ -69,7 +69,9 @@
     "source": "C:/!ass-ade/tests/test_phase_engines.py:603"
   },
   "kind": "engine_molecule",
-  "made_of": [],
+  "made_of": [
+    "at.source.ass_ade.persist_principles"
+  ],
   "name": "test_persist_principles_no_lora_on_low_conviction",
   "product_categories": [
     "COR"

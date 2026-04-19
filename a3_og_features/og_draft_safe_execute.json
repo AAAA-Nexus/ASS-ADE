@@ -15,20 +15,29 @@
     "certify_output"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_safe_execute.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/workflows.py:234.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "og.source.a3_og_features.safe_execute",
+  "id": "og.source.ass_ade.safe_execute",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "logging",
+    "typing.Any",
+    "httpx",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "ass_ade.nexus.client.NexusClient",
+    "ass_ade.nexus.errors.NexusError",
+    "ass_ade.nexus.validation.validate_agent_id",
+    "ass_ade.nexus.validation.validate_prompt"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_safe_execute.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/workflows.py:234"
   },
   "kind": "product_organism",
   "made_of": [
-    "mo.source.a2_mo_composites.security_shield",
-    "mo.source.a2_mo_composites.prompt_inject_scan"
+    "mo.source.ass_ade.security_shield",
+    "mo.source.ass_ade.prompt_inject_scan"
   ],
   "name": "safe_execute",
   "product_categories": [

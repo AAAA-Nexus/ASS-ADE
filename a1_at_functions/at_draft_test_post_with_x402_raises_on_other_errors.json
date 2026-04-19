@@ -11,21 +11,34 @@
     "_post_with_x402"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_post_with_x402_raises_on_other_errors.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_search_x402.py:191.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.test_post_with_x402_raises_on_other_errors",
+  "id": "at.source.ass_ade.test_post_with_x402_raises_on_other_errors",
   "imports": [
     "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "httpx",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.nexus.client.NexusClient",
+    "ass_ade.nexus.errors.NexusPaymentRequired",
     "ass_ade.nexus.errors.NexusAuthError"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_post_with_x402_raises_on_other_errors.py:7"
+    "source": "C:/!ass-ade/tests/test_search_x402.py:191"
   },
   "kind": "pure_function",
   "made_of": [],
   "name": "test_post_with_x402_raises_on_other_errors",
   "product_categories": [
+    "DCM",
     "PAY"
   ],
   "provides": [

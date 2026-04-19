@@ -42,8 +42,8 @@
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.a1_at_functions.subscribe",
-    "at.source.a1_at_functions.monitor_all"
+    "at.source.ass_ade.subscribe",
+    "at.source.ass_ade.monitor_all"
   ],
   "name": "test_subscriber_called_on_alert",
   "product_categories": [

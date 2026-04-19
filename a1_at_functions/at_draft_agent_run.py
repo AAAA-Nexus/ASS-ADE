@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_agent_run.py:7
-# Component id: at.source.a1_at_functions.agent_run
+# Extracted from C:/!ass-ade/src/ass_ade/commands/agent.py:151
+# Component id: at.source.ass_ade.agent_run
 from __future__ import annotations
 
 __version__ = "0.1.0"

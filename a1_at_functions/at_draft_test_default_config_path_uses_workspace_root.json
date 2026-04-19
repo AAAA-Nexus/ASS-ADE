@@ -6,15 +6,19 @@
     "default_config_path"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_default_config_path_uses_workspace_root.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_config.py:6.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.test_default_config_path_uses_workspace_root",
+  "id": "at.source.ass_ade.test_default_config_path_uses_workspace_root",
   "imports": [
-    "__future__.annotations"
+    "pathlib.Path",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.default_config_path",
+    "ass_ade.config.load_config",
+    "ass_ade.config.write_default_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_default_config_path_uses_workspace_root.py:7"
+    "source": "C:/!ass-ade/tests/test_config.py:6"
   },
   "kind": "pure_function",
   "made_of": [],

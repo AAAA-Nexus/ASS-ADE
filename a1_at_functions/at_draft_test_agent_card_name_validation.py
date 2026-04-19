@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_agent_card_name_validation.py:7
-# Component id: at.source.a1_at_functions.test_agent_card_name_validation
+# Extracted from C:/!ass-ade/tests/test_a2a.py:298
+# Component id: at.source.ass_ade.test_agent_card_name_validation
 from __future__ import annotations
 
 __version__ = "0.1.0"

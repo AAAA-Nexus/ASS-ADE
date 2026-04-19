@@ -17,16 +17,30 @@
     "Path"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_a2a_negotiate.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/commands/a2a.py:98.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.a2a_negotiate",
+  "id": "at.source.ass_ade.a2a_negotiate",
   "imports": [
     "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Annotated",
+    "typing.Any",
+    "httpx",
+    "typer",
+    "rich.console.Console",
+    "ass_ade.a2a.fetch_agent_card",
+    "ass_ade.a2a.local_agent_card",
+    "ass_ade.a2a.negotiate",
+    "ass_ade.config.default_config_path",
+    "ass_ade.config.load_config",
+    "ass_ade.nexus.client.NexusClient",
+    "ass_ade.a2a.validate_agent_card",
     "ass_ade.nexus.validation.validate_url"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_a2a_negotiate.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/commands/a2a.py:98"
   },
   "kind": "pure_function",
   "made_of": [],

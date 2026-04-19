@@ -66,7 +66,7 @@
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.a1_at_functions.gate_sam"
+    "at.source.ass_ade.gate_sam"
   ],
   "name": "test_gate_sam_returns_dict",
   "product_categories": [

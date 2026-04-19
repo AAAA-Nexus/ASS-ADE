@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_handle_x402_parses_payment_details.py:7
-# Component id: at.source.a1_at_functions.test_handle_x402_parses_payment_details
+# Extracted from C:/!ass-ade/tests/test_search_x402.py:116
+# Component id: at.source.ass_ade.test_handle_x402_parses_payment_details
 from __future__ import annotations
 
 __version__ = "0.1.0"

@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_doctor_json_flag.py:7
-# Component id: at.source.a1_at_functions.test_doctor_json_flag
+# Extracted from C:/!ass-ade/tests/test_cli.py:112
+# Component id: at.source.ass_ade.test_doctor_json_flag
 from __future__ import annotations
 
 __version__ = "0.1.0"

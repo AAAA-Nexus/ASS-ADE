@@ -1,8 +1,0 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testauditquestions.py:8
-# Component id: at.source.a2_mo_composites.test_count_is_50
-from __future__ import annotations
-
-__version__ = "0.1.0"
-
-def test_count_is_50(self) -> None:
-    assert len(AUDIT_QUESTIONS) == 50

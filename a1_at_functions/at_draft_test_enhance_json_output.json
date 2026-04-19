@@ -3,6 +3,7 @@
   "body_hash": "f5c7e137c0f51440",
   "body_truncated": false,
   "callers_of": [
+    "skipif",
     "write_text",
     "invoke",
     "find",
@@ -10,15 +11,20 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_enhance_json_output.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_enhance_cli.py:71.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.test_enhance_json_output",
+  "id": "at.source.ass_ade.test_enhance_json_output",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_enhance_json_output.py:7"
+    "source": "C:/!ass-ade/tests/test_enhance_cli.py:71"
   },
   "kind": "pure_function",
   "made_of": [],

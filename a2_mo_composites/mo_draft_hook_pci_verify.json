@@ -13,12 +13,15 @@
     "getLogger"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_qualitygates.py:231.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/gates.py:259.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.hook_pci_verify",
+  "id": "mo.source.ass_ade.hook_pci_verify",
   "imports": [
     "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "typing.Any",
     "ast",
     "re",
     "json",
@@ -35,11 +38,11 @@
     "ass_ade.agent.sam.SAM"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_qualitygates.py:231"
+    "source": "C:/!ass-ade/src/ass_ade/agent/gates.py:259"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.a1_at_functions.search"
+    "at.source.ass_ade.search"
   ],
   "name": "hook_pci_verify",
   "product_categories": [

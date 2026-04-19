@@ -8,15 +8,22 @@
     "strip"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_can_pay.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/x402.py:403.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.can_pay",
+  "id": "at.source.ass_ade.can_pay",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "os",
+    "time",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "eth_account.Account",
+    "web3.Web3",
+    "logging"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_can_pay.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/x402.py:403"
   },
   "kind": "pure_function",
   "made_of": [],

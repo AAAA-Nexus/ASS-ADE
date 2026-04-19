@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_scan_long_functions.py:7
-# Component id: at.source.a1_at_functions.scan_long_functions
+# Extracted from C:/!ass-ade/src/ass_ade/local/enhancer.py:77
+# Component id: at.source.ass_ade.scan_long_functions
 from __future__ import annotations
 
 __version__ = "0.1.0"

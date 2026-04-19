@@ -16,21 +16,24 @@
     "getattr"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_severa.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/severa.py:22.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.severa",
+  "id": "mo.source.ass_ade.severa",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_severa.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/agent/severa.py:22"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.a1_at_functions.search",
-    "at.source.a1_at_functions.synthesize",
-    "at.source.a1_at_functions.verify"
+    "at.source.ass_ade.search",
+    "at.source.ass_ade.synthesize",
+    "at.source.ass_ade.verify"
   ],
   "name": "Severa",
   "product_categories": [

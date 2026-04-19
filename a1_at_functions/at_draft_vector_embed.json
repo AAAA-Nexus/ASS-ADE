@@ -14,17 +14,28 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_vector_embed.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/context_memory.py:79.",
   "exceptions_raised": [
     "ValueError"
   ],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.vector_embed",
+  "id": "at.source.ass_ade.vector_embed",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "math",
+    "re",
+    "datetime.UTC",
+    "datetime.datetime",
+    "pathlib.Path",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "ass_ade.recon.phase0_recon"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_vector_embed.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/context_memory.py:79"
   },
   "kind": "pure_function",
   "made_of": [],

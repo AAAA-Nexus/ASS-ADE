@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testvalidateabsoluteendpoint.py:32
-# Component id: at.source.a1_at_functions.test_private_10_network_blocked
+# Extracted from C:/!ass-ade/tests/test_ssrf_protection.py:45
+# Component id: at.source.ass_ade.test_private_10_network_blocked
 from __future__ import annotations
 
 __version__ = "0.1.0"

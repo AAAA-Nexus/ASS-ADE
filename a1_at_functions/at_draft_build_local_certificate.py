@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_build_local_certificate.py:7
-# Component id: at.source.a1_at_functions.build_local_certificate
+# Extracted from C:/!ass-ade/src/ass_ade/local/certifier.py:75
+# Component id: at.source.ass_ade.build_local_certificate
 from __future__ import annotations
 
 __version__ = "0.1.0"

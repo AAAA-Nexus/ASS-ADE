@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_testregistry.py:7
-# Component id: og.source.a3_og_features.testregistry
+# Extracted from C:/!ass-ade/tests/test_tools_builtin.py:185
+# Component id: og.source.ass_ade.testregistry
 from __future__ import annotations
 
 __version__ = "0.1.0"

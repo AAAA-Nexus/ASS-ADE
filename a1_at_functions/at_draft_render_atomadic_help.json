@@ -1,22 +1,34 @@
 {
-  "body": "def render_atomadic_help(working_dir: str | Path = \".\") -> str:\n    \"\"\"Render a human help summary backed by the dynamic inventory.\"\"\"\n    snapshot = build_capability_snapshot(working_dir)\n    highlighted = [\n        item for item in snapshot.cli_commands\n        if item.name in {\n            \"rebuild\",\n            \"design\",\n            \"docs\",\n            \"lint\",\n            \"certify\",\n            \"enhance\",\n            \"eco-scan\",\n            \"recon\",\n            \"doctor\",\n            \"protocol evolution-record\",\n            \"protocol evolution-demo\",\n            \"protocol version-bump\",\n            \"context pack\",\n            \"context store\",\n            \"context query\",\n            \"mcp serve\",\n        }\n    ]\n    lines = [\n        \"I'm Atomadic, the front door of ASS-ADE.\",\n        \"\",\n        \"I learn my command and tool surface from the current codebase at runtime,\",\n        \"so new CLI commands, local tools, MCP tools, agents, and hooks appear in\",\n        \"my prompt without hand-editing a static list.\",\n        \"\",\n        \"Useful commands right now:\",\n        *_format_entries(highlighted, limit=40),\n        \"\",\n        \"Local tools I can use:\",\n        *_format_entries(snapshot.local_tools, limit=20),\n        \"\",\n        \"MCP workflow tools:\",\n        *_format_entries(snapshot.mcp_tools, limit=30),\n        \"\",\n        \"Just tell me what you want in plain English.\",\n    ]\n    return \"\\n\".join(lines)\n",
-  "body_hash": "9cd2a337e20c9517",
+  "body": "def render_atomadic_help(working_dir: str | Path = \".\") -> str:\n    \"\"\"Render a human help summary backed by the dynamic inventory.\"\"\"\n    snapshot = build_capability_snapshot(working_dir)\n    highlighted = [\n        item for item in snapshot.cli_commands\n        if item.name in {\n            \"rebuild\",\n            \"design\",\n            \"docs\",\n            \"lint\",\n            \"certify\",\n            \"enhance\",\n            \"eco-scan\",\n            \"recon\",\n            \"doctor\",\n            \"protocol evolution-record\",\n            \"protocol evolution-demo\",\n            \"protocol version-bump\",\n            \"context pack\",\n            \"context store\",\n            \"context query\",\n            \"mcp serve\",\n        }\n    ]\n    lines = [\n        \"I'm Atomadic, the front door of ASS-ADE.\",\n        \"\",\n        \"I learn my command and tool surface from the current codebase at runtime,\",\n        \"so new CLI commands, local tools, MCP tools, agents, and hooks appear in\",\n        \"my prompt without hand-editing a static list.\",\n        \"\",\n        f\"Inventory generated at: {snapshot.generated_at_utc}\",\n        \"\",\n        \"Capability counts:\",\n        *_format_count_summary(snapshot),\n        \"\",\n        \"Useful commands right now:\",\n        *_format_entries(highlighted, limit=40),\n        \"\",\n        \"Local tools I can use:\",\n        *_format_entries(snapshot.local_tools, limit=20),\n        \"\",\n        \"MCP workflow tools:\",\n        *_format_entries(snapshot.mcp_tools, limit=30),\n        \"\",\n        \"Just tell me what you want in plain English.\",\n    ]\n    return \"\\n\".join(lines)\n",
+  "body_hash": "1cd24f7929c647bf",
   "body_truncated": false,
   "callers_of": [
     "build_capability_snapshot",
     "join",
+    "_format_count_summary",
     "_format_entries"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_render_atomadic_help.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/capabilities.py:484.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.render_atomadic_help",
+  "id": "at.source.ass_ade.render_atomadic_help",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "typer.main",
+    "ass_ade.cli.app",
+    "ass_ade.tools.registry.default_registry",
+    "ass_ade.mcp.server._WORKFLOW_TOOLS"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_render_atomadic_help.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/agent/capabilities.py:484"
   },
   "kind": "pure_function",
   "made_of": [],

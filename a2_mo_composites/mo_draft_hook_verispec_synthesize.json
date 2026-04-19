@@ -10,12 +10,15 @@
     "getLogger"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_qualitygates.py:272.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/gates.py:300.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.hook_verispec_synthesize",
+  "id": "mo.source.ass_ade.hook_verispec_synthesize",
   "imports": [
     "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "typing.Any",
     "ast",
     "re",
     "json",
@@ -32,7 +35,7 @@
     "ass_ade.agent.sam.SAM"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_qualitygates.py:272"
+    "source": "C:/!ass-ade/src/ass_ade/agent/gates.py:300"
   },
   "kind": "engine_molecule",
   "made_of": [],

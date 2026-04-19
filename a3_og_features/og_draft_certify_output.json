@@ -18,22 +18,31 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_certify_output.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/workflows.py:164.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "og.source.a3_og_features.certify_output",
+  "id": "og.source.ass_ade.certify_output",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "logging",
+    "typing.Any",
+    "httpx",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "ass_ade.nexus.client.NexusClient",
+    "ass_ade.nexus.errors.NexusError",
+    "ass_ade.nexus.validation.validate_agent_id",
+    "ass_ade.nexus.validation.validate_prompt"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_certify_output.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/workflows.py:164"
   },
   "kind": "product_organism",
   "made_of": [
-    "mo.source.a2_mo_composites.hallucination_oracle",
-    "mo.source.a2_mo_composites.ethics_check",
-    "mo.source.a2_mo_composites.compliance_check",
-    "mo.source.a2_mo_composites.lineage_record"
+    "mo.source.ass_ade.hallucination_oracle",
+    "mo.source.ass_ade.ethics_check",
+    "mo.source.ass_ade.compliance_check",
+    "mo.source.ass_ade.lineage_record"
   ],
   "name": "certify_output",
   "product_categories": [

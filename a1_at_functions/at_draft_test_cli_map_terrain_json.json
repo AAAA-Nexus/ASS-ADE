@@ -9,15 +9,21 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_cli_map_terrain_json.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_map_terrain.py:253.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.test_cli_map_terrain_json",
+  "id": "at.source.ass_ade.test_cli_map_terrain_json",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.map_terrain.map_terrain",
+    "ass_ade.mcp.server.MCPServer"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_cli_map_terrain_json.py:7"
+    "source": "C:/!ass-ade/tests/test_map_terrain.py:253"
   },
   "kind": "pure_function",
   "made_of": [],

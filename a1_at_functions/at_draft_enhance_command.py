@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_enhance_command.py:7
-# Component id: at.source.a1_at_functions.enhance_command
+# Extracted from C:/!ass-ade/src/ass_ade/cli.py:5837
+# Component id: at.source.ass_ade.enhance_command
 from __future__ import annotations
 
 __version__ = "0.1.0"
@@ -82,7 +82,7 @@ def enhance_command(
         try:
             with NexusClient(
                 base_url=settings.nexus_base_url,
-                api_key=getattr(settings, "api_key", None),
+                api_key=settings.nexus_api_key,
                 agent_id=str(settings.agent_id) if settings.agent_id else None,
                 timeout=60.0,
             ) as nx:
@@ -165,7 +165,7 @@ def enhance_command(
             try:
                 with NexusClient(
                     base_url=settings.nexus_base_url,
-                    api_key=getattr(settings, "api_key", None),
+                    api_key=settings.nexus_api_key,
                     agent_id=str(settings.agent_id) if settings.agent_id else None,
                     timeout=120.0,
                 ) as nx:

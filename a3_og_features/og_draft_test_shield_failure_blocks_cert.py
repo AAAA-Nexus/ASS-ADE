@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_testsafeexecute.py:13
-# Component id: og.source.a3_og_features.test_shield_failure_blocks_cert
+# Extracted from C:/!ass-ade/tests/test_workflows.py:182
+# Component id: og.source.ass_ade.test_shield_failure_blocks_cert
 from __future__ import annotations
 
 __version__ = "0.1.0"

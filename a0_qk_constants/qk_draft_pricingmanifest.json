@@ -4,15 +4,19 @@
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_pricingmanifest.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/models.py:69.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "qk.source.a0_qk_constants.pricingmanifest",
+  "id": "qk.source.ass_ade.pricingmanifest",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_pricingmanifest.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/models.py:69"
   },
   "kind": "invariant",
   "made_of": [],

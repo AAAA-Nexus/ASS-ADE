@@ -20,15 +20,23 @@
     "sorted"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_runcommandtool.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/tools/builtin.py:241.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.runcommandtool",
+  "id": "mo.source.ass_ade.runcommandtool",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "difflib",
+    "re",
+    "shlex",
+    "subprocess",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.history.FileHistory"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_runcommandtool.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/tools/builtin.py:241"
   },
   "kind": "engine_molecule",
   "made_of": [],

@@ -11,12 +11,15 @@
     "getLogger"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_qualitygates.py:394.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/gates.py:422.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.hook_map_terrain_gate",
+  "id": "mo.source.ass_ade.hook_map_terrain_gate",
   "imports": [
     "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "typing.Any",
     "ast",
     "re",
     "json",
@@ -33,7 +36,7 @@
     "ass_ade.agent.sam.SAM"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_qualitygates.py:394"
+    "source": "C:/!ass-ade/src/ass_ade/agent/gates.py:422"
   },
   "kind": "engine_molecule",
   "made_of": [],

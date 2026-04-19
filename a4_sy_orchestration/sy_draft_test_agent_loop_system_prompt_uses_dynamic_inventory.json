@@ -1,6 +1,6 @@
 {
-  "body": "def test_agent_loop_system_prompt_uses_dynamic_inventory(tmp_path: Path) -> None:\n    (tmp_path / \"pyproject.toml\").write_text(\"[project]\\nname='demo'\\n\", encoding=\"utf-8\")\n\n    prompt = build_system_prompt(str(tmp_path))\n\n    assert \"Dynamic Capability Inventory\" in prompt\n    assert \"`protocol evolution-record`\" in prompt\n    assert \"`read_file`\" in prompt\n    assert \"Project type: Python\" in prompt\n",
-  "body_hash": "1132dba1accdd25a",
+  "body": "def test_agent_loop_system_prompt_uses_dynamic_inventory(tmp_path: Path) -> None:\n    (tmp_path / \"pyproject.toml\").write_text(\"[project]\\nname='demo'\\n\", encoding=\"utf-8\")\n\n    prompt = build_system_prompt(str(tmp_path))\n\n    assert \"Dynamic Capability Inventory\" in prompt\n    assert \"Capability summary\" in prompt\n    assert \"`protocol evolution-record`\" in prompt\n    assert \"`read_file`\" in prompt\n    assert \"Project type: Python\" in prompt\n",
+  "body_hash": "0da461ced030bc33",
   "body_truncated": false,
   "callers_of": [
     "write_text",
@@ -8,15 +8,24 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_test_agent_loop_system_prompt_uses_dynamic_inventory.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_capabilities.py:40.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "sy.source.a4_sy_orchestration.test_agent_loop_system_prompt_uses_dynamic_inventory",
+  "id": "sy.source.ass_ade.test_agent_loop_system_prompt_uses_dynamic_inventory",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "ass_ade.interpreter",
+    "ass_ade.agent.capabilities.build_atomadic_intent_prompt",
+    "ass_ade.agent.capabilities.command_path_exists",
+    "ass_ade.agent.capabilities.render_atomadic_help",
+    "ass_ade.agent.capabilities.sync_atomadic_prompt_capabilities",
+    "ass_ade.agent.context.build_system_prompt",
+    "ass_ade.interpreter.Atomadic"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_test_agent_loop_system_prompt_uses_dynamic_inventory.py:7"
+    "source": "C:/!ass-ade/tests/test_capabilities.py:40"
   },
   "kind": "ecosystem_system",
   "made_of": [],

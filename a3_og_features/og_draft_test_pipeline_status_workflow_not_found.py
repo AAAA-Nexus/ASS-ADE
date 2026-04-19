@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testpipelinerun.py:175
-# Component id: og.source.a2_mo_composites.test_pipeline_status_workflow_not_found
+# Extracted from C:/!ass-ade/tests/test_cli_happy_path.py:500
+# Component id: og.source.ass_ade.test_pipeline_status_workflow_not_found
 from __future__ import annotations
 
 __version__ = "0.1.0"

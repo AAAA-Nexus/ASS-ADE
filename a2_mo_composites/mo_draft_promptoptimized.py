@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_promptoptimized.py:7
-# Component id: mo.source.a2_mo_composites.promptoptimized
+# Extracted from C:/!ass-ade/src/ass_ade/nexus/models.py:428
+# Component id: mo.source.ass_ade.promptoptimized
 from __future__ import annotations
 
 __version__ = "0.1.0"

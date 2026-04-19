@@ -70,8 +70,8 @@
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.a1_at_functions.capture_fix",
-    "at.source.a1_at_functions.tick"
+    "at.source.ass_ade.capture_fix",
+    "at.source.ass_ade.tick"
   ],
   "name": "test_tick_triggers_batch_at_interval",
   "product_categories": [

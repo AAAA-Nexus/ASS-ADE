@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_fetch_samples.py:7
-# Component id: at.source.a1_at_functions.fetch_samples
+# Extracted from C:/!ass-ade/scripts/lora_train.py:78
+# Component id: at.source.ass_ade.fetch_samples
 from __future__ import annotations
 
 __version__ = "0.1.0"

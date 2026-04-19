@@ -6,15 +6,27 @@
     "invoke"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testa2avalidatecli.py:29.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_a2a_cli.py:63.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.test_validate_missing_file",
+  "id": "at.source.ass_ade.test_validate_missing_file",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.nexus.models.DiscoveryResult",
+    "ass_ade.nexus.models.DiscoveredAgent",
+    "ass_ade.a2a.A2AAgentCard",
+    "ass_ade.a2a.NegotiationResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testa2avalidatecli.py:29"
+    "source": "C:/!ass-ade/tests/test_a2a_cli.py:63"
   },
   "kind": "pure_function",
   "made_of": [],

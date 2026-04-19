@@ -1,20 +1,34 @@
 {
-  "body": "class InventionStub(BaseModel):\n    \"\"\"A generated placeholder module for a missing capability.\"\"\"\n    capability_name: str\n    stub_path: str\n    spec_summary: str\n    verification_criteria: list[str] = Field(default_factory=list)\n",
-  "body_hash": "9607fbaf60a1eb71",
+  "body": "class InventionStub(BaseModel):\n    \"\"\"A generated implementation packet for a missing capability.\"\"\"\n\n    capability_name: str\n    stub_path: str\n    spec_summary: str\n    verification_criteria: list[str] = Field(default_factory=list)\n",
+  "body_hash": "94f476e40cfbc3c0",
   "body_truncated": false,
   "callers_of": [
     "Field"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_inventionstub.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/map_terrain.py:1171.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.inventionstub",
+  "id": "mo.source.ass_ade.inventionstub",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "re",
+    "time",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Literal",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "ass_ade.tools.registry.default_registry",
+    "ass_ade.engine.rebuild.schema_materializer.emit_certificate",
+    "ass_ade.engine.rebuild.schema_materializer.materialize_plan",
+    "ass_ade.engine.rebuild.schema_materializer.validate_rebuild",
+    "ass_ade.local.enhancer.build_enhancement_report"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_inventionstub.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/map_terrain.py:1171"
   },
   "kind": "engine_molecule",
   "made_of": [],

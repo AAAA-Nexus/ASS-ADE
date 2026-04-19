@@ -24,17 +24,32 @@
     "replace"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_phase0_recon.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/recon.py:186.",
   "exceptions_raised": [
     "ValueError"
   ],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.phase0_recon",
+  "id": "at.source.ass_ade.phase0_recon",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "ast",
+    "concurrent.futures",
+    "os",
+    "re",
+    "time",
+    "collections.defaultdict",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Literal",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "ass_ade.local.repo.DEFAULT_IGNORED_DIRS",
+    "ass_ade.local.repo.summarize_repo"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_phase0_recon.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/recon.py:186"
   },
   "kind": "pure_function",
   "made_of": [],

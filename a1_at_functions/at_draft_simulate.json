@@ -26,15 +26,27 @@
     "encode"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_simulate.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/dgm_h.py:246.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.simulate",
+  "id": "at.source.ass_ade.simulate",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "math",
+    "random",
+    "dataclasses.asdict",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.UTC",
+    "datetime.datetime",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.agent.golden_runner.run_golden"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_simulate.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/agent/dgm_h.py:246"
   },
   "kind": "pure_function",
   "made_of": [],

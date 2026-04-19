@@ -22,15 +22,29 @@
     "startswith"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_validate_rebuild.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/rebuild/schema_materializer.py:254.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "qk.source.a0_qk_constants.validate_rebuild",
+  "id": "qk.source.ass_ade.validate_rebuild",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "datetime",
+    "hashlib",
+    "json",
+    "re",
+    "sys",
+    "textwrap",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.engine.rebuild.version_tracker.assign_version",
+    "ass_ade.engine.rebuild.version_tracker.content_hash",
+    "ass_ade.engine.rebuild.version_tracker.load_prev_versions",
+    "ass_ade.engine.rebuild.version_tracker.write_project_version_file",
+    "ass_ade.engine.rebuild.version_tracker.write_tier_version_file",
+    "ass_ade.engine.rebuild.version_tracker._aggregate_version"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_validate_rebuild.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/engine/rebuild/schema_materializer.py:254"
   },
   "kind": "invariant",
   "made_of": [],

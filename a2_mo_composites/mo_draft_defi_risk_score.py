@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_nexusclient.py:803
-# Component id: mo.source.a2_mo_composites.defi_risk_score
+# Extracted from C:/!ass-ade/src/ass_ade/nexus/client.py:998
+# Component id: mo.source.ass_ade.defi_risk_score
 from __future__ import annotations
 
 __version__ = "0.1.0"

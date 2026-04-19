@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_build_capability_inventory.py:7
-# Component id: at.source.a1_at_functions.build_capability_inventory
+# Extracted from C:/!ass-ade/src/ass_ade/map_terrain.py:301
+# Component id: at.source.ass_ade.build_capability_inventory
 from __future__ import annotations
 
 __version__ = "0.1.0"

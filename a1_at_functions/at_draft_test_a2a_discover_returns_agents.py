@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_a2a_discover_returns_agents.py:7
-# Component id: at.source.a1_at_functions.test_a2a_discover_returns_agents
+# Extracted from C:/!ass-ade/tests/test_cli_happy_path.py:165
+# Component id: at.source.ass_ade.test_a2a_discover_returns_agents
 from __future__ import annotations
 
 __version__ = "0.1.0"

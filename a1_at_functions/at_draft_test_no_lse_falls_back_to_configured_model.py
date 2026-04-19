@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_no_lse_falls_back_to_configured_model.py:7
-# Component id: at.source.a1_at_functions.test_no_lse_falls_back_to_configured_model
+# Extracted from C:/!ass-ade/tests/test_phase1_integration.py:142
+# Component id: at.source.ass_ade.test_no_lse_falls_back_to_configured_model
 from __future__ import annotations
 
 __version__ = "0.1.0"

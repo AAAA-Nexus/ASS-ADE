@@ -11,18 +11,30 @@
     "json"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_test_mock_server_oversized_body_returns_413_with_content_length.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp.py:275.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "sy.source.a4_sy_orchestration.test_mock_server_oversized_body_returns_413_with_content_length",
+  "id": "sy.source.ass_ade.test_mock_server_oversized_body_returns_413_with_content_length",
   "imports": [
-    "__future__.annotations",
+    "pathlib.Path",
+    "httpx",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.mcp.utils.invoke_tool",
+    "ass_ade.nexus.models.MCPManifest",
+    "ass_ade.nexus.models.MCPTool",
+    "ass_ade.nexus.models.CostEstimate",
+    "json",
+    "httpx",
+    "ass_ade.mcp.mock_server.start_server",
     "httpx",
     "ass_ade.mcp.mock_server._MAX_BODY_BYTES",
     "ass_ade.mcp.mock_server.start_server"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_test_mock_server_oversized_body_returns_413_with_content_length.py:7"
+    "source": "C:/!ass-ade/tests/test_mcp.py:275"
   },
   "kind": "ecosystem_system",
   "made_of": [],

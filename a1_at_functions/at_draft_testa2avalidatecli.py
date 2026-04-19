@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testa2avalidatecli.py:7
-# Component id: at.source.a1_at_functions.testa2avalidatecli
+# Extracted from C:/!ass-ade/tests/test_a2a_cli.py:41
+# Component id: at.source.ass_ade.testa2avalidatecli
 from __future__ import annotations
 
 __version__ = "0.1.0"

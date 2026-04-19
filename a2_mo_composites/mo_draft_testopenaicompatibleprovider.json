@@ -15,15 +15,38 @@
     "ToolSchema"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testopenaicompatibleprovider.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine.py:72.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.testopenaicompatibleprovider",
+  "id": "mo.source.ass_ade.testopenaicompatibleprovider",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "json",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "ass_ade.engine.provider.NexusProvider",
+    "ass_ade.engine.provider.OpenAICompatibleProvider",
+    "ass_ade.engine.router.build_provider",
+    "ass_ade.engine.types.CompletionRequest",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolCallRequest",
+    "ass_ade.engine.types.ToolSchema",
+    "os",
+    "ass_ade.agent.providers.FREE_PROVIDERS",
+    "ass_ade.agent.providers.FREE_PROVIDERS",
+    "ass_ade.config.ProviderOverride",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.engine.provider.MultiProvider",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.engine.provider.MultiProvider",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.engine.provider.MultiProvider"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testopenaicompatibleprovider.py:7"
+    "source": "C:/!ass-ade/tests/test_engine.py:72"
   },
   "kind": "engine_molecule",
   "made_of": [],

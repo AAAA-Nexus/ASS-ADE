@@ -7,22 +7,31 @@
     "StepResult"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_trust_gate_pipeline.py:63.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/pipeline.py:286.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.gate_step",
+  "id": "at.source.ass_ade.gate_step",
   "imports": [
     "__future__.annotations",
+    "json",
+    "time",
+    "collections.abc.Callable",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "enum.Enum",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Protocol",
     "ass_ade.nexus.validation.validate_agent_id"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_trust_gate_pipeline.py:63"
+    "source": "C:/!ass-ade/src/ass_ade/pipeline.py:286"
   },
   "kind": "pure_function",
   "made_of": [],
   "name": "gate_step",
   "product_categories": [
-    "IDT"
+    "COR"
   ],
   "provides": [
     "rebuild candidate for gate_step"

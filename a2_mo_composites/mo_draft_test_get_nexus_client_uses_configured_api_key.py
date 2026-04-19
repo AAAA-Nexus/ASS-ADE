@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_testmcptrustgate.py:35
-# Component id: mo.source.a4_sy_orchestration.test_get_nexus_client_uses_configured_api_key
+# Extracted from C:/!ass-ade/tests/test_mcp_extended.py:186
+# Component id: mo.source.ass_ade.test_get_nexus_client_uses_configured_api_key
 from __future__ import annotations
 
 __version__ = "0.1.0"

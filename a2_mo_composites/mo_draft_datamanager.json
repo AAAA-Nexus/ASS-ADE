@@ -6,15 +6,15 @@
     "append"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_datamanager.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/benchmarks/messy_demo/helpers.py:11.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.datamanager",
+  "id": "mo.source.ass_ade.datamanager",
   "imports": [
-    "__future__.annotations"
+    "utils.process_data"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_datamanager.py:7"
+    "source": "C:/!ass-ade/benchmarks/messy_demo/helpers.py:11"
   },
   "kind": "engine_molecule",
   "made_of": [],

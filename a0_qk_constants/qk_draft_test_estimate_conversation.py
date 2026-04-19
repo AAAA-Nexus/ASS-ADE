@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_testtokenbudget.py:62
-# Component id: qk.source.a0_qk_constants.test_estimate_conversation
+# Extracted from C:/!ass-ade/tests/test_tokens.py:176
+# Component id: qk.source.ass_ade.test_estimate_conversation
 from __future__ import annotations
 
 __version__ = "0.1.0"

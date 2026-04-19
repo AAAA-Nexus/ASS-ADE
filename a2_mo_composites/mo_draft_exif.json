@@ -18,19 +18,24 @@
     "encode"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_exif.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/exif.py:19.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.exif",
+  "id": "mo.source.ass_ade.exif",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "hashlib",
+    "random",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_exif.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/agent/exif.py:19"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.a1_at_functions.explore"
+    "at.source.ass_ade.explore"
   ],
   "name": "EXIF",
   "product_categories": [

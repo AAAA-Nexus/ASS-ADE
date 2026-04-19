@@ -10,19 +10,36 @@
     "invoke"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testpipelinerun.py:149.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_cli_happy_path.py:474.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "og.source.a2_mo_composites.test_pipeline_status_workflow_found",
+  "id": "og.source.ass_ade.test_pipeline_status_workflow_found",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.nexus.models.AgentPlan",
+    "ass_ade.nexus.models.ComplianceResult",
+    "ass_ade.nexus.models.FormatConversion",
+    "ass_ade.nexus.models.InferenceResponse",
+    "ass_ade.nexus.models.IntentClassification",
+    "ass_ade.nexus.models.RatchetSession",
+    "ass_ade.nexus.models.TrustScore",
+    "ass_ade.pipeline.PipelineResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testpipelinerun.py:149"
+    "source": "C:/!ass-ade/tests/test_cli_happy_path.py:474"
   },
   "kind": "product_organism",
   "made_of": [
-    "mo.source.a2_mo_composites.patch"
+    "mo.source.ass_ade.patch"
   ],
   "name": "test_pipeline_status_workflow_found",
   "product_categories": [

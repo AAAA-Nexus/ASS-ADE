@@ -6,15 +6,15 @@
     "append"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_do_thing.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/benchmarks/messy_demo/helpers.py:23.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.do_thing",
+  "id": "at.source.ass_ade.do_thing",
   "imports": [
-    "__future__.annotations"
+    "utils.process_data"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_do_thing.py:7"
+    "source": "C:/!ass-ade/benchmarks/messy_demo/helpers.py:23"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -13,17 +13,42 @@
     "rstrip"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_fetch_samples.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/scripts/lora_train.py:78.",
   "exceptions_raised": [
     "RuntimeError"
   ],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.fetch_samples",
+  "id": "at.source.ass_ade.fetch_samples",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "argparse",
+    "hashlib",
+    "json",
+    "logging",
+    "os",
+    "sys",
+    "time",
+    "dataclasses.asdict",
+    "dataclasses.dataclass",
+    "pathlib.Path",
+    "typing.Any",
+    "httpx",
+    "subprocess",
+    "torch",
+    "datasets.Dataset",
+    "peft.LoraConfig",
+    "peft.TaskType",
+    "peft.get_peft_model",
+    "transformers.AutoModelForCausalLM",
+    "transformers.AutoTokenizer",
+    "transformers.DataCollatorForLanguageModeling",
+    "transformers.Trainer",
+    "transformers.TrainingArguments",
+    "huggingface_hub.HfApi",
+    "huggingface_hub.login"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_fetch_samples.py:7"
+    "source": "C:/!ass-ade/scripts/lora_train.py:78"
   },
   "kind": "pure_function",
   "made_of": [],

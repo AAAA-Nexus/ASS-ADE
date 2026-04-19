@@ -8,17 +8,21 @@
     "ValueError"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_sanitize_header_value.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/validation.py:150.",
   "exceptions_raised": [
     "ValueError"
   ],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.sanitize_header_value",
+  "id": "at.source.ass_ade.sanitize_header_value",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "ipaddress",
+    "re",
+    "socket",
+    "urllib.parse.urlparse"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_sanitize_header_value.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/validation.py:150"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "def workflow_safe_execute(\n    tool_name: str = typer.Argument(..., help=\"MCP tool name to execute.\"),\n    tool_input: str = typer.Argument(\"\", help=\"Input to the tool.\"),\n    agent_id: str | None = typer.Option(None, help=\"Agent ID for AEGIS proxy.\"),\n    config: Path | None = CONFIG_OPTION,\n    allow_remote: bool = ALLOW_REMOTE_OPTION,\n    json_out: bool = typer.Option(False, \"--json\", help=\"Output raw JSON.\"),\n) -> None:\n    \"\"\"AEGIS-wrapped MCP tool execution: shield \u2192 scan \u2192 proxy \u2192 certify.\"\"\"\n    from ass_ade.nexus.errors import NexusError\n    from ass_ade.workflows import safe_execute\n\n    _, settings = _resolve_config(config)\n    _require_remote_access(settings, allow_remote)\n    try:\n        with NexusClient(base_url=settings.nexus_base_url, timeout=settings.request_timeout_s, api_key=settings.nexus_api_key) as client:\n            result = safe_execute(client, tool_name, tool_input, agent_id=agent_id)\n    except NexusError as exc:\n        console.print(f\"[red]Workflow error: {exc.detail}[/red]\")\n        raise typer.Exit(code=3) from exc\n    except httpx.HTTPError as exc:\n        _nexus_err(exc)\n        return\n    if json_out:\n        _print_json(result.model_dump())\n    else:\n        console.print(f\"  Tool: {result.tool_name}\")\n        console.print(f\"  Shield: {'\u2713' if result.shield_passed else '\u2717'}\")\n        console.print(f\"  Prompt Scan: {'\u2713' if result.prompt_scan_passed else '\u2717'}\")\n        console.print(f\"  Certificate: {result.certificate_id or 'none'}\")\n",
-  "body_hash": "45b12b2580599626",
+  "body": "def workflow_safe_execute(\n    tool_name: str = typer.Argument(..., help=\"MCP tool name to execute.\"),\n    tool_input: str = typer.Argument(\"\", help=\"Input to the tool.\"),\n    agent_id: str | None = typer.Option(None, help=\"Agent ID for AEGIS proxy.\"),\n    config: Path | None = CONFIG_OPTION,\n    allow_remote: bool = ALLOW_REMOTE_OPTION,\n    json_out: bool = typer.Option(False, \"--json\", help=\"Output raw JSON.\"),\n) -> None:\n    \"\"\"AEGIS-wrapped MCP tool execution: shield \u2192 scan \u2192 proxy \u2192 certify.\"\"\"\n    from ass_ade.nexus.errors import NexusError\n    from ass_ade.workflows import safe_execute\n\n    _, settings = _resolve_config(config)\n    _require_remote_access(settings, allow_remote)\n    try:\n        with NexusClient(\n            base_url=settings.nexus_base_url,\n            timeout=settings.request_timeout_s,\n            api_key=settings.nexus_api_key,\n        ) as client:\n            result = safe_execute(client, tool_name, tool_input, agent_id=agent_id)\n    except NexusError as exc:\n        console.print(f\"[red]Workflow error: {exc.detail}[/red]\")\n        raise typer.Exit(code=3) from exc\n    except httpx.HTTPError as exc:\n        _nexus_err(exc)\n        return\n    if json_out:\n        _print_json(result.model_dump())\n    else:\n        console.print(f\"  Tool: {result.tool_name}\")\n        console.print(f\"  Shield: {'\u2713' if result.shield_passed else '\u2717'}\")\n        console.print(f\"  Prompt Scan: {'\u2713' if result.prompt_scan_passed else '\u2717'}\")\n        console.print(f\"  Certificate: {result.certificate_id or 'none'}\")\n",
+  "body_hash": "06ce657165f870f6",
   "body_truncated": false,
   "callers_of": [
     "Argument",
@@ -16,21 +16,36 @@
     "model_dump"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_workflow_safe_execute.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/commands/workflow.py:192.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "og.source.a3_og_features.workflow_safe_execute",
+  "id": "og.source.ass_ade.workflow_safe_execute",
   "imports": [
     "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "httpx",
+    "typer",
+    "rich.console.Console",
+    "ass_ade.config.default_config_path",
+    "ass_ade.config.load_config",
+    "ass_ade.nexus.client.NexusClient",
+    "ass_ade.recon.phase0_recon",
     "ass_ade.nexus.errors.NexusError",
-    "ass_ade.workflows.safe_execute"
+    "ass_ade.workflows.trust_gate",
+    "ass_ade.nexus.errors.NexusError",
+    "ass_ade.workflows.certify_output",
+    "ass_ade.nexus.errors.NexusError",
+    "ass_ade.workflows.safe_execute",
+    "ass_ade.map_terrain.map_terrain"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_workflow_safe_execute.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/commands/workflow.py:192"
   },
   "kind": "product_organism",
   "made_of": [
-    "mo.source.a2_mo_composites.nexusclient"
+    "mo.source.ass_ade.nexusclient"
   ],
   "name": "workflow_safe_execute",
   "product_categories": [

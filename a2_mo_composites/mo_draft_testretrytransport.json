@@ -14,19 +14,27 @@
     "Response"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testretrytransport.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_resilience.py:46.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.testretrytransport",
+  "id": "mo.source.ass_ade.testretrytransport",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "httpx",
+    "pytest",
+    "ass_ade.nexus.errors.NexusCircuitOpen",
+    "ass_ade.nexus.errors.NexusConnectionError",
+    "ass_ade.nexus.errors.NexusTimeoutError",
+    "ass_ade.nexus.resilience.CircuitBreakerTransport",
+    "ass_ade.nexus.resilience.RetryTransport",
+    "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testretrytransport.py:7"
+    "source": "C:/!ass-ade/tests/test_resilience.py:46"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.a1_at_functions.handle_request"
+    "at.source.ass_ade.handle_request"
   ],
   "name": "TestRetryTransport",
   "product_categories": [

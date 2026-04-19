@@ -7,15 +7,25 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_base_error_carries_context.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_errors.py:20.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.test_base_error_carries_context",
+  "id": "at.source.ass_ade.test_base_error_carries_context",
   "imports": [
-    "__future__.annotations"
+    "pytest",
+    "ass_ade.nexus.errors.NexusAuthError",
+    "ass_ade.nexus.errors.NexusCircuitOpen",
+    "ass_ade.nexus.errors.NexusConnectionError",
+    "ass_ade.nexus.errors.NexusError",
+    "ass_ade.nexus.errors.NexusPaymentRequired",
+    "ass_ade.nexus.errors.NexusRateLimited",
+    "ass_ade.nexus.errors.NexusServerError",
+    "ass_ade.nexus.errors.NexusTimeoutError",
+    "ass_ade.nexus.errors.NexusValidationError",
+    "ass_ade.nexus.errors.raise_for_status"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_base_error_carries_context.py:7"
+    "source": "C:/!ass-ade/tests/test_errors.py:20"
   },
   "kind": "pure_function",
   "made_of": [],

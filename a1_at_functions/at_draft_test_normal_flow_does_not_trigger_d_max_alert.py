@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_normal_flow_does_not_trigger_d_max_alert.py:7
-# Component id: at.source.a1_at_functions.test_normal_flow_does_not_trigger_d_max_alert
+# Extracted from C:/!ass-ade/tests/test_phase1_integration.py:192
+# Component id: at.source.ass_ade.test_normal_flow_does_not_trigger_d_max_alert
 from __future__ import annotations
 
 __version__ = "0.1.0"

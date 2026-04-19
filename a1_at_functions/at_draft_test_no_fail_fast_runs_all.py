@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_no_fail_fast_runs_all.py:7
-# Component id: at.source.a1_at_functions.test_no_fail_fast_runs_all
+# Extracted from C:/!ass-ade/tests/test_pipeline.py:109
+# Component id: at.source.ass_ade.test_no_fail_fast_runs_all
 from __future__ import annotations
 
 __version__ = "0.1.0"

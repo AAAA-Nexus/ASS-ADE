@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_reset_delegation_depth.py:7
-# Component id: at.source.a1_at_functions.reset_delegation_depth
+# Extracted from C:/!ass-ade/src/ass_ade/agent/loop.py:148
+# Component id: at.source.ass_ade.reset_delegation_depth
 from __future__ import annotations
 
 __version__ = "0.1.0"

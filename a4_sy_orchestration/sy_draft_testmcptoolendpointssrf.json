@@ -10,12 +10,19 @@
     "startswith"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_testmcptoolendpointssrf.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_ssrf_protection.py:135.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "sy.source.a4_sy_orchestration.testmcptoolendpointssrf",
+  "id": "sy.source.ass_ade.testmcptoolendpointssrf",
   "imports": [
-    "__future__.annotations",
+    "ipaddress",
+    "json",
+    "unittest.mock",
+    "pytest",
+    "ass_ade.a2a.fetch_agent_card",
+    "ass_ade.mcp.utils._validate_absolute_endpoint",
+    "ass_ade.nexus.models.MCPManifest",
+    "ass_ade.nexus.models.MCPTool",
     "ass_ade.mcp.utils.invoke_tool",
     "ass_ade.mcp.utils.invoke_tool",
     "ass_ade.mcp.utils.simulate_invoke",
@@ -23,7 +30,7 @@
     "ass_ade.mcp.utils.simulate_invoke"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_testmcptoolendpointssrf.py:7"
+    "source": "C:/!ass-ade/tests/test_ssrf_protection.py:135"
   },
   "kind": "ecosystem_system",
   "made_of": [],

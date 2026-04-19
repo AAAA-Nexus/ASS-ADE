@@ -13,15 +13,22 @@
     "Path"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_get_stale_files.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/tca.py:111.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.get_stale_files",
+  "id": "at.source.ass_ade.get_stale_files",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "json",
+    "logging",
+    "time",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "pathlib.Path",
+    "typing.Any"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_get_stale_files.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/agent/tca.py:111"
   },
   "kind": "pure_function",
   "made_of": [],

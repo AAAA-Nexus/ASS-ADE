@@ -8,18 +8,26 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_testmcpcancellation.py:11.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_server_streaming.py:39.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "sy.source.a4_sy_orchestration.server",
+  "id": "sy.source.ass_ade.server",
   "imports": [
     "__future__.annotations",
-    "ass_ade.mcp.cancellation.CancellationContext",
-    "ass_ade.mcp.cancellation.CancellationContext",
-    "ass_ade.mcp.cancellation.CancellationContext"
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "pytest",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolCallRequest",
+    "ass_ade.mcp.server.MCPServer",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.builtin.EditFileTool",
+    "ass_ade.tools.registry.ToolRegistry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_testmcpcancellation.py:11"
+    "source": "C:/!ass-ade/tests/test_mcp_server_streaming.py:39"
   },
   "kind": "ecosystem_system",
   "made_of": [],

@@ -15,16 +15,31 @@
     "max"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_generate.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/scripts/lora_training/serve_lora.py:80.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.generate",
+  "id": "at.source.ass_ade.generate",
   "imports": [
     "__future__.annotations",
-    "torch"
+    "argparse",
+    "json",
+    "logging",
+    "sys",
+    "threading",
+    "http.server.BaseHTTPRequestHandler",
+    "http.server.HTTPServer",
+    "pathlib.Path",
+    "typing.Any",
+    "torch",
+    "peft.PeftModel",
+    "transformers.AutoModelForCausalLM",
+    "transformers.AutoTokenizer",
+    "torch",
+    "peft",
+    "transformers"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_generate.py:7"
+    "source": "C:/!ass-ade/scripts/lora_training/serve_lora.py:80"
   },
   "kind": "pure_function",
   "made_of": [],

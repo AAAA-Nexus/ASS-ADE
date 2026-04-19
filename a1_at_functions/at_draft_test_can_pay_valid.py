@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_can_pay_valid.py:7
-# Component id: at.source.a1_at_functions.test_can_pay_valid
+# Extracted from C:/!ass-ade/tests/test_x402_flow.py:206
+# Component id: at.source.ass_ade.test_can_pay_valid
 from __future__ import annotations
 
 __version__ = "0.1.0"

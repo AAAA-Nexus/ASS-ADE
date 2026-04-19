@@ -1,16 +1,16 @@
 {
-  "body": "try {\n  const version = execSync('python --version', { encoding: 'utf8' }).trim();\n  console.log(`ass-ade: Found ${version}`);\n  console.log('ass-ade: Run \"pip install ass-ade\" if not already installed');\n} catch {\n  console.warn('ass-ade: Python not found. Install Python 3.12+ from https://python.org');\n}\n",
+  "body": "\ntry {\n  const version = execSync('python --version', { encoding: 'utf8' }).trim();\n  console.log(`ass-ade: Found ${version}`);\n  console.log('ass-ade: Run \"pip install ass-ade\" if not already installed');\n} catch {\n  console.warn('ass-ade: Python not found. Install Python 3.12+ from https://python.org');\n}\n",
   "body_hash": "e7d7e380e603241b",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_version.ts:5.",
+  "description": "Draft candidate from C:/!ass-ade/scripts/check-python.js:5.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.version",
+  "id": "at.source.ass_ade.version",
   "imports": [],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_version.ts:5"
+    "source": "C:/!ass-ade/scripts/check-python.js:5"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_bump_project_version_updates_public_surfaces.py:7
-# Component id: at.source.a1_at_functions.test_bump_project_version_updates_public_surfaces
+# Extracted from C:/!ass-ade/tests/test_protocol.py:95
+# Component id: at.source.ass_ade.test_bump_project_version_updates_public_surfaces
 from __future__ import annotations
 
 __version__ = "0.1.0"

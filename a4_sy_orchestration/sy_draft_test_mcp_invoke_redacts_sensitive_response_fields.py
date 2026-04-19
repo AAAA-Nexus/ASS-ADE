@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_test_mcp_invoke_redacts_sensitive_response_fields.py:7
-# Component id: sy.source.a4_sy_orchestration.test_mcp_invoke_redacts_sensitive_response_fields
+# Extracted from C:/!ass-ade/tests/test_mcp.py:131
+# Component id: sy.source.ass_ade.test_mcp_invoke_redacts_sensitive_response_fields
 from __future__ import annotations
 
 __version__ = "0.1.0"

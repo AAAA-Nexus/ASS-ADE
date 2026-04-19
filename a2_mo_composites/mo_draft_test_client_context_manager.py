@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_test_client_context_manager.py:7
-# Component id: mo.source.a2_mo_composites.test_client_context_manager
+# Extracted from C:/!ass-ade/tests/test_nexus_client_comprehensive.py:1300
+# Component id: mo.source.ass_ade.test_client_context_manager
 from __future__ import annotations
 
 __version__ = "0.1.0"

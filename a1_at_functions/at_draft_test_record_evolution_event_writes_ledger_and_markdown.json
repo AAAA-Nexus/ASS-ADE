@@ -10,15 +10,23 @@
     "Path"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_record_evolution_event_writes_ledger_and_markdown.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_protocol.py:55.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.test_record_evolution_event_writes_ledger_and_markdown",
+  "id": "at.source.ass_ade.test_record_evolution_event_writes_ledger_and_markdown",
   "imports": [
-    "__future__.annotations"
+    "pathlib.Path",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.protocol.cycle.render_protocol_markdown",
+    "ass_ade.protocol.cycle.run_protocol",
+    "ass_ade.protocol.evolution.bump_project_version",
+    "ass_ade.protocol.evolution.record_evolution_event",
+    "ass_ade.protocol.evolution.render_branch_evolution_demo"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_record_evolution_event_writes_ledger_and_markdown.py:7"
+    "source": "C:/!ass-ade/tests/test_protocol.py:55"
   },
   "kind": "pure_function",
   "made_of": [],

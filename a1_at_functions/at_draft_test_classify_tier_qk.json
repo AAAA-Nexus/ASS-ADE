@@ -7,15 +7,33 @@
     "_classify_tier"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_classify_tier_qk.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_parallel_recon.py:211.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.test_classify_tier_qk",
+  "id": "at.source.ass_ade.test_classify_tier_qk",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "ast",
+    "textwrap",
+    "pathlib.Path",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.recon.ReconReport",
+    "ass_ade.recon._classify_tier",
+    "ass_ade.recon._count_test_functions",
+    "ass_ade.recon._dependency_agent",
+    "ass_ade.recon._doc_agent",
+    "ass_ade.recon._iter_files",
+    "ass_ade.recon._scout_agent",
+    "ass_ade.recon._test_agent",
+    "ass_ade.recon._tier_agent",
+    "ass_ade.recon.run_parallel_recon",
+    "time",
+    "json"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_classify_tier_qk.py:7"
+    "source": "C:/!ass-ade/tests/test_parallel_recon.py:211"
   },
   "kind": "pure_function",
   "made_of": [],

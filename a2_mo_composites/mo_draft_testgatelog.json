@@ -13,21 +13,26 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testgatelog.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_gates.py:120.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.testgatelog",
+  "id": "mo.source.ass_ade.testgatelog",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "typing.Any",
+    "unittest.mock.MagicMock",
+    "ass_ade.agent.gates.GateResult",
+    "ass_ade.agent.gates.QualityGates"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testgatelog.py:7"
+    "source": "C:/!ass-ade/tests/test_gates.py:120"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.a1_at_functions.scan_prompt",
-    "at.source.a1_at_functions.check_hallucination",
-    "at.source.a1_at_functions.certify"
+    "at.source.ass_ade.scan_prompt",
+    "at.source.ass_ade.check_hallucination",
+    "at.source.ass_ade.certify",
+    "at.source.ass_ade.clear"
   ],
   "name": "TestGateLog",
   "product_categories": [

@@ -7,12 +7,16 @@
     "report"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_engineorchestrator.py:498.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/orchestrator.py:572.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.engine_report",
+  "id": "mo.source.ass_ade.engine_report",
   "imports": [
     "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any",
     "ass_ade.agent.atlas.Atlas",
     "ass_ade.agent.bas.BAS",
     "ass_ade.agent.wisdom.WisdomEngine",
@@ -35,7 +39,7 @@
     "json"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_engineorchestrator.py:498"
+    "source": "C:/!ass-ade/src/ass_ade/agent/orchestrator.py:572"
   },
   "kind": "engine_molecule",
   "made_of": [],

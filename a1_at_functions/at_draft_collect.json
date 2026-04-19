@@ -20,15 +20,21 @@
     "dumps"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_collect.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/scripts/lora_training/collect_training_data.py:264.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.collect",
+  "id": "at.source.ass_ade.collect",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "argparse",
+    "json",
+    "re",
+    "sys",
+    "pathlib.Path",
+    "typing.Any"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_collect.py:7"
+    "source": "C:/!ass-ade/scripts/lora_training/collect_training_data.py:264"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_executor.py:7
-# Component id: at.source.a1_at_functions.executor
+# Extracted from C:/!ass-ade/tests/test_plan.py:21
+# Component id: at.source.ass_ade.executor
 from __future__ import annotations
 
 __version__ = "0.1.0"

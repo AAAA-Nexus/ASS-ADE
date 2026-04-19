@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_capture_fix.py:7
-# Component id: at.source.a1_at_functions.capture_fix
+# Extracted from C:/!ass-ade/src/ass_ade/agent/lora_flywheel.py:143
+# Component id: at.source.ass_ade.capture_fix
 from __future__ import annotations
 
 __version__ = "0.1.0"

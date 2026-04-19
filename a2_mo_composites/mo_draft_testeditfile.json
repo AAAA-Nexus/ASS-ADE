@@ -11,15 +11,26 @@
     "lower"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testeditfile.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_tools_builtin.py:82.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.testeditfile",
+  "id": "mo.source.ass_ade.testeditfile",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "os",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.tools.builtin.EditFileTool",
+    "ass_ade.tools.builtin.GrepSearchTool",
+    "ass_ade.tools.builtin.ListDirectoryTool",
+    "ass_ade.tools.builtin.ReadFileTool",
+    "ass_ade.tools.builtin.RunCommandTool",
+    "ass_ade.tools.builtin.SearchFilesTool",
+    "ass_ade.tools.builtin.WriteFileTool",
+    "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testeditfile.py:7"
+    "source": "C:/!ass-ade/tests/test_tools_builtin.py:82"
   },
   "kind": "engine_molecule",
   "made_of": [],

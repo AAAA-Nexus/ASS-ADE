@@ -7,19 +7,25 @@
     "lower"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testlocalroute.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_routing.py:72.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.testlocalroute",
+  "id": "mo.source.ass_ade.testlocalroute",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "ass_ade.agent.routing.EpistemicRouter",
+    "ass_ade.agent.routing.ModelTier",
+    "ass_ade.agent.routing.RoutingDecision",
+    "ass_ade.agent.routing.classify_complexity",
+    "ass_ade.agent.routing.local_route",
+    "ass_ade.agent.routing.tier_for_complexity"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testlocalroute.py:7"
+    "source": "C:/!ass-ade/tests/test_routing.py:72"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.a1_at_functions.local_route"
+    "at.source.ass_ade.local_route"
   ],
   "name": "TestLocalRoute",
   "product_categories": [

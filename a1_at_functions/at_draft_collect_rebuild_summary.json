@@ -16,15 +16,31 @@
     "read_text"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_collect_rebuild_summary.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/protocol/evolution.py:258.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.collect_rebuild_summary",
+  "id": "at.source.ass_ade.collect_rebuild_summary",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "re",
+    "shutil",
+    "subprocess",
+    "tomllib",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field",
+    "ass_ade.engine.rebuild.version_tracker.INITIAL_VERSION",
+    "ass_ade.engine.rebuild.version_tracker.bump_version"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_collect_rebuild_summary.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/protocol/evolution.py:258"
   },
   "kind": "pure_function",
   "made_of": [],

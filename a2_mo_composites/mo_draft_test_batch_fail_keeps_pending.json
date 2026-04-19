@@ -71,8 +71,8 @@
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.a1_at_functions.capture_fix",
-    "at.source.a1_at_functions.contribute_batch"
+    "at.source.ass_ade.capture_fix",
+    "at.source.ass_ade.contribute_batch"
   ],
   "name": "test_batch_fail_keeps_pending",
   "product_categories": [

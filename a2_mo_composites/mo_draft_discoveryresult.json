@@ -6,15 +6,19 @@
     "Field"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_discoveryresult.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/models.py:343.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.discoveryresult",
+  "id": "mo.source.ass_ade.discoveryresult",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_discoveryresult.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/models.py:343"
   },
   "kind": "engine_molecule",
   "made_of": [],

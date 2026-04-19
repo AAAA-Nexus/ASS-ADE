@@ -15,19 +15,31 @@
     "_hybrid_config"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testa2adiscovercli.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_a2a_cli.py:68.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.testa2adiscovercli",
+  "id": "mo.source.ass_ade.testa2adiscovercli",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.nexus.models.DiscoveryResult",
+    "ass_ade.nexus.models.DiscoveredAgent",
+    "ass_ade.a2a.A2AAgentCard",
+    "ass_ade.a2a.NegotiationResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testa2adiscovercli.py:7"
+    "source": "C:/!ass-ade/tests/test_a2a_cli.py:68"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.a1_at_functions.write_default_config"
+    "at.source.ass_ade.write_default_config"
   ],
   "name": "TestA2ADiscoverCLI",
   "product_categories": [

@@ -1,0 +1,42 @@
+{
+  "body": "class SmokeTestToolTool:\n    def __init__(self, working_dir: str = \".\") -> None:\n        self._working_dir = Path(working_dir).resolve()\n\n    @property\n    def name(self) -> str:\n        return 'smoke_test_tool'\n\n    @property\n    def description(self) -> str:\n        return 'Smoke test for tools smoke_test_tool'\n\n    @property\n    def parameters(self) -> dict[str, Any]:\n        return {\n            \"type\": \"object\",\n            \"properties\": {\n                \"payload\": {\"type\": \"object\", \"description\": \"Structured arguments for the tool.\"},\n                \"note\": {\"type\": \"string\", \"description\": \"Optional operator note.\"},\n            },\n            \"additionalProperties\": True,\n        }\n\n    def execute(self, **kwargs: Any) -> ToolResult:\n        payload = kwargs.get(\"payload\")\n        if payload is None:\n            payload = {key: value for key, value in kwargs.items() if key != \"payload\"}\n        result = {\n            \"tool\": 'smoke_test_tool',\n            \"summary\": 'Smoke test for tools smoke_test_tool',\n            \"packet_manifest_path\": 'C:/!ass-ade/.ass-ade/capability-development/generated/tools-smoke_test_tool/manifest.json',\n            \"working_dir\": str(self._working_dir),\n            \"status\": \"implemented\",\n            \"payload\": payload,\n            \"note\": kwargs.get(\"note\", \"\"),\n        }\n        return ToolResult(output=json.dumps(result, indent=2))\n",
+  "body_hash": "bab8d235d79cc047",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "get",
+    "ToolResult",
+    "str",
+    "Path",
+    "dumps",
+    "items"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/tools/generated/smoke_test_tool.py:11.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.smoketesttooltool",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.tools.base.ToolResult"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/tools/generated/smoke_test_tool.py:11"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "SmokeTestToolTool",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for SmokeTestToolTool"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

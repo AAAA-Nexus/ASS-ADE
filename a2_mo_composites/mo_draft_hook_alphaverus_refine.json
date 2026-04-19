@@ -10,12 +10,15 @@
     "getLogger"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_qualitygates.py:282.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/gates.py:310.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.hook_alphaverus_refine",
+  "id": "mo.source.ass_ade.hook_alphaverus_refine",
   "imports": [
     "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "typing.Any",
     "ast",
     "re",
     "json",
@@ -32,11 +35,11 @@
     "ass_ade.agent.sam.SAM"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_qualitygates.py:282"
+    "source": "C:/!ass-ade/src/ass_ade/agent/gates.py:310"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.a1_at_functions.tree_search"
+    "at.source.ass_ade.tree_search"
   ],
   "name": "hook_alphaverus_refine",
   "product_categories": [

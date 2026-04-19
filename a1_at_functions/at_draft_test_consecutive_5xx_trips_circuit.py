@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_consecutive_5xx_trips_circuit.py:7
-# Component id: at.source.a1_at_functions.test_consecutive_5xx_trips_circuit
+# Extracted from C:/!ass-ade/tests/test_resilience.py:117
+# Component id: at.source.ass_ade.test_consecutive_5xx_trips_circuit
 from __future__ import annotations
 
 __version__ = "0.1.0"

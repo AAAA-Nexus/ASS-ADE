@@ -1,11 +1,13 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_mcpserver.py:50
-# Component id: sy.source.a4_sy_orchestration.tca
+# Extracted from C:/!ass-ade/src/ass_ade/agent/orchestrator.py:269
+# Component id: sy.source.ass_ade.tca
 from __future__ import annotations
 
 __version__ = "0.1.0"
 
-def tca(self) -> Any:
+def tca(self):
     if self._tca is None:
         from ass_ade.agent.tca import TCAEngine
-        self._tca = TCAEngine({"working_dir": self._working_dir})
+        cfg = dict(self._config)
+        cfg.setdefault("working_dir", self._working_dir)
+        self._tca = TCAEngine(cfg, self._nexus)
     return self._tca

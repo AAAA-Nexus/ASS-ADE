@@ -1,6 +1,6 @@
 {
-  "body": "def test_map_terrain_discovers_repo_agent_registry(tmp_path: Path) -> None:\n    agents = tmp_path / \"agents\"\n    agents.mkdir()\n    (agents / \"certifier.agent.md\").write_text(\"# Certifier\\n\", encoding=\"utf-8\")\n    (agents / \"blueprint-architect.agent.md\").write_text(\"# Blueprint Architect\\n\", encoding=\"utf-8\")\n\n    result = map_terrain(\n        task_description=\"Certify the package.\",\n        required_capabilities={\"agents\": [\"certifier\", \"blueprint_architect\"]},\n        working_dir=tmp_path,\n    )\n\n    assert result.verdict == \"PROCEED\"\n    assert result.inventory_check[\"agents\"][\"certifier\"] == \"exists\"\n    assert result.inventory_check[\"agents\"][\"blueprint_architect\"] == \"exists\"\n",
-  "body_hash": "8be8e6de758ebae8",
+  "body": "def test_map_terrain_discovers_repo_agent_registry(tmp_path: Path) -> None:\n    agents = tmp_path / \"agents\"\n    agents.mkdir()\n    (agents / \"certifier.agent.md\").write_text(\"# Certifier\\n\", encoding=\"utf-8\")\n    (agents / \"blueprint-architect.agent.md\").write_text(\n        \"# Blueprint Architect\\n\", encoding=\"utf-8\"\n    )\n\n    result = map_terrain(\n        task_description=\"Certify the package.\",\n        required_capabilities={\"agents\": [\"certifier\", \"blueprint_architect\"]},\n        working_dir=tmp_path,\n    )\n\n    assert result.verdict == \"PROCEED\"\n    assert result.inventory_check[\"agents\"][\"certifier\"] == \"exists\"\n    assert result.inventory_check[\"agents\"][\"blueprint_architect\"] == \"exists\"\n",
+  "body_hash": "5476211790fa4511",
   "body_truncated": false,
   "callers_of": [
     "mkdir",
@@ -8,19 +8,25 @@
     "map_terrain"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_test_map_terrain_discovers_repo_agent_registry.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_map_terrain.py:125.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "og.source.a3_og_features.test_map_terrain_discovers_repo_agent_registry",
+  "id": "og.source.ass_ade.test_map_terrain_discovers_repo_agent_registry",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.map_terrain.map_terrain",
+    "ass_ade.mcp.server.MCPServer"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_test_map_terrain_discovers_repo_agent_registry.py:7"
+    "source": "C:/!ass-ade/tests/test_map_terrain.py:125"
   },
   "kind": "product_organism",
   "made_of": [
-    "mo.source.a2_mo_composites.map_terrain"
+    "mo.source.ass_ade.map_terrain"
   ],
   "name": "test_map_terrain_discovers_repo_agent_registry",
   "product_categories": [

@@ -7,15 +7,26 @@
     "_walk_click_command"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_collect_cli_commands.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/capabilities.py:80.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.collect_cli_commands",
+  "id": "at.source.ass_ade.collect_cli_commands",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "typer.main",
+    "ass_ade.cli.app",
+    "ass_ade.tools.registry.default_registry",
+    "ass_ade.mcp.server._WORKFLOW_TOOLS"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_collect_cli_commands.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/agent/capabilities.py:80"
   },
   "kind": "pure_function",
   "made_of": [],

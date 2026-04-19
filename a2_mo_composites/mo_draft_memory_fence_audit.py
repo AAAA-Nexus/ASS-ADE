@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_nexusclient.py:712
-# Component id: mo.source.a2_mo_composites.memory_fence_audit
+# Extracted from C:/!ass-ade/src/ass_ade/nexus/client.py:907
+# Component id: mo.source.ass_ade.memory_fence_audit
 from __future__ import annotations
 
 __version__ = "0.1.0"

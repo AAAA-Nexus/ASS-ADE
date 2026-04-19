@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_extract_symbols.py:7
-# Component id: at.source.a1_at_functions.extract_symbols
+# Extracted from C:/!ass-ade/src/ass_ade/engine/rebuild/project_parser.py:120
+# Component id: at.source.ass_ade.extract_symbols
 from __future__ import annotations
 
 __version__ = "0.1.0"

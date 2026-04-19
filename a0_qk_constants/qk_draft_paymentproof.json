@@ -9,15 +9,22 @@
     "int"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_paymentproof.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/x402.py:123.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "qk.source.a0_qk_constants.paymentproof",
+  "id": "qk.source.ass_ade.paymentproof",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "os",
+    "time",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "eth_account.Account",
+    "web3.Web3",
+    "logging"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_paymentproof.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/x402.py:123"
   },
   "kind": "invariant",
   "made_of": [],

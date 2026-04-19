@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testpaymentresult.py:8
-# Component id: at.source.a2_mo_composites.test_build_header_success
+# Extracted from C:/!ass-ade/tests/test_x402_flow.py:307
+# Component id: at.source.ass_ade.test_build_header_success
 from __future__ import annotations
 
 __version__ = "0.1.0"

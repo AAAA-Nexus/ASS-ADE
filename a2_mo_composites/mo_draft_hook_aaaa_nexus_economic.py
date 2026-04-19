@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_qualitygates.py:217
-# Component id: mo.source.a2_mo_composites.hook_aaaa_nexus_economic
+# Extracted from C:/!ass-ade/src/ass_ade/agent/gates.py:245
+# Component id: mo.source.ass_ade.hook_aaaa_nexus_economic
 from __future__ import annotations
 
 __version__ = "0.1.0"

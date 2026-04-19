@@ -6,19 +6,23 @@
     "messages_to_evict"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_trim_to_budget.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/conversation.py:77.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.trim_to_budget",
+  "id": "at.source.ass_ade.trim_to_budget",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "ass_ade.engine.tokens.TokenBudget",
+    "ass_ade.engine.tokens.estimate_message_tokens",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolSchema"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_trim_to_budget.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/agent/conversation.py:77"
   },
   "kind": "pure_function",
   "made_of": [
-    "qk.source.a0_qk_constants.messages_to_evict"
+    "qk.source.ass_ade.messages_to_evict"
   ],
   "name": "trim_to_budget",
   "product_categories": [

@@ -4,15 +4,25 @@
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_step_names.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/pipeline.py:128.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.step_names",
+  "id": "at.source.ass_ade.step_names",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "json",
+    "time",
+    "collections.abc.Callable",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "enum.Enum",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Protocol",
+    "ass_ade.nexus.validation.validate_agent_id"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_step_names.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/pipeline.py:128"
   },
   "kind": "pure_function",
   "made_of": [],

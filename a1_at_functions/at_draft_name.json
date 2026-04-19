@@ -1,24 +1,33 @@
 {
-  "body": "def name(self) -> str:\n    return \"grep_search\"\n",
-  "body_hash": "e61d50e12733a43b",
+  "body": "def name(self) -> str:\n    return \"prompt_hash\"\n",
+  "body_hash": "d192721fe708c507",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_grepsearchtool.py:14.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/tools/prompt.py:105.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a2_mo_composites.name",
+  "id": "at.source.ass_ade.name",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.prompt_toolkit.prompt_diff",
+    "ass_ade.prompt_toolkit.prompt_hash",
+    "ass_ade.prompt_toolkit.prompt_propose",
+    "ass_ade.prompt_toolkit.prompt_section",
+    "ass_ade.prompt_toolkit.prompt_validate",
+    "ass_ade.tools.base.ToolResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_grepsearchtool.py:14"
+    "source": "C:/!ass-ade/src/ass_ade/tools/prompt.py:105"
   },
   "kind": "pure_function",
   "made_of": [],
   "name": "name",
   "product_categories": [
-    "DCM"
+    "COR"
   ],
   "provides": [
     "rebuild candidate for name"

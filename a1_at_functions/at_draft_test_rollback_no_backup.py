@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_rollback_no_backup.py:7
-# Component id: at.source.a1_at_functions.test_rollback_no_backup
+# Extracted from C:/!ass-ade/tests/test_cli.py:243
+# Component id: at.source.ass_ade.test_rollback_no_backup
 from __future__ import annotations
 
 __version__ = "0.1.0"

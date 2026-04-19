@@ -22,15 +22,26 @@
     "sha256"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_build_context_packet.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/context_memory.py:122.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.build_context_packet",
+  "id": "at.source.ass_ade.build_context_packet",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "math",
+    "re",
+    "datetime.UTC",
+    "datetime.datetime",
+    "pathlib.Path",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "ass_ade.recon.phase0_recon"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_build_context_packet.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/context_memory.py:122"
   },
   "kind": "pure_function",
   "made_of": [],

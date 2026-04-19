@@ -6,15 +6,36 @@
     "get"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_toolregistry.py:16.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/tools/registry.py:23.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "og.source.a3_og_features.get",
+  "id": "og.source.ass_ade.get",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "importlib.util",
+    "inspect",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.engine.types.ToolSchema",
+    "ass_ade.tools.base.Tool",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.builtin.EditFileTool",
+    "ass_ade.tools.builtin.GrepSearchTool",
+    "ass_ade.tools.builtin.ListDirectoryTool",
+    "ass_ade.tools.builtin.ReadFileTool",
+    "ass_ade.tools.builtin.RunCommandTool",
+    "ass_ade.tools.builtin.SearchFilesTool",
+    "ass_ade.tools.builtin.UndoEditTool",
+    "ass_ade.tools.builtin.WriteFileTool",
+    "ass_ade.tools.history.FileHistory",
+    "ass_ade.tools.prompt.PromptDiffTool",
+    "ass_ade.tools.prompt.PromptHashTool",
+    "ass_ade.tools.prompt.PromptProposeTool",
+    "ass_ade.tools.prompt.PromptSectionTool",
+    "ass_ade.tools.prompt.PromptValidateTool"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_toolregistry.py:16"
+    "source": "C:/!ass-ade/src/ass_ade/tools/registry.py:23"
   },
   "kind": "product_organism",
   "made_of": [],

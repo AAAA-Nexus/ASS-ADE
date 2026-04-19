@@ -1,0 +1,39 @@
+{
+  "body": "def test_map_terrain_auto_invent_supports_prompts_and_instructions(\n    tmp_path: Path,\n) -> None:\n    result = map_terrain(\n        task_description=\"Create routing prompts and instructions.\",\n        required_capabilities={\n            \"prompts\": [\"router_pack\"],\n            \"instructions\": [\"router_rules\"],\n        },\n        auto_invent_if_missing=True,\n        working_dir=tmp_path,\n    )\n\n    assert result.verdict == \"HALT_AND_INVENT\"\n    assert result.development_plan is not None\n    assert result.development_plan.auto_invent_triggered is True\n    assert (tmp_path / \"prompts\" / \"router_pack.prompt.md\").exists()\n    assert (tmp_path / \"instructions\" / \"router_rules.instructions.md\").exists()\n    follow_up = map_terrain(\n        task_description=\"Create routing prompts and instructions.\",\n        required_capabilities={\n            \"prompts\": [\"router_pack\"],\n            \"instructions\": [\"router_rules\"],\n        },\n        working_dir=tmp_path,\n    )\n    assert follow_up.verdict == \"PROCEED\"\n",
+  "body_hash": "a191f6eedb4d584d",
+  "body_truncated": false,
+  "callers_of": [
+    "map_terrain",
+    "exists"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_map_terrain.py:185.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_map_terrain_auto_invent_supports_prompts_and_instructions",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.map_terrain.map_terrain",
+    "ass_ade.mcp.server.MCPServer"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/tests/test_map_terrain.py:185"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_map_terrain_auto_invent_supports_prompts_and_instructions",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_map_terrain_auto_invent_supports_prompts_and_instructions"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,8 +1,8 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_grepsearchtool.py:18
-# Component id: at.source.a2_mo_composites.description
+# Extracted from C:/!ass-ade/src/ass_ade/tools/prompt.py:109
+# Component id: at.source.ass_ade.description
 from __future__ import annotations
 
 __version__ = "0.1.0"
 
 def description(self) -> str:
-    return "Search file contents for a regex pattern. Returns matching lines with file:line: prefix."
+    return "Return SHA-256 metadata for an explicit prompt file or prompt text."

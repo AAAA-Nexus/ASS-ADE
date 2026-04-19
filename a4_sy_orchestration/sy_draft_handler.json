@@ -1,23 +1,41 @@
 {
-  "body": "def handler(request):\n    return httpx.Response(200, json=response_json)\n",
-  "body_hash": "38638b55c672e6be",
+  "body": "def handler(request: httpx.Request) -> httpx.Response:\n    captured[\"authorization\"] = request.headers.get(\"Authorization\", \"\")\n    captured[\"x_api_key\"] = request.headers.get(\"X-API-Key\", \"\")\n    return httpx.Response(200, json={\"ok\": True})\n",
+  "body_hash": "8b06659e72dac0f6",
   "body_truncated": false,
   "callers_of": [
+    "get",
     "Response"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_test_ecosystem_coordination_happy_path.py:9.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp.py:110.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "sy.source.a2_mo_composites.handler",
+  "id": "sy.source.ass_ade.handler",
   "imports": [
-    "__future__.annotations"
+    "pathlib.Path",
+    "httpx",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.mcp.utils.invoke_tool",
+    "ass_ade.nexus.models.MCPManifest",
+    "ass_ade.nexus.models.MCPTool",
+    "ass_ade.nexus.models.CostEstimate",
+    "json",
+    "httpx",
+    "ass_ade.mcp.mock_server.start_server",
+    "httpx",
+    "ass_ade.mcp.mock_server._MAX_BODY_BYTES",
+    "ass_ade.mcp.mock_server.start_server"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_test_ecosystem_coordination_happy_path.py:9"
+    "source": "C:/!ass-ade/tests/test_mcp.py:110"
   },
   "kind": "ecosystem_system",
-  "made_of": [],
+  "made_of": [
+    "og.source.ass_ade.get"
+  ],
   "name": "handler",
   "product_categories": [
     "COR"

@@ -1,21 +1,25 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testa2avalidate.py:10
-# Component id: at.source.a1_at_functions.test_a2a_validate_success
+# Extracted from C:/!ass-ade/tests/test_mcp_extended.py:101
+# Component id: at.source.ass_ade.test_a2a_validate_success
 from __future__ import annotations
 
 __version__ = "0.1.0"
 
-def test_a2a_validate_success(self, tmp_path: Path) -> None:
-    """Valid agent card structure test."""
-    card = {
-        "name": "TestAgent",
-        "description": "A test agent",
-        "capabilities": ["reasoning", "tool_use"],
-        "endpoint": "https://agent.example.com/api",
-    }
-    card_file = tmp_path / "agent_card.json"
-    card_file.write_text(json.dumps(card), encoding="utf-8")
+def test_a2a_validate_success(self) -> None:
+    card_data = {"name": "Test", "description": "d", "url": "https://test.com", "version": "1.0"}
+    mock_response = MagicMock()
+    mock_response.json.return_value = card_data
 
-    result = runner.invoke(app, ["a2a", "validate", str(card_file)])
+    server = MCPServer(".")
+    _initialize_server(server)
+    with patch("ass_ade.a2a.socket.getaddrinfo", return_value=_FAKE_ADDR_INFO), \
+         patch("ass_ade.a2a.httpx.get", return_value=mock_response):
+        response = server._handle({
+            "jsonrpc": "2.0",
+            "id": 1,
+            "method": "tools/call",
+            "params": {"name": "a2a_validate", "arguments": {"url": "https://test.com"}},
+        })
 
-    # Validation may pass or fail depending on schema; both acceptable
-    assert result.exit_code in (0, 1)
+    assert response is not None
+    result_data = json.loads(response["result"]["content"][0]["text"])
+    assert result_data["valid"] is True

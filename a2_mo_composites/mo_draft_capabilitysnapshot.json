@@ -1,20 +1,35 @@
 {
-  "body": "class CapabilitySnapshot:\n    generated_at_utc: str\n    working_dir: str\n    cli_commands: list[CapabilityEntry] = field(default_factory=list)\n    local_tools: list[CapabilityEntry] = field(default_factory=list)\n    mcp_tools: list[CapabilityEntry] = field(default_factory=list)\n    agents: list[CapabilityEntry] = field(default_factory=list)\n    hooks: list[CapabilityEntry] = field(default_factory=list)\n\n    @property\n    def cli_paths(self) -> set[str]:\n        return {item.name for item in self.cli_commands}\n",
-  "body_hash": "8d500b4890a7a17d",
+  "body": "class CapabilitySnapshot:\n    generated_at_utc: str\n    working_dir: str\n    cli_commands: list[CapabilityEntry] = field(default_factory=list)\n    local_tools: list[CapabilityEntry] = field(default_factory=list)\n    mcp_tools: list[CapabilityEntry] = field(default_factory=list)\n    agents: list[CapabilityEntry] = field(default_factory=list)\n    hooks: list[CapabilityEntry] = field(default_factory=list)\n\n    @property\n    def cli_paths(self) -> set[str]:\n        return {item.name for item in self.cli_commands}\n\n    @property\n    def counts(self) -> dict[str, int]:\n        return {\n            \"cli_commands\": len(self.cli_commands),\n            \"local_tools\": len(self.local_tools),\n            \"mcp_tools\": len(self.mcp_tools),\n            \"agents\": len(self.agents),\n            \"hooks\": len(self.hooks),\n        }\n\n    @property\n    def top_level_cli_groups(self) -> list[str]:\n        return sorted({item.name.split()[0] for item in self.cli_commands if item.name})\n",
+  "body_hash": "28ffa085e8c4bf3e",
   "body_truncated": false,
   "callers_of": [
-    "field"
+    "dataclass",
+    "field",
+    "sorted",
+    "len",
+    "split"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_capabilitysnapshot.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/capabilities.py:25.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.capabilitysnapshot",
+  "id": "mo.source.ass_ade.capabilitysnapshot",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "typer.main",
+    "ass_ade.cli.app",
+    "ass_ade.tools.registry.default_registry",
+    "ass_ade.mcp.server._WORKFLOW_TOOLS"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_capabilitysnapshot.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/agent/capabilities.py:25"
   },
   "kind": "engine_molecule",
   "made_of": [],

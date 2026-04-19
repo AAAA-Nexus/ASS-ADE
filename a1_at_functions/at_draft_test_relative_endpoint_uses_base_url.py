@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_relative_endpoint_uses_base_url.py:7
-# Component id: at.source.a1_at_functions.test_relative_endpoint_uses_base_url
+# Extracted from C:/!ass-ade/tests/test_ssrf_protection.py:166
+# Component id: at.source.ass_ade.test_relative_endpoint_uses_base_url
 from __future__ import annotations
 
 __version__ = "0.1.0"

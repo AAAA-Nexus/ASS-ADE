@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_testmcpgatesequence.py:29
-# Component id: sy.source.a4_sy_orchestration.test_write_without_read_blocked_end_to_end
+# Extracted from C:/!ass-ade/tests/test_mcp_gates.py:189
+# Component id: sy.source.ass_ade.test_write_without_read_blocked_end_to_end
 from __future__ import annotations
 
 __version__ = "0.1.0"

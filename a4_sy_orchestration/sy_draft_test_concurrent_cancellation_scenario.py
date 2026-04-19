@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_testmcpcancellation.py:112
-# Component id: sy.source.a4_sy_orchestration.test_concurrent_cancellation_scenario
+# Extracted from C:/!ass-ade/tests/test_mcp_cancellation.py:177
+# Component id: sy.source.ass_ade.test_concurrent_cancellation_scenario
 from __future__ import annotations
 
 __version__ = "0.1.0"

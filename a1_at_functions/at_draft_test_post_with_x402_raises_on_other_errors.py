@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_post_with_x402_raises_on_other_errors.py:7
-# Component id: at.source.a1_at_functions.test_post_with_x402_raises_on_other_errors
+# Extracted from C:/!ass-ade/tests/test_search_x402.py:191
+# Component id: at.source.ass_ade.test_post_with_x402_raises_on_other_errors
 from __future__ import annotations
 
 __version__ = "0.1.0"

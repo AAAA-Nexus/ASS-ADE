@@ -14,15 +14,22 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_persist_creates_file.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_pipeline.py:184.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.test_persist_creates_file",
+  "id": "at.source.ass_ade.test_persist_creates_file",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.pipeline.Pipeline",
+    "ass_ade.pipeline.PipelineResult",
+    "ass_ade.pipeline.StepResult",
+    "ass_ade.pipeline.StepStatus"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_persist_creates_file.py:7"
+    "source": "C:/!ass-ade/tests/test_pipeline.py:184"
   },
   "kind": "pure_function",
   "made_of": [],

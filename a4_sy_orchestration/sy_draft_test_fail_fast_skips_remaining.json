@@ -8,15 +8,22 @@
     "run"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testfailfast.py:8.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_pipeline.py:98.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "sy.source.a2_mo_composites.test_fail_fast_skips_remaining",
+  "id": "sy.source.ass_ade.test_fail_fast_skips_remaining",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.pipeline.Pipeline",
+    "ass_ade.pipeline.PipelineResult",
+    "ass_ade.pipeline.StepResult",
+    "ass_ade.pipeline.StepStatus"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testfailfast.py:8"
+    "source": "C:/!ass-ade/tests/test_pipeline.py:98"
   },
   "kind": "ecosystem_system",
   "made_of": [],

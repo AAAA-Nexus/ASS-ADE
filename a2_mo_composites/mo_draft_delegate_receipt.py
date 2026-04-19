@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_nexusclient.py:313
-# Component id: mo.source.a2_mo_composites.delegate_receipt
+# Extracted from C:/!ass-ade/src/ass_ade/nexus/client.py:508
+# Component id: mo.source.ass_ade.delegate_receipt
 from __future__ import annotations
 
 __version__ = "0.1.0"

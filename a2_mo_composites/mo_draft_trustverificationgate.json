@@ -16,19 +16,20 @@
     "bool"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_trustverificationgate.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/trust_gate.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.trustverificationgate",
+  "id": "mo.source.ass_ade.trustverificationgate",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "typing.Any"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_trustverificationgate.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/agent/trust_gate.py:7"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.a2_mo_composites.pre_action_verify"
+    "at.source.ass_ade.pre_action_verify"
   ],
   "name": "TrustVerificationGate",
   "product_categories": [

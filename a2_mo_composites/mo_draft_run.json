@@ -1,24 +1,31 @@
 {
-  "body": "def run(self, ctx: dict) -> dict:\n    report = self.run_audit(ctx.get(\"cycle_state\", {}))\n    return {\n        \"passed\": report.passed,\n        \"failed\": report.failed,\n        \"score\": report.score,\n        \"conviction\": report.conviction,\n        \"failures\": report.failures[:5],\n        \"warnings\": list(report.warnings),\n    }\n",
-  "body_hash": "ebb14bc365694dfe",
+  "body": "def run(path: str) -> dict:\n    \"\"\"Certify the rebuilt codebase folder.\n\n    Args:\n        path: The output folder produced by ass-ade rebuild.\n\n    Returns:\n        dict with keys:\n            ok (bool): True when certify exits 0.\n            exit_code (int): Raw process exit code from certify.\n            certificate_path (str | None): Path to CERTIFICATE.json when ok=True.\n            digest_preview (str | None): First 16 chars of root_digest when ok=True.\n            signed (bool): True when Nexus signature is present.\n            error (str | None): Error message when ok=False.\n    \"\"\"\n    target = Path(path)\n    if not target.exists():\n        return {\n            \"ok\": False,\n            \"exit_code\": 3,\n            \"certificate_path\": None,\n            \"digest_preview\": None,\n            \"signed\": False,\n            \"error\": f\"rebuilt output path does not exist: {path}\",\n        }\n\n    certify_result = subprocess.run(\n        [sys.executable, \"-m\", \"ass_ade\", \"certify\", path],\n        capture_output=True,\n        text=True,\n        timeout=60,\n    )\n\n    if certify_result.returncode != 0:\n        return {\n            \"ok\": False,\n            \"exit_code\": certify_result.returncode,\n            \"certificate_path\": None,\n            \"digest_preview\": None,\n            \"signed\": False,\n            \"error\": certify_result.stderr.strip()[:300] or \"certify returned non-zero\",\n        }\n\n    cert_path = target / \"CERTIFICATE.json\"\n    digest_preview = None\n    signed = False\n\n    if cert_path.exists():\n        try:\n            cert = json.loads(cert_path.read_text(encoding=\"utf-8\"))\n            root_digest = cert.get(\"digest\", {}).get(\"root_digest\", \"\")\n            digest_preview = root_digest[:16] if root_digest else None\n            signed = cert.get(\"signed_by\") is not None\n        except (json.JSONDecodeError, OSError):\n            pass\n\n    return {\n        \"ok\": True,\n        \"exit_code\": certify_result.returncode,\n        \"certificate_path\": str(cert_path) if cert_path.exists() else None,\n        \"digest_preview\": digest_preview,\n        \"signed\": signed,\n        \"error\": None,\n    }\n",
+  "body_hash": "59685b9af32c53ba",
   "body_truncated": false,
   "callers_of": [
-    "run_audit",
+    "Path",
+    "run",
+    "exists",
+    "loads",
     "get",
-    "list"
+    "str",
+    "read_text",
+    "strip"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_wisdomengine.py:231.",
+  "description": "Draft candidate from C:/!ass-ade/hooks/post_rebuild.py:15.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.run",
+  "id": "mo.source.ass_ade.run",
   "imports": [
     "__future__.annotations",
-    "ass_ade.context_memory.query_vector_memory",
-    "ass_ade.context_memory.store_vector_memory"
+    "json",
+    "subprocess",
+    "sys",
+    "pathlib.Path"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_wisdomengine.py:231"
+    "source": "C:/!ass-ade/hooks/post_rebuild.py:15"
   },
   "kind": "engine_molecule",
   "made_of": [],

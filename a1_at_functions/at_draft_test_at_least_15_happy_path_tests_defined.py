@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testcoverageverification.py:10
-# Component id: at.source.a2_mo_composites.test_at_least_15_happy_path_tests_defined
+# Extracted from C:/!ass-ade/tests/test_cli_happy_path.py:748
+# Component id: at.source.ass_ade.test_at_least_15_happy_path_tests_defined
 from __future__ import annotations
 
 __version__ = "0.1.0"

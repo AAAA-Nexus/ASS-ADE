@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_agentloop.py:7
-# Component id: mo.source.a2_mo_composites.agentloop
+# Extracted from C:/!ass-ade/src/ass_ade/agent/loop.py:51
+# Component id: mo.source.ass_ade.agentloop
 from __future__ import annotations
 
 __version__ = "0.1.0"

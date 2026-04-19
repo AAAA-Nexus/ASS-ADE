@@ -15,20 +15,27 @@
     "Match"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_lifrgraph.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/lifr_graph.py:26.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.lifrgraph",
+  "id": "mo.source.ass_ade.lifrgraph",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "json",
+    "dataclasses.dataclass",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.context_memory.VectorMemoryMatch",
+    "ass_ade.context_memory.query_vector_memory",
+    "ass_ade.context_memory.store_vector_memory"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_lifrgraph.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/agent/lifr_graph.py:26"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.a1_at_functions.query_vector_memory",
-    "at.source.a1_at_functions.query"
+    "at.source.ass_ade.query_vector_memory",
+    "at.source.ass_ade.query"
   ],
   "name": "LIFRGraph",
   "product_categories": [

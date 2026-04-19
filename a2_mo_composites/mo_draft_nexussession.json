@@ -18,23 +18,31 @@
     "encode"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_nexussession.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/session.py:18.",
   "exceptions_raised": [
     "RuntimeError"
   ],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.nexussession",
+  "id": "mo.source.ass_ade.nexussession",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "hashlib",
+    "ass_ade.nexus.client.NexusClient",
+    "ass_ade.nexus.errors.NexusError",
+    "ass_ade.nexus.models.RatchetAdvance",
+    "ass_ade.nexus.models.RatchetSession",
+    "ass_ade.nexus.models.RatchetStatus",
+    "ass_ade.nexus.validation.validate_agent_id",
+    "ass_ade.nexus.validation.validate_session_id"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_nexussession.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/session.py:18"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.a1_at_functions.validate_agent_id",
-    "at.source.a1_at_functions.validate_session_id",
-    "at.source.a1_at_functions.status"
+    "at.source.ass_ade.validate_agent_id",
+    "at.source.ass_ade.validate_session_id",
+    "at.source.ass_ade.status"
   ],
   "name": "NexusSession",
   "product_categories": [

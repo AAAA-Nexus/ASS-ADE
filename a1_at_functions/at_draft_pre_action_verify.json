@@ -12,15 +12,16 @@
     "bool"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_trustverificationgate.py:15.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/trust_gate.py:15.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a2_mo_composites.pre_action_verify",
+  "id": "at.source.ass_ade.pre_action_verify",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "typing.Any"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_trustverificationgate.py:15"
+    "source": "C:/!ass-ade/src/ass_ade/agent/trust_gate.py:15"
   },
   "kind": "pure_function",
   "made_of": [],

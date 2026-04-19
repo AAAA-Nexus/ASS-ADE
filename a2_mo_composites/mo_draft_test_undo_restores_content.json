@@ -9,20 +9,23 @@
     "read_text"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testfilehistory.py:27.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_history.py:45.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.test_undo_restores_content",
+  "id": "mo.source.ass_ade.test_undo_restores_content",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.tools.history.FileHistory"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testfilehistory.py:27"
+    "source": "C:/!ass-ade/tests/test_history.py:45"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.a1_at_functions.record",
-    "at.source.a1_at_functions.undo"
+    "at.source.ass_ade.record",
+    "at.source.ass_ade.undo"
   ],
   "name": "test_undo_restores_content",
   "product_categories": [

@@ -8,21 +8,40 @@
     "_mock_client"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_testtrustgate.py:47.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_workflows.py:102.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a3_og_features.test_validates_agent_id",
+  "id": "at.source.ass_ade.test_validates_agent_id",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "typing.Any",
+    "unittest.mock.MagicMock",
+    "pytest",
+    "ass_ade.nexus.errors.NexusServerError",
+    "ass_ade.nexus.models.AegisProxyResult",
+    "ass_ade.nexus.models.CertifiedOutput",
+    "ass_ade.nexus.models.ComplianceResult",
+    "ass_ade.nexus.models.EthicsCheckResult",
+    "ass_ade.nexus.models.HallucinationResult",
+    "ass_ade.nexus.models.IdentityVerification",
+    "ass_ade.nexus.models.LineageRecord",
+    "ass_ade.nexus.models.PromptScanResult",
+    "ass_ade.nexus.models.ReputationScore",
+    "ass_ade.nexus.models.ShieldResult",
+    "ass_ade.nexus.models.SybilCheckResult",
+    "ass_ade.nexus.models.TrustScore",
+    "ass_ade.workflows.certify_output",
+    "ass_ade.workflows.safe_execute",
+    "ass_ade.workflows.trust_gate"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_testtrustgate.py:47"
+    "source": "C:/!ass-ade/tests/test_workflows.py:102"
   },
   "kind": "pure_function",
   "made_of": [],
   "name": "test_validates_agent_id",
   "product_categories": [
-    "IDT"
+    "COR"
   ],
   "provides": [
     "rebuild candidate for test_validates_agent_id"

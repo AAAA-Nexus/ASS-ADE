@@ -7,15 +7,19 @@
     "get"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_proofbridge.py:43.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/proofbridge.py:56.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "qk.source.a0_qk_constants.run",
+  "id": "qk.source.ass_ade.run",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "hashlib",
+    "re",
+    "dataclasses.dataclass",
+    "typing.Any"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_proofbridge.py:43"
+    "source": "C:/!ass-ade/src/ass_ade/agent/proofbridge.py:56"
   },
   "kind": "invariant",
   "made_of": [],

@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_is_healthy_false_when_no_calls.py:7
-# Component id: at.source.a1_at_functions.test_is_healthy_false_when_no_calls
+# Extracted from C:/!ass-ade/tests/test_session.py:51
+# Component id: at.source.ass_ade.test_is_healthy_false_when_no_calls
 from __future__ import annotations
 
 __version__ = "0.1.0"

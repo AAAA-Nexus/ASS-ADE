@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_discover_requires_remote.py:7
-# Component id: at.source.a1_at_functions.test_discover_requires_remote
+# Extracted from C:/!ass-ade/tests/test_a2a_cli.py:84
+# Component id: at.source.ass_ade.test_discover_requires_remote
 from __future__ import annotations
 
 __version__ = "0.1.0"

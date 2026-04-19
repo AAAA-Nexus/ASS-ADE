@@ -42,7 +42,7 @@
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.a1_at_functions.step"
+    "at.source.ass_ade.step"
   ],
   "name": "test_orchestrator_error_does_not_block_loop",
   "product_categories": [

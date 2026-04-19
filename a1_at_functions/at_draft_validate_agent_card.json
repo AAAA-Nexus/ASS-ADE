@@ -14,15 +14,29 @@
     "get"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_validate_agent_card.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/a2a/__init__.py:137.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.validate_agent_card",
+  "id": "at.source.ass_ade.validate_agent_card",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "json",
+    "socket",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any",
+    "urllib.parse.urlparse",
+    "httpx",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "pydantic.ValidationError",
+    "pydantic.field_validator",
+    "ass_ade.__version__",
+    "ass_ade.nexus.validation.validate_https_public_url",
+    "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_validate_agent_card.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/a2a/__init__.py:137"
   },
   "kind": "pure_function",
   "made_of": [],

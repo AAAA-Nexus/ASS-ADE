@@ -1,11 +1,25 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_build_atomadic_intent_prompt.py:7
-# Component id: at.source.a1_at_functions.build_atomadic_intent_prompt
+# Extracted from C:/!ass-ade/src/ass_ade/agent/capabilities.py:370
+# Component id: at.source.ass_ade.build_atomadic_intent_prompt
 from __future__ import annotations
 
 __version__ = "0.1.0"
 
-def build_atomadic_intent_prompt(working_dir: str | Path = ".") -> str:
-    """Build the live LLM intent-classifier prompt with current capabilities."""
+def build_atomadic_intent_prompt(
+    working_dir: str | Path = ".",
+    *,
+    memory_context: str | None = None,
+) -> str:
+    """Build the live LLM intent-classifier prompt with current capabilities.
+
+    Loads agents/atomadic_interpreter.md dynamically so changes to the agent
+    definition are picked up without code modifications. Also incorporates
+    any ONBOARDING.md or RECON_REPORT.md found in working_dir.
+    """
+    wdir = Path(working_dir).resolve()
+    repo_root = _find_repo_root(wdir)
+
+    agent_definition = _load_agent_md(repo_root)
+    context_files = _load_project_context_files(wdir)
     capability_section = render_capability_prompt_section(
         working_dir,
         max_cli=240,
@@ -13,11 +27,24 @@ def build_atomadic_intent_prompt(working_dir: str | Path = ".") -> str:
         max_mcp=40,
         max_agents=20,
     )
-    return f"""\
-You are Atomadic, the intelligent front door of ASS-ADE (Autonomous Sovereign
-System: Atomadic Development Environment), a CLI for analyzing, rebuilding,
-documenting, certifying, and evolving codebases.
 
+    identity_block = agent_definition if agent_definition else (
+        "You are Atomadic, the intelligent front door of ASS-ADE (Autonomous Sovereign\n"
+        "System: Atomadic Development Environment), a CLI for analyzing, rebuilding,\n"
+        "documenting, certifying, and evolving codebases."
+    )
+
+    extra_sections: list[str] = []
+    if memory_context:
+        extra_sections.append(f"## User Context\n{memory_context}")
+    if context_files:
+        extra_sections.append(f"## Project Onboarding Context\n{context_files}")
+    extra_block = "\n\n".join(extra_sections)
+
+    return f"""\
+{identity_block}
+
+{extra_block + chr(10) + chr(10) if extra_block else ""}\
 Classify the user's message and respond with ONLY a single valid JSON object.
 Do not use markdown fences. Do not add prose outside the JSON object.
 

@@ -8,15 +8,28 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testcontenthash.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_version_tracker.py:48.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.testcontenthash",
+  "id": "mo.source.ass_ade.testcontenthash",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.engine.rebuild.version_tracker.INITIAL_VERSION",
+    "ass_ade.engine.rebuild.version_tracker._aggregate_version",
+    "ass_ade.engine.rebuild.version_tracker._public_python_api",
+    "ass_ade.engine.rebuild.version_tracker.assign_version",
+    "ass_ade.engine.rebuild.version_tracker.bump_version",
+    "ass_ade.engine.rebuild.version_tracker.classify_change",
+    "ass_ade.engine.rebuild.version_tracker.content_hash",
+    "ass_ade.engine.rebuild.version_tracker.load_prev_versions",
+    "ass_ade.engine.rebuild.version_tracker.write_project_version_file",
+    "ass_ade.engine.rebuild.version_tracker.write_tier_version_file"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testcontenthash.py:7"
+    "source": "C:/!ass-ade/tests/test_version_tracker.py:48"
   },
   "kind": "engine_molecule",
   "made_of": [],

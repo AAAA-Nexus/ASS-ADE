@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_classify_tier.py:7
-# Component id: at.source.a1_at_functions.classify_tier
+# Extracted from C:/!ass-ade/src/ass_ade/engine/rebuild/project_parser.py:134
+# Component id: at.source.ass_ade.classify_tier
 from __future__ import annotations
 
 __version__ = "0.1.0"

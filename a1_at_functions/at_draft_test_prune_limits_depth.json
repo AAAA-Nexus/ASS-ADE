@@ -9,15 +9,18 @@
     "depth"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_prune_limits_depth.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_history.py:81.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.test_prune_limits_depth",
+  "id": "at.source.ass_ade.test_prune_limits_depth",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.tools.history.FileHistory"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_prune_limits_depth.py:7"
+    "source": "C:/!ass-ade/tests/test_history.py:81"
   },
   "kind": "pure_function",
   "made_of": [],

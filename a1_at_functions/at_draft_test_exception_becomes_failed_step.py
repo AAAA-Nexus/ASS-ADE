@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_exception_becomes_failed_step.py:7
-# Component id: at.source.a1_at_functions.test_exception_becomes_failed_step
+# Extracted from C:/!ass-ade/tests/test_pipeline.py:125
+# Component id: at.source.ass_ade.test_exception_becomes_failed_step
 from __future__ import annotations
 
 __version__ = "0.1.0"

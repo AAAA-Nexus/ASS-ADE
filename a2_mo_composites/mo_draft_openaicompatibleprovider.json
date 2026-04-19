@@ -24,19 +24,30 @@
     "dumps"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_openaicompatibleprovider.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/provider.py:27.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.openaicompatibleprovider",
+  "id": "mo.source.ass_ade.openaicompatibleprovider",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "json",
+    "uuid",
+    "collections.abc.Iterator",
+    "typing.Any",
+    "typing.Protocol",
+    "typing.runtime_checkable",
+    "httpx",
+    "ass_ade.engine.types.CompletionRequest",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolCallRequest"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_openaicompatibleprovider.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/engine/provider.py:27"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.a1_at_functions.raise_for_status"
+    "at.source.ass_ade.raise_for_status"
   ],
   "name": "OpenAICompatibleProvider",
   "product_categories": [

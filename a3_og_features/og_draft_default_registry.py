@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_default_registry.py:7
-# Component id: og.source.a3_og_features.default_registry
+# Extracted from C:/!ass-ade/src/ass_ade/tools/registry.py:101
+# Component id: og.source.ass_ade.default_registry
 from __future__ import annotations
 
 __version__ = "0.1.0"
@@ -44,4 +44,5 @@ def default_registry(working_dir: str | None = None) -> ToolRegistry:
     registry.register(PromptSectionTool(cwd))
     registry.register(PromptDiffTool(cwd))
     registry.register(PromptProposeTool(cwd))
+    _register_generated_tools(registry, cwd)
     return registry

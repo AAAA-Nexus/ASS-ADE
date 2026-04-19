@@ -63,12 +63,15 @@
     "set"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_qualitygates.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/gates.py:35.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.qualitygates",
+  "id": "mo.source.ass_ade.qualitygates",
   "imports": [
     "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "typing.Any",
     "ast",
     "re",
     "json",
@@ -85,21 +88,22 @@
     "ass_ade.agent.sam.SAM"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_qualitygates.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/agent/gates.py:35"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.a1_at_functions.gate_sam",
-    "at.source.a1_at_functions.scan_prompt",
-    "at.source.a1_at_functions.check_hallucination",
-    "at.source.a1_at_functions.certify",
-    "at.source.a2_mo_composites.pre_action_verify",
-    "at.source.a1_at_functions.tree_search",
-    "at.source.a1_at_functions.simulate",
-    "at.source.a1_at_functions.run_golden",
-    "at.source.a1_at_functions.compute_trs",
-    "at.source.a1_at_functions.search",
-    "at.source.a1_at_functions.validate_g23"
+    "at.source.ass_ade.gate_sam",
+    "at.source.ass_ade.scan_prompt",
+    "at.source.ass_ade.check_hallucination",
+    "at.source.ass_ade.certify",
+    "at.source.ass_ade.run_audit",
+    "at.source.ass_ade.pre_action_verify",
+    "at.source.ass_ade.tree_search",
+    "at.source.ass_ade.simulate",
+    "at.source.ass_ade.run_golden",
+    "at.source.ass_ade.compute_trs",
+    "at.source.ass_ade.search",
+    "at.source.ass_ade.validate_g23"
   ],
   "name": "QualityGates",
   "product_categories": [

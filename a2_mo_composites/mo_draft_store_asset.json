@@ -8,16 +8,20 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_edee.py:34.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/edee.py:51.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.store_asset",
+  "id": "mo.source.ass_ade.store_asset",
   "imports": [
     "__future__.annotations",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "ass_ade.context_memory.query_vector_memory",
+    "ass_ade.context_memory.store_vector_memory",
     "ass_ade.agent.exif.EXIF"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_edee.py:34"
+    "source": "C:/!ass-ade/src/ass_ade/agent/edee.py:51"
   },
   "kind": "engine_molecule",
   "made_of": [],

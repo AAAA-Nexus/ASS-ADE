@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_llm_chat_uses_text_field_fallback.py:7
-# Component id: at.source.a1_at_functions.test_llm_chat_uses_text_field_fallback
+# Extracted from C:/!ass-ade/tests/test_new_commands.py:401
+# Component id: at.source.ass_ade.test_llm_chat_uses_text_field_fallback
 from __future__ import annotations
 
 __version__ = "0.1.0"

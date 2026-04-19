@@ -7,15 +7,31 @@
     "print"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_print_colab_instructions.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/scripts/lora_training/train_lora.py:210.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.print_colab_instructions",
+  "id": "at.source.ass_ade.print_colab_instructions",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "argparse",
+    "json",
+    "logging",
+    "sys",
+    "pathlib.Path",
+    "typing.Any",
+    "torch",
+    "datasets.Dataset",
+    "peft.LoraConfig",
+    "peft.TaskType",
+    "peft.get_peft_model",
+    "transformers.AutoModelForCausalLM",
+    "transformers.AutoTokenizer",
+    "transformers.DataCollatorForLanguageModeling",
+    "transformers.Trainer",
+    "transformers.TrainingArguments"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_print_colab_instructions.py:7"
+    "source": "C:/!ass-ade/scripts/lora_training/train_lora.py:210"
   },
   "kind": "pure_function",
   "made_of": [],

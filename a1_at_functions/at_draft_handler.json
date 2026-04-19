@@ -1,26 +1,40 @@
 {
-  "body": "def handler(request):\n    return httpx.Response(200, json={\"history\": [{\"reviewer\": \"rev1\", \"decision\": \"approved\"}]})\n",
-  "body_hash": "6026972f4cb49dac",
+  "body": "def handler(request: httpx.Request) -> httpx.Response:\n    return httpx.Response(\n        402,\n        json={\"amount\": 0.008, \"network\": \"base\", \"address\": \"0xTREASURY\"},\n    )\n",
+  "body_hash": "9a08fd71967b42d2",
   "body_truncated": false,
   "callers_of": [
     "Response"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_compliance_oversight_history_happy_path.py:9.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_search_x402.py:167.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.handler",
+  "id": "at.source.ass_ade.handler",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "httpx",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.nexus.client.NexusClient",
+    "ass_ade.nexus.errors.NexusPaymentRequired",
+    "ass_ade.nexus.errors.NexusAuthError"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_compliance_oversight_history_happy_path.py:9"
+    "source": "C:/!ass-ade/tests/test_search_x402.py:167"
   },
   "kind": "pure_function",
   "made_of": [],
   "name": "handler",
   "product_categories": [
-    "SRG"
+    "DCM",
+    "PAY"
   ],
   "provides": [
     "rebuild candidate for handler"

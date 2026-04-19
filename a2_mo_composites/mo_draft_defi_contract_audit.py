@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_nexusclient.py:839
-# Component id: mo.source.a2_mo_composites.defi_contract_audit
+# Extracted from C:/!ass-ade/src/ass_ade/nexus/client.py:1034
+# Component id: mo.source.ass_ade.defi_contract_audit
 from __future__ import annotations
 
 __version__ = "0.1.0"

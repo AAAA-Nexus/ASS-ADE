@@ -71,12 +71,16 @@
     "range"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_engineorchestrator.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/orchestrator.py:81.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.engineorchestrator",
+  "id": "mo.source.ass_ade.engineorchestrator",
   "imports": [
     "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any",
     "ass_ade.agent.atlas.Atlas",
     "ass_ade.agent.bas.BAS",
     "ass_ade.agent.wisdom.WisdomEngine",
@@ -99,22 +103,27 @@
     "json"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_engineorchestrator.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/agent/orchestrator.py:81"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.a1_at_functions.decompose",
-    "at.source.a1_at_functions.complexity_score",
-    "at.source.a1_at_functions.query",
-    "at.source.a1_at_functions.select_next_agent",
-    "at.source.a1_at_functions.monitor_all",
-    "at.source.a1_at_functions.flush_alerts",
-    "at.source.a1_at_functions.capture_trace",
-    "at.source.a1_at_functions.tick",
-    "at.source.a1_at_functions.active_terrain_gate",
-    "at.source.a1_at_functions.compute_synergy",
-    "at.source.a1_at_functions.update",
-    "at.source.a1_at_functions.compute_coefficient"
+    "at.source.ass_ade.hydrate_from_memory",
+    "at.source.ass_ade.decompose",
+    "at.source.ass_ade.complexity_score",
+    "at.source.ass_ade.query",
+    "at.source.ass_ade.select_next_agent",
+    "at.source.ass_ade.get_stale_files",
+    "at.source.ass_ade.monitor_all",
+    "at.source.ass_ade.run_audit",
+    "at.source.ass_ade.distill_principles",
+    "at.source.ass_ade.flush_alerts",
+    "at.source.ass_ade.capture_trace",
+    "at.source.ass_ade.tick",
+    "at.source.ass_ade.active_terrain_gate",
+    "at.source.ass_ade.persist_principles",
+    "at.source.ass_ade.compute_synergy",
+    "at.source.ass_ade.update",
+    "at.source.ass_ade.compute_coefficient"
   ],
   "name": "EngineOrchestrator",
   "product_categories": [

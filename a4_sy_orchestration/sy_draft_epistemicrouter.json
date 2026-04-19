@@ -20,15 +20,20 @@
     "float"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_epistemicrouter.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/routing.py:181.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "sy.source.a4_sy_orchestration.epistemicrouter",
+  "id": "sy.source.ass_ade.epistemicrouter",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "re",
+    "collections.abc.Mapping",
+    "dataclasses.dataclass",
+    "enum.Enum",
+    "typing.Any"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_epistemicrouter.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/agent/routing.py:181"
   },
   "kind": "ecosystem_system",
   "made_of": [],

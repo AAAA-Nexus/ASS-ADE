@@ -51,8 +51,8 @@
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.a1_at_functions.detect_available_providers",
-    "at.source.a1_at_functions.resolve_api_key"
+    "at.source.ass_ade.detect_available_providers",
+    "at.source.ass_ade.resolve_api_key"
   ],
   "name": "build_provider",
   "product_categories": [

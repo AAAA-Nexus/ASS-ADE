@@ -9,18 +9,27 @@
     "check"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_testmcpcancellation.py:33.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_cancellation.py:98.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "sy.source.a4_sy_orchestration.test_cancellation_notification_marks_context_cancelled",
+  "id": "sy.source.ass_ade.test_cancellation_notification_marks_context_cancelled",
   "imports": [
     "__future__.annotations",
+    "threading",
+    "time",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.mcp.cancellation.CancellationContext",
+    "ass_ade.mcp.cancellation.NullCancellationContext",
+    "ass_ade.mcp.server.MCPServer",
     "ass_ade.mcp.cancellation.CancellationContext",
     "ass_ade.mcp.cancellation.CancellationContext",
     "ass_ade.mcp.cancellation.CancellationContext"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_testmcpcancellation.py:33"
+    "source": "C:/!ass-ade/tests/test_mcp_cancellation.py:98"
   },
   "kind": "ecosystem_system",
   "made_of": [],

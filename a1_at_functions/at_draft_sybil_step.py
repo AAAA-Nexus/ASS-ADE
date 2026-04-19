@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_trust_gate_pipeline.py:32
-# Component id: at.source.a1_at_functions.sybil_step
+# Extracted from C:/!ass-ade/src/ass_ade/pipeline.py:255
+# Component id: at.source.ass_ade.sybil_step
 from __future__ import annotations
 
 __version__ = "0.1.0"

@@ -23,22 +23,28 @@
     "capture_principle"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_wisdomengine.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/wisdom.py:38.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.wisdomengine",
+  "id": "mo.source.ass_ade.wisdomengine",
   "imports": [
     "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any",
+    "ass_ade.agent.audit_questions.AUDIT_QUESTIONS",
     "ass_ade.context_memory.query_vector_memory",
     "ass_ade.context_memory.store_vector_memory"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_wisdomengine.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/agent/wisdom.py:38"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.a1_at_functions.query_vector_memory",
-    "at.source.a1_at_functions.capture_principle"
+    "at.source.ass_ade.run_audit",
+    "at.source.ass_ade.query_vector_memory",
+    "at.source.ass_ade.capture_principle"
   ],
   "name": "WisdomEngine",
   "product_categories": [

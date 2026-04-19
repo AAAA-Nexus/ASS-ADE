@@ -1,5 +1,5 @@
-# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_hybrid_config.py:7
-# Component id: at.source.a1_at_functions.hybrid_config
+# Extracted from C:/!ass-ade/tests/test_cli_happy_path.py:58
+# Component id: at.source.ass_ade.hybrid_config
 from __future__ import annotations
 
 __version__ = "0.1.0"

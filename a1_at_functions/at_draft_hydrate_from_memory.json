@@ -12,16 +12,22 @@
     "get"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_hydrate_from_memory.py:7.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/wisdom.py:184.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.a1_at_functions.hydrate_from_memory",
+  "id": "at.source.ass_ade.hydrate_from_memory",
   "imports": [
     "__future__.annotations",
-    "ass_ade.context_memory.query_vector_memory"
+    "logging",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any",
+    "ass_ade.agent.audit_questions.AUDIT_QUESTIONS",
+    "ass_ade.context_memory.query_vector_memory",
+    "ass_ade.context_memory.store_vector_memory"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_hydrate_from_memory.py:7"
+    "source": "C:/!ass-ade/src/ass_ade/agent/wisdom.py:184"
   },
   "kind": "pure_function",
   "made_of": [],

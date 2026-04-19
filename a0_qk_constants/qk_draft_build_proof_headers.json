@@ -6,15 +6,22 @@
     "build_payment_header"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_x402clientflow.py:89.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/x402.py:452.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "qk.source.a2_mo_composites.build_proof_headers",
+  "id": "qk.source.ass_ade.build_proof_headers",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "os",
+    "time",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "eth_account.Account",
+    "web3.Web3",
+    "logging"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_x402clientflow.py:89"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/x402.py:452"
   },
   "kind": "invariant",
   "made_of": [],

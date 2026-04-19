@@ -7,15 +7,22 @@
     "store_vector_memory"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_lifrgraph.py:18.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/lifr_graph.py:37.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.a2_mo_composites.store",
+  "id": "mo.source.ass_ade.store",
   "imports": [
-    "__future__.annotations"
+    "__future__.annotations",
+    "json",
+    "dataclasses.dataclass",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.context_memory.VectorMemoryMatch",
+    "ass_ade.context_memory.query_vector_memory",
+    "ass_ade.context_memory.store_vector_memory"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_lifrgraph.py:18"
+    "source": "C:/!ass-ade/src/ass_ade/agent/lifr_graph.py:37"
   },
   "kind": "engine_molecule",
   "made_of": [],

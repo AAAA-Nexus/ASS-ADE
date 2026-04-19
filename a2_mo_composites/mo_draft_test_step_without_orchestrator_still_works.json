@@ -40,7 +40,7 @@
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.a1_at_functions.step"
+    "at.source.ass_ade.step"
   ],
   "name": "test_step_without_orchestrator_still_works",
   "product_categories": [
