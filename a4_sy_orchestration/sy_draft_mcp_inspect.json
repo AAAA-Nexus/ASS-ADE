@@ -1,0 +1,39 @@
+{
+  "body": "def mcp_inspect(\n    identifier: str = typer.Argument(..., help=\"Tool name or index (1-based).\"),\n    config: Path | None = CONFIG_OPTION,\n    allow_remote: bool = ALLOW_REMOTE_OPTION,\n) -> None:\n    \"\"\"Show full MCP tool metadata for a named tool or numeric index.\"\"\"\n    _, settings = _resolve_config(config)\n    _require_remote_access(settings, allow_remote)\n    try:\n        with NexusClient(\n            base_url=settings.nexus_base_url, timeout=settings.request_timeout_s,\n            api_key=settings.nexus_api_key\n        ) as client:\n            manifest = client.get_mcp_manifest()\n    except httpx.HTTPError as exc:\n        _nexus_err(exc)\n        return\n\n    tool = resolve_tool(manifest, identifier)\n    if tool is None:\n        console.print(f\"Tool not found: {identifier}\")\n        raise typer.Exit(code=2)\n\n    _print_json(tool)\n",
+  "body_hash": "80b78a7d9ba0d0a1",
+  "body_truncated": false,
+  "callers_of": [
+    "Argument",
+    "_resolve_config",
+    "_require_remote_access",
+    "resolve_tool",
+    "_print_json",
+    "print",
+    "Exit",
+    "NexusClient",
+    "get_mcp_manifest",
+    "_nexus_err"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_mcp_inspect.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.mcp_inspect",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_mcp_inspect.py:5"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "mcp_inspect",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for mcp_inspect"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

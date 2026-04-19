@@ -1,0 +1,28 @@
+{
+  "body": "    def test_tier_aliases_include_canonical_and_claude(self):\n        assert TIER_ALIASES[\"haiku\"] == TIER_FAST\n        assert TIER_ALIASES[\"sonnet\"] == TIER_BALANCED\n        assert TIER_ALIASES[\"opus\"] == TIER_DEEP\n        assert TIER_ALIASES[TIER_FAST] == TIER_FAST\n        assert TIER_ALIASES[TIER_BALANCED] == TIER_BALANCED\n        assert TIER_ALIASES[TIER_DEEP] == TIER_DEEP\n",
+  "body_hash": "3acd4e2a90e34f62",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testcataloginvariants.py:42.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.test_tier_aliases_include_canonical_and_claude",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testcataloginvariants.py:42"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "test_tier_aliases_include_canonical_and_claude",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_tier_aliases_include_canonical_and_claude"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

@@ -1,0 +1,42 @@
+{
+  "body": "def test_doctor_json_flag(tmp_path: Path) -> None:\n    config_path = tmp_path / \".ass-ade\" / \"config.json\"\n    write_default_config(config_path, config=AssAdeConfig(profile=\"local\"), overwrite=True)\n\n    result = runner.invoke(app, [\"doctor\", \"--config\", str(config_path), \"--json\"])\n\n    assert result.exit_code == 0\n    payload = json.loads(result.stdout)\n    assert \"profile\" in payload\n    assert \"tools\" in payload\n    assert payload[\"profile\"] == \"local\"\n",
+  "body_hash": "3a9cfd2b3cb681d2",
+  "body_truncated": false,
+  "callers_of": [
+    "write_default_config",
+    "invoke",
+    "loads",
+    "AssAdeConfig",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli.py:112.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_doctor_json_flag",
+  "imports": [
+    "json",
+    "pathlib.Path",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.cli._auto_detect_project"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli.py:112"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_doctor_json_flag",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_doctor_json_flag"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

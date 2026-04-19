@@ -1,0 +1,33 @@
+{
+  "body": "    def test_validate_delete_not_found(self, executor: EditPlanExecutor):\n        plan = EditPlan()\n        plan.add_delete(\"nonexistent.py\")\n        errors = executor.validate(plan)\n        assert len(errors) == 1\n",
+  "body_hash": "e5d33d83c9ea2cfb",
+  "body_truncated": false,
+  "callers_of": [
+    "EditPlan",
+    "add_delete",
+    "validate",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditplanexecutor.py:47.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_validate_delete_not_found",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditplanexecutor.py:47"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_validate_delete_not_found",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_validate_delete_not_found"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

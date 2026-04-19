@@ -1,0 +1,32 @@
+{
+  "body": "    def test_initial_context_is_available(self) -> None:\n        pipe = Pipeline(\"initial\")\n        pipe.add(\"reader\", context_reader)\n        result = pipe.run({\"message\": \"hello\"})\n        assert result.passed\n        assert result.context[\"reader\"][\"read_message\"] == \"hello\"\n",
+  "body_hash": "14169154ebdf4d19",
+  "body_truncated": false,
+  "callers_of": [
+    "Pipeline",
+    "add",
+    "run"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpipeline.py:36.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_initial_context_is_available",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpipeline.py:36"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_initial_context_is_available",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_initial_context_is_available"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

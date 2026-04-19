@@ -1,0 +1,44 @@
+{
+  "body": "    def test_read_then_write_passes_all_gates(self, tmp_path, monkeypatch):\n        monkeypatch.chdir(tmp_path)\n        server = _make_server(tmp_path)\n        server._ncb_mode = \"block\"\n        target = tmp_path / \"app.py\"\n        target.write_text(\"x = 1\\n\")\n\n        # 1. read_file \u2192 TCA records freshness\n        server._post_tool_hook(\"read_file\", _mk_args(target), MagicMock(success=True, output=\"x = 1\\n\"))\n        # 2. write_file pre-check \u2192 NCB passes (we just read it)\n        allow, _ = server._pre_tool_hook(\"write_file\", _mk_args(target))\n        assert allow is True\n        # 3. write_file post-check \u2192 CIE accepts clean code\n        new_code = \"def run():\\n    return 2\\n\"\n        out = server._post_tool_hook(\n            \"write_file\",\n            {\"path\": str(target), \"content\": new_code},\n            MagicMock(success=True, output=\"wrote\"),\n        )\n        assert out.success is True\n",
+  "body_hash": "88b0177f78f44c27",
+  "body_truncated": false,
+  "callers_of": [
+    "chdir",
+    "_make_server",
+    "write_text",
+    "_post_tool_hook",
+    "_pre_tool_hook",
+    "_mk_args",
+    "MagicMock",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_gates.py:168.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_read_then_write_passes_all_gates",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "pytest",
+    "ass_ade.mcp.server.MCPServer"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_gates.py:168"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "test_read_then_write_passes_all_gates",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_read_then_write_passes_all_gates"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

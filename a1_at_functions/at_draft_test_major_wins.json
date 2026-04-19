@@ -1,0 +1,30 @@
+{
+  "body": "    def test_major_wins(self):\n        assert _aggregate_version([\"0.9.9\", \"1.0.0\", \"0.9.8\"]) == \"1.0.0\"\n",
+  "body_hash": "b20d69484ac76bb9",
+  "body_truncated": false,
+  "callers_of": [
+    "_aggregate_version"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testaggregateversion.py:15.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_major_wins",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testaggregateversion.py:15"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_major_wins",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_major_wins"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

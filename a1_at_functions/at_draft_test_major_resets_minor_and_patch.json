@@ -1,0 +1,30 @@
+{
+  "body": "    def test_major_resets_minor_and_patch(self):\n        assert bump_version(\"2.5.7\", \"major\") == \"3.0.0\"\n",
+  "body_hash": "0d35804550d32522",
+  "body_truncated": false,
+  "callers_of": [
+    "bump_version"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbumpversion.py:21.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_major_resets_minor_and_patch",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbumpversion.py:21"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_major_resets_minor_and_patch",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_major_resets_minor_and_patch"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

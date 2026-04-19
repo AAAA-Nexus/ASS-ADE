@@ -1,0 +1,28 @@
+{
+  "body": "class CertifiedOutput(NexusModel):\n    \"\"\"/v1/certify/output \u2014 OCN-100\"\"\"\n    certificate_id: str | None = None\n    score: float | None = None\n    rubric_passed: bool | None = None\n    valid_until: str | None = None\n",
+  "body_hash": "585fe5f2caca14e8",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_certifiedoutput.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.certifiedoutput",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_certifiedoutput.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "CertifiedOutput",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for CertifiedOutput"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

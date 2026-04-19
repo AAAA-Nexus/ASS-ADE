@@ -1,0 +1,47 @@
+{
+  "body": "    def test_apply_includes_diff(self, tmp_path: Path):\n        (tmp_path / \"code.py\").write_text(\"x = 1\\ny = 2\\nz = 3\\n\")\n        tool = EditFileTool(str(tmp_path))\n        result = tool.execute(\n            path=\"code.py\",\n            old_string=\"y = 2\",\n            new_string=\"y = 42\",\n            preview=False,\n        )\n        assert result.success\n        assert \"Applied edit\" in result.output\n        assert \"-y = 2\" in result.output\n        assert \"+y = 42\" in result.output\n        # File should be changed\n        assert \"y = 42\" in (tmp_path / \"code.py\").read_text()\n",
+  "body_hash": "95a6eb8bb0ea82d1",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "EditFileTool",
+    "execute",
+    "str",
+    "read_text"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:181.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_apply_includes_diff",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "pytest",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolCallRequest",
+    "ass_ade.mcp.server.MCPServer",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.builtin.EditFileTool",
+    "ass_ade.tools.registry.ToolRegistry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:181"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "test_apply_includes_diff",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_apply_includes_diff"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

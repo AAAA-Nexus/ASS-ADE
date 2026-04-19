@@ -1,0 +1,33 @@
+{
+  "body": "    def test_reject_outside_cwd(self, workspace: Path):\n        tool = WriteFileTool(str(workspace))\n        # Try to escape up\n        r = tool.execute(path=\"../escape.py\", content=\"pwned\")\n        assert not r.success\n        assert \"outside\" in (r.error or \"\").lower()\n",
+  "body_hash": "0e9753c359c5d3b8",
+  "body_truncated": false,
+  "callers_of": [
+    "WriteFileTool",
+    "execute",
+    "str",
+    "lower"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwritefile.py:18.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_reject_outside_cwd",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwritefile.py:18"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_reject_outside_cwd",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_reject_outside_cwd"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

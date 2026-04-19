@@ -1,0 +1,30 @@
+{
+  "body": "    def report(self) -> dict:\n        return {\n            \"engine\": \"mcp_zero_router\",\n            \"catalog_size\": len(self._catalog),\n            \"calls\": self._calls,\n        }\n",
+  "body_hash": "088a0d3e0910f039",
+  "body_truncated": false,
+  "callers_of": [
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_mcpzerorouter.py:44.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.report",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_mcpzerorouter.py:44"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "report",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for report"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

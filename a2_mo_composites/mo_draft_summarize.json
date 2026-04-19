@@ -1,0 +1,36 @@
+{
+  "body": "    def summarize(self) -> str:\n        if not self.user_profile and not self.project_contexts:\n            return \"No memory yet. Start chatting to build it up.\"\n        lines = [\"**Atomadic memory**\\n\"]\n        if self.user_profile:\n            lines.append(\"**You:**\")\n            tone = self.user_profile.get(\"dominant_tone\", \"unknown\")\n            lines.append(f\"  - Tone: {tone}\")\n            fav = self.user_profile.get(\"favorite_command\")\n            if fav:\n                lines.append(f\"  - Favorite command: `{fav}`\")\n            count = self.user_profile.get(\"session_interactions\", 0)\n            lines.append(f\"  - Total interactions: {count}\")\n        if self.project_contexts:\n            lines.append(\"\\n**Projects:**\")\n            for path, ctx in list(self.project_contexts.items())[-5:]:\n                name = Path(path).name\n                last = ctx.get(\"last_seen\", \"\")[:10]\n                n_cmds = len(ctx.get(\"commands_run\", []))\n                lines.append(f\"  - `{name}` \u2014 last seen {last}, {n_cmds} commands run\")\n        return \"\\n\".join(lines)\n",
+  "body_hash": "f1030b3fe6b832a5",
+  "body_truncated": false,
+  "callers_of": [
+    "join",
+    "append",
+    "get",
+    "list",
+    "len",
+    "items",
+    "Path"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_memorystore.py:173.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.summarize",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_memorystore.py:173"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "summarize",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for summarize"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

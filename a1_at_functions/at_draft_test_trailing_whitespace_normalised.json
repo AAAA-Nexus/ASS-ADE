@@ -1,0 +1,30 @@
+{
+  "body": "    def test_trailing_whitespace_normalised(self):\n        assert content_hash(\"a  \\nb  \\n\") == content_hash(\"a\\nb\")\n",
+  "body_hash": "8e2c648f6debb797",
+  "body_truncated": false,
+  "callers_of": [
+    "content_hash"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testcontenthash.py:12.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_trailing_whitespace_normalised",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testcontenthash.py:12"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_trailing_whitespace_normalised",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_trailing_whitespace_normalised"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

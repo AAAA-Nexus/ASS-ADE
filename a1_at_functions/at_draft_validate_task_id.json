@@ -1,0 +1,31 @@
+{
+  "body": "def validate_task_id(task_id: str) -> bool:\n    \"\"\"Check if task ID is valid (pure function).\"\"\"\n    return bool(task_id) and len(task_id) <= 50\n",
+  "body_hash": "88e70b1077c86577",
+  "body_truncated": false,
+  "callers_of": [
+    "bool",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_validate_task_id.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.validate_task_id",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_validate_task_id.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "validate_task_id",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for validate_task_id"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,37 @@
+{
+  "body": "    def test_discover_success(self, tmp_path: Path) -> None:\n        mock_nx = MagicMock()\n        mock_nx.discovery_search.return_value = DiscoveryResult(\n            agents=[DiscoveredAgent(agent_id=\"agent-1\", name=\"DiscoverMe\")],\n            total=1,\n            query=\"search\",\n        )\n        with patch(\"ass_ade.commands.a2a.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n            result = runner.invoke(\n                app, [\"a2a\", \"discover\", \"search\",\n                       \"--config\", str(_hybrid_config(tmp_path)), \"--allow-remote\"]\n            )\n        assert result.exit_code == 0\n        assert \"DiscoverMe\" in result.stdout\n",
+  "body_hash": "02d60794a04e188c",
+  "body_truncated": false,
+  "callers_of": [
+    "MagicMock",
+    "DiscoveryResult",
+    "patch",
+    "invoke",
+    "DiscoveredAgent",
+    "_make_ctx_mgr",
+    "str",
+    "_hybrid_config"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testa2adiscovercli.py:6.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_discover_success",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testa2adiscovercli.py:6"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_discover_success",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_discover_success"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

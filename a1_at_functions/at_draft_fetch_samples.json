@@ -1,0 +1,39 @@
+{
+  "body": "def fetch_samples(cfg: TrainConfig) -> list[dict[str, Any]]:\n    \"\"\"Authenticated GET /v1/lora/samples/export \u2014 owner token required.\"\"\"\n    if not cfg.owner_token:\n        raise RuntimeError(\n            \"AAAA_NEXUS_OWNER_TOKEN not set. Samples export is owner-only.\"\n        )\n    url = f\"{cfg.storefront_url.rstrip('/')}/v1/lora/samples/export\"\n    headers = {\"X-Atomadic-Auth\": cfg.owner_token}\n    params = {\"lang\": cfg.language, \"limit\": str(cfg.max_samples)}\n    resp = httpx.get(url, headers=headers, params=params, timeout=60.0)\n    resp.raise_for_status()\n    data = resp.json()\n    samples = data.get(\"samples\") or []\n    _log.info(\"fetched %d %s samples from storefront\", len(samples), cfg.language)\n    return samples\n",
+  "body_hash": "ac5ee53edc43ff48",
+  "body_truncated": false,
+  "callers_of": [
+    "get",
+    "raise_for_status",
+    "json",
+    "info",
+    "RuntimeError",
+    "str",
+    "len",
+    "rstrip"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_fetch_samples.py:5.",
+  "exceptions_raised": [
+    "RuntimeError"
+  ],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.fetch_samples",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_fetch_samples.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "fetch_samples",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for fetch_samples"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,31 @@
+{
+  "body": "    def test_empty_content(self):\n        msg = Message(role=\"assistant\", content=\"\")\n        tokens = estimate_message_tokens(msg)\n        assert tokens == 4  # just overhead\n",
+  "body_hash": "87f82dc73e5f4fb6",
+  "body_truncated": false,
+  "callers_of": [
+    "Message",
+    "estimate_message_tokens"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testestimatemessagetokens.py:11.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.test_empty_content",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testestimatemessagetokens.py:11"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "test_empty_content",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_empty_content"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

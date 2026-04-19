@@ -1,0 +1,36 @@
+{
+  "body": "def test_vanguard_redteam(tmp_path: Path) -> None:\n    mock_nx = MagicMock()\n    mock_nx.vanguard_redteam.return_value = VanguardRedTeamResult(\n        run_id=\"rt-1\", agent_id=\"agent-1\", vulnerabilities_found=0, severity=\"none\")\n    with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n        result = runner.invoke(app, [\"vanguard\", \"redteam\", \"agent-1\", \"target\",\n                                     \"--config\", str(_hybrid_config(tmp_path)), \"--allow-remote\"])\n    assert result.exit_code == 0\n    assert \"rt-1\" in result.stdout\n",
+  "body_hash": "9e7bded99f7d7875",
+  "body_truncated": false,
+  "callers_of": [
+    "MagicMock",
+    "VanguardRedTeamResult",
+    "patch",
+    "invoke",
+    "_make_ctx_mgr",
+    "str",
+    "_hybrid_config"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_vanguard_redteam.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_vanguard_redteam",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_vanguard_redteam.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_vanguard_redteam",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_vanguard_redteam"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

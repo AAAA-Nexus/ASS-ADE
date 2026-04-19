@@ -1,0 +1,33 @@
+{
+  "body": "def test_docs_json_output(tmp_path: Path) -> None:\n    _write_minimal_project(tmp_path)\n\n    result = runner.invoke(app, [\"docs\", str(tmp_path), \"--json\", \"--local-only\"])\n\n    assert result.exit_code == 0\n    payload = _extract_json(result.stdout)\n    assert \"files_generated\" in payload\n",
+  "body_hash": "5966e294a879719c",
+  "body_truncated": false,
+  "callers_of": [
+    "_write_minimal_project",
+    "invoke",
+    "_extract_json",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_docs_json_output.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_docs_json_output",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_docs_json_output.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_docs_json_output",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_docs_json_output"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

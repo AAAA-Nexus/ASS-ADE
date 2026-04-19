@@ -1,0 +1,31 @@
+{
+  "body": "    def add_create(self, path: str, content: str, description: str = \"\") -> None:\n        self.edits.append(PlannedEdit(\n            kind=EditKind.CREATE,\n            path=path,\n            new_string=content,\n            description=description or f\"Create {path}\",\n        ))\n        self.validated = False\n",
+  "body_hash": "ec6be31911222039",
+  "body_truncated": false,
+  "callers_of": [
+    "append",
+    "PlannedEdit"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_editplan.py:13.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.add_create",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_editplan.py:13"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "add_create",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for add_create"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

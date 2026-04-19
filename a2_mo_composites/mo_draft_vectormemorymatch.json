@@ -1,0 +1,30 @@
+{
+  "body": "class VectorMemoryMatch(BaseModel):\n    id: str\n    namespace: str\n    score: float\n    text: str\n    metadata: dict[str, Any] = Field(default_factory=dict)\n    created_at: str\n",
+  "body_hash": "fe760d9a2c42bc2a",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_vectormemorymatch.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.vectormemorymatch",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_vectormemorymatch.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "VectorMemoryMatch",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for VectorMemoryMatch"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

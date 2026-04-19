@@ -1,0 +1,37 @@
+{
+  "body": "    def reputation_step(ctx: dict[str, Any]) -> StepResult:\n        try:\n            result = client.reputation_score(aid)\n            raw = result.model_dump() if hasattr(result, \"model_dump\") else {}\n            ctx[\"reputation_tier\"] = raw.get(\"tier\")\n            return StepResult(name=\"reputation_score\", status=StepStatus.PASSED, output=raw)\n        except Exception as exc:\n            return StepResult(name=\"reputation_score\", status=StepStatus.FAILED, error=str(exc))\n",
+  "body_hash": "7c2002a6965dee2f",
+  "body_truncated": false,
+  "callers_of": [
+    "reputation_score",
+    "get",
+    "StepResult",
+    "hasattr",
+    "model_dump",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_trust_gate_pipeline.py:52.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.reputation_step",
+  "imports": [
+    "ass_ade.nexus.validation.validate_agent_id"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_trust_gate_pipeline.py:52"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "reputation_step",
+  "product_categories": [
+    "IDT"
+  ],
+  "provides": [
+    "rebuild candidate for reputation_step"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

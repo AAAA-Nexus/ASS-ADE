@@ -1,0 +1,32 @@
+{
+  "body": "    def test_compliance_check_invalid_json(self, tmp_path: Path, hybrid_config: Path) -> None:\n        \"\"\"Compliance check should error if payload is invalid JSON.\"\"\"\n        bad_json = tmp_path / \"bad.json\"\n        bad_json.write_text(\"{ invalid json }\", encoding=\"utf-8\")\n        \n        result = runner.invoke(\n            app,\n            [\"compliance\", \"check\", str(bad_json), \"--config\", str(hybrid_config)],\n        )\n        \n        assert result.exit_code != 0\n",
+  "body_hash": "afcf12a3edd12955",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "invoke",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testerrorhandling.py:18.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_compliance_check_invalid_json",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testerrorhandling.py:18"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_compliance_check_invalid_json",
+  "product_categories": [
+    "SRG"
+  ],
+  "provides": [
+    "rebuild candidate for test_compliance_check_invalid_json"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

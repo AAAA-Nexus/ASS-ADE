@@ -1,0 +1,40 @@
+{
+  "body": "def test_hash_file_different_content(tmp_path: Path) -> None:\n    f1 = tmp_path / \"a.py\"\n    f2 = tmp_path / \"b.py\"\n    f1.write_bytes(b\"x = 1\")\n    f2.write_bytes(b\"x = 2\")\n\n    assert hash_file(f1) != hash_file(f2)\n",
+  "body_hash": "d786d5137778ad44",
+  "body_truncated": false,
+  "callers_of": [
+    "write_bytes",
+    "hash_file"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_certifier.py:32.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_hash_file_different_content",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.local.certifier.build_local_certificate",
+    "ass_ade.local.certifier.compute_codebase_digest",
+    "ass_ade.local.certifier.hash_file",
+    "ass_ade.local.certifier.render_certificate_text"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_certifier.py:32"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_hash_file_different_content",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_hash_file_different_content"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

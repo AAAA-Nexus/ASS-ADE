@@ -1,0 +1,33 @@
+{
+  "body": "    def test_prune_limits_depth(self, history: FileHistory):\n        for i in range(10):\n            history.record(\"hello.py\", f\"version {i}\")\n\n        # max_depth is 5\n        assert history.depth(\"hello.py\") == 5\n\n        # Should keep the latest 5\n        snaps = history.list_snapshots(\"hello.py\")\n        assert snaps[0].content == \"version 5\"\n        assert snaps[-1].content == \"version 9\"\n",
+  "body_hash": "89409d69f80ea51c",
+  "body_truncated": false,
+  "callers_of": [
+    "range",
+    "list_snapshots",
+    "record",
+    "depth"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testfilehistory.py:61.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_prune_limits_depth",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testfilehistory.py:61"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_prune_limits_depth",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_prune_limits_depth"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

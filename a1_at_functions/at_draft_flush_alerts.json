@@ -1,0 +1,31 @@
+{
+  "body": "    def flush_alerts(self) -> list[Alert]:\n        \"\"\"Drain and return the unflushed alerts buffer.\"\"\"\n        drained = list(self._unflushed)\n        self._unflushed.clear()\n        return drained\n",
+  "body_hash": "3fe5d6a9860bf528",
+  "body_truncated": false,
+  "callers_of": [
+    "list",
+    "clear"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_bas.py:174.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.flush_alerts",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_bas.py:174"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "flush_alerts",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for flush_alerts"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

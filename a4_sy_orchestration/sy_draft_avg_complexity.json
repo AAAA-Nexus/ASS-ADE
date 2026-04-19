@@ -1,0 +1,31 @@
+{
+  "body": "    def avg_complexity(self) -> float:\n        \"\"\"Average complexity across all routed messages.\"\"\"\n        if not self._history:\n            return 0.0\n        return sum(d.complexity for d in self._history) / len(self._history)\n",
+  "body_hash": "bb67daa942629efb",
+  "body_truncated": false,
+  "callers_of": [
+    "sum",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_epistemicrouter.py:45.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.avg_complexity",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_epistemicrouter.py:45"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "avg_complexity",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for avg_complexity"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

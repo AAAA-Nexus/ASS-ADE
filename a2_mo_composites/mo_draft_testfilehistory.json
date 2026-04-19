@@ -1,0 +1,49 @@
+{
+  "body": "class TestFileHistory:\n    def test_record_creates_snapshot(self, history: FileHistory, tmp_workspace: Path):\n        snap = history.record(\"hello.py\", \"print('hello')\\n\")\n        assert snap.path == \"hello.py\"\n        assert snap.sequence == 0\n        assert snap.content == \"print('hello')\\n\"\n        assert snap.timestamp > 0\n\n    def test_record_increments_sequence(self, history: FileHistory):\n        history.record(\"hello.py\", \"v1\")\n        snap = history.record(\"hello.py\", \"v2\")\n        assert snap.sequence == 1\n\n    def test_depth(self, history: FileHistory):\n        assert history.depth(\"hello.py\") == 0\n        history.record(\"hello.py\", \"v1\")\n        assert history.depth(\"hello.py\") == 1\n        history.record(\"hello.py\", \"v2\")\n        assert history.depth(\"hello.py\") == 2\n\n    def test_undo_restores_content(self, history: FileHistory, tmp_workspace: Path):\n        original = \"print('hello')\\n\"\n        history.record(\"hello.py\", original)\n\n        # Overwrite the file\n        (tmp_workspace / \"hello.py\").write_text(\"print('goodbye')\\n\", encoding=\"utf-8\")\n\n        # Undo should restore\n        snap = history.undo(\"hello.py\")\n        assert snap is not None\n        assert snap.content == original\n        assert (tmp_workspace / \"hello.py\").read_text(encoding=\"utf-8\") == original\n\n    def test_undo_no_history(self, history: FileHistory):\n        assert history.undo(\"nonexistent.py\") is None\n\n    def test_undo_consumes_snapshot(self, history: FileHistory, tmp_workspace: Path):\n        history.record(\"hello.py\", \"v1\")\n        history.record(\"hello.py\", \"v2\")\n        assert history.depth(\"hello.py\") == 2\n\n        history.undo(\"hello.py\")\n        assert history.depth(\"hello.py\") == 1\n\n    def test_list_snapshots(self, history: FileHistory):\n        history.record(\"hello.py\", \"v1\")\n        history.record(\"hello.py\", \"v2\")\n\n        snaps = history.list_snapshots(\"hello.py\")\n        assert len(snaps) == 2\n        assert snaps[0].content == \"v1\"\n        assert snaps[1].content == \"v2\"\n\n    def test_list_snapshots_empty(self, history: FileHistory):\n        assert history.list_snapshots(\"nonexistent.py\") == []\n\n    def test_prune_limits_depth(self, history: FileHistory):\n        for i in range(10):\n            history.record(\"hello.py\", f\"version {i}\")\n\n        # max_depth is 5\n        assert history.depth(\"hello.py\") == 5\n\n        # Should keep the latest 5\n        snaps = history.list_snapshots(\"hello.py\")\n        assert snaps[0].content == \"version 5\"\n        assert snaps[-1].content == \"version 9\"\n\n    def test_multiple_files(self, history: FileHistory, tmp_workspace: Path):\n        (tmp_workspace / \"other.py\").write_text(\"other\", encoding=\"utf-8\")\n        history.record(\"hello.py\", \"h1\")\n        history.record(\"other.py\", \"o1\")\n\n        assert history.depth(\"hello.py\") == 1\n        assert history.depth(\"other.py\") == 1\n\n    def test_snapshot_persistence(self, tmp_workspace: Path):\n        h1 = FileHistory(str(tmp_workspace))\n        h1.record(\"hello.py\", \"persistent content\")\n\n        # New history instance should find existing snapshots\n        h2 = FileHistory(str(tmp_workspace))\n        assert h2.depth(\"hello.py\") == 1\n        snaps = h2.list_snapshots(\"hello.py\")\n        assert snaps[0].content == \"persistent content\"\n",
+  "body_hash": "d674caf0db4a94a6",
+  "body_truncated": false,
+  "callers_of": [
+    "record",
+    "write_text",
+    "undo",
+    "list_snapshots",
+    "range",
+    "FileHistory",
+    "depth",
+    "read_text",
+    "len",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_history.py:25.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testfilehistory",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.tools.history.FileHistory"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_history.py:25"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.record",
+    "at.source.ass_ade.undo",
+    "at.source.ass_ade.list_snapshots",
+    "at.source.ass_ade.depth"
+  ],
+  "name": "TestFileHistory",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestFileHistory"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

@@ -1,0 +1,34 @@
+{
+  "body": "class DocsResult(NexusModel):\n    ok: bool = False\n    path: str | None = None\n    files_generated: list[str] = []\n    synthesis_applied: bool = False\n    lora_captured: bool = False\n    credit_used: float | None = None\n    message: str | None = None\n",
+  "body_hash": "85906c8f34f5cc7e",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/models.py:1107.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.docsresult",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/models.py:1107"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "DocsResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for DocsResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

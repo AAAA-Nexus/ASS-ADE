@@ -1,0 +1,30 @@
+{
+  "body": "def default_config_path(base_dir: Path | None = None) -> Path:\n    root = base_dir or Path.cwd()\n    return root / \".ass-ade\" / \"config.json\"\n",
+  "body_hash": "f718d2c01781dcbf",
+  "body_truncated": false,
+  "callers_of": [
+    "cwd"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_default_config_path.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.default_config_path",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_default_config_path.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "default_config_path",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for default_config_path"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

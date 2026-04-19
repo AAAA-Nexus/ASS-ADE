@@ -1,0 +1,44 @@
+{
+  "body": "    def complete(self, request):\n        idx = min(self._idx, len(self._responses) - 1)\n        self._idx += 1\n        return self._responses[idx]\n",
+  "body_hash": "e5c0587ace505e99",
+  "body_truncated": false,
+  "callers_of": [
+    "min",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:208.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.complete",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "pytest",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolCallRequest",
+    "ass_ade.mcp.server.MCPServer",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.builtin.EditFileTool",
+    "ass_ade.tools.registry.ToolRegistry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:208"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "complete",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for complete"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

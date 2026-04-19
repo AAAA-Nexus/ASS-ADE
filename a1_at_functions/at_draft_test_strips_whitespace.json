@@ -1,0 +1,30 @@
+{
+  "body": "    def test_strips_whitespace(self) -> None:\n        assert validate_agent_id(\"  agent-1  \") == \"agent-1\"\n",
+  "body_hash": "8c1091d77e339c52",
+  "body_truncated": false,
+  "callers_of": [
+    "validate_agent_id"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateagentid.py:11.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_strips_whitespace",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateagentid.py:11"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_strips_whitespace",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_strips_whitespace"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

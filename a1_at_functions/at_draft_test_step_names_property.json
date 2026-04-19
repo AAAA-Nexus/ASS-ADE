@@ -1,0 +1,40 @@
+{
+  "body": "    def test_step_names_property(self) -> None:\n        pipe = Pipeline(\"names\")\n        pipe.add(\"alpha\", pass_step)\n        pipe.add(\"beta\", pass_step)\n        pipe.add(\"gamma\", fail_step)\n        assert pipe.step_names == [\"alpha\", \"beta\", \"gamma\"]\n",
+  "body_hash": "e018d96f99eb2a38",
+  "body_truncated": false,
+  "callers_of": [
+    "Pipeline",
+    "add"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:271.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_step_names_property",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.pipeline.Pipeline",
+    "ass_ade.pipeline.PipelineResult",
+    "ass_ade.pipeline.StepResult",
+    "ass_ade.pipeline.StepStatus"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:271"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_step_names_property",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_step_names_property"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

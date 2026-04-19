@@ -1,0 +1,41 @@
+{
+  "body": "def protocol_run(\n    goal: str = typer.Argument(..., help=\"Enhancement goal for the protocol cycle.\"),\n    config: Path | None = CONFIG_OPTION,\n    path: Path = REPO_PATH_OPTION,\n    markdown: bool = typer.Option(False, help=\"Render the protocol report as Markdown.\"),\n) -> None:\n    _, settings = _resolve_config(config)\n    report = run_protocol(goal, path, settings)\n\n    if markdown:\n        console.print(render_protocol_markdown(report))\n        return\n\n    overview = Table(title=\"ASS-ADE Protocol Report\")\n    overview.add_column(\"Signal\")\n    overview.add_column(\"Value\")\n    overview.add_row(\"Goal\", report.goal)\n    overview.add_row(\"Profile\", report.assessment.profile)\n    overview.add_row(\"Root\", report.assessment.root)\n    overview.add_row(\"Files\", str(report.assessment.total_files))\n    overview.add_row(\"Directories\", str(report.assessment.total_dirs))\n    overview.add_row(\"Audit Checks\", str(len(report.audit)))\n    console.print(overview)\n\n    design = Table(title=\"Design Steps\")\n    design.add_column(\"#\", justify=\"right\")\n    design.add_column(\"Step\")\n    for index, step in enumerate(report.design_steps, start=1):\n        design.add_row(str(index), step)\n    console.print(design)\n\n    audit = Table(title=\"Audit\")\n    audit.add_column(\"Status\")\n    audit.add_column(\"Check\")\n    audit.add_column(\"Detail\")\n    for item in report.audit:\n        audit.add_row(\"PASS\" if item.passed else \"FAIL\", item.name, item.detail)\n    console.print(audit)\n\n    recommendations = Table(title=\"Recommendations\")\n    recommendations.add_column(\"#\", justify=\"right\")\n    recommendations.add_column(\"Recommendation\")\n    for index, item in enumerate(report.recommendations, start=1):\n        recommendations.add_row(str(index), item)\n    console.print(recommendations)\n\n    console.print(report.summary)\n",
+  "body_hash": "7dbe48308ee354c0",
+  "body_truncated": false,
+  "callers_of": [
+    "Argument",
+    "Option",
+    "_resolve_config",
+    "run_protocol",
+    "Table",
+    "add_column",
+    "add_row",
+    "print",
+    "enumerate",
+    "str",
+    "render_protocol_markdown",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_protocol_run.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.protocol_run",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_protocol_run.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "protocol_run",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for protocol_run"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

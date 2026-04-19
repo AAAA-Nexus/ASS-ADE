@@ -1,0 +1,38 @@
+{
+  "body": "def test_nexus_client_rejects_invalid_health_payload() -> None:\n    transport = httpx.MockTransport(lambda request: httpx.Response(200, json={\"version\": \"0.5.1\"}))\n\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        with pytest.raises(Exception):\n            client.get_health()\n",
+  "body_hash": "541c79a86fa92ba4",
+  "body_truncated": false,
+  "callers_of": [
+    "MockTransport",
+    "NexusClient",
+    "Response",
+    "raises",
+    "get_health"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client.py:26.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.test_nexus_client_rejects_invalid_health_payload",
+  "imports": [
+    "httpx",
+    "pytest",
+    "ass_ade.nexus.client.NexusClient"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client.py:26"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "test_nexus_client_rejects_invalid_health_payload",
+  "product_categories": [
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for test_nexus_client_rejects_invalid_health_payload"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

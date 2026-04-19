@@ -1,0 +1,83 @@
+{
+  "body": "    def test_status_structure(self, tmp_path):\n        fly = self._make(tmp_path)\n        status = fly.status()\n        assert hasattr(status, \"adapter_version\")\n        assert hasattr(status, \"contribution_count\")\n        assert hasattr(status, \"ratchet_epoch\")\n        assert hasattr(status, \"pending_count\")\n",
+  "body_hash": "22788c3b90a8517c",
+  "body_truncated": false,
+  "callers_of": [
+    "_make",
+    "status",
+    "hasattr"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:537.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.test_status_structure",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "time",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.agent.providers.FREE_PROVIDERS",
+    "ass_ade.agent.lse._LEGACY_TIER_TO_MODEL",
+    "unittest.mock.MagicMock",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.agent.loop.D_MAX",
+    "ass_ade.agent.orchestrator.CycleReport",
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.tca.TCAEngine",
+    "ass_ade.agent.tca.TCAEngine",
+    "ass_ade.map_terrain.active_terrain_gate",
+    "ass_ade.map_terrain.active_terrain_gate",
+    "ass_ade.map_terrain.active_terrain_gate",
+    "ass_ade.map_terrain.active_terrain_gate",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel",
+    "ass_ade.agent.lora_flywheel.RG_LOOP",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel",
+    "ass_ade.agent.orchestrator.EngineOrchestrator",
+    "ass_ade.agent.orchestrator.CycleReport"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:537"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.status"
+  ],
+  "name": "test_status_structure",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_status_structure"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

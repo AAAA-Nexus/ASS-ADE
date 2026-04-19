@@ -1,0 +1,33 @@
+{
+  "body": "    def test_lse_property_lazy_init(self):\n        orch = self._make()\n        assert orch._lse is None\n        lse = orch.lse\n        assert lse is not None\n        assert orch._lse is lse  # cached\n",
+  "body_hash": "a9dab3ea0abf06f2",
+  "body_truncated": false,
+  "callers_of": [
+    "_make"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testengineorchestratorphase15.py:11.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.test_lse_property_lazy_init",
+  "imports": [
+    "ass_ade.agent.orchestrator.EngineOrchestrator",
+    "ass_ade.agent.orchestrator.CycleReport"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testengineorchestratorphase15.py:11"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "test_lse_property_lazy_init",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_lse_property_lazy_init"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

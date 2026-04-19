@@ -1,0 +1,31 @@
+{
+  "body": "    def test_adding_resets_validated(self):\n        plan = EditPlan()\n        plan.validated = True\n        plan.add_create(\"x.py\", \"x\")\n        assert plan.validated is False\n",
+  "body_hash": "a32f0bcdfcb4884d",
+  "body_truncated": false,
+  "callers_of": [
+    "EditPlan",
+    "add_create"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditplan.py:24.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_adding_resets_validated",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditplan.py:24"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_adding_resets_validated",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_adding_resets_validated"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

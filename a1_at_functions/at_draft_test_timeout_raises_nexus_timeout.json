@@ -1,0 +1,35 @@
+{
+  "body": "    def test_timeout_raises_nexus_timeout(self) -> None:\n        inner = _FailingTransport(httpx.ReadTimeout(\"timed out\"))\n        transport = RetryTransport(inner, max_retries=2, backoff_base=0.0)\n        with pytest.raises(NexusTimeoutError):\n            transport.handle_request(httpx.Request(\"GET\", \"https://example.com\"))\n        assert inner.call_count == 2\n",
+  "body_hash": "a9744a9fe9c55fd1",
+  "body_truncated": false,
+  "callers_of": [
+    "_FailingTransport",
+    "RetryTransport",
+    "ReadTimeout",
+    "raises",
+    "handle_request",
+    "Request"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testretrytransport.py:43.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_timeout_raises_nexus_timeout",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testretrytransport.py:43"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_timeout_raises_nexus_timeout",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_timeout_raises_nexus_timeout"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

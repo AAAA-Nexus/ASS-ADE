@@ -1,0 +1,34 @@
+{
+  "body": "class TaskPriority(Enum):\n    \"\"\"Priority levels.\"\"\"\n    LOW = 1\n    MEDIUM = 2\n    HIGH = 3\n    URGENT = 4\n",
+  "body_hash": "91bc34639fd8fb69",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/examples/02-rebuild-a-codebase/sample_project/main.py:25.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.taskpriority",
+  "imports": [
+    "enum.Enum",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.List",
+    "typing.Optional"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/examples/02-rebuild-a-codebase/sample_project/main.py:25"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "TaskPriority",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TaskPriority"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

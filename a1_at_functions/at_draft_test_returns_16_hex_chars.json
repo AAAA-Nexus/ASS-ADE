@@ -1,0 +1,32 @@
+{
+  "body": "    def test_returns_16_hex_chars(self):\n        h = content_hash(\"test\")\n        assert len(h) == 16\n        assert all(c in \"0123456789abcdef\" for c in h)\n",
+  "body_hash": "3ad7d3a6271fc7b3",
+  "body_truncated": false,
+  "callers_of": [
+    "content_hash",
+    "all",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testcontenthash.py:15.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_returns_16_hex_chars",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testcontenthash.py:15"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_returns_16_hex_chars",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_returns_16_hex_chars"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

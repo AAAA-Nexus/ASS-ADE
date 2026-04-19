@@ -1,0 +1,32 @@
+{
+  "body": "    def test_pipeline_history_empty(self, tmp_path: Path) -> None:\n        \"\"\"Pipeline history should handle missing workflows directory gracefully.\"\"\"\n        with patch(\"pathlib.Path.cwd\", return_value=tmp_path):\n            result = runner.invoke(\n                app,\n                [\"pipeline\", \"history\"],\n            )\n        \n        # Should exit cleanly with appropriate message\n        assert result.exit_code == 0\n        assert \"history\" in result.stdout.lower() or \"found\" in result.stdout.lower()\n",
+  "body_hash": "e0703c6df051b4fd",
+  "body_truncated": false,
+  "callers_of": [
+    "patch",
+    "invoke",
+    "lower"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpipelinerun.py:213.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_pipeline_history_empty",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpipelinerun.py:213"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_pipeline_history_empty",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_pipeline_history_empty"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,49 @@
+{
+  "body": "class TestValidateAgentCard:\n    def test_valid_minimal_card(self) -> None:\n        data = {\"name\": \"TestAgent\"}\n        report = validate_agent_card(data)\n        assert report.valid\n        assert report.card is not None\n        assert report.card.name == \"TestAgent\"\n\n    def test_valid_full_card(self) -> None:\n        data = {\n            \"name\": \"FullAgent\",\n            \"description\": \"A complete agent\",\n            \"url\": \"https://example.com\",\n            \"version\": \"1.0.0\",\n            \"provider\": {\"organization\": \"TestOrg\", \"url\": \"https://testorg.com\"},\n            \"capabilities\": {\"streaming\": True, \"pushNotifications\": False, \"stateTransitionHistory\": True},\n            \"authentication\": {\"schemes\": [\"bearer\"]},\n            \"skills\": [\n                {\"id\": \"skill1\", \"name\": \"Skill One\", \"description\": \"Does things\"},\n            ],\n            \"defaultInputModes\": [\"text/plain\"],\n            \"defaultOutputModes\": [\"text/plain\", \"application/json\"],\n        }\n        report = validate_agent_card(data)\n        assert report.valid\n        assert report.card is not None\n        assert report.card.name == \"FullAgent\"\n        assert report.card.capabilities.streaming is True\n        assert len(report.card.skills) == 1\n        assert report.card.skills[0].id == \"skill1\"\n\n    def test_missing_name_is_error(self) -> None:\n        data = {\"description\": \"no name\"}\n        report = validate_agent_card(data)\n        assert not report.valid\n        assert any(i.severity == \"error\" for i in report.issues)\n\n    def test_empty_name_is_error(self) -> None:\n        data = {\"name\": \"   \"}\n        report = validate_agent_card(data)\n        assert not report.valid\n\n    def test_missing_description_is_warning(self) -> None:\n        data = {\"name\": \"TestAgent\", \"url\": \"https://example.com\", \"version\": \"1.0\"}\n        report = validate_agent_card(data)\n        assert report.valid\n        assert any(i.severity == \"warning\" and i.field == \"description\" for i in report.issues)\n\n    def test_missing_url_is_warning(self) -> None:\n        data = {\"name\": \"TestAgent\", \"description\": \"desc\"}\n        report = validate_agent_card(data)\n        assert report.valid\n        assert any(i.severity == \"warning\" and i.field == \"url\" for i in report.issues)\n\n    def test_invalid_url_scheme_is_error(self) -> None:\n        data = {\"name\": \"TestAgent\", \"url\": \"ftp://bad.com\"}\n        report = validate_agent_card(data)\n        assert not report.valid\n        assert any(\"scheme\" in i.message for i in report.errors)\n\n    def test_missing_version_is_warning(self) -> None:\n        data = {\"name\": \"TestAgent\", \"url\": \"https://example.com\"}\n        report = validate_agent_card(data)\n        assert any(i.severity == \"warning\" and i.field == \"version\" for i in report.issues)\n\n    def test_no_skills_is_warning(self) -> None:\n        data = {\"name\": \"TestAgent\", \"url\": \"https://example.com\", \"version\": \"1.0\", \"description\": \"desc\"}\n        report = validate_agent_card(data)\n        assert any(i.severity == \"warning\" and i.field == \"skills\" for i in report.issues)\n\n    def test_skill_missing_id_is_error(self) -> None:\n        data = {\n            \"name\": \"TestAgent\",\n            \"url\": \"https://example.com\",\n            \"version\": \"1.0\",\n            \"skills\": [{\"id\": \"\", \"name\": \"Skill One\"}],\n        }\n        report = validate_agent_card(data)\n        assert not report.valid\n\n    def test_skill_missing_name_is_error(self) -> None:\n        data = {\n            \"name\": \"TestAgent\",\n            \"url\": \"https://example.com\",\n            \"version\": \"1.0\",\n            \"skills\": [{\"id\": \"s1\", \"name\": \"\"}],\n        }\n        report = validate_agent_card(data)\n        assert not report.valid\n\n    def test_auth_no_schemes_is_warning(self) -> None:\n        data = {\"name\": \"TestAgent\", \"authentication\": {\"schemes\": []}}\n        report = validate_agent_card(data)\n        assert any(i.severity == \"warning\" and \"schemes\" in i.field for i in report.issues)\n",
+  "body_hash": "d94aee02111815be",
+  "body_truncated": false,
+  "callers_of": [
+    "validate_agent_card",
+    "any",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:25.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.testvalidateagentcard",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.a2a.A2AAgentCard",
+    "ass_ade.a2a.A2AAuthentication",
+    "ass_ade.a2a.A2ASkill",
+    "ass_ade.a2a.ValidationIssue",
+    "ass_ade.a2a.ValidationReport",
+    "ass_ade.a2a.fetch_agent_card",
+    "ass_ade.a2a.local_agent_card",
+    "ass_ade.a2a.negotiate",
+    "ass_ade.a2a.validate_agent_card",
+    "httpx",
+    "httpx"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:25"
+  },
+  "kind": "pure_class",
+  "made_of": [],
+  "name": "TestValidateAgentCard",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestValidateAgentCard"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

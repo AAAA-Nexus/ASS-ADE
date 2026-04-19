@@ -1,0 +1,34 @@
+{
+  "body": "def test_prompt_download_happy_path():\n    \"\"\"Test prompt_download GET endpoint (returns raw dict).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json={\"prompts\": [{\"name\": \"prompt1\", \"text\": \"...\"}]})\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        result = client.prompt_download()\n        assert isinstance(result, dict)\n        assert \"prompts\" in result\n",
+  "body_hash": "cde0d0e264724c74",
+  "body_truncated": false,
+  "callers_of": [
+    "MockTransport",
+    "Response",
+    "NexusClient",
+    "prompt_download",
+    "isinstance"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_prompt_download_happy_path.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_prompt_download_happy_path",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_prompt_download_happy_path.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_prompt_download_happy_path",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_prompt_download_happy_path"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

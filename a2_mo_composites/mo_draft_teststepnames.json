@@ -1,0 +1,42 @@
+{
+  "body": "class TestStepNames:\n    def test_step_names_property(self) -> None:\n        pipe = Pipeline(\"names\")\n        pipe.add(\"alpha\", pass_step)\n        pipe.add(\"beta\", pass_step)\n        pipe.add(\"gamma\", fail_step)\n        assert pipe.step_names == [\"alpha\", \"beta\", \"gamma\"]\n\n    def test_name_property(self) -> None:\n        pipe = Pipeline(\"my-pipeline\")\n        assert pipe.name == \"my-pipeline\"\n",
+  "body_hash": "63aac73c2e7d0efb",
+  "body_truncated": false,
+  "callers_of": [
+    "Pipeline",
+    "add"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:270.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.teststepnames",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.pipeline.Pipeline",
+    "ass_ade.pipeline.PipelineResult",
+    "ass_ade.pipeline.StepResult",
+    "ass_ade.pipeline.StepStatus"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:270"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.add"
+  ],
+  "name": "TestStepNames",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestStepNames"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

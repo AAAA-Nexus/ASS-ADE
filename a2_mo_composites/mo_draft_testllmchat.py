@@ -1,0 +1,24 @@
+# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testllmchat.py:5
+# Component id: mo.source.ass_ade.testllmchat
+__version__ = "0.1.0"
+
+class TestLLMChat:
+    """Test `llm chat` command — run LLM inference."""
+
+    def test_llm_chat_success(self, tmp_path: Path, hybrid_config: Path) -> None:
+        """LLM chat should return inference result."""
+        mock_nx = MagicMock()
+        mock_nx.inference.return_value = InferenceResponse(
+            result="The capital of France is Paris.",
+            tokens_used=15,
+            model="llama-3.1-8b",
+        )
+        
+        with patch("ass_ade.cli.NexusClient", return_value=_make_ctx_mgr(mock_nx)):
+            result = runner.invoke(
+                app,
+                ["llm", "chat", "What is the capital of France?", "--config", str(hybrid_config)],
+            )
+        
+        assert result.exit_code == 0
+        assert "Paris" in result.stdout or "capital" in result.stdout

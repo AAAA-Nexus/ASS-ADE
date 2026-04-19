@@ -1,0 +1,31 @@
+{
+  "body": "    def test_report_structure(self) -> None:\n        b = BAS({})\n        r = b.report()\n        assert r[\"engine\"] == \"bas\"\n        assert \"alerts_total\" in r\n        assert \"alerts_session\" in r\n        assert \"unflushed\" in r\n        assert \"cooldown_s\" in r\n",
+  "body_hash": "40d49188c1af5cc3",
+  "body_truncated": false,
+  "callers_of": [
+    "BAS",
+    "report"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbas.py:100.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_report_structure",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbas.py:100"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_report_structure",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_report_structure"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

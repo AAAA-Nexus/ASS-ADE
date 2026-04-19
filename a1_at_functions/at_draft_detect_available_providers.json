@@ -1,0 +1,40 @@
+{
+  "body": "def detect_available_providers(\n    config_providers: dict[str, Any] | None = None,\n) -> list[ProviderProfile]:\n    \"\"\"Return all providers with API keys available (env or config overrides).\n\n    Local providers (ollama, lm studio) are always considered available even\n    though they may not be running \u2014 the actual reachability check happens at\n    request time, and a provider that 404s simply advances the fallback chain.\n    \"\"\"\n    overrides = config_providers or {}\n    available: list[ProviderProfile] = []\n    for name, profile in FREE_PROVIDERS.items():\n        user_override = overrides.get(name) if overrides else None\n        user_key = None\n        user_enabled = True\n        if isinstance(user_override, dict):\n            user_key = user_override.get(\"api_key\")\n            user_enabled = user_override.get(\"enabled\", True)\n        if not user_enabled:\n            continue\n        if profile.is_available(config_key=user_key):\n            available.append(profile)\n    return available\n",
+  "body_hash": "d59daefe9f9e7975",
+  "body_truncated": false,
+  "callers_of": [
+    "items",
+    "isinstance",
+    "is_available",
+    "get",
+    "append"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/providers.py:355.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.detect_available_providers",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/providers.py:355"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "detect_available_providers",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for detect_available_providers"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

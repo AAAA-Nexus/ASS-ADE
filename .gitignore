@@ -1,0 +1,67 @@
+# Python build artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+
+# Environments
+.env
+.venv/
+venv/
+
+# Dev / CI artifacts
+*.log
+*.log.*
+.pytest_tmp/
+*.txt
+test_output*
+test_summary*
+tests.txt
+
+# Local MCP config (use .mcp.json.example)
+.mcp.json
+
+# Dev-only directories (not part of the published output)
+src/
+tests/
+agents/
+docs/
+benchmarks/
+blueprints/
+examples/
+scripts/
+tools/
+training_data/
+mcp/
+skills/
+prompts/
+bin/
+hooks/
+
+# Dev tooling config
+.atomadic/
+.ass-ade/
+.claude/
+.cursor/
+CLAUDE.md
+pyrightconfig.json
+package.json
+node_modules/
+
+# Old tier stub directories
+mo_engines/
+og_swarm/
+sy_manifold/
+
+# Dev report artifacts
+RECON_REPORT.md
+ECO_SCAN_REPORT.md
+EVOLUTION.md
+SUCCESS_STORIES.md
+
+# OS
+.DS_Store
+Thumbs.db

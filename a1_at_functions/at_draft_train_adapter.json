@@ -1,0 +1,83 @@
+{
+  "body": "def train_adapter(cfg: TrainConfig, samples: list[dict[str, Any]]) -> Path:\n    \"\"\"Run a LoRA fine-tune on `samples`. Returns the adapter directory path.\"\"\"\n    try:\n        import torch\n        from datasets import Dataset\n        from peft import LoraConfig, TaskType, get_peft_model\n        from transformers import (\n            AutoModelForCausalLM,\n            AutoTokenizer,\n            DataCollatorForLanguageModeling,\n            Trainer,\n            TrainingArguments,\n        )\n    except ImportError as exc:\n        raise RuntimeError(\n            f\"LoRA training deps missing ({exc}). Install with: \"\n            \"pip install 'ass-ade[lora]' (pulls torch, transformers, peft, datasets, accelerate)\"\n        ) from exc\n\n    _log.info(\"loading base model %s\", cfg.base_model)\n    tokenizer = AutoTokenizer.from_pretrained(cfg.base_model, trust_remote_code=True)\n    if tokenizer.pad_token is None:\n        tokenizer.pad_token = tokenizer.eos_token\n    model = AutoModelForCausalLM.from_pretrained(\n        cfg.base_model,\n        torch_dtype=torch.bfloat16 if torch.cuda.is_available() else torch.float32,\n        device_map=\"auto\" if torch.cuda.is_available() else None,\n        trust_remote_code=True,\n    )\n\n    # Build the instruction-tuning dataset\n    def _format(sample: dict[str, Any]) -> str:\n        instruction = sample.get(\"instruction\", \"Fix the code.\")\n        bad = sample.get(\"input\", \"\")\n        good = sample.get(\"output\", \"\")\n        return (\n            f\"<|im_start|>user\\n{instruction}\\n\\n```\\n{bad}\\n```<|im_end|>\\n\"\n            f\"<|im_start|>assistant\\n```\\n{good}\\n```<|im_end|>\"\n        )\n\n    texts = [_format(s) for s in samples]\n    ds = Dataset.from_dict({\"text\": texts})\n\n    def _tok(batch: dict[str, list[str]]) -> dict[str, Any]:\n        out = tokenizer(\n            batch[\"text\"],\n            truncation=True,\n            max_length=cfg.max_length,\n            padding=False,\n        )\n        out[\"labels\"] = out[\"input_ids\"].copy()\n        return out\n\n    ds = ds.map(_tok, batched=True, remove_columns=[\"text\"])\n\n    # Attach LoRA adapter\n    lora_cfg = LoraConfig(\n        r=cfg.lora_rank,\n        lora_alpha=cfg.lora_alpha,\n        lora_dropout=cfg.lora_dropout,\n        bias=\"none\",\n        task_type=TaskType.CAUSAL_LM,\n        target_modules=[\"q_proj\", \"v_proj\", \"k_proj\", \"o_proj\"],\n    )\n    model = get_peft_model(model, lora_cfg)\n    trainable, total = 0, 0\n    for p in model.parameters():\n        total += p.numel()\n        if p.requires_grad:\n            trainable += p.numel()\n    _log.info(\n        \"LoRA parameters: trainable=%d total=%d (%.3f%%)\",\n        trainable,\n        total,\n        100 * trainable / max(total, 1),\n    )\n\n    cfg.output_dir.mkdir(parents=True, exist_ok=True)\n    args = TrainingArguments(\n        output_dir=str(cfg.output_dir / \"checkpoints\"),\n        num_train_epochs=cfg.epochs,\n        per_device_train_batch_size=cfg.batch_size,\n        learning_rate=cfg.learning_rate,\n        logging_steps=10,\n        save_strategy=\"no\",\n        report_to=[],\n        fp16=False,  # use bf16 when on CUDA\n        bf16=bool(torch.cuda.is_available()),\n        gradient_accumulation_steps=2,\n        warmup_ratio=0.03,\n        lr_scheduler_type=\"cosine\",\n        remove_unused_columns=False,\n    )\n\n    collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False)\n    trainer = Trainer(\n        model=model,\n        args=args,\n        train_dataset=ds,\n        data_collator=collator,\n    )\n    trainer.train()\n\n    # Save just the adapter (small, portable)\n    adapter_dir = cfg.output_dir / f\"adapter-{cfg.language}-{int(time.time())}\"\n    model.save_pretrained(str(adapter_dir))\n    tokenizer.save_pretrained(str(adapter_dir))\n    _log.info(\"adapter saved to %s\", adapter_dir)\n    return adapter_dir\n",
+  "body_hash": "a42ce679c1251f50",
+  "body_truncated": false,
+  "callers_of": [
+    "info",
+    "from_pretrained",
+    "from_dict",
+    "map",
+    "LoraConfig",
+    "get_peft_model",
+    "parameters",
+    "mkdir",
+    "TrainingArguments",
+    "DataCollatorForLanguageModeling",
+    "Trainer",
+    "train",
+    "save_pretrained",
+    "get",
+    "_format",
+    "tokenizer",
+    "copy",
+    "numel",
+    "str",
+    "RuntimeError",
+    "max",
+    "bool",
+    "is_available",
+    "int",
+    "time"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_train.py:101.",
+  "exceptions_raised": [
+    "RuntimeError"
+  ],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.train_adapter",
+  "imports": [
+    "__future__.annotations",
+    "argparse",
+    "hashlib",
+    "json",
+    "logging",
+    "os",
+    "sys",
+    "time",
+    "dataclasses.asdict",
+    "dataclasses.dataclass",
+    "pathlib.Path",
+    "typing.Any",
+    "httpx",
+    "subprocess",
+    "torch",
+    "datasets.Dataset",
+    "peft.LoraConfig",
+    "peft.TaskType",
+    "peft.get_peft_model",
+    "transformers.AutoModelForCausalLM",
+    "transformers.AutoTokenizer",
+    "transformers.DataCollatorForLanguageModeling",
+    "transformers.Trainer",
+    "transformers.TrainingArguments",
+    "huggingface_hub.HfApi",
+    "huggingface_hub.login"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_train.py:101"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "train_adapter",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for train_adapter"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

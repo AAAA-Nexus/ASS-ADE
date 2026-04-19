@@ -1,0 +1,33 @@
+{
+  "body": "    def get_statistics(self) -> dict:\n        \"\"\"Get task statistics.\"\"\"\n        all_tasks = self.list_all_tasks()\n        return {\n            \"total\": len(all_tasks),\n            \"by_status\": count_tasks_by_status(all_tasks),\n            \"completion_rate\": self._calculate_completion_rate(all_tasks),\n        }\n",
+  "body_hash": "01caf6edc69ee915",
+  "body_truncated": false,
+  "callers_of": [
+    "list_all_tasks",
+    "len",
+    "count_tasks_by_status",
+    "_calculate_completion_rate"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_taskmanager.py:44.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.get_statistics",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_taskmanager.py:44"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "get_statistics",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for get_statistics"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

@@ -1,0 +1,34 @@
+{
+  "body": "def build_assessment(root: Path, settings: AssAdeConfig) -> ProtocolAssessment:\n    repo_summary: RepoSummary = summarize_repo(root)\n    toolchain = collect_tool_status()\n\n    return ProtocolAssessment(\n        root=str(repo_summary.root),\n        total_files=repo_summary.total_files,\n        total_dirs=repo_summary.total_dirs,\n        top_level_entries=repo_summary.top_level_entries,\n        file_types=repo_summary.file_types,\n        toolchain=_tool_status_payload(toolchain),\n        profile=settings.profile,\n        local_mode_default=settings.profile == \"local\",\n    )\n",
+  "body_hash": "a4a17d33b21e1eb0",
+  "body_truncated": false,
+  "callers_of": [
+    "summarize_repo",
+    "collect_tool_status",
+    "ProtocolAssessment",
+    "str",
+    "_tool_status_payload"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_build_assessment.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.build_assessment",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_build_assessment.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "build_assessment",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for build_assessment"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

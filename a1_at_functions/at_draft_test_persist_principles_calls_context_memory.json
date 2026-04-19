@@ -1,0 +1,38 @@
+{
+  "body": "    def test_persist_principles_calls_context_memory(self):\n        from ass_ade.agent.wisdom import WisdomEngine\n        engine = WisdomEngine({})\n        engine._principles = [\"verify before acting\", \"halt on capability gap\"]\n\n        with patch(\"ass_ade.context_memory.store_vector_memory\") as mock_store:\n            count = engine.persist_principles()\n        assert count == 2\n",
+  "body_hash": "9048a4e40f015a95",
+  "body_truncated": false,
+  "callers_of": [
+    "WisdomEngine",
+    "patch",
+    "persist_principles"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwisdompersistence.py:6.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_persist_principles_calls_context_memory",
+  "imports": [
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwisdompersistence.py:6"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_persist_principles_calls_context_memory",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_persist_principles_calls_context_memory"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

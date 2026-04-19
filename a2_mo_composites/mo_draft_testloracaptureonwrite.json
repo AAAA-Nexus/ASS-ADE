@@ -1,0 +1,34 @@
+{
+  "body": "class TestLoRACaptureOnWrite:\n    def test_accepted_write_captures_fix(self, tmp_path, monkeypatch):\n        # Isolate LoRA state to tmp_path\n        monkeypatch.chdir(tmp_path)\n        server = _make_server(tmp_path)\n        args = {\"path\": str(tmp_path / \"module.py\"), \"content\": \"def g(): return 42\\n\"}\n        server._post_tool_hook(\"write_file\", args, MagicMock(success=True, output=\"wrote\"))\n        # Flywheel should have 1 captured fix\n        fly = server.lora_flywheel\n        if fly is not None:\n            kinds = [c.kind for c in fly._pending]\n            assert \"fix\" in kinds\n\n    def test_rejected_write_captures_rejection(self, tmp_path, monkeypatch):\n        monkeypatch.chdir(tmp_path)\n        server = _make_server(tmp_path)\n        args = {\"path\": str(tmp_path / \"bad.py\"), \"content\": \"def bad(:\\n    pass\\n\"}\n        server._post_tool_hook(\"write_file\", args, MagicMock(success=True, output=\"wrote\"))\n        fly = server.lora_flywheel\n        if fly is not None:\n            kinds = [c.kind for c in fly._pending]\n            assert \"rejection\" in kinds\n",
+  "body_hash": "68c67645ae8d1b95",
+  "body_truncated": false,
+  "callers_of": [
+    "chdir",
+    "_make_server",
+    "_post_tool_hook",
+    "str",
+    "MagicMock"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testloracaptureonwrite.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testloracaptureonwrite",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testloracaptureonwrite.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "TestLoRACaptureOnWrite",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestLoRACaptureOnWrite"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

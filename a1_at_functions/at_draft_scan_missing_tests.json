@@ -1,0 +1,44 @@
+{
+  "body": "def scan_missing_tests(root: Path) -> list[dict[str, Any]]:\n    src_dir = root / \"src\"\n    if not src_dir.exists():\n        src_dir = root\n    tests_dir = root / \"tests\"\n\n    src_files = [p for p in _walk_python_files(src_dir) if not p.name.startswith(\"test_\") and not p.name.endswith(\"_test.py\")]\n\n    test_files: set[str] = set()\n    if tests_dir.exists():\n        for p in _walk_python_files(tests_dir):\n            name = p.stem.removeprefix(\"test_\")\n            if p.stem.endswith(\"_test\"):\n                name = p.stem[:-5]\n            test_files.add(name)\n\n    findings: list[dict[str, Any]] = []\n    counter = 1\n    for src_file in src_files:\n        stem = src_file.stem\n        if stem in (\"__init__\", \"__main__\"):\n            continue\n        if stem not in test_files:\n            rel = str(src_file.relative_to(root))\n            findings.append({\n                \"id\": counter,\n                \"category\": \"missing_tests\",\n                \"title\": f\"No tests for {src_file.name}\",\n                \"description\": f\"{rel} has no corresponding test file under tests/.\",\n                \"file\": rel,\n                \"line\": None,\n                \"impact\": \"high\",\n                \"effort\": \"medium\",\n            })\n            counter += 1\n            if len(findings) >= 10:\n                break\n    return findings\n",
+  "body_hash": "ce107b5b55efb018",
+  "body_truncated": false,
+  "callers_of": [
+    "set",
+    "exists",
+    "_walk_python_files",
+    "removeprefix",
+    "endswith",
+    "add",
+    "str",
+    "append",
+    "relative_to",
+    "len",
+    "startswith"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/local/enhancer.py:37.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.scan_missing_tests",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/local/enhancer.py:37"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "scan_missing_tests",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for scan_missing_tests"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

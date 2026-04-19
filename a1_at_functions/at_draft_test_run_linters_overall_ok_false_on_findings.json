@@ -1,0 +1,32 @@
+{
+  "body": "def test_run_linters_overall_ok_false_on_findings(tmp_path: Path) -> None:\n    (tmp_path / \"pyproject.toml\").write_text(\"[tool.ruff]\\n\", encoding=\"utf-8\")\n    (tmp_path / \"bad.py\").write_text(\"import os\\n\", encoding=\"utf-8\")\n\n    ruff_with_findings = {\n        \"linter\": \"ruff\",\n        \"ok\": False,\n        \"error_count\": 5,\n        \"warning_count\": 0,\n        \"findings\": [{\"file\": \"bad.py\", \"row\": 1, \"col\": 1, \"code\": \"F401\", \"message\": \"unused\"}] * 5,\n        \"raw\": \"[]\",\n    }\n\n    with (\n        patch(\"ass_ade.local.linter.shutil.which\", side_effect=lambda cmd: cmd if cmd == \"ruff\" else None),\n        patch(\"ass_ade.local.linter.run_ruff\", return_value=ruff_with_findings),\n    ):\n        result = run_linters(tmp_path)\n\n    assert result[\"overall_ok\"] is False\n",
+  "body_hash": "aeba24509bbe2316",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "patch",
+    "run_linters"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_run_linters_overall_ok_false_on_findings.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_run_linters_overall_ok_false_on_findings",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_run_linters_overall_ok_false_on_findings.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_run_linters_overall_ok_false_on_findings",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_run_linters_overall_ok_false_on_findings"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

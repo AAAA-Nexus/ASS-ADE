@@ -1,0 +1,32 @@
+{
+  "body": "def test_draft_plan_respects_max_steps() -> None:\n    plan = draft_plan(\"Integrate AAAA-Nexus MCP discovery\", max_steps=3)\n\n    assert len(plan) == 3\n    assert plan[0].startswith(\"Define success criteria\")\n",
+  "body_hash": "0a6232379be75036",
+  "body_truncated": false,
+  "callers_of": [
+    "draft_plan",
+    "startswith",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_draft_plan_respects_max_steps.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_draft_plan_respects_max_steps",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_draft_plan_respects_max_steps.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_draft_plan_respects_max_steps",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_draft_plan_respects_max_steps"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

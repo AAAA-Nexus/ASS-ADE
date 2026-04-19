@@ -1,0 +1,59 @@
+{
+  "body": "    def step_stream(self, user_message: str) -> Iterator[StreamEvent]:\n        \"\"\"Process one user message, yielding StreamEvents in real-time.\n\n        The final text response is emitted as a 'done' event.\n\n        NOTE: This method does not produce token-by-token streaming. It calls\n        complete() internally and yields a single 'done' event with the full response.\n        Real streaming is not yet implemented.\n        \"\"\"\n        # \u2500\u2500 D_MAX=23 delegation depth guard \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n        self.reset_delegation_depth()\n\n        # \u2500\u2500 Epistemic routing \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n        self._last_routing = self._router.route(user_message)\n\n        # \u2500\u2500 LSE model selection \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n        step_model = self._select_model(self._last_routing)\n\n        # \u2500\u2500 Orchestrator pre-step hook \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n        pre_step: dict[str, Any] = {}\n        if self._orchestrator:\n            try:\n                pre_step = self._orchestrator.on_step_start(user_message, self._last_routing)\n            except Exception:\n                pass\n\n        # \u2500\u2500 Input gate \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n        if self._gates:\n            scan = self._gates.scan_prompt(user_message)\n            if scan and scan.get(\"blocked\"):\n                yield StreamEvent(kind=\"blocked\", text=\"Input rejected by security scan.\")\n                return\n\n        self._conversation.add_user(user_message)\n\n        # \u2500\u2500 Token budget \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n        tool_schemas = self._registry.schemas()\n        self._conversation.trim_to_budget(tool_schemas)\n\n        can_stream = isinstance(self._provider, OpenAICompatibleProvider)  # TODO: implement real streaming\n\n        for _round in range(self.MAX_TOOL_ROUNDS):\n            # \u2500\u2500 Non-streaming path (tool rounds or non-streamable provider) \u2500\u2500\u2500\n            response = self._call_model(model_override=step_model)\n            self._conversation.budget.update_from_usage(response.usage)\n\n            if response.message.tool_calls:\n                self._conversation.add_assistant(response.message)\n\n                for tc in response.message.tool_calls:\n                    yield StreamEvent(kind=\"tool_call\", tool_name=tc.name, tool_args=tc.arguments)\n\n                    if self._on_tool_call:\n                        self._on_tool_call(tc.name, tc.arguments)\n\n                    if self._gates:\n                        shield = self._gates.shield_tool(tc.name, tc.arguments)\n                        if shield and shield.get(\"blocked\"):\n                            result = ToolResult(\n                                error=f\"Tool blocked by security shield: {shield.get('reason', 'policy')}\",\n                                success=False,\n                            )\n                        else:\n                            result = self._registry.execute(tc.name, **tc.arguments)\n                    else:\n                        result = self._registry.execute(tc.name, **tc.arguments)\n\n                    yield StreamEvent(kind=\"tool_result\", tool_name=tc.name, tool_result=result)\n\n                    if self._on_tool_result:\n                        self._on_tool_result(tc.name, result)\n\n                    content = result.output if result.success else f\"[ERROR] {result.error}\"\n                    self._conversation.add_tool_result(tc.id, tc.name, content)\n\n                    # \u2500\u2500 Orchestrator tool-event hook \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n                    if self._orchestrator:\n                        try:\n                            content_str = result.output if result.success else result.error or \"\"\n                            self._orchestrator.on_tool_event(tc.name, tc.arguments, content_str)\n                        except Exception:\n                            pass\n\n                continue\n\n            # \u2500\u2500 Final response \u2014 stream text if possible \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n            text = response.message.content\n\n            if can_stream and not response.message.tool_calls:\n                # Re-do the last call as a streaming request\n                # (We already got the full response above, so use it)\n                pass  # TODO: implement real streaming \u2014 currently emits single 'done' event\n\n            if self._gates and text:\n                check = self._gates.check_hallucination(text)\n                if check and check.get(\"verdict\") == \"unsafe\":\n                    text += \"\\n\\n\u26a0\ufe0f [Nexus hallucination oracle flagged this \u2014 review carefully]\"\n\n            self._conversation.add_assistant(response.message)\n\n            if self._on_assistant:\n                self._on_assistant(text)\n\n            self._conversation.trim_to_budget(tool_schemas)\n            self._conversation.trim(max_messages=100)\n\n            # \u2500\u2500 Orchestrator step-end hook \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n            if self._orchestrator:\n                try:\n                    cycle_state = {\n                        \"tool_calls\": [tc.name for tc in response.message.tool_calls] if response.message.tool_calls else [],\n                        \"budget_ok\": True,\n                        \"hallucination_checked\": self._gates is not None,\n                        \"certified\": False,\n                        \"recon_done\": bool(pre_step.get(\"lifr_matches\")),\n                        \"atlas_used\": bool(pre_step.get(\"atlas_subtasks\")),\n                        \"lifr_queried\": bool(pre_step.get(\"lifr_matches\")),\n                        \"tdmi_computed\": False,\n                        \"map_terrain_done\": False,\n                        \"conviction\": 0.5,\n                    }\n                    self._last_cycle_report = self._orchestrator.on_step_end(text or \"\", cycle_state)\n                except Exception:\n                    pass\n\n            # Emit tokens character-by-character for rich display\n            # In a real streaming scenario, we'd stream from the provider\n            yield StreamEvent(kind=\"done\", text=text)\n            return\n\n        yield StreamEvent(kind=\"error\", text=\"Agent reached maximum tool rounds.\")\n",
+  "body_hash": "9fb81b0258bc3453",
+  "body_truncated": false,
+  "callers_of": [
+    "reset_delegation_depth",
+    "route",
+    "_select_model",
+    "add_user",
+    "schemas",
+    "trim_to_budget",
+    "isinstance",
+    "range",
+    "scan_prompt",
+    "_call_model",
+    "update_from_usage",
+    "add_assistant",
+    "trim",
+    "StreamEvent",
+    "on_step_start",
+    "get",
+    "check_hallucination",
+    "_on_assistant",
+    "add_tool_result",
+    "on_step_end",
+    "_on_tool_call",
+    "shield_tool",
+    "execute",
+    "_on_tool_result",
+    "bool",
+    "ToolResult",
+    "on_tool_event"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_agentloop.py:323.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.step_stream",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_agentloop.py:323"
+  },
+  "kind": "pure_function",
+  "made_of": [
+    "qk.source.ass_ade.schemas",
+    "qk.source.ass_ade.update_from_usage"
+  ],
+  "name": "step_stream",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for step_stream"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

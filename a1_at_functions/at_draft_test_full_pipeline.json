@@ -1,0 +1,41 @@
+{
+  "body": "    def test_full_pipeline(self):\n        gates = QualityGates(_mock_nexus())\n        results = gates.run_pipeline(prompt=\"What is Python?\", output=\"A programming language.\")\n        # Phase 1: SAM is now Stage 0, so 4 gates total: sam + scan + hallucination + certify\n        assert len(results) == 4\n        assert [r.gate for r in results] == [\"sam\", \"prompt_scan\", \"hallucination\", \"certify\"]\n        assert all(isinstance(r, GateResult) for r in results)\n        # SAM may fail on a mock nexus (trust score defaults to 0.8*something) \u2014 just ensure downstream gates pass\n        downstream = [r for r in results if r.gate != \"sam\"]\n        assert all(r.passed for r in downstream)\n",
+  "body_hash": "c39086a6a8b39fd5",
+  "body_truncated": false,
+  "callers_of": [
+    "QualityGates",
+    "run_pipeline",
+    "all",
+    "_mock_nexus",
+    "len",
+    "isinstance"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:146.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_full_pipeline",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "unittest.mock.MagicMock",
+    "ass_ade.agent.gates.GateResult",
+    "ass_ade.agent.gates.QualityGates"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:146"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_full_pipeline",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_full_pipeline"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

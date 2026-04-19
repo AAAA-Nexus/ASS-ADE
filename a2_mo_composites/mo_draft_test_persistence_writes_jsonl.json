@@ -1,0 +1,59 @@
+{
+  "body": "    def test_persistence_writes_jsonl(self, tmp_path: Path) -> None:\n        state_file = tmp_path / \"alerts.jsonl\"\n        b = BAS({\"bas_state_path\": str(state_file)})\n        b.alert(\"novelty_spike\", {\"novelty\": 0.8})\n        assert state_file.exists()\n        lines = [json.loads(line) for line in state_file.read_text().strip().splitlines()]\n        assert lines[0][\"kind\"] == \"novelty_spike\"\n",
+  "body_hash": "2de8dee8b6bd5194",
+  "body_truncated": false,
+  "callers_of": [
+    "BAS",
+    "alert",
+    "exists",
+    "loads",
+    "str",
+    "splitlines",
+    "strip",
+    "read_text"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:246.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.test_persistence_writes_jsonl",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "time",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.agent.audit_questions.AUDIT_QUESTIONS",
+    "ass_ade.agent.bas.BAS",
+    "ass_ade.agent.bas.Alert",
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.orchestrator.CycleReport",
+    "ass_ade.agent.orchestrator.EngineOrchestrator",
+    "ass_ade.agent.wisdom.AuditReport",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "collections.Counter",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.engine.provider.ModelProvider",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.tools.registry.default_registry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:246"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "test_persistence_writes_jsonl",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_persistence_writes_jsonl"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

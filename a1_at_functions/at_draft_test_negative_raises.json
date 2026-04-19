@@ -1,0 +1,31 @@
+{
+  "body": "    def test_negative_raises(self) -> None:\n        with pytest.raises(ValueError, match=\"positive\"):\n            validate_usdc_amount(-5.0)\n",
+  "body_hash": "a5e737c1e992f42e",
+  "body_truncated": false,
+  "callers_of": [
+    "raises",
+    "validate_usdc_amount"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateusdcamount.py:14.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_negative_raises",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateusdcamount.py:14"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_negative_raises",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_negative_raises"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,35 @@
+{
+  "body": "    def test_handle_x402_empty_body(self) -> None:\n        \"\"\"handle_x402 should handle empty or malformed 402 body.\"\"\"\n        client = self._make_client()\n        mock_response = httpx.Response(402, text=\"Payment Required\")\n        result = client.handle_x402(mock_response)\n        assert result[\"payment_required\"] is True\n        assert result[\"amount_usdc\"] == 0\n        assert result[\"network\"] == \"base\"\n        client.close()\n",
+  "body_hash": "d10cca782b8caf11",
+  "body_truncated": false,
+  "callers_of": [
+    "_make_client",
+    "Response",
+    "handle_x402",
+    "close"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testx402paymenthandling.py:49.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_handle_x402_empty_body",
+  "imports": [
+    "ass_ade.nexus.errors.NexusAuthError"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testx402paymenthandling.py:49"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_handle_x402_empty_body",
+  "product_categories": [
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for test_handle_x402_empty_body"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

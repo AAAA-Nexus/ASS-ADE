@@ -1,0 +1,31 @@
+{
+  "body": "    def test_depth(self, history: FileHistory):\n        assert history.depth(\"hello.py\") == 0\n        history.record(\"hello.py\", \"v1\")\n        assert history.depth(\"hello.py\") == 1\n        history.record(\"hello.py\", \"v2\")\n        assert history.depth(\"hello.py\") == 2\n",
+  "body_hash": "4d1fda67611260a6",
+  "body_truncated": false,
+  "callers_of": [
+    "record",
+    "depth"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testfilehistory.py:18.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_depth",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testfilehistory.py:18"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_depth",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_depth"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

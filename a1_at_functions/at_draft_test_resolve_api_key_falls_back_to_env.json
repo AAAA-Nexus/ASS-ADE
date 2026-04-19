@@ -1,0 +1,32 @@
+{
+  "body": "    def test_resolve_api_key_falls_back_to_env(self, monkeypatch):\n        monkeypatch.setenv(\"GROQ_API_KEY\", \"env-key-value\")\n        p = get_provider(\"groq\")\n        assert p.resolve_api_key() == \"env-key-value\"\n",
+  "body_hash": "8fa97472ac2ca68b",
+  "body_truncated": false,
+  "callers_of": [
+    "setenv",
+    "get_provider",
+    "resolve_api_key"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testproviderprofile.py:12.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_resolve_api_key_falls_back_to_env",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testproviderprofile.py:12"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_resolve_api_key_falls_back_to_env",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_resolve_api_key_falls_back_to_env"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

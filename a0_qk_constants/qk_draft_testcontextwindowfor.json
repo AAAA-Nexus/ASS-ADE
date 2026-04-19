@@ -1,0 +1,30 @@
+{
+  "body": "class TestContextWindowFor:\n    def test_known_model(self):\n        assert context_window_for(\"gpt-4o\") == 128_000\n\n    def test_claude_model(self):\n        assert context_window_for(\"claude-opus-4\") == 200_000\n\n    def test_unknown_model(self):\n        assert context_window_for(\"totally-unknown-model\") == DEFAULT_CONTEXT_WINDOW\n\n    def test_none_model(self):\n        assert context_window_for(None) == DEFAULT_CONTEXT_WINDOW\n\n    def test_fuzzy_match(self):\n        # Should match \"llama-3.1-8b\" as substring\n        assert context_window_for(\"ollama/llama-3.1-8b\") == 128_000\n\n    def test_case_insensitive(self):\n        assert context_window_for(\"GPT-4O\") == 128_000\n",
+  "body_hash": "d7ad779881b173eb",
+  "body_truncated": false,
+  "callers_of": [
+    "context_window_for"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testcontextwindowfor.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.testcontextwindowfor",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testcontextwindowfor.py:5"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "TestContextWindowFor",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestContextWindowFor"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

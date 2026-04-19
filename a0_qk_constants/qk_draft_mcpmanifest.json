@@ -1,0 +1,36 @@
+{
+  "body": "class MCPManifest(NexusModel):\n    name: str\n    version: str | None = None\n    mcpVersion: str | None = None\n    serverUrl: str | None = None\n    tools: list[MCPTool] = Field(default_factory=list)\n",
+  "body_hash": "5f3f4c238da0a9f7",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/models.py:100.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.mcpmanifest",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/models.py:100"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "MCPManifest",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for MCPManifest"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

@@ -1,0 +1,41 @@
+{
+  "body": "def lora_train(\n    lang: str = typer.Option(\"python\", help=\"Target language.\"),\n    profile: str = typer.Option(\"fast\", help=\"Model profile: fast | medium | large.\"),\n    base_model: str = typer.Option(\"\", help=\"Override base-model HF id (blank = use profile default).\"),\n    epochs: int = typer.Option(3, help=\"Training epochs.\"),\n    lora_rank: int = typer.Option(8, help=\"LoRA adapter rank.\"),\n    max_samples: int = typer.Option(1000, help=\"Max samples to pull.\"),\n    min_samples: int = typer.Option(20, help=\"Skip training if pool < this.\"),\n    upload: str = typer.Option(\"hf\", help=\"Upload backend: hf | r2 | local.\"),\n    hf_repo: str = typer.Option(\"\", help=\"HuggingFace repo id (blank = don't upload to HF).\"),\n    output_dir: Path = typer.Option(Path(\".lora-train-output\"), help=\"Where to stash checkpoints + receipts.\"),\n    config: Path | None = CONFIG_OPTION,\n) -> None:\n    \"\"\"Fine-tune a shared LoRA adapter from the live sample pool and promote it.\n\n    Prerequisites:\n      - pip install 'ass-ade[lora]'\n      - AAAA_NEXUS_OWNER_TOKEN env var (owner-only samples export)\n      - HF_TOKEN env var if uploading to Hugging Face\n\n    Runs: fetch_samples -> LoRA fine-tune -> upload -> promote on atomadic.tech.\n    \"\"\"\n    import os as _os\n    import subprocess as _sp\n\n    _, settings = _resolve_config(config)\n\n    env = {\n        **_os.environ,\n        \"AAAA_NEXUS_BASE_URL\": settings.nexus_base_url,\n    }\n    cmd = [\n        sys.executable, \"-m\", \"scripts.lora_train\",\n        \"--lang\", lang,\n        \"--profile\", profile,\n        \"--epochs\", str(epochs),\n        \"--lora-rank\", str(lora_rank),\n        \"--max-samples\", str(max_samples),\n        \"--min-samples\", str(min_samples),\n        \"--upload\", upload,\n        \"--output-dir\", str(output_dir),\n        \"--storefront\", settings.nexus_base_url,\n    ]\n    if base_model:\n        cmd.extend([\"--base-model\", base_model])\n    if hf_repo:\n        cmd.extend([\"--hf-repo\", hf_repo])\n    _ = config  # acknowledge param, used only to resolve settings above\n    console.print(f\"[dim]$ {' '.join(cmd)}[/dim]\")\n    # Stream stdout/stderr so the user sees training progress live.\n    rc = _sp.call(cmd, env=env)\n    raise typer.Exit(code=rc)\n",
+  "body_hash": "0b2656b9b7158dd3",
+  "body_truncated": false,
+  "callers_of": [
+    "Option",
+    "_resolve_config",
+    "print",
+    "call",
+    "Exit",
+    "Path",
+    "str",
+    "extend",
+    "join"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_lora_train.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.lora_train",
+  "imports": [
+    "os",
+    "subprocess"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_lora_train.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "lora_train",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for lora_train"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

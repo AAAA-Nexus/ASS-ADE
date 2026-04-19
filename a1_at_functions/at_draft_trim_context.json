@@ -1,0 +1,50 @@
+{
+  "body": "    def trim_context(self, context: str, target_tokens: int) -> str | None:\n        \"\"\"Trim context using Nexus memory_trim for optimal token usage.\n\n        Falls back to None if Nexus is unavailable (caller uses local trim).\n        \"\"\"\n        try:\n            result = self._client.memory_trim(context=context, target_tokens=target_tokens)\n            gate = GateResult(\n                gate=\"memory_trim\",\n                passed=True,\n                confidence=1.0,\n                details={\"target_tokens\": target_tokens},\n            )\n            self._gate_log.append(gate)\n            return result.trimmed_context\n        except Exception as _exc:  # noqa: BLE001\n            logging.getLogger(__name__).warning(\n                \"Gate %s failed (fail-open): %s: %s\",\n                \"trim_context\",\n                type(_exc).__name__,\n                _exc,\n            )\n            return None\n",
+  "body_hash": "43b0cb834afc6618",
+  "body_truncated": false,
+  "callers_of": [
+    "memory_trim",
+    "GateResult",
+    "append",
+    "warning",
+    "getLogger",
+    "type"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_qualitygates.py:129.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.trim_context",
+  "imports": [
+    "ast",
+    "re",
+    "json",
+    "datetime.UTC",
+    "datetime.datetime",
+    "pathlib.Path",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "ass_ade.agent.trust_gate.TrustVerificationGate",
+    "ass_ade.agent.proofbridge.ProofBridge",
+    "ass_ade.agent.alphaverus.AlphaVerus",
+    "ass_ade.agent.dgm_h.DGMH",
+    "ass_ade.agent.dgm_h.Patch",
+    "ass_ade.agent.golden_runner.run_golden",
+    "ass_ade.agent.sam.SAM"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_qualitygates.py:129"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "trim_context",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for trim_context"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

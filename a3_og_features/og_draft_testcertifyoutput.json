@@ -1,0 +1,57 @@
+{
+  "body": "class TestCertifyOutput:\n    def test_full_certification_passes(self) -> None:\n        result = certify_output(_mock_client(), \"This is a safe output.\")\n        assert result.passed is True\n        assert result.certificate_id == \"cert-123\"\n        assert result.lineage_id == \"lin-456\"\n\n    def test_hallucination_failure_blocks(self) -> None:\n        client = _mock_client()\n        client.hallucination_oracle.return_value = HallucinationResult(verdict=\"unsafe\")\n        result = certify_output(client, \"Suspicious output that is unsafe.\")\n        assert result.passed is False\n\n    def test_empty_text_raises(self) -> None:\n        with pytest.raises(ValueError, match=\"must not be empty\"):\n            certify_output(_mock_client(), \"\")\n\n    def test_text_preview_truncated(self) -> None:\n        long_text = \"A\" * 200\n        result = certify_output(_mock_client(), long_text)\n        assert len(result.text_preview) == 120\n",
+  "body_hash": "d191abfdc34b07df",
+  "body_truncated": false,
+  "callers_of": [
+    "certify_output",
+    "_mock_client",
+    "HallucinationResult",
+    "raises",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_workflows.py:151.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "og.source.ass_ade.testcertifyoutput",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "unittest.mock.MagicMock",
+    "pytest",
+    "ass_ade.nexus.errors.NexusServerError",
+    "ass_ade.nexus.models.AegisProxyResult",
+    "ass_ade.nexus.models.CertifiedOutput",
+    "ass_ade.nexus.models.ComplianceResult",
+    "ass_ade.nexus.models.EthicsCheckResult",
+    "ass_ade.nexus.models.HallucinationResult",
+    "ass_ade.nexus.models.IdentityVerification",
+    "ass_ade.nexus.models.LineageRecord",
+    "ass_ade.nexus.models.PromptScanResult",
+    "ass_ade.nexus.models.ReputationScore",
+    "ass_ade.nexus.models.ShieldResult",
+    "ass_ade.nexus.models.SybilCheckResult",
+    "ass_ade.nexus.models.TrustScore",
+    "ass_ade.workflows.certify_output",
+    "ass_ade.workflows.safe_execute",
+    "ass_ade.workflows.trust_gate"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_workflows.py:151"
+  },
+  "kind": "product_organism",
+  "made_of": [
+    "mo.source.ass_ade.hallucinationresult"
+  ],
+  "name": "TestCertifyOutput",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestCertifyOutput"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a3_og_features",
+  "version": "0.1.0"
+}

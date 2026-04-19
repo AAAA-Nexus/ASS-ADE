@@ -1,0 +1,54 @@
+{
+  "body": "    def test_exception_handling_identity_sanitized(self) -> None:\n        \"\"\"Exception in identity_verify should not leak raw exception to caller.\"\"\"\n        client = _mock_client()\n        client.identity_verify.side_effect = RuntimeError(\"Connection timeout to server\")\n        result = trust_gate(client, \"agent-error\")\n        # Verify detail is generic, not raw exception\n        identity_step = next(s for s in result.steps if s.name == \"identity_verify\")\n        assert identity_step.detail == \"step_failed\"\n        assert \"Connection\" not in identity_step.detail\n        assert \"timeout\" not in identity_step.detail\n        assert result.verdict == \"DENY\"\n",
+  "body_hash": "6e73dd3a5a1bb347",
+  "body_truncated": false,
+  "callers_of": [
+    "_mock_client",
+    "RuntimeError",
+    "trust_gate",
+    "next"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_workflows.py:106.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "og.source.ass_ade.test_exception_handling_identity_sanitized",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "unittest.mock.MagicMock",
+    "pytest",
+    "ass_ade.nexus.errors.NexusServerError",
+    "ass_ade.nexus.models.AegisProxyResult",
+    "ass_ade.nexus.models.CertifiedOutput",
+    "ass_ade.nexus.models.ComplianceResult",
+    "ass_ade.nexus.models.EthicsCheckResult",
+    "ass_ade.nexus.models.HallucinationResult",
+    "ass_ade.nexus.models.IdentityVerification",
+    "ass_ade.nexus.models.LineageRecord",
+    "ass_ade.nexus.models.PromptScanResult",
+    "ass_ade.nexus.models.ReputationScore",
+    "ass_ade.nexus.models.ShieldResult",
+    "ass_ade.nexus.models.SybilCheckResult",
+    "ass_ade.nexus.models.TrustScore",
+    "ass_ade.workflows.certify_output",
+    "ass_ade.workflows.safe_execute",
+    "ass_ade.workflows.trust_gate"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_workflows.py:106"
+  },
+  "kind": "product_organism",
+  "made_of": [],
+  "name": "test_exception_handling_identity_sanitized",
+  "product_categories": [
+    "IDT"
+  ],
+  "provides": [
+    "rebuild candidate for test_exception_handling_identity_sanitized"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a3_og_features",
+  "version": "0.1.0"
+}

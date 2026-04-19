@@ -1,0 +1,31 @@
+{
+  "body": "    def test_empty_string(self):\n        h = content_hash(\"\")\n        assert len(h) == 16\n",
+  "body_hash": "d313ebb837e436b6",
+  "body_truncated": false,
+  "callers_of": [
+    "content_hash",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testcontenthash.py:20.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_empty_string",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testcontenthash.py:20"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_empty_string",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_empty_string"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

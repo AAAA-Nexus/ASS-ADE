@@ -1,0 +1,43 @@
+{
+  "body": "def test_rebuild_json_output(tmp_path: Path) -> None:\n    src = tmp_path / \"proj\"\n    src.mkdir()\n    (src / \"util.py\").write_text(\"def add(a, b): return a + b\\n\", encoding=\"utf-8\")\n    out = tmp_path / \"proj-out\"\n\n    result = runner.invoke(app, [\"rebuild\", str(src), str(out), \"--yes\", \"--no-certify\", \"--json\"])\n\n    assert result.exit_code == 0\n    payload = json.loads(result.stdout)\n    assert payload.get(\"ok\") is True\n    assert \"components_written\" in payload\n    assert \"by_tier\" in payload\n",
+  "body_hash": "8ce259e39b38e5ef",
+  "body_truncated": false,
+  "callers_of": [
+    "mkdir",
+    "write_text",
+    "invoke",
+    "loads",
+    "get",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli.py:165.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_rebuild_json_output",
+  "imports": [
+    "json",
+    "pathlib.Path",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.cli._auto_detect_project"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli.py:165"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_rebuild_json_output",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_rebuild_json_output"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

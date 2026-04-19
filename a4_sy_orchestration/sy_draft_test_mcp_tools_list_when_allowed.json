@@ -1,0 +1,53 @@
+{
+  "body": "def test_mcp_tools_list_when_allowed(monkeypatch, tmp_path: Path) -> None:\n    # Fake manifest returned by NexusClient\n    manifest = MCPManifest(name=\"demo\", tools=[MCPTool(name=\"echo\", endpoint=\"/echo\", method=\"POST\", paid=False)])\n\n    class FakeClient:\n        def __init__(self, base_url: str, timeout: float = 20.0, transport=None, api_key: str | None = None):\n            pass\n\n        def __enter__(self):\n            return self\n\n        def __exit__(self, exc_type, exc, tb):\n            return False\n\n        def get_mcp_manifest(self):\n            return manifest\n\n    monkeypatch.setattr(\"ass_ade.cli.NexusClient\", FakeClient)\n\n    config_path = tmp_path / \".ass-ade\" / \"config.json\"\n    write_default_config(config_path, config=AssAdeConfig(profile=\"hybrid\"), overwrite=True)\n\n    result = runner.invoke(app, [\"mcp\", \"tools\", \"--config\", str(config_path)])\n\n    assert result.exit_code == 0\n    assert \"MCP Tools\" in result.stdout\n    assert \"echo\" in result.stdout\n",
+  "body_hash": "be2482e3a03780f4",
+  "body_truncated": false,
+  "callers_of": [
+    "MCPManifest",
+    "setattr",
+    "write_default_config",
+    "invoke",
+    "AssAdeConfig",
+    "str",
+    "MCPTool"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp.py:24.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_mcp_tools_list_when_allowed",
+  "imports": [
+    "pathlib.Path",
+    "httpx",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.mcp.utils.invoke_tool",
+    "ass_ade.nexus.models.MCPManifest",
+    "ass_ade.nexus.models.MCPTool",
+    "ass_ade.nexus.models.CostEstimate",
+    "json",
+    "httpx",
+    "ass_ade.mcp.mock_server.start_server",
+    "httpx",
+    "ass_ade.mcp.mock_server._MAX_BODY_BYTES",
+    "ass_ade.mcp.mock_server.start_server"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp.py:24"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "test_mcp_tools_list_when_allowed",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_mcp_tools_list_when_allowed"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

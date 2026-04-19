@@ -1,0 +1,39 @@
+{
+  "body": "    def test_write_without_read_is_allowed_in_warn_mode(self, tmp_path):\n        server = _make_server(tmp_path)\n        # Default mode is \"warn\" \u2192 returns (True, \"\")\n        allow, reason = server._pre_tool_hook(\"write_file\", _mk_args(tmp_path / \"new.py\"))\n        assert allow is True\n",
+  "body_hash": "22bcc943e62ec7b7",
+  "body_truncated": false,
+  "callers_of": [
+    "_make_server",
+    "_pre_tool_hook",
+    "_mk_args"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_gates.py:51.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_write_without_read_is_allowed_in_warn_mode",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "pytest",
+    "ass_ade.mcp.server.MCPServer"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_gates.py:51"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "test_write_without_read_is_allowed_in_warn_mode",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_write_without_read_is_allowed_in_warn_mode"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

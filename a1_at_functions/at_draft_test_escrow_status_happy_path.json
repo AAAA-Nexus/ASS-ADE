@@ -1,0 +1,33 @@
+{
+  "body": "def test_escrow_status_happy_path():\n    \"\"\"Test escrow_status GET endpoint.\"\"\"\n    def handler(request):\n        assert \"/v1/escrow/status/\" in request.url.path\n        return httpx.Response(200, json={\"escrow_id\": \"escrow_123\", \"status\": \"locked\", \"amount\": 100.0})\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        result = client.escrow_status(escrow_id=\"escrow_123\")\n        assert result is not None\n",
+  "body_hash": "004e6a6a10764438",
+  "body_truncated": false,
+  "callers_of": [
+    "MockTransport",
+    "Response",
+    "NexusClient",
+    "escrow_status"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_escrow_status_happy_path.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_escrow_status_happy_path",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_escrow_status_happy_path.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_escrow_status_happy_path",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_escrow_status_happy_path"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,32 @@
+{
+  "body": "    def test_from_payment_result_success(self) -> None:\n        \"\"\"PaymentProof should parse from a successful PaymentResult.\"\"\"\n        result = PaymentResult(\n            success=True,\n            txid=\"0xabc123\",\n            signature_header=\"sig123;0x1234567890abcdef;0xabc123;8000\",\n            testnet=True,\n        )\n        proof = PaymentProof.from_payment_result(result)\n        assert proof is not None\n        assert proof.signature == \"sig123\"\n        assert proof.wallet_address == \"0x1234567890abcdef\"\n        assert proof.transaction_id == \"0xabc123\"\n        assert proof.amount_micro_usdc == 8000\n",
+  "body_hash": "d6de3fdbe04447cb",
+  "body_truncated": false,
+  "callers_of": [
+    "PaymentResult",
+    "from_payment_result"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testpaymentproof.py:6.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.test_from_payment_result_success",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testpaymentproof.py:6"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "test_from_payment_result_success",
+  "product_categories": [
+    "DCM",
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for test_from_payment_result_success"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

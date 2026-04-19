@@ -1,0 +1,44 @@
+{
+  "body": "def content_hash(text: str) -> str:\n    \"\"\"SHA-256 (first 16 hex chars) of whitespace-normalised content.\"\"\"\n    normalised = \"\\n\".join(line.rstrip() for line in text.splitlines()).strip()\n    return hashlib.sha256(normalised.encode(\"utf-8\")).hexdigest()[:16]\n",
+  "body_hash": "7f5b55a95ee5e09f",
+  "body_truncated": false,
+  "callers_of": [
+    "strip",
+    "hexdigest",
+    "join",
+    "sha256",
+    "rstrip",
+    "encode",
+    "splitlines"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/version_tracker.py:65.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.content_hash",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "hashlib",
+    "json",
+    "re",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/version_tracker.py:65"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "content_hash",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for content_hash"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

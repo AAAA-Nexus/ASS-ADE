@@ -1,0 +1,32 @@
+{
+  "body": "    def tick(self) -> BatchResult | None:\n        \"\"\"Advance step counter. Returns BatchResult if batch was submitted.\"\"\"\n        self._step_count += 1\n        if self._step_count % self._batch_interval == 0 and self._pending:\n            return self.contribute_batch()\n        return None\n",
+  "body_hash": "d500bd597b8346d3",
+  "body_truncated": false,
+  "callers_of": [
+    "contribute_batch"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_loraflywheel.py:132.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.tick",
+  "imports": [
+    "hashlib"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_loraflywheel.py:132"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "tick",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for tick"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

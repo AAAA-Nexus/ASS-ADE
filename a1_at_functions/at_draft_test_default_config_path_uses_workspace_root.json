@@ -1,0 +1,30 @@
+{
+  "body": "def test_default_config_path_uses_workspace_root(tmp_path: Path) -> None:\n    assert default_config_path(tmp_path) == tmp_path / \".ass-ade\" / \"config.json\"\n",
+  "body_hash": "52688878f4f89d69",
+  "body_truncated": false,
+  "callers_of": [
+    "default_config_path"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_default_config_path_uses_workspace_root.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_default_config_path_uses_workspace_root",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_default_config_path_uses_workspace_root.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_default_config_path_uses_workspace_root",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_default_config_path_uses_workspace_root"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

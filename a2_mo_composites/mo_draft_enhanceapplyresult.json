@@ -1,0 +1,34 @@
+{
+  "body": "class EnhanceApplyResult(NexusModel):\n    ok: bool = False\n    path: str | None = None\n    applied_count: int = 0\n    blueprints: list[dict[str, Any]] = []\n    rebuild_triggered: bool = False\n    certified: bool = False\n    lora_captured: bool = False\n    credit_used: float | None = None\n    message: str | None = None\n",
+  "body_hash": "e77c97d963eeddf0",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/models.py:1170.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.enhanceapplyresult",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/models.py:1170"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "EnhanceApplyResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for EnhanceApplyResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

@@ -1,0 +1,50 @@
+{
+  "body": "def negotiate(local: A2AAgentCard, remote: A2AAgentCard) -> NegotiationResult:\n    \"\"\"Compare two agent cards and assess interoperability.\n\n    Checks:\n      - Skill overlap (by skill id)\n      - Authentication compatibility\n      - Input/output mode compatibility\n    \"\"\"\n    local_skill_ids = {s.id for s in local.skills}\n    remote_skill_ids = {s.id for s in remote.skills}\n\n    shared = sorted(local_skill_ids & remote_skill_ids)\n    local_only = sorted(local_skill_ids - remote_skill_ids)\n    remote_only = sorted(remote_skill_ids - local_skill_ids)\n\n    # Auth compat: if remote requires auth, check local can provide it\n    auth_ok = True\n    notes: list[str] = []\n\n    if remote.authentication and remote.authentication.schemes:\n        local_schemes = set(local.authentication.schemes) if local.authentication else set()\n        required = set(remote.authentication.schemes)\n        if not required & local_schemes:\n            auth_ok = False\n            notes.append(\n                f\"Auth mismatch: remote requires {required}, local has {local_schemes or 'none'}\"\n            )\n\n    # I/O mode compat\n    local_in = set(local.defaultInputModes)\n    remote_out = set(remote.defaultOutputModes)\n    if not local_in & remote_out:\n        notes.append(f\"Output format mismatch: remote outputs {remote_out}, local accepts {local_in}\")\n\n    compatible = bool(shared) and auth_ok\n\n    return NegotiationResult(\n        compatible=compatible,\n        shared_skills=shared,\n        local_only=local_only,\n        remote_only=remote_only,\n        auth_compatible=auth_ok,\n        notes=notes,\n    )\n",
+  "body_hash": "f9a9df801560669e",
+  "body_truncated": false,
+  "callers_of": [
+    "sorted",
+    "set",
+    "NegotiationResult",
+    "append",
+    "bool"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/a2a/__init__.py:261.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.negotiate",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "socket",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any",
+    "urllib.parse.urlparse",
+    "httpx",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "pydantic.ValidationError",
+    "pydantic.field_validator",
+    "ass_ade.__version__",
+    "ass_ade.nexus.validation.validate_https_public_url",
+    "ass_ade.tools.registry.default_registry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/a2a/__init__.py:261"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "negotiate",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for negotiate"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

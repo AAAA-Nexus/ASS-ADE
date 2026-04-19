@@ -1,0 +1,32 @@
+{
+  "body": "    def test_route_without_nexus(self):\n        router = EpistemicRouter()\n        decision = router.route(\"Hello world\")\n        assert isinstance(decision, RoutingDecision)\n        assert decision.source == \"local\"\n",
+  "body_hash": "b381180bbc22180a",
+  "body_truncated": false,
+  "callers_of": [
+    "EpistemicRouter",
+    "route",
+    "isinstance"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testepistemicrouter.py:6.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_route_without_nexus",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testepistemicrouter.py:6"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "test_route_without_nexus",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_route_without_nexus"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

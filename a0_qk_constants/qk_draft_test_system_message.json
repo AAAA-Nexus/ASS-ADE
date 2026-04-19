@@ -1,0 +1,31 @@
+{
+  "body": "    def test_system_message(self):\n        msg = Message(role=\"system\", content=\"You are an AI assistant.\")\n        tokens = estimate_message_tokens(msg)\n        assert tokens >= 5\n",
+  "body_hash": "f5ca3b4a24c8f586",
+  "body_truncated": false,
+  "callers_of": [
+    "Message",
+    "estimate_message_tokens"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testestimatemessagetokens.py:21.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.test_system_message",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testestimatemessagetokens.py:21"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "test_system_message",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_system_message"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

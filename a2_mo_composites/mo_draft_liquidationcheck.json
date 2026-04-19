@@ -1,0 +1,28 @@
+{
+  "body": "class LiquidationCheck(NexusModel):\n    \"\"\"/v1/defi/liquidation-check \u2014 LQS-100\"\"\"\n    health_factor: float | None = None\n    time_to_liquidation_s: int | None = None\n    recommended_top_up_usdc: float | None = None\n",
+  "body_hash": "d4da83dcdef92ec1",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_liquidationcheck.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.liquidationcheck",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_liquidationcheck.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "LiquidationCheck",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for LiquidationCheck"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

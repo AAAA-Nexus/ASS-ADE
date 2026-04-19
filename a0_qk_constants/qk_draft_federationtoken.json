@@ -1,0 +1,30 @@
+{
+  "body": "class FederationToken(NexusModel):\n    \"\"\"/v1/federation/mint \u2014 AIF-100\"\"\"\n    token: str | None = None          # nxf_\u2026 prefixed\n    identity_record: dict | None = None\n    platforms: list[str] = Field(default_factory=list)\n",
+  "body_hash": "a69426e9019590a3",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_federationtoken.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.federationtoken",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_federationtoken.py:5"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "FederationToken",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for FederationToken"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

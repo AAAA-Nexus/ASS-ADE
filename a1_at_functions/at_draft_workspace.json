@@ -1,0 +1,38 @@
+{
+  "body": "def workspace(tmp_path: Path) -> Path:\n    (tmp_path / \"main.py\").write_text(\"def main():\\n    pass\\n\", encoding=\"utf-8\")\n    (tmp_path / \"utils.py\").write_text(\"def helper():\\n    return 42\\n\", encoding=\"utf-8\")\n    return tmp_path\n",
+  "body_hash": "a13450192f4c7941",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:14.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.workspace",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.tools.history.FileHistory",
+    "ass_ade.tools.plan.EditKind",
+    "ass_ade.tools.plan.EditPlan",
+    "ass_ade.tools.plan.EditPlanExecutor"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:14"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "workspace",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for workspace"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

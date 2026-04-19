@@ -1,0 +1,36 @@
+{
+  "body": "    def test_report_tracks_decisions(self):\n        lse = self._make()\n        lse.select(trs_score=0.8)\n        lse.select(trs_score=0.5)\n        rep = lse.report()\n        assert rep[\"decisions\"] == 2\n        assert \"tier_distribution\" in rep\n        assert \"provider_distribution\" in rep\n        assert \"avg_trs\" in rep\n",
+  "body_hash": "4b9eb370d6d52d72",
+  "body_truncated": false,
+  "callers_of": [
+    "_make",
+    "select",
+    "report"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testlseengine.py:62.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.test_report_tracks_decisions",
+  "imports": [
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.agent.providers.FREE_PROVIDERS",
+    "ass_ade.agent.lse._LEGACY_TIER_TO_MODEL"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testlseengine.py:62"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "test_report_tracks_decisions",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_report_tracks_decisions"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

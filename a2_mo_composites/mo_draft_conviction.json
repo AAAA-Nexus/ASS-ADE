@@ -1,0 +1,31 @@
+{
+  "body": "    def conviction(self) -> float:\n        return self._conviction\n",
+  "body_hash": "76b12d86cdbab32f",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_wisdomengine.py:19.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.conviction",
+  "imports": [
+    "ass_ade.context_memory.query_vector_memory",
+    "ass_ade.context_memory.store_vector_memory"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_wisdomengine.py:19"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "conviction",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for conviction"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

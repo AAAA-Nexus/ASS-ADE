@@ -1,0 +1,39 @@
+{
+  "body": "    def test_trim_context_exception(self):\n        client = MagicMock()\n        client.memory_trim.side_effect = Exception(\"fail\")\n        gates = QualityGates(client)\n        assert gates.trim_context(\"text\", 100) is None\n",
+  "body_hash": "366287d4c3bdab37",
+  "body_truncated": false,
+  "callers_of": [
+    "MagicMock",
+    "Exception",
+    "QualityGates",
+    "trim_context"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:113.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_trim_context_exception",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "unittest.mock.MagicMock",
+    "ass_ade.agent.gates.GateResult",
+    "ass_ade.agent.gates.QualityGates"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:113"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_trim_context_exception",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_trim_context_exception"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

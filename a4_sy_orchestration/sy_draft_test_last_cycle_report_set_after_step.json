@@ -1,0 +1,39 @@
+{
+  "body": "    def test_last_cycle_report_set_after_step(self) -> None:\n        o = EngineOrchestrator({})\n        loop = self._make_loop(orchestrator=o)\n        loop.step(\"Write hello world\")\n        assert loop.last_cycle_report is not None\n        assert isinstance(loop.last_cycle_report, CycleReport)\n",
+  "body_hash": "13c8324a04cf7713",
+  "body_truncated": false,
+  "callers_of": [
+    "EngineOrchestrator",
+    "_make_loop",
+    "step",
+    "isinstance"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testagentlooporchestrator.py:32.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_last_cycle_report_set_after_step",
+  "imports": [
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.engine.provider.ModelProvider",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.tools.registry.default_registry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testagentlooporchestrator.py:32"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "test_last_cycle_report_set_after_step",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_last_cycle_report_set_after_step"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

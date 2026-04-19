@@ -1,0 +1,32 @@
+{
+  "body": "def test_context_packet_includes_file_hashes(tmp_path: Path) -> None:\n    _seed_repo(tmp_path)\n\n    packet = build_context_packet(\n        task_description=\"Add an MCP tool schema\",\n        working_dir=tmp_path,\n        file_paths=[\"src/mcp_server.py\"],\n        source_urls=[\"https://modelcontextprotocol.io/specification/2025-11-25/server/tools\"],\n    )\n\n    assert packet.recon_verdict == \"READY_FOR_PHASE_1\"\n    assert packet.files[0].path == \"src/mcp_server.py\"\n    assert len(packet.files[0].sha256) == 64\n",
+  "body_hash": "c6d5ecf0908ea3f3",
+  "body_truncated": false,
+  "callers_of": [
+    "_seed_repo",
+    "build_context_packet",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_context_packet_includes_file_hashes.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_context_packet_includes_file_hashes",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_context_packet_includes_file_hashes.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_context_packet_includes_file_hashes",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_context_packet_includes_file_hashes"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

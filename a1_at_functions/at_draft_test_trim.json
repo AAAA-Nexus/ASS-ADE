@@ -1,0 +1,34 @@
+{
+  "body": "    def test_trim(self):\n        c = Conversation(\"system\")\n        for i in range(60):\n            c.add_user(f\"msg {i}\")\n        assert c.count() == 61  # 1 system + 60 user\n        removed = c.trim(max_messages=10)\n        assert removed == 51\n        assert c.count() == 10\n        # System prompt preserved\n        assert c.messages[0].role == \"system\"\n",
+  "body_hash": "1a22e6d41d6916bb",
+  "body_truncated": false,
+  "callers_of": [
+    "Conversation",
+    "range",
+    "trim",
+    "add_user",
+    "count"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testconversation.py:25.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_trim",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testconversation.py:25"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_trim",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_trim"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

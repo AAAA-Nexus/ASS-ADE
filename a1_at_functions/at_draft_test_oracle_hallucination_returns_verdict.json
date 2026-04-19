@@ -1,0 +1,36 @@
+{
+  "body": "def test_oracle_hallucination_returns_verdict(tmp_path: Path) -> None:\n    mock_nx = MagicMock()\n    mock_nx.hallucination_oracle.return_value = HallucinationResult(\n        policy_epsilon=0.03, verdict=\"safe\", ceiling=\"proved-not-estimated\", confidence=0.97\n    )\n    with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n        result = runner.invoke(\n            app,\n            [\"oracle\", \"hallucination\", \"AI is always correct\", \"--config\", str(_hybrid_config(tmp_path)), \"--allow-remote\"],\n        )\n    assert result.exit_code == 0\n    assert \"safe\" in result.stdout or \"policy_epsilon\" in result.stdout\n",
+  "body_hash": "e2a9611c36c59295",
+  "body_truncated": false,
+  "callers_of": [
+    "MagicMock",
+    "HallucinationResult",
+    "patch",
+    "invoke",
+    "_make_ctx_mgr",
+    "str",
+    "_hybrid_config"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_oracle_hallucination_returns_verdict.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_oracle_hallucination_returns_verdict",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_oracle_hallucination_returns_verdict.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_oracle_hallucination_returns_verdict",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_oracle_hallucination_returns_verdict"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

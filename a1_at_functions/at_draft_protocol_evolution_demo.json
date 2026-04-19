@@ -1,0 +1,37 @@
+{
+  "body": "def protocol_evolution_demo(\n    path: Path = REPO_PATH_OPTION,\n    branches: str = typer.Option(\n        \"tests-first,docs-first,safety-first\",\n        \"--branches\",\n        help=\"Comma-separated branch track names.\",\n    ),\n    iterations: int = typer.Option(3, min=1, max=12, help=\"Iterations to show per branch.\"),\n    output: Path | None = typer.Option(None, \"--output\", help=\"Where to write the demo markdown.\"),\n    write: bool = typer.Option(True, \"--write/--print\", help=\"Write docs/evolution-workflow.md or print markdown.\"),\n    json_out: bool = typer.Option(False, \"--json\", help=\"Output raw JSON when writing.\"),\n) -> None:\n    \"\"\"Generate the split-branch evolution demo workflow.\"\"\"\n    branch_list = [item.strip() for item in branches.split(\",\") if item.strip()]\n    if not write:\n        console.print(render_branch_evolution_demo(root=path, branches=branch_list, iterations=iterations))\n        return\n\n    target = write_branch_evolution_demo(\n        root=path,\n        branches=branch_list,\n        iterations=iterations,\n        output=output,\n    )\n    if json_out:\n        _print_json({\"path\": str(target), \"branches\": branch_list, \"iterations\": iterations})\n    else:\n        console.print(f\"[green]Wrote evolution demo:[/green] {target}\")\n",
+  "body_hash": "8fb35ce2659ef8d4",
+  "body_truncated": false,
+  "callers_of": [
+    "Option",
+    "write_branch_evolution_demo",
+    "strip",
+    "print",
+    "_print_json",
+    "split",
+    "render_branch_evolution_demo",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_protocol_evolution_demo.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.protocol_evolution_demo",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_protocol_evolution_demo.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "protocol_evolution_demo",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for protocol_evolution_demo"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

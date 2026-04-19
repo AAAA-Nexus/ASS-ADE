@@ -1,0 +1,43 @@
+{
+  "body": "def test_load_project_metadata_pyproject(tmp_path: Path) -> None:\n    pyproject = tmp_path / \"pyproject.toml\"\n    pyproject.write_text(\n        '[project]\\nname = \"myproject\"\\nversion = \"1.2.3\"\\ndescription = \"A test project\"\\n',\n        encoding=\"utf-8\",\n    )\n\n    meta = load_project_metadata(tmp_path)\n\n    assert meta[\"name\"] == \"myproject\"\n    assert meta[\"version\"] == \"1.2.3\"\n    assert meta[\"description\"] == \"A test project\"\n",
+  "body_hash": "c9fc28f8cb2aa492",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "load_project_metadata"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_docs_engine.py:52.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.test_load_project_metadata_pyproject",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.local.docs_engine.build_local_analysis",
+    "ass_ade.local.docs_engine.detect_ci",
+    "ass_ade.local.docs_engine.detect_languages",
+    "ass_ade.local.docs_engine.detect_test_framework",
+    "ass_ade.local.docs_engine.load_project_metadata",
+    "ass_ade.local.docs_engine.render_local_docs",
+    "ass_ade.local.docs_engine.scan_source_symbols"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_docs_engine.py:52"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "test_load_project_metadata_pyproject",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_load_project_metadata_pyproject"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

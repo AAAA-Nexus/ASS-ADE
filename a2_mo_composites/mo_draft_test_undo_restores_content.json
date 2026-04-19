@@ -1,0 +1,36 @@
+{
+  "body": "    def test_undo_restores_content(self, history: FileHistory, tmp_workspace: Path):\n        original = \"print('hello')\\n\"\n        history.record(\"hello.py\", original)\n\n        # Overwrite the file\n        (tmp_workspace / \"hello.py\").write_text(\"print('goodbye')\\n\", encoding=\"utf-8\")\n\n        # Undo should restore\n        snap = history.undo(\"hello.py\")\n        assert snap is not None\n        assert snap.content == original\n        assert (tmp_workspace / \"hello.py\").read_text(encoding=\"utf-8\") == original\n",
+  "body_hash": "3e52196f393e2633",
+  "body_truncated": false,
+  "callers_of": [
+    "record",
+    "write_text",
+    "undo",
+    "read_text"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testfilehistory.py:25.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.test_undo_restores_content",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testfilehistory.py:25"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.record",
+    "at.source.ass_ade.undo"
+  ],
+  "name": "test_undo_restores_content",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_undo_restores_content"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

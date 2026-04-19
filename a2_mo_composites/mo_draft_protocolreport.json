@@ -1,0 +1,38 @@
+{
+  "body": "class ProtocolReport(BaseModel):\n    protocol_name: str = \"ASS-ADE Public Enhancement Cycle\"\n    goal: str\n    assessment: ProtocolAssessment\n    design_steps: list[str]\n    audit: list[ProtocolAuditCheck]\n    recommendations: list[str]\n    summary: str\n",
+  "body_hash": "0f77672bbb583c6b",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/protocol/cycle.py:30.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.protocolreport",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "pydantic.BaseModel",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.local.planner.draft_plan",
+    "ass_ade.local.repo.RepoSummary",
+    "ass_ade.local.repo.summarize_repo",
+    "ass_ade.system.ToolStatus",
+    "ass_ade.system.collect_tool_status"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/protocol/cycle.py:30"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "ProtocolReport",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ProtocolReport"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

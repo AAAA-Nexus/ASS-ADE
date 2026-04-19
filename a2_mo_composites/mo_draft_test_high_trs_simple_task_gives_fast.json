@@ -1,0 +1,35 @@
+{
+  "body": "    def test_high_trs_simple_task_gives_fast(self):\n        lse = self._make()\n        decision = lse.select(trs_score=0.95, complexity=\"simple\")\n        assert decision.tier == \"fast\"\n",
+  "body_hash": "b20a71bdfbff5271",
+  "body_truncated": false,
+  "callers_of": [
+    "_make",
+    "select"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testlseengine.py:28.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.test_high_trs_simple_task_gives_fast",
+  "imports": [
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.agent.providers.FREE_PROVIDERS",
+    "ass_ade.agent.lse._LEGACY_TIER_TO_MODEL"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testlseengine.py:28"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "test_high_trs_simple_task_gives_fast",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_high_trs_simple_task_gives_fast"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

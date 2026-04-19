@@ -1,0 +1,34 @@
+{
+  "body": "def test_record_evolution_event_writes_ledger_and_markdown(tmp_path: Path) -> None:\n    (tmp_path / \"pyproject.toml\").write_text(\n        '[project]\\nname = \"demo\"\\nversion = \"0.0.1\"\\n',\n        encoding=\"utf-8\",\n    )\n\n    result = record_evolution_event(\n        root=tmp_path,\n        event_type=\"birth\",\n        summary=\"First public-safe birth record\",\n        commands=[],\n        metrics={\"tests_passed\": 1150},\n        reports=[\"RECON_REPORT.md\"],\n        timestamp_utc=\"2026-04-18T12:00:00Z\",\n    )\n\n    assert Path(result.ledger_path).exists()\n    assert Path(result.snapshot_path).exists()\n    markdown = Path(result.markdown_path).read_text(encoding=\"utf-8\")\n    assert \"First public-safe birth record\" in markdown\n    assert \"`tests_passed`: 1150\" in markdown\n",
+  "body_hash": "0a490c4bfaab5b98",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "record_evolution_event",
+    "exists",
+    "read_text",
+    "Path"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_record_evolution_event_writes_ledger_and_markdown.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_record_evolution_event_writes_ledger_and_markdown",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_record_evolution_event_writes_ledger_and_markdown.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_record_evolution_event_writes_ledger_and_markdown",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_record_evolution_event_writes_ledger_and_markdown"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

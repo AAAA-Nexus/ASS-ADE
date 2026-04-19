@@ -1,0 +1,39 @@
+{
+  "body": "class TestValidatePrompt:\n    def test_valid_prompt(self) -> None:\n        assert validate_prompt(\"Hello world\") == \"Hello world\"\n\n    def test_strips_control_chars(self) -> None:\n        result = validate_prompt(\"Hello\\x00World\\x0b!\")\n        assert \"\\x00\" not in result\n        assert \"\\x0b\" not in result\n        assert \"HelloWorld!\" == result\n\n    def test_preserves_newlines_and_tabs(self) -> None:\n        text = \"Hello\\nWorld\\tFoo\"\n        assert validate_prompt(text) == text\n\n    def test_empty_raises(self) -> None:\n        with pytest.raises(ValueError, match=\"must not be empty\"):\n            validate_prompt(\"\")\n\n    def test_whitespace_only_raises(self) -> None:\n        with pytest.raises(ValueError, match=\"must not be empty\"):\n            validate_prompt(\"   \")\n\n    def test_oversized_raises(self) -> None:\n        with pytest.raises(ValueError, match=\"exceeds\"):\n            validate_prompt(\"x\" * 40_000)\n",
+  "body_hash": "6dfc2d577673a3bf",
+  "body_truncated": false,
+  "callers_of": [
+    "validate_prompt",
+    "raises"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_validation.py:43.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.testvalidateprompt",
+  "imports": [
+    "pytest",
+    "ass_ade.nexus.validation._is_private_host",
+    "ass_ade.nexus.validation.validate_agent_id",
+    "ass_ade.nexus.validation.validate_prompt",
+    "ass_ade.nexus.validation.validate_session_id",
+    "ass_ade.nexus.validation.validate_url",
+    "ass_ade.nexus.validation.validate_usdc_amount"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_validation.py:43"
+  },
+  "kind": "pure_class",
+  "made_of": [],
+  "name": "TestValidatePrompt",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestValidatePrompt"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

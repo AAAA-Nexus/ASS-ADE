@@ -1,0 +1,59 @@
+{
+  "body": "def test_cli_recon_json_flag(tmp_path: Path) -> None:\n    import json\n    _seed_full_repo(tmp_path)\n    result = runner.invoke(app, [\"recon\", str(tmp_path), \"--json\"])\n    assert result.exit_code == 0\n    # JSON output should be parseable\n    # The output may be Rich-rendered; extract the JSON block\n    lines = result.output.strip().splitlines()\n    # Find the first line that looks like JSON\n    json_start = next((i for i, l in enumerate(lines) if l.strip().startswith(\"{\")), None)\n    assert json_start is not None, \"No JSON block found in output\"\n    json_text = \"\\n\".join(lines[json_start:])\n    # Remove any trailing non-JSON lines\n    try:\n        data = json.loads(json_text)\n    except json.JSONDecodeError:\n        # Try to find the closing brace\n        depth = 0\n        end = 0\n        for i, ch in enumerate(json_text):\n            if ch == \"{\":\n                depth += 1\n            elif ch == \"}\":\n                depth -= 1\n                if depth == 0:\n                    end = i + 1\n                    break\n        data = json.loads(json_text[:end])\n    assert \"scout\" in data\n    assert \"test\" in data\n",
+  "body_hash": "4283e69b3f7ec686",
+  "body_truncated": false,
+  "callers_of": [
+    "_seed_full_repo",
+    "invoke",
+    "splitlines",
+    "next",
+    "join",
+    "loads",
+    "str",
+    "strip",
+    "enumerate",
+    "startswith"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_parallel_recon.py:390.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_cli_recon_json_flag",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "textwrap",
+    "pathlib.Path",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.recon.ReconReport",
+    "ass_ade.recon._classify_tier",
+    "ass_ade.recon._count_test_functions",
+    "ass_ade.recon._dependency_agent",
+    "ass_ade.recon._doc_agent",
+    "ass_ade.recon._iter_files",
+    "ass_ade.recon._scout_agent",
+    "ass_ade.recon._test_agent",
+    "ass_ade.recon._tier_agent",
+    "ass_ade.recon.run_parallel_recon",
+    "time",
+    "json"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_parallel_recon.py:390"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_cli_recon_json_flag",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_cli_recon_json_flag"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

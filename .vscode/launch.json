@@ -1,0 +1,78 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "ass-ade: doctor",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "ass_ade",
+      "args": ["doctor"],
+      "python": "c:\\!ass-ade\\.venv\\Scripts\\python.exe",
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/.env",
+      "env": {
+        "ASS_ADE_CONFIG": "${workspaceFolder}/.ass-ade/config.json"
+      }
+    },
+    {
+      "name": "ass-ade: agent chat",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "ass_ade",
+      "args": ["agent", "chat", "--allow-remote"],
+      "python": "c:\\!ass-ade\\.venv\\Scripts\\python.exe",
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/.env",
+      "env": {
+        "ASS_ADE_CONFIG": "${workspaceFolder}/.ass-ade/config.json"
+      },
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "ass-ade: mcp serve (debug)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "ass_ade",
+      "args": ["mcp", "serve"],
+      "python": "c:\\!ass-ade\\.venv\\Scripts\\python.exe",
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/.env",
+      "env": {
+        "ASS_ADE_CONFIG": "${workspaceFolder}/.ass-ade/config.json"
+      }
+    },
+    {
+      "name": "ass-ade: workflow phase0-recon",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "ass_ade",
+      "args": ["workflow", "phase0-recon", "--path", "${workspaceFolder}"],
+      "python": "c:\\!ass-ade\\.venv\\Scripts\\python.exe",
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/.env",
+      "env": {
+        "ASS_ADE_CONFIG": "${workspaceFolder}/.ass-ade/config.json"
+      }
+    },
+    {
+      "name": "pytest: all tests",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "pytest",
+      "args": ["tests/", "-v", "--no-header", "--tb=short"],
+      "python": "c:\\!ass-ade\\.venv\\Scripts\\python.exe",
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "name": "pytest: engine integration",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "pytest",
+      "args": ["tests/test_engine_integration.py", "-v"],
+      "python": "c:\\!ass-ade\\.venv\\Scripts\\python.exe",
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}

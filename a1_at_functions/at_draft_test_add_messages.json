@@ -1,0 +1,34 @@
+{
+  "body": "    def test_add_messages(self):\n        c = Conversation()\n        c.add_user(\"hello\")\n        c.add_assistant(Message(role=\"assistant\", content=\"hi\"))\n        assert c.count() == 2\n",
+  "body_hash": "bb1147bcb380a1a6",
+  "body_truncated": false,
+  "callers_of": [
+    "Conversation",
+    "add_user",
+    "add_assistant",
+    "Message",
+    "count"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testconversation.py:11.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_add_messages",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testconversation.py:11"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_add_messages",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_add_messages"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

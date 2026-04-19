@@ -1,0 +1,53 @@
+{
+  "body": "    def test_sam_runs_first_in_pipeline(self):\n        nexus = _make_nexus_mock()\n        gates = QualityGates(nexus, config={})\n        with patch(\"ass_ade.context_memory.vector_embed\", return_value=[0.1, 0.2, 0.3]):\n            results = gates.run_pipeline(prompt=\"build a function\", output=\"def x(): pass\")\n        gate_names = [r.gate for r in results]\n        assert \"sam\" in gate_names, f\"SAM missing from pipeline: {gate_names}\"\n        # SAM must be the very first gate\n        assert gate_names[0] == \"sam\"\n",
+  "body_hash": "6c232c6a0e0a0b46",
+  "body_truncated": false,
+  "callers_of": [
+    "_make_nexus_mock",
+    "QualityGates",
+    "patch",
+    "run_pipeline"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase1_integration.py:53.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_sam_runs_first_in_pipeline",
+  "imports": [
+    "__future__.annotations",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.agent.loop.D_MAX",
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.agent.orchestrator.EngineOrchestrator",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.tools.registry.ToolRegistry",
+    "ass_ade.agent.bas._SEVERITY",
+    "ass_ade.commands.agent._render_phase1_header",
+    "io.StringIO",
+    "rich.console.Console",
+    "ass_ade.commands.agent._render_phase1_header",
+    "io.StringIO",
+    "rich.console.Console"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase1_integration.py:53"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_sam_runs_first_in_pipeline",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_sam_runs_first_in_pipeline"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

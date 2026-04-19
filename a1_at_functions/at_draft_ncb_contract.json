@@ -1,0 +1,39 @@
+{
+  "body": "    def ncb_contract(self, target_path: str | Path) -> bool:\n        \"\"\"Return True if NCB contract is satisfied (file was read before writing).\"\"\"\n        return self.check_freshness(target_path).fresh\n",
+  "body_hash": "aee3fc5feffcb90f",
+  "body_truncated": false,
+  "callers_of": [
+    "check_freshness"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/tca.py:107.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.ncb_contract",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "logging",
+    "time",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/tca.py:107"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "ncb_contract",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ncb_contract"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

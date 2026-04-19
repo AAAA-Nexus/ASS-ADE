@@ -1,0 +1,32 @@
+{
+  "body": "    def validate_g23(self, intent: str, impl: str) -> bool:\n        vi = vector_embed(intent)\n        vc = vector_embed(impl)\n        sim = _cosine(vi, vc)\n        distance = max(0.0, 1.0 - sim) * 10.0\n        return distance <= self._g23_threshold\n",
+  "body_hash": "cd55d1f8ed36414d",
+  "body_truncated": false,
+  "callers_of": [
+    "vector_embed",
+    "_cosine",
+    "max"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_sam.py:30.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.validate_g23",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_sam.py:30"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "validate_g23",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for validate_g23"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

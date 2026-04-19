@@ -1,0 +1,54 @@
+{
+  "body": "def test_cli_recon_out_flag(tmp_path: Path) -> None:\n    _seed_full_repo(tmp_path)\n    out_file = tmp_path / \"report.md\"\n    result = runner.invoke(app, [\"recon\", str(tmp_path), \"--out\", str(out_file)])\n    assert result.exit_code == 0\n    assert out_file.exists()\n    content = out_file.read_text(encoding=\"utf-8\")\n    assert \"RECON_REPORT\" in content\n",
+  "body_hash": "f181866deb4f378a",
+  "body_truncated": false,
+  "callers_of": [
+    "_seed_full_repo",
+    "invoke",
+    "exists",
+    "read_text",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_parallel_recon.py:422.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_cli_recon_out_flag",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "textwrap",
+    "pathlib.Path",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.recon.ReconReport",
+    "ass_ade.recon._classify_tier",
+    "ass_ade.recon._count_test_functions",
+    "ass_ade.recon._dependency_agent",
+    "ass_ade.recon._doc_agent",
+    "ass_ade.recon._iter_files",
+    "ass_ade.recon._scout_agent",
+    "ass_ade.recon._test_agent",
+    "ass_ade.recon._tier_agent",
+    "ass_ade.recon.run_parallel_recon",
+    "time",
+    "json"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_parallel_recon.py:422"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_cli_recon_out_flag",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_cli_recon_out_flag"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

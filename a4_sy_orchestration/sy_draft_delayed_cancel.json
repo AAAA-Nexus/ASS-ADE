@@ -1,0 +1,35 @@
+{
+  "body": "        def delayed_cancel():\n            time.sleep(0.05)\n            ctx.cancel()\n",
+  "body_hash": "cced87084398b7d8",
+  "body_truncated": false,
+  "callers_of": [
+    "sleep",
+    "cancel"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testmcpcancellation.py:119.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.delayed_cancel",
+  "imports": [
+    "ass_ade.mcp.cancellation.CancellationContext",
+    "ass_ade.mcp.cancellation.CancellationContext",
+    "ass_ade.mcp.cancellation.CancellationContext"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testmcpcancellation.py:119"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "delayed_cancel",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for delayed_cancel"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

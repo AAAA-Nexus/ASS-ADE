@@ -1,0 +1,41 @@
+{
+  "body": "    def test_rejected_write_captures_rejection(self, tmp_path, monkeypatch):\n        monkeypatch.chdir(tmp_path)\n        server = _make_server(tmp_path)\n        args = {\"path\": str(tmp_path / \"bad.py\"), \"content\": \"def bad(:\\n    pass\\n\"}\n        server._post_tool_hook(\"write_file\", args, MagicMock(success=True, output=\"wrote\"))\n        fly = server.lora_flywheel\n        if fly is not None:\n            kinds = [c.kind for c in fly._pending]\n            assert \"rejection\" in kinds\n",
+  "body_hash": "57fdaf0778b6baf9",
+  "body_truncated": false,
+  "callers_of": [
+    "chdir",
+    "_make_server",
+    "_post_tool_hook",
+    "str",
+    "MagicMock"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_gates.py:151.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_rejected_write_captures_rejection",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "pytest",
+    "ass_ade.mcp.server.MCPServer"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_gates.py:151"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "test_rejected_write_captures_rejection",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_rejected_write_captures_rejection"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

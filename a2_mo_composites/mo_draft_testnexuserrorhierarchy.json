@@ -1,0 +1,46 @@
+{
+  "body": "class TestNexusErrorHierarchy:\n    def test_base_error_carries_context(self) -> None:\n        err = NexusError(\"boom\", status_code=500, endpoint=\"/health\", retry_after=2.5)\n        assert err.detail == \"boom\"\n        assert err.status_code == 500\n        assert err.endpoint == \"/health\"\n        assert err.retry_after == 2.5\n        assert str(err) == \"boom\"\n\n    def test_all_subclasses_inherit_from_base(self) -> None:\n        for cls in (\n            NexusConnectionError,\n            NexusTimeoutError,\n            NexusAuthError,\n            NexusPaymentRequired,\n            NexusRateLimited,\n            NexusServerError,\n            NexusValidationError,\n            NexusCircuitOpen,\n        ):\n            assert issubclass(cls, NexusError)\n            err = cls(\"test\")\n            assert isinstance(err, NexusError)\n\n    def test_default_optional_fields_are_none(self) -> None:\n        err = NexusError(\"minimal\")\n        assert err.status_code is None\n        assert err.endpoint is None\n        assert err.retry_after is None\n",
+  "body_hash": "562f290b7a37f468",
+  "body_truncated": false,
+  "callers_of": [
+    "NexusError",
+    "str",
+    "issubclass",
+    "cls",
+    "isinstance"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_errors.py:19.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testnexuserrorhierarchy",
+  "imports": [
+    "pytest",
+    "ass_ade.nexus.errors.NexusAuthError",
+    "ass_ade.nexus.errors.NexusCircuitOpen",
+    "ass_ade.nexus.errors.NexusConnectionError",
+    "ass_ade.nexus.errors.NexusError",
+    "ass_ade.nexus.errors.NexusPaymentRequired",
+    "ass_ade.nexus.errors.NexusRateLimited",
+    "ass_ade.nexus.errors.NexusServerError",
+    "ass_ade.nexus.errors.NexusTimeoutError",
+    "ass_ade.nexus.errors.NexusValidationError",
+    "ass_ade.nexus.errors.raise_for_status"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_errors.py:19"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "TestNexusErrorHierarchy",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestNexusErrorHierarchy"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

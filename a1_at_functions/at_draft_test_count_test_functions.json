@@ -1,0 +1,51 @@
+{
+  "body": "def test_count_test_functions(tmp_path: Path) -> None:\n    f = tmp_path / \"test_utils.py\"\n    f.write_text(\n        \"def test_add(): assert True\\ndef test_sub(): assert True\\ndef helper(): pass\\n\",\n        encoding=\"utf-8\",\n    )\n    assert _count_test_functions(f) == 2\n",
+  "body_hash": "08d4d0aa51035288",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "_count_test_functions"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_parallel_recon.py:258.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_count_test_functions",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "textwrap",
+    "pathlib.Path",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.recon.ReconReport",
+    "ass_ade.recon._classify_tier",
+    "ass_ade.recon._count_test_functions",
+    "ass_ade.recon._dependency_agent",
+    "ass_ade.recon._doc_agent",
+    "ass_ade.recon._iter_files",
+    "ass_ade.recon._scout_agent",
+    "ass_ade.recon._test_agent",
+    "ass_ade.recon._tier_agent",
+    "ass_ade.recon.run_parallel_recon",
+    "time",
+    "json"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_parallel_recon.py:258"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_count_test_functions",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_count_test_functions"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

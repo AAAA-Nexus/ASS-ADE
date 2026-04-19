@@ -1,0 +1,42 @@
+{
+  "body": "def test_security_compliance_happy_path(method_name, response_json):\n    \"\"\"Test security & compliance methods (happy path).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json=response_json)\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        if method_name == \"threat_score\":\n            result = client.threat_score(payload={\"action\": \"execute\"})\n        elif method_name == \"security_shield\":\n            result = client.security_shield(payload={\"tool_call\": \"execute\"})\n        elif method_name == \"security_pqc_sign\":\n            result = client.security_pqc_sign(data=\"data_to_sign\")\n        elif method_name == \"compliance_check\":\n            result = client.compliance_check(system_description=\"system desc\")\n        elif method_name == \"compliance_eu_ai_act\":\n            result = client.compliance_eu_ai_act(system_description=\"system desc\")\n        elif method_name == \"aibom_drift\":\n            result = client.aibom_drift(model_id=\"model_1\")\n        elif method_name == \"audit_log\":\n            result = client.audit_log(event={\"action\": \"login\"})\n        elif method_name == \"audit_verify\":\n            result = client.audit_verify()\n        else:  # agent_quarantine\n            result = client.agent_quarantine(agent_id=\"agent_1\", reason=\"security_risk\")\n        assert result is not None\n",
+  "body_hash": "5758c3e5de99182c",
+  "body_truncated": false,
+  "callers_of": [
+    "MockTransport",
+    "Response",
+    "NexusClient",
+    "threat_score",
+    "security_shield",
+    "security_pqc_sign",
+    "compliance_check",
+    "compliance_eu_ai_act",
+    "aibom_drift",
+    "audit_log",
+    "audit_verify",
+    "agent_quarantine"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_security_compliance_happy_path.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_security_compliance_happy_path",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_security_compliance_happy_path.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_security_compliance_happy_path",
+  "product_categories": [
+    "SEC",
+    "SRG"
+  ],
+  "provides": [
+    "rebuild candidate for test_security_compliance_happy_path"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

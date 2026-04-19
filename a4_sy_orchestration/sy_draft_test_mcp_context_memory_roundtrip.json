@@ -1,0 +1,48 @@
+{
+  "body": "def test_mcp_context_memory_roundtrip(tmp_path: Path) -> None:\n    server = MCPServer(str(tmp_path))\n    _initialize_server(server)\n    store_response = server._handle({\n        \"jsonrpc\": \"2.0\",\n        \"id\": 1,\n        \"method\": \"tools/call\",\n        \"params\": {\n            \"name\": \"context_memory_store\",\n            \"arguments\": {\"text\": \"phase zero recon context\", \"namespace\": \"demo\"},\n        },\n    })\n    query_response = server._handle({\n        \"jsonrpc\": \"2.0\",\n        \"id\": 2,\n        \"method\": \"tools/call\",\n        \"params\": {\n            \"name\": \"context_memory_query\",\n            \"arguments\": {\"query\": \"recon\", \"namespace\": \"demo\"},\n        },\n    })\n\n    assert store_response is not None\n    assert store_response[\"result\"][\"isError\"] is False\n    assert query_response is not None\n    payload = json.loads(query_response[\"result\"][\"content\"][0][\"text\"])\n    assert len(payload[\"matches\"]) == 1\n",
+  "body_hash": "c83f6b6412a35096",
+  "body_truncated": false,
+  "callers_of": [
+    "MCPServer",
+    "_initialize_server",
+    "_handle",
+    "loads",
+    "str",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_recon_context.py:130.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_mcp_context_memory_roundtrip",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.context_memory.VECTOR_DIMENSIONS",
+    "ass_ade.context_memory.build_context_packet",
+    "ass_ade.context_memory.query_vector_memory",
+    "ass_ade.context_memory.store_vector_memory",
+    "ass_ade.context_memory.vector_embed",
+    "ass_ade.mcp.server.MCPServer",
+    "ass_ade.recon.phase0_recon"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_recon_context.py:130"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "test_mcp_context_memory_roundtrip",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_mcp_context_memory_roundtrip"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

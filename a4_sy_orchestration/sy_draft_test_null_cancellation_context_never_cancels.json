@@ -1,0 +1,46 @@
+{
+  "body": "    def test_null_cancellation_context_never_cancels(self) -> None:\n        ctx = NullCancellationContext()\n        ctx.cancel()\n        assert ctx.check() is False\n        assert ctx.is_cancelled is False\n",
+  "body_hash": "f47e66127542c7d5",
+  "body_truncated": false,
+  "callers_of": [
+    "NullCancellationContext",
+    "cancel",
+    "check"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_cancellation.py:41.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_null_cancellation_context_never_cancels",
+  "imports": [
+    "__future__.annotations",
+    "threading",
+    "time",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.mcp.cancellation.CancellationContext",
+    "ass_ade.mcp.cancellation.NullCancellationContext",
+    "ass_ade.mcp.server.MCPServer",
+    "ass_ade.mcp.cancellation.CancellationContext",
+    "ass_ade.mcp.cancellation.CancellationContext",
+    "ass_ade.mcp.cancellation.CancellationContext"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_cancellation.py:41"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "test_null_cancellation_context_never_cancels",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_null_cancellation_context_never_cancels"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

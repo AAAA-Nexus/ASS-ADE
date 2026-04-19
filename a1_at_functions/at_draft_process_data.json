@@ -1,0 +1,30 @@
+{
+  "body": "def process_data(data):\n    result = []\n    for item in data:\n        result.append(item * 2)\n    return result\n",
+  "body_hash": "9e29aa3a52e82148",
+  "body_truncated": false,
+  "callers_of": [
+    "append"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_process_data.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.process_data",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_process_data.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "process_data",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for process_data"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

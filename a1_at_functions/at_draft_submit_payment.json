@@ -1,0 +1,58 @@
+{
+  "body": "def submit_payment(challenge: PaymentChallenge) -> PaymentResult:\n    \"\"\"Submit a USDC payment on Base to fulfill an x402 challenge.\n\n    Requires ATOMADIC_WALLET_KEY environment variable with the sender's\n    private key (hex, without 0x prefix).\n\n    For testnet: set ATOMADIC_X402_TESTNET=1\n\n    Returns PaymentResult with txid and signature header on success.\n    \"\"\"\n    wallet_key = os.environ.get(\"ATOMADIC_WALLET_KEY\", \"\").strip()\n    if not wallet_key:\n        return PaymentResult(\n            success=False,\n            error=\"ATOMADIC_WALLET_KEY not set. Export your Base wallet private key.\",\n        )\n\n    if challenge.is_expired:\n        return PaymentResult(success=False, error=\"Payment challenge has expired.\")\n\n    if challenge.amount_micro_usdc <= 0 or challenge.amount_micro_usdc > MAX_CHALLENGE_MICRO_USDC:\n        return PaymentResult(\n            success=False,\n            error=f\"Payment aborted: amount {challenge.amount_micro_usdc} outside valid range (1\\u2013{MAX_CHALLENGE_MICRO_USDC})\",\n        )\n\n    config = get_chain_config()\n\n    if challenge.chain_id and challenge.chain_id != config[\"chain_id\"]:\n        return PaymentResult(\n            success=False,\n            error=(\n                f\"Payment aborted: challenge chain_id {challenge.chain_id} \"\n                f\"does not match active chain {config['chain_id']}\"\n            ),\n        )\n\n    if challenge.token_address:\n        try:\n            challenge_token = challenge.token_address.lower()\n            expected_token = config[\"usdc_address\"].lower()\n        except AttributeError:\n            return PaymentResult(success=False, error=\"Payment aborted: invalid token address in challenge\")\n        if challenge_token != expected_token:\n            return PaymentResult(\n                success=False,\n                error=(\n                    f\"Payment aborted: challenge token {challenge.token_address} \"\n                    f\"does not match expected USDC token {config['usdc_address']}\"\n                ),\n            )\n\n    try:\n        from eth_account import Account\n        from web3 import Web3\n    except ImportError:\n        return PaymentResult(\n            success=False,\n            error=\"web3 and eth-account packages required. Install: pip install web3 eth-account\",\n        )\n\n    try:\n        w3 = Web3(Web3.HTTPProvider(config[\"rpc_url\"]))\n        if not w3.is_connected():\n            return PaymentResult(success=False, error=f\"Cannot connect to {config['rpc_url']}\")\n\n        account = Account.from_key(wallet_key)\n\n        # USDC ERC-20 transfer ABI\n        usdc_abi = [\n            {\n                \"name\": \"transfer\",\n                \"type\": \"function\",\n                \"inputs\": [\n                    {\"name\": \"to\", \"type\": \"address\"},\n                    {\"name\": \"amount\", \"type\": \"uint256\"},\n                ],\n                \"outputs\": [{\"name\": \"\", \"type\": \"bool\"}],\n            }\n        ]\n\n        usdc = w3.eth.contract(\n            address=Web3.to_checksum_address(config[\"usdc_address\"]),\n            abi=usdc_abi,\n        )\n\n        # Build transfer transaction\n        recipient = Web3.to_checksum_address(challenge.recipient)\n        expected = Web3.to_checksum_address(ATOMADIC_TREASURY)\n        if recipient != expected:\n            return PaymentResult(\n                success=False,\n                error=f\"Payment aborted: server proposed recipient {recipient} does not match expected treasury {expected}\",\n            )\n        nonce = w3.eth.get_transaction_count(account.address)\n\n        gas_price = w3.eth.gas_price\n        max_gas_wei = MAX_GAS_PRICE_GWEI * 10**9\n        if gas_price > max_gas_wei:\n            return PaymentResult(\n                success=False,\n                error=f\"Gas price {gas_price / 10**9:.1f} Gwei exceeds limit {MAX_GAS_PRICE_GWEI} Gwei. Retry when network is less congested.\",\n            )\n\n        tx = usdc.functions.transfer(\n            recipient, challenge.amount_micro_usdc\n        ).build_transaction({\n            \"from\": account.address,\n            \"nonce\": nonce,\n            \"gas\": 100_000,\n            \"gasPrice\": gas_price,\n            \"chainId\": config[\"chain_id\"],\n        })\n\n        # Sign and send\n        signed = account.sign_transaction(tx)\n        tx_hash = w3.eth.send_raw_transaction(signed.raw_transaction)\n        txid = tx_hash.hex()\n\n        # Build the payment proof header\n        # Format: <sig_hex>;<wallet_addr>;<txid>;<amount_micro>\n        sig_hex = signed.signature.hex()\n        if sig_hex.startswith(\"0x\"):\n            sig_hex = sig_hex[2:]\n        wallet_addr = account.address[2:]  # Remove 0x prefix \u2014 wallet address, not public key\n        header = f\"{sig_hex};{wallet_addr};{txid};{challenge.amount_micro_usdc}\"\n\n        return PaymentResult(\n            success=True,\n            txid=txid,\n            signature_header=header,\n            testnet=config[\"testnet\"],\n        )\n\n    except (ValueError, TypeError, OSError, RuntimeError):\n        import logging\n        logging.getLogger(__name__).exception(\"Payment submission failed\")\n        return PaymentResult(success=False, error=\"Payment submission failed. Check logs for details.\")\n",
+  "body_hash": "1d872d18844cd621",
+  "body_truncated": false,
+  "callers_of": [
+    "strip",
+    "get_chain_config",
+    "PaymentResult",
+    "Web3",
+    "from_key",
+    "contract",
+    "to_checksum_address",
+    "get_transaction_count",
+    "build_transaction",
+    "sign_transaction",
+    "send_raw_transaction",
+    "hex",
+    "startswith",
+    "get",
+    "lower",
+    "HTTPProvider",
+    "is_connected",
+    "exception",
+    "transfer",
+    "getLogger"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/x402.py:218.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.submit_payment",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "time",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "eth_account.Account",
+    "web3.Web3",
+    "logging"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/x402.py:218"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "submit_payment",
+  "product_categories": [
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for submit_payment"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

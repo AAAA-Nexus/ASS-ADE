@@ -1,0 +1,45 @@
+{
+  "body": "class Puppeteer:\n    def __init__(self, config: dict, nexus: Any | None = None):\n        self._config = config\n        self._nexus = nexus\n        cfg = config.get(\"puppeteer\") or {}\n        self._policy_path = Path(cfg.get(\"policy_path\", \".ass-ade/policies/puppeteer.pt\"))\n        self._fallback_dag = bool(cfg.get(\"fallback_to_dag\", True))\n        self._dag = list(_DEFAULT_DAG)\n        self._selections = 0\n\n    def _policy_available(self) -> bool:\n        return self._policy_path.exists()\n\n    def select_next_agent(self, state: dict) -> AgentRef:\n        self._selections += 1\n        visited = set(state.get(\"visited\", []))\n        if self._policy_available():\n            return AgentRef(name=\"policy\", priority=1.0, reason=\"rl_policy\")\n        if not self._fallback_dag:\n            return AgentRef(name=\"noop\", priority=0.0, reason=\"no_policy_no_dag\")\n        for name, prio in self._dag:\n            if name not in visited:\n                return AgentRef(name=name, priority=prio, reason=\"dag_fallback\")\n        return AgentRef(name=\"done\", priority=0.0, reason=\"dag_exhausted\")\n\n    def run(self, ctx: dict) -> dict:\n        agent = self.select_next_agent(ctx)\n        return {\"next\": agent.name, \"priority\": agent.priority, \"reason\": agent.reason}\n\n    def report(self) -> dict:\n        return {\n            \"engine\": \"puppeteer\",\n            \"policy_available\": self._policy_available(),\n            \"fallback_enabled\": self._fallback_dag,\n            \"selections\": self._selections,\n        }\n",
+  "body_hash": "b58a6e4db14ab916",
+  "body_truncated": false,
+  "callers_of": [
+    "Path",
+    "bool",
+    "list",
+    "exists",
+    "set",
+    "_policy_available",
+    "AgentRef",
+    "select_next_agent",
+    "get"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/puppeteer.py:27.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.puppeteer",
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/puppeteer.py:27"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.select_next_agent"
+  ],
+  "name": "Puppeteer",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for Puppeteer"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

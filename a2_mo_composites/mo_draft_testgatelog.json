@@ -1,0 +1,47 @@
+{
+  "body": "class TestGateLog:\n    def test_gate_log_accumulates(self):\n        gates = QualityGates(_mock_nexus())\n        gates.scan_prompt(\"test\")\n        gates.check_hallucination(\"output\")\n        gates.certify(\"code\")\n        assert len(gates.gate_log) == 3\n\n    def test_gate_log_is_copy(self):\n        gates = QualityGates(_mock_nexus())\n        gates.scan_prompt(\"test\")\n        log = gates.gate_log\n        log.clear()\n        assert len(gates.gate_log) == 1  # original unchanged\n\n    def test_gate_result_structure(self):\n        gates = QualityGates(_mock_nexus())\n        gates.scan_prompt(\"test\")\n        result = gates.gate_log[0]\n        assert isinstance(result, GateResult)\n        assert result.gate == \"prompt_scan\"\n        assert result.passed is True\n        assert result.confidence > 0\n",
+  "body_hash": "cb1adf4999ad0209",
+  "body_truncated": false,
+  "callers_of": [
+    "QualityGates",
+    "scan_prompt",
+    "check_hallucination",
+    "certify",
+    "clear",
+    "isinstance",
+    "_mock_nexus",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:120.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testgatelog",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "unittest.mock.MagicMock",
+    "ass_ade.agent.gates.GateResult",
+    "ass_ade.agent.gates.QualityGates"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:120"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.scan_prompt",
+    "at.source.ass_ade.check_hallucination",
+    "at.source.ass_ade.certify"
+  ],
+  "name": "TestGateLog",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestGateLog"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

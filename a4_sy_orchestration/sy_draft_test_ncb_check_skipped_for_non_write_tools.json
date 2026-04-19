@@ -1,0 +1,39 @@
+{
+  "body": "    def test_ncb_check_skipped_for_non_write_tools(self, tmp_path):\n        server = _make_server(tmp_path)\n        server._ncb_mode = \"block\"\n        # list_directory etc. should never be NCB-gated\n        allow, _ = server._pre_tool_hook(\"list_directory\", _mk_args(tmp_path))\n        assert allow is True\n",
+  "body_hash": "5ff19c3307ec1073",
+  "body_truncated": false,
+  "callers_of": [
+    "_make_server",
+    "_pre_tool_hook",
+    "_mk_args"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_gates.py:74.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_ncb_check_skipped_for_non_write_tools",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "pytest",
+    "ass_ade.mcp.server.MCPServer"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_gates.py:74"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "test_ncb_check_skipped_for_non_write_tools",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_ncb_check_skipped_for_non_write_tools"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

@@ -1,0 +1,45 @@
+{
+  "body": "class TestGrepSearch:\n    def test_find_pattern(self, workspace: Path):\n        tool = GrepSearchTool(str(workspace))\n        r = tool.execute(pattern=\"hello\")\n        assert r.success\n        assert \"hello.py\" in r.output\n\n    def test_no_matches(self, workspace: Path):\n        tool = GrepSearchTool(str(workspace))\n        r = tool.execute(pattern=\"ZZZZZ_NOTHING\")\n        assert \"No matches\" in r.output\n\n    def test_invalid_regex(self, workspace: Path):\n        tool = GrepSearchTool(str(workspace))\n        r = tool.execute(pattern=\"[invalid\")\n        assert not r.success\n        assert \"Invalid regex\" in (r.error or \"\")\n",
+  "body_hash": "15506df4d44db41b",
+  "body_truncated": false,
+  "callers_of": [
+    "GrepSearchTool",
+    "execute",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:163.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testgrepsearch",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.tools.builtin.EditFileTool",
+    "ass_ade.tools.builtin.GrepSearchTool",
+    "ass_ade.tools.builtin.ListDirectoryTool",
+    "ass_ade.tools.builtin.ReadFileTool",
+    "ass_ade.tools.builtin.RunCommandTool",
+    "ass_ade.tools.builtin.SearchFilesTool",
+    "ass_ade.tools.builtin.WriteFileTool",
+    "ass_ade.tools.registry.default_registry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:163"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "TestGrepSearch",
+  "product_categories": [
+    "DCM"
+  ],
+  "provides": [
+    "rebuild candidate for TestGrepSearch"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

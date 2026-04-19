@@ -1,0 +1,38 @@
+{
+  "body": "class ProtocolAssessment(BaseModel):\n    root: str\n    total_files: int\n    total_dirs: int\n    top_level_entries: list[str]\n    file_types: dict[str, int]\n    toolchain: list[dict[str, str | bool | None]]\n    profile: str\n    local_mode_default: bool\n",
+  "body_hash": "f7df3c8a25c949f8",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/protocol/cycle.py:19.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.protocolassessment",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "pydantic.BaseModel",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.local.planner.draft_plan",
+    "ass_ade.local.repo.RepoSummary",
+    "ass_ade.local.repo.summarize_repo",
+    "ass_ade.system.ToolStatus",
+    "ass_ade.system.collect_tool_status"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/protocol/cycle.py:19"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "ProtocolAssessment",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ProtocolAssessment"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

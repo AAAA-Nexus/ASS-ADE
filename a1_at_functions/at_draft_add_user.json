@@ -1,0 +1,31 @@
+{
+  "body": "    def add_user(self, content: str) -> None:\n        self._messages.append(Message(role=\"user\", content=content))\n",
+  "body_hash": "228d0e05016a9f2f",
+  "body_truncated": false,
+  "callers_of": [
+    "append",
+    "Message"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_conversation.py:25.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.add_user",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_conversation.py:25"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "add_user",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for add_user"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

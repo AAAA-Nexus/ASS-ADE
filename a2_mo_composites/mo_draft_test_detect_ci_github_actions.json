@@ -1,0 +1,44 @@
+{
+  "body": "def test_detect_ci_github_actions(tmp_path: Path) -> None:\n    workflows = tmp_path / \".github\" / \"workflows\"\n    workflows.mkdir(parents=True)\n    (workflows / \"ci.yml\").write_text(\"on: push\\n\", encoding=\"utf-8\")\n\n    result = detect_ci(tmp_path)\n\n    assert \"github-actions\" in result\n",
+  "body_hash": "8704a634a86f9966",
+  "body_truncated": false,
+  "callers_of": [
+    "mkdir",
+    "write_text",
+    "detect_ci"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_docs_engine.py:132.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.test_detect_ci_github_actions",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.local.docs_engine.build_local_analysis",
+    "ass_ade.local.docs_engine.detect_ci",
+    "ass_ade.local.docs_engine.detect_languages",
+    "ass_ade.local.docs_engine.detect_test_framework",
+    "ass_ade.local.docs_engine.load_project_metadata",
+    "ass_ade.local.docs_engine.render_local_docs",
+    "ass_ade.local.docs_engine.scan_source_symbols"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_docs_engine.py:132"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "test_detect_ci_github_actions",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_detect_ci_github_actions"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

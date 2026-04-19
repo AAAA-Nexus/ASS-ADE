@@ -1,0 +1,49 @@
+{
+  "body": "def bump_project_version(\n    *,\n    root: Path,\n    bump: str,\n    new_version: str = \"\",\n    summary: str = \"Version update\",\n    dry_run: bool = False,\n) -> VersionBumpResult:\n    root = root.resolve()\n    old_version, target_version = calculate_next_version(root, bump, new_version)\n    files_updated: list[str] = []\n    files_backed_up: list[str] = []\n    timestamp = datetime.now(timezone.utc).strftime(\"%Y%m%dT%H%M%SZ\")\n    backup_dir = root / DEFAULT_EVOLUTION_DIR / \"version-backups\" / f\"{old_version}-to-{target_version}-{timestamp}\"\n\n    def backup_file(path: Path) -> None:\n        if dry_run or not path.exists():\n            return\n        rel = path.relative_to(root)\n        target = backup_dir / rel\n        target.parent.mkdir(parents=True, exist_ok=True)\n        shutil.copy2(path, target)\n        files_backed_up.append(str(target))\n\n    pyproject = root / \"pyproject.toml\"\n    if pyproject.exists():\n        backup_file(pyproject)\n        updated = _replace_project_version(pyproject.read_text(encoding=\"utf-8\"), target_version)\n        if not dry_run:\n            pyproject.write_text(updated, encoding=\"utf-8\")\n        files_updated.append(str(pyproject))\n\n    init_file = root / \"src\" / \"ass_ade\" / \"__init__.py\"\n    if init_file.exists():\n        backup_file(init_file)\n        updated = _replace_init_version(init_file.read_text(encoding=\"utf-8\"), target_version)\n        if not dry_run:\n            init_file.write_text(updated, encoding=\"utf-8\")\n        files_updated.append(str(init_file))\n\n    readme = root / \"README.md\"\n    if readme.exists():\n        backup_file(readme)\n        updated = _replace_readme_version(readme.read_text(encoding=\"utf-8\"), target_version)\n        if not dry_run:\n            readme.write_text(updated, encoding=\"utf-8\")\n        files_updated.append(str(readme))\n\n    changelog = root / \"CHANGELOG.md\"\n    if changelog.exists():\n        backup_file(changelog)\n        release_timestamp = datetime.now(timezone.utc).replace(microsecond=0).isoformat()\n        updated = _insert_changelog_entry(\n            changelog.read_text(encoding=\"utf-8\"),\n            target_version,\n            summary,\n            release_timestamp,\n        )\n        if not dry_run:\n            changelog.write_text(updated, encoding=\"utf-8\")\n        files_updated.append(str(changelog))\n\n    return VersionBumpResult(\n        old_version=old_version,\n        new_version=target_version,\n        bump=bump,\n        dry_run=dry_run,\n        files_updated=files_updated,\n        backup_dir=str(backup_dir) if files_backed_up else \"\",\n        files_backed_up=files_backed_up,\n    )\n",
+  "body_hash": "d092642c26b6fcbe",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "calculate_next_version",
+    "strftime",
+    "exists",
+    "VersionBumpResult",
+    "relative_to",
+    "mkdir",
+    "copy2",
+    "append",
+    "backup_file",
+    "_replace_project_version",
+    "_replace_init_version",
+    "_replace_readme_version",
+    "isoformat",
+    "_insert_changelog_entry",
+    "now",
+    "str",
+    "read_text",
+    "write_text",
+    "replace"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_bump_project_version.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.bump_project_version",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_bump_project_version.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "bump_project_version",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for bump_project_version"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

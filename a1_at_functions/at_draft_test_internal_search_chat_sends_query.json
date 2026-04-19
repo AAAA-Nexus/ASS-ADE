@@ -1,0 +1,52 @@
+{
+  "body": "    def test_internal_search_chat_sends_query(self) -> None:\n        \"\"\"internal_search_chat should POST to /internal/search/chat.\"\"\"\n        requests_made = []\n\n        def handler(request: httpx.Request) -> httpx.Response:\n            requests_made.append(request)\n            return httpx.Response(200, json={\"success\": True, \"result\": {\"response\": \"answer\"}})\n\n        transport = httpx.MockTransport(handler)\n        client = NexusClient(base_url=\"https://test.atomadic.tech\", transport=transport)\n        result = client.internal_search_chat(\"what is codex\", session_token=\"sess\")\n        assert result[\"success\"] is True\n        assert \"/internal/search/chat\" in str(requests_made[0].url)\n        client.close()\n",
+  "body_hash": "e8e6b51630a811dc",
+  "body_truncated": false,
+  "callers_of": [
+    "MockTransport",
+    "NexusClient",
+    "internal_search_chat",
+    "close",
+    "append",
+    "Response",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_search_x402.py:225.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_internal_search_chat_sends_query",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "httpx",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.nexus.client.NexusClient",
+    "ass_ade.nexus.errors.NexusPaymentRequired",
+    "ass_ade.nexus.errors.NexusAuthError"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_search_x402.py:225"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_internal_search_chat_sends_query",
+  "product_categories": [
+    "DCM",
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for test_internal_search_chat_sends_query"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

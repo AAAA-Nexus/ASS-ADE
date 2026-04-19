@@ -1,0 +1,36 @@
+{
+  "body": "def test_reputation_score(tmp_path: Path) -> None:\n    mock_nx = MagicMock()\n    mock_nx.reputation_score.return_value = ReputationScore(agent_id=\"ag-1\", score=0.9, tier=\"gold\", fee_multiplier=0.9)\n    with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n        result = runner.invoke(app, [\"reputation\", \"score\", \"ag-1\",\n                                     \"--config\", str(_hybrid_config(tmp_path)), \"--allow-remote\"])\n    assert result.exit_code == 0\n    assert \"gold\" in result.stdout\n",
+  "body_hash": "8282008b2c0024c5",
+  "body_truncated": false,
+  "callers_of": [
+    "MagicMock",
+    "ReputationScore",
+    "patch",
+    "invoke",
+    "_make_ctx_mgr",
+    "str",
+    "_hybrid_config"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_reputation_score.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_reputation_score",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_reputation_score.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_reputation_score",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_reputation_score"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

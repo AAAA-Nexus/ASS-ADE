@@ -1,0 +1,28 @@
+{
+  "body": "class QuarantineResult(NexusModel):\n    \"\"\"/v1/agent/quarantine\"\"\"\n    quarantined: bool | None = None\n    agent_id: str | None = None\n    reason: str | None = None\n",
+  "body_hash": "ed88f72abe93fb24",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_quarantineresult.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.quarantineresult",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_quarantineresult.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "QuarantineResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for QuarantineResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

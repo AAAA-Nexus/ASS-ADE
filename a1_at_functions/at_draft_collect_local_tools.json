@@ -1,0 +1,38 @@
+{
+  "body": "def collect_local_tools(working_dir: str | Path = \".\") -> list[CapabilityEntry]:\n    \"\"\"Return local agent tool schemas from the registered tool system.\"\"\"\n    try:\n        from ass_ade.tools.registry import default_registry\n\n        registry = default_registry(str(working_dir))\n        return [\n            CapabilityEntry(kind=\"tool\", name=schema.name, description=_first_sentence(schema.description))\n            for schema in registry.schemas()\n        ]\n    except Exception:\n        return []\n",
+  "body_hash": "d87287f24c0e9ae4",
+  "body_truncated": false,
+  "callers_of": [
+    "default_registry",
+    "str",
+    "CapabilityEntry",
+    "schemas",
+    "_first_sentence"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_collect_local_tools.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.collect_local_tools",
+  "imports": [
+    "ass_ade.tools.registry.default_registry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_collect_local_tools.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [
+    "qk.source.ass_ade.schemas"
+  ],
+  "name": "collect_local_tools",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for collect_local_tools"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

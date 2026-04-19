@@ -1,0 +1,50 @@
+{
+  "body": "    def test_whitespace_only_text_response_is_preserved(self, tmp_path):\n        provider = _MockProvider([\n            CompletionResponse(\n                message=Message(role=\"assistant\", content=\"   \"),\n                finish_reason=\"stop\",\n            )\n        ])\n        registry = ToolRegistry()\n        loop = AgentLoop(\n            provider=provider,\n            registry=registry,\n            working_dir=str(tmp_path),\n        )\n        result = loop.step(\"Hello\")\n        assert result == \"   \"\n",
+  "body_hash": "3850edfab72b6c8d",
+  "body_truncated": false,
+  "callers_of": [
+    "_MockProvider",
+    "ToolRegistry",
+    "AgentLoop",
+    "step",
+    "CompletionResponse",
+    "str",
+    "Message"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_agent.py:204.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_whitespace_only_text_response_is_preserved",
+  "imports": [
+    "__future__.annotations",
+    "unittest.mock.MagicMock",
+    "ass_ade.agent.context.build_system_prompt",
+    "ass_ade.agent.conversation.Conversation",
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.agent.loop.MAX_ROUNDS_SENTINEL",
+    "ass_ade.engine.types.CompletionRequest",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolCallRequest",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.registry.ToolRegistry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_agent.py:204"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_whitespace_only_text_response_is_preserved",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_whitespace_only_text_response_is_preserved"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

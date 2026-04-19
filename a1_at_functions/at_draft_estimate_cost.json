@@ -1,0 +1,31 @@
+{
+  "body": "def estimate_cost(tool: MCPTool) -> CostEstimate | None:\n    \"\"\"Return the cost metadata for a tool, or None if the tool is free / metadata unavailable.\"\"\"\n    if tool.cost is not None:\n        return tool.cost\n    if bool(tool.paid):\n        # Manifest declares paid but no cost detail; return a placeholder.\n        return CostEstimate(notes=\"paid tool \u2013 no cost detail in manifest\")\n    return None\n",
+  "body_hash": "b2964f3e308d33ca",
+  "body_truncated": false,
+  "callers_of": [
+    "bool",
+    "CostEstimate"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_estimate_cost.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.estimate_cost",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_estimate_cost.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "estimate_cost",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for estimate_cost"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

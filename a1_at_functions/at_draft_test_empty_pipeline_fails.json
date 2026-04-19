@@ -1,0 +1,41 @@
+{
+  "body": "    def test_empty_pipeline_fails(self) -> None:\n        pipe = Pipeline(\"empty\")\n        result = pipe.run()\n        assert not result.passed\n        assert len(result.steps) == 0\n",
+  "body_hash": "d4776f8ca0e9bbef",
+  "body_truncated": false,
+  "callers_of": [
+    "Pipeline",
+    "run",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:50.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_empty_pipeline_fails",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.pipeline.Pipeline",
+    "ass_ade.pipeline.PipelineResult",
+    "ass_ade.pipeline.StepResult",
+    "ass_ade.pipeline.StepStatus"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:50"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_empty_pipeline_fails",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_empty_pipeline_fails"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

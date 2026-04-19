@@ -1,0 +1,34 @@
+{
+  "body": "def test_full_cycle_command_writes_report(tmp_path: Path) -> None:\n    (tmp_path / \"README.md\").write_text(\"hello\", encoding=\"utf-8\")\n    report_path = tmp_path / \"reports\" / \"cycle.md\"\n\n    result = runner.invoke(\n        app,\n        [\n            \"cycle\",\n            \"Enhance via cycle\",\n            \"--path\",\n            str(tmp_path),\n            \"--report-out\",\n            str(report_path),\n        ],\n    )\n\n    assert result.exit_code == 0\n    assert report_path.exists()\n    assert \"ASS-ADE Public Enhancement Cycle\" in report_path.read_text(encoding=\"utf-8\")\n",
+  "body_hash": "7fb360897072c5b8",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "invoke",
+    "exists",
+    "read_text",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_full_cycle_command_writes_report.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_full_cycle_command_writes_report",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_full_cycle_command_writes_report.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_full_cycle_command_writes_report",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_full_cycle_command_writes_report"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

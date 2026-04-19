@@ -1,0 +1,28 @@
+{
+  "body": "    def last_provider_name(self) -> str | None:\n        return self._last_provider_name\n",
+  "body_hash": "745bf933b7d3e7fa",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_multiprovider.py:34.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.last_provider_name",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_multiprovider.py:34"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "last_provider_name",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for last_provider_name"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

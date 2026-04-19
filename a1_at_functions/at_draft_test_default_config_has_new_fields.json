@@ -1,0 +1,38 @@
+{
+  "body": "    def test_default_config_has_new_fields(self):\n        from ass_ade.config import AssAdeConfig\n        cfg = AssAdeConfig()\n        assert cfg.lse_enabled is True\n        assert cfg.tier_policy == {}\n        assert cfg.provider_fallback_chain == []\n        assert cfg.providers == {}\n",
+  "body_hash": "ea3b93f56b2823ae",
+  "body_truncated": false,
+  "callers_of": [
+    "AssAdeConfig"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testconfigproviderfields.py:6.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_default_config_has_new_fields",
+  "imports": [
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.ProviderOverride",
+    "ass_ade.config.write_default_config",
+    "ass_ade.config.load_config",
+    "ass_ade.config.load_config"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testconfigproviderfields.py:6"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_default_config_has_new_fields",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_default_config_has_new_fields"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

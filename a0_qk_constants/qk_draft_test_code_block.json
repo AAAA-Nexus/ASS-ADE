@@ -1,0 +1,30 @@
+{
+  "body": "    def test_code_block(self):\n        code = \"def fibonacci(n: int) -> int:\\n    if n <= 1:\\n        return n\\n    return fibonacci(n - 1) + fibonacci(n - 2)\\n\"\n        result = estimate_tokens(code)\n        assert result >= 10\n        assert result <= 100\n",
+  "body_hash": "b9c0fe14d1666a0a",
+  "body_truncated": false,
+  "callers_of": [
+    "estimate_tokens"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testestimatetokens.py:14.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.test_code_block",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testestimatetokens.py:14"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "test_code_block",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_code_block"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

@@ -1,0 +1,38 @@
+{
+  "body": "    def test_gate_sam_fail_open_on_exception(self):\n        from ass_ade.agent.gates import QualityGates\n        broken_nexus = MagicMock()\n        broken_nexus.trust_score.side_effect = RuntimeError(\"boom\")\n        gates = QualityGates(nexus_client=broken_nexus, config={})\n        # Should not raise \u2014 context_memory may also raise; patch it\n        with patch(\"ass_ade.context_memory.vector_embed\", return_value=[0.1, 0.2]):\n            result = gates.gate_sam(target=\"x\")\n        # Either None (fail-open) or a dict\n        assert result is None or isinstance(result, dict)\n",
+  "body_hash": "6a6604160adfe398",
+  "body_truncated": false,
+  "callers_of": [
+    "MagicMock",
+    "RuntimeError",
+    "QualityGates",
+    "patch",
+    "gate_sam",
+    "isinstance"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testqualitygatessam.py:27.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_gate_sam_fail_open_on_exception",
+  "imports": [
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.gates.QualityGates"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testqualitygatessam.py:27"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_gate_sam_fail_open_on_exception",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_gate_sam_fail_open_on_exception"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

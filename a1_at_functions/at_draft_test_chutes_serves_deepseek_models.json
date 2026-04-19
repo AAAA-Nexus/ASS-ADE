@@ -1,0 +1,33 @@
+{
+  "body": "    def test_chutes_serves_deepseek_models(self):\n        profile = get_provider(\"chutes\")\n        assert \"deepseek\" in profile.models_by_tier[\"balanced\"].lower()\n        assert \"deepseek\" in profile.models_by_tier[\"deep\"].lower()\n",
+  "body_hash": "0e9196776ec3887b",
+  "body_truncated": false,
+  "callers_of": [
+    "get_provider",
+    "lower"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testchutesprovider.py:16.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_chutes_serves_deepseek_models",
+  "imports": [
+    "ass_ade.agent.lse.LSEEngine"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testchutesprovider.py:16"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_chutes_serves_deepseek_models",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_chutes_serves_deepseek_models"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

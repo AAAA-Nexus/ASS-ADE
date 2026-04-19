@@ -1,0 +1,34 @@
+{
+  "body": "def filter_tasks_by_status(tasks: List[Task], status: TaskStatus) -> List[Task]:\n    \"\"\"Filter tasks by status (pure function).\"\"\"\n    return [t for t in tasks if t.status == status]\n",
+  "body_hash": "cbfdd7c3b535a8b0",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/examples/02-rebuild-a-codebase/sample_project/main.py:64.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.filter_tasks_by_status",
+  "imports": [
+    "enum.Enum",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.List",
+    "typing.Optional"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/examples/02-rebuild-a-codebase/sample_project/main.py:64"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "filter_tasks_by_status",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for filter_tasks_by_status"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

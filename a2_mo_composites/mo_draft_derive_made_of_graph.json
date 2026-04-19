@@ -1,0 +1,40 @@
+{
+  "body": "def derive_made_of_graph(plan: dict[str, Any]) -> dict[str, Any]:\n    \"\"\"Populate each component's ``made_of`` from call-graph analysis. Mutates ``plan``.\"\"\"\n    by_name: dict[str, str] = {}\n    for prop in plan.get(\"proposed_components\") or []:\n        name = (prop.get(\"name\") or \"\").lower()\n        if name:\n            by_name[name] = prop[\"id\"]\n\n    for prop in plan.get(\"proposed_components\") or []:\n        made_of: list[str] = list(prop.get(\"made_of\") or [])\n        for callee in prop.get(\"callers_of\") or []:\n            target_id = by_name.get((callee or \"\").lower())\n            if target_id and target_id != prop[\"id\"] and target_id not in made_of:\n                made_of.append(target_id)\n        prop[\"made_of\"] = made_of\n    return plan\n",
+  "body_hash": "66d654ae22a9c0e9",
+  "body_truncated": false,
+  "callers_of": [
+    "get",
+    "lower",
+    "list",
+    "append"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/body_extractor.py:163.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.derive_made_of_graph",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "re",
+    "dataclasses.dataclass",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/body_extractor.py:163"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "derive_made_of_graph",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for derive_made_of_graph"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

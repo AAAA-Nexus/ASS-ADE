@@ -1,0 +1,48 @@
+{
+  "body": "    def test_schemas(self, workspace: Path):\n        reg = default_registry(str(workspace))\n        schemas = reg.schemas()\n        assert len(schemas) == len(reg.list_tools())\n        assert all(s.name for s in schemas)\n",
+  "body_hash": "df23be5d105cc382",
+  "body_truncated": false,
+  "callers_of": [
+    "default_registry",
+    "schemas",
+    "all",
+    "str",
+    "len",
+    "list_tools"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:203.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.test_schemas",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.tools.builtin.EditFileTool",
+    "ass_ade.tools.builtin.GrepSearchTool",
+    "ass_ade.tools.builtin.ListDirectoryTool",
+    "ass_ade.tools.builtin.ReadFileTool",
+    "ass_ade.tools.builtin.RunCommandTool",
+    "ass_ade.tools.builtin.SearchFilesTool",
+    "ass_ade.tools.builtin.WriteFileTool",
+    "ass_ade.tools.registry.default_registry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:203"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "test_schemas",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_schemas"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

@@ -1,0 +1,42 @@
+{
+  "body": "    def test_callback_on_skip(self) -> None:\n        calls: list[tuple[str, StepStatus, int, int]] = []\n\n        def on_progress(name: str, status: StepStatus, current: int, total: int) -> None:\n            calls.append((name, status, current, total))\n\n        pipe = Pipeline(\"skip\", fail_fast=True, on_progress=on_progress)\n        pipe.add(\"s1\", fail_step)\n        pipe.add(\"s2\", pass_step)\n        pipe.run()\n\n        statuses = [s for _, s, _, _ in calls]\n        assert StepStatus.SKIPPED in statuses\n",
+  "body_hash": "aecf83694858c534",
+  "body_truncated": false,
+  "callers_of": [
+    "Pipeline",
+    "add",
+    "run",
+    "append"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:165.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_callback_on_skip",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.pipeline.Pipeline",
+    "ass_ade.pipeline.PipelineResult",
+    "ass_ade.pipeline.StepResult",
+    "ass_ade.pipeline.StepStatus"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:165"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_callback_on_skip",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_callback_on_skip"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

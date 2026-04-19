@@ -1,0 +1,39 @@
+{
+  "body": "def test_write_and_load_config_round_trip(tmp_path: Path, monkeypatch) -> None:\n    # Isolate from any process-level AAAA_NEXUS_API_KEY (tests run from repo\n    # root may have hydrated the project's .env into os.environ).\n    monkeypatch.delenv(\"AAAA_NEXUS_API_KEY\", raising=False)\n    target = tmp_path / \".ass-ade\" / \"config.json\"\n    expected = AssAdeConfig(profile=\"hybrid\", agent_id=\"agent-77\")\n\n    write_default_config(target, config=expected, overwrite=True)\n    actual = load_config(target)\n\n    assert actual == expected\n",
+  "body_hash": "f45a6f72148b368a",
+  "body_truncated": false,
+  "callers_of": [
+    "delenv",
+    "AssAdeConfig",
+    "write_default_config",
+    "load_config"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_config.py:10.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_write_and_load_config_round_trip",
+  "imports": [
+    "pathlib.Path",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.default_config_path",
+    "ass_ade.config.load_config",
+    "ass_ade.config.write_default_config"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_config.py:10"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_write_and_load_config_round_trip",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_write_and_load_config_round_trip"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

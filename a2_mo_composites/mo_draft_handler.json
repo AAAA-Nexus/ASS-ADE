@@ -1,0 +1,31 @@
+{
+  "body": "        def handler(request: httpx.Request) -> httpx.Response:\n            requests_made.append(request)\n            return httpx.Response(200, json={\"success\": True, \"result\": {}})\n",
+  "body_hash": "4ccc7e45443c2bf4",
+  "body_truncated": false,
+  "callers_of": [
+    "append",
+    "Response"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexusclientsearch.py:10.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.handler",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexusclientsearch.py:10"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "handler",
+  "product_categories": [
+    "DCM"
+  ],
+  "provides": [
+    "rebuild candidate for handler"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

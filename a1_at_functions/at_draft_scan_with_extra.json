@@ -1,0 +1,38 @@
+{
+  "body": "        def scan_with_extra(text: str):\n            result = original_scan(text)\n            gates._gate_log.append(GateResult(gate=\"scan_extra\", passed=True, confidence=1.0))\n            return result\n",
+  "body_hash": "e6e8c1cf4fca7b7f",
+  "body_truncated": false,
+  "callers_of": [
+    "original_scan",
+    "append",
+    "GateResult"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:168.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.scan_with_extra",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "unittest.mock.MagicMock",
+    "ass_ade.agent.gates.GateResult",
+    "ass_ade.agent.gates.QualityGates"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:168"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "scan_with_extra",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for scan_with_extra"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,44 @@
+{
+  "body": "    def test_build_provider_instantiates_nexus_provider(self, monkeypatch):\n        for key in (\"OPENAI_API_KEY\", \"ANTHROPIC_API_KEY\", \"ASS_ADE_PROVIDER_URL\"):\n            monkeypatch.delenv(key, raising=False)\n        for p in FREE_PROVIDERS.values():\n            if p.api_key_env:\n                monkeypatch.delenv(p.api_key_env, raising=False)\n        monkeypatch.setenv(\"AAAA_NEXUS_API_KEY\", \"an_test_key\")\n\n        from ass_ade.config import AssAdeConfig, ProviderOverride\n        from ass_ade.engine.provider import NexusProvider\n        from ass_ade.engine.router import build_provider\n\n        # Profile must be non-local for Nexus to wire up\n        cfg = AssAdeConfig(profile=\"hybrid\", nexus_api_key=\"an_test_key\")\n        # Disable all other catalog providers so Nexus is the only one\n        for name in FREE_PROVIDERS:\n            if name != \"nexus\":\n                cfg.providers[name] = ProviderOverride(enabled=False)\n        provider = build_provider(cfg)\n        # With only Nexus enabled, it's returned directly (no MultiProvider wrapper)\n        assert isinstance(provider, NexusProvider)\n",
+  "body_hash": "ff1b36ce75fa6e7b",
+  "body_truncated": false,
+  "callers_of": [
+    "values",
+    "setenv",
+    "AssAdeConfig",
+    "build_provider",
+    "isinstance",
+    "delenv",
+    "ProviderOverride"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexusasprovider.py:27.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_build_provider_instantiates_nexus_provider",
+  "imports": [
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.ProviderOverride",
+    "ass_ade.engine.provider.NexusProvider",
+    "ass_ade.engine.router.build_provider",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.engine.router.build_provider"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexusasprovider.py:27"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_build_provider_instantiates_nexus_provider",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_build_provider_instantiates_nexus_provider"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

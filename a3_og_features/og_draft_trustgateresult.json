@@ -1,0 +1,41 @@
+{
+  "body": "class TrustGateResult(BaseModel):\n    agent_id: str\n    verdict: str  # ALLOW | DENY | WARN\n    steps: list[TrustGateStep] = Field(default_factory=list)\n    trust_score: float | None = None\n    reputation_tier: str | None = None\n",
+  "body_hash": "4d7f3bf7cd5076e3",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/workflows.py:39.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "og.source.ass_ade.trustgateresult",
+  "imports": [
+    "__future__.annotations",
+    "logging",
+    "typing.Any",
+    "httpx",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "ass_ade.nexus.client.NexusClient",
+    "ass_ade.nexus.errors.NexusError",
+    "ass_ade.nexus.validation.validate_agent_id",
+    "ass_ade.nexus.validation.validate_prompt"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/workflows.py:39"
+  },
+  "kind": "product_organism",
+  "made_of": [],
+  "name": "TrustGateResult",
+  "product_categories": [
+    "IDT"
+  ],
+  "provides": [
+    "rebuild candidate for TrustGateResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a3_og_features",
+  "version": "0.1.0"
+}

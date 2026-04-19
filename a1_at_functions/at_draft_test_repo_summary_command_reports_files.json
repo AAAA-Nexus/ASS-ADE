@@ -1,0 +1,41 @@
+{
+  "body": "def test_repo_summary_command_reports_files(tmp_path: Path) -> None:\n    (tmp_path / \"README.md\").write_text(\"hello\", encoding=\"utf-8\")\n    (tmp_path / \"src\").mkdir()\n    (tmp_path / \"src\" / \"app.py\").write_text(\"pass\", encoding=\"utf-8\")\n\n    result = runner.invoke(app, [\"repo\", \"summary\", str(tmp_path)])\n\n    assert result.exit_code == 0\n    assert \"Repo Summary\" in result.stdout\n    assert \"Top File Types\" in result.stdout\n",
+  "body_hash": "0179403f39ebf725",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "mkdir",
+    "invoke",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli.py:33.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_repo_summary_command_reports_files",
+  "imports": [
+    "json",
+    "pathlib.Path",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.cli._auto_detect_project"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli.py:33"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_repo_summary_command_reports_files",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_repo_summary_command_reports_files"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

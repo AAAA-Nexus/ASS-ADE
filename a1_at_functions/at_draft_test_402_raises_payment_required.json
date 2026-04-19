@@ -1,0 +1,31 @@
+{
+  "body": "    def test_402_raises_payment_required(self) -> None:\n        with pytest.raises(NexusPaymentRequired) as exc_info:\n            raise_for_status(402, endpoint=\"/v1/inference\")\n        assert exc_info.value.status_code == 402\n",
+  "body_hash": "365c487a913c698f",
+  "body_truncated": false,
+  "callers_of": [
+    "raises",
+    "raise_for_status"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testraiseforstatus.py:19.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_402_raises_payment_required",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testraiseforstatus.py:19"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_402_raises_payment_required",
+  "product_categories": [
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for test_402_raises_payment_required"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

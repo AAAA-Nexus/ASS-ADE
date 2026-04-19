@@ -1,0 +1,32 @@
+{
+  "body": "    def test_invalid_regex(self, workspace: Path):\n        tool = GrepSearchTool(str(workspace))\n        r = tool.execute(pattern=\"[invalid\")\n        assert not r.success\n        assert \"Invalid regex\" in (r.error or \"\")\n",
+  "body_hash": "178ce514225f4e74",
+  "body_truncated": false,
+  "callers_of": [
+    "GrepSearchTool",
+    "execute",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testgrepsearch.py:17.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_invalid_regex",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testgrepsearch.py:17"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_invalid_regex",
+  "product_categories": [
+    "DCM"
+  ],
+  "provides": [
+    "rebuild candidate for test_invalid_regex"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

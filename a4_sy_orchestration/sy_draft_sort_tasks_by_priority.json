@@ -1,0 +1,36 @@
+{
+  "body": "def sort_tasks_by_priority(tasks: List[Task], descending: bool = True) -> List[Task]:\n    \"\"\"Sort tasks by priority (pure function).\"\"\"\n    return sorted(tasks, key=lambda t: t.priority.value, reverse=descending)\n",
+  "body_hash": "10544f44d65b7b2d",
+  "body_truncated": false,
+  "callers_of": [
+    "sorted"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/examples/02-rebuild-a-codebase/sample_project/main.py:69.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.sort_tasks_by_priority",
+  "imports": [
+    "enum.Enum",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.List",
+    "typing.Optional"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/examples/02-rebuild-a-codebase/sample_project/main.py:69"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "sort_tasks_by_priority",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for sort_tasks_by_priority"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

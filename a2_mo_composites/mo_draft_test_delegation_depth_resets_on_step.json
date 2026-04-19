@@ -1,0 +1,82 @@
+{
+  "body": "    def test_delegation_depth_resets_on_step(self):\n        loop = self._make_loop()\n        loop._delegation_depth = 10\n        loop.reset_delegation_depth()\n        assert loop.delegation_depth == 0\n",
+  "body_hash": "e258416f4e9e61a3",
+  "body_truncated": false,
+  "callers_of": [
+    "_make_loop",
+    "reset_delegation_depth"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:117.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.test_delegation_depth_resets_on_step",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "time",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.agent.providers.FREE_PROVIDERS",
+    "ass_ade.agent.lse._LEGACY_TIER_TO_MODEL",
+    "unittest.mock.MagicMock",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.agent.loop.D_MAX",
+    "ass_ade.agent.orchestrator.CycleReport",
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.tca.TCAEngine",
+    "ass_ade.agent.tca.TCAEngine",
+    "ass_ade.map_terrain.active_terrain_gate",
+    "ass_ade.map_terrain.active_terrain_gate",
+    "ass_ade.map_terrain.active_terrain_gate",
+    "ass_ade.map_terrain.active_terrain_gate",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel",
+    "ass_ade.agent.lora_flywheel.RG_LOOP",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel",
+    "ass_ade.agent.orchestrator.EngineOrchestrator",
+    "ass_ade.agent.orchestrator.CycleReport"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:117"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.reset_delegation_depth"
+  ],
+  "name": "test_delegation_depth_resets_on_step",
+  "product_categories": [
+    "IDT"
+  ],
+  "provides": [
+    "rebuild candidate for test_delegation_depth_resets_on_step"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

@@ -1,0 +1,32 @@
+{
+  "body": "    def monitor(self, metrics: dict) -> Alert | None:\n        synergy = float(metrics.get(\"synergy\", 0.0))\n        novelty = float(metrics.get(\"novelty\", 0.0))\n        gvu = float(metrics.get(\"gvu_delta\", 0.0))\n        if synergy > self._synergy_threshold:\n            return self.alert(\"emergent_synergy\", {\"synergy\": synergy})\n        if novelty > self._novelty_threshold:\n            return self.alert(\"novelty_spike\", {\"novelty\": novelty})\n        if gvu > 0.1:\n            return self.alert(\"gvu_jump\", {\"gvu_delta\": gvu})\n        return None\n",
+  "body_hash": "854a093f2584d72f",
+  "body_truncated": false,
+  "callers_of": [
+    "float",
+    "get",
+    "alert"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_bas.py:108.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.monitor",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_bas.py:108"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "monitor",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for monitor"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

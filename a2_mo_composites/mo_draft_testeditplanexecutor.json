@@ -1,0 +1,47 @@
+{
+  "body": "class TestEditPlanExecutor:\n    def test_validate_create_success(self, executor: EditPlanExecutor):\n        plan = EditPlan()\n        plan.add_create(\"brand_new.py\", \"content\")\n        errors = executor.validate(plan)\n        assert errors == []\n        assert plan.validated is True\n\n    def test_validate_create_conflict(self, executor: EditPlanExecutor):\n        plan = EditPlan()\n        plan.add_create(\"main.py\", \"conflict\")\n        errors = executor.validate(plan)\n        assert len(errors) == 1\n        assert \"already exists\" in errors[0]\n\n    def test_validate_modify_success(self, executor: EditPlanExecutor):\n        plan = EditPlan()\n        plan.add_modify(\"main.py\", \"pass\", \"print('hello')\")\n        errors = executor.validate(plan)\n        assert errors == []\n        assert plan.validated is True\n        assert plan.edits[0].diff  # diff populated\n\n    def test_validate_modify_not_found(self, executor: EditPlanExecutor):\n        plan = EditPlan()\n        plan.add_modify(\"main.py\", \"NONEXISTENT\", \"replacement\")\n        errors = executor.validate(plan)\n        assert len(errors) == 1\n        assert \"not found\" in errors[0]\n\n    def test_validate_modify_file_missing(self, executor: EditPlanExecutor):\n        plan = EditPlan()\n        plan.add_modify(\"ghost.py\", \"old\", \"new\")\n        errors = executor.validate(plan)\n        assert len(errors) == 1\n\n    def test_validate_delete_success(self, executor: EditPlanExecutor):\n        plan = EditPlan()\n        plan.add_delete(\"main.py\")\n        errors = executor.validate(plan)\n        assert errors == []\n\n    def test_validate_delete_not_found(self, executor: EditPlanExecutor):\n        plan = EditPlan()\n        plan.add_delete(\"nonexistent.py\")\n        errors = executor.validate(plan)\n        assert len(errors) == 1\n\n    def test_apply_create(self, executor: EditPlanExecutor, workspace: Path):\n        plan = EditPlan()\n        plan.add_create(\"created.py\", \"print('created')\\n\")\n        executor.validate(plan)\n        result = executor.apply(plan)\n        assert result.success\n        assert (workspace / \"created.py\").read_text(encoding=\"utf-8\") == \"print('created')\\n\"\n        assert plan.applied is True\n\n    def test_apply_modify(self, executor: EditPlanExecutor, workspace: Path):\n        plan = EditPlan()\n        plan.add_modify(\"main.py\", \"pass\", \"print('hello')\")\n        executor.validate(plan)\n        result = executor.apply(plan)\n        assert result.success\n        content = (workspace / \"main.py\").read_text(encoding=\"utf-8\")\n        assert \"print('hello')\" in content\n\n    def test_apply_delete(self, executor: EditPlanExecutor, workspace: Path):\n        plan = EditPlan()\n        plan.add_delete(\"utils.py\")\n        executor.validate(plan)\n        result = executor.apply(plan)\n        assert result.success\n        assert not (workspace / \"utils.py\").exists()\n\n    def test_apply_unvalidated_fails(self, executor: EditPlanExecutor):\n        plan = EditPlan()\n        plan.add_create(\"x.py\", \"x\")\n        result = executor.apply(plan)\n        assert not result.success\n        assert \"validated\" in result.error.lower()\n\n    def test_apply_multi_file(self, executor: EditPlanExecutor, workspace: Path):\n        plan = EditPlan(description=\"Multi-file edit\")\n        plan.add_modify(\"main.py\", \"pass\", \"print('main')\")\n        plan.add_modify(\"utils.py\", \"return 42\", \"return 99\")\n        plan.add_create(\"new.py\", \"# new file\\n\")\n        executor.validate(plan)\n        result = executor.apply(plan)\n        assert result.success\n        assert \"print('main')\" in (workspace / \"main.py\").read_text(encoding=\"utf-8\")\n        assert \"return 99\" in (workspace / \"utils.py\").read_text(encoding=\"utf-8\")\n        assert (workspace / \"new.py\").exists()\n\n    def test_preview(self, executor: EditPlanExecutor):\n        plan = EditPlan()\n        plan.add_modify(\"main.py\", \"pass\", \"print('hello')\")\n        preview = executor.preview(plan)\n        assert \"pass\" in preview or \"print\" in preview\n\n    def test_preview_with_validation_errors(self, executor: EditPlanExecutor):\n        plan = EditPlan()\n        plan.add_modify(\"ghost.py\", \"old\", \"new\")\n        preview = executor.preview(plan)\n        assert \"error\" in preview.lower() or \"Validation\" in preview\n",
+  "body_hash": "75a66cdf9ab118d0",
+  "body_truncated": false,
+  "callers_of": [
+    "EditPlan",
+    "add_create",
+    "validate",
+    "add_modify",
+    "add_delete",
+    "apply",
+    "read_text",
+    "exists",
+    "preview",
+    "len",
+    "lower"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditplanexecutor.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testeditplanexecutor",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditplanexecutor.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.add_create",
+    "at.source.ass_ade.validate",
+    "at.source.ass_ade.add_modify",
+    "at.source.ass_ade.add_delete",
+    "at.source.ass_ade.apply",
+    "at.source.ass_ade.preview"
+  ],
+  "name": "TestEditPlanExecutor",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestEditPlanExecutor"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

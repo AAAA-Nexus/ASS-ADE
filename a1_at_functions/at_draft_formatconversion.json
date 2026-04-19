@@ -1,0 +1,28 @@
+{
+  "body": "class FormatConversion(NexusModel):\n    \"\"\"/v1/data/format-convert\"\"\"\n    result: str | None = None\n    from_format: str | None = None\n    to_format: str | None = None\n",
+  "body_hash": "f4efdd2a1dc3e198",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_formatconversion.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.formatconversion",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_formatconversion.py:5"
+  },
+  "kind": "pure_class",
+  "made_of": [],
+  "name": "FormatConversion",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for FormatConversion"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

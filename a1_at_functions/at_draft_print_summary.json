@@ -1,0 +1,47 @@
+{
+  "body": "def print_summary() -> None:\n    total = len(results)\n    passed = sum(1 for _, _, s, _ in results if s == \"PASS\")\n    failed = sum(1 for _, _, s, _ in results if s == \"FAIL\")\n\n    print(f\"{CYAN}{'=' * 70}{RESET}\")\n    print(f\"{CYAN}  SUMMARY: {passed}/{total} passed  ({failed} failed){RESET}\")\n    print(f\"{CYAN}{'=' * 70}{RESET}\")\n\n    if failed:\n        print(f\"\\n{RED}  Failed endpoints:{RESET}\")\n        for grp, name, status, _ in results:\n            if status == \"FAIL\":\n                print(f\"    {RED}  FAIL: {grp:15s} {name}{RESET}\")\n\n    # Per-group pass rate\n    groups: dict[str, list[str]] = {}\n    for grp, _, status, _ in results:\n        groups.setdefault(grp, []).append(status)\n    print(f\"\\n  {'Group':<20} {'Pass':>5} {'Fail':>5} {'Rate':>6}\")\n    print(f\"  {'-'*20} {'-'*5} {'-'*5} {'-'*6}\")\n    for grp, statuses in sorted(groups.items()):\n        p = statuses.count(\"PASS\")\n        f = statuses.count(\"FAIL\")\n        rate = f\"{100*p//(p+f)}%\" if p + f else \"\u2014\"\n        colour = GREEN if f == 0 else (YELLOW if p > 0 else RED)\n        print(f\"  {colour}{grp:<20} {p:>5} {f:>5} {rate:>6}{RESET}\")\n",
+  "body_hash": "73bda489eb393236",
+  "body_truncated": false,
+  "callers_of": [
+    "len",
+    "sum",
+    "print",
+    "sorted",
+    "append",
+    "items",
+    "count",
+    "setdefault"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/probe_endpoints.py:425.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.print_summary",
+  "imports": [
+    "__future__.annotations",
+    "argparse",
+    "os",
+    "sys",
+    "time",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Callable",
+    "ass_ade.nexus.client.NexusClient"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/probe_endpoints.py:425"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "print_summary",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for print_summary"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

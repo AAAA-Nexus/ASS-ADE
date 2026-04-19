@@ -1,0 +1,32 @@
+{
+  "body": "    def test_deny_on_low_trust(self) -> None:\n        client = _mock_client()\n        client.trust_score.return_value = TrustScore(score=0.3, tier=\"untrusted\")\n        result = trust_gate(client, \"agent-low-trust\")\n        assert result.verdict == \"DENY\"\n",
+  "body_hash": "636efaeaebbffea9",
+  "body_truncated": false,
+  "callers_of": [
+    "_mock_client",
+    "TrustScore",
+    "trust_gate"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_testtrustgate.py:25.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "og.source.ass_ade.test_deny_on_low_trust",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_testtrustgate.py:25"
+  },
+  "kind": "product_organism",
+  "made_of": [],
+  "name": "test_deny_on_low_trust",
+  "product_categories": [
+    "IDT"
+  ],
+  "provides": [
+    "rebuild candidate for test_deny_on_low_trust"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a3_og_features",
+  "version": "0.1.0"
+}

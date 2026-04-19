@@ -1,0 +1,30 @@
+{
+  "body": "class NexusAuthError(NexusError):\n    \"\"\"Authentication or authorisation failure (401/403).\"\"\"\n",
+  "body_hash": "7b690d94629a859e",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/errors.py:36.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.nexusautherror",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/errors.py:36"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "NexusAuthError",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for NexusAuthError"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

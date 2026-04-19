@@ -1,0 +1,50 @@
+{
+  "body": "    def test_fetch_does_not_duplicate_well_known(self) -> None:\n        mock_response = MagicMock()\n        mock_response.json.return_value = {\"name\": \"Test\"}\n\n        with patch(\"ass_ade.a2a.socket.getaddrinfo\", return_value=_FAKE_ADDR_INFO):\n            with patch(\"ass_ade.a2a.httpx.get\", return_value=mock_response) as mock_get:\n                fetch_agent_card(\"https://example.com/.well-known/agent.json\")\n                mock_get.assert_called_once_with(\n                    \"https://example.com/.well-known/agent.json\",\n                    timeout=10.0,\n                    follow_redirects=False,\n                )\n",
+  "body_hash": "344bec427d36084c",
+  "body_truncated": false,
+  "callers_of": [
+    "MagicMock",
+    "patch",
+    "fetch_agent_card",
+    "assert_called_once_with"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:159.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_fetch_does_not_duplicate_well_known",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.a2a.A2AAgentCard",
+    "ass_ade.a2a.A2AAuthentication",
+    "ass_ade.a2a.A2ASkill",
+    "ass_ade.a2a.ValidationIssue",
+    "ass_ade.a2a.ValidationReport",
+    "ass_ade.a2a.fetch_agent_card",
+    "ass_ade.a2a.local_agent_card",
+    "ass_ade.a2a.negotiate",
+    "ass_ade.a2a.validate_agent_card",
+    "httpx",
+    "httpx"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:159"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_fetch_does_not_duplicate_well_known",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_fetch_does_not_duplicate_well_known"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,36 @@
+{
+  "body": "def test_nexus_client_fetches_public_contracts() -> None:\n    def handler(request: httpx.Request) -> httpx.Response:\n        payloads = {\n            \"/health\": {\"status\": \"ok\"},\n            \"/openapi.json\": {\"info\": {\"version\": \"0.5.1\"}},\n            \"/.well-known/agent.json\": {\"name\": \"AAAA-Nexus\", \"skills\": []},\n            \"/.well-known/mcp.json\": {\"name\": \"AAAA-Nexus\", \"tools\": []},\n        }\n        return httpx.Response(200, json=payloads[request.url.path])\n\n    transport = httpx.MockTransport(handler)\n\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        assert client.get_health().status == \"ok\"\n        assert client.get_openapi().info.version == \"0.5.1\"\n        assert client.get_agent_card().name == \"AAAA-Nexus\"\n        assert client.get_mcp_manifest().name == \"AAAA-Nexus\"\n",
+  "body_hash": "153a5aa2bd5cbb65",
+  "body_truncated": false,
+  "callers_of": [
+    "MockTransport",
+    "Response",
+    "NexusClient",
+    "get_health",
+    "get_agent_card",
+    "get_mcp_manifest",
+    "get_openapi"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_nexus_client_fetches_public_contracts.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.test_nexus_client_fetches_public_contracts",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_nexus_client_fetches_public_contracts.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "test_nexus_client_fetches_public_contracts",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_nexus_client_fetches_public_contracts"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

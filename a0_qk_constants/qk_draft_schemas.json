@@ -1,0 +1,31 @@
+{
+  "body": "    def schemas(self) -> list[ToolSchema]:\n        return [\n            ToolSchema(\n                name=t.name,\n                description=t.description,\n                parameters=t.parameters,\n            )\n            for t in self._tools.values()\n        ]\n",
+  "body_hash": "5aa01d44cabea9ed",
+  "body_truncated": false,
+  "callers_of": [
+    "ToolSchema",
+    "values"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_toolregistry.py:20.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.schemas",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_toolregistry.py:20"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "schemas",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for schemas"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

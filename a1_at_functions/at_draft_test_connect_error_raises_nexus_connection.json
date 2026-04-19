@@ -1,0 +1,35 @@
+{
+  "body": "    def test_connect_error_raises_nexus_connection(self) -> None:\n        inner = _FailingTransport(httpx.ConnectError(\"refused\"))\n        transport = RetryTransport(inner, max_retries=2, backoff_base=0.0)\n        with pytest.raises(NexusConnectionError):\n            transport.handle_request(httpx.Request(\"GET\", \"https://example.com\"))\n        assert inner.call_count == 2\n",
+  "body_hash": "2cc5e81d5846b43c",
+  "body_truncated": false,
+  "callers_of": [
+    "_FailingTransport",
+    "RetryTransport",
+    "ConnectError",
+    "raises",
+    "handle_request",
+    "Request"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testretrytransport.py:50.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_connect_error_raises_nexus_connection",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testretrytransport.py:50"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_connect_error_raises_nexus_connection",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_connect_error_raises_nexus_connection"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

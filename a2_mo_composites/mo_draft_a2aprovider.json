@@ -1,0 +1,28 @@
+{
+  "body": "class A2AProvider(BaseModel):\n    \"\"\"Organization or individual providing the agent.\"\"\"\n\n    organization: str = \"\"\n    url: str = \"\"\n",
+  "body_hash": "7392ba8ec5c5cceb",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_a2aprovider.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.a2aprovider",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_a2aprovider.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "A2AProvider",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for A2AProvider"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

@@ -1,0 +1,33 @@
+{
+  "body": "    def test_appends_well_known_path(self) -> None:\n        \"\"\"Fetching from a URL without /.well-known/agent.json should auto-append it.\"\"\"\n        # Mock httpx.get to verify the right URL is called\n        with mock.patch(\"ass_ade.a2a.httpx.get\") as mock_get:\n            mock_response = mock.MagicMock()\n            mock_response.json.return_value = {\"name\": \"TestAgent\"}\n            mock_get.return_value = mock_response\n            \n            # This should work and return valid=False because the JSON is incomplete\n            # but we mainly care about the URL transformation\n            fetch_agent_card(\"https://example.com\")\n            \n            # Verify that the .well-known path was appended\n            called_url = mock_get.call_args[0][0]\n            assert called_url.endswith(\"/.well-known/agent.json\")\n",
+  "body_hash": "361f0fc51c5a48e0",
+  "body_truncated": false,
+  "callers_of": [
+    "patch",
+    "MagicMock",
+    "fetch_agent_card",
+    "endswith"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testa2afetchagentcardssrf.py:21.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_appends_well_known_path",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testa2afetchagentcardssrf.py:21"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_appends_well_known_path",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_appends_well_known_path"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,55 @@
+{
+  "body": "def run():\n    cfg = load_config()\n    cfg2 = load_config_again()\n    val = get_value(\"test\")\n    data = [1, 2, 3, 4, 5]\n    processed = process_data(data)\n    processed2 = process_data_copy(data)\n    formatted = format_output(processed)\n    formatted2 = format_output_again(processed2)\n    result1 = helper_thing(1, 2, 3)\n    result2 = another_helper_thing(1, 2, 3)\n    mgr = DataManager()\n    mgr.do_thing(42)\n    mgr.do_thing_2(43)\n    print(cfg, cfg2, val, processed, processed2, formatted, formatted2, result1, result2)\n",
+  "body_hash": "7f02161ef69b67c3",
+  "body_truncated": false,
+  "callers_of": [
+    "load_config",
+    "load_config_again",
+    "get_value",
+    "process_data",
+    "process_data_copy",
+    "format_output",
+    "format_output_again",
+    "helper_thing",
+    "another_helper_thing",
+    "DataManager",
+    "do_thing",
+    "do_thing_2",
+    "print"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/benchmarks/messy_demo/main.py:10.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.run",
+  "imports": [
+    "sys",
+    "os",
+    "config.load_config",
+    "config.load_config_again",
+    "utils.get_value",
+    "utils.process_data",
+    "utils.process_data_copy",
+    "utils.helper_thing",
+    "utils.another_helper_thing",
+    "helpers.format_output",
+    "helpers.format_output_again",
+    "helpers.DataManager"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/benchmarks/messy_demo/main.py:10"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "run",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for run"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

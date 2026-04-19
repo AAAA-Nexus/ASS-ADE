@@ -1,0 +1,28 @@
+{
+  "body": "    def validated(self) -> bool:\n        # Require: no violations, improvement >= threshold AND > 2\u03c3 of noise.\n        return (\n            not self.constitutional_violation\n            and not self.violations\n            and self.improvement >= self.threshold\n            and self.improvement > (2.0 * self.noise_sigma)\n        )\n",
+  "body_hash": "8dd5d2d2a855370a",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_simulationresult.py:26.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.validated",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_simulationresult.py:26"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "validated",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for validated"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

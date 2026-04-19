@@ -1,0 +1,50 @@
+{
+  "body": "    def test_writes_file(self, tmp_path: Path):\n        tier_dir = tmp_path / \"a1_at_functions\"\n        tier_dir.mkdir()\n        modules = [\n            {\"id\": \"at.foo\", \"name\": \"foo\", \"version\": \"0.1.0\", \"change_type\": \"new\"},\n            {\"id\": \"at.bar\", \"name\": \"bar\", \"version\": \"0.2.0\", \"change_type\": \"minor\"},\n        ]\n        path = write_tier_version_file(tier_dir, \"a1_at_functions\", modules)\n        assert Path(path).exists()\n        data = json.loads(Path(path).read_text())\n        assert data[\"tier\"] == \"a1_at_functions\"\n        assert data[\"tier_version\"] == \"0.2.0\"\n        assert data[\"module_count\"] == 2\n",
+  "body_hash": "a294b4264622fcf4",
+  "body_truncated": false,
+  "callers_of": [
+    "mkdir",
+    "write_tier_version_file",
+    "exists",
+    "loads",
+    "read_text",
+    "Path"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_version_tracker.py:239.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_writes_file",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.engine.rebuild.version_tracker.INITIAL_VERSION",
+    "ass_ade.engine.rebuild.version_tracker._aggregate_version",
+    "ass_ade.engine.rebuild.version_tracker._public_python_api",
+    "ass_ade.engine.rebuild.version_tracker.assign_version",
+    "ass_ade.engine.rebuild.version_tracker.bump_version",
+    "ass_ade.engine.rebuild.version_tracker.classify_change",
+    "ass_ade.engine.rebuild.version_tracker.content_hash",
+    "ass_ade.engine.rebuild.version_tracker.load_prev_versions",
+    "ass_ade.engine.rebuild.version_tracker.write_project_version_file",
+    "ass_ade.engine.rebuild.version_tracker.write_tier_version_file"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_version_tracker.py:239"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_writes_file",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_writes_file"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

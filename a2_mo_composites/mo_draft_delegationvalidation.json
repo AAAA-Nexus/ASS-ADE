@@ -1,0 +1,34 @@
+{
+  "body": "class DelegationValidation(NexusModel):\n    \"\"\"/v1/identity/delegation/validate and /v1/delegate/verify\"\"\"\n    valid: bool | None = None\n    depth: int | None = None\n    depth_limit: int | None = None   # D_MAX = 23\n    receipt_id: str | None = None\n    capability_attenuated: bool | None = None\n    trust_vector: dict | None = None\n",
+  "body_hash": "7566851b3f637ea1",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/models.py:218.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.delegationvalidation",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/models.py:218"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "DelegationValidation",
+  "product_categories": [
+    "IDT"
+  ],
+  "provides": [
+    "rebuild candidate for DelegationValidation"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

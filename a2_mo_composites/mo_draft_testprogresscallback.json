@@ -1,0 +1,45 @@
+{
+  "body": "class TestProgressCallback:\n    def test_callback_is_called(self) -> None:\n        calls: list[tuple[str, StepStatus, int, int]] = []\n\n        def on_progress(name: str, status: StepStatus, current: int, total: int) -> None:\n            calls.append((name, status, current, total))\n\n        pipe = Pipeline(\"prog\", on_progress=on_progress)\n        pipe.add(\"s1\", pass_step)\n        pipe.add(\"s2\", pass_step)\n        pipe.run()\n\n        # Each step: RUNNING then PASSED = 2 calls per step = 4 total\n        assert len(calls) == 4\n        assert calls[0] == (\"s1\", StepStatus.RUNNING, 1, 2)\n        assert calls[1] == (\"s1\", StepStatus.PASSED, 1, 2)\n        assert calls[2] == (\"s2\", StepStatus.RUNNING, 2, 2)\n        assert calls[3] == (\"s2\", StepStatus.PASSED, 2, 2)\n\n    def test_callback_on_skip(self) -> None:\n        calls: list[tuple[str, StepStatus, int, int]] = []\n\n        def on_progress(name: str, status: StepStatus, current: int, total: int) -> None:\n            calls.append((name, status, current, total))\n\n        pipe = Pipeline(\"skip\", fail_fast=True, on_progress=on_progress)\n        pipe.add(\"s1\", fail_step)\n        pipe.add(\"s2\", pass_step)\n        pipe.run()\n\n        statuses = [s for _, s, _, _ in calls]\n        assert StepStatus.SKIPPED in statuses\n",
+  "body_hash": "3e8b37aaca619735",
+  "body_truncated": false,
+  "callers_of": [
+    "Pipeline",
+    "add",
+    "run",
+    "append",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:146.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testprogresscallback",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.pipeline.Pipeline",
+    "ass_ade.pipeline.PipelineResult",
+    "ass_ade.pipeline.StepResult",
+    "ass_ade.pipeline.StepStatus"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:146"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.add"
+  ],
+  "name": "TestProgressCallback",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestProgressCallback"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

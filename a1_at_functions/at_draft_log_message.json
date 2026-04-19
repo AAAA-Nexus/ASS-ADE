@@ -1,0 +1,48 @@
+{
+  "body": "        def log_message(self, fmt: str, *args: Any) -> None:\n            _log.debug(fmt, *args)\n",
+  "body_hash": "56fd24debfa359e8",
+  "body_truncated": false,
+  "callers_of": [
+    "debug"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_training/serve_lora.py:108.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.log_message",
+  "imports": [
+    "__future__.annotations",
+    "argparse",
+    "json",
+    "logging",
+    "sys",
+    "threading",
+    "http.server.BaseHTTPRequestHandler",
+    "http.server.HTTPServer",
+    "pathlib.Path",
+    "typing.Any",
+    "torch",
+    "peft.PeftModel",
+    "transformers.AutoModelForCausalLM",
+    "transformers.AutoTokenizer",
+    "torch",
+    "peft",
+    "transformers"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_training/serve_lora.py:108"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "log_message",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for log_message"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

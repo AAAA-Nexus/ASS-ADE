@@ -1,0 +1,47 @@
+{
+  "body": "    def certify_step(ctx: dict[str, Any]) -> StepResult:\n        try:\n            result = client.certify_output(text, rubric=[\"accuracy\", \"safety\", \"compliance\"])\n            raw = result.model_dump() if hasattr(result, \"model_dump\") else {}\n            ctx[\"certificate_id\"] = raw.get(\"certificate_id\")\n            return StepResult(name=\"certify_output\", status=StepStatus.PASSED, output=raw)\n        except Exception as exc:\n            return StepResult(name=\"certify_output\", status=StepStatus.FAILED, error=str(exc))\n",
+  "body_hash": "8ac475a7ed09142a",
+  "body_truncated": false,
+  "callers_of": [
+    "certify_output",
+    "get",
+    "StepResult",
+    "hasattr",
+    "model_dump",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/pipeline.py:361.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.certify_step",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "time",
+    "collections.abc.Callable",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "enum.Enum",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Protocol",
+    "ass_ade.nexus.validation.validate_agent_id"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/pipeline.py:361"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "certify_step",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for certify_step"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

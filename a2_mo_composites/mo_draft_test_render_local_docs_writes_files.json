@@ -1,0 +1,45 @@
+{
+  "body": "def test_render_local_docs_writes_files(tmp_path: Path) -> None:\n    src_dir = tmp_path / \"project\"\n    src_dir.mkdir()\n    out_dir = tmp_path / \"out\"\n\n    analysis = _minimal_analysis(src_dir)\n    written = render_local_docs(analysis, out_dir)\n\n    for name in _EXPECTED_FILES:\n        assert name in written, f\"{name} not in written dict\"\n        assert (out_dir / name).exists(), f\"{name} not written to disk\"\n",
+  "body_hash": "11755959337b3c32",
+  "body_truncated": false,
+  "callers_of": [
+    "mkdir",
+    "_minimal_analysis",
+    "render_local_docs",
+    "exists"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_docs_engine.py:187.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.test_render_local_docs_writes_files",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.local.docs_engine.build_local_analysis",
+    "ass_ade.local.docs_engine.detect_ci",
+    "ass_ade.local.docs_engine.detect_languages",
+    "ass_ade.local.docs_engine.detect_test_framework",
+    "ass_ade.local.docs_engine.load_project_metadata",
+    "ass_ade.local.docs_engine.render_local_docs",
+    "ass_ade.local.docs_engine.scan_source_symbols"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_docs_engine.py:187"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "test_render_local_docs_writes_files",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_render_local_docs_writes_files"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

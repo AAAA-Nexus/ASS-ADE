@@ -1,0 +1,36 @@
+{
+  "body": "def test_forge_badge(tmp_path: Path) -> None:\n    mock_nx = MagicMock()\n    mock_nx.forge_badge.return_value = ForgeBadgeResult(badge_id=\"b-1\", name=\"Gold\", valid=True)\n    with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n        result = runner.invoke(app, [\"forge\", \"badge\", \"b-1\",\n                                     \"--config\", str(_hybrid_config(tmp_path)), \"--allow-remote\"])\n    assert result.exit_code == 0\n    assert \"Gold\" in result.stdout\n",
+  "body_hash": "ab5d502210ebd1a7",
+  "body_truncated": false,
+  "callers_of": [
+    "MagicMock",
+    "ForgeBadgeResult",
+    "patch",
+    "invoke",
+    "_make_ctx_mgr",
+    "str",
+    "_hybrid_config"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_forge_badge.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_forge_badge",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_forge_badge.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_forge_badge",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_forge_badge"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

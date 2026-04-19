@@ -1,0 +1,45 @@
+{
+  "body": "    def contribute_batch(self) -> BatchResult:\n        \"\"\"Batch all pending contributions \u2192 nexus.lora_contribute().\"\"\"\n        if not self._pending:\n            return BatchResult(submitted=0, contribution_id=None)\n        to_submit = list(self._pending)\n        try:\n            contribution_id = self._submit_to_nexus(to_submit)\n            # When nexus is present but returns None \u2192 treat as a submission failure\n            if self._nexus is not None and contribution_id is None:\n                raise RuntimeError(\"nexus lora_contribute returned no contribution_id\")\n            self._total_contributed += len(to_submit)\n            self._ratchet_epoch = self._total_contributed // RG_LOOP\n            reward = self._claim_reward(contribution_id)\n            result = BatchResult(\n                submitted=len(to_submit),\n                contribution_id=contribution_id,\n                reward_claimed=reward,\n            )\n            self._append_contribution_log(result, to_submit)\n            self._pending.clear()\n            self._save_pending()\n            _log.info(\"LoRAFlywheel: submitted %d contributions (epoch %d)\", len(to_submit), self._ratchet_epoch)\n            return result\n        except Exception as exc:\n            _log.warning(\"LoRAFlywheel: batch submit failed (will retry): %s\", exc)\n            return BatchResult(submitted=0, contribution_id=None, error=str(exc))\n",
+  "body_hash": "55c4527fbd31d7e8",
+  "body_truncated": false,
+  "callers_of": [
+    "list",
+    "BatchResult",
+    "_submit_to_nexus",
+    "len",
+    "_claim_reward",
+    "_append_contribution_log",
+    "clear",
+    "_save_pending",
+    "info",
+    "RuntimeError",
+    "warning",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_loraflywheel.py:143.",
+  "exceptions_raised": [
+    "RuntimeError"
+  ],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.contribute_batch",
+  "imports": [
+    "hashlib"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_loraflywheel.py:143"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "contribute_batch",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for contribute_batch"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

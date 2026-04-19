@@ -1,0 +1,49 @@
+{
+  "body": "def lint_command(\n    path: Path = typer.Argument(Path(\".\"), help=\"Folder to lint.\"),\n    config: Path | None = CONFIG_OPTION,\n    fix: bool = typer.Option(False, help=\"Apply auto-fixes where supported (ruff --fix).\"),\n    local_only: bool = typer.Option(\n        False,\n        help=\"Skip Nexus synthesis; run local linters only.\",\n    ),\n    allow_remote: bool = typer.Option(\n        False,\n        help=\"Force remote enrichment even in local profile.\",\n    ),\n    json_out: bool = typer.Option(False, \"--json\", help=\"Print result as JSON.\"),\n) -> None:\n    \"\"\"Run the monadic linter on any codebase.\n\n    Detects and runs language-appropriate linters (ruff, pyright, eslint, clippy,\n    go vet). Then sends findings to the AAAA-Nexus synthesis engine for intelligent\n    gap analysis and remediation suggestions. Free tier: 3 calls/day. Paid: x402.\n\n    Every lint run is captured by the LoRA flywheel.\n\n    Examples:\n        ass-ade lint .\n        ass-ade lint ~/myproject --fix\n        ass-ade lint ~/myproject --allow-remote --json\n    \"\"\"\n    from ass_ade.local.linter import run_linters\n\n    _, settings = _resolve_config(config)\n    target = path.resolve()\n    if not target.exists():\n        console.print(f\"[red]Path does not exist:[/red] {target}\")\n        raise typer.Exit(code=1)\n\n    console.print(f\"[bold]Linting[/bold] {target}\")\n    lint_results = run_linters(target, fix=fix)\n\n    for linter_name, res in lint_results.get(\"results\", {}).items():\n        ok_str = \"[green]OK[/green]\" if res.get(\"ok\") else \"[red]FAIL[/red]\"\n        count = res.get(\"error_count\", 0) + res.get(\"warning_count\", 0)\n        console.print(f\"  {linter_name}: [{ok_str}] {count} findings\")\n\n    nexus_result: dict = {}\n    use_remote = not local_only and _should_probe_remote(settings, allow_remote if allow_remote else None)\n\n    if use_remote:\n        try:\n            with NexusClient(\n                base_url=settings.nexus_base_url,\n                api_key=settings.nexus_api_key,\n                agent_id=str(settings.agent_id) if settings.agent_id else None,\n                timeout=60.0,\n            ) as nx:\n                console.print(\"[dim]Sending to AAAA-Nexus lint synthesis engine\u2026[/dim]\")\n                result = nx.lint_analyze(\n                    path_analysis=lint_results,\n                    agent_id=str(settings.agent_id) if settings.agent_id else None,\n                )\n                nexus_result = result.model_dump()\n                if result.ok:\n                    console.print(f\"[green][OK][/green] Nexus analysis: {result.findings_count} findings\")\n                    if result.lora_captured:\n                        console.print(\"[dim]LoRA flywheel: sample captured.[/dim]\")\n        except Exception as exc:\n            _http_status = (\n                getattr(exc, \"status_code\", None)\n                or getattr(getattr(exc, \"response\", None), \"status_code\", None)\n            )\n            if _http_status == 402:\n                console.print(\"[yellow]Nexus synthesis unavailable \u2014 API credits required[/yellow]\")\n            else:\n                console.print(f\"[yellow]Nexus synthesis unavailable:[/yellow] {exc}\")\n\n    total = lint_results.get(\"total_findings\", 0)\n    payload = {\n        **lint_results,\n        \"nexus_enriched\": nexus_result.get(\"synthesis_applied\", False),\n        \"lora_captured\": nexus_result.get(\"lora_captured\", False),\n    }\n\n    if json_out:\n        _print_json(payload)\n        return\n\n    status = \"[green]PASS[/green]\" if total == 0 else f\"[red]FAIL[/red] ({total} findings)\"\n    console.print(f\"\\n[bold]Lint result:[/bold] {status}\")\n    if total > 0:\n        raise typer.Exit(code=1)\n",
+  "body_hash": "6c0e4dd48dfb4df2",
+  "body_truncated": false,
+  "callers_of": [
+    "Argument",
+    "Option",
+    "_resolve_config",
+    "resolve",
+    "print",
+    "run_linters",
+    "items",
+    "get",
+    "Path",
+    "exists",
+    "Exit",
+    "_should_probe_remote",
+    "_print_json",
+    "NexusClient",
+    "lint_analyze",
+    "model_dump",
+    "getattr",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_lint_command.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.lint_command",
+  "imports": [
+    "ass_ade.local.linter.run_linters"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_lint_command.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "lint_command",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for lint_command"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

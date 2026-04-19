@@ -1,0 +1,62 @@
+{
+  "body": "    def recent_history(self, n: int = 5) -> list[dict]:\n        if not self._history_path.exists():\n            return []\n        lines = self._history_path.read_text(encoding=\"utf-8\").splitlines()\n        results = []\n        for line in reversed(lines[-n * 2:]):\n            try:\n                results.append(json.loads(line))\n                if len(results) >= n:\n                    break\n            except json.JSONDecodeError:\n                continue\n        return list(reversed(results))\n",
+  "body_hash": "00e63cd37742e9fd",
+  "body_truncated": false,
+  "callers_of": [
+    "splitlines",
+    "reversed",
+    "list",
+    "exists",
+    "read_text",
+    "append",
+    "loads",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/interpreter.py:240.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.recent_history",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "os",
+    "re",
+    "subprocess",
+    "sys",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "httpx",
+    "ass_ade.agent.capabilities.build_atomadic_intent_prompt",
+    "ass_ade.agent.capabilities.command_path_exists",
+    "ass_ade.agent.capabilities.render_atomadic_help",
+    "dotenv.load_dotenv",
+    "time",
+    "shutil",
+    "shutil",
+    "importlib",
+    "sys",
+    "rich.console.Console",
+    "rich.markdown.Markdown"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/interpreter.py:240"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "recent_history",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for recent_history"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

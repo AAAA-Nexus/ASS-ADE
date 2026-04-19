@@ -1,0 +1,57 @@
+{
+  "body": "def prompt_diff(\n    *,\n    baseline_path: str | Path,\n    working_dir: str | Path = \".\",\n    prompt_text: str | None = None,\n    prompt_path: str | Path | None = None,\n    redacted: bool = True,\n    max_lines: int = 200,\n) -> PromptDiffResult:\n    root = Path(working_dir).resolve()\n    current = load_prompt_artifact(\n        working_dir=root,\n        prompt_text=prompt_text,\n        prompt_path=prompt_path,\n    )\n    baseline_file = _resolve_under(root, baseline_path)\n    baseline = PromptArtifact(\n        source=baseline_file.relative_to(root).as_posix(),\n        text=baseline_file.read_text(encoding=\"utf-8\", errors=\"replace\"),\n    )\n\n    current_lines = current.text.splitlines()\n    baseline_lines = baseline.text.splitlines()\n    if redacted:\n        current_lines = [_redact_line(line) for line in current_lines]\n        baseline_lines = [_redact_line(line) for line in baseline_lines]\n\n    diff_lines = list(difflib.unified_diff(\n        baseline_lines,\n        current_lines,\n        fromfile=f\"a/{baseline.source}\",\n        tofile=f\"b/{current.source}\",\n        lineterm=\"\",\n    ))\n    truncated = len(diff_lines) > max_lines\n    if truncated:\n        diff_lines = diff_lines[:max_lines] + [\"... [diff truncated]\"]\n\n    return PromptDiffResult(\n        source=current.source,\n        baseline_source=baseline.source,\n        current_sha256=hashlib.sha256(current.text.encode()).hexdigest(),\n        baseline_sha256=hashlib.sha256(baseline.text.encode()).hexdigest(),\n        diff=\"\\n\".join(diff_lines) or \"(no changes)\",\n        redacted=redacted,\n        truncated=truncated,\n    )\n",
+  "body_hash": "7babfdbf3c758a1c",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "load_prompt_artifact",
+    "_resolve_under",
+    "PromptArtifact",
+    "splitlines",
+    "list",
+    "PromptDiffResult",
+    "unified_diff",
+    "len",
+    "Path",
+    "as_posix",
+    "read_text",
+    "_redact_line",
+    "hexdigest",
+    "join",
+    "relative_to",
+    "sha256",
+    "encode"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/prompt_toolkit.py:261.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.prompt_diff",
+  "imports": [
+    "__future__.annotations",
+    "difflib",
+    "hashlib",
+    "json",
+    "re",
+    "pathlib.Path",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/prompt_toolkit.py:261"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "prompt_diff",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for prompt_diff"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

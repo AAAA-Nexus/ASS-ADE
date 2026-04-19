@@ -1,0 +1,33 @@
+{
+  "body": "    def test_create_nested(self, workspace: Path):\n        tool = WriteFileTool(str(workspace))\n        r = tool.execute(path=\"a/b/c.py\", content=\"pass\\n\")\n        assert r.success\n        assert (workspace / \"a\" / \"b\" / \"c.py\").exists()\n",
+  "body_hash": "39d4912a243f716d",
+  "body_truncated": false,
+  "callers_of": [
+    "WriteFileTool",
+    "execute",
+    "exists",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwritefile.py:12.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_create_nested",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwritefile.py:12"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_create_nested",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_create_nested"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

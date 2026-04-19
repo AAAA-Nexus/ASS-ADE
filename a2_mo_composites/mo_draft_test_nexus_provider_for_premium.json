@@ -1,0 +1,60 @@
+{
+  "body": "    def test_nexus_provider_for_premium(self, monkeypatch):\n        self._clear_provider_env()\n        monkeypatch.setenv(\"AAAA_NEXUS_API_KEY\", \"an_test_key\")\n\n        from ass_ade.config import AssAdeConfig\n\n        cfg = self._disable_all_catalog(\n            AssAdeConfig(\n                profile=\"premium\",\n                nexus_api_key=\"an_test_key\",\n                nexus_base_url=\"https://atomadic.tech\",\n            ),\n            keep=(\"nexus\",),  # leave Nexus enabled\n        )\n        provider = build_provider(cfg)\n        # Only Nexus enabled \u2192 single return\n        assert isinstance(provider, NexusProvider)\n",
+  "body_hash": "e2c1bc5c73388ecf",
+  "body_truncated": false,
+  "callers_of": [
+    "_clear_provider_env",
+    "setenv",
+    "_disable_all_catalog",
+    "build_provider",
+    "isinstance",
+    "AssAdeConfig"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine.py:240.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.test_nexus_provider_for_premium",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "ass_ade.engine.provider.NexusProvider",
+    "ass_ade.engine.provider.OpenAICompatibleProvider",
+    "ass_ade.engine.router.build_provider",
+    "ass_ade.engine.types.CompletionRequest",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolCallRequest",
+    "ass_ade.engine.types.ToolSchema",
+    "os",
+    "ass_ade.agent.providers.FREE_PROVIDERS",
+    "ass_ade.agent.providers.FREE_PROVIDERS",
+    "ass_ade.config.ProviderOverride",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.engine.provider.MultiProvider",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.engine.provider.MultiProvider",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.engine.provider.MultiProvider"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine.py:240"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "test_nexus_provider_for_premium",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_nexus_provider_for_premium"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

@@ -1,0 +1,30 @@
+{
+  "body": "class Arch:\n    name: str\n    score: float\n    traits: list[str] = field(default_factory=list)\n",
+  "body_hash": "7596c9deb2672d79",
+  "body_truncated": false,
+  "callers_of": [
+    "field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_arch.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.arch",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_arch.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "Arch",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for Arch"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

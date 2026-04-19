@@ -1,0 +1,32 @@
+{
+  "body": "def load_config_again():\n    val = get_value(\"config\")\n    return {\"host\": DB_HOST, \"port\": DB_PORT, \"secret\": SECRET}\n",
+  "body_hash": "6744f88c589db258",
+  "body_truncated": false,
+  "callers_of": [
+    "get_value"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/benchmarks/messy_demo/config.py:13.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.load_config_again",
+  "imports": [
+    "utils.get_value"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/benchmarks/messy_demo/config.py:13"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "load_config_again",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for load_config_again"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

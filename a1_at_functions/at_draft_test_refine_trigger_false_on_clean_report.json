@@ -1,0 +1,38 @@
+{
+  "body": "    def test_refine_trigger_false_on_clean_report(self):\n        from ass_ade.agent.orchestrator import CycleReport\n        loop = self._make_loop()\n        report = CycleReport(alerts=[], wisdom_score=0.8)\n        report.engine_reports[\"cie\"] = {\"patches_applied\": 0}\n        assert loop._check_refine_trigger(report) is False\n",
+  "body_hash": "848ea7df7faddccd",
+  "body_truncated": false,
+  "callers_of": [
+    "_make_loop",
+    "CycleReport",
+    "_check_refine_trigger"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testagentloopphase1.py:45.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_refine_trigger_false_on_clean_report",
+  "imports": [
+    "unittest.mock.MagicMock",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.agent.loop.D_MAX",
+    "ass_ade.agent.orchestrator.CycleReport"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testagentloopphase1.py:45"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_refine_trigger_false_on_clean_report",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_refine_trigger_false_on_clean_report"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

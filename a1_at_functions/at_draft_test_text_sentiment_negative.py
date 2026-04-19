@@ -1,0 +1,13 @@
+# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_new_commands.py:278
+# Component id: at.source.ass_ade.test_text_sentiment_negative
+__version__ = "0.1.0"
+
+def test_text_sentiment_negative(tmp_path: Path) -> None:
+    mock_nx = MagicMock()
+    mock_nx.text_sentiment.return_value = TextSentiment(sentiment="negative", confidence=0.88, score=0.12)
+    with patch("ass_ade.cli.NexusClient", return_value=_make_ctx_mgr(mock_nx)):
+        result = runner.invoke(
+            app, ["text", "sentiment", "This is terrible.", "--config", str(_hybrid_config(tmp_path)), "--allow-remote"]
+        )
+    assert result.exit_code == 0
+    assert "negative" in result.stdout

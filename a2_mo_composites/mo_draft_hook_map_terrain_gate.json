@@ -1,0 +1,50 @@
+{
+  "body": "    def hook_map_terrain_gate(self, ctx: dict[str, Any]) -> dict[str, Any] | None:\n        try:\n            for method in (\"map_terrain\", \"nexus_map_terrain\"):\n                fn = getattr(self._client, method, None)\n                if fn is None:\n                    continue\n                try:\n                    result = fn(ctx)\n                    verdict = getattr(result, \"verdict\", None)\n                    if verdict is None and isinstance(result, dict):\n                        verdict = result.get(\"verdict\")\n                    return {\"verdict\": verdict or \"proceed\"}\n                except Exception:\n                    break\n            return {\"verdict\": \"proceed\", \"source\": \"fallback\"}\n        except Exception as exc:\n            logging.getLogger(__name__).warning(\"hook_map_terrain_gate failed: %s\", exc)\n            return None\n",
+  "body_hash": "70cc2c712807c0d2",
+  "body_truncated": false,
+  "callers_of": [
+    "getattr",
+    "warning",
+    "fn",
+    "isinstance",
+    "get",
+    "getLogger"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_qualitygates.py:392.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.hook_map_terrain_gate",
+  "imports": [
+    "ast",
+    "re",
+    "json",
+    "datetime.UTC",
+    "datetime.datetime",
+    "pathlib.Path",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "ass_ade.agent.trust_gate.TrustVerificationGate",
+    "ass_ade.agent.proofbridge.ProofBridge",
+    "ass_ade.agent.alphaverus.AlphaVerus",
+    "ass_ade.agent.dgm_h.DGMH",
+    "ass_ade.agent.dgm_h.Patch",
+    "ass_ade.agent.golden_runner.run_golden",
+    "ass_ade.agent.sam.SAM"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_qualitygates.py:392"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "hook_map_terrain_gate",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for hook_map_terrain_gate"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

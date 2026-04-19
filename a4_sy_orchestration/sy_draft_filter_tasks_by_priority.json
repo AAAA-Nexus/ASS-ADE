@@ -1,0 +1,34 @@
+{
+  "body": "def filter_tasks_by_priority(tasks: List[Task], min_priority: TaskPriority) -> List[Task]:\n    \"\"\"Filter tasks by minimum priority (pure function).\"\"\"\n    return [t for t in tasks if t.priority.value >= min_priority.value]\n",
+  "body_hash": "0dc0580fd9252527",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/examples/02-rebuild-a-codebase/sample_project/main.py:59.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.filter_tasks_by_priority",
+  "imports": [
+    "enum.Enum",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.List",
+    "typing.Optional"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/examples/02-rebuild-a-codebase/sample_project/main.py:59"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "filter_tasks_by_priority",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for filter_tasks_by_priority"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

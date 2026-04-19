@@ -1,0 +1,58 @@
+{
+  "body": "class TestLSEInAgentLoop:\n    def test_lse_decision_populated_after_step(self):\n        provider = _make_provider_returning_text(\"result\")\n        registry = ToolRegistry()\n        lse = LSEEngine({})\n        loop = AgentLoop(provider=provider, registry=registry, lse=lse)\n        loop.step(\"simple question\")\n        assert loop.last_lse_decision is not None\n        # Canonical tier names (catalog-aware); haiku/sonnet/opus are aliases\n        assert loop.last_lse_decision.tier in {\"fast\", \"balanced\", \"deep\"}\n\n    def test_lse_model_override_propagates_to_provider(self):\n        provider = _make_provider_returning_text(\"ok\")\n        registry = ToolRegistry()\n        lse = LSEEngine({})\n        loop = AgentLoop(provider=provider, registry=registry, lse=lse)\n        loop.step(\"trivial task\")\n        # Provider was called with a model name from LSE\n        call_args = provider.complete.call_args\n        assert call_args is not None\n        request = call_args[0][0] if call_args[0] else call_args[1].get(\"request\")\n        # The request should have a model set (either from LSE or None)\n        assert hasattr(request, \"model\")\n\n    def test_no_lse_falls_back_to_configured_model(self):\n        provider = _make_provider_returning_text(\"ok\")\n        registry = ToolRegistry()\n        loop = AgentLoop(\n            provider=provider,\n            registry=registry,\n            model=\"claude-sonnet-4-6\",\n        )\n        loop.step(\"any\")\n        call_args = provider.complete.call_args\n        request = call_args[0][0] if call_args[0] else call_args[1].get(\"request\")\n        assert request.model == \"claude-sonnet-4-6\"\n",
+  "body_hash": "9b3fce90c25b429d",
+  "body_truncated": false,
+  "callers_of": [
+    "_make_provider_returning_text",
+    "ToolRegistry",
+    "LSEEngine",
+    "AgentLoop",
+    "step",
+    "hasattr",
+    "get"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase1_integration.py:118.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testlseinagentloop",
+  "imports": [
+    "__future__.annotations",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.agent.loop.D_MAX",
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.agent.orchestrator.EngineOrchestrator",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.tools.registry.ToolRegistry",
+    "ass_ade.agent.bas._SEVERITY",
+    "ass_ade.commands.agent._render_phase1_header",
+    "io.StringIO",
+    "rich.console.Console",
+    "ass_ade.commands.agent._render_phase1_header",
+    "io.StringIO",
+    "rich.console.Console"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase1_integration.py:118"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.step"
+  ],
+  "name": "TestLSEInAgentLoop",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestLSEInAgentLoop"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

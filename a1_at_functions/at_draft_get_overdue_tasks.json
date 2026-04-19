@@ -1,0 +1,31 @@
+{
+  "body": "    def get_overdue_tasks(self) -> List[Task]:\n        \"\"\"Get all non-done tasks (would check dates in real impl).\"\"\"\n        all_tasks = self.manager.list_all_tasks()\n        return filter_tasks_by_status(all_tasks, TaskStatus.TODO)\n",
+  "body_hash": "fc36b0036145c2fc",
+  "body_truncated": false,
+  "callers_of": [
+    "list_all_tasks",
+    "filter_tasks_by_status"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_taskfilter.py:17.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.get_overdue_tasks",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_taskfilter.py:17"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "get_overdue_tasks",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for get_overdue_tasks"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

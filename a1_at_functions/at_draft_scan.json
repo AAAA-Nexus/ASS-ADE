@@ -1,0 +1,42 @@
+{
+  "body": "def scan(\n    path: str,\n    local_only: bool = False,\n    min_severity: str = \"info\",\n    timeout: int = 120,\n) -> dict:\n    \"\"\"Scan a codebase for enhancement opportunities.\n\n    Args:\n        path: Absolute or relative path to the codebase.\n        local_only: Skip AAAA-Nexus enrichment; use local analysis only.\n        min_severity: Minimum severity level to report (info/low/medium/high/critical).\n        timeout: Maximum seconds to wait for the command.\n\n    Returns:\n        dict with keys:\n            ok (bool): True when exit_code == 0.\n            exit_code (int): Raw process exit code.\n            stdout (str): Captured standard output.\n            stderr (str): Captured standard error.\n            findings (list[dict] | None): Parsed findings list when ok=True.\n    \"\"\"\n    cmd = [\n        sys.executable, \"-m\", \"ass_ade\", \"enhance\", \"scan\", path,\n        \"--json\",\n        \"--min-severity\", min_severity,\n    ]\n    if local_only:\n        cmd.append(\"--local-only\")\n\n    try:\n        result = subprocess.run(\n            cmd,\n            capture_output=True,\n            text=True,\n            timeout=timeout,\n        )\n    except subprocess.TimeoutExpired:\n        return {\n            \"ok\": False,\n            \"exit_code\": 124,\n            \"stdout\": \"\",\n            \"stderr\": f\"enhance scan timed out after {timeout}s\",\n            \"findings\": None,\n        }\n    except FileNotFoundError as exc:\n        return {\n            \"ok\": False,\n            \"exit_code\": 127,\n            \"stdout\": \"\",\n            \"stderr\": str(exc),\n            \"findings\": None,\n        }\n\n    findings = None\n    if result.returncode == 0 and result.stdout.strip():\n        try:\n            parsed = json.loads(result.stdout)\n            findings = parsed if isinstance(parsed, list) else parsed.get(\"findings\")\n        except json.JSONDecodeError:\n            pass\n\n    return {\n        \"ok\": result.returncode == 0,\n        \"exit_code\": result.returncode,\n        \"stdout\": result.stdout,\n        \"stderr\": result.stderr,\n        \"findings\": findings,\n    }\n",
+  "body_hash": "8c0987d5c82c05e0",
+  "body_truncated": false,
+  "callers_of": [
+    "append",
+    "run",
+    "strip",
+    "loads",
+    "str",
+    "isinstance",
+    "get"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tools/enhance_tool.py:10.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.scan",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "subprocess",
+    "sys",
+    "pathlib.Path"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tools/enhance_tool.py:10"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "scan",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for scan"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

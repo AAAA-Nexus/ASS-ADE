@@ -1,0 +1,51 @@
+{
+  "body": "class TestModels:\n    def test_agent_card_name_validation(self) -> None:\n        with pytest.raises(Exception):\n            A2AAgentCard(name=\"\")\n\n    def test_agent_card_with_payment(self) -> None:\n        card = A2AAgentCard(name=\"Paid\", payment={\"type\": \"x402\"})\n        assert card.payment == {\"type\": \"x402\"}\n\n    def test_validation_report_properties(self) -> None:\n        issues = [\n            ValidationIssue(\"error\", \"f1\", \"bad\"),\n            ValidationIssue(\"warning\", \"f2\", \"meh\"),\n            ValidationIssue(\"error\", \"f3\", \"also bad\"),\n        ]\n        report = ValidationReport(valid=False, issues=issues)\n        assert len(report.errors) == 2\n        assert len(report.warnings) == 1\n",
+  "body_hash": "65797e561457e879",
+  "body_truncated": false,
+  "callers_of": [
+    "A2AAgentCard",
+    "ValidationReport",
+    "raises",
+    "ValidationIssue",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:297.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testmodels",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.a2a.A2AAgentCard",
+    "ass_ade.a2a.A2AAuthentication",
+    "ass_ade.a2a.A2ASkill",
+    "ass_ade.a2a.ValidationIssue",
+    "ass_ade.a2a.ValidationReport",
+    "ass_ade.a2a.fetch_agent_card",
+    "ass_ade.a2a.local_agent_card",
+    "ass_ade.a2a.negotiate",
+    "ass_ade.a2a.validate_agent_card",
+    "httpx",
+    "httpx"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:297"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "TestModels",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestModels"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

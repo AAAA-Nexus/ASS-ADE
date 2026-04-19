@@ -1,0 +1,32 @@
+{
+  "body": "    def test_loads_from_manifest(self, tmp_path: Path):\n        manifest = {\n            \"components\": [\n                {\n                    \"id\": \"at.foo\",\n                    \"version\": \"0.2.1\",\n                    \"body_hash\": \"abc123\",\n                    \"body\": \"def foo(): pass\",\n                }\n            ]\n        }\n        p = tmp_path / \"MANIFEST.json\"\n        p.write_text(json.dumps(manifest), encoding=\"utf-8\")\n        result = load_prev_versions(p)\n        assert \"at.foo\" in result\n        assert result[\"at.foo\"][\"version\"] == \"0.2.1\"\n        assert result[\"at.foo\"][\"body_hash\"] == \"abc123\"\n",
+  "body_hash": "899adb12bdd9868b",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "load_prev_versions",
+    "dumps"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testloadprevversions.py:12.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.test_loads_from_manifest",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testloadprevversions.py:12"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "test_loads_from_manifest",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_loads_from_manifest"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

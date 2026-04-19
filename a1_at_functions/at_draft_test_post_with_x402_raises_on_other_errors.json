@@ -1,0 +1,37 @@
+{
+  "body": "    def test_post_with_x402_raises_on_other_errors(self) -> None:\n        \"\"\"_post_with_x402 should raise on non-402 errors (401, 500, etc.).\"\"\"\n        def handler(request: httpx.Request) -> httpx.Response:\n            return httpx.Response(401, json={\"error\": \"unauthorized\"})\n\n        transport = httpx.MockTransport(handler)\n        client = NexusClient(base_url=\"https://test.atomadic.tech\", transport=transport)\n        from ass_ade.nexus.errors import NexusAuthError\n        with pytest.raises(NexusAuthError):\n            client._post_with_x402(\"/v1/trust/score\")\n        client.close()\n",
+  "body_hash": "6649104bbfaee5bf",
+  "body_truncated": false,
+  "callers_of": [
+    "MockTransport",
+    "NexusClient",
+    "close",
+    "Response",
+    "raises",
+    "_post_with_x402"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testx402paymenthandling.py:85.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_post_with_x402_raises_on_other_errors",
+  "imports": [
+    "ass_ade.nexus.errors.NexusAuthError"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testx402paymenthandling.py:85"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_post_with_x402_raises_on_other_errors",
+  "product_categories": [
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for test_post_with_x402_raises_on_other_errors"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

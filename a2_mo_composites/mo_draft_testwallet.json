@@ -1,0 +1,32 @@
+{
+  "body": "class TestWallet:\n    \"\"\"Test `wallet` command \u2014 check x402 wallet status.\"\"\"\n\n    def test_wallet_status_no_key(self, tmp_path: Path, hybrid_config: Path) -> None:\n        \"\"\"Wallet status should display chain config and warn if key not set.\"\"\"\n        result = runner.invoke(\n            app,\n            [\"wallet\", \"--config\", str(hybrid_config)],\n        )\n        \n        assert result.exit_code == 0\n        assert \"Wallet\" in result.stdout or \"wallet\" in result.stdout.lower()\n",
+  "body_hash": "2ad0bcd10e8f8a58",
+  "body_truncated": false,
+  "callers_of": [
+    "invoke",
+    "str",
+    "lower"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwallet.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testwallet",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwallet.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "TestWallet",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestWallet"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

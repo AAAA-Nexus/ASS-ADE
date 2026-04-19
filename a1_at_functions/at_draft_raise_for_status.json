@@ -1,0 +1,33 @@
+{
+  "body": "def raise_for_status(status_code: int, *, endpoint: str = \"\", detail: str = \"\", retry_after: float | None = None) -> None:\n    \"\"\"Raise the appropriate typed exception for a non-2xx status code.\n\n    Does nothing when ``status_code`` is in the 2xx range.\n    \"\"\"\n    if 200 <= status_code < 300:\n        return\n\n    exc_cls = _STATUS_MAP.get(status_code)\n    if exc_cls is None and 500 <= status_code < 600:\n        exc_cls = NexusServerError\n    if exc_cls is None:\n        exc_cls = NexusError\n\n    msg = detail or f\"HTTP {status_code} from {endpoint or 'unknown'}\"\n    raise exc_cls(msg, status_code=status_code, endpoint=endpoint, retry_after=retry_after)\n",
+  "body_hash": "92c0917599728b66",
+  "body_truncated": false,
+  "callers_of": [
+    "get",
+    "exc_cls"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_raise_for_status.py:5.",
+  "exceptions_raised": [
+    "exc_cls"
+  ],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.raise_for_status",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_raise_for_status.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "raise_for_status",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for raise_for_status"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

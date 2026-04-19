@@ -1,0 +1,47 @@
+{
+  "body": "def test_scan_security_patterns_pickle(tmp_path: Path) -> None:\n    content = \"import pickle\\nresult = pickle.loads(data)\\n\"\n    (tmp_path / \"module.py\").write_text(content, encoding=\"utf-8\")\n\n    findings = scan_security_patterns(tmp_path)\n\n    assert any(f[\"category\"] == \"security\" for f in findings)\n    assert any(\"pickle\" in f[\"title\"].lower() for f in findings)\n",
+  "body_hash": "ee6d3294593456de",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "scan_security_patterns",
+    "any",
+    "lower"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_enhancer.py:109.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_scan_security_patterns_pickle",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "typing.Any",
+    "pytest",
+    "ass_ade.local.enhancer.build_enhancement_report",
+    "ass_ade.local.enhancer.rank_findings",
+    "ass_ade.local.enhancer.scan_bare_except",
+    "ass_ade.local.enhancer.scan_long_functions",
+    "ass_ade.local.enhancer.scan_missing_docs",
+    "ass_ade.local.enhancer.scan_missing_tests",
+    "ass_ade.local.enhancer.scan_security_patterns",
+    "ass_ade.local.enhancer.scan_todo_fixme",
+    "ass_ade.local.enhancer.scan_missing_type_hints"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_enhancer.py:109"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_scan_security_patterns_pickle",
+  "product_categories": [
+    "SEC"
+  ],
+  "provides": [
+    "rebuild candidate for test_scan_security_patterns_pickle"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

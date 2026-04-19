@@ -1,0 +1,51 @@
+{
+  "body": "def collect_certificate_summaries(root: Path, rebuild_path: Path | None = None) -> list[dict[str, Any]]:\n    paths = [root.resolve() / \"CERTIFICATE.json\"]\n    if rebuild_path is not None:\n        paths.append(rebuild_path.resolve() / \"CERTIFICATE.json\")\n    summaries: list[dict[str, Any]] = []\n    for path in paths:\n        if path.exists():\n            summary = _certificate_summary(path)\n            if summary:\n                summaries.append(summary)\n    return summaries\n",
+  "body_hash": "2e5a1c6986ef6385",
+  "body_truncated": false,
+  "callers_of": [
+    "append",
+    "exists",
+    "resolve",
+    "_certificate_summary"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/protocol/evolution.py:245.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.collect_certificate_summaries",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "re",
+    "shutil",
+    "subprocess",
+    "tomllib",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field",
+    "ass_ade.engine.rebuild.version_tracker.INITIAL_VERSION",
+    "ass_ade.engine.rebuild.version_tracker.bump_version"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/protocol/evolution.py:245"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "collect_certificate_summaries",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for collect_certificate_summaries"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

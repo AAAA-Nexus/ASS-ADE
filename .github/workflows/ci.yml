@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .[dev]
+
+      - name: Lint (ruff)
+        run: python -m ruff check src/ tests/ --output-format=github
+        continue-on-error: true
+
+      - name: Type check (pyright)
+        run: python -m pyright src/
+        continue-on-error: true
+
+      - name: Run tests
+        run: python -m pytest --tb=short
+
+      - name: Run ASS-ADE full cycle (JSON)
+        run: |
+          python -m ass_ade cycle "CI validation cycle" --json-out .ass-ade/reports/ci-cycle.json
+
+      - name: Upload cycle report
+        uses: actions/upload-artifact@v4
+        with:
+          name: ass-ade-cycle-report
+          path: .ass-ade/reports/ci-cycle.json
+          if-no-files-found: error

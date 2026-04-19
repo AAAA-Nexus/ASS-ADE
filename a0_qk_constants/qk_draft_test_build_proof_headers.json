@@ -1,0 +1,53 @@
+{
+  "body": "    def test_build_proof_headers(self) -> None:\n        \"\"\"X402ClientFlow should build proof headers from payment result.\"\"\"\n        flow = X402ClientFlow()\n        result = PaymentResult(\n            success=True,\n            txid=\"0xabc\",\n            signature_header=\"sig;0x1234;0xabc;5000\",\n        )\n        headers = flow.build_proof_headers(result)\n        assert \"PAYMENT-SIGNATURE\" in headers\n        assert headers[\"PAYMENT-SIGNATURE\"] == \"sig;0x1234;0xabc;5000\"\n",
+  "body_hash": "fcdc0179666ee835",
+  "body_truncated": false,
+  "callers_of": [
+    "X402ClientFlow",
+    "PaymentResult",
+    "build_proof_headers"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:219.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.test_build_proof_headers",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.nexus.x402.PaymentChallenge",
+    "ass_ade.nexus.x402.PaymentResult",
+    "ass_ade.nexus.x402.PaymentProof",
+    "ass_ade.nexus.x402.X402ClientFlow",
+    "ass_ade.nexus.x402.format_payment_consent",
+    "ass_ade.nexus.x402.get_chain_config",
+    "ass_ade.nexus.x402.build_payment_header",
+    "ass_ade.nexus.x402.ATOMADIC_TREASURY",
+    "ass_ade.nexus.x402.BASE_MAINNET_CHAIN_ID",
+    "ass_ade.nexus.x402.BASE_SEPOLIA_CHAIN_ID"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:219"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "test_build_proof_headers",
+  "product_categories": [
+    "DCM",
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for test_build_proof_headers"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

@@ -1,0 +1,39 @@
+{
+  "body": "    def test_valid_http(self) -> None:\n        with pytest.raises(ValueError, match=\"private/loopback\"):\n            validate_url(\"http://localhost:8787\")\n",
+  "body_hash": "30ad01a33d8afa3c",
+  "body_truncated": false,
+  "callers_of": [
+    "raises",
+    "validate_url"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_validation.py:105.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_valid_http",
+  "imports": [
+    "pytest",
+    "ass_ade.nexus.validation._is_private_host",
+    "ass_ade.nexus.validation.validate_agent_id",
+    "ass_ade.nexus.validation.validate_prompt",
+    "ass_ade.nexus.validation.validate_session_id",
+    "ass_ade.nexus.validation.validate_url",
+    "ass_ade.nexus.validation.validate_usdc_amount"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_validation.py:105"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_valid_http",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_valid_http"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

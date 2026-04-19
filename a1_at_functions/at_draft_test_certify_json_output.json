@@ -1,0 +1,40 @@
+{
+  "body": "def test_certify_json_output(tmp_path: Path) -> None:\n    (tmp_path / \"code.py\").write_text(\"def run(): pass\\n\", encoding=\"utf-8\")\n\n    result = runner.invoke(app, [\"certify\", str(tmp_path), \"--json\", \"--local-only\"])\n\n    assert result.exit_code == 0\n    payload = _extract_json(result.stdout)\n    assert \"schema\" in payload\n",
+  "body_hash": "a4ceb804df2a8aad",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "invoke",
+    "_extract_json",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_new_codebase_commands.py:108.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_certify_json_output",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_new_codebase_commands.py:108"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_certify_json_output",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_certify_json_output"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

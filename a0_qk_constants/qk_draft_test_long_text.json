@@ -1,0 +1,30 @@
+{
+  "body": "    def test_long_text(self):\n        text = \"The quick brown fox jumps over the lazy dog. \" * 100\n        result = estimate_tokens(text)\n        # ~4500 chars / 3.7 \u2248 ~1216 tokens\n        assert 800 < result < 2000\n",
+  "body_hash": "928debee15a0566b",
+  "body_truncated": false,
+  "callers_of": [
+    "estimate_tokens"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testestimatetokens.py:20.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.test_long_text",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testestimatetokens.py:20"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "test_long_text",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_long_text"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

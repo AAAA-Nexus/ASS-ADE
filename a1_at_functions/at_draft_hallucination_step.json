@@ -1,0 +1,35 @@
+{
+  "body": "    def hallucination_step(ctx: dict[str, Any]) -> StepResult:\n        try:\n            result = client.hallucination_oracle(text)\n            raw = result.model_dump() if hasattr(result, \"model_dump\") else {}\n            verdict = raw.get(\"verdict\", \"unknown\")\n            passed = verdict not in (\"unsafe\", \"error\")\n            ctx[\"hallucination_verdict\"] = verdict\n            return StepResult(name=\"hallucination_oracle\", status=StepStatus.PASSED if passed else StepStatus.FAILED, output=raw)\n        except Exception as exc:\n            return StepResult(name=\"hallucination_oracle\", status=StepStatus.FAILED, error=str(exc))\n",
+  "body_hash": "d46d4275dc2aa013",
+  "body_truncated": false,
+  "callers_of": [
+    "hallucination_oracle",
+    "get",
+    "StepResult",
+    "hasattr",
+    "model_dump",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_certify_pipeline.py:14.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.hallucination_step",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_certify_pipeline.py:14"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "hallucination_step",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for hallucination_step"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

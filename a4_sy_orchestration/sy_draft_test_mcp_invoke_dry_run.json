@@ -1,0 +1,37 @@
+{
+  "body": "def test_mcp_invoke_dry_run(monkeypatch, tmp_path: Path) -> None:\n    manifest = MCPManifest(name=\"demo\", tools=[MCPTool(name=\"echo\", endpoint=\"/echo\", method=\"POST\", paid=False)])\n\n    class FakeClient:\n        def __init__(self, base_url: str, timeout: float = 20.0, transport=None, api_key: str | None = None):\n            pass\n\n        def __enter__(self):\n            return self\n\n        def __exit__(self, exc_type, exc, tb):\n            return False\n\n        def get_mcp_manifest(self):\n            return manifest\n\n    monkeypatch.setattr(\"ass_ade.cli.NexusClient\", FakeClient)\n\n    config_path = tmp_path / \".ass-ade\" / \"config.json\"\n    write_default_config(config_path, config=AssAdeConfig(profile=\"hybrid\"), overwrite=True)\n\n    result = runner.invoke(app, [\"mcp\", \"invoke\", \"1\", \"--config\", str(config_path), \"--dry-run\"]) \n\n    assert result.exit_code == 0\n    assert '\"simulated\"' in result.stdout.lower()\n",
+  "body_hash": "9ccf2be60eab1b00",
+  "body_truncated": false,
+  "callers_of": [
+    "MCPManifest",
+    "setattr",
+    "write_default_config",
+    "invoke",
+    "lower",
+    "AssAdeConfig",
+    "str",
+    "MCPTool"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_test_mcp_invoke_dry_run.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_mcp_invoke_dry_run",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_test_mcp_invoke_dry_run.py:5"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "test_mcp_invoke_dry_run",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_mcp_invoke_dry_run"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

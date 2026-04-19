@@ -1,0 +1,30 @@
+{
+  "body": "class TestClassifyChange:\n    def test_identical(self):\n        body = \"def foo(): pass\"\n        assert classify_change(body, body) == \"none\"\n\n    def test_patch_internal_change(self):\n        old = \"def foo():\\n    return 1\"\n        new = \"def foo():\\n    return 2\"\n        assert classify_change(old, new) == \"patch\"\n\n    def test_minor_new_function(self):\n        old = \"def foo(): pass\"\n        new = \"def foo(): pass\\ndef bar(): pass\"\n        assert classify_change(old, new) == \"minor\"\n\n    def test_major_removed_function(self):\n        old = \"def foo(): pass\\ndef bar(): pass\"\n        new = \"def foo(): pass\"\n        assert classify_change(old, new) == \"major\"\n\n    def test_non_python_falls_back_to_patch(self):\n        assert classify_change(\"old code\", \"new code\", language=\"rust\") == \"patch\"\n\n    def test_empty_old_body(self):\n        new = \"def foo(): pass\"\n        result = classify_change(\"\", new)\n        assert result in {\"minor\", \"patch\"}\n",
+  "body_hash": "b285090714d8ca7c",
+  "body_truncated": false,
+  "callers_of": [
+    "classify_change"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testclassifychange.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testclassifychange",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testclassifychange.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "TestClassifyChange",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestClassifyChange"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

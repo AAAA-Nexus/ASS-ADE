@@ -1,0 +1,36 @@
+{
+  "body": "def test_identity_verify(tmp_path: Path) -> None:\n    mock_nx = MagicMock()\n    mock_nx.identity_verify.return_value = IdentityVerification(decision=\"allow\", uniqueness_coefficient=0.98)\n    with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n        result = runner.invoke(app, [\"identity\", \"verify\", \"agent-1\",\n                                     \"--config\", str(_hybrid_config(tmp_path)), \"--allow-remote\"])\n    assert result.exit_code == 0\n    assert \"allow\" in result.stdout\n",
+  "body_hash": "25688fbb610f0e82",
+  "body_truncated": false,
+  "callers_of": [
+    "MagicMock",
+    "IdentityVerification",
+    "patch",
+    "invoke",
+    "_make_ctx_mgr",
+    "str",
+    "_hybrid_config"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_identity_verify.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_identity_verify",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_identity_verify.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_identity_verify",
+  "product_categories": [
+    "IDT"
+  ],
+  "provides": [
+    "rebuild candidate for test_identity_verify"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

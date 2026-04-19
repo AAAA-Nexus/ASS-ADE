@@ -1,0 +1,55 @@
+{
+  "body": "    def test_tool_result(self):\n        m = Message(role=\"tool\", content=\"file data\", tool_call_id=\"c1\", name=\"read_file\")\n        assert m.role == \"tool\"\n        assert m.tool_call_id == \"c1\"\n",
+  "body_hash": "c09497ea8900efd0",
+  "body_truncated": false,
+  "callers_of": [
+    "Message"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine.py:38.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.test_tool_result",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "ass_ade.engine.provider.NexusProvider",
+    "ass_ade.engine.provider.OpenAICompatibleProvider",
+    "ass_ade.engine.router.build_provider",
+    "ass_ade.engine.types.CompletionRequest",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolCallRequest",
+    "ass_ade.engine.types.ToolSchema",
+    "os",
+    "ass_ade.agent.providers.FREE_PROVIDERS",
+    "ass_ade.agent.providers.FREE_PROVIDERS",
+    "ass_ade.config.ProviderOverride",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.engine.provider.MultiProvider",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.engine.provider.MultiProvider",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.engine.provider.MultiProvider"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine.py:38"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "test_tool_result",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_tool_result"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

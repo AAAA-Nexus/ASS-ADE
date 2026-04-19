@@ -1,0 +1,58 @@
+{
+  "body": "class TestBASOnDMaxBreach:\n    def test_d_max_breach_returns_blocked_message(self):\n        provider = _make_provider_returning_text(\"ok\")\n        registry = ToolRegistry()\n        orchestrator = EngineOrchestrator({})\n        loop = AgentLoop(provider=provider, registry=registry, orchestrator=orchestrator)\n\n        # Simulate being inside a recursion by setting depth past D_MAX\n        loop._delegation_depth = D_MAX + 1\n        result = loop.step(\"[REFINE round 1/3] retry\")\n        assert \"D_MAX\" in result or \"delegation\" in result.lower()\n\n    def test_d_max_breach_emits_bas_alert(self):\n        provider = _make_provider_returning_text(\"ok\")\n        registry = ToolRegistry()\n        orchestrator = EngineOrchestrator({})\n        loop = AgentLoop(provider=provider, registry=registry, orchestrator=orchestrator)\n\n        # Set to exactly D_MAX so next increment exceeds\n        loop._delegation_depth = D_MAX\n        loop.step(\"[REFINE round 1/3] retry\")\n\n        # BAS should have a d_max_breach alert\n        alerts = orchestrator.bas._alerts\n        kinds = [a.kind for a in alerts]\n        assert \"d_max_breach\" in kinds, f\"Expected d_max_breach in {kinds}\"\n\n    def test_d_max_breach_severity_is_high(self):\n        from ass_ade.agent.bas import _SEVERITY\n        assert _SEVERITY.get(\"d_max_breach\") == \"high\"\n\n    def test_normal_flow_does_not_trigger_d_max_alert(self):\n        provider = _make_provider_returning_text(\"ok\")\n        registry = ToolRegistry()\n        orchestrator = EngineOrchestrator({})\n        loop = AgentLoop(provider=provider, registry=registry, orchestrator=orchestrator)\n\n        # Normal step (depth = 0)\n        loop.step(\"normal request\")\n        alerts = orchestrator.bas._alerts\n        kinds = [a.kind for a in alerts]\n        assert \"d_max_breach\" not in kinds\n",
+  "body_hash": "067def29058e8bb9",
+  "body_truncated": false,
+  "callers_of": [
+    "_make_provider_returning_text",
+    "ToolRegistry",
+    "EngineOrchestrator",
+    "AgentLoop",
+    "step",
+    "get",
+    "lower"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase1_integration.py:161.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testbasondmaxbreach",
+  "imports": [
+    "__future__.annotations",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.agent.loop.D_MAX",
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.agent.orchestrator.EngineOrchestrator",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.tools.registry.ToolRegistry",
+    "ass_ade.agent.bas._SEVERITY",
+    "ass_ade.commands.agent._render_phase1_header",
+    "io.StringIO",
+    "rich.console.Console",
+    "ass_ade.commands.agent._render_phase1_header",
+    "io.StringIO",
+    "rich.console.Console"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase1_integration.py:161"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.step"
+  ],
+  "name": "TestBASOnDMaxBreach",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestBASOnDMaxBreach"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

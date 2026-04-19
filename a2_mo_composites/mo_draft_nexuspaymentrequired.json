@@ -1,0 +1,30 @@
+{
+  "body": "class NexusPaymentRequired(NexusError):\n    \"\"\"Payment required \u2014 x402 or credit-pack exhausted (402).\"\"\"\n",
+  "body_hash": "97cda701d91dea0b",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/errors.py:40.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.nexuspaymentrequired",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/errors.py:40"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "NexusPaymentRequired",
+  "product_categories": [
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for NexusPaymentRequired"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

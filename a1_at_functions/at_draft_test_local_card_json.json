@@ -1,0 +1,31 @@
+{
+  "body": "    def test_local_card_json(self) -> None:\n        result = runner.invoke(app, [\"a2a\", \"local-card\", \"--json\"])\n        assert result.exit_code == 0\n        data = json.loads(result.stdout, strict=False)\n        assert data[\"name\"] == \"ASS-ADE\"\n        assert \"skills\" in data\n",
+  "body_hash": "fe879faa027b1164",
+  "body_truncated": false,
+  "callers_of": [
+    "invoke",
+    "loads"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testa2alocalcardcli.py:11.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_local_card_json",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testa2alocalcardcli.py:11"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_local_card_json",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_local_card_json"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

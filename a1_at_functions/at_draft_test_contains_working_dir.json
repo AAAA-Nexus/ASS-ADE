@@ -1,0 +1,45 @@
+{
+  "body": "    def test_contains_working_dir(self, tmp_path):\n        prompt = build_system_prompt(str(tmp_path))\n        assert \"ASS-ADE\" in prompt\n        assert str(tmp_path) in prompt\n",
+  "body_hash": "9b316fcb31ec979b",
+  "body_truncated": false,
+  "callers_of": [
+    "build_system_prompt",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_agent.py:64.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_contains_working_dir",
+  "imports": [
+    "__future__.annotations",
+    "unittest.mock.MagicMock",
+    "ass_ade.agent.context.build_system_prompt",
+    "ass_ade.agent.conversation.Conversation",
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.agent.loop.MAX_ROUNDS_SENTINEL",
+    "ass_ade.engine.types.CompletionRequest",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolCallRequest",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.registry.ToolRegistry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_agent.py:64"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_contains_working_dir",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_contains_working_dir"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

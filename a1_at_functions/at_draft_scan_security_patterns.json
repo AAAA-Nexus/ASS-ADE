@@ -1,0 +1,42 @@
+{
+  "body": "def scan_security_patterns(root: Path) -> list[dict[str, Any]]:\n    findings: list[dict[str, Any]] = []\n    counter = 1\n    patterns = [\n        (\"pickle.loads(\", \"Unsafe deserialization via pickle.loads\"),\n        (\"eval(\", \"Use of eval()\"),\n        (\"exec(\", \"Use of exec()\"),\n    ]\n    for path in _walk_python_files(root):\n        is_test = \"test\" in path.stem or \"test\" in str(path.parent)\n        lines = _read_lines(path)\n        for i, line in enumerate(lines):\n            if \"# nosec\" in line or \"# noqa: S\" in line:\n                continue\n            for pat, msg in patterns:\n                if pat in line:\n                    rel = str(path.relative_to(root))\n                    findings.append({\n                        \"id\": counter,\n                        \"category\": \"security\",\n                        \"title\": msg,\n                        \"description\": f\"{msg} at {rel}:{i + 1}.\",\n                        \"file\": rel,\n                        \"line\": i + 1,\n                        \"impact\": \"high\",\n                        \"effort\": \"low\",\n                    })\n                    counter += 1\n                    if len(findings) >= 10:\n                        return findings\n            if \"subprocess.run(\" in line or \"subprocess.call(\" in line:\n                if \"shell=True\" in line:\n                    rel = str(path.relative_to(root))\n                    findings.append({\n                        \"id\": counter,\n                        \"category\": \"security\",\n                        \"title\": \"subprocess call with shell=True\",\n                        \"description\": f\"subprocess call with shell=True at {rel}:{i + 1}.\",\n                        \"file\": rel,\n                        \"line\": i + 1,\n                        \"impact\": \"high\",\n                        \"effort\": \"low\",\n                    })\n                    counter += 1\n                    if len(findings) >= 10:\n                        return findings\n            if not is_test and line.lstrip().startswith(\"assert \"):\n                if \"# nosec\" not in line:\n                    rel = str(path.relative_to(root))\n                    findings.append({\n                        \"id\": counter,\n                        \"category\": \"security\",\n                        \"title\": \"Assertions used for control flow\",\n                        \"description\": f\"assert used for control flow at {rel}:{i + 1}.\",\n                        \"file\": rel,\n                        \"line\": i + 1,\n                        \"impact\": \"high\",\n                        \"effort\": \"low\",\n                    })\n                    counter += 1\n                    if len(findings) >= 10:\n                        return findings\n    return findings\n",
+  "body_hash": "693347a0172881ee",
+  "body_truncated": false,
+  "callers_of": [
+    "_walk_python_files",
+    "_read_lines",
+    "enumerate",
+    "str",
+    "startswith",
+    "append",
+    "relative_to",
+    "len",
+    "lstrip"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/local/enhancer.py:169.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.scan_security_patterns",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/local/enhancer.py:169"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "scan_security_patterns",
+  "product_categories": [
+    "SEC"
+  ],
+  "provides": [
+    "rebuild candidate for scan_security_patterns"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

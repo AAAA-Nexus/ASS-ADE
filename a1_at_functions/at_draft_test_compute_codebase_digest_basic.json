@@ -1,0 +1,41 @@
+{
+  "body": "def test_compute_codebase_digest_basic(tmp_path: Path) -> None:\n    (tmp_path / \"alpha.py\").write_text(\"a = 1\\n\", encoding=\"utf-8\")\n    (tmp_path / \"beta.py\").write_text(\"b = 2\\n\", encoding=\"utf-8\")\n\n    result = compute_codebase_digest(tmp_path)\n\n    assert \"root_digest\" in result\n    assert result[\"file_count\"] == 2\n    assert \"files\" in result\n    assert isinstance(result[\"files\"], dict)\n",
+  "body_hash": "ccd1e28576b14a37",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "compute_codebase_digest",
+    "isinstance"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_certifier.py:46.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_compute_codebase_digest_basic",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.local.certifier.build_local_certificate",
+    "ass_ade.local.certifier.compute_codebase_digest",
+    "ass_ade.local.certifier.hash_file",
+    "ass_ade.local.certifier.render_certificate_text"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_certifier.py:46"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_compute_codebase_digest_basic",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_compute_codebase_digest_basic"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

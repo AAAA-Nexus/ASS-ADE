@@ -1,0 +1,52 @@
+{
+  "body": "    def increment_delegation_depth(self) -> bool:\n        \"\"\"Increment delegation depth. Returns False if D_MAX=23 exceeded.\"\"\"\n        self._delegation_depth += 1\n        return self._delegation_depth <= D_MAX\n",
+  "body_hash": "4e2821a2b69cef3c",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/loop.py:143.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.increment_delegation_depth",
+  "imports": [
+    "__future__.annotations",
+    "collections.abc.Callable",
+    "collections.abc.Iterator",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any",
+    "typing.Literal",
+    "ass_ade.agent.context.build_system_prompt",
+    "ass_ade.agent.conversation.Conversation",
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.agent.lse.LSEDecision",
+    "ass_ade.agent.orchestrator.CycleReport",
+    "ass_ade.agent.orchestrator.EngineOrchestrator",
+    "ass_ade.agent.routing.EpistemicRouter",
+    "ass_ade.agent.routing.RoutingDecision",
+    "ass_ade.engine.provider.ModelProvider",
+    "ass_ade.engine.provider.OpenAICompatibleProvider",
+    "ass_ade.engine.tokens.TokenBudget",
+    "ass_ade.engine.types.CompletionRequest",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.registry.ToolRegistry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/loop.py:143"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "increment_delegation_depth",
+  "product_categories": [
+    "IDT"
+  ],
+  "provides": [
+    "rebuild candidate for increment_delegation_depth"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

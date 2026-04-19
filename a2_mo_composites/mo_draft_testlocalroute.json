@@ -1,0 +1,33 @@
+{
+  "body": "class TestLocalRoute:\n    def test_simple_query(self):\n        decision = local_route(\"What is 2 + 2?\")\n        assert decision.tier == ModelTier.FAST\n        assert decision.source == \"local\"\n        assert decision.recommended_model is not None\n\n    def test_code_query(self):\n        decision = local_route(\"Write a function to parse JSON\")\n        assert decision.tier in (ModelTier.STANDARD, ModelTier.DEEP)\n        assert decision.complexity >= 0.3\n\n    def test_decision_has_reason(self):\n        decision = local_route(\"Hello\")\n        assert \"heuristic\" in decision.reason.lower()\n",
+  "body_hash": "145717ef7907e3f3",
+  "body_truncated": false,
+  "callers_of": [
+    "local_route",
+    "lower"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testlocalroute.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testlocalroute",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testlocalroute.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.local_route"
+  ],
+  "name": "TestLocalRoute",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestLocalRoute"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

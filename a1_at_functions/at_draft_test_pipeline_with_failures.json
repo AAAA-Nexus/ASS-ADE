@@ -1,0 +1,39 @@
+{
+  "body": "    def test_pipeline_with_failures(self):\n        gates = QualityGates(_mock_nexus(threat_detected=True, verdict=\"unsafe\"))\n        results = gates.run_pipeline(prompt=\"bad\", output=\"wrong\")\n        failed = [r for r in results if not r.passed]\n        assert len(failed) >= 2  # scan and hallucination should fail\n",
+  "body_hash": "feeb00fabe7d711d",
+  "body_truncated": false,
+  "callers_of": [
+    "QualityGates",
+    "run_pipeline",
+    "_mock_nexus",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:157.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_pipeline_with_failures",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "unittest.mock.MagicMock",
+    "ass_ade.agent.gates.GateResult",
+    "ass_ade.agent.gates.QualityGates"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:157"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_pipeline_with_failures",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_pipeline_with_failures"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

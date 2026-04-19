@@ -1,0 +1,32 @@
+{
+  "body": "    def do_thing_2(self, x):\n        self.data.append(x)\n        self.count += 1\n        self.total += x\n        self.average = self.total / self.count\n        if x > self.maximum: self.maximum = x\n        if x < self.minimum: self.minimum = x\n        return self.data\n",
+  "body_hash": "7cb969a9a9f9578b",
+  "body_truncated": false,
+  "callers_of": [
+    "append"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/benchmarks/messy_demo/helpers.py:32.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.do_thing_2",
+  "imports": [
+    "utils.process_data"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/benchmarks/messy_demo/helpers.py:32"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "do_thing_2",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for do_thing_2"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

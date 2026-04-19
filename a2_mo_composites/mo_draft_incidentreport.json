@@ -1,0 +1,28 @@
+{
+  "body": "class IncidentReport(NexusModel):\n    \"\"\"/v1/compliance/incident \u2014 INC-100\"\"\"\n    incident_id: str | None = None\n    severity: str | None = None\n    notification_deadline: str | None = None\n",
+  "body_hash": "58edc07491bfec31",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_incidentreport.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.incidentreport",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_incidentreport.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "IncidentReport",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for IncidentReport"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

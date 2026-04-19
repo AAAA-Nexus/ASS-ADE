@@ -1,0 +1,43 @@
+{
+  "body": "def validate_payload(schema: dict | None, payload: Any | None) -> tuple[bool, str | None]:\n    \"\"\"Validate the given payload against the provided JSON Schema.\n\n    Returns (True, None) when valid, otherwise (False, error_message).\n    \"\"\"\n    if schema is None:\n        return True, None\n\n    try:\n        # jsonschema expects a concrete instance; use None -> {} for convenience\n        instance = payload if payload is not None else {}\n        jsonschema.validate(instance=instance, schema=schema)\n        return True, None\n    except ValidationError as exc:\n        return False, str(exc)\n    except jsonschema.SchemaError as exc:\n        return False, f\"schema validation error: {exc}\"\n",
+  "body_hash": "8aac50f53b9c413f",
+  "body_truncated": false,
+  "callers_of": [
+    "validate",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/mcp/utils.py:132.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.validate_payload",
+  "imports": [
+    "__future__.annotations",
+    "time",
+    "typing.Any",
+    "httpx",
+    "jsonschema",
+    "jsonschema.ValidationError",
+    "ass_ade.nexus.models.CostEstimate",
+    "ass_ade.nexus.models.MCPManifest",
+    "ass_ade.nexus.models.MCPTool",
+    "ass_ade.nexus.validation.sanitize_header_value",
+    "ass_ade.nexus.validation.validate_https_public_url"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/mcp/utils.py:132"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "validate_payload",
+  "product_categories": [
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for validate_payload"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

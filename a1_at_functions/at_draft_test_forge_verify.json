@@ -1,0 +1,36 @@
+{
+  "body": "def test_forge_verify(tmp_path: Path) -> None:\n    mock_nx = MagicMock()\n    mock_nx.forge_verify.return_value = ForgeVerifyResult(verified=True, agent_id=\"agent-1\", score=0.98, badge_awarded=\"gold\")\n    with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n        result = runner.invoke(app, [\"forge\", \"verify\", \"agent-1\",\n                                     \"--config\", str(_hybrid_config(tmp_path)), \"--allow-remote\"])\n    assert result.exit_code == 0\n    assert \"True\" in result.stdout\n",
+  "body_hash": "12bedef994797cbc",
+  "body_truncated": false,
+  "callers_of": [
+    "MagicMock",
+    "ForgeVerifyResult",
+    "patch",
+    "invoke",
+    "_make_ctx_mgr",
+    "str",
+    "_hybrid_config"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_forge_verify.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_forge_verify",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_forge_verify.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_forge_verify",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_forge_verify"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

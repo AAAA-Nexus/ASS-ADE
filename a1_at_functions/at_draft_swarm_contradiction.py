@@ -1,0 +1,23 @@
+# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/cli.py:2118
+# Component id: at.source.ass_ade.swarm_contradiction
+__version__ = "0.1.0"
+
+def swarm_contradiction(
+    statement_a: str = typer.Argument(..., help="First statement."),
+    statement_b: str = typer.Argument(..., help="Second statement."),
+    config: Path | None = CONFIG_OPTION,
+    allow_remote: bool = ALLOW_REMOTE_OPTION,
+) -> None:
+    """Detect logical contradiction between two statements. $0.020/call."""
+    _, settings = _resolve_config(config)
+    _require_remote_access(settings, allow_remote)
+    try:
+        with NexusClient(base_url=settings.nexus_base_url, timeout=settings.request_timeout_s, api_key=settings.nexus_api_key) as client:
+            result = client.agent_contradiction(statement_a=statement_a, statement_b=statement_b)
+    except httpx.HTTPError as exc:
+        _nexus_err(exc)
+        return
+    verdict = "CONTRADICTS" if result.contradicts else "NO CONTRADICTION"
+    console.print(f"{verdict}  confidence={result.confidence}")
+    if result.explanation:
+        console.print(result.explanation)

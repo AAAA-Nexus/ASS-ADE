@@ -1,0 +1,40 @@
+{
+  "body": "def get_chain_config() -> dict[str, Any]:\n    \"\"\"Get chain configuration based on testnet/mainnet mode.\"\"\"\n    testnet = is_testnet()\n    return {\n        \"testnet\": testnet,\n        \"chain_id\": BASE_SEPOLIA_CHAIN_ID if testnet else BASE_MAINNET_CHAIN_ID,\n        \"rpc_url\": os.environ.get(\n            \"BASE_RPC_URL\",\n            BASE_SEPOLIA_RPC if testnet else BASE_MAINNET_RPC,\n        ),\n        \"usdc_address\": USDC_BASE_SEPOLIA if testnet else USDC_BASE_MAINNET,\n        \"treasury\": ATOMADIC_TREASURY,\n        \"network_name\": \"Base Sepolia (testnet)\" if testnet else \"Base (mainnet)\",\n    }\n",
+  "body_hash": "2ae6a0a2c03d48f3",
+  "body_truncated": false,
+  "callers_of": [
+    "is_testnet",
+    "get"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/x402.py:183.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.get_chain_config",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "time",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "eth_account.Account",
+    "web3.Web3",
+    "logging"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/x402.py:183"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "get_chain_config",
+  "product_categories": [
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for get_chain_config"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

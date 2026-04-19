@@ -1,0 +1,41 @@
+{
+  "body": "def scan_todo_fixme(root: Path) -> list[dict[str, Any]]:\n    findings: list[dict[str, Any]] = []\n    counter = 1\n    markers = (\"# TODO\", \"# FIXME\", \"# HACK\", \"# XXX\")\n    for path in _walk_python_files(root):\n        lines = _read_lines(path)\n        for i, line in enumerate(lines):\n            for marker in markers:\n                if marker in line:\n                    rel = str(path.relative_to(root))\n                    findings.append({\n                        \"id\": counter,\n                        \"category\": \"technical_debt\",\n                        \"title\": f\"Technical debt marker: {marker.strip()}\",\n                        \"description\": line.strip(),\n                        \"file\": rel,\n                        \"line\": i + 1,\n                        \"impact\": \"low\",\n                        \"effort\": \"medium\",\n                    })\n                    counter += 1\n                    if len(findings) >= 6:\n                        return findings\n                    break\n    return findings\n",
+  "body_hash": "77aed8b4304b1932",
+  "body_truncated": false,
+  "callers_of": [
+    "_walk_python_files",
+    "_read_lines",
+    "enumerate",
+    "str",
+    "append",
+    "relative_to",
+    "len",
+    "strip"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/local/enhancer.py:294.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.scan_todo_fixme",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/local/enhancer.py:294"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "scan_todo_fixme",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for scan_todo_fixme"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,32 @@
+{
+  "body": "def process_data_copy(data):\n    result = []\n    for item in data:\n        result.append(item * 2)\n    return result\n",
+  "body_hash": "8b11058c0fb422f9",
+  "body_truncated": false,
+  "callers_of": [
+    "append"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/benchmarks/messy_demo/utils.py:12.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.process_data_copy",
+  "imports": [
+    "helpers.format_output"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/benchmarks/messy_demo/utils.py:12"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "process_data_copy",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for process_data_copy"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

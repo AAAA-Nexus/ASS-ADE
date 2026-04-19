@@ -1,0 +1,40 @@
+{
+  "body": "    def test_non_python_skipped_by_cie(self, tmp_path):\n        server = _make_server(tmp_path)\n        args = {\"path\": str(tmp_path / \"readme.txt\"), \"content\": \"raw text with eval()\"}\n        result = MagicMock(success=True, output=\"ok\")\n        out = server._post_tool_hook(\"write_file\", args, result)\n        # Text files aren't AST-validated or OWASP-scanned \u2192 pass through\n        assert out.success is True\n",
+  "body_hash": "e5c7aecdce90b265",
+  "body_truncated": false,
+  "callers_of": [
+    "_make_server",
+    "MagicMock",
+    "_post_tool_hook",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_gates.py:115.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_non_python_skipped_by_cie",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "pytest",
+    "ass_ade.mcp.server.MCPServer"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_gates.py:115"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "test_non_python_skipped_by_cie",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_non_python_skipped_by_cie"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

@@ -1,0 +1,28 @@
+{
+  "body": "    def test_extended_tools_have_schemas(self) -> None:\n        for tool in _WORKFLOW_TOOLS:\n            assert \"name\" in tool\n            assert \"description\" in tool\n            assert \"inputSchema\" in tool\n            assert tool[\"inputSchema\"][\"type\"] == \"object\"\n            assert \"required\" in tool[\"inputSchema\"]\n",
+  "body_hash": "a14779350b75a3bf",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testmcptoollisting.py:36.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.test_extended_tools_have_schemas",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testmcptoollisting.py:36"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "test_extended_tools_have_schemas",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_extended_tools_have_schemas"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

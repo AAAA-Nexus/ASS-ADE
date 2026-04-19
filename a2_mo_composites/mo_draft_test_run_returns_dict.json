@@ -1,0 +1,31 @@
+{
+  "body": "    def test_run_returns_dict(self) -> None:\n        w = WisdomEngine({})\n        result = w.run({\"cycle_state\": {}})\n        assert \"passed\" in result and \"failed\" in result and \"score\" in result\n",
+  "body_hash": "a720dd78dba4edcb",
+  "body_truncated": false,
+  "callers_of": [
+    "WisdomEngine",
+    "run"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwisdomengine.py:107.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.test_run_returns_dict",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwisdomengine.py:107"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "test_run_returns_dict",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_run_returns_dict"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

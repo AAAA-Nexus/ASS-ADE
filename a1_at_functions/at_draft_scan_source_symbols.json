@@ -1,0 +1,41 @@
+{
+  "body": "def scan_source_symbols(root: Path, max_files: int = 200) -> list[dict[str, Any]]:\n    _def_re = re.compile(r\"^(?:async\\s+)?def\\s+([A-Za-z_]\\w*)\")\n    _class_re = re.compile(r\"^class\\s+([A-Za-z_]\\w*)\")\n    symbols: list[dict[str, Any]] = []\n    files_seen = 0\n\n    _ignored = DEFAULT_IGNORED_DIRS | {\".venv\"}\n\n    for dirpath, dirs, files in os.walk(root, topdown=True):\n        dirs[:] = [d for d in dirs if d not in _ignored]\n        for filename in files:\n            if not filename.endswith(\".py\"):\n                continue\n            if files_seen >= max_files:\n                break\n            files_seen += 1\n            full_path = Path(dirpath) / filename\n            try:\n                rel = str(full_path.relative_to(root))\n                for line in full_path.read_text(encoding=\"utf-8\", errors=\"replace\").splitlines():\n                    stripped = line.lstrip()\n                    m = _class_re.match(stripped)\n                    if m:\n                        symbols.append({\"file\": rel, \"kind\": \"class\", \"name\": m.group(1)})\n                        continue\n                    m = _def_re.match(stripped)\n                    if m:\n                        symbols.append({\"file\": rel, \"kind\": \"function\", \"name\": m.group(1)})\n            except Exception:\n                pass\n\n    return symbols\n",
+  "body_hash": "323f8f8de24f6bcd",
+  "body_truncated": false,
+  "callers_of": [
+    "compile",
+    "walk",
+    "endswith",
+    "Path",
+    "str",
+    "splitlines",
+    "relative_to",
+    "lstrip",
+    "match",
+    "read_text",
+    "append",
+    "group"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_scan_source_symbols.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.scan_source_symbols",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_scan_source_symbols.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "scan_source_symbols",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for scan_source_symbols"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,35 @@
+{
+  "body": "def probe(group: str, name: str, fn: Callable[[], Any]) -> None:\n    \"\"\"Call fn(), record PASS / FAIL, print one line.\"\"\"\n    t0 = time.perf_counter()\n    try:\n        fn()\n        ms = (time.perf_counter() - t0) * 1000\n        print(f\"  {PASS} {name:55s} {DIM}{ms:7.0f} ms{RESET}\")\n        results.append((group, name, \"PASS\", ms))\n    except Exception as exc:\n        ms = (time.perf_counter() - t0) * 1000\n        short = str(exc)[:80].replace(\"\\n\", \" \")\n        print(f\"  {FAIL} {name:55s} {DIM}{short}{RESET}\")\n        results.append((group, name, \"FAIL\", ms))\n",
+  "body_hash": "9abd3c8d0823bbe0",
+  "body_truncated": false,
+  "callers_of": [
+    "perf_counter",
+    "fn",
+    "print",
+    "append",
+    "replace",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_probe.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.probe",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_probe.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "probe",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for probe"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

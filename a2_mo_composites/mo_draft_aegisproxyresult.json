@@ -1,0 +1,28 @@
+{
+  "body": "class AegisProxyResult(NexusModel):\n    \"\"\"/v1/aegis/mcp-proxy/execute\"\"\"\n    allowed: bool | None = None\n    tool_result: dict | None = None\n    entropy_bound: float | None = None\n    firewall_verdict: str | None = None\n",
+  "body_hash": "b73604a729a28e44",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_aegisproxyresult.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.aegisproxyresult",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_aegisproxyresult.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "AegisProxyResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for AegisProxyResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

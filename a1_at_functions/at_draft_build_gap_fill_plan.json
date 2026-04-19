@@ -1,0 +1,49 @@
+{
+  "body": "def build_gap_fill_plan(\n    root_reports: list[dict[str, Any]],\n    blueprints: list[dict[str, Any]] | None = None,\n    registry: list[dict[str, Any]] | None = None,\n) -> dict[str, Any]:\n    \"\"\"Build a full gap-fill plan from one or more ingestion reports.\n\n    Args:\n        root_reports: List of dicts from ``project_ingestor.ingest_project``.\n        blueprints:   Optional list of blueprint dicts (used for fulfillment mapping).\n        registry:     Optional existing component registry (reduces gap count).\n    \"\"\"\n    blueprints = blueprints or []\n    registry = registry or []\n\n    all_proposals: list[ProposedComponent] = []\n    for rr in root_reports:\n        root_id = rr.get(\"root_id\") or Path(rr.get(\"source_root\", \"\")).name\n        gaps = rr.get(\"gaps\") or []\n        all_proposals.extend(propose_components(gaps, root_id=root_id))\n\n    dedup: dict[str, ProposedComponent] = {}\n    sibling_sources: dict[str, list[dict[str, Any]]] = {}\n    for prop in all_proposals:\n        incumbent = dedup.get(prop.dedup_key)\n        if incumbent is None:\n            dedup[prop.dedup_key] = prop\n            continue\n        if _proposal_sort_key(prop) < _proposal_sort_key(incumbent):\n            sibling_sources.setdefault(prop.dedup_key, []).append(incumbent.source_symbol)\n            dedup[prop.dedup_key] = prop\n            continue\n        sibling_sources.setdefault(prop.dedup_key, []).append(prop.source_symbol)\n\n    final_proposals = sorted(dedup.values(), key=_proposal_sort_key)\n    fulfillment = assess_blueprint_fulfillment(blueprints, final_proposals, registry)\n\n    total_raw_gaps = sum(len(rr.get(\"gaps\") or []) for rr in root_reports)\n    deduped_dropped = len(all_proposals) - len(final_proposals)\n\n    plan: dict[str, Any] = {\n        \"gap_fill_schema\": GAP_FILL_SCHEMA,\n        \"generated_at\": dt.datetime.now(dt.timezone.utc).isoformat(),\n        \"summary\": {\n            \"roots\": len(root_reports),\n            \"raw_gaps\": total_raw_gaps,\n            \"proposals_pre_dedup\": len(all_proposals),\n            \"deduped_dropped\": deduped_dropped,\n            **_summarize_proposals(final_proposals),\n            \"blueprints_assessed\": len(fulfillment),\n            \"blueprints_fully_satisfied\": sum(1 for f in fulfillment if f.get(\"fully_satisfied\")),\n        },\n        \"blueprint_fulfillment\": fulfillment,\n        \"proposed_components\": [\n            _proposal_record(p, sibling_source_count=len(sibling_sources.get(p.dedup_key, [])))\n            for p in final_proposals\n        ],\n    }\n    plan[\"content_digest\"] = hashlib.sha256(\n        json.dumps(\n            plan[\"proposed_components\"],\n            sort_keys=True,\n            separators=(\",\", \":\"),\n            ensure_ascii=True,\n        ).encode()\n    ).hexdigest()[:16]\n    return plan\n",
+  "body_hash": "640ee750d78ce209",
+  "body_truncated": false,
+  "callers_of": [
+    "sorted",
+    "assess_blueprint_fulfillment",
+    "sum",
+    "extend",
+    "get",
+    "append",
+    "values",
+    "len",
+    "isoformat",
+    "hexdigest",
+    "propose_components",
+    "_proposal_sort_key",
+    "_summarize_proposals",
+    "_proposal_record",
+    "Path",
+    "setdefault",
+    "now",
+    "sha256",
+    "encode",
+    "dumps"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_build_gap_fill_plan.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.build_gap_fill_plan",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_build_gap_fill_plan.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "build_gap_fill_plan",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for build_gap_fill_plan"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

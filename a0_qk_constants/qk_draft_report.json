@@ -1,0 +1,28 @@
+{
+  "body": "    def report(self) -> dict:\n        return {\"engine\": \"proofbridge\", \"translations\": self._translations}\n",
+  "body_hash": "b06845faa0cb997f",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_proofbridge.py:45.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.report",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_proofbridge.py:45"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "report",
+  "product_categories": [
+    "DCM"
+  ],
+  "provides": [
+    "rebuild candidate for report"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

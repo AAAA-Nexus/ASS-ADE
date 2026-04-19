@@ -1,0 +1,33 @@
+{
+  "body": "    def query(self, spec_text: str, top_k: int = 5) -> list[Match]:\n        self._queries += 1\n        result = query_vector_memory(\n            query=spec_text,\n            namespace=self._namespace,\n            top_k=top_k,\n            working_dir=self._working_dir,\n        )\n        matches: list[Match] = []\n        for m in result.matches:\n            if m.score < self._threshold:\n                continue\n            payload = (m.metadata or {}).get(\"payload\") or {}\n            matches.append(\n                Match(\n                    id=m.id,\n                    score=m.score,\n                    spec=payload.get(\"spec\", m.text),\n                    code=payload.get(\"code\", \"\"),\n                    proof=payload.get(\"proof\", \"\"),\n                    metadata=m.metadata or {},\n                )\n            )\n        return matches\n",
+  "body_hash": "88791223310b090c",
+  "body_truncated": false,
+  "callers_of": [
+    "query_vector_memory",
+    "append",
+    "get",
+    "Match"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_lifrgraph.py:35.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.query",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_lifrgraph.py:35"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "query",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for query"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

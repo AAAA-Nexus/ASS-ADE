@@ -1,0 +1,30 @@
+{
+  "body": "    def test_record_increments_sequence(self, history: FileHistory):\n        history.record(\"hello.py\", \"v1\")\n        snap = history.record(\"hello.py\", \"v2\")\n        assert snap.sequence == 1\n",
+  "body_hash": "00b762f1306e0e27",
+  "body_truncated": false,
+  "callers_of": [
+    "record"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testfilehistory.py:13.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_record_increments_sequence",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testfilehistory.py:13"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_record_increments_sequence",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_record_increments_sequence"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

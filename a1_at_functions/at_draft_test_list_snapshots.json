@@ -1,0 +1,32 @@
+{
+  "body": "    def test_list_snapshots(self, history: FileHistory):\n        history.record(\"hello.py\", \"v1\")\n        history.record(\"hello.py\", \"v2\")\n\n        snaps = history.list_snapshots(\"hello.py\")\n        assert len(snaps) == 2\n        assert snaps[0].content == \"v1\"\n        assert snaps[1].content == \"v2\"\n",
+  "body_hash": "313528273d5ad6e7",
+  "body_truncated": false,
+  "callers_of": [
+    "record",
+    "list_snapshots",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testfilehistory.py:49.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_list_snapshots",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testfilehistory.py:49"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_list_snapshots",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_list_snapshots"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,32 @@
+{
+  "body": "    def test_context_flows_through_steps(self) -> None:\n        pipe = Pipeline(\"context\")\n        pipe.add(\"count1\", counting_step)\n        pipe.add(\"count2\", counting_step)\n        result = pipe.run()\n        assert result.passed\n        assert result.context[\"count\"] == 2\n",
+  "body_hash": "f505dbe40afc1352",
+  "body_truncated": false,
+  "callers_of": [
+    "Pipeline",
+    "add",
+    "run"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpipeline.py:28.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_context_flows_through_steps",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpipeline.py:28"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_context_flows_through_steps",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_context_flows_through_steps"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

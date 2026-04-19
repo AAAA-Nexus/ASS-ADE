@@ -1,0 +1,33 @@
+{
+  "body": "class AgentRef:\n    name: str\n    priority: float\n    reason: str = \"\"\n",
+  "body_hash": "64bceae702f8fa18",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/puppeteer.py:10.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.agentref",
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/puppeteer.py:10"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "AgentRef",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for AgentRef"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

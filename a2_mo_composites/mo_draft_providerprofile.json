@@ -1,0 +1,41 @@
+{
+  "body": "class ProviderProfile:\n    \"\"\"Describes a single LLM provider.\"\"\"\n\n    name: str\n    display_name: str\n    base_url: str | None  # None = requires runtime substitution (e.g., cloudflare account id)\n    api_key_env: str | None  # environment variable name (None for local providers)\n    api_key_default: str | None = None  # default key if none set (for local providers)\n    local: bool = False  # True = runs on localhost, no internet needed\n    models_by_tier: dict[str, str] = field(default_factory=dict)  # tier \u2192 model id\n    signup_url: str | None = None\n    rate_limit: str | None = None  # human-readable rate limit summary\n    notes: str = \"\"\n    # special=True \u2192 requires a custom provider class (NexusProvider), not\n    # OpenAICompatibleProvider. The router knows how to instantiate it.\n    special: bool = False\n    # paid=True \u2192 not a free provider, but listed here so users can wire it in.\n    paid: bool = False\n\n    def resolve_api_key(self, config_key: str | None = None) -> str | None:\n        \"\"\"Resolve the API key: config override \u2192 env var \u2192 default.\"\"\"\n        if config_key:\n            return config_key\n        if self.api_key_env:\n            env_val = os.getenv(self.api_key_env)\n            if env_val:\n                return env_val\n        return self.api_key_default\n\n    def model_for_tier(self, tier: str, override: dict[str, str] | None = None) -> str | None:\n        \"\"\"Get the model id for a tier, honoring config overrides.\"\"\"\n        tier = TIER_ALIASES.get(tier, tier)\n        if override and tier in override:\n            return override[tier]\n        return self.models_by_tier.get(tier)\n\n    def is_available(self, config_key: str | None = None) -> bool:\n        \"\"\"True if this provider has auth (or is local + reachable).\"\"\"\n        if self.local:\n            return True\n        return self.resolve_api_key(config_key) is not None\n",
+  "body_hash": "655bd817c9b9f232",
+  "body_truncated": false,
+  "callers_of": [
+    "field",
+    "get",
+    "getenv",
+    "resolve_api_key"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/providers.py:44.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.providerprofile",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/providers.py:44"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.resolve_api_key"
+  ],
+  "name": "ProviderProfile",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ProviderProfile"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

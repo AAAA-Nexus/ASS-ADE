@@ -1,0 +1,45 @@
+{
+  "body": "    def test_public_absolute_endpoint_allowed_in_simulate(self) -> None:\n        \"\"\"Public absolute endpoints should be allowed in simulate_invoke.\"\"\"\n        from ass_ade.mcp.utils import simulate_invoke\n        \n        tool = MCPTool(\n            name=\"public-tool\",\n            endpoint=\"https://cloudflare.com/tool\",\n            method=\"POST\",\n            paid=False,\n        )\n        \n        result = simulate_invoke(\"https://fallback.example.com\", tool)\n        assert result[\"endpoint\"] == \"https://cloudflare.com/tool\"\n",
+  "body_hash": "04451d3597fbed5b",
+  "body_truncated": false,
+  "callers_of": [
+    "MCPTool",
+    "simulate_invoke"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_ssrf_protection.py:195.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_public_absolute_endpoint_allowed_in_simulate",
+  "imports": [
+    "ipaddress",
+    "json",
+    "unittest.mock",
+    "pytest",
+    "ass_ade.a2a.fetch_agent_card",
+    "ass_ade.mcp.utils._validate_absolute_endpoint",
+    "ass_ade.nexus.models.MCPManifest",
+    "ass_ade.nexus.models.MCPTool",
+    "ass_ade.mcp.utils.invoke_tool",
+    "ass_ade.mcp.utils.invoke_tool",
+    "ass_ade.mcp.utils.simulate_invoke",
+    "ass_ade.mcp.utils.simulate_invoke",
+    "ass_ade.mcp.utils.simulate_invoke"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_ssrf_protection.py:195"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_public_absolute_endpoint_allowed_in_simulate",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_public_absolute_endpoint_allowed_in_simulate"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

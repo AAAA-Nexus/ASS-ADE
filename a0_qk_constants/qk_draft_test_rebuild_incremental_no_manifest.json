@@ -1,0 +1,41 @@
+{
+  "body": "def test_rebuild_incremental_no_manifest(tmp_path: Path) -> None:\n    src = tmp_path / \"proj\"\n    src.mkdir()\n    (src / \"util.py\").write_text(\"def foo(): pass\\n\", encoding=\"utf-8\")\n    out = tmp_path / \"proj-out\"\n\n    result = runner.invoke(\n        app, [\"rebuild\", str(src), str(out), \"--yes\", \"--no-certify\", \"--incremental\"]\n    )\n\n    assert result.exit_code == 0\n",
+  "body_hash": "0a66c1e1e847e66c",
+  "body_truncated": false,
+  "callers_of": [
+    "mkdir",
+    "write_text",
+    "invoke",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli.py:213.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.test_rebuild_incremental_no_manifest",
+  "imports": [
+    "json",
+    "pathlib.Path",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.cli._auto_detect_project"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli.py:213"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "test_rebuild_incremental_no_manifest",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_rebuild_incremental_no_manifest"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "ass-ade": {
+      "command": "python",
+      "args": ["-m", "ass_ade", "mcp", "serve"],
+      "env": {
+        "PYTHONPATH": "/path/to/your/ass-ade/src",
+        "ASS_ADE_CONFIG": "/path/to/your/ass-ade/.ass-ade/config.json"
+      }
+    }
+  }
+}

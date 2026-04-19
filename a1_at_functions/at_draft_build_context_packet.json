@@ -1,0 +1,59 @@
+{
+  "body": "def build_context_packet(\n    *,\n    task_description: str,\n    working_dir: str | Path = \".\",\n    file_paths: list[str] | None = None,\n    source_urls: list[str] | None = None,\n    max_files: int = 12,\n    max_bytes_per_file: int = 4000,\n) -> ContextPacket:\n    \"\"\"Build a compact context packet from repo files and source URLs.\"\"\"\n    root = Path(working_dir).resolve()\n    sources = [source for source in (source_urls or []) if source.strip()]\n    recon = phase0_recon(\n        task_description=task_description,\n        working_dir=root,\n        provided_sources=sources,\n        max_relevant_files=max_files,\n    )\n\n    selected_paths = list(file_paths or recon.codebase.relevant_files)[:max_files]\n    warnings: list[str] = list(recon.required_actions)\n    files: list[ContextFile] = []\n\n    for rel in selected_paths:\n        try:\n            path = _safe_file(root, rel)\n            excerpt, truncated = _read_excerpt(path, max_bytes_per_file)\n        except (OSError, ValueError) as exc:\n            warnings.append(str(exc))\n            continue\n\n        raw = path.read_bytes()\n        files.append(ContextFile(\n            path=path.relative_to(root).as_posix(),\n            sha256=hashlib.sha256(raw).hexdigest(),\n            size_bytes=len(raw),\n            excerpt=excerpt,\n            truncated=truncated,\n        ))\n\n    return ContextPacket(\n        task_description=task_description,\n        recon_verdict=recon.verdict,\n        source_urls=sources,\n        files=files,\n        warnings=warnings,\n    )\n",
+  "body_hash": "457eaea00ad8c28c",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "phase0_recon",
+    "list",
+    "ContextPacket",
+    "read_bytes",
+    "append",
+    "Path",
+    "strip",
+    "_safe_file",
+    "_read_excerpt",
+    "ContextFile",
+    "str",
+    "as_posix",
+    "hexdigest",
+    "len",
+    "relative_to",
+    "sha256"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/context_memory.py:122.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.build_context_packet",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "math",
+    "re",
+    "datetime.UTC",
+    "datetime.datetime",
+    "pathlib.Path",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "ass_ade.recon.phase0_recon"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/context_memory.py:122"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "build_context_packet",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for build_context_packet"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

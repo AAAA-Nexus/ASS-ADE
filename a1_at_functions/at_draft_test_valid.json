@@ -1,0 +1,30 @@
+{
+  "body": "    def test_valid(self) -> None:\n        assert validate_session_id(\"sess-abc-123\") == \"sess-abc-123\"\n",
+  "body_hash": "2325186ed0a61fe4",
+  "body_truncated": false,
+  "callers_of": [
+    "validate_session_id"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidatesessionid.py:6.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_valid",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidatesessionid.py:6"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_valid",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_valid"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,50 @@
+{
+  "body": "class UndoEditTool:\n    \"\"\"Undo the last edit to a file, restoring its previous content.\"\"\"\n\n    def __init__(self, working_dir: str = \".\", history: FileHistory | None = None) -> None:\n        self._cwd = Path(working_dir).resolve()\n        self._history = history\n\n    @property\n    def name(self) -> str:\n        return \"undo_edit\"\n\n    @property\n    def description(self) -> str:\n        return (\n            \"Undo the last write_file or edit_file operation on a file, \"\n            \"restoring it to its previous content. Supports multiple undo steps.\"\n        )\n\n    @property\n    def parameters(self) -> dict[str, Any]:\n        return {\n            \"type\": \"object\",\n            \"properties\": {\n                \"path\": {\n                    \"type\": \"string\",\n                    \"description\": \"File path (relative to working directory) to undo.\",\n                },\n            },\n            \"required\": [\"path\"],\n        }\n\n    def execute(self, **kwargs: Any) -> ToolResult:\n        if self._history is None:\n            return ToolResult(error=\"Undo history not available.\", success=False)\n\n        path_str = kwargs[\"path\"]\n        # Normalize to relative path\n        resolved = _resolve(self._cwd, path_str)\n        try:\n            rel = str(resolved.relative_to(self._cwd))\n        except ValueError:\n            rel = path_str\n\n        depth = self._history.depth(rel)\n        if depth == 0:\n            return ToolResult(error=f\"No undo history for {path_str}\", success=False)\n\n        snap = self._history.undo(rel)\n        if snap is None:\n            return ToolResult(error=f\"Failed to undo {path_str}\", success=False)\n\n        remaining = self._history.depth(rel)\n        return ToolResult(\n            output=f\"Restored {path_str} to snapshot #{snap.sequence} ({remaining} undo steps remaining)\"\n        )\n",
+  "body_hash": "45b04324724e0a33",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "_resolve",
+    "depth",
+    "undo",
+    "ToolResult",
+    "str",
+    "Path",
+    "relative_to"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/tools/builtin.py:496.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.undoedittool",
+  "imports": [
+    "__future__.annotations",
+    "difflib",
+    "re",
+    "shlex",
+    "subprocess",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.history.FileHistory"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/tools/builtin.py:496"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.depth",
+    "at.source.ass_ade.undo"
+  ],
+  "name": "UndoEditTool",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for UndoEditTool"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

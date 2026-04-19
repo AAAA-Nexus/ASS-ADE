@@ -1,0 +1,51 @@
+{
+  "body": "class ProofBridge:\n    def __init__(self, config: dict, nexus: Any | None = None):\n        self._config = config\n        self._nexus = nexus\n        self._translations = 0\n\n    def _spec_name(self, description: str) -> str:\n        tokens = _NAME_RE.sub(\"_\", description.lower()).strip(\"_\").split(\"_\")\n        head = \"_\".join(t for t in tokens[:4] if t)[:32] or \"spec\"\n        digest = hashlib.sha256(description.encode()).hexdigest()[:6]\n        return f\"{head}_{digest}\"\n\n    def translate(self, task_description: str) -> Lean4Spec:\n        self._translations += 1\n        if self._nexus is not None and hasattr(self._nexus, \"synthesize_verified_code\"):\n            try:\n                result = self._nexus.synthesize_verified_code(\n                    description=task_description, language=\"lean4\"\n                )\n                source = getattr(result, \"source\", None) or getattr(result, \"code\", None)\n                if source:\n                    return Lean4Spec(\n                        name=self._spec_name(task_description),\n                        source=str(source),\n                        has_sorry=\"sorry\" in str(source),\n                    )\n            except Exception:\n                pass\n        name = self._spec_name(task_description)\n        src = (\n            f\"-- spec: {task_description}\\n\"\n            f\"theorem {name} : True := by\\n\"\n            f\"  sorry\\n\"\n        )\n        return Lean4Spec(name=name, source=src, has_sorry=True)\n\n    def run(self, ctx: dict) -> dict:\n        spec = self.translate(ctx.get(\"description\", \"\"))\n        return {\"name\": spec.name, \"source\": spec.source, \"has_sorry\": spec.has_sorry}\n\n    def report(self) -> dict:\n        return {\"engine\": \"proofbridge\", \"translations\": self._translations}\n",
+  "body_hash": "53f2793bc082104b",
+  "body_truncated": false,
+  "callers_of": [
+    "split",
+    "_spec_name",
+    "Lean4Spec",
+    "translate",
+    "hexdigest",
+    "hasattr",
+    "get",
+    "strip",
+    "join",
+    "synthesize_verified_code",
+    "sha256",
+    "getattr",
+    "sub",
+    "encode",
+    "lower",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/proofbridge.py:20.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.proofbridge",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "re",
+    "dataclasses.dataclass",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/proofbridge.py:20"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "ProofBridge",
+  "product_categories": [
+    "DCM"
+  ],
+  "provides": [
+    "rebuild candidate for ProofBridge"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

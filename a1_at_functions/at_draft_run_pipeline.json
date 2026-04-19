@@ -1,0 +1,69 @@
+{
+  "body": "def run_pipeline(cfg: TrainConfig) -> int:\n    logging.basicConfig(\n        level=logging.INFO, format=\"%(asctime)s %(name)s %(levelname)s %(message)s\"\n    )\n    samples = fetch_samples(cfg)\n    if len(samples) < cfg.min_samples_to_train:\n        _log.warning(\n            \"only %d samples available (need %d); skipping training\",\n            len(samples),\n            cfg.min_samples_to_train,\n        )\n        return 0\n    adapter_dir = train_adapter(cfg, samples)\n    adapter_url, sha = upload_adapter(cfg, adapter_dir)\n    metrics = {\n        \"sample_count\": len(samples),\n        \"epochs\": cfg.epochs,\n        \"lora_rank\": cfg.lora_rank,\n        \"base_model\": cfg.base_model,\n        \"trained_at\": int(time.time()),\n    }\n    promotion = promote_adapter(cfg, adapter_url, sha, metrics)\n    _log.info(\"promotion response: %s\", json.dumps(promotion, indent=2))\n    # Write a receipt so CI artifacts are easy to grab\n    (cfg.output_dir / \"last_promotion.json\").write_text(\n        json.dumps(promotion, indent=2), encoding=\"utf-8\"\n    )\n    return 1 if promotion.get(\"promoted\") else 0\n",
+  "body_hash": "667a6a3d630f22b3",
+  "body_truncated": false,
+  "callers_of": [
+    "basicConfig",
+    "fetch_samples",
+    "train_adapter",
+    "upload_adapter",
+    "promote_adapter",
+    "info",
+    "write_text",
+    "len",
+    "warning",
+    "int",
+    "dumps",
+    "get",
+    "time"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_train.py:310.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.run_pipeline",
+  "imports": [
+    "__future__.annotations",
+    "argparse",
+    "hashlib",
+    "json",
+    "logging",
+    "os",
+    "sys",
+    "time",
+    "dataclasses.asdict",
+    "dataclasses.dataclass",
+    "pathlib.Path",
+    "typing.Any",
+    "httpx",
+    "subprocess",
+    "torch",
+    "datasets.Dataset",
+    "peft.LoraConfig",
+    "peft.TaskType",
+    "peft.get_peft_model",
+    "transformers.AutoModelForCausalLM",
+    "transformers.AutoTokenizer",
+    "transformers.DataCollatorForLanguageModeling",
+    "transformers.Trainer",
+    "transformers.TrainingArguments",
+    "huggingface_hub.HfApi",
+    "huggingface_hub.login"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_train.py:310"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "run_pipeline",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for run_pipeline"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

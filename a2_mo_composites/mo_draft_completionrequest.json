@@ -1,0 +1,35 @@
+{
+  "body": "class CompletionRequest(BaseModel):\n    \"\"\"Model completion request.\"\"\"\n\n    messages: list[Message]\n    tools: list[ToolSchema] = Field(default_factory=list)\n    temperature: float = 0.0\n    max_tokens: int = 4096\n    model: str | None = None\n",
+  "body_hash": "f003b39e4b57031c",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/types.py:36.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.completionrequest",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/types.py:36"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "CompletionRequest",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for CompletionRequest"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

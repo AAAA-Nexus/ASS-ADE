@@ -1,0 +1,35 @@
+{
+  "body": "    def test_cancellation_context_created_per_request(self, server: MCPServer) -> None:\n        \"\"\"Verify that a cancellation context is created for each request.\"\"\"\n        _initialize_server(server)\n\n        # Start a simple request\n        req = {\n            \"jsonrpc\": \"2.0\",\n            \"id\": 123,\n            \"method\": \"tools/call\",\n            \"params\": {\"name\": \"read_file\", \"arguments\": {\"path\": \"hello.py\"}},\n        }\n        resp = server._handle(req)\n        assert resp is not None\n        assert resp[\"result\"][\"isError\"] is False\n\n        # The cancellation context should have been cleaned up\n        assert 123 not in server._cancellation_contexts\n",
+  "body_hash": "372e5703b8c80fed",
+  "body_truncated": false,
+  "callers_of": [
+    "_initialize_server",
+    "_handle"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testmcpcancellation.py:13.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_cancellation_context_created_per_request",
+  "imports": [
+    "ass_ade.mcp.cancellation.CancellationContext",
+    "ass_ade.mcp.cancellation.CancellationContext",
+    "ass_ade.mcp.cancellation.CancellationContext"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testmcpcancellation.py:13"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "test_cancellation_context_created_per_request",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_cancellation_context_created_per_request"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

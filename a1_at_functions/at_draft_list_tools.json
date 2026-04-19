@@ -1,0 +1,28 @@
+{
+  "body": "def list_tools():\n    return []\n",
+  "body_hash": "8b36eff982e84e0d",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_list_tools.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.list_tools",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_list_tools.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "list_tools",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for list_tools"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,7 @@
+# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:658
+# Component id: mo.source.ass_ade.agent_capabilities_match
+__version__ = "0.1.0"
+
+    def agent_capabilities_match(self, task: str, **kwargs: Any) -> CapabilityMatch:
+        """/v1/agents/capabilities/match — find matching agents in the swarm. $0.020/request"""
+        return self._post_model("/v1/agents/capabilities/match", CapabilityMatch, {"task": task, **kwargs})

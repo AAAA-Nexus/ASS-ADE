@@ -1,0 +1,33 @@
+{
+  "body": "def format_output(data):\n    processed = process_data(data)\n    return str(processed)\n",
+  "body_hash": "929b77634ebb811c",
+  "body_truncated": false,
+  "callers_of": [
+    "process_data",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/benchmarks/messy_demo/helpers.py:3.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.format_output",
+  "imports": [
+    "utils.process_data"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/benchmarks/messy_demo/helpers.py:3"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "format_output",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for format_output"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

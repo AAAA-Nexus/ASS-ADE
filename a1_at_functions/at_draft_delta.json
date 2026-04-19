@@ -1,0 +1,28 @@
+{
+  "body": "    def delta(self) -> float:\n        return self.improvement\n",
+  "body_hash": "0c92eeeb2a647228",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_simulationresult.py:22.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.delta",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_simulationresult.py:22"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "delta",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for delta"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,37 @@
+{
+  "body": "    def start(self, agent_id: str) -> RatchetSession:\n        \"\"\"Register a new RatchetGate session.\"\"\"\n        validate_agent_id(agent_id)\n        # RatchetGate expects agent_id as an int multiple of G_18 (324)\n        # The server handles the constraint; we send the raw value\n        result = self._client.ratchet_register(\n            int(agent_id) if agent_id.isdigit() else (\n                int.from_bytes(hashlib.sha256(agent_id.encode(\"utf-8\")).digest()[:4], \"big\") & 0x7FFFFFFF\n            )\n        )\n        self.session_id = result.session_id\n        self.epoch = result.epoch or 0\n        self._started = True\n        return result\n",
+  "body_hash": "e22ad993aa247d49",
+  "body_truncated": false,
+  "callers_of": [
+    "validate_agent_id",
+    "ratchet_register",
+    "isdigit",
+    "int",
+    "from_bytes",
+    "digest",
+    "sha256",
+    "encode"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_nexussession.py:18.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.start",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_nexussession.py:18"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "start",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for start"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

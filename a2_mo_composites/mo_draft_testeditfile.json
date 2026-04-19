@@ -1,0 +1,35 @@
+{
+  "body": "class TestEditFile:\n    def test_simple_replace(self, workspace: Path):\n        tool = EditFileTool(str(workspace))\n        r = tool.execute(path=\"hello.py\", old_string=\"hello world\", new_string=\"goodbye world\")\n        assert r.success\n        assert (workspace / \"hello.py\").read_text() == \"print('goodbye world')\\n\"\n\n    def test_not_found(self, workspace: Path):\n        tool = EditFileTool(str(workspace))\n        r = tool.execute(path=\"hello.py\", old_string=\"NOPE\", new_string=\"X\")\n        assert not r.success\n        assert \"not found\" in (r.error or \"\").lower()\n\n    def test_multiple_matches(self, workspace: Path):\n        (workspace / \"dup.py\").write_text(\"a\\na\\na\\n\", encoding=\"utf-8\")\n        tool = EditFileTool(str(workspace))\n        r = tool.execute(path=\"dup.py\", old_string=\"a\", new_string=\"b\")\n        assert not r.success\n        assert \"3 locations\" in (r.error or \"\")\n",
+  "body_hash": "e3497fbecfa0f700",
+  "body_truncated": false,
+  "callers_of": [
+    "EditFileTool",
+    "execute",
+    "write_text",
+    "str",
+    "read_text",
+    "lower"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditfile.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testeditfile",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditfile.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "TestEditFile",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestEditFile"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

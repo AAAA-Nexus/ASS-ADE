@@ -1,0 +1,30 @@
+{
+  "body": "def test_map_terrain_accepts_single_string_capability_name(tmp_path: Path) -> None:\n    result = map_terrain(\n        task_description=\"Read one file.\",\n        required_capabilities={\"tools\": \"read_file\"},\n        working_dir=tmp_path,\n    )\n\n    assert result.verdict == \"PROCEED\"\n    assert result.inventory_check[\"tools\"][\"read_file\"] == \"exists\"\n",
+  "body_hash": "9d85120e6b98fe76",
+  "body_truncated": false,
+  "callers_of": [
+    "map_terrain"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_map_terrain_accepts_single_string_capability_name.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_map_terrain_accepts_single_string_capability_name",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_map_terrain_accepts_single_string_capability_name.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_map_terrain_accepts_single_string_capability_name",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_map_terrain_accepts_single_string_capability_name"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

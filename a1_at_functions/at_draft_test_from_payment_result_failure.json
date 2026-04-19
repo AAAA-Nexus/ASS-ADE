@@ -1,0 +1,51 @@
+{
+  "body": "    def test_from_payment_result_failure(self) -> None:\n        \"\"\"PaymentProof should return None for failed PaymentResult.\"\"\"\n        result = PaymentResult(success=False, error=\"No wallet\")\n        proof = PaymentProof.from_payment_result(result)\n        assert proof is None\n",
+  "body_hash": "226269df3e956407",
+  "body_truncated": false,
+  "callers_of": [
+    "PaymentResult",
+    "from_payment_result"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:104.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_from_payment_result_failure",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.nexus.x402.PaymentChallenge",
+    "ass_ade.nexus.x402.PaymentResult",
+    "ass_ade.nexus.x402.PaymentProof",
+    "ass_ade.nexus.x402.X402ClientFlow",
+    "ass_ade.nexus.x402.format_payment_consent",
+    "ass_ade.nexus.x402.get_chain_config",
+    "ass_ade.nexus.x402.build_payment_header",
+    "ass_ade.nexus.x402.ATOMADIC_TREASURY",
+    "ass_ade.nexus.x402.BASE_MAINNET_CHAIN_ID",
+    "ass_ade.nexus.x402.BASE_SEPOLIA_CHAIN_ID"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:104"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_from_payment_result_failure",
+  "product_categories": [
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for test_from_payment_result_failure"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

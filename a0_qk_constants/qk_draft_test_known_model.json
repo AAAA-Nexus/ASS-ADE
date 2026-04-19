@@ -1,0 +1,30 @@
+{
+  "body": "    def test_known_model(self):\n        assert context_window_for(\"gpt-4o\") == 128_000\n",
+  "body_hash": "33c8c7290ea4ac96",
+  "body_truncated": false,
+  "callers_of": [
+    "context_window_for"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testcontextwindowfor.py:6.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.test_known_model",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testcontextwindowfor.py:6"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "test_known_model",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_known_model"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

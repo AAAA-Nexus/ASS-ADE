@@ -1,0 +1,52 @@
+{
+  "body": "def certify_pipeline(\n    client: Any,\n    text: str,\n    *,\n    on_progress: ProgressCallback | None = None,\n    persist_dir: str | None = None,\n) -> Pipeline:\n    \"\"\"Build a certification pipeline: hallucination \u2192 ethics \u2192 compliance \u2192 certify.\"\"\"\n\n    def hallucination_step(ctx: dict[str, Any]) -> StepResult:\n        try:\n            result = client.hallucination_oracle(text)\n            raw = result.model_dump() if hasattr(result, \"model_dump\") else {}\n            verdict = raw.get(\"verdict\", \"unknown\")\n            passed = verdict not in (\"unsafe\", \"error\")\n            ctx[\"hallucination_verdict\"] = verdict\n            return StepResult(name=\"hallucination_oracle\", status=StepStatus.PASSED if passed else StepStatus.FAILED, output=raw)\n        except Exception as exc:\n            return StepResult(name=\"hallucination_oracle\", status=StepStatus.FAILED, error=str(exc))\n\n    def ethics_step(ctx: dict[str, Any]) -> StepResult:\n        try:\n            result = client.ethics_check(text)\n            raw = result.model_dump() if hasattr(result, \"model_dump\") else {}\n            passed = raw.get(\"safe\", False)\n            return StepResult(name=\"ethics_check\", status=StepStatus.PASSED if passed else StepStatus.FAILED, output=raw)\n        except Exception as exc:\n            return StepResult(name=\"ethics_check\", status=StepStatus.FAILED, error=str(exc))\n\n    def compliance_step(ctx: dict[str, Any]) -> StepResult:\n        try:\n            result = client.compliance_check(text)\n            raw = result.model_dump() if hasattr(result, \"model_dump\") else {}\n            passed = raw.get(\"compliant\", False)\n            return StepResult(name=\"compliance_check\", status=StepStatus.PASSED if passed else StepStatus.FAILED, output=raw)\n        except Exception as exc:\n            return StepResult(name=\"compliance_check\", status=StepStatus.FAILED, error=str(exc))\n\n    def certify_step(ctx: dict[str, Any]) -> StepResult:\n        try:\n            result = client.certify_output(text, rubric=[\"accuracy\", \"safety\", \"compliance\"])\n            raw = result.model_dump() if hasattr(result, \"model_dump\") else {}\n            ctx[\"certificate_id\"] = raw.get(\"certificate_id\")\n            return StepResult(name=\"certify_output\", status=StepStatus.PASSED, output=raw)\n        except Exception as exc:\n            return StepResult(name=\"certify_output\", status=StepStatus.FAILED, error=str(exc))\n\n    pipe = Pipeline(\n        \"certify-output\",\n        fail_fast=False,\n        persist_dir=persist_dir,\n        on_progress=on_progress,\n    )\n    pipe.add(\"hallucination_oracle\", hallucination_step)\n    pipe.add(\"ethics_check\", ethics_step)\n    pipe.add(\"compliance_check\", compliance_step)\n    pipe.add(\"certify_output\", certify_step)\n    return pipe\n",
+  "body_hash": "156292ab17482633",
+  "body_truncated": false,
+  "callers_of": [
+    "Pipeline",
+    "add",
+    "hallucination_oracle",
+    "get",
+    "StepResult",
+    "ethics_check",
+    "compliance_check",
+    "certify_output",
+    "hasattr",
+    "model_dump",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/pipeline.py:323.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.certify_pipeline",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "time",
+    "collections.abc.Callable",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "enum.Enum",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Protocol",
+    "ass_ade.nexus.validation.validate_agent_id"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/pipeline.py:323"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "certify_pipeline",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for certify_pipeline"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

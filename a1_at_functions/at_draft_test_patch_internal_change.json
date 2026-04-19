@@ -1,0 +1,30 @@
+{
+  "body": "    def test_patch_internal_change(self):\n        old = \"def foo():\\n    return 1\"\n        new = \"def foo():\\n    return 2\"\n        assert classify_change(old, new) == \"patch\"\n",
+  "body_hash": "63891473c3bd2c3e",
+  "body_truncated": false,
+  "callers_of": [
+    "classify_change"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testclassifychange.py:10.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_patch_internal_change",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testclassifychange.py:10"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_patch_internal_change",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_patch_internal_change"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

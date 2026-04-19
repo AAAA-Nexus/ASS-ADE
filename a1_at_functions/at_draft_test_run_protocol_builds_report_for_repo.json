@@ -1,0 +1,45 @@
+{
+  "body": "def test_run_protocol_builds_report_for_repo(tmp_path: Path) -> None:\n    (tmp_path / \"README.md\").write_text(\"# Demo\\n\", encoding=\"utf-8\")\n    (tmp_path / \"docs\").mkdir()\n    (tmp_path / \"docs\" / \"architecture.md\").write_text(\"x\", encoding=\"utf-8\")\n    (tmp_path / \"docs\" / \"dev-stack.md\").write_text(\"x\", encoding=\"utf-8\")\n    (tmp_path / \"docs\" / \"protocol.md\").write_text(\"x\", encoding=\"utf-8\")\n    (tmp_path / \".github\").mkdir()\n    (tmp_path / \".github\" / \"copilot-instructions.md\").write_text(\"x\", encoding=\"utf-8\")\n    (tmp_path / \"src\").mkdir()\n    (tmp_path / \"src\" / \"ass_ade\").mkdir()\n    (tmp_path / \"src\" / \"ass_ade\" / \"cli.py\").write_text(\"x\", encoding=\"utf-8\")\n    (tmp_path / \"src\" / \"ass_ade\" / \"nexus\").mkdir(parents=True)\n    (tmp_path / \"src\" / \"ass_ade\" / \"nexus\" / \"models.py\").write_text(\"x\", encoding=\"utf-8\")\n    (tmp_path / \"src\" / \"ass_ade\" / \"local\").mkdir(parents=True)\n    (tmp_path / \"src\" / \"ass_ade\" / \"local\" / \"repo.py\").write_text(\"x\", encoding=\"utf-8\")\n    (tmp_path / \"tests\").mkdir()\n    (tmp_path / \"tests\" / \"test_cli.py\").write_text(\"x\", encoding=\"utf-8\")\n    (tmp_path / \"pyproject.toml\").write_text(\"[project]\\nname='demo'\\n\", encoding=\"utf-8\")\n\n    report = run_protocol(\"Improve public shell\", tmp_path, AssAdeConfig(profile=\"local\"))\n\n    assert report.goal == \"Improve public shell\"\n    assert report.assessment.profile == \"local\"\n    assert len(report.audit) == 5\n    assert report.summary.startswith(\"Completed a public-safe enhancement cycle\")\n",
+  "body_hash": "ddf67924ff949c38",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "mkdir",
+    "run_protocol",
+    "startswith",
+    "AssAdeConfig",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_protocol.py:17.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_run_protocol_builds_report_for_repo",
+  "imports": [
+    "pathlib.Path",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.protocol.cycle.render_protocol_markdown",
+    "ass_ade.protocol.cycle.run_protocol",
+    "ass_ade.protocol.evolution.bump_project_version",
+    "ass_ade.protocol.evolution.record_evolution_event",
+    "ass_ade.protocol.evolution.render_branch_evolution_demo"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_protocol.py:17"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_run_protocol_builds_report_for_repo",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_run_protocol_builds_report_for_repo"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,47 @@
+{
+  "body": "    def test_preview_does_not_modify(self, tmp_path: Path):\n        (tmp_path / \"code.py\").write_text(\"x = 1\\ny = 2\\nz = 3\\n\")\n        tool = EditFileTool(str(tmp_path))\n        tool.execute(\n            path=\"code.py\",\n            old_string=\"y = 2\",\n            new_string=\"y = 42\",\n            preview=True,\n        )\n        # File should be unchanged\n        assert (tmp_path / \"code.py\").read_text() == \"x = 1\\ny = 2\\nz = 3\\n\"\n",
+  "body_hash": "27e479b8a0747ccf",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "EditFileTool",
+    "execute",
+    "str",
+    "read_text"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:169.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_preview_does_not_modify",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "pytest",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolCallRequest",
+    "ass_ade.mcp.server.MCPServer",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.builtin.EditFileTool",
+    "ass_ade.tools.registry.ToolRegistry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:169"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "test_preview_does_not_modify",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_preview_does_not_modify"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

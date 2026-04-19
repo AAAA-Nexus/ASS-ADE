@@ -1,0 +1,31 @@
+{
+  "body": "def test_build_local_certificate_structure(tmp_path: Path) -> None:\n    (tmp_path / \"src.py\").write_text(\"pass\\n\", encoding=\"utf-8\")\n\n    cert = build_local_certificate(tmp_path)\n\n    for key in (\"schema\", \"version\", \"digest\", \"signed_by\", \"valid\"):\n        assert key in cert, f\"missing key: {key}\"\n    assert cert[\"signed_by\"] is None\n    assert cert[\"valid\"] is False\n",
+  "body_hash": "a27137cf2d73763a",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "build_local_certificate"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_build_local_certificate_structure.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_build_local_certificate_structure",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_build_local_certificate_structure.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_build_local_certificate_structure",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_build_local_certificate_structure"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

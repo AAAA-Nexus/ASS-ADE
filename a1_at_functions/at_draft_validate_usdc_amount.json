@@ -1,0 +1,38 @@
+{
+  "body": "def validate_usdc_amount(value: float) -> float:\n    \"\"\"Positive, max 1,000,000 USDC.\"\"\"\n    if value <= 0:\n        raise ValueError(\"USDC amount must be positive.\")\n    if value > MAX_USDC:\n        raise ValueError(f\"USDC amount exceeds maximum ({MAX_USDC:,.0f}).\")\n    return value\n",
+  "body_hash": "e3d604bdda0e319c",
+  "body_truncated": false,
+  "callers_of": [
+    "ValueError"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/validation.py:106.",
+  "exceptions_raised": [
+    "ValueError"
+  ],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.validate_usdc_amount",
+  "imports": [
+    "__future__.annotations",
+    "ipaddress",
+    "re",
+    "socket",
+    "urllib.parse.urlparse"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/validation.py:106"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "validate_usdc_amount",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for validate_usdc_amount"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

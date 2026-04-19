@@ -1,0 +1,40 @@
+{
+  "body": "def test_render_atomadic_help_mentions_runtime_inventory(tmp_path: Path) -> None:\n    help_text = render_atomadic_help(tmp_path)\n\n    assert \"runtime\" in help_text\n    assert \"`protocol evolution-record`\" in help_text\n    assert \"`context pack`\" in help_text\n",
+  "body_hash": "0095a5071e8ae93b",
+  "body_truncated": false,
+  "callers_of": [
+    "render_atomadic_help"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_capabilities.py:46.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_render_atomadic_help_mentions_runtime_inventory",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "ass_ade.interpreter",
+    "ass_ade.agent.capabilities.build_atomadic_intent_prompt",
+    "ass_ade.agent.capabilities.command_path_exists",
+    "ass_ade.agent.capabilities.render_atomadic_help",
+    "ass_ade.agent.capabilities.sync_atomadic_prompt_capabilities",
+    "ass_ade.agent.context.build_system_prompt",
+    "ass_ade.interpreter.Atomadic"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_capabilities.py:46"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_render_atomadic_help_mentions_runtime_inventory",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_render_atomadic_help_mentions_runtime_inventory"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

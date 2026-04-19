@@ -1,0 +1,28 @@
+{
+  "body": "def f():\n    pass  # TODO: implement\n",
+  "body_hash": "de770f697251a8f5",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.pytest_tmp/test_enhance_json_output0/sample.py:1.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.f",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.pytest_tmp/test_enhance_json_output0/sample.py:1"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "f",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for f"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

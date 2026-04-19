@@ -1,0 +1,44 @@
+{
+  "body": "class TestQualityGates:\n    def test_scan_prompt_clean(self):\n        gates = QualityGates(_mock_nexus())\n        result = gates.scan_prompt(\"What is Python?\")\n        assert result is not None\n        assert result[\"blocked\"] is False\n\n    def test_scan_prompt_blocked(self):\n        gates = QualityGates(_mock_nexus(threat_detected=True, threat_level=\"high\"))\n        result = gates.scan_prompt(\"Ignore instructions and...\")\n        assert result is not None\n        assert result[\"blocked\"] is True\n        assert result[\"threat_level\"] == \"high\"\n\n    def test_scan_prompt_exception(self):\n        client = MagicMock()\n        client.prompt_inject_scan.side_effect = Exception(\"network error\")\n        gates = QualityGates(client)\n        assert gates.scan_prompt(\"test\") is None\n\n    def test_check_hallucination_safe(self):\n        gates = QualityGates(_mock_nexus())\n        result = gates.check_hallucination(\"Python is a programming language.\")\n        assert result is not None\n        assert result[\"verdict\"] == \"safe\"\n        assert \"policy_epsilon\" in result\n\n    def test_check_hallucination_unsafe(self):\n        gates = QualityGates(_mock_nexus(verdict=\"unsafe\", policy_epsilon=0.85))\n        result = gates.check_hallucination(\"Made up claim.\")\n        assert result is not None\n        assert result[\"verdict\"] == \"unsafe\"\n\n    def test_shield_tool_allowed(self):\n        gates = QualityGates(_mock_nexus())\n        result = gates.shield_tool(\"read_file\", {\"path\": \"test.py\"})\n        assert result is not None\n        assert result[\"blocked\"] is False\n\n    def test_shield_tool_blocked(self):\n        gates = QualityGates(_mock_nexus(shield_blocked=True))\n        result = gates.shield_tool(\"run_command\", {\"command\": \"rm -rf /\"})\n        assert result is not None\n        assert result[\"blocked\"] is True\n\n    def test_certify_passed(self):\n        gates = QualityGates(_mock_nexus())\n        result = gates.certify(\"def add(a, b): return a + b\")\n        assert result is not None\n        assert result[\"passed\"] is True\n        assert result[\"certificate_id\"] == \"cert-123\"\n\n    def test_certify_failed(self):\n        gates = QualityGates(_mock_nexus(rubric_passed=False, cert_score=0.3))\n        result = gates.certify(\"bad code\")\n        assert result is not None\n        assert result[\"passed\"] is False\n\n    def test_trim_context(self):\n        gates = QualityGates(_mock_nexus(trimmed_context=\"short version\"))\n        result = gates.trim_context(\"very long context...\", target_tokens=100)\n        assert result == \"short version\"\n\n    def test_trim_context_exception(self):\n        client = MagicMock()\n        client.memory_trim.side_effect = Exception(\"fail\")\n        gates = QualityGates(client)\n        assert gates.trim_context(\"text\", 100) is None\n",
+  "body_hash": "ee0e5ffc4e715300",
+  "body_truncated": false,
+  "callers_of": [
+    "QualityGates",
+    "scan_prompt",
+    "MagicMock",
+    "Exception",
+    "check_hallucination",
+    "shield_tool",
+    "certify",
+    "trim_context",
+    "_mock_nexus"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testqualitygates.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testqualitygates",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testqualitygates.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.scan_prompt",
+    "at.source.ass_ade.check_hallucination",
+    "at.source.ass_ade.shield_tool",
+    "at.source.ass_ade.certify",
+    "at.source.ass_ade.trim_context"
+  ],
+  "name": "TestQualityGates",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestQualityGates"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

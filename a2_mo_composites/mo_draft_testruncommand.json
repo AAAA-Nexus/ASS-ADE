@@ -1,0 +1,46 @@
+{
+  "body": "class TestRunCommand:\n    def test_echo(self, workspace: Path):\n        tool = RunCommandTool(str(workspace))\n        r = tool.execute(command='python -c \"print(\\'hello\\')\"')\n        assert r.success\n        assert \"hello\" in r.output\n\n    def test_blocked_dangerous(self, workspace: Path):\n        tool = RunCommandTool(str(workspace))\n        r = tool.execute(command=\"rm -rf /\")\n        assert not r.success\n        assert \"blocked\" in (r.error or \"\").lower()\n\n    def test_timeout(self, workspace: Path):\n        tool = RunCommandTool(str(workspace))\n        r = tool.execute(command=\"python -c \\\"import time; time.sleep(10)\\\"\", timeout=1)\n        assert not r.success\n        assert \"timed out\" in (r.error or \"\").lower()\n",
+  "body_hash": "7359bea4ee4de75a",
+  "body_truncated": false,
+  "callers_of": [
+    "RunCommandTool",
+    "execute",
+    "str",
+    "lower"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:106.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testruncommand",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.tools.builtin.EditFileTool",
+    "ass_ade.tools.builtin.GrepSearchTool",
+    "ass_ade.tools.builtin.ListDirectoryTool",
+    "ass_ade.tools.builtin.ReadFileTool",
+    "ass_ade.tools.builtin.RunCommandTool",
+    "ass_ade.tools.builtin.SearchFilesTool",
+    "ass_ade.tools.builtin.WriteFileTool",
+    "ass_ade.tools.registry.default_registry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:106"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "TestRunCommand",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestRunCommand"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

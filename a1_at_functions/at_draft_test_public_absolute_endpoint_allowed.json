@@ -1,0 +1,30 @@
+{
+  "body": "    def test_public_absolute_endpoint_allowed(self) -> None:\n        \"\"\"Public absolute endpoints should be allowed (when domain resolves).\"\"\"\n        # Use a well-known public domain that should resolve\n        result = _validate_absolute_endpoint(\"https://cloudflare.com/api/tool\")\n        assert result == \"https://cloudflare.com/api/tool\"\n",
+  "body_hash": "3e0e97a08dc03b5e",
+  "body_truncated": false,
+  "callers_of": [
+    "_validate_absolute_endpoint"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateabsoluteendpoint.py:14.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_public_absolute_endpoint_allowed",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateabsoluteendpoint.py:14"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_public_absolute_endpoint_allowed",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_public_absolute_endpoint_allowed"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,54 @@
+{
+  "body": "def rollback_command(\n    path: Path = typer.Argument(Path(\".\"), help=\"Project root to roll back (default: current directory).\"),\n    yes: bool = typer.Option(False, \"--yes\", \"-y\", help=\"Skip confirmation prompt.\"),\n    json_out: bool = typer.Option(False, \"--json\", help=\"Print result as JSON.\"),\n) -> None:\n    \"\"\"Restore the most recent backup created by a previous rebuild.\n\n    Finds the newest folder matching ``*-backup-*`` next to the project root,\n    shows what will be restored, asks for confirmation, then replaces the\n    current project folder with the backup.\n\n    Examples:\n        ass-ade rollback .\n        ass-ade rollback ./myproject --yes\n    \"\"\"\n    import shutil as _shutil\n    import stat as _stat\n\n    target = path.resolve()\n    if not target.exists():\n        console.print(f\"[red]Path does not exist:[/red] {target}\")\n        raise typer.Exit(code=1)\n\n    parent = target.parent\n    # On Windows, Path(\"C:\") is not the drive root \u2014 ensure we use Path(\"C:/\")\n    # so that glob() searches the actual drive root directory.\n    if str(parent) == parent.drive:\n        parent = Path(parent.drive + \"/\")\n    pattern = f\"{target.name}-backup-*\"\n    candidates = sorted(\n        [d for d in parent.glob(pattern) if d.is_dir()],\n        key=lambda d: d.name,\n        reverse=True,\n    )\n\n    if not candidates:\n        msg = f\"No backup folders found matching '{pattern}' in {parent}\"\n        if json_out:\n            print(json.dumps({\"ok\": False, \"error\": msg}, indent=2))\n        else:\n            console.print(f\"[yellow]{msg}[/yellow]\")\n        raise typer.Exit(code=1)\n\n    backup = candidates[0]\n    backup_files = sum(1 for f in backup.rglob(\"*\") if f.is_file())\n    current_files = sum(1 for f in target.rglob(\"*\") if f.is_file())\n\n    restore_info = {\n        \"target\": str(target),\n        \"backup\": str(backup),\n        \"backup_name\": backup.name,\n        \"backup_files\": backup_files,\n        \"current_files\": current_files,\n        \"other_backups\": [str(c) for c in candidates[1:5]],\n    }\n\n    if not yes and not json_out:\n        console.print(f\"[bold]Rollback plan:[/bold]\")\n        console.print(f\"  Restore from : [cyan]{backup.name}[/cyan] ({backup_files} files)\")\n        console.print(f\"  Overwrites   : [yellow]{target.name}[/yellow] ({current_files} files)\")\n        if len(candidates) > 1:\n            console.print(f\"  Other backups: {', '.join(c.name for c in candidates[1:4])}\")\n        confirmed = typer.confirm(\"Proceed with rollback?\", default=False)\n        if not confirmed:\n            console.print(\"[dim]Rollback cancelled.[/dim]\")\n            raise typer.Exit(code=0)\n\n    # Perform rollback\n    def _on_rm_error(func, path, exc_info):\n        os.chmod(path, _stat.S_IWRITE)\n        func(path)\n\n    try:\n        if target.exists():\n            _shutil.rmtree(str(target), onerror=_on_rm_error)\n        _shutil.copytree(str(backup), str(target))\n    except Exception as exc:\n        if json_out:\n            print(json.dumps({\"ok\": False, \"error\": str(exc), **restore_info}, indent=2))\n        else:\n            console.print(f\"[red]Rollback failed:[/red] {exc}\")\n        raise typer.Exit(code=1)\n\n    if json_out:\n        print(json.dumps({\"ok\": True, **restore_info}, indent=2))\n    else:\n        console.print(f\"[green][OK][/green] Rolled back to [bold]{backup.name}[/bold]\")\n        console.print(f\"[dim]Restored {backup_files} files \u2192 {target}[/dim]\")\n",
+  "body_hash": "a505310c61467d9e",
+  "body_truncated": false,
+  "callers_of": [
+    "Argument",
+    "Option",
+    "resolve",
+    "sorted",
+    "sum",
+    "Path",
+    "exists",
+    "print",
+    "Exit",
+    "str",
+    "confirm",
+    "chmod",
+    "func",
+    "copytree",
+    "len",
+    "rmtree",
+    "dumps",
+    "glob",
+    "is_dir",
+    "rglob",
+    "is_file",
+    "join"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_rollback_command.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.rollback_command",
+  "imports": [
+    "shutil",
+    "stat"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_rollback_command.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "rollback_command",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for rollback_command"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

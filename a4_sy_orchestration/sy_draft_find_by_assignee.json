@@ -1,0 +1,36 @@
+{
+  "body": "    def find_by_assignee(self, assignee: str) -> List[Task]:\n        \"\"\"Find all tasks assigned to a person.\"\"\"\n        all_tasks = self.manager.list_all_tasks()\n        return [t for t in all_tasks if t.assignee == assignee]\n",
+  "body_hash": "ef6e37de2493ba47",
+  "body_truncated": false,
+  "callers_of": [
+    "list_all_tasks"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/examples/02-rebuild-a-codebase/sample_project/main.py:164.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.find_by_assignee",
+  "imports": [
+    "enum.Enum",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.List",
+    "typing.Optional"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/examples/02-rebuild-a-codebase/sample_project/main.py:164"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "find_by_assignee",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for find_by_assignee"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

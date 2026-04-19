@@ -1,0 +1,32 @@
+{
+  "body": "def test_atomadic_dispatches_dynamic_cli_args(monkeypatch, tmp_path: Path) -> None:\n    captured: dict[str, list[str]] = {}\n\n    def fake_call_llm(_text: str, _working_dir: Path | str | None = None) -> dict:\n        return {\n            \"type\": \"command\",\n            \"intent\": \"cli\",\n            \"cli_args\": [\"doctor\", \"--json\"],\n            \"path\": None,\n            \"output_path\": None,\n            \"feature_desc\": None,\n        }\n\n    def fake_execute(self: Atomadic, cmd: list[str]) -> str:\n        captured[\"cmd\"] = cmd\n        return '{\"profile\":\"local\"}'\n\n    monkeypatch.setattr(interpreter, \"_call_llm\", fake_call_llm)\n    monkeypatch.setattr(Atomadic, \"_execute\", fake_execute)\n\n    agent = Atomadic(working_dir=tmp_path)\n    response = agent.process(\"show doctor json\")\n\n    assert captured[\"cmd\"][-2:] == [\"doctor\", \"--json\"]\n    assert \"Command complete\" in response\n",
+  "body_hash": "e5b0ff055e9427f2",
+  "body_truncated": false,
+  "callers_of": [
+    "setattr",
+    "Atomadic",
+    "process"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_atomadic_dispatches_dynamic_cli_args.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_atomadic_dispatches_dynamic_cli_args",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_atomadic_dispatches_dynamic_cli_args.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_atomadic_dispatches_dynamic_cli_args",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_atomadic_dispatches_dynamic_cli_args"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

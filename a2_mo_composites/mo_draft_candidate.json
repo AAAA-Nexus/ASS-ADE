@@ -1,0 +1,30 @@
+{
+  "body": "class Candidate:\n    id: str\n    features: tuple[int, int]\n    fitness: float\n    payload: dict = field(default_factory=dict)\n",
+  "body_hash": "2b3e1b49998d887a",
+  "body_truncated": false,
+  "callers_of": [
+    "field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_candidate.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.candidate",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_candidate.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "Candidate",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for Candidate"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

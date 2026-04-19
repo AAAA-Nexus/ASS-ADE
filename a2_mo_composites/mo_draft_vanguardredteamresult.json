@@ -1,0 +1,36 @@
+{
+  "body": "class VanguardRedTeamResult(NexusModel):\n    \"\"\"POST /v1/vanguard/continuous-redteam\"\"\"\n    run_id: str | None = None\n    agent_id: str | None = None\n    vulnerabilities_found: int | None = None\n    severity: str | None = None\n    findings: list[dict] = Field(default_factory=list)\n    next_run_at: int | None = None\n",
+  "body_hash": "d0bfba307b7aeca5",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/models.py:1000.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.vanguardredteamresult",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/models.py:1000"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "VanguardRedTeamResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for VanguardRedTeamResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

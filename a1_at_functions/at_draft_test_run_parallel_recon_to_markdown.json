@@ -1,0 +1,52 @@
+{
+  "body": "def test_run_parallel_recon_to_markdown(tmp_path: Path) -> None:\n    _seed_full_repo(tmp_path)\n    report = run_parallel_recon(tmp_path)\n    md = report.to_markdown()\n    assert \"# RECON_REPORT\" in md\n    assert \"## Scout\" in md\n    assert \"## Dependencies\" in md\n    assert \"## Tier Distribution\" in md\n    assert \"## Tests\" in md\n    assert \"## Documentation\" in md\n",
+  "body_hash": "7dff6d9409a5e26a",
+  "body_truncated": false,
+  "callers_of": [
+    "_seed_full_repo",
+    "run_parallel_recon",
+    "to_markdown"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_parallel_recon.py:349.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_run_parallel_recon_to_markdown",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "textwrap",
+    "pathlib.Path",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.recon.ReconReport",
+    "ass_ade.recon._classify_tier",
+    "ass_ade.recon._count_test_functions",
+    "ass_ade.recon._dependency_agent",
+    "ass_ade.recon._doc_agent",
+    "ass_ade.recon._iter_files",
+    "ass_ade.recon._scout_agent",
+    "ass_ade.recon._test_agent",
+    "ass_ade.recon._tier_agent",
+    "ass_ade.recon.run_parallel_recon",
+    "time",
+    "json"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_parallel_recon.py:349"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_run_parallel_recon_to_markdown",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_run_parallel_recon_to_markdown"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

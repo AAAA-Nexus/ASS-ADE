@@ -1,0 +1,46 @@
+{
+  "body": "class TestRunPipeline:\n    def test_full_pipeline(self):\n        gates = QualityGates(_mock_nexus())\n        results = gates.run_pipeline(prompt=\"What is Python?\", output=\"A programming language.\")\n        # Phase 1: SAM is now Stage 0, so 4 gates total: sam + scan + hallucination + certify\n        assert len(results) == 4\n        assert [r.gate for r in results] == [\"sam\", \"prompt_scan\", \"hallucination\", \"certify\"]\n        assert all(isinstance(r, GateResult) for r in results)\n        # SAM may fail on a mock nexus (trust score defaults to 0.8*something) \u2014 just ensure downstream gates pass\n        downstream = [r for r in results if r.gate != \"sam\"]\n        assert all(r.passed for r in downstream)\n\n    def test_pipeline_with_failures(self):\n        gates = QualityGates(_mock_nexus(threat_detected=True, verdict=\"unsafe\"))\n        results = gates.run_pipeline(prompt=\"bad\", output=\"wrong\")\n        failed = [r for r in results if not r.passed]\n        assert len(failed) >= 2  # scan and hallucination should fail\n\n    def test_pipeline_collects_multiple_entries_appended_by_a_stage(self):\n        gates = QualityGates(_mock_nexus())\n\n        original_scan = gates.scan_prompt\n\n        def scan_with_extra(text: str):\n            result = original_scan(text)\n            gates._gate_log.append(GateResult(gate=\"scan_extra\", passed=True, confidence=1.0))\n            return result\n\n        gates.scan_prompt = scan_with_extra  # type: ignore[method-assign]\n        results = gates.run_pipeline(prompt=\"safe\", output=\"safe\")\n\n        names = [r.gate for r in results]\n        assert \"prompt_scan\" in names\n        assert \"scan_extra\" in names\n",
+  "body_hash": "9cc9af4474f147dc",
+  "body_truncated": false,
+  "callers_of": [
+    "QualityGates",
+    "run_pipeline",
+    "all",
+    "_mock_nexus",
+    "len",
+    "original_scan",
+    "append",
+    "isinstance",
+    "GateResult"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:145.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testrunpipeline",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "unittest.mock.MagicMock",
+    "ass_ade.agent.gates.GateResult",
+    "ass_ade.agent.gates.QualityGates"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:145"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.run_pipeline"
+  ],
+  "name": "TestRunPipeline",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestRunPipeline"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

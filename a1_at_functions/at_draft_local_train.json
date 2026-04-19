@@ -1,0 +1,40 @@
+{
+  "body": "def local_train(\n    collect: bool = typer.Option(False, \"--collect\", help=\"Collect training data from the current project.\"),\n    run: bool = typer.Option(False, \"--run\", help=\"Run LoRA fine-tuning (GPU) or print Colab instructions.\"),\n    serve: bool = typer.Option(False, \"--serve\", help=\"Start the local adapter server at localhost:8081.\"),\n    root: Path = typer.Option(Path(\".\"), \"--root\", help=\"Project root to scan when collecting (default: cwd).\"),\n    data_path: Path = typer.Option(\n        Path(\"training_data/training_data.jsonl\"),\n        \"--data\",\n        help=\"Training data JSONL path.\",\n    ),\n    output_dir: Path = typer.Option(\n        Path(\"models/lora_adapter\"),\n        \"--output-dir\",\n        help=\"Adapter output directory.\",\n    ),\n    base_model: str = typer.Option(\n        \"TinyLlama/TinyLlama-1.1B-Chat-v1.0\",\n        \"--base-model\",\n        help=\"Base model HF id.\",\n    ),\n    epochs: int = typer.Option(3, \"--epochs\", help=\"Training epochs.\"),\n    lora_rank: int = typer.Option(8, \"--lora-rank\", help=\"LoRA rank (default: 8).\"),\n    port: int = typer.Option(8081, \"--port\", help=\"HTTP port for serve mode.\"),\n    preload: bool = typer.Option(False, \"--preload\", help=\"Pre-load model on server startup.\"),\n) -> None:\n    \"\"\"Local LoRA training pipeline \u2014 bootstrapped from ASS-ADE's own development data.\n\n    Free-tier, self-contained: no Nexus token required.\n\n    Workflow:\n      ass-ade train --collect        # scan project and write training_data/training_data.jsonl\n      ass-ade train --run            # fine-tune locally (GPU) or print Colab instructions\n      ass-ade train --serve          # start adapter server at localhost:8081/generate\n\n    See scripts/lora_training/ for standalone scripts and the Colab notebook.\n    See docs/TRAINING_GUIDE.md for the full guide.\n    \"\"\"\n    import subprocess as _sp\n\n    if not collect and not run and not serve:\n        console.print(\n            \"[yellow]Specify at least one flag:[/yellow]\\n\"\n            \"  [cyan]ass-ade train --collect[/cyan]   collect training data\\n\"\n            \"  [cyan]ass-ade train --run[/cyan]        run fine-tuning (or Colab instructions)\\n\"\n            \"  [cyan]ass-ade train --serve[/cyan]      start local adapter server\"\n        )\n        raise typer.Exit(code=1)\n\n    collect_script = Path(__file__).parent.parent.parent / \"scripts\" / \"lora_training\" / \"collect_training_data.py\"\n    train_script = Path(__file__).parent.parent.parent / \"scripts\" / \"lora_training\" / \"train_lora.py\"\n    serve_script = Path(__file__).parent.parent.parent / \"scripts\" / \"lora_training\" / \"serve_lora.py\"\n\n    if collect:\n        console.print(\"[bold]Collecting training data\u2026[/bold]\")\n        rc = _sp.call([\n            sys.executable, str(collect_script),\n            \"--root\", str(root.resolve()),\n            \"--out\", str(data_path),\n        ])\n        if rc != 0:\n            raise typer.Exit(code=rc)\n        console.print(f\"[green]Done.[/green] Training data saved to [bold]{data_path}[/bold]\")\n\n    if run:\n        import torch as _torch\n        has_gpu = _torch.cuda.is_available()\n        if not has_gpu:\n            _sp.call([sys.executable, \"-c\",\n                \"from scripts.lora_training.train_lora import print_colab_instructions; \"\n                \"from pathlib import Path; \"\n                f\"print_colab_instructions(Path('{data_path}'))\"])\n        else:\n            console.print(\"[bold]Starting LoRA fine-tuning\u2026[/bold]\")\n            rc = _sp.call([\n                sys.executable, str(train_script),\n                \"--data\", str(data_path),\n                \"--output-dir\", str(output_dir),\n                \"--base\", base_model,\n                \"--epochs\", str(epochs),\n                \"--lora-rank\", str(lora_rank),\n            ])\n            if rc != 0:\n                raise typer.Exit(code=rc)\n            console.print(f\"[green]Adapter saved to {output_dir}[/green]\")\n\n    if serve:\n        console.print(f\"[bold]Starting adapter server at http://127.0.0.1:{port}/generate\u2026[/bold]\")\n        rc = _sp.call([\n            sys.executable, str(serve_script),\n            \"--adapter-dir\", str(output_dir),\n            \"--base\", base_model,\n            \"--port\", str(port),\n            *([\"--preload\"] if preload else []),\n        ])\n        raise typer.Exit(code=rc)\n        console.print(\"[dim]Demo files cleaned up.[/dim]\")\n",
+  "body_hash": "11f74af510486193",
+  "body_truncated": false,
+  "callers_of": [
+    "Option",
+    "Path",
+    "print",
+    "Exit",
+    "call",
+    "is_available",
+    "str",
+    "resolve"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_local_train.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.local_train",
+  "imports": [
+    "subprocess",
+    "torch"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_local_train.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "local_train",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for local_train"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,40 @@
+{
+  "body": "    def test_notifications_cancelled_suppresses_no_response(self) -> None:\n        \"\"\"notifications/cancelled has no id \u2014 server returns None.\"\"\"\n        server = MCPServer(\".\")\n        response = server._handle({\n            \"method\": \"notifications/cancelled\",\n            \"params\": {\"requestId\": 42, \"reason\": \"user cancel\"},\n        })\n        assert response is None\n",
+  "body_hash": "d7a99798fa4cbea7",
+  "body_truncated": false,
+  "callers_of": [
+    "MCPServer",
+    "_handle"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:334.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_notifications_cancelled_suppresses_no_response",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.mcp.server._WORKFLOW_TOOLS",
+    "ass_ade.mcp.server.MCPServer",
+    "httpx"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:334"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "test_notifications_cancelled_suppresses_no_response",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_notifications_cancelled_suppresses_no_response"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

@@ -1,0 +1,34 @@
+{
+  "body": "def test_methods_do_not_crash_on_valid_args(method_name, kwargs):\n    \"\"\"Parametrized test: methods should not crash with valid arguments.\"\"\"\n    def handler(request):\n        # Return a generic response that might work for many endpoints\n        return httpx.Response(200, json={\"success\": True, \"method\": method_name})\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        method = getattr(client, method_name)\n        try:\n            result = method(**kwargs)\n            # Some methods might fail with response validation, which is fine\n        except Exception:\n            pass  # Expected for some mismatched responses\n",
+  "body_hash": "1e27109e17ee6bbe",
+  "body_truncated": false,
+  "callers_of": [
+    "MockTransport",
+    "Response",
+    "NexusClient",
+    "getattr",
+    "method"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_methods_do_not_crash_on_valid_args.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_methods_do_not_crash_on_valid_args",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_methods_do_not_crash_on_valid_args.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_methods_do_not_crash_on_valid_args",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_methods_do_not_crash_on_valid_args"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

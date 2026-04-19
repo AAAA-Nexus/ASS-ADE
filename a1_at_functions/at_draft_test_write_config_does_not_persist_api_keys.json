@@ -1,0 +1,41 @@
+{
+  "body": "    def test_write_config_does_not_persist_api_keys(self, tmp_path):\n        from ass_ade.config import AssAdeConfig, ProviderOverride, write_default_config\n        cfg = AssAdeConfig(\n            profile=\"local\",\n            providers={\"groq\": ProviderOverride(enabled=True, api_key=\"sk-secret\")},\n        )\n        path = tmp_path / \"config.json\"\n        write_default_config(path, config=cfg, overwrite=True)\n        written = path.read_text(encoding=\"utf-8\")\n        assert \"sk-secret\" not in written\n        assert \"nexus_api_key\" not in written\n",
+  "body_hash": "dc8fb1570ce35b81",
+  "body_truncated": false,
+  "callers_of": [
+    "AssAdeConfig",
+    "write_default_config",
+    "read_text",
+    "ProviderOverride"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testconfigproviderfields.py:30.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_write_config_does_not_persist_api_keys",
+  "imports": [
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.ProviderOverride",
+    "ass_ade.config.write_default_config",
+    "ass_ade.config.load_config",
+    "ass_ade.config.load_config"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testconfigproviderfields.py:30"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_write_config_does_not_persist_api_keys",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_write_config_does_not_persist_api_keys"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

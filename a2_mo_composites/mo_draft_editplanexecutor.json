@@ -1,0 +1,55 @@
+{
+  "body": "class EditPlanExecutor:\n    \"\"\"Validates and atomically applies edit plans.\n\n    Uses FileHistory for snapshots so every applied plan can be undone.\n    \"\"\"\n\n    def __init__(self, working_dir: str = \".\", history: FileHistory | None = None) -> None:\n        self._cwd = Path(working_dir).resolve()\n        self._history = history or FileHistory(working_dir)\n\n    def validate(self, plan: EditPlan) -> list[str]:\n        \"\"\"Validate a plan, populating diffs and detecting conflicts.\n\n        Returns a list of error messages (empty = valid).\n        \"\"\"\n        errors: list[str] = []\n\n        for edit in plan.edits:\n            target = self._cwd / edit.path\n\n            if edit.kind == EditKind.CREATE:\n                if target.exists():\n                    errors.append(f\"CREATE conflict: {edit.path} already exists.\")\n                edit.diff = _create_diff(edit.path, edit.new_string)\n\n            elif edit.kind == EditKind.MODIFY:\n                if not target.is_file():\n                    errors.append(f\"MODIFY target not found: {edit.path}\")\n                    continue\n                text = target.read_text(encoding=\"utf-8\")\n                count = text.count(edit.old_string)\n                if count == 0:\n                    errors.append(\n                        f\"MODIFY: old_string not found in {edit.path}\"\n                    )\n                elif count > 1:\n                    errors.append(\n                        f\"MODIFY: old_string matches {count} locations in {edit.path}\"\n                    )\n                else:\n                    new_text = text.replace(edit.old_string, edit.new_string, 1)\n                    edit.diff = _modify_diff(edit.path, text, new_text)\n                    edit._original_content = text\n\n            elif edit.kind == EditKind.DELETE:\n                if not target.exists():\n                    errors.append(f\"DELETE target not found: {edit.path}\")\n                elif target.is_file():\n                    edit._original_content = target.read_text(encoding=\"utf-8\")\n\n        if not errors:\n            plan.validated = True\n        return errors\n\n    def apply(self, plan: EditPlan) -> ToolResult:\n        \"\"\"Apply a validated plan atomically.\n\n        If any edit fails, all previously applied edits in this plan\n        are rolled back via FileHistory.\n        \"\"\"\n        if not plan.validated:\n            return ToolResult(error=\"Plan must be validated before applying.\", success=False)\n\n        applied_paths: list[str] = []\n\n        try:\n            for edit in plan.edits:\n                target = self._cwd / edit.path\n\n                if edit.kind == EditKind.CREATE:\n                    target.parent.mkdir(parents=True, exist_ok=True)\n                    target.write_text(edit.new_string, encoding=\"utf-8\")\n                    applied_paths.append(edit.path)\n\n                elif edit.kind == EditKind.MODIFY:\n                    # Snapshot before mutation\n                    if edit._original_content is not None:\n                        self._history.record(edit.path, edit._original_content)\n                    text = target.read_text(encoding=\"utf-8\")\n                    new_text = text.replace(edit.old_string, edit.new_string, 1)\n                    target.write_text(new_text, encoding=\"utf-8\")\n                    applied_paths.append(edit.path)\n\n                elif edit.kind == EditKind.DELETE:\n                    if edit._original_content is not None:\n                        self._history.record(edit.path, edit._original_content)\n                    target.unlink()\n                    applied_paths.append(edit.path)\n\n        except Exception as exc:\n            # \u2500\u2500 Rollback \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n            for rpath in reversed(applied_paths):\n                try:\n                    self._history.undo(rpath)\n                except Exception:\n                    pass  # Best-effort rollback\n            plan.applied = False\n            return ToolResult(\n                error=f\"Plan failed at {edit.path}: {exc}. Rolled back {len(applied_paths)} edits.\",\n                success=False,\n            )\n\n        plan.applied = True\n        summary = \"\\n\".join(f\"  \u2713 {e.description}\" for e in plan.edits)\n        return ToolResult(output=f\"Applied {len(plan.edits)} edits:\\n{summary}\")\n\n    def preview(self, plan: EditPlan) -> str:\n        \"\"\"Return a combined diff of all edits in the plan.\"\"\"\n        if not plan.validated:\n            errs = self.validate(plan)\n            if errs:\n                return \"Validation errors:\\n\" + \"\\n\".join(f\"  \u2717 {e}\" for e in errs)\n        return \"\\n\\n\".join(\n            f\"--- {e.description} ---\\n{e.diff}\" for e in plan.edits if e.diff\n        )\n",
+  "body_hash": "65ec7a061dc942ac",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "join",
+    "ToolResult",
+    "FileHistory",
+    "validate",
+    "Path",
+    "exists",
+    "_create_diff",
+    "reversed",
+    "append",
+    "read_text",
+    "count",
+    "mkdir",
+    "write_text",
+    "is_file",
+    "replace",
+    "undo",
+    "len",
+    "_modify_diff",
+    "record",
+    "unlink"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_editplanexecutor.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.editplanexecutor",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_editplanexecutor.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.validate",
+    "at.source.ass_ade.count",
+    "at.source.ass_ade.undo",
+    "at.source.ass_ade.record"
+  ],
+  "name": "EditPlanExecutor",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for EditPlanExecutor"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

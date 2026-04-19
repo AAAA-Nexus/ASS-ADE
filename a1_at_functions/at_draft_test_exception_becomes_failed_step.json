@@ -1,0 +1,41 @@
+{
+  "body": "    def test_exception_becomes_failed_step(self) -> None:\n        pipe = Pipeline(\"err\")\n        pipe.add(\"boom\", error_step)\n        result = pipe.run()\n        assert not result.passed\n        assert result.steps[0].status == StepStatus.FAILED\n        assert \"kaboom\" in result.steps[0].error\n",
+  "body_hash": "5929fa62fbccb3cb",
+  "body_truncated": false,
+  "callers_of": [
+    "Pipeline",
+    "add",
+    "run"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:125.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_exception_becomes_failed_step",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.pipeline.Pipeline",
+    "ass_ade.pipeline.PipelineResult",
+    "ass_ade.pipeline.StepResult",
+    "ass_ade.pipeline.StepStatus"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:125"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_exception_becomes_failed_step",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_exception_becomes_failed_step"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

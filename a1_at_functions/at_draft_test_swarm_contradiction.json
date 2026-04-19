@@ -1,0 +1,36 @@
+{
+  "body": "def test_swarm_contradiction(tmp_path: Path) -> None:\n    mock_nx = MagicMock()\n    mock_nx.agent_contradiction.return_value = ContradictionResult(contradicts=True, confidence=0.95)\n    with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n        result = runner.invoke(app, [\"swarm\", \"contradiction\", \"A is true\", \"A is false\",\n                                     \"--config\", str(_hybrid_config(tmp_path)), \"--allow-remote\"])\n    assert result.exit_code == 0\n    assert \"CONTRADICTS\" in result.stdout\n",
+  "body_hash": "7470333d70fb4de2",
+  "body_truncated": false,
+  "callers_of": [
+    "MagicMock",
+    "ContradictionResult",
+    "patch",
+    "invoke",
+    "_make_ctx_mgr",
+    "str",
+    "_hybrid_config"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_swarm_contradiction.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_swarm_contradiction",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_swarm_contradiction.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_swarm_contradiction",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_swarm_contradiction"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,53 @@
+{
+  "body": "def test_scout_basic_counts(tmp_path: Path) -> None:\n    _seed_full_repo(tmp_path)\n    files = _iter_files(tmp_path)\n    result = _scout_agent(tmp_path, files)\n\n    assert result[\"total_files\"] > 0\n    assert result[\"total_size_kb\"] > 0\n    assert result[\"max_depth\"] >= 1\n    assert isinstance(result[\"top_level\"], list)\n    assert \".py\" in result[\"by_extension\"]\n    assert result[\"source_files\"] > 0\n",
+  "body_hash": "f4b0a18aa3560af2",
+  "body_truncated": false,
+  "callers_of": [
+    "_seed_full_repo",
+    "_iter_files",
+    "_scout_agent",
+    "isinstance"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_parallel_recon.py:159.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_scout_basic_counts",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "textwrap",
+    "pathlib.Path",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.recon.ReconReport",
+    "ass_ade.recon._classify_tier",
+    "ass_ade.recon._count_test_functions",
+    "ass_ade.recon._dependency_agent",
+    "ass_ade.recon._doc_agent",
+    "ass_ade.recon._iter_files",
+    "ass_ade.recon._scout_agent",
+    "ass_ade.recon._test_agent",
+    "ass_ade.recon._tier_agent",
+    "ass_ade.recon.run_parallel_recon",
+    "time",
+    "json"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_parallel_recon.py:159"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_scout_basic_counts",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_scout_basic_counts"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

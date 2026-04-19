@@ -1,0 +1,30 @@
+{
+  "body": "    def test_extracts_classes(self):\n        body = \"class Foo: pass\\nclass _Hidden: pass\"\n        assert _public_python_api(body) == {\"Foo\"}\n",
+  "body_hash": "a57d5a47101b90ae",
+  "body_truncated": false,
+  "callers_of": [
+    "_public_python_api"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpublicpythonapi.py:10.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_extracts_classes",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpublicpythonapi.py:10"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_extracts_classes",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_extracts_classes"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

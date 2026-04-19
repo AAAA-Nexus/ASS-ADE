@@ -1,0 +1,48 @@
+{
+  "body": "    def test_search_requires_session_token(self, tmp_path: Path) -> None:\n        \"\"\"Search should fail if ATOMADIC_SESSION_TOKEN is not set.\"\"\"\n        result = runner.invoke(\n            app,\n            [\"search\", \"test query\", \"--config\", str(_hybrid_config(tmp_path))],\n            env={\"ATOMADIC_SESSION_TOKEN\": \"\"},\n        )\n        assert result.exit_code == 1\n        assert \"ATOMADIC_SESSION_TOKEN\" in result.stdout\n",
+  "body_hash": "55ca56680b44eb3c",
+  "body_truncated": false,
+  "callers_of": [
+    "invoke",
+    "str",
+    "_hybrid_config"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_search_x402.py:44.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.test_search_requires_session_token",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "httpx",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.nexus.client.NexusClient",
+    "ass_ade.nexus.errors.NexusPaymentRequired",
+    "ass_ade.nexus.errors.NexusAuthError"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_search_x402.py:44"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "test_search_requires_session_token",
+  "product_categories": [
+    "DCM",
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for test_search_requires_session_token"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

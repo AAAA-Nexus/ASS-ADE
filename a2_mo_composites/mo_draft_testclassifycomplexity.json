@@ -1,0 +1,40 @@
+{
+  "body": "class TestClassifyComplexity:\n    def test_simple_greeting(self):\n        c = classify_complexity(\"Hello!\")\n        assert c < 0.3\n\n    def test_code_request(self):\n        c = classify_complexity(\"Write a Python function to sort a list\")\n        assert c >= 0.3  # code keywords\n\n    def test_complex_multi_step(self):\n        c = classify_complexity(\n            \"First, implement a REST API endpoint for user registration, \"\n            \"then write integration tests and create a database migration\"\n        )\n        assert c >= 0.5\n\n    def test_formal_verification(self):\n        c = classify_complexity(\n            \"Write a formal proof that this invariant holds across all states\"\n        )\n        assert c >= 0.2  # formal keywords detected\n\n    def test_long_text_adds_complexity(self):\n        short = classify_complexity(\"Fix the bug\")\n        long_ = classify_complexity(\"Fix the bug \" + \"detailed context \" * 100)\n        assert long_ > short\n\n    def test_range_bounded(self):\n        c = classify_complexity(\n            \"First implement a function, then write a theorem proof, \"\n            \"design the architecture, and create several test files \" * 10\n        )\n        assert c <= 1.0\n\n    def test_empty_string(self):\n        assert classify_complexity(\"\") == 0.0\n",
+  "body_hash": "95f9d240886ba53b",
+  "body_truncated": false,
+  "callers_of": [
+    "classify_complexity"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_routing.py:15.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testclassifycomplexity",
+  "imports": [
+    "__future__.annotations",
+    "ass_ade.agent.routing.EpistemicRouter",
+    "ass_ade.agent.routing.ModelTier",
+    "ass_ade.agent.routing.RoutingDecision",
+    "ass_ade.agent.routing.classify_complexity",
+    "ass_ade.agent.routing.local_route",
+    "ass_ade.agent.routing.tier_for_complexity"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_routing.py:15"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.classify_complexity"
+  ],
+  "name": "TestClassifyComplexity",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestClassifyComplexity"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

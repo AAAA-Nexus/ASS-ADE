@@ -1,0 +1,41 @@
+{
+  "body": "def test_hash_file_deterministic(tmp_path: Path) -> None:\n    f = tmp_path / \"sample.py\"\n    f.write_bytes(b\"def hello(): pass\\n\")\n\n    h1 = hash_file(f)\n    h2 = hash_file(f)\n\n    assert h1 == h2\n    assert len(h1) == 64  # sha256 hex digest length\n",
+  "body_hash": "236a498dc5f463b4",
+  "body_truncated": false,
+  "callers_of": [
+    "write_bytes",
+    "hash_file",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_certifier.py:21.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_hash_file_deterministic",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.local.certifier.build_local_certificate",
+    "ass_ade.local.certifier.compute_codebase_digest",
+    "ass_ade.local.certifier.hash_file",
+    "ass_ade.local.certifier.render_certificate_text"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_certifier.py:21"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_hash_file_deterministic",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_hash_file_deterministic"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

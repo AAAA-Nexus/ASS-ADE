@@ -1,0 +1,33 @@
+{
+  "body": "def assign_version(\n    artifact_id: str,\n    new_body: str,\n    language: str,\n    prev_versions: dict[str, dict[str, Any]],\n) -> tuple[str, str]:\n    \"\"\"Return (version_string, change_type) for a component artifact.\n\n    Args:\n        artifact_id:   Component id (e.g. ``at.source.myapp.parse_token``).\n        new_body:      Source body of the new/updated component (may be empty).\n        language:      'python', 'typescript', 'rust', etc.\n        prev_versions: Previous build's version map (from ``load_prev_versions``).\n\n    Returns:\n        (version, change_type) where change_type is one of:\n        'new', 'none', 'patch', 'minor', 'major'.\n    \"\"\"\n    prev = prev_versions.get(artifact_id)\n    if prev is None:\n        return INITIAL_VERSION, \"new\"\n\n    new_hash = content_hash(new_body)\n    if prev.get(\"body_hash\") == new_hash:\n        return prev.get(\"version\", INITIAL_VERSION), \"none\"\n\n    old_body = prev.get(\"body\", \"\")\n    change_type = classify_change(old_body, new_body, language)\n    if change_type == \"none\":\n        return prev.get(\"version\", INITIAL_VERSION), \"none\"\n\n    return bump_version(prev.get(\"version\", INITIAL_VERSION), change_type), change_type\n",
+  "body_hash": "1e87d998407854df",
+  "body_truncated": false,
+  "callers_of": [
+    "get",
+    "content_hash",
+    "classify_change",
+    "bump_version"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_assign_version.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.assign_version",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_assign_version.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "assign_version",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for assign_version"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

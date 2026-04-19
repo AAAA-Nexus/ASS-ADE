@@ -1,0 +1,31 @@
+{
+  "body": "    def test_invalid_hostname_rejected(self) -> None:\n        \"\"\"Absolute URLs with invalid hostnames should be rejected.\"\"\"\n        with pytest.raises(ValueError, match=\"valid host\"):\n            _validate_absolute_endpoint(\"https:///api\")\n",
+  "body_hash": "2c8b7fbb3abaabac",
+  "body_truncated": false,
+  "callers_of": [
+    "raises",
+    "_validate_absolute_endpoint"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateabsoluteendpoint.py:55.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_invalid_hostname_rejected",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateabsoluteendpoint.py:55"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_invalid_hostname_rejected",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_invalid_hostname_rejected"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

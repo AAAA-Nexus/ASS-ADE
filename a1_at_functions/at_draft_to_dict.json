@@ -1,0 +1,28 @@
+{
+  "body": "    def to_dict(self) -> dict[str, Any]:\n        return {\n            \"root\": self.root,\n            \"duration_ms\": self.duration_ms,\n            \"summary\": self.summary,\n            \"scout\": self.scout,\n            \"dependency\": self.dependency,\n            \"tier\": self.tier,\n            \"test\": self.test,\n            \"doc\": self.doc,\n            \"recommendations\": self.recommendations,\n            \"next_action\": self.next_action,\n        }\n",
+  "body_hash": "189c56610d9ff390",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_reconreport.py:131.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.to_dict",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_reconreport.py:131"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "to_dict",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for to_dict"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

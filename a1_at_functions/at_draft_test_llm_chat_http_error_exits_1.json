@@ -1,0 +1,36 @@
+{
+  "body": "def test_llm_chat_http_error_exits_1(tmp_path: Path) -> None:\n    mock_nx = MagicMock()\n    mock_nx.inference.side_effect = _http_error(503)\n    with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n        result = runner.invoke(\n            app,\n            [\"llm\", \"chat\", \"hello\", \"--config\", str(_hybrid_config(tmp_path)), \"--allow-remote\"],\n        )\n    assert result.exit_code == 1\n    assert \"API request failed\" in result.stdout\n",
+  "body_hash": "b02182d49220ff97",
+  "body_truncated": false,
+  "callers_of": [
+    "MagicMock",
+    "_http_error",
+    "patch",
+    "invoke",
+    "_make_ctx_mgr",
+    "str",
+    "_hybrid_config"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_llm_chat_http_error_exits_1.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_llm_chat_http_error_exits_1",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_llm_chat_http_error_exits_1.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_llm_chat_http_error_exits_1",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_llm_chat_http_error_exits_1"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

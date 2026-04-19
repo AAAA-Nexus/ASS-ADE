@@ -1,0 +1,44 @@
+{
+  "body": "def test_cli_context_store_query_json(tmp_path: Path) -> None:\n    stored = runner.invoke(\n        app,\n        [\n            \"context\",\n            \"store\",\n            \"trusted docs packet\",\n            \"--namespace\",\n            \"demo\",\n            \"--path\",\n            str(tmp_path),\n            \"--json\",\n        ],\n    )\n    queried = runner.invoke(\n        app,\n        [\n            \"context\",\n            \"query\",\n            \"trusted docs\",\n            \"--namespace\",\n            \"demo\",\n            \"--path\",\n            str(tmp_path),\n            \"--json\",\n        ],\n    )\n\n    assert stored.exit_code == 0\n    assert queried.exit_code == 0\n    assert '\"matches\"' in queried.stdout\n",
+  "body_hash": "987b25786f21ff54",
+  "body_truncated": false,
+  "callers_of": [
+    "invoke",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_recon_context.py:177.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.test_cli_context_store_query_json",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.context_memory.VECTOR_DIMENSIONS",
+    "ass_ade.context_memory.build_context_packet",
+    "ass_ade.context_memory.query_vector_memory",
+    "ass_ade.context_memory.store_vector_memory",
+    "ass_ade.context_memory.vector_embed",
+    "ass_ade.mcp.server.MCPServer",
+    "ass_ade.recon.phase0_recon"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_recon_context.py:177"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "test_cli_context_store_query_json",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_cli_context_store_query_json"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

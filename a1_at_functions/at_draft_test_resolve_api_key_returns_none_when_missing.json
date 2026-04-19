@@ -1,0 +1,32 @@
+{
+  "body": "    def test_resolve_api_key_returns_none_when_missing(self, monkeypatch):\n        monkeypatch.delenv(\"GROQ_API_KEY\", raising=False)\n        p = get_provider(\"groq\")\n        assert p.resolve_api_key() is None\n",
+  "body_hash": "582a95ec8a449c74",
+  "body_truncated": false,
+  "callers_of": [
+    "delenv",
+    "get_provider",
+    "resolve_api_key"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testproviderprofile.py:17.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_resolve_api_key_returns_none_when_missing",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testproviderprofile.py:17"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_resolve_api_key_returns_none_when_missing",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_resolve_api_key_returns_none_when_missing"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

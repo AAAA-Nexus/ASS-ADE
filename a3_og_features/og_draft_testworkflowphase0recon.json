@@ -1,0 +1,33 @@
+{
+  "body": "class TestWorkflowPhase0Recon:\n    \"\"\"Test `workflow phase0-recon` command \u2014 repo reconnaissance.\"\"\"\n\n    def test_workflow_phase0_recon_ready(self, tmp_path: Path) -> None:\n        \"\"\"Phase 0 recon should identify relevant files and sources.\"\"\"\n        (tmp_path / \"README.md\").write_text(\"# My Project\", encoding=\"utf-8\")\n        (tmp_path / \"src\").mkdir()\n        (tmp_path / \"src\" / \"main.py\").write_text(\"def main(): pass\", encoding=\"utf-8\")\n        \n        result = runner.invoke(\n            app,\n            [\"workflow\", \"phase0-recon\", \"Add async support\", \"--path\", str(tmp_path)],\n        )\n        \n        assert result.exit_code == 0\n",
+  "body_hash": "eb5723bb3db601cc",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "mkdir",
+    "invoke",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_testworkflowphase0recon.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "og.source.ass_ade.testworkflowphase0recon",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_testworkflowphase0recon.py:5"
+  },
+  "kind": "product_organism",
+  "made_of": [],
+  "name": "TestWorkflowPhase0Recon",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestWorkflowPhase0Recon"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a3_og_features",
+  "version": "0.1.0"
+}

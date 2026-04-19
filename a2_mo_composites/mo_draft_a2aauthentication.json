@@ -1,0 +1,30 @@
+{
+  "body": "class A2AAuthentication(BaseModel):\n    \"\"\"Authentication requirements for the agent.\"\"\"\n\n    schemes: list[str] = Field(default_factory=list)  # e.g. [\"bearer\", \"x402\"]\n    credentials: str | None = None  # human-readable note\n",
+  "body_hash": "f2a4c22735461ab8",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_a2aauthentication.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.a2aauthentication",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_a2aauthentication.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "A2AAuthentication",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for A2AAuthentication"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

@@ -1,0 +1,31 @@
+{
+  "body": "    def test_empty_body(self):\n        assert _public_python_api(\"\") == set()\n",
+  "body_hash": "af0a47a26c683f66",
+  "body_truncated": false,
+  "callers_of": [
+    "_public_python_api",
+    "set"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpublicpythonapi.py:14.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_empty_body",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpublicpythonapi.py:14"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_empty_body",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_empty_body"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

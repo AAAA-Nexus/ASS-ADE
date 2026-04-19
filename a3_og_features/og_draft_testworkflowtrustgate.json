@@ -1,0 +1,37 @@
+{
+  "body": "class TestWorkflowTrustGate:\n    \"\"\"Test `workflow trust-gate` command \u2014 multi-step agent trust gating.\"\"\"\n\n    def test_workflow_trust_gate_allow(self, tmp_path: Path, hybrid_config: Path) -> None:\n        \"\"\"Trust gate should return ALLOW verdict for trusted agent.\"\"\"\n        mock_nx = MagicMock()\n        mock_nx.trust_score.return_value = TrustScore(\n            agent_id=\"agent-trusted\",\n            score=0.95,\n            tier=\"platinum\",\n            certified_monotonic=True,\n        )\n        mock_nx.reputation_score.return_value = {\n            \"agent_id\": \"agent-trusted\",\n            \"tier\": \"gold\",\n            \"score\": 0.90,\n        }\n        \n        with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n            result = runner.invoke(\n                app,\n                [\"workflow\", \"trust-gate\", \"agent-trusted\", \"--config\", str(hybrid_config)],\n            )\n        \n        assert result.exit_code == 0\n",
+  "body_hash": "2e332545b81f8713",
+  "body_truncated": false,
+  "callers_of": [
+    "MagicMock",
+    "TrustScore",
+    "patch",
+    "invoke",
+    "_make_ctx_mgr",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_testworkflowtrustgate.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "og.source.ass_ade.testworkflowtrustgate",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_testworkflowtrustgate.py:5"
+  },
+  "kind": "product_organism",
+  "made_of": [
+    "mo.source.ass_ade.patch"
+  ],
+  "name": "TestWorkflowTrustGate",
+  "product_categories": [
+    "IDT"
+  ],
+  "provides": [
+    "rebuild candidate for TestWorkflowTrustGate"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a3_og_features",
+  "version": "0.1.0"
+}

@@ -1,0 +1,36 @@
+{
+  "body": "class EthicsCheckResult(NexusModel):\n    \"\"\"/v1/ethics/check and /v1/ethics/compliance\"\"\"\n    safe: bool | None = None\n    score: float | None = None\n    axiom_bound: float | None = None\n    violations: list[str] = Field(default_factory=list)\n",
+  "body_hash": "2e2283a85557b63e",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/models.py:436.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.ethicscheckresult",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/models.py:436"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "EthicsCheckResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for EthicsCheckResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

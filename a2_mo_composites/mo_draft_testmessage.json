@@ -1,0 +1,57 @@
+{
+  "body": "class TestMessage:\n    def test_minimal(self):\n        m = Message(role=\"user\", content=\"hello\")\n        assert m.role == \"user\"\n        assert m.content == \"hello\"\n        assert m.tool_calls == []\n        assert m.tool_call_id is None\n\n    def test_with_tool_calls(self):\n        tc = ToolCallRequest(id=\"c1\", name=\"read_file\", arguments={\"path\": \"a.py\"})\n        m = Message(role=\"assistant\", content=\"\", tool_calls=[tc])\n        assert len(m.tool_calls) == 1\n        assert m.tool_calls[0].name == \"read_file\"\n\n    def test_tool_result(self):\n        m = Message(role=\"tool\", content=\"file data\", tool_call_id=\"c1\", name=\"read_file\")\n        assert m.role == \"tool\"\n        assert m.tool_call_id == \"c1\"\n",
+  "body_hash": "2cc466e05dcde430",
+  "body_truncated": false,
+  "callers_of": [
+    "Message",
+    "ToolCallRequest",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine.py:24.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testmessage",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "ass_ade.engine.provider.NexusProvider",
+    "ass_ade.engine.provider.OpenAICompatibleProvider",
+    "ass_ade.engine.router.build_provider",
+    "ass_ade.engine.types.CompletionRequest",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolCallRequest",
+    "ass_ade.engine.types.ToolSchema",
+    "os",
+    "ass_ade.agent.providers.FREE_PROVIDERS",
+    "ass_ade.agent.providers.FREE_PROVIDERS",
+    "ass_ade.config.ProviderOverride",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.engine.provider.MultiProvider",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.engine.provider.MultiProvider",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.engine.provider.MultiProvider"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine.py:24"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "TestMessage",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestMessage"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

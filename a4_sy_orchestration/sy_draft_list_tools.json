@@ -1,0 +1,28 @@
+{
+  "body": "def list_tools():\n    return []\n",
+  "body_hash": "8b36eff982e84e0d",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.pytest_tmp/test_cli_phase0_recon_json0/src/mcp_server.py:1.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.list_tools",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.pytest_tmp/test_cli_phase0_recon_json0/src/mcp_server.py:1"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "list_tools",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for list_tools"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

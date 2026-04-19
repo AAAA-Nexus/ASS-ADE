@@ -1,0 +1,32 @@
+{
+  "body": "    def check(self) -> bool:\n        \"\"\"Check if cancellation has been requested.\n        \n        Returns True if cancel() was called, False otherwise.\n        Long-running operations should call this periodically and exit early\n        if it returns True.\n        \"\"\"\n        with self._lock:\n            return self._cancelled\n",
+  "body_hash": "fbc1a419f8509393",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/mcp/cancellation.py:30.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.check",
+  "imports": [
+    "__future__.annotations",
+    "threading",
+    "typing.Optional"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/mcp/cancellation.py:30"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "check",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for check"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

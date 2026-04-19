@@ -1,0 +1,40 @@
+{
+  "body": "    def test_validate_create_success(self, executor: EditPlanExecutor):\n        plan = EditPlan()\n        plan.add_create(\"brand_new.py\", \"content\")\n        errors = executor.validate(plan)\n        assert errors == []\n        assert plan.validated is True\n",
+  "body_hash": "8cb93e6730fa02ee",
+  "body_truncated": false,
+  "callers_of": [
+    "EditPlan",
+    "add_create",
+    "validate"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:53.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_validate_create_success",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.tools.history.FileHistory",
+    "ass_ade.tools.plan.EditKind",
+    "ass_ade.tools.plan.EditPlan",
+    "ass_ade.tools.plan.EditPlanExecutor"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:53"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_validate_create_success",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_validate_create_success"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

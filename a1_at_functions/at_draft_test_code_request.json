@@ -1,0 +1,30 @@
+{
+  "body": "    def test_code_request(self):\n        c = classify_complexity(\"Write a Python function to sort a list\")\n        assert c >= 0.3  # code keywords\n",
+  "body_hash": "feb048f8a8c50dba",
+  "body_truncated": false,
+  "callers_of": [
+    "classify_complexity"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testclassifycomplexity.py:10.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_code_request",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testclassifycomplexity.py:10"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_code_request",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_code_request"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

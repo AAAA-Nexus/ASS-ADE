@@ -1,0 +1,44 @@
+{
+  "body": "class TestPipeline:\n    def test_empty_pipeline_fails(self) -> None:\n        pipe = Pipeline(\"empty\")\n        result = pipe.run()\n        assert not result.passed\n        assert len(result.steps) == 0\n\n    def test_single_passing_step(self) -> None:\n        pipe = Pipeline(\"single\")\n        pipe.add(\"step1\", pass_step)\n        result = pipe.run()\n        assert result.passed\n        assert len(result.steps) == 1\n        assert result.steps[0].status == StepStatus.PASSED\n\n    def test_single_failing_step(self) -> None:\n        pipe = Pipeline(\"fail\")\n        pipe.add(\"step1\", fail_step)\n        result = pipe.run()\n        assert not result.passed\n        assert result.steps[0].status == StepStatus.FAILED\n        assert result.steps[0].error == \"something broke\"\n\n    def test_context_flows_through_steps(self) -> None:\n        pipe = Pipeline(\"context\")\n        pipe.add(\"count1\", counting_step)\n        pipe.add(\"count2\", counting_step)\n        result = pipe.run()\n        assert result.passed\n        assert result.context[\"count\"] == 2\n\n    def test_initial_context_is_available(self) -> None:\n        pipe = Pipeline(\"initial\")\n        pipe.add(\"reader\", context_reader)\n        result = pipe.run({\"message\": \"hello\"})\n        assert result.passed\n        assert result.context[\"reader\"][\"read_message\"] == \"hello\"\n\n    def test_chaining_add(self) -> None:\n        pipe = Pipeline(\"chain\")\n        returned = pipe.add(\"s1\", pass_step).add(\"s2\", pass_step)\n        assert returned is pipe\n        assert len(pipe.step_names) == 2\n",
+  "body_hash": "a7e6f9d8b0573bf1",
+  "body_truncated": false,
+  "callers_of": [
+    "Pipeline",
+    "run",
+    "add",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:49.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testpipeline",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.pipeline.Pipeline",
+    "ass_ade.pipeline.PipelineResult",
+    "ass_ade.pipeline.StepResult",
+    "ass_ade.pipeline.StepStatus"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:49"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.add"
+  ],
+  "name": "TestPipeline",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestPipeline"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

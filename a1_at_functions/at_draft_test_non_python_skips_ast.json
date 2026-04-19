@@ -1,0 +1,42 @@
+{
+  "body": "    def test_non_python_skips_ast(self):\n        from ass_ade.agent.cie import CIEPipeline\n        cie = CIEPipeline({\"cie\": {\"enable_lint\": False}})\n        result = cie.run(\"const x = 1;\", \"typescript\")\n        assert result.language == \"typescript\"\n        # Non-python: ast_valid stays default True (no check performed)\n        assert result.ast_valid is True\n",
+  "body_hash": "db93b6ce54c8a439",
+  "body_truncated": false,
+  "callers_of": [
+    "CIEPipeline",
+    "run"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testciepipeline.py:59.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_non_python_skips_ast",
+  "imports": [
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testciepipeline.py:59"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_non_python_skips_ast",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_non_python_skips_ast"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

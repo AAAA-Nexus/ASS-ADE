@@ -1,0 +1,31 @@
+{
+  "body": "    def parse_challenge(self, response_dict: dict) -> PaymentChallenge | None:\n        \"\"\"Parse a 402 response dict into a PaymentChallenge.\n\n        Returns None if parsing fails; check last_error for details.\n        \"\"\"\n        try:\n            return PaymentChallenge.from_response(response_dict)\n        except ValueError as e:\n            self.last_error = str(e)\n            return None\n",
+  "body_hash": "280d234a9af6aac2",
+  "body_truncated": false,
+  "callers_of": [
+    "from_response",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_x402clientflow.py:27.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.parse_challenge",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_x402clientflow.py:27"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "parse_challenge",
+  "product_categories": [
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for parse_challenge"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,49 @@
+{
+  "body": "class Severa:\n    def __init__(self, config: dict, nexus: Any | None = None):\n        self._config = config\n        self._nexus = nexus\n        self._searches = 0\n\n    def search(self) -> list[Arch]:\n        self._searches += 1\n        base = [\n            Arch(name=\"linear\", score=0.5, traits=[\"simple\"]),\n            Arch(name=\"tree\", score=0.7, traits=[\"recursive\"]),\n            Arch(name=\"graph\", score=0.8, traits=[\"emergent\"]),\n        ]\n        return sorted(base, key=lambda a: a.score, reverse=True)\n\n    def synthesize(self, arch: Arch) -> Agent:\n        code = (\n            f\"class Agent_{arch.name}:\\n\"\n            f\"    traits = {arch.traits!r}\\n\"\n            f\"    def run(self, ctx):\\n\"\n            f\"        return {{'arch': {arch.name!r}}}\\n\"\n        )\n        return Agent(name=f\"agent_{arch.name}\", arch=arch, code=code)\n\n    def verify(self, agent: Agent, spec: str) -> bool:\n        if self._nexus is not None and hasattr(self._nexus, \"certify_output_verify\"):\n            try:\n                result = self._nexus.certify_output_verify(agent.code)\n                return bool(getattr(result, \"rubric_passed\", False))\n            except Exception:\n                pass\n        return \"run\" in agent.code and agent.arch.score > 0.4\n\n    def run(self, ctx: dict) -> dict:\n        spec = ctx.get(\"spec\", \"\")\n        archs = self.search()\n        best = archs[0]\n        agent = self.synthesize(best)\n        ok = self.verify(agent, spec)\n        return {\n            \"arch\": best.name,\n            \"score\": best.score,\n            \"agent\": agent.name,\n            \"verified\": ok,\n        }\n\n    def report(self) -> dict:\n        return {\"engine\": \"severa\", \"searches\": self._searches}\n",
+  "body_hash": "863ec73c1272ecf1",
+  "body_truncated": false,
+  "callers_of": [
+    "sorted",
+    "Agent",
+    "get",
+    "search",
+    "synthesize",
+    "verify",
+    "Arch",
+    "hasattr",
+    "certify_output_verify",
+    "bool",
+    "getattr"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/severa.py:22.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.severa",
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/severa.py:22"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.search",
+    "at.source.ass_ade.synthesize",
+    "at.source.ass_ade.verify"
+  ],
+  "name": "Severa",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for Severa"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

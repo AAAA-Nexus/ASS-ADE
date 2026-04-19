@@ -1,0 +1,33 @@
+{
+  "body": "class TestRaiseForStatus:\n    def test_2xx_does_nothing(self) -> None:\n        for code in (200, 201, 204, 299):\n            raise_for_status(code)  # should not raise\n\n    def test_401_raises_auth_error(self) -> None:\n        with pytest.raises(NexusAuthError) as exc_info:\n            raise_for_status(401, endpoint=\"/v1/trust/score\")\n        assert exc_info.value.status_code == 401\n\n    def test_403_raises_auth_error(self) -> None:\n        with pytest.raises(NexusAuthError):\n            raise_for_status(403)\n\n    def test_402_raises_payment_required(self) -> None:\n        with pytest.raises(NexusPaymentRequired) as exc_info:\n            raise_for_status(402, endpoint=\"/v1/inference\")\n        assert exc_info.value.status_code == 402\n\n    def test_422_raises_validation_error(self) -> None:\n        with pytest.raises(NexusValidationError):\n            raise_for_status(422, detail=\"bad input\")\n\n    def test_429_raises_rate_limited_with_retry_after(self) -> None:\n        with pytest.raises(NexusRateLimited) as exc_info:\n            raise_for_status(429, retry_after=5.0)\n        assert exc_info.value.retry_after == 5.0\n\n    def test_5xx_raises_server_error(self) -> None:\n        for code in (500, 502, 503, 504):\n            with pytest.raises(NexusServerError) as exc_info:\n                raise_for_status(code)\n            assert exc_info.value.status_code == code\n\n    def test_unknown_4xx_raises_base_error(self) -> None:\n        with pytest.raises(NexusError) as exc_info:\n            raise_for_status(418)\n        assert exc_info.value.status_code == 418\n\n    def test_custom_detail_message(self) -> None:\n        with pytest.raises(NexusServerError, match=\"oops\"):\n            raise_for_status(500, detail=\"oops\")\n",
+  "body_hash": "686a160cf0e1a7aa",
+  "body_truncated": false,
+  "callers_of": [
+    "raise_for_status",
+    "raises"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testraiseforstatus.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testraiseforstatus",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testraiseforstatus.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.raise_for_status"
+  ],
+  "name": "TestRaiseForStatus",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestRaiseForStatus"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

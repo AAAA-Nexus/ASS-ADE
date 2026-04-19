@@ -1,0 +1,31 @@
+{
+  "body": "    def test_unchanged_artifact(self):\n        body = \"def foo(): pass\"\n        prev = {\n            \"at.foo\": {\n                \"version\": \"0.2.1\",\n                \"body_hash\": content_hash(body),\n                \"body\": body,\n            }\n        }\n        version, change_type = assign_version(\"at.foo\", body, \"python\", prev)\n        assert version == \"0.2.1\"\n        assert change_type == \"none\"\n",
+  "body_hash": "34aabc705bab4e28",
+  "body_truncated": false,
+  "callers_of": [
+    "assign_version",
+    "content_hash"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testassignversion.py:11.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_unchanged_artifact",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testassignversion.py:11"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_unchanged_artifact",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_unchanged_artifact"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

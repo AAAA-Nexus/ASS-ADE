@@ -1,0 +1,39 @@
+{
+  "body": "def pass_step(ctx: dict[str, Any]) -> StepResult:\n    ctx[\"pass_ran\"] = True\n    return StepResult(name=\"pass\", status=StepStatus.PASSED, output={\"ok\": True})\n",
+  "body_hash": "c62e4dda51b96448",
+  "body_truncated": false,
+  "callers_of": [
+    "StepResult"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:19.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.pass_step",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.pipeline.Pipeline",
+    "ass_ade.pipeline.PipelineResult",
+    "ass_ade.pipeline.StepResult",
+    "ass_ade.pipeline.StepStatus"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:19"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "pass_step",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for pass_step"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

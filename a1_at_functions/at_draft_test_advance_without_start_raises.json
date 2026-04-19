@@ -1,0 +1,33 @@
+{
+  "body": "    def test_advance_without_start_raises(self) -> None:\n        session = NexusSession(_mock_client())\n        with pytest.raises(RuntimeError, match=\"No active session\"):\n            session.advance()\n",
+  "body_hash": "9c5e8b653b98aa2d",
+  "body_truncated": false,
+  "callers_of": [
+    "NexusSession",
+    "_mock_client",
+    "raises",
+    "advance"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexussession.py:19.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_advance_without_start_raises",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexussession.py:19"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_advance_without_start_raises",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_advance_without_start_raises"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

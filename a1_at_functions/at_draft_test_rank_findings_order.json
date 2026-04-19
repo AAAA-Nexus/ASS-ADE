@@ -1,0 +1,44 @@
+{
+  "body": "def test_rank_findings_order() -> None:\n    findings: list[dict[str, Any]] = [\n        {\"id\": 1, \"impact\": \"low\", \"effort\": \"low\", \"category\": \"a\"},\n        {\"id\": 2, \"impact\": \"high\", \"effort\": \"medium\", \"category\": \"b\"},\n        {\"id\": 3, \"impact\": \"medium\", \"effort\": \"low\", \"category\": \"c\"},\n    ]\n\n    ranked = rank_findings(findings)\n\n    assert ranked[0][\"impact\"] == \"high\"\n",
+  "body_hash": "c12e58f9e6ff54e1",
+  "body_truncated": false,
+  "callers_of": [
+    "rank_findings"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_enhancer.py:173.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_rank_findings_order",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "typing.Any",
+    "pytest",
+    "ass_ade.local.enhancer.build_enhancement_report",
+    "ass_ade.local.enhancer.rank_findings",
+    "ass_ade.local.enhancer.scan_bare_except",
+    "ass_ade.local.enhancer.scan_long_functions",
+    "ass_ade.local.enhancer.scan_missing_docs",
+    "ass_ade.local.enhancer.scan_missing_tests",
+    "ass_ade.local.enhancer.scan_security_patterns",
+    "ass_ade.local.enhancer.scan_todo_fixme",
+    "ass_ade.local.enhancer.scan_missing_type_hints"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_enhancer.py:173"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_rank_findings_order",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_rank_findings_order"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

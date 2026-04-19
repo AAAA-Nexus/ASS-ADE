@@ -1,0 +1,33 @@
+{
+  "body": "    def get_trust_score(self, agent_id: str) -> float:\n        if agent_id in self._scores:\n            return self._scores[agent_id]\n        if self._nexus is not None and hasattr(self._nexus, \"trust_score\"):\n            try:\n                r = self._nexus.trust_score(agent_id)\n                score = float(getattr(r, \"score\", 0.5))\n                self._scores[agent_id] = score\n                return score\n            except Exception:\n                pass\n        return 0.5\n",
+  "body_hash": "a8b0a0d4fa7d3963",
+  "body_truncated": false,
+  "callers_of": [
+    "hasattr",
+    "trust_score",
+    "float",
+    "getattr"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_trustverificationgate.py:37.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.get_trust_score",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_trustverificationgate.py:37"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "get_trust_score",
+  "product_categories": [
+    "IDT"
+  ],
+  "provides": [
+    "rebuild candidate for get_trust_score"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

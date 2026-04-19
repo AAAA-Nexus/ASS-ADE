@@ -1,0 +1,31 @@
+{
+  "body": "def test_compute_codebase_digest_changes_on_file_edit(tmp_path: Path) -> None:\n    f = tmp_path / \"mutable.py\"\n    f.write_text(\"version = 1\\n\", encoding=\"utf-8\")\n\n    r1 = compute_codebase_digest(tmp_path)\n\n    f.write_text(\"version = 2\\n\", encoding=\"utf-8\")\n\n    r2 = compute_codebase_digest(tmp_path)\n\n    assert r1[\"root_digest\"] != r2[\"root_digest\"]\n",
+  "body_hash": "838dee9bd5e27419",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "compute_codebase_digest"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_compute_codebase_digest_changes_on_file_edit.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_compute_codebase_digest_changes_on_file_edit",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_compute_codebase_digest_changes_on_file_edit.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_compute_codebase_digest_changes_on_file_edit",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_compute_codebase_digest_changes_on_file_edit"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

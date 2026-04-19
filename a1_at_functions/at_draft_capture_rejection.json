@@ -1,0 +1,37 @@
+{
+  "body": "    def capture_rejection(self, candidate: str, reason: str, confidence: float = 0.9) -> str:\n        \"\"\"Capture a CIE-rejected candidate as a negative training example.\"\"\"\n        if not self._enabled:\n            return \"\"\n        cid = f\"rejection_{int(time.time())}_{len(self._pending)}\"\n        c = Contribution(\n            kind=\"rejection\",\n            content={\"candidate\": candidate[:2000], \"reason\": reason[:200]},\n            session_id=self._session_id,\n            confidence=confidence,\n        )\n        self._pending.append(c)\n        self._save_pending()\n        return cid\n",
+  "body_hash": "cb447602528cef39",
+  "body_truncated": false,
+  "callers_of": [
+    "Contribution",
+    "append",
+    "_save_pending",
+    "int",
+    "len",
+    "time"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_loraflywheel.py:115.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.capture_rejection",
+  "imports": [
+    "hashlib"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_loraflywheel.py:115"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "capture_rejection",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for capture_rejection"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

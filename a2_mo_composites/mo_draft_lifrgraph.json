@@ -1,0 +1,51 @@
+{
+  "body": "class LIFRGraph:\n    def __init__(self, config: dict, nexus: Any | None = None):\n        self._config = config\n        self._nexus = nexus\n        lifr_cfg = config.get(\"lifr\") or {}\n        self._namespace = lifr_cfg.get(\"namespace\", \"lifr\")\n        self._threshold = float(lifr_cfg.get(\"similarity_threshold\", 0.85))\n        self._working_dir = config.get(\"working_dir\", \".\")\n        self._writes = 0\n        self._queries = 0\n\n    def store(self, spec: str, code: str, proof: str, metadata: dict | None = None) -> str:\n        payload = {\n            \"spec\": spec,\n            \"code\": code,\n            \"proof\": proof,\n            \"metadata\": metadata or {},\n        }\n        meta = dict(metadata or {})\n        meta[\"tier\"] = \"lifr\"\n        meta[\"payload\"] = payload\n        result = store_vector_memory(\n            text=spec,\n            namespace=self._namespace,\n            metadata=meta,\n            working_dir=self._working_dir,\n        )\n        self._writes += 1\n        return result.id\n\n    def query(self, spec_text: str, top_k: int = 5) -> list[Match]:\n        self._queries += 1\n        result = query_vector_memory(\n            query=spec_text,\n            namespace=self._namespace,\n            top_k=top_k,\n            working_dir=self._working_dir,\n        )\n        matches: list[Match] = []\n        for m in result.matches:\n            if m.score < self._threshold:\n                continue\n            payload = (m.metadata or {}).get(\"payload\") or {}\n            matches.append(\n                Match(\n                    id=m.id,\n                    score=m.score,\n                    spec=payload.get(\"spec\", m.text),\n                    code=payload.get(\"code\", \"\"),\n                    proof=payload.get(\"proof\", \"\"),\n                    metadata=m.metadata or {},\n                )\n            )\n        return matches\n\n    def run(self, ctx: dict) -> dict:\n        op = ctx.get(\"op\", \"query\")\n        if op == \"store\":\n            mid = self.store(\n                ctx.get(\"spec\", \"\"),\n                ctx.get(\"code\", \"\"),\n                ctx.get(\"proof\", \"\"),\n                ctx.get(\"metadata\"),\n            )\n            return {\"id\": mid, \"stored\": True}\n        matches = self.query(ctx.get(\"spec\", \"\"), int(ctx.get(\"top_k\", 5)))\n        return {\"matches\": [m.__dict__ for m in matches]}\n\n    def report(self) -> dict:\n        return {\n            \"engine\": \"lifr_graph\",\n            \"namespace\": self._namespace,\n            \"threshold\": self._threshold,\n            \"writes\": self._writes,\n            \"queries\": self._queries,\n        }\n",
+  "body_hash": "1e65807bf4fff294",
+  "body_truncated": false,
+  "callers_of": [
+    "get",
+    "float",
+    "dict",
+    "store_vector_memory",
+    "query_vector_memory",
+    "query",
+    "append",
+    "store",
+    "int",
+    "Match"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/lifr_graph.py:26.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.lifrgraph",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "dataclasses.dataclass",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.context_memory.VectorMemoryMatch",
+    "ass_ade.context_memory.query_vector_memory",
+    "ass_ade.context_memory.store_vector_memory"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/lifr_graph.py:26"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.query_vector_memory",
+    "at.source.ass_ade.query"
+  ],
+  "name": "LIFRGraph",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for LIFRGraph"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

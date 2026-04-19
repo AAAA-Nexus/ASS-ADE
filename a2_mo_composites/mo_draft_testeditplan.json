@@ -1,0 +1,46 @@
+{
+  "body": "class TestEditPlan:\n    def test_add_create(self):\n        plan = EditPlan(description=\"Test plan\")\n        plan.add_create(\"new.py\", \"print('new')\\n\")\n        assert len(plan.edits) == 1\n        assert plan.edits[0].kind == EditKind.CREATE\n\n    def test_add_modify(self):\n        plan = EditPlan()\n        plan.add_modify(\"main.py\", \"pass\", \"print('hello')\")\n        assert len(plan.edits) == 1\n        assert plan.edits[0].kind == EditKind.MODIFY\n\n    def test_add_delete(self):\n        plan = EditPlan()\n        plan.add_delete(\"old.py\")\n        assert len(plan.edits) == 1\n        assert plan.edits[0].kind == EditKind.DELETE\n\n    def test_adding_resets_validated(self):\n        plan = EditPlan()\n        plan.validated = True\n        plan.add_create(\"x.py\", \"x\")\n        assert plan.validated is False\n",
+  "body_hash": "ddddec0276bd4ef1",
+  "body_truncated": false,
+  "callers_of": [
+    "EditPlan",
+    "add_create",
+    "add_modify",
+    "add_delete",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:26.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testeditplan",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.tools.history.FileHistory",
+    "ass_ade.tools.plan.EditKind",
+    "ass_ade.tools.plan.EditPlan",
+    "ass_ade.tools.plan.EditPlanExecutor"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:26"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.add_create",
+    "at.source.ass_ade.add_modify",
+    "at.source.ass_ade.add_delete"
+  ],
+  "name": "TestEditPlan",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestEditPlan"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

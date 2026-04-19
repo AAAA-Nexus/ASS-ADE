@@ -1,0 +1,34 @@
+{
+  "body": "def test_enhance_json_output(tmp_path: Path) -> None:\n    (tmp_path / \"sample.py\").write_text(\"def f():\\n    pass  # TODO: implement\\n\", encoding=\"utf-8\")\n\n    result = runner.invoke(app, [\"enhance\", str(tmp_path), \"--json\", \"--local-only\"])\n\n    assert result.exit_code == 0\n    start = result.output.find(\"{\")\n    assert start != -1, f\"No JSON in output:\\n{result.output}\"\n    payload = json.loads(result.output[start:], strict=False)\n    assert \"total_findings\" in payload\n",
+  "body_hash": "f5c7e137c0f51440",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "invoke",
+    "find",
+    "loads",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_enhance_json_output.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_enhance_json_output",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_enhance_json_output.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_enhance_json_output",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_enhance_json_output"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

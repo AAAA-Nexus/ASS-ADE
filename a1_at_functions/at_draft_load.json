@@ -1,0 +1,60 @@
+{
+  "body": "    def load(cls) -> \"MemoryStore\":\n        _MEMORY_DIR.mkdir(parents=True, exist_ok=True)\n        store = cls()\n        for attr, filename in [\n            (\"user_profile\", \"user_profile.json\"),\n            (\"project_contexts\", \"project_contexts.json\"),\n            (\"preferences\", \"preferences.json\"),\n        ]:\n            p = _MEMORY_DIR / filename\n            if p.exists():\n                try:\n                    setattr(store, attr, json.loads(p.read_text(encoding=\"utf-8\")))\n                except (json.JSONDecodeError, OSError):\n                    pass\n        return store\n",
+  "body_hash": "1db6d123c79da419",
+  "body_truncated": false,
+  "callers_of": [
+    "mkdir",
+    "cls",
+    "exists",
+    "setattr",
+    "loads",
+    "read_text"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/interpreter.py:167.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.load",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "os",
+    "re",
+    "subprocess",
+    "sys",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "httpx",
+    "ass_ade.agent.capabilities.build_atomadic_intent_prompt",
+    "ass_ade.agent.capabilities.command_path_exists",
+    "ass_ade.agent.capabilities.render_atomadic_help",
+    "dotenv.load_dotenv",
+    "time",
+    "shutil",
+    "shutil",
+    "importlib",
+    "sys",
+    "rich.console.Console",
+    "rich.markdown.Markdown"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/interpreter.py:167"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "load",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for load"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

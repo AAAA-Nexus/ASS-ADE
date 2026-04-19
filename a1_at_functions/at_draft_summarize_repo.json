@@ -1,0 +1,48 @@
+{
+  "body": "def summarize_repo(root: Path, ignored_dirs: set[str] | None = None) -> RepoSummary:\n    root = root.resolve()\n    ignores = ignored_dirs or DEFAULT_IGNORED_DIRS\n    file_types: Counter[str] = Counter()\n    total_files = 0\n    total_dirs = 0\n\n    top_level_entries = sorted(item.name for item in root.iterdir()) if root.exists() else []\n\n    for _, dirs, files in os.walk(root, topdown=True):\n        dirs[:] = [directory for directory in dirs if directory not in ignores]\n        total_dirs += len(dirs)\n\n        for filename in files:\n            total_files += 1\n            suffix = Path(filename).suffix.lower().lstrip(\".\") or \"[no_ext]\"\n            file_types[suffix] += 1\n\n    return RepoSummary(\n        root=root,\n        total_files=total_files,\n        total_dirs=total_dirs,\n        file_types=dict(file_types.most_common()),\n        top_level_entries=top_level_entries,\n    )\n",
+  "body_hash": "aa3a6a24b67da040",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "Counter",
+    "walk",
+    "RepoSummary",
+    "exists",
+    "sorted",
+    "len",
+    "dict",
+    "lstrip",
+    "most_common",
+    "iterdir",
+    "lower",
+    "Path"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/local/repo.py:35.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.summarize_repo",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "collections.Counter",
+    "dataclasses.dataclass",
+    "pathlib.Path"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/local/repo.py:35"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "summarize_repo",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for summarize_repo"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

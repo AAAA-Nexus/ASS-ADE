@@ -1,0 +1,30 @@
+{
+  "body": "    def providers(self) -> dict[str, \"ModelProvider\"]:\n        return dict(self._providers)\n",
+  "body_hash": "fb802275bc5d5ece",
+  "body_truncated": false,
+  "callers_of": [
+    "dict"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_multiprovider.py:30.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.providers",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_multiprovider.py:30"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "providers",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for providers"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

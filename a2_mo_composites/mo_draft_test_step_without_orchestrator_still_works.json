@@ -1,0 +1,56 @@
+{
+  "body": "    def test_step_without_orchestrator_still_works(self) -> None:\n        loop = self._make_loop(orchestrator=None)\n        result = loop.step(\"Hello\")\n        assert isinstance(result, str)\n",
+  "body_hash": "1eb0147c8e80a1d9",
+  "body_truncated": false,
+  "callers_of": [
+    "_make_loop",
+    "step",
+    "isinstance"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:451.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.test_step_without_orchestrator_still_works",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "time",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.agent.audit_questions.AUDIT_QUESTIONS",
+    "ass_ade.agent.bas.BAS",
+    "ass_ade.agent.bas.Alert",
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.orchestrator.CycleReport",
+    "ass_ade.agent.orchestrator.EngineOrchestrator",
+    "ass_ade.agent.wisdom.AuditReport",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "collections.Counter",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.engine.provider.ModelProvider",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.tools.registry.default_registry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:451"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.step"
+  ],
+  "name": "test_step_without_orchestrator_still_works",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_step_without_orchestrator_still_works"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

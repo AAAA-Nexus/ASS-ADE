@@ -1,0 +1,30 @@
+{
+  "body": "    def update_task_status(self, task_id: str, new_status: TaskStatus) -> bool:\n        \"\"\"Update a task's status.\"\"\"\n        task = self.get_task(task_id)\n        if task:\n            task.status = new_status\n            return True\n        return False\n",
+  "body_hash": "98203ea84aef23f7",
+  "body_truncated": false,
+  "callers_of": [
+    "get_task"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_taskmanager.py:25.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.update_task_status",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_taskmanager.py:25"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "update_task_status",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for update_task_status"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

@@ -1,0 +1,41 @@
+{
+  "body": "    def test_duration_tracking(self) -> None:\n        pipe = Pipeline(\"dur\")\n        pipe.add(\"s1\", pass_step)\n        result = pipe.run()\n        assert result.duration_ms >= 0\n        assert result.steps[0].duration_ms >= 0\n",
+  "body_hash": "511d7558599b5b0a",
+  "body_truncated": false,
+  "callers_of": [
+    "Pipeline",
+    "add",
+    "run"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:259.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_duration_tracking",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.pipeline.Pipeline",
+    "ass_ade.pipeline.PipelineResult",
+    "ass_ade.pipeline.StepResult",
+    "ass_ade.pipeline.StepStatus"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:259"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_duration_tracking",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_duration_tracking"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

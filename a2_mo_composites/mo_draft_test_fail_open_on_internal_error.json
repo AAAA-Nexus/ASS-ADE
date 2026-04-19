@@ -1,0 +1,35 @@
+{
+  "body": "    def test_fail_open_on_internal_error(self):\n        lse = self._make({\"lse\": {\"default_tier\": \"balanced\"}})\n        # Corrupt internal state \u2014 should still return a decision\n        lse._trs_haiku_threshold = \"not_a_float\"  # type: ignore\n        decision = lse.select(trs_score=0.9)\n        assert decision.model is not None\n",
+  "body_hash": "e9d2b4c9e0c16bb3",
+  "body_truncated": false,
+  "callers_of": [
+    "_make",
+    "select"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testlseengine.py:55.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.test_fail_open_on_internal_error",
+  "imports": [
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.agent.providers.FREE_PROVIDERS",
+    "ass_ade.agent.lse._LEGACY_TIER_TO_MODEL"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testlseengine.py:55"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "test_fail_open_on_internal_error",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_fail_open_on_internal_error"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

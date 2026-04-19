@@ -1,0 +1,33 @@
+{
+  "body": "def test_certify_local_only(tmp_path: Path) -> None:\n    (tmp_path / \"code.py\").write_text(\"def run(): pass\\n\", encoding=\"utf-8\")\n\n    result = runner.invoke(app, [\"certify\", str(tmp_path), \"--local-only\"])\n\n    assert result.exit_code == 0\n    cert_path = tmp_path / \"CERTIFICATE.json\"\n    assert cert_path.exists(), \"CERTIFICATE.json was not written\"\n",
+  "body_hash": "8565bb07c4bda911",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "invoke",
+    "exists",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_certify_local_only.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_certify_local_only",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_certify_local_only.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_certify_local_only",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_certify_local_only"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

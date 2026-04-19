@@ -1,0 +1,59 @@
+{
+  "body": "class WisdomEngine:\n    def __init__(self, config: dict, nexus: Any | None = None):\n        self._config = config\n        self._nexus = nexus\n        sde = config.get(\"sde\") or {}\n        self._conviction_required = float(sde.get(\"conviction_required\", 0.85))\n        self._conviction = 0.5\n        self._audits = 0\n        self._principles: list[str] = []\n\n    # ------------------------------------------------------------------\n    # Properties\n    # ------------------------------------------------------------------\n    @property\n    def conviction(self) -> float:\n        return self._conviction\n\n    @property\n    def is_confident(self) -> bool:\n        return self._conviction >= self._conviction_required\n\n    # ------------------------------------------------------------------\n    # Audit logic\n    # ------------------------------------------------------------------\n    def _answer(self, question: dict, cycle_state: dict) -> bool:\n        # Explicit per-question override always wins.\n        key = f\"q{question['id']}\"\n        if key in cycle_state:\n            return bool(cycle_state[key])\n\n        group = question[\"group\"]\n        signals = _GROUP_SIGNALS.get(group, ())\n        for sig in signals:\n            if sig not in cycle_state:\n                continue\n            val = cycle_state[sig]\n            # Numeric signals (like conviction) pass on > 0.\n            if isinstance(val, (int, float)) and not isinstance(val, bool):\n                if val > 0:\n                    return True\n            # Collections pass if non-empty.\n            elif isinstance(val, (list, tuple, set, dict)):\n                if len(val) > 0:\n                    return True\n            # Everything else falls back to truthiness.\n            elif val:\n                return True\n\n        # Default to False when no signal present (audit-report fix).\n        return False\n\n    def run_audit(self, cycle_state: dict) -> AuditReport:\n        self._audits += 1\n        passed = 0\n        failed = 0\n        per_group: dict[str, dict] = {}\n        failures: list[dict] = []\n        warnings: list[str] = []\n\n        for q in AUDIT_QUESTIONS:\n            ok = self._answer(q, cycle_state)\n            g = per_group.setdefault(q[\"group\"], {\"passed\": 0, \"failed\": 0})\n            if ok:\n                passed += 1\n                g[\"passed\"] += 1\n            else:\n                failed += 1\n                g[\"failed\"] += 1\n                failures.append({\"id\": q[\"id\"], \"group\": q[\"group\"], \"text\": q[\"text\"]})\n\n        total = passed + failed\n        score = passed / total if total else 0.0\n        # Update conviction EMA.\n        self._conviction = 0.5 * self._conviction + 0.5 * score\n\n        # Low-conviction warning after the first audit.\n        if score < 0.3 and self._audits > 1:\n            warnings.append(\"low_conviction\")\n\n        return AuditReport(\n            total=total,\n            passed=passed,\n            failed=failed,\n            score=score,\n            conviction=self._conviction,\n            per_group=per_group,\n            failures=failures,\n            warnings=warnings,\n            principles=list(self._principles),\n        )\n\n    # ------------------------------------------------------------------\n    # Principles\n    # ------------------------------------------------------------------\n    def distill_principles(self, report: AuditReport | None = None) -> list[str]:\n        default_principles = [\n            \"verify before acting\",\n            \"prefer reuse over regeneration\",\n            \"halt on capability gap\",\n        ]\n\n        if report is None or not report.failures:\n            self._principles = list(default_principles)\n            return list(self._principles)\n\n        # Count failures per group.\n        group_counts: dict[str, int] = {}\n        for f in report.failures:\n            g = f.get(\"group\", \"unknown\")\n            group_counts[g] = group_counts.get(g, 0) + 1\n\n        group_to_principle = {\n            \"foundational\": \"Always classify epistemic tier before acting\",\n            \"operational\": \"Minimize tool round-trips and track token budget\",\n            \"autonomous\": \"Consult persistent memory and capture traces for every cycle\",\n            \"meta_cognition\": \"Certify output and check hallucination signals before delivery\",\n            \"hyperagent\": \"Invoke MAP=TERRAIN, ATLAS, and LIFR engines for complex tasks\",\n        }\n\n        # Threshold: a group contributes a principle when it has >= 2 failures\n        # (or any failures if there are few overall).\n        threshold = 2 if len(report.failures) > 5 else 1\n        derived: list[str] = []\n        for group, count in sorted(group_counts.items(), key=lambda kv: -kv[1]):\n            if count >= threshold and group in group_to_principle:\n                derived.append(group_to_principle[group])\n\n        if not derived:\n            derived = list(default_principles)\n\n        # Cap at 5 principles total.\n        merged: list[str] = []\n        for p in derived + default_principles:\n            if p not in merged:\n                merged.append(p)\n            if len(merged) >= 5:\n                break\n\n        self._principles = merged\n        return list(self._principles)\n\n    def update_principles(self, principles: list[str]) -> list[str]:\n        for p in principles:\n            if p not in self._principles:\n                self._principles.append(p)\n\n    def hydrate_from_memory(self, *, top_k: int = 10, working_dir: str | Any = \".\") -> int:\n        \"\"\"Pre-load principles from prior sessions' persisted vector memory.\n\n        Called at orchestrator init so wisdom carries across sessions. Returns\n        the number of principles loaded.\n        \"\"\"\n        try:\n            from ass_ade.context_memory import query_vector_memory\n\n            result = query_vector_memory(\n                query=\"wisdom principle\",\n                namespace=\"wisdom_principle\",\n                top_k=top_k,\n                working_dir=working_dir,\n            )\n            matches = getattr(result, \"matches\", None) or []\n            loaded: list[str] = []\n            for m in matches:\n                text = getattr(m, \"text\", None) or (m.get(\"text\") if isinstance(m, dict) else None)\n                if text and text not in loaded and text not in self._principles:\n                    loaded.append(text)\n            if loaded:\n                self._principles = (self._principles + loaded)[:20]  # cap at 20\n            return len(loaded)\n        except Exception as exc:\n            _log.debug(\"WisdomEngine.hydrate_from_memory failed (fail-open): %s\", exc)\n            return 0\n\n    def persist_principles(self, lora_flywheel: Any = None) -> int:\n        \"\"\"Persist distilled principles to context_memory and optionally LoRA flywheel.\n\n        Returns the count of new principles contributed.\n        \"\"\"\n        if not self._principles:\n            return 0\n        new_count = 0\n        # Store in context_memory for cross-session recall\n        try:\n            from ass_ade.context_memory import store_vector_memory\n            for p in self._principles:\n                store_vector_memory(\n                    text=p,\n                    namespace=\"wisdom_principle\",\n                    metadata={\"type\": \"wisdom_principle\", \"conviction\": self._conviction},\n                )\n            new_count = len(self._principles)\n        except Exception as exc:\n            _log.debug(\"WisdomEngine: context_memory persist failed: %s\", exc)\n\n        # Contribute to LoRA flywheel if conviction is high enough\n        if lora_flywheel is not None and self._conviction >= 0.7 and new_count >= 3:\n            try:\n                for p in self._principles:\n                    lora_flywheel.capture_principle(p, confidence=self._conviction)\n            except Exception as exc:\n                _log.debug(\"WisdomEngine: LoRA flywheel capture failed: %s\", exc)\n\n        return new_count\n        return list(self._principles)\n\n    # ------------------------------------------------------------------\n    # Gating\n    # ------------------------------------------------------------------\n    def gate_action(self, action: str, cycle_state: dict) -> tuple[bool, str]:\n        self.run_audit(cycle_state)\n        if self.is_confident:\n            return (True, \"conviction_met\")\n        return (\n            False,\n            f\"conviction {self._conviction:.2f} below required {self._conviction_required:.2f}\",\n        )\n\n    # ------------------------------------------------------------------\n    # Legacy helpers\n    # ------------------------------------------------------------------\n    def update_conviction(self) -> float:\n        return self._conviction\n\n    def run(self, ctx: dict) -> dict:\n        report = self.run_audit(ctx.get(\"cycle_state\", {}))\n        return {\n            \"passed\": report.passed,\n            \"failed\": report.failed,\n            \"score\": report.score,\n            \"conviction\": report.conviction,\n            \"failures\": report.failures[:5],\n            \"warnings\": list(report.warnings),\n        }\n\n    def report(self) -> dict:\n        return {\n            \"engine\": \"wisdom\",\n            \"audits\": self._audits,\n            \"conviction\": self._conviction,\n            \"conviction_required\": self._conviction_required,\n            \"principles\": list(self._principles),\n        }\n",
+  "body_hash": "4112cfc9668a38c7",
+  "body_truncated": false,
+  "callers_of": [
+    "float",
+    "get",
+    "AuditReport",
+    "sorted",
+    "list",
+    "run_audit",
+    "bool",
+    "_answer",
+    "setdefault",
+    "append",
+    "items",
+    "query_vector_memory",
+    "len",
+    "isinstance",
+    "getattr",
+    "debug",
+    "store_vector_memory",
+    "capture_principle"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/wisdom.py:38.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.wisdomengine",
+  "imports": [
+    "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any",
+    "ass_ade.agent.audit_questions.AUDIT_QUESTIONS",
+    "ass_ade.context_memory.query_vector_memory",
+    "ass_ade.context_memory.store_vector_memory"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/wisdom.py:38"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.query_vector_memory",
+    "at.source.ass_ade.capture_principle"
+  ],
+  "name": "WisdomEngine",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for WisdomEngine"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

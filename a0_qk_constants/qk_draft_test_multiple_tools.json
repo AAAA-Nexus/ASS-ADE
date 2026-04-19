@@ -1,0 +1,32 @@
+{
+  "body": "    def test_multiple_tools(self):\n        tools = [\n            ToolSchema(name=f\"tool_{i}\", description=f\"Tool number {i}\", parameters={\"type\": \"object\"})\n            for i in range(5)\n        ]\n        tokens = estimate_tools_tokens(tools)\n        assert tokens > estimate_tools_tokens(tools[:1])\n",
+  "body_hash": "2bbd5522d477789e",
+  "body_truncated": false,
+  "callers_of": [
+    "estimate_tools_tokens",
+    "ToolSchema",
+    "range"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testestimatetoolstokens.py:18.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.test_multiple_tools",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testestimatetoolstokens.py:18"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "test_multiple_tools",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_multiple_tools"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

@@ -1,0 +1,33 @@
+{
+  "body": "    def test_tca_property_lazy_init(self):\n        orch = self._make()\n        tca = orch.tca\n        assert tca is not None\n",
+  "body_hash": "cf920b7fec6d26c1",
+  "body_truncated": false,
+  "callers_of": [
+    "_make"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testengineorchestratorphase15.py:18.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.test_tca_property_lazy_init",
+  "imports": [
+    "ass_ade.agent.orchestrator.EngineOrchestrator",
+    "ass_ade.agent.orchestrator.CycleReport"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testengineorchestratorphase15.py:18"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "test_tca_property_lazy_init",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_tca_property_lazy_init"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

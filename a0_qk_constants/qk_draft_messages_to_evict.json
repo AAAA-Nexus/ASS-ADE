@@ -1,0 +1,42 @@
+{
+  "body": "    def messages_to_evict(\n        self,\n        messages: list[Message],\n        tools: list[ToolSchema] | None = None,\n    ) -> int:\n        \"\"\"Compute how many oldest non-system messages to evict.\n\n        Returns 0 if the conversation fits within the budget.\n        The eviction count is the *minimum* needed to restore the invariant.\n        \"\"\"\n        tool_overhead = estimate_tools_tokens(tools or [])\n\n        # Calculate cumulative tokens for each message\n        msg_tokens = [estimate_message_tokens(m) for m in messages]\n        total = sum(msg_tokens) + tool_overhead\n\n        if total <= self.available:\n            return 0\n\n        # Identify non-system messages eligible for eviction\n        excess = total - self.available\n        evicted = 0\n        freed = 0\n        for i, msg in enumerate(messages):\n            if msg.role == \"system\":\n                continue\n            freed += msg_tokens[i]\n            evicted += 1\n            if freed >= excess:\n                break\n\n        return evicted\n",
+  "body_hash": "ab3abd33df80d805",
+  "body_truncated": false,
+  "callers_of": [
+    "estimate_tools_tokens",
+    "enumerate",
+    "estimate_message_tokens",
+    "sum"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/tokens.py:208.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.messages_to_evict",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "math",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolSchema",
+    "tiktoken"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/tokens.py:208"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "messages_to_evict",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for messages_to_evict"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

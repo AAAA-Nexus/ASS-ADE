@@ -1,0 +1,28 @@
+{
+  "body": "class BitNetModel(NexusModel):\n    \"\"\"One entry in GET /v1/bitnet/models (BIT-102)\"\"\"\n    id: str | None = None\n    provider: str | None = None\n    params_b: float | None = None\n    context_length: int | None = None\n    memory_gb: float | None = None\n    status: str | None = None\n",
+  "body_hash": "580711c856b1029b",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_bitnetmodel.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.bitnetmodel",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_bitnetmodel.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "BitNetModel",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for BitNetModel"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

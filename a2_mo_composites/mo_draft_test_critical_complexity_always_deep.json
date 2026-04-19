@@ -1,0 +1,35 @@
+{
+  "body": "    def test_critical_complexity_always_deep(self):\n        lse = self._make()\n        decision = lse.select(trs_score=0.9, complexity=\"critical\")\n        assert decision.tier == \"deep\"\n",
+  "body_hash": "d14837a91e1597d2",
+  "body_truncated": false,
+  "callers_of": [
+    "_make",
+    "select"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testlseengine.py:38.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.test_critical_complexity_always_deep",
+  "imports": [
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.agent.providers.FREE_PROVIDERS",
+    "ass_ade.agent.lse._LEGACY_TIER_TO_MODEL"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testlseengine.py:38"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "test_critical_complexity_always_deep",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_critical_complexity_always_deep"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

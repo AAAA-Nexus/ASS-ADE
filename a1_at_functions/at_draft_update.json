@@ -1,0 +1,38 @@
+{
+  "body": "    def update(self, improvements: list[float] | float) -> float:\n        if isinstance(improvements, (int, float)):\n            deltas = [float(improvements)]\n        else:\n            deltas = [float(x) for x in improvements]\n        total = sum(deltas)\n        base = float(self._state.get(\"coefficient\", 1.0))\n        new_coef = max(1e-6, base * (1.0 + total / max(1, len(deltas))))\n        entry = {\n            \"ts\": datetime.now(UTC).isoformat(),\n            \"delta\": total / max(1, len(deltas)),\n            \"coefficient\": new_coef,\n        }\n        self._state[\"history\"] = (self._state.get(\"history\") or []) + [entry]\n        self._state[\"coefficient\"] = new_coef\n        self._save()\n        return new_coef\n",
+  "body_hash": "51ce6b873121df4a",
+  "body_truncated": false,
+  "callers_of": [
+    "isinstance",
+    "sum",
+    "float",
+    "max",
+    "_save",
+    "get",
+    "isoformat",
+    "now",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_gvu.py:36.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.update",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_gvu.py:36"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "update",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for update"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

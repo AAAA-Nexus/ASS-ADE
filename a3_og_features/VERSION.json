@@ -1,0 +1,499 @@
+{
+  "module_count": 82,
+  "modules": [
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.agentregistry",
+      "name": "AgentRegistry",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.bar",
+      "name": "Bar",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.big_function",
+      "name": "big_function",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.certify_output",
+      "name": "certify_output",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.certifyresult",
+      "name": "CertifyResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.default_registry",
+      "name": "default_registry",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.discovery_registry",
+      "name": "discovery_registry",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.do_work",
+      "name": "do_work",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.execute",
+      "name": "execute",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.foo",
+      "name": "foo",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.get",
+      "name": "get",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.list_tools",
+      "name": "list_tools",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.main",
+      "name": "main",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.public_function",
+      "name": "public_function",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.register",
+      "name": "register",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.safe_execute",
+      "name": "safe_execute",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.safeexecuteresult",
+      "name": "SafeExecuteResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.small_function",
+      "name": "small_function",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_allow_on_medium_trust_with_gold",
+      "name": "test_allow_on_medium_trust_with_gold",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_allow_with_good_scores",
+      "name": "test_allow_with_good_scores",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_allow_with_good_scores",
+      "name": "test_allow_with_good_scores",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_builtin_tool_still_works",
+      "name": "test_builtin_tool_still_works",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_cancelled_request_returns_error",
+      "name": "test_cancelled_request_returns_error",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_clean_execution",
+      "name": "test_clean_execution",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_clean_execution",
+      "name": "test_clean_execution",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_default_registry_has_all_tools",
+      "name": "test_default_registry_has_all_tools",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_deny_on_identity_failure",
+      "name": "test_deny_on_identity_failure",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_deny_on_low_trust",
+      "name": "test_deny_on_low_trust",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_deny_on_sybil",
+      "name": "test_deny_on_sybil",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_deny_on_sybil",
+      "name": "test_deny_on_sybil",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_empty_text_raises",
+      "name": "test_empty_text_raises",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_exception_handling_identity_sanitized",
+      "name": "test_exception_handling_identity_sanitized",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_exception_handling_proxy_network_error_sanitized",
+      "name": "test_exception_handling_proxy_network_error_sanitized",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_exception_handling_proxy_network_error_sanitized",
+      "name": "test_exception_handling_proxy_network_error_sanitized",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_exception_handling_proxy_sanitized",
+      "name": "test_exception_handling_proxy_sanitized",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_exception_handling_proxy_sanitized",
+      "name": "test_exception_handling_proxy_sanitized",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_exception_handling_reputation_sanitized",
+      "name": "test_exception_handling_reputation_sanitized",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_exception_handling_reputation_sanitized",
+      "name": "test_exception_handling_reputation_sanitized",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_exception_handling_sybil_sanitized",
+      "name": "test_exception_handling_sybil_sanitized",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_exception_handling_sybil_sanitized",
+      "name": "test_exception_handling_sybil_sanitized",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_exception_handling_trust_sanitized",
+      "name": "test_exception_handling_trust_sanitized",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_execute_unknown",
+      "name": "test_execute_unknown",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_full_certification_passes",
+      "name": "test_full_certification_passes",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_hallucination_failure_blocks",
+      "name": "test_hallucination_failure_blocks",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_injection_detected_blocks_cert",
+      "name": "test_injection_detected_blocks_cert",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_injection_detected_blocks_cert",
+      "name": "test_injection_detected_blocks_cert",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_map_terrain_discovers_repo_agent_registry",
+      "name": "test_map_terrain_discovers_repo_agent_registry",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_map_terrain_sees_extended_mcp_workflow_tools",
+      "name": "test_map_terrain_sees_extended_mcp_workflow_tools",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_notifications_cancelled_suppresses_no_response",
+      "name": "test_notifications_cancelled_suppresses_no_response",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_pipeline_history_lists_workflows",
+      "name": "test_pipeline_history_lists_workflows",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_pipeline_status_workflow_found",
+      "name": "test_pipeline_status_workflow_found",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_pipeline_status_workflow_not_found",
+      "name": "test_pipeline_status_workflow_not_found",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_read_file_is_readonly",
+      "name": "test_read_file_is_readonly",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_run_command_is_open_world",
+      "name": "test_run_command_is_open_world",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_shield_failure_blocks_cert",
+      "name": "test_shield_failure_blocks_cert",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_shield_failure_blocks_cert",
+      "name": "test_shield_failure_blocks_cert",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_text_preview_truncated",
+      "name": "test_text_preview_truncated",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_tool_annotations_present_on_workflow_tools",
+      "name": "test_tool_annotations_present_on_workflow_tools",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_tools_list_accepts_cursor_param",
+      "name": "test_tools_list_accepts_cursor_param",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_tools_list_includes_annotations_for_builtin_tools",
+      "name": "test_tools_list_includes_annotations_for_builtin_tools",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_unknown_tool_returns_error",
+      "name": "test_unknown_tool_returns_error",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_warn_on_medium_trust_without_gold",
+      "name": "test_warn_on_medium_trust_without_gold",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_workflow_phase0_recon_ready",
+      "name": "test_workflow_phase0_recon_ready",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_workflow_trust_gate_allow",
+      "name": "test_workflow_trust_gate_allow",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.test_write_file_is_destructive",
+      "name": "test_write_file_is_destructive",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.testcertifyoutput",
+      "name": "TestCertifyOutput",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.testmcp202511features",
+      "name": "TestMCP202511Features",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.testmcpworkflowrouting",
+      "name": "TestMCPWorkflowRouting",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.testregistry",
+      "name": "TestRegistry",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.testsafeexecute",
+      "name": "TestSafeExecute",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.testtrustgate",
+      "name": "TestTrustGate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.testworkflowphase0recon",
+      "name": "TestWorkflowPhase0Recon",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.testworkflowtrustgate",
+      "name": "TestWorkflowTrustGate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.toolregistry",
+      "name": "ToolRegistry",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.trust_gate",
+      "name": "trust_gate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.trustgateresult",
+      "name": "TrustGateResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.trustgatestep",
+      "name": "TrustGateStep",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.workflow_certify",
+      "name": "workflow_certify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.workflow_map_terrain",
+      "name": "workflow_map_terrain",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.workflow_phase0_recon",
+      "name": "workflow_phase0_recon",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.workflow_safe_execute",
+      "name": "workflow_safe_execute",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.workflow_trust_gate",
+      "name": "workflow_trust_gate",
+      "version": "0.1.0"
+    }
+  ],
+  "tier": "a3_og_features",
+  "tier_version": "0.1.0"
+}

@@ -1,0 +1,42 @@
+{
+  "body": "class TestWisdomPersistence:\n    def test_persist_principles_calls_context_memory(self):\n        from ass_ade.agent.wisdom import WisdomEngine\n        engine = WisdomEngine({})\n        engine._principles = [\"verify before acting\", \"halt on capability gap\"]\n\n        with patch(\"ass_ade.context_memory.store_vector_memory\") as mock_store:\n            count = engine.persist_principles()\n        assert count == 2\n\n    def test_persist_principles_triggers_lora_on_high_conviction(self, tmp_path):\n        from ass_ade.agent.wisdom import WisdomEngine\n        from ass_ade.agent.lora_flywheel import LoRAFlywheel\n        cfg = {\n            \"lora_flywheel\": {\n                \"pending_file\": str(tmp_path / \"pending.jsonl\"),\n                \"contributions_file\": str(tmp_path / \"contributions.jsonl\"),\n                \"batch_interval\": 50,\n                \"min_confidence\": 0.5,\n            }\n        }\n        engine = WisdomEngine({})\n        engine._principles = [\"p1\", \"p2\", \"p3\", \"p4\"]\n        engine._conviction = 0.9  # High conviction\n\n        flywheel = LoRAFlywheel(cfg)\n        with patch(\"ass_ade.context_memory.store_vector_memory\"):\n            count = engine.persist_principles(lora_flywheel=flywheel)\n        assert count == 4\n        # Flywheel should have captured principles (\u22653 and conviction \u2265 0.7)\n        assert any(c.kind == \"principle\" for c in flywheel._pending)\n\n    def test_persist_principles_no_lora_on_low_conviction(self, tmp_path):\n        from ass_ade.agent.wisdom import WisdomEngine\n        from ass_ade.agent.lora_flywheel import LoRAFlywheel\n        cfg = {\n            \"lora_flywheel\": {\n                \"pending_file\": str(tmp_path / \"pending.jsonl\"),\n                \"contributions_file\": str(tmp_path / \"contributions.jsonl\"),\n                \"batch_interval\": 50,\n                \"min_confidence\": 0.5,\n            }\n        }\n        engine = WisdomEngine({})\n        engine._principles = [\"p1\", \"p2\", \"p3\"]\n        engine._conviction = 0.3  # Below 0.7\n\n        flywheel = LoRAFlywheel(cfg)\n        with patch(\"ass_ade.context_memory.store_vector_memory\"):\n            engine.persist_principles(lora_flywheel=flywheel)\n        # Low conviction \u2192 no LoRA contribution\n        assert len(flywheel._pending) == 0\n",
+  "body_hash": "35dc26332c1db2ab",
+  "body_truncated": false,
+  "callers_of": [
+    "WisdomEngine",
+    "LoRAFlywheel",
+    "any",
+    "patch",
+    "persist_principles",
+    "len",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwisdompersistence.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testwisdompersistence",
+  "imports": [
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwisdompersistence.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "TestWisdomPersistence",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestWisdomPersistence"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

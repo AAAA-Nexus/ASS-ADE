@@ -1,0 +1,31 @@
+{
+  "body": "    def test_401_raises_auth_error(self) -> None:\n        with pytest.raises(NexusAuthError) as exc_info:\n            raise_for_status(401, endpoint=\"/v1/trust/score\")\n        assert exc_info.value.status_code == 401\n",
+  "body_hash": "1ebb5e762c6ae63c",
+  "body_truncated": false,
+  "callers_of": [
+    "raises",
+    "raise_for_status"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testraiseforstatus.py:10.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_401_raises_auth_error",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testraiseforstatus.py:10"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_401_raises_auth_error",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_401_raises_auth_error"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

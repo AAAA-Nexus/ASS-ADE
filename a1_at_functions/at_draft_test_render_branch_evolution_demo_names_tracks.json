@@ -1,0 +1,31 @@
+{
+  "body": "def test_render_branch_evolution_demo_names_tracks(tmp_path: Path) -> None:\n    (tmp_path / \"pyproject.toml\").write_text(\n        '[project]\\nname = \"demo\"\\nversion = \"0.0.1\"\\n',\n        encoding=\"utf-8\",\n    )\n\n    markdown = render_branch_evolution_demo(\n        root=tmp_path,\n        branches=[\"tests-first\", \"docs-first\"],\n        iterations=2,\n    )\n\n    assert \"git switch -c evolve/tests-first\" in markdown\n    assert \"docs-first iteration 2\" in markdown\n    assert \"ass-ade protocol evolution-record\" in markdown\n",
+  "body_hash": "49b96dc44062bab9",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "render_branch_evolution_demo"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_render_branch_evolution_demo_names_tracks.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_render_branch_evolution_demo_names_tracks",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_render_branch_evolution_demo_names_tracks.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_render_branch_evolution_demo_names_tracks",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_render_branch_evolution_demo_names_tracks"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,51 @@
+{
+  "body": "def render_rebuild_summary(result: dict[str, Any]) -> str:\n    \"\"\"Return a human-readable rebuild summary for CLI display.\"\"\"\n    phases = result.get(\"phases\", {})\n    ingest = phases.get(\"ingest\", {})\n    gap = phases.get(\"gap_fill\", {})\n    mat = phases.get(\"materialize\", {})\n    audit = phases.get(\"audit\", {})\n    cert = phases.get(\"certificate\", {})\n    pkg = phases.get(\"package\", {})\n    cycles = phases.get(\"cycles\", {})\n    purity = phases.get(\"tier_purity\", {})\n\n    lines: list[str] = [\n        f\"[Phase 1] Ingest     : {ingest.get('files_scanned', 0)} files, \"\n        f\"{ingest.get('symbols', 0)} symbols, {ingest.get('gaps', 0)} gaps\",\n        f\"[Phase 2] Gap-Fill   : {gap.get('proposed_components', 0)} proposals\",\n    ]\n    if phases.get(\"enrich\"):\n        e = phases[\"enrich\"]\n        lines.append(f\"[Phase 3] Enrich     : {e.get('bodies_attached', 0)} bodies, \"\n                     f\"{e.get('made_of_edges', 0)} edges\")\n    if cycles.get(\"cycle_count\"):\n        lines.append(f\"[Phase 4] Cycles     : {cycles['cycle_count']} detected + broken\")\n    else:\n        lines.append(\"[Phase 4] Cycles     : none (acyclic)\")\n    if purity.get(\"removed_edges\"):\n        lines.append(f\"[Phase 4] Purity     : {purity['removed_edges']} violating edges removed\")\n    lines.append(\n        f\"[Phase 5] Materialize: {mat.get('written_count', 0)} components -> {mat.get('target_root', '')}\"\n    )\n    pass_rate = audit.get(\"pass_rate\", 0.0)\n    lines.append(\n        f\"[Phase 6] Audit      : {audit.get('valid', 0)}/{audit.get('total', 0)} clean \"\n        f\"({pass_rate * 100:.1f}%), \"\n        f\"{'conformant' if audit.get('structure_conformant') else 'non-conformant'}\"\n    )\n    if cert.get(\"certificate_sha256\"):\n        lines.append(\n            f\"[Cert]    SHA-256    : {cert['certificate_sha256'][:16]}...\"\n        )\n    if pkg.get(\"importable\"):\n        lines.append(f\"[Phase 7] Package    : pip install -e {mat.get('target_root', '')}\")\n    elif pkg.get(\"error\"):\n        lines.append(f\"[Phase 7] Package    : error \u2014 {pkg['error']}\")\n\n    return \"\\n\".join(lines)\n",
+  "body_hash": "97f777bb51f5b3e2",
+  "body_truncated": false,
+  "callers_of": [
+    "get",
+    "append",
+    "join"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/orchestrator.py:198.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.render_rebuild_summary",
+  "imports": [
+    "__future__.annotations",
+    "datetime",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.engine.rebuild.body_extractor.derive_made_of_graph",
+    "ass_ade.engine.rebuild.body_extractor.enrich_components_with_bodies",
+    "ass_ade.engine.rebuild.cycle_detector.break_cycles",
+    "ass_ade.engine.rebuild.cycle_detector.detect_cycles",
+    "ass_ade.engine.rebuild.gap_filler.build_gap_fill_plan",
+    "ass_ade.engine.rebuild.package_emitter.emit_runnable_package",
+    "ass_ade.engine.rebuild.project_parser.ingest_project",
+    "ass_ade.engine.rebuild.schema_materializer.emit_certificate",
+    "ass_ade.engine.rebuild.schema_materializer.materialize_plan",
+    "ass_ade.engine.rebuild.schema_materializer.validate_rebuild",
+    "ass_ade.engine.rebuild.synthesis.synthesize_missing_components",
+    "ass_ade.engine.rebuild.tier_purity.enforce_tier_purity",
+    "os"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/orchestrator.py:198"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "render_rebuild_summary",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for render_rebuild_summary"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

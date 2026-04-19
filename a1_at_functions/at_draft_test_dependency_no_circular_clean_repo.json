@@ -1,0 +1,52 @@
+{
+  "body": "def test_dependency_no_circular_clean_repo(tmp_path: Path) -> None:\n    (tmp_path / \"utils.py\").write_text(\"def add(a, b): return a + b\\n\", encoding=\"utf-8\")\n    (tmp_path / \"main.py\").write_text(\"from utils import add\\n\", encoding=\"utf-8\")\n    files = _iter_files(tmp_path)\n    result = _dependency_agent(tmp_path, files)\n    assert result[\"has_circular_deps\"] is False\n",
+  "body_hash": "98e0b20aeb11506e",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "_iter_files",
+    "_dependency_agent"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_parallel_recon.py:200.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_dependency_no_circular_clean_repo",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "textwrap",
+    "pathlib.Path",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.recon.ReconReport",
+    "ass_ade.recon._classify_tier",
+    "ass_ade.recon._count_test_functions",
+    "ass_ade.recon._dependency_agent",
+    "ass_ade.recon._doc_agent",
+    "ass_ade.recon._iter_files",
+    "ass_ade.recon._scout_agent",
+    "ass_ade.recon._test_agent",
+    "ass_ade.recon._tier_agent",
+    "ass_ade.recon.run_parallel_recon",
+    "time",
+    "json"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_parallel_recon.py:200"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_dependency_no_circular_clean_repo",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_dependency_no_circular_clean_repo"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

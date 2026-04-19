@@ -1,0 +1,31 @@
+{
+  "body": "    def test_monitor_all_fires_multiple_alerts(self) -> None:\n        b = BAS({})\n        alerts = b.monitor_all({\n            \"synergy\": 0.9,\n            \"novelty\": 0.9,\n            \"trust_score\": 0.1,\n            \"budget_pct\": 0.95,\n            \"gvu_delta\": 0.0,\n        })\n        kinds = {a.kind for a in alerts}\n        assert \"emergent_synergy\" in kinds\n        assert \"trust_violation\" in kinds\n        assert \"budget_exhaustion\" in kinds\n",
+  "body_hash": "65450d18b0c2fa14",
+  "body_truncated": false,
+  "callers_of": [
+    "BAS",
+    "monitor_all"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbas.py:18.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_monitor_all_fires_multiple_alerts",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbas.py:18"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_monitor_all_fires_multiple_alerts",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_monitor_all_fires_multiple_alerts"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

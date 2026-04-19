@@ -1,0 +1,16 @@
+# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_version_tracker.py:183
+# Component id: mo.source.ass_ade.testaggregateversion
+__version__ = "0.1.0"
+
+class TestAggregateVersion:
+    def test_picks_highest(self):
+        assert _aggregate_version(["0.1.0", "0.2.0", "0.1.5"]) == "0.2.0"
+
+    def test_empty_list_returns_initial(self):
+        assert _aggregate_version([]) == INITIAL_VERSION
+
+    def test_single(self):
+        assert _aggregate_version(["1.3.7"]) == "1.3.7"
+
+    def test_major_wins(self):
+        assert _aggregate_version(["0.9.9", "1.0.0", "0.9.8"]) == "1.0.0"

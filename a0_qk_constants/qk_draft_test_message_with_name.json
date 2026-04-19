@@ -1,0 +1,31 @@
+{
+  "body": "    def test_message_with_name(self):\n        msg = Message(role=\"tool\", content=\"result\", name=\"read_file\")\n        tokens = estimate_message_tokens(msg)\n        assert tokens >= 6  # overhead + name + content\n",
+  "body_hash": "fd8408a6aa8b5e9f",
+  "body_truncated": false,
+  "callers_of": [
+    "Message",
+    "estimate_message_tokens"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testestimatemessagetokens.py:16.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.test_message_with_name",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testestimatemessagetokens.py:16"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "test_message_with_name",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_message_with_name"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

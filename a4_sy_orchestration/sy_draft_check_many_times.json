@@ -1,0 +1,47 @@
+{
+  "body": "        def check_many_times():\n            for _ in range(100):\n                results.append(ctx.check())\n                time.sleep(0.001)\n",
+  "body_hash": "1bfdce066588f89c",
+  "body_truncated": false,
+  "callers_of": [
+    "range",
+    "append",
+    "sleep",
+    "check"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_cancellation.py:51.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.check_many_times",
+  "imports": [
+    "__future__.annotations",
+    "threading",
+    "time",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.mcp.cancellation.CancellationContext",
+    "ass_ade.mcp.cancellation.NullCancellationContext",
+    "ass_ade.mcp.server.MCPServer",
+    "ass_ade.mcp.cancellation.CancellationContext",
+    "ass_ade.mcp.cancellation.CancellationContext",
+    "ass_ade.mcp.cancellation.CancellationContext"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_cancellation.py:51"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "check_many_times",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for check_many_times"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

@@ -1,0 +1,56 @@
+{
+  "body": "class CycleReport:\n    \"\"\"Full report from one agent step cycle.\"\"\"\n    alerts: list  # list[Alert] \u2014 typed at runtime to avoid circular import\n    wisdom_score: float = 0.0\n    wisdom_passed: int = 0\n    wisdom_failed: int = 0\n    conviction: float = 0.5\n    wisdom_ema: float = 0.5  # Exponential moving average of wisdom scores\n    gvu_coefficient: float = 1.0\n    synergy: float = 0.0\n    synergy_emergent: bool = False\n    atlas_subtasks: list = field(default_factory=list)  # list[SubTask]\n    principles: list[str] = field(default_factory=list)\n    engine_reports: dict[str, dict] = field(default_factory=dict)\n    warnings: list[str] = field(default_factory=list)\n    tca_stale_files: list[str] = field(default_factory=list)\n    cie_passes: int = 0\n    cie_failures: int = 0\n    lora_pending: int = 0\n    autopoietic_triggered: bool = False\n",
+  "body_hash": "0c620c38c84e925a",
+  "body_truncated": false,
+  "callers_of": [
+    "field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/orchestrator.py:59.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.cyclereport",
+  "imports": [
+    "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any",
+    "ass_ade.agent.atlas.Atlas",
+    "ass_ade.agent.bas.BAS",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "pathlib.Path",
+    "json",
+    "pathlib.Path",
+    "ass_ade.agent.gvu.GVU",
+    "ass_ade.agent.tdmi.TDMI",
+    "ass_ade.agent.edee.EDEE",
+    "ass_ade.agent.lifr_graph.LIFRGraph",
+    "ass_ade.agent.puppeteer.Puppeteer",
+    "ass_ade.agent.sam.SAM",
+    "ass_ade.agent.ide.IDE",
+    "ass_ade.agent.severa.Severa",
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.agent.tca.TCAEngine",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel",
+    "ass_ade.map_terrain.active_terrain_gate",
+    "json"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/orchestrator.py:59"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "CycleReport",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for CycleReport"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

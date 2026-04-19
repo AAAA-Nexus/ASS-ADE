@@ -1,0 +1,46 @@
+{
+  "body": "class TestMCPTrustGate:\n    def test_trust_gate_requires_agent_id(self) -> None:\n        server = MCPServer(\".\")\n        _initialize_server(server)\n        response = server._handle({\n            \"jsonrpc\": \"2.0\",\n            \"id\": 1,\n            \"method\": \"tools/call\",\n            \"params\": {\"name\": \"trust_gate\", \"arguments\": {\"agent_id\": \"\"}},\n        })\n        assert response is not None\n        assert response[\"error\"][\"code\"] == -32602\n\n    def test_trust_gate_local_profile_blocked(self) -> None:\n\n        server = MCPServer(\".\")\n        _initialize_server(server)\n        # Mock load_config to return local profile\n        with patch(\"ass_ade.mcp.server.MCPServer._get_nexus_client\", side_effect=RuntimeError(\"local\")):\n            response = server._handle({\n                \"jsonrpc\": \"2.0\",\n                \"id\": 1,\n                \"method\": \"tools/call\",\n                \"params\": {\"name\": \"trust_gate\", \"arguments\": {\"agent_id\": \"test-agent\"}},\n            })\n        assert response is not None\n        assert response[\"result\"][\"isError\"]\n\n    def test_get_nexus_client_uses_configured_api_key(self) -> None:\n        server = MCPServer(\".\")\n        cfg = AssAdeConfig(\n            profile=\"hybrid\",\n            nexus_base_url=\"https://atomadic.tech\",\n            request_timeout_s=12.0,\n            nexus_api_key=\"test-secret\",\n        )\n\n        with (\n            patch(\"ass_ade.config.load_config\", return_value=cfg),\n            patch(\"ass_ade.nexus.client.NexusClient\") as client_cls,\n        ):\n            client = server._get_nexus_client()\n\n        assert client is client_cls.return_value\n        client_cls.assert_called_once_with(\n            base_url=\"https://atomadic.tech\",\n            timeout=12.0,\n            api_key=\"test-secret\",\n        )\n",
+  "body_hash": "e1fb71337f9da78d",
+  "body_truncated": false,
+  "callers_of": [
+    "MCPServer",
+    "_initialize_server",
+    "_handle",
+    "AssAdeConfig",
+    "assert_called_once_with",
+    "patch",
+    "_get_nexus_client",
+    "RuntimeError"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:158.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.testmcptrustgate",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.mcp.server._WORKFLOW_TOOLS",
+    "ass_ade.mcp.server.MCPServer",
+    "httpx"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:158"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "TestMCPTrustGate",
+  "product_categories": [
+    "IDT"
+  ],
+  "provides": [
+    "rebuild candidate for TestMCPTrustGate"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

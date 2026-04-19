@@ -1,0 +1,31 @@
+{
+  "body": "    def add_delete(self, path: str, description: str = \"\") -> None:\n        self.edits.append(PlannedEdit(\n            kind=EditKind.DELETE,\n            path=path,\n            description=description or f\"Delete {path}\",\n        ))\n        self.validated = False\n",
+  "body_hash": "7475dce2dd3e3db5",
+  "body_truncated": false,
+  "callers_of": [
+    "append",
+    "PlannedEdit"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_editplan.py:34.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.add_delete",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_editplan.py:34"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "add_delete",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for add_delete"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,33 @@
+{
+  "body": "def build_audit(root: Path, settings: AssAdeConfig) -> list[ProtocolAuditCheck]:\n    checks: list[ProtocolAuditCheck] = []\n\n    required_files = [\n        root / \"README.md\",\n        root / \"docs\" / \"architecture.md\",\n        root / \"docs\" / \"dev-stack.md\",\n        root / \".github\" / \"copilot-instructions.md\",\n        root / \"pyproject.toml\",\n        root / \"src\" / \"ass_ade\" / \"cli.py\",\n        root / \"src\" / \"ass_ade\" / \"nexus\" / \"models.py\",\n        root / \"src\" / \"ass_ade\" / \"local\" / \"repo.py\",\n        root / \"tests\" / \"test_cli.py\",\n    ]\n    checks.append(\n        ProtocolAuditCheck(\n            name=\"Public shell scaffold present\",\n            passed=all(path.exists() for path in required_files),\n            detail=\"Checks that docs, package config, CLI, typed contracts, local utility, and tests exist.\",\n        )\n    )\n\n    checks.append(\n        ProtocolAuditCheck(\n            name=\"Local mode is the default\",\n            passed=settings.profile == \"local\",\n            detail=f\"Current profile is '{settings.profile}'. Public-safe default should remain local.\",\n        )\n    )\n\n    checks.append(\n        ProtocolAuditCheck(\n            name=\"Remote contract boundary preserved\",\n            passed=(root / \"src\" / \"ass_ade\" / \"nexus\" / \"models.py\").exists(),\n            detail=\"Typed public-contract models should exist instead of raw backend logic in the repo.\",\n        )\n    )\n\n    checks.append(\n        ProtocolAuditCheck(\n            name=\"Standalone local value exists\",\n            passed=(root / \"src\" / \"ass_ade\" / \"local\" / \"repo.py\").exists(),\n            detail=\"The repo should ship at least one genuinely useful local capability with no premium dependency.\",\n        )\n    )\n\n    checks.append(\n        ProtocolAuditCheck(\n            name=\"Protocol docs are public-safe\",\n            passed=(root / \"docs\" / \"protocol.md\").exists(),\n            detail=\"The sanitized protocol should be documented without embedding private backend internals.\",\n        )\n    )\n\n    return checks\n",
+  "body_hash": "cd6c82d58e7f6266",
+  "body_truncated": false,
+  "callers_of": [
+    "append",
+    "ProtocolAuditCheck",
+    "all",
+    "exists"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_build_audit.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.build_audit",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_build_audit.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "build_audit",
+  "product_categories": [
+    "SRG"
+  ],
+  "provides": [
+    "rebuild candidate for build_audit"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

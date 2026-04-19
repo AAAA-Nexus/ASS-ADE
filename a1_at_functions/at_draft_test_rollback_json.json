@@ -1,0 +1,42 @@
+{
+  "body": "def test_rollback_json(tmp_path: Path) -> None:\n    target = tmp_path / \"myproject\"\n    target.mkdir()\n    (target / \"main.py\").write_text(\"v2\\n\", encoding=\"utf-8\")\n\n    backup = tmp_path / \"myproject-backup-20240101-120000\"\n    backup.mkdir()\n    (backup / \"main.py\").write_text(\"v1\\n\", encoding=\"utf-8\")\n\n    result = runner.invoke(app, [\"rollback\", str(target), \"--yes\", \"--json\"])\n\n    assert result.exit_code == 0\n    payload = json.loads(result.stdout)\n    assert payload[\"ok\"] is True\n    assert \"backup_name\" in payload\n",
+  "body_hash": "a28e0f77d418a3cf",
+  "body_truncated": false,
+  "callers_of": [
+    "mkdir",
+    "write_text",
+    "invoke",
+    "loads",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli.py:252.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_rollback_json",
+  "imports": [
+    "json",
+    "pathlib.Path",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.cli._auto_detect_project"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli.py:252"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_rollback_json",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_rollback_json"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

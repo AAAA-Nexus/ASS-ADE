@@ -1,0 +1,33 @@
+{
+  "body": "class SIP:\n    top: list[Candidate]\n    summary: str\n",
+  "body_hash": "cb7d0891f46f11bf",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/ide.py:17.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.sip",
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/ide.py:17"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "SIP",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for SIP"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

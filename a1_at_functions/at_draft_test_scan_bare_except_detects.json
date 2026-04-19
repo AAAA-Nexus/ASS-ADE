@@ -1,0 +1,46 @@
+{
+  "body": "def test_scan_bare_except_detects(tmp_path: Path) -> None:\n    content = \"try:\\n    risky()\\nexcept:\\n    pass\\n\"\n    (tmp_path / \"module.py\").write_text(content, encoding=\"utf-8\")\n\n    findings = scan_bare_except(tmp_path)\n\n    assert len(findings) >= 1\n    assert findings[0][\"category\"] == \"bare_except\"\n",
+  "body_hash": "3d8edb7f418453fd",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "scan_bare_except",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_enhancer.py:134.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_scan_bare_except_detects",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "typing.Any",
+    "pytest",
+    "ass_ade.local.enhancer.build_enhancement_report",
+    "ass_ade.local.enhancer.rank_findings",
+    "ass_ade.local.enhancer.scan_bare_except",
+    "ass_ade.local.enhancer.scan_long_functions",
+    "ass_ade.local.enhancer.scan_missing_docs",
+    "ass_ade.local.enhancer.scan_missing_tests",
+    "ass_ade.local.enhancer.scan_security_patterns",
+    "ass_ade.local.enhancer.scan_todo_fixme",
+    "ass_ade.local.enhancer.scan_missing_type_hints"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_enhancer.py:134"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_scan_bare_except_detects",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_scan_bare_except_detects"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,31 @@
+{
+  "body": "    def test_unknown_4xx_raises_base_error(self) -> None:\n        with pytest.raises(NexusError) as exc_info:\n            raise_for_status(418)\n        assert exc_info.value.status_code == 418\n",
+  "body_hash": "e21cb44f3a657ace",
+  "body_truncated": false,
+  "callers_of": [
+    "raises",
+    "raise_for_status"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testraiseforstatus.py:39.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_unknown_4xx_raises_base_error",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testraiseforstatus.py:39"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_unknown_4xx_raises_base_error",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_unknown_4xx_raises_base_error"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

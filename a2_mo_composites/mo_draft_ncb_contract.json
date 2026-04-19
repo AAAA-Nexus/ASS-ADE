@@ -1,0 +1,30 @@
+{
+  "body": "    def ncb_contract(self, target_path: str | Path) -> bool:\n        \"\"\"Return True if NCB contract is satisfied (file was read before writing).\"\"\"\n        return self.check_freshness(target_path).fresh\n",
+  "body_hash": "aee3fc5feffcb90f",
+  "body_truncated": false,
+  "callers_of": [
+    "check_freshness"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_tcaengine.py:70.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.ncb_contract",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_tcaengine.py:70"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "ncb_contract",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ncb_contract"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

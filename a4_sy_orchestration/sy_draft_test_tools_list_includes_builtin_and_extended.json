@@ -1,0 +1,41 @@
+{
+  "body": "    def test_tools_list_includes_builtin_and_extended(self) -> None:\n        server = MCPServer(\".\")\n        _initialize_server(server)\n        response = server._handle({\n            \"jsonrpc\": \"2.0\",\n            \"id\": 1,\n            \"method\": \"tools/list\",\n            \"params\": {},\n        })\n        assert response is not None\n        tools = response[\"result\"][\"tools\"]\n        names = {t[\"name\"] for t in tools}\n\n        # Built-in tools\n        assert \"read_file\" in names\n        assert \"write_file\" in names\n\n        # Extended workflow tools\n        assert \"phase0_recon\" in names\n        assert \"context_pack\" in names\n        assert \"context_memory_store\" in names\n        assert \"context_memory_query\" in names\n        assert \"map_terrain\" in names\n        assert \"trust_gate\" in names\n        assert \"certify_output\" in names\n        assert \"safe_execute\" in names\n        assert \"ask_agent\" in names\n        assert \"a2a_validate\" in names\n        assert \"a2a_negotiate\" in names\n",
+  "body_hash": "80b1eb41da4d3e35",
+  "body_truncated": false,
+  "callers_of": [
+    "MCPServer",
+    "_initialize_server",
+    "_handle"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:26.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_tools_list_includes_builtin_and_extended",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.mcp.server._WORKFLOW_TOOLS",
+    "ass_ade.mcp.server.MCPServer",
+    "httpx"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:26"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "test_tools_list_includes_builtin_and_extended",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_tools_list_includes_builtin_and_extended"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

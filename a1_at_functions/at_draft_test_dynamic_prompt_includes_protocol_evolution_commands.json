@@ -1,0 +1,40 @@
+{
+  "body": "def test_dynamic_prompt_includes_protocol_evolution_commands(tmp_path: Path) -> None:\n    prompt = build_atomadic_intent_prompt(tmp_path)\n\n    assert \"Dynamic Capability Inventory\" in prompt\n    assert \"`protocol evolution-record`\" in prompt\n    assert \"`protocol evolution-demo`\" in prompt\n    assert \"`protocol version-bump`\" in prompt\n    assert \"`prompt sync-agent`\" in prompt\n    assert \"`prompt_hash`\" in prompt\n",
+  "body_hash": "063cae11849b8081",
+  "body_truncated": false,
+  "callers_of": [
+    "build_atomadic_intent_prompt"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_capabilities.py:16.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_dynamic_prompt_includes_protocol_evolution_commands",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "ass_ade.interpreter",
+    "ass_ade.agent.capabilities.build_atomadic_intent_prompt",
+    "ass_ade.agent.capabilities.command_path_exists",
+    "ass_ade.agent.capabilities.render_atomadic_help",
+    "ass_ade.agent.capabilities.sync_atomadic_prompt_capabilities",
+    "ass_ade.agent.context.build_system_prompt",
+    "ass_ade.interpreter.Atomadic"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_capabilities.py:16"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_dynamic_prompt_includes_protocol_evolution_commands",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_dynamic_prompt_includes_protocol_evolution_commands"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

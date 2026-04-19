@@ -1,0 +1,31 @@
+{
+  "body": "        def cancel_once():\n            time.sleep(0.01)\n            ctx.cancel()\n",
+  "body_hash": "96c7815c4ece13a9",
+  "body_truncated": false,
+  "callers_of": [
+    "sleep",
+    "cancel"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testcancellationcontext.py:34.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.cancel_once",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testcancellationcontext.py:34"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "cancel_once",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for cancel_once"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

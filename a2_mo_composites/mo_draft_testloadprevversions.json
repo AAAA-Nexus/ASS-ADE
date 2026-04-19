@@ -1,0 +1,47 @@
+{
+  "body": "class TestLoadPrevVersions:\n    def test_none_path_returns_empty(self):\n        assert load_prev_versions(None) == {}\n\n    def test_nonexistent_path_returns_empty(self, tmp_path: Path):\n        assert load_prev_versions(tmp_path / \"nope.json\") == {}\n\n    def test_loads_from_manifest(self, tmp_path: Path):\n        manifest = {\n            \"components\": [\n                {\n                    \"id\": \"at.foo\",\n                    \"version\": \"0.2.1\",\n                    \"body_hash\": \"abc123\",\n                    \"body\": \"def foo(): pass\",\n                }\n            ]\n        }\n        p = tmp_path / \"MANIFEST.json\"\n        p.write_text(json.dumps(manifest), encoding=\"utf-8\")\n        result = load_prev_versions(p)\n        assert \"at.foo\" in result\n        assert result[\"at.foo\"][\"version\"] == \"0.2.1\"\n        assert result[\"at.foo\"][\"body_hash\"] == \"abc123\"\n\n    def test_missing_id_skipped(self, tmp_path: Path):\n        manifest = {\"components\": [{\"version\": \"0.1.0\"}]}\n        p = tmp_path / \"MANIFEST.json\"\n        p.write_text(json.dumps(manifest), encoding=\"utf-8\")\n        assert load_prev_versions(p) == {}\n\n    def test_invalid_json_returns_empty(self, tmp_path: Path):\n        p = tmp_path / \"MANIFEST.json\"\n        p.write_text(\"not json\", encoding=\"utf-8\")\n        assert load_prev_versions(p) == {}\n",
+  "body_hash": "8a5790605db74039",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "load_prev_versions",
+    "dumps"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_version_tracker.py:199.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testloadprevversions",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.engine.rebuild.version_tracker.INITIAL_VERSION",
+    "ass_ade.engine.rebuild.version_tracker._aggregate_version",
+    "ass_ade.engine.rebuild.version_tracker._public_python_api",
+    "ass_ade.engine.rebuild.version_tracker.assign_version",
+    "ass_ade.engine.rebuild.version_tracker.bump_version",
+    "ass_ade.engine.rebuild.version_tracker.classify_change",
+    "ass_ade.engine.rebuild.version_tracker.content_hash",
+    "ass_ade.engine.rebuild.version_tracker.load_prev_versions",
+    "ass_ade.engine.rebuild.version_tracker.write_project_version_file",
+    "ass_ade.engine.rebuild.version_tracker.write_tier_version_file"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_version_tracker.py:199"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "TestLoadPrevVersions",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestLoadPrevVersions"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

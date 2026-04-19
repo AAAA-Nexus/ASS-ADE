@@ -1,0 +1,36 @@
+{
+  "body": "def test_vector_memory_store_and_query(tmp_path: Path) -> None:\n    vector = vector_embed(\"trusted rag context\")\n    assert len(vector) == VECTOR_DIMENSIONS\n\n    stored = store_vector_memory(\n        text=\"trusted rag context for mcp tools\",\n        namespace=\"demo\",\n        metadata={\"source\": \"unit\"},\n        working_dir=tmp_path,\n    )\n    result = query_vector_memory(\n        query=\"mcp trusted context\",\n        namespace=\"demo\",\n        working_dir=tmp_path,\n    )\n\n    assert stored.id == result.matches[0].id\n    assert result.matches[0].metadata[\"source\"] == \"unit\"\n",
+  "body_hash": "629404ddfc21780b",
+  "body_truncated": false,
+  "callers_of": [
+    "vector_embed",
+    "store_vector_memory",
+    "query_vector_memory",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_vector_memory_store_and_query.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.test_vector_memory_store_and_query",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_vector_memory_store_and_query.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.vector_embed",
+    "at.source.ass_ade.query_vector_memory"
+  ],
+  "name": "test_vector_memory_store_and_query",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_vector_memory_store_and_query"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

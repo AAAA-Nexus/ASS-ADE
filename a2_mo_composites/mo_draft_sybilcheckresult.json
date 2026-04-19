@@ -1,0 +1,36 @@
+{
+  "body": "class SybilCheckResult(NexusModel):\n    \"\"\"/v1/identity/sybil-check\"\"\"\n    sybil_risk: str | None = None   # \"low\" | \"medium\" | \"high\"\n    score: float | None = None\n    flags: list[str] = Field(default_factory=list)\n",
+  "body_hash": "11c3e44e7c2a763b",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/models.py:246.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.sybilcheckresult",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/models.py:246"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "SybilCheckResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for SybilCheckResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

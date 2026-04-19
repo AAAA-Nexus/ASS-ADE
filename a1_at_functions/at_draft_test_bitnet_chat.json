@@ -1,0 +1,36 @@
+{
+  "body": "def test_bitnet_chat(tmp_path: Path) -> None:\n    mock_nx = MagicMock()\n    mock_nx.bitnet_inference.return_value = BitNetInferenceResponse(result=\"hello from bitnet\", model=\"bitnet-b1.58-2B-4T\")\n    with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n        result = runner.invoke(app, [\"bitnet\", \"chat\", \"hi\",\n                                     \"--config\", str(_hybrid_config(tmp_path)), \"--allow-remote\"])\n    assert result.exit_code == 0\n    assert \"bitnet\" in result.stdout\n",
+  "body_hash": "03a9d782bb296ed6",
+  "body_truncated": false,
+  "callers_of": [
+    "MagicMock",
+    "BitNetInferenceResponse",
+    "patch",
+    "invoke",
+    "_make_ctx_mgr",
+    "str",
+    "_hybrid_config"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_bitnet_chat.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_bitnet_chat",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_bitnet_chat.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_bitnet_chat",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_bitnet_chat"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,42 @@
+# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_teststepstream.py:23
+# Component id: at.source.ass_ade.test_tool_call_events
+__version__ = "0.1.0"
+
+    def test_tool_call_events(self, tmp_path):
+        provider = _MockProvider([
+            CompletionResponse(
+                message=Message(
+                    role="assistant",
+                    content="",
+                    tool_calls=[
+                        ToolCallRequest(id="c1", name="echo", arguments={"text": "x"})
+                    ],
+                ),
+                finish_reason="tool_calls",
+            ),
+            CompletionResponse(
+                message=Message(role="assistant", content="Done."),
+                finish_reason="stop",
+            ),
+        ])
+        registry = ToolRegistry()
+        registry.register(_EchoTool())
+
+        loop = AgentLoop(
+            provider=provider,
+            registry=registry,
+            working_dir=str(tmp_path),
+        )
+        events = list(loop.step_stream("Echo x"))
+
+        kinds = [e.kind for e in events]
+        assert "tool_call" in kinds
+        assert "tool_result" in kinds
+        assert "done" in kinds
+
+        tool_event = next(e for e in events if e.kind == "tool_call")
+        assert tool_event.tool_name == "echo"
+
+        result_event = next(e for e in events if e.kind == "tool_result")
+        assert result_event.tool_result is not None
+        assert result_event.tool_result.success

@@ -1,0 +1,56 @@
+{
+  "body": "class TestQualityGatesConfig:\n    def test_default_config_is_empty_dict(self) -> None:\n        mock_client = MagicMock()\n        gates = QualityGates(mock_client)\n        assert gates._v18_config == {}\n\n    def test_config_passed_through(self) -> None:\n        mock_client = MagicMock()\n        config = {\"alphaverus\": {\"beam_width\": 8}, \"dgm_h\": {\"simulation_cycles\": 20}}\n        gates = QualityGates(mock_client, config=config)\n        assert gates._v18_config == config\n\n    def test_hooks_receive_config(self) -> None:\n        mock_client = MagicMock()\n        mock_client.certify_output_verify.return_value = MagicMock(rubric_passed=True)\n        config = {\"alphaverus\": {\"beam_width\": 2}}\n        gates = QualityGates(mock_client, config=config)\n        # hook_alphaverus_refine uses self._v18_config \u2014 verify it's the right dict\n        with patch(\"ass_ade.agent.alphaverus.AlphaVerus\") as MockAV:\n            instance = MockAV.return_value\n            instance.tree_search.return_value = MagicMock(code=\"x=1\", verified=True, score=0.9)\n            result = gates.hook_alphaverus_refine(\"x = 1\", \"x == 1\")\n            # AlphaVerus was instantiated with our config\n            MockAV.assert_called_once_with(config, mock_client)\n",
+  "body_hash": "fb19488398b077bf",
+  "body_truncated": false,
+  "callers_of": [
+    "MagicMock",
+    "QualityGates",
+    "patch",
+    "hook_alphaverus_refine",
+    "assert_called_once_with"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:389.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testqualitygatesconfig",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "time",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.agent.audit_questions.AUDIT_QUESTIONS",
+    "ass_ade.agent.bas.BAS",
+    "ass_ade.agent.bas.Alert",
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.orchestrator.CycleReport",
+    "ass_ade.agent.orchestrator.EngineOrchestrator",
+    "ass_ade.agent.wisdom.AuditReport",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "collections.Counter",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.engine.provider.ModelProvider",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.tools.registry.default_registry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:389"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "TestQualityGatesConfig",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestQualityGatesConfig"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

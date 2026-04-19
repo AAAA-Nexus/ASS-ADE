@@ -1,0 +1,31 @@
+{
+  "body": "class TestPublicPythonApi:\n    def test_extracts_functions(self):\n        body = \"def foo(): pass\\ndef _bar(): pass\\ndef baz(): pass\"\n        assert _public_python_api(body) == {\"foo\", \"baz\"}\n\n    def test_extracts_classes(self):\n        body = \"class Foo: pass\\nclass _Hidden: pass\"\n        assert _public_python_api(body) == {\"Foo\"}\n\n    def test_empty_body(self):\n        assert _public_python_api(\"\") == set()\n\n    def test_syntax_error_returns_empty(self):\n        assert _public_python_api(\"def (broken\") == set()\n",
+  "body_hash": "8af89d84152fd055",
+  "body_truncated": false,
+  "callers_of": [
+    "_public_python_api",
+    "set"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpublicpythonapi.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testpublicpythonapi",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpublicpythonapi.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "TestPublicPythonApi",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestPublicPythonApi"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

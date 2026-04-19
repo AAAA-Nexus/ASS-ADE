@@ -1,0 +1,31 @@
+{
+  "body": "    def test_report_returns_engine_info(self) -> None:\n        w = WisdomEngine({})\n        r = w.report()\n        assert r[\"engine\"] == \"wisdom\"\n        assert \"conviction\" in r and \"conviction_required\" in r\n",
+  "body_hash": "9e3bc64777c1f056",
+  "body_truncated": false,
+  "callers_of": [
+    "WisdomEngine",
+    "report"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwisdomengine.py:112.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.test_report_returns_engine_info",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwisdomengine.py:112"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "test_report_returns_engine_info",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_report_returns_engine_info"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

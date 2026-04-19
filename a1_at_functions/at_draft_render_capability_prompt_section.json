@@ -1,0 +1,46 @@
+{
+  "body": "def render_capability_prompt_section(\n    working_dir: str | Path = \".\",\n    *,\n    max_cli: int = 90,\n    max_tools: int = 30,\n    max_mcp: int = 40,\n    max_agents: int = 20,\n) -> str:\n    snapshot = build_capability_snapshot(working_dir)\n    lines = [\n        \"## Dynamic Capability Inventory\",\n        \"\",\n        f\"Generated from the current codebase at: {snapshot.generated_at_utc}\",\n        f\"Working directory: {snapshot.working_dir}\",\n        \"\",\n        \"### CLI command paths\",\n        \"\",\n        *_format_entries(snapshot.cli_commands, limit=max_cli),\n        \"\",\n        \"### Local agent tools\",\n        \"\",\n        *_format_entries(snapshot.local_tools, limit=max_tools),\n        \"\",\n        \"### MCP stdio tools\",\n        \"\",\n        *_format_entries(snapshot.mcp_tools, limit=max_mcp),\n        \"\",\n        \"### Repo agents\",\n        \"\",\n        *_format_entries(snapshot.agents, limit=max_agents),\n    ]\n    if snapshot.hooks:\n        lines.extend([\"\", \"### Hooks\", \"\", *_format_entries(snapshot.hooks, limit=20)])\n    return \"\\n\".join(lines)\n",
+  "body_hash": "316700a7306701f7",
+  "body_truncated": false,
+  "callers_of": [
+    "build_capability_snapshot",
+    "join",
+    "extend",
+    "_format_entries"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/capabilities.py:195.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.render_capability_prompt_section",
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "typer.main",
+    "ass_ade.cli.app",
+    "ass_ade.tools.registry.default_registry",
+    "ass_ade.mcp.server._WORKFLOW_TOOLS"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/capabilities.py:195"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "render_capability_prompt_section",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for render_capability_prompt_section"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

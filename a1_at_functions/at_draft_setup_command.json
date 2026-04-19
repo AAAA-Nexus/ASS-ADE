@@ -1,0 +1,46 @@
+{
+  "body": "def setup_command(\n    reset: bool = typer.Option(False, help=\"Re-run setup even if config already exists.\"),\n) -> None:\n    \"\"\"Interactive setup wizard \u2014 configure ASS-ADE in 60 seconds.\n\n    Detects your environment, validates your API key, and writes\n    .ass-ade/config.json with the right LLM router profile for your setup.\n\n    Run once after install, or again with --reset to reconfigure.\n    \"\"\"\n    import json as _json\n    import subprocess as _sp\n\n    console.print(\"\\n[bold cyan]Welcome to ASS-ADE![/bold cyan]\")\n    console.print(\"[dim]Let's get you set up in 60 seconds.[/dim]\\n\")\n\n    config_dir = Path.home() / \".ass-ade\"\n    config_file = config_dir / \"config.json\"\n    if config_file.exists() and not reset:\n        console.print(f\"[green]\u2713[/green] Config already exists at {config_file}\")\n        console.print(\"[dim]Run with --reset to reconfigure.[/dim]\")\n        raise typer.Exit(code=0)\n\n    # --- Detect environment ---\n    py_ver = sys.version.split()[0]\n    console.print(f\"[dim]Python {py_ver}[/dim]\")\n\n    ollama_available = False\n    try:\n        r = _sp.run([\"ollama\", \"list\"], capture_output=True, timeout=3)\n        ollama_available = r.returncode == 0\n    except Exception:\n        pass\n    if ollama_available:\n        console.print(\"[green]\u2713[/green] Ollama detected \u2014 local inference available\")\n    else:\n        console.print(\"[dim]  Ollama not found \u2014 will use cloud/free-tier routing[/dim]\")\n\n    git_available = False\n    try:\n        r = _sp.run([\"git\", \"--version\"], capture_output=True, timeout=3)\n        git_available = r.returncode == 0\n    except Exception:\n        pass\n\n    ecosystem_root = os.environ.get(\"ATOMADIC_ECOSYSTEM_ROOT\", \"\")\n    if ecosystem_root and Path(ecosystem_root).exists():\n        console.print(f\"[green]\u2713[/green] Atomadic ecosystem root: {ecosystem_root}\")\n    else:\n        console.print(\n            \"[yellow]![/yellow] ATOMADIC_ECOSYSTEM_ROOT not set.\\n\"\n            \"  [dim]Set it to enable the rebuild engine: export ATOMADIC_ECOSYSTEM_ROOT=/path/to/atomadic-ecosystem[/dim]\"\n        )\n\n    console.print()\n\n    # --- API key ---\n    api_key = os.environ.get(\"AAAA_NEXUS_API_KEY\", \"\")\n    if api_key:\n        console.print(f\"[green]\u2713[/green] AAAA_NEXUS_API_KEY found in environment\")\n    else:\n        console.print(\n            \"No AAAA_NEXUS_API_KEY found. You can:\\n\"\n            \"  [bold]a)[/bold] Enter a key now\\n\"\n            \"  [bold]b)[/bold] Press Enter to use the free tier (3 scans/day)\\n\"\n            \"  [bold]c)[/bold] Get a key at [link]https://atomadic.tech[/link]\"\n        )\n        api_key = typer.prompt(\"API key (or blank for free tier)\", default=\"\", hide_input=True)\n\n    # --- Use case ---\n    console.print()\n    console.print(\"[bold]What's your main use case?[/bold]\")\n    console.print(\"  [bold]1[/bold] Rebuild an existing repo into clean monadic structure\")\n    console.print(\"  [bold]2[/bold] Design a new feature or architecture blueprint\")\n    console.print(\"  [bold]3[/bold] Enhance and certify an existing project\")\n    console.print(\"  [bold]4[/bold] Use as MCP server (attach to Claude, Cursor, etc.)\")\n    choice = typer.prompt(\"Choice\", default=\"1\")\n    use_case_map = {\n        \"1\": \"rebuild\",\n        \"2\": \"design\",\n        \"3\": \"enhance\",\n        \"4\": \"mcp\",\n    }\n    use_case = use_case_map.get(choice.strip(), \"rebuild\")\n\n    # --- LLM profile ---\n    profile = \"local\" if ollama_available else (\"premium\" if api_key else \"free\")\n\n    # --- Write config ---\n    config_dir.mkdir(parents=True, exist_ok=True)\n    cfg: dict = {\n        \"profile\": profile,\n        \"use_case\": use_case,\n        \"ollama_available\": ollama_available,\n        \"git_available\": git_available,\n        \"ecosystem_root\": ecosystem_root or None,\n        \"setup_complete\": True,\n    }\n    if api_key:\n        cfg[\"api_key_set\"] = True\n    config_file.write_text(_json.dumps(cfg, indent=2), encoding=\"utf-8\")\n\n    console.print(f\"\\n[green]\u2713[/green] Config written to [bold]{config_file}[/bold]\")\n    console.print(f\"[dim]Profile: {profile} | Use case: {use_case}[/dim]\")\n    console.print()\n\n    # --- Next step hint ---\n    hints = {\n        \"rebuild\": \"ass-ade rebuild ./your-project ./clean-output\",\n        \"design\": \"ass-ade design ./your-project\",\n        \"enhance\": \"ass-ade enhance ./your-project\",\n        \"mcp\": \"python -m ass_ade  # runs the MCP stdio server\",\n    }\n    console.print(f\"[bold]You're ready![/bold] Try: [cyan]{hints[use_case]}[/cyan]\")\n    console.print(\"[dim]Or run 'ass-ade tutorial' for an interactive 2-minute demo.[/dim]\")\n",
+  "body_hash": "d57f10621de29738",
+  "body_truncated": false,
+  "callers_of": [
+    "Option",
+    "print",
+    "get",
+    "prompt",
+    "mkdir",
+    "write_text",
+    "home",
+    "exists",
+    "Exit",
+    "split",
+    "run",
+    "strip",
+    "dumps",
+    "Path"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_setup_command.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.setup_command",
+  "imports": [
+    "json",
+    "subprocess"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_setup_command.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "setup_command",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for setup_command"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

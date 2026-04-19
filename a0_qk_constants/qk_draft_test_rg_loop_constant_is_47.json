@@ -1,0 +1,37 @@
+{
+  "body": "    def test_rg_loop_constant_is_47(self):\n        from ass_ade.agent.lora_flywheel import RG_LOOP\n        assert RG_LOOP == 47\n",
+  "body_hash": "d3a870519d6aabe1",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testloraflywheel.py:143.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.test_rg_loop_constant_is_47",
+  "imports": [
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel",
+    "ass_ade.agent.lora_flywheel.RG_LOOP",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testloraflywheel.py:143"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "test_rg_loop_constant_is_47",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_rg_loop_constant_is_47"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

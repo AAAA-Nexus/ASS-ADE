@@ -1,0 +1,41 @@
+{
+  "body": "def test_load_config_honors_env_config_path(monkeypatch, tmp_path: Path) -> None:\n    monkeypatch.delenv(\"AAAA_NEXUS_API_KEY\", raising=False)\n    target = tmp_path / \".ass-ade\" / \"config.json\"\n    expected = AssAdeConfig(profile=\"premium\", agent_id=\"agent-env\")\n    write_default_config(target, config=expected, overwrite=True)\n    monkeypatch.setenv(\"ASS_ADE_CONFIG\", str(target))\n\n    actual = load_config()\n\n    assert actual == expected\n",
+  "body_hash": "4824c7c989d4b793",
+  "body_truncated": false,
+  "callers_of": [
+    "delenv",
+    "AssAdeConfig",
+    "write_default_config",
+    "setenv",
+    "load_config",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_config.py:23.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_load_config_honors_env_config_path",
+  "imports": [
+    "pathlib.Path",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.default_config_path",
+    "ass_ade.config.load_config",
+    "ass_ade.config.write_default_config"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_config.py:23"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_load_config_honors_env_config_path",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_load_config_honors_env_config_path"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

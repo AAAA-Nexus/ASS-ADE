@@ -1,0 +1,31 @@
+{
+  "body": "    def summary(self) -> str:\n        total = len(self.steps)\n        passed = sum(1 for s in self.steps if s.status == StepStatus.PASSED)\n        failed = sum(1 for s in self.steps if s.status == StepStatus.FAILED)\n        skipped = sum(1 for s in self.steps if s.status == StepStatus.SKIPPED)\n        verdict = \"PASSED\" if self.passed else \"FAILED\"\n        return f\"[{verdict}] {self.name}: {passed}/{total} passed, {failed} failed, {skipped} skipped ({self.duration_ms:.0f}ms)\"\n",
+  "body_hash": "8802aaeba027da0c",
+  "body_truncated": false,
+  "callers_of": [
+    "len",
+    "sum"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_pipelineresult.py:19.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.summary",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_pipelineresult.py:19"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "summary",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for summary"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

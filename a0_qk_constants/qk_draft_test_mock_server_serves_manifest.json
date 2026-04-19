@@ -1,0 +1,50 @@
+{
+  "body": "def test_mock_server_serves_manifest() -> None:\n    import httpx\n\n    from ass_ade.mcp.mock_server import start_server\n\n    server = start_server(port=19787, block=False)\n    try:\n        resp = httpx.get(\"http://127.0.0.1:19787/.well-known/mcp.json\", timeout=5)\n        assert resp.status_code == 200\n        data = resp.json()\n        assert \"tools\" in data\n    finally:\n        server.shutdown()\n",
+  "body_hash": "bb536517441356b9",
+  "body_truncated": false,
+  "callers_of": [
+    "start_server",
+    "get",
+    "json",
+    "shutdown"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp.py:260.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.test_mock_server_serves_manifest",
+  "imports": [
+    "pathlib.Path",
+    "httpx",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.mcp.utils.invoke_tool",
+    "ass_ade.nexus.models.MCPManifest",
+    "ass_ade.nexus.models.MCPTool",
+    "ass_ade.nexus.models.CostEstimate",
+    "json",
+    "httpx",
+    "ass_ade.mcp.mock_server.start_server",
+    "httpx",
+    "ass_ade.mcp.mock_server._MAX_BODY_BYTES",
+    "ass_ade.mcp.mock_server.start_server"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp.py:260"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "test_mock_server_serves_manifest",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_mock_server_serves_manifest"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

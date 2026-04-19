@@ -1,0 +1,32 @@
+{
+  "body": "class TestBuildSystemPrompt:\n    def test_contains_working_dir(self, tmp_path):\n        prompt = build_system_prompt(str(tmp_path))\n        assert \"ASS-ADE\" in prompt\n        assert str(tmp_path) in prompt\n\n    def test_detects_python_project(self, tmp_path):\n        (tmp_path / \"pyproject.toml\").write_text(\"[project]\\n\")\n        prompt = build_system_prompt(str(tmp_path))\n        assert \"Python\" in prompt\n\n    def test_detects_node_project(self, tmp_path):\n        (tmp_path / \"package.json\").write_text(\"{}\")\n        prompt = build_system_prompt(str(tmp_path))\n        assert \"Node.js\" in prompt\n",
+  "body_hash": "50a8195e8e4fc223",
+  "body_truncated": false,
+  "callers_of": [
+    "build_system_prompt",
+    "write_text",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testbuildsystemprompt.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.testbuildsystemprompt",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testbuildsystemprompt.py:5"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "TestBuildSystemPrompt",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestBuildSystemPrompt"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

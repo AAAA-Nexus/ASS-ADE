@@ -1,0 +1,40 @@
+{
+  "body": "class TestChutesProvider:\n    \"\"\"Chutes.ai \u2014 free DeepSeek V3/R1 via Bittensor subnet.\"\"\"\n\n    def test_chutes_in_catalog(self):\n        assert \"chutes\" in FREE_PROVIDERS\n\n    def test_chutes_available_with_env_key(self, monkeypatch):\n        monkeypatch.setenv(\"CHUTES_API_TOKEN\", \"ct_test_key\")\n        profile = get_provider(\"chutes\")\n        assert profile.is_available() is True\n\n    def test_chutes_serves_deepseek_models(self):\n        profile = get_provider(\"chutes\")\n        assert \"deepseek\" in profile.models_by_tier[\"balanced\"].lower()\n        assert \"deepseek\" in profile.models_by_tier[\"deep\"].lower()\n\n    def test_chutes_selectable_via_tier_policy(self, monkeypatch):\n        monkeypatch.setenv(\"CHUTES_API_TOKEN\", \"ct_test_key\")\n        from ass_ade.agent.lse import LSEEngine\n\n        lse = LSEEngine({\"tier_policy\": {\"deep\": \"chutes\"}})\n        decision = lse.select(trs_score=0.3, complexity=\"critical\")\n        assert decision.provider == \"chutes\"\n        assert \"deepseek\" in decision.model.lower()\n",
+  "body_hash": "8720c2b7f078df65",
+  "body_truncated": false,
+  "callers_of": [
+    "setenv",
+    "get_provider",
+    "LSEEngine",
+    "select",
+    "is_available",
+    "lower"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testchutesprovider.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testchutesprovider",
+  "imports": [
+    "ass_ade.agent.lse.LSEEngine"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testchutesprovider.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.get_provider",
+    "at.source.ass_ade.is_available"
+  ],
+  "name": "TestChutesProvider",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestChutesProvider"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

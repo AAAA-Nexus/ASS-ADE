@@ -1,0 +1,31 @@
+{
+  "body": "    def test_localhost_blocked(self) -> None:\n        \"\"\"A2A should block attempts to fetch from localhost.\"\"\"\n        report = fetch_agent_card(\"https://localhost/.well-known/agent.json\")\n        assert not report.valid\n        assert len(report.errors) > 0\n        assert \"blocked\" in report.errors[0].message or \"loopback\" in report.errors[0].message\n",
+  "body_hash": "8620d005e1d7d573",
+  "body_truncated": false,
+  "callers_of": [
+    "fetch_agent_card",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testa2afetchagentcardssrf.py:14.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_localhost_blocked",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testa2afetchagentcardssrf.py:14"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_localhost_blocked",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_localhost_blocked"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,40 @@
+{
+  "body": "def local_route(message: str) -> RoutingDecision:\n    \"\"\"Route using local heuristics (no Nexus required).\"\"\"\n    c = classify_complexity(message)\n    tier = tier_for_complexity(c)\n    candidates = _TIER_MODELS.get(tier, [])\n    return RoutingDecision(\n        tier=tier,\n        complexity=c,\n        recommended_model=candidates[0] if candidates else None,\n        reason=f\"Local heuristic: complexity={c:.2f} \u2192 {tier.value}\",\n        source=\"local\",\n    )\n",
+  "body_hash": "ba64ef3c452fc7ea",
+  "body_truncated": false,
+  "callers_of": [
+    "classify_complexity",
+    "tier_for_complexity",
+    "get",
+    "RoutingDecision"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/routing.py:119.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.local_route",
+  "imports": [
+    "__future__.annotations",
+    "re",
+    "collections.abc.Mapping",
+    "dataclasses.dataclass",
+    "enum.Enum",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/routing.py:119"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "local_route",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for local_route"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

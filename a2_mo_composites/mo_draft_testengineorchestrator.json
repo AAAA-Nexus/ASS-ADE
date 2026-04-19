@@ -1,0 +1,66 @@
+{
+  "body": "class TestEngineOrchestrator:\n    def test_lazy_init_atlas(self) -> None:\n        o = EngineOrchestrator({})\n        assert o._atlas is None\n        _ = o.atlas\n        assert o._atlas is not None\n\n    def test_on_step_start_returns_dict(self) -> None:\n        o = EngineOrchestrator({})\n        result = o.on_step_start(\"implement auth system\")\n        assert isinstance(result, dict)\n        assert \"atlas_subtasks\" in result\n        assert \"puppeteer_next\" in result\n\n    def test_on_step_start_atlas_complexity(self) -> None:\n        o = EngineOrchestrator({})\n        result = o.on_step_start(\"a\" * 2000)  # long = high complexity\n        assert result[\"atlas_complexity\"] > 1.0\n\n    def test_on_tool_event_tracks_repeat(self) -> None:\n        o = EngineOrchestrator({})\n        o.on_step_start(\"task\")\n        for _ in range(4):\n            o.on_tool_event(\"read_file\", {\"path\": \"x\"}, \"ok\")\n        # After 4 repeats, loop_detected should fire\n        # Check _step_tool_counts\n        assert o._step_tool_counts.get(\"read_file\", 0) == 4\n\n    def test_on_step_end_returns_cycle_report(self) -> None:\n        o = EngineOrchestrator({})\n        o.on_step_start(\"do something\")\n        report = o.on_step_end(\"done\", {\"recon_done\": True, \"tool_calls\": [\"read_file\"]})\n        assert isinstance(report, CycleReport)\n        assert isinstance(report.wisdom_score, float)\n        assert isinstance(report.conviction, float)\n        assert isinstance(report.alerts, list)\n        assert isinstance(report.principles, list)\n        assert isinstance(report.engine_reports, dict)\n\n    def test_on_step_end_wisdom_scores(self) -> None:\n        o = EngineOrchestrator({})\n        o.on_step_start(\"task\")\n        report = o.on_step_end(\"response\", {\n            \"recon_done\": True,\n            \"atlas_used\": True,\n            \"lifr_queried\": True,\n            \"memory_consulted\": True,\n            \"budget_ok\": True,\n            \"tool_calls\": [\"read_file\"],\n        })\n        assert report.wisdom_score > 0.0\n        assert report.wisdom_passed > 0\n\n    def test_on_step_end_gvu_updated(self) -> None:\n        o = EngineOrchestrator({})\n        o.on_step_start(\"task\")\n        report = o.on_step_end(\"response\", {})\n        assert report.gvu_coefficient > 0.0\n\n    def test_on_step_end_edee_traces(self) -> None:\n        o = EngineOrchestrator({})\n        o.on_step_start(\"task\")\n        report = o.on_step_end(\"response\", {})\n        # EDEE should be initialized and have captured a trace\n        assert o._edee is not None\n        assert o.edee._traces >= 1\n\n    def test_step_metrics_reset_on_start(self) -> None:\n        o = EngineOrchestrator({})\n        o.on_step_start(\"first task\")\n        o.on_tool_event(\"read_file\", {}, \"\")\n        assert o._step_tool_counts.get(\"read_file\", 0) == 1\n        # Second step start should reset\n        o.on_step_start(\"second task\")\n        assert o._step_tool_counts == {}\n\n    def test_engine_report_aggregates_initialized_engines(self) -> None:\n        o = EngineOrchestrator({})\n        _ = o.atlas  # initialize atlas\n        _ = o.bas    # initialize bas\n        reports = o.engine_report()\n        assert \"atlas\" in reports\n        assert \"bas\" in reports\n\n    def test_fail_open_on_engine_error(self) -> None:\n        o = EngineOrchestrator({})\n        # Corrupt the atlas to simulate failure\n        o._atlas = MagicMock()\n        o._atlas.decompose.side_effect = RuntimeError(\"engine crashed\")\n        o._atlas.complexity_score.side_effect = RuntimeError(\"engine crashed\")\n        # on_step_start should not raise\n        result = o.on_step_start(\"task\")\n        assert isinstance(result, dict)\n\n    def test_bas_subscriber_via_orchestrator(self) -> None:\n        o = EngineOrchestrator({})\n        received: list = []\n        o.bas.subscribe(lambda a: received.append(a.kind))\n        o.on_step_start(\"task\")\n        o.on_step_end(\"response\", {\"trust_score\": 0.05, \"budget_pct\": 0.99})\n        assert len(received) >= 1\n",
+  "body_hash": "689ab96591274cae",
+  "body_truncated": false,
+  "callers_of": [
+    "EngineOrchestrator",
+    "on_step_start",
+    "isinstance",
+    "range",
+    "on_step_end",
+    "on_tool_event",
+    "engine_report",
+    "MagicMock",
+    "RuntimeError",
+    "subscribe",
+    "get",
+    "len",
+    "append"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:284.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testengineorchestrator",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "time",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.agent.audit_questions.AUDIT_QUESTIONS",
+    "ass_ade.agent.bas.BAS",
+    "ass_ade.agent.bas.Alert",
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.orchestrator.CycleReport",
+    "ass_ade.agent.orchestrator.EngineOrchestrator",
+    "ass_ade.agent.wisdom.AuditReport",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "collections.Counter",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.engine.provider.ModelProvider",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.tools.registry.default_registry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:284"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.subscribe"
+  ],
+  "name": "TestEngineOrchestrator",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestEngineOrchestrator"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

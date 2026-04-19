@@ -1,0 +1,11 @@
+# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/map_terrain.py:420
+# Component id: mo.source.ass_ade.activeterrainverdict
+__version__ = "0.1.0"
+
+class ActiveTerrainVerdict(BaseModel):
+    """Result of the active MAP=TERRAIN loop."""
+    verdict: Verdict
+    stubs_created: list[InventionStub] = Field(default_factory=list)
+    capabilities_present: list[str] = Field(default_factory=list)
+    capabilities_missing: list[str] = Field(default_factory=list)
+    next_action: str

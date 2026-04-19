@@ -1,0 +1,59 @@
+{
+  "body": "class TestX402EndToEndFlow:\n    \"\"\"Test the full x402 payment flow from challenge to proof.\"\"\"\n\n    def test_full_flow_parse_and_validate(self) -> None:\n        \"\"\"Full flow: parse challenge \u2192 validate \u2192 build proof.\"\"\"\n        flow = X402ClientFlow()\n\n        # Step 1: Server returns 402 with challenge\n        response_body = {\n            \"x402_version\": \"2.1\",\n            \"chain_id\": BASE_SEPOLIA_CHAIN_ID,\n            \"token_address\": \"0x036CbD53842c5426634e7929541eC2318f3dCF7e\",\n            \"amount_micro_usdc\": 5000,\n            \"amount_usdc\": \"0.005000\",\n            \"recipient\": \"0xCBd9e4c44958ee76E0F941106Ea960D476c48FD9\",\n            \"nonce\": \"test_nonce\",\n            \"expires\": 9999999999,\n            \"endpoint\": \"/v1/trust/score\",\n        }\n\n        # Step 2: Client parses challenge\n        challenge = flow.parse_challenge(response_body)\n        assert challenge is not None\n        assert challenge.amount_micro_usdc == 5000\n        assert challenge.endpoint == \"/v1/trust/score\"\n\n        # Step 3: Client checks if it can pay\n        with patch.dict(\"os.environ\", {\"ATOMADIC_X402_TESTNET\": \"1\"}, clear=False):\n            assert flow.can_pay(challenge)\n\n        # Step 4: Simulate successful payment (normally would submit to blockchain)\n        payment = PaymentResult(\n            success=True,\n            txid=\"0x1234567890abcdef\",\n            signature_header=\"abcd;0xWalletAddress;0x1234567890abcdef;5000\",\n            testnet=True,\n        )\n\n        # Step 5: Extract proof and build headers\n        proof = flow.get_proof(payment)\n        assert proof is not None\n        assert proof.transaction_id == \"0x1234567890abcdef\"\n        assert proof.amount_micro_usdc == 5000\n\n        # Step 6: Build headers for retry\n        headers = flow.build_proof_headers(payment)\n        assert headers[\"PAYMENT-SIGNATURE\"] == \"abcd;0xWalletAddress;0x1234567890abcdef;5000\"\n\n    def test_full_flow_payment_failure(self) -> None:\n        \"\"\"Full flow: challenge \u2192 failure to pay.\"\"\"\n        flow = X402ClientFlow()\n\n        response_body = {\n            \"amount_micro_usdc\": 5000,\n            \"amount_usdc\": \"0.005\",\n            \"recipient\": ATOMADIC_TREASURY,\n            \"expires\": 1,  # Already expired\n        }\n\n        challenge = flow.parse_challenge(response_body)\n        assert challenge is not None\n\n        # Client should not proceed due to expiry\n        assert not flow.can_pay(challenge)\n        assert \"expired\" in flow.last_error.lower()\n",
+  "body_hash": "c8fc2647c5abb83b",
+  "body_truncated": false,
+  "callers_of": [
+    "X402ClientFlow",
+    "parse_challenge",
+    "PaymentResult",
+    "get_proof",
+    "build_proof_headers",
+    "dict",
+    "can_pay",
+    "lower"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:324.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testx402endtoendflow",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.nexus.x402.PaymentChallenge",
+    "ass_ade.nexus.x402.PaymentResult",
+    "ass_ade.nexus.x402.PaymentProof",
+    "ass_ade.nexus.x402.X402ClientFlow",
+    "ass_ade.nexus.x402.format_payment_consent",
+    "ass_ade.nexus.x402.get_chain_config",
+    "ass_ade.nexus.x402.build_payment_header",
+    "ass_ade.nexus.x402.ATOMADIC_TREASURY",
+    "ass_ade.nexus.x402.BASE_MAINNET_CHAIN_ID",
+    "ass_ade.nexus.x402.BASE_SEPOLIA_CHAIN_ID"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:324"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.parse_challenge"
+  ],
+  "name": "TestX402EndToEndFlow",
+  "product_categories": [
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for TestX402EndToEndFlow"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

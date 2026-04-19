@@ -1,0 +1,41 @@
+{
+  "body": "    def test_case_insensitive(self):\n        assert context_window_for(\"GPT-4O\") == 128_000\n",
+  "body_hash": "465a67c95055b3f2",
+  "body_truncated": false,
+  "callers_of": [
+    "context_window_for"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tokens.py:114.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.test_case_insensitive",
+  "imports": [
+    "__future__.annotations",
+    "ass_ade.engine.tokens.DEFAULT_CONTEXT_WINDOW",
+    "ass_ade.engine.tokens.RESPONSE_RESERVE",
+    "ass_ade.engine.tokens.TokenBudget",
+    "ass_ade.engine.tokens.context_window_for",
+    "ass_ade.engine.tokens.estimate_message_tokens",
+    "ass_ade.engine.tokens.estimate_tokens",
+    "ass_ade.engine.tokens.estimate_tools_tokens",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolSchema"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tokens.py:114"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "test_case_insensitive",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_case_insensitive"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

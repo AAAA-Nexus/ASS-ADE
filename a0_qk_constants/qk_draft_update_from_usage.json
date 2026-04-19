@@ -1,0 +1,39 @@
+{
+  "body": "    def update_from_usage(self, usage: dict[str, int] | None) -> None:\n        \"\"\"Update running totals from a completion response's usage dict.\"\"\"\n        if not usage:\n            return\n        self.prompt_tokens = usage.get(\"prompt_tokens\", self.prompt_tokens)\n        self.completion_tokens += usage.get(\"completion_tokens\", 0)\n        self.total_calls += 1\n",
+  "body_hash": "c1b977a1af42f9eb",
+  "body_truncated": false,
+  "callers_of": [
+    "get"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/tokens.py:200.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.update_from_usage",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "math",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolSchema",
+    "tiktoken"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/tokens.py:200"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "update_from_usage",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for update_from_usage"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

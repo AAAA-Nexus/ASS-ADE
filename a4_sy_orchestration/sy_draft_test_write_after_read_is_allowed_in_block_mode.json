@@ -1,0 +1,42 @@
+{
+  "body": "    def test_write_after_read_is_allowed_in_block_mode(self, tmp_path):\n        target = tmp_path / \"existing.py\"\n        target.write_text(\"y = 2\\n\")\n        server = _make_server(tmp_path)\n        server._ncb_mode = \"block\"\n        # Record a read\n        server._post_tool_hook(\"read_file\", _mk_args(target), MagicMock(success=True, output=\"y = 2\\n\"))\n        allow, reason = server._pre_tool_hook(\"write_file\", _mk_args(target))\n        assert allow is True\n",
+  "body_hash": "d31a10237c45ada0",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "_make_server",
+    "_post_tool_hook",
+    "_pre_tool_hook",
+    "_mk_args",
+    "MagicMock"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_gates.py:64.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_write_after_read_is_allowed_in_block_mode",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "pytest",
+    "ass_ade.mcp.server.MCPServer"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_gates.py:64"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "test_write_after_read_is_allowed_in_block_mode",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_write_after_read_is_allowed_in_block_mode"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

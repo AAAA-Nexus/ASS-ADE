@@ -1,0 +1,31 @@
+{
+  "body": "    def test_oversized_raises(self) -> None:\n        with pytest.raises(ValueError, match=\"exceeds\"):\n            validate_prompt(\"x\" * 40_000)\n",
+  "body_hash": "f8c7648672f53b07",
+  "body_truncated": false,
+  "callers_of": [
+    "raises",
+    "validate_prompt"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateprompt.py:27.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_oversized_raises",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateprompt.py:27"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_oversized_raises",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_oversized_raises"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

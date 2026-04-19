@@ -1,0 +1,32 @@
+{
+  "body": "    def test_chaining_add(self) -> None:\n        pipe = Pipeline(\"chain\")\n        returned = pipe.add(\"s1\", pass_step).add(\"s2\", pass_step)\n        assert returned is pipe\n        assert len(pipe.step_names) == 2\n",
+  "body_hash": "60973214a8f4b5b6",
+  "body_truncated": false,
+  "callers_of": [
+    "Pipeline",
+    "add",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpipeline.py:43.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_chaining_add",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpipeline.py:43"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_chaining_add",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_chaining_add"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

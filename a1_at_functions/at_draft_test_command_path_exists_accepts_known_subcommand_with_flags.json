@@ -1,0 +1,40 @@
+{
+  "body": "def test_command_path_exists_accepts_known_subcommand_with_flags(tmp_path: Path) -> None:\n    assert command_path_exists(\n        [\"protocol\", \"evolution-record\", \"--summary\", \"birth\"],\n        tmp_path,\n    )\n    assert not command_path_exists([\"protocol\", \"made-up-command\"], tmp_path)\n",
+  "body_hash": "db683b19d5a17d8b",
+  "body_truncated": false,
+  "callers_of": [
+    "command_path_exists"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_capabilities.py:27.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_command_path_exists_accepts_known_subcommand_with_flags",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "ass_ade.interpreter",
+    "ass_ade.agent.capabilities.build_atomadic_intent_prompt",
+    "ass_ade.agent.capabilities.command_path_exists",
+    "ass_ade.agent.capabilities.render_atomadic_help",
+    "ass_ade.agent.capabilities.sync_atomadic_prompt_capabilities",
+    "ass_ade.agent.context.build_system_prompt",
+    "ass_ade.interpreter.Atomadic"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_capabilities.py:27"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_command_path_exists_accepts_known_subcommand_with_flags",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_command_path_exists_accepts_known_subcommand_with_flags"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,34 @@
+{
+  "body": "class TrustDecayResult(NexusModel):\n    \"\"\"/v1/trust/decay\"\"\"\n    decayed_score: float | None = None\n    original_score: float | None = None\n    epochs_elapsed: int | None = None\n",
+  "body_hash": "e3f9877f5d89c476",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/models.py:152.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.trustdecayresult",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/models.py:152"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "TrustDecayResult",
+  "product_categories": [
+    "IDT"
+  ],
+  "provides": [
+    "rebuild candidate for TrustDecayResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

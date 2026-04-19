@@ -1,0 +1,47 @@
+{
+  "body": "    def test_openai_key_multiprovider_when_catalog_enabled(self, monkeypatch):\n        \"\"\"With catalog providers AND OpenAI key, build_provider returns MultiProvider.\"\"\"\n        self._clear_provider_env()\n        monkeypatch.setenv(\"OPENAI_API_KEY\", \"sk-test\")\n        monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-groq\")\n\n        from ass_ade.config import AssAdeConfig\n        from ass_ade.engine.provider import MultiProvider\n\n        cfg = AssAdeConfig(profile=\"local\")\n        provider = build_provider(cfg)\n        assert isinstance(provider, MultiProvider)\n        assert \"openai\" in provider.providers\n        assert \"groq\" in provider.providers\n",
+  "body_hash": "8e0f56731e2d0335",
+  "body_truncated": false,
+  "callers_of": [
+    "_clear_provider_env",
+    "setenv",
+    "AssAdeConfig",
+    "build_provider",
+    "isinstance"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbuildprovider.py:42.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_openai_key_multiprovider_when_catalog_enabled",
+  "imports": [
+    "os",
+    "ass_ade.agent.providers.FREE_PROVIDERS",
+    "ass_ade.agent.providers.FREE_PROVIDERS",
+    "ass_ade.config.ProviderOverride",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.engine.provider.MultiProvider",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.engine.provider.MultiProvider",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.engine.provider.MultiProvider"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbuildprovider.py:42"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_openai_key_multiprovider_when_catalog_enabled",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_openai_key_multiprovider_when_catalog_enabled"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

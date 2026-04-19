@@ -1,0 +1,46 @@
+{
+  "body": "    def capture_fix(self, original: str, fixed: str, context: dict[str, Any] | None = None) -> str:\n        \"\"\"Capture a before/after code fix as a positive training signal.\"\"\"\n        if not self._enabled:\n            return \"\"\n        cid = f\"fix_{int(time.time())}_{len(self._pending)}\"\n        c = Contribution(\n            kind=\"fix\",\n            content={\"original\": original[:2000], \"fixed\": fixed[:2000], \"context\": context or {}},\n            session_id=self._session_id,\n            confidence=1.0,\n        )\n        self._pending.append(c)\n        self._save_pending()\n        self._maybe_batch()\n        return cid\n",
+  "body_hash": "03765f1e84fed6aa",
+  "body_truncated": false,
+  "callers_of": [
+    "Contribution",
+    "append",
+    "_save_pending",
+    "_maybe_batch",
+    "int",
+    "len",
+    "time"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/lora_flywheel.py:143.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.capture_fix",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "logging",
+    "time",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "pathlib.Path",
+    "typing.Any",
+    "hashlib"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/lora_flywheel.py:143"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "capture_fix",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for capture_fix"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

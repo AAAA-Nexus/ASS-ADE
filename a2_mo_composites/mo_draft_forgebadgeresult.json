@@ -1,0 +1,34 @@
+{
+  "body": "class ForgeBadgeResult(NexusModel):\n    \"\"\"GET /v1/forge/badge/{id}\"\"\"\n    badge_id: str | None = None\n    name: str | None = None\n    description: str | None = None\n    image_url: str | None = None\n    issued_at: str | None = None\n    valid: bool | None = None\n",
+  "body_hash": "cc77f7d35fbc672e",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/models.py:1095.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.forgebadgeresult",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/models.py:1095"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "ForgeBadgeResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ForgeBadgeResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

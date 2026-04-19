@@ -1,0 +1,28 @@
+{
+  "body": "def main():\n    pass\n",
+  "body_hash": "da3fa202a748f53a",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.pytest_tmp/test_apply_unvalidated_fails0/main.py:1.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.main",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.pytest_tmp/test_apply_unvalidated_fails0/main.py:1"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "main",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for main"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

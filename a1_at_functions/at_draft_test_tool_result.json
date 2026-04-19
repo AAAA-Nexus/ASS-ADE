@@ -1,0 +1,30 @@
+{
+  "body": "    def test_tool_result(self):\n        m = Message(role=\"tool\", content=\"file data\", tool_call_id=\"c1\", name=\"read_file\")\n        assert m.role == \"tool\"\n        assert m.tool_call_id == \"c1\"\n",
+  "body_hash": "c09497ea8900efd0",
+  "body_truncated": false,
+  "callers_of": [
+    "Message"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testmessage.py:19.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_tool_result",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testmessage.py:19"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_tool_result",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_tool_result"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

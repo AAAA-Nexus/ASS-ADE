@@ -1,0 +1,40 @@
+{
+  "body": "    def test_valid_python_passes_cie(self, tmp_path):\n        server = _make_server(tmp_path)\n        args = {\"path\": str(tmp_path / \"ok.py\"), \"content\": \"def f(): return 1\\n\"}\n        result = MagicMock(success=True, output=\"wrote 18 bytes\")\n        out = server._post_tool_hook(\"write_file\", args, result)\n        # Valid code \u2192 result unchanged\n        assert out.success is True\n",
+  "body_hash": "7c21b3c141fadde2",
+  "body_truncated": false,
+  "callers_of": [
+    "_make_server",
+    "MagicMock",
+    "_post_tool_hook",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_gates.py:88.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_valid_python_passes_cie",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "pytest",
+    "ass_ade.mcp.server.MCPServer"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_gates.py:88"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "test_valid_python_passes_cie",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_valid_python_passes_cie"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

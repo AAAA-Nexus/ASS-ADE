@@ -1,0 +1,46 @@
+{
+  "body": "def prompt_propose(\n    *,\n    objective: str,\n    working_dir: str | Path = \".\",\n    prompt_text: str | None = None,\n    prompt_path: str | Path | None = None,\n) -> PromptProposalResult:\n    artifact = load_prompt_artifact(\n        working_dir=working_dir,\n        prompt_text=prompt_text,\n        prompt_path=prompt_path,\n    )\n    digest = hashlib.sha256(artifact.text.encode()).hexdigest()\n\n    recommended = [\n        \"Add or refresh a source-boundary section that says the prompt artifact \"\n        \"must not expose hidden runtime prompts or private credentials.\",\n        \"Add a verification section requiring prompt_hash and prompt_validate \"\n        \"before deployment.\",\n        \"Add a drift-control section requiring prompt_diff against the approved \"\n        \"baseline before activation.\",\n        \"Add a rollback section naming the prior prompt hash and restore path.\",\n    ]\n    if objective.strip():\n        recommended.insert(0, f\"Address objective: {objective.strip()}\")\n\n    proposal_id = hashlib.sha256(f\"{digest}\\0{objective}\".encode()).hexdigest()[:24]\n    return PromptProposalResult(\n        proposal_id=proposal_id,\n        source=artifact.source,\n        prompt_sha256=digest,\n        objective=objective,\n        recommended_changes=recommended,\n        verification_criteria=[\n            \"New prompt hash is recorded in a manifest.\",\n            \"prompt_validate passes against the intended manifest.\",\n            \"prompt_diff is reviewed with redaction enabled.\",\n            \"Human approval is recorded before deployment.\",\n        ],\n        next_action=\"Review the proposal, edit the prompt artifact, then validate against manifest.\",\n    )\n",
+  "body_hash": "7ce512554c89732a",
+  "body_truncated": false,
+  "callers_of": [
+    "load_prompt_artifact",
+    "hexdigest",
+    "strip",
+    "PromptProposalResult",
+    "insert",
+    "sha256",
+    "encode"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/prompt_toolkit.py:310.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.prompt_propose",
+  "imports": [
+    "__future__.annotations",
+    "difflib",
+    "hashlib",
+    "json",
+    "re",
+    "pathlib.Path",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/prompt_toolkit.py:310"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "prompt_propose",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for prompt_propose"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

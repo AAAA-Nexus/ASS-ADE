@@ -1,0 +1,37 @@
+{
+  "body": "def list_providers() -> list[str]:\n    \"\"\"All provider names known to the catalog.\"\"\"\n    return list(FREE_PROVIDERS.keys())\n",
+  "body_hash": "74f8fc7e3bf653b9",
+  "body_truncated": false,
+  "callers_of": [
+    "list",
+    "keys"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/providers.py:345.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.list_providers",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/providers.py:345"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "list_providers",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for list_providers"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

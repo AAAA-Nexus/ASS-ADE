@@ -1,0 +1,36 @@
+{
+  "body": "    def generate_status_report(self) -> str:\n        \"\"\"Generate a human-readable status report.\"\"\"\n        stats = self.manager.get_statistics()\n        return (\n            f\"Task Report:\\n\"\n            f\"  Total tasks: {stats['total']}\\n\"\n            f\"  Completion: {stats['completion_rate']:.1f}%\\n\"\n            f\"  By status: {stats['by_status']}\"\n        )\n",
+  "body_hash": "0d857e58b956c5d2",
+  "body_truncated": false,
+  "callers_of": [
+    "get_statistics"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/examples/02-rebuild-a-codebase/sample_project/main.py:182.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.generate_status_report",
+  "imports": [
+    "enum.Enum",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.List",
+    "typing.Optional"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/examples/02-rebuild-a-codebase/sample_project/main.py:182"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "generate_status_report",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for generate_status_report"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

@@ -1,0 +1,48 @@
+{
+  "body": "class TestMCPToolEndpointSSRF:\n    \"\"\"Test SSRF protection for MCP tool endpoint invocation.\"\"\"\n\n    def test_absolute_localhost_endpoint_raises(self) -> None:\n        \"\"\"Invoking a tool with localhost endpoint should raise ValueError.\"\"\"\n        from ass_ade.mcp.utils import invoke_tool\n        \n        tool = MCPTool(\n            name=\"admin-tool\",\n            endpoint=\"https://localhost:8080/admin\",\n            method=\"POST\",\n            paid=False,\n        )\n        \n        with pytest.raises(ValueError, match=\"blocked network address|localhost\"):\n            invoke_tool(\"https://api.example.com\", tool)\n\n    def test_absolute_private_ip_endpoint_raises(self) -> None:\n        \"\"\"Invoking a tool with private IP endpoint should raise ValueError.\"\"\"\n        from ass_ade.mcp.utils import invoke_tool\n        \n        tool = MCPTool(\n            name=\"internal-tool\",\n            endpoint=\"https://192.168.1.1/internal\",\n            method=\"GET\",\n            paid=False,\n        )\n        \n        with pytest.raises(ValueError, match=\"private/loopback address\"):\n            invoke_tool(\"https://api.example.com\", tool)\n\n    def test_relative_endpoint_uses_base_url(self) -> None:\n        \"\"\"Relative endpoints should be joined to base_url without SSRF validation.\"\"\"\n        from ass_ade.mcp.utils import simulate_invoke\n        \n        tool = MCPTool(\n            name=\"safe-tool\",\n            endpoint=\"/api/invoke\",\n            method=\"POST\",\n            paid=False,\n        )\n        \n        result = simulate_invoke(\"https://api.example.com\", tool)\n        assert result[\"endpoint\"] == \"https://api.example.com/api/invoke\"\n        assert not result[\"endpoint\"].startswith(\"//\")\n\n    def test_simulate_invoke_validates_absolute_endpoint(self) -> None:\n        \"\"\"simulate_invoke should validate absolute endpoints for SSRF.\"\"\"\n        from ass_ade.mcp.utils import simulate_invoke\n        \n        tool = MCPTool(\n            name=\"bad-tool\",\n            endpoint=\"https://127.0.0.1/admin\",\n            method=\"POST\",\n            paid=False,\n        )\n        \n        with pytest.raises(ValueError, match=\"blocked network address|loopback\"):\n            simulate_invoke(\"https://api.example.com\", tool)\n\n    def test_public_absolute_endpoint_allowed_in_simulate(self) -> None:\n        \"\"\"Public absolute endpoints should be allowed in simulate_invoke.\"\"\"\n        from ass_ade.mcp.utils import simulate_invoke\n        \n        tool = MCPTool(\n            name=\"public-tool\",\n            endpoint=\"https://cloudflare.com/tool\",\n            method=\"POST\",\n            paid=False,\n        )\n        \n        result = simulate_invoke(\"https://fallback.example.com\", tool)\n        assert result[\"endpoint\"] == \"https://cloudflare.com/tool\"\n",
+  "body_hash": "236aef0fcf286952",
+  "body_truncated": false,
+  "callers_of": [
+    "MCPTool",
+    "simulate_invoke",
+    "raises",
+    "invoke_tool",
+    "startswith"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_ssrf_protection.py:135.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.testmcptoolendpointssrf",
+  "imports": [
+    "ipaddress",
+    "json",
+    "unittest.mock",
+    "pytest",
+    "ass_ade.a2a.fetch_agent_card",
+    "ass_ade.mcp.utils._validate_absolute_endpoint",
+    "ass_ade.nexus.models.MCPManifest",
+    "ass_ade.nexus.models.MCPTool",
+    "ass_ade.mcp.utils.invoke_tool",
+    "ass_ade.mcp.utils.invoke_tool",
+    "ass_ade.mcp.utils.simulate_invoke",
+    "ass_ade.mcp.utils.simulate_invoke",
+    "ass_ade.mcp.utils.simulate_invoke"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_ssrf_protection.py:135"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "TestMCPToolEndpointSSRF",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestMCPToolEndpointSSRF"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

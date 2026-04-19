@@ -1,0 +1,53 @@
+{
+  "body": "class TestSearchCommand:\n    def test_search_requires_session_token(self, tmp_path: Path) -> None:\n        \"\"\"Search should fail if ATOMADIC_SESSION_TOKEN is not set.\"\"\"\n        result = runner.invoke(\n            app,\n            [\"search\", \"test query\", \"--config\", str(_hybrid_config(tmp_path))],\n            env={\"ATOMADIC_SESSION_TOKEN\": \"\"},\n        )\n        assert result.exit_code == 1\n        assert \"ATOMADIC_SESSION_TOKEN\" in result.stdout\n\n    def test_search_calls_internal_search(self, tmp_path: Path) -> None:\n        \"\"\"Search with valid session token should call internal_search.\"\"\"\n        mock_nx = MagicMock()\n        mock_nx.internal_search.return_value = {\n            \"success\": True,\n            \"result\": {\"search_query\": \"test results\", \"chunks\": []},\n        }\n        with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n            result = runner.invoke(\n                app,\n                [\"search\", \"Atomadic invariants\", \"--config\", str(_hybrid_config(tmp_path))],\n                env={\"ATOMADIC_SESSION_TOKEN\": \"test-session-abc123\"},\n            )\n        assert result.exit_code == 0\n        mock_nx.internal_search.assert_called_once_with(\n            query=\"Atomadic invariants\",\n            max_results=10,\n            session_token=\"test-session-abc123\",\n        )\n\n    def test_search_chat_mode(self, tmp_path: Path) -> None:\n        \"\"\"Search with --chat flag should call internal_search_chat.\"\"\"\n        mock_nx = MagicMock()\n        mock_nx.internal_search_chat.return_value = {\n            \"success\": True,\n            \"result\": {\"response\": \"The Atomadic codex defines...\"},\n        }\n        with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n            result = runner.invoke(\n                app,\n                [\"search\", \"what is the codex\", \"--chat\", \"--config\", str(_hybrid_config(tmp_path))],\n                env={\"ATOMADIC_SESSION_TOKEN\": \"test-session-abc123\"},\n            )\n        assert result.exit_code == 0\n        mock_nx.internal_search_chat.assert_called_once()\n\n    def test_search_custom_max_results(self, tmp_path: Path) -> None:\n        \"\"\"Search with --max-results should pass through to client.\"\"\"\n        mock_nx = MagicMock()\n        mock_nx.internal_search.return_value = {\"success\": True, \"result\": {}}\n        with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n            result = runner.invoke(\n                app,\n                [\"search\", \"query\", \"--max-results\", \"5\", \"--config\", str(_hybrid_config(tmp_path))],\n                env={\"ATOMADIC_SESSION_TOKEN\": \"sess-tok\"},\n            )\n        assert result.exit_code == 0\n        mock_nx.internal_search.assert_called_once_with(\n            query=\"query\", max_results=5, session_token=\"sess-tok\"\n        )\n",
+  "body_hash": "91618bb5f72f4a0e",
+  "body_truncated": false,
+  "callers_of": [
+    "invoke",
+    "MagicMock",
+    "assert_called_once_with",
+    "assert_called_once",
+    "patch",
+    "str",
+    "_hybrid_config",
+    "_make_ctx_mgr"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_search_x402.py:43.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testsearchcommand",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "httpx",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.nexus.client.NexusClient",
+    "ass_ade.nexus.errors.NexusPaymentRequired",
+    "ass_ade.nexus.errors.NexusAuthError"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_search_x402.py:43"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "TestSearchCommand",
+  "product_categories": [
+    "DCM",
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for TestSearchCommand"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

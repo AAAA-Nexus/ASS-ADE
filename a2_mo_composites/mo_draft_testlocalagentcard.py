@@ -1,0 +1,17 @@
+# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:279
+# Component id: mo.source.ass_ade.testlocalagentcard
+__version__ = "0.1.0"
+
+class TestLocalAgentCard:
+    def test_generates_valid_card(self, tmp_path: str) -> None:
+        card = local_agent_card(str(tmp_path) if isinstance(tmp_path, type(None)) else ".")
+        assert card.name == "ASS-ADE"
+        assert card.provider is not None
+        assert card.provider.organization == "Atomadic"
+        assert len(card.skills) > 0
+
+    def test_card_validates(self) -> None:
+        card = local_agent_card(".")
+        report = validate_agent_card(card.model_dump())
+        # Should be valid (may have warnings but no errors)
+        assert not report.errors

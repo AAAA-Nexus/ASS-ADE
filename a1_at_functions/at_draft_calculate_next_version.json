@@ -1,0 +1,36 @@
+{
+  "body": "def calculate_next_version(root: Path, bump: str, new_version: str = \"\") -> tuple[str, str]:\n    old_version = read_project_version(root)\n    requested = new_version.strip()\n    if requested:\n        if not _SEMVER_RE.match(requested):\n            raise ValueError(f\"Version must be semantic version-like: {requested}\")\n        return old_version, requested\n    if bump not in {\"patch\", \"minor\", \"major\"}:\n        raise ValueError(\"Bump must be one of: patch, minor, major\")\n    return old_version, bump_version(old_version, bump)\n",
+  "body_hash": "fc1fb9add93fd603",
+  "body_truncated": false,
+  "callers_of": [
+    "read_project_version",
+    "strip",
+    "ValueError",
+    "bump_version",
+    "match"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_calculate_next_version.py:5.",
+  "exceptions_raised": [
+    "ValueError"
+  ],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.calculate_next_version",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_calculate_next_version.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "calculate_next_version",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for calculate_next_version"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

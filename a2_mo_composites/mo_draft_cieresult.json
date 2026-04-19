@@ -1,0 +1,30 @@
+{
+  "body": "class CIEResult:\n    passed: bool\n    candidate: str\n    language: str\n    ast_valid: bool = True\n    lint_clean: bool = True\n    owasp_clean: bool = True\n    alphaverus_passed: bool = True\n    patch_applied: bool = False\n    patch_rounds: int = 0\n    warnings: list[str] = field(default_factory=list)\n    errors: list[str] = field(default_factory=list)\n    owasp_findings: list[str] = field(default_factory=list)\n    proof_stub: str | None = None\n    variant_score: float = 0.0\n",
+  "body_hash": "f9786ffbe4dc742c",
+  "body_truncated": false,
+  "callers_of": [
+    "field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_cieresult.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.cieresult",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_cieresult.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "CIEResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for CIEResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

@@ -1,0 +1,12 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ass_ade_rebuild"
+version = "0.1.0.dev0"
+description = "Auto-emitted rebuild package"
+requires-python = ">=3.11"
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]

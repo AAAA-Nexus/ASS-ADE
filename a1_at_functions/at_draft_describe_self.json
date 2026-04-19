@@ -1,0 +1,36 @@
+{
+  "body": "    def describe_self(self) -> str:\n        try:\n            return render_atomadic_help(self.working_dir)\n        except Exception:\n            return (\n                \"I'm Atomadic, the front door of ASS-ADE.\\n\\n\"\n                \"I can rebuild, design, document, lint, certify, enhance, scan, \"\n                \"and evolve codebases. Just tell me what you want in plain English.\"\n            )\n",
+  "body_hash": "d5c50fbeededf301",
+  "body_truncated": false,
+  "callers_of": [
+    "render_atomadic_help"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_atomadic.py:247.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.describe_self",
+  "imports": [
+    "time",
+    "shutil",
+    "shutil",
+    "importlib",
+    "sys"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_atomadic.py:247"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "describe_self",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for describe_self"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

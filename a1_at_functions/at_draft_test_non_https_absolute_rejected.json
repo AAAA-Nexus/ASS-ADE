@@ -1,0 +1,31 @@
+{
+  "body": "    def test_non_https_absolute_rejected(self) -> None:\n        \"\"\"HTTP (non-HTTPS) absolute URLs should be rejected.\"\"\"\n        with pytest.raises(ValueError, match=\"https scheme\"):\n            _validate_absolute_endpoint(\"http://example.com/api\")\n",
+  "body_hash": "868e9c48d584d75f",
+  "body_truncated": false,
+  "callers_of": [
+    "raises",
+    "_validate_absolute_endpoint"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateabsoluteendpoint.py:50.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_non_https_absolute_rejected",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateabsoluteendpoint.py:50"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_non_https_absolute_rejected",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_non_https_absolute_rejected"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,33 @@
+{
+  "body": "def test_render_local_docs_writes_files(tmp_path: Path) -> None:\n    src_dir = tmp_path / \"project\"\n    src_dir.mkdir()\n    out_dir = tmp_path / \"out\"\n\n    analysis = _minimal_analysis(src_dir)\n    written = render_local_docs(analysis, out_dir)\n\n    for name in _EXPECTED_FILES:\n        assert name in written, f\"{name} not in written dict\"\n        assert (out_dir / name).exists(), f\"{name} not written to disk\"\n",
+  "body_hash": "11755959337b3c32",
+  "body_truncated": false,
+  "callers_of": [
+    "mkdir",
+    "_minimal_analysis",
+    "render_local_docs",
+    "exists"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_render_local_docs_writes_files.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_render_local_docs_writes_files",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_render_local_docs_writes_files.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_render_local_docs_writes_files",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_render_local_docs_writes_files"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

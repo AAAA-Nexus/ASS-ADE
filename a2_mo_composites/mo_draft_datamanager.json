@@ -1,0 +1,32 @@
+{
+  "body": "class DataManager:\n    def __init__(self):\n        self.data = []\n        self.cache = {}\n        self.temp = None\n        self.flag = False\n        self.count = 0\n        self.total = 0\n        self.average = 0\n        self.maximum = 0\n        self.minimum = 0\n\n    def do_thing(self, x):\n        self.data.append(x)\n        self.count += 1\n        self.total += x\n        self.average = self.total / self.count\n        if x > self.maximum: self.maximum = x\n        if x < self.minimum: self.minimum = x\n        return self.data\n\n    def do_thing_2(self, x):\n        self.data.append(x)\n        self.count += 1\n        self.total += x\n        self.average = self.total / self.count\n        if x > self.maximum: self.maximum = x\n        if x < self.minimum: self.minimum = x\n        return self.data\n",
+  "body_hash": "b3cf09acc95913f0",
+  "body_truncated": false,
+  "callers_of": [
+    "append"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/benchmarks/messy_demo/helpers.py:11.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.datamanager",
+  "imports": [
+    "utils.process_data"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/benchmarks/messy_demo/helpers.py:11"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "DataManager",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for DataManager"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

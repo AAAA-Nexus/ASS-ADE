@@ -1,0 +1,30 @@
+{
+  "body": "class SagaRollback(NexusModel):\n    \"\"\"/v1/rollback/saga \u2014 RBK-100\"\"\"\n    saga_id: str | None = None\n    steps: list[str] = Field(default_factory=list)\n    status: str | None = None\n",
+  "body_hash": "b014e903b40a277b",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_sagarollback.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.sagarollback",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_sagarollback.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "SagaRollback",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for SagaRollback"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

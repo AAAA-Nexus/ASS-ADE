@@ -1,0 +1,48 @@
+{
+  "body": "def test_mcp_phase0_recon_tool_requires_sources(tmp_path: Path) -> None:\n    _seed_repo(tmp_path)\n    server = MCPServer(str(tmp_path))\n    _initialize_server(server)\n\n    response = server._handle({\n        \"jsonrpc\": \"2.0\",\n        \"id\": 1,\n        \"method\": \"tools/call\",\n        \"params\": {\n            \"name\": \"phase0_recon\",\n            \"arguments\": {\"task_description\": \"Add an MCP tool schema\"},\n        },\n    })\n\n    assert response is not None\n    assert response[\"result\"][\"isError\"] is True\n    payload = json.loads(response[\"result\"][\"content\"][0][\"text\"])\n    assert payload[\"verdict\"] == \"RECON_REQUIRED\"\n",
+  "body_hash": "de140d7a83bb7dce",
+  "body_truncated": false,
+  "callers_of": [
+    "_seed_repo",
+    "MCPServer",
+    "_initialize_server",
+    "_handle",
+    "loads",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_recon_context.py:109.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_mcp_phase0_recon_tool_requires_sources",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.context_memory.VECTOR_DIMENSIONS",
+    "ass_ade.context_memory.build_context_packet",
+    "ass_ade.context_memory.query_vector_memory",
+    "ass_ade.context_memory.store_vector_memory",
+    "ass_ade.context_memory.vector_embed",
+    "ass_ade.mcp.server.MCPServer",
+    "ass_ade.recon.phase0_recon"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_recon_context.py:109"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "test_mcp_phase0_recon_tool_requires_sources",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_mcp_phase0_recon_tool_requires_sources"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

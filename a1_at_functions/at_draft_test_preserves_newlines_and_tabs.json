@@ -1,0 +1,30 @@
+{
+  "body": "    def test_preserves_newlines_and_tabs(self) -> None:\n        text = \"Hello\\nWorld\\tFoo\"\n        assert validate_prompt(text) == text\n",
+  "body_hash": "37357aa4a40dd511",
+  "body_truncated": false,
+  "callers_of": [
+    "validate_prompt"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateprompt.py:15.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_preserves_newlines_and_tabs",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateprompt.py:15"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_preserves_newlines_and_tabs",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_preserves_newlines_and_tabs"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

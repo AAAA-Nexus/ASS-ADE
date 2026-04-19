@@ -1,0 +1,52 @@
+{
+  "body": "    def test_workflow_phase0_recon_ready(self, tmp_path: Path) -> None:\n        \"\"\"Phase 0 recon should identify relevant files and sources.\"\"\"\n        (tmp_path / \"README.md\").write_text(\"# My Project\", encoding=\"utf-8\")\n        (tmp_path / \"src\").mkdir()\n        (tmp_path / \"src\" / \"main.py\").write_text(\"def main(): pass\", encoding=\"utf-8\")\n        \n        result = runner.invoke(\n            app,\n            [\"workflow\", \"phase0-recon\", \"Add async support\", \"--path\", str(tmp_path)],\n        )\n        \n        assert result.exit_code == 0\n",
+  "body_hash": "95baa35a624471d0",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "mkdir",
+    "invoke",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli_happy_path.py:605.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "og.source.ass_ade.test_workflow_phase0_recon_ready",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.nexus.models.AgentPlan",
+    "ass_ade.nexus.models.ComplianceResult",
+    "ass_ade.nexus.models.FormatConversion",
+    "ass_ade.nexus.models.InferenceResponse",
+    "ass_ade.nexus.models.IntentClassification",
+    "ass_ade.nexus.models.RatchetSession",
+    "ass_ade.nexus.models.TrustScore",
+    "ass_ade.pipeline.PipelineResult"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli_happy_path.py:605"
+  },
+  "kind": "product_organism",
+  "made_of": [],
+  "name": "test_workflow_phase0_recon_ready",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_workflow_phase0_recon_ready"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a3_og_features",
+  "version": "0.1.0"
+}

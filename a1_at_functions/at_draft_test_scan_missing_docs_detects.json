@@ -1,0 +1,33 @@
+{
+  "body": "def test_scan_missing_docs_detects(tmp_path: Path) -> None:\n    content = \"def public_function():\\n    return 42\\n\"\n    (tmp_path / \"module.py\").write_text(content, encoding=\"utf-8\")\n\n    findings = scan_missing_docs(tmp_path)\n\n    assert len(findings) >= 1\n    assert any(f[\"category\"] == \"missing_docs\" for f in findings)\n",
+  "body_hash": "5b61b110129ef2e5",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "scan_missing_docs",
+    "any",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_scan_missing_docs_detects.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_scan_missing_docs_detects",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_scan_missing_docs_detects.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_scan_missing_docs_detects",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_scan_missing_docs_detects"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

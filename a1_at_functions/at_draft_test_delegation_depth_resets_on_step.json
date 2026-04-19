@@ -1,0 +1,37 @@
+{
+  "body": "    def test_delegation_depth_resets_on_step(self):\n        loop = self._make_loop()\n        loop._delegation_depth = 10\n        loop.reset_delegation_depth()\n        assert loop.delegation_depth == 0\n",
+  "body_hash": "e258416f4e9e61a3",
+  "body_truncated": false,
+  "callers_of": [
+    "_make_loop",
+    "reset_delegation_depth"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testagentloopphase1.py:19.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_delegation_depth_resets_on_step",
+  "imports": [
+    "unittest.mock.MagicMock",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.agent.loop.D_MAX",
+    "ass_ade.agent.orchestrator.CycleReport"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testagentloopphase1.py:19"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_delegation_depth_resets_on_step",
+  "product_categories": [
+    "IDT"
+  ],
+  "provides": [
+    "rebuild candidate for test_delegation_depth_resets_on_step"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,43 @@
+{
+  "body": "def test_protocol_evolution_record_cli(tmp_path: Path) -> None:\n    (tmp_path / \"pyproject.toml\").write_text(\n        '[project]\\nname = \"demo\"\\nversion = \"0.0.1\"\\n',\n        encoding=\"utf-8\",\n    )\n\n    result = runner.invoke(\n        app,\n        [\n            \"protocol\",\n            \"evolution-record\",\n            \"iteration\",\n            \"--summary\",\n            \"CLI event\",\n            \"--path\",\n            str(tmp_path),\n            \"--command\",\n            \"status=passed::python -m pytest tests/ -q --no-header\",\n            \"--metric\",\n            \"tests=1\",\n        ],\n    )\n\n    assert result.exit_code == 0\n    assert \"Evolution Event Recorded\" in result.stdout\n    assert (tmp_path / \".ass-ade\" / \"evolution\" / \"ledger.jsonl\").exists()\n",
+  "body_hash": "a897cd4b3b1734f1",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "invoke",
+    "exists",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_protocol.py:123.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_protocol_evolution_record_cli",
+  "imports": [
+    "pathlib.Path",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.protocol.cycle.render_protocol_markdown",
+    "ass_ade.protocol.cycle.run_protocol",
+    "ass_ade.protocol.evolution.bump_project_version",
+    "ass_ade.protocol.evolution.record_evolution_event",
+    "ass_ade.protocol.evolution.render_branch_evolution_demo"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_protocol.py:123"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_protocol_evolution_record_cli",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_protocol_evolution_record_cli"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,53 @@
+{
+  "body": "class WriteFileTool:\n    \"\"\"Create a new file or overwrite an existing file.\"\"\"\n\n    def __init__(self, working_dir: str = \".\", history: FileHistory | None = None) -> None:\n        self._cwd = Path(working_dir).resolve()\n        self._history = history\n\n    @property\n    def name(self) -> str:\n        return \"write_file\"\n\n    @property\n    def description(self) -> str:\n        return \"Create a new file or overwrite an existing file with the given content.\"\n\n    @property\n    def parameters(self) -> dict[str, Any]:\n        return {\n            \"type\": \"object\",\n            \"properties\": {\n                \"path\": {\"type\": \"string\", \"description\": \"File path relative to the working directory.\"},\n                \"content\": {\"type\": \"string\", \"description\": \"Full content to write.\"},\n            },\n            \"required\": [\"path\", \"content\"],\n        }\n\n    def execute(self, **kwargs: Any) -> ToolResult:\n        path = _resolve(self._cwd, kwargs[\"path\"])\n        content = kwargs[\"content\"]\n\n        try:\n            path.relative_to(self._cwd)\n        except ValueError:\n            return ToolResult(error=\"Cannot write outside the working directory.\", success=False)\n\n        # Record undo snapshot if file exists\n        if path.is_file() and self._history:\n            rel = str(path.relative_to(self._cwd))\n            self._history.record(rel, path.read_text(encoding=\"utf-8\"))\n\n        path.parent.mkdir(parents=True, exist_ok=True)\n        path.write_text(content, encoding=\"utf-8\")\n        return ToolResult(output=f\"Wrote {len(content)} bytes to {kwargs['path']}\")\n",
+  "body_hash": "1c89e803a62d8dbb",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "_resolve",
+    "mkdir",
+    "write_text",
+    "ToolResult",
+    "relative_to",
+    "is_file",
+    "str",
+    "record",
+    "Path",
+    "read_text",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/tools/builtin.py:105.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.writefiletool",
+  "imports": [
+    "__future__.annotations",
+    "difflib",
+    "re",
+    "shlex",
+    "subprocess",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.history.FileHistory"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/tools/builtin.py:105"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.record"
+  ],
+  "name": "WriteFileTool",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for WriteFileTool"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

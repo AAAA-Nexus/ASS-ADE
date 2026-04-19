@@ -1,0 +1,30 @@
+{
+  "body": "    def test_invalid_falls_back_to_initial(self):\n        assert bump_version(\"not-semver\", \"patch\") == INITIAL_VERSION\n",
+  "body_hash": "d6204b144fcc543b",
+  "body_truncated": false,
+  "callers_of": [
+    "bump_version"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbumpversion.py:15.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_invalid_falls_back_to_initial",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbumpversion.py:15"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_invalid_falls_back_to_initial",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_invalid_falls_back_to_initial"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,38 @@
+{
+  "body": "    def get_task(self, task_id: str) -> Optional[Task]:\n        \"\"\"Retrieve a task by ID.\"\"\"\n        return self.tasks.get(task_id)\n",
+  "body_hash": "f0c12e4361e346e6",
+  "body_truncated": false,
+  "callers_of": [
+    "get"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/examples/02-rebuild-a-codebase/sample_project/main.py:102.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.get_task",
+  "imports": [
+    "enum.Enum",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.List",
+    "typing.Optional"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/examples/02-rebuild-a-codebase/sample_project/main.py:102"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [
+    "og.source.ass_ade.get"
+  ],
+  "name": "get_task",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for get_task"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

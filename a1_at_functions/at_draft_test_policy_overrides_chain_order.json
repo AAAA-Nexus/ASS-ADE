@@ -1,0 +1,31 @@
+{
+  "body": "    def test_policy_overrides_chain_order(self, monkeypatch):\n        monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-a\")\n        monkeypatch.setenv(\"GEMINI_API_KEY\", \"sk-b\")\n        # Policy forces gemini for balanced\n        match = select_provider_for_tier(\n            \"balanced\",\n            tier_policy={\"balanced\": \"gemini\"},\n        )\n        assert match is not None\n        profile, _ = match\n        assert profile.name == \"gemini\"\n",
+  "body_hash": "43166733bd5b5e7d",
+  "body_truncated": false,
+  "callers_of": [
+    "setenv",
+    "select_provider_for_tier"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testselectproviderfortier.py:19.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_policy_overrides_chain_order",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testselectproviderfortier.py:19"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_policy_overrides_chain_order",
+  "product_categories": [
+    "SRG"
+  ],
+  "provides": [
+    "rebuild candidate for test_policy_overrides_chain_order"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

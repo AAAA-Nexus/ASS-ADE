@@ -1,0 +1,32 @@
+{
+  "body": "    def test_shield_tool_blocked(self):\n        gates = QualityGates(_mock_nexus(shield_blocked=True))\n        result = gates.shield_tool(\"run_command\", {\"command\": \"rm -rf /\"})\n        assert result is not None\n        assert result[\"blocked\"] is True\n",
+  "body_hash": "c42009ce9115440f",
+  "body_truncated": false,
+  "callers_of": [
+    "QualityGates",
+    "shield_tool",
+    "_mock_nexus"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testqualitygates.py:44.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_shield_tool_blocked",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testqualitygates.py:44"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_shield_tool_blocked",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_shield_tool_blocked"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,52 @@
+{
+  "body": "def collect(root: Path, out: Path) -> int:\n    \"\"\"Collect all training samples from *root* and write to *out*.\n\n    Returns the number of samples written.\n    \"\"\"\n    samples: list[dict[str, str]] = []\n\n    samples.extend(_from_certificate(root))\n    samples.extend(\n        _from_markdown_report(\n            root / \"REBUILD_REPORT.md\",\n            \"Summarize this rebuild report.\",\n        )\n    )\n    samples.extend(\n        _from_markdown_report(\n            root / \"NEXT_ENHANCEMENT.md\",\n            \"Suggest the next enhancement for this project based on this report.\",\n        )\n    )\n    samples.extend(_from_benchmarks(root / \"benchmarks\"))\n    samples.extend(_from_reports_dir(root / \".ass-ade\" / \"reports\"))\n\n    # conversation history \u2014 check common locations\n    for conv_path in [\n        root / \"memory\" / \"conversation_history.jsonl\",\n        root / \".ass-ade\" / \"conversation_history.jsonl\",\n        Path.home() / \".claude\" / \"conversation_history.jsonl\",\n    ]:\n        samples.extend(_from_conversation_history(conv_path))\n\n    samples.extend(_from_lora_buffer(root))\n\n    samples = _dedup(samples)\n    samples = samples[:SAMPLE_LIMIT]\n\n    out.parent.mkdir(parents=True, exist_ok=True)\n    with out.open(\"w\", encoding=\"utf-8\") as f:\n        for s in samples:\n            f.write(json.dumps(s, ensure_ascii=False) + \"\\n\")\n\n    print(f\"[collect] wrote {len(samples)} samples \u2192 {out}\", file=sys.stderr)\n    return len(samples)\n",
+  "body_hash": "52508a5784f2426a",
+  "body_truncated": false,
+  "callers_of": [
+    "extend",
+    "_dedup",
+    "mkdir",
+    "print",
+    "len",
+    "_from_certificate",
+    "_from_markdown_report",
+    "_from_benchmarks",
+    "_from_reports_dir",
+    "_from_lora_buffer",
+    "open",
+    "_from_conversation_history",
+    "write",
+    "home",
+    "dumps"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_training/collect_training_data.py:264.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.collect",
+  "imports": [
+    "__future__.annotations",
+    "argparse",
+    "json",
+    "re",
+    "sys",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_training/collect_training_data.py:264"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "collect",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for collect"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

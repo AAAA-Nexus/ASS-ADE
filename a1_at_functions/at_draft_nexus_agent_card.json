@@ -1,0 +1,35 @@
+{
+  "body": "def nexus_agent_card(\n    config: Path | None = CONFIG_OPTION,\n    allow_remote: bool = ALLOW_REMOTE_OPTION,\n) -> None:\n    _, settings = _resolve_config(config)\n    _require_remote_access(settings, allow_remote)\n    try:\n        with NexusClient(\n            base_url=settings.nexus_base_url,\n            timeout=settings.request_timeout_s,\n            api_key=settings.nexus_api_key,\n        ) as client:\n            _print_json(client.get_agent_card())\n    except httpx.HTTPError as exc:\n        _nexus_err(exc)\n",
+  "body_hash": "dd4693e8ccddff52",
+  "body_truncated": false,
+  "callers_of": [
+    "_resolve_config",
+    "_require_remote_access",
+    "NexusClient",
+    "_print_json",
+    "_nexus_err",
+    "get_agent_card"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_nexus_agent_card.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.nexus_agent_card",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_nexus_agent_card.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "nexus_agent_card",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for nexus_agent_card"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

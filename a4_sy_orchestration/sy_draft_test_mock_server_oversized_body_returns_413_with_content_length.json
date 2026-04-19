@@ -1,0 +1,52 @@
+{
+  "body": "def test_mock_server_oversized_body_returns_413_with_content_length() -> None:\n    import httpx\n\n    from ass_ade.mcp.mock_server import _MAX_BODY_BYTES, start_server\n\n    server = start_server(port=19788, block=False)\n    try:\n        payload = b\"x\" * (_MAX_BODY_BYTES + 1)\n        resp = httpx.post(\n            \"http://127.0.0.1:19788/tools/echo\",\n            content=payload,\n            headers={\"Content-Type\": \"application/json\"},\n            timeout=5,\n        )\n        assert resp.status_code == 413\n        assert \"Content-Length\" in resp.headers\n        assert int(resp.headers[\"Content-Length\"]) == len(resp.content)\n        assert resp.json()[\"error\"] == \"request entity too large\"\n    finally:\n        server.shutdown()\n",
+  "body_hash": "f07086c45f62d9c9",
+  "body_truncated": false,
+  "callers_of": [
+    "start_server",
+    "post",
+    "shutdown",
+    "int",
+    "len",
+    "json"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp.py:275.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_mock_server_oversized_body_returns_413_with_content_length",
+  "imports": [
+    "pathlib.Path",
+    "httpx",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.mcp.utils.invoke_tool",
+    "ass_ade.nexus.models.MCPManifest",
+    "ass_ade.nexus.models.MCPTool",
+    "ass_ade.nexus.models.CostEstimate",
+    "json",
+    "httpx",
+    "ass_ade.mcp.mock_server.start_server",
+    "httpx",
+    "ass_ade.mcp.mock_server._MAX_BODY_BYTES",
+    "ass_ade.mcp.mock_server.start_server"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp.py:275"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "test_mock_server_oversized_body_returns_413_with_content_length",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_mock_server_oversized_body_returns_413_with_content_length"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

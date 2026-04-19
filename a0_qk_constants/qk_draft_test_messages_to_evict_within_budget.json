@@ -1,0 +1,43 @@
+{
+  "body": "    def test_messages_to_evict_within_budget(self):\n        budget = TokenBudget(context_window=100_000)\n        messages = [\n            Message(role=\"system\", content=\"System prompt\"),\n            Message(role=\"user\", content=\"Hello\"),\n        ]\n        assert budget.messages_to_evict(messages) == 0\n",
+  "body_hash": "28c8cc0d6c5c3395",
+  "body_truncated": false,
+  "callers_of": [
+    "TokenBudget",
+    "Message",
+    "messages_to_evict"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tokens.py:147.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.test_messages_to_evict_within_budget",
+  "imports": [
+    "__future__.annotations",
+    "ass_ade.engine.tokens.DEFAULT_CONTEXT_WINDOW",
+    "ass_ade.engine.tokens.RESPONSE_RESERVE",
+    "ass_ade.engine.tokens.TokenBudget",
+    "ass_ade.engine.tokens.context_window_for",
+    "ass_ade.engine.tokens.estimate_message_tokens",
+    "ass_ade.engine.tokens.estimate_tokens",
+    "ass_ade.engine.tokens.estimate_tools_tokens",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolSchema"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tokens.py:147"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "test_messages_to_evict_within_budget",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_messages_to_evict_within_budget"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

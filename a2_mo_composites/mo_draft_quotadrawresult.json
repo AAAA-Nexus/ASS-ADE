@@ -1,0 +1,28 @@
+{
+  "body": "class QuotaDrawResult(NexusModel):\n    \"\"\"/v1/quota/tree/{id}/draw \u2014 QTA-100\"\"\"\n    drawn: int | None = None\n    remaining: int | None = None\n    idempotency_key: str | None = None\n",
+  "body_hash": "f1b65400ac32ed87",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_quotadrawresult.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.quotadrawresult",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_quotadrawresult.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "QuotaDrawResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for QuotaDrawResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

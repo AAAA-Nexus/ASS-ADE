@@ -1,0 +1,62 @@
+{
+  "body": "def promote_adapter(\n    cfg: TrainConfig,\n    adapter_url: str,\n    weights_sha256: str,\n    metrics: dict[str, Any],\n) -> dict[str, Any]:\n    version = f\"v{int(time.time())}\"\n    body = {\n        \"language\": cfg.language,\n        \"base_model\": cfg.base_model,\n        \"adapter_url\": adapter_url,\n        \"weights_sha256\": weights_sha256,\n        \"version\": version,\n        \"metrics\": metrics,\n    }\n    headers = {\"X-Atomadic-Auth\": cfg.owner_token or \"\"}\n    url = f\"{cfg.storefront_url.rstrip('/')}/v1/lora/adapter/promote\"\n    resp = httpx.post(url, headers=headers, json=body, timeout=30.0)\n    resp.raise_for_status()\n    return resp.json()\n",
+  "body_hash": "e899d1017fc73f40",
+  "body_truncated": false,
+  "callers_of": [
+    "post",
+    "raise_for_status",
+    "json",
+    "int",
+    "rstrip",
+    "time"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_train.py:283.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.promote_adapter",
+  "imports": [
+    "__future__.annotations",
+    "argparse",
+    "hashlib",
+    "json",
+    "logging",
+    "os",
+    "sys",
+    "time",
+    "dataclasses.asdict",
+    "dataclasses.dataclass",
+    "pathlib.Path",
+    "typing.Any",
+    "httpx",
+    "subprocess",
+    "torch",
+    "datasets.Dataset",
+    "peft.LoraConfig",
+    "peft.TaskType",
+    "peft.get_peft_model",
+    "transformers.AutoModelForCausalLM",
+    "transformers.AutoTokenizer",
+    "transformers.DataCollatorForLanguageModeling",
+    "transformers.Trainer",
+    "transformers.TrainingArguments",
+    "huggingface_hub.HfApi",
+    "huggingface_hub.login"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_train.py:283"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "promote_adapter",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for promote_adapter"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,39 @@
+{
+  "body": "class TestX402PaymentHandling:\n    def _make_client(self) -> NexusClient:\n        transport = httpx.MockTransport(lambda req: httpx.Response(200, json={}))\n        return NexusClient(base_url=\"https://test.atomadic.tech\", transport=transport)\n\n    def test_handle_x402_parses_payment_details(self) -> None:\n        \"\"\"handle_x402 should extract amount, network, treasury from 402 body.\"\"\"\n        client = self._make_client()\n        mock_response = httpx.Response(\n            402,\n            json={\n                \"amount\": 0.008,\n                \"network\": \"base\",\n                \"address\": \"0xCBd9e4c44958ee76E0F941106Ea960D476c48FD9\",\n                \"endpoint\": \"/v1/trust/score\",\n                \"detail\": \"Payment required: $0.008 USDC\",\n            },\n        )\n        result = client.handle_x402(mock_response)\n        assert result[\"payment_required\"] is True\n        assert result[\"amount_usdc\"] == 0.008\n        assert result[\"network\"] == \"base\"\n        assert result[\"treasury\"] == \"0xCBd9e4c44958ee76E0F941106Ea960D476c48FD9\"\n        assert result[\"endpoint\"] == \"/v1/trust/score\"\n        client.close()\n\n    def test_handle_x402_fallback_fields(self) -> None:\n        \"\"\"handle_x402 should handle alternative field names.\"\"\"\n        client = self._make_client()\n        mock_response = httpx.Response(\n            402,\n            json={\n                \"price_usdc\": 0.04,\n                \"treasury\": \"0xABC123\",\n                \"message\": \"Insufficient credits\",\n            },\n        )\n        result = client.handle_x402(mock_response)\n        assert result[\"payment_required\"] is True\n        assert result[\"amount_usdc\"] == 0.04\n        assert result[\"treasury\"] == \"0xABC123\"\n        assert result[\"detail\"] == \"Insufficient credits\"\n        client.close()\n\n    def test_handle_x402_empty_body(self) -> None:\n        \"\"\"handle_x402 should handle empty or malformed 402 body.\"\"\"\n        client = self._make_client()\n        mock_response = httpx.Response(402, text=\"Payment Required\")\n        result = client.handle_x402(mock_response)\n        assert result[\"payment_required\"] is True\n        assert result[\"amount_usdc\"] == 0\n        assert result[\"network\"] == \"base\"\n        client.close()\n\n    def test_post_with_x402_returns_payment_on_402(self) -> None:\n        \"\"\"_post_with_x402 should return payment details instead of raising on 402.\"\"\"\n        def handler(request: httpx.Request) -> httpx.Response:\n            return httpx.Response(\n                402,\n                json={\"amount\": 0.008, \"network\": \"base\", \"address\": \"0xTREASURY\"},\n            )\n\n        transport = httpx.MockTransport(handler)\n        client = NexusClient(base_url=\"https://test.atomadic.tech\", transport=transport)\n        result = client._post_with_x402(\"/v1/trust/score\", {\"agent_id\": \"test\"})\n        assert result[\"payment_required\"] is True\n        assert result[\"amount_usdc\"] == 0.008\n        client.close()\n\n    def test_post_with_x402_passes_through_on_200(self) -> None:\n        \"\"\"_post_with_x402 should return normal response on 200.\"\"\"\n        def handler(request: httpx.Request) -> httpx.Response:\n            return httpx.Response(200, json={\"trust_score\": 0.95})\n\n        transport = httpx.MockTransport(handler)\n        client = NexusClient(base_url=\"https://test.atomadic.tech\", transport=transport)\n        result = client._post_with_x402(\"/v1/trust/score\", {\"agent_id\": \"test\"})\n        assert result == {\"trust_score\": 0.95}\n        client.close()\n\n    def test_post_with_x402_raises_on_other_errors(self) -> None:\n        \"\"\"_post_with_x402 should raise on non-402 errors (401, 500, etc.).\"\"\"\n        def handler(request: httpx.Request) -> httpx.Response:\n            return httpx.Response(401, json={\"error\": \"unauthorized\"})\n\n        transport = httpx.MockTransport(handler)\n        client = NexusClient(base_url=\"https://test.atomadic.tech\", transport=transport)\n        from ass_ade.nexus.errors import NexusAuthError\n        with pytest.raises(NexusAuthError):\n            client._post_with_x402(\"/v1/trust/score\")\n        client.close()\n",
+  "body_hash": "32fad306609c2651",
+  "body_truncated": false,
+  "callers_of": [
+    "MockTransport",
+    "NexusClient",
+    "_make_client",
+    "Response",
+    "handle_x402",
+    "close",
+    "_post_with_x402",
+    "raises"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testx402paymenthandling.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testx402paymenthandling",
+  "imports": [
+    "ass_ade.nexus.errors.NexusAuthError"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testx402paymenthandling.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "TestX402PaymentHandling",
+  "product_categories": [
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for TestX402PaymentHandling"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

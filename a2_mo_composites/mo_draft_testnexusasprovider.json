@@ -1,0 +1,52 @@
+{
+  "body": "class TestNexusAsProvider:\n    \"\"\"AAAA-Nexus is selectable like any other provider once the user has a key.\"\"\"\n\n    def test_nexus_available_when_key_set(self, monkeypatch):\n        monkeypatch.setenv(\"AAAA_NEXUS_API_KEY\", \"an_test_key\")\n        profile = get_provider(\"nexus\")\n        assert profile is not None\n        assert profile.is_available() is True\n\n    def test_nexus_unavailable_without_key(self, monkeypatch):\n        monkeypatch.delenv(\"AAAA_NEXUS_API_KEY\", raising=False)\n        profile = get_provider(\"nexus\")\n        assert profile.is_available() is False\n\n    def test_nexus_selectable_via_tier_policy(self, monkeypatch):\n        monkeypatch.setenv(\"AAAA_NEXUS_API_KEY\", \"an_test_key\")\n        from ass_ade.agent.lse import LSEEngine\n\n        lse = LSEEngine({\"tier_policy\": {\"deep\": \"nexus\"}})\n        decision = lse.select(trs_score=0.3, complexity=\"critical\")\n        assert decision.provider == \"nexus\"\n\n    def test_build_provider_instantiates_nexus_provider(self, monkeypatch):\n        for key in (\"OPENAI_API_KEY\", \"ANTHROPIC_API_KEY\", \"ASS_ADE_PROVIDER_URL\"):\n            monkeypatch.delenv(key, raising=False)\n        for p in FREE_PROVIDERS.values():\n            if p.api_key_env:\n                monkeypatch.delenv(p.api_key_env, raising=False)\n        monkeypatch.setenv(\"AAAA_NEXUS_API_KEY\", \"an_test_key\")\n\n        from ass_ade.config import AssAdeConfig, ProviderOverride\n        from ass_ade.engine.provider import NexusProvider\n        from ass_ade.engine.router import build_provider\n\n        # Profile must be non-local for Nexus to wire up\n        cfg = AssAdeConfig(profile=\"hybrid\", nexus_api_key=\"an_test_key\")\n        # Disable all other catalog providers so Nexus is the only one\n        for name in FREE_PROVIDERS:\n            if name != \"nexus\":\n                cfg.providers[name] = ProviderOverride(enabled=False)\n        provider = build_provider(cfg)\n        # With only Nexus enabled, it's returned directly (no MultiProvider wrapper)\n        assert isinstance(provider, NexusProvider)\n\n    def test_nexus_is_in_default_fallback_chain(self):\n        assert \"nexus\" in DEFAULT_FALLBACK_CHAIN\n\n    def test_nexus_skipped_in_local_profile(self, monkeypatch):\n        \"\"\"Nexus is a metered paid-ish provider; local profile should skip it.\"\"\"\n        for key in (\"OPENAI_API_KEY\", \"ANTHROPIC_API_KEY\"):\n            monkeypatch.delenv(key, raising=False)\n        for p in FREE_PROVIDERS.values():\n            if p.api_key_env:\n                monkeypatch.delenv(p.api_key_env, raising=False)\n        monkeypatch.setenv(\"AAAA_NEXUS_API_KEY\", \"an_test_key\")\n\n        from ass_ade.config import AssAdeConfig\n        from ass_ade.engine.router import build_provider\n\n        cfg = AssAdeConfig(profile=\"local\", nexus_api_key=\"an_test_key\")\n        provider = build_provider(cfg)\n        # Nexus must not be in the provider map when profile is local\n        if hasattr(provider, \"providers\"):\n            assert \"nexus\" not in provider.providers\n",
+  "body_hash": "07fb86b7b8445e21",
+  "body_truncated": false,
+  "callers_of": [
+    "setenv",
+    "get_provider",
+    "delenv",
+    "LSEEngine",
+    "select",
+    "values",
+    "AssAdeConfig",
+    "build_provider",
+    "isinstance",
+    "hasattr",
+    "is_available",
+    "ProviderOverride"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexusasprovider.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testnexusasprovider",
+  "imports": [
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.ProviderOverride",
+    "ass_ade.engine.provider.NexusProvider",
+    "ass_ade.engine.router.build_provider",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.engine.router.build_provider"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexusasprovider.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.get_provider",
+    "at.source.ass_ade.is_available"
+  ],
+  "name": "TestNexusAsProvider",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestNexusAsProvider"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

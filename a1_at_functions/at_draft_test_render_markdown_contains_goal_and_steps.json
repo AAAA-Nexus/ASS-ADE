@@ -1,0 +1,35 @@
+{
+  "body": "def test_render_markdown_contains_goal_and_steps() -> None:\n    steps = draft_plan(\"Write onboarding docs\", max_steps=2)\n    rendered = render_markdown(\"Write onboarding docs\", steps)\n\n    assert \"Goal: Write onboarding docs\" in rendered\n    assert \"1. \" in rendered\n",
+  "body_hash": "0d3fc34365462013",
+  "body_truncated": false,
+  "callers_of": [
+    "draft_plan",
+    "render_markdown"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_planner.py:18.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_render_markdown_contains_goal_and_steps",
+  "imports": [
+    "pytest",
+    "ass_ade.local.planner.draft_plan",
+    "ass_ade.local.planner.render_markdown"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_planner.py:18"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_render_markdown_contains_goal_and_steps",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_render_markdown_contains_goal_and_steps"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,34 @@
+{
+  "body": "def test_compliance_oversight_history_happy_path():\n    \"\"\"Test compliance_oversight_history GET endpoint (returns raw dict).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json={\"history\": [{\"reviewer\": \"rev1\", \"decision\": \"approved\"}]})\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        result = client.compliance_oversight_history(system_id=\"system_1\")\n        assert isinstance(result, dict)\n",
+  "body_hash": "dda5f27b751e35b2",
+  "body_truncated": false,
+  "callers_of": [
+    "MockTransport",
+    "Response",
+    "NexusClient",
+    "compliance_oversight_history",
+    "isinstance"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_compliance_oversight_history_happy_path.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_compliance_oversight_history_happy_path",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_compliance_oversight_history_happy_path.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_compliance_oversight_history_happy_path",
+  "product_categories": [
+    "SRG"
+  ],
+  "provides": [
+    "rebuild candidate for test_compliance_oversight_history_happy_path"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

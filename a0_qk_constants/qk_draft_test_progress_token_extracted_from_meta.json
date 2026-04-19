@@ -1,0 +1,34 @@
+{
+  "body": "    def test_progress_token_extracted_from_meta(self, tmp_path) -> None:\n        \"\"\"_meta.progressToken is accepted in tools/call params without error.\"\"\"\n        # Create the server rooted at tmp_path so the file is within working dir.\n        server = MCPServer(str(tmp_path))\n        _initialize_server(server)\n        # read_file is a builtin tool; it runs synchronously without progress,\n        # but the server must accept the _meta field without error.\n        test_file = tmp_path / \"meta_test.txt\"\n        test_file.write_text(\"hello\")\n        response = server._handle({\n            \"jsonrpc\": \"2.0\",\n            \"id\": 1,\n            \"method\": \"tools/call\",\n            \"params\": {\n                \"name\": \"read_file\",\n                \"arguments\": {\"path\": \"meta_test.txt\"},\n                \"_meta\": {\"progressToken\": \"tok-1\"},\n            },\n        })\n        assert response is not None\n        assert response[\"result\"][\"isError\"] is False\n",
+  "body_hash": "8d0468507b732835",
+  "body_truncated": false,
+  "callers_of": [
+    "MCPServer",
+    "_initialize_server",
+    "write_text",
+    "_handle",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_testmcp202511features.py:103.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.test_progress_token_extracted_from_meta",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_testmcp202511features.py:103"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "test_progress_token_extracted_from_meta",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_progress_token_extracted_from_meta"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

@@ -1,0 +1,38 @@
+{
+  "body": "    def fake_call_llm(_text: str, _working_dir: Path | str | None = None) -> dict:\n        return {\n            \"type\": \"command\",\n            \"intent\": \"cli\",\n            \"cli_args\": [\"doctor\", \"--json\"],\n            \"path\": None,\n            \"output_path\": None,\n            \"feature_desc\": None,\n        }\n",
+  "body_hash": "fb8b71797899c404",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_capabilities.py:74.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.fake_call_llm",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "ass_ade.interpreter",
+    "ass_ade.agent.capabilities.build_atomadic_intent_prompt",
+    "ass_ade.agent.capabilities.command_path_exists",
+    "ass_ade.agent.capabilities.render_atomadic_help",
+    "ass_ade.agent.capabilities.sync_atomadic_prompt_capabilities",
+    "ass_ade.agent.context.build_system_prompt",
+    "ass_ade.interpreter.Atomadic"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_capabilities.py:74"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "fake_call_llm",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for fake_call_llm"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

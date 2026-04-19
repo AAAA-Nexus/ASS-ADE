@@ -1,0 +1,28 @@
+{
+  "body": "class FairnessProof(NexusModel):\n    \"\"\"/v1/compliance/fairness \u2014 FNS-100\"\"\"\n    disparate_impact_ratio: float | None = None\n    within_bound: bool | None = None\n    theorem: str | None = None   # \"FNS-100-FairnessBound\"\n",
+  "body_hash": "cc446e4c882324a1",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_fairnessproof.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.fairnessproof",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_fairnessproof.py:5"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "FairnessProof",
+  "product_categories": [
+    "DCM"
+  ],
+  "provides": [
+    "rebuild candidate for FairnessProof"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

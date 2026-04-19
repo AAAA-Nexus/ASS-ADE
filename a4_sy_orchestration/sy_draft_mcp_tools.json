@@ -1,0 +1,41 @@
+{
+  "body": "def mcp_tools(\n    config: Path | None = CONFIG_OPTION,\n    allow_remote: bool = ALLOW_REMOTE_OPTION,\n) -> None:\n    \"\"\"List tools published in the MCP manifest.\"\"\"\n    _, settings = _resolve_config(config)\n    _require_remote_access(settings, allow_remote)\n    try:\n        with NexusClient(\n            base_url=settings.nexus_base_url, timeout=settings.request_timeout_s,\n            api_key=settings.nexus_api_key\n        ) as client:\n            manifest = client.get_mcp_manifest()\n    except httpx.HTTPError as exc:\n        _nexus_err(exc)\n        return\n\n    table = Table(title=\"MCP Tools\")\n    table.add_column(\"#\", justify=\"right\")\n    table.add_column(\"Name\")\n    table.add_column(\"Endpoint\")\n    table.add_column(\"Method\")\n    table.add_column(\"Paid\")\n    for idx, tool in enumerate(manifest.tools, start=1):\n        table.add_row(\n            str(idx), tool.name or \"n/a\", tool.endpoint or \"n/a\", tool.method\n            or \"POST\", str(bool(tool.paid)),\n        )\n    console.print(table)\n",
+  "body_hash": "c14e769c590b993b",
+  "body_truncated": false,
+  "callers_of": [
+    "_resolve_config",
+    "_require_remote_access",
+    "Table",
+    "add_column",
+    "enumerate",
+    "print",
+    "add_row",
+    "NexusClient",
+    "get_mcp_manifest",
+    "_nexus_err",
+    "str",
+    "bool"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_mcp_tools.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.mcp_tools",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_mcp_tools.py:5"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "mcp_tools",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for mcp_tools"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

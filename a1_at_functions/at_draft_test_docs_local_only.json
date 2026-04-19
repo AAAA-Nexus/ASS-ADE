@@ -1,0 +1,40 @@
+{
+  "body": "def test_docs_local_only(tmp_path: Path) -> None:\n    _write_minimal_project(tmp_path)\n\n    result = runner.invoke(app, [\"docs\", str(tmp_path), \"--local-only\"])\n\n    assert result.exit_code == 0\n    # Should report how many docs were written\n    assert \"docs written\" in result.stdout or \"written\" in result.stdout.lower()\n",
+  "body_hash": "92807dc7b0286b1e",
+  "body_truncated": false,
+  "callers_of": [
+    "_write_minimal_project",
+    "invoke",
+    "str",
+    "lower"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_new_codebase_commands.py:46.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_docs_local_only",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_new_codebase_commands.py:46"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_docs_local_only",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_docs_local_only"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

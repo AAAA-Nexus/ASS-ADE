@@ -1,0 +1,32 @@
+{
+  "body": "    def test_fail_fast_skips_remaining(self) -> None:\n        pipe = Pipeline(\"ff\", fail_fast=True)\n        pipe.add(\"s1\", pass_step)\n        pipe.add(\"s2\", fail_step)\n        pipe.add(\"s3\", pass_step)\n        result = pipe.run()\n        assert not result.passed\n        assert result.steps[0].status == StepStatus.PASSED\n        assert result.steps[1].status == StepStatus.FAILED\n        assert result.steps[2].status == StepStatus.SKIPPED\n",
+  "body_hash": "1cf7ab09068bd81e",
+  "body_truncated": false,
+  "callers_of": [
+    "Pipeline",
+    "add",
+    "run"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testfailfast.py:6.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_fail_fast_skips_remaining",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testfailfast.py:6"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "test_fail_fast_skips_remaining",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_fail_fast_skips_remaining"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

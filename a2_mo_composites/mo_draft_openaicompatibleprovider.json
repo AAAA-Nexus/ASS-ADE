@@ -1,0 +1,63 @@
+{
+  "body": "class OpenAICompatibleProvider:\n    \"\"\"Calls any OpenAI-compatible chat/completions API.\n\n    Works with: OpenAI, Ollama, LM Studio, vLLM, Together, Groq,\n    Fireworks, DeepSeek, and any other OpenAI-compatible provider.\n    \"\"\"\n\n    def __init__(\n        self,\n        *,\n        base_url: str = \"https://api.openai.com/v1\",\n        api_key: str = \"\",\n        model: str = \"gpt-4o\",\n        timeout: float = 120.0,\n    ) -> None:\n        headers: dict[str, str] = {\"Content-Type\": \"application/json\"}\n        if api_key:\n            headers[\"Authorization\"] = f\"Bearer {api_key}\"\n        self._client = httpx.Client(\n            base_url=base_url.rstrip(\"/\"),\n            headers=headers,\n            timeout=timeout,\n        )\n        self._default_model = model\n\n    def close(self) -> None:\n        self._client.close()\n\n    @property\n    def model_name(self) -> str:\n        return self._default_model\n\n    def complete(self, request: CompletionRequest) -> CompletionResponse:\n        model = request.model or self._default_model\n        body: dict[str, Any] = {\n            \"model\": model,\n            \"messages\": [self._format_message(m) for m in request.messages],\n            \"temperature\": request.temperature,\n            \"max_tokens\": request.max_tokens,\n        }\n        if request.tools:\n            body[\"tools\"] = [\n                {\n                    \"type\": \"function\",\n                    \"function\": {\n                        \"name\": t.name,\n                        \"description\": t.description,\n                        \"parameters\": t.parameters,\n                    },\n                }\n                for t in request.tools\n            ]\n\n        resp = self._client.post(\"/chat/completions\", json=body)\n        resp.raise_for_status()\n        data = resp.json()\n\n        choice = data[\"choices\"][0]\n        msg_data = choice[\"message\"]\n\n        tool_calls: list[ToolCallRequest] = []\n        if raw_calls := msg_data.get(\"tool_calls\"):\n            for tc in raw_calls:\n                fn = tc[\"function\"]\n                try:\n                    args = (\n                        json.loads(fn[\"arguments\"])\n                        if isinstance(fn[\"arguments\"], str)\n                        else fn[\"arguments\"]\n                    )\n                except json.JSONDecodeError:\n                    args = {\"raw\": fn[\"arguments\"]}\n                tool_calls.append(\n                    ToolCallRequest(\n                        id=tc[\"id\"],\n                        name=fn[\"name\"],\n                        arguments=args,\n                    )\n                )\n\n        message = Message(\n            role=\"assistant\",\n            content=msg_data.get(\"content\") or \"\",\n            tool_calls=tool_calls,\n        )\n\n        return CompletionResponse(\n            message=message,\n            model=data.get(\"model\"),\n            finish_reason=choice.get(\"finish_reason\"),\n            usage=data.get(\"usage\"),\n        )\n\n    def stream(self, request: CompletionRequest) -> Iterator[str]:\n        \"\"\"Streaming variant \u2014 yields text chunks.\"\"\"\n        model = request.model or self._default_model\n        body: dict[str, Any] = {\n            \"model\": model,\n            \"messages\": [self._format_message(m) for m in request.messages],\n            \"temperature\": request.temperature,\n            \"max_tokens\": request.max_tokens,\n            \"stream\": True,\n        }\n        with self._client.stream(\"POST\", \"/chat/completions\", json=body) as resp:\n            resp.raise_for_status()\n            for line in resp.iter_lines():\n                if not line or not line.startswith(\"data: \"):\n                    continue\n                payload = line[6:]\n                if payload.strip() == \"[DONE]\":\n                    break\n                try:\n                    chunk = json.loads(payload)\n                    delta = chunk[\"choices\"][0].get(\"delta\", {})\n                    if text := delta.get(\"content\"):\n                        yield text\n                except (json.JSONDecodeError, KeyError, IndexError):\n                    continue\n\n    @staticmethod\n    def _format_message(msg: Message) -> dict[str, Any]:\n        d: dict[str, Any] = {\"role\": msg.role, \"content\": msg.content}\n        if msg.tool_calls:\n            d[\"tool_calls\"] = [\n                {\n                    \"id\": tc.id,\n                    \"type\": \"function\",\n                    \"function\": {\n                        \"name\": tc.name,\n                        \"arguments\": json.dumps(tc.arguments),\n                    },\n                }\n                for tc in msg.tool_calls\n            ]\n        if msg.tool_call_id:\n            d[\"tool_call_id\"] = msg.tool_call_id\n        if msg.name:\n            d[\"name\"] = msg.name\n        return d\n",
+  "body_hash": "9f98406f2bee8d3c",
+  "body_truncated": false,
+  "callers_of": [
+    "Client",
+    "close",
+    "post",
+    "raise_for_status",
+    "json",
+    "Message",
+    "CompletionResponse",
+    "get",
+    "stream",
+    "iter_lines",
+    "rstrip",
+    "_format_message",
+    "append",
+    "ToolCallRequest",
+    "strip",
+    "loads",
+    "isinstance",
+    "startswith",
+    "dumps"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/provider.py:27.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.openaicompatibleprovider",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "uuid",
+    "collections.abc.Iterator",
+    "typing.Any",
+    "typing.Protocol",
+    "typing.runtime_checkable",
+    "httpx",
+    "ass_ade.engine.types.CompletionRequest",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolCallRequest"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/provider.py:27"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.raise_for_status"
+  ],
+  "name": "OpenAICompatibleProvider",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for OpenAICompatibleProvider"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

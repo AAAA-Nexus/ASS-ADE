@@ -1,0 +1,30 @@
+{
+  "body": "    def test_code_query(self):\n        decision = local_route(\"Write a function to parse JSON\")\n        assert decision.tier in (ModelTier.STANDARD, ModelTier.DEEP)\n        assert decision.complexity >= 0.3\n",
+  "body_hash": "689c1a16b10d9e61",
+  "body_truncated": false,
+  "callers_of": [
+    "local_route"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testlocalroute.py:12.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_code_query",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testlocalroute.py:12"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_code_query",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_code_query"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

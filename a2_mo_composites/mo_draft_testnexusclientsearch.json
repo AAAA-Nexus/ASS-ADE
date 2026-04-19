@@ -1,0 +1,55 @@
+{
+  "body": "class TestNexusClientSearch:\n    def test_internal_search_sends_session_token(self) -> None:\n        \"\"\"internal_search should include X-Owner-Token header.\"\"\"\n        requests_made = []\n\n        def handler(request: httpx.Request) -> httpx.Response:\n            requests_made.append(request)\n            return httpx.Response(200, json={\"success\": True, \"result\": {}})\n\n        transport = httpx.MockTransport(handler)\n        client = NexusClient(base_url=\"https://test.atomadic.tech\", transport=transport)\n        client.internal_search(\"test query\", session_token=\"my-session-123\")\n        assert len(requests_made) == 1\n        assert requests_made[0].headers.get(\"X-Owner-Token\") == \"my-session-123\"\n        client.close()\n\n    def test_internal_search_chat_sends_query(self) -> None:\n        \"\"\"internal_search_chat should POST to /internal/search/chat.\"\"\"\n        requests_made = []\n\n        def handler(request: httpx.Request) -> httpx.Response:\n            requests_made.append(request)\n            return httpx.Response(200, json={\"success\": True, \"result\": {\"response\": \"answer\"}})\n\n        transport = httpx.MockTransport(handler)\n        client = NexusClient(base_url=\"https://test.atomadic.tech\", transport=transport)\n        result = client.internal_search_chat(\"what is codex\", session_token=\"sess\")\n        assert result[\"success\"] is True\n        assert \"/internal/search/chat\" in str(requests_made[0].url)\n        client.close()\n",
+  "body_hash": "0a667e0af7f790f5",
+  "body_truncated": false,
+  "callers_of": [
+    "MockTransport",
+    "NexusClient",
+    "internal_search",
+    "close",
+    "internal_search_chat",
+    "append",
+    "Response",
+    "len",
+    "get",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_search_x402.py:209.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testnexusclientsearch",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "httpx",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.nexus.client.NexusClient",
+    "ass_ade.nexus.errors.NexusPaymentRequired",
+    "ass_ade.nexus.errors.NexusAuthError"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_search_x402.py:209"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "TestNexusClientSearch",
+  "product_categories": [
+    "DCM",
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for TestNexusClientSearch"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

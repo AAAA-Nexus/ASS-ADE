@@ -1,0 +1,30 @@
+{
+  "body": "    def test_all_profiles_have_all_three_tiers(self):\n        for name, profile in FREE_PROVIDERS.items():\n            for tier in ALL_TIERS:\n                assert tier in profile.models_by_tier, f\"{name} missing {tier} tier\"\n                assert profile.models_by_tier[tier], f\"{name} {tier} is empty\"\n",
+  "body_hash": "5204d809f44af310",
+  "body_truncated": false,
+  "callers_of": [
+    "items"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testcataloginvariants.py:16.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.test_all_profiles_have_all_three_tiers",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testcataloginvariants.py:16"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "test_all_profiles_have_all_three_tiers",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_all_profiles_have_all_three_tiers"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

@@ -1,0 +1,34 @@
+{
+  "body": "class VanguardMevRouteResult(NexusModel):\n    \"\"\"POST /v1/vanguard/mev/route-intent\"\"\"\n    route_id: str | None = None\n    approved: bool | None = None\n    priority_score: float | None = None\n    estimated_mev_usd: float | None = None\n    slippage_within_tolerance: bool | None = None\n",
+  "body_hash": "1a64bc5ce272d444",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/models.py:1010.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.vanguardmevrouteresult",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/models.py:1010"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "VanguardMevRouteResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for VanguardMevRouteResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

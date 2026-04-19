@@ -1,0 +1,30 @@
+{
+  "body": "    def test_simple_query(self):\n        decision = local_route(\"What is 2 + 2?\")\n        assert decision.tier == ModelTier.FAST\n        assert decision.source == \"local\"\n        assert decision.recommended_model is not None\n",
+  "body_hash": "d16e9944238e1882",
+  "body_truncated": false,
+  "callers_of": [
+    "local_route"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testlocalroute.py:6.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_simple_query",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testlocalroute.py:6"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_simple_query",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_simple_query"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

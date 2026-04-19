@@ -1,0 +1,30 @@
+{
+  "body": "class PortabilityCheck(NexusModel):\n    \"\"\"/v1/federation/portability \u2014 AIF-102\"\"\"\n    portability_score: float | None = None\n    from_platform: str | None = None\n    to_platform: str | None = None\n    capability_gaps: list[str] = Field(default_factory=list)\n",
+  "body_hash": "23edcb387425e531",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_portabilitycheck.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.portabilitycheck",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_portabilitycheck.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "PortabilityCheck",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for PortabilityCheck"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

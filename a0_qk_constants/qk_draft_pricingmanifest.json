@@ -1,0 +1,28 @@
+{
+  "body": "class PricingManifest(NexusModel):\n    \"\"\"/.well-known/pricing.json\"\"\"\n    tiers: Any = None\n",
+  "body_hash": "9ef644e3f23e6224",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_pricingmanifest.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.pricingmanifest",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_pricingmanifest.py:5"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "PricingManifest",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for PricingManifest"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

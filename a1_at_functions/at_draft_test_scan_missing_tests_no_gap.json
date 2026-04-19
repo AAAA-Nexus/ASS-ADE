@@ -1,0 +1,47 @@
+{
+  "body": "def test_scan_missing_tests_no_gap(tmp_path: Path) -> None:\n    src_pkg = tmp_path / \"src\" / \"mypackage\"\n    src_pkg.mkdir(parents=True)\n    (src_pkg / \"utils.py\").write_text(\"def helper(): pass\\n\", encoding=\"utf-8\")\n    tests_dir = tmp_path / \"tests\"\n    tests_dir.mkdir()\n    (tests_dir / \"test_utils.py\").write_text(\"def test_helper(): pass\\n\", encoding=\"utf-8\")\n\n    findings = scan_missing_tests(tmp_path)\n\n    # utils.py now has a corresponding test_utils.py \u2014 should not be flagged\n    flagged_files = [f[\"file\"] for f in findings]\n    assert not any(\"utils\" in fp for fp in flagged_files)\n",
+  "body_hash": "d023f9b309a5bcb0",
+  "body_truncated": false,
+  "callers_of": [
+    "mkdir",
+    "write_text",
+    "scan_missing_tests",
+    "any"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_enhancer.py:38.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_scan_missing_tests_no_gap",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "typing.Any",
+    "pytest",
+    "ass_ade.local.enhancer.build_enhancement_report",
+    "ass_ade.local.enhancer.rank_findings",
+    "ass_ade.local.enhancer.scan_bare_except",
+    "ass_ade.local.enhancer.scan_long_functions",
+    "ass_ade.local.enhancer.scan_missing_docs",
+    "ass_ade.local.enhancer.scan_missing_tests",
+    "ass_ade.local.enhancer.scan_security_patterns",
+    "ass_ade.local.enhancer.scan_todo_fixme",
+    "ass_ade.local.enhancer.scan_missing_type_hints"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_enhancer.py:38"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_scan_missing_tests_no_gap",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_scan_missing_tests_no_gap"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

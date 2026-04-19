@@ -1,0 +1,40 @@
+{
+  "body": "    def test_add_create(self):\n        plan = EditPlan(description=\"Test plan\")\n        plan.add_create(\"new.py\", \"print('new')\\n\")\n        assert len(plan.edits) == 1\n        assert plan.edits[0].kind == EditKind.CREATE\n",
+  "body_hash": "9260ebe807618a32",
+  "body_truncated": false,
+  "callers_of": [
+    "EditPlan",
+    "add_create",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:27.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_add_create",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.tools.history.FileHistory",
+    "ass_ade.tools.plan.EditKind",
+    "ass_ade.tools.plan.EditPlan",
+    "ass_ade.tools.plan.EditPlanExecutor"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:27"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_add_create",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_add_create"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

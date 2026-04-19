@@ -1,0 +1,30 @@
+{
+  "body": "    def test_major(self):\n        assert bump_version(\"0.1.3\", \"major\") == \"1.0.0\"\n",
+  "body_hash": "7d4db8633cb1444c",
+  "body_truncated": false,
+  "callers_of": [
+    "bump_version"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbumpversion.py:12.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_major",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbumpversion.py:12"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_major",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_major"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

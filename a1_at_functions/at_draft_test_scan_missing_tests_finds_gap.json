@@ -1,0 +1,48 @@
+{
+  "body": "def test_scan_missing_tests_finds_gap(tmp_path: Path) -> None:\n    src_pkg = tmp_path / \"src\" / \"mypackage\"\n    src_pkg.mkdir(parents=True)\n    (src_pkg / \"utils.py\").write_text(\"def helper(): pass\\n\", encoding=\"utf-8\")\n    (tmp_path / \"tests\").mkdir()\n\n    findings = scan_missing_tests(tmp_path)\n\n    assert len(findings) >= 1\n    assert any(\"utils\" in f[\"file\"] for f in findings)\n",
+  "body_hash": "32039da28361f2f0",
+  "body_truncated": false,
+  "callers_of": [
+    "mkdir",
+    "write_text",
+    "scan_missing_tests",
+    "any",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_enhancer.py:26.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_scan_missing_tests_finds_gap",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "typing.Any",
+    "pytest",
+    "ass_ade.local.enhancer.build_enhancement_report",
+    "ass_ade.local.enhancer.rank_findings",
+    "ass_ade.local.enhancer.scan_bare_except",
+    "ass_ade.local.enhancer.scan_long_functions",
+    "ass_ade.local.enhancer.scan_missing_docs",
+    "ass_ade.local.enhancer.scan_missing_tests",
+    "ass_ade.local.enhancer.scan_security_patterns",
+    "ass_ade.local.enhancer.scan_todo_fixme",
+    "ass_ade.local.enhancer.scan_missing_type_hints"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_enhancer.py:26"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_scan_missing_tests_finds_gap",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_scan_missing_tests_finds_gap"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

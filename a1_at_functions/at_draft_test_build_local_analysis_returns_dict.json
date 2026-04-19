@@ -1,0 +1,32 @@
+{
+  "body": "def test_build_local_analysis_returns_dict(tmp_path: Path) -> None:\n    (tmp_path / \"app.py\").write_text(\"def main(): pass\\n\", encoding=\"utf-8\")\n    (tmp_path / \"pyproject.toml\").write_text(\n        '[project]\\nname = \"demo\"\\nversion = \"0.1.0\"\\n',\n        encoding=\"utf-8\",\n    )\n\n    analysis = build_local_analysis(tmp_path)\n\n    assert isinstance(analysis, dict)\n    for key in (\"root\", \"languages\", \"metadata\", \"symbols\", \"test_framework\", \"ci\", \"summary\"):\n        assert key in analysis, f\"missing key: {key}\"\n",
+  "body_hash": "54575f35c1ad0b38",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "build_local_analysis",
+    "isinstance"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_build_local_analysis_returns_dict.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_build_local_analysis_returns_dict",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_build_local_analysis_returns_dict.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_build_local_analysis_returns_dict",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_build_local_analysis_returns_dict"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,42 @@
+{
+  "body": "class AssAdeConfig(BaseModel):\n    profile: ProfileName = Field(default=\"local\")\n    nexus_base_url: str = Field(default=\"https://atomadic.tech\")\n    request_timeout_s: float = Field(default=20.0, ge=1.0, le=120.0)\n    agent_id: str = Field(default=\"ass-ade-local\")\n    agent_model: str = Field(default=\"\")  # empty = let LSE + catalog decide\n    nexus_api_key: str | None = Field(default=None, repr=False)\n\n    # \u2500\u2500 LSE + Provider configuration (Phase 1 free-tier support) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    lse_enabled: bool = Field(default=True)\n    \"\"\"Enable LSE tier-based model routing. If False, agent_model is used directly.\"\"\"\n\n    tier_policy: dict[str, str] = Field(default_factory=dict)\n    \"\"\"Explicit tier \u2192 provider preference, e.g. {\"balanced\": \"groq\", \"deep\": \"openrouter\"}.\n    Keys: fast / balanced / deep. Values: provider names from the catalog.\"\"\"\n\n    provider_fallback_chain: list[str] = Field(default_factory=list)\n    \"\"\"Ordered list of provider names to try. Empty = use catalog default.\"\"\"\n\n    providers: dict[str, ProviderOverride] = Field(default_factory=dict)\n    \"\"\"Per-provider overrides. Key = provider name (groq, gemini, ollama, ...).\"\"\"\n",
+  "body_hash": "d3614484d61d40d9",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/config.py:27.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.assadeconfig",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "stat",
+    "pathlib.Path",
+    "typing.Literal",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "ass_ade.nexus.validation.sanitize_header_value",
+    "ass_ade.nexus.validation.validate_api_key",
+    "ass_ade.nexus.validation.validate_url",
+    "json"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/config.py:27"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "AssAdeConfig",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for AssAdeConfig"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

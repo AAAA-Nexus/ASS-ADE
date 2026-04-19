@@ -1,0 +1,35 @@
+{
+  "body": "def tmp_workspace(tmp_path: Path) -> Path:\n    \"\"\"Create a temporary workspace with a sample file.\"\"\"\n    sample = tmp_path / \"hello.py\"\n    sample.write_text(\"print('hello')\\n\", encoding=\"utf-8\")\n    return tmp_path\n",
+  "body_hash": "a978bf3e4c0ffb8c",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_history.py:13.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.tmp_workspace",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.tools.history.FileHistory"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_history.py:13"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "tmp_workspace",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for tmp_workspace"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

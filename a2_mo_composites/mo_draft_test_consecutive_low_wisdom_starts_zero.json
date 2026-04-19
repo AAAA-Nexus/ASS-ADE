@@ -1,0 +1,33 @@
+{
+  "body": "    def test_consecutive_low_wisdom_starts_zero(self):\n        orch = self._make()\n        assert orch._consecutive_low_wisdom == 0\n",
+  "body_hash": "9742407bf83934fb",
+  "body_truncated": false,
+  "callers_of": [
+    "_make"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testengineorchestratorphase15.py:62.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.test_consecutive_low_wisdom_starts_zero",
+  "imports": [
+    "ass_ade.agent.orchestrator.EngineOrchestrator",
+    "ass_ade.agent.orchestrator.CycleReport"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testengineorchestratorphase15.py:62"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "test_consecutive_low_wisdom_starts_zero",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_consecutive_low_wisdom_starts_zero"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

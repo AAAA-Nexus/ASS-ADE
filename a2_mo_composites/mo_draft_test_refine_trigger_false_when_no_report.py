@@ -1,0 +1,7 @@
+# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:139
+# Component id: mo.source.ass_ade.test_refine_trigger_false_when_no_report
+__version__ = "0.1.0"
+
+    def test_refine_trigger_false_when_no_report(self):
+        loop = self._make_loop()
+        assert loop._check_refine_trigger(None) is False

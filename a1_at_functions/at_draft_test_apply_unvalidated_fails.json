@@ -1,0 +1,41 @@
+{
+  "body": "    def test_apply_unvalidated_fails(self, executor: EditPlanExecutor):\n        plan = EditPlan()\n        plan.add_create(\"x.py\", \"x\")\n        result = executor.apply(plan)\n        assert not result.success\n        assert \"validated\" in result.error.lower()\n",
+  "body_hash": "dcc3d0074e32a5d9",
+  "body_truncated": false,
+  "callers_of": [
+    "EditPlan",
+    "add_create",
+    "apply",
+    "lower"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:126.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_apply_unvalidated_fails",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.tools.history.FileHistory",
+    "ass_ade.tools.plan.EditKind",
+    "ass_ade.tools.plan.EditPlan",
+    "ass_ade.tools.plan.EditPlanExecutor"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:126"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_apply_unvalidated_fails",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_apply_unvalidated_fails"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

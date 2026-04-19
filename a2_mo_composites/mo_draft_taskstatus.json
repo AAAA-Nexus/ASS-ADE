@@ -1,0 +1,28 @@
+{
+  "body": "class TaskStatus(Enum):\n    \"\"\"Task state constants.\"\"\"\n    TODO = \"todo\"\n    IN_PROGRESS = \"in_progress\"\n    DONE = \"done\"\n    BLOCKED = \"blocked\"\n",
+  "body_hash": "a62ab3afe3305369",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_taskstatus.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.taskstatus",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_taskstatus.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "TaskStatus",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TaskStatus"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

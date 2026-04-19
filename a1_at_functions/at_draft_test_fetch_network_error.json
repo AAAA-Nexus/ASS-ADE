@@ -1,0 +1,50 @@
+{
+  "body": "    def test_fetch_network_error(self) -> None:\n        import httpx as _httpx\n\n        with patch(\"ass_ade.a2a.socket.getaddrinfo\", return_value=_FAKE_ADDR_INFO):\n            with patch(\"ass_ade.a2a.httpx.get\", side_effect=_httpx.ConnectError(\"refused\")):\n                report = fetch_agent_card(\"https://unreachable.com\")\n                assert not report.valid\n                assert any(\"Network\" in i.message for i in report.errors)\n",
+  "body_hash": "bdabb1a504ebc38b",
+  "body_truncated": false,
+  "callers_of": [
+    "patch",
+    "fetch_agent_card",
+    "any",
+    "ConnectError"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:185.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_fetch_network_error",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.a2a.A2AAgentCard",
+    "ass_ade.a2a.A2AAuthentication",
+    "ass_ade.a2a.A2ASkill",
+    "ass_ade.a2a.ValidationIssue",
+    "ass_ade.a2a.ValidationReport",
+    "ass_ade.a2a.fetch_agent_card",
+    "ass_ade.a2a.local_agent_card",
+    "ass_ade.a2a.negotiate",
+    "ass_ade.a2a.validate_agent_card",
+    "httpx",
+    "httpx"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:185"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_fetch_network_error",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_fetch_network_error"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

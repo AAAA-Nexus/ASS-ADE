@@ -1,0 +1,39 @@
+{
+  "body": "def lora_credit(\n    config: Path | None = CONFIG_OPTION,\n) -> None:\n    \"\"\"Show accrued Nexus credit balance (auto-applied on paid calls).\"\"\"\n    _, settings = _resolve_config(config)\n    if settings.profile == \"local\":\n        console.print(\"[yellow]Local profile \u2014 credit is earned/applied in hybrid or premium mode.[/yellow]\")\n        return\n    try:\n        with NexusClient(\n            base_url=settings.nexus_base_url,\n            timeout=settings.request_timeout_s,\n            api_key=settings.nexus_api_key,\n            agent_id=settings.agent_id,\n        ) as client:\n            balance = client.lora_credit_balance(agent_id=settings.agent_id)\n            claim = client.lora_reward_claim(agent_id=settings.agent_id)\n    except Exception as exc:\n        console.print(f\"[red]Error:[/red] {exc}\")\n        return\n    t = Table(title=f\"Nexus Credit \u2014 {settings.agent_id}\")\n    t.add_column(\"Metric\")\n    t.add_column(\"Value\")\n    t.add_row(\"Accepted contributions\", str(claim.get(\"accepted_contributions\", 0)))\n    t.add_row(\"Reputation earned\", str(claim.get(\"reputation_earned\", 0)))\n    t.add_row(\n        \"Credit balance\",\n        f\"${balance.get('balance_usdc', '0.000000')} \"\n        f\"({balance.get('balance_micro_usdc', 0)} micro-USDC)\",\n    )\n    t.add_row(\"Reward model\", str(balance.get(\"reward_model\", \"nexus_api_credit\")))\n    console.print(t)\n    console.print(\n        \"\\n[dim]Balance is auto-deducted on paid calls when X-Agent-Id is set (handled by ass-ade automatically).[/dim]\"\n    )\n",
+  "body_hash": "c0e76162d69cd4c2",
+  "body_truncated": false,
+  "callers_of": [
+    "_resolve_config",
+    "Table",
+    "add_column",
+    "add_row",
+    "print",
+    "str",
+    "NexusClient",
+    "lora_credit_balance",
+    "lora_reward_claim",
+    "get"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_lora_credit.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.lora_credit",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_lora_credit.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "lora_credit",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for lora_credit"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

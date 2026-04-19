@@ -1,0 +1,34 @@
+{
+  "body": "    def test_is_healthy_false_when_no_calls(self) -> None:\n        client = _mock_client()\n        client.ratchet_status.return_value = RatchetStatus(remaining_calls=0)\n        session = NexusSession(client)\n        session.start(\"13608\")\n        assert not session.is_healthy()\n",
+  "body_hash": "43d3e57404f907a8",
+  "body_truncated": false,
+  "callers_of": [
+    "_mock_client",
+    "RatchetStatus",
+    "NexusSession",
+    "start",
+    "is_healthy"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexussession.py:34.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_is_healthy_false_when_no_calls",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexussession.py:34"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_is_healthy_false_when_no_calls",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_is_healthy_false_when_no_calls"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

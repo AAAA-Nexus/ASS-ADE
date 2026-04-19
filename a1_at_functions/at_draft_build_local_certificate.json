@@ -1,0 +1,30 @@
+{
+  "body": "def build_local_certificate(root: Path, version: str | None = None) -> dict[str, Any]:\n    return {\n        \"schema\": \"ASS-ADE-CERT-001\",\n        \"version\": version or \"unknown\",\n        \"digest\": compute_codebase_digest(root),\n        \"signed_by\": None,\n        \"signature\": None,\n        \"valid\": False,\n        \"issuer\": \"atomadic.tech\",\n    }\n",
+  "body_hash": "a444de061250091c",
+  "body_truncated": false,
+  "callers_of": [
+    "compute_codebase_digest"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_build_local_certificate.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.build_local_certificate",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_build_local_certificate.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "build_local_certificate",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for build_local_certificate"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

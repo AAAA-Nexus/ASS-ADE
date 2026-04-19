@@ -1,0 +1,31 @@
+{
+  "body": "    def test_missing_name_is_error(self) -> None:\n        data = {\"description\": \"no name\"}\n        report = validate_agent_card(data)\n        assert not report.valid\n        assert any(i.severity == \"error\" for i in report.issues)\n",
+  "body_hash": "55f8bcc8edd83101",
+  "body_truncated": false,
+  "callers_of": [
+    "validate_agent_card",
+    "any"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateagentcard.py:36.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_missing_name_is_error",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateagentcard.py:36"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_missing_name_is_error",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_missing_name_is_error"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,49 @@
+{
+  "body": "def print_colab_instructions(data_path: Path = Path(\"training_data/training_data.jsonl\")) -> None:\n    \"\"\"Print step-by-step Colab instructions when no GPU is available locally.\"\"\"\n    print(\n        \"\\n\"\n        \"\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\\n\"\n        \"  No GPU detected \u2014 use Google Colab free T4:\\n\"\n        \"\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\\n\"\n        \"\\n\"\n        \"  1. Open scripts/lora_training/colab_notebook.ipynb in Colab\\n\"\n        \"     \u2192 File > Upload notebook\\n\"\n        \"\\n\"\n        \"  2. Runtime > Change runtime type \u2192 T4 GPU\\n\"\n        \"\\n\"\n        f\"  3. Upload {data_path} when the notebook prompts\\n\"\n        \"\\n\"\n        \"  4. Run all cells (~15 min for 500 samples / 3 epochs)\\n\"\n        \"\\n\"\n        \"  5. Download the adapter zip and unzip to models/lora_adapter/\\n\"\n        \"\\n\"\n        \"  6. Then run: ass-ade train --serve\\n\"\n        \"\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\\n\"\n    )\n",
+  "body_hash": "ef32fd0533fde1da",
+  "body_truncated": false,
+  "callers_of": [
+    "Path",
+    "print"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_training/train_lora.py:210.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.print_colab_instructions",
+  "imports": [
+    "__future__.annotations",
+    "argparse",
+    "json",
+    "logging",
+    "sys",
+    "pathlib.Path",
+    "typing.Any",
+    "torch",
+    "datasets.Dataset",
+    "peft.LoraConfig",
+    "peft.TaskType",
+    "peft.get_peft_model",
+    "transformers.AutoModelForCausalLM",
+    "transformers.AutoTokenizer",
+    "transformers.DataCollatorForLanguageModeling",
+    "transformers.Trainer",
+    "transformers.TrainingArguments"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_training/train_lora.py:210"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "print_colab_instructions",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for print_colab_instructions"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

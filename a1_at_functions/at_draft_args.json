@@ -1,0 +1,28 @@
+{
+  "body": "const { execFileSync } = require('child_process');\n\nconst args = process.argv.slice(2);\n\ntry {\n  execFileSync('python', ['-m', 'ass_ade', ...args], {\n    stdio: 'inherit',\n    env: { ...process.env }\n  });\n} catch (err) {\n  if (err.status) process.exit(err.status);\n  // Python not found\n  console.error('Error: Python 3.12+ is required. Install from https://python.org');\n  console.error('Then: pip install ass-ade');\n  process.exit(1);\n}\n",
+  "body_hash": "7521759f8b854558",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/bin/ass-ade.js:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.args",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/bin/ass-ade.js:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "args",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for args"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

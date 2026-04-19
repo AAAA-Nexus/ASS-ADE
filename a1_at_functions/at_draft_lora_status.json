@@ -1,0 +1,46 @@
+{
+  "body": "def lora_status(\n    config: Path | None = CONFIG_OPTION,\n) -> None:\n    \"\"\"Show LoRA flywheel contribution status and adapter health.\"\"\"\n    from ass_ade.agent.lora_flywheel import LoRAFlywheel, RG_LOOP\n\n    _, settings = _resolve_config(config)\n    nexus = None\n    if settings.profile != \"local\":\n        try:\n            nexus = NexusClient(\n                base_url=settings.nexus_base_url,\n                timeout=settings.request_timeout_s,\n                api_key=settings.nexus_api_key,\n            ).__enter__()\n        except Exception:\n            pass\n\n    flywheel = LoRAFlywheel(nexus=nexus)\n    status = flywheel.status()\n\n    t = Table(title=\"LoRA Flywheel Status\")\n    t.add_column(\"Metric\")\n    t.add_column(\"Value\")\n    t.add_row(\"Adapter version\", status.adapter_version)\n    t.add_row(\"Total contributions\", str(status.contribution_count))\n    t.add_row(\"  Fixes captured\", str(status.fix_count))\n    t.add_row(\"  Principles captured\", str(status.principle_count))\n    t.add_row(\"  Rejections captured\", str(status.rejection_count))\n    t.add_row(\"Ratchet epoch\", f\"{status.ratchet_epoch} / 7\")\n    t.add_row(\"Pending contributions\", str(status.pending_count))\n    t.add_row(f\"Next batch (every {RG_LOOP} steps)\", f\"in {status.next_batch_step} steps\")\n    if status.quality_score > 0:\n        t.add_row(\"Adapter quality\", f\"{status.quality_score:.2%}\")\n\n    # Fetch live reputation + Nexus credit balance (non-blocking)\n    reputation: int | None = None\n    credit_micro: int | None = None\n    accepted_contributions: int | None = None\n    if nexus is not None:\n        try:\n            claim = nexus.lora_reward_claim(agent_id=settings.agent_id)\n            if isinstance(claim, dict):\n                reputation = int(claim.get(\"reputation_earned\", 0))\n                credit_micro = int(claim.get(\"usdc_micro_payout\", 0))  # legacy field = credit balance\n                accepted_contributions = int(claim.get(\"accepted_contributions\", 0))\n        except Exception:\n            pass\n\n    if accepted_contributions is not None:\n        t.add_row(\"Accepted by Nexus\", str(accepted_contributions))\n    if reputation is not None:\n        t.add_row(\"Reputation earned\", str(reputation))\n    if credit_micro is not None:\n        t.add_row(\"Nexus credit accrued\", f\"${credit_micro / 1_000_000:.6f} (discount against future API calls)\")\n\n    console.print(t)\n\n    if credit_micro is not None and credit_micro > 0:\n        console.print(\n            \"\\n[green]\u2713[/green] Credit will auto-discount your next metered Nexus calls.\\n\"\n            \"[dim]Reward model: Nexus API-call credits today; on-chain USDC once Nexus is cash-positive.[/dim]\"\n        )\n    elif status.ratchet_epoch == 0:\n        console.print(\"\\n[dim]Contribute fixes to earn Nexus API credit + advance the ratchet epoch.[/dim]\")\n    elif status.ratchet_epoch >= 7:\n        console.print(\"\\n[green]\u2713 Sovereign contributor status achieved.[/green]\")\n",
+  "body_hash": "b94c966f5b7aa28f",
+  "body_truncated": false,
+  "callers_of": [
+    "_resolve_config",
+    "LoRAFlywheel",
+    "status",
+    "Table",
+    "add_column",
+    "add_row",
+    "print",
+    "str",
+    "__enter__",
+    "lora_reward_claim",
+    "isinstance",
+    "int",
+    "NexusClient",
+    "get"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_lora_status.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.lora_status",
+  "imports": [
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel",
+    "ass_ade.agent.lora_flywheel.RG_LOOP"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_lora_status.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "lora_status",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for lora_status"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

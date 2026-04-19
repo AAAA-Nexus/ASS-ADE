@@ -1,0 +1,30 @@
+{
+  "body": "    def model_for_tier(self, tier: str, override: dict[str, str] | None = None) -> str | None:\n        \"\"\"Get the model id for a tier, honoring config overrides.\"\"\"\n        tier = TIER_ALIASES.get(tier, tier)\n        if override and tier in override:\n            return override[tier]\n        return self.models_by_tier.get(tier)\n",
+  "body_hash": "8a2f5eab5d650c1d",
+  "body_truncated": false,
+  "callers_of": [
+    "get"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_providerprofile.py:34.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.model_for_tier",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_providerprofile.py:34"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "model_for_tier",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for model_for_tier"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

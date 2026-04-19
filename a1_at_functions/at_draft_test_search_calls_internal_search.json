@@ -1,0 +1,52 @@
+{
+  "body": "    def test_search_calls_internal_search(self, tmp_path: Path) -> None:\n        \"\"\"Search with valid session token should call internal_search.\"\"\"\n        mock_nx = MagicMock()\n        mock_nx.internal_search.return_value = {\n            \"success\": True,\n            \"result\": {\"search_query\": \"test results\", \"chunks\": []},\n        }\n        with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n            result = runner.invoke(\n                app,\n                [\"search\", \"Atomadic invariants\", \"--config\", str(_hybrid_config(tmp_path))],\n                env={\"ATOMADIC_SESSION_TOKEN\": \"test-session-abc123\"},\n            )\n        assert result.exit_code == 0\n        mock_nx.internal_search.assert_called_once_with(\n            query=\"Atomadic invariants\",\n            max_results=10,\n            session_token=\"test-session-abc123\",\n        )\n",
+  "body_hash": "1c1fdfc5ee20d991",
+  "body_truncated": false,
+  "callers_of": [
+    "MagicMock",
+    "assert_called_once_with",
+    "patch",
+    "invoke",
+    "_make_ctx_mgr",
+    "str",
+    "_hybrid_config"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_search_x402.py:54.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_search_calls_internal_search",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "httpx",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.nexus.client.NexusClient",
+    "ass_ade.nexus.errors.NexusPaymentRequired",
+    "ass_ade.nexus.errors.NexusAuthError"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_search_x402.py:54"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_search_calls_internal_search",
+  "product_categories": [
+    "DCM",
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for test_search_calls_internal_search"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

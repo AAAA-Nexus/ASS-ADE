@@ -1,0 +1,43 @@
+{
+  "body": "def test_render_protocol_markdown_contains_sections(tmp_path: Path) -> None:\n    (tmp_path / \"README.md\").write_text(\"# Demo\\n\", encoding=\"utf-8\")\n    report = run_protocol(\"Improve public shell\", tmp_path, AssAdeConfig(profile=\"local\"))\n    markdown = render_protocol_markdown(report)\n\n    assert \"# ASS-ADE Public Enhancement Cycle\" in markdown\n    assert \"## Assessment\" in markdown\n    assert \"## Audit\" in markdown\n    assert \"## Recommendations\" in markdown\n",
+  "body_hash": "75d2bac899958bd8",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "run_protocol",
+    "render_protocol_markdown",
+    "AssAdeConfig"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_protocol.py:44.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_render_protocol_markdown_contains_sections",
+  "imports": [
+    "pathlib.Path",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.protocol.cycle.render_protocol_markdown",
+    "ass_ade.protocol.cycle.run_protocol",
+    "ass_ade.protocol.evolution.bump_project_version",
+    "ass_ade.protocol.evolution.record_evolution_event",
+    "ass_ade.protocol.evolution.render_branch_evolution_demo"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_protocol.py:44"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_render_protocol_markdown_contains_sections",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_render_protocol_markdown_contains_sections"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

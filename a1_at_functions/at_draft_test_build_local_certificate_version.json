@@ -1,0 +1,40 @@
+{
+  "body": "def test_build_local_certificate_version(tmp_path: Path) -> None:\n    (tmp_path / \"src.py\").write_text(\"pass\\n\", encoding=\"utf-8\")\n\n    cert = build_local_certificate(tmp_path, version=\"1.2.3\")\n\n    assert cert[\"version\"] == \"1.2.3\"\n",
+  "body_hash": "ecbf34ac4e240a51",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "build_local_certificate"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_certifier.py:105.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_build_local_certificate_version",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.local.certifier.build_local_certificate",
+    "ass_ade.local.certifier.compute_codebase_digest",
+    "ass_ade.local.certifier.hash_file",
+    "ass_ade.local.certifier.render_certificate_text"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_certifier.py:105"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_build_local_certificate_version",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_build_local_certificate_version"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

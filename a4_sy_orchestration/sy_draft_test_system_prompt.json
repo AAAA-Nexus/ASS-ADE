@@ -1,0 +1,45 @@
+{
+  "body": "    def test_system_prompt(self):\n        c = Conversation(\"You are helpful.\")\n        assert c.count() == 1\n        assert c.messages[0].role == \"system\"\n",
+  "body_hash": "fa6d75a86b6f63c2",
+  "body_truncated": false,
+  "callers_of": [
+    "Conversation",
+    "count"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_agent.py:24.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_system_prompt",
+  "imports": [
+    "__future__.annotations",
+    "unittest.mock.MagicMock",
+    "ass_ade.agent.context.build_system_prompt",
+    "ass_ade.agent.conversation.Conversation",
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.agent.loop.MAX_ROUNDS_SENTINEL",
+    "ass_ade.engine.types.CompletionRequest",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolCallRequest",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.registry.ToolRegistry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_agent.py:24"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "test_system_prompt",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_system_prompt"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

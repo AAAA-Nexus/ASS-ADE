@@ -1,0 +1,45 @@
+{
+  "body": "class TestValidateAbsoluteEndpoint:\n    \"\"\"Test SSRF validation for absolute endpoint URLs.\"\"\"\n\n    def test_relative_endpoint_passthrough(self) -> None:\n        \"\"\"Relative endpoints should pass through without validation.\"\"\"\n        assert _validate_absolute_endpoint(\"/api/tool\") == \"/api/tool\"\n        assert _validate_absolute_endpoint(\"api/tool\") == \"api/tool\"\n        assert _validate_absolute_endpoint(\"\") == \"\"\n\n    def test_public_absolute_endpoint_allowed(self) -> None:\n        \"\"\"Public absolute endpoints should be allowed (when domain resolves).\"\"\"\n        # Use a well-known public domain that should resolve\n        result = _validate_absolute_endpoint(\"https://cloudflare.com/api/tool\")\n        assert result == \"https://cloudflare.com/api/tool\"\n\n    def test_localhost_blocked(self) -> None:\n        \"\"\"Absolute URLs to localhost should be blocked.\"\"\"\n        with pytest.raises(ValueError, match=\"private/loopback address\"):\n            _validate_absolute_endpoint(\"https://localhost/admin\")\n\n    def test_loopback_127_0_0_1_blocked(self) -> None:\n        \"\"\"Absolute URLs to 127.0.0.1 should be blocked.\"\"\"\n        with pytest.raises(ValueError, match=\"private/loopback address\"):\n            _validate_absolute_endpoint(\"https://127.0.0.1/admin\")\n\n    def test_private_10_network_blocked(self) -> None:\n        \"\"\"Absolute URLs to 10.x.x.x should be blocked.\"\"\"\n        with pytest.raises(ValueError, match=\"private/loopback address\"):\n            _validate_absolute_endpoint(\"https://10.0.0.1/admin\")\n\n    def test_private_172_network_blocked(self) -> None:\n        \"\"\"Absolute URLs to 172.16.x.x should be blocked.\"\"\"\n        with pytest.raises(ValueError, match=\"private/loopback address\"):\n            _validate_absolute_endpoint(\"https://172.16.0.1/admin\")\n\n    def test_private_192_168_network_blocked(self) -> None:\n        \"\"\"Absolute URLs to 192.168.x.x should be blocked.\"\"\"\n        with pytest.raises(ValueError, match=\"private/loopback address\"):\n            _validate_absolute_endpoint(\"https://192.168.1.1/admin\")\n\n    def test_ipv6_loopback_blocked(self) -> None:\n        \"\"\"Absolute URLs to IPv6 loopback should be blocked.\"\"\"\n        with pytest.raises(ValueError, match=\"private/loopback address\"):\n            _validate_absolute_endpoint(\"https://[::1]/admin\")\n\n    def test_non_https_absolute_rejected(self) -> None:\n        \"\"\"HTTP (non-HTTPS) absolute URLs should be rejected.\"\"\"\n        with pytest.raises(ValueError, match=\"https scheme\"):\n            _validate_absolute_endpoint(\"http://example.com/api\")\n\n    def test_invalid_hostname_rejected(self) -> None:\n        \"\"\"Absolute URLs with invalid hostnames should be rejected.\"\"\"\n        with pytest.raises(ValueError, match=\"valid host\"):\n            _validate_absolute_endpoint(\"https:///api\")\n\n    def test_dns_resolution_failure_handled(self) -> None:\n        \"\"\"DNS resolution failures should be caught and reported.\"\"\"\n        with pytest.raises(ValueError, match=\"private/loopback address\"):\n            # Invalid hostname that won't resolve\n            _validate_absolute_endpoint(\"https://this-domain-does-not-exist-12345-test.invalid/api\")\n",
+  "body_hash": "bdf4d9f3a082773c",
+  "body_truncated": false,
+  "callers_of": [
+    "_validate_absolute_endpoint",
+    "raises"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_ssrf_protection.py:20.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.testvalidateabsoluteendpoint",
+  "imports": [
+    "ipaddress",
+    "json",
+    "unittest.mock",
+    "pytest",
+    "ass_ade.a2a.fetch_agent_card",
+    "ass_ade.mcp.utils._validate_absolute_endpoint",
+    "ass_ade.nexus.models.MCPManifest",
+    "ass_ade.nexus.models.MCPTool",
+    "ass_ade.mcp.utils.invoke_tool",
+    "ass_ade.mcp.utils.invoke_tool",
+    "ass_ade.mcp.utils.simulate_invoke",
+    "ass_ade.mcp.utils.simulate_invoke",
+    "ass_ade.mcp.utils.simulate_invoke"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_ssrf_protection.py:20"
+  },
+  "kind": "pure_class",
+  "made_of": [],
+  "name": "TestValidateAbsoluteEndpoint",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestValidateAbsoluteEndpoint"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

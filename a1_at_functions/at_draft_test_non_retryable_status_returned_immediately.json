@@ -1,0 +1,34 @@
+{
+  "body": "    def test_non_retryable_status_returned_immediately(self) -> None:\n        inner = _CountingTransport([httpx.Response(404)])\n        transport = RetryTransport(inner, max_retries=3, backoff_base=0.0)\n        response = transport.handle_request(httpx.Request(\"GET\", \"https://example.com\"))\n        assert response.status_code == 404\n        assert inner.call_count == 1\n",
+  "body_hash": "08542dc0e09fb211",
+  "body_truncated": false,
+  "callers_of": [
+    "_CountingTransport",
+    "RetryTransport",
+    "handle_request",
+    "Request",
+    "Response"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testretrytransport.py:57.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_non_retryable_status_returned_immediately",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testretrytransport.py:57"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_non_retryable_status_returned_immediately",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_non_retryable_status_returned_immediately"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

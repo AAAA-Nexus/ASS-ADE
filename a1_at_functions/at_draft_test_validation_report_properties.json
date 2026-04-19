@@ -1,0 +1,32 @@
+{
+  "body": "    def test_validation_report_properties(self) -> None:\n        issues = [\n            ValidationIssue(\"error\", \"f1\", \"bad\"),\n            ValidationIssue(\"warning\", \"f2\", \"meh\"),\n            ValidationIssue(\"error\", \"f3\", \"also bad\"),\n        ]\n        report = ValidationReport(valid=False, issues=issues)\n        assert len(report.errors) == 2\n        assert len(report.warnings) == 1\n",
+  "body_hash": "b517d0cff0f4cb6f",
+  "body_truncated": false,
+  "callers_of": [
+    "ValidationReport",
+    "ValidationIssue",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testmodels.py:14.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_validation_report_properties",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testmodels.py:14"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_validation_report_properties",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_validation_report_properties"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,31 @@
+{
+  "body": "def local_config(tmp_path: Path) -> Path:\n    \"\"\"Create a local profile config (remote calls require --allow-remote).\"\"\"\n    config_path = tmp_path / \".ass-ade\" / \"config.json\"\n    write_default_config(\n        config_path,\n        config=AssAdeConfig(profile=\"local\"),\n        overwrite=True,\n    )\n    return config_path\n",
+  "body_hash": "e867fde85c80a6f3",
+  "body_truncated": false,
+  "callers_of": [
+    "write_default_config",
+    "AssAdeConfig"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_local_config.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.local_config",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_local_config.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "local_config",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for local_config"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

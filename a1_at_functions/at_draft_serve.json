@@ -1,0 +1,55 @@
+{
+  "body": "def serve(\n    adapter_dir: Path = _DEFAULT_ADAPTER,\n    base_model: str = _DEFAULT_BASE,\n    port: int = _DEFAULT_PORT,\n    preload: bool = False,\n) -> None:\n    \"\"\"Start the HTTP server. Blocks until KeyboardInterrupt.\"\"\"\n    global _model_instance\n    model = _Model(adapter_dir=adapter_dir.resolve(), base_model=base_model)\n    _model_instance = model\n\n    if preload:\n        _log.info(\"pre-loading model\u2026\")\n        model.ensure_loaded()\n    else:\n        _log.info(\"lazy loading \u2014 model loads on first request\")\n\n    handler_cls = _make_handler(model)\n    server = HTTPServer((\"127.0.0.1\", port), handler_cls)\n    _log.info(\"serving at http://127.0.0.1:%d/generate\", port)\n    _log.info(\"  POST /generate  {prompt, max_new_tokens, temperature}\")\n    _log.info(\"  GET  /health\")\n    _log.info(\"  Ctrl+C to stop\")\n    try:\n        server.serve_forever()\n    except KeyboardInterrupt:\n        _log.info(\"shutting down\")\n        server.shutdown()\n",
+  "body_hash": "56db8a1581a4f194",
+  "body_truncated": false,
+  "callers_of": [
+    "_Model",
+    "_make_handler",
+    "HTTPServer",
+    "info",
+    "ensure_loaded",
+    "serve_forever",
+    "resolve",
+    "shutdown"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_training/serve_lora.py:163.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.serve",
+  "imports": [
+    "__future__.annotations",
+    "argparse",
+    "json",
+    "logging",
+    "sys",
+    "threading",
+    "http.server.BaseHTTPRequestHandler",
+    "http.server.HTTPServer",
+    "pathlib.Path",
+    "typing.Any",
+    "torch",
+    "peft.PeftModel",
+    "transformers.AutoModelForCausalLM",
+    "transformers.AutoTokenizer",
+    "torch",
+    "peft",
+    "transformers"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_training/serve_lora.py:163"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "serve",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for serve"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

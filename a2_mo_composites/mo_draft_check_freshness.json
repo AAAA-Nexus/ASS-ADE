@@ -1,0 +1,36 @@
+{
+  "body": "    def check_freshness(self, path: str | Path) -> FreshnessReport:\n        \"\"\"Check whether a file is fresh (read within threshold).\"\"\"\n        key = str(Path(path).resolve())\n        ts = self._reads.get(key)\n        now = time.time()\n        if ts is None:\n            return FreshnessReport(\n                path=key, fresh=False, last_read_ts=None,\n                age_hours=None, threshold_hours=self._threshold_hours,\n            )\n        age_hours = (now - ts) / 3600.0\n        return FreshnessReport(\n            path=key,\n            fresh=age_hours <= self._threshold_hours,\n            last_read_ts=ts,\n            age_hours=round(age_hours, 2),\n            threshold_hours=self._threshold_hours,\n        )\n",
+  "body_hash": "5e5b8f5f898aafed",
+  "body_truncated": false,
+  "callers_of": [
+    "str",
+    "get",
+    "time",
+    "FreshnessReport",
+    "resolve",
+    "round",
+    "Path"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_tcaengine.py:51.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.check_freshness",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_tcaengine.py:51"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "check_freshness",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for check_freshness"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

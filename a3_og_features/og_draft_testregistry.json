@@ -1,0 +1,49 @@
+{
+  "body": "class TestRegistry:\n    def test_default_registry_has_all_tools(self, workspace: Path):\n        reg = default_registry(str(workspace))\n        names = reg.list_tools()\n        assert \"read_file\" in names\n        assert \"write_file\" in names\n        assert \"edit_file\" in names\n        assert \"run_command\" in names\n        assert \"list_directory\" in names\n        assert \"search_files\" in names\n        assert \"grep_search\" in names\n\n    def test_execute_unknown(self, workspace: Path):\n        reg = default_registry(str(workspace))\n        r = reg.execute(\"no_such_tool\")\n        assert not r.success\n        assert \"Unknown tool\" in (r.error or \"\")\n\n    def test_schemas(self, workspace: Path):\n        reg = default_registry(str(workspace))\n        schemas = reg.schemas()\n        assert len(schemas) == len(reg.list_tools())\n        assert all(s.name for s in schemas)\n",
+  "body_hash": "23c90bd928d3396d",
+  "body_truncated": false,
+  "callers_of": [
+    "default_registry",
+    "list_tools",
+    "execute",
+    "schemas",
+    "all",
+    "str",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:185.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "og.source.ass_ade.testregistry",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.tools.builtin.EditFileTool",
+    "ass_ade.tools.builtin.GrepSearchTool",
+    "ass_ade.tools.builtin.ListDirectoryTool",
+    "ass_ade.tools.builtin.ReadFileTool",
+    "ass_ade.tools.builtin.RunCommandTool",
+    "ass_ade.tools.builtin.SearchFilesTool",
+    "ass_ade.tools.builtin.WriteFileTool",
+    "ass_ade.tools.registry.default_registry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:185"
+  },
+  "kind": "product_organism",
+  "made_of": [],
+  "name": "TestRegistry",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestRegistry"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a3_og_features",
+  "version": "0.1.0"
+}

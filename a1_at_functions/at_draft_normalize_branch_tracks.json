@@ -1,0 +1,33 @@
+{
+  "body": "def normalize_branch_tracks(branches: Iterable[str]) -> list[str]:\n    normalized: list[str] = []\n    for branch in branches:\n        item = branch.strip()\n        if not item:\n            continue\n        item = re.sub(r\"[^A-Za-z0-9/_-]+\", \"-\", item).strip(\"-/\")\n        if not item:\n            continue\n        if not item.startswith(\"evolve/\"):\n            item = f\"evolve/{item}\"\n        normalized.append(item)\n    return normalized or [\"evolve/tests-first\", \"evolve/docs-first\", \"evolve/safety-first\"]\n",
+  "body_hash": "8f1f85d164d809a7",
+  "body_truncated": false,
+  "callers_of": [
+    "strip",
+    "append",
+    "startswith",
+    "sub"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_normalize_branch_tracks.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.normalize_branch_tracks",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_normalize_branch_tracks.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "normalize_branch_tracks",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for normalize_branch_tracks"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

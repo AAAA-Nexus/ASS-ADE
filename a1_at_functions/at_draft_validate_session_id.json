@@ -1,0 +1,40 @@
+{
+  "body": "def validate_session_id(value: str) -> str:\n    \"\"\"Non-empty, max 256 chars.\"\"\"\n    value = value.strip()\n    if not value:\n        raise ValueError(\"Session ID must not be empty.\")\n    if len(value) > 256:\n        raise ValueError(f\"Session ID exceeds 256 characters (got {len(value)}).\")\n    return value\n",
+  "body_hash": "327eb6f52fa59f61",
+  "body_truncated": false,
+  "callers_of": [
+    "strip",
+    "ValueError",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/validation.py:115.",
+  "exceptions_raised": [
+    "ValueError"
+  ],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.validate_session_id",
+  "imports": [
+    "__future__.annotations",
+    "ipaddress",
+    "re",
+    "socket",
+    "urllib.parse.urlparse"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/validation.py:115"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "validate_session_id",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for validate_session_id"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,34 @@
+{
+  "body": "class PqcSignResult(NexusModel):\n    \"\"\"/v1/security/pqc-sign\"\"\"\n    signature: str | None = None\n    algorithm: str | None = None   # \"ML-DSA (Dilithium)\"\n    public_key: str | None = None\n",
+  "body_hash": "2951c2b4a89cc6a1",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/models.py:467.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.pqcsignresult",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/models.py:467"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "PqcSignResult",
+  "product_categories": [
+    "SEC"
+  ],
+  "provides": [
+    "rebuild candidate for PqcSignResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

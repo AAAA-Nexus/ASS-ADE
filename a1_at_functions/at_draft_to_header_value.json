@@ -1,0 +1,37 @@
+{
+  "body": "    def to_header_value(self) -> str:\n        \"\"\"Format as HTTP header value (PAYMENT-SIGNATURE).\"\"\"\n        return f\"{self.signature};{self.wallet_address};{self.transaction_id};{self.amount_micro_usdc}\"\n",
+  "body_hash": "ba1ede2ca4d22535",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/x402.py:156.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.to_header_value",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "time",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "eth_account.Account",
+    "web3.Web3",
+    "logging"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/x402.py:156"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "to_header_value",
+  "product_categories": [
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for to_header_value"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

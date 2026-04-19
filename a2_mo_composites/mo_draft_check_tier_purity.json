@@ -1,0 +1,40 @@
+{
+  "body": "def check_tier_purity(\n    plan: dict[str, Any],\n    *,\n    strict: bool = True,\n) -> dict[str, Any]:\n    \"\"\"Validate every proposed component against the monadic composition law.\n\n    Returns ``{\"violations\": [...], \"pure\": bool, \"by_tier\": {...}}``.\n    \"\"\"\n    components = _plan_components(plan)\n    violations: list[dict[str, str]] = []\n    by_tier: dict[str, dict[str, int]] = {}\n\n    for comp in components:\n        comp_id: str = comp.get(\"id\", \"<unknown>\")\n        comp_tier: str = comp.get(\"tier\", \"\")\n        made_of: list[str] = comp.get(\"made_of\") or []\n\n        tier_stats = by_tier.setdefault(comp_tier, {\"checked\": 0, \"violations\": 0})\n        tier_stats[\"checked\"] += 1\n\n        if comp_tier not in ALLOWED_DEP_TIERS:\n            if strict:\n                if not made_of:\n                    violations.append({\n                        \"component_id\": comp_id,\n                        \"component_tier\": comp_tier,\n                        \"bad_dep\": \"\",\n                        \"bad_dep_tier\": \"unknown\",\n                        \"reason\": (\n                            f\"Component tier '{comp_tier}' is not in the tier table; \"\n                            \"strict mode requires a known tier.\"\n                        ),\n                    })\n                    tier_stats[\"violations\"] += 1\n                    continue\n                for dep in made_of:\n                    dep_prefix = tier_prefix_from_id(dep)\n                    dep_tier_name = _PREFIX_TO_TIER.get(dep_prefix, \"unknown\") if dep_prefix else \"unknown\"\n                    violations.append({\n                        \"component_id\": comp_id,\n                        \"component_tier\": comp_tier,\n                        \"bad_dep\": dep,\n                        \"bad_dep_tier\": dep_tier_name,\n                        \"reason\": (\n                            f\"Component tier '{comp_tier}' is not in the tier table; \"\n                            f\"dep '{dep}' cannot be validated.\"\n                        ),\n                    })\n                    tier_stats[\"violations\"] += 1\n            continue\n\n        allowed_prefixes: set[str] = ALLOWED_DEP_TIERS[comp_tier]\n\n        for dep in made_of:\n            dep_prefix = tier_prefix_from_id(dep)\n\n            if dep_prefix is None:\n                violations.append({\n                    \"component_id\": comp_id,\n                    \"component_tier\": comp_tier,\n                    \"bad_dep\": dep,\n                    \"bad_dep_tier\": \"unknown\",\n                    \"reason\": (\n                        f\"Dep '{dep}' has no recognised tier prefix \"\n                        \"(expected '<prefix>.<name>', prefix one of qk/at/mo/og/sy).\"\n                    ),\n                })\n                tier_stats[\"violations\"] += 1\n                continue\n\n            if dep_prefix in allowed_prefixes:\n                continue\n\n            dep_tier_name = _PREFIX_TO_TIER.get(dep_prefix, \"unknown\")\n            allowed_str = \", \".join(sorted(allowed_prefixes)) if allowed_prefixes else \"nothing\"\n            violations.append({\n                \"component_id\": comp_id,\n                \"component_tier\": comp_tier,\n                \"bad_dep\": dep,\n                \"bad_dep_tier\": dep_tier_name,\n                \"reason\": (\n                    f\"Tier '{comp_tier}' may only depend on [{allowed_str}]; \"\n                    f\"dep '{dep}' belongs to tier '{dep_tier_name}'.\"\n                ),\n            })\n            tier_stats[\"violations\"] += 1\n\n    return {\n        \"violations\": violations,\n        \"pure\": len(violations) == 0,\n        \"by_tier\": by_tier,\n    }\n",
+  "body_hash": "c99067aa89a3daad",
+  "body_truncated": false,
+  "callers_of": [
+    "_plan_components",
+    "get",
+    "setdefault",
+    "tier_prefix_from_id",
+    "append",
+    "len",
+    "join",
+    "sorted"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/tier_purity.py:47.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.check_tier_purity",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/tier_purity.py:47"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "check_tier_purity",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for check_tier_purity"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

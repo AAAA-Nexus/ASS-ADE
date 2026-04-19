@@ -1,0 +1,41 @@
+{
+  "body": "def safe_path_segment(value: str, name: str = \"ID\") -> str:\n    \"\"\"Validate that *value* is safe to interpolate into a URL path segment.\n\n    Rejects empty values, values exceeding 256 characters, and any character\n    that is not alphanumeric, dash, underscore, or dot.  This prevents path\n    traversal (``../``) and injection via IDs passed to f-string URL templates\n    (OWASP A01).\n    \"\"\"\n    value = value.strip()\n    if not value:\n        raise ValueError(f\"{name} must not be empty.\")\n    if len(value) > 256:\n        raise ValueError(f\"{name} exceeds 256 characters (got {len(value)}).\")\n    if not _SAFE_PATH_SEGMENT_RE.match(value):\n        raise ValueError(\n            f\"{name} contains invalid characters for a URL path segment. \"\n            \"Only alphanumeric characters, dash, underscore, and dot are allowed.\"\n        )\n    return value\n",
+  "body_hash": "1c6f085c2da512a4",
+  "body_truncated": false,
+  "callers_of": [
+    "strip",
+    "ValueError",
+    "len",
+    "match"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/validation.py:181.",
+  "exceptions_raised": [
+    "ValueError"
+  ],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.safe_path_segment",
+  "imports": [
+    "__future__.annotations",
+    "ipaddress",
+    "re",
+    "socket",
+    "urllib.parse.urlparse"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/validation.py:181"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "safe_path_segment",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for safe_path_segment"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

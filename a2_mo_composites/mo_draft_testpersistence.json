@@ -1,0 +1,49 @@
+{
+  "body": "class TestPersistence:\n    def test_persist_creates_file(self, tmp_path: Path) -> None:\n        pipe = Pipeline(\"persist\", persist_dir=str(tmp_path))\n        pipe.add(\"s1\", pass_step)\n        pipe.run()\n\n        files = list(tmp_path.glob(\"persist_*.json\"))\n        assert len(files) == 1\n\n        data = json.loads(files[0].read_text())\n        assert data[\"name\"] == \"persist\"\n        assert data[\"passed\"] is True\n        assert len(data[\"steps\"]) == 1\n\n    def test_persist_records_failure(self, tmp_path: Path) -> None:\n        pipe = Pipeline(\"failp\", persist_dir=str(tmp_path))\n        pipe.add(\"s1\", fail_step)\n        pipe.run()\n\n        files = list(tmp_path.glob(\"failp_*.json\"))\n        data = json.loads(files[0].read_text())\n        assert data[\"passed\"] is False\n        assert data[\"steps\"][0][\"error\"] == \"something broke\"\n\n    def test_no_persist_when_not_configured(self, tmp_path: Path) -> None:\n        pipe = Pipeline(\"nopersist\")\n        pipe.add(\"s1\", pass_step)\n        pipe.run()\n        # No files created anywhere \u2014 this is just a sanity check\n        assert not list(tmp_path.glob(\"*.json\"))\n",
+  "body_hash": "ea199e257814f3e9",
+  "body_truncated": false,
+  "callers_of": [
+    "Pipeline",
+    "add",
+    "run",
+    "list",
+    "loads",
+    "glob",
+    "len",
+    "read_text",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:183.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testpersistence",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.pipeline.Pipeline",
+    "ass_ade.pipeline.PipelineResult",
+    "ass_ade.pipeline.StepResult",
+    "ass_ade.pipeline.StepStatus"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:183"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.add"
+  ],
+  "name": "TestPersistence",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestPersistence"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

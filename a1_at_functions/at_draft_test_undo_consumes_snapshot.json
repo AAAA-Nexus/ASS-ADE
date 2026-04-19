@@ -1,0 +1,32 @@
+{
+  "body": "    def test_undo_consumes_snapshot(self, history: FileHistory, tmp_workspace: Path):\n        history.record(\"hello.py\", \"v1\")\n        history.record(\"hello.py\", \"v2\")\n        assert history.depth(\"hello.py\") == 2\n\n        history.undo(\"hello.py\")\n        assert history.depth(\"hello.py\") == 1\n",
+  "body_hash": "1dddf013a749b0a0",
+  "body_truncated": false,
+  "callers_of": [
+    "record",
+    "undo",
+    "depth"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testfilehistory.py:41.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_undo_consumes_snapshot",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testfilehistory.py:41"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_undo_consumes_snapshot",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_undo_consumes_snapshot"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

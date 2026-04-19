@@ -1,0 +1,40 @@
+{
+  "body": "def executor(workspace: Path) -> EditPlanExecutor:\n    history = FileHistory(str(workspace))\n    return EditPlanExecutor(str(workspace), history=history)\n",
+  "body_hash": "aaa78b2d1f6e6323",
+  "body_truncated": false,
+  "callers_of": [
+    "FileHistory",
+    "EditPlanExecutor",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:21.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.executor",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.tools.history.FileHistory",
+    "ass_ade.tools.plan.EditKind",
+    "ass_ade.tools.plan.EditPlan",
+    "ass_ade.tools.plan.EditPlanExecutor"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:21"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "executor",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for executor"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

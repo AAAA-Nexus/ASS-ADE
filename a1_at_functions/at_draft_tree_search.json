@@ -1,0 +1,49 @@
+{
+  "body": "    def tree_search(\n        self,\n        code: str,\n        spec: str,\n        *,\n        code_path: Optional[Path] = None,\n    ) -> Optional[VerifiedCode]:\n        \"\"\"Beam search for a verified variant. Returns None if none pass.\"\"\"\n        root_metrics = _score(code, spec, code_path)\n        root = VerifiedCode(\n            code=code,\n            verified=_passes(root_metrics),\n            score=root_metrics[\"score\"],\n            trace=[\"root\"],\n            metrics=root_metrics,\n        )\n        self._log.append({\"step\": \"root\", **root_metrics})\n\n        # Beam of (VerifiedCode, trace_labels).\n        beam: list[VerifiedCode] = [root]\n        best_passing: Optional[VerifiedCode] = root if root.verified else None\n\n        steps_used = 0\n        for depth in range(self._depth):\n            candidates: list[VerifiedCode] = []\n            for node in beam:\n                for label, variant in self._mutations(node.code):\n                    if steps_used >= self._budget:\n                        break\n                    metrics = _score(variant, spec, code_path)\n                    ok = _passes(metrics)\n                    vc = VerifiedCode(\n                        code=variant,\n                        verified=ok,\n                        score=metrics[\"score\"],\n                        trace=node.trace + [f\"d{depth}:{label}\"],\n                        metrics=metrics,\n                    )\n                    candidates.append(vc)\n                    self._log.append({\n                        \"step\": steps_used,\n                        \"depth\": depth,\n                        \"label\": label,\n                        \"verified\": ok,\n                        **metrics,\n                    })\n                    steps_used += 1\n                    if ok and (best_passing is None or vc.score > best_passing.score):\n                        best_passing = vc\n                if steps_used >= self._budget:\n                    break\n            if not candidates:\n                break\n            # Keep top-N by score for next depth.\n            candidates.sort(key=lambda v: v.score, reverse=True)\n            beam = candidates[: self._width]\n            if steps_used >= self._budget:\n                break\n\n        return best_passing\n",
+  "body_hash": "70378f5d052fd742",
+  "body_truncated": false,
+  "callers_of": [
+    "_score",
+    "VerifiedCode",
+    "append",
+    "range",
+    "sort",
+    "_passes",
+    "_mutations"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/alphaverus.py:225.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.tree_search",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "os",
+    "re",
+    "subprocess",
+    "sys",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Optional",
+    "radon.complexity.cc_visit"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/alphaverus.py:225"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "tree_search",
+  "product_categories": [
+    "DCM"
+  ],
+  "provides": [
+    "rebuild candidate for tree_search"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

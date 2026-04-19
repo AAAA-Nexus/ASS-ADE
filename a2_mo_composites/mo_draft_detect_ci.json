@@ -1,0 +1,46 @@
+{
+  "body": "def detect_ci(root: Path) -> list[str]:\n    found: list[str] = []\n\n    workflows_dir = root / \".github\" / \"workflows\"\n    if workflows_dir.exists():\n        try:\n            if any(p.suffix in {\".yml\", \".yaml\"} for p in workflows_dir.iterdir()):\n                found.append(\"github-actions\")\n        except Exception:\n            pass\n\n    if (root / \".gitlab-ci.yml\").exists():\n        found.append(\"gitlab-ci\")\n\n    if (root / \"Jenkinsfile\").exists():\n        found.append(\"jenkins\")\n\n    if (root / \".circleci\" / \"config.yml\").exists():\n        found.append(\"circleci\")\n\n    return found\n",
+  "body_hash": "ac29231a28335467",
+  "body_truncated": false,
+  "callers_of": [
+    "exists",
+    "append",
+    "any",
+    "iterdir"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/local/docs_engine.py:209.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.detect_ci",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "re",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.local.repo.DEFAULT_IGNORED_DIRS",
+    "ass_ade.local.repo.summarize_repo",
+    "json",
+    "tomllib",
+    "tomllib",
+    "tomli",
+    "tomli"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/local/docs_engine.py:209"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "detect_ci",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for detect_ci"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

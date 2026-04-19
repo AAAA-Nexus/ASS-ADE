@@ -1,0 +1,33 @@
+{
+  "body": "    def test_preview_with_validation_errors(self, executor: EditPlanExecutor):\n        plan = EditPlan()\n        plan.add_modify(\"ghost.py\", \"old\", \"new\")\n        preview = executor.preview(plan)\n        assert \"error\" in preview.lower() or \"Validation\" in preview\n",
+  "body_hash": "9664bff17d62394c",
+  "body_truncated": false,
+  "callers_of": [
+    "EditPlan",
+    "add_modify",
+    "preview",
+    "lower"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditplanexecutor.py:104.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_preview_with_validation_errors",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditplanexecutor.py:104"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_preview_with_validation_errors",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_preview_with_validation_errors"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

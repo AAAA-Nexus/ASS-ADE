@@ -1,0 +1,37 @@
+{
+  "body": "def validate_task_title(title: str) -> bool:\n    \"\"\"Check if task title is valid (pure function).\"\"\"\n    return bool(title) and 1 <= len(title) <= 255\n",
+  "body_hash": "f7f935d81de1f159",
+  "body_truncated": false,
+  "callers_of": [
+    "bool",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/examples/02-rebuild-a-codebase/sample_project/main.py:49.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.validate_task_title",
+  "imports": [
+    "enum.Enum",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.List",
+    "typing.Optional"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/examples/02-rebuild-a-codebase/sample_project/main.py:49"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "validate_task_title",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for validate_task_title"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

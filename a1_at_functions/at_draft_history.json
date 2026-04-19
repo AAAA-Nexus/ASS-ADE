@@ -1,0 +1,36 @@
+{
+  "body": "def history(tmp_workspace: Path) -> FileHistory:\n    return FileHistory(str(tmp_workspace), max_depth=5)\n",
+  "body_hash": "f999d1db5488976d",
+  "body_truncated": false,
+  "callers_of": [
+    "FileHistory",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_history.py:21.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.history",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.tools.history.FileHistory"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_history.py:21"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "history",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for history"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,37 @@
+{
+  "body": "def enforce_tier_purity(plan: dict[str, Any]) -> dict[str, Any]:\n    \"\"\"Remove dep edges that violate the composition law. Mutates ``plan`` in place.\n\n    Returns ``{\"removed_edges\": int, \"components_fixed\": [str, ...]}``.\n    \"\"\"\n    result = check_tier_purity(plan, strict=True)\n    violations = result[\"violations\"]\n\n    if not violations:\n        return {\"removed_edges\": 0, \"components_fixed\": []}\n\n    bad_deps_by_comp: dict[str, set[str]] = {}\n    for v in violations:\n        bad_deps_by_comp.setdefault(v[\"component_id\"], set()).add(v[\"bad_dep\"])\n\n    components_fixed: list[str] = []\n    removed_count = 0\n\n    for comp in _plan_components(plan):\n        comp_id = comp.get(\"id\", \"<unknown>\")\n        if comp_id not in bad_deps_by_comp:\n            continue\n        bad = bad_deps_by_comp[comp_id]\n        original_deps: list[str] = comp.get(\"made_of\", [])\n        cleaned_deps = [d for d in original_deps if d not in bad]\n        removed_count += len(original_deps) - len(cleaned_deps)\n        comp[\"made_of\"] = cleaned_deps\n        components_fixed.append(comp_id)\n\n    summary: dict[str, Any] = plan.setdefault(\"summary\", {})\n    fixes: list[dict[str, Any]] = summary.setdefault(\"tier_purity_fixes\", [])\n    fixes.append({\n        \"removed_edges\": removed_count,\n        \"components_fixed\": components_fixed,\n        \"violations_detail\": violations,\n    })\n\n    return {\"removed_edges\": removed_count, \"components_fixed\": components_fixed}\n",
+  "body_hash": "d8aaa0b3bdff7aa7",
+  "body_truncated": false,
+  "callers_of": [
+    "check_tier_purity",
+    "_plan_components",
+    "setdefault",
+    "append",
+    "add",
+    "get",
+    "len",
+    "set"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_enforce_tier_purity.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.enforce_tier_purity",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_enforce_tier_purity.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "enforce_tier_purity",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for enforce_tier_purity"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

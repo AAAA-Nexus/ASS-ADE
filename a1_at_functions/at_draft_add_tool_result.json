@@ -1,0 +1,31 @@
+{
+  "body": "    def add_tool_result(self, tool_call_id: str, name: str, content: str) -> None:\n        self._messages.append(\n            Message(\n                role=\"tool\",\n                content=content,\n                tool_call_id=tool_call_id,\n                name=name,\n            )\n        )\n",
+  "body_hash": "350caaaf4bc196f2",
+  "body_truncated": false,
+  "callers_of": [
+    "append",
+    "Message"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_conversation.py:31.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.add_tool_result",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_conversation.py:31"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "add_tool_result",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for add_tool_result"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

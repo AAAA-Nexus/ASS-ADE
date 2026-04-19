@@ -1,0 +1,28 @@
+{
+  "body": "class ConsensusSession(NexusModel):\n    \"\"\"/v1/consensus/session \u2014 CSN-100\"\"\"\n    session_id: str | None = None\n    quorum_mode: str | None = None\n    required_votes: int | None = None\n    status: str | None = None\n",
+  "body_hash": "54d15dada81a09c3",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_consensussession.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.consensussession",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_consensussession.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "ConsensusSession",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ConsensusSession"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

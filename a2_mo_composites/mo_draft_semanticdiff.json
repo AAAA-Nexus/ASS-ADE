@@ -1,0 +1,36 @@
+{
+  "body": "class SemanticDiff(NexusModel):\n    \"\"\"/v1/agents/semantic-diff\"\"\"\n    drift_score: float | None = None\n    jaccard_similarity: float | None = None\n    changed_concepts: list[str] = Field(default_factory=list)\n",
+  "body_hash": "17b7e4cfd550f6f2",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/models.py:371.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.semanticdiff",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/models.py:371"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "SemanticDiff",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for SemanticDiff"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

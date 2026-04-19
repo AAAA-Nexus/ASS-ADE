@@ -1,0 +1,55 @@
+{
+  "body": "def test_mcp_estimate_cost_paid_tool(monkeypatch, tmp_path: Path) -> None:\n    from ass_ade.nexus.models import CostEstimate\n    tool = MCPTool(name=\"premium\", endpoint=\"/premium\", paid=True, cost=CostEstimate(unit_cost=0.01, currency=\"USDC\"))\n    manifest = MCPManifest(name=\"demo\", tools=[tool])\n    monkeypatch.setattr(\"ass_ade.cli.NexusClient\", _fake_client_factory(manifest))\n\n    config_path = tmp_path / \".ass-ade\" / \"config.json\"\n    write_default_config(config_path, config=AssAdeConfig(profile=\"hybrid\"), overwrite=True)\n\n    result = runner.invoke(app, [\"mcp\", \"estimate-cost\", \"1\", \"--config\", str(config_path)])\n    assert result.exit_code == 0\n    assert \"0.01\" in result.stdout\n",
+  "body_hash": "e2a4fef5db1209f6",
+  "body_truncated": false,
+  "callers_of": [
+    "MCPTool",
+    "MCPManifest",
+    "setattr",
+    "write_default_config",
+    "invoke",
+    "_fake_client_factory",
+    "CostEstimate",
+    "AssAdeConfig",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp.py:223.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_mcp_estimate_cost_paid_tool",
+  "imports": [
+    "pathlib.Path",
+    "httpx",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.mcp.utils.invoke_tool",
+    "ass_ade.nexus.models.MCPManifest",
+    "ass_ade.nexus.models.MCPTool",
+    "ass_ade.nexus.models.CostEstimate",
+    "json",
+    "httpx",
+    "ass_ade.mcp.mock_server.start_server",
+    "httpx",
+    "ass_ade.mcp.mock_server._MAX_BODY_BYTES",
+    "ass_ade.mcp.mock_server.start_server"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp.py:223"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "test_mcp_estimate_cost_paid_tool",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_mcp_estimate_cost_paid_tool"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

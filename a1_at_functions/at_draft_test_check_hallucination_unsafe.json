@@ -1,0 +1,32 @@
+{
+  "body": "    def test_check_hallucination_unsafe(self):\n        gates = QualityGates(_mock_nexus(verdict=\"unsafe\", policy_epsilon=0.85))\n        result = gates.check_hallucination(\"Made up claim.\")\n        assert result is not None\n        assert result[\"verdict\"] == \"unsafe\"\n",
+  "body_hash": "cfcc90f7ffa545ae",
+  "body_truncated": false,
+  "callers_of": [
+    "QualityGates",
+    "check_hallucination",
+    "_mock_nexus"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testqualitygates.py:32.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_check_hallucination_unsafe",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testqualitygates.py:32"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_check_hallucination_unsafe",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_check_hallucination_unsafe"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

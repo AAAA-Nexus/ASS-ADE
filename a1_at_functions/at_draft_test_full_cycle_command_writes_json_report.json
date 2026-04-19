@@ -1,0 +1,35 @@
+{
+  "body": "def test_full_cycle_command_writes_json_report(tmp_path: Path) -> None:\n    (tmp_path / \"README.md\").write_text(\"hello\", encoding=\"utf-8\")\n    json_report_path = tmp_path / \"reports\" / \"cycle.json\"\n\n    result = runner.invoke(\n        app,\n        [\n            \"cycle\",\n            \"Enhance via cycle\",\n            \"--path\",\n            str(tmp_path),\n            \"--json-out\",\n            str(json_report_path),\n        ],\n    )\n\n    assert result.exit_code == 0\n    assert json_report_path.exists()\n    payload = json.loads(json_report_path.read_text(encoding=\"utf-8\"))\n    assert payload[\"goal\"] == \"Enhance via cycle\"\n    assert \"report\" in payload\n",
+  "body_hash": "f80282720669fb6f",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "invoke",
+    "exists",
+    "loads",
+    "read_text",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_full_cycle_command_writes_json_report.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_full_cycle_command_writes_json_report",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_full_cycle_command_writes_json_report.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_full_cycle_command_writes_json_report",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_full_cycle_command_writes_json_report"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

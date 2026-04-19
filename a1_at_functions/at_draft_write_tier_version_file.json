@@ -1,0 +1,36 @@
+{
+  "body": "def write_tier_version_file(\n    tier_dir: Path,\n    tier: str,\n    module_versions: list[dict[str, Any]],\n) -> str:\n    \"\"\"Write ``VERSION.json`` inside a tier directory.\n\n    Args:\n        tier_dir:        The tier folder (e.g. ``<root>/a1_at_functions``).\n        tier:            Tier name string.\n        module_versions: List of ``{id, name, version, change_type}`` dicts.\n\n    Returns:\n        Absolute path of the written file.\n    \"\"\"\n    all_versions = [m.get(\"version\", INITIAL_VERSION) for m in module_versions]\n    tier_version = _aggregate_version(all_versions)\n    payload: dict[str, Any] = {\n        \"tier\": tier,\n        \"tier_version\": tier_version,\n        \"module_count\": len(module_versions),\n        \"modules\": sorted(module_versions, key=lambda m: m.get(\"id\", \"\")),\n    }\n    path = tier_dir / \"VERSION.json\"\n    path.write_text(json.dumps(payload, indent=2, sort_keys=True) + \"\\n\", encoding=\"utf-8\")\n    return path.as_posix()\n",
+  "body_hash": "32df42603036d89b",
+  "body_truncated": false,
+  "callers_of": [
+    "_aggregate_version",
+    "write_text",
+    "as_posix",
+    "get",
+    "len",
+    "sorted",
+    "dumps"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_write_tier_version_file.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.write_tier_version_file",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_write_tier_version_file.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "write_tier_version_file",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for write_tier_version_file"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

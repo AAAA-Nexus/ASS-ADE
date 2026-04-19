@@ -1,0 +1,36 @@
+{
+  "body": "class TestEpistemicRouter:\n    def test_route_without_nexus(self):\n        router = EpistemicRouter()\n        decision = router.route(\"Hello world\")\n        assert isinstance(decision, RoutingDecision)\n        assert decision.source == \"local\"\n\n    def test_history_tracking(self):\n        router = EpistemicRouter()\n        router.route(\"Hello\")\n        router.route(\"Write a complex algorithm with formal proof\")\n        assert len(router.history) == 2\n\n    def test_avg_complexity(self):\n        router = EpistemicRouter()\n        router.route(\"Hi\")\n        router.route(\"Write code\")\n        avg = router.avg_complexity\n        assert 0 <= avg <= 1.0\n\n    def test_avg_complexity_empty(self):\n        router = EpistemicRouter()\n        assert router.avg_complexity == 0.0\n\n    def test_route_with_nexus_recommendation(self):\n        nexus = type(\"NexusMock\", (), {\n            \"routing_recommend\": lambda self, **kwargs: {\n                \"model\": \"claude-sonnet-4\",\n                \"reason\": \"Nexus route picked for balanced complexity\",\n                \"confidence\": 0.62,\n                \"tier\": \"standard\",\n            }\n        })()\n        router = EpistemicRouter(nexus_client=nexus)\n        decision = router.route(\"Hello\")\n        assert decision.source == \"nexus\"\n        assert decision.recommended_model == \"claude-sonnet-4\"\n        assert decision.reason == \"Nexus route picked for balanced complexity\"\n        assert decision.tier == ModelTier.STANDARD\n        assert decision.complexity == 0.62\n\n    def test_route_with_nexus_exception_falls_back_local(self):\n        nexus = type(\"NexusBoom\", (), {\n            \"routing_recommend\": lambda self, **kwargs: (_ for _ in ()).throw(RuntimeError(\"boom\"))\n        })()\n        router = EpistemicRouter(nexus_client=nexus)\n        decision = router.route(\"Write a function to parse JSON\")\n        assert decision.source == \"local\"\n",
+  "body_hash": "7198a421c6aceb38",
+  "body_truncated": false,
+  "callers_of": [
+    "EpistemicRouter",
+    "route",
+    "isinstance",
+    "len",
+    "type",
+    "throw",
+    "RuntimeError"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testepistemicrouter.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.testepistemicrouter",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testepistemicrouter.py:5"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "TestEpistemicRouter",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestEpistemicRouter"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

@@ -1,0 +1,38 @@
+{
+  "body": "class TestSAMInAgentLoop:\n    def test_sam_gate_runs_per_step_and_populates_last_result(self):\n        nexus = _make_nexus_mock()\n        gates = QualityGates(nexus, config={})\n        provider = _make_provider_returning_text(\"hello\")\n        registry = ToolRegistry()\n\n        loop = AgentLoop(\n            provider=provider,\n            registry=registry,\n            quality_gates=gates,\n        )\n\n        with patch(\"ass_ade.context_memory.vector_embed\", return_value=[0.1, 0.2, 0.3]):\n            loop.step(\"What is 1+1?\")\n\n        assert loop.last_sam_result is not None\n        assert \"trs\" in loop.last_sam_result\n        assert \"composite\" in loop.last_sam_result\n\n    def test_sam_result_none_when_no_gates(self):\n        provider = _make_provider_returning_text(\"hello\")\n        registry = ToolRegistry()\n        loop = AgentLoop(provider=provider, registry=registry)\n        loop.step(\"What is 2+2?\")\n        assert loop.last_sam_result is None\n",
+  "body_hash": "05a4a37ca6486819",
+  "body_truncated": false,
+  "callers_of": [
+    "_make_nexus_mock",
+    "QualityGates",
+    "_make_provider_returning_text",
+    "ToolRegistry",
+    "AgentLoop",
+    "step",
+    "patch"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testsaminagentloop.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testsaminagentloop",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testsaminagentloop.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.step"
+  ],
+  "name": "TestSAMInAgentLoop",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestSAMInAgentLoop"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

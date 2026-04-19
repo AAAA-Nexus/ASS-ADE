@@ -1,0 +1,28 @@
+{
+  "body": "def do_work():\n    try:\n        pass\n    except:\n        pass\n",
+  "body_hash": "99c19e3f3d59b11a",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.pytest_tmp/test_enhance_local_only0/bad.py:1.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.do_work",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.pytest_tmp/test_enhance_local_only0/bad.py:1"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "do_work",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for do_work"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

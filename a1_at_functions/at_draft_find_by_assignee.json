@@ -1,0 +1,30 @@
+{
+  "body": "    def find_by_assignee(self, assignee: str) -> List[Task]:\n        \"\"\"Find all tasks assigned to a person.\"\"\"\n        all_tasks = self.manager.list_all_tasks()\n        return [t for t in all_tasks if t.assignee == assignee]\n",
+  "body_hash": "ef6e37de2493ba47",
+  "body_truncated": false,
+  "callers_of": [
+    "list_all_tasks"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_taskfilter.py:22.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.find_by_assignee",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_taskfilter.py:22"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "find_by_assignee",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for find_by_assignee"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

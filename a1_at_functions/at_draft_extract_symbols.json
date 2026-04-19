@@ -1,0 +1,47 @@
+{
+  "body": "def extract_symbols(path: Path) -> list[Symbol]:\n    text = _read_text(path)\n    if text is None:\n        return []\n    suffix = path.suffix.lower()\n    if suffix == \".py\":\n        return _extract_python_symbols(path, text)\n    if suffix in {\".ts\", \".tsx\", \".js\", \".jsx\"}:\n        return _extract_regex_symbols(path, text, \"typescript\", TS_SYMBOL_PATTERNS)\n    if suffix == \".rs\":\n        return _extract_regex_symbols(path, text, \"rust\", RS_SYMBOL_PATTERNS)\n    return []\n",
+  "body_hash": "b475cb4d87a8c841",
+  "body_truncated": false,
+  "callers_of": [
+    "_read_text",
+    "lower",
+    "_extract_python_symbols",
+    "_extract_regex_symbols"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/project_parser.py:116.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.extract_symbols",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "datetime",
+    "json",
+    "os",
+    "re",
+    "dataclasses.asdict",
+    "dataclasses.dataclass",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "ass_ade.engine.rebuild.tiers.TIER_PREFIX",
+    "ass_ade.engine.rebuild.tiers.TIERS"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/project_parser.py:116"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "extract_symbols",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for extract_symbols"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

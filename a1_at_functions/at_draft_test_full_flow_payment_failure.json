@@ -1,0 +1,53 @@
+{
+  "body": "    def test_full_flow_payment_failure(self) -> None:\n        \"\"\"Full flow: challenge \u2192 failure to pay.\"\"\"\n        flow = X402ClientFlow()\n\n        response_body = {\n            \"amount_micro_usdc\": 5000,\n            \"amount_usdc\": \"0.005\",\n            \"recipient\": ATOMADIC_TREASURY,\n            \"expires\": 1,  # Already expired\n        }\n\n        challenge = flow.parse_challenge(response_body)\n        assert challenge is not None\n\n        # Client should not proceed due to expiry\n        assert not flow.can_pay(challenge)\n        assert \"expired\" in flow.last_error.lower()\n",
+  "body_hash": "f0c272cac5b3e91e",
+  "body_truncated": false,
+  "callers_of": [
+    "X402ClientFlow",
+    "parse_challenge",
+    "can_pay",
+    "lower"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:372.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_full_flow_payment_failure",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.nexus.x402.PaymentChallenge",
+    "ass_ade.nexus.x402.PaymentResult",
+    "ass_ade.nexus.x402.PaymentProof",
+    "ass_ade.nexus.x402.X402ClientFlow",
+    "ass_ade.nexus.x402.format_payment_consent",
+    "ass_ade.nexus.x402.get_chain_config",
+    "ass_ade.nexus.x402.build_payment_header",
+    "ass_ade.nexus.x402.ATOMADIC_TREASURY",
+    "ass_ade.nexus.x402.BASE_MAINNET_CHAIN_ID",
+    "ass_ade.nexus.x402.BASE_SEPOLIA_CHAIN_ID"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:372"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_full_flow_payment_failure",
+  "product_categories": [
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for test_full_flow_payment_failure"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

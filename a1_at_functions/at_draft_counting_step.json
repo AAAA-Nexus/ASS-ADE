@@ -1,0 +1,40 @@
+{
+  "body": "def counting_step(ctx: dict[str, Any]) -> StepResult:\n    count = ctx.get(\"count\", 0)\n    ctx[\"count\"] = count + 1\n    return StepResult(name=\"count\", status=StepStatus.PASSED, output={\"count\": count + 1})\n",
+  "body_hash": "68a1b0c660e8d6ad",
+  "body_truncated": false,
+  "callers_of": [
+    "get",
+    "StepResult"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:28.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.counting_step",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.pipeline.Pipeline",
+    "ass_ade.pipeline.PipelineResult",
+    "ass_ade.pipeline.StepResult",
+    "ass_ade.pipeline.StepStatus"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:28"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "counting_step",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for counting_step"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

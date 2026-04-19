@@ -1,0 +1,43 @@
+{
+  "body": "class Conversation:\n    \"\"\"Manages a conversation's message history with token-aware trimming.\"\"\"\n\n    def __init__(self, system_prompt: str = \"\", model: str | None = None) -> None:\n        self._messages: list[Message] = []\n        self._budget = TokenBudget.for_model(model)\n        if system_prompt:\n            self._messages.append(Message(role=\"system\", content=system_prompt))\n\n    @property\n    def messages(self) -> list[Message]:\n        return list(self._messages)\n\n    @property\n    def budget(self) -> TokenBudget:\n        return self._budget\n\n    def add(self, message: Message) -> None:\n        self._messages.append(message)\n\n    def add_user(self, content: str) -> None:\n        self._messages.append(Message(role=\"user\", content=content))\n\n    def add_assistant(self, message: Message) -> None:\n        self._messages.append(message)\n\n    def add_tool_result(self, tool_call_id: str, name: str, content: str) -> None:\n        self._messages.append(\n            Message(\n                role=\"tool\",\n                content=content,\n                tool_call_id=tool_call_id,\n                name=name,\n            )\n        )\n\n    def count(self) -> int:\n        return len(self._messages)\n\n    def estimated_tokens(self) -> int:\n        \"\"\"Total estimated tokens across all messages.\"\"\"\n        return sum(estimate_message_tokens(m) for m in self._messages)\n\n    def trim(self, max_messages: int = 50) -> int:\n        \"\"\"Trim oldest non-system messages if over limit. Returns count removed.\"\"\"\n        if len(self._messages) <= max_messages:\n            return 0\n\n        system = [m for m in self._messages if m.role == \"system\"]\n        others = [m for m in self._messages if m.role != \"system\"]\n\n        keep = max_messages - len(system)\n        removed = len(others) - keep\n        if removed <= 0:\n            return 0\n\n        self._messages = system + others[removed:]\n        return removed\n\n    def trim_to_budget(self, tools: list[ToolSchema] | None = None) -> int:\n        \"\"\"Trim oldest non-system messages to fit within the token budget.\n\n        Uses the TokenBudget invariant:\n            \u03a3 tokens(messages) + tokens(tools) + reserve \u2264 context_window\n\n        Returns the number of messages evicted.\n        \"\"\"\n        to_evict = self._budget.messages_to_evict(self._messages, tools)\n        if to_evict == 0:\n            return 0\n\n        system = [m for m in self._messages if m.role == \"system\"]\n        others = [m for m in self._messages if m.role != \"system\"]\n\n        self._messages = system + others[to_evict:]\n        return to_evict\n",
+  "body_hash": "8ab432cd20c0cbf3",
+  "body_truncated": false,
+  "callers_of": [
+    "for_model",
+    "list",
+    "append",
+    "len",
+    "sum",
+    "messages_to_evict",
+    "Message",
+    "estimate_message_tokens"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/conversation.py:18.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.conversation",
+  "imports": [
+    "__future__.annotations",
+    "ass_ade.engine.tokens.TokenBudget",
+    "ass_ade.engine.tokens.estimate_message_tokens",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolSchema"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/conversation.py:18"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "Conversation",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for Conversation"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

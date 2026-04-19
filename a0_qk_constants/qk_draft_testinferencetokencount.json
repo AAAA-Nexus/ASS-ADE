@@ -1,0 +1,54 @@
+{
+  "body": "class TestInferenceTokenCount:\n    \"\"\"Test `llm token-count` command \u2014 estimate token costs.\"\"\"\n\n    def test_llm_token_count_success(self, tmp_path: Path, hybrid_config: Path) -> None:\n        \"\"\"Token count should return cost estimates across models.\"\"\"\n        mock_nx = MagicMock()\n        mock_nx.agent_token_budget.return_value = {\n            \"task\": \"write a test\",\n            \"estimates\": [\n                {\"model\": \"gpt-4\", \"tokens\": 142, \"cost_usd\": 0.004},\n                {\"model\": \"llama-3.1-8b\", \"tokens\": 89, \"cost_usd\": 0.001},\n            ],\n        }\n        \n        with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n            result = runner.invoke(\n                app,\n                [\"llm\", \"token-count\", \"write a test\", \"--config\", str(hybrid_config)],\n            )\n        \n        assert result.exit_code == 0\n        assert \"estimates\" in result.stdout or \"token\" in result.stdout.lower()\n",
+  "body_hash": "5b04df4673bb4fb8",
+  "body_truncated": false,
+  "callers_of": [
+    "MagicMock",
+    "patch",
+    "invoke",
+    "lower",
+    "_make_ctx_mgr",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli_happy_path.py:183.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.testinferencetokencount",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.nexus.models.AgentPlan",
+    "ass_ade.nexus.models.ComplianceResult",
+    "ass_ade.nexus.models.FormatConversion",
+    "ass_ade.nexus.models.InferenceResponse",
+    "ass_ade.nexus.models.IntentClassification",
+    "ass_ade.nexus.models.RatchetSession",
+    "ass_ade.nexus.models.TrustScore",
+    "ass_ade.pipeline.PipelineResult"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli_happy_path.py:183"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "TestInferenceTokenCount",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestInferenceTokenCount"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

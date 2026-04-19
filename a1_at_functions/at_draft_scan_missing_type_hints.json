@@ -1,0 +1,44 @@
+{
+  "body": "def scan_missing_type_hints(root: Path) -> list[dict[str, Any]]:\n    findings: list[dict[str, Any]] = []\n    counter = 1\n    for path in _walk_python_files(root):\n        if \"test\" in path.stem or \"test\" in str(path.parent):\n            continue\n        lines = _read_lines(path)\n        for i, line in enumerate(lines):\n            stripped = line.lstrip()\n            if not stripped.startswith(\"def \"):\n                continue\n            name_part = stripped[4:].split(\"(\")[0].strip()\n            if name_part.startswith(\"_\"):\n                continue\n            combined = line\n            if i + 1 < len(lines):\n                combined += lines[i + 1]\n            if \"->\" not in combined:\n                rel = str(path.relative_to(root))\n                findings.append({\n                    \"id\": counter,\n                    \"category\": \"missing_types\",\n                    \"title\": f\"Missing return type hint: {name_part}\",\n                    \"description\": f\"{name_part} in {rel} has no return type annotation.\",\n                    \"file\": rel,\n                    \"line\": i + 1,\n                    \"impact\": \"low\",\n                    \"effort\": \"low\",\n                })\n                counter += 1\n                if len(findings) >= 8:\n                    return findings\n    return findings\n",
+  "body_hash": "69376785761fb25e",
+  "body_truncated": false,
+  "callers_of": [
+    "_walk_python_files",
+    "_read_lines",
+    "enumerate",
+    "lstrip",
+    "strip",
+    "startswith",
+    "str",
+    "len",
+    "append",
+    "relative_to",
+    "split"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/local/enhancer.py:259.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.scan_missing_type_hints",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/local/enhancer.py:259"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "scan_missing_type_hints",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for scan_missing_type_hints"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

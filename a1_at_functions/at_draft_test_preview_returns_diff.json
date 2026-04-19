@@ -1,0 +1,33 @@
+{
+  "body": "    def test_preview_returns_diff(self, tmp_path: Path):\n        (tmp_path / \"code.py\").write_text(\"x = 1\\ny = 2\\nz = 3\\n\")\n        tool = EditFileTool(str(tmp_path))\n        result = tool.execute(\n            path=\"code.py\",\n            old_string=\"y = 2\",\n            new_string=\"y = 42\",\n            preview=True,\n        )\n        assert result.success\n        assert \"---\" in result.output  # unified diff header\n        assert \"-y = 2\" in result.output\n        assert \"+y = 42\" in result.output\n",
+  "body_hash": "55ae514285c239f9",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "EditFileTool",
+    "execute",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testdiffpreview.py:6.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_preview_returns_diff",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testdiffpreview.py:6"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_preview_returns_diff",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_preview_returns_diff"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,31 @@
+{
+  "body": "    def test_summary_failed(self) -> None:\n        result = PipelineResult(\n            name=\"test\",\n            steps=[\n                StepResult(name=\"s1\", status=StepStatus.PASSED),\n                StepResult(name=\"s2\", status=StepStatus.FAILED, error=\"x\"),\n                StepResult(name=\"s3\", status=StepStatus.SKIPPED),\n            ],\n            passed=False,\n            duration_ms=200.0,\n        )\n        assert \"[FAILED]\" in result.summary\n        assert \"1 failed\" in result.summary\n        assert \"1 skipped\" in result.summary\n",
+  "body_hash": "d1be8f8f46cca6bc",
+  "body_truncated": false,
+  "callers_of": [
+    "PipelineResult",
+    "StepResult"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpipelineresult.py:19.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_summary_failed",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpipelineresult.py:19"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_summary_failed",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_summary_failed"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

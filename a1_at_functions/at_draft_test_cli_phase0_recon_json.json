@@ -1,0 +1,45 @@
+{
+  "body": "def test_cli_phase0_recon_json(tmp_path: Path) -> None:\n    _seed_repo(tmp_path)\n    result = runner.invoke(\n        app,\n        [\n            \"workflow\",\n            \"phase0-recon\",\n            \"Add an MCP tool schema\",\n            \"--path\",\n            str(tmp_path),\n            \"--json\",\n        ],\n    )\n\n    assert result.exit_code == 0\n    assert '\"verdict\": \"RECON_REQUIRED\"' in result.stdout\n",
+  "body_hash": "4ddbdd25a594de3f",
+  "body_truncated": false,
+  "callers_of": [
+    "_seed_repo",
+    "invoke",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_recon_context.py:159.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_cli_phase0_recon_json",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.context_memory.VECTOR_DIMENSIONS",
+    "ass_ade.context_memory.build_context_packet",
+    "ass_ade.context_memory.query_vector_memory",
+    "ass_ade.context_memory.store_vector_memory",
+    "ass_ade.context_memory.vector_embed",
+    "ass_ade.mcp.server.MCPServer",
+    "ass_ade.recon.phase0_recon"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_recon_context.py:159"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_cli_phase0_recon_json",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_cli_phase0_recon_json"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

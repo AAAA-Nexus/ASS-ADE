@@ -1,0 +1,35 @@
+{
+  "body": "class TestLLMChat:\n    \"\"\"Test `llm chat` command \u2014 run LLM inference.\"\"\"\n\n    def test_llm_chat_success(self, tmp_path: Path, hybrid_config: Path) -> None:\n        \"\"\"LLM chat should return inference result.\"\"\"\n        mock_nx = MagicMock()\n        mock_nx.inference.return_value = InferenceResponse(\n            result=\"The capital of France is Paris.\",\n            tokens_used=15,\n            model=\"llama-3.1-8b\",\n        )\n        \n        with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n            result = runner.invoke(\n                app,\n                [\"llm\", \"chat\", \"What is the capital of France?\", \"--config\", str(hybrid_config)],\n            )\n        \n        assert result.exit_code == 0\n        assert \"Paris\" in result.stdout or \"capital\" in result.stdout\n",
+  "body_hash": "061941112d7f9da0",
+  "body_truncated": false,
+  "callers_of": [
+    "MagicMock",
+    "InferenceResponse",
+    "patch",
+    "invoke",
+    "_make_ctx_mgr",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testllmchat.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testllmchat",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testllmchat.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "TestLLMChat",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestLLMChat"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

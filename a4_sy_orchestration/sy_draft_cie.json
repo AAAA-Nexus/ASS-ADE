@@ -1,0 +1,56 @@
+{
+  "body": "    def cie(self):\n        if self._cie is None:\n            from ass_ade.agent.cie import CIEPipeline\n            self._cie = CIEPipeline(self._config, self._nexus)\n        return self._cie\n",
+  "body_hash": "89a04c0172fe026d",
+  "body_truncated": false,
+  "callers_of": [
+    "CIEPipeline"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/orchestrator.py:278.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.cie",
+  "imports": [
+    "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any",
+    "ass_ade.agent.atlas.Atlas",
+    "ass_ade.agent.bas.BAS",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "pathlib.Path",
+    "json",
+    "pathlib.Path",
+    "ass_ade.agent.gvu.GVU",
+    "ass_ade.agent.tdmi.TDMI",
+    "ass_ade.agent.edee.EDEE",
+    "ass_ade.agent.lifr_graph.LIFRGraph",
+    "ass_ade.agent.puppeteer.Puppeteer",
+    "ass_ade.agent.sam.SAM",
+    "ass_ade.agent.ide.IDE",
+    "ass_ade.agent.severa.Severa",
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.agent.tca.TCAEngine",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel",
+    "ass_ade.map_terrain.active_terrain_gate",
+    "json"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/orchestrator.py:278"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "cie",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for cie"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

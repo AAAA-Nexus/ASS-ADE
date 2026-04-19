@@ -1,0 +1,32 @@
+{
+  "body": "def test_repo_summary_counts_files_and_skips_ignored_dirs(tmp_path: Path) -> None:\n    (tmp_path / \"src\").mkdir()\n    (tmp_path / \".venv\").mkdir()\n    (tmp_path / \"README.md\").write_text(\"hello\", encoding=\"utf-8\")\n    (tmp_path / \"src\" / \"main.py\").write_text(\"print('ok')\", encoding=\"utf-8\")\n    (tmp_path / \".venv\" / \"secret.py\").write_text(\"ignored\", encoding=\"utf-8\")\n\n    summary = summarize_repo(tmp_path)\n\n    assert summary.total_files == 2\n    assert summary.file_types[\"md\"] == 1\n    assert summary.file_types[\"py\"] == 1\n",
+  "body_hash": "f5a5303b056fde93",
+  "body_truncated": false,
+  "callers_of": [
+    "mkdir",
+    "write_text",
+    "summarize_repo"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_repo_summary_counts_files_and_skips_ignored_dirs.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_repo_summary_counts_files_and_skips_ignored_dirs",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_repo_summary_counts_files_and_skips_ignored_dirs.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_repo_summary_counts_files_and_skips_ignored_dirs",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_repo_summary_counts_files_and_skips_ignored_dirs"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

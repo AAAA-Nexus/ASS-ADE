@@ -1,0 +1,50 @@
+{
+  "body": "    def test_fail_open_on_exception(self):\n        client = MagicMock()\n        client.prompt_inject_scan.side_effect = Exception(\"network error\")\n        client.hallucination_oracle.side_effect = Exception(\"network error\")\n        client.security_shield.side_effect = Exception(\"network error\")\n        client.certify_output.side_effect = Exception(\"network error\")\n        gates = QualityGates(client)\n\n        assert gates.scan_prompt(\"test\") is None\n        assert gates.check_hallucination(\"test\") is None\n        assert gates.shield_tool(\"x\", {}) is None\n        assert gates.certify(\"test\") is None\n",
+  "body_hash": "e7ce247fda2d46cd",
+  "body_truncated": false,
+  "callers_of": [
+    "MagicMock",
+    "Exception",
+    "QualityGates",
+    "scan_prompt",
+    "check_hallucination",
+    "shield_tool",
+    "certify"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_agent.py:134.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_fail_open_on_exception",
+  "imports": [
+    "__future__.annotations",
+    "unittest.mock.MagicMock",
+    "ass_ade.agent.context.build_system_prompt",
+    "ass_ade.agent.conversation.Conversation",
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.agent.loop.MAX_ROUNDS_SENTINEL",
+    "ass_ade.engine.types.CompletionRequest",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolCallRequest",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.registry.ToolRegistry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_agent.py:134"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_fail_open_on_exception",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_fail_open_on_exception"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

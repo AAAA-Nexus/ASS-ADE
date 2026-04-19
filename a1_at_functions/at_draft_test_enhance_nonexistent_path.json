@@ -1,0 +1,30 @@
+{
+  "body": "def test_enhance_nonexistent_path() -> None:\n    result = runner.invoke(app, [\"enhance\", \"/nonexistent/path/xyz\"])\n\n    assert result.exit_code == 1\n",
+  "body_hash": "53dbbcdce0f51a4f",
+  "body_truncated": false,
+  "callers_of": [
+    "invoke"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_enhance_nonexistent_path.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_enhance_nonexistent_path",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_enhance_nonexistent_path.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_enhance_nonexistent_path",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_enhance_nonexistent_path"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

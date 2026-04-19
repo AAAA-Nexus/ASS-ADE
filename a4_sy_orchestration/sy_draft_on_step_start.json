@@ -1,0 +1,69 @@
+{
+  "body": "    def on_step_start(self, user_message: str, routing: Any = None) -> dict:\n        \"\"\"Called before model is invoked. Returns pre-step analysis.\"\"\"\n        # Reset per-step metrics\n        self._step_tool_counts = {}\n        self._step_tool_results = []\n\n        result: dict[str, Any] = {}\n\n        # ATLAS: decompose if complex\n        try:\n            complexity = float(getattr(routing, \"complexity\", 0.0) or 0.0)\n            subs = self.atlas.decompose(user_message, complexity if complexity > 0 else None)\n            result[\"atlas_subtasks\"] = [s.__dict__ for s in subs]\n            result[\"atlas_complexity\"] = self.atlas.complexity_score(user_message)\n        except Exception as exc:\n            _LOG.debug(\"atlas.on_step_start failed: %s\", exc)\n\n        # LIFR: query knowledge graph for relevant patterns\n        try:\n            matches = self.lifr.query(user_message[:500], top_k=3)\n            result[\"lifr_matches\"] = len(matches)\n            result[\"lifr_patterns\"] = [m.spec[:100] for m in matches]\n        except Exception as exc:\n            _LOG.debug(\"lifr.on_step_start failed: %s\", exc)\n\n        # Puppeteer: get next engine recommendation\n        try:\n            state = {\"visited\": list(result.keys())}\n            agent_ref = self.puppeteer.select_next_agent(state)\n            result[\"puppeteer_next\"] = agent_ref.name\n            result[\"puppeteer_reason\"] = agent_ref.reason\n        except Exception as exc:\n            _LOG.debug(\"puppeteer.on_step_start failed: %s\", exc)\n\n        # TCA: freshness pre-check (Phase 2)\n        try:\n            stale = self.tca.get_stale_files()\n            result[\"tca_stale_count\"] = len(stale)\n            result[\"tca_stale_paths\"] = [r.path for r in stale[:5]]\n        except Exception as exc:\n            _LOG.debug(\"tca.on_step_start failed: %s\", exc)\n\n        # MAP=TERRAIN: active capability gate pre-synthesis (Phase 2)\n        # Infer required capabilities from ATLAS subtask verbs and from\n        # explicit per-step hints in routing. If any are missing, emit a BAS\n        # alert + surface the verdict \u2014 agent loop can decide to halt.\n        try:\n            from ass_ade.map_terrain import active_terrain_gate\n\n            required = _infer_required_capabilities(user_message, result)\n            if required:\n                terrain = active_terrain_gate(\n                    required,\n                    context={\"task_description\": user_message[:200]},\n                    working_dir=self._working_dir,\n                    write_stubs=False,  # never write stubs from the pre-synthesis gate\n                )\n                result[\"terrain_verdict\"] = terrain.verdict\n                result[\"terrain_missing\"] = list(terrain.capabilities_missing)\n                if terrain.verdict == \"HALT_AND_INVENT\":\n                    try:\n                        self.bas.alert(\"capability_gap\", {\n                            \"missing\": terrain.capabilities_missing[:5],\n                            \"task\": user_message[:120],\n                        })\n                    except Exception:\n                        pass\n        except Exception as exc:\n            _LOG.debug(\"map_terrain.on_step_start failed: %s\", exc)\n\n        return result\n",
+  "body_hash": "ef4d86839e4afd48",
+  "body_truncated": false,
+  "callers_of": [
+    "float",
+    "decompose",
+    "complexity_score",
+    "query",
+    "len",
+    "select_next_agent",
+    "get_stale_files",
+    "_infer_required_capabilities",
+    "debug",
+    "list",
+    "active_terrain_gate",
+    "getattr",
+    "keys",
+    "alert"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/orchestrator.py:315.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.on_step_start",
+  "imports": [
+    "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any",
+    "ass_ade.agent.atlas.Atlas",
+    "ass_ade.agent.bas.BAS",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "pathlib.Path",
+    "json",
+    "pathlib.Path",
+    "ass_ade.agent.gvu.GVU",
+    "ass_ade.agent.tdmi.TDMI",
+    "ass_ade.agent.edee.EDEE",
+    "ass_ade.agent.lifr_graph.LIFRGraph",
+    "ass_ade.agent.puppeteer.Puppeteer",
+    "ass_ade.agent.sam.SAM",
+    "ass_ade.agent.ide.IDE",
+    "ass_ade.agent.severa.Severa",
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.agent.tca.TCAEngine",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel",
+    "ass_ade.map_terrain.active_terrain_gate",
+    "json"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/orchestrator.py:315"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "on_step_start",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for on_step_start"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

@@ -1,0 +1,52 @@
+{
+  "body": "    def test_blocked_event(self, tmp_path):\n        provider = _MockProvider([])\n        mock_gates = MagicMock()\n        mock_gates.scan_prompt.return_value = {\"blocked\": True}\n\n        loop = AgentLoop(\n            provider=provider,\n            registry=ToolRegistry(),\n            working_dir=str(tmp_path),\n            quality_gates=mock_gates,\n        )\n        events = list(loop.step_stream(\"Bad input\"))\n        assert len(events) == 1\n        assert events[0].kind == \"blocked\"\n",
+  "body_hash": "8bb34f9e0a16a338",
+  "body_truncated": false,
+  "callers_of": [
+    "_MockProvider",
+    "MagicMock",
+    "AgentLoop",
+    "list",
+    "step_stream",
+    "len",
+    "ToolRegistry",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:288.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_blocked_event",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "pytest",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolCallRequest",
+    "ass_ade.mcp.server.MCPServer",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.builtin.EditFileTool",
+    "ass_ade.tools.registry.ToolRegistry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:288"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [
+    "og.source.ass_ade.toolregistry"
+  ],
+  "name": "test_blocked_event",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_blocked_event"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

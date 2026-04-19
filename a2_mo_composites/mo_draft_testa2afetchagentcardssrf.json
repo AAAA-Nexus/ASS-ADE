@@ -1,0 +1,36 @@
+{
+  "body": "class TestA2AFetchAgentCardSSRF:\n    \"\"\"Test SSRF protection in A2A agent card fetching.\"\"\"\n\n    def test_https_only_required(self) -> None:\n        \"\"\"A2A fetching should require HTTPS.\"\"\"\n        report = fetch_agent_card(\"http://example.com/.well-known/agent.json\")\n        assert not report.valid\n        assert \"HTTPS\" in report.errors[0].message\n\n    def test_localhost_blocked(self) -> None:\n        \"\"\"A2A should block attempts to fetch from localhost.\"\"\"\n        report = fetch_agent_card(\"https://localhost/.well-known/agent.json\")\n        assert not report.valid\n        assert len(report.errors) > 0\n        assert \"blocked\" in report.errors[0].message or \"loopback\" in report.errors[0].message\n\n    def test_appends_well_known_path(self) -> None:\n        \"\"\"Fetching from a URL without /.well-known/agent.json should auto-append it.\"\"\"\n        # Mock httpx.get to verify the right URL is called\n        with mock.patch(\"ass_ade.a2a.httpx.get\") as mock_get:\n            mock_response = mock.MagicMock()\n            mock_response.json.return_value = {\"name\": \"TestAgent\"}\n            mock_get.return_value = mock_response\n            \n            # This should work and return valid=False because the JSON is incomplete\n            # but we mainly care about the URL transformation\n            fetch_agent_card(\"https://example.com\")\n            \n            # Verify that the .well-known path was appended\n            called_url = mock_get.call_args[0][0]\n            assert called_url.endswith(\"/.well-known/agent.json\")\n\n    def test_immediate_ssrf_validation_before_request(self) -> None:\n        \"\"\"SSRF validation should happen immediately before the network request.\n        \n        This tests that we don't have a TOCTOU window where DNS could change\n        between validation and the actual request.\n        \"\"\"\n        with mock.patch(\"ass_ade.a2a.httpx.get\") as mock_get:\n            with mock.patch(\"ass_ade.a2a._check_ssrf\") as mock_check_ssrf:\n                # Set up mocks\n                mock_check_ssrf.return_value = None  # No SSRF error\n                mock_response = mock.MagicMock()\n                mock_response.json.return_value = {\"name\": \"TestAgent\"}\n                mock_get.return_value = mock_response\n                \n                # Call fetch_agent_card\n                fetch_agent_card(\"https://example.com\")\n                \n                # Verify _check_ssrf was called (it's called immediately before request)\n                assert mock_check_ssrf.called\n",
+  "body_hash": "18c657102c3025ed",
+  "body_truncated": false,
+  "callers_of": [
+    "fetch_agent_card",
+    "len",
+    "patch",
+    "MagicMock",
+    "endswith"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testa2afetchagentcardssrf.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testa2afetchagentcardssrf",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testa2afetchagentcardssrf.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.fetch_agent_card"
+  ],
+  "name": "TestA2AFetchAgentCardSSRF",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestA2AFetchAgentCardSSRF"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

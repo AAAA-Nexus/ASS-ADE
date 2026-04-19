@@ -1,0 +1,61 @@
+{
+  "body": "    def test_complete_basic(self, mock_client_cls):\n        mock_resp = MagicMock()\n        mock_resp.json.return_value = self._mock_response(\"Hello!\")\n        mock_resp.raise_for_status = MagicMock()\n\n        mock_instance = MagicMock()\n        mock_instance.post.return_value = mock_resp\n        mock_client_cls.return_value = mock_instance\n\n        provider = OpenAICompatibleProvider(base_url=\"http://test:8000/v1\", api_key=\"k\")\n        req = CompletionRequest(messages=[Message(role=\"user\", content=\"hi\")])\n        resp = provider.complete(req)\n\n        assert resp.message.content == \"Hello!\"\n        assert resp.finish_reason == \"stop\"\n        assert resp.model == \"test-model\"\n",
+  "body_hash": "28bbfabac57c6bb9",
+  "body_truncated": false,
+  "callers_of": [
+    "patch",
+    "MagicMock",
+    "_mock_response",
+    "OpenAICompatibleProvider",
+    "CompletionRequest",
+    "complete",
+    "Message"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine.py:85.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.test_complete_basic",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "ass_ade.engine.provider.NexusProvider",
+    "ass_ade.engine.provider.OpenAICompatibleProvider",
+    "ass_ade.engine.router.build_provider",
+    "ass_ade.engine.types.CompletionRequest",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolCallRequest",
+    "ass_ade.engine.types.ToolSchema",
+    "os",
+    "ass_ade.agent.providers.FREE_PROVIDERS",
+    "ass_ade.agent.providers.FREE_PROVIDERS",
+    "ass_ade.config.ProviderOverride",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.engine.provider.MultiProvider",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.engine.provider.MultiProvider",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.engine.provider.MultiProvider"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine.py:85"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "test_complete_basic",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_complete_basic"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

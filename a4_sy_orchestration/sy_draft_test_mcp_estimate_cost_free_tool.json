@@ -1,0 +1,55 @@
+{
+  "body": "def test_mcp_estimate_cost_free_tool(monkeypatch, tmp_path: Path) -> None:\n    manifest = MCPManifest(name=\"demo\", tools=[MCPTool(name=\"echo\", endpoint=\"/echo\", paid=False)])\n    monkeypatch.setattr(\"ass_ade.cli.NexusClient\", _fake_client_factory(manifest))\n\n    config_path = tmp_path / \".ass-ade\" / \"config.json\"\n    write_default_config(config_path, config=AssAdeConfig(profile=\"hybrid\"), overwrite=True)\n\n    result = runner.invoke(app, [\"mcp\", \"estimate-cost\", \"1\", \"--config\", str(config_path)])\n    assert result.exit_code == 0\n    assert \"free\" in result.stdout.lower()\n",
+  "body_hash": "17c546e215811182",
+  "body_truncated": false,
+  "callers_of": [
+    "MCPManifest",
+    "setattr",
+    "write_default_config",
+    "invoke",
+    "_fake_client_factory",
+    "lower",
+    "AssAdeConfig",
+    "str",
+    "MCPTool"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp.py:211.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_mcp_estimate_cost_free_tool",
+  "imports": [
+    "pathlib.Path",
+    "httpx",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.mcp.utils.invoke_tool",
+    "ass_ade.nexus.models.MCPManifest",
+    "ass_ade.nexus.models.MCPTool",
+    "ass_ade.nexus.models.CostEstimate",
+    "json",
+    "httpx",
+    "ass_ade.mcp.mock_server.start_server",
+    "httpx",
+    "ass_ade.mcp.mock_server._MAX_BODY_BYTES",
+    "ass_ade.mcp.mock_server.start_server"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp.py:211"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "test_mcp_estimate_cost_free_tool",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_mcp_estimate_cost_free_tool"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

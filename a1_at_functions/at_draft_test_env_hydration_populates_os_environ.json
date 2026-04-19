@@ -1,0 +1,42 @@
+{
+  "body": "    def test_env_hydration_populates_os_environ(self, tmp_path, monkeypatch):\n        from ass_ade.config import load_config\n        monkeypatch.delenv(\"GROQ_API_KEY\", raising=False)\n        # Write a .env at project root\n        (tmp_path / \".env\").write_text(\"GROQ_API_KEY=from-env-file\\n\")\n        (tmp_path / \".ass-ade\").mkdir()\n        config_path = tmp_path / \".ass-ade\" / \"config.json\"\n        load_config(config_path)\n        assert os.getenv(\"GROQ_API_KEY\") == \"from-env-file\"\n",
+  "body_hash": "e96587785f3b5994",
+  "body_truncated": false,
+  "callers_of": [
+    "delenv",
+    "write_text",
+    "mkdir",
+    "load_config",
+    "getenv"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testconfigproviderfields.py:42.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_env_hydration_populates_os_environ",
+  "imports": [
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.ProviderOverride",
+    "ass_ade.config.write_default_config",
+    "ass_ade.config.load_config",
+    "ass_ade.config.load_config"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testconfigproviderfields.py:42"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_env_hydration_populates_os_environ",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_env_hydration_populates_os_environ"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

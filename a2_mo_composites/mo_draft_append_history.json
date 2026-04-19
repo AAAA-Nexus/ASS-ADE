@@ -1,0 +1,39 @@
+{
+  "body": "    def append_history(self, turn: \"Turn\") -> None:\n        try:\n            entry = {\n                \"ts\": datetime.now(timezone.utc).isoformat(),\n                \"user\": turn.user,\n                \"intent\": turn.intent,\n                \"tone\": turn.tone,\n                \"path\": turn.path,\n                \"ok\": \"[error\" not in (turn.output or \"\").lower(),\n            }\n            lines: list[str] = []\n            if self._history_path.exists():\n                lines = self._history_path.read_text(encoding=\"utf-8\").splitlines()\n            lines.append(json.dumps(entry))\n            lines = lines[-_HISTORY_MAX:]\n            self._history_path.write_text(\"\\n\".join(lines) + \"\\n\", encoding=\"utf-8\")\n        except OSError:\n            pass\n",
+  "body_hash": "030582cf1c8ac9e8",
+  "body_truncated": false,
+  "callers_of": [
+    "exists",
+    "append",
+    "write_text",
+    "isoformat",
+    "splitlines",
+    "dumps",
+    "lower",
+    "join",
+    "now",
+    "read_text"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_memorystore.py:79.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.append_history",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_memorystore.py:79"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "append_history",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for append_history"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

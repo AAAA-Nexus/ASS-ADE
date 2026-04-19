@@ -1,0 +1,36 @@
+{
+  "body": "    def test_nexus_is_in_default_fallback_chain(self):\n        assert \"nexus\" in DEFAULT_FALLBACK_CHAIN\n",
+  "body_hash": "fade57106f83fa9e",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexusasprovider.py:49.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_nexus_is_in_default_fallback_chain",
+  "imports": [
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.ProviderOverride",
+    "ass_ade.engine.provider.NexusProvider",
+    "ass_ade.engine.router.build_provider",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.engine.router.build_provider"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexusasprovider.py:49"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_nexus_is_in_default_fallback_chain",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_nexus_is_in_default_fallback_chain"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

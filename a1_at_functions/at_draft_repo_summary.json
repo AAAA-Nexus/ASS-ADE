@@ -1,0 +1,39 @@
+{
+  "body": "def repo_summary(\n    path: Path = REPO_PATH_ARGUMENT,\n    top: int = typer.Option(8, min=1, max=25, help=\"Number of file types to show.\"),\n) -> None:\n    summary = summarize_repo(path)\n\n    overview = Table(title=\"Repo Summary\")\n    overview.add_column(\"Signal\")\n    overview.add_column(\"Value\")\n    overview.add_row(\"Root\", str(summary.root))\n    overview.add_row(\"Files\", str(summary.total_files))\n    overview.add_row(\"Directories\", str(summary.total_dirs))\n    overview.add_row(\"Top-level Entries\", \", \".join(summary.top_level_entries[:12]) or \"none\")\n    console.print(overview)\n\n    types = Table(title=\"Top File Types\")\n    types.add_column(\"Type\")\n    types.add_column(\"Count\", justify=\"right\")\n    for file_type, count in list(summary.file_types.items())[:top]:\n        types.add_row(file_type, str(count))\n    console.print(types)\n",
+  "body_hash": "8e9847b756a14a39",
+  "body_truncated": false,
+  "callers_of": [
+    "Option",
+    "summarize_repo",
+    "Table",
+    "add_column",
+    "add_row",
+    "print",
+    "str",
+    "list",
+    "join",
+    "items"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_repo_summary.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.repo_summary",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_repo_summary.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "repo_summary",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for repo_summary"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

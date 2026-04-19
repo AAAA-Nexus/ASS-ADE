@@ -1,0 +1,28 @@
+{
+  "body": "def foo():\n    pass\n",
+  "body_hash": "cc9b8be51052e4ec",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.pytest_tmp/test_scan_source_symbols_finds0/module.py:1.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "og.source.ass_ade.foo",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.pytest_tmp/test_scan_source_symbols_finds0/module.py:1"
+  },
+  "kind": "product_organism",
+  "made_of": [],
+  "name": "foo",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for foo"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a3_og_features",
+  "version": "0.1.0"
+}

@@ -1,0 +1,43 @@
+{
+  "body": "def a2a_negotiate(\n    remote_url: Annotated[str, typer.Argument(help=\"Base URL of the remote agent to negotiate with.\")],\n    config: Path | None = CONFIG_OPTION,\n) -> None:\n    \"\"\"Compare local ASS-ADE agent card with a remote agent for A2A interoperability.\"\"\"\n    from ass_ade.nexus.validation import validate_url\n\n    _, settings = _resolve_config(config)\n\n    try:\n        validate_url(remote_url)\n    except ValueError as exc:\n        console.print(f\"[red]Blocked:[/red] {exc}\")\n        raise typer.Exit(code=1) from exc\n\n    local = local_agent_card(str(Path(\".\").resolve()))\n    report = fetch_agent_card(remote_url)\n    if not report.valid or not report.card:\n        msgs = [issue.message for issue in report.errors]\n        console.print(f\"[red]Remote agent card invalid:[/red] {msgs}\")\n        raise typer.Exit(code=1)\n\n    result = negotiate(local, report.card)\n    console.print(json.dumps({\n        \"compatible\": result.compatible,\n        \"shared_skills\": result.shared_skills,\n        \"local_only\": result.local_only,\n        \"remote_only\": result.remote_only,\n        \"auth_compatible\": result.auth_compatible,\n        \"notes\": result.notes,\n    }, indent=2), markup=False)\n    if not result.compatible:\n        raise typer.Exit(code=1)\n",
+  "body_hash": "893afd3cf0bfc13e",
+  "body_truncated": false,
+  "callers_of": [
+    "_resolve_config",
+    "local_agent_card",
+    "fetch_agent_card",
+    "negotiate",
+    "print",
+    "validate_url",
+    "str",
+    "Exit",
+    "dumps",
+    "resolve",
+    "Argument",
+    "Path"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_a2a_negotiate.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.a2a_negotiate",
+  "imports": [
+    "ass_ade.nexus.validation.validate_url"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_a2a_negotiate.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "a2a_negotiate",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for a2a_negotiate"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

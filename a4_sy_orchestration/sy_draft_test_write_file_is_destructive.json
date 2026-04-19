@@ -1,0 +1,41 @@
+{
+  "body": "    def test_write_file_is_destructive(self) -> None:\n        server = MCPServer(\".\")\n        _initialize_server(server)\n        response = server._handle({\n            \"jsonrpc\": \"2.0\", \"id\": 1, \"method\": \"tools/list\", \"params\": {},\n        })\n        tools = {t[\"name\"]: t for t in response[\"result\"][\"tools\"]}\n        assert tools[\"write_file\"][\"annotations\"][\"destructiveHint\"] is True\n        assert tools[\"write_file\"][\"annotations\"][\"readOnlyHint\"] is False\n",
+  "body_hash": "a63b59e6fb867e65",
+  "body_truncated": false,
+  "callers_of": [
+    "MCPServer",
+    "_initialize_server",
+    "_handle"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:301.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_write_file_is_destructive",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.mcp.server._WORKFLOW_TOOLS",
+    "ass_ade.mcp.server.MCPServer",
+    "httpx"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:301"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "test_write_file_is_destructive",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_write_file_is_destructive"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

@@ -1,0 +1,51 @@
+{
+  "body": "def test_classify_tier_sy(tmp_path: Path) -> None:\n    f = tmp_path / \"app.py\"\n    f.write_text(\n        \"import os\\nimport sys\\nimport json\\n\"\n        \"def main(): pass\\n\"\n        \"if __name__ == '__main__':\\n    main()\\n\",\n        encoding=\"utf-8\",\n    )\n    assert _classify_tier(f) == \"sy\"\n",
+  "body_hash": "ffec44499913ee71",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "_classify_tier"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_parallel_recon.py:234.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_classify_tier_sy",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "textwrap",
+    "pathlib.Path",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.recon.ReconReport",
+    "ass_ade.recon._classify_tier",
+    "ass_ade.recon._count_test_functions",
+    "ass_ade.recon._dependency_agent",
+    "ass_ade.recon._doc_agent",
+    "ass_ade.recon._iter_files",
+    "ass_ade.recon._scout_agent",
+    "ass_ade.recon._test_agent",
+    "ass_ade.recon._tier_agent",
+    "ass_ade.recon.run_parallel_recon",
+    "time",
+    "json"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_parallel_recon.py:234"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_classify_tier_sy",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_classify_tier_sy"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

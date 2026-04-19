@@ -1,0 +1,51 @@
+{
+  "body": "class TestConfigProviderFields:\n    def test_default_config_has_new_fields(self):\n        from ass_ade.config import AssAdeConfig\n        cfg = AssAdeConfig()\n        assert cfg.lse_enabled is True\n        assert cfg.tier_policy == {}\n        assert cfg.provider_fallback_chain == []\n        assert cfg.providers == {}\n\n    def test_provider_override_parses_from_json(self):\n        from ass_ade.config import AssAdeConfig\n        cfg = AssAdeConfig.model_validate({\n            \"profile\": \"local\",\n            \"providers\": {\n                \"groq\": {\"enabled\": True, \"api_key\": \"sk-test\"},\n                \"gemini\": {\"enabled\": False},\n            },\n            \"tier_policy\": {\"balanced\": \"groq\"},\n            \"provider_fallback_chain\": [\"groq\", \"gemini\", \"ollama\"],\n        })\n        assert cfg.providers[\"groq\"].api_key == \"sk-test\"\n        assert cfg.providers[\"gemini\"].enabled is False\n        assert cfg.tier_policy == {\"balanced\": \"groq\"}\n        assert cfg.provider_fallback_chain == [\"groq\", \"gemini\", \"ollama\"]\n\n    def test_write_config_does_not_persist_api_keys(self, tmp_path):\n        from ass_ade.config import AssAdeConfig, ProviderOverride, write_default_config\n        cfg = AssAdeConfig(\n            profile=\"local\",\n            providers={\"groq\": ProviderOverride(enabled=True, api_key=\"sk-secret\")},\n        )\n        path = tmp_path / \"config.json\"\n        write_default_config(path, config=cfg, overwrite=True)\n        written = path.read_text(encoding=\"utf-8\")\n        assert \"sk-secret\" not in written\n        assert \"nexus_api_key\" not in written\n\n    def test_env_hydration_populates_os_environ(self, tmp_path, monkeypatch):\n        from ass_ade.config import load_config\n        monkeypatch.delenv(\"GROQ_API_KEY\", raising=False)\n        # Write a .env at project root\n        (tmp_path / \".env\").write_text(\"GROQ_API_KEY=from-env-file\\n\")\n        (tmp_path / \".ass-ade\").mkdir()\n        config_path = tmp_path / \".ass-ade\" / \"config.json\"\n        load_config(config_path)\n        assert os.getenv(\"GROQ_API_KEY\") == \"from-env-file\"\n\n    def test_env_hydration_does_not_override_process_env(self, tmp_path, monkeypatch):\n        from ass_ade.config import load_config\n        monkeypatch.setenv(\"GROQ_API_KEY\", \"from-process\")\n        (tmp_path / \".env\").write_text(\"GROQ_API_KEY=from-file\\n\")\n        (tmp_path / \".ass-ade\").mkdir()\n        load_config(tmp_path / \".ass-ade\" / \"config.json\")\n        # Process env wins\n        assert os.getenv(\"GROQ_API_KEY\") == \"from-process\"\n",
+  "body_hash": "820e2ebf657d3697",
+  "body_truncated": false,
+  "callers_of": [
+    "AssAdeConfig",
+    "model_validate",
+    "write_default_config",
+    "read_text",
+    "delenv",
+    "write_text",
+    "mkdir",
+    "load_config",
+    "setenv",
+    "getenv",
+    "ProviderOverride"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testconfigproviderfields.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testconfigproviderfields",
+  "imports": [
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.ProviderOverride",
+    "ass_ade.config.write_default_config",
+    "ass_ade.config.load_config",
+    "ass_ade.config.load_config"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testconfigproviderfields.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.write_default_config",
+    "at.source.ass_ade.load_config"
+  ],
+  "name": "TestConfigProviderFields",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestConfigProviderFields"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

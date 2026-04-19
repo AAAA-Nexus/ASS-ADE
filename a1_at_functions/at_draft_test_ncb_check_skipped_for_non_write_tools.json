@@ -1,0 +1,32 @@
+{
+  "body": "    def test_ncb_check_skipped_for_non_write_tools(self, tmp_path):\n        server = _make_server(tmp_path)\n        server._ncb_mode = \"block\"\n        # list_directory etc. should never be NCB-gated\n        allow, _ = server._pre_tool_hook(\"list_directory\", _mk_args(tmp_path))\n        assert allow is True\n",
+  "body_hash": "5ff19c3307ec1073",
+  "body_truncated": false,
+  "callers_of": [
+    "_make_server",
+    "_pre_tool_hook",
+    "_mk_args"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testncbenforcement.py:29.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_ncb_check_skipped_for_non_write_tools",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testncbenforcement.py:29"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_ncb_check_skipped_for_non_write_tools",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_ncb_check_skipped_for_non_write_tools"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

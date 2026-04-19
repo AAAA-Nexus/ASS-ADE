@@ -1,0 +1,32 @@
+{
+  "body": "def test_new_sub_command_blocked_locally(tmp_path: Path, argv: list[str]) -> None:\n    \"\"\"New sub-commands must exit code 2 without --allow-remote in local profile.\"\"\"\n    config = _local_config(tmp_path)\n    result = runner.invoke(app, argv + [\"--config\", str(config)])\n    assert result.exit_code == 2\n",
+  "body_hash": "be18ee1347b29faf",
+  "body_truncated": false,
+  "callers_of": [
+    "_local_config",
+    "invoke",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_new_sub_command_blocked_locally.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_new_sub_command_blocked_locally",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_new_sub_command_blocked_locally.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_new_sub_command_blocked_locally",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_new_sub_command_blocked_locally"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,28 @@
+{
+  "body": "class EpistemicRouteResult(NexusModel):\n    \"\"\"/v1/aegis/router/epistemic-bound\"\"\"\n    routed_to: str | None = None\n    epsilon_bound: float | None = None\n    rationale: str | None = None\n",
+  "body_hash": "6b7dc3cd2d02abf9",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_epistemicrouteresult.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.epistemicrouteresult",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_epistemicrouteresult.py:5"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "EpistemicRouteResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for EpistemicRouteResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

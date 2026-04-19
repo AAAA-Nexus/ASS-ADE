@@ -1,0 +1,42 @@
+{
+  "body": "def run_training(language: str, profile: str, epochs: int, max_samples: int, hf_repo: str) -> str:\n    env = {\n        **os.environ,\n        \"AAAA_NEXUS_BASE_URL\": \"https://atomadic.tech\",\n    }\n    cmd = [\n        sys.executable,\n        \"-m\",\n        \"scripts.lora_train\",\n        \"--lang\",\n        language,\n        \"--profile\",\n        profile,\n        \"--epochs\",\n        str(epochs),\n        \"--max-samples\",\n        str(max_samples),\n        \"--min-samples\",\n        \"20\",\n        \"--upload\",\n        \"hf\",\n        \"--hf-repo\",\n        hf_repo,\n        \"--storefront\",\n        \"https://atomadic.tech\",\n    ]\n    log: list[str] = [f\"$ {' '.join(cmd)}\"]\n    try:\n        proc = subprocess.run(\n            cmd,\n            env=env,\n            capture_output=True,\n            text=True,\n            timeout=270,\n        )\n        log.append(proc.stdout[-4000:] if proc.stdout else \"\")\n        if proc.returncode != 0:\n            log.append(f\"\\n[stderr]\\n{proc.stderr[-2000:]}\")\n        log.append(f\"\\nexit code: {proc.returncode}\")\n    except subprocess.TimeoutExpired:\n        log.append(\"\\n\u26a0 hit ZeroGPU time limit; try `fast` profile or fewer samples\")\n    return \"\\n\".join(log)\n",
+  "body_hash": "9af670460ecf5dfd",
+  "body_truncated": false,
+  "callers_of": [
+    "GPU",
+    "join",
+    "str",
+    "run",
+    "append"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/hf_space/app.py:46.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.run_training",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "subprocess",
+    "sys",
+    "pathlib.Path",
+    "gradio",
+    "spaces"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/hf_space/app.py:46"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "run_training",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for run_training"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

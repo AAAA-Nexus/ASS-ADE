@@ -1,0 +1,47 @@
+{
+  "body": "class TestContentHash:\n    def test_deterministic(self):\n        assert content_hash(\"hello world\") == content_hash(\"hello world\")\n\n    def test_different_content(self):\n        assert content_hash(\"foo\") != content_hash(\"bar\")\n\n    def test_trailing_whitespace_normalised(self):\n        assert content_hash(\"a  \\nb  \\n\") == content_hash(\"a\\nb\")\n\n    def test_returns_16_hex_chars(self):\n        h = content_hash(\"test\")\n        assert len(h) == 16\n        assert all(c in \"0123456789abcdef\" for c in h)\n\n    def test_empty_string(self):\n        h = content_hash(\"\")\n        assert len(h) == 16\n",
+  "body_hash": "9f0f7b033e3d9738",
+  "body_truncated": false,
+  "callers_of": [
+    "content_hash",
+    "all",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_version_tracker.py:48.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testcontenthash",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.engine.rebuild.version_tracker.INITIAL_VERSION",
+    "ass_ade.engine.rebuild.version_tracker._aggregate_version",
+    "ass_ade.engine.rebuild.version_tracker._public_python_api",
+    "ass_ade.engine.rebuild.version_tracker.assign_version",
+    "ass_ade.engine.rebuild.version_tracker.bump_version",
+    "ass_ade.engine.rebuild.version_tracker.classify_change",
+    "ass_ade.engine.rebuild.version_tracker.content_hash",
+    "ass_ade.engine.rebuild.version_tracker.load_prev_versions",
+    "ass_ade.engine.rebuild.version_tracker.write_project_version_file",
+    "ass_ade.engine.rebuild.version_tracker.write_tier_version_file"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_version_tracker.py:48"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "TestContentHash",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestContentHash"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

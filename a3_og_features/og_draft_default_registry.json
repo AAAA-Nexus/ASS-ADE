@@ -1,0 +1,79 @@
+{
+  "body": "def default_registry(working_dir: str | None = None) -> ToolRegistry:\n    \"\"\"Create a registry pre-loaded with all built-in tools.\"\"\"\n    from ass_ade.tools.builtin import (\n        EditFileTool,\n        GrepSearchTool,\n        ListDirectoryTool,\n        ReadFileTool,\n        RunCommandTool,\n        SearchFilesTool,\n        UndoEditTool,\n        WriteFileTool,\n    )\n    from ass_ade.tools.history import FileHistory\n    from ass_ade.tools.prompt import (\n        PromptDiffTool,\n        PromptHashTool,\n        PromptProposeTool,\n        PromptSectionTool,\n        PromptValidateTool,\n    )\n\n    cwd = working_dir or \".\"\n\n    # Initialize file history for undo support\n    history = FileHistory(cwd)\n\n    registry = ToolRegistry()\n    registry.register(ReadFileTool(cwd))\n    registry.register(WriteFileTool(cwd, history=history))\n    registry.register(EditFileTool(cwd, history=history))\n    registry.register(RunCommandTool(cwd))\n    registry.register(ListDirectoryTool(cwd))\n    registry.register(SearchFilesTool(cwd))\n    registry.register(GrepSearchTool(cwd))\n    registry.register(UndoEditTool(cwd, history=history))\n    registry.register(PromptHashTool(cwd))\n    registry.register(PromptValidateTool(cwd))\n    registry.register(PromptSectionTool(cwd))\n    registry.register(PromptDiffTool(cwd))\n    registry.register(PromptProposeTool(cwd))\n    return registry\n",
+  "body_hash": "be84dbb9d549dae0",
+  "body_truncated": false,
+  "callers_of": [
+    "FileHistory",
+    "ToolRegistry",
+    "register",
+    "ReadFileTool",
+    "WriteFileTool",
+    "EditFileTool",
+    "RunCommandTool",
+    "ListDirectoryTool",
+    "SearchFilesTool",
+    "GrepSearchTool",
+    "UndoEditTool",
+    "PromptHashTool",
+    "PromptValidateTool",
+    "PromptSectionTool",
+    "PromptDiffTool",
+    "PromptProposeTool"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/tools/registry.py:46.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "og.source.ass_ade.default_registry",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "ass_ade.engine.types.ToolSchema",
+    "ass_ade.tools.base.Tool",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.builtin.EditFileTool",
+    "ass_ade.tools.builtin.GrepSearchTool",
+    "ass_ade.tools.builtin.ListDirectoryTool",
+    "ass_ade.tools.builtin.ReadFileTool",
+    "ass_ade.tools.builtin.RunCommandTool",
+    "ass_ade.tools.builtin.SearchFilesTool",
+    "ass_ade.tools.builtin.UndoEditTool",
+    "ass_ade.tools.builtin.WriteFileTool",
+    "ass_ade.tools.history.FileHistory",
+    "ass_ade.tools.prompt.PromptDiffTool",
+    "ass_ade.tools.prompt.PromptHashTool",
+    "ass_ade.tools.prompt.PromptProposeTool",
+    "ass_ade.tools.prompt.PromptSectionTool",
+    "ass_ade.tools.prompt.PromptValidateTool"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/tools/registry.py:46"
+  },
+  "kind": "product_organism",
+  "made_of": [
+    "mo.source.ass_ade.filehistory",
+    "mo.source.ass_ade.readfiletool",
+    "mo.source.ass_ade.writefiletool",
+    "mo.source.ass_ade.editfiletool",
+    "mo.source.ass_ade.runcommandtool",
+    "mo.source.ass_ade.listdirectorytool",
+    "mo.source.ass_ade.searchfilestool",
+    "mo.source.ass_ade.grepsearchtool",
+    "mo.source.ass_ade.undoedittool",
+    "mo.source.ass_ade.prompthashtool",
+    "mo.source.ass_ade.promptsectiontool",
+    "mo.source.ass_ade.promptdifftool",
+    "mo.source.ass_ade.promptproposetool"
+  ],
+  "name": "default_registry",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for default_registry"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a3_og_features",
+  "version": "0.1.0"
+}

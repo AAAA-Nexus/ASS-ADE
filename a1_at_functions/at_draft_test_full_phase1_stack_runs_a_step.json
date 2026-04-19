@@ -1,0 +1,58 @@
+{
+  "body": "    def test_full_phase1_stack_runs_a_step(self):\n        nexus = _make_nexus_mock()\n        gates = QualityGates(nexus, config={})\n        orchestrator = EngineOrchestrator({}, nexus=nexus)\n        lse = LSEEngine({})\n        provider = _make_provider_returning_text(\"done\")\n        registry = ToolRegistry()\n\n        loop = AgentLoop(\n            provider=provider,\n            registry=registry,\n            quality_gates=gates,\n            orchestrator=orchestrator,\n            lse=lse,\n        )\n\n        with patch(\"ass_ade.context_memory.vector_embed\", return_value=[0.3] * 8):\n            result = loop.step(\"what is Python's GIL?\")\n\n        assert result == \"done\"\n        # SAM ran\n        assert loop.last_sam_result is not None\n        # LSE chose a model\n        assert loop.last_lse_decision is not None\n        # CycleReport was produced\n        assert loop.last_cycle_report is not None\n        # Delegation depth back to 0 after step\n        assert loop.delegation_depth == 0\n",
+  "body_hash": "7b9ec324a63f134d",
+  "body_truncated": false,
+  "callers_of": [
+    "_make_nexus_mock",
+    "QualityGates",
+    "EngineOrchestrator",
+    "LSEEngine",
+    "_make_provider_returning_text",
+    "ToolRegistry",
+    "AgentLoop",
+    "patch",
+    "step"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase1_integration.py:254.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_full_phase1_stack_runs_a_step",
+  "imports": [
+    "__future__.annotations",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.agent.loop.D_MAX",
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.agent.orchestrator.EngineOrchestrator",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.tools.registry.ToolRegistry",
+    "ass_ade.agent.bas._SEVERITY",
+    "ass_ade.commands.agent._render_phase1_header",
+    "io.StringIO",
+    "rich.console.Console",
+    "ass_ade.commands.agent._render_phase1_header",
+    "io.StringIO",
+    "rich.console.Console"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase1_integration.py:254"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_full_phase1_stack_runs_a_step",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_full_phase1_stack_runs_a_step"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

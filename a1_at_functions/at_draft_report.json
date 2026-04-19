@@ -1,0 +1,28 @@
+{
+  "body": "    def report(self) -> dict:\n        return {\n            \"engine\": \"trust_gate\",\n            \"checks\": self._checks,\n            \"denied\": self._denied,\n        }\n",
+  "body_hash": "6acbcd714a624c99",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_trustverificationgate.py:54.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.report",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_trustverificationgate.py:54"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "report",
+  "product_categories": [
+    "IDT"
+  ],
+  "provides": [
+    "rebuild candidate for report"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

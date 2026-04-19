@@ -1,0 +1,32 @@
+{
+  "body": "class TestTierForComplexity:\n    def test_fast(self):\n        assert tier_for_complexity(0.1) == ModelTier.FAST\n\n    def test_standard(self):\n        assert tier_for_complexity(0.4) == ModelTier.STANDARD\n\n    def test_deep(self):\n        assert tier_for_complexity(0.8) == ModelTier.DEEP\n\n    def test_boundary_fast_standard(self):\n        assert tier_for_complexity(0.29) == ModelTier.FAST\n        assert tier_for_complexity(0.3) == ModelTier.STANDARD\n\n    def test_boundary_standard_deep(self):\n        assert tier_for_complexity(0.59) == ModelTier.STANDARD\n        assert tier_for_complexity(0.6) == ModelTier.DEEP\n",
+  "body_hash": "a8ee461372b08cb2",
+  "body_truncated": false,
+  "callers_of": [
+    "tier_for_complexity"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testtierforcomplexity.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testtierforcomplexity",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testtierforcomplexity.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.tier_for_complexity"
+  ],
+  "name": "TestTierForComplexity",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestTierForComplexity"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

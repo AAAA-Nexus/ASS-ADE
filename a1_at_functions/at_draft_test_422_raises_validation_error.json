@@ -1,0 +1,31 @@
+{
+  "body": "    def test_422_raises_validation_error(self) -> None:\n        with pytest.raises(NexusValidationError):\n            raise_for_status(422, detail=\"bad input\")\n",
+  "body_hash": "2cc7b5ae143b7479",
+  "body_truncated": false,
+  "callers_of": [
+    "raises",
+    "raise_for_status"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testraiseforstatus.py:24.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_422_raises_validation_error",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testraiseforstatus.py:24"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_422_raises_validation_error",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_422_raises_validation_error"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

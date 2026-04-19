@@ -1,0 +1,41 @@
+{
+  "body": "def format_payment_consent(challenge: PaymentChallenge) -> str:\n    \"\"\"Format a human-readable payment consent message.\"\"\"\n    config = get_chain_config()\n    lines = [\n        \"x402 Payment Required\",\n        \"=\" * 40,\n        f\"  Endpoint:  {challenge.endpoint}\",\n        f\"  Amount:    {challenge.display_amount}\",\n        f\"  Network:   {config['network_name']}\",\n        f\"  Recipient: {challenge.recipient}\",\n        f\"  Token:     USDC ({config['usdc_address'][:10]}...)\",\n        f\"  Chain ID:  {config['chain_id']}\",\n        \"=\" * 40,\n    ]\n    if config[\"testnet\"]:\n        lines.append(\"  MODE: TESTNET (no real funds)\")\n    return \"\\n\".join(lines)\n",
+  "body_hash": "497732ec99aaa081",
+  "body_truncated": false,
+  "callers_of": [
+    "get_chain_config",
+    "join",
+    "append"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/x402.py:199.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.format_payment_consent",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "time",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "eth_account.Account",
+    "web3.Web3",
+    "logging"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/x402.py:199"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "format_payment_consent",
+  "product_categories": [
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for format_payment_consent"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

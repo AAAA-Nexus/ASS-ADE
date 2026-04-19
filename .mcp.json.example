@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "aaaa-nexus": {
+      "command": "/path/to/python",
+      "args": ["/path/to/ass-ade/scripts/run_aaaa_nexus_mcp.py"],
+      "env": {
+        "AAAA_NEXUS_BASE_URL": "https://atomadic.tech",
+        "AAAA_NEXUS_TIMEOUT": "5.0",
+        "AAAA_NEXUS_AUTOGUARD": "false",
+        "AAAA_NEXUS_MCP_SRC": "/path/to/aaaa-nexus-mcp/src"
+      }
+    },
+    "ass-ade": {
+      "command": "/path/to/ass-ade/.venv/bin/python",
+      "args": ["-m", "ass_ade", "mcp", "serve"],
+      "env": {
+        "ASS_ADE_CONFIG": "/path/to/ass-ade/.ass-ade/config.json",
+        "AAAA_NEXUS_BASE_URL": "https://atomadic.tech"
+      }
+    }
+  }
+}

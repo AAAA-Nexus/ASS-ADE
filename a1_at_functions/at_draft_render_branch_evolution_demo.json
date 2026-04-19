@@ -1,0 +1,37 @@
+{
+  "body": "def render_branch_evolution_demo(\n    *,\n    root: Path,\n    branches: Iterable[str],\n    iterations: int,\n) -> str:\n    root = root.resolve()\n    tracks = normalize_branch_tracks(branches)\n    iterations = max(1, iterations)\n    version = read_project_version(root)\n    lines = [\n        \"# Split-Branch Evolution Workflow\",\n        \"\",\n        \"This demo shows how ASS-ADE can evolve along several public-safe branches,\",\n        \"record evidence for each path, then merge the strongest line after review.\",\n        \"\",\n        \"## Baseline\",\n        \"\",\n        \"```bash\",\n        \"ass-ade doctor\",\n        \"python -m pytest tests/ -q --no-header\",\n        (\n            \"ass-ade protocol evolution-record baseline \"\n            \"--summary \\\"Baseline before branch evolution\\\" \"\n            \"--command \\\"ass-ade doctor\\\" \"\n            \"--command \\\"python -m pytest tests/ -q --no-header\\\"\"\n        ),\n        \"```\",\n        \"\",\n        \"## Branch Tracks\",\n        \"\",\n    ]\n    for track in tracks:\n        short = track.split(\"/\", 1)[-1]\n        lines.extend(\n            [\n                f\"### `{track}`\",\n                \"\",\n                \"```bash\",\n                f\"git switch -c {track}\",\n            ]\n        )\n        for index in range(1, iterations + 1):\n            lines.extend(\n                [\n                    f\"ass-ade context pack \\\"evolution {short} iteration {index}\\\" --path . --json\",\n                    (\n                        \"ass-ade design \"\n                        f\"\\\"{short} iteration {index}: improve the strongest measured gap\\\" \"\n                        \"--path . --local-only --out \"\n                        f\"blueprints/{short}-iteration-{index}.json\"\n                    ),\n                    \"ass-ade enhance . --local-only --json --limit 10\",\n                    \"ass-ade rebuild . --yes --git-track\",\n                    \"python -m pytest tests/ -q --no-header\",\n                    (\n                        \"ass-ade protocol evolution-record iteration \"\n                        f\"--summary \\\"{short} iteration {index}\\\" \"\n                        f\"--version {version} \"\n                        f\"--artifact blueprints/{short}-iteration-{index}.json \"\n                        \"--command \\\"ass-ade context pack\\\" \"\n                        \"--command \\\"ass-ade design\\\" \"\n                        \"--command \\\"ass-ade enhance\\\" \"\n                        \"--command \\\"ass-ade rebuild . --yes --git-track\\\" \"\n                        \"--command \\\"python -m pytest tests/ -q --no-header\\\"\"\n                    ),\n                ]\n            )\n        lines.extend([\"git switch -\", \"```\", \"\"])\n\n    lines.extend(\n        [\n            \"## Compare And Merge\",\n            \"\",\n            \"```bash\",\n            \"git log --oneline --graph --all --decorate\",\n            \"ass-ade protocol evolution-record merge-candidate --summary \\\"Compare branch evidence\\\"\",\n            \"git switch main\",\n            \"# Merge the branch with passing tests, fresh docs, and the strongest evidence ledger.\",\n            \"git merge --no-ff evolve/tests-first\",\n            \"python -m pytest tests/ -q --no-header\",\n            (\n                \"ass-ade protocol evolution-record merge \"\n                \"--summary \\\"Merged selected evolution branch\\\" \"\n                \"--command \\\"git merge --no-ff <branch>\\\" \"\n                \"--command \\\"python -m pytest tests/ -q --no-header\\\"\"\n            ),\n            \"```\",\n            \"\",\n            \"## Merge Rule\",\n            \"\",\n            \"A branch is merge-ready only when tests pass, public docs are current,\",\n            \"`EVOLUTION.md` has the event trail, and any release needs a fresh certificate.\",\n            \"\",\n            \"## Version Rule\",\n            \"\",\n            \"Use `ass-ade protocol version-bump patch|minor|major` after the winning path is merged.\",\n            \"The command updates package version surfaces and records the bump in the evolution ledger.\",\n        ]\n    )\n    return \"\\n\".join(lines)\n",
+  "body_hash": "9ba8070707c4da13",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "normalize_branch_tracks",
+    "max",
+    "read_project_version",
+    "extend",
+    "join",
+    "range",
+    "split"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_render_branch_evolution_demo.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.render_branch_evolution_demo",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_render_branch_evolution_demo.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "render_branch_evolution_demo",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for render_branch_evolution_demo"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

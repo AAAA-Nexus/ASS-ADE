@@ -1,0 +1,45 @@
+{
+  "body": "class TestBumpVersion:\n    def test_patch(self):\n        assert bump_version(\"0.1.3\", \"patch\") == \"0.1.4\"\n\n    def test_minor(self):\n        assert bump_version(\"0.1.3\", \"minor\") == \"0.2.0\"\n\n    def test_major(self):\n        assert bump_version(\"0.1.3\", \"major\") == \"1.0.0\"\n\n    def test_invalid_falls_back_to_initial(self):\n        assert bump_version(\"not-semver\", \"patch\") == INITIAL_VERSION\n\n    def test_minor_resets_patch(self):\n        assert bump_version(\"1.2.9\", \"minor\") == \"1.3.0\"\n\n    def test_major_resets_minor_and_patch(self):\n        assert bump_version(\"2.5.7\", \"major\") == \"3.0.0\"\n",
+  "body_hash": "1b44645b92cc589d",
+  "body_truncated": false,
+  "callers_of": [
+    "bump_version"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_version_tracker.py:26.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testbumpversion",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.engine.rebuild.version_tracker.INITIAL_VERSION",
+    "ass_ade.engine.rebuild.version_tracker._aggregate_version",
+    "ass_ade.engine.rebuild.version_tracker._public_python_api",
+    "ass_ade.engine.rebuild.version_tracker.assign_version",
+    "ass_ade.engine.rebuild.version_tracker.bump_version",
+    "ass_ade.engine.rebuild.version_tracker.classify_change",
+    "ass_ade.engine.rebuild.version_tracker.content_hash",
+    "ass_ade.engine.rebuild.version_tracker.load_prev_versions",
+    "ass_ade.engine.rebuild.version_tracker.write_project_version_file",
+    "ass_ade.engine.rebuild.version_tracker.write_tier_version_file"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_version_tracker.py:26"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "TestBumpVersion",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestBumpVersion"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

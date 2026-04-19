@@ -1,0 +1,33 @@
+{
+  "body": "    def test_validate_create_conflict(self, executor: EditPlanExecutor):\n        plan = EditPlan()\n        plan.add_create(\"main.py\", \"conflict\")\n        errors = executor.validate(plan)\n        assert len(errors) == 1\n        assert \"already exists\" in errors[0]\n",
+  "body_hash": "923f66e84f1ae5a2",
+  "body_truncated": false,
+  "callers_of": [
+    "EditPlan",
+    "add_create",
+    "validate",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditplanexecutor.py:13.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_validate_create_conflict",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditplanexecutor.py:13"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_validate_create_conflict",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_validate_create_conflict"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

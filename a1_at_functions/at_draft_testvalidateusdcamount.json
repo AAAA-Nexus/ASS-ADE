@@ -1,0 +1,31 @@
+{
+  "body": "class TestValidateUsdcAmount:\n    def test_valid_amounts(self) -> None:\n        assert validate_usdc_amount(0.01) == 0.01\n        assert validate_usdc_amount(1_000_000.0) == 1_000_000.0\n\n    def test_zero_raises(self) -> None:\n        with pytest.raises(ValueError, match=\"positive\"):\n            validate_usdc_amount(0.0)\n\n    def test_negative_raises(self) -> None:\n        with pytest.raises(ValueError, match=\"positive\"):\n            validate_usdc_amount(-5.0)\n\n    def test_too_large_raises(self) -> None:\n        with pytest.raises(ValueError, match=\"maximum\"):\n            validate_usdc_amount(1_000_001.0)\n",
+  "body_hash": "99df1bb264a078c5",
+  "body_truncated": false,
+  "callers_of": [
+    "validate_usdc_amount",
+    "raises"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateusdcamount.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.testvalidateusdcamount",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateusdcamount.py:5"
+  },
+  "kind": "pure_class",
+  "made_of": [],
+  "name": "TestValidateUsdcAmount",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestValidateUsdcAmount"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

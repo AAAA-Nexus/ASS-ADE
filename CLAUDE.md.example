@@ -1,0 +1,52 @@
+# ASS-ADE — MCP Tool Reference
+
+ASS-ADE is connected as an MCP server. It exposes developer-shell tools for
+codebase analysis, blueprint generation, compliance checking, certification,
+and agentic workflows.
+
+## CLI tools (local, no API key required)
+
+| Tool | Description |
+|------|-------------|
+| `doctor` | Environment diagnostics — config, Python version, toolchain |
+| `recon` | Parallel codebase reconnaissance — structure, deps, quality signals |
+| `eco_scan` | Monadic compliance scan — tier violations, circular deps, coverage |
+| `lint` | Ruff linting with optional auto-fix |
+| `certify` | SHA-256 tamper-evident certificate for the current repo state |
+| `design` | Enhancement blueprint — tier-annotated plan with gap analysis |
+| `rebuild` | Rebuild into 5-tier monadic structure with certificate output |
+
+## IDE tools (file system, read/write/edit)
+
+`read_file`, `write_file`, `edit_file`, `undo_edit`, `run_command`,
+`list_directory`, `search_files`, `grep_search`
+
+## Workflow tools
+
+| Tool | Description |
+|------|-------------|
+| `phase0_recon` | Never-Code-Blind gate — require source targets before coding |
+| `context_pack` | Build a compact task context packet from recon + file excerpts |
+| `context_memory_store` | Store text into local vector memory |
+| `context_memory_query` | Query local vector memory |
+| `map_terrain` | MAP = TERRAIN capability gate — verify required assets exist |
+| `trust_gate` | Multi-step agent trust gate (identity, sybil, trust, reputation) |
+| `certify_output` | Certify agent output via hallucination oracle + ethics checks |
+| `safe_execute` | Execute a tool inside trust + ethics pre-flight |
+| `ask_agent` | Send a task through the full ASS-ADE agent loop |
+
+## A2A tools
+
+`a2a_validate`, `a2a_negotiate`
+
+## Prompt tools
+
+`prompt_hash`, `prompt_validate`, `prompt_section`, `prompt_diff`, `prompt_propose`
+
+## Usage notes
+
+- All local tools run offline — no API key required.
+- `trust_gate`, `certify_output`, and `safe_execute` require a hybrid/premium
+  profile with a Nexus API key (`AAAA_NEXUS_API_KEY` env var).
+- `rebuild` writes a versioned output folder — it does not overwrite the source.
+- `eco_scan` scores conformance 0–100; below 60 exits with code 1.

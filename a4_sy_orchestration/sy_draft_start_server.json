@@ -1,0 +1,38 @@
+{
+  "body": "def start_server(\n    port: int = 8787,\n    *,\n    manifest_path: Path | None = None,\n    block: bool = True,\n) -> HTTPServer | None:\n    \"\"\"Start the mock server.\n\n    Returns the ``HTTPServer`` instance. When ``block=False`` the server\n    runs in a daemon thread so it stops automatically when the process exits.\n    \"\"\"\n    manifest = _DEFAULT_MANIFEST.copy()\n    if manifest_path is not None and manifest_path.exists():\n        try:\n            manifest = json.loads(manifest_path.read_text(encoding=\"utf-8\"))\n        except Exception:\n            pass  # fall back to default manifest\n\n    handler_cls = build_handler(manifest)\n    server = HTTPServer((\"127.0.0.1\", port), handler_cls)\n\n    if not block:\n        t = threading.Thread(target=server.serve_forever, daemon=True)\n        t.start()\n        return server\n\n    server.serve_forever()\n    return None\n",
+  "body_hash": "ab1b8092e14b0c7e",
+  "body_truncated": false,
+  "callers_of": [
+    "copy",
+    "build_handler",
+    "HTTPServer",
+    "serve_forever",
+    "exists",
+    "Thread",
+    "start",
+    "loads",
+    "read_text"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_start_server.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.start_server",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_start_server.py:5"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "start_server",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for start_server"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

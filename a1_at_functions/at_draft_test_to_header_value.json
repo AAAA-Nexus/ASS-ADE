@@ -1,0 +1,53 @@
+{
+  "body": "    def test_to_header_value(self) -> None:\n        \"\"\"PaymentProof should format as HTTP header value.\"\"\"\n        proof = PaymentProof(\n            signature=\"sig123\",\n            wallet_address=\"0x1234\",\n            transaction_id=\"0xabc\",\n            amount_micro_usdc=8000,\n        )\n        header = proof.to_header_value()\n        assert header == \"sig123;0x1234;0xabc;8000\"\n",
+  "body_hash": "0ece67d38b193a8c",
+  "body_truncated": false,
+  "callers_of": [
+    "PaymentProof",
+    "to_header_value"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:110.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_to_header_value",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.nexus.x402.PaymentChallenge",
+    "ass_ade.nexus.x402.PaymentResult",
+    "ass_ade.nexus.x402.PaymentProof",
+    "ass_ade.nexus.x402.X402ClientFlow",
+    "ass_ade.nexus.x402.format_payment_consent",
+    "ass_ade.nexus.x402.get_chain_config",
+    "ass_ade.nexus.x402.build_payment_header",
+    "ass_ade.nexus.x402.ATOMADIC_TREASURY",
+    "ass_ade.nexus.x402.BASE_MAINNET_CHAIN_ID",
+    "ass_ade.nexus.x402.BASE_SEPOLIA_CHAIN_ID"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:110"
+  },
+  "kind": "pure_function",
+  "made_of": [
+    "qk.source.ass_ade.paymentproof"
+  ],
+  "name": "test_to_header_value",
+  "product_categories": [
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for test_to_header_value"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

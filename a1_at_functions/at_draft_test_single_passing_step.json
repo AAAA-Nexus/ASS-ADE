@@ -1,0 +1,33 @@
+{
+  "body": "    def test_single_passing_step(self) -> None:\n        pipe = Pipeline(\"single\")\n        pipe.add(\"step1\", pass_step)\n        result = pipe.run()\n        assert result.passed\n        assert len(result.steps) == 1\n        assert result.steps[0].status == StepStatus.PASSED\n",
+  "body_hash": "a1e47dfe29ce8c5c",
+  "body_truncated": false,
+  "callers_of": [
+    "Pipeline",
+    "add",
+    "run",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpipeline.py:12.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_single_passing_step",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpipeline.py:12"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_single_passing_step",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_single_passing_step"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

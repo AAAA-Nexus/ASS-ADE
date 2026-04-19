@@ -1,0 +1,34 @@
+{
+  "body": "class RatchetSession(NexusModel):\n    \"\"\"/v1/ratchet/register\"\"\"\n    session_id: str | None = None\n    epoch: int | None = None\n    next_rekey_at: int | None = None\n    fips_203_compliant: bool | None = None\n",
+  "body_hash": "aec2e1d0ab0fa3ea",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/models.py:161.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.ratchetsession",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/models.py:161"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "RatchetSession",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for RatchetSession"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

@@ -1,0 +1,52 @@
+{
+  "body": "def test_iter_files_skips_ignored_dirs(tmp_path: Path) -> None:\n    venv = tmp_path / \".venv\"\n    venv.mkdir()\n    (venv / \"pkg.py\").write_text(\"x=1\", encoding=\"utf-8\")\n    (tmp_path / \"main.py\").write_text(\"x=1\", encoding=\"utf-8\")\n    files = _iter_files(tmp_path)\n    names = [f.name for f in files]\n    assert \"main.py\" in names\n    assert \"pkg.py\" not in names\n",
+  "body_hash": "bc35a6e8d095a86a",
+  "body_truncated": false,
+  "callers_of": [
+    "mkdir",
+    "write_text",
+    "_iter_files"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_parallel_recon.py:145.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_iter_files_skips_ignored_dirs",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "textwrap",
+    "pathlib.Path",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.recon.ReconReport",
+    "ass_ade.recon._classify_tier",
+    "ass_ade.recon._count_test_functions",
+    "ass_ade.recon._dependency_agent",
+    "ass_ade.recon._doc_agent",
+    "ass_ade.recon._iter_files",
+    "ass_ade.recon._scout_agent",
+    "ass_ade.recon._test_agent",
+    "ass_ade.recon._tier_agent",
+    "ass_ade.recon.run_parallel_recon",
+    "time",
+    "json"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_parallel_recon.py:145"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_iter_files_skips_ignored_dirs",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_iter_files_skips_ignored_dirs"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

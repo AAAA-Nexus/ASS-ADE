@@ -1,0 +1,48 @@
+{
+  "body": "    def ensure_loaded(self) -> None:\n        with self._lock:\n            if self._model is None:\n                self._load()\n",
+  "body_hash": "b3fca11dc7d34e65",
+  "body_truncated": false,
+  "callers_of": [
+    "_load"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_training/serve_lora.py:75.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.ensure_loaded",
+  "imports": [
+    "__future__.annotations",
+    "argparse",
+    "json",
+    "logging",
+    "sys",
+    "threading",
+    "http.server.BaseHTTPRequestHandler",
+    "http.server.HTTPServer",
+    "pathlib.Path",
+    "typing.Any",
+    "torch",
+    "peft.PeftModel",
+    "transformers.AutoModelForCausalLM",
+    "transformers.AutoTokenizer",
+    "torch",
+    "peft",
+    "transformers"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_training/serve_lora.py:75"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "ensure_loaded",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ensure_loaded"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

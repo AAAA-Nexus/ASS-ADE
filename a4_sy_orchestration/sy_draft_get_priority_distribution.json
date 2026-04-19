@@ -1,0 +1,36 @@
+{
+  "body": "    def get_priority_distribution(self) -> dict:\n        \"\"\"Get count of tasks by priority.\"\"\"\n        all_tasks = self.manager.list_all_tasks()\n        distribution = {p: 0 for p in TaskPriority}\n        for task in all_tasks:\n            distribution[task.priority] += 1\n        return distribution\n",
+  "body_hash": "5c6cd4f23e036ce7",
+  "body_truncated": false,
+  "callers_of": [
+    "list_all_tasks"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/examples/02-rebuild-a-codebase/sample_project/main.py:192.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.get_priority_distribution",
+  "imports": [
+    "enum.Enum",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.List",
+    "typing.Optional"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/examples/02-rebuild-a-codebase/sample_project/main.py:192"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "get_priority_distribution",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for get_priority_distribution"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

@@ -1,0 +1,44 @@
+{
+  "body": "def test_phase0_recon_requires_latest_docs_for_technical_task(tmp_path: Path) -> None:\n    _seed_repo(tmp_path)\n\n    result = phase0_recon(\n        task_description=\"Add an MCP tool schema\",\n        working_dir=tmp_path,\n    )\n\n    assert result.verdict == \"RECON_REQUIRED\"\n    assert result.research_targets[0].suggested_url is not None\n    assert \"modelcontextprotocol.io\" in result.research_targets[0].suggested_url\n    assert \"src/mcp_server.py\" in result.codebase.relevant_files\n",
+  "body_hash": "a16df83ddcb157e7",
+  "body_truncated": false,
+  "callers_of": [
+    "_seed_repo",
+    "phase0_recon"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_recon_context.py:47.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_phase0_recon_requires_latest_docs_for_technical_task",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.context_memory.VECTOR_DIMENSIONS",
+    "ass_ade.context_memory.build_context_packet",
+    "ass_ade.context_memory.query_vector_memory",
+    "ass_ade.context_memory.store_vector_memory",
+    "ass_ade.context_memory.vector_embed",
+    "ass_ade.mcp.server.MCPServer",
+    "ass_ade.recon.phase0_recon"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_recon_context.py:47"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_phase0_recon_requires_latest_docs_for_technical_task",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_phase0_recon_requires_latest_docs_for_technical_task"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

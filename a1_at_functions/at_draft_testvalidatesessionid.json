@@ -1,0 +1,31 @@
+{
+  "body": "class TestValidateSessionId:\n    def test_valid(self) -> None:\n        assert validate_session_id(\"sess-abc-123\") == \"sess-abc-123\"\n\n    def test_empty_raises(self) -> None:\n        with pytest.raises(ValueError, match=\"must not be empty\"):\n            validate_session_id(\"\")\n\n    def test_too_long_raises(self) -> None:\n        with pytest.raises(ValueError, match=\"exceeds 256\"):\n            validate_session_id(\"x\" * 257)\n",
+  "body_hash": "0d9ba7033d93da13",
+  "body_truncated": false,
+  "callers_of": [
+    "validate_session_id",
+    "raises"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidatesessionid.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.testvalidatesessionid",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidatesessionid.py:5"
+  },
+  "kind": "pure_class",
+  "made_of": [],
+  "name": "TestValidateSessionId",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestValidateSessionId"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

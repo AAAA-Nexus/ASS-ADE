@@ -1,0 +1,33 @@
+{
+  "body": "    def test_teardown_resets_state(self) -> None:\n        session = NexusSession(_mock_client())\n        session.start(\"13608\")\n        session.teardown()\n        assert not session.is_active\n        assert session.session_id is None\n        assert session.epoch == 0\n",
+  "body_hash": "1c7ba413e801f4a8",
+  "body_truncated": false,
+  "callers_of": [
+    "NexusSession",
+    "start",
+    "teardown",
+    "_mock_client"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexussession.py:41.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_teardown_resets_state",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexussession.py:41"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_teardown_resets_state",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_teardown_resets_state"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

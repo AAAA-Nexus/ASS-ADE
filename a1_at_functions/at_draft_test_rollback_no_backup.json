@@ -1,0 +1,41 @@
+{
+  "body": "def test_rollback_no_backup(tmp_path: Path) -> None:\n    target = tmp_path / \"myproject\"\n    target.mkdir()\n    (target / \"main.py\").write_text(\"pass\\n\", encoding=\"utf-8\")\n\n    result = runner.invoke(app, [\"rollback\", str(target), \"--yes\"])\n\n    assert result.exit_code == 1\n    assert \"No backup\" in result.stdout\n",
+  "body_hash": "d9cba88e69b7e1bf",
+  "body_truncated": false,
+  "callers_of": [
+    "mkdir",
+    "write_text",
+    "invoke",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli.py:226.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_rollback_no_backup",
+  "imports": [
+    "json",
+    "pathlib.Path",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.cli._auto_detect_project"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli.py:226"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_rollback_no_backup",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_rollback_no_backup"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

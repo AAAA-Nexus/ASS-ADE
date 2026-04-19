@@ -1,0 +1,35 @@
+{
+  "body": "class TestWriteFile:\n    def test_create_new(self, workspace: Path):\n        tool = WriteFileTool(str(workspace))\n        r = tool.execute(path=\"new.py\", content=\"x = 1\\n\")\n        assert r.success\n        assert (workspace / \"new.py\").read_text() == \"x = 1\\n\"\n\n    def test_create_nested(self, workspace: Path):\n        tool = WriteFileTool(str(workspace))\n        r = tool.execute(path=\"a/b/c.py\", content=\"pass\\n\")\n        assert r.success\n        assert (workspace / \"a\" / \"b\" / \"c.py\").exists()\n\n    def test_reject_outside_cwd(self, workspace: Path):\n        tool = WriteFileTool(str(workspace))\n        # Try to escape up\n        r = tool.execute(path=\"../escape.py\", content=\"pwned\")\n        assert not r.success\n        assert \"outside\" in (r.error or \"\").lower()\n",
+  "body_hash": "383d1feb6a457f7a",
+  "body_truncated": false,
+  "callers_of": [
+    "WriteFileTool",
+    "execute",
+    "exists",
+    "str",
+    "read_text",
+    "lower"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwritefile.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testwritefile",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwritefile.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "TestWriteFile",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestWriteFile"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

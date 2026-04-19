@@ -1,0 +1,92 @@
+# Scheduled LoRA training workflow.
+#
+# Runs weekly: pulls accepted samples from atomadic.tech, fine-tunes a LoRA
+# adapter, uploads to Hugging Face Hub, and calls /v1/lora/adapter/promote
+# to publish the new version.
+#
+# Free GitHub runners are CPU-only for public repos, which is fine for the
+# `fast` profile (Qwen2.5-Coder-1.5B, LoRA rank 8, ~500 samples, 3 epochs
+# finishes in ~30–60 min on ubuntu-latest). For larger models, wire up a
+# self-hosted GPU runner or the `medium` / `large` profile with a manual
+# `workflow_dispatch` trigger from a GPU-capable machine.
+name: LoRA Training
+
+on:
+  schedule:
+    # Every Sunday 06:00 UTC — cheap slot, plenty of runner capacity
+    - cron: "0 6 * * 0"
+  workflow_dispatch:
+    inputs:
+      language:
+        description: "Target language"
+        required: true
+        default: "python"
+        type: choice
+        options: [python, rust, typescript, javascript, go, java, c, cpp]
+      profile:
+        description: "Model profile (fast=CPU-ok, medium=T4-GPU, large=A100)"
+        required: true
+        default: "fast"
+        type: choice
+        options: [fast, medium, large]
+      epochs:
+        description: "Training epochs"
+        required: true
+        default: "3"
+        type: string
+      max_samples:
+        description: "Max samples to pull from the storefront"
+        required: true
+        default: "500"
+        type: string
+
+jobs:
+  train:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330   # GH public free runners cap at 360; leave 30 for cleanup
+
+    steps:
+      - name: Checkout ass-ade
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install ass-ade + LoRA extras
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[lora]"
+
+      - name: Run LoRA fine-tune → upload → promote
+        env:
+          AAAA_NEXUS_OWNER_TOKEN: ${{ secrets.AAAA_NEXUS_OWNER_TOKEN }}
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          AAAA_NEXUS_BASE_URL: https://atomadic.tech
+        run: |
+          LANG="${{ github.event.inputs.language || 'python' }}"
+          PROFILE="${{ github.event.inputs.profile || 'fast' }}"
+          EPOCHS="${{ github.event.inputs.epochs || '3' }}"
+          MAX="${{ github.event.inputs.max_samples || '500' }}"
+          python -m scripts.lora_train \
+            --lang "$LANG" \
+            --profile "$PROFILE" \
+            --epochs "$EPOCHS" \
+            --max-samples "$MAX" \
+            --min-samples 20 \
+            --upload hf \
+            --hf-repo "atomadic/lora-${LANG}" \
+            --storefront https://atomadic.tech
+
+      - name: Upload training receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lora-training-receipts-${{ github.run_id }}
+          path: |
+            .lora-train-output/last_promotion.json
+            .lora-train-output/adapter-*/adapter_config.json
+          retention-days: 90
+          if-no-files-found: warn

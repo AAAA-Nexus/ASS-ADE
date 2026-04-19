@@ -1,0 +1,35 @@
+{
+  "body": "    def test_record_creates_snapshot(self, history: FileHistory, tmp_workspace: Path):\n        snap = history.record(\"hello.py\", \"print('hello')\\n\")\n        assert snap.path == \"hello.py\"\n        assert snap.sequence == 0\n        assert snap.content == \"print('hello')\\n\"\n        assert snap.timestamp > 0\n",
+  "body_hash": "426ff841584dd24f",
+  "body_truncated": false,
+  "callers_of": [
+    "record"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_history.py:26.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_record_creates_snapshot",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.tools.history.FileHistory"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_history.py:26"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_record_creates_snapshot",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_record_creates_snapshot"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

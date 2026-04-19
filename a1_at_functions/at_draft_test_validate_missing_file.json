@@ -1,0 +1,30 @@
+{
+  "body": "    def test_validate_missing_file(self) -> None:\n        result = runner.invoke(app, [\"a2a\", \"validate\", \"/nonexistent/agent.json\"])\n        assert result.exit_code == 1\n",
+  "body_hash": "60b413d9eab328a3",
+  "body_truncated": false,
+  "callers_of": [
+    "invoke"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testa2avalidatecli.py:27.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_validate_missing_file",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testa2avalidatecli.py:27"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_validate_missing_file",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_validate_missing_file"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

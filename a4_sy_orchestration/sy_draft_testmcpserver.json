@@ -1,0 +1,49 @@
+{
+  "body": "class TestMCPServer:\n    @pytest.fixture\n    def server(self, tmp_path: Path) -> MCPServer:\n        (tmp_path / \"hello.py\").write_text(\"print('hi')\\n\")\n        return MCPServer(working_dir=str(tmp_path))\n\n    def test_initialize(self, server: MCPServer):\n        req = {\"jsonrpc\": \"2.0\", \"id\": 1, \"method\": \"initialize\", \"params\": {}}\n        resp = server._handle(req)\n        assert resp is not None\n        assert resp[\"id\"] == 1\n        result = resp[\"result\"]\n        assert result[\"protocolVersion\"] == \"2025-11-25\"\n        assert result[\"serverInfo\"][\"name\"] == \"ass-ade\"\n        assert \"tools\" in result[\"capabilities\"]\n\n    def test_tools_list(self, server: MCPServer):\n        _initialize_server(server)\n        req = {\"jsonrpc\": \"2.0\", \"id\": 2, \"method\": \"tools/list\", \"params\": {}}\n        resp = server._handle(req)\n        assert resp is not None\n        tools = resp[\"result\"][\"tools\"]\n        names = {t[\"name\"] for t in tools}\n        assert \"read_file\" in names\n        assert \"write_file\" in names\n        assert \"edit_file\" in names\n        assert \"run_command\" in names\n        assert \"list_directory\" in names\n        assert \"search_files\" in names\n        assert \"grep_search\" in names\n        assert \"phase0_recon\" in names\n        assert \"context_pack\" in names\n        assert \"context_memory_store\" in names\n        assert \"context_memory_query\" in names\n        assert \"map_terrain\" in names\n        # Verify minimum expected tools; exact count may vary with additional tools\n        assert len(tools) >= 19  # At least 8 builtin + 11 workflow/agent/A2A\n\n    def test_tools_call_read_file(self, server: MCPServer):\n        _initialize_server(server)\n        req = {\n            \"jsonrpc\": \"2.0\",\n            \"id\": 3,\n            \"method\": \"tools/call\",\n            \"params\": {\"name\": \"read_file\", \"arguments\": {\"path\": \"hello.py\"}},\n        }\n        resp = server._handle(req)\n        assert resp is not None\n        assert resp[\"result\"][\"isError\"] is False\n        content = resp[\"result\"][\"content\"][0][\"text\"]\n        assert \"print('hi')\" in content\n\n    def test_tools_call_unknown(self, server: MCPServer):\n        _initialize_server(server)\n        req = {\n            \"jsonrpc\": \"2.0\",\n            \"id\": 4,\n            \"method\": \"tools/call\",\n            \"params\": {\"name\": \"nonexistent_tool\", \"arguments\": {}},\n        }\n        resp = server._handle(req)\n        assert resp is not None\n        assert resp[\"result\"][\"isError\"] is True\n        assert \"Unknown tool\" in resp[\"result\"][\"content\"][0][\"text\"]\n\n    def test_unknown_method(self, server: MCPServer):\n        _initialize_server(server)\n        req = {\"jsonrpc\": \"2.0\", \"id\": 5, \"method\": \"weird/method\", \"params\": {}}\n        resp = server._handle(req)\n        assert resp is not None\n        assert \"error\" in resp\n        assert resp[\"error\"][\"code\"] == -32601\n\n    def test_ping(self, server: MCPServer):\n        req = {\"jsonrpc\": \"2.0\", \"id\": 6, \"method\": \"ping\", \"params\": {}}\n        resp = server._handle(req)\n        assert resp is not None\n        assert resp[\"result\"] == {}\n\n    def test_notification_no_response(self, server: MCPServer):\n        req = {\"method\": \"notifications/initialized\", \"params\": {}}\n        resp = server._handle(req)\n        assert resp is None\n\n    def test_tools_call_write_file(self, server: MCPServer, tmp_path: Path):\n        _initialize_server(server)\n        req = {\n            \"jsonrpc\": \"2.0\",\n            \"id\": 7,\n            \"method\": \"tools/call\",\n            \"params\": {\n                \"name\": \"write_file\",\n                \"arguments\": {\"path\": \"new.py\", \"content\": \"x = 1\\n\"},\n            },\n        }\n        resp = server._handle(req)\n        assert resp[\"result\"][\"isError\"] is False\n        assert (tmp_path / \"new.py\").read_text() == \"x = 1\\n\"\n\n    def test_tools_call_list_directory(self, server: MCPServer):\n        _initialize_server(server)\n        req = {\n            \"jsonrpc\": \"2.0\",\n            \"id\": 8,\n            \"method\": \"tools/call\",\n            \"params\": {\"name\": \"list_directory\", \"arguments\": {}},\n        }\n        resp = server._handle(req)\n        assert resp[\"result\"][\"isError\"] is False\n        assert \"hello.py\" in resp[\"result\"][\"content\"][0][\"text\"]\n",
+  "body_hash": "05d5312c237bc1e4",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "MCPServer",
+    "_handle",
+    "_initialize_server",
+    "len",
+    "read_text",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:37.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.testmcpserver",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "pytest",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolCallRequest",
+    "ass_ade.mcp.server.MCPServer",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.builtin.EditFileTool",
+    "ass_ade.tools.registry.ToolRegistry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:37"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "TestMCPServer",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestMCPServer"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

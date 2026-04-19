@@ -1,0 +1,28 @@
+{
+  "body": "\ntry {\n  const version = execSync('python --version', { encoding: 'utf8' }).trim();\n  console.log(`ass-ade: Found ${version}`);\n  console.log('ass-ade: Run \"pip install ass-ade\" if not already installed');\n} catch {\n  console.warn('ass-ade: Python not found. Install Python 3.12+ from https://python.org');\n}\n",
+  "body_hash": "e7d7e380e603241b",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/check-python.js:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.version",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/check-python.js:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "version",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for version"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

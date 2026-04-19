@@ -1,0 +1,41 @@
+{
+  "body": "def test_render_certificate_text_contains_digest(tmp_path: Path) -> None:\n    (tmp_path / \"code.py\").write_text(\"x = 42\\n\", encoding=\"utf-8\")\n\n    cert = build_local_certificate(tmp_path)\n    text = render_certificate_text(cert)\n\n    root_digest = cert[\"digest\"][\"root_digest\"]\n    # The render function truncates to 32 chars\n    assert root_digest[:32] in text\n",
+  "body_hash": "0a2a1794e9e27aa9",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "build_local_certificate",
+    "render_certificate_text"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_certifier.py:118.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_render_certificate_text_contains_digest",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.local.certifier.build_local_certificate",
+    "ass_ade.local.certifier.compute_codebase_digest",
+    "ass_ade.local.certifier.hash_file",
+    "ass_ade.local.certifier.render_certificate_text"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_certifier.py:118"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_render_certificate_text_contains_digest",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_render_certificate_text_contains_digest"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

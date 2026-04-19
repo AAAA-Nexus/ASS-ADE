@@ -1,0 +1,31 @@
+{
+  "body": "    def add_modify(\n        self, path: str, old_string: str, new_string: str, description: str = \"\"\n    ) -> None:\n        self.edits.append(PlannedEdit(\n            kind=EditKind.MODIFY,\n            path=path,\n            old_string=old_string,\n            new_string=new_string,\n            description=description or f\"Edit {path}\",\n        ))\n        self.validated = False\n",
+  "body_hash": "037ac31e85641359",
+  "body_truncated": false,
+  "callers_of": [
+    "append",
+    "PlannedEdit"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_editplan.py:22.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.add_modify",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_editplan.py:22"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "add_modify",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for add_modify"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

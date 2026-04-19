@@ -1,0 +1,41 @@
+{
+  "body": "class ActiveTerrainVerdict(BaseModel):\n    \"\"\"Result of the active MAP=TERRAIN loop.\"\"\"\n    verdict: Verdict\n    stubs_created: list[InventionStub] = Field(default_factory=list)\n    capabilities_present: list[str] = Field(default_factory=list)\n    capabilities_missing: list[str] = Field(default_factory=list)\n    next_action: str\n",
+  "body_hash": "417e13a747e32c4e",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/map_terrain.py:420.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.activeterrainverdict",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "re",
+    "time",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Literal",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "ass_ade.tools.registry.default_registry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/map_terrain.py:420"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "ActiveTerrainVerdict",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ActiveTerrainVerdict"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

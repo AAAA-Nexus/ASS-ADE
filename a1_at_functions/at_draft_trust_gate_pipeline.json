@@ -1,0 +1,53 @@
+{
+  "body": "def trust_gate_pipeline(\n    client: Any,\n    agent_id: str,\n    *,\n    on_progress: ProgressCallback | None = None,\n    persist_dir: str | None = None,\n) -> Pipeline:\n    \"\"\"Build a trust-gate pipeline: identity \u2192 sybil \u2192 trust \u2192 reputation \u2192 gate.\n\n    Uses NexusClient endpoints, wrapping each as a pipeline step.\n    \"\"\"\n    from ass_ade.nexus.validation import validate_agent_id\n\n    aid = validate_agent_id(agent_id)\n\n    def identity_step(ctx: dict[str, Any]) -> StepResult:\n        try:\n            result = client.identity_verify(aid)\n            raw = result.model_dump() if hasattr(result, \"model_dump\") else {}\n            passed = raw.get(\"decision\", \"allow\") != \"deny\"\n            ctx[\"identity_passed\"] = passed\n            return StepResult(name=\"identity_verify\", status=StepStatus.PASSED if passed else StepStatus.FAILED, output=raw)\n        except Exception as exc:\n            return StepResult(name=\"identity_verify\", status=StepStatus.FAILED, error=str(exc))\n\n    def sybil_step(ctx: dict[str, Any]) -> StepResult:\n        try:\n            result = client.sybil_check(aid)\n            raw = result.model_dump() if hasattr(result, \"model_dump\") else {}\n            risk = raw.get(\"sybil_risk\", \"low\")\n            passed = risk != \"high\"\n            ctx[\"sybil_passed\"] = passed\n            return StepResult(name=\"sybil_check\", status=StepStatus.PASSED if passed else StepStatus.FAILED, output=raw)\n        except Exception as exc:\n            return StepResult(name=\"sybil_check\", status=StepStatus.FAILED, error=str(exc))\n\n    def trust_step(ctx: dict[str, Any]) -> StepResult:\n        try:\n            result = client.trust_score(aid)\n            raw = result.model_dump() if hasattr(result, \"model_dump\") else {}\n            score = raw.get(\"score\", 0)\n            passed = score >= 0.5\n            ctx[\"trust_score\"] = score\n            return StepResult(name=\"trust_score\", status=StepStatus.PASSED if passed else StepStatus.FAILED, output=raw)\n        except Exception as exc:\n            return StepResult(name=\"trust_score\", status=StepStatus.FAILED, error=str(exc))\n\n    def reputation_step(ctx: dict[str, Any]) -> StepResult:\n        try:\n            result = client.reputation_score(aid)\n            raw = result.model_dump() if hasattr(result, \"model_dump\") else {}\n            ctx[\"reputation_tier\"] = raw.get(\"tier\")\n            return StepResult(name=\"reputation_score\", status=StepStatus.PASSED, output=raw)\n        except Exception as exc:\n            return StepResult(name=\"reputation_score\", status=StepStatus.FAILED, error=str(exc))\n\n    def gate_step(ctx: dict[str, Any]) -> StepResult:\n        trust_score = ctx.get(\"trust_score\", 0)\n        rep_tier = ctx.get(\"reputation_tier\")\n        identity_ok = ctx.get(\"identity_passed\", False)\n        sybil_ok = ctx.get(\"sybil_passed\", False)\n\n        if not identity_ok or not sybil_ok:\n            verdict = \"DENY\"\n        elif trust_score < 0.5:\n            verdict = \"DENY\"\n        elif trust_score < 0.7 and rep_tier not in {\"gold\", \"platinum\"}:\n            verdict = \"WARN\"\n        else:\n            verdict = \"ALLOW\"\n\n        ctx[\"verdict\"] = verdict\n        passed = verdict != \"DENY\"\n        return StepResult(\n            name=\"gate_decision\",\n            status=StepStatus.PASSED if passed else StepStatus.FAILED,\n            output={\"verdict\": verdict, \"trust_score\": trust_score, \"reputation_tier\": rep_tier},\n        )\n\n    pipe = Pipeline(\n        f\"trust-gate-{aid}\",\n        fail_fast=False,  # run all steps even if some fail\n        persist_dir=persist_dir,\n        on_progress=on_progress,\n    )\n    pipe.add(\"identity_verify\", identity_step)\n    pipe.add(\"sybil_check\", sybil_step)\n    pipe.add(\"trust_score\", trust_step)\n    pipe.add(\"reputation_score\", reputation_step)\n    pipe.add(\"gate_decision\", gate_step)\n    return pipe\n",
+  "body_hash": "f61afcd97d3f0f29",
+  "body_truncated": false,
+  "callers_of": [
+    "validate_agent_id",
+    "Pipeline",
+    "add",
+    "get",
+    "StepResult",
+    "identity_verify",
+    "sybil_check",
+    "trust_score",
+    "reputation_score",
+    "hasattr",
+    "model_dump",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/pipeline.py:230.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.trust_gate_pipeline",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "time",
+    "collections.abc.Callable",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "enum.Enum",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Protocol",
+    "ass_ade.nexus.validation.validate_agent_id"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/pipeline.py:230"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "trust_gate_pipeline",
+  "product_categories": [
+    "IDT"
+  ],
+  "provides": [
+    "rebuild candidate for trust_gate_pipeline"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,32 @@
+{
+  "body": "    def test_to_header_value(self) -> None:\n        \"\"\"PaymentProof should format as HTTP header value.\"\"\"\n        proof = PaymentProof(\n            signature=\"sig123\",\n            wallet_address=\"0x1234\",\n            transaction_id=\"0xabc\",\n            amount_micro_usdc=8000,\n        )\n        header = proof.to_header_value()\n        assert header == \"sig123;0x1234;0xabc;8000\"\n",
+  "body_hash": "0ece67d38b193a8c",
+  "body_truncated": false,
+  "callers_of": [
+    "PaymentProof",
+    "to_header_value"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testpaymentproof.py:27.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.test_to_header_value",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testpaymentproof.py:27"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "test_to_header_value",
+  "product_categories": [
+    "DCM",
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for test_to_header_value"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

@@ -1,0 +1,54 @@
+{
+  "body": "    def test_exception_handling_trust_sanitized(self) -> None:\n        \"\"\"Exception in trust_score should not leak raw exception to caller.\"\"\"\n        client = _mock_client()\n        client.trust_score.side_effect = OSError(\"Network unreachable\")\n        result = trust_gate(client, \"agent-net-fail\")\n        trust_step = next(s for s in result.steps if s.name == \"trust_score\")\n        assert trust_step.detail == \"step_failed\"\n        assert \"Network\" not in trust_step.detail\n        assert \"unreachable\" not in trust_step.detail\n",
+  "body_hash": "f3c7c10fc50588da",
+  "body_truncated": false,
+  "callers_of": [
+    "_mock_client",
+    "OSError",
+    "trust_gate",
+    "next"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_workflows.py:128.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "og.source.ass_ade.test_exception_handling_trust_sanitized",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "unittest.mock.MagicMock",
+    "pytest",
+    "ass_ade.nexus.errors.NexusServerError",
+    "ass_ade.nexus.models.AegisProxyResult",
+    "ass_ade.nexus.models.CertifiedOutput",
+    "ass_ade.nexus.models.ComplianceResult",
+    "ass_ade.nexus.models.EthicsCheckResult",
+    "ass_ade.nexus.models.HallucinationResult",
+    "ass_ade.nexus.models.IdentityVerification",
+    "ass_ade.nexus.models.LineageRecord",
+    "ass_ade.nexus.models.PromptScanResult",
+    "ass_ade.nexus.models.ReputationScore",
+    "ass_ade.nexus.models.ShieldResult",
+    "ass_ade.nexus.models.SybilCheckResult",
+    "ass_ade.nexus.models.TrustScore",
+    "ass_ade.workflows.certify_output",
+    "ass_ade.workflows.safe_execute",
+    "ass_ade.workflows.trust_gate"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_workflows.py:128"
+  },
+  "kind": "product_organism",
+  "made_of": [],
+  "name": "test_exception_handling_trust_sanitized",
+  "product_categories": [
+    "IDT"
+  ],
+  "provides": [
+    "rebuild candidate for test_exception_handling_trust_sanitized"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a3_og_features",
+  "version": "0.1.0"
+}

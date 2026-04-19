@@ -1,0 +1,41 @@
+{
+  "body": "    def test_tools_list_accepts_cursor_param(self) -> None:\n        \"\"\"Cursor is accepted; all tools returned in single page with no nextCursor.\"\"\"\n        server = MCPServer(\".\")\n        _initialize_server(server)\n        response = server._handle({\n            \"jsonrpc\": \"2.0\",\n            \"id\": 1,\n            \"method\": \"tools/list\",\n            \"params\": {\"cursor\": \"some-cursor\"},\n        })\n        assert response is not None\n        assert \"tools\" in response[\"result\"]\n        assert \"nextCursor\" not in response[\"result\"]\n",
+  "body_hash": "2c8bd86b6bea878e",
+  "body_truncated": false,
+  "callers_of": [
+    "MCPServer",
+    "_initialize_server",
+    "_handle"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:320.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_tools_list_accepts_cursor_param",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.mcp.server._WORKFLOW_TOOLS",
+    "ass_ade.mcp.server.MCPServer",
+    "httpx"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:320"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "test_tools_list_accepts_cursor_param",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_tools_list_accepts_cursor_param"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

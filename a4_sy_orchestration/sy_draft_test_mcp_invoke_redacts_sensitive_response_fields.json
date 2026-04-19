@@ -1,0 +1,56 @@
+{
+  "body": "def test_mcp_invoke_redacts_sensitive_response_fields(monkeypatch, tmp_path: Path) -> None:\n    manifest = MCPManifest(\n        name=\"demo\",\n        tools=[MCPTool(name=\"authorize_action\", endpoint=\"/authorize\", method=\"POST\", paid=False)],\n    )\n    monkeypatch.setattr(\"ass_ade.cli.NexusClient\", _fake_client_factory(manifest))\n    monkeypatch.setattr(\n        \"ass_ade.cli.invoke_tool\",\n        lambda *_, **__: httpx.Response(\n            200,\n            request=httpx.Request(\"POST\", \"https://atomadic.tech/authorize\"),\n            json={\n                \"authorized\": True,\n                \"authorization_token\": \"live-token\",\n                \"nested\": {\"payment_proof\": \"proof\"},\n            },\n        ),\n    )\n\n    config_path = tmp_path / \".ass-ade\" / \"config.json\"\n    write_default_config(config_path, config=AssAdeConfig(profile=\"hybrid\"), overwrite=True)\n\n    result = runner.invoke(\n        app,\n        [\"mcp\", \"invoke\", \"authorize_action\", \"--config\", str(config_path)],\n    )\n\n    assert result.exit_code == 0\n    assert \"live-token\" not in result.stdout\n    assert \"[redacted]\" in result.stdout\n",
+  "body_hash": "fdee77c11fab7884",
+  "body_truncated": false,
+  "callers_of": [
+    "MCPManifest",
+    "setattr",
+    "write_default_config",
+    "invoke",
+    "_fake_client_factory",
+    "Response",
+    "AssAdeConfig",
+    "str",
+    "MCPTool",
+    "Request"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp.py:131.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_mcp_invoke_redacts_sensitive_response_fields",
+  "imports": [
+    "pathlib.Path",
+    "httpx",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.mcp.utils.invoke_tool",
+    "ass_ade.nexus.models.MCPManifest",
+    "ass_ade.nexus.models.MCPTool",
+    "ass_ade.nexus.models.CostEstimate",
+    "json",
+    "httpx",
+    "ass_ade.mcp.mock_server.start_server",
+    "httpx",
+    "ass_ade.mcp.mock_server._MAX_BODY_BYTES",
+    "ass_ade.mcp.mock_server.start_server"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp.py:131"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "test_mcp_invoke_redacts_sensitive_response_fields",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_mcp_invoke_redacts_sensitive_response_fields"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

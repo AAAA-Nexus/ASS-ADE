@@ -1,0 +1,36 @@
+{
+  "body": "class ForgeLeaderboardEntry(NexusModel):\n    agent_id: str | None = None\n    name: str | None = None\n    score: float | None = None\n    rank: int | None = None\n    badges: list[str] = Field(default_factory=list)\n",
+  "body_hash": "2c5ebeb4c66ab47c",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/models.py:1057.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.forgeleaderboardentry",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/models.py:1057"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "ForgeLeaderboardEntry",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ForgeLeaderboardEntry"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

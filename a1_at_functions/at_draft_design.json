@@ -1,0 +1,41 @@
+{
+  "body": "def design(\n    path: str,\n    feature: str,\n    output: str | None = None,\n    local_only: bool = False,\n    fmt: str = \"json\",\n    timeout: int = 120,\n) -> dict:\n    \"\"\"Generate an AAAA-SPEC-004 blueprint for a feature or codebase.\n\n    Args:\n        path: Absolute or relative path to the codebase to analyse.\n        feature: Natural language description of the feature to design.\n        output: Write the blueprint to this file path instead of stdout.\n        local_only: Skip AAAA-Nexus enrichment; use local analysis only.\n        fmt: Output format - \"json\" (default) or \"markdown\".\n        timeout: Maximum seconds to wait for the command.\n\n    Returns:\n        dict with keys:\n            ok (bool): True when exit_code == 0.\n            exit_code (int): Raw process exit code.\n            stdout (str): Captured standard output (blueprint JSON when ok=True).\n            stderr (str): Captured standard error.\n            blueprint (dict | None): Parsed blueprint dict when ok=True and fmt=\"json\".\n    \"\"\"\n    cmd = [sys.executable, \"-m\", \"ass_ade\", \"design\", path, \"--feature\", feature]\n    if output:\n        cmd.extend([\"--output\", output])\n    if local_only:\n        cmd.append(\"--local-only\")\n    if fmt != \"json\":\n        cmd.extend([\"--format\", fmt])\n\n    try:\n        result = subprocess.run(\n            cmd,\n            capture_output=True,\n            text=True,\n            timeout=timeout,\n        )\n    except subprocess.TimeoutExpired:\n        return {\n            \"ok\": False,\n            \"exit_code\": 124,\n            \"stdout\": \"\",\n            \"stderr\": f\"design timed out after {timeout}s\",\n            \"blueprint\": None,\n        }\n    except FileNotFoundError as exc:\n        return {\n            \"ok\": False,\n            \"exit_code\": 127,\n            \"stdout\": \"\",\n            \"stderr\": str(exc),\n            \"blueprint\": None,\n        }\n\n    blueprint = None\n    if result.returncode == 0 and fmt == \"json\" and result.stdout.strip():\n        try:\n            blueprint = json.loads(result.stdout)\n        except json.JSONDecodeError:\n            pass\n\n    return {\n        \"ok\": result.returncode == 0,\n        \"exit_code\": result.returncode,\n        \"stdout\": result.stdout,\n        \"stderr\": result.stderr,\n        \"blueprint\": blueprint,\n    }\n",
+  "body_hash": "de29697456eb78e8",
+  "body_truncated": false,
+  "callers_of": [
+    "extend",
+    "append",
+    "run",
+    "strip",
+    "loads",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tools/design_tool.py:10.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.design",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "subprocess",
+    "sys",
+    "pathlib.Path"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tools/design_tool.py:10"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "design",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for design"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

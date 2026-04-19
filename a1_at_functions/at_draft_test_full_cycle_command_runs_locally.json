@@ -1,0 +1,32 @@
+{
+  "body": "def test_full_cycle_command_runs_locally(tmp_path: Path) -> None:\n    (tmp_path / \"README.md\").write_text(\"hello\", encoding=\"utf-8\")\n\n    result = runner.invoke(app, [\"cycle\", \"Enhance via cycle\", \"--path\", str(tmp_path)])\n\n    assert result.exit_code == 0\n    assert \"ASS-ADE Full Cycle\" in result.stdout\n    assert \"Protocol Summary\" in result.stdout\n",
+  "body_hash": "84fe6bf7bad2a714",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "invoke",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_full_cycle_command_runs_locally.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_full_cycle_command_runs_locally",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_full_cycle_command_runs_locally.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_full_cycle_command_runs_locally",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_full_cycle_command_runs_locally"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,51 @@
+{
+  "body": "def build_capability_inventory(\n    *,\n    working_dir: str | Path = \".\",\n    hosted_tools: list[str] | None = None,\n) -> dict[CapabilityType, set[str]]:\n    \"\"\"Build the current capability inventory from local tools, assets, and hosted MCP.\"\"\"\n    root = Path(working_dir).resolve()\n    inventory = {key: set(value) for key, value in _BASE_INVENTORY.items()}\n    inventory[\"tools\"].update(default_registry(str(root)).list_tools())\n    inventory[\"tools\"].update(_slug(tool) for tool in (hosted_tools or []) if tool)\n\n    for cap_type, names in _load_repo_inventory(root).items():\n        inventory[cap_type].update(names)\n\n    for cap_type, names in _load_asset_memory(root).items():\n        inventory[cap_type].update(names)\n\n    return inventory\n",
+  "body_hash": "2377e3a01bf2ff07",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "update",
+    "items",
+    "set",
+    "list_tools",
+    "Path",
+    "_slug",
+    "_load_repo_inventory",
+    "_load_asset_memory",
+    "default_registry",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/map_terrain.py:221.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.build_capability_inventory",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "re",
+    "time",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Literal",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "ass_ade.tools.registry.default_registry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/map_terrain.py:221"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "build_capability_inventory",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for build_capability_inventory"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

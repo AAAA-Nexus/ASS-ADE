@@ -1,0 +1,38 @@
+{
+  "body": "    def test_hallucination_warning(self, tmp_path):\n        provider = _MockProvider([\n            CompletionResponse(\n                message=Message(role=\"assistant\", content=\"I made this up.\"),\n                finish_reason=\"stop\",\n            )\n        ])\n        registry = ToolRegistry()\n\n        mock_gates = MagicMock(spec=QualityGates)\n        mock_gates.scan_prompt.return_value = {\"blocked\": False}\n        mock_gates.check_hallucination.return_value = {\"verdict\": \"unsafe\"}\n\n        loop = AgentLoop(\n            provider=provider,\n            registry=registry,\n            working_dir=str(tmp_path),\n            quality_gates=mock_gates,\n        )\n        result = loop.step(\"Tell me something\")\n        assert \"hallucination oracle\" in result.lower()\n",
+  "body_hash": "ad4aebf6a8b5fcb7",
+  "body_truncated": false,
+  "callers_of": [
+    "_MockProvider",
+    "ToolRegistry",
+    "MagicMock",
+    "AgentLoop",
+    "step",
+    "lower",
+    "CompletionResponse",
+    "str",
+    "Message"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testagentloop.py:179.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_hallucination_warning",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testagentloop.py:179"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_hallucination_warning",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_hallucination_warning"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

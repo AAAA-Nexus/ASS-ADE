@@ -1,0 +1,33 @@
+{
+  "body": "class NexusError(Exception):\n    \"\"\"Base exception for all AAAA-Nexus client errors.\"\"\"\n\n    def __init__(\n        self,\n        detail: str,\n        *,\n        status_code: int | None = None,\n        endpoint: str | None = None,\n        retry_after: float | None = None,\n    ) -> None:\n        self.detail = detail\n        self.status_code = status_code\n        self.endpoint = endpoint\n        self.retry_after = retry_after\n        super().__init__(detail)\n",
+  "body_hash": "24728d20a3bf0b57",
+  "body_truncated": false,
+  "callers_of": [
+    "__init__",
+    "super"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/errors.py:10.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.nexuserror",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/errors.py:10"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "NexusError",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for NexusError"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

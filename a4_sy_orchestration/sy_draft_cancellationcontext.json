@@ -1,0 +1,35 @@
+{
+  "body": "class CancellationContext:\n    \"\"\"Thread-safe context for signaling cancellation to in-flight operations.\n    \n    Long-running tools can periodically call check() to see if a cancellation\n    request has been issued. When check() returns True, the tool should clean\n    up and return promptly.\n    \"\"\"\n\n    def __init__(self) -> None:\n        self._cancelled = False\n        self._lock = threading.Lock()\n\n    def cancel(self) -> None:\n        \"\"\"Mark this context as cancelled.\"\"\"\n        with self._lock:\n            self._cancelled = True\n\n    def check(self) -> bool:\n        \"\"\"Check if cancellation has been requested.\n        \n        Returns True if cancel() was called, False otherwise.\n        Long-running operations should call this periodically and exit early\n        if it returns True.\n        \"\"\"\n        with self._lock:\n            return self._cancelled\n\n    @property\n    def is_cancelled(self) -> bool:\n        \"\"\"Alias for check().\"\"\"\n        return self.check()\n",
+  "body_hash": "de9ac4101ebd6702",
+  "body_truncated": false,
+  "callers_of": [
+    "Lock",
+    "check"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/mcp/cancellation.py:13.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.cancellationcontext",
+  "imports": [
+    "__future__.annotations",
+    "threading",
+    "typing.Optional"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/mcp/cancellation.py:13"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "CancellationContext",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for CancellationContext"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

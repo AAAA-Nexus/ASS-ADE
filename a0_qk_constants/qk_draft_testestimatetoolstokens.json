@@ -1,0 +1,32 @@
+{
+  "body": "class TestEstimateToolsTokens:\n    def test_empty_list(self):\n        assert estimate_tools_tokens([]) == 0\n\n    def test_single_tool(self):\n        tool = ToolSchema(\n            name=\"read_file\",\n            description=\"Read a file\",\n            parameters={\"type\": \"object\", \"properties\": {\"path\": {\"type\": \"string\"}}},\n        )\n        tokens = estimate_tools_tokens([tool])\n        assert tokens > 0\n\n    def test_multiple_tools(self):\n        tools = [\n            ToolSchema(name=f\"tool_{i}\", description=f\"Tool number {i}\", parameters={\"type\": \"object\"})\n            for i in range(5)\n        ]\n        tokens = estimate_tools_tokens(tools)\n        assert tokens > estimate_tools_tokens(tools[:1])\n",
+  "body_hash": "32f4645d1035023a",
+  "body_truncated": false,
+  "callers_of": [
+    "ToolSchema",
+    "estimate_tools_tokens",
+    "range"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testestimatetoolstokens.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.testestimatetoolstokens",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testestimatetoolstokens.py:5"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "TestEstimateToolsTokens",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestEstimateToolsTokens"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

@@ -1,0 +1,44 @@
+{
+  "body": "    def test_relative_endpoint_passthrough(self) -> None:\n        \"\"\"Relative endpoints should pass through without validation.\"\"\"\n        assert _validate_absolute_endpoint(\"/api/tool\") == \"/api/tool\"\n        assert _validate_absolute_endpoint(\"api/tool\") == \"api/tool\"\n        assert _validate_absolute_endpoint(\"\") == \"\"\n",
+  "body_hash": "cfb4fa09b4e1c460",
+  "body_truncated": false,
+  "callers_of": [
+    "_validate_absolute_endpoint"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_ssrf_protection.py:23.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_relative_endpoint_passthrough",
+  "imports": [
+    "ipaddress",
+    "json",
+    "unittest.mock",
+    "pytest",
+    "ass_ade.a2a.fetch_agent_card",
+    "ass_ade.mcp.utils._validate_absolute_endpoint",
+    "ass_ade.nexus.models.MCPManifest",
+    "ass_ade.nexus.models.MCPTool",
+    "ass_ade.mcp.utils.invoke_tool",
+    "ass_ade.mcp.utils.invoke_tool",
+    "ass_ade.mcp.utils.simulate_invoke",
+    "ass_ade.mcp.utils.simulate_invoke",
+    "ass_ade.mcp.utils.simulate_invoke"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_ssrf_protection.py:23"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_relative_endpoint_passthrough",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_relative_endpoint_passthrough"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

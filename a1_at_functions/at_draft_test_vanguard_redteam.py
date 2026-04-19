@@ -1,0 +1,13 @@
+# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_vanguard_redteam.py:5
+# Component id: at.source.ass_ade.test_vanguard_redteam
+__version__ = "0.1.0"
+
+def test_vanguard_redteam(tmp_path: Path) -> None:
+    mock_nx = MagicMock()
+    mock_nx.vanguard_redteam.return_value = VanguardRedTeamResult(
+        run_id="rt-1", agent_id="agent-1", vulnerabilities_found=0, severity="none")
+    with patch("ass_ade.cli.NexusClient", return_value=_make_ctx_mgr(mock_nx)):
+        result = runner.invoke(app, ["vanguard", "redteam", "agent-1", "target",
+                                     "--config", str(_hybrid_config(tmp_path)), "--allow-remote"])
+    assert result.exit_code == 0
+    assert "rt-1" in result.stdout

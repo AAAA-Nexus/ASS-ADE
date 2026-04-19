@@ -1,0 +1,32 @@
+{
+  "body": "    def test_all_have_required_keys(self) -> None:\n        for q in AUDIT_QUESTIONS:\n            assert \"id\" in q and \"group\" in q and \"text\" in q\n            assert isinstance(q[\"text\"], str) and q[\"text\"]\n",
+  "body_hash": "e3d5dfb264e4b4cd",
+  "body_truncated": false,
+  "callers_of": [
+    "isinstance"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testauditquestions.py:23.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_all_have_required_keys",
+  "imports": [
+    "collections.Counter"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testauditquestions.py:23"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_all_have_required_keys",
+  "product_categories": [
+    "SRG"
+  ],
+  "provides": [
+    "rebuild candidate for test_all_have_required_keys"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

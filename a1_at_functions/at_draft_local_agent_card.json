@@ -1,0 +1,56 @@
+{
+  "body": "def local_agent_card(working_dir: str = \".\") -> A2AAgentCard:\n    \"\"\"Generate an A2A agent card for this ASS-ADE instance.\n\n    Lists all built-in tool capabilities as A2A skills.\n    \"\"\"\n    from ass_ade.tools.registry import default_registry\n\n    registry = default_registry(working_dir)\n\n    skills = [\n        A2ASkill(\n            id=name,\n            name=name,\n            description=schema.description,\n        )\n        for name, schema in zip(registry.list_tools(), registry.schemas())\n    ]\n\n    return A2AAgentCard(\n        name=\"ASS-ADE\",\n        description=\"Autonomous Sovereign Systems: Atomadic Development Environment \u2014 agentic IDE with multi-model support\",\n        url=\"\",  # local instance\n        version=__version__,\n        provider=A2AProvider(organization=\"Atomadic\", url=\"https://atomadic.tech\"),\n        capabilities=A2ACapabilities(\n            streaming=True,\n            pushNotifications=False,\n            stateTransitionHistory=True,\n        ),\n        authentication=A2AAuthentication(schemes=[\"bearer\"]),\n        skills=skills,\n        defaultInputModes=[\"text/plain\", \"application/json\"],\n        defaultOutputModes=[\"text/plain\", \"application/json\"],\n    )\n",
+  "body_hash": "eb7cd695556c9726",
+  "body_truncated": false,
+  "callers_of": [
+    "default_registry",
+    "A2AAgentCard",
+    "A2ASkill",
+    "zip",
+    "A2AProvider",
+    "A2ACapabilities",
+    "A2AAuthentication",
+    "list_tools",
+    "schemas"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/a2a/__init__.py:310.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.local_agent_card",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "socket",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any",
+    "urllib.parse.urlparse",
+    "httpx",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "pydantic.ValidationError",
+    "pydantic.field_validator",
+    "ass_ade.__version__",
+    "ass_ade.nexus.validation.validate_https_public_url",
+    "ass_ade.tools.registry.default_registry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/a2a/__init__.py:310"
+  },
+  "kind": "pure_function",
+  "made_of": [
+    "qk.source.ass_ade.schemas"
+  ],
+  "name": "local_agent_card",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for local_agent_card"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

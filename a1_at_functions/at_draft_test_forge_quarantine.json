@@ -1,0 +1,36 @@
+{
+  "body": "def test_forge_quarantine(tmp_path: Path) -> None:\n    mock_nx = MagicMock()\n    mock_nx.forge_quarantine.return_value = ForgeQuarantineResponse(quarantined=[], count=0)\n    with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n        result = runner.invoke(app, [\"forge\", \"quarantine\",\n                                     \"--config\", str(_hybrid_config(tmp_path)), \"--allow-remote\"])\n    assert result.exit_code == 0\n",
+  "body_hash": "63ad6e860c3dec9f",
+  "body_truncated": false,
+  "callers_of": [
+    "MagicMock",
+    "ForgeQuarantineResponse",
+    "patch",
+    "invoke",
+    "_make_ctx_mgr",
+    "str",
+    "_hybrid_config"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_forge_quarantine.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_forge_quarantine",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_forge_quarantine.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_forge_quarantine",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_forge_quarantine"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

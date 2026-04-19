@@ -1,0 +1,31 @@
+{
+  "body": "    def is_confident(self) -> bool:\n        return self._conviction >= self._conviction_required\n",
+  "body_hash": "23781872f72813d4",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_wisdomengine.py:23.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.is_confident",
+  "imports": [
+    "ass_ade.context_memory.query_vector_memory",
+    "ass_ade.context_memory.store_vector_memory"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_wisdomengine.py:23"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "is_confident",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for is_confident"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

@@ -1,0 +1,9 @@
+# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_parallel_recon.py:373
+# Component id: at.source.ass_ade.test_run_parallel_recon_empty_dir
+__version__ = "0.1.0"
+
+def test_run_parallel_recon_empty_dir(tmp_path: Path) -> None:
+    report = run_parallel_recon(tmp_path)
+    assert report.scout["total_files"] == 0
+    assert report.test["test_files"] == 0
+    assert not report.doc["has_readme"]

@@ -1,0 +1,75 @@
+{
+  "body": "class TestBAS:\n    def test_monitor_synergy_alert(self) -> None:\n        b = BAS({\"synergy\": {\"threshold\": 0.5}})\n        a = b.monitor({\"synergy\": 0.8, \"novelty\": 0.0, \"gvu_delta\": 0.0})\n        assert a is not None\n        assert a.kind == \"emergent_synergy\"\n        assert a.severity == \"high\"\n\n    def test_monitor_returns_none_below_threshold(self) -> None:\n        b = BAS({})\n        a = b.monitor({\"synergy\": 0.1, \"novelty\": 0.1, \"gvu_delta\": 0.0})\n        assert a is None\n\n    def test_monitor_all_fires_multiple_alerts(self) -> None:\n        b = BAS({})\n        alerts = b.monitor_all({\n            \"synergy\": 0.9,\n            \"novelty\": 0.9,\n            \"trust_score\": 0.1,\n            \"budget_pct\": 0.95,\n            \"gvu_delta\": 0.0,\n        })\n        kinds = {a.kind for a in alerts}\n        assert \"emergent_synergy\" in kinds\n        assert \"trust_violation\" in kinds\n        assert \"budget_exhaustion\" in kinds\n\n    def test_capability_gap_alert(self) -> None:\n        b = BAS({})\n        alerts = b.monitor_all({\"missing_capabilities\": [\"llm\", \"search\"]})\n        kinds = {a.kind for a in alerts}\n        assert \"capability_gap\" in kinds\n\n    def test_quality_regression_alert(self) -> None:\n        b = BAS({})\n        alerts = b.monitor_all({\"score_delta\": -0.5})\n        kinds = {a.kind for a in alerts}\n        assert \"quality_regression\" in kinds\n\n    def test_loop_detected_alert(self) -> None:\n        b = BAS({})\n        alerts = b.monitor_all({\"tool_repeat_count\": 5})\n        kinds = {a.kind for a in alerts}\n        assert \"loop_detected\" in kinds\n\n    def test_subscriber_called_on_alert(self) -> None:\n        b = BAS({})\n        received: list[Alert] = []\n        b.subscribe(lambda a: received.append(a))\n        b.monitor_all({\"synergy\": 0.9})\n        assert len(received) >= 1\n        assert received[0].kind == \"emergent_synergy\"\n\n    def test_subscriber_exception_does_not_propagate(self) -> None:\n        b = BAS({})\n        b.subscribe(lambda a: (_ for _ in ()).throw(RuntimeError(\"boom\")))\n        # Should not raise\n        b.monitor_all({\"synergy\": 0.9})\n\n    def test_flush_alerts_drains_buffer(self) -> None:\n        b = BAS({})\n        b.monitor_all({\"synergy\": 0.9, \"trust_score\": 0.1})\n        flushed = b.flush_alerts()\n        assert len(flushed) >= 1\n        # second flush is empty\n        assert b.flush_alerts() == []\n\n    def test_cooldown_prevents_duplicate_alerts(self) -> None:\n        b = BAS({\"bas_cooldown_s\": 3600.0})  # 1-hour cooldown\n        a1 = b.alert(\"gvu_jump\", {\"gvu_delta\": 0.5})\n        a2 = b.alert(\"gvu_jump\", {\"gvu_delta\": 0.6})\n        # second alert on cooldown\n        assert a2.cooldown_skipped\n\n    def test_persistence_writes_jsonl(self, tmp_path: Path) -> None:\n        state_file = tmp_path / \"alerts.jsonl\"\n        b = BAS({\"bas_state_path\": str(state_file)})\n        b.alert(\"novelty_spike\", {\"novelty\": 0.8})\n        assert state_file.exists()\n        lines = [json.loads(line) for line in state_file.read_text().strip().splitlines()]\n        assert lines[0][\"kind\"] == \"novelty_spike\"\n\n    def test_persistence_io_error_does_not_crash(self, tmp_path: Path) -> None:\n        # Point to a directory path (not writable as file)\n        b = BAS({\"bas_state_path\": str(tmp_path)})\n        b.alert(\"novelty_spike\", {\"novelty\": 0.8})  # should not raise\n\n    def test_alert_severity_mapping(self) -> None:\n        b = BAS({})\n        high_kinds = [\"emergent_synergy\", \"gvu_jump\", \"trust_violation\", \"budget_exhaustion\"]\n        for kind in high_kinds:\n            a = Alert(kind=kind, severity=\"\", payload={}, ts=\"\")\n            b_alert = b.alert(kind, {})\n            assert b_alert.severity == \"high\", f\"{kind} should be high severity\"\n\n    def test_report_structure(self) -> None:\n        b = BAS({})\n        r = b.report()\n        assert r[\"engine\"] == \"bas\"\n        assert \"alerts_total\" in r\n        assert \"alerts_session\" in r\n        assert \"unflushed\" in r\n        assert \"cooldown_s\" in r\n\n    def test_run_returns_dict(self) -> None:\n        b = BAS({})\n        result = b.run({\"metrics\": {\"synergy\": 0.9}})\n        assert \"alert\" in result\n",
+  "body_hash": "3cd43e4aaac0dff1",
+  "body_truncated": false,
+  "callers_of": [
+    "BAS",
+    "monitor",
+    "monitor_all",
+    "subscribe",
+    "flush_alerts",
+    "alert",
+    "exists",
+    "report",
+    "run",
+    "len",
+    "loads",
+    "Alert",
+    "append",
+    "throw",
+    "str",
+    "splitlines",
+    "RuntimeError",
+    "strip",
+    "read_text"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:172.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testbas",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "time",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.agent.audit_questions.AUDIT_QUESTIONS",
+    "ass_ade.agent.bas.BAS",
+    "ass_ade.agent.bas.Alert",
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.orchestrator.CycleReport",
+    "ass_ade.agent.orchestrator.EngineOrchestrator",
+    "ass_ade.agent.wisdom.AuditReport",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "collections.Counter",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.engine.provider.ModelProvider",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.tools.registry.default_registry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:172"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.monitor",
+    "at.source.ass_ade.monitor_all",
+    "at.source.ass_ade.subscribe",
+    "at.source.ass_ade.flush_alerts"
+  ],
+  "name": "TestBAS",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestBAS"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

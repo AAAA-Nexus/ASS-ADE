@@ -1,0 +1,44 @@
+{
+  "body": "class CapabilitySnapshot:\n    generated_at_utc: str\n    working_dir: str\n    cli_commands: list[CapabilityEntry] = field(default_factory=list)\n    local_tools: list[CapabilityEntry] = field(default_factory=list)\n    mcp_tools: list[CapabilityEntry] = field(default_factory=list)\n    agents: list[CapabilityEntry] = field(default_factory=list)\n    hooks: list[CapabilityEntry] = field(default_factory=list)\n\n    @property\n    def cli_paths(self) -> set[str]:\n        return {item.name for item in self.cli_commands}\n",
+  "body_hash": "8d500b4890a7a17d",
+  "body_truncated": false,
+  "callers_of": [
+    "dataclass",
+    "field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/capabilities.py:25.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.capabilitysnapshot",
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "typer.main",
+    "ass_ade.cli.app",
+    "ass_ade.tools.registry.default_registry",
+    "ass_ade.mcp.server._WORKFLOW_TOOLS"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/capabilities.py:25"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "CapabilitySnapshot",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for CapabilitySnapshot"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

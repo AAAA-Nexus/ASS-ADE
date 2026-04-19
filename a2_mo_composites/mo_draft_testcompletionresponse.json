@@ -1,0 +1,31 @@
+{
+  "body": "class TestCompletionResponse:\n    def test_basic(self):\n        r = CompletionResponse(\n            message=Message(role=\"assistant\", content=\"done\"),\n            finish_reason=\"stop\",\n        )\n        assert r.finish_reason == \"stop\"\n        assert r.model is None\n",
+  "body_hash": "f58f681158917934",
+  "body_truncated": false,
+  "callers_of": [
+    "CompletionResponse",
+    "Message"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testcompletionresponse.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testcompletionresponse",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testcompletionresponse.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "TestCompletionResponse",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestCompletionResponse"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

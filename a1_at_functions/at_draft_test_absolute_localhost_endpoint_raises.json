@@ -1,0 +1,46 @@
+{
+  "body": "    def test_absolute_localhost_endpoint_raises(self) -> None:\n        \"\"\"Invoking a tool with localhost endpoint should raise ValueError.\"\"\"\n        from ass_ade.mcp.utils import invoke_tool\n        \n        tool = MCPTool(\n            name=\"admin-tool\",\n            endpoint=\"https://localhost:8080/admin\",\n            method=\"POST\",\n            paid=False,\n        )\n        \n        with pytest.raises(ValueError, match=\"blocked network address|localhost\"):\n            invoke_tool(\"https://api.example.com\", tool)\n",
+  "body_hash": "072cc9d9d5f79813",
+  "body_truncated": false,
+  "callers_of": [
+    "MCPTool",
+    "raises",
+    "invoke_tool"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_ssrf_protection.py:138.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_absolute_localhost_endpoint_raises",
+  "imports": [
+    "ipaddress",
+    "json",
+    "unittest.mock",
+    "pytest",
+    "ass_ade.a2a.fetch_agent_card",
+    "ass_ade.mcp.utils._validate_absolute_endpoint",
+    "ass_ade.nexus.models.MCPManifest",
+    "ass_ade.nexus.models.MCPTool",
+    "ass_ade.mcp.utils.invoke_tool",
+    "ass_ade.mcp.utils.invoke_tool",
+    "ass_ade.mcp.utils.simulate_invoke",
+    "ass_ade.mcp.utils.simulate_invoke",
+    "ass_ade.mcp.utils.simulate_invoke"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_ssrf_protection.py:138"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_absolute_localhost_endpoint_raises",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_absolute_localhost_endpoint_raises"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

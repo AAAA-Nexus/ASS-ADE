@@ -1,0 +1,42 @@
+{
+  "body": "def test_rebuild_dry_run(tmp_path: Path) -> None:\n    src = tmp_path / \"myproject\"\n    src.mkdir()\n    (src / \"main.py\").write_text(\"def hello(): pass\\n\", encoding=\"utf-8\")\n    out = tmp_path / \"myproject-rebuilt\"\n\n    result = runner.invoke(app, [\"rebuild\", str(src), str(out), \"--dry-run\"])\n\n    assert result.exit_code == 0\n    assert \"Dry-run preview\" in result.stdout\n    assert not out.exists(), \"--dry-run must not create output folder\"\n",
+  "body_hash": "fb0656f1cc8ea783",
+  "body_truncated": false,
+  "callers_of": [
+    "mkdir",
+    "write_text",
+    "invoke",
+    "exists",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli.py:125.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_rebuild_dry_run",
+  "imports": [
+    "json",
+    "pathlib.Path",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.cli._auto_detect_project"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli.py:125"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_rebuild_dry_run",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_rebuild_dry_run"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

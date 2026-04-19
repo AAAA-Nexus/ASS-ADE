@@ -1,0 +1,41 @@
+{
+  "body": "class TestA2ADiscoverCLI:\n    def test_discover_success(self, tmp_path: Path) -> None:\n        mock_nx = MagicMock()\n        mock_nx.discovery_search.return_value = DiscoveryResult(\n            agents=[DiscoveredAgent(agent_id=\"agent-1\", name=\"DiscoverMe\")],\n            total=1,\n            query=\"search\",\n        )\n        with patch(\"ass_ade.commands.a2a.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n            result = runner.invoke(\n                app, [\"a2a\", \"discover\", \"search\",\n                       \"--config\", str(_hybrid_config(tmp_path)), \"--allow-remote\"]\n            )\n        assert result.exit_code == 0\n        assert \"DiscoverMe\" in result.stdout\n\n    def test_discover_requires_remote(self, tmp_path: Path) -> None:\n        config_path = tmp_path / \".ass-ade\" / \"config.json\"\n        write_default_config(config_path, config=AssAdeConfig(profile=\"local\"), overwrite=True)\n        result = runner.invoke(app, [\"a2a\", \"discover\", \"search\", \"--config\", str(config_path)])\n        assert result.exit_code == 2\n        assert \"disabled in the local profile\" in result.stdout\n",
+  "body_hash": "26193fdd763a057a",
+  "body_truncated": false,
+  "callers_of": [
+    "MagicMock",
+    "DiscoveryResult",
+    "write_default_config",
+    "invoke",
+    "patch",
+    "AssAdeConfig",
+    "str",
+    "DiscoveredAgent",
+    "_make_ctx_mgr",
+    "_hybrid_config"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testa2adiscovercli.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testa2adiscovercli",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testa2adiscovercli.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.write_default_config"
+  ],
+  "name": "TestA2ADiscoverCLI",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestA2ADiscoverCLI"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

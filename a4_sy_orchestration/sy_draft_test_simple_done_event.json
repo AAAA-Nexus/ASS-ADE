@@ -1,0 +1,53 @@
+{
+  "body": "    def test_simple_done_event(self, tmp_path):\n        provider = _MockProvider([\n            CompletionResponse(\n                message=Message(role=\"assistant\", content=\"Hello!\"),\n                finish_reason=\"stop\",\n            )\n        ])\n        loop = AgentLoop(\n            provider=provider,\n            registry=ToolRegistry(),\n            working_dir=str(tmp_path),\n        )\n        events = list(loop.step_stream(\"Hi\"))\n        assert len(events) == 1\n        assert events[0].kind == \"done\"\n        assert events[0].text == \"Hello!\"\n",
+  "body_hash": "d2e833771869ef94",
+  "body_truncated": false,
+  "callers_of": [
+    "_MockProvider",
+    "AgentLoop",
+    "list",
+    "step_stream",
+    "len",
+    "CompletionResponse",
+    "ToolRegistry",
+    "str",
+    "Message"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:232.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_simple_done_event",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "pytest",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolCallRequest",
+    "ass_ade.mcp.server.MCPServer",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.builtin.EditFileTool",
+    "ass_ade.tools.registry.ToolRegistry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:232"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [
+    "og.source.ass_ade.toolregistry"
+  ],
+  "name": "test_simple_done_event",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_simple_done_event"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

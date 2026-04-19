@@ -1,0 +1,30 @@
+{
+  "body": "    def test_undo_no_history(self, history: FileHistory):\n        assert history.undo(\"nonexistent.py\") is None\n",
+  "body_hash": "c6c96f9f94619ca8",
+  "body_truncated": false,
+  "callers_of": [
+    "undo"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testfilehistory.py:38.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_undo_no_history",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testfilehistory.py:38"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_undo_no_history",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_undo_no_history"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

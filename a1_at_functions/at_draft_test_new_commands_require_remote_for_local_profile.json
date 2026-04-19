@@ -1,0 +1,32 @@
+{
+  "body": "def test_new_commands_require_remote_for_local_profile(\n    tmp_path: Path, argv: list[str]\n) -> None:\n    result = runner.invoke(app, [*argv, \"--config\", str(_local_config(tmp_path))])\n    assert result.exit_code == 2\n    assert \"disabled in the local profile\" in result.stdout\n",
+  "body_hash": "d8ee41a64a498591",
+  "body_truncated": false,
+  "callers_of": [
+    "invoke",
+    "str",
+    "_local_config"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_new_commands_require_remote_for_local_profile.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_new_commands_require_remote_for_local_profile",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_new_commands_require_remote_for_local_profile.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_new_commands_require_remote_for_local_profile",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_new_commands_require_remote_for_local_profile"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

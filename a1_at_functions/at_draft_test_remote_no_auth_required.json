@@ -1,0 +1,48 @@
+{
+  "body": "    def test_remote_no_auth_required(self) -> None:\n        local = self._make_card(\"Local\", skills=[(\"s1\", \"S1\")])\n        remote = self._make_card(\"Remote\", skills=[(\"s1\", \"S1\")])\n        result = negotiate(local, remote)\n        assert result.auth_compatible\n",
+  "body_hash": "c09aaab995e7f0cb",
+  "body_truncated": false,
+  "callers_of": [
+    "_make_card",
+    "negotiate"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:269.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_remote_no_auth_required",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.a2a.A2AAgentCard",
+    "ass_ade.a2a.A2AAuthentication",
+    "ass_ade.a2a.A2ASkill",
+    "ass_ade.a2a.ValidationIssue",
+    "ass_ade.a2a.ValidationReport",
+    "ass_ade.a2a.fetch_agent_card",
+    "ass_ade.a2a.local_agent_card",
+    "ass_ade.a2a.negotiate",
+    "ass_ade.a2a.validate_agent_card",
+    "httpx",
+    "httpx"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:269"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_remote_no_auth_required",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_remote_no_auth_required"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

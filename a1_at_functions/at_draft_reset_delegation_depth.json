@@ -1,0 +1,28 @@
+{
+  "body": "    def reset_delegation_depth(self) -> None:\n        self._delegation_depth = 0\n",
+  "body_hash": "510962e93645f297",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_agentloop.py:102.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.reset_delegation_depth",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_agentloop.py:102"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "reset_delegation_depth",
+  "product_categories": [
+    "IDT"
+  ],
+  "provides": [
+    "rebuild candidate for reset_delegation_depth"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

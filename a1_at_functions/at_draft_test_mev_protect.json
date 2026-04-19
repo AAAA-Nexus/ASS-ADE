@@ -1,0 +1,36 @@
+{
+  "body": "def test_mev_protect(tmp_path: Path) -> None:\n    mock_nx = MagicMock()\n    mock_nx.mev_protect.return_value = MevProtectResult(bundle_id=\"bun-1\", protected=True, strategy=\"flashbots\")\n    with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n        result = runner.invoke(app, [\"mev\", \"protect\", \"0xabc,0xdef\",\n                                     \"--config\", str(_hybrid_config(tmp_path)), \"--allow-remote\"])\n    assert result.exit_code == 0\n    assert \"bun-1\" in result.stdout\n",
+  "body_hash": "491cca8da4df9ee3",
+  "body_truncated": false,
+  "callers_of": [
+    "MagicMock",
+    "MevProtectResult",
+    "patch",
+    "invoke",
+    "_make_ctx_mgr",
+    "str",
+    "_hybrid_config"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_mev_protect.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_mev_protect",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_mev_protect.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_mev_protect",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_mev_protect"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

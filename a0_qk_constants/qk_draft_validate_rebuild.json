@@ -1,0 +1,61 @@
+{
+  "body": "def validate_rebuild(target_root: Path) -> dict[str, Any]:\n    \"\"\"Lint every materialized component JSON under ``target_root``.\n\n    Checks:\n      1. All required top-level fields present\n      2. tier is one of the five known values\n      3. id prefix matches tier\n      4. File lives in the correct tier subdirectory\n      5. ``component_schema`` equals ASSADE-SPEC-003\n      6. ``made_of`` is a list\n      7. No duplicate ids\n\n    Returns a compact report the orchestrator folds into the rebuild receipt.\n    \"\"\"\n    if not target_root.exists():\n        return {\n            \"validated\": False,\n            \"reason\": f\"target_root does not exist: {target_root}\",\n            \"total\": 0, \"valid\": 0, \"findings\": [],\n        }\n\n    findings: list[dict[str, Any]] = []\n    seen_ids: dict[str, str] = {}\n    total = 0\n    valid = 0\n\n    for tier_dir in target_root.iterdir():\n        if not tier_dir.is_dir() or tier_dir.name not in _VALID_TIERS:\n            continue\n        expected_prefix = TIER_PREFIX[tier_dir.name] + \".\"\n        for f in sorted(f for f in tier_dir.glob(\"*.json\") if f.name != \"VERSION.json\"):\n            total += 1\n            try:\n                doc = json.loads(f.read_text(encoding=\"utf-8\"))\n            except json.JSONDecodeError as exc:\n                findings.append({\"severity\": \"error\", \"code\": \"JSON_PARSE\",\n                                  \"path\": f.as_posix(), \"message\": str(exc)})\n                continue\n            file_ok = True\n\n            for field_name in _REQUIRED_FIELDS:\n                if field_name not in doc:\n                    findings.append({\"severity\": \"error\", \"code\": \"MISSING_FIELD\",\n                                      \"path\": f.as_posix(), \"field\": field_name})\n                    file_ok = False\n\n            tier = doc.get(\"tier\")\n            if tier not in _VALID_TIERS:\n                findings.append({\"severity\": \"error\", \"code\": \"INVALID_TIER\",\n                                  \"path\": f.as_posix(), \"tier\": str(tier)})\n                file_ok = False\n\n            cid = str(doc.get(\"id\") or \"\")\n            if tier in _VALID_TIERS and not cid.startswith(TIER_PREFIX[tier] + \".\"):\n                findings.append({\"severity\": \"error\", \"code\": \"TIER_PREFIX_MISMATCH\",\n                                  \"path\": f.as_posix(), \"id\": cid,\n                                  \"expected_prefix\": TIER_PREFIX[tier] + \".\"})\n                file_ok = False\n\n            if tier != tier_dir.name:\n                findings.append({\"severity\": \"error\", \"code\": \"TIER_DIR_MISMATCH\",\n                                  \"path\": f.as_posix(),\n                                  \"declared_tier\": str(tier),\n                                  \"actual_dir\": tier_dir.name})\n                file_ok = False\n\n            if doc.get(\"component_schema\") != COMPONENT_SCHEMA:\n                findings.append({\"severity\": \"warn\", \"code\": \"SCHEMA_VERSION\",\n                                  \"path\": f.as_posix(), \"got\": str(doc.get(\"component_schema\"))})\n\n            if not isinstance(doc.get(\"made_of\"), list):\n                findings.append({\"severity\": \"error\", \"code\": \"MADE_OF_NOT_LIST\",\n                                  \"path\": f.as_posix()})\n                file_ok = False\n\n            if cid and cid in seen_ids and seen_ids[cid] != f.as_posix():\n                findings.append({\"severity\": \"warn\", \"code\": \"DUPLICATE_ID\",\n                                  \"path\": f.as_posix(), \"other\": seen_ids[cid], \"id\": cid})\n            elif cid:\n                seen_ids[cid] = f.as_posix()\n\n            if file_ok:\n                valid += 1\n\n    structure_report = _audit_structure(target_root, seen_ids, total, valid)\n    findings.extend(structure_report[\"findings\"])\n\n    by_code: dict[str, int] = {}\n    by_sev: dict[str, int] = {}\n    for item in findings:\n        by_code[item[\"code\"]] = by_code.get(item[\"code\"], 0) + 1\n        by_sev[item[\"severity\"]] = by_sev.get(item[\"severity\"], 0) + 1\n\n    pass_rate = round(valid / total, 4) if total else 1.0\n    return {\n        \"validated\": True,\n        \"target_root\": target_root.as_posix(),\n        \"total\": total,\n        \"valid\": valid,\n        \"findings\": findings,\n        \"structure\": structure_report[\"metrics\"],\n        \"summary\": {\n            \"findings_total\": len(findings),\n            \"by_severity\": by_sev,\n            \"by_code\": by_code,\n            \"pass_rate\": pass_rate,\n            \"structure_conformant\": structure_report[\"conformant\"],\n        },\n    }\n",
+  "body_hash": "c8b0eeae73810ab9",
+  "body_truncated": false,
+  "callers_of": [
+    "iterdir",
+    "_audit_structure",
+    "extend",
+    "exists",
+    "sorted",
+    "round",
+    "as_posix",
+    "get",
+    "str",
+    "len",
+    "is_dir",
+    "loads",
+    "append",
+    "isinstance",
+    "glob",
+    "read_text",
+    "startswith"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/schema_materializer.py:240.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.validate_rebuild",
+  "imports": [
+    "__future__.annotations",
+    "datetime",
+    "hashlib",
+    "json",
+    "re",
+    "sys",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.engine.rebuild.version_tracker.assign_version",
+    "ass_ade.engine.rebuild.version_tracker.content_hash",
+    "ass_ade.engine.rebuild.version_tracker.load_prev_versions",
+    "ass_ade.engine.rebuild.version_tracker.write_project_version_file",
+    "ass_ade.engine.rebuild.version_tracker.write_tier_version_file",
+    "ass_ade.engine.rebuild.version_tracker._aggregate_version"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/schema_materializer.py:240"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "validate_rebuild",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for validate_rebuild"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

@@ -1,0 +1,32 @@
+{
+  "body": "def iter_source_files(root: Path) -> Iterable[Path]:\n    for dirpath, dirnames, filenames in os.walk(root):\n        dirnames[:] = [name for name in dirnames if name not in EXCLUDED_DIRS]\n        for filename in filenames:\n            path = Path(dirpath) / filename\n            if path.suffix.lower() in SOURCE_SUFFIXES:\n                yield path\n",
+  "body_hash": "b1c78c015d2ce374",
+  "body_truncated": false,
+  "callers_of": [
+    "walk",
+    "Path",
+    "lower"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_iter_source_files.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.iter_source_files",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_iter_source_files.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "iter_source_files",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for iter_source_files"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,42 @@
+{
+  "body": "def validate_url(value: str) -> str:\n    \"\"\"Must be a valid HTTP(S) URL with no control characters in the host.\"\"\"\n    value = value.strip()\n    parsed = urlparse(value)\n    if parsed.scheme not in (\"http\", \"https\"):\n        raise ValueError(f\"URL must use http or https scheme (got '{parsed.scheme}').\")\n    if not parsed.netloc:\n        raise ValueError(\"URL must have a valid host.\")\n    if _HEADER_INJECTION_RE.search(parsed.netloc):\n        raise ValueError(\"URL host contains disallowed control characters.\")\n    hostname = parsed.hostname or \"\"\n    if _is_private_host(hostname):\n        raise ValueError(f\"URL targets private/loopback address: {hostname}\")\n    return value\n",
+  "body_hash": "505f84c5efb3232e",
+  "body_truncated": false,
+  "callers_of": [
+    "strip",
+    "urlparse",
+    "search",
+    "_is_private_host",
+    "ValueError"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/validation.py:125.",
+  "exceptions_raised": [
+    "ValueError"
+  ],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.validate_url",
+  "imports": [
+    "__future__.annotations",
+    "ipaddress",
+    "re",
+    "socket",
+    "urllib.parse.urlparse"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/validation.py:125"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "validate_url",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for validate_url"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

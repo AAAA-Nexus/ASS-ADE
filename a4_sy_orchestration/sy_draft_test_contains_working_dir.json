@@ -1,0 +1,31 @@
+{
+  "body": "    def test_contains_working_dir(self, tmp_path):\n        prompt = build_system_prompt(str(tmp_path))\n        assert \"ASS-ADE\" in prompt\n        assert str(tmp_path) in prompt\n",
+  "body_hash": "9b316fcb31ec979b",
+  "body_truncated": false,
+  "callers_of": [
+    "build_system_prompt",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testbuildsystemprompt.py:6.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_contains_working_dir",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testbuildsystemprompt.py:6"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "test_contains_working_dir",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_contains_working_dir"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

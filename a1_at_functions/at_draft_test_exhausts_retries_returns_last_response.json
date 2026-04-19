@@ -1,0 +1,34 @@
+{
+  "body": "    def test_exhausts_retries_returns_last_response(self) -> None:\n        inner = _CountingTransport([\n            httpx.Response(503),\n            httpx.Response(503),\n            httpx.Response(503),\n        ])\n        transport = RetryTransport(inner, max_retries=3, backoff_base=0.0)\n        response = transport.handle_request(httpx.Request(\"GET\", \"https://example.com\"))\n        assert response.status_code == 503\n        assert inner.call_count == 3\n",
+  "body_hash": "448f6308e0b5626a",
+  "body_truncated": false,
+  "callers_of": [
+    "_CountingTransport",
+    "RetryTransport",
+    "handle_request",
+    "Request",
+    "Response"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testretrytransport.py:32.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_exhausts_retries_returns_last_response",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testretrytransport.py:32"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_exhausts_retries_returns_last_response",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_exhausts_retries_returns_last_response"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

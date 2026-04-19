@@ -1,0 +1,35 @@
+{
+  "body": "def test_aegis_certify_epoch(tmp_path: Path) -> None:\n    mock_nx = MagicMock()\n    mock_nx.aegis_certify_epoch.return_value = MagicMock(model_dump=lambda: {\"cert_id\": \"cert-1\", \"valid\": True})\n    with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n        result = runner.invoke(app, [\"aegis\", \"certify-epoch\", \"agent-1\",\n                                     \"--config\", str(_hybrid_config(tmp_path)), \"--allow-remote\"])\n    assert result.exit_code == 0\n",
+  "body_hash": "999207163ec70361",
+  "body_truncated": false,
+  "callers_of": [
+    "MagicMock",
+    "patch",
+    "invoke",
+    "_make_ctx_mgr",
+    "str",
+    "_hybrid_config"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_aegis_certify_epoch.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_aegis_certify_epoch",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_aegis_certify_epoch.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_aegis_certify_epoch",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_aegis_certify_epoch"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

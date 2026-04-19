@@ -1,0 +1,36 @@
+{
+  "body": "def test_escrow_status(tmp_path: Path) -> None:\n    mock_nx = MagicMock()\n    mock_nx.escrow_status.return_value = EscrowStatus(escrow_id=\"esc-1\", status=\"funded\", amount_usdc=10.0)\n    with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n        result = runner.invoke(app, [\"escrow\", \"status\", \"esc-1\",\n                                     \"--config\", str(_hybrid_config(tmp_path)), \"--allow-remote\"])\n    assert result.exit_code == 0\n    assert \"funded\" in result.stdout\n",
+  "body_hash": "6997bab18d6a9c0e",
+  "body_truncated": false,
+  "callers_of": [
+    "MagicMock",
+    "EscrowStatus",
+    "patch",
+    "invoke",
+    "_make_ctx_mgr",
+    "str",
+    "_hybrid_config"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_escrow_status.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_escrow_status",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_escrow_status.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_escrow_status",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_escrow_status"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

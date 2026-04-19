@@ -1,0 +1,32 @@
+{
+  "body": "def test_compute_codebase_digest_ignores_pyc(tmp_path: Path) -> None:\n    (tmp_path / \"module.pyc\").write_bytes(b\"\\x00\\x01\\x02\")\n\n    result = compute_codebase_digest(tmp_path)\n\n    assert result[\"file_count\"] == 0\n    assert \"module.pyc\" not in result.get(\"files\", {})\n",
+  "body_hash": "5fca0f8201f15424",
+  "body_truncated": false,
+  "callers_of": [
+    "write_bytes",
+    "compute_codebase_digest",
+    "get"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_compute_codebase_digest_ignores_pyc.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_compute_codebase_digest_ignores_pyc",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_compute_codebase_digest_ignores_pyc.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_compute_codebase_digest_ignores_pyc",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_compute_codebase_digest_ignores_pyc"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

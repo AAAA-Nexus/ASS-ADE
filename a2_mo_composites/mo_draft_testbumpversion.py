@@ -1,0 +1,22 @@
+# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_version_tracker.py:26
+# Component id: mo.source.ass_ade.testbumpversion
+__version__ = "0.1.0"
+
+class TestBumpVersion:
+    def test_patch(self):
+        assert bump_version("0.1.3", "patch") == "0.1.4"
+
+    def test_minor(self):
+        assert bump_version("0.1.3", "minor") == "0.2.0"
+
+    def test_major(self):
+        assert bump_version("0.1.3", "major") == "1.0.0"
+
+    def test_invalid_falls_back_to_initial(self):
+        assert bump_version("not-semver", "patch") == INITIAL_VERSION
+
+    def test_minor_resets_patch(self):
+        assert bump_version("1.2.9", "minor") == "1.3.0"
+
+    def test_major_resets_minor_and_patch(self):
+        assert bump_version("2.5.7", "major") == "3.0.0"

@@ -1,0 +1,34 @@
+{
+  "body": "    def test_ids_are_1_to_50(self) -> None:\n        ids = sorted(q[\"id\"] for q in AUDIT_QUESTIONS)\n        assert ids == list(range(1, 51))\n",
+  "body_hash": "d5869c747c83a974",
+  "body_truncated": false,
+  "callers_of": [
+    "sorted",
+    "list",
+    "range"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testauditquestions.py:13.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_ids_are_1_to_50",
+  "imports": [
+    "collections.Counter"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testauditquestions.py:13"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_ids_are_1_to_50",
+  "product_categories": [
+    "SRG"
+  ],
+  "provides": [
+    "rebuild candidate for test_ids_are_1_to_50"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

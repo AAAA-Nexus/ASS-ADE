@@ -1,0 +1,35 @@
+{
+  "body": "def tier_for_complexity(complexity: float) -> ModelTier:\n    \"\"\"Map a complexity score to a model tier.\"\"\"\n    if complexity < 0.3:\n        return ModelTier.FAST\n    elif complexity < 0.6:\n        return ModelTier.STANDARD\n    else:\n        return ModelTier.DEEP\n",
+  "body_hash": "e51a8eb771f047ae",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/routing.py:109.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.tier_for_complexity",
+  "imports": [
+    "__future__.annotations",
+    "re",
+    "collections.abc.Mapping",
+    "dataclasses.dataclass",
+    "enum.Enum",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/routing.py:109"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "tier_for_complexity",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for tier_for_complexity"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

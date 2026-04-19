@@ -1,0 +1,45 @@
+{
+  "body": "def classify_tier(symbol: Symbol) -> str:\n    haystack = f\"{symbol.path} {symbol.name} {symbol.kind}\".lower()\n    if any(term in haystack for term in (\n        \"constant\", \"const\", \"schema\", \"manifest\", \"token\", \"invariant\", \"proof\"\n    )):\n        return \"a0_qk_constants\"\n    if any(term in haystack for term in (\n        \"button\", \"textarea\", \"input\", \"validator\", \"validate\", \"format\", \"parse\", \"atom\"\n    )):\n        return \"a1_at_functions\"\n    if any(term in haystack for term in (\n        \"engine\", \"service\", \"client\", \"manager\", \"store\", \"hook\", \"calculator\", \"molecule\"\n    )):\n        return \"a2_mo_composites\"\n    if any(term in haystack for term in (\n        \"registry\", \"gateway\", \"vault\", \"module\", \"feature\", \"workflow\", \"page\", \"screen\", \"organism\"\n    )):\n        return \"a3_og_features\"\n    if any(term in haystack for term in (\n        \"server\", \"router\", \"orchestrator\", \"bridge\", \"runtime\", \"system\", \"main\", \"mcp\"\n    )):\n        return \"a4_sy_orchestration\"\n    if symbol.kind == \"function\":\n        return \"a1_at_functions\"\n    if symbol.kind == \"class\":\n        return \"a2_mo_composites\"\n    return \"a1_at_functions\"\n",
+  "body_hash": "338f888d3da96216",
+  "body_truncated": false,
+  "callers_of": [
+    "lower",
+    "any"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/project_parser.py:130.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.classify_tier",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "datetime",
+    "json",
+    "os",
+    "re",
+    "dataclasses.asdict",
+    "dataclasses.dataclass",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "ass_ade.engine.rebuild.tiers.TIER_PREFIX",
+    "ass_ade.engine.rebuild.tiers.TIERS"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/project_parser.py:130"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "classify_tier",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for classify_tier"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

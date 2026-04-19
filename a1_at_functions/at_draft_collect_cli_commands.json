@@ -1,0 +1,31 @@
+{
+  "body": "def collect_cli_commands() -> list[CapabilityEntry]:\n    \"\"\"Return current CLI command paths by introspecting the Typer app.\"\"\"\n    try:\n        click_root = _get_click_root()\n        return _walk_click_command(click_root)\n    except Exception:\n        return []\n",
+  "body_hash": "2f257e2a32b5237f",
+  "body_truncated": false,
+  "callers_of": [
+    "_get_click_root",
+    "_walk_click_command"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_collect_cli_commands.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.collect_cli_commands",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_collect_cli_commands.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "collect_cli_commands",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for collect_cli_commands"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

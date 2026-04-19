@@ -1,0 +1,46 @@
+{
+  "body": "class TestTokenBudget:\n    def test_for_model(self):\n        budget = TokenBudget.for_model(\"gpt-4o\")\n        assert budget.context_window == 128_000\n        assert budget.reserve == RESPONSE_RESERVE\n\n    def test_available(self):\n        budget = TokenBudget(context_window=10_000, reserve=1000)\n        assert budget.available == 9000\n\n    def test_utilization_zero(self):\n        budget = TokenBudget(context_window=10_000)\n        assert budget.utilization == 0.0\n\n    def test_utilization_after_update(self):\n        budget = TokenBudget(context_window=10_000)\n        budget.update_from_usage({\"prompt_tokens\": 5000, \"completion_tokens\": 100})\n        assert budget.utilization == 0.5\n        assert budget.completion_tokens == 100\n        assert budget.total_calls == 1\n\n    def test_update_none_usage(self):\n        budget = TokenBudget(context_window=10_000)\n        budget.update_from_usage(None)\n        assert budget.total_calls == 0\n\n    def test_messages_to_evict_within_budget(self):\n        budget = TokenBudget(context_window=100_000)\n        messages = [\n            Message(role=\"system\", content=\"System prompt\"),\n            Message(role=\"user\", content=\"Hello\"),\n        ]\n        assert budget.messages_to_evict(messages) == 0\n\n    def test_messages_to_evict_over_budget(self):\n        budget = TokenBudget(context_window=50, reserve=10)  # very small\n        messages = [\n            Message(role=\"system\", content=\"System prompt\"),\n            Message(role=\"user\", content=\"A\" * 200),\n            Message(role=\"assistant\", content=\"B\" * 200),\n            Message(role=\"user\", content=\"C\" * 50),\n        ]\n        evictions = budget.messages_to_evict(messages)\n        assert evictions > 0\n\n    def test_system_messages_not_evicted(self):\n        budget = TokenBudget(context_window=50, reserve=10)\n        messages = [\n            Message(role=\"system\", content=\"Important system prompt\"),\n            Message(role=\"user\", content=\"A\" * 200),\n        ]\n        evictions = budget.messages_to_evict(messages)\n        # Even if over budget, we'd only evict the user message, not system\n        assert evictions <= 1\n\n    def test_estimate_conversation(self):\n        budget = TokenBudget(context_window=100_000)\n        messages = [\n            Message(role=\"system\", content=\"You are a helpful assistant.\"),\n            Message(role=\"user\", content=\"Tell me about Python.\"),\n        ]\n        estimate = budget.estimate_conversation(messages)\n        assert \"message_tokens\" in estimate\n        assert \"tool_schema_tokens\" in estimate\n        assert \"reserve\" in estimate\n        assert \"total_needed\" in estimate\n        assert \"context_window\" in estimate\n        assert \"headroom\" in estimate\n        assert estimate[\"context_window\"] == 100_000\n        assert estimate[\"headroom\"] > 0\n",
+  "body_hash": "9913cb0f37f8f3c9",
+  "body_truncated": false,
+  "callers_of": [
+    "for_model",
+    "TokenBudget",
+    "update_from_usage",
+    "messages_to_evict",
+    "estimate_conversation",
+    "Message"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tokens.py:121.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.testtokenbudget",
+  "imports": [
+    "__future__.annotations",
+    "ass_ade.engine.tokens.DEFAULT_CONTEXT_WINDOW",
+    "ass_ade.engine.tokens.RESPONSE_RESERVE",
+    "ass_ade.engine.tokens.TokenBudget",
+    "ass_ade.engine.tokens.context_window_for",
+    "ass_ade.engine.tokens.estimate_message_tokens",
+    "ass_ade.engine.tokens.estimate_tokens",
+    "ass_ade.engine.tokens.estimate_tools_tokens",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolSchema"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tokens.py:121"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "TestTokenBudget",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestTokenBudget"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

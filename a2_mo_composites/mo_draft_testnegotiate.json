@@ -1,0 +1,54 @@
+{
+  "body": "class TestNegotiate:\n    def _make_card(\n        self,\n        name: str = \"Agent\",\n        skills: list[tuple[str, str]] | None = None,\n        auth_schemes: list[str] | None = None,\n        input_modes: list[str] | None = None,\n        output_modes: list[str] | None = None,\n    ) -> A2AAgentCard:\n        return A2AAgentCard(\n            name=name,\n            skills=[A2ASkill(id=sid, name=sn) for sid, sn in (skills or [])],\n            authentication=A2AAuthentication(schemes=auth_schemes or []),\n            defaultInputModes=input_modes or [\"text/plain\"],\n            defaultOutputModes=output_modes or [\"text/plain\"],\n        )\n\n    def test_compatible_with_shared_skills(self) -> None:\n        local = self._make_card(\"Local\", skills=[(\"s1\", \"Skill 1\"), (\"s2\", \"Skill 2\")])\n        remote = self._make_card(\"Remote\", skills=[(\"s2\", \"Skill 2\"), (\"s3\", \"Skill 3\")])\n        result = negotiate(local, remote)\n        assert result.compatible\n        assert result.shared_skills == [\"s2\"]\n        assert result.local_only == [\"s1\"]\n        assert result.remote_only == [\"s3\"]\n\n    def test_no_shared_skills_incompatible(self) -> None:\n        local = self._make_card(\"Local\", skills=[(\"s1\", \"Skill 1\")])\n        remote = self._make_card(\"Remote\", skills=[(\"s2\", \"Skill 2\")])\n        result = negotiate(local, remote)\n        assert not result.compatible\n        assert result.shared_skills == []\n\n    def test_auth_mismatch(self) -> None:\n        local = self._make_card(\"Local\", skills=[(\"s1\", \"S1\")], auth_schemes=[\"api_key\"])\n        remote = self._make_card(\"Remote\", skills=[(\"s1\", \"S1\")], auth_schemes=[\"bearer\"])\n        result = negotiate(local, remote)\n        assert not result.compatible\n        assert not result.auth_compatible\n        assert any(\"Auth mismatch\" in n for n in result.notes)\n\n    def test_auth_compatible(self) -> None:\n        local = self._make_card(\"Local\", skills=[(\"s1\", \"S1\")], auth_schemes=[\"bearer\"])\n        remote = self._make_card(\"Remote\", skills=[(\"s1\", \"S1\")], auth_schemes=[\"bearer\"])\n        result = negotiate(local, remote)\n        assert result.compatible\n        assert result.auth_compatible\n\n    def test_output_mode_mismatch_noted(self) -> None:\n        local = self._make_card(\"Local\", skills=[(\"s1\", \"S1\")], input_modes=[\"text/plain\"])\n        remote = self._make_card(\"Remote\", skills=[(\"s1\", \"S1\")], output_modes=[\"application/pdf\"])\n        result = negotiate(local, remote)\n        assert any(\"Output format mismatch\" in n for n in result.notes)\n\n    def test_empty_skills_both_sides(self) -> None:\n        local = self._make_card(\"Local\")\n        remote = self._make_card(\"Remote\")\n        result = negotiate(local, remote)\n        assert not result.compatible\n        assert result.shared_skills == []\n\n    def test_remote_no_auth_required(self) -> None:\n        local = self._make_card(\"Local\", skills=[(\"s1\", \"S1\")])\n        remote = self._make_card(\"Remote\", skills=[(\"s1\", \"S1\")])\n        result = negotiate(local, remote)\n        assert result.auth_compatible\n",
+  "body_hash": "b8e6cf6ea2145dc1",
+  "body_truncated": false,
+  "callers_of": [
+    "A2AAgentCard",
+    "_make_card",
+    "negotiate",
+    "any",
+    "A2AAuthentication",
+    "A2ASkill"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:208.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testnegotiate",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.a2a.A2AAgentCard",
+    "ass_ade.a2a.A2AAuthentication",
+    "ass_ade.a2a.A2ASkill",
+    "ass_ade.a2a.ValidationIssue",
+    "ass_ade.a2a.ValidationReport",
+    "ass_ade.a2a.fetch_agent_card",
+    "ass_ade.a2a.local_agent_card",
+    "ass_ade.a2a.negotiate",
+    "ass_ade.a2a.validate_agent_card",
+    "httpx",
+    "httpx"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:208"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.negotiate"
+  ],
+  "name": "TestNegotiate",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestNegotiate"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

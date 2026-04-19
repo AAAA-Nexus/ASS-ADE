@@ -1,0 +1,40 @@
+{
+  "body": "def hash_file(path: Path) -> str:\n    content = path.read_bytes()\n    return hashlib.sha256(content).hexdigest()\n",
+  "body_hash": "11a530c840abc6bf",
+  "body_truncated": false,
+  "callers_of": [
+    "read_bytes",
+    "hexdigest",
+    "sha256"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/local/certifier.py:40.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.hash_file",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "os",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/local/certifier.py:40"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "hash_file",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for hash_file"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

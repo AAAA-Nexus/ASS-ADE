@@ -1,0 +1,30 @@
+{
+  "body": "    def test_cloud_providers_have_signup_url(self):\n        exempt = {\"pollinations\"}  # no signup needed\n        for name, profile in FREE_PROVIDERS.items():\n            if not profile.local and name not in exempt:\n                assert profile.signup_url, f\"{name} is cloud without signup_url\"\n",
+  "body_hash": "733236d2ae929b0f",
+  "body_truncated": false,
+  "callers_of": [
+    "items"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testcataloginvariants.py:31.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.test_cloud_providers_have_signup_url",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testcataloginvariants.py:31"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "test_cloud_providers_have_signup_url",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_cloud_providers_have_signup_url"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

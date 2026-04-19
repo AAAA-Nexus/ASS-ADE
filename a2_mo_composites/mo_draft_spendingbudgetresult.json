@@ -1,0 +1,30 @@
+{
+  "body": "class SpendingBudgetResult(NexusModel):\n    \"\"\"/v1/spending/budget \u2014 SPG-101\"\"\"\n    within_budget: bool | None = None\n    total_spend_usdc: float | None = None\n    per_hop: list[dict] = Field(default_factory=list)\n",
+  "body_hash": "b20793064af62a31",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_spendingbudgetresult.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.spendingbudgetresult",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_spendingbudgetresult.py:5"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "SpendingBudgetResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for SpendingBudgetResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

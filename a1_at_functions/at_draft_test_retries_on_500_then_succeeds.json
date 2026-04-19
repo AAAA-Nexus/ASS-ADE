@@ -1,0 +1,34 @@
+{
+  "body": "    def test_retries_on_500_then_succeeds(self) -> None:\n        inner = _CountingTransport([\n            httpx.Response(500),\n            httpx.Response(200),\n        ])\n        transport = RetryTransport(inner, max_retries=3, backoff_base=0.0)\n        response = transport.handle_request(httpx.Request(\"GET\", \"https://example.com\"))\n        assert response.status_code == 200\n        assert inner.call_count == 2\n",
+  "body_hash": "b67c3a283bc750d7",
+  "body_truncated": false,
+  "callers_of": [
+    "_CountingTransport",
+    "RetryTransport",
+    "handle_request",
+    "Request",
+    "Response"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testretrytransport.py:13.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_retries_on_500_then_succeeds",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testretrytransport.py:13"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_retries_on_500_then_succeeds",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_retries_on_500_then_succeeds"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,34 @@
+{
+  "body": "    def depth(self, rel_path: str) -> int:\n        \"\"\"Number of undo steps available for a file.\"\"\"\n        snap_dir = self._snapshot_dir(rel_path)\n        if not snap_dir.exists():\n            return 0\n        return len(list(snap_dir.glob(\"*.snapshot\")))\n",
+  "body_hash": "4340d508fd4fbf18",
+  "body_truncated": false,
+  "callers_of": [
+    "_snapshot_dir",
+    "len",
+    "exists",
+    "list",
+    "glob"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_filehistory.py:131.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.depth",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_filehistory.py:131"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "depth",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for depth"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

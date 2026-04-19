@@ -1,0 +1,38 @@
+{
+  "body": "def test_escrow_http_error(tmp_path: Path) -> None:\n    mock_nx = MagicMock()\n    req = _httpx.Request(\"POST\", \"https://x.y/v1/escrow/create\")\n    resp = _httpx.Response(402, request=req)\n    mock_nx.escrow_create.side_effect = _httpx.HTTPStatusError(\"402\", request=req, response=resp)\n    with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n        result = runner.invoke(app, [\"escrow\", \"create\", \"a\", \"b\", \"5.0\",\n                                     \"--config\", str(_hybrid_config(tmp_path)), \"--allow-remote\"])\n    assert result.exit_code == 1\n",
+  "body_hash": "869c7203808b1943",
+  "body_truncated": false,
+  "callers_of": [
+    "MagicMock",
+    "Request",
+    "Response",
+    "HTTPStatusError",
+    "patch",
+    "invoke",
+    "_make_ctx_mgr",
+    "str",
+    "_hybrid_config"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_escrow_http_error.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_escrow_http_error",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_escrow_http_error.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_escrow_http_error",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_escrow_http_error"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

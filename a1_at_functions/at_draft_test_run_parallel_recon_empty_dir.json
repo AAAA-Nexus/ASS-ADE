@@ -1,0 +1,50 @@
+{
+  "body": "def test_run_parallel_recon_empty_dir(tmp_path: Path) -> None:\n    report = run_parallel_recon(tmp_path)\n    assert report.scout[\"total_files\"] == 0\n    assert report.test[\"test_files\"] == 0\n    assert not report.doc[\"has_readme\"]\n",
+  "body_hash": "036ee5bf63635df6",
+  "body_truncated": false,
+  "callers_of": [
+    "run_parallel_recon"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_parallel_recon.py:373.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_run_parallel_recon_empty_dir",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "textwrap",
+    "pathlib.Path",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.recon.ReconReport",
+    "ass_ade.recon._classify_tier",
+    "ass_ade.recon._count_test_functions",
+    "ass_ade.recon._dependency_agent",
+    "ass_ade.recon._doc_agent",
+    "ass_ade.recon._iter_files",
+    "ass_ade.recon._scout_agent",
+    "ass_ade.recon._test_agent",
+    "ass_ade.recon._tier_agent",
+    "ass_ade.recon.run_parallel_recon",
+    "time",
+    "json"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_parallel_recon.py:373"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_run_parallel_recon_empty_dir",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_run_parallel_recon_empty_dir"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

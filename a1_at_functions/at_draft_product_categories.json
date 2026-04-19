@@ -1,0 +1,46 @@
+{
+  "body": "def product_categories(symbol: Symbol) -> list[str]:\n    haystack = f\"{symbol.path} {symbol.name}\".lower()\n    categories: list[str] = []\n    if any(term in haystack for term in (\"pay\", \"x402\", \"billing\", \"fee\", \"price\")):\n        categories.append(\"PAY\")\n    if any(term in haystack for term in (\"identity\", \"delegation\", \"trust\", \"ucan\")):\n        categories.append(\"IDT\")\n    if any(term in haystack for term in (\"theorem\", \"rag\", \"search\", \"answer\", \"proof\")):\n        categories.append(\"DCM\")\n    if any(term in haystack for term in (\"audit\", \"compliance\", \"policy\", \"vault\")):\n        categories.append(\"SRG\")\n    if any(term in haystack for term in (\"security\", \"crypto\", \"pqc\", \"threat\")):\n        categories.append(\"SEC\")\n    if not categories:\n        categories.append(\"COR\")\n    return categories\n",
+  "body_hash": "cc17849fa0969c76",
+  "body_truncated": false,
+  "callers_of": [
+    "lower",
+    "any",
+    "append"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/project_parser.py:159.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.product_categories",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "datetime",
+    "json",
+    "os",
+    "re",
+    "dataclasses.asdict",
+    "dataclasses.dataclass",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "ass_ade.engine.rebuild.tiers.TIER_PREFIX",
+    "ass_ade.engine.rebuild.tiers.TIERS"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/project_parser.py:159"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "product_categories",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for product_categories"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,54 @@
+{
+  "body": "    def test_swarm_plan_success(self, tmp_path: Path, hybrid_config: Path) -> None:\n        \"\"\"Swarm plan should return a numbered list of steps.\"\"\"\n        mock_nx = MagicMock()\n        mock_nx.agent_plan.return_value = AgentPlan(\n            goal=\"Build a Python CLI\",\n            steps=[\n                {\"step\": 1, \"description\": \"Design command structure\"},\n                {\"step\": 2, \"description\": \"Implement core commands\"},\n                {\"step\": 3, \"description\": \"Add test coverage\"},\n                {\"step\": 4, \"description\": \"Document API\"},\n            ],\n        )\n        \n        with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n            result = runner.invoke(\n                app,\n                [\"swarm\", \"plan\", \"Build a Python CLI\", \"--config\", str(hybrid_config)],\n            )\n        \n        assert result.exit_code == 0\n",
+  "body_hash": "51a425a4e950635c",
+  "body_truncated": false,
+  "callers_of": [
+    "MagicMock",
+    "AgentPlan",
+    "patch",
+    "invoke",
+    "_make_ctx_mgr",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli_happy_path.py:235.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_swarm_plan_success",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.nexus.models.AgentPlan",
+    "ass_ade.nexus.models.ComplianceResult",
+    "ass_ade.nexus.models.FormatConversion",
+    "ass_ade.nexus.models.InferenceResponse",
+    "ass_ade.nexus.models.IntentClassification",
+    "ass_ade.nexus.models.RatchetSession",
+    "ass_ade.nexus.models.TrustScore",
+    "ass_ade.pipeline.PipelineResult"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli_happy_path.py:235"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_swarm_plan_success",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_swarm_plan_success"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

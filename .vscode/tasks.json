@@ -1,0 +1,166 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "ass-ade: doctor",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/Scripts/ass-ade",
+      "args": ["doctor"],
+      "windows": {
+        "command": "${workspaceFolder}/.venv/Scripts/ass-ade.exe"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "ASS_ADE_CONFIG": "${workspaceFolder}/.ass-ade/config.json"
+        }
+      },
+      "presentation": { "reveal": "always", "panel": "shared" },
+      "group": "test"
+    },
+    {
+      "label": "ass-ade: recon",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/Scripts/ass-ade",
+      "args": ["recon", "."],
+      "windows": {
+        "command": "${workspaceFolder}/.venv/Scripts/ass-ade.exe"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "ASS_ADE_CONFIG": "${workspaceFolder}/.ass-ade/config.json"
+        }
+      },
+      "presentation": { "reveal": "always", "panel": "shared" },
+      "group": "build"
+    },
+    {
+      "label": "ass-ade: eco-scan",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/Scripts/ass-ade",
+      "args": ["eco-scan", "."],
+      "windows": {
+        "command": "${workspaceFolder}/.venv/Scripts/ass-ade.exe"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "ASS_ADE_CONFIG": "${workspaceFolder}/.ass-ade/config.json"
+        }
+      },
+      "presentation": { "reveal": "always", "panel": "shared" },
+      "group": "build"
+    },
+    {
+      "label": "ass-ade: lint",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/Scripts/ass-ade",
+      "args": ["lint", "."],
+      "windows": {
+        "command": "${workspaceFolder}/.venv/Scripts/ass-ade.exe"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "ASS_ADE_CONFIG": "${workspaceFolder}/.ass-ade/config.json"
+        }
+      },
+      "presentation": { "reveal": "always", "panel": "shared" },
+      "group": "build",
+      "problemMatcher": {
+        "owner": "ruff",
+        "fileLocation": ["relative", "${workspaceFolder}"],
+        "pattern": {
+          "regexp": "^(.+):(\\d+):(\\d+):\\s+(\\w+)\\s+(.+)$",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "severity": 4,
+          "message": 5
+        }
+      }
+    },
+    {
+      "label": "ass-ade: certify",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/Scripts/ass-ade",
+      "args": ["certify", "."],
+      "windows": {
+        "command": "${workspaceFolder}/.venv/Scripts/ass-ade.exe"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "ASS_ADE_CONFIG": "${workspaceFolder}/.ass-ade/config.json"
+        }
+      },
+      "presentation": { "reveal": "always", "panel": "shared" },
+      "group": "build"
+    },
+    {
+      "label": "ass-ade: rebuild",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/Scripts/ass-ade",
+      "args": ["rebuild", ".", "--yes"],
+      "windows": {
+        "command": "${workspaceFolder}/.venv/Scripts/ass-ade.exe"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "ASS_ADE_CONFIG": "${workspaceFolder}/.ass-ade/config.json"
+        }
+      },
+      "presentation": { "reveal": "always", "panel": "shared" },
+      "group": "build"
+    },
+    {
+      "label": "ass-ade: run tests",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/Scripts/python",
+      "args": ["-m", "pytest", "tests/", "-q", "--no-header", "--tb=short"],
+      "windows": {
+        "command": "${workspaceFolder}/.venv/Scripts/python.exe"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": { "reveal": "always", "panel": "shared" },
+      "group": { "kind": "test", "isDefault": true }
+    },
+    {
+      "label": "ass-ade: agent chat",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/Scripts/ass-ade",
+      "args": ["agent", "chat", "--allow-remote"],
+      "windows": {
+        "command": "${workspaceFolder}/.venv/Scripts/ass-ade.exe"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "ASS_ADE_CONFIG": "${workspaceFolder}/.ass-ade/config.json"
+        }
+      },
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    },
+    {
+      "label": "ass-ade: mcp serve",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/Scripts/python",
+      "args": ["-m", "ass_ade", "mcp", "serve"],
+      "windows": {
+        "command": "${workspaceFolder}/.venv/Scripts/python.exe"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "ASS_ADE_CONFIG": "${workspaceFolder}/.ass-ade/config.json"
+        }
+      },
+      "presentation": { "reveal": "always", "panel": "dedicated" },
+      "isBackground": true
+    }
+  ]
+}

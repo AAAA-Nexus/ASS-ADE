@@ -1,0 +1,52 @@
+{
+  "body": "def run_linters(root: Path, fix: bool = False) -> dict[str, Any]:\n    linters = detect_linters(root)\n    results: dict[str, Any] = {}\n\n    for linter in linters:\n        if linter == \"ruff\":\n            results[\"ruff\"] = run_ruff(root, fix=fix)\n        elif linter == \"pyright\":\n            results[\"pyright\"] = run_pyright(root)\n        elif linter == \"mypy\":\n            results[\"mypy\"] = _run_generic(\"mypy\", [\"mypy\", str(root)])\n        elif linter == \"eslint\":\n            cmd = [\"eslint\", str(root), \"--format\", \"json\"]\n            results[\"eslint\"] = _run_generic(\"eslint\", cmd)\n        elif linter == \"prettier\":\n            cmd = [\"prettier\", \"--check\", str(root)]\n            results[\"prettier\"] = _run_generic(\"prettier\", cmd)\n        elif linter == \"clippy\":\n            cmd = [\"cargo\", \"clippy\", \"--manifest-path\", str(root / \"Cargo.toml\")]\n            results[\"clippy\"] = _run_generic(\"clippy\", cmd, timeout=120)\n        elif linter == \"go-vet\":\n            cmd = [\"go\", \"vet\", \"./...\"]\n            results[\"go-vet\"] = _run_generic(\"go-vet\", cmd)\n\n    total_findings = sum(\n        len(r.get(\"findings\") or []) for r in results.values()\n    )\n    overall_ok = bool(linters) and all(\n        r.get(\"ok\") is True for r in results.values()\n    )\n\n    return {\n        \"root\": str(root.resolve()),\n        \"linters_run\": list(results.keys()),\n        \"results\": results,\n        \"overall_ok\": overall_ok,\n        \"total_findings\": total_findings,\n    }\n",
+  "body_hash": "48423b1665df407a",
+  "body_truncated": false,
+  "callers_of": [
+    "detect_linters",
+    "sum",
+    "bool",
+    "all",
+    "str",
+    "list",
+    "run_ruff",
+    "len",
+    "resolve",
+    "keys",
+    "run_pyright",
+    "values",
+    "_run_generic",
+    "get"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/local/linter.py:216.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.run_linters",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "re",
+    "shutil",
+    "subprocess",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.local.repo.DEFAULT_IGNORED_DIRS"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/local/linter.py:216"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "run_linters",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for run_linters"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

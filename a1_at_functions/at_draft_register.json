@@ -1,0 +1,31 @@
+{
+  "body": "def register(app: typer.Typer) -> None:\n    \"\"\"Register payment commands on the provided app (stub).\"\"\"\n    # Placeholder for future payment commands:\n    # - payment request\n    # - payment status\n    # - payment history\n    pass\n",
+  "body_hash": "d9e2bb9cdecafe6a",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/commands/payment.py:12.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.register",
+  "imports": [
+    "__future__.annotations",
+    "typer"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/commands/payment.py:12"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "register",
+  "product_categories": [
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for register"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

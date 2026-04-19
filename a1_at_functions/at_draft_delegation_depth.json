@@ -1,0 +1,52 @@
+{
+  "body": "    def delegation_depth(self) -> int:\n        return self._delegation_depth\n",
+  "body_hash": "575ad8eebd1c5876",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/loop.py:128.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.delegation_depth",
+  "imports": [
+    "__future__.annotations",
+    "collections.abc.Callable",
+    "collections.abc.Iterator",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any",
+    "typing.Literal",
+    "ass_ade.agent.context.build_system_prompt",
+    "ass_ade.agent.conversation.Conversation",
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.agent.lse.LSEDecision",
+    "ass_ade.agent.orchestrator.CycleReport",
+    "ass_ade.agent.orchestrator.EngineOrchestrator",
+    "ass_ade.agent.routing.EpistemicRouter",
+    "ass_ade.agent.routing.RoutingDecision",
+    "ass_ade.engine.provider.ModelProvider",
+    "ass_ade.engine.provider.OpenAICompatibleProvider",
+    "ass_ade.engine.tokens.TokenBudget",
+    "ass_ade.engine.types.CompletionRequest",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.registry.ToolRegistry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/loop.py:128"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "delegation_depth",
+  "product_categories": [
+    "IDT"
+  ],
+  "provides": [
+    "rebuild candidate for delegation_depth"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,53 @@
+{
+  "body": "def test_iter_files_respects_limit(tmp_path: Path) -> None:\n    for i in range(20):\n        (tmp_path / f\"f{i}.py\").write_text(\"x=1\", encoding=\"utf-8\")\n    files = _iter_files(tmp_path, limit=10)\n    assert len(files) == 10\n",
+  "body_hash": "26492a3615f7c684",
+  "body_truncated": false,
+  "callers_of": [
+    "range",
+    "_iter_files",
+    "write_text",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_parallel_recon.py:138.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_iter_files_respects_limit",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "textwrap",
+    "pathlib.Path",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.recon.ReconReport",
+    "ass_ade.recon._classify_tier",
+    "ass_ade.recon._count_test_functions",
+    "ass_ade.recon._dependency_agent",
+    "ass_ade.recon._doc_agent",
+    "ass_ade.recon._iter_files",
+    "ass_ade.recon._scout_agent",
+    "ass_ade.recon._test_agent",
+    "ass_ade.recon._tier_agent",
+    "ass_ade.recon.run_parallel_recon",
+    "time",
+    "json"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_parallel_recon.py:138"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_iter_files_respects_limit",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_iter_files_respects_limit"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

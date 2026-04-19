@@ -1,0 +1,52 @@
+{
+  "body": "    def test_search_custom_max_results(self, tmp_path: Path) -> None:\n        \"\"\"Search with --max-results should pass through to client.\"\"\"\n        mock_nx = MagicMock()\n        mock_nx.internal_search.return_value = {\"success\": True, \"result\": {}}\n        with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n            result = runner.invoke(\n                app,\n                [\"search\", \"query\", \"--max-results\", \"5\", \"--config\", str(_hybrid_config(tmp_path))],\n                env={\"ATOMADIC_SESSION_TOKEN\": \"sess-tok\"},\n            )\n        assert result.exit_code == 0\n        mock_nx.internal_search.assert_called_once_with(\n            query=\"query\", max_results=5, session_token=\"sess-tok\"\n        )\n",
+  "body_hash": "6b5bef663f60abcd",
+  "body_truncated": false,
+  "callers_of": [
+    "MagicMock",
+    "assert_called_once_with",
+    "patch",
+    "invoke",
+    "_make_ctx_mgr",
+    "str",
+    "_hybrid_config"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_search_x402.py:90.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_search_custom_max_results",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "httpx",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.nexus.client.NexusClient",
+    "ass_ade.nexus.errors.NexusPaymentRequired",
+    "ass_ade.nexus.errors.NexusAuthError"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_search_x402.py:90"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_search_custom_max_results",
+  "product_categories": [
+    "DCM",
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for test_search_custom_max_results"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

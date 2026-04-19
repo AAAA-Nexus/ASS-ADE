@@ -1,0 +1,71 @@
+{
+  "body": "class AlphaVerus:\n    DEFAULT_WIDTH = 4\n    DEFAULT_DEPTH = 3\n\n    def __init__(self, config: dict, nexus: Any | None = None):\n        self._config = config\n        self._nexus = nexus\n        cfg = config.get(\"alphaverus\") or {}\n        self._budget = int(cfg.get(\"exploration_budget\", 10))\n        self._width = int(cfg.get(\"beam_width\", self.DEFAULT_WIDTH))\n        self._depth = int(cfg.get(\"beam_depth\", self.DEFAULT_DEPTH))\n        self._log: list[dict] = []\n\n    # \u2500\u2500 public verify kept for back-compat \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    def verify(self, code: str, spec: str) -> bool:\n        if self._nexus is not None and hasattr(self._nexus, \"certify_output_verify\"):\n            try:\n                result = self._nexus.certify_output_verify(code)\n                verdict = getattr(result, \"rubric_passed\", None)\n                if verdict is not None:\n                    return bool(verdict)\n            except Exception:\n                pass\n        metrics = _score(code, spec)\n        return _passes(metrics)\n\n    # \u2500\u2500 Mutation operators \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    @staticmethod\n    def _mutations(code: str) -> list[tuple[str, str]]:\n        \"\"\"Return (label, mutated_code) pairs. Cheap, deterministic.\"\"\"\n        out: list[tuple[str, str]] = []\n        # Identity (no-op) variant \u2014 keeps the beam anchored.\n        out.append((\"identity\", code))\n        # Add a docstring if missing.\n        if '\"\"\"' not in code and \"'''\" not in code:\n            lines = code.splitlines()\n            for i, ln in enumerate(lines):\n                if ln.lstrip().startswith(\"def \") and ln.rstrip().endswith(\":\"):\n                    indent = \" \" * (len(ln) - len(ln.lstrip()) + 4)\n                    lines.insert(i + 1, f'{indent}\"\"\"Auto-synthesized docstring.\"\"\"')\n                    break\n            out.append((\"docstring\", \"\\n\".join(lines)))\n        # Guard against None if there is a parameter.\n        if \"def \" in code and \"is None\" not in code:\n            m = re.search(r\"def\\s+\\w+\\s*\\(\\s*([A-Za-z_]\\w*)\", code)\n            if m:\n                param = m.group(1)\n                guard = f\"\\n    if {param} is None:\\n        return None\"\n                mutated = re.sub(\n                    r\"(def\\s+\\w+\\s*\\([^)]*\\)\\s*:)\",\n                    r\"\\1\" + guard,\n                    code,\n                    count=1,\n                )\n                out.append((\"none_guard\", mutated))\n        # Trailing type-hint free comment.\n        out.append((\"annotate\", code + \"\\n# verified: alphaverus\\n\"))\n        return out\n\n    # \u2500\u2500 Tree search \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    def tree_search(\n        self,\n        code: str,\n        spec: str,\n        *,\n        code_path: Optional[Path] = None,\n    ) -> Optional[VerifiedCode]:\n        \"\"\"Beam search for a verified variant. Returns None if none pass.\"\"\"\n        root_metrics = _score(code, spec, code_path)\n        root = VerifiedCode(\n            code=code,\n            verified=_passes(root_metrics),\n            score=root_metrics[\"score\"],\n            trace=[\"root\"],\n            metrics=root_metrics,\n        )\n        self._log.append({\"step\": \"root\", **root_metrics})\n\n        # Beam of (VerifiedCode, trace_labels).\n        beam: list[VerifiedCode] = [root]\n        best_passing: Optional[VerifiedCode] = root if root.verified else None\n\n        steps_used = 0\n        for depth in range(self._depth):\n            candidates: list[VerifiedCode] = []\n            for node in beam:\n                for label, variant in self._mutations(node.code):\n                    if steps_used >= self._budget:\n                        break\n                    metrics = _score(variant, spec, code_path)\n                    ok = _passes(metrics)\n                    vc = VerifiedCode(\n                        code=variant,\n                        verified=ok,\n                        score=metrics[\"score\"],\n                        trace=node.trace + [f\"d{depth}:{label}\"],\n                        metrics=metrics,\n                    )\n                    candidates.append(vc)\n                    self._log.append({\n                        \"step\": steps_used,\n                        \"depth\": depth,\n                        \"label\": label,\n                        \"verified\": ok,\n                        **metrics,\n                    })\n                    steps_used += 1\n                    if ok and (best_passing is None or vc.score > best_passing.score):\n                        best_passing = vc\n                if steps_used >= self._budget:\n                    break\n            if not candidates:\n                break\n            # Keep top-N by score for next depth.\n            candidates.sort(key=lambda v: v.score, reverse=True)\n            beam = candidates[: self._width]\n            if steps_used >= self._budget:\n                break\n\n        return best_passing\n\n    def run(self, ctx: dict) -> dict:\n        code = ctx.get(\"code\", \"\")\n        spec = ctx.get(\"spec\", \"\")\n        result = self.tree_search(code, spec)\n        if result is None:\n            return {\"code\": code, \"verified\": False, \"score\": 0.0, \"trace\": [], \"passed\": False}\n        return {\n            \"code\": result.code,\n            \"verified\": result.verified,\n            \"score\": result.score,\n            \"trace\": result.trace,\n            \"passed\": True,\n        }\n\n    def report(self) -> dict:\n        return {\n            \"engine\": \"alphaverus\",\n            \"budget\": self._budget,\n            \"width\": self._width,\n            \"depth\": self._depth,\n            \"iterations\": len(self._log),\n            \"last\": self._log[-1] if self._log else None,\n        }\n",
+  "body_hash": "1223ba2770aa6023",
+  "body_truncated": false,
+  "callers_of": [
+    "int",
+    "_score",
+    "_passes",
+    "append",
+    "VerifiedCode",
+    "range",
+    "get",
+    "tree_search",
+    "hasattr",
+    "splitlines",
+    "enumerate",
+    "search",
+    "sort",
+    "len",
+    "certify_output_verify",
+    "getattr",
+    "group",
+    "sub",
+    "_mutations",
+    "bool",
+    "startswith",
+    "endswith",
+    "insert",
+    "join",
+    "lstrip",
+    "rstrip"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/alphaverus.py:165.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.alphaverus",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "os",
+    "re",
+    "subprocess",
+    "sys",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Optional",
+    "radon.complexity.cc_visit"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/alphaverus.py:165"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.tree_search",
+    "at.source.ass_ade.search"
+  ],
+  "name": "AlphaVerus",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for AlphaVerus"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

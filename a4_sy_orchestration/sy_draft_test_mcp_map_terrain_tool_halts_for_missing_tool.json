@@ -1,0 +1,41 @@
+{
+  "body": "def test_mcp_map_terrain_tool_halts_for_missing_tool(tmp_path: Path) -> None:\n    server = MCPServer(str(tmp_path))\n    _initialize_server(server)\n    response = server._handle({\n        \"jsonrpc\": \"2.0\",\n        \"id\": 1,\n        \"method\": \"tools/call\",\n        \"params\": {\n            \"name\": \"map_terrain\",\n            \"arguments\": {\n                \"task_description\": \"Need a missing scanner.\",\n                \"required_capabilities\": {\"tools\": [\"nexus_semgrep_scan\"]},\n            },\n        },\n    })\n\n    assert response is not None\n    assert response[\"result\"][\"isError\"] is True\n    text = response[\"result\"][\"content\"][0][\"text\"]\n    assert '\"verdict\": \"HALT_AND_INVENT\"' in text\n",
+  "body_hash": "444f8c988b615b59",
+  "body_truncated": false,
+  "callers_of": [
+    "MCPServer",
+    "_initialize_server",
+    "_handle",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_map_terrain.py:129.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_mcp_map_terrain_tool_halts_for_missing_tool",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.map_terrain.map_terrain",
+    "ass_ade.mcp.server.MCPServer"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_map_terrain.py:129"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "test_mcp_map_terrain_tool_halts_for_missing_tool",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_mcp_map_terrain_tool_halts_for_missing_tool"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

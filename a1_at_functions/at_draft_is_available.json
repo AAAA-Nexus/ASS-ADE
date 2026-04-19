@@ -1,0 +1,30 @@
+{
+  "body": "    def is_available(self, config_key: str | None = None) -> bool:\n        \"\"\"True if this provider has auth (or is local + reachable).\"\"\"\n        if self.local:\n            return True\n        return self.resolve_api_key(config_key) is not None\n",
+  "body_hash": "51ba1712ff8e470c",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve_api_key"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_providerprofile.py:41.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.is_available",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_providerprofile.py:41"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "is_available",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for is_available"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

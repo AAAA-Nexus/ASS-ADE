@@ -1,0 +1,32 @@
+{
+  "body": "    def test_exception_handling_proxy_network_error_sanitized(self) -> None:\n        \"\"\"Network errors should be sanitized.\"\"\"\n        client = _mock_client()\n        client.aegis_mcp_proxy.side_effect = ConnectionError(\"Failed to connect to 192.168.1.1:8080\")\n        result = safe_execute(client, \"network_tool\", \"\", agent_id=\"agent-2\")\n        assert result.invocation_result[\"error\"] == \"proxy_failed\"\n        assert \"192.168.1.1\" not in result.invocation_result[\"error\"]\n        assert \"Failed\" not in result.invocation_result[\"error\"]\n",
+  "body_hash": "98bd15a0fb2ca1e8",
+  "body_truncated": false,
+  "callers_of": [
+    "_mock_client",
+    "ConnectionError",
+    "safe_execute"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_testsafeexecute.py:38.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "og.source.ass_ade.test_exception_handling_proxy_network_error_sanitized",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_testsafeexecute.py:38"
+  },
+  "kind": "product_organism",
+  "made_of": [],
+  "name": "test_exception_handling_proxy_network_error_sanitized",
+  "product_categories": [
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for test_exception_handling_proxy_network_error_sanitized"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a3_og_features",
+  "version": "0.1.0"
+}

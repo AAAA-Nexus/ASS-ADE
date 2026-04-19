@@ -1,0 +1,36 @@
+{
+  "body": "def test_identity_sybil_check(tmp_path: Path) -> None:\n    mock_nx = MagicMock()\n    mock_nx.sybil_check.return_value = SybilCheckResult(sybil_risk=\"low\", score=0.1)\n    with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n        result = runner.invoke(app, [\"identity\", \"sybil-check\", \"agent-1\",\n                                     \"--config\", str(_hybrid_config(tmp_path)), \"--allow-remote\"])\n    assert result.exit_code == 0\n    assert \"low\" in result.stdout\n",
+  "body_hash": "7677761ce4c2b043",
+  "body_truncated": false,
+  "callers_of": [
+    "MagicMock",
+    "SybilCheckResult",
+    "patch",
+    "invoke",
+    "_make_ctx_mgr",
+    "str",
+    "_hybrid_config"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_identity_sybil_check.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_identity_sybil_check",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_identity_sybil_check.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_identity_sybil_check",
+  "product_categories": [
+    "IDT"
+  ],
+  "provides": [
+    "rebuild candidate for test_identity_sybil_check"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

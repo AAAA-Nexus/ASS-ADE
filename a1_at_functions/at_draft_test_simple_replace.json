@@ -1,0 +1,33 @@
+{
+  "body": "    def test_simple_replace(self, workspace: Path):\n        tool = EditFileTool(str(workspace))\n        r = tool.execute(path=\"hello.py\", old_string=\"hello world\", new_string=\"goodbye world\")\n        assert r.success\n        assert (workspace / \"hello.py\").read_text() == \"print('goodbye world')\\n\"\n",
+  "body_hash": "49ec5836f88f4c2a",
+  "body_truncated": false,
+  "callers_of": [
+    "EditFileTool",
+    "execute",
+    "str",
+    "read_text"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditfile.py:6.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_simple_replace",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditfile.py:6"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_simple_replace",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_simple_replace"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

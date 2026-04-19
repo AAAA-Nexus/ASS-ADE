@@ -1,0 +1,40 @@
+{
+  "body": "    def test_nexus_selectable_via_tier_policy(self, monkeypatch):\n        monkeypatch.setenv(\"AAAA_NEXUS_API_KEY\", \"an_test_key\")\n        from ass_ade.agent.lse import LSEEngine\n\n        lse = LSEEngine({\"tier_policy\": {\"deep\": \"nexus\"}})\n        decision = lse.select(trs_score=0.3, complexity=\"critical\")\n        assert decision.provider == \"nexus\"\n",
+  "body_hash": "d74b7a1b712ed0c2",
+  "body_truncated": false,
+  "callers_of": [
+    "setenv",
+    "LSEEngine",
+    "select"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexusasprovider.py:19.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_nexus_selectable_via_tier_policy",
+  "imports": [
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.ProviderOverride",
+    "ass_ade.engine.provider.NexusProvider",
+    "ass_ade.engine.router.build_provider",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.engine.router.build_provider"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexusasprovider.py:19"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_nexus_selectable_via_tier_policy",
+  "product_categories": [
+    "SRG"
+  ],
+  "provides": [
+    "rebuild candidate for test_nexus_selectable_via_tier_policy"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

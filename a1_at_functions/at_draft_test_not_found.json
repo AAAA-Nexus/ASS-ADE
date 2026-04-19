@@ -1,0 +1,33 @@
+{
+  "body": "    def test_not_found(self, workspace: Path):\n        tool = EditFileTool(str(workspace))\n        r = tool.execute(path=\"hello.py\", old_string=\"NOPE\", new_string=\"X\")\n        assert not r.success\n        assert \"not found\" in (r.error or \"\").lower()\n",
+  "body_hash": "89314545769aed07",
+  "body_truncated": false,
+  "callers_of": [
+    "EditFileTool",
+    "execute",
+    "str",
+    "lower"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditfile.py:12.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_not_found",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditfile.py:12"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_not_found",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_not_found"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

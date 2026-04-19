@@ -1,0 +1,37 @@
+{
+  "body": "    def from_response(cls, body: dict) -> PaymentChallenge:\n        \"\"\"Parse a 402 JSON response body into a PaymentChallenge.\"\"\"\n        recipient = body.get(\"recipient\", \"\")\n        amount_raw = body.get(\"amount_micro_usdc\", 0)\n        if not recipient:\n            raise ValueError(\"402 response missing required field: recipient\")\n        try:\n            amount = int(amount_raw)\n        except (TypeError, ValueError):\n            raise ValueError(\"402 response field amount_micro_usdc must be an integer\") from None\n        challenge = cls(\n            amount_micro_usdc=amount,\n            amount_usdc=float(body.get(\"amount_usdc\", 0)),\n            recipient=recipient,\n            nonce=body.get(\"nonce\", \"\"),\n            expires=body.get(\"expires\", 0),\n            chain_id=body.get(\"chain_id\", BASE_MAINNET_CHAIN_ID),\n            token_address=body.get(\"token_address\") or body.get(\"sdk_hints\", {}).get(\"token_address\", \"\"),\n            endpoint=body.get(\"endpoint\", \"\"),\n            x402_version=body.get(\"x402_version\", \"2.1\"),\n        )\n        return challenge.validate()\n",
+  "body_hash": "aaf00ee574c5fba9",
+  "body_truncated": false,
+  "callers_of": [
+    "get",
+    "cls",
+    "validate",
+    "ValueError",
+    "int",
+    "float"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_paymentchallenge.py:33.",
+  "exceptions_raised": [
+    "ValueError"
+  ],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.from_response",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_paymentchallenge.py:33"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "from_response",
+  "product_categories": [
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for from_response"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

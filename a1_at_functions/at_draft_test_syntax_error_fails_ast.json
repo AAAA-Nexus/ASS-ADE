@@ -1,0 +1,43 @@
+{
+  "body": "    def test_syntax_error_fails_ast(self):\n        from ass_ade.agent.cie import CIEPipeline\n        cie = CIEPipeline({\"cie\": {\"enable_lint\": False}})\n        result = cie.run(\"def foo(:\\n    pass\\n\", \"python\")\n        assert result.ast_valid is False\n        assert result.passed is False\n        assert len(result.errors) > 0\n",
+  "body_hash": "9e84eb5bdd0c10db",
+  "body_truncated": false,
+  "callers_of": [
+    "CIEPipeline",
+    "run",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testciepipeline.py:16.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_syntax_error_fails_ast",
+  "imports": [
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.cie.CIEPipeline"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testciepipeline.py:16"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_syntax_error_fails_ast",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_syntax_error_fails_ast"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

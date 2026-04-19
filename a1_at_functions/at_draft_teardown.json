@@ -1,0 +1,28 @@
+{
+  "body": "    def teardown(self) -> None:\n        \"\"\"Mark the session as ended (client-side only).\"\"\"\n        self.session_id = None\n        self.epoch = 0\n        self._started = False\n",
+  "body_hash": "fde599ce321f1b40",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_nexussession.py:64.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.teardown",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_nexussession.py:64"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "teardown",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for teardown"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

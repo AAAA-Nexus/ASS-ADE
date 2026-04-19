@@ -1,0 +1,30 @@
+{
+  "body": "    def register(self, tool: ToolRef) -> None:\n        self._catalog.append(tool)\n",
+  "body_hash": "cc0a2c36e3d3a8b0",
+  "body_truncated": false,
+  "callers_of": [
+    "append"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_mcpzerorouter.py:12.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.register",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_mcpzerorouter.py:12"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "register",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for register"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

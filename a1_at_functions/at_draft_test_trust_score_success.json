@@ -1,0 +1,54 @@
+{
+  "body": "    def test_trust_score_success(self, tmp_path: Path, hybrid_config: Path) -> None:\n        \"\"\"Trust score should return formally bounded score and tier.\"\"\"\n        mock_nx = MagicMock()\n        mock_nx.trust_score.return_value = TrustScore(\n            agent_id=\"agent-reliable-1\",\n            score=0.92,\n            tier=\"gold\",\n            certified_monotonic=True,\n        )\n        \n        with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n            result = runner.invoke(\n                app,\n                [\"trust\", \"score\", \"agent-reliable-1\", \"--config\", str(hybrid_config)],\n            )\n        \n        assert result.exit_code == 0\n        assert \"0.92\" in result.stdout or \"gold\" in result.stdout\n",
+  "body_hash": "688ab4728fd19129",
+  "body_truncated": false,
+  "callers_of": [
+    "MagicMock",
+    "TrustScore",
+    "patch",
+    "invoke",
+    "_make_ctx_mgr",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli_happy_path.py:312.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_trust_score_success",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.nexus.models.AgentPlan",
+    "ass_ade.nexus.models.ComplianceResult",
+    "ass_ade.nexus.models.FormatConversion",
+    "ass_ade.nexus.models.InferenceResponse",
+    "ass_ade.nexus.models.IntentClassification",
+    "ass_ade.nexus.models.RatchetSession",
+    "ass_ade.nexus.models.TrustScore",
+    "ass_ade.pipeline.PipelineResult"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli_happy_path.py:312"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_trust_score_success",
+  "product_categories": [
+    "IDT"
+  ],
+  "provides": [
+    "rebuild candidate for test_trust_score_success"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

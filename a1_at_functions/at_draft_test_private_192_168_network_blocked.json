@@ -1,0 +1,31 @@
+{
+  "body": "    def test_private_192_168_network_blocked(self) -> None:\n        \"\"\"Absolute URLs to 192.168.x.x should be blocked.\"\"\"\n        with pytest.raises(ValueError, match=\"private/loopback address\"):\n            _validate_absolute_endpoint(\"https://192.168.1.1/admin\")\n",
+  "body_hash": "b27a94e26acd38bf",
+  "body_truncated": false,
+  "callers_of": [
+    "raises",
+    "_validate_absolute_endpoint"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateabsoluteendpoint.py:40.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_private_192_168_network_blocked",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateabsoluteendpoint.py:40"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_private_192_168_network_blocked",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_private_192_168_network_blocked"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

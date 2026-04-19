@@ -1,0 +1,38 @@
+{
+  "body": "    def test_trim_context(self):\n        gates = QualityGates(_mock_nexus(trimmed_context=\"short version\"))\n        result = gates.trim_context(\"very long context...\", target_tokens=100)\n        assert result == \"short version\"\n",
+  "body_hash": "c84f58af0e2a1452",
+  "body_truncated": false,
+  "callers_of": [
+    "QualityGates",
+    "trim_context",
+    "_mock_nexus"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:108.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_trim_context",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "unittest.mock.MagicMock",
+    "ass_ade.agent.gates.GateResult",
+    "ass_ade.agent.gates.QualityGates"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:108"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_trim_context",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_trim_context"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

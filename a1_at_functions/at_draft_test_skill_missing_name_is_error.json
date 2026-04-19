@@ -1,0 +1,47 @@
+{
+  "body": "    def test_skill_missing_name_is_error(self) -> None:\n        data = {\n            \"name\": \"TestAgent\",\n            \"url\": \"https://example.com\",\n            \"version\": \"1.0\",\n            \"skills\": [{\"id\": \"s1\", \"name\": \"\"}],\n        }\n        report = validate_agent_card(data)\n        assert not report.valid\n",
+  "body_hash": "95d086c1fdd99976",
+  "body_truncated": false,
+  "callers_of": [
+    "validate_agent_card"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:105.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_skill_missing_name_is_error",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "pytest",
+    "ass_ade.a2a.A2AAgentCard",
+    "ass_ade.a2a.A2AAuthentication",
+    "ass_ade.a2a.A2ASkill",
+    "ass_ade.a2a.ValidationIssue",
+    "ass_ade.a2a.ValidationReport",
+    "ass_ade.a2a.fetch_agent_card",
+    "ass_ade.a2a.local_agent_card",
+    "ass_ade.a2a.negotiate",
+    "ass_ade.a2a.validate_agent_card",
+    "httpx",
+    "httpx"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:105"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_skill_missing_name_is_error",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_skill_missing_name_is_error"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

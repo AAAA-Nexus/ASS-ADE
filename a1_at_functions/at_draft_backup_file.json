@@ -1,0 +1,35 @@
+{
+  "body": "    def backup_file(path: Path) -> None:\n        if dry_run or not path.exists():\n            return\n        rel = path.relative_to(root)\n        target = backup_dir / rel\n        target.parent.mkdir(parents=True, exist_ok=True)\n        shutil.copy2(path, target)\n        files_backed_up.append(str(target))\n",
+  "body_hash": "09a2bab275f31bda",
+  "body_truncated": false,
+  "callers_of": [
+    "relative_to",
+    "mkdir",
+    "copy2",
+    "append",
+    "str",
+    "exists"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_bump_project_version.py:20.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.backup_file",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_bump_project_version.py:20"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "backup_file",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for backup_file"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

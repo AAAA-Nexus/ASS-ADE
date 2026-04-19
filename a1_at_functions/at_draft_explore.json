@@ -1,0 +1,34 @@
+{
+  "body": "    def explore(self, missing_skill: str, env: dict, budget: int | None = None) -> SkillArtifact:\n        n = budget if budget is not None else self._budget\n        self._explorations += 1\n        trace: list[dict] = []\n        successes = 0\n        for i in range(n):\n            sample = self._simulate_action(missing_skill, env, i)\n            trace.append(sample)\n            if sample[\"success\"] >= 0.5:\n                successes += 1\n        feasibility = successes / max(1, n)\n        return SkillArtifact(\n            skill=missing_skill,\n            feasibility=feasibility,\n            samples=n,\n            trace=trace[-5:],\n            ready=feasibility >= 0.5,\n        )\n",
+  "body_hash": "40ac46bb6065d234",
+  "body_truncated": false,
+  "callers_of": [
+    "range",
+    "SkillArtifact",
+    "_simulate_action",
+    "append",
+    "max"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_exif.py:18.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.explore",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_exif.py:18"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "explore",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for explore"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,41 @@
+{
+  "body": "    def test_no_fail_fast_runs_all(self) -> None:\n        pipe = Pipeline(\"noff\", fail_fast=False)\n        pipe.add(\"s1\", pass_step)\n        pipe.add(\"s2\", fail_step)\n        pipe.add(\"s3\", pass_step)\n        result = pipe.run()\n        assert not result.passed\n        assert result.steps[0].status == StepStatus.PASSED\n        assert result.steps[1].status == StepStatus.FAILED\n        assert result.steps[2].status == StepStatus.PASSED\n",
+  "body_hash": "0a80f823de1a7794",
+  "body_truncated": false,
+  "callers_of": [
+    "Pipeline",
+    "add",
+    "run"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:109.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_no_fail_fast_runs_all",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.pipeline.Pipeline",
+    "ass_ade.pipeline.PipelineResult",
+    "ass_ade.pipeline.StepResult",
+    "ass_ade.pipeline.StepStatus"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:109"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_no_fail_fast_runs_all",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_no_fail_fast_runs_all"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

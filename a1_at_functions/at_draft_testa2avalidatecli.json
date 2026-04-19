@@ -1,0 +1,47 @@
+{
+  "body": "class TestA2AValidateCLI:\n    def test_validate_valid_card(self, tmp_path: Path) -> None:\n        card_file = tmp_path / \"agent.json\"\n        card_file.write_text(json.dumps({\n            \"name\": \"TestAgent\",\n            \"description\": \"A test agent\",\n            \"url\": \"https://test.com\",\n            \"version\": \"1.0.0\",\n            \"skills\": [{\"id\": \"skill1\", \"name\": \"Test Skill\"}],\n        }), encoding=\"utf-8\")\n\n        result = runner.invoke(app, [\"a2a\", \"validate\", str(card_file)])\n        assert result.exit_code == 0\n        assert \"Valid\" in result.stdout or \"TestAgent\" in result.stdout\n\n    def test_validate_missing_fields(self, tmp_path: Path) -> None:\n        card_file = tmp_path / \"bad.json\"\n        card_file.write_text(json.dumps({\"description\": \"Missing name\"}), encoding=\"utf-8\")\n\n        result = runner.invoke(app, [\"a2a\", \"validate\", str(card_file)])\n        assert result.exit_code == 1\n\n    def test_validate_missing_file(self) -> None:\n        result = runner.invoke(app, [\"a2a\", \"validate\", \"/nonexistent/agent.json\"])\n        assert result.exit_code == 1\n",
+  "body_hash": "a3ab98b474bde545",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "invoke",
+    "dumps",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a_cli.py:41.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.testa2avalidatecli",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "unittest.mock.patch",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.nexus.models.DiscoveryResult",
+    "ass_ade.nexus.models.DiscoveredAgent",
+    "ass_ade.a2a.A2AAgentCard",
+    "ass_ade.a2a.NegotiationResult"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a_cli.py:41"
+  },
+  "kind": "pure_class",
+  "made_of": [],
+  "name": "TestA2AValidateCLI",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestA2AValidateCLI"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,31 @@
+{
+  "body": "    def estimated_tokens(self) -> int:\n        \"\"\"Total estimated tokens across all messages.\"\"\"\n        return sum(estimate_message_tokens(m) for m in self._messages)\n",
+  "body_hash": "af317490eacace80",
+  "body_truncated": false,
+  "callers_of": [
+    "sum",
+    "estimate_message_tokens"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_conversation.py:44.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.estimated_tokens",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_conversation.py:44"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "estimated_tokens",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for estimated_tokens"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

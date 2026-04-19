@@ -1,0 +1,31 @@
+{
+  "body": "    def test_dns_resolution_failure_handled(self) -> None:\n        \"\"\"DNS resolution failures should be caught and reported.\"\"\"\n        with pytest.raises(ValueError, match=\"private/loopback address\"):\n            # Invalid hostname that won't resolve\n            _validate_absolute_endpoint(\"https://this-domain-does-not-exist-12345-test.invalid/api\")\n",
+  "body_hash": "96098dab54eb2c08",
+  "body_truncated": false,
+  "callers_of": [
+    "raises",
+    "_validate_absolute_endpoint"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateabsoluteendpoint.py:60.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_dns_resolution_failure_handled",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateabsoluteendpoint.py:60"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_dns_resolution_failure_handled",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_dns_resolution_failure_handled"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

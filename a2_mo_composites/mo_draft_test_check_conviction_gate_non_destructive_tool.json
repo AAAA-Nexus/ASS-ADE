@@ -1,0 +1,34 @@
+{
+  "body": "    def test_check_conviction_gate_non_destructive_tool(self):\n        orch = self._make()\n        # Non-destructive tool: read_file should NOT be blocked\n        blocked = orch.check_conviction_gate(\"read_file\", {})\n        assert blocked is False\n",
+  "body_hash": "af30c470c8578f83",
+  "body_truncated": false,
+  "callers_of": [
+    "_make",
+    "check_conviction_gate"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testengineorchestratorphase15.py:33.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.test_check_conviction_gate_non_destructive_tool",
+  "imports": [
+    "ass_ade.agent.orchestrator.EngineOrchestrator",
+    "ass_ade.agent.orchestrator.CycleReport"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testengineorchestratorphase15.py:33"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "test_check_conviction_gate_non_destructive_tool",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_check_conviction_gate_non_destructive_tool"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

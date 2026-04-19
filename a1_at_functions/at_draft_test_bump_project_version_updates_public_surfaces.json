@@ -1,0 +1,36 @@
+{
+  "body": "def test_bump_project_version_updates_public_surfaces(tmp_path: Path) -> None:\n    (tmp_path / \"pyproject.toml\").write_text(\n        '[project]\\nname = \"demo\"\\nversion = \"0.0.1\"\\n',\n        encoding=\"utf-8\",\n    )\n    package_dir = tmp_path / \"src\" / \"ass_ade\"\n    package_dir.mkdir(parents=True)\n    (package_dir / \"__init__.py\").write_text('__version__ = \"0.0.1\"\\n', encoding=\"utf-8\")\n    (tmp_path / \"README.md\").write_text(\"# Demo\\n\\n**Version:** 0.0.1\\n\", encoding=\"utf-8\")\n    (tmp_path / \"CHANGELOG.md\").write_text(\"# Changelog\\n\\n## [Unreleased]\\n\", encoding=\"utf-8\")\n\n    result = bump_project_version(\n        root=tmp_path,\n        bump=\"minor\",\n        summary=\"Prepare next evolution branch\",\n    )\n\n    assert result.old_version == \"0.0.1\"\n    assert result.new_version == \"0.1.0\"\n    assert 'version = \"0.1.0\"' in (tmp_path / \"pyproject.toml\").read_text(encoding=\"utf-8\")\n    assert '__version__ = \"0.1.0\"' in (package_dir / \"__init__.py\").read_text(encoding=\"utf-8\")\n    assert \"**Version:** 0.1.0\" in (tmp_path / \"README.md\").read_text(encoding=\"utf-8\")\n    assert \"## [0.1.0]\" in (tmp_path / \"CHANGELOG.md\").read_text(encoding=\"utf-8\")\n    assert result.backup_dir\n    assert len(result.files_backed_up) == 4\n    assert (Path(result.backup_dir) / \"pyproject.toml\").exists()\n",
+  "body_hash": "dbfeba378025c3f4",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "mkdir",
+    "bump_project_version",
+    "exists",
+    "read_text",
+    "len",
+    "Path"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_bump_project_version_updates_public_surfaces.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_bump_project_version_updates_public_surfaces",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_bump_project_version_updates_public_surfaces.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_bump_project_version_updates_public_surfaces",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_bump_project_version_updates_public_surfaces"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,28 @@
+{
+  "body": "    def failed_steps(self) -> list[StepResult]:\n        return [s for s in self.steps if s.status == StepStatus.FAILED]\n",
+  "body_hash": "72175a7a8af791a2",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_pipelineresult.py:15.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.failed_steps",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_pipelineresult.py:15"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "failed_steps",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for failed_steps"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

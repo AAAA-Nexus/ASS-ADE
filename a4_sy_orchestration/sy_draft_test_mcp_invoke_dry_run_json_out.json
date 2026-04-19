@@ -1,0 +1,60 @@
+{
+  "body": "def test_mcp_invoke_dry_run_json_out(monkeypatch, tmp_path: Path) -> None:\n    import json as _json\n    manifest = MCPManifest(name=\"demo\", tools=[MCPTool(name=\"echo\", endpoint=\"/echo\", method=\"POST\", paid=False)])\n    monkeypatch.setattr(\"ass_ade.cli.NexusClient\", _fake_client_factory(manifest))\n\n    config_path = tmp_path / \".ass-ade\" / \"config.json\"\n    write_default_config(config_path, config=AssAdeConfig(profile=\"hybrid\"), overwrite=True)\n    out_file = tmp_path / \"sim.json\"\n\n    result = runner.invoke(\n        app,\n        [\"mcp\", \"invoke\", \"1\", \"--config\", str(config_path), \"--dry-run\", \"--json-out\", str(out_file)],\n    )\n    assert result.exit_code == 0\n    assert out_file.exists()\n    payload = _json.loads(out_file.read_text(encoding=\"utf-8\"))\n    assert payload.get(\"simulated\") is True\n",
+  "body_hash": "9c15ed92e2dc51ab",
+  "body_truncated": false,
+  "callers_of": [
+    "MCPManifest",
+    "setattr",
+    "write_default_config",
+    "invoke",
+    "exists",
+    "loads",
+    "_fake_client_factory",
+    "read_text",
+    "get",
+    "AssAdeConfig",
+    "str",
+    "MCPTool"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp.py:239.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_mcp_invoke_dry_run_json_out",
+  "imports": [
+    "pathlib.Path",
+    "httpx",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.write_default_config",
+    "ass_ade.mcp.utils.invoke_tool",
+    "ass_ade.nexus.models.MCPManifest",
+    "ass_ade.nexus.models.MCPTool",
+    "ass_ade.nexus.models.CostEstimate",
+    "json",
+    "httpx",
+    "ass_ade.mcp.mock_server.start_server",
+    "httpx",
+    "ass_ade.mcp.mock_server._MAX_BODY_BYTES",
+    "ass_ade.mcp.mock_server.start_server"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp.py:239"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [
+    "og.source.ass_ade.get"
+  ],
+  "name": "test_mcp_invoke_dry_run_json_out",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_mcp_invoke_dry_run_json_out"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

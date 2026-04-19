@@ -1,0 +1,30 @@
+{
+  "body": "    def test_empty_list(self):\n        assert estimate_tools_tokens([]) == 0\n",
+  "body_hash": "3b35bd9be72620da",
+  "body_truncated": false,
+  "callers_of": [
+    "estimate_tools_tokens"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testestimatetoolstokens.py:6.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.test_empty_list",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testestimatetoolstokens.py:6"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "test_empty_list",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_empty_list"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

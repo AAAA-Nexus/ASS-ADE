@@ -1,0 +1,35 @@
+{
+  "body": "class Principle:\n    text: str\n    weight: float\n    source_traces: int\n",
+  "body_hash": "149c8a7dc4b21c9f",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/edee.py:14.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.principle",
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "ass_ade.context_memory.query_vector_memory",
+    "ass_ade.context_memory.store_vector_memory",
+    "ass_ade.agent.exif.EXIF"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/edee.py:14"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "Principle",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for Principle"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

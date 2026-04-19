@@ -1,0 +1,42 @@
+{
+  "body": "    def test_apply_modify(self, executor: EditPlanExecutor, workspace: Path):\n        plan = EditPlan()\n        plan.add_modify(\"main.py\", \"pass\", \"print('hello')\")\n        executor.validate(plan)\n        result = executor.apply(plan)\n        assert result.success\n        content = (workspace / \"main.py\").read_text(encoding=\"utf-8\")\n        assert \"print('hello')\" in content\n",
+  "body_hash": "82f3a899dcfc8c89",
+  "body_truncated": false,
+  "callers_of": [
+    "EditPlan",
+    "add_modify",
+    "validate",
+    "apply",
+    "read_text"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:109.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_apply_modify",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "pytest",
+    "ass_ade.tools.history.FileHistory",
+    "ass_ade.tools.plan.EditKind",
+    "ass_ade.tools.plan.EditPlan",
+    "ass_ade.tools.plan.EditPlanExecutor"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:109"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_apply_modify",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_apply_modify"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

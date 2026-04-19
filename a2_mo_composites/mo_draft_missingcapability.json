@@ -1,0 +1,41 @@
+{
+  "body": "class MissingCapability(BaseModel):\n    name: str\n    type: str\n    specification: str\n    recommended_creation_tool: str\n    estimated_fuel_cost: float\n    verification_criteria: list[str] = Field(default_factory=list)\n    human_approval_required: bool = False\n",
+  "body_hash": "ec046098a8fd837d",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/map_terrain.py:109.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.missingcapability",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "re",
+    "time",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Literal",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "ass_ade.tools.registry.default_registry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/map_terrain.py:109"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "MissingCapability",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for MissingCapability"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

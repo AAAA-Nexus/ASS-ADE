@@ -1,0 +1,31 @@
+{
+  "body": "    def test_add_tool_result(self):\n        c = Conversation()\n        c.add_tool_result(\"c1\", \"read_file\", \"file data\")\n        m = c.messages[-1]\n        assert m.role == \"tool\"\n        assert m.tool_call_id == \"c1\"\n        assert m.name == \"read_file\"\n",
+  "body_hash": "e6ea468063081167",
+  "body_truncated": false,
+  "callers_of": [
+    "Conversation",
+    "add_tool_result"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testconversation.py:17.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_add_tool_result",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testconversation.py:17"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_add_tool_result",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_add_tool_result"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

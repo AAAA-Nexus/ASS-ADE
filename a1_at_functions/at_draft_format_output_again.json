@@ -1,0 +1,31 @@
+{
+  "body": "def format_output_again(data):\n    processed = process_data(data)\n    return str(processed)\n",
+  "body_hash": "e99a01f5f56f28bf",
+  "body_truncated": false,
+  "callers_of": [
+    "process_data",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_format_output_again.py:5.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.format_output_again",
+  "imports": [],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_format_output_again.py:5"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "format_output_again",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for format_output_again"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

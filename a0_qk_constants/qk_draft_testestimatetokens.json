@@ -1,0 +1,42 @@
+{
+  "body": "class TestEstimateTokens:\n    def test_empty_string(self):\n        assert estimate_tokens(\"\") == 1  # min 1\n\n    def test_short_text(self):\n        result = estimate_tokens(\"hello world\")\n        assert result >= 1\n        assert result <= 10\n\n    def test_code_block(self):\n        code = \"def fibonacci(n: int) -> int:\\n    if n <= 1:\\n        return n\\n    return fibonacci(n - 1) + fibonacci(n - 2)\\n\"\n        result = estimate_tokens(code)\n        assert result >= 10\n        assert result <= 100\n\n    def test_long_text(self):\n        text = \"The quick brown fox jumps over the lazy dog. \" * 100\n        result = estimate_tokens(text)\n        # ~4500 chars / 3.7 \u2248 ~1216 tokens\n        assert 800 < result < 2000\n\n    def test_returns_int(self):\n        assert isinstance(estimate_tokens(\"test\"), int)\n",
+  "body_hash": "75866f65e8363d5b",
+  "body_truncated": false,
+  "callers_of": [
+    "estimate_tokens",
+    "isinstance"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tokens.py:19.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.testestimatetokens",
+  "imports": [
+    "__future__.annotations",
+    "ass_ade.engine.tokens.DEFAULT_CONTEXT_WINDOW",
+    "ass_ade.engine.tokens.RESPONSE_RESERVE",
+    "ass_ade.engine.tokens.TokenBudget",
+    "ass_ade.engine.tokens.context_window_for",
+    "ass_ade.engine.tokens.estimate_message_tokens",
+    "ass_ade.engine.tokens.estimate_tokens",
+    "ass_ade.engine.tokens.estimate_tools_tokens",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolSchema"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tokens.py:19"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "TestEstimateTokens",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestEstimateTokens"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

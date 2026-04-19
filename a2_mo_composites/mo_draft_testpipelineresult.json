@@ -1,0 +1,46 @@
+{
+  "body": "class TestPipelineResult:\n    def test_summary_passed(self) -> None:\n        result = PipelineResult(\n            name=\"test\",\n            steps=[\n                StepResult(name=\"s1\", status=StepStatus.PASSED),\n                StepResult(name=\"s2\", status=StepStatus.PASSED),\n            ],\n            passed=True,\n            duration_ms=150.0,\n        )\n        assert \"[PASSED]\" in result.summary\n        assert \"2/2 passed\" in result.summary\n\n    def test_summary_failed(self) -> None:\n        result = PipelineResult(\n            name=\"test\",\n            steps=[\n                StepResult(name=\"s1\", status=StepStatus.PASSED),\n                StepResult(name=\"s2\", status=StepStatus.FAILED, error=\"x\"),\n                StepResult(name=\"s3\", status=StepStatus.SKIPPED),\n            ],\n            passed=False,\n            duration_ms=200.0,\n        )\n        assert \"[FAILED]\" in result.summary\n        assert \"1 failed\" in result.summary\n        assert \"1 skipped\" in result.summary\n\n    def test_failed_steps_property(self) -> None:\n        result = PipelineResult(\n            name=\"test\",\n            steps=[\n                StepResult(name=\"s1\", status=StepStatus.PASSED),\n                StepResult(name=\"s2\", status=StepStatus.FAILED),\n            ],\n            passed=False,\n        )\n        assert len(result.failed_steps) == 1\n        assert result.failed_steps[0].name == \"s2\"\n\n    def test_duration_tracking(self) -> None:\n        pipe = Pipeline(\"dur\")\n        pipe.add(\"s1\", pass_step)\n        result = pipe.run()\n        assert result.duration_ms >= 0\n        assert result.steps[0].duration_ms >= 0\n",
+  "body_hash": "034de51255980cef",
+  "body_truncated": false,
+  "callers_of": [
+    "PipelineResult",
+    "Pipeline",
+    "add",
+    "run",
+    "len",
+    "StepResult"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:218.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.testpipelineresult",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.pipeline.Pipeline",
+    "ass_ade.pipeline.PipelineResult",
+    "ass_ade.pipeline.StepResult",
+    "ass_ade.pipeline.StepStatus"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:218"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.add"
+  ],
+  "name": "TestPipelineResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TestPipelineResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}
