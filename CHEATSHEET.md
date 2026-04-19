@@ -42,7 +42,8 @@ Usage: python -m ass_ade [OPTIONS] COMMAND [ARGS]...
 │ recon          Run parallel codebase reconnaissance — 5 agents, no LLM, < 5 │
 │                s.                                                           │
 │ rebuild        Rebuild any codebase into a clean tier-partitioned modular   │
-│                folder.                                                      │
+│                folder. Accepts multiple SOURCE paths for merge-rebuild:     │
+│                  ass-ade rebuild src1 src2 --output unified --yes           │
 │ rollback       Restore the most recent backup created by a previous         │
 │                rebuild.                                                     │
 │ enhance        Proactive enhancement recommendation cycle for any codebase. │
@@ -140,6 +141,35 @@ Usage: python -m ass_ade [OPTIONS] COMMAND [ARGS]...
 ## Blueprint Files
 
 - (none found)
+
+---
+
+## Rebuild Syntax Reference
+
+### Single-source rebuild
+
+```bash
+ass-ade rebuild ./source --output ./output [--yes] [--incremental] [--premium]
+```
+
+### Merge-rebuild (new in v0.0.1)
+
+Merge multiple source directories into one unified tier-partitioned output.
+Newer files (by modification time) win on symbol conflicts.
+
+```bash
+ass-ade rebuild ./src-a ./src-b ./src-c --output ./unified --yes
+```
+
+`--output` is **required** for multi-source merges.
+
+### Rebuild vs Evolve
+
+| | `rebuild` | `enhance` / evolve |
+|--|-----------|-------------------|
+| Use when | First-time structure, merging sources | Applying a blueprint delta to existing output |
+| Pipeline | Full 7-phase (recon → certify) | Targeted blueprint application |
+| Output | New tier-partitioned folder | In-place update |
 
 ---
 
