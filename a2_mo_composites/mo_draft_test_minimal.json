@@ -1,12 +1,12 @@
 {
-  "body": "    def test_minimal(self):\n        m = Message(role=\"user\", content=\"hello\")\n        assert m.role == \"user\"\n        assert m.content == \"hello\"\n        assert m.tool_calls == []\n        assert m.tool_call_id is None\n",
-  "body_hash": "5f05a4393f708b6d",
+  "body": "def test_minimal(self):\n    m = Message(role=\"user\", content=\"hello\")\n    assert m.role == \"user\"\n    assert m.content == \"hello\"\n    assert m.tool_calls == []\n    assert m.tool_call_id is None\n",
+  "body_hash": "5a28d1b9beb96d4c",
   "body_truncated": false,
   "callers_of": [
     "Message"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine.py:25.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine.py:25.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_minimal",
@@ -37,7 +37,7 @@
     "ass_ade.engine.provider.MultiProvider"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine.py:25"
+    "source": "C:/!ass-ade/tests/test_engine.py:25"
   },
   "kind": "engine_molecule",
   "made_of": [],

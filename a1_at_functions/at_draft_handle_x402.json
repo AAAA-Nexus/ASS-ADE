@@ -1,0 +1,34 @@
+{
+  "body": "def handle_x402(self, response: httpx.Response) -> dict:\n    \"\"\"Parse a 402 Payment Required response and return payment details.\n\n    The x402 protocol returns payment requirements in the response body.\n    This method parses the response into a dict that includes both backward-compatible\n    keys and a typed PaymentChallenge for new code.\n\n    Returns a dict with:\n    - payment_required: bool (always True)\n    - challenge: PaymentChallenge (typed, parsed from response)\n    - amount_usdc: float (from challenge.amount_usdc)\n    - network: str (blockchain network)\n    - treasury: str (payment recipient)\n    - endpoint: str (which endpoint requires payment)\n    - detail: str (human-readable message)\n    - raw: dict (original response body)\n    \"\"\"\n    try:\n        body = response.json()\n    except ValueError:\n        body = {}\n\n    # Try to parse as a typed PaymentChallenge\n    challenge = None\n    try:\n        challenge = PaymentChallenge.from_response(body)\n    except ValueError:\n        pass  # Fall back to loose dict format\n\n    return {\n        \"payment_required\": True,\n        \"challenge\": challenge,  # New: typed PaymentChallenge\n        \"amount_usdc\": body.get(\"amount\") or body.get(\"price_usdc\", 0),\n        \"network\": body.get(\"network\", \"base\"),\n        \"treasury\": body.get(\"address\") or body.get(\"treasury\", \"\"),\n        \"endpoint\": body.get(\"endpoint\", \"\"),\n        \"detail\": body.get(\"detail\") or body.get(\"message\", \"Payment required\"),\n        \"raw\": body,\n    }\n",
+  "body_hash": "43bdb6c297c56b4c",
+  "body_truncated": false,
+  "callers_of": [
+    "json",
+    "from_response",
+    "get"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_handle_x402.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.handle_x402",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_handle_x402.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "handle_x402",
+  "product_categories": [
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for handle_x402"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_ncb_check_skipped_for_non_write_tools(self, tmp_path):\n        server = _make_server(tmp_path)\n        server._ncb_mode = \"block\"\n        # list_directory etc. should never be NCB-gated\n        allow, _ = server._pre_tool_hook(\"list_directory\", _mk_args(tmp_path))\n        assert allow is True\n",
-  "body_hash": "5ff19c3307ec1073",
+  "body": "def test_ncb_check_skipped_for_non_write_tools(self, tmp_path):\n    server = _make_server(tmp_path)\n    server._ncb_mode = \"block\"\n    # list_directory etc. should never be NCB-gated\n    allow, _ = server._pre_tool_hook(\"list_directory\", _mk_args(tmp_path))\n    assert allow is True\n",
+  "body_hash": "e35873ce410fa146",
   "body_truncated": false,
   "callers_of": [
     "_make_server",
@@ -8,7 +8,7 @@
     "_mk_args"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_gates.py:74.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_gates.py:74.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.test_ncb_check_skipped_for_non_write_tools",
@@ -21,7 +21,7 @@
     "ass_ade.mcp.server.MCPServer"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_gates.py:74"
+    "source": "C:/!ass-ade/tests/test_mcp_gates.py:74"
   },
   "kind": "ecosystem_system",
   "made_of": [],

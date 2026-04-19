@@ -1,6 +1,6 @@
 {
-  "body": "    def test_tool_blocked_by_shield(self, tmp_path):\n        provider = _MockProvider([\n            CompletionResponse(\n                message=Message(\n                    role=\"assistant\",\n                    content=\"\",\n                    tool_calls=[\n                        ToolCallRequest(id=\"c1\", name=\"echo\", arguments={\"text\": \"x\"})\n                    ],\n                ),\n                finish_reason=\"tool_calls\",\n            ),\n            CompletionResponse(\n                message=Message(role=\"assistant\", content=\"Tool was blocked.\"),\n                finish_reason=\"stop\",\n            ),\n        ])\n        registry = ToolRegistry()\n        registry.register(_EchoTool())\n\n        mock_gates = MagicMock(spec=QualityGates)\n        mock_gates.scan_prompt.return_value = {\"blocked\": False}\n        mock_gates.shield_tool.return_value = {\"blocked\": True, \"reason\": \"dangerous\"}\n        mock_gates.check_hallucination.return_value = None\n\n        loop = AgentLoop(\n            provider=provider,\n            registry=registry,\n            working_dir=str(tmp_path),\n            quality_gates=mock_gates,\n        )\n        result = loop.step(\"Do something dangerous\")\n        # The model should see the blocked error and respond\n        assert \"blocked\" in result.lower() or \"Tool was blocked\" in result\n",
-  "body_hash": "4a207eba233e2e2e",
+  "body": "def test_tool_blocked_by_shield(self, tmp_path):\n    provider = _MockProvider([\n        CompletionResponse(\n            message=Message(\n                role=\"assistant\",\n                content=\"\",\n                tool_calls=[\n                    ToolCallRequest(id=\"c1\", name=\"echo\", arguments={\"text\": \"x\"})\n                ],\n            ),\n            finish_reason=\"tool_calls\",\n        ),\n        CompletionResponse(\n            message=Message(role=\"assistant\", content=\"Tool was blocked.\"),\n            finish_reason=\"stop\",\n        ),\n    ])\n    registry = ToolRegistry()\n    registry.register(_EchoTool())\n\n    mock_gates = MagicMock(spec=QualityGates)\n    mock_gates.scan_prompt.return_value = {\"blocked\": False}\n    mock_gates.shield_tool.return_value = {\"blocked\": True, \"reason\": \"dangerous\"}\n    mock_gates.check_hallucination.return_value = None\n\n    loop = AgentLoop(\n        provider=provider,\n        registry=registry,\n        working_dir=str(tmp_path),\n        quality_gates=mock_gates,\n    )\n    result = loop.step(\"Do something dangerous\")\n    # The model should see the blocked error and respond\n    assert \"blocked\" in result.lower() or \"Tool was blocked\" in result\n",
+  "body_hash": "fad89c87f9f1e7cc",
   "body_truncated": false,
   "callers_of": [
     "_MockProvider",
@@ -17,13 +17,15 @@
     "ToolCallRequest"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testagentloop.py:144.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_tool_blocked_by_shield.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_tool_blocked_by_shield",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_tool_blocked_by_shield",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testagentloop.py:144"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_tool_blocked_by_shield.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

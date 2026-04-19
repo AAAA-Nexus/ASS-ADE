@@ -1,18 +1,20 @@
 {
-  "body": "    def do_thing_2(self, x):\n        self.data.append(x)\n        self.count += 1\n        self.total += x\n        self.average = self.total / self.count\n        if x > self.maximum: self.maximum = x\n        if x < self.minimum: self.minimum = x\n        return self.data\n",
-  "body_hash": "7cb969a9a9f9578b",
+  "body": "def do_thing_2(self, x):\n    self.data.append(x)\n    self.count += 1\n    self.total += x\n    self.average = self.total / self.count\n    if x > self.maximum: self.maximum = x\n    if x < self.minimum: self.minimum = x\n    return self.data\n",
+  "body_hash": "a1e2a09d1aa66903",
   "body_truncated": false,
   "callers_of": [
     "append"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_datamanager.py:26.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_datamanager.py:28.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.do_thing_2",
-  "imports": [],
+  "id": "mo.source.a2_mo_composites.do_thing_2",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_datamanager.py:26"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_datamanager.py:28"
   },
   "kind": "engine_molecule",
   "made_of": [],

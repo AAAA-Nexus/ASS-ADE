@@ -25,25 +25,20 @@
     "now"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/gvu.py:13.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_gvu.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.gvu",
+  "id": "mo.source.a2_mo_composites.gvu",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "datetime.UTC",
-    "datetime.datetime",
-    "pathlib.Path",
-    "typing.Any"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/gvu.py:13"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_gvu.py:7"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.update",
-    "at.source.ass_ade.compute_coefficient"
+    "at.source.a1_at_functions.update",
+    "at.source.a1_at_functions.compute_coefficient"
   ],
   "name": "GVU",
   "product_categories": [

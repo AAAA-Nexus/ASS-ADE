@@ -1,6 +1,6 @@
 {
-  "body": "    def test_pipeline_run_certify_success(self, tmp_path: Path, hybrid_config: Path) -> None:\n        \"\"\"Certify pipeline should verify hallucination, ethics, compliance, and certify output.\"\"\"\n        mock_nx = MagicMock()\n        \n        # Mock the four certify steps\n        hallucination_result = MagicMock()\n        hallucination_result.model_dump.return_value = {\"verdict\": \"safe\"}\n        mock_nx.hallucination_oracle.return_value = hallucination_result\n        \n        ethics_result = MagicMock()\n        ethics_result.model_dump.return_value = {\"safe\": True}\n        mock_nx.ethics_check.return_value = ethics_result\n        \n        compliance_result = MagicMock()\n        compliance_result.model_dump.return_value = {\"compliant\": True}\n        mock_nx.compliance_check.return_value = compliance_result\n        \n        certify_result = MagicMock()\n        certify_result.model_dump.return_value = {\"certificate_id\": \"cert-2025-12345\"}\n        mock_nx.certify_output.return_value = certify_result\n        \n        test_text = \"The Earth is round and orbits the Sun.\"\n        \n        with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n            result = runner.invoke(\n                app,\n                [\"pipeline\", \"run\", \"certify\", test_text, \"--config\", str(hybrid_config), \"--no-persist\"],\n            )\n        \n        assert result.exit_code == 0, f\"Pipeline failed:\\n{result.stdout}\"\n        assert \"Running pipeline\" in result.stdout\n        assert \"certify-output\" in result.stdout or \"certify\" in result.stdout.lower()\n        # Verify all certify steps were called\n        assert mock_nx.hallucination_oracle.called\n        assert mock_nx.ethics_check.called\n        assert mock_nx.compliance_check.called\n        assert mock_nx.certify_output.called\n",
-  "body_hash": "ae0a89473eb5675b",
+  "body": "def test_pipeline_run_certify_success(self, tmp_path: Path, hybrid_config: Path) -> None:\n    \"\"\"Certify pipeline should verify hallucination, ethics, compliance, and certify output.\"\"\"\n    mock_nx = MagicMock()\n\n    # Mock the four certify steps\n    hallucination_result = MagicMock()\n    hallucination_result.model_dump.return_value = {\"verdict\": \"safe\"}\n    mock_nx.hallucination_oracle.return_value = hallucination_result\n\n    ethics_result = MagicMock()\n    ethics_result.model_dump.return_value = {\"safe\": True}\n    mock_nx.ethics_check.return_value = ethics_result\n\n    compliance_result = MagicMock()\n    compliance_result.model_dump.return_value = {\"compliant\": True}\n    mock_nx.compliance_check.return_value = compliance_result\n\n    certify_result = MagicMock()\n    certify_result.model_dump.return_value = {\"certificate_id\": \"cert-2025-12345\"}\n    mock_nx.certify_output.return_value = certify_result\n\n    test_text = \"The Earth is round and orbits the Sun.\"\n\n    with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n        result = runner.invoke(\n            app,\n            [\"pipeline\", \"run\", \"certify\", test_text, \"--config\", str(hybrid_config), \"--no-persist\"],\n        )\n\n    assert result.exit_code == 0, f\"Pipeline failed:\\n{result.stdout}\"\n    assert \"Running pipeline\" in result.stdout\n    assert \"certify-output\" in result.stdout or \"certify\" in result.stdout.lower()\n    # Verify all certify steps were called\n    assert mock_nx.hallucination_oracle.called\n    assert mock_nx.ethics_check.called\n    assert mock_nx.compliance_check.called\n    assert mock_nx.certify_output.called\n",
+  "body_hash": "83e73ca7917b4b21",
   "body_truncated": false,
   "callers_of": [
     "MagicMock",
@@ -11,32 +11,15 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli_happy_path.py:404.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_pipeline_run_certify_success.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_pipeline_run_certify_success",
+  "id": "at.source.a1_at_functions.test_pipeline_run_certify_success",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "pathlib.Path",
-    "unittest.mock.MagicMock",
-    "unittest.mock.patch",
-    "pytest",
-    "typer.testing.CliRunner",
-    "ass_ade.cli.app",
-    "ass_ade.config.AssAdeConfig",
-    "ass_ade.config.write_default_config",
-    "ass_ade.nexus.models.AgentPlan",
-    "ass_ade.nexus.models.ComplianceResult",
-    "ass_ade.nexus.models.FormatConversion",
-    "ass_ade.nexus.models.InferenceResponse",
-    "ass_ade.nexus.models.IntentClassification",
-    "ass_ade.nexus.models.RatchetSession",
-    "ass_ade.nexus.models.TrustScore",
-    "ass_ade.pipeline.PipelineResult"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli_happy_path.py:404"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_pipeline_run_certify_success.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

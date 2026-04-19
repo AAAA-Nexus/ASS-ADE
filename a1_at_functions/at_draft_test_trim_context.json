@@ -1,6 +1,6 @@
 {
-  "body": "    def test_trim_context(self):\n        gates = QualityGates(_mock_nexus(trimmed_context=\"short version\"))\n        result = gates.trim_context(\"very long context...\", target_tokens=100)\n        assert result == \"short version\"\n",
-  "body_hash": "c84f58af0e2a1452",
+  "body": "def test_trim_context(self):\n    gates = QualityGates(_mock_nexus(trimmed_context=\"short version\"))\n    result = gates.trim_context(\"very long context...\", target_tokens=100)\n    assert result == \"short version\"\n",
+  "body_hash": "2c69653c48602ef6",
   "body_truncated": false,
   "callers_of": [
     "QualityGates",
@@ -8,19 +8,15 @@
     "_mock_nexus"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:108.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_trim_context.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_trim_context",
+  "id": "at.source.a1_at_functions.test_trim_context",
   "imports": [
-    "__future__.annotations",
-    "typing.Any",
-    "unittest.mock.MagicMock",
-    "ass_ade.agent.gates.GateResult",
-    "ass_ade.agent.gates.QualityGates"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:108"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_trim_context.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

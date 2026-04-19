@@ -1,13 +1,13 @@
 {
-  "body": "    def test_d_max_increment_blocks_at_limit(self):\n        from ass_ade.agent.loop import D_MAX\n        loop = self._make_loop()\n        # Set depth to D_MAX so the next increment exceeds it\n        loop._delegation_depth = D_MAX\n        assert loop.increment_delegation_depth() is False\n",
-  "body_hash": "57d70c6efde0e38e",
+  "body": "def test_d_max_increment_blocks_at_limit(self):\n    from ass_ade.agent.loop import D_MAX\n    loop = self._make_loop()\n    # Set depth to D_MAX so the next increment exceeds it\n    loop._delegation_depth = D_MAX\n    assert loop.increment_delegation_depth() is False\n",
+  "body_hash": "5dec0910773ea459",
   "body_truncated": false,
   "callers_of": [
     "_make_loop",
     "increment_delegation_depth"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:123.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase_engines.py:123.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_d_max_increment_blocks_at_limit",
@@ -62,11 +62,11 @@
     "ass_ade.agent.orchestrator.CycleReport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:123"
+    "source": "C:/!ass-ade/tests/test_phase_engines.py:123"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.increment_delegation_depth"
+    "at.source.a1_at_functions.increment_delegation_depth"
   ],
   "name": "test_d_max_increment_blocks_at_limit",
   "product_categories": [

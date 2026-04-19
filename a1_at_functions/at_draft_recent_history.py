@@ -1,17 +1,19 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/interpreter.py:240
-# Component id: at.source.ass_ade.recent_history
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_recent_history.py:7
+# Component id: at.source.a1_at_functions.recent_history
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
-    def recent_history(self, n: int = 5) -> list[dict]:
-        if not self._history_path.exists():
-            return []
-        lines = self._history_path.read_text(encoding="utf-8").splitlines()
-        results = []
-        for line in reversed(lines[-n * 2:]):
-            try:
-                results.append(json.loads(line))
-                if len(results) >= n:
-                    break
-            except json.JSONDecodeError:
-                continue
-        return list(reversed(results))
+def recent_history(self, n: int = 5) -> list[dict]:
+    if not self._history_path.exists():
+        return []
+    lines = self._history_path.read_text(encoding="utf-8").splitlines()
+    results = []
+    for line in reversed(lines[-n * 2:]):
+        try:
+            results.append(json.loads(line))
+            if len(results) >= n:
+                break
+        except json.JSONDecodeError:
+            continue
+    return list(reversed(results))

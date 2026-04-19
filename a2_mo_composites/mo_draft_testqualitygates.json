@@ -14,21 +14,23 @@
     "_mock_nexus"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testqualitygates.py:5.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testqualitygates.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.testqualitygates",
-  "imports": [],
+  "id": "mo.source.a2_mo_composites.testqualitygates",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testqualitygates.py:5"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testqualitygates.py:7"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.scan_prompt",
-    "at.source.ass_ade.check_hallucination",
-    "at.source.ass_ade.shield_tool",
-    "at.source.ass_ade.certify",
-    "at.source.ass_ade.trim_context"
+    "at.source.a1_at_functions.scan_prompt",
+    "at.source.a1_at_functions.check_hallucination",
+    "at.source.a1_at_functions.shield_tool",
+    "at.source.a1_at_functions.certify",
+    "at.source.a1_at_functions.trim_context"
   ],
   "name": "TestQualityGates",
   "product_categories": [

@@ -1,27 +1,20 @@
 {
-  "body": "    def is_expired(self) -> bool:\n        return time.time() > self.expires if self.expires else False\n",
-  "body_hash": "32a6ff328571f49c",
+  "body": "def is_expired(self) -> bool:\n    return time.time() > self.expires if self.expires else False\n",
+  "body_hash": "a5582effa1786b9a",
   "body_truncated": false,
   "callers_of": [
     "time"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/x402.py:102.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_paymentchallenge.py:59.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.is_expired",
+  "id": "at.source.a2_mo_composites.is_expired",
   "imports": [
-    "__future__.annotations",
-    "os",
-    "time",
-    "dataclasses.dataclass",
-    "typing.Any",
-    "eth_account.Account",
-    "web3.Web3",
-    "logging"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/x402.py:102"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_paymentchallenge.py:59"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_complete_text_response(self):\n        mock_client = MagicMock()\n        mock_client.inference.return_value = MagicMock(\n            result=\"Hello from Nexus!\",\n            text=None,\n            model=\"llama-3.1-8b\",\n        )\n\n        provider = NexusProvider(mock_client)\n        req = CompletionRequest(messages=[Message(role=\"user\", content=\"hi\")])\n        resp = provider.complete(req)\n\n        assert resp.message.content == \"Hello from Nexus!\"\n        assert resp.model == \"llama-3.1-8b\"\n        assert resp.finish_reason == \"stop\"\n",
-  "body_hash": "af13eb91873e222b",
+  "body": "def test_complete_text_response(self):\n    mock_client = MagicMock()\n    mock_client.inference.return_value = MagicMock(\n        result=\"Hello from Nexus!\",\n        text=None,\n        model=\"llama-3.1-8b\",\n    )\n\n    provider = NexusProvider(mock_client)\n    req = CompletionRequest(messages=[Message(role=\"user\", content=\"hi\")])\n    resp = provider.complete(req)\n\n    assert resp.message.content == \"Hello from Nexus!\"\n    assert resp.model == \"llama-3.1-8b\"\n    assert resp.finish_reason == \"stop\"\n",
+  "body_hash": "14d91889da01f7bb",
   "body_truncated": false,
   "callers_of": [
     "MagicMock",
@@ -10,7 +10,7 @@
     "Message"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine.py:138.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine.py:138.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_complete_text_response",
@@ -41,7 +41,7 @@
     "ass_ade.engine.provider.MultiProvider"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine.py:138"
+    "source": "C:/!ass-ade/tests/test_engine.py:138"
   },
   "kind": "engine_molecule",
   "made_of": [],

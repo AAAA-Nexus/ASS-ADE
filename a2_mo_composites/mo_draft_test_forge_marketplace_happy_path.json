@@ -1,5 +1,5 @@
 {
-  "body": "def test_forge_marketplace_happy_path(method_name, response_json):\n    \"\"\"Test Forge Marketplace methods (happy path).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json=response_json)\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        if method_name == \"forge_leaderboard\":\n            result = client.forge_leaderboard()\n        elif method_name == \"forge_verify\":\n            result = client.forge_verify(agent_id=\"agent_1\")\n        elif method_name == \"forge_quarantine\":\n            result = client.forge_quarantine(model_id=\"model_1\", reason=\"security_risk\")\n        elif method_name == \"forge_delta_submit\":\n            result = client.forge_delta_submit(agent_id=\"agent_1\", delta={\"improvement\": \"faster\"})\n        else:  # forge_badge\n            result = client.forge_badge(badge_id=\"badge_123\")\n        assert result is not None\n",
+  "body": "def test_forge_marketplace_happy_path(method_name, response_json):\n    \"\"\"Test Forge Marketplace methods (happy path).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json=response_json)\n\n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        if method_name == \"forge_leaderboard\":\n            result = client.forge_leaderboard()\n        elif method_name == \"forge_verify\":\n            result = client.forge_verify(agent_id=\"agent_1\")\n        elif method_name == \"forge_quarantine\":\n            result = client.forge_quarantine(model_id=\"model_1\", reason=\"security_risk\")\n        elif method_name == \"forge_delta_submit\":\n            result = client.forge_delta_submit(agent_id=\"agent_1\", delta={\"improvement\": \"faster\"})\n        else:  # forge_badge\n            result = client.forge_badge(badge_id=\"badge_123\")\n        assert result is not None\n",
   "body_hash": "e416102fe4ce6880",
   "body_truncated": false,
   "callers_of": [
@@ -14,7 +14,7 @@
     "forge_badge"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:1241.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_nexus_client_comprehensive.py:1241.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_forge_marketplace_happy_path",
@@ -149,7 +149,7 @@
     "ass_ade.nexus.models.EntropyResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:1241"
+    "source": "C:/!ass-ade/tests/test_nexus_client_comprehensive.py:1241"
   },
   "kind": "engine_molecule",
   "made_of": [],

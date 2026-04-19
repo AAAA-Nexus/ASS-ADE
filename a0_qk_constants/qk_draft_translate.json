@@ -1,6 +1,6 @@
 {
-  "body": "    def translate(self, task_description: str) -> Lean4Spec:\n        self._translations += 1\n        if self._nexus is not None and hasattr(self._nexus, \"synthesize_verified_code\"):\n            try:\n                result = self._nexus.synthesize_verified_code(\n                    description=task_description, language=\"lean4\"\n                )\n                source = getattr(result, \"source\", None) or getattr(result, \"code\", None)\n                if source:\n                    return Lean4Spec(\n                        name=self._spec_name(task_description),\n                        source=str(source),\n                        has_sorry=\"sorry\" in str(source),\n                    )\n            except Exception:\n                pass\n        name = self._spec_name(task_description)\n        src = (\n            f\"-- spec: {task_description}\\n\"\n            f\"theorem {name} : True := by\\n\"\n            f\"  sorry\\n\"\n        )\n        return Lean4Spec(name=name, source=src, has_sorry=True)\n",
-  "body_hash": "5f79f14a6b652b7b",
+  "body": "def translate(self, task_description: str) -> Lean4Spec:\n    self._translations += 1\n    if self._nexus is not None and hasattr(self._nexus, \"synthesize_verified_code\"):\n        try:\n            result = self._nexus.synthesize_verified_code(\n                description=task_description, language=\"lean4\"\n            )\n            source = getattr(result, \"source\", None) or getattr(result, \"code\", None)\n            if source:\n                return Lean4Spec(\n                    name=self._spec_name(task_description),\n                    source=str(source),\n                    has_sorry=\"sorry\" in str(source),\n                )\n        except Exception:\n            pass\n    name = self._spec_name(task_description)\n    src = (\n        f\"-- spec: {task_description}\\n\"\n        f\"theorem {name} : True := by\\n\"\n        f\"  sorry\\n\"\n    )\n    return Lean4Spec(name=name, source=src, has_sorry=True)\n",
+  "body_hash": "acf461976f8f7568",
   "body_truncated": false,
   "callers_of": [
     "_spec_name",
@@ -11,13 +11,15 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_proofbridge.py:17.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_proofbridge.py:19.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "qk.source.ass_ade.translate",
-  "imports": [],
+  "id": "qk.source.a0_qk_constants.translate",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_proofbridge.py:17"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_proofbridge.py:19"
   },
   "kind": "invariant",
   "made_of": [],

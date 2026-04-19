@@ -1,6 +1,6 @@
 {
-  "body": "    def test_env_hydration_populates_os_environ(self, tmp_path, monkeypatch):\n        from ass_ade.config import load_config\n        monkeypatch.delenv(\"GROQ_API_KEY\", raising=False)\n        # Write a .env at project root\n        (tmp_path / \".env\").write_text(\"GROQ_API_KEY=from-env-file\\n\")\n        (tmp_path / \".ass-ade\").mkdir()\n        config_path = tmp_path / \".ass-ade\" / \"config.json\"\n        load_config(config_path)\n        assert os.getenv(\"GROQ_API_KEY\") == \"from-env-file\"\n",
-  "body_hash": "e96587785f3b5994",
+  "body": "def test_env_hydration_populates_os_environ(self, tmp_path, monkeypatch):\n    from ass_ade.config import load_config\n    monkeypatch.delenv(\"GROQ_API_KEY\", raising=False)\n    # Write a .env at project root\n    (tmp_path / \".env\").write_text(\"GROQ_API_KEY=from-env-file\\n\")\n    (tmp_path / \".ass-ade\").mkdir()\n    config_path = tmp_path / \".ass-ade\" / \"config.json\"\n    load_config(config_path)\n    assert os.getenv(\"GROQ_API_KEY\") == \"from-env-file\"\n",
+  "body_hash": "37228ec58c1853e5",
   "body_truncated": false,
   "callers_of": [
     "delenv",
@@ -10,21 +10,16 @@
     "getenv"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testconfigproviderfields.py:42.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_env_hydration_populates_os_environ.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_env_hydration_populates_os_environ",
+  "id": "at.source.a1_at_functions.test_env_hydration_populates_os_environ",
   "imports": [
-    "ass_ade.config.AssAdeConfig",
-    "ass_ade.config.AssAdeConfig",
-    "ass_ade.config.AssAdeConfig",
-    "ass_ade.config.ProviderOverride",
-    "ass_ade.config.write_default_config",
-    "ass_ade.config.load_config",
+    "__future__.annotations",
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testconfigproviderfields.py:42"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_env_hydration_populates_os_environ.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_preview_returns_diff(self, tmp_path: Path):\n        (tmp_path / \"code.py\").write_text(\"x = 1\\ny = 2\\nz = 3\\n\")\n        tool = EditFileTool(str(tmp_path))\n        result = tool.execute(\n            path=\"code.py\",\n            old_string=\"y = 2\",\n            new_string=\"y = 42\",\n            preview=True,\n        )\n        assert result.success\n        assert \"---\" in result.output  # unified diff header\n        assert \"-y = 2\" in result.output\n        assert \"+y = 42\" in result.output\n",
-  "body_hash": "55ae514285c239f9",
+  "body": "def test_preview_returns_diff(self, tmp_path: Path):\n    (tmp_path / \"code.py\").write_text(\"x = 1\\ny = 2\\nz = 3\\n\")\n    tool = EditFileTool(str(tmp_path))\n    result = tool.execute(\n        path=\"code.py\",\n        old_string=\"y = 2\",\n        new_string=\"y = 42\",\n        preview=True,\n    )\n    assert result.success\n    assert \"---\" in result.output  # unified diff header\n    assert \"-y = 2\" in result.output\n    assert \"+y = 42\" in result.output\n",
+  "body_hash": "6df9d349cc0af026",
   "body_truncated": false,
   "callers_of": [
     "write_text",
@@ -9,13 +9,15 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testdiffpreview.py:6.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_preview_returns_diff.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_preview_returns_diff",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_preview_returns_diff",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testdiffpreview.py:6"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_preview_returns_diff.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,16 +1,18 @@
 {
-  "body": "    def description(self) -> str:\n        return \"Search file contents for a regex pattern. Returns matching lines with file:line: prefix.\"\n",
-  "body_hash": "c53458f68374cbc8",
+  "body": "def description(self) -> str:\n    return \"Search file contents for a regex pattern. Returns matching lines with file:line: prefix.\"\n",
+  "body_hash": "512abbc9e528cf03",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_grepsearchtool.py:16.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_grepsearchtool.py:18.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.description",
-  "imports": [],
+  "id": "at.source.a2_mo_composites.description",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_grepsearchtool.py:16"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_grepsearchtool.py:18"
   },
   "kind": "pure_function",
   "made_of": [],

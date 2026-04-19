@@ -1,6 +1,8 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testcontextwindowfor.py:6
-# Component id: qk.source.ass_ade.test_known_model
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_test_known_model.py:7
+# Component id: qk.source.a0_qk_constants.test_known_model
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
-    def test_known_model(self):
-        assert context_window_for("gpt-4o") == 128_000
+def test_known_model(self):
+    assert context_window_for("gpt-4o") == 128_000

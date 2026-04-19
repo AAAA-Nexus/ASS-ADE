@@ -1,22 +1,24 @@
 {
-  "body": "    def trim_to_budget(self, tools: list[ToolSchema] | None = None) -> int:\n        \"\"\"Trim oldest non-system messages to fit within the token budget.\n\n        Uses the TokenBudget invariant:\n            \u03a3 tokens(messages) + tokens(tools) + reserve \u2264 context_window\n\n        Returns the number of messages evicted.\n        \"\"\"\n        to_evict = self._budget.messages_to_evict(self._messages, tools)\n        if to_evict == 0:\n            return 0\n\n        system = [m for m in self._messages if m.role == \"system\"]\n        others = [m for m in self._messages if m.role != \"system\"]\n\n        self._messages = system + others[to_evict:]\n        return to_evict\n",
-  "body_hash": "1d3bce880e327c39",
+  "body": "def trim_to_budget(self, tools: list[ToolSchema] | None = None) -> int:\n    \"\"\"Trim oldest non-system messages to fit within the token budget.\n\n    Uses the TokenBudget invariant:\n        \u03a3 tokens(messages) + tokens(tools) + reserve \u2264 context_window\n\n    Returns the number of messages evicted.\n    \"\"\"\n    to_evict = self._budget.messages_to_evict(self._messages, tools)\n    if to_evict == 0:\n        return 0\n\n    system = [m for m in self._messages if m.role == \"system\"]\n    others = [m for m in self._messages if m.role != \"system\"]\n\n    self._messages = system + others[to_evict:]\n    return to_evict\n",
+  "body_hash": "5c9d9929fe8cdf3e",
   "body_truncated": false,
   "callers_of": [
     "messages_to_evict"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_conversation.py:64.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_trim_to_budget.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.trim_to_budget",
-  "imports": [],
+  "id": "at.source.a1_at_functions.trim_to_budget",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_conversation.py:64"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_trim_to_budget.py:7"
   },
   "kind": "pure_function",
   "made_of": [
-    "qk.source.ass_ade.messages_to_evict"
+    "qk.source.a0_qk_constants.messages_to_evict"
   ],
   "name": "trim_to_budget",
   "product_categories": [

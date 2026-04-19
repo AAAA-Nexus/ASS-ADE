@@ -1,0 +1,34 @@
+{
+  "body": "def test_cancellation_returns_error_code(self, server: MCPServer) -> None:\n    \"\"\"Verify that a cancelled request returns the correct error code.\"\"\"\n    _initialize_server(server)\n\n    req_id = 789\n    # Simulate a cancellation\n    server._cancelled.add(req_id)\n\n    req = {\n        \"jsonrpc\": \"2.0\",\n        \"id\": req_id,\n        \"method\": \"tools/call\",\n        \"params\": {\"name\": \"read_file\", \"arguments\": {\"path\": \"hello.py\"}},\n    }\n    resp = server._handle(req)\n\n    assert resp is not None\n    assert \"error\" in resp\n    assert resp[\"error\"][\"code\"] == -32800  # MCP error code for cancellation\n",
+  "body_hash": "b62014b580cfd3ce",
+  "body_truncated": false,
+  "callers_of": [
+    "_initialize_server",
+    "add",
+    "_handle"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_cancellation_returns_error_code.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.test_cancellation_returns_error_code",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_cancellation_returns_error_code.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_cancellation_returns_error_code",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_cancellation_returns_error_code"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

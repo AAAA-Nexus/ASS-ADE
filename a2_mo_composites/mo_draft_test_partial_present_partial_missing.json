@@ -1,13 +1,13 @@
 {
-  "body": "    def test_partial_present_partial_missing(self, tmp_path):\n        from ass_ade.map_terrain import active_terrain_gate\n        result = active_terrain_gate(\n            [\"ass_ade_agent\", \"nonexistent_xyz_999\"],\n            working_dir=str(tmp_path),\n            write_stubs=False,\n        )\n        assert result.verdict == \"HALT_AND_INVENT\"\n        assert \"ass_ade_agent\" in result.capabilities_present\n        assert \"nonexistent_xyz_999\" in result.capabilities_missing\n",
-  "body_hash": "41f7a71cf2e85eb4",
+  "body": "def test_partial_present_partial_missing(self, tmp_path):\n    from ass_ade.map_terrain import active_terrain_gate\n    result = active_terrain_gate(\n        [\"ass_ade_agent\", \"nonexistent_xyz_999\"],\n        working_dir=str(tmp_path),\n        write_stubs=False,\n    )\n    assert result.verdict == \"HALT_AND_INVENT\"\n    assert \"ass_ade_agent\" in result.capabilities_present\n    assert \"nonexistent_xyz_999\" in result.capabilities_missing\n",
+  "body_hash": "2b0f74eeb3546445",
   "body_truncated": false,
   "callers_of": [
     "active_terrain_gate",
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:305.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase_engines.py:305.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_partial_present_partial_missing",
@@ -62,11 +62,11 @@
     "ass_ade.agent.orchestrator.CycleReport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:305"
+    "source": "C:/!ass-ade/tests/test_phase_engines.py:305"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.active_terrain_gate"
+    "at.source.a1_at_functions.active_terrain_gate"
   ],
   "name": "test_partial_present_partial_missing",
   "product_categories": [

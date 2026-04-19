@@ -1,22 +1,23 @@
 {
-  "body": "    def test_check_conviction_gate_non_destructive_tool(self):\n        orch = self._make()\n        # Non-destructive tool: read_file should NOT be blocked\n        blocked = orch.check_conviction_gate(\"read_file\", {})\n        assert blocked is False\n",
-  "body_hash": "af30c470c8578f83",
+  "body": "def test_check_conviction_gate_non_destructive_tool(self):\n    orch = self._make()\n    # Non-destructive tool: read_file should NOT be blocked\n    blocked = orch.check_conviction_gate(\"read_file\", {})\n    assert blocked is False\n",
+  "body_hash": "6569480893cbc9db",
   "body_truncated": false,
   "callers_of": [
     "_make",
     "check_conviction_gate"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testengineorchestratorphase15.py:33.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testengineorchestratorphase15.py:35.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.test_check_conviction_gate_non_destructive_tool",
+  "id": "mo.source.a2_mo_composites.test_check_conviction_gate_non_destructive_tool",
   "imports": [
+    "__future__.annotations",
     "ass_ade.agent.orchestrator.EngineOrchestrator",
     "ass_ade.agent.orchestrator.CycleReport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testengineorchestratorphase15.py:33"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testengineorchestratorphase15.py:35"
   },
   "kind": "engine_molecule",
   "made_of": [],

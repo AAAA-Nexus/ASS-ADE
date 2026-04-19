@@ -1,12 +1,14 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/a2a/__init__.py:188
-# Component id: at.source.ass_ade.fetch_agent_card
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_fetch_agent_card.py:7
+# Component id: at.source.a1_at_functions.fetch_agent_card
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def fetch_agent_card(url: str, *, timeout: float = 10.0) -> ValidationReport:
     """Fetch and validate an agent card from a URL.
 
     If the URL doesn't end with /.well-known/agent.json, it is appended.
-    
+
     SSRF validation is performed immediately before the network request to
     minimize the DNS rebinding TOCTOU window (time-of-check to time-of-use).
     """
@@ -37,7 +39,7 @@ def fetch_agent_card(url: str, *, timeout: float = 10.0) -> ValidationReport:
                 valid=False,
                 issues=[ValidationIssue("error", "_fetch", ssrf_err)],
             )
-        
+
         resp = httpx.get(url, timeout=timeout, follow_redirects=False)
         resp.raise_for_status()
         data = resp.json()

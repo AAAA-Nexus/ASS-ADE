@@ -1,6 +1,6 @@
 {
-  "body": "    def test_fallback_to_ollama(self, monkeypatch):\n        \"\"\"With no keys and all catalog providers disabled, falls back to Ollama.\"\"\"\n        self._clear_provider_env()\n\n        from ass_ade.config import AssAdeConfig\n\n        cfg = self._disable_all_catalog(AssAdeConfig(profile=\"local\"))\n        provider = build_provider(cfg)\n        assert isinstance(provider, OpenAICompatibleProvider)\n",
-  "body_hash": "77a6078602c16c47",
+  "body": "def test_fallback_to_ollama(self, monkeypatch):\n    \"\"\"With no keys and all catalog providers disabled, falls back to Ollama.\"\"\"\n    self._clear_provider_env()\n\n    from ass_ade.config import AssAdeConfig\n\n    cfg = self._disable_all_catalog(AssAdeConfig(profile=\"local\"))\n    provider = build_provider(cfg)\n    assert isinstance(provider, OpenAICompatibleProvider)\n",
+  "body_hash": "405a6c718b86767b",
   "body_truncated": false,
   "callers_of": [
     "_clear_provider_env",
@@ -10,7 +10,7 @@
     "AssAdeConfig"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine.py:230.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine.py:230.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_fallback_to_ollama",
@@ -41,7 +41,7 @@
     "ass_ade.engine.provider.MultiProvider"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine.py:230"
+    "source": "C:/!ass-ade/tests/test_engine.py:230"
   },
   "kind": "engine_molecule",
   "made_of": [],

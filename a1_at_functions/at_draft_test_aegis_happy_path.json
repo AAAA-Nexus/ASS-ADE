@@ -1,5 +1,5 @@
 {
-  "body": "def test_aegis_happy_path(method_name, response_json):\n    \"\"\"Test NEXUS AEGIS methods (happy path).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json=response_json)\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        if method_name == \"aegis_mcp_proxy\":\n            result = client.aegis_mcp_proxy(tool=\"execute\", tool_input=\"action_data\")\n        elif method_name == \"aegis_epistemic_route\":\n            result = client.aegis_epistemic_route(prompt=\"test query\", model=\"auto\")\n        else:  # aegis_certify_epoch\n            result = client.aegis_certify_epoch(system_id=\"system_1\")\n        assert result is not None\n",
+  "body": "def test_aegis_happy_path(method_name, response_json):\n    \"\"\"Test NEXUS AEGIS methods (happy path).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json=response_json)\n\n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        if method_name == \"aegis_mcp_proxy\":\n            result = client.aegis_mcp_proxy(tool=\"execute\", tool_input=\"action_data\")\n        elif method_name == \"aegis_epistemic_route\":\n            result = client.aegis_epistemic_route(prompt=\"test query\", model=\"auto\")\n        else:  # aegis_certify_epoch\n            result = client.aegis_certify_epoch(system_id=\"system_1\")\n        assert result is not None\n",
   "body_hash": "331751ffe4e096d0",
   "body_truncated": false,
   "callers_of": [
@@ -11,13 +11,15 @@
     "aegis_certify_epoch"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_aegis_happy_path.py:5.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_aegis_happy_path.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_aegis_happy_path",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_aegis_happy_path",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_aegis_happy_path.py:5"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_aegis_happy_path.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

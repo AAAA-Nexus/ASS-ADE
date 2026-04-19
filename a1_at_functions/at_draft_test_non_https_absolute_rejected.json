@@ -1,19 +1,21 @@
 {
-  "body": "    def test_non_https_absolute_rejected(self) -> None:\n        \"\"\"HTTP (non-HTTPS) absolute URLs should be rejected.\"\"\"\n        with pytest.raises(ValueError, match=\"https scheme\"):\n            _validate_absolute_endpoint(\"http://example.com/api\")\n",
-  "body_hash": "868e9c48d584d75f",
+  "body": "def test_non_https_absolute_rejected(self) -> None:\n    \"\"\"HTTP (non-HTTPS) absolute URLs should be rejected.\"\"\"\n    with pytest.raises(ValueError, match=\"https scheme\"):\n        _validate_absolute_endpoint(\"http://example.com/api\")\n",
+  "body_hash": "01fa551e98742d42",
   "body_truncated": false,
   "callers_of": [
     "raises",
     "_validate_absolute_endpoint"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateabsoluteendpoint.py:50.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testvalidateabsoluteendpoint.py:52.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_non_https_absolute_rejected",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_non_https_absolute_rejected",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateabsoluteendpoint.py:50"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testvalidateabsoluteendpoint.py:52"
   },
   "kind": "pure_function",
   "made_of": [],

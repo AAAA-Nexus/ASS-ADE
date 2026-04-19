@@ -1,27 +1,25 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/cli.py:2405
-# Component id: sy.source.ass_ade.aegis_mcp_proxy
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_aegis_mcp_proxy.py:7
+# Component id: sy.source.a2_mo_composites.aegis_mcp_proxy
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def aegis_mcp_proxy(
-    tool_name: str = typer.Argument(..., help="MCP tool name to proxy."),
-    payload_file: Path | None = typer.Option(None, help="JSON payload file."),
-    config: Path | None = CONFIG_OPTION,
-    allow_remote: bool = ALLOW_REMOTE_OPTION,
-) -> None:
-    """Route MCP tool calls through AEGIS safety layer. $0.040/call."""
-    _, settings = _resolve_config(config)
-    _require_remote_access(settings, allow_remote)
-    payload: dict = {}
-    if payload_file:
-        try:
-            payload = json.loads(payload_file.read_text(encoding="utf-8"))
-        except (json.JSONDecodeError, OSError) as exc:
-            console.print(f"Failed to read payload: {exc}")
-            raise typer.Exit(code=4) from exc
-    try:
-        with NexusClient(base_url=settings.nexus_base_url, timeout=settings.request_timeout_s, api_key=settings.nexus_api_key) as client:
-            result = client.aegis_mcp_proxy(tool_name=tool_name, payload=payload)
-    except httpx.HTTPError as exc:
-        _nexus_err(exc)
-        return
-    _print_json(result.model_dump())
+    self,
+    tool: str | None = None,
+    tool_input: str = "",
+    agent_id: str | None = None,
+    *,
+    tool_name: str | None = None,
+    payload: dict[str, Any] | None = None,
+    **kwargs: Any,
+) -> AegisProxyResult:
+    """/v1/aegis/mcp-proxy/execute — MCP tool-call firewall (AEG-100). $0.040/call"""
+    resolved_tool = tool or tool_name or ""
+    resolved_tool_input = tool_input
+    if payload is not None and not resolved_tool_input:
+        resolved_tool_input = json.dumps(payload)
+    body: dict[str, Any] = {"tool": resolved_tool, "tool_input": resolved_tool_input, **kwargs}
+    if agent_id:
+        body["agent_id"] = agent_id
+    return self._post_model("/v1/aegis/mcp-proxy/execute", AegisProxyResult, body)

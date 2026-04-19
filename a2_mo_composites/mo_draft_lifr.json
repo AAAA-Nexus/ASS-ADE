@@ -1,6 +1,6 @@
 {
-  "body": "    def lifr(self):\n        if self._lifr is None:\n            from ass_ade.agent.lifr_graph import LIFRGraph\n            cfg = dict(self._config)\n            cfg.setdefault(\"working_dir\", self._working_dir)\n            self._lifr = LIFRGraph(cfg, self._nexus)\n        return self._lifr\n",
-  "body_hash": "708815ba34f8e7fa",
+  "body": "def lifr(self):\n    if self._lifr is None:\n        from ass_ade.agent.lifr_graph import LIFRGraph\n        cfg = dict(self._config)\n        cfg.setdefault(\"working_dir\", self._working_dir)\n        self._lifr = LIFRGraph(cfg, self._nexus)\n    return self._lifr\n",
+  "body_hash": "a0700aaca0291f95",
   "body_truncated": false,
   "callers_of": [
     "dict",
@@ -8,11 +8,12 @@
     "LIFRGraph"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_engineorchestrator.py:149.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_engineorchestrator.py:151.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.lifr",
+  "id": "mo.source.a2_mo_composites.lifr",
   "imports": [
+    "__future__.annotations",
     "ass_ade.agent.atlas.Atlas",
     "ass_ade.agent.bas.BAS",
     "ass_ade.agent.wisdom.WisdomEngine",
@@ -35,7 +36,7 @@
     "json"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_engineorchestrator.py:149"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_engineorchestrator.py:151"
   },
   "kind": "engine_molecule",
   "made_of": [],

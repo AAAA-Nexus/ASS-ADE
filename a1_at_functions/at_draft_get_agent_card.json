@@ -1,0 +1,32 @@
+{
+  "body": "def get_agent_card(self) -> AgentCard:\n    \"\"\"/.well-known/agent.json \u2014 A2A capability manifest, free\"\"\"\n    return self._get_model(\"/.well-known/agent.json\", AgentCard)\n",
+  "body_hash": "fa177a21dced9f3e",
+  "body_truncated": false,
+  "callers_of": [
+    "_get_model"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_get_agent_card.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.get_agent_card",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_get_agent_card.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "get_agent_card",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for get_agent_card"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

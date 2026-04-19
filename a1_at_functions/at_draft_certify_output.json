@@ -1,0 +1,32 @@
+{
+  "body": "def certify_output(self, output: str, rubric: list[str], **kwargs: Any) -> CertifiedOutput:\n    \"\"\"/v1/certify/output \u2014 30-day output certificate (OCN-100). $0.060/call\"\"\"\n    return self._post_model(\"/v1/certify/output\", CertifiedOutput, {\"output\": output, \"rubric\": rubric, **kwargs})\n",
+  "body_hash": "fba98adb98af946f",
+  "body_truncated": false,
+  "callers_of": [
+    "_post_model"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_certify_output.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.certify_output",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_certify_output.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "certify_output",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for certify_output"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

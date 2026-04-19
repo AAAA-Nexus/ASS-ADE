@@ -1,6 +1,6 @@
 {
-  "body": "    def certify_step(ctx: dict[str, Any]) -> StepResult:\n        try:\n            result = client.certify_output(text, rubric=[\"accuracy\", \"safety\", \"compliance\"])\n            raw = result.model_dump() if hasattr(result, \"model_dump\") else {}\n            ctx[\"certificate_id\"] = raw.get(\"certificate_id\")\n            return StepResult(name=\"certify_output\", status=StepStatus.PASSED, output=raw)\n        except Exception as exc:\n            return StepResult(name=\"certify_output\", status=StepStatus.FAILED, error=str(exc))\n",
-  "body_hash": "8ac475a7ed09142a",
+  "body": "def certify_step(ctx: dict[str, Any]) -> StepResult:\n    try:\n        result = client.certify_output(text, rubric=[\"accuracy\", \"safety\", \"compliance\"])\n        raw = result.model_dump() if hasattr(result, \"model_dump\") else {}\n        ctx[\"certificate_id\"] = raw.get(\"certificate_id\")\n        return StepResult(name=\"certify_output\", status=StepStatus.PASSED, output=raw)\n    except Exception as exc:\n        return StepResult(name=\"certify_output\", status=StepStatus.FAILED, error=str(exc))\n",
+  "body_hash": "e06d4927a789cab8",
   "body_truncated": false,
   "callers_of": [
     "certify_output",
@@ -11,25 +11,15 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/pipeline.py:361.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_certify_pipeline.py:45.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.certify_step",
+  "id": "at.source.a1_at_functions.certify_step",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "time",
-    "collections.abc.Callable",
-    "dataclasses.dataclass",
-    "dataclasses.field",
-    "enum.Enum",
-    "pathlib.Path",
-    "typing.Any",
-    "typing.Protocol",
-    "ass_ade.nexus.validation.validate_agent_id"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/pipeline.py:361"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_certify_pipeline.py:45"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -6,13 +6,15 @@
     "Field"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_safeexecuteresult.py:5.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_safeexecuteresult.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "og.source.ass_ade.safeexecuteresult",
-  "imports": [],
+  "id": "og.source.a3_og_features.safeexecuteresult",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_safeexecuteresult.py:5"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_safeexecuteresult.py:7"
   },
   "kind": "product_organism",
   "made_of": [],

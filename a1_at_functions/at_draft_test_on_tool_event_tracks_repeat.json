@@ -1,0 +1,36 @@
+{
+  "body": "def test_on_tool_event_tracks_repeat(self) -> None:\n    o = EngineOrchestrator({})\n    o.on_step_start(\"task\")\n    for _ in range(4):\n        o.on_tool_event(\"read_file\", {\"path\": \"x\"}, \"ok\")\n    # After 4 repeats, loop_detected should fire\n    # Check _step_tool_counts\n    assert o._step_tool_counts.get(\"read_file\", 0) == 4\n",
+  "body_hash": "5eb78594c66a971b",
+  "body_truncated": false,
+  "callers_of": [
+    "EngineOrchestrator",
+    "on_step_start",
+    "range",
+    "on_tool_event",
+    "get"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_on_tool_event_tracks_repeat.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.test_on_tool_event_tracks_repeat",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_on_tool_event_tracks_repeat.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_on_tool_event_tracks_repeat",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_on_tool_event_tracks_repeat"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

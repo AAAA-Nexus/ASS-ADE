@@ -1,6 +1,6 @@
 {
-  "body": "    def test_orchestrator_error_does_not_block_loop(self) -> None:\n        o = MagicMock(spec=EngineOrchestrator)\n        o.on_step_start.side_effect = RuntimeError(\"engine down\")\n        o.on_tool_event.side_effect = RuntimeError(\"engine down\")\n        o.on_step_end.side_effect = RuntimeError(\"engine down\")\n\n        loop = self._make_loop(orchestrator=o)\n        # Should not raise \u2014 fail-open design\n        result = loop.step(\"Do something\")\n        assert isinstance(result, str)\n",
-  "body_hash": "eb1f2c72fa358d66",
+  "body": "def test_orchestrator_error_does_not_block_loop(self) -> None:\n    o = MagicMock(spec=EngineOrchestrator)\n    o.on_step_start.side_effect = RuntimeError(\"engine down\")\n    o.on_tool_event.side_effect = RuntimeError(\"engine down\")\n    o.on_step_end.side_effect = RuntimeError(\"engine down\")\n\n    loop = self._make_loop(orchestrator=o)\n    # Should not raise \u2014 fail-open design\n    result = loop.step(\"Do something\")\n    assert isinstance(result, str)\n",
+  "body_hash": "e3adfa01f56ae5eb",
   "body_truncated": false,
   "callers_of": [
     "MagicMock",
@@ -10,7 +10,7 @@
     "isinstance"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:476.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:476.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_orchestrator_error_does_not_block_loop",
@@ -38,11 +38,11 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:476"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:476"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.step"
+    "at.source.a1_at_functions.step"
   ],
   "name": "test_orchestrator_error_does_not_block_loop",
   "product_categories": [

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_callback_is_called(self) -> None:\n        calls: list[tuple[str, StepStatus, int, int]] = []\n\n        def on_progress(name: str, status: StepStatus, current: int, total: int) -> None:\n            calls.append((name, status, current, total))\n\n        pipe = Pipeline(\"prog\", on_progress=on_progress)\n        pipe.add(\"s1\", pass_step)\n        pipe.add(\"s2\", pass_step)\n        pipe.run()\n\n        # Each step: RUNNING then PASSED = 2 calls per step = 4 total\n        assert len(calls) == 4\n        assert calls[0] == (\"s1\", StepStatus.RUNNING, 1, 2)\n        assert calls[1] == (\"s1\", StepStatus.PASSED, 1, 2)\n        assert calls[2] == (\"s2\", StepStatus.RUNNING, 2, 2)\n        assert calls[3] == (\"s2\", StepStatus.PASSED, 2, 2)\n",
-  "body_hash": "a6b28ca35b4fd1b3",
+  "body": "def test_callback_is_called(self) -> None:\n    calls: list[tuple[str, StepStatus, int, int]] = []\n\n    def on_progress(name: str, status: StepStatus, current: int, total: int) -> None:\n        calls.append((name, status, current, total))\n\n    pipe = Pipeline(\"prog\", on_progress=on_progress)\n    pipe.add(\"s1\", pass_step)\n    pipe.add(\"s2\", pass_step)\n    pipe.run()\n\n    # Each step: RUNNING then PASSED = 2 calls per step = 4 total\n    assert len(calls) == 4\n    assert calls[0] == (\"s1\", StepStatus.RUNNING, 1, 2)\n    assert calls[1] == (\"s1\", StepStatus.PASSED, 1, 2)\n    assert calls[2] == (\"s2\", StepStatus.RUNNING, 2, 2)\n    assert calls[3] == (\"s2\", StepStatus.PASSED, 2, 2)\n",
+  "body_hash": "2a7b94b78deaa176",
   "body_truncated": false,
   "callers_of": [
     "Pipeline",
@@ -10,22 +10,15 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:147.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_callback_is_called.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_callback_is_called",
+  "id": "at.source.a1_at_functions.test_callback_is_called",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "pathlib.Path",
-    "typing.Any",
-    "ass_ade.pipeline.Pipeline",
-    "ass_ade.pipeline.PipelineResult",
-    "ass_ade.pipeline.StepResult",
-    "ass_ade.pipeline.StepStatus"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:147"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_callback_is_called.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

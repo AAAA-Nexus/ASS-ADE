@@ -1,1293 +1,1518 @@
 """Auto-generated tier package."""
 
-from .at_draft_a2a_discover import a2a_discover  # noqa: F401
-from .at_draft_a2a_local_card import a2a_local_card  # noqa: F401
-from .at_draft_a2a_negotiate import a2a_negotiate  # noqa: F401
-from .at_draft_a2a_validate import a2a_validate  # noqa: F401
-from .at_draft_active_terrain_gate import active_terrain_gate  # noqa: F401
-from . import at_draft_add  # noqa: F401
-from . import at_draft_add_assistant  # noqa: F401
-from . import at_draft_add_create  # noqa: F401
-from . import at_draft_add_delete  # noqa: F401
-from . import at_draft_add_modify  # noqa: F401
-from . import at_draft_add_tool_result  # noqa: F401
-from . import at_draft_add_user  # noqa: F401
-from . import at_draft_advance  # noqa: F401
-from .at_draft_aegis_certify_epoch import aegis_certify_epoch  # noqa: F401
-from .at_draft_aegis_epistemic_route import aegis_epistemic_route  # noqa: F401
-from .at_draft_agent_chat import agent_chat  # noqa: F401
-from .at_draft_agent_run import agent_run  # noqa: F401
-from . import at_draft_alert  # noqa: F401
-from .at_draft_another_helper_thing import another_helper_thing  # noqa: F401
-from . import at_draft_append_history  # noqa: F401
-from . import at_draft_apply  # noqa: F401
-from .at_draft_assess_blueprint_fulfillment import assess_blueprint_fulfillment  # noqa: F401
-from .at_draft_assign_version import assign_version  # noqa: F401
-from .at_draft_atomadic import Atomadic  # noqa: F401
-from . import at_draft_avg_complexity  # noqa: F401
-from . import at_draft_backup_file  # noqa: F401
-from .at_draft_bitnet_benchmark import bitnet_benchmark  # noqa: F401
-from .at_draft_bitnet_chat import bitnet_chat  # noqa: F401
-from .at_draft_bitnet_models import bitnet_models  # noqa: F401
-from .at_draft_bitnet_status import bitnet_status  # noqa: F401
-from .at_draft_bitnet_stream import bitnet_stream  # noqa: F401
-from .at_draft_break_cycles import break_cycles  # noqa: F401
-from . import at_draft_budget  # noqa: F401
-from .at_draft_build_assessment import build_assessment  # noqa: F401
-from .at_draft_build_atomadic_intent_prompt import build_atomadic_intent_prompt  # noqa: F401
-from .at_draft_build_audit import build_audit  # noqa: F401
-from .at_draft_build_capability_inventory import build_capability_inventory  # noqa: F401
-from .at_draft_build_capability_snapshot import build_capability_snapshot  # noqa: F401
-from .at_draft_build_context_packet import build_context_packet  # noqa: F401
-from .at_draft_build_enhancement_report import build_enhancement_report  # noqa: F401
-from .at_draft_build_gap_fill_plan import build_gap_fill_plan  # noqa: F401
-from .at_draft_build_handler import build_handler  # noqa: F401
-from .at_draft_build_local_analysis import build_local_analysis  # noqa: F401
-from .at_draft_build_local_certificate import build_local_certificate  # noqa: F401
-from .at_draft_build_payment_header import build_payment_header  # noqa: F401
-from .at_draft_build_provider import build_provider  # noqa: F401
-from .at_draft_build_recommendations import build_recommendations  # noqa: F401
-from .at_draft_build_resilient_transport import build_resilient_transport  # noqa: F401
-from .at_draft_bump_project_version import bump_project_version  # noqa: F401
-from .at_draft_bump_version import bump_version  # noqa: F401
-from .at_draft_calculate_next_version import calculate_next_version  # noqa: F401
-from . import at_draft_can_pay  # noqa: F401
-from . import at_draft_cancel  # noqa: F401
-from . import at_draft_cancel_once  # noqa: F401
-from . import at_draft_capture_fix  # noqa: F401
-from . import at_draft_capture_principle  # noqa: F401
-from . import at_draft_capture_rejection  # noqa: F401
-from . import at_draft_capture_trace  # noqa: F401
-from .at_draft_certify import certify  # noqa: F401
-from .at_draft_certify_command import certify_command  # noqa: F401
-from .at_draft_certify_pipeline import certify_pipeline  # noqa: F401
-from . import at_draft_certify_step  # noqa: F401
-from . import at_draft_check  # noqa: F401
-from . import at_draft_check_freshness  # noqa: F401
-from . import at_draft_check_hallucination  # noqa: F401
-from . import at_draft_check_many_times  # noqa: F401
-from .at_draft_check_tier_purity import check_tier_purity  # noqa: F401
-from .at_draft_classify_change import classify_change  # noqa: F401
-from .at_draft_classify_complexity import classify_complexity  # noqa: F401
-from .at_draft_classify_symbol import classify_symbol  # noqa: F401
-from .at_draft_classify_tier import classify_tier  # noqa: F401
-from . import at_draft_clear  # noqa: F401
-from . import at_draft_cli_paths  # noqa: F401
-from . import at_draft_close  # noqa: F401
-from .at_draft_collect import collect  # noqa: F401
-from .at_draft_collect_agents import collect_agents  # noqa: F401
-from .at_draft_collect_certificate_summaries import collect_certificate_summaries  # noqa: F401
-from .at_draft_collect_cli_commands import collect_cli_commands  # noqa: F401
-from .at_draft_collect_git_state import collect_git_state  # noqa: F401
-from .at_draft_collect_lineage_ids import collect_lineage_ids  # noqa: F401
-from .at_draft_collect_local_tools import collect_local_tools  # noqa: F401
-from .at_draft_collect_rebuild_summary import collect_rebuild_summary  # noqa: F401
-from .at_draft_collect_tool_status import collect_tool_status  # noqa: F401
-from .at_draft_command_path_exists import command_path_exists  # noqa: F401
-from . import at_draft_complete  # noqa: F401
-from . import at_draft_complexity_score  # noqa: F401
-from .at_draft_compliance_check import compliance_check  # noqa: F401
-from .at_draft_compliance_drift_cert import compliance_drift_cert  # noqa: F401
-from .at_draft_compliance_drift_check import compliance_drift_check  # noqa: F401
-from .at_draft_compliance_eu_ai_act import compliance_eu_ai_act  # noqa: F401
-from .at_draft_compliance_fairness import compliance_fairness  # noqa: F401
-from .at_draft_compliance_incident import compliance_incident  # noqa: F401
-from . import at_draft_compliance_step  # noqa: F401
-from .at_draft_compute_codebase_digest import compute_codebase_digest  # noqa: F401
-from . import at_draft_compute_coefficient  # noqa: F401
-from . import at_draft_compute_synergy  # noqa: F401
-from . import at_draft_compute_trs  # noqa: F401
-from .at_draft_content_hash import content_hash  # noqa: F401
-from .at_draft_context_pack_command import context_pack_command  # noqa: F401
-from .at_draft_context_query_command import context_query_command  # noqa: F401
-from .at_draft_context_reader import context_reader  # noqa: F401
-from . import at_draft_contribute_batch  # noqa: F401
-from .at_draft_control_authorize import control_authorize  # noqa: F401
-from .at_draft_control_federation_mint import control_federation_mint  # noqa: F401
-from .at_draft_control_lineage_record import control_lineage_record  # noqa: F401
-from .at_draft_control_lineage_trace import control_lineage_trace  # noqa: F401
-from .at_draft_control_spending_authorize import control_spending_authorize  # noqa: F401
-from .at_draft_control_spending_budget import control_spending_budget  # noqa: F401
-from . import at_draft_conversation  # noqa: F401
-from . import at_draft_conviction  # noqa: F401
-from . import at_draft_count  # noqa: F401
-from .at_draft_count_tasks_by_status import count_tasks_by_status  # noqa: F401
-from .at_draft_counting_step import counting_step  # noqa: F401
-from .at_draft_credits import credits  # noqa: F401
-from .at_draft_data_convert import data_convert  # noqa: F401
-from . import at_draft_data_format_convert  # noqa: F401
-from . import at_draft_data_validate_json  # noqa: F401
-from . import at_draft_decompose  # noqa: F401
-from .at_draft_default_config_path import default_config_path  # noqa: F401
-from .at_draft_defi_liquidation_check import defi_liquidation_check  # noqa: F401
-from .at_draft_defi_optimize import defi_optimize  # noqa: F401
-from .at_draft_defi_oracle_verify import defi_oracle_verify  # noqa: F401
-from .at_draft_defi_risk_score import defi_risk_score  # noqa: F401
-from .at_draft_defi_yield_optimize import defi_yield_optimize  # noqa: F401
-from . import at_draft_delegation_depth  # noqa: F401
-from . import at_draft_delegation_validate  # noqa: F401
-from . import at_draft_delta  # noqa: F401
-from . import at_draft_depth  # noqa: F401
-from .at_draft_derive_made_of_graph import derive_made_of_graph  # noqa: F401
-from . import at_draft_describe_self  # noqa: F401
-from . import at_draft_description  # noqa: F401
-from .at_draft_design import design  # noqa: F401
-from .at_draft_design_command import design_command  # noqa: F401
-from .at_draft_detect_available_providers import detect_available_providers  # noqa: F401
-from .at_draft_detect_ci import detect_ci  # noqa: F401
-from .at_draft_detect_cycles import detect_cycles  # noqa: F401
-from .at_draft_detect_languages import detect_languages  # noqa: F401
-from .at_draft_detect_linters import detect_linters  # noqa: F401
-from .at_draft_detect_test_framework import detect_test_framework  # noqa: F401
-from .at_draft_detect_tool import detect_tool  # noqa: F401
-from .at_draft_dev_crypto_toolkit import dev_crypto_toolkit  # noqa: F401
-from .at_draft_dev_routing_think import dev_routing_think  # noqa: F401
-from .at_draft_dev_starter import dev_starter  # noqa: F401
-from .at_draft_discovery_recommend import discovery_recommend  # noqa: F401
-from .at_draft_discovery_search import discovery_search  # noqa: F401
-from . import at_draft_display_amount  # noqa: F401
-from . import at_draft_distill_principles  # noqa: F401
-from . import at_draft_do_get  # noqa: F401
-from . import at_draft_do_post  # noqa: F401
-from . import at_draft_do_thing  # noqa: F401
-from . import at_draft_do_thing_2  # noqa: F401
-from .at_draft_do_work import do_work  # noqa: F401
-from .at_draft_docs_command import docs_command  # noqa: F401
-from .at_draft_doctor import doctor  # noqa: F401
-from .at_draft_draft_plan import draft_plan  # noqa: F401
-from .at_draft_eco_scan import eco_scan  # noqa: F401
-from .at_draft_emit_runnable_package import emit_runnable_package  # noqa: F401
-from .at_draft_enforce_tier_purity import enforce_tier_purity  # noqa: F401
-from .at_draft_enhance_command import enhance_command  # noqa: F401
-from .at_draft_enrich_components_with_bodies import enrich_components_with_bodies  # noqa: F401
-from . import at_draft_ensure_loaded  # noqa: F401
-from .at_draft_error_step import error_step  # noqa: F401
-from . import at_draft_errors  # noqa: F401
-from .at_draft_escrow_arbitrate import escrow_arbitrate  # noqa: F401
-from .at_draft_escrow_create import escrow_create  # noqa: F401
-from .at_draft_escrow_dispute import escrow_dispute  # noqa: F401
-from .at_draft_escrow_release import escrow_release  # noqa: F401
-from .at_draft_escrow_status import escrow_status  # noqa: F401
-from .at_draft_estimate_cost import estimate_cost  # noqa: F401
-from . import at_draft_ethics_step  # noqa: F401
-from . import at_draft_evaluate_fitness  # noqa: F401
-from . import at_draft_execute  # noqa: F401
-from . import at_draft_execute_payment  # noqa: F401
-from .at_draft_executor import executor  # noqa: F401
-from . import at_draft_exif_explore  # noqa: F401
-from . import at_draft_explore  # noqa: F401
-from .at_draft_extract_body import extract_body  # noqa: F401
-from .at_draft_extract_symbols import extract_symbols  # noqa: F401
-from .at_draft_f import f  # noqa: F401
-from .at_draft_fail_step import fail_step  # noqa: F401
-from . import at_draft_failed_steps  # noqa: F401
-from . import at_draft_fake_call_llm  # noqa: F401
-from . import at_draft_fake_execute  # noqa: F401
-from .at_draft_fetch_agent_card import fetch_agent_card  # noqa: F401
-from .at_draft_fetch_samples import fetch_samples  # noqa: F401
-from .at_draft_filter_tasks_by_priority import filter_tasks_by_priority  # noqa: F401
-from .at_draft_filter_tasks_by_status import filter_tasks_by_status  # noqa: F401
-from . import at_draft_find_by_assignee  # noqa: F401
-from . import at_draft_find_by_tag  # noqa: F401
-from . import at_draft_flush_alerts  # noqa: F401
-from .at_draft_forge_badge import forge_badge  # noqa: F401
-from .at_draft_forge_delta_submit import forge_delta_submit  # noqa: F401
-from .at_draft_forge_leaderboard import forge_leaderboard  # noqa: F401
-from .at_draft_forge_quarantine import forge_quarantine  # noqa: F401
-from .at_draft_forge_verify import forge_verify  # noqa: F401
-from .at_draft_format_output import format_output  # noqa: F401
-from .at_draft_format_output_again import format_output_again  # noqa: F401
-from .at_draft_format_payment_consent import format_payment_consent  # noqa: F401
-from .at_draft_formatconversion import FormatConversion  # noqa: F401
-from . import at_draft_from_header_value  # noqa: F401
-from . import at_draft_from_payment_result  # noqa: F401
-from . import at_draft_from_response  # noqa: F401
-from .at_draft_full_cycle import full_cycle  # noqa: F401
-from . import at_draft_gate_action  # noqa: F401
-from . import at_draft_gate_log  # noqa: F401
-from . import at_draft_gate_sam  # noqa: F401
-from . import at_draft_gate_step  # noqa: F401
-from . import at_draft_generate  # noqa: F401
-from .at_draft_generate_docs import generate_docs  # noqa: F401
-from . import at_draft_generate_sip  # noqa: F401
-from . import at_draft_generate_status_report  # noqa: F401
-from .at_draft_get_chain_config import get_chain_config  # noqa: F401
-from . import at_draft_get_gaps  # noqa: F401
-from . import at_draft_get_high_priority_tasks  # noqa: F401
-from .at_draft_get_null_context import get_null_context  # noqa: F401
-from . import at_draft_get_overdue_tasks  # noqa: F401
-from . import at_draft_get_priority_distribution  # noqa: F401
-from .at_draft_get_provider import get_provider  # noqa: F401
-from . import at_draft_get_stale_files  # noqa: F401
-from . import at_draft_get_trust_score  # noqa: F401
-from .at_draft_get_value import get_value  # noqa: F401
-from . import at_draft_get_workload_by_assignee  # noqa: F401
-from . import at_draft_greeting  # noqa: F401
-from . import at_draft_hallucination_step  # noqa: F401
-from . import at_draft_handle_request  # noqa: F401
-from . import at_draft_handler  # noqa: F401
-from .at_draft_hash_file import hash_file  # noqa: F401
-from .at_draft_hello import hello  # noqa: F401
-from .at_draft_helper import helper  # noqa: F401
-from .at_draft_helper_thing import helper_thing  # noqa: F401
-from .at_draft_history import history  # noqa: F401
-from . import at_draft_hook_dgm_h_validate  # noqa: F401
-from . import at_draft_hook_meta_edit_validate  # noqa: F401
-from .at_draft_hybrid_config import hybrid_config  # noqa: F401
-from . import at_draft_hydrate_from_memory  # noqa: F401
-from .at_draft_identity_delegate_verify import identity_delegate_verify  # noqa: F401
-from . import at_draft_identity_step  # noqa: F401
-from .at_draft_identity_sybil_check import identity_sybil_check  # noqa: F401
-from .at_draft_identity_verify import identity_verify  # noqa: F401
-from . import at_draft_increment_delegation_depth  # noqa: F401
-from .at_draft_ingest_project import ingest_project  # noqa: F401
-from .at_draft_init import init  # noqa: F401
-from .at_draft_interpreter_chat import interpreter_chat  # noqa: F401
-from .at_draft_invoke_tool import invoke_tool  # noqa: F401
-from . import at_draft_is_active  # noqa: F401
-from . import at_draft_is_available  # noqa: F401
-from . import at_draft_is_cancelled  # noqa: F401
-from . import at_draft_is_confident  # noqa: F401
-from . import at_draft_is_expired  # noqa: F401
-from . import at_draft_is_healthy  # noqa: F401
-from . import at_draft_is_open  # noqa: F401
-from .at_draft_is_testnet import is_testnet  # noqa: F401
-from .at_draft_iter_source_files import iter_source_files  # noqa: F401
-from . import at_draft_last_cycle_report  # noqa: F401
-from . import at_draft_last_lse_decision  # noqa: F401
-from . import at_draft_last_provider_name  # noqa: F401
-from . import at_draft_last_routing  # noqa: F401
-from . import at_draft_last_sam_result  # noqa: F401
-from .at_draft_lint_command import lint_command  # noqa: F401
-from .at_draft_list_providers import list_providers  # noqa: F401
-from . import at_draft_list_snapshots  # noqa: F401
-from .at_draft_list_tools import list_tools  # noqa: F401
-from .at_draft_llm_chat import llm_chat  # noqa: F401
-from .at_draft_llm_stream import llm_stream  # noqa: F401
-from . import at_draft_load  # noqa: F401
-from .at_draft_load_config import load_config  # noqa: F401
-from .at_draft_load_config_again import load_config_again  # noqa: F401
-from .at_draft_load_prev_versions import load_prev_versions  # noqa: F401
-from .at_draft_load_project_metadata import load_project_metadata  # noqa: F401
-from .at_draft_load_prompt_artifact import load_prompt_artifact  # noqa: F401
-from .at_draft_local_agent_card import local_agent_card  # noqa: F401
-from .at_draft_local_config import local_config  # noqa: F401
-from .at_draft_local_route import local_route  # noqa: F401
-from .at_draft_local_train import local_train  # noqa: F401
-from . import at_draft_log_message  # noqa: F401
-from .at_draft_lora_credit import lora_credit  # noqa: F401
-from .at_draft_lora_status import lora_status  # noqa: F401
-from .at_draft_lora_train import lora_train  # noqa: F401
-from .at_draft_main import main  # noqa: F401
-from .at_draft_map_terrain import map_terrain  # noqa: F401
-from .at_draft_memory_clear import memory_clear  # noqa: F401
-from .at_draft_memory_export import memory_export  # noqa: F401
-from .at_draft_memory_show import memory_show  # noqa: F401
-from . import at_draft_messages  # noqa: F401
-from .at_draft_mev_protect import mev_protect  # noqa: F401
-from .at_draft_mev_status import mev_status  # noqa: F401
-from . import at_draft_model_for_tier  # noqa: F401
-from . import at_draft_model_name  # noqa: F401
-from . import at_draft_monitor  # noqa: F401
-from . import at_draft_monitor_all  # noqa: F401
-from . import at_draft_name  # noqa: F401
-from . import at_draft_name_not_empty  # noqa: F401
-from . import at_draft_ncb_contract  # noqa: F401
-from .at_draft_negotiate import negotiate  # noqa: F401
-from .at_draft_nexus_agent_card import nexus_agent_card  # noqa: F401
-from .at_draft_nexus_health import nexus_health  # noqa: F401
-from .at_draft_nexus_overview import nexus_overview  # noqa: F401
-from .at_draft_nexus_route import nexus_route  # noqa: F401
-from .at_draft_normalize_branch_tracks import normalize_branch_tracks  # noqa: F401
-from . import at_draft_on_progress  # noqa: F401
-from .at_draft_oracle_entropy import oracle_entropy  # noqa: F401
-from .at_draft_oracle_hallucination import oracle_hallucination  # noqa: F401
-from .at_draft_oracle_trust_decay import oracle_trust_decay  # noqa: F401
-from .at_draft_oracle_trust_phase import oracle_trust_phase  # noqa: F401
-from . import at_draft_parameters  # noqa: F401
-from . import at_draft_parse_challenge  # noqa: F401
-from .at_draft_parse_command_specs import parse_command_specs  # noqa: F401
-from .at_draft_parse_metrics import parse_metrics  # noqa: F401
-from .at_draft_pass_step import pass_step  # noqa: F401
-from .at_draft_pay import pay  # noqa: F401
-from . import at_draft_persist_principles  # noqa: F401
-from .at_draft_phase0_recon import phase0_recon  # noqa: F401
-from .at_draft_pipeline_certify import pipeline_certify  # noqa: F401
-from .at_draft_pipeline_history import pipeline_history  # noqa: F401
-from .at_draft_pipeline_run import pipeline_run  # noqa: F401
-from .at_draft_pipeline_status import pipeline_status  # noqa: F401
-from .at_draft_pipeline_trust_gate import pipeline_trust_gate  # noqa: F401
-from .at_draft_plan import plan  # noqa: F401
-from . import at_draft_pre_action_verify  # noqa: F401
-from . import at_draft_pre_synthesis_check  # noqa: F401
-from . import at_draft_preview  # noqa: F401
-from .at_draft_print_colab_instructions import print_colab_instructions  # noqa: F401
-from .at_draft_print_summary import print_summary  # noqa: F401
-from .at_draft_probe import probe  # noqa: F401
-from . import at_draft_process  # noqa: F401
-from .at_draft_process_data import process_data  # noqa: F401
-from .at_draft_process_data_copy import process_data_copy  # noqa: F401
-from .at_draft_product_categories import product_categories  # noqa: F401
-from .at_draft_promote_adapter import promote_adapter  # noqa: F401
-from .at_draft_prompt_diff import prompt_diff  # noqa: F401
-from .at_draft_prompt_diff_command import prompt_diff_command  # noqa: F401
-from .at_draft_prompt_hash import prompt_hash  # noqa: F401
-from .at_draft_prompt_hash_command import prompt_hash_command  # noqa: F401
-from .at_draft_prompt_propose import prompt_propose  # noqa: F401
-from .at_draft_prompt_propose_command import prompt_propose_command  # noqa: F401
-from .at_draft_prompt_section import prompt_section  # noqa: F401
-from .at_draft_prompt_section_command import prompt_section_command  # noqa: F401
-from .at_draft_prompt_sync_agent_command import prompt_sync_agent_command  # noqa: F401
-from .at_draft_prompt_validate import prompt_validate  # noqa: F401
-from .at_draft_prompt_validate_command import prompt_validate_command  # noqa: F401
-from .at_draft_promptvalidateresult import PromptValidateResult  # noqa: F401
-from .at_draft_promptvalidatetool import PromptValidateTool  # noqa: F401
-from .at_draft_propose_components import propose_components  # noqa: F401
-from . import at_draft_propose_meta_edit  # noqa: F401
-from . import at_draft_propose_patch  # noqa: F401
-from .at_draft_protocol_evolution_demo import protocol_evolution_demo  # noqa: F401
-from .at_draft_protocol_evolution_record import protocol_evolution_record  # noqa: F401
-from .at_draft_protocol_run import protocol_run  # noqa: F401
-from .at_draft_protocol_version_bump import protocol_version_bump  # noqa: F401
-from .at_draft_provider_for_model import provider_for_model  # noqa: F401
-from . import at_draft_providers  # noqa: F401
-from .at_draft_providers_disable import providers_disable  # noqa: F401
-from .at_draft_providers_enable import providers_enable  # noqa: F401
-from .at_draft_providers_env import providers_env  # noqa: F401
-from .at_draft_providers_list import providers_list  # noqa: F401
-from .at_draft_providers_set_chain import providers_set_chain  # noqa: F401
-from .at_draft_providers_set_key import providers_set_key  # noqa: F401
-from .at_draft_providers_set_tier import providers_set_tier  # noqa: F401
-from .at_draft_providers_show import providers_show  # noqa: F401
-from .at_draft_providers_test import providers_test  # noqa: F401
-from . import at_draft_query  # noqa: F401
-from .at_draft_query_vector_memory import query_vector_memory  # noqa: F401
-from .at_draft_quick_project_scan import quick_project_scan  # noqa: F401
-from .at_draft_raise_for_status import raise_for_status  # noqa: F401
-from .at_draft_rank_findings import rank_findings  # noqa: F401
-from .at_draft_ratchet_advance import ratchet_advance  # noqa: F401
-from .at_draft_ratchet_register import ratchet_register  # noqa: F401
-from .at_draft_ratchet_status import ratchet_status  # noqa: F401
-from .at_draft_read_project_version import read_project_version  # noqa: F401
-from .at_draft_rebuild import rebuild  # noqa: F401
-from .at_draft_rebuild_codebase import rebuild_codebase  # noqa: F401
-from .at_draft_rebuild_project import rebuild_project  # noqa: F401
-from . import at_draft_recall  # noqa: F401
-from . import at_draft_recent_history  # noqa: F401
-from .at_draft_recon_command import recon_command  # noqa: F401
-from . import at_draft_record  # noqa: F401
-from .at_draft_record_evolution_event import record_evolution_event  # noqa: F401
-from . import at_draft_record_gap  # noqa: F401
-from . import at_draft_record_read  # noqa: F401
-from .at_draft_register import register  # noqa: F401
-from .at_draft_register_commands import register_commands  # noqa: F401
-from .at_draft_render_atomadic_help import render_atomadic_help  # noqa: F401
-from .at_draft_render_branch_evolution_demo import render_branch_evolution_demo  # noqa: F401
-from .at_draft_render_capability_prompt_section import render_capability_prompt_section  # noqa: F401
-from .at_draft_render_certificate_text import render_certificate_text  # noqa: F401
-from .at_draft_render_evolution_markdown import render_evolution_markdown  # noqa: F401
-from .at_draft_render_local_docs import render_local_docs  # noqa: F401
-from .at_draft_render_markdown import render_markdown  # noqa: F401
-from .at_draft_render_markdown_capability_section import render_markdown_capability_section  # noqa: F401
-from .at_draft_render_protocol_markdown import render_protocol_markdown  # noqa: F401
-from .at_draft_render_rebuild_summary import render_rebuild_summary  # noqa: F401
-from .at_draft_repo_summary import repo_summary  # noqa: F401
-from . import at_draft_report  # noqa: F401
-from .at_draft_reputation_history import reputation_history  # noqa: F401
-from .at_draft_reputation_record import reputation_record  # noqa: F401
-from .at_draft_reputation_score import reputation_score  # noqa: F401
-from . import at_draft_reputation_step  # noqa: F401
-from . import at_draft_reset_delegation_depth  # noqa: F401
-from . import at_draft_resolve_api_key  # noqa: F401
-from .at_draft_resolve_tier import resolve_tier  # noqa: F401
-from .at_draft_resolve_tool import resolve_tool  # noqa: F401
-from .at_draft_rollback_command import rollback_command  # noqa: F401
-from . import at_draft_route  # noqa: F401
-from . import at_draft_run  # noqa: F401
-from .at_draft_run_again import run_again  # noqa: F401
-from .at_draft_run_all import run_all  # noqa: F401
-from . import at_draft_run_audit  # noqa: F401
-from .at_draft_run_golden import run_golden  # noqa: F401
-from .at_draft_run_interactive import run_interactive  # noqa: F401
-from .at_draft_run_linters import run_linters  # noqa: F401
-from .at_draft_run_parallel_recon import run_parallel_recon  # noqa: F401
-from .at_draft_run_pipeline import run_pipeline  # noqa: F401
-from .at_draft_run_protocol import run_protocol  # noqa: F401
-from .at_draft_run_pyright import run_pyright  # noqa: F401
-from .at_draft_run_ruff import run_ruff  # noqa: F401
-from .at_draft_run_training import run_training  # noqa: F401
-from .at_draft_run_web_research_tool_with_ai_powered_search_pipeline import run_web_research_tool_with_ai_powered_search_pipeline  # noqa: F401
-from .at_draft_run_web_search_skill_to_my_project_pipeline import run_web_search_skill_to_my_project_pipeline  # noqa: F401
-from .at_draft_safe_path_segment import safe_path_segment  # noqa: F401
-from .at_draft_sam_status import sam_status  # noqa: F401
-from .at_draft_sanitize_header_value import sanitize_header_value  # noqa: F401
-from . import at_draft_save  # noqa: F401
-from .at_draft_scan import scan  # noqa: F401
-from .at_draft_scan_bare_except import scan_bare_except  # noqa: F401
-from .at_draft_scan_long_functions import scan_long_functions  # noqa: F401
-from .at_draft_scan_missing_docs import scan_missing_docs  # noqa: F401
-from .at_draft_scan_missing_tests import scan_missing_tests  # noqa: F401
-from .at_draft_scan_missing_type_hints import scan_missing_type_hints  # noqa: F401
-from . import at_draft_scan_prompt  # noqa: F401
-from .at_draft_scan_security_patterns import scan_security_patterns  # noqa: F401
-from .at_draft_scan_source_symbols import scan_source_symbols  # noqa: F401
-from .at_draft_scan_todo_fixme import scan_todo_fixme  # noqa: F401
-from . import at_draft_scan_with_extra  # noqa: F401
-from . import at_draft_search  # noqa: F401
-from . import at_draft_section  # noqa: F401
-from .at_draft_security_pqc_sign import security_pqc_sign  # noqa: F401
-from .at_draft_security_prompt_scan import security_prompt_scan  # noqa: F401
-from .at_draft_security_shield import security_shield  # noqa: F401
-from .at_draft_security_threat_score import security_threat_score  # noqa: F401
-from .at_draft_security_zero_day_scan import security_zero_day_scan  # noqa: F401
-from . import at_draft_select  # noqa: F401
-from . import at_draft_select_next_agent  # noqa: F401
-from .at_draft_select_provider_for_tier import select_provider_for_tier  # noqa: F401
-from .at_draft_serve import serve  # noqa: F401
-from .at_draft_setup_command import setup_command  # noqa: F401
-from . import at_draft_shield_tool  # noqa: F401
-from . import at_draft_simulate  # noqa: F401
-from .at_draft_simulate_invoke import simulate_invoke  # noqa: F401
-from .at_draft_sla_breach import sla_breach  # noqa: F401
-from .at_draft_sla_register import sla_register  # noqa: F401
-from .at_draft_sla_report import sla_report  # noqa: F401
-from .at_draft_sla_status import sla_status  # noqa: F401
-from .at_draft_sort_tasks_by_priority import sort_tasks_by_priority  # noqa: F401
-from . import at_draft_start  # noqa: F401
-from . import at_draft_status  # noqa: F401
-from . import at_draft_step  # noqa: F401
-from . import at_draft_step_names  # noqa: F401
-from . import at_draft_step_stream  # noqa: F401
-from . import at_draft_stream  # noqa: F401
-from .at_draft_submit_payment import submit_payment  # noqa: F401
-from . import at_draft_subscribe  # noqa: F401
-from . import at_draft_summarize  # noqa: F401
-from .at_draft_summarize_repo import summarize_repo  # noqa: F401
-from . import at_draft_summary  # noqa: F401
-from .at_draft_swarm_contradiction import swarm_contradiction  # noqa: F401
-from .at_draft_swarm_intent_classify import swarm_intent_classify  # noqa: F401
-from .at_draft_swarm_plan import swarm_plan  # noqa: F401
-from .at_draft_swarm_relay import swarm_relay  # noqa: F401
-from .at_draft_swarm_semantic_diff import swarm_semantic_diff  # noqa: F401
-from . import at_draft_sybil_step  # noqa: F401
-from .at_draft_symbol import Symbol  # noqa: F401
-from .at_draft_sync_atomadic_prompt_capabilities import sync_atomadic_prompt_capabilities  # noqa: F401
-from . import at_draft_synthesize  # noqa: F401
-from .at_draft_synthesize_missing_components import synthesize_missing_components  # noqa: F401
-from .at_draft_tca_status import tca_status  # noqa: F401
-from . import at_draft_teardown  # noqa: F401
-from . import at_draft_test_2xx_does_nothing  # noqa: F401
-from . import at_draft_test_401_raises_auth_error  # noqa: F401
-from . import at_draft_test_402_raises_payment_required  # noqa: F401
-from . import at_draft_test_403_raises_auth_error  # noqa: F401
-from . import at_draft_test_422_raises_validation_error  # noqa: F401
-from . import at_draft_test_429_raises_rate_limited_with_retry_after  # noqa: F401
-from . import at_draft_test_a2a_discover_returns_agents  # noqa: F401
-from . import at_draft_test_a2a_validate_missing_required_field  # noqa: F401
-from . import at_draft_test_a2a_validate_missing_url  # noqa: F401
-from . import at_draft_test_a2a_validate_success  # noqa: F401
-from . import at_draft_test_absolute_localhost_endpoint_raises  # noqa: F401
-from . import at_draft_test_absolute_private_ip_endpoint_raises  # noqa: F401
-from . import at_draft_test_accepted_write_captures_fix  # noqa: F401
-from . import at_draft_test_add_create  # noqa: F401
-from . import at_draft_test_add_delete  # noqa: F401
-from . import at_draft_test_add_messages  # noqa: F401
-from . import at_draft_test_add_modify  # noqa: F401
-from . import at_draft_test_add_tool_result  # noqa: F401
-from . import at_draft_test_adding_resets_validated  # noqa: F401
-from . import at_draft_test_advance_increments_epoch  # noqa: F401
-from . import at_draft_test_advance_without_start_raises  # noqa: F401
-from .at_draft_test_aegis_certify_epoch import test_aegis_certify_epoch  # noqa: F401
-from .at_draft_test_aegis_happy_path import test_aegis_happy_path  # noqa: F401
-from . import at_draft_test_agent_card_name_validation  # noqa: F401
-from . import at_draft_test_agent_card_with_payment  # noqa: F401
-from .at_draft_test_agent_discovery_happy_path import test_agent_discovery_happy_path  # noqa: F401
-from .at_draft_test_agent_escrow_happy_path import test_agent_escrow_happy_path  # noqa: F401
-from .at_draft_test_agent_reputation_happy_path import test_agent_reputation_happy_path  # noqa: F401
-from . import at_draft_test_agent_run_success_outputs_result  # noqa: F401
-from .at_draft_test_agent_swarm_routing_happy_path import test_agent_swarm_routing_happy_path  # noqa: F401
-from . import at_draft_test_aggregate_version_is_max  # noqa: F401
-from .at_draft_test_ai_inference_happy_path import test_ai_inference_happy_path  # noqa: F401
-from . import at_draft_test_alert_severity_mapping  # noqa: F401
-from . import at_draft_test_all_have_required_keys  # noqa: F401
-from . import at_draft_test_all_profiles_have_all_three_tiers  # noqa: F401
-from . import at_draft_test_all_profiles_have_display_name  # noqa: F401
-from . import at_draft_test_all_providers_fail_raises  # noqa: F401
-from . import at_draft_test_all_subclasses_inherit_from_base  # noqa: F401
-from . import at_draft_test_all_texts_unique  # noqa: F401
-from .at_draft_test_api_key_header_injection import test_api_key_header_injection  # noqa: F401
-from . import at_draft_test_appends_well_known_path  # noqa: F401
-from . import at_draft_test_apply_create  # noqa: F401
-from . import at_draft_test_apply_delete  # noqa: F401
-from . import at_draft_test_apply_includes_diff  # noqa: F401
-from . import at_draft_test_apply_modify  # noqa: F401
-from . import at_draft_test_apply_multi_file  # noqa: F401
-from . import at_draft_test_apply_unvalidated_fails  # noqa: F401
-from . import at_draft_test_at_least_15_happy_path_tests_defined  # noqa: F401
-from .at_draft_test_atomadic_dispatches_dynamic_cli_args import test_atomadic_dispatches_dynamic_cli_args  # noqa: F401
-from . import at_draft_test_auth_compatible  # noqa: F401
-from . import at_draft_test_auth_mismatch  # noqa: F401
-from . import at_draft_test_auth_no_schemes_is_warning  # noqa: F401
-from .at_draft_test_auto_detect_helper import test_auto_detect_helper  # noqa: F401
-from . import at_draft_test_avg_complexity  # noqa: F401
-from . import at_draft_test_avg_complexity_empty  # noqa: F401
-from . import at_draft_test_base_error_carries_context  # noqa: F401
-from . import at_draft_test_basic  # noqa: F401
-from . import at_draft_test_batch_clears_pending_on_success  # noqa: F401
-from . import at_draft_test_batch_fail_keeps_pending  # noqa: F401
-from . import at_draft_test_batch_uses_configured_trust_floor_threshold  # noqa: F401
-from .at_draft_test_billing_platform_happy_path import test_billing_platform_happy_path  # noqa: F401
-from .at_draft_test_bitnet_chat import test_bitnet_chat  # noqa: F401
-from .at_draft_test_bitnet_happy_path import test_bitnet_happy_path  # noqa: F401
-from .at_draft_test_bitnet_models import test_bitnet_models  # noqa: F401
-from .at_draft_test_bitnet_status import test_bitnet_status  # noqa: F401
-from .at_draft_test_bitnet_stream_happy_path import test_bitnet_stream_happy_path  # noqa: F401
-from . import at_draft_test_blocked_dangerous  # noqa: F401
-from . import at_draft_test_blocked_event  # noqa: F401
-from . import at_draft_test_blocked_input_with_gates  # noqa: F401
-from . import at_draft_test_boundary_fast_standard  # noqa: F401
-from . import at_draft_test_boundary_standard_deep  # noqa: F401
-from .at_draft_test_build_enhancement_report_no_crash_empty_dir import test_build_enhancement_report_no_crash_empty_dir  # noqa: F401
-from .at_draft_test_build_enhancement_report_returns_dict import test_build_enhancement_report_returns_dict  # noqa: F401
-from . import at_draft_test_build_header_failure  # noqa: F401
-from . import at_draft_test_build_header_success  # noqa: F401
-from .at_draft_test_build_local_analysis_returns_dict import test_build_local_analysis_returns_dict  # noqa: F401
-from .at_draft_test_build_local_certificate_structure import test_build_local_certificate_structure  # noqa: F401
-from .at_draft_test_build_local_certificate_version import test_build_local_certificate_version  # noqa: F401
-from . import at_draft_test_build_provider_instantiates_nexus_provider  # noqa: F401
-from .at_draft_test_bump_project_version_updates_public_surfaces import test_bump_project_version_updates_public_surfaces  # noqa: F401
-from . import at_draft_test_callback_is_called  # noqa: F401
-from . import at_draft_test_callback_on_skip  # noqa: F401
-from . import at_draft_test_can_pay_expired  # noqa: F401
-from . import at_draft_test_can_pay_valid  # noqa: F401
-from . import at_draft_test_cancellation_context_can_be_marked_cancelled  # noqa: F401
-from . import at_draft_test_cancellation_context_defaults_to_not_cancelled  # noqa: F401
-from . import at_draft_test_cancellation_context_is_thread_safe  # noqa: F401
-from . import at_draft_test_capability_gap_alert  # noqa: F401
-from . import at_draft_test_capture_fix_adds_to_pending  # noqa: F401
-from . import at_draft_test_capture_principle_adds_to_pending  # noqa: F401
-from . import at_draft_test_capture_rejection_adds_negative  # noqa: F401
-from . import at_draft_test_card_validates  # noqa: F401
-from . import at_draft_test_catalog_includes_groq_chutes_nexus  # noqa: F401
-from . import at_draft_test_certify  # noqa: F401
-from . import at_draft_test_certify_failed  # noqa: F401
-from .at_draft_test_certify_json_output import test_certify_json_output  # noqa: F401
-from .at_draft_test_certify_local_only import test_certify_local_only  # noqa: F401
-from .at_draft_test_certify_nonexistent_path import test_certify_nonexistent_path  # noqa: F401
-from .at_draft_test_certify_output_verify_happy_path import test_certify_output_verify_happy_path  # noqa: F401
-from . import at_draft_test_certify_passed  # noqa: F401
-from .at_draft_test_certify_version_flag import test_certify_version_flag  # noqa: F401
-from . import at_draft_test_chaining_add  # noqa: F401
-from . import at_draft_test_check_hallucination_safe  # noqa: F401
-from . import at_draft_test_check_hallucination_unsafe  # noqa: F401
-from . import at_draft_test_chutes_available_with_env_key  # noqa: F401
-from . import at_draft_test_chutes_in_catalog  # noqa: F401
-from . import at_draft_test_chutes_selectable_via_tier_policy  # noqa: F401
-from . import at_draft_test_chutes_serves_deepseek_models  # noqa: F401
-from .at_draft_test_classify_tier_at import test_classify_tier_at  # noqa: F401
-from .at_draft_test_classify_tier_mo import test_classify_tier_mo  # noqa: F401
-from .at_draft_test_classify_tier_qk import test_classify_tier_qk  # noqa: F401
-from .at_draft_test_classify_tier_sy import test_classify_tier_sy  # noqa: F401
-from . import at_draft_test_claude_tier_alias_works  # noqa: F401
-from . import at_draft_test_clean_code_passes_all_stages  # noqa: F401
-from .at_draft_test_cli_commands_batch_happy_path import test_cli_commands_batch_happy_path  # noqa: F401
-from .at_draft_test_cli_map_terrain_json import test_cli_map_terrain_json  # noqa: F401
-from .at_draft_test_cli_phase0_recon_json import test_cli_phase0_recon_json  # noqa: F401
-from .at_draft_test_cli_recon_default_markdown import test_cli_recon_default_markdown  # noqa: F401
-from .at_draft_test_cli_recon_json_flag import test_cli_recon_json_flag  # noqa: F401
-from .at_draft_test_cli_recon_missing_path import test_cli_recon_missing_path  # noqa: F401
-from .at_draft_test_cli_recon_out_flag import test_cli_recon_out_flag  # noqa: F401
-from . import at_draft_test_close_forwards_to_all_underlying  # noqa: F401
-from . import at_draft_test_cloud_provider_available_with_env_key  # noqa: F401
-from . import at_draft_test_cloud_provider_unavailable_without_key  # noqa: F401
-from . import at_draft_test_cloud_providers_have_signup_url  # noqa: F401
-from . import at_draft_test_code_query  # noqa: F401
-from . import at_draft_test_code_request  # noqa: F401
-from .at_draft_test_command_path_exists_accepts_known_subcommand_with_flags import test_command_path_exists_accepts_known_subcommand_with_flags  # noqa: F401
-from . import at_draft_test_compatible_with_shared_skills  # noqa: F401
-from . import at_draft_test_complete_basic  # noqa: F401
-from . import at_draft_test_complete_text_response  # noqa: F401
-from . import at_draft_test_complete_tool_call_response  # noqa: F401
-from . import at_draft_test_complete_with_tool_calls  # noqa: F401
-from . import at_draft_test_complex_multi_step  # noqa: F401
-from . import at_draft_test_compliance_check_invalid_json  # noqa: F401
-from . import at_draft_test_compliance_check_success  # noqa: F401
-from .at_draft_test_compliance_oversight_history_happy_path import test_compliance_oversight_history_happy_path  # noqa: F401
-from .at_draft_test_compliance_products_happy_path import test_compliance_products_happy_path  # noqa: F401
-from .at_draft_test_compute_codebase_digest_basic import test_compute_codebase_digest_basic  # noqa: F401
-from .at_draft_test_compute_codebase_digest_changes_on_file_edit import test_compute_codebase_digest_changes_on_file_edit  # noqa: F401
-from .at_draft_test_compute_codebase_digest_deterministic import test_compute_codebase_digest_deterministic  # noqa: F401
-from .at_draft_test_compute_codebase_digest_ignores_pyc import test_compute_codebase_digest_ignores_pyc  # noqa: F401
-from . import at_draft_test_config_override_model_honored  # noqa: F401
-from . import at_draft_test_config_passed_through  # noqa: F401
-from . import at_draft_test_connect_error_raises_nexus_connection  # noqa: F401
-from . import at_draft_test_consecutive_5xx_trips_circuit  # noqa: F401
-from .at_draft_test_consensus_result_happy_path import test_consensus_result_happy_path  # noqa: F401
-from . import at_draft_test_contains_working_dir  # noqa: F401
-from . import at_draft_test_context_flows_through_steps  # noqa: F401
-from .at_draft_test_context_packet_includes_file_hashes import test_context_packet_includes_file_hashes  # noqa: F401
-from .at_draft_test_contract_attestation_happy_path import test_contract_attestation_happy_path  # noqa: F401
-from .at_draft_test_control_plane_happy_path import test_control_plane_happy_path  # noqa: F401
-from . import at_draft_test_cooldown_prevents_duplicate_alerts  # noqa: F401
-from . import at_draft_test_count_is_50  # noqa: F401
-from .at_draft_test_count_test_functions import test_count_test_functions  # noqa: F401
-from . import at_draft_test_create_nested  # noqa: F401
-from . import at_draft_test_create_new  # noqa: F401
-from . import at_draft_test_custom_detail_message  # noqa: F401
-from . import at_draft_test_custom_fallback_chain_respected  # noqa: F401
-from . import at_draft_test_custom_rpc  # noqa: F401
-from . import at_draft_test_d_max_breach_emits_bas_alert  # noqa: F401
-from . import at_draft_test_d_max_breach_returns_blocked_message  # noqa: F401
-from . import at_draft_test_d_max_breach_severity_is_high  # noqa: F401
-from . import at_draft_test_d_max_increment_blocks_at_limit  # noqa: F401
-from . import at_draft_test_data_convert_json_to_yaml  # noqa: F401
-from . import at_draft_test_data_convert_nonexistent_file  # noqa: F401
-from .at_draft_test_data_tools_happy_path import test_data_tools_happy_path  # noqa: F401
-from . import at_draft_test_decision_has_reason  # noqa: F401
-from . import at_draft_test_deep  # noqa: F401
-from . import at_draft_test_default_config_has_new_fields  # noqa: F401
-from . import at_draft_test_default_config_is_empty_dict  # noqa: F401
-from .at_draft_test_default_config_path_uses_workspace_root import test_default_config_path_uses_workspace_root  # noqa: F401
-from . import at_draft_test_default_optional_fields_are_none  # noqa: F401
-from . import at_draft_test_defaults  # noqa: F401
-from .at_draft_test_defi_risk_score import test_defi_risk_score  # noqa: F401
-from .at_draft_test_defi_suite_happy_path import test_defi_suite_happy_path  # noqa: F401
-from .at_draft_test_delegate_receipt_happy_path import test_delegate_receipt_happy_path  # noqa: F401
-from . import at_draft_test_delegation_depth_resets_on_step  # noqa: F401
-from .at_draft_test_dependency_detects_circular import test_dependency_detects_circular  # noqa: F401
-from .at_draft_test_dependency_finds_external_deps import test_dependency_finds_external_deps  # noqa: F401
-from .at_draft_test_dependency_no_circular_clean_repo import test_dependency_no_circular_clean_repo  # noqa: F401
-from . import at_draft_test_depth  # noqa: F401
-from .at_draft_test_detect_ci_github_actions import test_detect_ci_github_actions  # noqa: F401
-from . import at_draft_test_detect_config_key_overrides_env  # noqa: F401
-from .at_draft_test_detect_languages_ignores_venv import test_detect_languages_ignores_venv  # noqa: F401
-from .at_draft_test_detect_languages_on_tmp import test_detect_languages_on_tmp  # noqa: F401
-from .at_draft_test_detect_linters_empty_dir import test_detect_linters_empty_dir  # noqa: F401
-from .at_draft_test_detect_linters_python_project import test_detect_linters_python_project  # noqa: F401
-from . import at_draft_test_detect_picks_up_env_key  # noqa: F401
-from . import at_draft_test_detect_returns_at_least_local_providers  # noqa: F401
-from . import at_draft_test_detect_skips_disabled_providers  # noqa: F401
-from .at_draft_test_detect_test_framework_pytest import test_detect_test_framework_pytest  # noqa: F401
-from . import at_draft_test_detects_node_project  # noqa: F401
-from . import at_draft_test_detects_python_project  # noqa: F401
-from . import at_draft_test_deterministic  # noqa: F401
-from .at_draft_test_dev_crypto_toolkit import test_dev_crypto_toolkit  # noqa: F401
-from .at_draft_test_dev_starter import test_dev_starter  # noqa: F401
-from .at_draft_test_developer_tools_happy_path import test_developer_tools_happy_path  # noqa: F401
-from . import at_draft_test_different_content  # noqa: F401
-from . import at_draft_test_disabled_flywheel_rejects_captures  # noqa: F401
-from . import at_draft_test_discover_requires_remote  # noqa: F401
-from . import at_draft_test_discover_success  # noqa: F401
-from .at_draft_test_discovery_protocol_happy_path import test_discovery_protocol_happy_path  # noqa: F401
-from .at_draft_test_discovery_search import test_discovery_search  # noqa: F401
-from . import at_draft_test_dns_failure_fails_closed  # noqa: F401
-from . import at_draft_test_dns_resolution_failure_handled  # noqa: F401
-from .at_draft_test_doc_agent_coverage import test_doc_agent_coverage  # noqa: F401
-from .at_draft_test_doc_agent_finds_readme import test_doc_agent_finds_readme  # noqa: F401
-from .at_draft_test_doc_agent_no_readme import test_doc_agent_no_readme  # noqa: F401
-from .at_draft_test_docs_json_output import test_docs_json_output  # noqa: F401
-from .at_draft_test_docs_local_only import test_docs_local_only  # noqa: F401
-from .at_draft_test_docs_nonexistent_path import test_docs_nonexistent_path  # noqa: F401
-from .at_draft_test_doctor_json_flag import test_doctor_json_flag  # noqa: F401
-from .at_draft_test_doctor_stays_local_by_default import test_doctor_stays_local_by_default  # noqa: F401
-from .at_draft_test_draft_plan_rejects_empty_goal import test_draft_plan_rejects_empty_goal  # noqa: F401
-from .at_draft_test_draft_plan_respects_max_steps import test_draft_plan_respects_max_steps  # noqa: F401
-from . import at_draft_test_duration_tracking  # noqa: F401
-from .at_draft_test_dynamic_prompt_includes_protocol_evolution_commands import test_dynamic_prompt_includes_protocol_evolution_commands  # noqa: F401
-from . import at_draft_test_echo  # noqa: F401
-from . import at_draft_test_empty_body  # noqa: F401
-from . import at_draft_test_empty_list_returns_initial  # noqa: F401
-from . import at_draft_test_empty_name_is_error  # noqa: F401
-from . import at_draft_test_empty_old_body  # noqa: F401
-from . import at_draft_test_empty_pipeline_fails  # noqa: F401
-from . import at_draft_test_empty_raises  # noqa: F401
-from . import at_draft_test_empty_skills_both_sides  # noqa: F401
-from . import at_draft_test_empty_string  # noqa: F401
-from . import at_draft_test_empty_tiers_returns_initial  # noqa: F401
-from .at_draft_test_enhance_apply_requires_ids import test_enhance_apply_requires_ids  # noqa: F401
-from .at_draft_test_enhance_help import test_enhance_help  # noqa: F401
-from .at_draft_test_enhance_json_output import test_enhance_json_output  # noqa: F401
-from .at_draft_test_enhance_local_only import test_enhance_local_only  # noqa: F401
-from .at_draft_test_enhance_nonexistent_path import test_enhance_nonexistent_path  # noqa: F401
-from . import at_draft_test_env_hydration_does_not_override_process_env  # noqa: F401
-from . import at_draft_test_env_hydration_populates_os_environ  # noqa: F401
-from .at_draft_test_escrow_create import test_escrow_create  # noqa: F401
-from .at_draft_test_escrow_http_error import test_escrow_http_error  # noqa: F401
-from .at_draft_test_escrow_status import test_escrow_status  # noqa: F401
-from .at_draft_test_escrow_status_happy_path import test_escrow_status_happy_path  # noqa: F401
-from . import at_draft_test_exception_becomes_failed_step  # noqa: F401
-from . import at_draft_test_exception_with_fail_fast  # noqa: F401
-from . import at_draft_test_execute_unknown  # noqa: F401
-from . import at_draft_test_exhausts_retries_returns_last_response  # noqa: F401
-from .at_draft_test_existing_nexus_health_still_works import test_existing_nexus_health_still_works  # noqa: F401
-from .at_draft_test_existing_plan_command_still_works import test_existing_plan_command_still_works  # noqa: F401
-from . import at_draft_test_expired_challenge  # noqa: F401
-from . import at_draft_test_explicit_env_override_bypasses_catalog  # noqa: F401
-from . import at_draft_test_extracts_classes  # noqa: F401
-from . import at_draft_test_extracts_functions  # noqa: F401
-from . import at_draft_test_fail_open_on_exception  # noqa: F401
-from . import at_draft_test_failed_steps_property  # noqa: F401
-from . import at_draft_test_failed_write_is_not_cie_gated  # noqa: F401
-from . import at_draft_test_fallback_chain_contains_only_known_providers  # noqa: F401
-from . import at_draft_test_fallback_to_ollama  # noqa: F401
-from . import at_draft_test_falls_back_on_failure  # noqa: F401
-from . import at_draft_test_falls_through_when_policy_unavailable  # noqa: F401
-from . import at_draft_test_fast  # noqa: F401
-from . import at_draft_test_fetch_appends_well_known_path  # noqa: F401
-from . import at_draft_test_fetch_does_not_duplicate_well_known  # noqa: F401
-from . import at_draft_test_fetch_http_error  # noqa: F401
-from . import at_draft_test_fetch_invalid_json  # noqa: F401
-from . import at_draft_test_fetch_network_error  # noqa: F401
-from . import at_draft_test_fetch_success  # noqa: F401
-from . import at_draft_test_find_pattern  # noqa: F401
-from . import at_draft_test_five_groups_of_ten  # noqa: F401
-from . import at_draft_test_flush_alerts_drains_buffer  # noqa: F401
-from .at_draft_test_forge_badge import test_forge_badge  # noqa: F401
-from .at_draft_test_forge_leaderboard import test_forge_leaderboard  # noqa: F401
-from .at_draft_test_forge_marketplace_happy_path import test_forge_marketplace_happy_path  # noqa: F401
-from .at_draft_test_forge_quarantine import test_forge_quarantine  # noqa: F401
-from .at_draft_test_forge_verify import test_forge_verify  # noqa: F401
-from . import at_draft_test_formal_verification  # noqa: F401
-from . import at_draft_test_format_includes_amount  # noqa: F401
-from . import at_draft_test_free_providers_assembled_into_multiprovider  # noqa: F401
-from . import at_draft_test_from_header_value  # noqa: F401
-from . import at_draft_test_from_payment_result_failure  # noqa: F401
-from . import at_draft_test_from_payment_result_success  # noqa: F401
-from . import at_draft_test_from_response_full  # noqa: F401
-from . import at_draft_test_from_response_minimal  # noqa: F401
-from . import at_draft_test_ftp_raises  # noqa: F401
-from .at_draft_test_full_cycle_command_runs_locally import test_full_cycle_command_runs_locally  # noqa: F401
-from .at_draft_test_full_cycle_command_writes_json_report import test_full_cycle_command_writes_json_report  # noqa: F401
-from .at_draft_test_full_cycle_command_writes_report import test_full_cycle_command_writes_report  # noqa: F401
-from . import at_draft_test_full_flow_parse_and_validate  # noqa: F401
-from . import at_draft_test_full_flow_payment_failure  # noqa: F401
-from . import at_draft_test_full_phase1_stack_runs_a_step  # noqa: F401
-from . import at_draft_test_full_pipeline  # noqa: F401
-from . import at_draft_test_gate_log_accumulates  # noqa: F401
-from . import at_draft_test_gate_log_is_copy  # noqa: F401
-from . import at_draft_test_gate_result_structure  # noqa: F401
-from . import at_draft_test_gate_sam_fail_open_on_exception  # noqa: F401
-from . import at_draft_test_gate_sam_logs_to_gate_log  # noqa: F401
-from . import at_draft_test_gate_sam_returns_dict  # noqa: F401
-from . import at_draft_test_generates_valid_card  # noqa: F401
-from . import at_draft_test_glob_py  # noqa: F401
-from .at_draft_test_governance_happy_path import test_governance_happy_path  # noqa: F401
-from . import at_draft_test_hallucination_check  # noqa: F401
-from . import at_draft_test_hallucination_warning  # noqa: F401
-from . import at_draft_test_halt_when_cap_missing  # noqa: F401
-from . import at_draft_test_handle_x402_empty_body  # noqa: F401
-from . import at_draft_test_handle_x402_fallback_fields  # noqa: F401
-from . import at_draft_test_handle_x402_parses_payment_details  # noqa: F401
-from .at_draft_test_hash_file_deterministic import test_hash_file_deterministic  # noqa: F401
-from .at_draft_test_hash_file_different_content import test_hash_file_different_content  # noqa: F401
-from . import at_draft_test_header_roundtrip  # noqa: F401
-from .at_draft_test_helper import test_helper  # noqa: F401
-from . import at_draft_test_history_tracking  # noqa: F401
-from .at_draft_test_http_errors_raise_exception import test_http_errors_raise_exception  # noqa: F401
-from . import at_draft_test_https_only_required  # noqa: F401
-from . import at_draft_test_identical  # noqa: F401
-from .at_draft_test_identity_auth_happy_path import test_identity_auth_happy_path  # noqa: F401
-from .at_draft_test_identity_sybil_check import test_identity_sybil_check  # noqa: F401
-from .at_draft_test_identity_verify import test_identity_verify  # noqa: F401
-from . import at_draft_test_ids_are_1_to_50  # noqa: F401
-from . import at_draft_test_immediate_ssrf_validation_before_request  # noqa: F401
-from .at_draft_test_inference_stream_happy_path import test_inference_stream_happy_path  # noqa: F401
-from . import at_draft_test_initial_context_is_available  # noqa: F401
-from . import at_draft_test_internal_search_chat_sends_query  # noqa: F401
-from . import at_draft_test_invalid_chars_raises  # noqa: F401
-from . import at_draft_test_invalid_falls_back_to_initial  # noqa: F401
-from . import at_draft_test_invalid_hostname_rejected  # noqa: F401
-from . import at_draft_test_invalid_json_returns_empty  # noqa: F401
-from . import at_draft_test_invalid_regex  # noqa: F401
-from . import at_draft_test_invalid_url_scheme_is_error  # noqa: F401
-from .at_draft_test_invoke_tool_forwards_api_key import test_invoke_tool_forwards_api_key  # noqa: F401
-from . import at_draft_test_ipv6_loopback_blocked  # noqa: F401
-from . import at_draft_test_is_healthy_false_when_no_calls  # noqa: F401
-from . import at_draft_test_is_healthy_true  # noqa: F401
-from .at_draft_test_iter_files_respects_limit import test_iter_files_respects_limit  # noqa: F401
-from .at_draft_test_iter_files_skips_ignored_dirs import test_iter_files_skips_ignored_dirs  # noqa: F401
-from .at_draft_test_lineage_trace_happy_path import test_lineage_trace_happy_path  # noqa: F401
-from .at_draft_test_lint_local_path import test_lint_local_path  # noqa: F401
-from .at_draft_test_lint_nonexistent_path import test_lint_nonexistent_path  # noqa: F401
-from . import at_draft_test_list_root  # noqa: F401
-from . import at_draft_test_list_snapshots  # noqa: F401
-from . import at_draft_test_list_snapshots_empty  # noqa: F401
-from . import at_draft_test_list_subdir  # noqa: F401
-from .at_draft_test_llm_chat_http_error_exits_1 import test_llm_chat_http_error_exits_1  # noqa: F401
-from .at_draft_test_llm_chat_returns_response import test_llm_chat_returns_response  # noqa: F401
-from . import at_draft_test_llm_chat_success  # noqa: F401
-from .at_draft_test_llm_chat_uses_text_field_fallback import test_llm_chat_uses_text_field_fallback  # noqa: F401
-from .at_draft_test_llm_chat_writes_json_out import test_llm_chat_writes_json_out  # noqa: F401
-from .at_draft_test_load_config_honors_env_config_path import test_load_config_honors_env_config_path  # noqa: F401
-from .at_draft_test_load_project_metadata_empty import test_load_project_metadata_empty  # noqa: F401
-from .at_draft_test_load_project_metadata_package_json import test_load_project_metadata_package_json  # noqa: F401
-from .at_draft_test_load_project_metadata_pyproject import test_load_project_metadata_pyproject  # noqa: F401
-from . import at_draft_test_local_card_displays  # noqa: F401
-from . import at_draft_test_local_card_json  # noqa: F401
-from . import at_draft_test_local_provider_always_available  # noqa: F401
-from . import at_draft_test_local_providers_have_no_api_key_env  # noqa: F401
-from . import at_draft_test_localhost_blocked  # noqa: F401
-from . import at_draft_test_long_text_adds_complexity  # noqa: F401
-from . import at_draft_test_loop_detected_alert  # noqa: F401
-from . import at_draft_test_loopback_127_0_0_1_blocked  # noqa: F401
-from . import at_draft_test_low_confidence_principle_skipped  # noqa: F401
-from . import at_draft_test_lse_custom_fallback_chain_in_config  # noqa: F401
-from . import at_draft_test_lse_decision_populated_after_step  # noqa: F401
-from . import at_draft_test_lse_falls_back_to_pollinations_when_catalog_disabled  # noqa: F401
-from . import at_draft_test_lse_model_override_propagates_to_provider  # noqa: F401
-from . import at_draft_test_lse_prefers_pollinations_over_legacy_claude  # noqa: F401
-from . import at_draft_test_lse_report_includes_provider_distribution  # noqa: F401
-from . import at_draft_test_lse_tier_policy_honors_claude_aliases  # noqa: F401
-from . import at_draft_test_lse_tier_policy_respected  # noqa: F401
-from . import at_draft_test_lse_user_override_bypasses_catalog  # noqa: F401
-from . import at_draft_test_lse_uses_free_provider_when_key_present  # noqa: F401
-from . import at_draft_test_major  # noqa: F401
-from . import at_draft_test_major_bump  # noqa: F401
-from . import at_draft_test_major_removed_function  # noqa: F401
-from . import at_draft_test_major_resets_minor_and_patch  # noqa: F401
-from . import at_draft_test_major_wins  # noqa: F401
-from .at_draft_test_map_terrain_accepts_single_string_capability_name import test_map_terrain_accepts_single_string_capability_name  # noqa: F401
-from .at_draft_test_map_terrain_auto_invent_persists_tool_plan import test_map_terrain_auto_invent_persists_tool_plan  # noqa: F401
-from .at_draft_test_map_terrain_halts_and_builds_invention_plan import test_map_terrain_halts_and_builds_invention_plan  # noqa: F401
-from .at_draft_test_map_terrain_halts_for_invalid_requirement_type import test_map_terrain_halts_for_invalid_requirement_type  # noqa: F401
-from .at_draft_test_map_terrain_proceed_for_existing_local_and_hosted_tool import test_map_terrain_proceed_for_existing_local_and_hosted_tool  # noqa: F401
-from . import at_draft_test_max_rounds_error_event  # noqa: F401
-from . import at_draft_test_max_rounds_safety  # noqa: F401
-from .at_draft_test_memory_fence_audit_happy_path import test_memory_fence_audit_happy_path  # noqa: F401
-from .at_draft_test_methods_do_not_crash_on_valid_args import test_methods_do_not_crash_on_valid_args  # noqa: F401
-from .at_draft_test_mev_protect import test_mev_protect  # noqa: F401
-from .at_draft_test_mev_shield_happy_path import test_mev_shield_happy_path  # noqa: F401
-from .at_draft_test_mev_status import test_mev_status  # noqa: F401
-from . import at_draft_test_minimal  # noqa: F401
-from . import at_draft_test_minor  # noqa: F401
-from . import at_draft_test_minor_bump  # noqa: F401
-from . import at_draft_test_minor_new_function  # noqa: F401
-from . import at_draft_test_minor_resets_patch  # noqa: F401
-from . import at_draft_test_missing_description_is_warning  # noqa: F401
-from . import at_draft_test_missing_id_skipped  # noqa: F401
-from . import at_draft_test_missing_name_is_error  # noqa: F401
-from . import at_draft_test_missing_url_is_warning  # noqa: F401
-from . import at_draft_test_missing_version_is_warning  # noqa: F401
-from . import at_draft_test_model_for_tier_accepts_claude_aliases  # noqa: F401
-from . import at_draft_test_model_for_tier_honors_override  # noqa: F401
-from . import at_draft_test_monitor_all_fires_multiple_alerts  # noqa: F401
-from . import at_draft_test_monitor_returns_none_below_threshold  # noqa: F401
-from . import at_draft_test_monitor_synergy_alert  # noqa: F401
-from . import at_draft_test_multiple_files  # noqa: F401
-from . import at_draft_test_multiple_matches  # noqa: F401
-from . import at_draft_test_name_property  # noqa: F401
-from . import at_draft_test_ncb_check_skipped_for_non_write_tools  # noqa: F401
-from . import at_draft_test_negative_raises  # noqa: F401
-from . import at_draft_test_negotiate_blocks_private_url  # noqa: F401
-from . import at_draft_test_negotiate_invalid_remote_card  # noqa: F401
-from . import at_draft_test_negotiate_success  # noqa: F401
-from . import at_draft_test_new_artifact  # noqa: F401
-from .at_draft_test_new_commands_require_remote_for_local_profile import test_new_commands_require_remote_for_local_profile  # noqa: F401
-from .at_draft_test_new_sub_command_blocked_locally import test_new_sub_command_blocked_locally  # noqa: F401
-from . import at_draft_test_nexus_added_to_multiprovider_when_catalog_keys_present  # noqa: F401
-from . import at_draft_test_nexus_available_when_key_set  # noqa: F401
-from .at_draft_test_nexus_commands_require_remote_opt_in_for_local_profile import test_nexus_commands_require_remote_opt_in_for_local_profile  # noqa: F401
-from . import at_draft_test_nexus_is_in_default_fallback_chain  # noqa: F401
-from . import at_draft_test_nexus_is_marked_special  # noqa: F401
-from . import at_draft_test_nexus_provider_for_premium  # noqa: F401
-from . import at_draft_test_nexus_selectable_via_tier_policy  # noqa: F401
-from . import at_draft_test_nexus_skipped_in_local_profile  # noqa: F401
-from . import at_draft_test_nexus_unavailable_without_key  # noqa: F401
-from . import at_draft_test_no_fail_fast_runs_all  # noqa: F401
-from . import at_draft_test_no_host_raises  # noqa: F401
-from . import at_draft_test_no_lse_falls_back_to_configured_model  # noqa: F401
-from . import at_draft_test_no_matches  # noqa: F401
-from . import at_draft_test_no_persist_when_not_configured  # noqa: F401
-from . import at_draft_test_no_providers_falls_back_to_ollama  # noqa: F401
-from . import at_draft_test_no_scheme_raises  # noqa: F401
-from . import at_draft_test_no_shared_skills_incompatible  # noqa: F401
-from . import at_draft_test_no_skills_is_warning  # noqa: F401
-from . import at_draft_test_non_https_absolute_rejected  # noqa: F401
-from . import at_draft_test_non_python_falls_back_to_patch  # noqa: F401
-from . import at_draft_test_non_python_skipped_by_cie  # noqa: F401
-from . import at_draft_test_non_python_skips_ast  # noqa: F401
-from . import at_draft_test_non_retryable_status_returned_immediately  # noqa: F401
-from . import at_draft_test_none_path_returns_empty  # noqa: F401
-from . import at_draft_test_nonexistent_path_returns_empty  # noqa: F401
-from . import at_draft_test_normal_flow_does_not_trigger_d_max_alert  # noqa: F401
-from . import at_draft_test_not_found  # noqa: F401
-from . import at_draft_test_null_cancellation_context_never_cancels  # noqa: F401
-from . import at_draft_test_open_circuit_raises_immediately  # noqa: F401
-from . import at_draft_test_openai_key_multiprovider_when_catalog_enabled  # noqa: F401
-from . import at_draft_test_openai_key_picks_openai  # noqa: F401
-from .at_draft_test_oracle_entropy import test_oracle_entropy  # noqa: F401
-from .at_draft_test_oracle_hallucination_http_error_exits_1 import test_oracle_hallucination_http_error_exits_1  # noqa: F401
-from .at_draft_test_oracle_hallucination_returns_verdict import test_oracle_hallucination_returns_verdict  # noqa: F401
-from .at_draft_test_oracle_hallucination_writes_json_out import test_oracle_hallucination_writes_json_out  # noqa: F401
-from .at_draft_test_oracle_trust_decay import test_oracle_trust_decay  # noqa: F401
-from .at_draft_test_oracle_trust_phase import test_oracle_trust_phase  # noqa: F401
-from . import at_draft_test_output_mode_mismatch_noted  # noqa: F401
-from . import at_draft_test_oversized_raises  # noqa: F401
-from . import at_draft_test_owasp_critical_eval_blocked  # noqa: F401
-from . import at_draft_test_owasp_eval_injection_blocked  # noqa: F401
-from . import at_draft_test_owasp_medium_warns_not_blocks  # noqa: F401
-from . import at_draft_test_parse_challenge_amount_too_large  # noqa: F401
-from . import at_draft_test_parse_challenge_invalid  # noqa: F401
-from . import at_draft_test_parse_challenge_recipient_mismatch  # noqa: F401
-from . import at_draft_test_parse_challenge_valid  # noqa: F401
-from . import at_draft_test_partial_present_partial_missing  # noqa: F401
-from . import at_draft_test_patch  # noqa: F401
-from . import at_draft_test_patch_bump  # noqa: F401
-from . import at_draft_test_patch_internal_change  # noqa: F401
-from . import at_draft_test_pay_no_payment_required  # noqa: F401
-from . import at_draft_test_pay_shows_challenge  # noqa: F401
-from . import at_draft_test_pending_persists_across_instances  # noqa: F401
-from . import at_draft_test_persist_creates_file  # noqa: F401
-from . import at_draft_test_persist_principles_calls_context_memory  # noqa: F401
-from . import at_draft_test_persist_principles_no_lora_on_low_conviction  # noqa: F401
-from . import at_draft_test_persist_principles_triggers_lora_on_high_conviction  # noqa: F401
-from . import at_draft_test_persist_records_failure  # noqa: F401
-from . import at_draft_test_persistence_io_error_does_not_crash  # noqa: F401
-from . import at_draft_test_persistence_writes_jsonl  # noqa: F401
-from .at_draft_test_phase0_recon_ready_when_sources_are_attached import test_phase0_recon_ready_when_sources_are_attached  # noqa: F401
-from .at_draft_test_phase0_recon_requires_latest_docs_for_technical_task import test_phase0_recon_requires_latest_docs_for_technical_task  # noqa: F401
-from . import at_draft_test_picks_highest  # noqa: F401
-from . import at_draft_test_pipeline_collects_multiple_entries_appended_by_a_stage  # noqa: F401
-from . import at_draft_test_pipeline_history_empty  # noqa: F401
-from . import at_draft_test_pipeline_run_certify_success  # noqa: F401
-from . import at_draft_test_pipeline_run_certify_unsafe  # noqa: F401
-from . import at_draft_test_pipeline_run_trust_gate_deny  # noqa: F401
-from . import at_draft_test_pipeline_run_trust_gate_success  # noqa: F401
-from . import at_draft_test_pipeline_with_failures  # noqa: F401
-from . import at_draft_test_policy_overrides_chain_order  # noqa: F401
-from . import at_draft_test_pollinations_available_via_default_key  # noqa: F401
-from . import at_draft_test_post_with_x402_passes_through_on_200  # noqa: F401
-from . import at_draft_test_post_with_x402_raises_on_other_errors  # noqa: F401
-from . import at_draft_test_post_with_x402_returns_payment_on_402  # noqa: F401
-from . import at_draft_test_preserves_newlines_and_tabs  # noqa: F401
-from . import at_draft_test_preview  # noqa: F401
-from . import at_draft_test_preview_does_not_modify  # noqa: F401
-from . import at_draft_test_preview_returns_diff  # noqa: F401
-from . import at_draft_test_preview_with_validation_errors  # noqa: F401
-from . import at_draft_test_private_10_network_blocked  # noqa: F401
-from . import at_draft_test_private_172_network_blocked  # noqa: F401
-from . import at_draft_test_private_192_168_network_blocked  # noqa: F401
-from . import at_draft_test_proceed_when_all_caps_present  # noqa: F401
-from .at_draft_test_prompt_download_happy_path import test_prompt_download_happy_path  # noqa: F401
-from .at_draft_test_prompt_ethics_happy_path import test_prompt_ethics_happy_path  # noqa: F401
-from .at_draft_test_protocol_evolution_record_cli import test_protocol_evolution_record_cli  # noqa: F401
-from .at_draft_test_protocol_run_command_reports_cycle import test_protocol_run_command_reports_cycle  # noqa: F401
-from . import at_draft_test_provider_for_model_empty_string  # noqa: F401
-from . import at_draft_test_provider_for_model_reverse_lookup  # noqa: F401
-from . import at_draft_test_provider_for_model_unknown_returns_none  # noqa: F401
-from . import at_draft_test_provider_override_parses_from_json  # noqa: F401
-from . import at_draft_test_prune_limits_depth  # noqa: F401
-from . import at_draft_test_public_absolute_endpoint_allowed  # noqa: F401
-from . import at_draft_test_public_absolute_endpoint_allowed_in_simulate  # noqa: F401
-from . import at_draft_test_quality_regression_alert  # noqa: F401
-from .at_draft_test_quota_status_happy_path import test_quota_status_happy_path  # noqa: F401
-from . import at_draft_test_range_bounded  # noqa: F401
-from .at_draft_test_rank_findings_order import test_rank_findings_order  # noqa: F401
-from .at_draft_test_rank_findings_reassigns_ids import test_rank_findings_reassigns_ids  # noqa: F401
-from .at_draft_test_ratchet_advance import test_ratchet_advance  # noqa: F401
-from .at_draft_test_ratchet_register_http_error_exits_1 import test_ratchet_register_http_error_exits_1  # noqa: F401
-from .at_draft_test_ratchet_register_shows_session import test_ratchet_register_shows_session  # noqa: F401
-from . import at_draft_test_ratchet_register_success  # noqa: F401
-from .at_draft_test_ratchet_register_writes_json_out import test_ratchet_register_writes_json_out  # noqa: F401
-from .at_draft_test_ratchet_status import test_ratchet_status  # noqa: F401
-from .at_draft_test_ratchet_status_happy_path import test_ratchet_status_happy_path  # noqa: F401
-from .at_draft_test_ratchetgate_happy_path import test_ratchetgate_happy_path  # noqa: F401
-from . import at_draft_test_read_file_failure_does_not_record  # noqa: F401
-from . import at_draft_test_read_file_records_freshness  # noqa: F401
-from . import at_draft_test_read_full  # noqa: F401
-from . import at_draft_test_read_line_range  # noqa: F401
-from . import at_draft_test_read_missing  # noqa: F401
-from .at_draft_test_rebuild_backs_up_existing_output import test_rebuild_backs_up_existing_output  # noqa: F401
-from .at_draft_test_rebuild_copies_local_env_without_tracking_hint import test_rebuild_copies_local_env_without_tracking_hint  # noqa: F401
-from .at_draft_test_rebuild_dry_run import test_rebuild_dry_run  # noqa: F401
-from .at_draft_test_rebuild_dry_run_json import test_rebuild_dry_run_json  # noqa: F401
-from .at_draft_test_rebuild_json_output import test_rebuild_json_output  # noqa: F401
-from .at_draft_test_rebuild_yes_skips_confirmation import test_rebuild_yes_skips_confirmation  # noqa: F401
-from . import at_draft_test_record_creates_snapshot  # noqa: F401
-from .at_draft_test_record_evolution_event_writes_ledger_and_markdown import test_record_evolution_event_writes_ledger_and_markdown  # noqa: F401
-from . import at_draft_test_record_increments_sequence  # noqa: F401
-from . import at_draft_test_refine_trigger_false_on_clean_report  # noqa: F401
-from . import at_draft_test_refine_trigger_false_when_no_report  # noqa: F401
-from . import at_draft_test_reject_outside_cwd  # noqa: F401
-from . import at_draft_test_rejected_write_captures_rejection  # noqa: F401
-from . import at_draft_test_relative_endpoint_passthrough  # noqa: F401
-from . import at_draft_test_relative_endpoint_uses_base_url  # noqa: F401
-from . import at_draft_test_remote_no_auth_required  # noqa: F401
-from .at_draft_test_render_atomadic_help_mentions_runtime_inventory import test_render_atomadic_help_mentions_runtime_inventory  # noqa: F401
-from .at_draft_test_render_branch_evolution_demo_names_tracks import test_render_branch_evolution_demo_names_tracks  # noqa: F401
-from .at_draft_test_render_certificate_text_contains_digest import test_render_certificate_text_contains_digest  # noqa: F401
-from . import at_draft_test_render_header_includes_trs_when_sam_ran  # noqa: F401
-from . import at_draft_test_render_header_skips_when_nothing_to_show  # noqa: F401
-from .at_draft_test_render_local_docs_readme_contains_name import test_render_local_docs_readme_contains_name  # noqa: F401
-from .at_draft_test_render_local_docs_writes_files import test_render_local_docs_writes_files  # noqa: F401
-from .at_draft_test_render_markdown_contains_goal_and_steps import test_render_markdown_contains_goal_and_steps  # noqa: F401
-from .at_draft_test_render_protocol_markdown_contains_sections import test_render_protocol_markdown_contains_sections  # noqa: F401
-from .at_draft_test_repo_summary_command_reports_files import test_repo_summary_command_reports_files  # noqa: F401
-from .at_draft_test_repo_summary_counts_files_and_skips_ignored_dirs import test_repo_summary_counts_files_and_skips_ignored_dirs  # noqa: F401
-from . import at_draft_test_report_structure  # noqa: F401
-from . import at_draft_test_report_tracks_passes_failures  # noqa: F401
-from .at_draft_test_reputation_ledger_happy_path import test_reputation_ledger_happy_path  # noqa: F401
-from .at_draft_test_reputation_score import test_reputation_score  # noqa: F401
-from .at_draft_test_reputation_score_happy_path import test_reputation_score_happy_path  # noqa: F401
-from . import at_draft_test_resolve_api_key_config_wins  # noqa: F401
-from . import at_draft_test_resolve_api_key_falls_back_to_env  # noqa: F401
-from . import at_draft_test_resolve_api_key_returns_none_when_missing  # noqa: F401
-from . import at_draft_test_retries_on_429_then_succeeds  # noqa: F401
-from . import at_draft_test_retries_on_500_then_succeeds  # noqa: F401
-from . import at_draft_test_returns_16_hex_chars  # noqa: F401
-from . import at_draft_test_returns_circuit_breaker_wrapping_retry  # noqa: F401
-from . import at_draft_test_returns_none_when_no_providers  # noqa: F401
-from .at_draft_test_rollback_json import test_rollback_json  # noqa: F401
-from .at_draft_test_rollback_no_backup import test_rollback_no_backup  # noqa: F401
-from . import at_draft_test_route_with_nexus_exception_falls_back_local  # noqa: F401
-from . import at_draft_test_route_with_nexus_recommendation  # noqa: F401
-from . import at_draft_test_route_without_nexus  # noqa: F401
-from . import at_draft_test_routes_to_provider_for_known_model  # noqa: F401
-from .at_draft_test_run_linters_overall_ok_false_on_findings import test_run_linters_overall_ok_false_on_findings  # noqa: F401
-from .at_draft_test_run_linters_returns_dict import test_run_linters_returns_dict  # noqa: F401
-from .at_draft_test_run_parallel_recon_completes_fast import test_run_parallel_recon_completes_fast  # noqa: F401
-from .at_draft_test_run_parallel_recon_empty_dir import test_run_parallel_recon_empty_dir  # noqa: F401
-from .at_draft_test_run_parallel_recon_returns_report import test_run_parallel_recon_returns_report  # noqa: F401
-from .at_draft_test_run_parallel_recon_summary_is_string import test_run_parallel_recon_summary_is_string  # noqa: F401
-from .at_draft_test_run_parallel_recon_to_dict import test_run_parallel_recon_to_dict  # noqa: F401
-from .at_draft_test_run_parallel_recon_to_markdown import test_run_parallel_recon_to_markdown  # noqa: F401
-from .at_draft_test_run_protocol_builds_report_for_repo import test_run_protocol_builds_report_for_repo  # noqa: F401
-from . import at_draft_test_run_returns_dict  # noqa: F401
-from .at_draft_test_run_ruff_not_found import test_run_ruff_not_found  # noqa: F401
-from . import at_draft_test_sam_gate_runs_per_step_and_populates_last_result  # noqa: F401
-from . import at_draft_test_sam_pipeline_passes_intent_and_impl  # noqa: F401
-from . import at_draft_test_sam_result_none_when_no_gates  # noqa: F401
-from . import at_draft_test_sam_runs_first_in_pipeline  # noqa: F401
-from .at_draft_test_scan_bare_except_detects import test_scan_bare_except_detects  # noqa: F401
-from .at_draft_test_scan_bare_except_typed_ok import test_scan_bare_except_typed_ok  # noqa: F401
-from .at_draft_test_scan_long_functions_detects import test_scan_long_functions_detects  # noqa: F401
-from .at_draft_test_scan_long_functions_short_ok import test_scan_long_functions_short_ok  # noqa: F401
-from .at_draft_test_scan_missing_docs_detects import test_scan_missing_docs_detects  # noqa: F401
-from .at_draft_test_scan_missing_docs_private_ok import test_scan_missing_docs_private_ok  # noqa: F401
-from .at_draft_test_scan_missing_tests_finds_gap import test_scan_missing_tests_finds_gap  # noqa: F401
-from .at_draft_test_scan_missing_tests_no_gap import test_scan_missing_tests_no_gap  # noqa: F401
-from . import at_draft_test_scan_prompt_blocked  # noqa: F401
-from . import at_draft_test_scan_prompt_clean  # noqa: F401
-from . import at_draft_test_scan_prompt_exception  # noqa: F401
-from . import at_draft_test_scan_prompt_safe  # noqa: F401
-from .at_draft_test_scan_security_patterns_eval import test_scan_security_patterns_eval  # noqa: F401
-from .at_draft_test_scan_security_patterns_pickle import test_scan_security_patterns_pickle  # noqa: F401
-from .at_draft_test_scan_source_symbols_finds_functions import test_scan_source_symbols_finds_functions  # noqa: F401
-from .at_draft_test_scan_source_symbols_skips_venv import test_scan_source_symbols_skips_venv  # noqa: F401
-from .at_draft_test_scan_todo_fixme_detects import test_scan_todo_fixme_detects  # noqa: F401
-from .at_draft_test_scout_basic_counts import test_scout_basic_counts  # noqa: F401
-from .at_draft_test_scout_empty_dir import test_scout_empty_dir  # noqa: F401
-from . import at_draft_test_search_calls_internal_search  # noqa: F401
-from . import at_draft_test_search_chat_mode  # noqa: F401
-from . import at_draft_test_search_custom_max_results  # noqa: F401
-from .at_draft_test_security_compliance_happy_path import test_security_compliance_happy_path  # noqa: F401
-from .at_draft_test_security_pqc_sign import test_security_pqc_sign  # noqa: F401
-from .at_draft_test_security_pqc_sign_writes_json_out import test_security_pqc_sign_writes_json_out  # noqa: F401
-from .at_draft_test_security_prompt_scan_clean import test_security_prompt_scan_clean  # noqa: F401
-from .at_draft_test_security_prompt_scan_http_error_exits_1 import test_security_prompt_scan_http_error_exits_1  # noqa: F401
-from .at_draft_test_security_prompt_scan_threat_detected import test_security_prompt_scan_threat_detected  # noqa: F401
-from .at_draft_test_security_shield import test_security_shield  # noqa: F401
-from .at_draft_test_security_shield_bad_json_exits_4 import test_security_shield_bad_json_exits_4  # noqa: F401
-from .at_draft_test_security_threat_score import test_security_threat_score  # noqa: F401
-from .at_draft_test_security_threat_score_bad_json_exits_4 import test_security_threat_score_bad_json_exits_4  # noqa: F401
-from . import at_draft_test_selects_first_available_in_chain  # noqa: F401
-from . import at_draft_test_shell_injection_blocked  # noqa: F401
-from . import at_draft_test_shield_tool  # noqa: F401
-from . import at_draft_test_shield_tool_allowed  # noqa: F401
-from . import at_draft_test_shield_tool_blocked  # noqa: F401
-from . import at_draft_test_simple_done_event  # noqa: F401
-from . import at_draft_test_simple_greeting  # noqa: F401
-from . import at_draft_test_simple_query  # noqa: F401
-from . import at_draft_test_simple_replace  # noqa: F401
-from . import at_draft_test_simple_text_response  # noqa: F401
-from . import at_draft_test_simulate_invoke_validates_absolute_endpoint  # noqa: F401
-from . import at_draft_test_single  # noqa: F401
-from . import at_draft_test_single_failing_step  # noqa: F401
-from . import at_draft_test_single_passing_step  # noqa: F401
-from . import at_draft_test_single_provider_shortcut  # noqa: F401
-from . import at_draft_test_skill_missing_id_is_error  # noqa: F401
-from . import at_draft_test_skill_missing_name_is_error  # noqa: F401
-from .at_draft_test_sla_register import test_sla_register  # noqa: F401
-from .at_draft_test_sla_status_happy_path import test_sla_status_happy_path  # noqa: F401
-from . import at_draft_test_snapshot_persistence  # noqa: F401
-from . import at_draft_test_standard  # noqa: F401
-from . import at_draft_test_start_creates_session  # noqa: F401
-from . import at_draft_test_start_non_numeric_agent_id_uses_deterministic_sha256_int  # noqa: F401
-from . import at_draft_test_status_structure  # noqa: F401
-from . import at_draft_test_status_without_start_raises  # noqa: F401
-from . import at_draft_test_step_names_property  # noqa: F401
-from . import at_draft_test_strips_control_chars  # noqa: F401
-from . import at_draft_test_strips_whitespace  # noqa: F401
-from . import at_draft_test_stubs_created_list  # noqa: F401
-from . import at_draft_test_subscriber_called_on_alert  # noqa: F401
-from . import at_draft_test_subscriber_exception_does_not_propagate  # noqa: F401
-from . import at_draft_test_success_after_failures_resets  # noqa: F401
-from . import at_draft_test_success_keeps_circuit_closed  # noqa: F401
-from . import at_draft_test_success_on_first_try  # noqa: F401
-from . import at_draft_test_summary_failed  # noqa: F401
-from . import at_draft_test_summary_passed  # noqa: F401
-from .at_draft_test_swarm_contradiction import test_swarm_contradiction  # noqa: F401
-from .at_draft_test_swarm_intent_classify import test_swarm_intent_classify  # noqa: F401
-from . import at_draft_test_swarm_intent_classify_success  # noqa: F401
-from . import at_draft_test_swarm_plan_success  # noqa: F401
-from .at_draft_test_sync_atomadic_prompt_capabilities_replaces_generated_block import test_sync_atomadic_prompt_capabilities_replaces_generated_block  # noqa: F401
-from . import at_draft_test_syntax_error_blocked_by_cie  # noqa: F401
-from . import at_draft_test_syntax_error_fails_ast  # noqa: F401
-from . import at_draft_test_syntax_error_returns_empty  # noqa: F401
-from . import at_draft_test_teardown_resets_state  # noqa: F401
-from .at_draft_test_test_agent_empty import test_test_agent_empty  # noqa: F401
-from .at_draft_test_test_agent_finds_tests import test_test_agent_finds_tests  # noqa: F401
-from . import at_draft_test_testnet_label  # noqa: F401
-from . import at_draft_test_testnet_mode  # noqa: F401
-from .at_draft_test_text_ai_happy_path import test_text_ai_happy_path  # noqa: F401
-from .at_draft_test_text_keywords import test_text_keywords  # noqa: F401
-from .at_draft_test_text_sentiment_negative import test_text_sentiment_negative  # noqa: F401
-from .at_draft_test_text_sentiment_positive import test_text_sentiment_positive  # noqa: F401
-from .at_draft_test_text_summarize import test_text_summarize  # noqa: F401
-from .at_draft_test_text_summarize_http_error_exits_1 import test_text_summarize_http_error_exits_1  # noqa: F401
-from . import at_draft_test_tick_triggers_batch_at_interval  # noqa: F401
-from .at_draft_test_tier_agent_counts import test_tier_agent_counts  # noqa: F401
-from . import at_draft_test_tier_aliases_include_canonical_and_claude  # noqa: F401
-from . import at_draft_test_timeout  # noqa: F401
-from .at_draft_test_timeout_handling import test_timeout_handling  # noqa: F401
-from . import at_draft_test_timeout_raises_nexus_timeout  # noqa: F401
-from . import at_draft_test_to_header_value  # noqa: F401
-from . import at_draft_test_too_large_raises  # noqa: F401
-from . import at_draft_test_too_long_raises  # noqa: F401
-from . import at_draft_test_tool_blocked_by_shield  # noqa: F401
-from . import at_draft_test_tool_call_callbacks  # noqa: F401
-from . import at_draft_test_tool_call_events  # noqa: F401
-from . import at_draft_test_tool_call_then_response  # noqa: F401
-from . import at_draft_test_tool_result  # noqa: F401
-from .at_draft_test_tools import test_tools  # noqa: F401
-from . import at_draft_test_trailing_whitespace_normalised  # noqa: F401
-from . import at_draft_test_trim  # noqa: F401
-from . import at_draft_test_trim_context  # noqa: F401
-from . import at_draft_test_trim_context_exception  # noqa: F401
-from . import at_draft_test_trim_noop_when_under_limit  # noqa: F401
-from .at_draft_test_trust_history import test_trust_history  # noqa: F401
-from .at_draft_test_trust_oracle_happy_path import test_trust_oracle_happy_path  # noqa: F401
-from .at_draft_test_trust_oracles_happy_path import test_trust_oracles_happy_path  # noqa: F401
-from .at_draft_test_trust_oracles_validation_error import test_trust_oracles_validation_error  # noqa: F401
-from .at_draft_test_trust_score import test_trust_score  # noqa: F401
-from .at_draft_test_trust_score_http_error_exits_1 import test_trust_score_http_error_exits_1  # noqa: F401
-from . import at_draft_test_trust_score_success  # noqa: F401
-from . import at_draft_test_unchanged_artifact  # noqa: F401
-from . import at_draft_test_undo_consumes_snapshot  # noqa: F401
-from . import at_draft_test_undo_no_history  # noqa: F401
-from . import at_draft_test_unknown_4xx_raises_base_error  # noqa: F401
-from . import at_draft_test_unknown_model_uses_fallback_order  # noqa: F401
-from . import at_draft_test_valid  # noqa: F401
-from . import at_draft_test_valid_amounts  # noqa: F401
-from . import at_draft_test_valid_full_card  # noqa: F401
-from . import at_draft_test_valid_http  # noqa: F401
-from . import at_draft_test_valid_https  # noqa: F401
-from . import at_draft_test_valid_ids  # noqa: F401
-from . import at_draft_test_valid_minimal_card  # noqa: F401
-from . import at_draft_test_valid_prompt  # noqa: F401
-from . import at_draft_test_valid_python_passes_ast  # noqa: F401
-from . import at_draft_test_valid_python_passes_cie  # noqa: F401
-from . import at_draft_test_validate_create_conflict  # noqa: F401
-from . import at_draft_test_validate_create_success  # noqa: F401
-from . import at_draft_test_validate_delete_not_found  # noqa: F401
-from . import at_draft_test_validate_delete_success  # noqa: F401
-from . import at_draft_test_validate_missing_fields  # noqa: F401
-from . import at_draft_test_validate_missing_file  # noqa: F401
-from . import at_draft_test_validate_modify_file_missing  # noqa: F401
-from . import at_draft_test_validate_modify_not_found  # noqa: F401
-from . import at_draft_test_validate_modify_success  # noqa: F401
-from . import at_draft_test_validate_valid_card  # noqa: F401
-from . import at_draft_test_validates_agent_id  # noqa: F401
-from . import at_draft_test_validation_report_properties  # noqa: F401
-from .at_draft_test_vanguard_happy_path import test_vanguard_happy_path  # noqa: F401
-from .at_draft_test_vanguard_redteam import test_vanguard_redteam  # noqa: F401
-from .at_draft_test_veridelegate_happy_path import test_veridelegate_happy_path  # noqa: F401
-from .at_draft_test_verirand_happy_path import test_verirand_happy_path  # noqa: F401
-from .at_draft_test_vrf_draw import test_vrf_draw  # noqa: F401
-from .at_draft_test_vrf_gaming_happy_path import test_vrf_gaming_happy_path  # noqa: F401
-from . import at_draft_test_wallet_shows_status  # noqa: F401
-from . import at_draft_test_wallet_status_no_key  # noqa: F401
-from . import at_draft_test_wallet_testnet_on  # noqa: F401
-from . import at_draft_test_whitespace_only_raises  # noqa: F401
-from . import at_draft_test_whitespace_only_text_response_is_preserved  # noqa: F401
-from . import at_draft_test_with_tool_calls  # noqa: F401
-from . import at_draft_test_write_after_read_is_allowed_in_block_mode  # noqa: F401
-from .at_draft_test_write_and_load_config_round_trip import test_write_and_load_config_round_trip  # noqa: F401
-from . import at_draft_test_write_config_does_not_persist_api_keys  # noqa: F401
-from . import at_draft_test_write_without_read_is_allowed_in_warn_mode  # noqa: F401
-from . import at_draft_test_write_without_read_is_blocked_in_block_mode  # noqa: F401
-from . import at_draft_test_writes_file  # noqa: F401
-from . import at_draft_test_writes_version_file  # noqa: F401
-from . import at_draft_test_zero_raises  # noqa: F401
-from .at_draft_testa2avalidate import TestA2AValidate  # noqa: F401
-from .at_draft_testa2avalidatecli import TestA2AValidateCLI  # noqa: F401
-from .at_draft_testmcpa2avalidate import TestMCPA2AValidate  # noqa: F401
-from .at_draft_testvalidateabsoluteendpoint import TestValidateAbsoluteEndpoint  # noqa: F401
-from .at_draft_testvalidateagentcard import TestValidateAgentCard  # noqa: F401
-from .at_draft_testvalidateagentid import TestValidateAgentId  # noqa: F401
-from .at_draft_testvalidateprompt import TestValidatePrompt  # noqa: F401
-from .at_draft_testvalidatesessionid import TestValidateSessionId  # noqa: F401
-from .at_draft_testvalidateurl import TestValidateUrl  # noqa: F401
-from .at_draft_testvalidateusdcamount import TestValidateUsdcAmount  # noqa: F401
-from .at_draft_text_keywords import text_keywords  # noqa: F401
-from .at_draft_text_sentiment import text_sentiment  # noqa: F401
-from .at_draft_text_summarize import text_summarize  # noqa: F401
-from . import at_draft_tick  # noqa: F401
-from .at_draft_tier_for_complexity import tier_for_complexity  # noqa: F401
-from .at_draft_tier_prefix_from_id import tier_prefix_from_id  # noqa: F401
-from .at_draft_tmp_workspace import tmp_workspace  # noqa: F401
-from . import at_draft_to_dict  # noqa: F401
-from . import at_draft_to_header_value  # noqa: F401
-from . import at_draft_to_markdown  # noqa: F401
-from .at_draft_train import train  # noqa: F401
-from .at_draft_train_adapter import train_adapter  # noqa: F401
-from . import at_draft_tree_search  # noqa: F401
-from . import at_draft_trim  # noqa: F401
-from . import at_draft_trim_context  # noqa: F401
-from . import at_draft_trim_to_budget  # noqa: F401
-from .at_draft_trust_gate_pipeline import trust_gate_pipeline  # noqa: F401
-from .at_draft_trust_history import trust_history  # noqa: F401
-from .at_draft_trust_score import trust_score  # noqa: F401
-from . import at_draft_trust_step  # noqa: F401
-from .at_draft_tutorial_command import tutorial_command  # noqa: F401
-from . import at_draft_undo  # noqa: F401
-from . import at_draft_update  # noqa: F401
-from . import at_draft_update_conviction  # noqa: F401
-from . import at_draft_update_from_turn  # noqa: F401
-from . import at_draft_update_principles  # noqa: F401
-from .at_draft_upload_adapter import upload_adapter  # noqa: F401
-from . import at_draft_validate  # noqa: F401
-from .at_draft_validate_acyclic import validate_acyclic  # noqa: F401
-from .at_draft_validate_agent_card import validate_agent_card  # noqa: F401
-from .at_draft_validate_agent_id import validate_agent_id  # noqa: F401
-from .at_draft_validate_api_key import validate_api_key  # noqa: F401
-from . import at_draft_validate_g23  # noqa: F401
-from .at_draft_validate_https_public_url import validate_https_public_url  # noqa: F401
-from .at_draft_validate_payload import validate_payload  # noqa: F401
-from .at_draft_validate_prompt import validate_prompt  # noqa: F401
-from .at_draft_validate_session_id import validate_session_id  # noqa: F401
-from .at_draft_validate_task_id import validate_task_id  # noqa: F401
-from .at_draft_validate_task_title import validate_task_title  # noqa: F401
-from .at_draft_validate_url import validate_url  # noqa: F401
-from .at_draft_validate_usdc_amount import validate_usdc_amount  # noqa: F401
-from . import at_draft_validated  # noqa: F401
-from .at_draft_vanguard_epoch_certify import vanguard_epoch_certify  # noqa: F401
-from .at_draft_vanguard_govern_session import vanguard_govern_session  # noqa: F401
-from .at_draft_vanguard_lock_and_verify import vanguard_lock_and_verify  # noqa: F401
-from .at_draft_vanguard_mev_route import vanguard_mev_route  # noqa: F401
-from .at_draft_vanguard_redteam import vanguard_redteam  # noqa: F401
-from .at_draft_vanguard_wallet_session import vanguard_wallet_session  # noqa: F401
-from .at_draft_vector_embed import vector_embed  # noqa: F401
-from . import at_draft_verify  # noqa: F401
-from .at_draft_vrf_draw import vrf_draw  # noqa: F401
-from .at_draft_vrf_verify import vrf_verify  # noqa: F401
-from .at_draft_wallet import wallet  # noqa: F401
-from . import at_draft_warnings  # noqa: F401
-from .at_draft_web_research_tool_with_ai_powered_search import web_research_tool_with_ai_powered_search  # noqa: F401
-from .at_draft_web_search_skill_to_my_project import web_search_skill_to_my_project  # noqa: F401
-from .at_draft_wisdom_report import wisdom_report  # noqa: F401
-from .at_draft_workspace import workspace  # noqa: F401
-from .at_draft_write_branch_evolution_demo import write_branch_evolution_demo  # noqa: F401
-from .at_draft_write_default_config import write_default_config  # noqa: F401
-from .at_draft_write_project_version_file import write_project_version_file  # noqa: F401
-from .at_draft_write_tier_version_file import write_tier_version_file  # noqa: F401
+__all__ = [
+    "at_draft_a2a_discover",
+    "at_draft_a2a_local_card",
+    "at_draft_a2a_negotiate",
+    "at_draft_a2a_validate",
+    "at_draft_active_terrain_gate",
+    "at_draft_add",
+    "at_draft_add_assistant",
+    "at_draft_add_create",
+    "at_draft_add_delete",
+    "at_draft_add_modify",
+    "at_draft_add_task",
+    "at_draft_add_tool_result",
+    "at_draft_add_user",
+    "at_draft_advance",
+    "at_draft_aegis_certify_epoch",
+    "at_draft_aegis_epistemic_route",
+    "at_draft_agent_capabilities_match",
+    "at_draft_agent_chat",
+    "at_draft_agent_contradiction",
+    "at_draft_agent_intent_classify",
+    "at_draft_agent_plan",
+    "at_draft_agent_quarantine",
+    "at_draft_agent_register",
+    "at_draft_agent_reputation",
+    "at_draft_agent_run",
+    "at_draft_agent_semantic_diff",
+    "at_draft_agent_topology",
+    "at_draft_aibom_drift",
+    "at_draft_alert",
+    "at_draft_another_helper_thing",
+    "at_draft_append_history",
+    "at_draft_apply",
+    "at_draft_assess_blueprint_fulfillment",
+    "at_draft_assign_version",
+    "at_draft_atlas",
+    "at_draft_atomadic",
+    "at_draft_audit_log",
+    "at_draft_audit_verify",
+    "at_draft_authorize_action",
+    "at_draft_avg_complexity",
+    "at_draft_backup_file",
+    "at_draft_bas",
+    "at_draft_billing_outcome",
+    "at_draft_bitnet_benchmark",
+    "at_draft_bitnet_chat",
+    "at_draft_bitnet_inference",
+    "at_draft_bitnet_models",
+    "at_draft_bitnet_quantize",
+    "at_draft_bitnet_status",
+    "at_draft_bitnet_stream",
+    "at_draft_break_cycles",
+    "at_draft_budget",
+    "at_draft_build_assessment",
+    "at_draft_build_atomadic_intent_prompt",
+    "at_draft_build_audit",
+    "at_draft_build_capability_inventory",
+    "at_draft_build_capability_snapshot",
+    "at_draft_build_context_packet",
+    "at_draft_build_enhancement_report",
+    "at_draft_build_gap_fill_plan",
+    "at_draft_build_handler",
+    "at_draft_build_local_analysis",
+    "at_draft_build_local_certificate",
+    "at_draft_build_payment_header",
+    "at_draft_build_provider",
+    "at_draft_build_recommendations",
+    "at_draft_build_resilient_transport",
+    "at_draft_bump_project_version",
+    "at_draft_bump_version",
+    "at_draft_calculate_next_version",
+    "at_draft_can_pay",
+    "at_draft_cancel",
+    "at_draft_cancel_once",
+    "at_draft_capture_fix",
+    "at_draft_capture_principle",
+    "at_draft_capture_rejection",
+    "at_draft_capture_trace",
+    "at_draft_certify",
+    "at_draft_certify_codebase",
+    "at_draft_certify_command",
+    "at_draft_certify_output",
+    "at_draft_certify_output_verify",
+    "at_draft_certify_pipeline",
+    "at_draft_certify_step",
+    "at_draft_check",
+    "at_draft_check_conviction_gate",
+    "at_draft_check_freshness",
+    "at_draft_check_hallucination",
+    "at_draft_check_many_times",
+    "at_draft_check_tier_purity",
+    "at_draft_cie",
+    "at_draft_classify_change",
+    "at_draft_classify_complexity",
+    "at_draft_classify_symbol",
+    "at_draft_classify_tier",
+    "at_draft_clear",
+    "at_draft_cli_paths",
+    "at_draft_close",
+    "at_draft_collect",
+    "at_draft_collect_agents",
+    "at_draft_collect_certificate_summaries",
+    "at_draft_collect_cli_commands",
+    "at_draft_collect_git_state",
+    "at_draft_collect_lineage_ids",
+    "at_draft_collect_local_tools",
+    "at_draft_collect_rebuild_summary",
+    "at_draft_collect_tool_status",
+    "at_draft_command_path_exists",
+    "at_draft_complete",
+    "at_draft_complexity_score",
+    "at_draft_compliance_check",
+    "at_draft_compliance_drift_cert",
+    "at_draft_compliance_drift_check",
+    "at_draft_compliance_eu_ai_act",
+    "at_draft_compliance_explain",
+    "at_draft_compliance_fairness",
+    "at_draft_compliance_incident",
+    "at_draft_compliance_incidents",
+    "at_draft_compliance_lineage",
+    "at_draft_compliance_oversight",
+    "at_draft_compliance_oversight_history",
+    "at_draft_compliance_step",
+    "at_draft_compliance_transparency",
+    "at_draft_compute_codebase_digest",
+    "at_draft_compute_coefficient",
+    "at_draft_compute_synergy",
+    "at_draft_compute_trs",
+    "at_draft_consensus_result",
+    "at_draft_consensus_vote",
+    "at_draft_content_hash",
+    "at_draft_context_pack_command",
+    "at_draft_context_query_command",
+    "at_draft_context_reader",
+    "at_draft_contract_attestation",
+    "at_draft_contract_verify",
+    "at_draft_contribute_batch",
+    "at_draft_control_authorize",
+    "at_draft_control_federation_mint",
+    "at_draft_control_lineage_record",
+    "at_draft_control_lineage_trace",
+    "at_draft_control_spending_authorize",
+    "at_draft_control_spending_budget",
+    "at_draft_conversation",
+    "at_draft_conviction",
+    "at_draft_costs_attribute",
+    "at_draft_count",
+    "at_draft_count_tasks_by_status",
+    "at_draft_counting_step",
+    "at_draft_counts",
+    "at_draft_credits",
+    "at_draft_crypto_toolkit",
+    "at_draft_data_convert",
+    "at_draft_data_format_convert",
+    "at_draft_data_validate_json",
+    "at_draft_decompose",
+    "at_draft_default_config_path",
+    "at_draft_defi_contract_audit",
+    "at_draft_defi_liquidation_check",
+    "at_draft_defi_optimize",
+    "at_draft_defi_oracle_verify",
+    "at_draft_defi_risk_score",
+    "at_draft_defi_yield_optimize",
+    "at_draft_delayed_cancel",
+    "at_draft_delegate_receipt",
+    "at_draft_delegate_verify",
+    "at_draft_delegation_depth",
+    "at_draft_delegation_validate",
+    "at_draft_delete_task",
+    "at_draft_delta",
+    "at_draft_depth",
+    "at_draft_derive_made_of_graph",
+    "at_draft_describe_self",
+    "at_draft_description",
+    "at_draft_design",
+    "at_draft_design_blueprint",
+    "at_draft_design_command",
+    "at_draft_detect_available_providers",
+    "at_draft_detect_ci",
+    "at_draft_detect_cycles",
+    "at_draft_detect_languages",
+    "at_draft_detect_linters",
+    "at_draft_detect_test_framework",
+    "at_draft_detect_tool",
+    "at_draft_dev_crypto_toolkit",
+    "at_draft_dev_routing_think",
+    "at_draft_dev_starter",
+    "at_draft_discover",
+    "at_draft_discovery_recommend",
+    "at_draft_discovery_search",
+    "at_draft_display_amount",
+    "at_draft_distill_principles",
+    "at_draft_do_get",
+    "at_draft_do_post",
+    "at_draft_do_thing",
+    "at_draft_do_thing_2",
+    "at_draft_do_work",
+    "at_draft_docs_command",
+    "at_draft_docs_generate",
+    "at_draft_doctor",
+    "at_draft_draft_plan",
+    "at_draft_drift_certificate",
+    "at_draft_drift_check",
+    "at_draft_eco_scan",
+    "at_draft_edee",
+    "at_draft_efficiency_capture",
+    "at_draft_embed",
+    "at_draft_emit_runnable_package",
+    "at_draft_enforce_tier_purity",
+    "at_draft_enhance_apply",
+    "at_draft_enhance_command",
+    "at_draft_enhance_scan",
+    "at_draft_enrich_components_with_bodies",
+    "at_draft_ensure_loaded",
+    "at_draft_entropy_oracle",
+    "at_draft_error_step",
+    "at_draft_errors",
+    "at_draft_escrow_arbitrate",
+    "at_draft_escrow_create",
+    "at_draft_escrow_dispute",
+    "at_draft_escrow_release",
+    "at_draft_escrow_status",
+    "at_draft_estimate_cost",
+    "at_draft_ethics_check",
+    "at_draft_ethics_compliance",
+    "at_draft_ethics_step",
+    "at_draft_evaluate_fitness",
+    "at_draft_execute",
+    "at_draft_execute_payment",
+    "at_draft_executor",
+    "at_draft_exif_explore",
+    "at_draft_explore",
+    "at_draft_extract_body",
+    "at_draft_extract_symbols",
+    "at_draft_f",
+    "at_draft_fail_step",
+    "at_draft_failed_steps",
+    "at_draft_fake_call_llm",
+    "at_draft_fake_execute",
+    "at_draft_fake_post",
+    "at_draft_fake_run",
+    "at_draft_federation_mint",
+    "at_draft_federation_portability",
+    "at_draft_federation_verify",
+    "at_draft_fetch_agent_card",
+    "at_draft_fetch_samples",
+    "at_draft_filter_tasks_by_priority",
+    "at_draft_filter_tasks_by_status",
+    "at_draft_find_by_assignee",
+    "at_draft_find_by_tag",
+    "at_draft_flush_alerts",
+    "at_draft_forge_badge",
+    "at_draft_forge_delta_submit",
+    "at_draft_forge_leaderboard",
+    "at_draft_forge_quarantine",
+    "at_draft_forge_verify",
+    "at_draft_format_output",
+    "at_draft_format_output_again",
+    "at_draft_format_payment_consent",
+    "at_draft_formatconversion",
+    "at_draft_from_header_value",
+    "at_draft_from_payment_result",
+    "at_draft_from_response",
+    "at_draft_full_cycle",
+    "at_draft_gate_action",
+    "at_draft_gate_log",
+    "at_draft_gate_sam",
+    "at_draft_gate_step",
+    "at_draft_generate",
+    "at_draft_generate_docs",
+    "at_draft_generate_sip",
+    "at_draft_generate_status_report",
+    "at_draft_get_agent_card",
+    "at_draft_get_chain_config",
+    "at_draft_get_gaps",
+    "at_draft_get_health",
+    "at_draft_get_high_priority_tasks",
+    "at_draft_get_metrics",
+    "at_draft_get_null_context",
+    "at_draft_get_openapi",
+    "at_draft_get_overdue_tasks",
+    "at_draft_get_payment_fee",
+    "at_draft_get_priority_distribution",
+    "at_draft_get_provider",
+    "at_draft_get_stale_files",
+    "at_draft_get_statistics",
+    "at_draft_get_task",
+    "at_draft_get_trust_score",
+    "at_draft_get_value",
+    "at_draft_get_workload_by_assignee",
+    "at_draft_governance_vote",
+    "at_draft_greeting",
+    "at_draft_gvu",
+    "at_draft_hallucination_oracle",
+    "at_draft_hallucination_step",
+    "at_draft_handle_request",
+    "at_draft_handle_x402",
+    "at_draft_handler",
+    "at_draft_hash_file",
+    "at_draft_hello",
+    "at_draft_helper",
+    "at_draft_helper_thing",
+    "at_draft_history",
+    "at_draft_hook_dgm_h_validate",
+    "at_draft_hook_meta_edit_validate",
+    "at_draft_hybrid_config",
+    "at_draft_hydrate_from_memory",
+    "at_draft_ide",
+    "at_draft_identity_delegate_verify",
+    "at_draft_identity_step",
+    "at_draft_identity_sybil_check",
+    "at_draft_identity_verify",
+    "at_draft_increment_delegation_depth",
+    "at_draft_inference",
+    "at_draft_inference_stream",
+    "at_draft_ingest_project",
+    "at_draft_init",
+    "at_draft_internal_search",
+    "at_draft_internal_search_chat",
+    "at_draft_interpreter_chat",
+    "at_draft_invoke_tool",
+    "at_draft_is_active",
+    "at_draft_is_available",
+    "at_draft_is_cancelled",
+    "at_draft_is_confident",
+    "at_draft_is_expired",
+    "at_draft_is_healthy",
+    "at_draft_is_open",
+    "at_draft_is_testnet",
+    "at_draft_iter_source_files",
+    "at_draft_last_cycle_report",
+    "at_draft_last_lse_decision",
+    "at_draft_last_provider_name",
+    "at_draft_last_routing",
+    "at_draft_last_sam_result",
+    "at_draft_lifr",
+    "at_draft_lineage_record",
+    "at_draft_lineage_trace",
+    "at_draft_lint_analyze",
+    "at_draft_lint_command",
+    "at_draft_list_all_tasks",
+    "at_draft_list_providers",
+    "at_draft_list_snapshots",
+    "at_draft_list_tools",
+    "at_draft_llm_chat",
+    "at_draft_llm_stream",
+    "at_draft_load",
+    "at_draft_load_config",
+    "at_draft_load_config_again",
+    "at_draft_load_prev_versions",
+    "at_draft_load_project_metadata",
+    "at_draft_load_prompt_artifact",
+    "at_draft_local_agent_card",
+    "at_draft_local_config",
+    "at_draft_local_route",
+    "at_draft_local_train",
+    "at_draft_log_message",
+    "at_draft_lora_adapter_current",
+    "at_draft_lora_buffer_capture",
+    "at_draft_lora_buffer_inspect",
+    "at_draft_lora_capture_fix",
+    "at_draft_lora_contribute",
+    "at_draft_lora_credit",
+    "at_draft_lora_credit_balance",
+    "at_draft_lora_flywheel",
+    "at_draft_lora_reward_claim",
+    "at_draft_lora_status",
+    "at_draft_lora_train",
+    "at_draft_lse",
+    "at_draft_map_terrain",
+    "at_draft_memory_clear",
+    "at_draft_memory_export",
+    "at_draft_memory_fence_audit",
+    "at_draft_memory_fence_create",
+    "at_draft_memory_show",
+    "at_draft_memory_trim",
+    "at_draft_messages",
+    "at_draft_mev_protect",
+    "at_draft_mev_status",
+    "at_draft_model_for_tier",
+    "at_draft_model_name",
+    "at_draft_monitor",
+    "at_draft_monitor_all",
+    "at_draft_name",
+    "at_draft_name_not_empty",
+    "at_draft_ncb_contract",
+    "at_draft_negotiate",
+    "at_draft_nexus_agent_card",
+    "at_draft_nexus_health",
+    "at_draft_nexus_overview",
+    "at_draft_nexus_route",
+    "at_draft_normalize_branch_tracks",
+    "at_draft_on_progress",
+    "at_draft_on_step_end",
+    "at_draft_on_step_start",
+    "at_draft_on_tool_event",
+    "at_draft_oracle_entropy",
+    "at_draft_oracle_hallucination",
+    "at_draft_oracle_trust_decay",
+    "at_draft_oracle_trust_phase",
+    "at_draft_parameters",
+    "at_draft_parse_challenge",
+    "at_draft_parse_command_specs",
+    "at_draft_parse_metrics",
+    "at_draft_pass_step",
+    "at_draft_pay",
+    "at_draft_persist_principles",
+    "at_draft_phase0_recon",
+    "at_draft_pipeline_certify",
+    "at_draft_pipeline_history",
+    "at_draft_pipeline_run",
+    "at_draft_pipeline_status",
+    "at_draft_pipeline_trust_gate",
+    "at_draft_plan",
+    "at_draft_post_with_x402",
+    "at_draft_pre_action_verify",
+    "at_draft_pre_synthesis_check",
+    "at_draft_preview",
+    "at_draft_print_colab_instructions",
+    "at_draft_print_summary",
+    "at_draft_probe",
+    "at_draft_process",
+    "at_draft_process_data",
+    "at_draft_process_data_copy",
+    "at_draft_product_categories",
+    "at_draft_promote_adapter",
+    "at_draft_prompt_diff",
+    "at_draft_prompt_diff_command",
+    "at_draft_prompt_download",
+    "at_draft_prompt_hash",
+    "at_draft_prompt_hash_command",
+    "at_draft_prompt_inject_scan",
+    "at_draft_prompt_optimize",
+    "at_draft_prompt_propose",
+    "at_draft_prompt_propose_command",
+    "at_draft_prompt_section",
+    "at_draft_prompt_section_command",
+    "at_draft_prompt_sync_agent_command",
+    "at_draft_prompt_validate",
+    "at_draft_prompt_validate_command",
+    "at_draft_promptvalidateresult",
+    "at_draft_promptvalidatetool",
+    "at_draft_propose_components",
+    "at_draft_propose_meta_edit",
+    "at_draft_propose_patch",
+    "at_draft_protocol_evolution_demo",
+    "at_draft_protocol_evolution_record",
+    "at_draft_protocol_run",
+    "at_draft_protocol_version_bump",
+    "at_draft_provider_for_model",
+    "at_draft_providers",
+    "at_draft_providers_disable",
+    "at_draft_providers_enable",
+    "at_draft_providers_env",
+    "at_draft_providers_list",
+    "at_draft_providers_set_chain",
+    "at_draft_providers_set_key",
+    "at_draft_providers_set_tier",
+    "at_draft_providers_show",
+    "at_draft_providers_test",
+    "at_draft_puppeteer",
+    "at_draft_query",
+    "at_draft_query_vector_memory",
+    "at_draft_quick_project_scan",
+    "at_draft_quota_draw",
+    "at_draft_quota_status",
+    "at_draft_quota_tree_create",
+    "at_draft_raise_for_status",
+    "at_draft_rank_findings",
+    "at_draft_ratchet_advance",
+    "at_draft_ratchet_probe",
+    "at_draft_ratchet_register",
+    "at_draft_ratchet_status",
+    "at_draft_read_project_version",
+    "at_draft_rebuild",
+    "at_draft_rebuild_codebase",
+    "at_draft_rebuild_project",
+    "at_draft_recall",
+    "at_draft_recent_history",
+    "at_draft_recon_command",
+    "at_draft_record",
+    "at_draft_record_evolution_event",
+    "at_draft_record_gap",
+    "at_draft_record_read",
+    "at_draft_register",
+    "at_draft_register_commands",
+    "at_draft_render_atomadic_help",
+    "at_draft_render_branch_evolution_demo",
+    "at_draft_render_capability_prompt_section",
+    "at_draft_render_certificate_text",
+    "at_draft_render_evolution_markdown",
+    "at_draft_render_local_docs",
+    "at_draft_render_markdown",
+    "at_draft_render_markdown_capability_section",
+    "at_draft_render_protocol_markdown",
+    "at_draft_render_rebuild_summary",
+    "at_draft_repo_summary",
+    "at_draft_report",
+    "at_draft_reputation_dispute",
+    "at_draft_reputation_history",
+    "at_draft_reputation_record",
+    "at_draft_reputation_score",
+    "at_draft_reputation_step",
+    "at_draft_request_with_payment_headers",
+    "at_draft_reset_delegation_depth",
+    "at_draft_resilient",
+    "at_draft_resolve_api_key",
+    "at_draft_resolve_tier",
+    "at_draft_resolve_tool",
+    "at_draft_rng_quantum",
+    "at_draft_rng_verify",
+    "at_draft_rollback_command",
+    "at_draft_route",
+    "at_draft_routing_recommend",
+    "at_draft_routing_think",
+    "at_draft_run",
+    "at_draft_run_again",
+    "at_draft_run_all",
+    "at_draft_run_audit",
+    "at_draft_run_golden",
+    "at_draft_run_interactive",
+    "at_draft_run_linters",
+    "at_draft_run_parallel_recon",
+    "at_draft_run_pipeline",
+    "at_draft_run_protocol",
+    "at_draft_run_pyright",
+    "at_draft_run_ruff",
+    "at_draft_run_training",
+    "at_draft_run_web_research_tool_with_ai_powered_search_pipeline",
+    "at_draft_run_web_search_skill_to_my_project_pipeline",
+    "at_draft_safe_path_segment",
+    "at_draft_saga_checkpoint",
+    "at_draft_saga_compensate",
+    "at_draft_saga_register",
+    "at_draft_sam",
+    "at_draft_sam_status",
+    "at_draft_sanitize_header_value",
+    "at_draft_save",
+    "at_draft_scan",
+    "at_draft_scan_bare_except",
+    "at_draft_scan_long_functions",
+    "at_draft_scan_missing_docs",
+    "at_draft_scan_missing_tests",
+    "at_draft_scan_missing_type_hints",
+    "at_draft_scan_prompt",
+    "at_draft_scan_security_patterns",
+    "at_draft_scan_source_symbols",
+    "at_draft_scan_todo_fixme",
+    "at_draft_scan_with_extra",
+    "at_draft_search",
+    "at_draft_section",
+    "at_draft_security_pqc_sign",
+    "at_draft_security_prompt_scan",
+    "at_draft_security_shield",
+    "at_draft_security_threat_score",
+    "at_draft_security_zero_day",
+    "at_draft_security_zero_day_scan",
+    "at_draft_select",
+    "at_draft_select_next_agent",
+    "at_draft_select_provider_for_tier",
+    "at_draft_serve",
+    "at_draft_setup_command",
+    "at_draft_severa",
+    "at_draft_shield_tool",
+    "at_draft_simulate",
+    "at_draft_simulate_invoke",
+    "at_draft_sla_breach",
+    "at_draft_sla_register",
+    "at_draft_sla_report",
+    "at_draft_sla_status",
+    "at_draft_sort_tasks_by_priority",
+    "at_draft_spending_authorize",
+    "at_draft_spending_budget",
+    "at_draft_start",
+    "at_draft_status",
+    "at_draft_step",
+    "at_draft_step_names",
+    "at_draft_step_stream",
+    "at_draft_stream",
+    "at_draft_strongconnect",
+    "at_draft_submit_payment",
+    "at_draft_subscribe",
+    "at_draft_summarize",
+    "at_draft_summarize_repo",
+    "at_draft_summary",
+    "at_draft_swarm_contradiction",
+    "at_draft_swarm_inbox",
+    "at_draft_swarm_intent_classify",
+    "at_draft_swarm_plan",
+    "at_draft_swarm_relay",
+    "at_draft_swarm_semantic_diff",
+    "at_draft_sybil_check",
+    "at_draft_sybil_step",
+    "at_draft_symbol",
+    "at_draft_sync_atomadic_prompt_capabilities",
+    "at_draft_synthesize",
+    "at_draft_synthesize_missing_components",
+    "at_draft_synthesize_verified_code",
+    "at_draft_tca",
+    "at_draft_tca_status",
+    "at_draft_tdmi",
+    "at_draft_teardown",
+    "at_draft_test_2xx_does_nothing",
+    "at_draft_test_401_raises_auth_error",
+    "at_draft_test_402_raises_payment_required",
+    "at_draft_test_403_raises_auth_error",
+    "at_draft_test_422_raises_validation_error",
+    "at_draft_test_429_raises_rate_limited_with_retry_after",
+    "at_draft_test_a2a_discover_returns_agents",
+    "at_draft_test_a2a_negotiate_invalid_remote",
+    "at_draft_test_a2a_validate_missing_required_field",
+    "at_draft_test_a2a_validate_missing_url",
+    "at_draft_test_a2a_validate_success",
+    "at_draft_test_absolute_localhost_endpoint_raises",
+    "at_draft_test_absolute_private_ip_endpoint_raises",
+    "at_draft_test_accepted_write_captures_fix",
+    "at_draft_test_add_create",
+    "at_draft_test_add_delete",
+    "at_draft_test_add_messages",
+    "at_draft_test_add_modify",
+    "at_draft_test_add_tool_result",
+    "at_draft_test_adding_resets_validated",
+    "at_draft_test_advance_increments_epoch",
+    "at_draft_test_advance_without_start_raises",
+    "at_draft_test_aegis_certify_epoch",
+    "at_draft_test_aegis_happy_path",
+    "at_draft_test_agent_card_name_validation",
+    "at_draft_test_agent_card_with_payment",
+    "at_draft_test_agent_discovery_happy_path",
+    "at_draft_test_agent_escrow_happy_path",
+    "at_draft_test_agent_reputation_happy_path",
+    "at_draft_test_agent_run_success_outputs_result",
+    "at_draft_test_agent_swarm_routing_happy_path",
+    "at_draft_test_aggregate_version_is_max",
+    "at_draft_test_ai_inference_happy_path",
+    "at_draft_test_alert_severity_mapping",
+    "at_draft_test_all_have_required_keys",
+    "at_draft_test_all_profiles_have_all_three_tiers",
+    "at_draft_test_all_profiles_have_display_name",
+    "at_draft_test_all_providers_fail_raises",
+    "at_draft_test_all_subclasses_inherit_from_base",
+    "at_draft_test_all_texts_unique",
+    "at_draft_test_api_key_header_injection",
+    "at_draft_test_appends_well_known_path",
+    "at_draft_test_apply_create",
+    "at_draft_test_apply_delete",
+    "at_draft_test_apply_includes_diff",
+    "at_draft_test_apply_modify",
+    "at_draft_test_apply_multi_file",
+    "at_draft_test_apply_unvalidated_fails",
+    "at_draft_test_at_least_15_happy_path_tests_defined",
+    "at_draft_test_atomadic_dispatches_dynamic_cli_args",
+    "at_draft_test_audit_report_has_principles_field",
+    "at_draft_test_audit_report_has_warnings_field",
+    "at_draft_test_auth_compatible",
+    "at_draft_test_auth_mismatch",
+    "at_draft_test_auth_no_schemes_is_warning",
+    "at_draft_test_auto_detect_helper",
+    "at_draft_test_avg_complexity",
+    "at_draft_test_avg_complexity_empty",
+    "at_draft_test_base_error_carries_context",
+    "at_draft_test_basic",
+    "at_draft_test_batch_clears_pending_on_success",
+    "at_draft_test_batch_fail_keeps_pending",
+    "at_draft_test_batch_uses_configured_trust_floor_threshold",
+    "at_draft_test_billing_platform_happy_path",
+    "at_draft_test_bitnet_chat",
+    "at_draft_test_bitnet_happy_path",
+    "at_draft_test_bitnet_models",
+    "at_draft_test_bitnet_status",
+    "at_draft_test_bitnet_stream_happy_path",
+    "at_draft_test_blocked_dangerous",
+    "at_draft_test_blocked_event",
+    "at_draft_test_blocked_input_with_gates",
+    "at_draft_test_boundary_fast_standard",
+    "at_draft_test_boundary_standard_deep",
+    "at_draft_test_budget_pressure_downgrades_to_fast",
+    "at_draft_test_build_enhancement_report_no_crash_empty_dir",
+    "at_draft_test_build_enhancement_report_returns_dict",
+    "at_draft_test_build_header_failure",
+    "at_draft_test_build_header_success",
+    "at_draft_test_build_local_analysis_returns_dict",
+    "at_draft_test_build_local_certificate_structure",
+    "at_draft_test_build_local_certificate_version",
+    "at_draft_test_build_provider_instantiates_nexus_provider",
+    "at_draft_test_builtin_tool_still_works",
+    "at_draft_test_bump_project_version_preserves_showcase_readme_without_version_line",
+    "at_draft_test_bump_project_version_updates_public_surfaces",
+    "at_draft_test_callback_is_called",
+    "at_draft_test_callback_on_skip",
+    "at_draft_test_can_pay_expired",
+    "at_draft_test_can_pay_valid",
+    "at_draft_test_cancellation_context_can_be_marked_cancelled",
+    "at_draft_test_cancellation_context_created_per_request",
+    "at_draft_test_cancellation_context_defaults_to_not_cancelled",
+    "at_draft_test_cancellation_context_is_thread_safe",
+    "at_draft_test_cancellation_notification_marks_context_cancelled",
+    "at_draft_test_cancellation_returns_error_code",
+    "at_draft_test_cancelled_request_returns_error",
+    "at_draft_test_capability_gap_alert",
+    "at_draft_test_capture_fix_adds_to_pending",
+    "at_draft_test_capture_principle_adds_to_pending",
+    "at_draft_test_capture_rejection_adds_negative",
+    "at_draft_test_card_validates",
+    "at_draft_test_catalog_includes_groq_chutes_nexus",
+    "at_draft_test_certify",
+    "at_draft_test_certify_failed",
+    "at_draft_test_certify_json_output",
+    "at_draft_test_certify_local_only",
+    "at_draft_test_certify_nonexistent_path",
+    "at_draft_test_certify_output_verify_happy_path",
+    "at_draft_test_certify_passed",
+    "at_draft_test_certify_version_flag",
+    "at_draft_test_chaining_add",
+    "at_draft_test_check_conviction_gate_destructive_no_audits_passes",
+    "at_draft_test_check_conviction_gate_non_destructive_tool",
+    "at_draft_test_check_hallucination_safe",
+    "at_draft_test_check_hallucination_unsafe",
+    "at_draft_test_chutes_available_with_env_key",
+    "at_draft_test_chutes_in_catalog",
+    "at_draft_test_chutes_selectable_via_tier_policy",
+    "at_draft_test_chutes_serves_deepseek_models",
+    "at_draft_test_cie_property_lazy_init",
+    "at_draft_test_classify_tier_at",
+    "at_draft_test_classify_tier_mo",
+    "at_draft_test_classify_tier_qk",
+    "at_draft_test_classify_tier_sy",
+    "at_draft_test_claude_tier_alias_in_tier_policy",
+    "at_draft_test_claude_tier_alias_works",
+    "at_draft_test_clean_code_passes_all_stages",
+    "at_draft_test_cli_commands_batch_happy_path",
+    "at_draft_test_cli_map_terrain_json",
+    "at_draft_test_cli_phase0_recon_json",
+    "at_draft_test_cli_recon_default_markdown",
+    "at_draft_test_cli_recon_json_flag",
+    "at_draft_test_cli_recon_missing_path",
+    "at_draft_test_cli_recon_out_flag",
+    "at_draft_test_close_forwards_to_all_underlying",
+    "at_draft_test_cloud_provider_available_with_env_key",
+    "at_draft_test_cloud_provider_unavailable_without_key",
+    "at_draft_test_cloud_providers_have_signup_url",
+    "at_draft_test_code_query",
+    "at_draft_test_code_request",
+    "at_draft_test_command_path_exists_accepts_known_subcommand_with_flags",
+    "at_draft_test_compatible_with_shared_skills",
+    "at_draft_test_complete_basic",
+    "at_draft_test_complete_text_response",
+    "at_draft_test_complete_tool_call_response",
+    "at_draft_test_complete_with_tool_calls",
+    "at_draft_test_complex_multi_step",
+    "at_draft_test_compliance_check_invalid_json",
+    "at_draft_test_compliance_check_success",
+    "at_draft_test_compliance_oversight_history_happy_path",
+    "at_draft_test_compliance_products_happy_path",
+    "at_draft_test_compute_codebase_digest_basic",
+    "at_draft_test_compute_codebase_digest_changes_on_file_edit",
+    "at_draft_test_compute_codebase_digest_deterministic",
+    "at_draft_test_compute_codebase_digest_ignores_pyc",
+    "at_draft_test_concurrent_cancellation_scenario",
+    "at_draft_test_config_override_model_honored",
+    "at_draft_test_config_passed_through",
+    "at_draft_test_connect_error_raises_nexus_connection",
+    "at_draft_test_consecutive_5xx_trips_circuit",
+    "at_draft_test_consecutive_low_wisdom_starts_zero",
+    "at_draft_test_consensus_result_happy_path",
+    "at_draft_test_contains_working_dir",
+    "at_draft_test_context_flows_through_steps",
+    "at_draft_test_context_pack_respects_cancellation_checkpoint",
+    "at_draft_test_context_packet_includes_file_hashes",
+    "at_draft_test_contract_attestation_happy_path",
+    "at_draft_test_control_plane_happy_path",
+    "at_draft_test_conviction_ema",
+    "at_draft_test_cooldown_prevents_duplicate_alerts",
+    "at_draft_test_count_is_50",
+    "at_draft_test_count_test_functions",
+    "at_draft_test_create_nested",
+    "at_draft_test_create_new",
+    "at_draft_test_critical_complexity_always_deep",
+    "at_draft_test_custom_detail_message",
+    "at_draft_test_custom_fallback_chain_respected",
+    "at_draft_test_custom_rpc",
+    "at_draft_test_cycle_report_has_new_fields",
+    "at_draft_test_d_max_breach_emits_bas_alert",
+    "at_draft_test_d_max_breach_returns_blocked_message",
+    "at_draft_test_d_max_breach_severity_is_high",
+    "at_draft_test_d_max_increment_blocks_at_limit",
+    "at_draft_test_data_convert_json_to_yaml",
+    "at_draft_test_data_convert_nonexistent_file",
+    "at_draft_test_data_tools_happy_path",
+    "at_draft_test_decision_has_reason",
+    "at_draft_test_deep",
+    "at_draft_test_default_config_has_new_fields",
+    "at_draft_test_default_config_is_empty_dict",
+    "at_draft_test_default_config_path_uses_workspace_root",
+    "at_draft_test_default_optional_fields_are_none",
+    "at_draft_test_default_returns_balanced_tier",
+    "at_draft_test_defaults",
+    "at_draft_test_defi_risk_score",
+    "at_draft_test_defi_suite_happy_path",
+    "at_draft_test_delegate_receipt_happy_path",
+    "at_draft_test_delegation_depth_resets_on_step",
+    "at_draft_test_dependency_detects_circular",
+    "at_draft_test_dependency_finds_external_deps",
+    "at_draft_test_dependency_no_circular_clean_repo",
+    "at_draft_test_depth",
+    "at_draft_test_detect_ci_github_actions",
+    "at_draft_test_detect_config_key_overrides_env",
+    "at_draft_test_detect_languages_ignores_venv",
+    "at_draft_test_detect_languages_on_tmp",
+    "at_draft_test_detect_linters_empty_dir",
+    "at_draft_test_detect_linters_python_project",
+    "at_draft_test_detect_picks_up_env_key",
+    "at_draft_test_detect_returns_at_least_local_providers",
+    "at_draft_test_detect_skips_disabled_providers",
+    "at_draft_test_detect_test_framework_pytest",
+    "at_draft_test_detect_tool_uses_resolved_executable",
+    "at_draft_test_detects_node_project",
+    "at_draft_test_detects_python_project",
+    "at_draft_test_deterministic",
+    "at_draft_test_dev_crypto_toolkit",
+    "at_draft_test_dev_starter",
+    "at_draft_test_developer_tools_happy_path",
+    "at_draft_test_different_content",
+    "at_draft_test_disabled_flywheel_rejects_captures",
+    "at_draft_test_discover_requires_remote",
+    "at_draft_test_discover_success",
+    "at_draft_test_discovery_protocol_happy_path",
+    "at_draft_test_discovery_search",
+    "at_draft_test_distill_principles_fallback_defaults",
+    "at_draft_test_distill_principles_from_failures",
+    "at_draft_test_dns_failure_fails_closed",
+    "at_draft_test_dns_resolution_failure_handled",
+    "at_draft_test_doc_agent_coverage",
+    "at_draft_test_doc_agent_finds_readme",
+    "at_draft_test_doc_agent_no_readme",
+    "at_draft_test_docs_json_output",
+    "at_draft_test_docs_local_only",
+    "at_draft_test_docs_nonexistent_path",
+    "at_draft_test_doctor_json_flag",
+    "at_draft_test_doctor_stays_local_by_default",
+    "at_draft_test_draft_plan_rejects_empty_goal",
+    "at_draft_test_draft_plan_respects_max_steps",
+    "at_draft_test_duration_tracking",
+    "at_draft_test_dynamic_prompt_includes_protocol_evolution_commands",
+    "at_draft_test_echo",
+    "at_draft_test_empty_body",
+    "at_draft_test_empty_cycle_state_fails_all",
+    "at_draft_test_empty_list_returns_initial",
+    "at_draft_test_empty_name_is_error",
+    "at_draft_test_empty_old_body",
+    "at_draft_test_empty_pipeline_fails",
+    "at_draft_test_empty_raises",
+    "at_draft_test_empty_skills_both_sides",
+    "at_draft_test_empty_string",
+    "at_draft_test_empty_tiers_returns_initial",
+    "at_draft_test_enhance_apply_requires_ids",
+    "at_draft_test_enhance_help",
+    "at_draft_test_enhance_json_output",
+    "at_draft_test_enhance_local_only",
+    "at_draft_test_enhance_nonexistent_path",
+    "at_draft_test_env_hydration_does_not_override_process_env",
+    "at_draft_test_env_hydration_populates_os_environ",
+    "at_draft_test_escrow_create",
+    "at_draft_test_escrow_http_error",
+    "at_draft_test_escrow_status",
+    "at_draft_test_escrow_status_happy_path",
+    "at_draft_test_exception_becomes_failed_step",
+    "at_draft_test_exception_with_fail_fast",
+    "at_draft_test_execute_unknown",
+    "at_draft_test_exhausts_retries_returns_last_response",
+    "at_draft_test_existing_nexus_health_still_works",
+    "at_draft_test_existing_plan_command_still_works",
+    "at_draft_test_expired_challenge",
+    "at_draft_test_explicit_env_override_bypasses_catalog",
+    "at_draft_test_explicit_qn_override",
+    "at_draft_test_extract_body_dedents_class_methods",
+    "at_draft_test_extracts_classes",
+    "at_draft_test_extracts_functions",
+    "at_draft_test_fail_open_on_exception",
+    "at_draft_test_fail_open_on_internal_error",
+    "at_draft_test_failed_steps_property",
+    "at_draft_test_failed_write_is_not_cie_gated",
+    "at_draft_test_fallback_chain_contains_only_known_providers",
+    "at_draft_test_fallback_llm_prompt_still_includes_dynamic_inventory",
+    "at_draft_test_fallback_to_ollama",
+    "at_draft_test_falls_back_on_failure",
+    "at_draft_test_falls_through_when_policy_unavailable",
+    "at_draft_test_fast",
+    "at_draft_test_fetch_appends_well_known_path",
+    "at_draft_test_fetch_does_not_duplicate_well_known",
+    "at_draft_test_fetch_http_error",
+    "at_draft_test_fetch_invalid_json",
+    "at_draft_test_fetch_network_error",
+    "at_draft_test_fetch_success",
+    "at_draft_test_find_pattern",
+    "at_draft_test_five_groups_of_ten",
+    "at_draft_test_flush_alerts_drains_buffer",
+    "at_draft_test_forge_badge",
+    "at_draft_test_forge_leaderboard",
+    "at_draft_test_forge_marketplace_happy_path",
+    "at_draft_test_forge_quarantine",
+    "at_draft_test_forge_verify",
+    "at_draft_test_formal_verification",
+    "at_draft_test_format_includes_amount",
+    "at_draft_test_free_providers_assembled_into_multiprovider",
+    "at_draft_test_from_header_value",
+    "at_draft_test_from_payment_result_failure",
+    "at_draft_test_from_payment_result_success",
+    "at_draft_test_from_response_full",
+    "at_draft_test_from_response_minimal",
+    "at_draft_test_ftp_raises",
+    "at_draft_test_full_cycle_command_runs_locally",
+    "at_draft_test_full_cycle_command_writes_json_report",
+    "at_draft_test_full_cycle_command_writes_report",
+    "at_draft_test_full_flow_parse_and_validate",
+    "at_draft_test_full_flow_payment_failure",
+    "at_draft_test_full_phase1_stack_runs_a_step",
+    "at_draft_test_full_pipeline",
+    "at_draft_test_full_signal_state_passes_groups",
+    "at_draft_test_gate_action_allows_above_conviction",
+    "at_draft_test_gate_action_blocks_below_conviction",
+    "at_draft_test_gate_log_accumulates",
+    "at_draft_test_gate_log_is_copy",
+    "at_draft_test_gate_result_structure",
+    "at_draft_test_gate_sam_fail_open_on_exception",
+    "at_draft_test_gate_sam_logs_to_gate_log",
+    "at_draft_test_gate_sam_returns_dict",
+    "at_draft_test_generates_valid_card",
+    "at_draft_test_get_stale_files_empty_when_all_fresh",
+    "at_draft_test_glob_py",
+    "at_draft_test_governance_happy_path",
+    "at_draft_test_hallucination_check",
+    "at_draft_test_hallucination_warning",
+    "at_draft_test_halt_when_cap_missing",
+    "at_draft_test_handle_x402_empty_body",
+    "at_draft_test_handle_x402_fallback_fields",
+    "at_draft_test_handle_x402_parses_payment_details",
+    "at_draft_test_hash_file_deterministic",
+    "at_draft_test_hash_file_different_content",
+    "at_draft_test_header_roundtrip",
+    "at_draft_test_helper",
+    "at_draft_test_high_trs_simple_task_gives_fast",
+    "at_draft_test_history_tracking",
+    "at_draft_test_http_errors_raise_exception",
+    "at_draft_test_https_only_required",
+    "at_draft_test_identical",
+    "at_draft_test_identity_auth_happy_path",
+    "at_draft_test_identity_sybil_check",
+    "at_draft_test_identity_verify",
+    "at_draft_test_ids_are_1_to_50",
+    "at_draft_test_immediate_ssrf_validation_before_request",
+    "at_draft_test_inference_stream_happy_path",
+    "at_draft_test_initial_context_is_available",
+    "at_draft_test_initialize",
+    "at_draft_test_initialize_declares_logging_capability",
+    "at_draft_test_internal_search_chat_sends_query",
+    "at_draft_test_invalid_chars_raises",
+    "at_draft_test_invalid_falls_back_to_initial",
+    "at_draft_test_invalid_hostname_rejected",
+    "at_draft_test_invalid_json_returns_empty",
+    "at_draft_test_invalid_regex",
+    "at_draft_test_invalid_url_scheme_is_error",
+    "at_draft_test_invoke_tool_forwards_api_key",
+    "at_draft_test_ipv6_loopback_blocked",
+    "at_draft_test_is_confident_true",
+    "at_draft_test_is_healthy_false_when_no_calls",
+    "at_draft_test_is_healthy_true",
+    "at_draft_test_iter_files_respects_limit",
+    "at_draft_test_iter_files_skips_ignored_dirs",
+    "at_draft_test_last_cycle_report_none_before_step",
+    "at_draft_test_last_cycle_report_set_after_step",
+    "at_draft_test_lazy_init_atlas",
+    "at_draft_test_legacy_fallback_uses_claude_model_ids",
+    "at_draft_test_lineage_trace_happy_path",
+    "at_draft_test_lint_local_path",
+    "at_draft_test_lint_nonexistent_path",
+    "at_draft_test_list_root",
+    "at_draft_test_list_snapshots",
+    "at_draft_test_list_snapshots_empty",
+    "at_draft_test_list_subdir",
+    "at_draft_test_llm_chat_http_error_exits_1",
+    "at_draft_test_llm_chat_returns_response",
+    "at_draft_test_llm_chat_success",
+    "at_draft_test_llm_chat_uses_text_field_fallback",
+    "at_draft_test_llm_chat_writes_json_out",
+    "at_draft_test_load_config_honors_env_config_path",
+    "at_draft_test_load_project_metadata_empty",
+    "at_draft_test_load_project_metadata_package_json",
+    "at_draft_test_load_project_metadata_pyproject",
+    "at_draft_test_local_card_displays",
+    "at_draft_test_local_card_json",
+    "at_draft_test_local_provider_always_available",
+    "at_draft_test_local_providers_have_no_api_key_env",
+    "at_draft_test_localhost_blocked",
+    "at_draft_test_long_text_adds_complexity",
+    "at_draft_test_loop_detected_alert",
+    "at_draft_test_loopback_127_0_0_1_blocked",
+    "at_draft_test_lora_flywheel_property_lazy_init",
+    "at_draft_test_low_confidence_principle_skipped",
+    "at_draft_test_low_conviction_warning_fires_on_second_audit",
+    "at_draft_test_low_trs_complex_task_gives_deep",
+    "at_draft_test_lse_custom_fallback_chain_in_config",
+    "at_draft_test_lse_decision_populated_after_step",
+    "at_draft_test_lse_falls_back_to_pollinations_when_catalog_disabled",
+    "at_draft_test_lse_model_override_propagates_to_provider",
+    "at_draft_test_lse_prefers_pollinations_over_legacy_claude",
+    "at_draft_test_lse_property_lazy_init",
+    "at_draft_test_lse_report_includes_provider_distribution",
+    "at_draft_test_lse_tier_policy_honors_claude_aliases",
+    "at_draft_test_lse_tier_policy_respected",
+    "at_draft_test_lse_user_override_bypasses_catalog",
+    "at_draft_test_lse_uses_free_provider_when_key_present",
+    "at_draft_test_major",
+    "at_draft_test_major_bump",
+    "at_draft_test_major_removed_function",
+    "at_draft_test_major_resets_minor_and_patch",
+    "at_draft_test_major_wins",
+    "at_draft_test_map_terrain_accepts_single_string_capability_name",
+    "at_draft_test_map_terrain_auto_invent_persists_tool_plan",
+    "at_draft_test_map_terrain_halts_and_builds_invention_plan",
+    "at_draft_test_map_terrain_halts_for_invalid_requirement_type",
+    "at_draft_test_map_terrain_proceed_for_existing_local_and_hosted_tool",
+    "at_draft_test_max_rounds_error_event",
+    "at_draft_test_max_rounds_safety",
+    "at_draft_test_memory_fence_audit_happy_path",
+    "at_draft_test_methods_do_not_crash_on_valid_args",
+    "at_draft_test_mev_protect",
+    "at_draft_test_mev_shield_happy_path",
+    "at_draft_test_mev_status",
+    "at_draft_test_minimal",
+    "at_draft_test_minor",
+    "at_draft_test_minor_bump",
+    "at_draft_test_minor_new_function",
+    "at_draft_test_minor_resets_patch",
+    "at_draft_test_missing_description_is_warning",
+    "at_draft_test_missing_id_skipped",
+    "at_draft_test_missing_name_is_error",
+    "at_draft_test_missing_url_is_warning",
+    "at_draft_test_missing_version_is_warning",
+    "at_draft_test_model_for_tier_accepts_claude_aliases",
+    "at_draft_test_model_for_tier_honors_override",
+    "at_draft_test_monitor_all_fires_multiple_alerts",
+    "at_draft_test_monitor_returns_none_below_threshold",
+    "at_draft_test_monitor_synergy_alert",
+    "at_draft_test_multiple_files",
+    "at_draft_test_multiple_matches",
+    "at_draft_test_name_property",
+    "at_draft_test_ncb_check_skipped_for_non_write_tools",
+    "at_draft_test_ncb_contract_false_before_read",
+    "at_draft_test_ncb_contract_true_after_read",
+    "at_draft_test_negative_raises",
+    "at_draft_test_negotiate_blocks_private_url",
+    "at_draft_test_negotiate_invalid_remote_card",
+    "at_draft_test_negotiate_success",
+    "at_draft_test_new_artifact",
+    "at_draft_test_new_commands_require_remote_for_local_profile",
+    "at_draft_test_new_sub_command_blocked_locally",
+    "at_draft_test_nexus_added_to_multiprovider_when_catalog_keys_present",
+    "at_draft_test_nexus_available_when_key_set",
+    "at_draft_test_nexus_commands_require_remote_opt_in_for_local_profile",
+    "at_draft_test_nexus_is_in_default_fallback_chain",
+    "at_draft_test_nexus_is_marked_special",
+    "at_draft_test_nexus_provider_for_premium",
+    "at_draft_test_nexus_selectable_via_tier_policy",
+    "at_draft_test_nexus_skipped_in_local_profile",
+    "at_draft_test_nexus_unavailable_without_key",
+    "at_draft_test_no_fail_fast_runs_all",
+    "at_draft_test_no_host_raises",
+    "at_draft_test_no_lse_falls_back_to_configured_model",
+    "at_draft_test_no_matches",
+    "at_draft_test_no_persist_when_not_configured",
+    "at_draft_test_no_providers_falls_back_to_ollama",
+    "at_draft_test_no_scheme_raises",
+    "at_draft_test_no_shared_skills_incompatible",
+    "at_draft_test_no_skills_is_warning",
+    "at_draft_test_non_https_absolute_rejected",
+    "at_draft_test_non_python_falls_back_to_patch",
+    "at_draft_test_non_python_skipped_by_cie",
+    "at_draft_test_non_python_skips_ast",
+    "at_draft_test_non_retryable_status_returned_immediately",
+    "at_draft_test_none_path_returns_empty",
+    "at_draft_test_nonexistent_path_returns_empty",
+    "at_draft_test_normal_flow_does_not_trigger_d_max_alert",
+    "at_draft_test_not_found",
+    "at_draft_test_notification_no_response",
+    "at_draft_test_notifications_cancelled_suppresses_no_response",
+    "at_draft_test_null_cancellation_context_never_cancels",
+    "at_draft_test_on_step_end_edee_traces",
+    "at_draft_test_on_step_end_gvu_updated",
+    "at_draft_test_on_step_end_returns_cycle_report",
+    "at_draft_test_on_step_end_wisdom_scores",
+    "at_draft_test_on_step_start_atlas_complexity",
+    "at_draft_test_on_step_start_returns_dict",
+    "at_draft_test_on_tool_event_tracks_repeat",
+    "at_draft_test_open_circuit_raises_immediately",
+    "at_draft_test_openai_key_multiprovider_when_catalog_enabled",
+    "at_draft_test_openai_key_picks_openai",
+    "at_draft_test_oracle_entropy",
+    "at_draft_test_oracle_hallucination_http_error_exits_1",
+    "at_draft_test_oracle_hallucination_returns_verdict",
+    "at_draft_test_oracle_hallucination_writes_json_out",
+    "at_draft_test_oracle_trust_decay",
+    "at_draft_test_oracle_trust_phase",
+    "at_draft_test_output_mode_mismatch_noted",
+    "at_draft_test_oversized_raises",
+    "at_draft_test_owasp_critical_eval_blocked",
+    "at_draft_test_owasp_eval_injection_blocked",
+    "at_draft_test_owasp_medium_warns_not_blocks",
+    "at_draft_test_parse_challenge_amount_too_large",
+    "at_draft_test_parse_challenge_invalid",
+    "at_draft_test_parse_challenge_recipient_mismatch",
+    "at_draft_test_parse_challenge_valid",
+    "at_draft_test_partial_present_partial_missing",
+    "at_draft_test_patch",
+    "at_draft_test_patch_bump",
+    "at_draft_test_patch_internal_change",
+    "at_draft_test_pay_no_payment_required",
+    "at_draft_test_pay_shows_challenge",
+    "at_draft_test_pending_persists_across_instances",
+    "at_draft_test_persist_creates_file",
+    "at_draft_test_persist_principles_calls_context_memory",
+    "at_draft_test_persist_principles_no_lora_on_low_conviction",
+    "at_draft_test_persist_principles_triggers_lora_on_high_conviction",
+    "at_draft_test_persist_records_failure",
+    "at_draft_test_persistence_io_error_does_not_crash",
+    "at_draft_test_persistence_writes_jsonl",
+    "at_draft_test_phase0_recon_ready_when_sources_are_attached",
+    "at_draft_test_phase0_recon_requires_latest_docs_for_technical_task",
+    "at_draft_test_phase0_recon_respects_cancellation_checkpoint",
+    "at_draft_test_picks_highest",
+    "at_draft_test_ping",
+    "at_draft_test_pipeline_collects_multiple_entries_appended_by_a_stage",
+    "at_draft_test_pipeline_history_empty",
+    "at_draft_test_pipeline_run_certify_success",
+    "at_draft_test_pipeline_run_certify_unsafe",
+    "at_draft_test_pipeline_run_trust_gate_deny",
+    "at_draft_test_pipeline_run_trust_gate_success",
+    "at_draft_test_pipeline_with_failures",
+    "at_draft_test_policy_overrides_chain_order",
+    "at_draft_test_pollinations_available_via_default_key",
+    "at_draft_test_post_with_x402_passes_through_on_200",
+    "at_draft_test_post_with_x402_raises_on_other_errors",
+    "at_draft_test_post_with_x402_returns_payment_on_402",
+    "at_draft_test_pre_synthesis_check",
+    "at_draft_test_preserves_newlines_and_tabs",
+    "at_draft_test_preview",
+    "at_draft_test_preview_does_not_modify",
+    "at_draft_test_preview_returns_diff",
+    "at_draft_test_preview_with_validation_errors",
+    "at_draft_test_private_10_network_blocked",
+    "at_draft_test_private_172_network_blocked",
+    "at_draft_test_private_192_168_network_blocked",
+    "at_draft_test_proceed_when_all_caps_present",
+    "at_draft_test_prompt_download_happy_path",
+    "at_draft_test_prompt_ethics_happy_path",
+    "at_draft_test_protocol_evolution_record_cli",
+    "at_draft_test_protocol_run_command_reports_cycle",
+    "at_draft_test_provider_for_model_empty_string",
+    "at_draft_test_provider_for_model_reverse_lookup",
+    "at_draft_test_provider_for_model_unknown_returns_none",
+    "at_draft_test_provider_override_parses_from_json",
+    "at_draft_test_prune_limits_depth",
+    "at_draft_test_public_absolute_endpoint_allowed",
+    "at_draft_test_public_absolute_endpoint_allowed_in_simulate",
+    "at_draft_test_quality_regression_alert",
+    "at_draft_test_quota_status_happy_path",
+    "at_draft_test_range_bounded",
+    "at_draft_test_rank_findings_order",
+    "at_draft_test_rank_findings_reassigns_ids",
+    "at_draft_test_ratchet_advance",
+    "at_draft_test_ratchet_register_http_error_exits_1",
+    "at_draft_test_ratchet_register_shows_session",
+    "at_draft_test_ratchet_register_success",
+    "at_draft_test_ratchet_register_writes_json_out",
+    "at_draft_test_ratchet_status",
+    "at_draft_test_ratchet_status_happy_path",
+    "at_draft_test_ratchetgate_happy_path",
+    "at_draft_test_read_file_failure_does_not_record",
+    "at_draft_test_read_file_is_readonly",
+    "at_draft_test_read_file_records_freshness",
+    "at_draft_test_read_full",
+    "at_draft_test_read_line_range",
+    "at_draft_test_read_missing",
+    "at_draft_test_read_then_write_passes_all_gates",
+    "at_draft_test_rebuild_backs_up_existing_output",
+    "at_draft_test_rebuild_copies_local_env_without_tracking_hint",
+    "at_draft_test_rebuild_dry_run",
+    "at_draft_test_rebuild_dry_run_json",
+    "at_draft_test_rebuild_json_output",
+    "at_draft_test_rebuild_preserves_existing_showcase_readme",
+    "at_draft_test_rebuild_yes_skips_confirmation",
+    "at_draft_test_record_and_check_fresh",
+    "at_draft_test_record_creates_snapshot",
+    "at_draft_test_record_evolution_event_writes_ledger_and_markdown",
+    "at_draft_test_record_gap",
+    "at_draft_test_record_increments_sequence",
+    "at_draft_test_refine_trigger_false_on_clean_report",
+    "at_draft_test_refine_trigger_false_when_no_report",
+    "at_draft_test_reject_outside_cwd",
+    "at_draft_test_rejected_write_captures_rejection",
+    "at_draft_test_relative_endpoint_passthrough",
+    "at_draft_test_relative_endpoint_uses_base_url",
+    "at_draft_test_remote_no_auth_required",
+    "at_draft_test_render_atomadic_help_mentions_runtime_inventory",
+    "at_draft_test_render_branch_evolution_demo_names_tracks",
+    "at_draft_test_render_certificate_text_contains_digest",
+    "at_draft_test_render_header_includes_trs_when_sam_ran",
+    "at_draft_test_render_header_skips_when_nothing_to_show",
+    "at_draft_test_render_local_docs_readme_contains_name",
+    "at_draft_test_render_local_docs_writes_files",
+    "at_draft_test_render_markdown_contains_goal_and_steps",
+    "at_draft_test_render_protocol_markdown_contains_sections",
+    "at_draft_test_repo_summary_command_reports_files",
+    "at_draft_test_repo_summary_counts_files_and_skips_ignored_dirs",
+    "at_draft_test_report_structure",
+    "at_draft_test_report_tracks_decisions",
+    "at_draft_test_report_tracks_passes_failures",
+    "at_draft_test_reputation_ledger_happy_path",
+    "at_draft_test_reputation_score",
+    "at_draft_test_reputation_score_happy_path",
+    "at_draft_test_resolve_api_key_config_wins",
+    "at_draft_test_resolve_api_key_falls_back_to_env",
+    "at_draft_test_resolve_api_key_returns_none_when_missing",
+    "at_draft_test_retries_on_429_then_succeeds",
+    "at_draft_test_retries_on_500_then_succeeds",
+    "at_draft_test_returns_16_hex_chars",
+    "at_draft_test_returns_circuit_breaker_wrapping_retry",
+    "at_draft_test_returns_none_when_no_providers",
+    "at_draft_test_rollback_json",
+    "at_draft_test_rollback_no_backup",
+    "at_draft_test_route_with_nexus_exception_falls_back_local",
+    "at_draft_test_route_with_nexus_recommendation",
+    "at_draft_test_route_without_nexus",
+    "at_draft_test_routes_to_provider_for_known_model",
+    "at_draft_test_run_command_is_open_world",
+    "at_draft_test_run_linters_overall_ok_false_on_findings",
+    "at_draft_test_run_linters_returns_dict",
+    "at_draft_test_run_parallel_recon_completes_fast",
+    "at_draft_test_run_parallel_recon_empty_dir",
+    "at_draft_test_run_parallel_recon_returns_report",
+    "at_draft_test_run_parallel_recon_summary_is_string",
+    "at_draft_test_run_parallel_recon_to_dict",
+    "at_draft_test_run_parallel_recon_to_markdown",
+    "at_draft_test_run_protocol_builds_report_for_repo",
+    "at_draft_test_run_returns_dict",
+    "at_draft_test_run_ruff_not_found",
+    "at_draft_test_sam_gate_runs_per_step_and_populates_last_result",
+    "at_draft_test_sam_pipeline_passes_intent_and_impl",
+    "at_draft_test_sam_result_none_when_no_gates",
+    "at_draft_test_sam_runs_first_in_pipeline",
+    "at_draft_test_scan_bare_except_detects",
+    "at_draft_test_scan_bare_except_typed_ok",
+    "at_draft_test_scan_long_functions_detects",
+    "at_draft_test_scan_long_functions_short_ok",
+    "at_draft_test_scan_missing_docs_detects",
+    "at_draft_test_scan_missing_docs_private_ok",
+    "at_draft_test_scan_missing_tests_finds_gap",
+    "at_draft_test_scan_missing_tests_no_gap",
+    "at_draft_test_scan_prompt_blocked",
+    "at_draft_test_scan_prompt_clean",
+    "at_draft_test_scan_prompt_exception",
+    "at_draft_test_scan_prompt_safe",
+    "at_draft_test_scan_security_patterns_eval",
+    "at_draft_test_scan_security_patterns_pickle",
+    "at_draft_test_scan_source_symbols_finds_functions",
+    "at_draft_test_scan_source_symbols_skips_venv",
+    "at_draft_test_scan_todo_fixme_detects",
+    "at_draft_test_scout_basic_counts",
+    "at_draft_test_scout_empty_dir",
+    "at_draft_test_search_calls_internal_search",
+    "at_draft_test_search_chat_mode",
+    "at_draft_test_search_custom_max_results",
+    "at_draft_test_security_compliance_happy_path",
+    "at_draft_test_security_pqc_sign",
+    "at_draft_test_security_pqc_sign_writes_json_out",
+    "at_draft_test_security_prompt_scan_clean",
+    "at_draft_test_security_prompt_scan_http_error_exits_1",
+    "at_draft_test_security_prompt_scan_threat_detected",
+    "at_draft_test_security_shield",
+    "at_draft_test_security_shield_bad_json_exits_4",
+    "at_draft_test_security_threat_score",
+    "at_draft_test_security_threat_score_bad_json_exits_4",
+    "at_draft_test_selects_first_available_in_chain",
+    "at_draft_test_shell_injection_blocked",
+    "at_draft_test_shield_tool",
+    "at_draft_test_shield_tool_allowed",
+    "at_draft_test_shield_tool_blocked",
+    "at_draft_test_simple_done_event",
+    "at_draft_test_simple_greeting",
+    "at_draft_test_simple_query",
+    "at_draft_test_simple_replace",
+    "at_draft_test_simple_text_response",
+    "at_draft_test_simulate_invoke_validates_absolute_endpoint",
+    "at_draft_test_single",
+    "at_draft_test_single_failing_step",
+    "at_draft_test_single_passing_step",
+    "at_draft_test_single_provider_shortcut",
+    "at_draft_test_skill_missing_id_is_error",
+    "at_draft_test_skill_missing_name_is_error",
+    "at_draft_test_sla_register",
+    "at_draft_test_sla_status_happy_path",
+    "at_draft_test_snapshot_persistence",
+    "at_draft_test_stale_detection_past_threshold",
+    "at_draft_test_standard",
+    "at_draft_test_start_creates_session",
+    "at_draft_test_start_non_numeric_agent_id_uses_deterministic_sha256_int",
+    "at_draft_test_state_persists_across_instances",
+    "at_draft_test_status_structure",
+    "at_draft_test_status_without_start_raises",
+    "at_draft_test_step_metrics_reset_on_start",
+    "at_draft_test_step_names_property",
+    "at_draft_test_strips_control_chars",
+    "at_draft_test_strips_whitespace",
+    "at_draft_test_stubs_created_list",
+    "at_draft_test_subscriber_called_on_alert",
+    "at_draft_test_subscriber_exception_does_not_propagate",
+    "at_draft_test_success_after_failures_resets",
+    "at_draft_test_success_keeps_circuit_closed",
+    "at_draft_test_success_on_first_try",
+    "at_draft_test_summary_failed",
+    "at_draft_test_summary_passed",
+    "at_draft_test_swarm_contradiction",
+    "at_draft_test_swarm_intent_classify",
+    "at_draft_test_swarm_intent_classify_success",
+    "at_draft_test_swarm_plan_success",
+    "at_draft_test_sync_atomadic_prompt_capabilities_replaces_generated_block",
+    "at_draft_test_syntax_error_blocked_by_cie",
+    "at_draft_test_syntax_error_fails_ast",
+    "at_draft_test_syntax_error_returns_empty",
+    "at_draft_test_tca_property_lazy_init",
+    "at_draft_test_teardown_resets_state",
+    "at_draft_test_test_agent_empty",
+    "at_draft_test_test_agent_finds_tests",
+    "at_draft_test_testnet_label",
+    "at_draft_test_testnet_mode",
+    "at_draft_test_text_ai_happy_path",
+    "at_draft_test_text_keywords",
+    "at_draft_test_text_sentiment_negative",
+    "at_draft_test_text_sentiment_positive",
+    "at_draft_test_text_summarize",
+    "at_draft_test_text_summarize_http_error_exits_1",
+    "at_draft_test_tick_triggers_batch_at_interval",
+    "at_draft_test_tier_agent_counts",
+    "at_draft_test_tier_aliases_include_canonical_and_claude",
+    "at_draft_test_timeout",
+    "at_draft_test_timeout_handling",
+    "at_draft_test_timeout_raises_nexus_timeout",
+    "at_draft_test_to_header_value",
+    "at_draft_test_too_large_raises",
+    "at_draft_test_too_long_raises",
+    "at_draft_test_tool_blocked_by_shield",
+    "at_draft_test_tool_call_callbacks",
+    "at_draft_test_tool_call_events",
+    "at_draft_test_tool_call_then_response",
+    "at_draft_test_tool_result",
+    "at_draft_test_tools",
+    "at_draft_test_tools_call_list_directory",
+    "at_draft_test_tools_call_read_file",
+    "at_draft_test_tools_call_unknown",
+    "at_draft_test_tools_call_write_file",
+    "at_draft_test_tools_list",
+    "at_draft_test_tools_list_accepts_cursor_param",
+    "at_draft_test_tools_list_includes_annotations_for_builtin_tools",
+    "at_draft_test_tools_list_includes_builtin_and_extended",
+    "at_draft_test_trailing_whitespace_normalised",
+    "at_draft_test_trim",
+    "at_draft_test_trim_context",
+    "at_draft_test_trim_context_exception",
+    "at_draft_test_trim_noop_when_under_limit",
+    "at_draft_test_trust_gate_local_profile_blocked",
+    "at_draft_test_trust_gate_requires_agent_id",
+    "at_draft_test_trust_history",
+    "at_draft_test_trust_oracle_happy_path",
+    "at_draft_test_trust_oracles_happy_path",
+    "at_draft_test_trust_oracles_validation_error",
+    "at_draft_test_trust_score",
+    "at_draft_test_trust_score_http_error_exits_1",
+    "at_draft_test_trust_score_success",
+    "at_draft_test_unchanged_artifact",
+    "at_draft_test_undo_consumes_snapshot",
+    "at_draft_test_undo_no_history",
+    "at_draft_test_unknown_4xx_raises_base_error",
+    "at_draft_test_unknown_method",
+    "at_draft_test_unknown_model_uses_fallback_order",
+    "at_draft_test_unknown_tool_returns_error",
+    "at_draft_test_unread_file_is_stale",
+    "at_draft_test_update_principles_deduplicates",
+    "at_draft_test_user_override_wins",
+    "at_draft_test_valid",
+    "at_draft_test_valid_amounts",
+    "at_draft_test_valid_full_card",
+    "at_draft_test_valid_http",
+    "at_draft_test_valid_https",
+    "at_draft_test_valid_ids",
+    "at_draft_test_valid_minimal_card",
+    "at_draft_test_valid_prompt",
+    "at_draft_test_valid_python_passes_ast",
+    "at_draft_test_valid_python_passes_cie",
+    "at_draft_test_validate_create_conflict",
+    "at_draft_test_validate_create_success",
+    "at_draft_test_validate_delete_not_found",
+    "at_draft_test_validate_delete_success",
+    "at_draft_test_validate_missing_fields",
+    "at_draft_test_validate_missing_file",
+    "at_draft_test_validate_modify_file_missing",
+    "at_draft_test_validate_modify_not_found",
+    "at_draft_test_validate_modify_success",
+    "at_draft_test_validate_valid_card",
+    "at_draft_test_validates_agent_id",
+    "at_draft_test_validation_report_properties",
+    "at_draft_test_vanguard_happy_path",
+    "at_draft_test_vanguard_redteam",
+    "at_draft_test_veridelegate_happy_path",
+    "at_draft_test_verirand_happy_path",
+    "at_draft_test_vrf_draw",
+    "at_draft_test_vrf_gaming_happy_path",
+    "at_draft_test_wallet_shows_status",
+    "at_draft_test_wallet_status_no_key",
+    "at_draft_test_wallet_testnet_on",
+    "at_draft_test_whitespace_only_raises",
+    "at_draft_test_whitespace_only_text_response_is_preserved",
+    "at_draft_test_wisdom_ema_initialized",
+    "at_draft_test_with_tool_calls",
+    "at_draft_test_write_after_read_is_allowed_in_block_mode",
+    "at_draft_test_write_and_load_config_round_trip",
+    "at_draft_test_write_config_does_not_persist_api_keys",
+    "at_draft_test_write_file_is_destructive",
+    "at_draft_test_write_without_read_blocked_end_to_end",
+    "at_draft_test_write_without_read_is_allowed_in_warn_mode",
+    "at_draft_test_write_without_read_is_blocked_in_block_mode",
+    "at_draft_test_writes_file",
+    "at_draft_test_writes_version_file",
+    "at_draft_test_zero_raises",
+    "at_draft_testa2avalidate",
+    "at_draft_testa2avalidatecli",
+    "at_draft_testmcpa2avalidate",
+    "at_draft_testvalidateabsoluteendpoint",
+    "at_draft_testvalidateagentcard",
+    "at_draft_testvalidateagentid",
+    "at_draft_testvalidateprompt",
+    "at_draft_testvalidatesessionid",
+    "at_draft_testvalidateurl",
+    "at_draft_testvalidateusdcamount",
+    "at_draft_text_keywords",
+    "at_draft_text_sentiment",
+    "at_draft_text_summarize",
+    "at_draft_threat_score",
+    "at_draft_tick",
+    "at_draft_tier_for_complexity",
+    "at_draft_tier_prefix_from_id",
+    "at_draft_tmp_workspace",
+    "at_draft_to_dict",
+    "at_draft_to_header_value",
+    "at_draft_to_markdown",
+    "at_draft_top_level_cli_groups",
+    "at_draft_train",
+    "at_draft_train_adapter",
+    "at_draft_tree_search",
+    "at_draft_trim",
+    "at_draft_trim_context",
+    "at_draft_trim_to_budget",
+    "at_draft_trust_decay",
+    "at_draft_trust_gate",
+    "at_draft_trust_gate_pipeline",
+    "at_draft_trust_history",
+    "at_draft_trust_phase_oracle",
+    "at_draft_trust_score",
+    "at_draft_trust_step",
+    "at_draft_tutorial_command",
+    "at_draft_undo",
+    "at_draft_update",
+    "at_draft_update_conviction",
+    "at_draft_update_from_turn",
+    "at_draft_update_principles",
+    "at_draft_update_task_status",
+    "at_draft_upload_adapter",
+    "at_draft_validate",
+    "at_draft_validate_acyclic",
+    "at_draft_validate_agent_card",
+    "at_draft_validate_agent_id",
+    "at_draft_validate_api_key",
+    "at_draft_validate_g23",
+    "at_draft_validate_https_public_url",
+    "at_draft_validate_payload",
+    "at_draft_validate_prompt",
+    "at_draft_validate_session_id",
+    "at_draft_validate_task_id",
+    "at_draft_validate_task_title",
+    "at_draft_validate_url",
+    "at_draft_validate_usdc_amount",
+    "at_draft_validated",
+    "at_draft_vanguard_epoch_certify",
+    "at_draft_vanguard_govern_session",
+    "at_draft_vanguard_lock_and_verify",
+    "at_draft_vanguard_mev_route",
+    "at_draft_vanguard_redteam",
+    "at_draft_vanguard_start_session",
+    "at_draft_vanguard_wallet_session",
+    "at_draft_vector_embed",
+    "at_draft_verify",
+    "at_draft_vrf_draw",
+    "at_draft_vrf_verify",
+    "at_draft_vrf_verify_draw",
+    "at_draft_wallet",
+    "at_draft_warnings",
+    "at_draft_web_research_tool_with_ai_powered_search",
+    "at_draft_web_search_skill_to_my_project",
+    "at_draft_wisdom",
+    "at_draft_wisdom_report",
+    "at_draft_workspace",
+    "at_draft_write_branch_evolution_demo",
+    "at_draft_write_default_config",
+    "at_draft_write_project_version_file",
+    "at_draft_write_tier_version_file",
+    "at_draft_zero_trust_auth",
+]

@@ -1,12 +1,12 @@
 {
-  "body": "    def find_by_tag(self, tag: str) -> List[Task]:\n        \"\"\"Find all tasks with a specific tag.\"\"\"\n        all_tasks = self.manager.list_all_tasks()\n        return [t for t in all_tasks if tag in t.tags]\n",
-  "body_hash": "0ffdda35ba701a6b",
+  "body": "def find_by_tag(self, tag: str) -> List[Task]:\n    \"\"\"Find all tasks with a specific tag.\"\"\"\n    all_tasks = self.manager.list_all_tasks()\n    return [t for t in all_tasks if tag in t.tags]\n",
+  "body_hash": "b16ff1548aac1f6e",
   "body_truncated": false,
   "callers_of": [
     "list_all_tasks"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/examples/02-rebuild-a-codebase/sample_project/main.py:169.",
+  "description": "Draft candidate from C:/!ass-ade/examples/02-rebuild-a-codebase/sample_project/main.py:169.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.find_by_tag",
@@ -18,7 +18,7 @@
     "typing.Optional"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/examples/02-rebuild-a-codebase/sample_project/main.py:169"
+    "source": "C:/!ass-ade/examples/02-rebuild-a-codebase/sample_project/main.py:169"
   },
   "kind": "ecosystem_system",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def from_header_value(cls, header_value: str) -> PaymentProof | None:\n        \"\"\"Parse from HTTP header value (PAYMENT-SIGNATURE).\"\"\"\n        try:\n            parts = header_value.split(\";\")\n            if len(parts) != 4:\n                return None\n            sig, addr, txid, amount_str = parts\n            return cls(\n                signature=sig,\n                wallet_address=addr,\n                transaction_id=txid,\n                amount_micro_usdc=int(amount_str),\n            )\n        except (ValueError, IndexError):\n            return None\n",
-  "body_hash": "4f51cc1b2bb53991",
+  "body": "def from_header_value(cls, header_value: str) -> PaymentProof | None:\n    \"\"\"Parse from HTTP header value (PAYMENT-SIGNATURE).\"\"\"\n    try:\n        parts = header_value.split(\";\")\n        if len(parts) != 4:\n            return None\n        sig, addr, txid, amount_str = parts\n        return cls(\n            signature=sig,\n            wallet_address=addr,\n            transaction_id=txid,\n            amount_micro_usdc=int(amount_str),\n        )\n    except (ValueError, IndexError):\n        return None\n",
+  "body_hash": "af9cceab71554c99",
   "body_truncated": false,
   "callers_of": [
     "split",
@@ -9,7 +9,7 @@
     "int"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/x402.py:161.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/x402.py:161.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.from_header_value",
@@ -24,7 +24,7 @@
     "logging"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/x402.py:161"
+    "source": "C:/!ass-ade/src/ass_ade/nexus/x402.py:161"
   },
   "kind": "pure_function",
   "made_of": [],

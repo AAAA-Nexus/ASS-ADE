@@ -1,19 +1,21 @@
 {
-  "body": "    def test_cooldown_prevents_duplicate_alerts(self) -> None:\n        b = BAS({\"bas_cooldown_s\": 3600.0})  # 1-hour cooldown\n        a1 = b.alert(\"gvu_jump\", {\"gvu_delta\": 0.5})\n        a2 = b.alert(\"gvu_jump\", {\"gvu_delta\": 0.6})\n        # second alert on cooldown\n        assert a2.cooldown_skipped\n",
-  "body_hash": "5720b19095b708b4",
+  "body": "def test_cooldown_prevents_duplicate_alerts(self) -> None:\n    b = BAS({\"bas_cooldown_s\": 3600.0})  # 1-hour cooldown\n    a1 = b.alert(\"gvu_jump\", {\"gvu_delta\": 0.5})\n    a2 = b.alert(\"gvu_jump\", {\"gvu_delta\": 0.6})\n    # second alert on cooldown\n    assert a2.cooldown_skipped\n",
+  "body_hash": "3d8f68fd43a6688f",
   "body_truncated": false,
   "callers_of": [
     "BAS",
     "alert"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbas.py:72.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_cooldown_prevents_duplicate_alerts.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_cooldown_prevents_duplicate_alerts",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_cooldown_prevents_duplicate_alerts",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbas.py:72"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_cooldown_prevents_duplicate_alerts.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

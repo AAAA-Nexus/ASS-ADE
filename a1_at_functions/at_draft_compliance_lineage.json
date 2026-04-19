@@ -1,0 +1,32 @@
+{
+  "body": "def compliance_lineage(self, dataset_stages: list[dict], **kwargs: Any) -> LineageProof:\n    \"\"\"/v1/compliance/lineage \u2014 SHA-256 hash chain across dataset (LIN-100). $0.040/call\"\"\"\n    return self._post_model(\"/v1/compliance/lineage\", LineageProof, {\"dataset_stages\": dataset_stages, **kwargs})\n",
+  "body_hash": "b0e342df18a64c24",
+  "body_truncated": false,
+  "callers_of": [
+    "_post_model"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_compliance_lineage.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.compliance_lineage",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_compliance_lineage.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "compliance_lineage",
+  "product_categories": [
+    "SRG"
+  ],
+  "provides": [
+    "rebuild candidate for compliance_lineage"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

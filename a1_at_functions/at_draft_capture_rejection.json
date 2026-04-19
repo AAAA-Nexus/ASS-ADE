@@ -1,6 +1,6 @@
 {
-  "body": "    def capture_rejection(self, candidate: str, reason: str, confidence: float = 0.9) -> str:\n        \"\"\"Capture a CIE-rejected candidate as a negative training example.\"\"\"\n        if not self._enabled:\n            return \"\"\n        cid = f\"rejection_{int(time.time())}_{len(self._pending)}\"\n        c = Contribution(\n            kind=\"rejection\",\n            content={\"candidate\": candidate[:2000], \"reason\": reason[:200]},\n            session_id=self._session_id,\n            confidence=confidence,\n        )\n        self._pending.append(c)\n        self._save_pending()\n        return cid\n",
-  "body_hash": "cb447602528cef39",
+  "body": "def capture_rejection(self, candidate: str, reason: str, confidence: float = 0.9) -> str:\n    \"\"\"Capture a CIE-rejected candidate as a negative training example.\"\"\"\n    if not self._enabled:\n        return \"\"\n    cid = f\"rejection_{int(time.time())}_{len(self._pending)}\"\n    c = Contribution(\n        kind=\"rejection\",\n        content={\"candidate\": candidate[:2000], \"reason\": reason[:200]},\n        session_id=self._session_id,\n        confidence=confidence,\n    )\n    self._pending.append(c)\n    self._save_pending()\n    return cid\n",
+  "body_hash": "ecacc8afad289872",
   "body_truncated": false,
   "callers_of": [
     "Contribution",
@@ -11,15 +11,15 @@
     "time"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_loraflywheel.py:115.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_capture_rejection.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.capture_rejection",
+  "id": "at.source.a1_at_functions.capture_rejection",
   "imports": [
-    "hashlib"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_loraflywheel.py:115"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_capture_rejection.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

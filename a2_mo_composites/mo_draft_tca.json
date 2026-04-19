@@ -1,6 +1,6 @@
 {
-  "body": "    def tca(self):\n        if self._tca is None:\n            from ass_ade.agent.tca import TCAEngine\n            cfg = dict(self._config)\n            cfg.setdefault(\"working_dir\", self._working_dir)\n            self._tca = TCAEngine(cfg, self._nexus)\n        return self._tca\n",
-  "body_hash": "86e11fff6f104962",
+  "body": "def tca(self):\n    if self._tca is None:\n        from ass_ade.agent.tca import TCAEngine\n        cfg = dict(self._config)\n        cfg.setdefault(\"working_dir\", self._working_dir)\n        self._tca = TCAEngine(cfg, self._nexus)\n    return self._tca\n",
+  "body_hash": "291ebe543597c721",
   "body_truncated": false,
   "callers_of": [
     "dict",
@@ -8,11 +8,12 @@
     "TCAEngine"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_engineorchestrator.py:193.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_engineorchestrator.py:195.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.tca",
+  "id": "mo.source.a2_mo_composites.tca",
   "imports": [
+    "__future__.annotations",
     "ass_ade.agent.atlas.Atlas",
     "ass_ade.agent.bas.BAS",
     "ass_ade.agent.wisdom.WisdomEngine",
@@ -35,7 +36,7 @@
     "json"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_engineorchestrator.py:193"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_engineorchestrator.py:195"
   },
   "kind": "engine_molecule",
   "made_of": [],

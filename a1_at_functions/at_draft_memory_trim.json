@@ -1,0 +1,32 @@
+{
+  "body": "def memory_trim(self, context: list[dict], target_tokens: int, **kwargs: Any) -> MemoryTrimResult:\n    \"\"\"/v1/memory/trim \u2014 prune context window for cost efficiency (INF-815). $0.040/call\"\"\"\n    return self._post_model(\"/v1/memory/trim\", MemoryTrimResult, {\"context\": context, \"target_tokens\": target_tokens, **kwargs})\n",
+  "body_hash": "3209951b5bf10a5d",
+  "body_truncated": false,
+  "callers_of": [
+    "_post_model"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_memory_trim.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.memory_trim",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_memory_trim.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "memory_trim",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for memory_trim"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

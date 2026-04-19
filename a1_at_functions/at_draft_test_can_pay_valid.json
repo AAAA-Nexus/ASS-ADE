@@ -1,6 +1,6 @@
 {
-  "body": "    def test_can_pay_valid(self) -> None:\n        \"\"\"X402ClientFlow should accept valid challenges.\"\"\"\n        flow = X402ClientFlow()\n        with patch.dict(\"os.environ\", {\"ATOMADIC_X402_TESTNET\": \"1\"}, clear=False):\n            challenge = PaymentChallenge.from_response({\n                \"recipient\": \"0xCBd9e4c44958ee76E0F941106Ea960D476c48FD9\",\n                \"amount_micro_usdc\": 5000,\n                \"expires\": 9999999999,\n                \"chain_id\": BASE_SEPOLIA_CHAIN_ID,\n                \"endpoint\": \"/v1/trust/score\",\n            })\n            assert flow.can_pay(challenge)\n",
-  "body_hash": "dbbce3495994fcaf",
+  "body": "def test_can_pay_valid(self) -> None:\n    \"\"\"X402ClientFlow should accept valid challenges.\"\"\"\n    flow = X402ClientFlow()\n    with patch.dict(\"os.environ\", {\"ATOMADIC_X402_TESTNET\": \"1\"}, clear=False):\n        challenge = PaymentChallenge.from_response({\n            \"recipient\": \"0xCBd9e4c44958ee76E0F941106Ea960D476c48FD9\",\n            \"amount_micro_usdc\": 5000,\n            \"expires\": 9999999999,\n            \"chain_id\": BASE_SEPOLIA_CHAIN_ID,\n            \"endpoint\": \"/v1/trust/score\",\n        })\n        assert flow.can_pay(challenge)\n",
+  "body_hash": "862efb1701ab5877",
   "body_truncated": false,
   "callers_of": [
     "X402ClientFlow",
@@ -9,33 +9,15 @@
     "can_pay"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:206.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_can_pay_valid.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_can_pay_valid",
+  "id": "at.source.a1_at_functions.test_can_pay_valid",
   "imports": [
-    "__future__.annotations",
-    "pathlib.Path",
-    "unittest.mock.MagicMock",
-    "unittest.mock.patch",
-    "pytest",
-    "typer.testing.CliRunner",
-    "ass_ade.cli.app",
-    "ass_ade.config.AssAdeConfig",
-    "ass_ade.config.write_default_config",
-    "ass_ade.nexus.x402.PaymentChallenge",
-    "ass_ade.nexus.x402.PaymentResult",
-    "ass_ade.nexus.x402.PaymentProof",
-    "ass_ade.nexus.x402.X402ClientFlow",
-    "ass_ade.nexus.x402.format_payment_consent",
-    "ass_ade.nexus.x402.get_chain_config",
-    "ass_ade.nexus.x402.build_payment_header",
-    "ass_ade.nexus.x402.ATOMADIC_TREASURY",
-    "ass_ade.nexus.x402.BASE_MAINNET_CHAIN_ID",
-    "ass_ade.nexus.x402.BASE_SEPOLIA_CHAIN_ID"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:206"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_can_pay_valid.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,12 +1,12 @@
 {
-  "body": "    def do_GET(self) -> None:  # noqa: N802\n        if self.path in (\"/.well-known/mcp.json\", \"/mcp.json\"):\n            self._send_json(200, self.manifest)\n        elif self.path == \"/health\":\n            self._send_json(200, {\"status\": \"ok\", \"version\": \"mock\"})\n        else:\n            self._send_json(404, {\"error\": \"not found\"})\n",
-  "body_hash": "3617e470302b98e5",
+  "body": "def do_GET(self) -> None:  # noqa: N802\n    if self.path in (\"/.well-known/mcp.json\", \"/mcp.json\"):\n        self._send_json(200, self.manifest)\n    elif self.path == \"/health\":\n        self._send_json(200, {\"status\": \"ok\", \"version\": \"mock\"})\n    else:\n        self._send_json(404, {\"error\": \"not found\"})\n",
+  "body_hash": "0ab8632b75847e31",
   "body_truncated": false,
   "callers_of": [
     "_send_json"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/mcp/mock_server.py:51.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/mcp/mock_server.py:51.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.do_get",
@@ -20,7 +20,7 @@
     "typing.Any"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/mcp/mock_server.py:51"
+    "source": "C:/!ass-ade/src/ass_ade/mcp/mock_server.py:51"
   },
   "kind": "ecosystem_system",
   "made_of": [],

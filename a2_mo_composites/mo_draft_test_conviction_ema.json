@@ -1,6 +1,6 @@
 {
-  "body": "    def test_conviction_ema(self) -> None:\n        w = WisdomEngine({})\n        r1 = w.run_audit({})  # score 0, conviction = 0.5*0.5 + 0.5*0 = 0.25\n        assert abs(w.conviction - 0.25) < 0.01\n        assert not w.is_confident  # well below 0.85\n",
-  "body_hash": "da2a12b26467f57c",
+  "body": "def test_conviction_ema(self) -> None:\n    w = WisdomEngine({})\n    r1 = w.run_audit({})  # score 0, conviction = 0.5*0.5 + 0.5*0 = 0.25\n    assert abs(w.conviction - 0.25) < 0.01\n    assert not w.is_confident  # well below 0.85\n",
+  "body_hash": "89a31b33dddf8b35",
   "body_truncated": false,
   "callers_of": [
     "WisdomEngine",
@@ -8,13 +8,15 @@
     "abs"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwisdomengine.py:42.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testwisdomengine.py:44.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.test_conviction_ema",
-  "imports": [],
+  "id": "mo.source.a2_mo_composites.test_conviction_ema",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwisdomengine.py:42"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testwisdomengine.py:44"
   },
   "kind": "engine_molecule",
   "made_of": [],

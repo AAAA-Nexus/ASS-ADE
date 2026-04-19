@@ -1,6 +1,6 @@
 {
-  "body": "    def test_nexus_added_to_multiprovider_when_catalog_keys_present(self, monkeypatch):\n        \"\"\"Premium profile + catalog keys \u2192 MultiProvider containing nexus + free providers.\"\"\"\n        self._clear_provider_env()\n        monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-groq\")\n        monkeypatch.setenv(\"AAAA_NEXUS_API_KEY\", \"an_test_key\")\n\n        from ass_ade.config import AssAdeConfig\n        from ass_ade.engine.provider import MultiProvider\n\n        cfg = AssAdeConfig(\n            profile=\"premium\",\n            nexus_api_key=\"an_test_key\",\n            nexus_base_url=\"https://atomadic.tech\",\n        )\n        provider = build_provider(cfg)\n        assert isinstance(provider, MultiProvider)\n        assert \"nexus\" in provider.providers\n        assert \"groq\" in provider.providers\n",
-  "body_hash": "2f3b5c14d5191263",
+  "body": "def test_nexus_added_to_multiprovider_when_catalog_keys_present(self, monkeypatch):\n    \"\"\"Premium profile + catalog keys \u2192 MultiProvider containing nexus + free providers.\"\"\"\n    self._clear_provider_env()\n    monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-groq\")\n    monkeypatch.setenv(\"AAAA_NEXUS_API_KEY\", \"an_test_key\")\n\n    from ass_ade.config import AssAdeConfig\n    from ass_ade.engine.provider import MultiProvider\n\n    cfg = AssAdeConfig(\n        profile=\"premium\",\n        nexus_api_key=\"an_test_key\",\n        nexus_base_url=\"https://atomadic.tech\",\n    )\n    provider = build_provider(cfg)\n    assert isinstance(provider, MultiProvider)\n    assert \"nexus\" in provider.providers\n    assert \"groq\" in provider.providers\n",
+  "body_hash": "0f217b2630959a82",
   "body_truncated": false,
   "callers_of": [
     "_clear_provider_env",
@@ -10,26 +10,17 @@
     "isinstance"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbuildprovider.py:85.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_nexus_added_to_multiprovider_when_catalog_keys_present.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_nexus_added_to_multiprovider_when_catalog_keys_present",
+  "id": "at.source.a1_at_functions.test_nexus_added_to_multiprovider_when_catalog_keys_present",
   "imports": [
-    "os",
-    "ass_ade.agent.providers.FREE_PROVIDERS",
-    "ass_ade.agent.providers.FREE_PROVIDERS",
-    "ass_ade.config.ProviderOverride",
-    "ass_ade.config.AssAdeConfig",
-    "ass_ade.engine.provider.MultiProvider",
-    "ass_ade.config.AssAdeConfig",
-    "ass_ade.engine.provider.MultiProvider",
-    "ass_ade.config.AssAdeConfig",
-    "ass_ade.config.AssAdeConfig",
+    "__future__.annotations",
     "ass_ade.config.AssAdeConfig",
     "ass_ade.engine.provider.MultiProvider"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbuildprovider.py:85"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_nexus_added_to_multiprovider_when_catalog_keys_present.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

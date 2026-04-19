@@ -1,6 +1,6 @@
 {
-  "body": "    def test_empty_tiers_returns_initial(self, tmp_path: Path):\n        path = write_project_version_file(tmp_path, {}, \"tag1\")\n        first_line = Path(path).read_text().splitlines()[0]\n        assert first_line == INITIAL_VERSION\n",
-  "body_hash": "6591119de4310f48",
+  "body": "def test_empty_tiers_returns_initial(self, tmp_path: Path):\n    path = write_project_version_file(tmp_path, {}, \"tag1\")\n    first_line = Path(path).read_text().splitlines()[0]\n    assert first_line == INITIAL_VERSION\n",
+  "body_hash": "d26c3dc9ddcdc5b0",
   "body_truncated": false,
   "callers_of": [
     "write_project_version_file",
@@ -9,13 +9,15 @@
     "Path"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwriteprojectversionfile.py:17.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_empty_tiers_returns_initial.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_empty_tiers_returns_initial",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_empty_tiers_returns_initial",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwriteprojectversionfile.py:17"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_empty_tiers_returns_initial.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

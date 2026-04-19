@@ -4,17 +4,17 @@
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/a2_mo_composites/mo_web_search_skill_to_my_project_pipeline.py:5.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_run_web_search_skill_to_my_project_pipeline.py:7.",
   "exceptions_raised": [
     "NotImplementedError"
   ],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.run_web_search_skill_to_my_project_pipeline",
+  "id": "at.source.a1_at_functions.run_web_search_skill_to_my_project_pipeline",
   "imports": [
     "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/a2_mo_composites/mo_web_search_skill_to_my_project_pipeline.py:5"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_run_web_search_skill_to_my_project_pipeline.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

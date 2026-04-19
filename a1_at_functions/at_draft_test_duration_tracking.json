@@ -1,6 +1,6 @@
 {
-  "body": "    def test_duration_tracking(self) -> None:\n        pipe = Pipeline(\"dur\")\n        pipe.add(\"s1\", pass_step)\n        result = pipe.run()\n        assert result.duration_ms >= 0\n        assert result.steps[0].duration_ms >= 0\n",
-  "body_hash": "511d7558599b5b0a",
+  "body": "def test_duration_tracking(self) -> None:\n    pipe = Pipeline(\"dur\")\n    pipe.add(\"s1\", pass_step)\n    result = pipe.run()\n    assert result.duration_ms >= 0\n    assert result.steps[0].duration_ms >= 0\n",
+  "body_hash": "93d913c3d36210b1",
   "body_truncated": false,
   "callers_of": [
     "Pipeline",
@@ -8,22 +8,15 @@
     "run"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:259.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_duration_tracking.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_duration_tracking",
+  "id": "at.source.a1_at_functions.test_duration_tracking",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "pathlib.Path",
-    "typing.Any",
-    "ass_ade.pipeline.Pipeline",
-    "ass_ade.pipeline.PipelineResult",
-    "ass_ade.pipeline.StepResult",
-    "ass_ade.pipeline.StepStatus"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:259"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_duration_tracking.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

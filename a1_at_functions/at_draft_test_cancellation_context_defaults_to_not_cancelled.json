@@ -1,19 +1,21 @@
 {
-  "body": "    def test_cancellation_context_defaults_to_not_cancelled(self) -> None:\n        ctx = CancellationContext()\n        assert ctx.check() is False\n        assert ctx.is_cancelled is False\n",
-  "body_hash": "b0154d6a46079a98",
+  "body": "def test_cancellation_context_defaults_to_not_cancelled(self) -> None:\n    ctx = CancellationContext()\n    assert ctx.check() is False\n    assert ctx.is_cancelled is False\n",
+  "body_hash": "8f8262819f5fdded",
   "body_truncated": false,
   "callers_of": [
     "CancellationContext",
     "check"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testcancellationcontext.py:8.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_cancellation_context_defaults_to_not_cancelled.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_cancellation_context_defaults_to_not_cancelled",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_cancellation_context_defaults_to_not_cancelled",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testcancellationcontext.py:8"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_cancellation_context_defaults_to_not_cancelled.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

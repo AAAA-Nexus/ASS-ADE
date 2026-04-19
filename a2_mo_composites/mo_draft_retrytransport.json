@@ -23,32 +23,23 @@
     "NexusTimeoutError"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/resilience.py:31.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_retrytransport.py:7.",
   "exceptions_raised": [
     "NexusServerError",
     "NexusConnectionError",
     "NexusTimeoutError"
   ],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.retrytransport",
+  "id": "mo.source.a2_mo_composites.retrytransport",
   "imports": [
-    "__future__.annotations",
-    "random",
-    "time",
-    "typing.TYPE_CHECKING",
-    "httpx",
-    "ass_ade.nexus.errors.NexusCircuitOpen",
-    "ass_ade.nexus.errors.NexusConnectionError",
-    "ass_ade.nexus.errors.NexusServerError",
-    "ass_ade.nexus.errors.NexusTimeoutError",
-    "ass_ade.mcp.cancellation.CancellationContext"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/resilience.py:31"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_retrytransport.py:7"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.handle_request"
+    "at.source.a1_at_functions.handle_request"
   ],
   "name": "RetryTransport",
   "product_categories": [

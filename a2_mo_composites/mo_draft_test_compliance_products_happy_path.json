@@ -1,5 +1,5 @@
 {
-  "body": "def test_compliance_products_happy_path(method_name, response_json):\n    \"\"\"Test compliance products methods (happy path).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json=response_json)\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        if method_name == \"compliance_fairness\":\n            result = client.compliance_fairness(dataset_description=\"dataset desc\")\n        elif method_name == \"compliance_explain\":\n            result = client.compliance_explain(output=\"model output\", input_features={\"f1\": 1.0})\n        elif method_name == \"compliance_lineage\":\n            result = client.compliance_lineage(dataset_stages=[{\"stage\": \"raw\"}, {\"stage\": \"processed\"}])\n        elif method_name == \"compliance_oversight\":\n            result = client.compliance_oversight(reviewer=\"reviewer_1\", decision=\"approved\")\n        elif method_name == \"compliance_incident\":\n            result = client.compliance_incident(system_id=\"system_1\", description=\"incident description\", severity=\"high\")\n        elif method_name == \"compliance_incidents\":\n            result = client.compliance_incidents(system_id=\"system_1\")\n        elif method_name == \"compliance_transparency\":\n            result = client.compliance_transparency(system_id=\"system_1\", period=\"Q1 2026\")\n        elif method_name == \"drift_check\":\n            result = client.drift_check(model_id=\"model_1\", reference_data={}, current_data={})\n        else:  # drift_certificate\n            result = client.drift_certificate(check_id=\"check_123\")\n        assert result is not None\n",
+  "body": "def test_compliance_products_happy_path(method_name, response_json):\n    \"\"\"Test compliance products methods (happy path).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json=response_json)\n\n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        if method_name == \"compliance_fairness\":\n            result = client.compliance_fairness(dataset_description=\"dataset desc\")\n        elif method_name == \"compliance_explain\":\n            result = client.compliance_explain(output=\"model output\", input_features={\"f1\": 1.0})\n        elif method_name == \"compliance_lineage\":\n            result = client.compliance_lineage(dataset_stages=[{\"stage\": \"raw\"}, {\"stage\": \"processed\"}])\n        elif method_name == \"compliance_oversight\":\n            result = client.compliance_oversight(reviewer=\"reviewer_1\", decision=\"approved\")\n        elif method_name == \"compliance_incident\":\n            result = client.compliance_incident(system_id=\"system_1\", description=\"incident description\", severity=\"high\")\n        elif method_name == \"compliance_incidents\":\n            result = client.compliance_incidents(system_id=\"system_1\")\n        elif method_name == \"compliance_transparency\":\n            result = client.compliance_transparency(system_id=\"system_1\", period=\"Q1 2026\")\n        elif method_name == \"drift_check\":\n            result = client.drift_check(model_id=\"model_1\", reference_data={}, current_data={})\n        else:  # drift_certificate\n            result = client.drift_certificate(check_id=\"check_123\")\n        assert result is not None\n",
   "body_hash": "88e190709589c8d5",
   "body_truncated": false,
   "callers_of": [
@@ -18,7 +18,7 @@
     "drift_certificate"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:902.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_nexus_client_comprehensive.py:902.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_compliance_products_happy_path",
@@ -153,7 +153,7 @@
     "ass_ade.nexus.models.EntropyResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:902"
+    "source": "C:/!ass-ade/tests/test_nexus_client_comprehensive.py:902"
   },
   "kind": "engine_molecule",
   "made_of": [],

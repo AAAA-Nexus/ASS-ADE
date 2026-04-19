@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/cli.py:3946
-# Component id: at.source.ass_ade.eco_scan
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_eco_scan.py:7
+# Component id: at.source.a1_at_functions.eco_scan
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def eco_scan(

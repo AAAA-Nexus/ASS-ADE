@@ -1,19 +1,21 @@
 {
-  "body": "    def test_tools_call_read_file(self, server: MCPServer):\n        _initialize_server(server)\n        req = {\n            \"jsonrpc\": \"2.0\",\n            \"id\": 3,\n            \"method\": \"tools/call\",\n            \"params\": {\"name\": \"read_file\", \"arguments\": {\"path\": \"hello.py\"}},\n        }\n        resp = server._handle(req)\n        assert resp is not None\n        assert resp[\"result\"][\"isError\"] is False\n        content = resp[\"result\"][\"content\"][0][\"text\"]\n        assert \"print('hi')\" in content\n",
-  "body_hash": "c92d6c6f5e8ebec4",
+  "body": "def test_tools_call_read_file(self, server: MCPServer):\n    _initialize_server(server)\n    req = {\n        \"jsonrpc\": \"2.0\",\n        \"id\": 3,\n        \"method\": \"tools/call\",\n        \"params\": {\"name\": \"read_file\", \"arguments\": {\"path\": \"hello.py\"}},\n    }\n    resp = server._handle(req)\n    assert resp is not None\n    assert resp[\"result\"][\"isError\"] is False\n    content = resp[\"result\"][\"content\"][0][\"text\"]\n    assert \"print('hi')\" in content\n",
+  "body_hash": "5c41e62bcad26845",
   "body_truncated": false,
   "callers_of": [
     "_initialize_server",
     "_handle"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testmcpserver.py:43.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_testmcpserver.py:45.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "sy.source.ass_ade.test_tools_call_read_file",
-  "imports": [],
+  "id": "sy.source.a4_sy_orchestration.test_tools_call_read_file",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testmcpserver.py:43"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_testmcpserver.py:45"
   },
   "kind": "ecosystem_system",
   "made_of": [],

@@ -1,18 +1,20 @@
 {
-  "body": "    def test_major_resets_minor_and_patch(self):\n        assert bump_version(\"2.5.7\", \"major\") == \"3.0.0\"\n",
-  "body_hash": "0d35804550d32522",
+  "body": "def test_major_resets_minor_and_patch(self):\n    assert bump_version(\"2.5.7\", \"major\") == \"3.0.0\"\n",
+  "body_hash": "9a9ed7e22596f87a",
   "body_truncated": false,
   "callers_of": [
     "bump_version"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbumpversion.py:21.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_major_resets_minor_and_patch.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_major_resets_minor_and_patch",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_major_resets_minor_and_patch",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbumpversion.py:21"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_major_resets_minor_and_patch.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

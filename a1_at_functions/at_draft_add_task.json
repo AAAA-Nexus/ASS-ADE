@@ -1,0 +1,33 @@
+{
+  "body": "def add_task(self, task: Task) -> bool:\n    \"\"\"Add a task to the collection.\"\"\"\n    if not validate_task_id(task.id):\n        return False\n    if not validate_task_title(task.title):\n        return False\n    self.tasks[task.id] = task\n    return True\n",
+  "body_hash": "4d998914bef91eb7",
+  "body_truncated": false,
+  "callers_of": [
+    "validate_task_id",
+    "validate_task_title"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_add_task.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.add_task",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_add_task.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "add_task",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for add_task"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

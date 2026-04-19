@@ -8,23 +8,15 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_capabilities.py:35.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_test_agent_loop_system_prompt_uses_dynamic_inventory.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "sy.source.ass_ade.test_agent_loop_system_prompt_uses_dynamic_inventory",
+  "id": "sy.source.a4_sy_orchestration.test_agent_loop_system_prompt_uses_dynamic_inventory",
   "imports": [
-    "__future__.annotations",
-    "pathlib.Path",
-    "ass_ade.interpreter",
-    "ass_ade.agent.capabilities.build_atomadic_intent_prompt",
-    "ass_ade.agent.capabilities.command_path_exists",
-    "ass_ade.agent.capabilities.render_atomadic_help",
-    "ass_ade.agent.capabilities.sync_atomadic_prompt_capabilities",
-    "ass_ade.agent.context.build_system_prompt",
-    "ass_ade.interpreter.Atomadic"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_capabilities.py:35"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_test_agent_loop_system_prompt_uses_dynamic_inventory.py:7"
   },
   "kind": "ecosystem_system",
   "made_of": [],

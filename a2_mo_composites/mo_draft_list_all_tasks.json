@@ -1,19 +1,21 @@
 {
-  "body": "    def list_all_tasks(self) -> List[Task]:\n        \"\"\"Get all tasks.\"\"\"\n        return list(self.tasks.values())\n",
-  "body_hash": "63ab097e87b47696",
+  "body": "def list_all_tasks(self) -> List[Task]:\n    \"\"\"Get all tasks.\"\"\"\n    return list(self.tasks.values())\n",
+  "body_hash": "9c381aaa3ef72bf7",
   "body_truncated": false,
   "callers_of": [
     "list",
     "values"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_taskmanager.py:40.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_taskmanager.py:42.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.list_all_tasks",
-  "imports": [],
+  "id": "mo.source.a2_mo_composites.list_all_tasks",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_taskmanager.py:40"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_taskmanager.py:42"
   },
   "kind": "engine_molecule",
   "made_of": [],

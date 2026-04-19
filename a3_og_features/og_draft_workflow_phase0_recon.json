@@ -11,15 +11,16 @@
     "model_dump"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_workflow_phase0_recon.py:5.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_workflow_phase0_recon.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "og.source.ass_ade.workflow_phase0_recon",
+  "id": "og.source.a3_og_features.workflow_phase0_recon",
   "imports": [
+    "__future__.annotations",
     "ass_ade.recon.phase0_recon"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_workflow_phase0_recon.py:5"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_workflow_phase0_recon.py:7"
   },
   "kind": "product_organism",
   "made_of": [],

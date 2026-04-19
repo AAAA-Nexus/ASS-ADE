@@ -1,0 +1,12 @@
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_update_principles_deduplicates.py:7
+# Component id: at.source.a1_at_functions.test_update_principles_deduplicates
+from __future__ import annotations
+
+__version__ = "0.1.0"
+
+def test_update_principles_deduplicates(self) -> None:
+    w = WisdomEngine({})
+    w.update_principles(["prefer reuse over regeneration"])
+    w.update_principles(["prefer reuse over regeneration", "new principle"])
+    assert w._principles.count("prefer reuse over regeneration") == 1
+    assert "new principle" in w._principles

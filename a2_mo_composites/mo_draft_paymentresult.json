@@ -4,22 +4,15 @@
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/x402.py:113.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_paymentresult.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.paymentresult",
+  "id": "mo.source.a2_mo_composites.paymentresult",
   "imports": [
-    "__future__.annotations",
-    "os",
-    "time",
-    "dataclasses.dataclass",
-    "typing.Any",
-    "eth_account.Account",
-    "web3.Web3",
-    "logging"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/x402.py:113"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_paymentresult.py:7"
   },
   "kind": "engine_molecule",
   "made_of": [],

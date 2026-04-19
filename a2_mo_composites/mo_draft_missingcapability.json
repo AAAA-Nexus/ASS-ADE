@@ -6,24 +6,15 @@
     "Field"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/map_terrain.py:109.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_missingcapability.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.missingcapability",
+  "id": "mo.source.a2_mo_composites.missingcapability",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "re",
-    "time",
-    "pathlib.Path",
-    "typing.Any",
-    "typing.Literal",
-    "pydantic.BaseModel",
-    "pydantic.Field",
-    "ass_ade.tools.registry.default_registry"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/map_terrain.py:109"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_missingcapability.py:7"
   },
   "kind": "engine_molecule",
   "made_of": [],

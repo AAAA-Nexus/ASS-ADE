@@ -47,4 +47,4 @@ This is the public-safe shell of the Atomadic ecosystem. Do NOT add:
 
 ## Rebuild baseline
 
-This folder was built from `C:\!ass-ade` · rebuild `20260418_220755` · 2026-04-19.
+This folder was built from `C:\!ass-ade` · rebuild `20260419_005513` · 2026-04-19.

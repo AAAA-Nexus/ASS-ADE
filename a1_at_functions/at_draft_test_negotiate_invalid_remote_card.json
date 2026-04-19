@@ -1,6 +1,6 @@
 {
-  "body": "    def test_negotiate_invalid_remote_card(self, tmp_path: Path) -> None:\n        mock_report = MagicMock()\n        mock_report.valid = False\n        mock_report.errors = [MagicMock(message=\"Missing name\")]\n        with patch(\"ass_ade.commands.a2a.fetch_agent_card\", return_value=mock_report):\n            result = runner.invoke(\n                app, [\"a2a\", \"negotiate\", \"https://example.com/.well-known/agent.json\",\n                       \"--config\", str(_hybrid_config(tmp_path))]\n            )\n        assert result.exit_code == 1\n",
-  "body_hash": "8e2c643afe63adc0",
+  "body": "def test_negotiate_invalid_remote_card(self, tmp_path: Path) -> None:\n    mock_report = MagicMock()\n    mock_report.valid = False\n    mock_report.errors = [MagicMock(message=\"Missing name\")]\n    with patch(\"ass_ade.commands.a2a.fetch_agent_card\", return_value=mock_report):\n        result = runner.invoke(\n            app, [\"a2a\", \"negotiate\", \"https://example.com/.well-known/agent.json\",\n                   \"--config\", str(_hybrid_config(tmp_path))]\n        )\n    assert result.exit_code == 1\n",
+  "body_hash": "77fe1bbba9479624",
   "body_truncated": false,
   "callers_of": [
     "MagicMock",
@@ -10,27 +10,15 @@
     "_hybrid_config"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a_cli.py:101.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_negotiate_invalid_remote_card.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_negotiate_invalid_remote_card",
+  "id": "at.source.a1_at_functions.test_negotiate_invalid_remote_card",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "pathlib.Path",
-    "unittest.mock.MagicMock",
-    "unittest.mock.patch",
-    "typer.testing.CliRunner",
-    "ass_ade.cli.app",
-    "ass_ade.config.AssAdeConfig",
-    "ass_ade.config.write_default_config",
-    "ass_ade.nexus.models.DiscoveryResult",
-    "ass_ade.nexus.models.DiscoveredAgent",
-    "ass_ade.a2a.A2AAgentCard",
-    "ass_ade.a2a.NegotiationResult"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a_cli.py:101"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_negotiate_invalid_remote_card.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

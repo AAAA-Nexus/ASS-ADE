@@ -1,19 +1,21 @@
 {
-  "body": "    def test_tools_call_unknown(self, server: MCPServer):\n        _initialize_server(server)\n        req = {\n            \"jsonrpc\": \"2.0\",\n            \"id\": 4,\n            \"method\": \"tools/call\",\n            \"params\": {\"name\": \"nonexistent_tool\", \"arguments\": {}},\n        }\n        resp = server._handle(req)\n        assert resp is not None\n        assert resp[\"result\"][\"isError\"] is True\n        assert \"Unknown tool\" in resp[\"result\"][\"content\"][0][\"text\"]\n",
-  "body_hash": "24cdc2ba7c776421",
+  "body": "def test_tools_call_unknown(self, server: MCPServer):\n    _initialize_server(server)\n    req = {\n        \"jsonrpc\": \"2.0\",\n        \"id\": 4,\n        \"method\": \"tools/call\",\n        \"params\": {\"name\": \"nonexistent_tool\", \"arguments\": {}},\n    }\n    resp = server._handle(req)\n    assert resp is not None\n    assert resp[\"result\"][\"isError\"] is True\n    assert \"Unknown tool\" in resp[\"result\"][\"content\"][0][\"text\"]\n",
+  "body_hash": "0908aa748844f9b7",
   "body_truncated": false,
   "callers_of": [
     "_initialize_server",
     "_handle"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testmcpserver.py:57.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_testmcpserver.py:59.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "sy.source.ass_ade.test_tools_call_unknown",
-  "imports": [],
+  "id": "sy.source.a4_sy_orchestration.test_tools_call_unknown",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testmcpserver.py:57"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_testmcpserver.py:59"
   },
   "kind": "ecosystem_system",
   "made_of": [],

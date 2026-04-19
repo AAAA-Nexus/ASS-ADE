@@ -1,13 +1,13 @@
 {
-  "body": "    def test_all_texts_unique(self) -> None:\n        texts = [q[\"text\"] for q in AUDIT_QUESTIONS]\n        assert len(set(texts)) == 50, \"All 50 audit questions must have distinct text\"\n",
-  "body_hash": "a48d233de8bf2d13",
+  "body": "def test_all_texts_unique(self) -> None:\n    texts = [q[\"text\"] for q in AUDIT_QUESTIONS]\n    assert len(set(texts)) == 50, \"All 50 audit questions must have distinct text\"\n",
+  "body_hash": "888f932c5bd3dbdf",
   "body_truncated": false,
   "callers_of": [
     "len",
     "set"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:34.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:34.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_all_texts_unique",
@@ -35,7 +35,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:34"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:34"
   },
   "kind": "engine_molecule",
   "made_of": [],

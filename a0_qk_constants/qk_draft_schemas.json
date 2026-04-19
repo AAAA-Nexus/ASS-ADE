@@ -1,19 +1,21 @@
 {
-  "body": "    def schemas(self) -> list[ToolSchema]:\n        return [\n            ToolSchema(\n                name=t.name,\n                description=t.description,\n                parameters=t.parameters,\n            )\n            for t in self._tools.values()\n        ]\n",
-  "body_hash": "5aa01d44cabea9ed",
+  "body": "def schemas(self) -> list[ToolSchema]:\n    return [\n        ToolSchema(\n            name=t.name,\n            description=t.description,\n            parameters=t.parameters,\n        )\n        for t in self._tools.values()\n    ]\n",
+  "body_hash": "f5f4a021120a5b32",
   "body_truncated": false,
   "callers_of": [
     "ToolSchema",
     "values"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_toolregistry.py:20.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_schemas.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "qk.source.ass_ade.schemas",
-  "imports": [],
+  "id": "qk.source.a0_qk_constants.schemas",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_toolregistry.py:20"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_schemas.py:7"
   },
   "kind": "invariant",
   "made_of": [],

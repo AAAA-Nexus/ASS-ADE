@@ -14,23 +14,19 @@
     "GateResult"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:145.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testrunpipeline.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.testrunpipeline",
+  "id": "mo.source.a2_mo_composites.testrunpipeline",
   "imports": [
-    "__future__.annotations",
-    "typing.Any",
-    "unittest.mock.MagicMock",
-    "ass_ade.agent.gates.GateResult",
-    "ass_ade.agent.gates.QualityGates"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:145"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testrunpipeline.py:7"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.run_pipeline"
+    "at.source.a1_at_functions.run_pipeline"
   ],
   "name": "TestRunPipeline",
   "product_categories": [

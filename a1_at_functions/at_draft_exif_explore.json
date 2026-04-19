@@ -1,21 +1,21 @@
 {
-  "body": "    def exif_explore(self, missing_skill: str, env: dict | None = None):\n        return self._get_exif().explore(missing_skill, env or {\"name\": \"default\"})\n",
-  "body_hash": "805805164e6b4eba",
+  "body": "def exif_explore(self, missing_skill: str, env: dict | None = None):\n    return self._get_exif().explore(missing_skill, env or {\"name\": \"default\"})\n",
+  "body_hash": "3c1acbc82b54da95",
   "body_truncated": false,
   "callers_of": [
     "explore",
     "_get_exif"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_edee.py:66.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_exif_explore.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.exif_explore",
+  "id": "at.source.a1_at_functions.exif_explore",
   "imports": [
-    "ass_ade.agent.exif.EXIF"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_edee.py:66"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_exif_explore.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

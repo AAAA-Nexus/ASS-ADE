@@ -1,6 +1,6 @@
 {
-  "body": "    def test_certify(self):\n        gates = QualityGates(self._mock_client())\n        result = gates.certify(\"Here is the fixed code.\")\n        assert result is not None\n        assert result[\"certificate_id\"] == \"cert-123\"\n",
-  "body_hash": "0118d313e115cfbd",
+  "body": "def test_certify(self):\n    gates = QualityGates(self._mock_client())\n    result = gates.certify(\"Here is the fixed code.\")\n    assert result is not None\n    assert result[\"certificate_id\"] == \"cert-123\"\n",
+  "body_hash": "bc0398661a325d87",
   "body_truncated": false,
   "callers_of": [
     "QualityGates",
@@ -8,27 +8,15 @@
     "_mock_client"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_agent.py:128.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_certify.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_certify",
+  "id": "at.source.a1_at_functions.test_certify",
   "imports": [
-    "__future__.annotations",
-    "unittest.mock.MagicMock",
-    "ass_ade.agent.context.build_system_prompt",
-    "ass_ade.agent.conversation.Conversation",
-    "ass_ade.agent.gates.QualityGates",
-    "ass_ade.agent.loop.AgentLoop",
-    "ass_ade.agent.loop.MAX_ROUNDS_SENTINEL",
-    "ass_ade.engine.types.CompletionRequest",
-    "ass_ade.engine.types.CompletionResponse",
-    "ass_ade.engine.types.Message",
-    "ass_ade.engine.types.ToolCallRequest",
-    "ass_ade.tools.base.ToolResult",
-    "ass_ade.tools.registry.ToolRegistry"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_agent.py:128"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_certify.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_invalid_regex(self, workspace: Path):\n        tool = GrepSearchTool(str(workspace))\n        r = tool.execute(pattern=\"[invalid\")\n        assert not r.success\n        assert \"Invalid regex\" in (r.error or \"\")\n",
-  "body_hash": "178ce514225f4e74",
+  "body": "def test_invalid_regex(self, workspace: Path):\n    tool = GrepSearchTool(str(workspace))\n    r = tool.execute(pattern=\"[invalid\")\n    assert not r.success\n    assert \"Invalid regex\" in (r.error or \"\")\n",
+  "body_hash": "cdca30061d0370d1",
   "body_truncated": false,
   "callers_of": [
     "GrepSearchTool",
@@ -8,13 +8,15 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testgrepsearch.py:17.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testgrepsearch.py:19.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_invalid_regex",
-  "imports": [],
+  "id": "at.source.a2_mo_composites.test_invalid_regex",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testgrepsearch.py:17"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testgrepsearch.py:19"
   },
   "kind": "pure_function",
   "made_of": [],

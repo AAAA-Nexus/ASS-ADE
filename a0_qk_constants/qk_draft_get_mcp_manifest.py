@@ -1,6 +1,8 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp.py:178
-# Component id: qk.source.ass_ade.get_mcp_manifest
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_fakeclient.py:17
+# Component id: qk.source.a0_qk_constants.get_mcp_manifest
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
-        def get_mcp_manifest(self):
-            return manifest
+def get_mcp_manifest(self):
+    return manifest

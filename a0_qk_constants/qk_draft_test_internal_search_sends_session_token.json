@@ -1,6 +1,6 @@
 {
-  "body": "    def test_internal_search_sends_session_token(self) -> None:\n        \"\"\"internal_search should include X-Owner-Token header.\"\"\"\n        requests_made = []\n\n        def handler(request: httpx.Request) -> httpx.Response:\n            requests_made.append(request)\n            return httpx.Response(200, json={\"success\": True, \"result\": {}})\n\n        transport = httpx.MockTransport(handler)\n        client = NexusClient(base_url=\"https://test.atomadic.tech\", transport=transport)\n        client.internal_search(\"test query\", session_token=\"my-session-123\")\n        assert len(requests_made) == 1\n        assert requests_made[0].headers.get(\"X-Owner-Token\") == \"my-session-123\"\n        client.close()\n",
-  "body_hash": "6bb70bd6426dea7f",
+  "body": "def test_internal_search_sends_session_token(self) -> None:\n    \"\"\"internal_search should include X-Owner-Token header.\"\"\"\n    requests_made = []\n\n    def handler(request: httpx.Request) -> httpx.Response:\n        requests_made.append(request)\n        return httpx.Response(200, json={\"success\": True, \"result\": {}})\n\n    transport = httpx.MockTransport(handler)\n    client = NexusClient(base_url=\"https://test.atomadic.tech\", transport=transport)\n    client.internal_search(\"test query\", session_token=\"my-session-123\")\n    assert len(requests_made) == 1\n    assert requests_made[0].headers.get(\"X-Owner-Token\") == \"my-session-123\"\n    client.close()\n",
+  "body_hash": "d634e3c1868df143",
   "body_truncated": false,
   "callers_of": [
     "MockTransport",
@@ -13,7 +13,7 @@
     "get"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_search_x402.py:210.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_search_x402.py:210.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "qk.source.ass_ade.test_internal_search_sends_session_token",
@@ -34,7 +34,7 @@
     "ass_ade.nexus.errors.NexusAuthError"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_search_x402.py:210"
+    "source": "C:/!ass-ade/tests/test_search_x402.py:210"
   },
   "kind": "invariant",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_mainnet_by_default(self) -> None:\n        with patch.dict(\"os.environ\", {\"ATOMADIC_X402_TESTNET\": \"\"}, clear=False):\n            config = get_chain_config()\n        assert config[\"chain_id\"] == BASE_MAINNET_CHAIN_ID\n        assert config[\"testnet\"] is False\n        assert \"mainnet\" in config[\"network_name\"].lower()\n",
-  "body_hash": "10f9981d2fa55b6f",
+  "body": "def test_mainnet_by_default(self) -> None:\n    with patch.dict(\"os.environ\", {\"ATOMADIC_X402_TESTNET\": \"\"}, clear=False):\n        config = get_chain_config()\n    assert config[\"chain_id\"] == BASE_MAINNET_CHAIN_ID\n    assert config[\"testnet\"] is False\n    assert \"mainnet\" in config[\"network_name\"].lower()\n",
+  "body_hash": "90f025ab279a196d",
   "body_truncated": false,
   "callers_of": [
     "dict",
@@ -8,7 +8,7 @@
     "lower"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:250.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_x402_flow.py:250.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.test_mainnet_by_default",
@@ -34,7 +34,7 @@
     "ass_ade.nexus.x402.BASE_SEPOLIA_CHAIN_ID"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:250"
+    "source": "C:/!ass-ade/tests/test_x402_flow.py:250"
   },
   "kind": "ecosystem_system",
   "made_of": [],

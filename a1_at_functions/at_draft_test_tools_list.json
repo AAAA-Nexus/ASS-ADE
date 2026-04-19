@@ -1,0 +1,34 @@
+{
+  "body": "def test_tools_list(self, server: MCPServer):\n    _initialize_server(server)\n    req = {\"jsonrpc\": \"2.0\", \"id\": 2, \"method\": \"tools/list\", \"params\": {}}\n    resp = server._handle(req)\n    assert resp is not None\n    tools = resp[\"result\"][\"tools\"]\n    names = {t[\"name\"] for t in tools}\n    assert \"read_file\" in names\n    assert \"write_file\" in names\n    assert \"edit_file\" in names\n    assert \"run_command\" in names\n    assert \"list_directory\" in names\n    assert \"search_files\" in names\n    assert \"grep_search\" in names\n    assert \"phase0_recon\" in names\n    assert \"context_pack\" in names\n    assert \"context_memory_store\" in names\n    assert \"context_memory_query\" in names\n    assert \"map_terrain\" in names\n    # Verify minimum expected tools; exact count may vary with additional tools\n    assert len(tools) >= 19  # At least 8 builtin + 11 workflow/agent/A2A\n",
+  "body_hash": "139e384352d98c24",
+  "body_truncated": false,
+  "callers_of": [
+    "_initialize_server",
+    "_handle",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_tools_list.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.test_tools_list",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_tools_list.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_tools_list",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_tools_list"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

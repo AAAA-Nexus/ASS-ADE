@@ -1,8 +1,10 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/a2a/__init__.py:102
-# Component id: at.source.ass_ade.name_not_empty
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_name_not_empty.py:7
+# Component id: at.source.a1_at_functions.name_not_empty
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
-    def name_not_empty(cls, v: str) -> str:
-        if not v.strip():
-            raise ValueError("Agent card name must not be empty")
-        return v
+def name_not_empty(cls, v: str) -> str:
+    if not v.strip():
+        raise ValueError("Agent card name must not be empty")
+    return v

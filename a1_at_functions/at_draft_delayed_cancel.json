@@ -1,0 +1,34 @@
+{
+  "body": "def delayed_cancel():\n    time.sleep(0.05)\n    ctx.cancel()\n",
+  "body_hash": "ff26f41076240f59",
+  "body_truncated": false,
+  "callers_of": [
+    "sleep",
+    "cancel"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_concurrent_cancellation_scenario.py:16.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.delayed_cancel",
+  "imports": [
+    "__future__.annotations",
+    "ass_ade.mcp.cancellation.CancellationContext"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_concurrent_cancellation_scenario.py:16"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "delayed_cancel",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for delayed_cancel"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,5 +1,5 @@
 {
-  "body": "def test_defi_suite_happy_path(method_name, response_json):\n    \"\"\"Test DeFi suite methods (happy path).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json=response_json)\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        if method_name == \"defi_optimize\":\n            result = client.defi_optimize(protocol=\"uniswap\", position_size_usdc=1000.0)\n        elif method_name == \"defi_risk_score\":\n            result = client.defi_risk_score(protocol=\"uniswap\", position={})\n        elif method_name == \"defi_oracle_verify\":\n            result = client.defi_oracle_verify(pool=\"uniswap_pool\", tvl_usdc=1000000.0)\n        elif method_name == \"defi_liquidation_check\":\n            result = client.defi_liquidation_check(position={})\n        elif method_name == \"defi_bridge_verify\":\n            result = client.defi_bridge_verify(bridge=\"bridge_name\", amount_usdc=1000.0)\n        elif method_name == \"defi_contract_audit\":\n            result = client.defi_contract_audit(contract_address=\"0x123\", source_code=\"solidity code\")\n        else:  # defi_yield_optimize\n            result = client.defi_yield_optimize(capital_usdc=10000.0, protocols=[\"uniswap\"])\n        assert result is not None\n",
+  "body": "def test_defi_suite_happy_path(method_name, response_json):\n    \"\"\"Test DeFi suite methods (happy path).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json=response_json)\n\n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        if method_name == \"defi_optimize\":\n            result = client.defi_optimize(protocol=\"uniswap\", position_size_usdc=1000.0)\n        elif method_name == \"defi_risk_score\":\n            result = client.defi_risk_score(protocol=\"uniswap\", position={})\n        elif method_name == \"defi_oracle_verify\":\n            result = client.defi_oracle_verify(pool=\"uniswap_pool\", tvl_usdc=1000000.0)\n        elif method_name == \"defi_liquidation_check\":\n            result = client.defi_liquidation_check(position={})\n        elif method_name == \"defi_bridge_verify\":\n            result = client.defi_bridge_verify(bridge=\"bridge_name\", amount_usdc=1000.0)\n        elif method_name == \"defi_contract_audit\":\n            result = client.defi_contract_audit(contract_address=\"0x123\", source_code=\"solidity code\")\n        else:  # defi_yield_optimize\n            result = client.defi_yield_optimize(capital_usdc=10000.0, protocols=[\"uniswap\"])\n        assert result is not None\n",
   "body_hash": "32f2bb1bb297ad81",
   "body_truncated": false,
   "callers_of": [
@@ -16,7 +16,7 @@
     "defi_yield_optimize"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:860.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_nexus_client_comprehensive.py:860.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_defi_suite_happy_path",
@@ -151,7 +151,7 @@
     "ass_ade.nexus.models.EntropyResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:860"
+    "source": "C:/!ass-ade/tests/test_nexus_client_comprehensive.py:860"
   },
   "kind": "engine_molecule",
   "made_of": [],

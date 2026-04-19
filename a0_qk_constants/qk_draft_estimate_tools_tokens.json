@@ -7,22 +7,15 @@
     "dumps"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/tokens.py:127.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_estimate_tools_tokens.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "qk.source.ass_ade.estimate_tools_tokens",
+  "id": "qk.source.a0_qk_constants.estimate_tools_tokens",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "math",
-    "dataclasses.dataclass",
-    "typing.Any",
-    "ass_ade.engine.types.Message",
-    "ass_ade.engine.types.ToolSchema",
-    "tiktoken"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/tokens.py:127"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_estimate_tools_tokens.py:7"
   },
   "kind": "invariant",
   "made_of": [],

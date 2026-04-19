@@ -9,18 +9,20 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_vector_memory_store_and_query.py:5.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_test_vector_memory_store_and_query.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.test_vector_memory_store_and_query",
-  "imports": [],
+  "id": "mo.source.a2_mo_composites.test_vector_memory_store_and_query",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_vector_memory_store_and_query.py:5"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_test_vector_memory_store_and_query.py:7"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.vector_embed",
-    "at.source.ass_ade.query_vector_memory"
+    "at.source.a1_at_functions.vector_embed",
+    "at.source.a1_at_functions.query_vector_memory"
   ],
   "name": "test_vector_memory_store_and_query",
   "product_categories": [

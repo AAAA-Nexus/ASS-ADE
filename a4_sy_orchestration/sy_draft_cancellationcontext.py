@@ -1,10 +1,12 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/mcp/cancellation.py:13
+# Extracted from C:/!ass-ade/src/ass_ade/mcp/cancellation.py:13
 # Component id: sy.source.ass_ade.cancellationcontext
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class CancellationContext:
     """Thread-safe context for signaling cancellation to in-flight operations.
-    
+
     Long-running tools can periodically call check() to see if a cancellation
     request has been issued. When check() returns True, the tool should clean
     up and return promptly.
@@ -21,7 +23,7 @@ class CancellationContext:
 
     def check(self) -> bool:
         """Check if cancellation has been requested.
-        
+
         Returns True if cancel() was called, False otherwise.
         Long-running operations should call this periodically and exit early
         if it returns True.

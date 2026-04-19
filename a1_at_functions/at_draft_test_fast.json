@@ -1,26 +1,20 @@
 {
-  "body": "    def test_fast(self):\n        assert tier_for_complexity(0.1) == ModelTier.FAST\n",
-  "body_hash": "f3fcbb74e590aac6",
+  "body": "def test_fast(self):\n    assert tier_for_complexity(0.1) == ModelTier.FAST\n",
+  "body_hash": "4e56cbc0434b0aec",
   "body_truncated": false,
   "callers_of": [
     "tier_for_complexity"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_routing.py:54.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_fast.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_fast",
+  "id": "at.source.a1_at_functions.test_fast",
   "imports": [
-    "__future__.annotations",
-    "ass_ade.agent.routing.EpistemicRouter",
-    "ass_ade.agent.routing.ModelTier",
-    "ass_ade.agent.routing.RoutingDecision",
-    "ass_ade.agent.routing.classify_complexity",
-    "ass_ade.agent.routing.local_route",
-    "ass_ade.agent.routing.tier_for_complexity"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_routing.py:54"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_fast.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

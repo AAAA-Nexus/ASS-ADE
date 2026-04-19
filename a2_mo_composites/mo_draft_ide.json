@@ -16,23 +16,20 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/ide.py:22.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_ide.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.ide",
+  "id": "mo.source.a2_mo_composites.ide",
   "imports": [
-    "__future__.annotations",
-    "dataclasses.dataclass",
-    "dataclasses.field",
-    "typing.Any"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/ide.py:22"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_ide.py:7"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.search",
-    "at.source.ass_ade.generate_sip"
+    "at.source.a1_at_functions.search",
+    "at.source.a1_at_functions.generate_sip"
   ],
   "name": "IDE",
   "product_categories": [

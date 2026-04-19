@@ -1,6 +1,6 @@
 {
-  "body": "    def test_distill_principles_from_failures(self) -> None:\n        w = WisdomEngine({})\n        report = w.run_audit({})  # all failed\n        principles = w.distill_principles(report)\n        assert isinstance(principles, list)\n        assert len(principles) >= 1\n        assert all(isinstance(p, str) and p for p in principles)\n",
-  "body_hash": "87fca54c1d0492d8",
+  "body": "def test_distill_principles_from_failures(self) -> None:\n    w = WisdomEngine({})\n    report = w.run_audit({})  # all failed\n    principles = w.distill_principles(report)\n    assert isinstance(principles, list)\n    assert len(principles) >= 1\n    assert all(isinstance(p, str) and p for p in principles)\n",
+  "body_hash": "46a603b34656feb2",
   "body_truncated": false,
   "callers_of": [
     "WisdomEngine",
@@ -11,35 +11,15 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:126.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testwisdomengine.py:77.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.test_distill_principles_from_failures",
+  "id": "mo.source.a2_mo_composites.test_distill_principles_from_failures",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "time",
-    "pathlib.Path",
-    "unittest.mock.MagicMock",
-    "unittest.mock.patch",
-    "pytest",
-    "ass_ade.agent.audit_questions.AUDIT_QUESTIONS",
-    "ass_ade.agent.bas.BAS",
-    "ass_ade.agent.bas.Alert",
-    "ass_ade.agent.gates.QualityGates",
-    "ass_ade.agent.orchestrator.CycleReport",
-    "ass_ade.agent.orchestrator.EngineOrchestrator",
-    "ass_ade.agent.wisdom.AuditReport",
-    "ass_ade.agent.wisdom.WisdomEngine",
-    "collections.Counter",
-    "ass_ade.agent.loop.AgentLoop",
-    "ass_ade.engine.provider.ModelProvider",
-    "ass_ade.engine.types.CompletionResponse",
-    "ass_ade.engine.types.Message",
-    "ass_ade.tools.registry.default_registry"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:126"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testwisdomengine.py:77"
   },
   "kind": "engine_molecule",
   "made_of": [],

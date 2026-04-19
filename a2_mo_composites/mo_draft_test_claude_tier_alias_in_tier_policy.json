@@ -1,22 +1,23 @@
 {
-  "body": "    def test_claude_tier_alias_in_tier_policy(self):\n        \"\"\"tier_policy should accept 'haiku'/'sonnet'/'opus' aliases.\"\"\"\n        lse = self._make({\"tier_policy\": {\"sonnet\": \"groq\"}})\n        # The policy key should have been normalized to 'balanced'\n        assert lse._tier_policy == {\"balanced\": \"groq\"}\n",
-  "body_hash": "ecd1fc619023af68",
+  "body": "def test_claude_tier_alias_in_tier_policy(self):\n    \"\"\"tier_policy should accept 'haiku'/'sonnet'/'opus' aliases.\"\"\"\n    lse = self._make({\"tier_policy\": {\"sonnet\": \"groq\"}})\n    # The policy key should have been normalized to 'balanced'\n    assert lse._tier_policy == {\"balanced\": \"groq\"}\n",
+  "body_hash": "6d365866c7a8c520",
   "body_truncated": false,
   "callers_of": [
     "_make"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testlseengine.py:79.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testlseengine.py:81.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.test_claude_tier_alias_in_tier_policy",
+  "id": "mo.source.a2_mo_composites.test_claude_tier_alias_in_tier_policy",
   "imports": [
+    "__future__.annotations",
     "ass_ade.agent.lse.LSEEngine",
     "ass_ade.agent.providers.FREE_PROVIDERS",
     "ass_ade.agent.lse._LEGACY_TIER_TO_MODEL"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testlseengine.py:79"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testlseengine.py:81"
   },
   "kind": "engine_molecule",
   "made_of": [],

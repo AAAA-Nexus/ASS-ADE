@@ -1,0 +1,33 @@
+{
+  "body": "def test_tools_call_unknown(self, server: MCPServer):\n    _initialize_server(server)\n    req = {\n        \"jsonrpc\": \"2.0\",\n        \"id\": 4,\n        \"method\": \"tools/call\",\n        \"params\": {\"name\": \"nonexistent_tool\", \"arguments\": {}},\n    }\n    resp = server._handle(req)\n    assert resp is not None\n    assert resp[\"result\"][\"isError\"] is True\n    assert \"Unknown tool\" in resp[\"result\"][\"content\"][0][\"text\"]\n",
+  "body_hash": "0908aa748844f9b7",
+  "body_truncated": false,
+  "callers_of": [
+    "_initialize_server",
+    "_handle"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_tools_call_unknown.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.test_tools_call_unknown",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_tools_call_unknown.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_tools_call_unknown",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_tools_call_unknown"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

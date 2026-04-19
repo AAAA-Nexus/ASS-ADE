@@ -1,6 +1,6 @@
 {
-  "body": "    def on_step_start(self, user_message: str, routing: Any = None) -> dict:\n        \"\"\"Called before model is invoked. Returns pre-step analysis.\"\"\"\n        # Reset per-step metrics\n        self._step_tool_counts = {}\n        self._step_tool_results = []\n\n        result: dict[str, Any] = {}\n\n        # ATLAS: decompose if complex\n        try:\n            complexity = float(getattr(routing, \"complexity\", 0.0) or 0.0)\n            subs = self.atlas.decompose(user_message, complexity if complexity > 0 else None)\n            result[\"atlas_subtasks\"] = [s.__dict__ for s in subs]\n            result[\"atlas_complexity\"] = self.atlas.complexity_score(user_message)\n        except Exception as exc:\n            _LOG.debug(\"atlas.on_step_start failed: %s\", exc)\n\n        # LIFR: query knowledge graph for relevant patterns\n        try:\n            matches = self.lifr.query(user_message[:500], top_k=3)\n            result[\"lifr_matches\"] = len(matches)\n            result[\"lifr_patterns\"] = [m.spec[:100] for m in matches]\n        except Exception as exc:\n            _LOG.debug(\"lifr.on_step_start failed: %s\", exc)\n\n        # Puppeteer: get next engine recommendation\n        try:\n            state = {\"visited\": list(result.keys())}\n            agent_ref = self.puppeteer.select_next_agent(state)\n            result[\"puppeteer_next\"] = agent_ref.name\n            result[\"puppeteer_reason\"] = agent_ref.reason\n        except Exception as exc:\n            _LOG.debug(\"puppeteer.on_step_start failed: %s\", exc)\n\n        # TCA: freshness pre-check (Phase 2)\n        try:\n            stale = self.tca.get_stale_files()\n            result[\"tca_stale_count\"] = len(stale)\n            result[\"tca_stale_paths\"] = [r.path for r in stale[:5]]\n        except Exception as exc:\n            _LOG.debug(\"tca.on_step_start failed: %s\", exc)\n\n        # MAP=TERRAIN: active capability gate pre-synthesis (Phase 2)\n        # Infer required capabilities from ATLAS subtask verbs and from\n        # explicit per-step hints in routing. If any are missing, emit a BAS\n        # alert + surface the verdict \u2014 agent loop can decide to halt.\n        try:\n            from ass_ade.map_terrain import active_terrain_gate\n\n            required = _infer_required_capabilities(user_message, result)\n            if required:\n                terrain = active_terrain_gate(\n                    required,\n                    context={\"task_description\": user_message[:200]},\n                    working_dir=self._working_dir,\n                    write_stubs=False,  # never write stubs from the pre-synthesis gate\n                )\n                result[\"terrain_verdict\"] = terrain.verdict\n                result[\"terrain_missing\"] = list(terrain.capabilities_missing)\n                if terrain.verdict == \"HALT_AND_INVENT\":\n                    try:\n                        self.bas.alert(\"capability_gap\", {\n                            \"missing\": terrain.capabilities_missing[:5],\n                            \"task\": user_message[:120],\n                        })\n                    except Exception:\n                        pass\n        except Exception as exc:\n            _LOG.debug(\"map_terrain.on_step_start failed: %s\", exc)\n\n        return result\n",
-  "body_hash": "ef4d86839e4afd48",
+  "body": "def on_step_start(self, user_message: str, routing: Any = None) -> dict:\n    \"\"\"Called before model is invoked. Returns pre-step analysis.\"\"\"\n    # Reset per-step metrics\n    self._step_tool_counts = {}\n    self._step_tool_results = []\n\n    result: dict[str, Any] = {}\n\n    # ATLAS: decompose if complex\n    try:\n        complexity = float(getattr(routing, \"complexity\", 0.0) or 0.0)\n        subs = self.atlas.decompose(user_message, complexity if complexity > 0 else None)\n        result[\"atlas_subtasks\"] = [s.__dict__ for s in subs]\n        result[\"atlas_complexity\"] = self.atlas.complexity_score(user_message)\n    except Exception as exc:\n        _LOG.debug(\"atlas.on_step_start failed: %s\", exc)\n\n    # LIFR: query knowledge graph for relevant patterns\n    try:\n        matches = self.lifr.query(user_message[:500], top_k=3)\n        result[\"lifr_matches\"] = len(matches)\n        result[\"lifr_patterns\"] = [m.spec[:100] for m in matches]\n    except Exception as exc:\n        _LOG.debug(\"lifr.on_step_start failed: %s\", exc)\n\n    # Puppeteer: get next engine recommendation\n    try:\n        state = {\"visited\": list(result.keys())}\n        agent_ref = self.puppeteer.select_next_agent(state)\n        result[\"puppeteer_next\"] = agent_ref.name\n        result[\"puppeteer_reason\"] = agent_ref.reason\n    except Exception as exc:\n        _LOG.debug(\"puppeteer.on_step_start failed: %s\", exc)\n\n    # TCA: freshness pre-check (Phase 2)\n    try:\n        stale = self.tca.get_stale_files()\n        result[\"tca_stale_count\"] = len(stale)\n        result[\"tca_stale_paths\"] = [r.path for r in stale[:5]]\n    except Exception as exc:\n        _LOG.debug(\"tca.on_step_start failed: %s\", exc)\n\n    # MAP=TERRAIN: active capability gate pre-synthesis (Phase 2)\n    # Infer required capabilities from ATLAS subtask verbs and from\n    # explicit per-step hints in routing. If any are missing, emit a BAS\n    # alert + surface the verdict \u2014 agent loop can decide to halt.\n    try:\n        from ass_ade.map_terrain import active_terrain_gate\n\n        required = _infer_required_capabilities(user_message, result)\n        if required:\n            terrain = active_terrain_gate(\n                required,\n                context={\"task_description\": user_message[:200]},\n                working_dir=self._working_dir,\n                write_stubs=False,  # never write stubs from the pre-synthesis gate\n            )\n            result[\"terrain_verdict\"] = terrain.verdict\n            result[\"terrain_missing\"] = list(terrain.capabilities_missing)\n            if terrain.verdict == \"HALT_AND_INVENT\":\n                try:\n                    self.bas.alert(\"capability_gap\", {\n                        \"missing\": terrain.capabilities_missing[:5],\n                        \"task\": user_message[:120],\n                    })\n                except Exception:\n                    pass\n    except Exception as exc:\n        _LOG.debug(\"map_terrain.on_step_start failed: %s\", exc)\n\n    return result\n",
+  "body_hash": "9aa754c15b6dd8b1",
   "body_truncated": false,
   "callers_of": [
     "float",
@@ -19,11 +19,12 @@
     "alert"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_engineorchestrator.py:239.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_engineorchestrator.py:241.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.on_step_start",
+  "id": "mo.source.a2_mo_composites.on_step_start",
   "imports": [
+    "__future__.annotations",
     "ass_ade.agent.atlas.Atlas",
     "ass_ade.agent.bas.BAS",
     "ass_ade.agent.wisdom.WisdomEngine",
@@ -46,15 +47,15 @@
     "json"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_engineorchestrator.py:239"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_engineorchestrator.py:241"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.decompose",
-    "at.source.ass_ade.complexity_score",
-    "at.source.ass_ade.query",
-    "at.source.ass_ade.select_next_agent",
-    "at.source.ass_ade.active_terrain_gate"
+    "at.source.a1_at_functions.decompose",
+    "at.source.a1_at_functions.complexity_score",
+    "at.source.a1_at_functions.query",
+    "at.source.a1_at_functions.select_next_agent",
+    "at.source.a1_at_functions.active_terrain_gate"
   ],
   "name": "on_step_start",
   "product_categories": [

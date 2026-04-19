@@ -1,5 +1,5 @@
 {
-  "body": "def test_ratchetgate_happy_path(method_name, path, response_json):\n    \"\"\"Test RatchetGate methods (happy path).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json=response_json)\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        if method_name == \"ratchet_register\":\n            result = client.ratchet_register(agent_id=324)\n        elif method_name == \"ratchet_advance\":\n            result = client.ratchet_advance(session_id=\"ratchet_abc123\")\n        elif method_name == \"ratchet_probe\":\n            result = client.ratchet_probe(session_ids=[\"ratchet_abc123\"])\n        assert result is not None\n",
+  "body": "def test_ratchetgate_happy_path(method_name, path, response_json):\n    \"\"\"Test RatchetGate methods (happy path).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json=response_json)\n\n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        if method_name == \"ratchet_register\":\n            result = client.ratchet_register(agent_id=324)\n        elif method_name == \"ratchet_advance\":\n            result = client.ratchet_advance(session_id=\"ratchet_abc123\")\n        elif method_name == \"ratchet_probe\":\n            result = client.ratchet_probe(session_ids=[\"ratchet_abc123\"])\n        assert result is not None\n",
   "body_hash": "2dcb47ae6a643df1",
   "body_truncated": false,
   "callers_of": [
@@ -12,7 +12,7 @@
     "ratchet_probe"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:180.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_nexus_client_comprehensive.py:180.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_ratchetgate_happy_path",
@@ -147,7 +147,7 @@
     "ass_ade.nexus.models.EntropyResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:180"
+    "source": "C:/!ass-ade/tests/test_nexus_client_comprehensive.py:180"
   },
   "kind": "engine_molecule",
   "made_of": [],

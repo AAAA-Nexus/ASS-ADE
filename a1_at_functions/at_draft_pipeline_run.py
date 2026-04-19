@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/cli.py:1298
-# Component id: at.source.ass_ade.pipeline_run
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_pipeline_run.py:7
+# Component id: at.source.a1_at_functions.pipeline_run
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def pipeline_run(

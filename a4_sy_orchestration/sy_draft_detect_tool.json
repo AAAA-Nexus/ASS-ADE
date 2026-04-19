@@ -1,17 +1,17 @@
 {
-  "body": "def detect_tool(name: str) -> ToolStatus:\n    if which(name) is None:\n        return ToolStatus(name=name, available=False, error=\"not found\")\n\n    try:\n        result = subprocess.run(\n            [name, \"--version\"],\n            check=False,\n            capture_output=True,\n            text=True,\n            timeout=5,\n        )\n    except (OSError, subprocess.SubprocessError) as exc:\n        return ToolStatus(name=name, available=False, error=str(exc))\n\n    version_line = (result.stdout or result.stderr).strip().splitlines()\n    if result.returncode != 0:\n        error = version_line[0] if version_line else f\"exit code {result.returncode}\"\n        return ToolStatus(name=name, available=False, error=error)\n\n    version = version_line[0] if version_line else \"available\"\n    return ToolStatus(name=name, available=True, version=version)\n",
-  "body_hash": "54ba0d70f76e6132",
+  "body": "def detect_tool(name: str) -> ToolStatus:\n    executable = which(name)\n    if executable is None:\n        return ToolStatus(name=name, available=False, error=\"not found\")\n\n    try:\n        result = subprocess.run(\n            [executable, \"--version\"],\n            check=False,\n            capture_output=True,\n            text=True,\n            timeout=5,\n        )\n    except (OSError, subprocess.SubprocessError) as exc:\n        return ToolStatus(name=name, available=False, error=str(exc))\n\n    version_line = (result.stdout or result.stderr).strip().splitlines()\n    if result.returncode != 0:\n        error = version_line[0] if version_line else f\"exit code {result.returncode}\"\n        return ToolStatus(name=name, available=False, error=error)\n\n    version = version_line[0] if version_line else \"available\"\n    return ToolStatus(name=name, available=True, version=version)\n",
+  "body_hash": "3613e6a3709563bb",
   "body_truncated": false,
   "callers_of": [
+    "which",
     "splitlines",
     "ToolStatus",
-    "which",
     "run",
     "strip",
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/system.py:19.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/system.py:19.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.detect_tool",
@@ -22,7 +22,7 @@
     "shutil.which"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/system.py:19"
+    "source": "C:/!ass-ade/src/ass_ade/system.py:19"
   },
   "kind": "ecosystem_system",
   "made_of": [],

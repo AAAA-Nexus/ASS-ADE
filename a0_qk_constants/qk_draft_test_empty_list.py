@@ -1,6 +1,8 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testestimatetoolstokens.py:6
-# Component id: qk.source.ass_ade.test_empty_list
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_test_empty_list.py:7
+# Component id: qk.source.a0_qk_constants.test_empty_list
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
-    def test_empty_list(self):
-        assert estimate_tools_tokens([]) == 0
+def test_empty_list(self):
+    assert estimate_tools_tokens([]) == 0

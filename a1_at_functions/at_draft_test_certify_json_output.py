@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_new_codebase_commands.py:108
-# Component id: at.source.ass_ade.test_certify_json_output
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_certify_json_output.py:7
+# Component id: at.source.a1_at_functions.test_certify_json_output
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_certify_json_output(tmp_path: Path) -> None:

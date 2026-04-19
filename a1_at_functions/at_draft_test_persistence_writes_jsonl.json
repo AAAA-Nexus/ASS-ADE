@@ -1,6 +1,6 @@
 {
-  "body": "    def test_persistence_writes_jsonl(self, tmp_path: Path) -> None:\n        state_file = tmp_path / \"alerts.jsonl\"\n        b = BAS({\"bas_state_path\": str(state_file)})\n        b.alert(\"novelty_spike\", {\"novelty\": 0.8})\n        assert state_file.exists()\n        lines = [json.loads(line) for line in state_file.read_text().strip().splitlines()]\n        assert lines[0][\"kind\"] == \"novelty_spike\"\n",
-  "body_hash": "2de8dee8b6bd5194",
+  "body": "def test_persistence_writes_jsonl(self, tmp_path: Path) -> None:\n    state_file = tmp_path / \"alerts.jsonl\"\n    b = BAS({\"bas_state_path\": str(state_file)})\n    b.alert(\"novelty_spike\", {\"novelty\": 0.8})\n    assert state_file.exists()\n    lines = [json.loads(line) for line in state_file.read_text().strip().splitlines()]\n    assert lines[0][\"kind\"] == \"novelty_spike\"\n",
+  "body_hash": "4aa4bd7d74f2bf03",
   "body_truncated": false,
   "callers_of": [
     "BAS",
@@ -13,13 +13,15 @@
     "read_text"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbas.py:79.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_persistence_writes_jsonl.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_persistence_writes_jsonl",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_persistence_writes_jsonl",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbas.py:79"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_persistence_writes_jsonl.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

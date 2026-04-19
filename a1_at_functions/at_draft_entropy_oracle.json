@@ -1,0 +1,32 @@
+{
+  "body": "def entropy_oracle(self, **kwargs: Any) -> EntropyResult:\n    \"\"\"/v1/oracle/entropy \u2014 session entropy measurement. $0.004/call\"\"\"\n    return self._post_model(\"/v1/oracle/entropy\", EntropyResult, kwargs or {})\n",
+  "body_hash": "59cc03017349e176",
+  "body_truncated": false,
+  "callers_of": [
+    "_post_model"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_entropy_oracle.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.entropy_oracle",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_entropy_oracle.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "entropy_oracle",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for entropy_oracle"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

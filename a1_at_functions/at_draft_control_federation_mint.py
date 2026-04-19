@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/cli.py:2564
-# Component id: at.source.ass_ade.control_federation_mint
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_control_federation_mint.py:7
+# Component id: at.source.a1_at_functions.control_federation_mint
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def control_federation_mint(

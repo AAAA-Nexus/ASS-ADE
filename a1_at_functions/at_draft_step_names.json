@@ -1,28 +1,18 @@
 {
-  "body": "    def step_names(self) -> list[str]:\n        return [s.name for s in self._steps]\n",
-  "body_hash": "a578ae90a7f687f0",
+  "body": "def step_names(self) -> list[str]:\n    return [s.name for s in self._steps]\n",
+  "body_hash": "7daf69db24dcfc60",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/pipeline.py:128.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_step_names.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.step_names",
+  "id": "at.source.a1_at_functions.step_names",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "time",
-    "collections.abc.Callable",
-    "dataclasses.dataclass",
-    "dataclasses.field",
-    "enum.Enum",
-    "pathlib.Path",
-    "typing.Any",
-    "typing.Protocol",
-    "ass_ade.nexus.validation.validate_agent_id"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/pipeline.py:128"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_step_names.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def persist_principles(self, lora_flywheel: Any = None) -> int:\n        \"\"\"Persist distilled principles to context_memory and optionally LoRA flywheel.\n\n        Returns the count of new principles contributed.\n        \"\"\"\n        if not self._principles:\n            return 0\n        new_count = 0\n        # Store in context_memory for cross-session recall\n        try:\n            from ass_ade.context_memory import store_vector_memory\n            for p in self._principles:\n                store_vector_memory(\n                    text=p,\n                    namespace=\"wisdom_principle\",\n                    metadata={\"type\": \"wisdom_principle\", \"conviction\": self._conviction},\n                )\n            new_count = len(self._principles)\n        except Exception as exc:\n            _log.debug(\"WisdomEngine: context_memory persist failed: %s\", exc)\n\n        # Contribute to LoRA flywheel if conviction is high enough\n        if lora_flywheel is not None and self._conviction >= 0.7 and new_count >= 3:\n            try:\n                for p in self._principles:\n                    lora_flywheel.capture_principle(p, confidence=self._conviction)\n            except Exception as exc:\n                _log.debug(\"WisdomEngine: LoRA flywheel capture failed: %s\", exc)\n\n        return new_count\n        return list(self._principles)\n",
-  "body_hash": "a80fe95ab17a522e",
+  "body": "def persist_principles(self, lora_flywheel: Any = None) -> int:\n    \"\"\"Persist distilled principles to context_memory and optionally LoRA flywheel.\n\n    Returns the count of new principles contributed.\n    \"\"\"\n    if not self._principles:\n        return 0\n    new_count = 0\n    # Store in context_memory for cross-session recall\n    try:\n        from ass_ade.context_memory import store_vector_memory\n        for p in self._principles:\n            store_vector_memory(\n                text=p,\n                namespace=\"wisdom_principle\",\n                metadata={\"type\": \"wisdom_principle\", \"conviction\": self._conviction},\n            )\n        new_count = len(self._principles)\n    except Exception as exc:\n        _log.debug(\"WisdomEngine: context_memory persist failed: %s\", exc)\n\n    # Contribute to LoRA flywheel if conviction is high enough\n    if lora_flywheel is not None and self._conviction >= 0.7 and new_count >= 3:\n        try:\n            for p in self._principles:\n                lora_flywheel.capture_principle(p, confidence=self._conviction)\n        except Exception as exc:\n            _log.debug(\"WisdomEngine: LoRA flywheel capture failed: %s\", exc)\n\n    return new_count\n    return list(self._principles)\n",
+  "body_hash": "8aed53522389aecf",
   "body_truncated": false,
   "callers_of": [
     "list",
@@ -10,20 +10,21 @@
     "capture_principle"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_wisdomengine.py:179.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_wisdomengine.py:181.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.persist_principles",
+  "id": "mo.source.a2_mo_composites.persist_principles",
   "imports": [
+    "__future__.annotations",
     "ass_ade.context_memory.query_vector_memory",
     "ass_ade.context_memory.store_vector_memory"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_wisdomengine.py:179"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_wisdomengine.py:181"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.capture_principle"
+    "at.source.a1_at_functions.capture_principle"
   ],
   "name": "persist_principles",
   "product_categories": [

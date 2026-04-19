@@ -1,6 +1,6 @@
 {
-  "body": "    def gvu(self):\n        if self._gvu is None:\n            from ass_ade.agent.gvu import GVU\n            cfg = dict(self._config)\n            cfg.setdefault(\"gvu_state_path\", f\"{self._working_dir}/.ass-ade/state/gvu.json\")\n            self._gvu = GVU(cfg, self._nexus)\n        return self._gvu\n",
-  "body_hash": "b1d5f40fdca875aa",
+  "body": "def gvu(self):\n    if self._gvu is None:\n        from ass_ade.agent.gvu import GVU\n        cfg = dict(self._config)\n        cfg.setdefault(\"gvu_state_path\", f\"{self._working_dir}/.ass-ade/state/gvu.json\")\n        self._gvu = GVU(cfg, self._nexus)\n    return self._gvu\n",
+  "body_hash": "be0aa9c7ed1f14e5",
   "body_truncated": false,
   "callers_of": [
     "dict",
@@ -8,7 +8,7 @@
     "GVU"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/orchestrator.py:200.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/orchestrator.py:200.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.gvu",
@@ -40,7 +40,7 @@
     "json"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/orchestrator.py:200"
+    "source": "C:/!ass-ade/src/ass_ade/agent/orchestrator.py:200"
   },
   "kind": "ecosystem_system",
   "made_of": [],

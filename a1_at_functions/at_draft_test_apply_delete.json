@@ -1,6 +1,6 @@
 {
-  "body": "    def test_apply_delete(self, executor: EditPlanExecutor, workspace: Path):\n        plan = EditPlan()\n        plan.add_delete(\"utils.py\")\n        executor.validate(plan)\n        result = executor.apply(plan)\n        assert result.success\n        assert not (workspace / \"utils.py\").exists()\n",
-  "body_hash": "b0e214320c2691e7",
+  "body": "def test_apply_delete(self, executor: EditPlanExecutor, workspace: Path):\n    plan = EditPlan()\n    plan.add_delete(\"utils.py\")\n    executor.validate(plan)\n    result = executor.apply(plan)\n    assert result.success\n    assert not (workspace / \"utils.py\").exists()\n",
+  "body_hash": "144fb9f8c013fa18",
   "body_truncated": false,
   "callers_of": [
     "EditPlan",
@@ -10,21 +10,15 @@
     "exists"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:118.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_apply_delete.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_apply_delete",
+  "id": "at.source.a1_at_functions.test_apply_delete",
   "imports": [
-    "__future__.annotations",
-    "pathlib.Path",
-    "pytest",
-    "ass_ade.tools.history.FileHistory",
-    "ass_ade.tools.plan.EditKind",
-    "ass_ade.tools.plan.EditPlan",
-    "ass_ade.tools.plan.EditPlanExecutor"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:118"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_apply_delete.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

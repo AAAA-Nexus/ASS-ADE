@@ -15,7 +15,7 @@
     "join"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_cancellation.py:27.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_cancellation.py:27.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.testcancellationcontext",
@@ -35,7 +35,7 @@
     "ass_ade.mcp.cancellation.CancellationContext"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_cancellation.py:27"
+    "source": "C:/!ass-ade/tests/test_mcp_cancellation.py:27"
   },
   "kind": "ecosystem_system",
   "made_of": [],

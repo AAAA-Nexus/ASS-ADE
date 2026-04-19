@@ -1,18 +1,18 @@
 # Features
 
-Auto-extracted from rebuilt component surface · 2589 components total.
+Auto-extracted from rebuilt component surface · 2860 components total.
 
 ## By tier
 
-- **a0_qk_constants**: 106 components
-- **a1_at_functions**: 1330 components
+- **a0_qk_constants**: 123 components
+- **a1_at_functions**: 1582 components
 - **a2_mo_composites**: 855 components
 - **a3_og_features**: 82 components
-- **a4_sy_orchestration**: 216 components
+- **a4_sy_orchestration**: 218 components
 
 ## By module category
 
-### source (2589 components)
+### source (2860 components)
 - `A2AAgentCard`
 - `A2AAuthentication`
 - `A2ACapabilities`
@@ -33,5 +33,5 @@ Auto-extracted from rebuilt component surface · 2589 components total.
 - `AnthropicProvider`
 - `Arch`
 - `AssAdeConfig`
-- … and 2569 more
+- … and 2840 more
 

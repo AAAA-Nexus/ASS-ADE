@@ -1,19 +1,21 @@
 {
-  "body": "    def test_oversized_raises(self) -> None:\n        with pytest.raises(ValueError, match=\"exceeds\"):\n            validate_prompt(\"x\" * 40_000)\n",
-  "body_hash": "f8c7648672f53b07",
+  "body": "def test_oversized_raises(self) -> None:\n    with pytest.raises(ValueError, match=\"exceeds\"):\n        validate_prompt(\"x\" * 40_000)\n",
+  "body_hash": "0ac0f83c635af6d3",
   "body_truncated": false,
   "callers_of": [
     "raises",
     "validate_prompt"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateprompt.py:27.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testvalidateprompt.py:29.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_oversized_raises",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_oversized_raises",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateprompt.py:27"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testvalidateprompt.py:29"
   },
   "kind": "pure_function",
   "made_of": [],

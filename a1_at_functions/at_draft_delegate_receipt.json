@@ -1,0 +1,33 @@
+{
+  "body": "def delegate_receipt(self, receipt_id: str) -> DelegateReceipt:\n    \"\"\"/v1/delegate/receipt/{id} \u2014 signed delegation receipt. $0.020/call\"\"\"\n    return self._get_model(f\"/v1/delegate/receipt/{_pseg(receipt_id, 'receipt_id')}\", DelegateReceipt)\n",
+  "body_hash": "adc6a178bcbb3506",
+  "body_truncated": false,
+  "callers_of": [
+    "_get_model",
+    "_pseg"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_delegate_receipt.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.delegate_receipt",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_delegate_receipt.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "delegate_receipt",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for delegate_receipt"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

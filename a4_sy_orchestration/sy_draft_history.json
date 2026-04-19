@@ -1,18 +1,20 @@
 {
-  "body": "    def history(self) -> list[RoutingDecision]:\n        return list(self._history)\n",
-  "body_hash": "18704f99998ea742",
+  "body": "def history(self) -> list[RoutingDecision]:\n    return list(self._history)\n",
+  "body_hash": "2661c5b70fb6252e",
   "body_truncated": false,
   "callers_of": [
     "list"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_epistemicrouter.py:41.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_epistemicrouter.py:43.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "sy.source.ass_ade.history",
-  "imports": [],
+  "id": "sy.source.a4_sy_orchestration.history",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_epistemicrouter.py:41"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_epistemicrouter.py:43"
   },
   "kind": "ecosystem_system",
   "made_of": [],

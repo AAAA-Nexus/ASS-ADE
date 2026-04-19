@@ -1,5 +1,5 @@
 {
-  "body": "def test_data_tools_happy_path(method_name, response_json):\n    \"\"\"Test data tools methods (happy path).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json=response_json)\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        if method_name == \"data_validate_json\":\n            result = client.data_validate_json(data={\"key\": \"value\"}, schema={})\n        elif method_name == \"data_format_convert\":\n            result = client.data_format_convert(data=\"data\", from_format=\"json\", to_format=\"csv\")\n        else:  # data_convert\n            result = client.data_convert(content=\"content\", target_format=\"csv\")\n        assert result is not None\n",
+  "body": "def test_data_tools_happy_path(method_name, response_json):\n    \"\"\"Test data tools methods (happy path).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json=response_json)\n\n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        if method_name == \"data_validate_json\":\n            result = client.data_validate_json(data={\"key\": \"value\"}, schema={})\n        elif method_name == \"data_format_convert\":\n            result = client.data_format_convert(data=\"data\", from_format=\"json\", to_format=\"csv\")\n        else:  # data_convert\n            result = client.data_convert(content=\"content\", target_format=\"csv\")\n        assert result is not None\n",
   "body_hash": "a8348d752b5c131a",
   "body_truncated": false,
   "callers_of": [
@@ -12,7 +12,7 @@
     "data_convert"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:981.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_nexus_client_comprehensive.py:981.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_data_tools_happy_path",
@@ -147,12 +147,12 @@
     "ass_ade.nexus.models.EntropyResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:981"
+    "source": "C:/!ass-ade/tests/test_nexus_client_comprehensive.py:981"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.data_validate_json",
-    "at.source.ass_ade.data_format_convert"
+    "at.source.a1_at_functions.data_validate_json",
+    "at.source.a1_at_functions.data_format_convert"
   ],
   "name": "test_data_tools_happy_path",
   "product_categories": [

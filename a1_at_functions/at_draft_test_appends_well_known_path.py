@@ -1,19 +1,21 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testa2afetchagentcardssrf.py:21
-# Component id: at.source.ass_ade.test_appends_well_known_path
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_appends_well_known_path.py:7
+# Component id: at.source.a1_at_functions.test_appends_well_known_path
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
-    def test_appends_well_known_path(self) -> None:
-        """Fetching from a URL without /.well-known/agent.json should auto-append it."""
-        # Mock httpx.get to verify the right URL is called
-        with mock.patch("ass_ade.a2a.httpx.get") as mock_get:
-            mock_response = mock.MagicMock()
-            mock_response.json.return_value = {"name": "TestAgent"}
-            mock_get.return_value = mock_response
-            
-            # This should work and return valid=False because the JSON is incomplete
-            # but we mainly care about the URL transformation
-            fetch_agent_card("https://example.com")
-            
-            # Verify that the .well-known path was appended
-            called_url = mock_get.call_args[0][0]
-            assert called_url.endswith("/.well-known/agent.json")
+def test_appends_well_known_path(self) -> None:
+    """Fetching from a URL without /.well-known/agent.json should auto-append it."""
+    # Mock httpx.get to verify the right URL is called
+    with mock.patch("ass_ade.a2a.httpx.get") as mock_get:
+        mock_response = mock.MagicMock()
+        mock_response.json.return_value = {"name": "TestAgent"}
+        mock_get.return_value = mock_response
+
+        # This should work and return valid=False because the JSON is incomplete
+        # but we mainly care about the URL transformation
+        fetch_agent_card("https://example.com")
+
+        # Verify that the .well-known path was appended
+        called_url = mock_get.call_args[0][0]
+        assert called_url.endswith("/.well-known/agent.json")

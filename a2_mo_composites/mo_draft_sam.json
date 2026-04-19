@@ -16,24 +16,21 @@
     "getattr"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/sam.py:25.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_sam.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.sam",
+  "id": "mo.source.a2_mo_composites.sam",
   "imports": [
-    "__future__.annotations",
-    "dataclasses.dataclass",
-    "typing.Any",
-    "ass_ade.context_memory.vector_embed"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/sam.py:25"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_sam.py:7"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.vector_embed",
-    "at.source.ass_ade.compute_trs",
-    "at.source.ass_ade.validate_g23"
+    "at.source.a1_at_functions.vector_embed",
+    "at.source.a1_at_functions.compute_trs",
+    "at.source.a1_at_functions.validate_g23"
   ],
   "name": "SAM",
   "product_categories": [

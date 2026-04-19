@@ -1,33 +1,20 @@
 {
-  "body": "    def gate_log(self) -> list[GateResult]:\n        \"\"\"Full log of gate results for this session.\"\"\"\n        return list(self._gate_log)\n",
-  "body_hash": "e040e185a0cb8ef4",
+  "body": "def gate_log(self) -> list[GateResult]:\n    \"\"\"Full log of gate results for this session.\"\"\"\n    return list(self._gate_log)\n",
+  "body_hash": "8f8b26a2151befe9",
   "body_truncated": false,
   "callers_of": [
     "list"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_qualitygates.py:22.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_gate_log.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.gate_log",
+  "id": "at.source.a1_at_functions.gate_log",
   "imports": [
-    "ast",
-    "re",
-    "json",
-    "datetime.UTC",
-    "datetime.datetime",
-    "pathlib.Path",
-    "ass_ade.agent.wisdom.WisdomEngine",
-    "ass_ade.agent.trust_gate.TrustVerificationGate",
-    "ass_ade.agent.proofbridge.ProofBridge",
-    "ass_ade.agent.alphaverus.AlphaVerus",
-    "ass_ade.agent.dgm_h.DGMH",
-    "ass_ade.agent.dgm_h.Patch",
-    "ass_ade.agent.golden_runner.run_golden",
-    "ass_ade.agent.sam.SAM"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_qualitygates.py:22"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_gate_log.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

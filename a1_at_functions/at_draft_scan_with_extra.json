@@ -1,6 +1,6 @@
 {
-  "body": "        def scan_with_extra(text: str):\n            result = original_scan(text)\n            gates._gate_log.append(GateResult(gate=\"scan_extra\", passed=True, confidence=1.0))\n            return result\n",
-  "body_hash": "e6e8c1cf4fca7b7f",
+  "body": "def scan_with_extra(text: str):\n    result = original_scan(text)\n    gates._gate_log.append(GateResult(gate=\"scan_extra\", passed=True, confidence=1.0))\n    return result\n",
+  "body_hash": "96ac13a453d273f6",
   "body_truncated": false,
   "callers_of": [
     "original_scan",
@@ -8,19 +8,15 @@
     "GateResult"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:168.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_pipeline_collects_multiple_entries_appended_by_a_stage.py:12.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.scan_with_extra",
+  "id": "at.source.a1_at_functions.scan_with_extra",
   "imports": [
-    "__future__.annotations",
-    "typing.Any",
-    "unittest.mock.MagicMock",
-    "ass_ade.agent.gates.GateResult",
-    "ass_ade.agent.gates.QualityGates"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:168"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_pipeline_collects_multiple_entries_appended_by_a_stage.py:12"
   },
   "kind": "pure_function",
   "made_of": [],

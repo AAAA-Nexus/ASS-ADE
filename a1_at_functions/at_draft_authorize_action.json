@@ -1,0 +1,32 @@
+{
+  "body": "def authorize_action(self, agent_id: str, action: str, delegation_depth: int = 0, **kwargs: Any) -> AuthorizeActionResult:\n    \"\"\"/v1/authorize/action \u2014 pre-action authorization gateway (OAP-100). $0.040/call\"\"\"\n    return self._post_model(\"/v1/authorize/action\", AuthorizeActionResult, {\n        \"agent_id\": agent_id, \"action\": action, \"delegation_depth\": delegation_depth, **kwargs,\n    })\n",
+  "body_hash": "8ca288c77c7797c2",
+  "body_truncated": false,
+  "callers_of": [
+    "_post_model"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_authorize_action.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.authorize_action",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_authorize_action.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "authorize_action",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for authorize_action"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

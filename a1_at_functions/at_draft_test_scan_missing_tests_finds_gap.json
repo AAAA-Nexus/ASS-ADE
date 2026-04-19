@@ -10,27 +10,15 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_enhancer.py:26.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_scan_missing_tests_finds_gap.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_scan_missing_tests_finds_gap",
+  "id": "at.source.a1_at_functions.test_scan_missing_tests_finds_gap",
   "imports": [
-    "__future__.annotations",
-    "pathlib.Path",
-    "typing.Any",
-    "pytest",
-    "ass_ade.local.enhancer.build_enhancement_report",
-    "ass_ade.local.enhancer.rank_findings",
-    "ass_ade.local.enhancer.scan_bare_except",
-    "ass_ade.local.enhancer.scan_long_functions",
-    "ass_ade.local.enhancer.scan_missing_docs",
-    "ass_ade.local.enhancer.scan_missing_tests",
-    "ass_ade.local.enhancer.scan_security_patterns",
-    "ass_ade.local.enhancer.scan_todo_fixme",
-    "ass_ade.local.enhancer.scan_missing_type_hints"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_enhancer.py:26"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_scan_missing_tests_finds_gap.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

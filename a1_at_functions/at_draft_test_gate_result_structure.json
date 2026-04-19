@@ -1,6 +1,6 @@
 {
-  "body": "    def test_gate_result_structure(self):\n        gates = QualityGates(_mock_nexus())\n        gates.scan_prompt(\"test\")\n        result = gates.gate_log[0]\n        assert isinstance(result, GateResult)\n        assert result.gate == \"prompt_scan\"\n        assert result.passed is True\n        assert result.confidence > 0\n",
-  "body_hash": "349173d079bf315a",
+  "body": "def test_gate_result_structure(self):\n    gates = QualityGates(_mock_nexus())\n    gates.scan_prompt(\"test\")\n    result = gates.gate_log[0]\n    assert isinstance(result, GateResult)\n    assert result.gate == \"prompt_scan\"\n    assert result.passed is True\n    assert result.confidence > 0\n",
+  "body_hash": "36f5662cf17272f9",
   "body_truncated": false,
   "callers_of": [
     "QualityGates",
@@ -9,19 +9,15 @@
     "_mock_nexus"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:135.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_gate_result_structure.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_gate_result_structure",
+  "id": "at.source.a1_at_functions.test_gate_result_structure",
   "imports": [
-    "__future__.annotations",
-    "typing.Any",
-    "unittest.mock.MagicMock",
-    "ass_ade.agent.gates.GateResult",
-    "ass_ade.agent.gates.QualityGates"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:135"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_gate_result_structure.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

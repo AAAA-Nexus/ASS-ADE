@@ -4,13 +4,15 @@
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.pytest_tmp/test_apply_create0/main.py:1.",
+  "description": "Draft candidate from C:/!ass-ade/a1_at_functions/at_draft_main.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "sy.source.ass_ade.main",
-  "imports": [],
+  "id": "sy.source.a1_at_functions.main",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.pytest_tmp/test_apply_create0/main.py:1"
+    "source": "C:/!ass-ade/a1_at_functions/at_draft_main.py:7"
   },
   "kind": "ecosystem_system",
   "made_of": [],

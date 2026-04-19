@@ -1,6 +1,6 @@
 {
-  "body": "    def test_read_file_is_readonly(self) -> None:\n        server = MCPServer(\".\")\n        _initialize_server(server)\n        response = server._handle({\n            \"jsonrpc\": \"2.0\", \"id\": 1, \"method\": \"tools/list\", \"params\": {},\n        })\n        tools = {t[\"name\"]: t for t in response[\"result\"][\"tools\"]}\n        assert tools[\"read_file\"][\"annotations\"][\"readOnlyHint\"] is True\n        assert tools[\"read_file\"][\"annotations\"][\"destructiveHint\"] is False\n",
-  "body_hash": "127fabaa1384d52c",
+  "body": "def test_read_file_is_readonly(self) -> None:\n    server = MCPServer(\".\")\n    _initialize_server(server)\n    response = server._handle({\n        \"jsonrpc\": \"2.0\", \"id\": 1, \"method\": \"tools/list\", \"params\": {},\n    })\n    tools = {t[\"name\"]: t for t in response[\"result\"][\"tools\"]}\n    assert tools[\"read_file\"][\"annotations\"][\"readOnlyHint\"] is True\n    assert tools[\"read_file\"][\"annotations\"][\"destructiveHint\"] is False\n",
+  "body_hash": "8c74739c1bb730bc",
   "body_truncated": false,
   "callers_of": [
     "MCPServer",
@@ -8,13 +8,15 @@
     "_handle"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_testmcp202511features.py:31.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_testmcp202511features.py:33.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "og.source.ass_ade.test_read_file_is_readonly",
-  "imports": [],
+  "id": "og.source.a3_og_features.test_read_file_is_readonly",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_testmcp202511features.py:31"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_testmcp202511features.py:33"
   },
   "kind": "product_organism",
   "made_of": [],

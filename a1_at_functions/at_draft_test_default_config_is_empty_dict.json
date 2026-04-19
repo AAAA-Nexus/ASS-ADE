@@ -1,19 +1,21 @@
 {
-  "body": "    def test_default_config_is_empty_dict(self) -> None:\n        mock_client = MagicMock()\n        gates = QualityGates(mock_client)\n        assert gates._v18_config == {}\n",
-  "body_hash": "1b4ef1b1b960ad06",
+  "body": "def test_default_config_is_empty_dict(self) -> None:\n    mock_client = MagicMock()\n    gates = QualityGates(mock_client)\n    assert gates._v18_config == {}\n",
+  "body_hash": "afddc781b50236fa",
   "body_truncated": false,
   "callers_of": [
     "MagicMock",
     "QualityGates"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testqualitygatesconfig.py:6.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_default_config_is_empty_dict.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_default_config_is_empty_dict",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_default_config_is_empty_dict",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testqualitygatesconfig.py:6"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_default_config_is_empty_dict.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

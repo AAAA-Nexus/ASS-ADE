@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_map_terrain.py:100
-# Component id: og.source.ass_ade.test_map_terrain_discovers_repo_agent_registry
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_test_map_terrain_discovers_repo_agent_registry.py:7
+# Component id: og.source.a3_og_features.test_map_terrain_discovers_repo_agent_registry
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_map_terrain_discovers_repo_agent_registry(tmp_path: Path) -> None:

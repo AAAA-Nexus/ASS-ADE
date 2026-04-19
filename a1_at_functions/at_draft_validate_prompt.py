@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_validate_prompt.py:5
-# Component id: at.source.ass_ade.validate_prompt
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_validate_prompt.py:7
+# Component id: at.source.a1_at_functions.validate_prompt
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def validate_prompt(value: str) -> str:

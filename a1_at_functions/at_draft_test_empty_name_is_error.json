@@ -1,18 +1,20 @@
 {
-  "body": "    def test_empty_name_is_error(self) -> None:\n        data = {\"name\": \"   \"}\n        report = validate_agent_card(data)\n        assert not report.valid\n",
-  "body_hash": "bf58ba000d026367",
+  "body": "def test_empty_name_is_error(self) -> None:\n    data = {\"name\": \"   \"}\n    report = validate_agent_card(data)\n    assert not report.valid\n",
+  "body_hash": "95afe4affb0cd422",
   "body_truncated": false,
   "callers_of": [
     "validate_agent_card"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateagentcard.py:42.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testvalidateagentcard.py:44.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_empty_name_is_error",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_empty_name_is_error",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateagentcard.py:42"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testvalidateagentcard.py:44"
   },
   "kind": "pure_function",
   "made_of": [],

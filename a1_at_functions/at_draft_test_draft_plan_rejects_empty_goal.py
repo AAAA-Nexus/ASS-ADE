@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_planner.py:13
-# Component id: at.source.ass_ade.test_draft_plan_rejects_empty_goal
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_draft_plan_rejects_empty_goal.py:7
+# Component id: at.source.a1_at_functions.test_draft_plan_rejects_empty_goal
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_draft_plan_rejects_empty_goal() -> None:

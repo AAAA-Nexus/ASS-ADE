@@ -1,6 +1,6 @@
 {
-  "body": "    def test_single_provider_shortcut(self, monkeypatch):\n        \"\"\"When only one provider is available, build_provider returns it directly (no MultiProvider wrapper).\"\"\"\n        for key in (\"OPENAI_API_KEY\", \"ANTHROPIC_API_KEY\", \"ASS_ADE_PROVIDER_URL\"):\n            monkeypatch.delenv(key, raising=False)\n        for p in FREE_PROVIDERS.values():\n            if p.api_key_env:\n                monkeypatch.delenv(p.api_key_env, raising=False)\n        # Disable pollinations and ollama to force a single-provider scenario\n        from ass_ade.config import AssAdeConfig, ProviderOverride\n        from ass_ade.engine.router import build_provider\n\n        cfg = AssAdeConfig(profile=\"local\")\n        # Clear available providers except one\n        disabled_names = {n for n in FREE_PROVIDERS if n != \"groq\"}\n        for n in disabled_names:\n            cfg.providers[n] = ProviderOverride(enabled=False)\n        monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-groq\")\n\n        result = build_provider(cfg)\n        # With exactly one provider, expect a direct OpenAICompatibleProvider\n        from ass_ade.engine.provider import OpenAICompatibleProvider\n        assert isinstance(result, OpenAICompatibleProvider)\n",
-  "body_hash": "9308c0cafbd7c344",
+  "body": "def test_single_provider_shortcut(self, monkeypatch):\n    \"\"\"When only one provider is available, build_provider returns it directly (no MultiProvider wrapper).\"\"\"\n    for key in (\"OPENAI_API_KEY\", \"ANTHROPIC_API_KEY\", \"ASS_ADE_PROVIDER_URL\"):\n        monkeypatch.delenv(key, raising=False)\n    for p in FREE_PROVIDERS.values():\n        if p.api_key_env:\n            monkeypatch.delenv(p.api_key_env, raising=False)\n    # Disable pollinations and ollama to force a single-provider scenario\n    from ass_ade.config import AssAdeConfig, ProviderOverride\n    from ass_ade.engine.router import build_provider\n\n    cfg = AssAdeConfig(profile=\"local\")\n    # Clear available providers except one\n    disabled_names = {n for n in FREE_PROVIDERS if n != \"groq\"}\n    for n in disabled_names:\n        cfg.providers[n] = ProviderOverride(enabled=False)\n    monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-groq\")\n\n    result = build_provider(cfg)\n    # With exactly one provider, expect a direct OpenAICompatibleProvider\n    from ass_ade.engine.provider import OpenAICompatibleProvider\n    assert isinstance(result, OpenAICompatibleProvider)\n",
+  "body_hash": "a8b843cb77c1d8af",
   "body_truncated": false,
   "callers_of": [
     "values",
@@ -12,28 +12,19 @@
     "ProviderOverride"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbuildproviderfromcatalog.py:32.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_single_provider_shortcut.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_single_provider_shortcut",
+  "id": "at.source.a1_at_functions.test_single_provider_shortcut",
   "imports": [
-    "ass_ade.config.AssAdeConfig",
-    "ass_ade.engine.provider.MultiProvider",
-    "ass_ade.engine.router.build_provider",
+    "__future__.annotations",
     "ass_ade.config.AssAdeConfig",
     "ass_ade.config.ProviderOverride",
     "ass_ade.engine.router.build_provider",
-    "ass_ade.engine.provider.OpenAICompatibleProvider",
-    "ass_ade.config.AssAdeConfig",
-    "ass_ade.config.ProviderOverride",
-    "ass_ade.engine.router.build_provider",
-    "ass_ade.engine.provider.OpenAICompatibleProvider",
-    "ass_ade.config.AssAdeConfig",
-    "ass_ade.engine.provider.OpenAICompatibleProvider",
-    "ass_ade.engine.router.build_provider"
+    "ass_ade.engine.provider.OpenAICompatibleProvider"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbuildproviderfromcatalog.py:32"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_single_provider_shortcut.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

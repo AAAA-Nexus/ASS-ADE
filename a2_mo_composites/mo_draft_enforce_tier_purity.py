@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/tier_purity.py:142
+# Extracted from C:/!ass-ade/src/ass_ade/engine/rebuild/tier_purity.py:142
 # Component id: mo.source.ass_ade.enforce_tier_purity
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def enforce_tier_purity(plan: dict[str, Any]) -> dict[str, Any]:

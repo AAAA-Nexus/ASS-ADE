@@ -15,17 +15,19 @@
     "join"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testcancellationcontext.py:5.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testcancellationcontext.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.testcancellationcontext",
-  "imports": [],
+  "id": "mo.source.a2_mo_composites.testcancellationcontext",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testcancellationcontext.py:5"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testcancellationcontext.py:7"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.start"
+    "at.source.a1_at_functions.start"
   ],
   "name": "TestCancellationContext",
   "product_categories": [

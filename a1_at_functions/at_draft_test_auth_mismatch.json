@@ -1,6 +1,6 @@
 {
-  "body": "    def test_auth_mismatch(self) -> None:\n        local = self._make_card(\"Local\", skills=[(\"s1\", \"S1\")], auth_schemes=[\"api_key\"])\n        remote = self._make_card(\"Remote\", skills=[(\"s1\", \"S1\")], auth_schemes=[\"bearer\"])\n        result = negotiate(local, remote)\n        assert not result.compatible\n        assert not result.auth_compatible\n        assert any(\"Auth mismatch\" in n for n in result.notes)\n",
-  "body_hash": "8e10e0072eebf4af",
+  "body": "def test_auth_mismatch(self) -> None:\n    local = self._make_card(\"Local\", skills=[(\"s1\", \"S1\")], auth_schemes=[\"api_key\"])\n    remote = self._make_card(\"Remote\", skills=[(\"s1\", \"S1\")], auth_schemes=[\"bearer\"])\n    result = negotiate(local, remote)\n    assert not result.compatible\n    assert not result.auth_compatible\n    assert any(\"Auth mismatch\" in n for n in result.notes)\n",
+  "body_hash": "54b7de94a42bf00c",
   "body_truncated": false,
   "callers_of": [
     "_make_card",
@@ -8,30 +8,15 @@
     "any"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:241.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_auth_mismatch.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_auth_mismatch",
+  "id": "at.source.a1_at_functions.test_auth_mismatch",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "unittest.mock.MagicMock",
-    "unittest.mock.patch",
-    "pytest",
-    "ass_ade.a2a.A2AAgentCard",
-    "ass_ade.a2a.A2AAuthentication",
-    "ass_ade.a2a.A2ASkill",
-    "ass_ade.a2a.ValidationIssue",
-    "ass_ade.a2a.ValidationReport",
-    "ass_ade.a2a.fetch_agent_card",
-    "ass_ade.a2a.local_agent_card",
-    "ass_ade.a2a.negotiate",
-    "ass_ade.a2a.validate_agent_card",
-    "httpx",
-    "httpx"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:241"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_auth_mismatch.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

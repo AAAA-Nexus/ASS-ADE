@@ -1,6 +1,6 @@
 {
-  "body": "    def test_chutes_selectable_via_tier_policy(self, monkeypatch):\n        monkeypatch.setenv(\"CHUTES_API_TOKEN\", \"ct_test_key\")\n        from ass_ade.agent.lse import LSEEngine\n\n        lse = LSEEngine({\"tier_policy\": {\"deep\": \"chutes\"}})\n        decision = lse.select(trs_score=0.3, complexity=\"critical\")\n        assert decision.provider == \"chutes\"\n        assert \"deepseek\" in decision.model.lower()\n",
-  "body_hash": "c2a8d44b01d66be2",
+  "body": "def test_chutes_selectable_via_tier_policy(self, monkeypatch):\n    monkeypatch.setenv(\"CHUTES_API_TOKEN\", \"ct_test_key\")\n    from ass_ade.agent.lse import LSEEngine\n\n    lse = LSEEngine({\"tier_policy\": {\"deep\": \"chutes\"}})\n    decision = lse.select(trs_score=0.3, complexity=\"critical\")\n    assert decision.provider == \"chutes\"\n    assert \"deepseek\" in decision.model.lower()\n",
+  "body_hash": "8d84c0356f306f9c",
   "body_truncated": false,
   "callers_of": [
     "setenv",
@@ -9,15 +9,16 @@
     "lower"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testchutesprovider.py:21.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_chutes_selectable_via_tier_policy.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_chutes_selectable_via_tier_policy",
+  "id": "at.source.a1_at_functions.test_chutes_selectable_via_tier_policy",
   "imports": [
+    "__future__.annotations",
     "ass_ade.agent.lse.LSEEngine"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testchutesprovider.py:21"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_chutes_selectable_via_tier_policy.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_post_with_x402_passes_through_on_200(self) -> None:\n        \"\"\"_post_with_x402 should return normal response on 200.\"\"\"\n        def handler(request: httpx.Request) -> httpx.Response:\n            return httpx.Response(200, json={\"trust_score\": 0.95})\n\n        transport = httpx.MockTransport(handler)\n        client = NexusClient(base_url=\"https://test.atomadic.tech\", transport=transport)\n        result = client._post_with_x402(\"/v1/trust/score\", {\"agent_id\": \"test\"})\n        assert result == {\"trust_score\": 0.95}\n        client.close()\n",
-  "body_hash": "b15131b63001c1c2",
+  "body": "def test_post_with_x402_passes_through_on_200(self) -> None:\n    \"\"\"_post_with_x402 should return normal response on 200.\"\"\"\n    def handler(request: httpx.Request) -> httpx.Response:\n        return httpx.Response(200, json={\"trust_score\": 0.95})\n\n    transport = httpx.MockTransport(handler)\n    client = NexusClient(base_url=\"https://test.atomadic.tech\", transport=transport)\n    result = client._post_with_x402(\"/v1/trust/score\", {\"agent_id\": \"test\"})\n    assert result == {\"trust_score\": 0.95}\n    client.close()\n",
+  "body_hash": "869e9f0ec8b085c8",
   "body_truncated": false,
   "callers_of": [
     "MockTransport",
@@ -10,15 +10,15 @@
     "Response"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testx402paymenthandling.py:74.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_post_with_x402_passes_through_on_200.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_post_with_x402_passes_through_on_200",
+  "id": "at.source.a1_at_functions.test_post_with_x402_passes_through_on_200",
   "imports": [
-    "ass_ade.nexus.errors.NexusAuthError"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testx402paymenthandling.py:74"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_post_with_x402_passes_through_on_200.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

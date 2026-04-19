@@ -1,5 +1,5 @@
 {
-  "body": "def test_prompt_ethics_happy_path(method_name, response_json):\n    \"\"\"Test prompt intelligence & ethics methods (happy path).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json=response_json)\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        if method_name == \"prompt_inject_scan\":\n            result = client.prompt_inject_scan(prompt=\"execute the plan\")\n        elif method_name == \"prompt_optimize\":\n            result = client.prompt_optimize(prompt=\"inefficient prompt\")\n        elif method_name == \"security_prompt_scan\":\n            result = client.security_prompt_scan(prompt=\"test prompt\")\n        elif method_name == \"ethics_check\":\n            result = client.ethics_check(text=\"test content\")\n        else:  # security_zero_day\n            result = client.security_zero_day(payload={\"command\": \"execute\"})\n        assert result is not None\n",
+  "body": "def test_prompt_ethics_happy_path(method_name, response_json):\n    \"\"\"Test prompt intelligence & ethics methods (happy path).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json=response_json)\n\n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        if method_name == \"prompt_inject_scan\":\n            result = client.prompt_inject_scan(prompt=\"execute the plan\")\n        elif method_name == \"prompt_optimize\":\n            result = client.prompt_optimize(prompt=\"inefficient prompt\")\n        elif method_name == \"security_prompt_scan\":\n            result = client.security_prompt_scan(prompt=\"test prompt\")\n        elif method_name == \"ethics_check\":\n            result = client.ethics_check(text=\"test content\")\n        else:  # security_zero_day\n            result = client.security_zero_day(payload={\"command\": \"execute\"})\n        assert result is not None\n",
   "body_hash": "52320d9efb285412",
   "body_truncated": false,
   "callers_of": [
@@ -14,7 +14,7 @@
     "security_zero_day"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:555.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_nexus_client_comprehensive.py:555.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_prompt_ethics_happy_path",
@@ -149,7 +149,7 @@
     "ass_ade.nexus.models.EntropyResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:555"
+    "source": "C:/!ass-ade/tests/test_nexus_client_comprehensive.py:555"
   },
   "kind": "engine_molecule",
   "made_of": [],

@@ -1,0 +1,22 @@
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_internal_search_chat.py:7
+# Component id: at.source.a1_at_functions.internal_search_chat
+from __future__ import annotations
+
+__version__ = "0.1.0"
+
+def internal_search_chat(self, query: str, session_token: str | None = None, **kwargs: Any) -> dict:
+    """POST /internal/search/chat — RAG search + LLM answer.
+
+    Requires owner session token.
+    """
+    headers = {}
+    if session_token:
+        # Sanitize before inserting into an HTTP header (OWASP A03).
+        headers["X-Owner-Token"] = sanitize_header_value(session_token.strip(), "session_token")
+    response = self._client.post(
+        "/internal/search/chat",
+        json={"query": query, **kwargs},
+        headers=headers,
+    )
+    raise_for_status(response.status_code, endpoint="/internal/search/chat")
+    return response.json()  # type: ignore[return-value]

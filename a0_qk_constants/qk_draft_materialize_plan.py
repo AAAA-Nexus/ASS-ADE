@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_materialize_plan.py:5
-# Component id: qk.source.ass_ade.materialize_plan
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_materialize_plan.py:7
+# Component id: qk.source.a0_qk_constants.materialize_plan
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def materialize_plan(

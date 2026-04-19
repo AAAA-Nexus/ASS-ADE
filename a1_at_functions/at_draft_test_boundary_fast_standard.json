@@ -1,18 +1,20 @@
 {
-  "body": "    def test_boundary_fast_standard(self):\n        assert tier_for_complexity(0.29) == ModelTier.FAST\n        assert tier_for_complexity(0.3) == ModelTier.STANDARD\n",
-  "body_hash": "34d921d9a871774f",
+  "body": "def test_boundary_fast_standard(self):\n    assert tier_for_complexity(0.29) == ModelTier.FAST\n    assert tier_for_complexity(0.3) == ModelTier.STANDARD\n",
+  "body_hash": "652df2b0d810c8e4",
   "body_truncated": false,
   "callers_of": [
     "tier_for_complexity"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testtierforcomplexity.py:15.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_boundary_fast_standard.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_boundary_fast_standard",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_boundary_fast_standard",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testtierforcomplexity.py:15"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_boundary_fast_standard.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

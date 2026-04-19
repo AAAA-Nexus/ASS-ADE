@@ -1,6 +1,6 @@
 {
-  "body": "    def test_pay_shows_challenge(self, tmp_path: Path) -> None:\n        \"\"\"If endpoint returns 402, pay should show the payment challenge.\"\"\"\n        mock_nx = MagicMock()\n        challenge = PaymentChallenge.from_response({\n            \"amount_micro_usdc\": 8000,\n            \"amount_usdc\": \"0.008000\",\n            \"recipient\": ATOMADIC_TREASURY,\n            \"endpoint\": \"/v1/trust/score\",\n            \"chain_id\": 84532,\n        })\n        mock_nx._post_with_x402.return_value = {\n            \"payment_required\": True,\n            \"challenge\": challenge,  # New: typed challenge in response\n            \"raw\": {\n                \"amount_micro_usdc\": 8000,\n                \"amount_usdc\": \"0.008000\",\n                \"recipient\": ATOMADIC_TREASURY,\n                \"endpoint\": \"/v1/trust/score\",\n                \"chain_id\": 84532,\n            },\n        }\n        with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n            result = runner.invoke(\n                app,\n                [\"pay\", \"/v1/trust/score\", \"--config\", str(_hybrid_config(tmp_path))],\n                input=\"n\\n\",  # Decline payment\n            )\n        assert \"Payment Required\" in result.stdout or \"0.008000\" in result.stdout\n",
-  "body_hash": "c9c176bd8484c477",
+  "body": "def test_pay_shows_challenge(self, tmp_path: Path) -> None:\n    \"\"\"If endpoint returns 402, pay should show the payment challenge.\"\"\"\n    mock_nx = MagicMock()\n    challenge = PaymentChallenge.from_response({\n        \"amount_micro_usdc\": 8000,\n        \"amount_usdc\": \"0.008000\",\n        \"recipient\": ATOMADIC_TREASURY,\n        \"endpoint\": \"/v1/trust/score\",\n        \"chain_id\": 84532,\n    })\n    mock_nx._post_with_x402.return_value = {\n        \"payment_required\": True,\n        \"challenge\": challenge,  # New: typed challenge in response\n        \"raw\": {\n            \"amount_micro_usdc\": 8000,\n            \"amount_usdc\": \"0.008000\",\n            \"recipient\": ATOMADIC_TREASURY,\n            \"endpoint\": \"/v1/trust/score\",\n            \"chain_id\": 84532,\n        },\n    }\n    with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n        result = runner.invoke(\n            app,\n            [\"pay\", \"/v1/trust/score\", \"--config\", str(_hybrid_config(tmp_path))],\n            input=\"n\\n\",  # Decline payment\n        )\n    assert \"Payment Required\" in result.stdout or \"0.008000\" in result.stdout\n",
+  "body_hash": "41a4fcc668763477",
   "body_truncated": false,
   "callers_of": [
     "MagicMock",
@@ -12,13 +12,15 @@
     "_hybrid_config"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpaycommand.py:18.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_pay_shows_challenge.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_pay_shows_challenge",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_pay_shows_challenge",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpaycommand.py:18"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_pay_shows_challenge.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

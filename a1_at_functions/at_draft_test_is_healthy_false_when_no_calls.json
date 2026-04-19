@@ -1,6 +1,6 @@
 {
-  "body": "    def test_is_healthy_false_when_no_calls(self) -> None:\n        client = _mock_client()\n        client.ratchet_status.return_value = RatchetStatus(remaining_calls=0)\n        session = NexusSession(client)\n        session.start(\"13608\")\n        assert not session.is_healthy()\n",
-  "body_hash": "43d3e57404f907a8",
+  "body": "def test_is_healthy_false_when_no_calls(self) -> None:\n    client = _mock_client()\n    client.ratchet_status.return_value = RatchetStatus(remaining_calls=0)\n    session = NexusSession(client)\n    session.start(\"13608\")\n    assert not session.is_healthy()\n",
+  "body_hash": "456d0bb3519cb8a0",
   "body_truncated": false,
   "callers_of": [
     "_mock_client",
@@ -10,13 +10,15 @@
     "is_healthy"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexussession.py:34.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_is_healthy_false_when_no_calls.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_is_healthy_false_when_no_calls",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_is_healthy_false_when_no_calls",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexussession.py:34"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_is_healthy_false_when_no_calls.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_can_pay_valid(self) -> None:\n        \"\"\"X402ClientFlow should accept valid challenges.\"\"\"\n        flow = X402ClientFlow()\n        with patch.dict(\"os.environ\", {\"ATOMADIC_X402_TESTNET\": \"1\"}, clear=False):\n            challenge = PaymentChallenge.from_response({\n                \"recipient\": \"0xCBd9e4c44958ee76E0F941106Ea960D476c48FD9\",\n                \"amount_micro_usdc\": 5000,\n                \"expires\": 9999999999,\n                \"chain_id\": BASE_SEPOLIA_CHAIN_ID,\n                \"endpoint\": \"/v1/trust/score\",\n            })\n            assert flow.can_pay(challenge)\n",
-  "body_hash": "dbbce3495994fcaf",
+  "body": "def test_can_pay_valid(self) -> None:\n    \"\"\"X402ClientFlow should accept valid challenges.\"\"\"\n    flow = X402ClientFlow()\n    with patch.dict(\"os.environ\", {\"ATOMADIC_X402_TESTNET\": \"1\"}, clear=False):\n        challenge = PaymentChallenge.from_response({\n            \"recipient\": \"0xCBd9e4c44958ee76E0F941106Ea960D476c48FD9\",\n            \"amount_micro_usdc\": 5000,\n            \"expires\": 9999999999,\n            \"chain_id\": BASE_SEPOLIA_CHAIN_ID,\n            \"endpoint\": \"/v1/trust/score\",\n        })\n        assert flow.can_pay(challenge)\n",
+  "body_hash": "862efb1701ab5877",
   "body_truncated": false,
   "callers_of": [
     "X402ClientFlow",
@@ -9,17 +9,19 @@
     "can_pay"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testx402clientflow.py:62.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testx402clientflow.py:64.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.test_can_pay_valid",
-  "imports": [],
+  "id": "mo.source.a2_mo_composites.test_can_pay_valid",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testx402clientflow.py:62"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testx402clientflow.py:64"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.from_response"
+    "at.source.a2_mo_composites.from_response"
   ],
   "name": "test_can_pay_valid",
   "product_categories": [

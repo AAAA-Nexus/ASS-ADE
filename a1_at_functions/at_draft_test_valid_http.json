@@ -1,27 +1,21 @@
 {
-  "body": "    def test_valid_http(self) -> None:\n        with pytest.raises(ValueError, match=\"private/loopback\"):\n            validate_url(\"http://localhost:8787\")\n",
-  "body_hash": "30ad01a33d8afa3c",
+  "body": "def test_valid_http(self) -> None:\n    with pytest.raises(ValueError, match=\"private/loopback\"):\n        validate_url(\"http://localhost:8787\")\n",
+  "body_hash": "459a7aa18aa2fc9d",
   "body_truncated": false,
   "callers_of": [
     "raises",
     "validate_url"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_validation.py:105.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testvalidateurl.py:11.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_valid_http",
+  "id": "at.source.a1_at_functions.test_valid_http",
   "imports": [
-    "pytest",
-    "ass_ade.nexus.validation._is_private_host",
-    "ass_ade.nexus.validation.validate_agent_id",
-    "ass_ade.nexus.validation.validate_prompt",
-    "ass_ade.nexus.validation.validate_session_id",
-    "ass_ade.nexus.validation.validate_url",
-    "ass_ade.nexus.validation.validate_usdc_amount"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_validation.py:105"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testvalidateurl.py:11"
   },
   "kind": "pure_function",
   "made_of": [],

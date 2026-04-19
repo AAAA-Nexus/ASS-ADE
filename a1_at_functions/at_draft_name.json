@@ -1,16 +1,18 @@
 {
-  "body": "    def name(self) -> str:\n        return \"grep_search\"\n",
-  "body_hash": "552891026fcdeb79",
+  "body": "def name(self) -> str:\n    return \"grep_search\"\n",
+  "body_hash": "e61d50e12733a43b",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_grepsearchtool.py:12.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_grepsearchtool.py:14.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.name",
-  "imports": [],
+  "id": "at.source.a2_mo_composites.name",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_grepsearchtool.py:12"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_grepsearchtool.py:14"
   },
   "kind": "pure_function",
   "made_of": [],

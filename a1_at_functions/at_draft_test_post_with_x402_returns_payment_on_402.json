@@ -1,6 +1,6 @@
 {
-  "body": "    def test_post_with_x402_returns_payment_on_402(self) -> None:\n        \"\"\"_post_with_x402 should return payment details instead of raising on 402.\"\"\"\n        def handler(request: httpx.Request) -> httpx.Response:\n            return httpx.Response(\n                402,\n                json={\"amount\": 0.008, \"network\": \"base\", \"address\": \"0xTREASURY\"},\n            )\n\n        transport = httpx.MockTransport(handler)\n        client = NexusClient(base_url=\"https://test.atomadic.tech\", transport=transport)\n        result = client._post_with_x402(\"/v1/trust/score\", {\"agent_id\": \"test\"})\n        assert result[\"payment_required\"] is True\n        assert result[\"amount_usdc\"] == 0.008\n        client.close()\n",
-  "body_hash": "4767f20dbc44867a",
+  "body": "def test_post_with_x402_returns_payment_on_402(self) -> None:\n    \"\"\"_post_with_x402 should return payment details instead of raising on 402.\"\"\"\n    def handler(request: httpx.Request) -> httpx.Response:\n        return httpx.Response(\n            402,\n            json={\"amount\": 0.008, \"network\": \"base\", \"address\": \"0xTREASURY\"},\n        )\n\n    transport = httpx.MockTransport(handler)\n    client = NexusClient(base_url=\"https://test.atomadic.tech\", transport=transport)\n    result = client._post_with_x402(\"/v1/trust/score\", {\"agent_id\": \"test\"})\n    assert result[\"payment_required\"] is True\n    assert result[\"amount_usdc\"] == 0.008\n    client.close()\n",
+  "body_hash": "bd07d41224f8ae02",
   "body_truncated": false,
   "callers_of": [
     "MockTransport",
@@ -10,15 +10,15 @@
     "Response"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testx402paymenthandling.py:59.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_post_with_x402_returns_payment_on_402.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_post_with_x402_returns_payment_on_402",
+  "id": "at.source.a1_at_functions.test_post_with_x402_returns_payment_on_402",
   "imports": [
-    "ass_ade.nexus.errors.NexusAuthError"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testx402paymenthandling.py:59"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_post_with_x402_returns_payment_on_402.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

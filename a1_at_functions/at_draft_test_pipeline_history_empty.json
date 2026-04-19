@@ -1,6 +1,6 @@
 {
-  "body": "    def test_pipeline_history_empty(self, tmp_path: Path) -> None:\n        \"\"\"Pipeline history should handle missing workflows directory gracefully.\"\"\"\n        with patch(\"pathlib.Path.cwd\", return_value=tmp_path):\n            result = runner.invoke(\n                app,\n                [\"pipeline\", \"history\"],\n            )\n        \n        # Should exit cleanly with appropriate message\n        assert result.exit_code == 0\n        assert \"history\" in result.stdout.lower() or \"found\" in result.stdout.lower()\n",
-  "body_hash": "e0703c6df051b4fd",
+  "body": "def test_pipeline_history_empty(self, tmp_path: Path) -> None:\n    \"\"\"Pipeline history should handle missing workflows directory gracefully.\"\"\"\n    with patch(\"pathlib.Path.cwd\", return_value=tmp_path):\n        result = runner.invoke(\n            app,\n            [\"pipeline\", \"history\"],\n        )\n\n    # Should exit cleanly with appropriate message\n    assert result.exit_code == 0\n    assert \"history\" in result.stdout.lower() or \"found\" in result.stdout.lower()\n",
+  "body_hash": "0f4fe9ca501f9c2f",
   "body_truncated": false,
   "callers_of": [
     "patch",
@@ -8,13 +8,15 @@
     "lower"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpipelinerun.py:213.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_pipeline_history_empty.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_pipeline_history_empty",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_pipeline_history_empty",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpipelinerun.py:213"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_pipeline_history_empty.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

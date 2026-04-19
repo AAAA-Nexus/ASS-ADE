@@ -7,21 +7,15 @@
     "raises"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_validation.py:15.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testvalidateagentid.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.testvalidateagentid",
+  "id": "at.source.a1_at_functions.testvalidateagentid",
   "imports": [
-    "pytest",
-    "ass_ade.nexus.validation._is_private_host",
-    "ass_ade.nexus.validation.validate_agent_id",
-    "ass_ade.nexus.validation.validate_prompt",
-    "ass_ade.nexus.validation.validate_session_id",
-    "ass_ade.nexus.validation.validate_url",
-    "ass_ade.nexus.validation.validate_usdc_amount"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_validation.py:15"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testvalidateagentid.py:7"
   },
   "kind": "pure_class",
   "made_of": [],

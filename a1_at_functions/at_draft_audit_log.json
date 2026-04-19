@@ -1,0 +1,32 @@
+{
+  "body": "def audit_log(self, event: dict, **kwargs: Any) -> AuditLogEntry:\n    \"\"\"/v1/audit/log \u2014 tamper-evident event logging (GOV-103). $0.040/request\"\"\"\n    return self._post_model(\"/v1/audit/log\", AuditLogEntry, {\"event\": event, **kwargs})\n",
+  "body_hash": "17ec1ae81774df8c",
+  "body_truncated": false,
+  "callers_of": [
+    "_post_model"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_audit_log.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.audit_log",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_audit_log.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "audit_log",
+  "product_categories": [
+    "SRG"
+  ],
+  "provides": [
+    "rebuild candidate for audit_log"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

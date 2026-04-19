@@ -1,19 +1,21 @@
 {
-  "body": "    def test_unknown_4xx_raises_base_error(self) -> None:\n        with pytest.raises(NexusError) as exc_info:\n            raise_for_status(418)\n        assert exc_info.value.status_code == 418\n",
-  "body_hash": "e21cb44f3a657ace",
+  "body": "def test_unknown_4xx_raises_base_error(self) -> None:\n    with pytest.raises(NexusError) as exc_info:\n        raise_for_status(418)\n    assert exc_info.value.status_code == 418\n",
+  "body_hash": "f0598ed60e3c3c62",
   "body_truncated": false,
   "callers_of": [
     "raises",
     "raise_for_status"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testraiseforstatus.py:39.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_unknown_4xx_raises_base_error.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_unknown_4xx_raises_base_error",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_unknown_4xx_raises_base_error",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testraiseforstatus.py:39"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_unknown_4xx_raises_base_error.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,18 +1,20 @@
 {
-  "body": "    def trim(self, max_messages: int = 50) -> int:\n        \"\"\"Trim oldest non-system messages if over limit. Returns count removed.\"\"\"\n        if len(self._messages) <= max_messages:\n            return 0\n\n        system = [m for m in self._messages if m.role == \"system\"]\n        others = [m for m in self._messages if m.role != \"system\"]\n\n        keep = max_messages - len(system)\n        removed = len(others) - keep\n        if removed <= 0:\n            return 0\n\n        self._messages = system + others[removed:]\n        return removed\n",
-  "body_hash": "fb8e8d11d5c5b190",
+  "body": "def trim(self, max_messages: int = 50) -> int:\n    \"\"\"Trim oldest non-system messages if over limit. Returns count removed.\"\"\"\n    if len(self._messages) <= max_messages:\n        return 0\n\n    system = [m for m in self._messages if m.role == \"system\"]\n    others = [m for m in self._messages if m.role != \"system\"]\n\n    keep = max_messages - len(system)\n    removed = len(others) - keep\n    if removed <= 0:\n        return 0\n\n    self._messages = system + others[removed:]\n    return removed\n",
+  "body_hash": "6cb16dfd3a404f52",
   "body_truncated": false,
   "callers_of": [
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_conversation.py:48.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_trim.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.trim",
-  "imports": [],
+  "id": "at.source.a1_at_functions.trim",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_conversation.py:48"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_trim.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

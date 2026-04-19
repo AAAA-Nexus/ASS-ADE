@@ -1,5 +1,5 @@
 {
-  "body": "def test_ecosystem_coordination_happy_path(method_name, response_json):\n    \"\"\"Test ecosystem coordination methods (happy path).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json=response_json)\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        if method_name == \"consensus_vote\":\n            result = client.consensus_vote(session_id=\"session_123\", agent_id=\"agent_1\", output_hash=\"hash_123\", confidence=0.9)\n        elif method_name == \"quota_tree_create\":\n            result = client.quota_tree_create(total_budget=10000, children=[\"child1\", \"child2\"])\n        elif method_name == \"quota_draw\":\n            result = client.quota_draw(tree_id=\"tree_123\", child_id=\"child1\", tokens=100, idempotency_key=\"key_123\")\n        elif method_name == \"certify_output\":\n            result = client.certify_output(output=\"output text\", rubric=[\"criterion1\", \"criterion2\"])\n        elif method_name == \"saga_register\":\n            result = client.saga_register(name=\"saga1\", steps=[\"s1\", \"s2\", \"s3\"], compensations=[\"c3\", \"c2\", \"c1\"])\n        elif method_name == \"saga_checkpoint\":\n            result = client.saga_checkpoint(saga_id=\"saga_123\", step=\"step1\")\n        elif method_name == \"saga_compensate\":\n            result = client.saga_compensate(saga_id=\"saga_123\")\n        else:  # memory_fence_create\n            result = client.memory_fence_create(namespace=\"namespace_1\")\n        assert result is not None\n",
+  "body": "def test_ecosystem_coordination_happy_path(method_name, response_json):\n    \"\"\"Test ecosystem coordination methods (happy path).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json=response_json)\n\n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        if method_name == \"consensus_vote\":\n            result = client.consensus_vote(session_id=\"session_123\", agent_id=\"agent_1\", output_hash=\"hash_123\", confidence=0.9)\n        elif method_name == \"quota_tree_create\":\n            result = client.quota_tree_create(total_budget=10000, children=[\"child1\", \"child2\"])\n        elif method_name == \"quota_draw\":\n            result = client.quota_draw(tree_id=\"tree_123\", child_id=\"child1\", tokens=100, idempotency_key=\"key_123\")\n        elif method_name == \"certify_output\":\n            result = client.certify_output(output=\"output text\", rubric=[\"criterion1\", \"criterion2\"])\n        elif method_name == \"saga_register\":\n            result = client.saga_register(name=\"saga1\", steps=[\"s1\", \"s2\", \"s3\"], compensations=[\"c3\", \"c2\", \"c1\"])\n        elif method_name == \"saga_checkpoint\":\n            result = client.saga_checkpoint(saga_id=\"saga_123\", step=\"step1\")\n        elif method_name == \"saga_compensate\":\n            result = client.saga_compensate(saga_id=\"saga_123\")\n        else:  # memory_fence_create\n            result = client.memory_fence_create(namespace=\"namespace_1\")\n        assert result is not None\n",
   "body_hash": "53ae440ae51f9d84",
   "body_truncated": false,
   "callers_of": [
@@ -16,17 +16,19 @@
     "memory_fence_create"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_ecosystem_coordination_happy_path.py:5.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_test_ecosystem_coordination_happy_path.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "sy.source.ass_ade.test_ecosystem_coordination_happy_path",
-  "imports": [],
+  "id": "sy.source.a2_mo_composites.test_ecosystem_coordination_happy_path",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_ecosystem_coordination_happy_path.py:5"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_test_ecosystem_coordination_happy_path.py:7"
   },
   "kind": "ecosystem_system",
   "made_of": [
-    "og.source.ass_ade.certify_output"
+    "og.source.a3_og_features.certify_output"
   ],
   "name": "test_ecosystem_coordination_happy_path",
   "product_categories": [

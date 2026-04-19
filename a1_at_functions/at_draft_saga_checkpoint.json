@@ -1,0 +1,33 @@
+{
+  "body": "def saga_checkpoint(self, saga_id: str, step: str, **kwargs: Any) -> SagaCheckpoint:\n    \"\"\"/v1/rollback/saga/{id}/checkpoint \u2014 mark step completed (RBK-100). $0.020/call\"\"\"\n    return self._post_model(f\"/v1/rollback/saga/{_pseg(saga_id, 'saga_id')}/checkpoint\", SagaCheckpoint, {\"step\": step, **kwargs})\n",
+  "body_hash": "96134bb71272aece",
+  "body_truncated": false,
+  "callers_of": [
+    "_post_model",
+    "_pseg"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_saga_checkpoint.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.saga_checkpoint",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_saga_checkpoint.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "saga_checkpoint",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for saga_checkpoint"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

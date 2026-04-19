@@ -1,6 +1,6 @@
 {
-  "body": "    def test_route_without_nexus(self):\n        router = EpistemicRouter()\n        decision = router.route(\"Hello world\")\n        assert isinstance(decision, RoutingDecision)\n        assert decision.source == \"local\"\n",
-  "body_hash": "b381180bbc22180a",
+  "body": "def test_route_without_nexus(self):\n    router = EpistemicRouter()\n    decision = router.route(\"Hello world\")\n    assert isinstance(decision, RoutingDecision)\n    assert decision.source == \"local\"\n",
+  "body_hash": "272fbcc419a5e4c6",
   "body_truncated": false,
   "callers_of": [
     "EpistemicRouter",
@@ -8,21 +8,15 @@
     "isinstance"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_routing.py:90.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_route_without_nexus.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_route_without_nexus",
+  "id": "at.source.a1_at_functions.test_route_without_nexus",
   "imports": [
-    "__future__.annotations",
-    "ass_ade.agent.routing.EpistemicRouter",
-    "ass_ade.agent.routing.ModelTier",
-    "ass_ade.agent.routing.RoutingDecision",
-    "ass_ade.agent.routing.classify_complexity",
-    "ass_ade.agent.routing.local_route",
-    "ass_ade.agent.routing.tier_for_complexity"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_routing.py:90"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_route_without_nexus.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

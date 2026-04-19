@@ -1,39 +1,21 @@
 {
-  "body": "    def test_format_includes_amount(self) -> None:\n        c = PaymentChallenge.from_response({\n            \"amount_usdc\": \"0.008000\",\n            \"amount_micro_usdc\": 8000,\n            \"recipient\": ATOMADIC_TREASURY,\n            \"endpoint\": \"/v1/trust/score\",\n        })\n        text = format_payment_consent(c)\n        assert \"$0.008000 USDC\" in text\n        assert \"/v1/trust/score\" in text\n        assert ATOMADIC_TREASURY in text\n",
-  "body_hash": "bb30c2803c0e59f6",
+  "body": "def test_format_includes_amount(self) -> None:\n    c = PaymentChallenge.from_response({\n        \"amount_usdc\": \"0.008000\",\n        \"amount_micro_usdc\": 8000,\n        \"recipient\": ATOMADIC_TREASURY,\n        \"endpoint\": \"/v1/trust/score\",\n    })\n    text = format_payment_consent(c)\n    assert \"$0.008000 USDC\" in text\n    assert \"/v1/trust/score\" in text\n    assert ATOMADIC_TREASURY in text\n",
+  "body_hash": "adf7dc0a77a522b0",
   "body_truncated": false,
   "callers_of": [
     "from_response",
     "format_payment_consent"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:276.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testpaymentconsent.py:8.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_format_includes_amount",
+  "id": "at.source.a2_mo_composites.test_format_includes_amount",
   "imports": [
-    "__future__.annotations",
-    "pathlib.Path",
-    "unittest.mock.MagicMock",
-    "unittest.mock.patch",
-    "pytest",
-    "typer.testing.CliRunner",
-    "ass_ade.cli.app",
-    "ass_ade.config.AssAdeConfig",
-    "ass_ade.config.write_default_config",
-    "ass_ade.nexus.x402.PaymentChallenge",
-    "ass_ade.nexus.x402.PaymentResult",
-    "ass_ade.nexus.x402.PaymentProof",
-    "ass_ade.nexus.x402.X402ClientFlow",
-    "ass_ade.nexus.x402.format_payment_consent",
-    "ass_ade.nexus.x402.get_chain_config",
-    "ass_ade.nexus.x402.build_payment_header",
-    "ass_ade.nexus.x402.ATOMADIC_TREASURY",
-    "ass_ade.nexus.x402.BASE_MAINNET_CHAIN_ID",
-    "ass_ade.nexus.x402.BASE_SEPOLIA_CHAIN_ID"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:276"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testpaymentconsent.py:8"
   },
   "kind": "pure_function",
   "made_of": [],

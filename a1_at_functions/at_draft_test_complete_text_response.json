@@ -1,6 +1,6 @@
 {
-  "body": "    def test_complete_text_response(self):\n        mock_client = MagicMock()\n        mock_client.inference.return_value = MagicMock(\n            result=\"Hello from Nexus!\",\n            text=None,\n            model=\"llama-3.1-8b\",\n        )\n\n        provider = NexusProvider(mock_client)\n        req = CompletionRequest(messages=[Message(role=\"user\", content=\"hi\")])\n        resp = provider.complete(req)\n\n        assert resp.message.content == \"Hello from Nexus!\"\n        assert resp.model == \"llama-3.1-8b\"\n        assert resp.finish_reason == \"stop\"\n",
-  "body_hash": "af13eb91873e222b",
+  "body": "def test_complete_text_response(self):\n    mock_client = MagicMock()\n    mock_client.inference.return_value = MagicMock(\n        result=\"Hello from Nexus!\",\n        text=None,\n        model=\"llama-3.1-8b\",\n    )\n\n    provider = NexusProvider(mock_client)\n    req = CompletionRequest(messages=[Message(role=\"user\", content=\"hi\")])\n    resp = provider.complete(req)\n\n    assert resp.message.content == \"Hello from Nexus!\"\n    assert resp.model == \"llama-3.1-8b\"\n    assert resp.finish_reason == \"stop\"\n",
+  "body_hash": "14d91889da01f7bb",
   "body_truncated": false,
   "callers_of": [
     "MagicMock",
@@ -10,13 +10,15 @@
     "Message"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexusprovider.py:6.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_complete_text_response.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_complete_text_response",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_complete_text_response",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexusprovider.py:6"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_complete_text_response.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

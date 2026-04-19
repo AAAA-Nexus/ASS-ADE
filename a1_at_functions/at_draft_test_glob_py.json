@@ -1,6 +1,6 @@
 {
-  "body": "    def test_glob_py(self, workspace: Path):\n        tool = SearchFilesTool(str(workspace))\n        r = tool.execute(pattern=\"**/*.py\")\n        assert r.success\n        assert \"hello.py\" in r.output\n",
-  "body_hash": "1828c9d30589fa13",
+  "body": "def test_glob_py(self, workspace: Path):\n    tool = SearchFilesTool(str(workspace))\n    r = tool.execute(pattern=\"**/*.py\")\n    assert r.success\n    assert \"hello.py\" in r.output\n",
+  "body_hash": "2600ad58d4f9b8c7",
   "body_truncated": false,
   "callers_of": [
     "SearchFilesTool",
@@ -8,13 +8,15 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testsearchfiles.py:6.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testsearchfiles.py:8.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_glob_py",
-  "imports": [],
+  "id": "at.source.a2_mo_composites.test_glob_py",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testsearchfiles.py:6"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testsearchfiles.py:8"
   },
   "kind": "pure_function",
   "made_of": [],

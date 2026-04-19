@@ -1,6 +1,6 @@
 {
-  "body": "    def test_negotiate_success(self, tmp_path: Path) -> None:\n        from ass_ade.a2a import A2AAgentCard, NegotiationResult\n        remote_card = A2AAgentCard(\n            name=\"RemoteAgent\", description=\"A remote agent\",\n            url=\"https://example.com\", version=\"1.0.0\",\n            skills=[], defaultInputModes=[\"text\"], defaultOutputModes=[\"text\"],\n        )\n        mock_report = MagicMock()\n        mock_report.valid = True\n        mock_report.card = remote_card\n\n        neg_result = NegotiationResult(\n            compatible=True, shared_skills=[], local_only=[\"read_file\"],\n            remote_only=[], auth_compatible=True, notes=[],\n        )\n        with patch(\"ass_ade.commands.a2a.fetch_agent_card\", return_value=mock_report), \\\n             patch(\"ass_ade.commands.a2a.negotiate\", return_value=neg_result), \\\n             patch(\"ass_ade.commands.a2a.local_agent_card\", return_value=remote_card):\n            result = runner.invoke(\n                app, [\"a2a\", \"negotiate\", \"https://example.com/.well-known/agent.json\",\n                       \"--config\", str(_hybrid_config(tmp_path))]\n            )\n        assert result.exit_code == 0\n        data = json.loads(result.stdout)\n        assert data[\"compatible\"] is True\n",
-  "body_hash": "e1c85126dda4d3c0",
+  "body": "def test_negotiate_success(self, tmp_path: Path) -> None:\n    from ass_ade.a2a import A2AAgentCard, NegotiationResult\n    remote_card = A2AAgentCard(\n        name=\"RemoteAgent\", description=\"A remote agent\",\n        url=\"https://example.com\", version=\"1.0.0\",\n        skills=[], defaultInputModes=[\"text\"], defaultOutputModes=[\"text\"],\n    )\n    mock_report = MagicMock()\n    mock_report.valid = True\n    mock_report.card = remote_card\n\n    neg_result = NegotiationResult(\n        compatible=True, shared_skills=[], local_only=[\"read_file\"],\n        remote_only=[], auth_compatible=True, notes=[],\n    )\n    with patch(\"ass_ade.commands.a2a.fetch_agent_card\", return_value=mock_report), \\\n         patch(\"ass_ade.commands.a2a.negotiate\", return_value=neg_result), \\\n         patch(\"ass_ade.commands.a2a.local_agent_card\", return_value=remote_card):\n        result = runner.invoke(\n            app, [\"a2a\", \"negotiate\", \"https://example.com/.well-known/agent.json\",\n                   \"--config\", str(_hybrid_config(tmp_path))]\n        )\n    assert result.exit_code == 0\n    data = json.loads(result.stdout)\n    assert data[\"compatible\"] is True\n",
+  "body_hash": "8e37287dc8a5c2ac",
   "body_truncated": false,
   "callers_of": [
     "A2AAgentCard",
@@ -13,27 +13,17 @@
     "_hybrid_config"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a_cli.py:112.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_negotiate_success.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_negotiate_success",
+  "id": "at.source.a1_at_functions.test_negotiate_success",
   "imports": [
     "__future__.annotations",
-    "json",
-    "pathlib.Path",
-    "unittest.mock.MagicMock",
-    "unittest.mock.patch",
-    "typer.testing.CliRunner",
-    "ass_ade.cli.app",
-    "ass_ade.config.AssAdeConfig",
-    "ass_ade.config.write_default_config",
-    "ass_ade.nexus.models.DiscoveryResult",
-    "ass_ade.nexus.models.DiscoveredAgent",
     "ass_ade.a2a.A2AAgentCard",
     "ass_ade.a2a.NegotiationResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a_cli.py:112"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_negotiate_success.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

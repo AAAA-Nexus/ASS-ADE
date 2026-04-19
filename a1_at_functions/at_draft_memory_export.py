@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/src/ass_ade/cli.py:190
-# Component id: at.source.ass_ade.memory_export
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_memory_export.py:7
+# Component id: at.source.a1_at_functions.memory_export
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def memory_export(

@@ -27,15 +27,16 @@
     "setdefault"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_materialize_plan.py:5.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_materialize_plan.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "qk.source.ass_ade.materialize_plan",
+  "id": "qk.source.a0_qk_constants.materialize_plan",
   "imports": [
+    "__future__.annotations",
     "ass_ade.engine.rebuild.version_tracker._aggregate_version"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_materialize_plan.py:5"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_materialize_plan.py:7"
   },
   "kind": "invariant",
   "made_of": [],

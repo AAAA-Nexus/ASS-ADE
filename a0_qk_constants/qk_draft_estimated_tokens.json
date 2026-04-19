@@ -1,19 +1,21 @@
 {
-  "body": "    def estimated_tokens(self) -> int:\n        \"\"\"Total estimated tokens across all messages.\"\"\"\n        return sum(estimate_message_tokens(m) for m in self._messages)\n",
-  "body_hash": "af317490eacace80",
+  "body": "def estimated_tokens(self) -> int:\n    \"\"\"Total estimated tokens across all messages.\"\"\"\n    return sum(estimate_message_tokens(m) for m in self._messages)\n",
+  "body_hash": "cbbac83b29725568",
   "body_truncated": false,
   "callers_of": [
     "sum",
     "estimate_message_tokens"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_conversation.py:44.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_estimated_tokens.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "qk.source.ass_ade.estimated_tokens",
-  "imports": [],
+  "id": "qk.source.a0_qk_constants.estimated_tokens",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_conversation.py:44"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_estimated_tokens.py:7"
   },
   "kind": "invariant",
   "made_of": [],

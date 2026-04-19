@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/cli.py:1449
-# Component id: at.source.ass_ade.ratchet_advance
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_ratchet_advance.py:7
+# Component id: at.source.a1_at_functions.ratchet_advance
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def ratchet_advance(

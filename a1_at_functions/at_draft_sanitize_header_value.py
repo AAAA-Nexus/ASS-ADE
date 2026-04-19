@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/validation.py:150
-# Component id: at.source.ass_ade.sanitize_header_value
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_sanitize_header_value.py:7
+# Component id: at.source.a1_at_functions.sanitize_header_value
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def sanitize_header_value(value: str, field_name: str = "header value") -> str:

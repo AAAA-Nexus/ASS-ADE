@@ -10,17 +10,15 @@
     "Path"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/context.py:36.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_build_system_prompt.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "sy.source.ass_ade.build_system_prompt",
+  "id": "sy.source.a4_sy_orchestration.build_system_prompt",
   "imports": [
-    "__future__.annotations",
-    "pathlib.Path",
-    "ass_ade.agent.capabilities.render_capability_prompt_section"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/context.py:36"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_build_system_prompt.py:7"
   },
   "kind": "ecosystem_system",
   "made_of": [],

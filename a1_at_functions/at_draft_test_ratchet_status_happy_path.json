@@ -1,5 +1,5 @@
 {
-  "body": "def test_ratchet_status_happy_path():\n    \"\"\"Test ratchet_status GET endpoint.\"\"\"\n    def handler(request):\n        assert \"/v1/ratchet/status/\" in request.url.path\n        return httpx.Response(200, json={\"epoch\": 5, \"remaining_calls\": 1000})\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        result = client.ratchet_status(session_id=\"ratchet_abc123\")\n        assert result is not None\n",
+  "body": "def test_ratchet_status_happy_path():\n    \"\"\"Test ratchet_status GET endpoint.\"\"\"\n    def handler(request):\n        assert \"/v1/ratchet/status/\" in request.url.path\n        return httpx.Response(200, json={\"epoch\": 5, \"remaining_calls\": 1000})\n\n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        result = client.ratchet_status(session_id=\"ratchet_abc123\")\n        assert result is not None\n",
   "body_hash": "bc607101dd5f5269",
   "body_truncated": false,
   "callers_of": [
@@ -9,13 +9,15 @@
     "ratchet_status"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_ratchet_status_happy_path.py:5.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_ratchet_status_happy_path.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_ratchet_status_happy_path",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_ratchet_status_happy_path",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_ratchet_status_happy_path.py:5"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_ratchet_status_happy_path.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

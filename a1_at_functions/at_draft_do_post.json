@@ -1,6 +1,6 @@
 {
-  "body": "        def do_POST(self) -> None:  # noqa: N802\n            if self.path != \"/generate\":\n                self._send_json(404, {\"error\": \"not found\"})\n                return\n            length = int(self.headers.get(\"Content-Length\", 0))\n            if length == 0:\n                self._send_json(400, {\"error\": \"empty body\"})\n                return\n            try:\n                body: dict[str, Any] = json.loads(self.rfile.read(length))\n            except Exception:\n                self._send_json(400, {\"error\": \"invalid JSON\"})\n                return\n            prompt = body.get(\"prompt\", \"\")\n            if not prompt:\n                self._send_json(400, {\"error\": \"prompt required\"})\n                return\n            max_new_tokens = int(body.get(\"max_new_tokens\", 256))\n            temperature = float(body.get(\"temperature\", 0.7))\n            try:\n                text = model.generate(prompt, max_new_tokens=max_new_tokens, temperature=temperature)\n                self._send_json(200, {\n                    \"text\": text,\n                    \"model\": model.base_model,\n                    \"tokens\": max_new_tokens,\n                })\n            except Exception as exc:\n                _log.exception(\"generate failed\")\n                self._send_json(500, {\"error\": str(exc)})\n",
-  "body_hash": "4619d9ff26c5b9bc",
+  "body": "def do_POST(self) -> None:  # noqa: N802\n    if self.path != \"/generate\":\n        self._send_json(404, {\"error\": \"not found\"})\n        return\n    length = int(self.headers.get(\"Content-Length\", 0))\n    if length == 0:\n        self._send_json(400, {\"error\": \"empty body\"})\n        return\n    try:\n        body: dict[str, Any] = json.loads(self.rfile.read(length))\n    except Exception:\n        self._send_json(400, {\"error\": \"invalid JSON\"})\n        return\n    prompt = body.get(\"prompt\", \"\")\n    if not prompt:\n        self._send_json(400, {\"error\": \"prompt required\"})\n        return\n    max_new_tokens = int(body.get(\"max_new_tokens\", 256))\n    temperature = float(body.get(\"temperature\", 0.7))\n    try:\n        text = model.generate(prompt, max_new_tokens=max_new_tokens, temperature=temperature)\n        self._send_json(200, {\n            \"text\": text,\n            \"model\": model.base_model,\n            \"tokens\": max_new_tokens,\n        })\n    except Exception as exc:\n        _log.exception(\"generate failed\")\n        self._send_json(500, {\"error\": str(exc)})\n",
+  "body_hash": "bc124472abd2d2c6",
   "body_truncated": false,
   "callers_of": [
     "int",
@@ -14,31 +14,15 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_training/serve_lora.py:130.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_do_post.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.do_post",
+  "id": "at.source.a1_at_functions.do_post",
   "imports": [
-    "__future__.annotations",
-    "argparse",
-    "json",
-    "logging",
-    "sys",
-    "threading",
-    "http.server.BaseHTTPRequestHandler",
-    "http.server.HTTPServer",
-    "pathlib.Path",
-    "typing.Any",
-    "torch",
-    "peft.PeftModel",
-    "transformers.AutoModelForCausalLM",
-    "transformers.AutoTokenizer",
-    "torch",
-    "peft",
-    "transformers"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_training/serve_lora.py:130"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_do_post.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

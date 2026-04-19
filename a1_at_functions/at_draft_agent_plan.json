@@ -1,0 +1,32 @@
+{
+  "body": "def agent_plan(self, goal: str, **kwargs: Any) -> AgentPlan:\n    \"\"\"/v1/agents/plan \u2014 decompose goal into dependency-aware steps. $0.060/request\"\"\"\n    return self._post_model(\"/v1/agents/plan\", AgentPlan, {\"goal\": goal, **kwargs})\n",
+  "body_hash": "d7f3554509bf1750",
+  "body_truncated": false,
+  "callers_of": [
+    "_post_model"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_agent_plan.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.agent_plan",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_agent_plan.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "agent_plan",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for agent_plan"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

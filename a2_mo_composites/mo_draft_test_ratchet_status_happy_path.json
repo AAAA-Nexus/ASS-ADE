@@ -1,5 +1,5 @@
 {
-  "body": "def test_ratchet_status_happy_path():\n    \"\"\"Test ratchet_status GET endpoint.\"\"\"\n    def handler(request):\n        assert \"/v1/ratchet/status/\" in request.url.path\n        return httpx.Response(200, json={\"epoch\": 5, \"remaining_calls\": 1000})\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        result = client.ratchet_status(session_id=\"ratchet_abc123\")\n        assert result is not None\n",
+  "body": "def test_ratchet_status_happy_path():\n    \"\"\"Test ratchet_status GET endpoint.\"\"\"\n    def handler(request):\n        assert \"/v1/ratchet/status/\" in request.url.path\n        return httpx.Response(200, json={\"epoch\": 5, \"remaining_calls\": 1000})\n\n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        result = client.ratchet_status(session_id=\"ratchet_abc123\")\n        assert result is not None\n",
   "body_hash": "bc607101dd5f5269",
   "body_truncated": false,
   "callers_of": [
@@ -9,7 +9,7 @@
     "ratchet_status"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:196.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_nexus_client_comprehensive.py:196.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_ratchet_status_happy_path",
@@ -144,7 +144,7 @@
     "ass_ade.nexus.models.EntropyResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:196"
+    "source": "C:/!ass-ade/tests/test_nexus_client_comprehensive.py:196"
   },
   "kind": "engine_molecule",
   "made_of": [],

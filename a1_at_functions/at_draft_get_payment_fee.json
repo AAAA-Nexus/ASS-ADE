@@ -1,0 +1,32 @@
+{
+  "body": "def get_payment_fee(self) -> PaymentFee:\n    \"\"\"/v1/payments/fee \u2014 current x402 payment requirements, free\"\"\"\n    return self._get_model(\"/v1/payments/fee\", PaymentFee)\n",
+  "body_hash": "b65623c60ea05c3c",
+  "body_truncated": false,
+  "callers_of": [
+    "_get_model"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_get_payment_fee.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.get_payment_fee",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_get_payment_fee.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "get_payment_fee",
+  "product_categories": [
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for get_payment_fee"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

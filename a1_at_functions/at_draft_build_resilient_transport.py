@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/resilience.py:196
-# Component id: at.source.ass_ade.build_resilient_transport
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_build_resilient_transport.py:7
+# Component id: at.source.a1_at_functions.build_resilient_transport
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def build_resilient_transport(
@@ -14,7 +16,7 @@ def build_resilient_transport(
     """Build a composed transport stack: CircuitBreaker (outer) → Retry (middle) → HTTP (inner).
 
     Requests traverse: CircuitBreaker → Retry → HTTP.
-    
+
     Args:
         cancellation_context: Optional context for cooperative cancellation support.
             If provided, the retry transport will check for cancellation between

@@ -1,0 +1,34 @@
+{
+  "body": "def test_report_tracks_decisions(self):\n    lse = self._make()\n    lse.select(trs_score=0.8)\n    lse.select(trs_score=0.5)\n    rep = lse.report()\n    assert rep[\"decisions\"] == 2\n    assert \"tier_distribution\" in rep\n    assert \"provider_distribution\" in rep\n    assert \"avg_trs\" in rep\n",
+  "body_hash": "ecff1f6c0c5c7c7f",
+  "body_truncated": false,
+  "callers_of": [
+    "_make",
+    "select",
+    "report"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_report_tracks_decisions.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.test_report_tracks_decisions",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_report_tracks_decisions.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_report_tracks_decisions",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_report_tracks_decisions"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,25 +1,27 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:976
-# Component id: mo.source.ass_ade.defi_optimize
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_nexusclient.py:781
+# Component id: mo.source.a2_mo_composites.defi_optimize
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
-    def defi_optimize(
-        self,
-        protocol: str | None = None,
-        position_size_usdc: float | None = None,
-        *,
-        payload: dict | None = None,
-        **kwargs: Any,
-    ) -> DefiOptimize:
-        """/v1/defi/optimize — optimal LP parameters (DFP-100). $0.08 + 0.2% of position"""
-        if payload is not None:
-            protocol = protocol or payload.get("protocol") or payload.get("pool") or payload.get("market")
-            position_size_usdc = (
-                position_size_usdc
-                if position_size_usdc is not None
-                else payload.get("position_size_usdc")
-                or payload.get("amount_usdc")
-                or payload.get("capital_usdc")
-            )
-        return self._post_model("/v1/defi/optimize", DefiOptimize, {
-            "protocol": protocol or "", "position_size_usdc": position_size_usdc or 0.0, **kwargs,
-        })
+def defi_optimize(
+    self,
+    protocol: str | None = None,
+    position_size_usdc: float | None = None,
+    *,
+    payload: dict | None = None,
+    **kwargs: Any,
+) -> DefiOptimize:
+    """/v1/defi/optimize — optimal LP parameters (DFP-100). $0.08 + 0.2% of position"""
+    if payload is not None:
+        protocol = protocol or payload.get("protocol") or payload.get("pool") or payload.get("market")
+        position_size_usdc = (
+            position_size_usdc
+            if position_size_usdc is not None
+            else payload.get("position_size_usdc")
+            or payload.get("amount_usdc")
+            or payload.get("capital_usdc")
+        )
+    return self._post_model("/v1/defi/optimize", DefiOptimize, {
+        "protocol": protocol or "", "position_size_usdc": position_size_usdc or 0.0, **kwargs,
+    })

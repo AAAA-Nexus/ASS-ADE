@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_taskpriority.py:5
-# Component id: mo.source.ass_ade.taskpriority
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_taskpriority.py:7
+# Component id: mo.source.a2_mo_composites.taskpriority
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class TaskPriority(Enum):

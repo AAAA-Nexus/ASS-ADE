@@ -26,20 +26,22 @@
     "unlink"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_editplanexecutor.py:5.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_editplanexecutor.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.editplanexecutor",
-  "imports": [],
+  "id": "mo.source.a2_mo_composites.editplanexecutor",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_editplanexecutor.py:5"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_editplanexecutor.py:7"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.validate",
-    "at.source.ass_ade.count",
-    "at.source.ass_ade.undo",
-    "at.source.ass_ade.record"
+    "at.source.a2_mo_composites.validate",
+    "at.source.a1_at_functions.count",
+    "at.source.a1_at_functions.undo",
+    "at.source.a1_at_functions.record"
   ],
   "name": "EditPlanExecutor",
   "product_categories": [

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_warn_on_medium_trust_without_gold(self) -> None:\n        client = _mock_client()\n        client.trust_score.return_value = TrustScore(score=0.6, tier=\"silver\")\n        client.reputation_score.return_value = ReputationScore(tier=\"silver\", fee_multiplier=1.2)\n        result = trust_gate(client, \"agent-mid-trust\")\n        assert result.verdict == \"WARN\"\n",
-  "body_hash": "45f4e4ae059597da",
+  "body": "def test_warn_on_medium_trust_without_gold(self) -> None:\n    client = _mock_client()\n    client.trust_score.return_value = TrustScore(score=0.6, tier=\"silver\")\n    client.reputation_score.return_value = ReputationScore(tier=\"silver\", fee_multiplier=1.2)\n    result = trust_gate(client, \"agent-mid-trust\")\n    assert result.verdict == \"WARN\"\n",
+  "body_hash": "35fb771a0c07ae03",
   "body_truncated": false,
   "callers_of": [
     "_mock_client",
@@ -9,13 +9,15 @@
     "trust_gate"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_testtrustgate.py:31.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_testtrustgate.py:33.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "og.source.ass_ade.test_warn_on_medium_trust_without_gold",
-  "imports": [],
+  "id": "og.source.a3_og_features.test_warn_on_medium_trust_without_gold",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_testtrustgate.py:31"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_testtrustgate.py:33"
   },
   "kind": "product_organism",
   "made_of": [],

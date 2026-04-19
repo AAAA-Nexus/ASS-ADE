@@ -1,31 +1,20 @@
 {
-  "body": "    def test_notification_no_response(self, server: MCPServer):\n        req = {\"method\": \"notifications/initialized\", \"params\": {}}\n        resp = server._handle(req)\n        assert resp is None\n",
-  "body_hash": "0438608442cb4658",
+  "body": "def test_notification_no_response(self, server: MCPServer):\n    req = {\"method\": \"notifications/initialized\", \"params\": {}}\n    resp = server._handle(req)\n    assert resp is None\n",
+  "body_hash": "e32587f2410b5fd6",
   "body_truncated": false,
   "callers_of": [
     "_handle"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:116.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_testmcpserver.py:86.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "sy.source.ass_ade.test_notification_no_response",
+  "id": "sy.source.a4_sy_orchestration.test_notification_no_response",
   "imports": [
-    "__future__.annotations",
-    "pathlib.Path",
-    "unittest.mock.MagicMock",
-    "pytest",
-    "ass_ade.agent.loop.AgentLoop",
-    "ass_ade.engine.types.CompletionResponse",
-    "ass_ade.engine.types.Message",
-    "ass_ade.engine.types.ToolCallRequest",
-    "ass_ade.mcp.server.MCPServer",
-    "ass_ade.tools.base.ToolResult",
-    "ass_ade.tools.builtin.EditFileTool",
-    "ass_ade.tools.registry.ToolRegistry"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:116"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_testmcpserver.py:86"
   },
   "kind": "ecosystem_system",
   "made_of": [],

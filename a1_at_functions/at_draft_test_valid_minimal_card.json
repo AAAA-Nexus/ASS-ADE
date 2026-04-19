@@ -1,35 +1,20 @@
 {
-  "body": "    def test_valid_minimal_card(self) -> None:\n        data = {\"name\": \"TestAgent\"}\n        report = validate_agent_card(data)\n        assert report.valid\n        assert report.card is not None\n        assert report.card.name == \"TestAgent\"\n",
-  "body_hash": "b28ba3d6ad259a04",
+  "body": "def test_valid_minimal_card(self) -> None:\n    data = {\"name\": \"TestAgent\"}\n    report = validate_agent_card(data)\n    assert report.valid\n    assert report.card is not None\n    assert report.card.name == \"TestAgent\"\n",
+  "body_hash": "fef7918a99e79986",
   "body_truncated": false,
   "callers_of": [
     "validate_agent_card"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:26.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_valid_minimal_card.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_valid_minimal_card",
+  "id": "at.source.a1_at_functions.test_valid_minimal_card",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "unittest.mock.MagicMock",
-    "unittest.mock.patch",
-    "pytest",
-    "ass_ade.a2a.A2AAgentCard",
-    "ass_ade.a2a.A2AAuthentication",
-    "ass_ade.a2a.A2ASkill",
-    "ass_ade.a2a.ValidationIssue",
-    "ass_ade.a2a.ValidationReport",
-    "ass_ade.a2a.fetch_agent_card",
-    "ass_ade.a2a.local_agent_card",
-    "ass_ade.a2a.negotiate",
-    "ass_ade.a2a.validate_agent_card",
-    "httpx",
-    "httpx"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:26"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_valid_minimal_card.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

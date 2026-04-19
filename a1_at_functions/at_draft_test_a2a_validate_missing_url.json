@@ -1,6 +1,6 @@
 {
-  "body": "    def test_a2a_validate_missing_url(self) -> None:\n        server = MCPServer(\".\")\n        _initialize_server(server)\n        response = server._handle({\n            \"jsonrpc\": \"2.0\",\n            \"id\": 1,\n            \"method\": \"tools/call\",\n            \"params\": {\"name\": \"a2a_validate\", \"arguments\": {\"url\": \"\"}},\n        })\n        assert response is not None\n        assert response[\"error\"][\"code\"] == -32602\n",
-  "body_hash": "40b922b70915e3a8",
+  "body": "def test_a2a_validate_missing_url(self) -> None:\n    server = MCPServer(\".\")\n    _initialize_server(server)\n    response = server._handle({\n        \"jsonrpc\": \"2.0\",\n        \"id\": 1,\n        \"method\": \"tools/call\",\n        \"params\": {\"name\": \"a2a_validate\", \"arguments\": {\"url\": \"\"}},\n    })\n    assert response is not None\n    assert response[\"error\"][\"code\"] == -32602\n",
+  "body_hash": "3e0c176ba4c79de9",
   "body_truncated": false,
   "callers_of": [
     "MCPServer",
@@ -8,22 +8,15 @@
     "_handle"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:121.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testmcpa2avalidate.py:28.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_a2a_validate_missing_url",
+  "id": "at.source.a1_at_functions.test_a2a_validate_missing_url",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "unittest.mock.MagicMock",
-    "unittest.mock.patch",
-    "ass_ade.config.AssAdeConfig",
-    "ass_ade.mcp.server._WORKFLOW_TOOLS",
-    "ass_ade.mcp.server.MCPServer",
-    "httpx"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:121"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testmcpa2avalidate.py:28"
   },
   "kind": "pure_function",
   "made_of": [],

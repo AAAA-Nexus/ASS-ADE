@@ -1,0 +1,33 @@
+{
+  "body": "def lse(self):\n    if self._lse is None:\n        from ass_ade.agent.lse import LSEEngine\n        self._lse = LSEEngine(self._config, self._nexus)\n    return self._lse\n",
+  "body_hash": "8084371166fd4ae1",
+  "body_truncated": false,
+  "callers_of": [
+    "LSEEngine"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_lse.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.lse",
+  "imports": [
+    "__future__.annotations",
+    "ass_ade.agent.lse.LSEEngine"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_lse.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "lse",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for lse"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

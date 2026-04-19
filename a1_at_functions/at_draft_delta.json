@@ -1,16 +1,18 @@
 {
-  "body": "    def delta(self) -> float:\n        return self.improvement\n",
-  "body_hash": "0c92eeeb2a647228",
+  "body": "def delta(self) -> float:\n    return self.improvement\n",
+  "body_hash": "30c198f559fe63c4",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_simulationresult.py:22.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_delta.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.delta",
-  "imports": [],
+  "id": "at.source.a1_at_functions.delta",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_simulationresult.py:22"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_delta.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

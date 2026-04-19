@@ -1,19 +1,21 @@
 {
-  "body": "    def test_quality_regression_alert(self) -> None:\n        b = BAS({})\n        alerts = b.monitor_all({\"score_delta\": -0.5})\n        kinds = {a.kind for a in alerts}\n        assert \"quality_regression\" in kinds\n",
-  "body_hash": "bf612c8a397ac30a",
+  "body": "def test_quality_regression_alert(self) -> None:\n    b = BAS({})\n    alerts = b.monitor_all({\"score_delta\": -0.5})\n    kinds = {a.kind for a in alerts}\n    assert \"quality_regression\" in kinds\n",
+  "body_hash": "dd45a8679f426a8a",
   "body_truncated": false,
   "callers_of": [
     "BAS",
     "monitor_all"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbas.py:38.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_quality_regression_alert.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_quality_regression_alert",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_quality_regression_alert",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbas.py:38"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_quality_regression_alert.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

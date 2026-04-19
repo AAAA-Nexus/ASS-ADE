@@ -1,0 +1,35 @@
+{
+  "body": "def tca(self):\n    if self._tca is None:\n        from ass_ade.agent.tca import TCAEngine\n        cfg = dict(self._config)\n        cfg.setdefault(\"working_dir\", self._working_dir)\n        self._tca = TCAEngine(cfg, self._nexus)\n    return self._tca\n",
+  "body_hash": "291ebe543597c721",
+  "body_truncated": false,
+  "callers_of": [
+    "dict",
+    "setdefault",
+    "TCAEngine"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_tca.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.tca",
+  "imports": [
+    "__future__.annotations",
+    "ass_ade.agent.tca.TCAEngine"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_tca.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "tca",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for tca"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

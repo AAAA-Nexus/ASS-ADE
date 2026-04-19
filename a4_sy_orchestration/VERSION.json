@@ -1,6 +1,648 @@
 {
-  "module_count": 216,
+  "module_count": 218,
   "modules": [
+    {
+      "change_type": "new",
+      "id": "sy.source.a1_at_functions.main",
+      "name": "main",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a2_mo_composites.aegis_mcp_proxy",
+      "name": "aegis_mcp_proxy",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a2_mo_composites.defi_bridge_verify",
+      "name": "defi_bridge_verify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a2_mo_composites.handler",
+      "name": "handler",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a2_mo_composites.test_5xx_raises_server_error",
+      "name": "test_5xx_raises_server_error",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a2_mo_composites.test_bas_subscriber_via_orchestrator",
+      "name": "test_bas_subscriber_via_orchestrator",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a2_mo_composites.test_discovery_protocol_server_error",
+      "name": "test_discovery_protocol_server_error",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a2_mo_composites.test_ecosystem_coordination_happy_path",
+      "name": "test_ecosystem_coordination_happy_path",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a2_mo_composites.test_fail_fast_skips_remaining",
+      "name": "test_fail_fast_skips_remaining",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a2_mo_composites.test_last_cycle_report_none_before_step",
+      "name": "test_last_cycle_report_none_before_step",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a2_mo_composites.test_last_cycle_report_set_after_step",
+      "name": "test_last_cycle_report_set_after_step",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a2_mo_composites.test_loop_accepts_orchestrator_param",
+      "name": "test_loop_accepts_orchestrator_param",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a2_mo_composites.test_mainnet_by_default",
+      "name": "test_mainnet_by_default",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a2_mo_composites.test_orchestrator_error_does_not_block_loop",
+      "name": "test_orchestrator_error_does_not_block_loop",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a2_mo_composites.test_orchestrator_on_step_end_called",
+      "name": "test_orchestrator_on_step_end_called",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a2_mo_composites.test_orchestrator_on_step_start_called",
+      "name": "test_orchestrator_on_step_start_called",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a2_mo_composites.test_register_adds_provider_at_runtime",
+      "name": "test_register_adds_provider_at_runtime",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a2_mo_composites.test_step_without_orchestrator_still_works",
+      "name": "test_step_without_orchestrator_still_works",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a2_mo_composites.test_system_prompt",
+      "name": "test_system_prompt",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a2_mo_composites.testagentlooporchestrator",
+      "name": "TestAgentLoopOrchestrator",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.avg_complexity",
+      "name": "avg_complexity",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.bridgeverify",
+      "name": "BridgeVerify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.build_system_prompt",
+      "name": "build_system_prompt",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.cie",
+      "name": "cie",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.collect_mcp_tools",
+      "name": "collect_mcp_tools",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.delayed_cancel",
+      "name": "delayed_cancel",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.discover",
+      "name": "discover",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.epistemicrouter",
+      "name": "EpistemicRouter",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.epistemicrouteresult",
+      "name": "EpistemicRouteResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.history",
+      "name": "history",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.lora_flywheel",
+      "name": "lora_flywheel",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.mcp_estimate_cost",
+      "name": "mcp_estimate_cost",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.mcp_inspect",
+      "name": "mcp_inspect",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.mcp_invoke",
+      "name": "mcp_invoke",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.mcp_mock_server",
+      "name": "mcp_mock_server",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.mcp_serve",
+      "name": "mcp_serve",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.mcp_tools",
+      "name": "mcp_tools",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.mcpserver",
+      "name": "MCPServer",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.mcptool",
+      "name": "MCPTool",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.mcpzerorouter",
+      "name": "MCPZeroRouter",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.nexusservererror",
+      "name": "NexusServerError",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.register",
+      "name": "register",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.report",
+      "name": "report",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.route",
+      "name": "route",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.run",
+      "name": "run",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.server",
+      "name": "server",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.start_server",
+      "name": "start_server",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.tca",
+      "name": "tca",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_a2a_negotiate_invalid_remote",
+      "name": "test_a2a_negotiate_invalid_remote",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_absolute_localhost_endpoint_raises",
+      "name": "test_absolute_localhost_endpoint_raises",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_absolute_private_ip_endpoint_raises",
+      "name": "test_absolute_private_ip_endpoint_raises",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_agent_loop_system_prompt_uses_dynamic_inventory",
+      "name": "test_agent_loop_system_prompt_uses_dynamic_inventory",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_avg_complexity",
+      "name": "test_avg_complexity",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_avg_complexity_empty",
+      "name": "test_avg_complexity_empty",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_cancellation_context_created_per_request",
+      "name": "test_cancellation_context_created_per_request",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_cancellation_notification_marks_context_cancelled",
+      "name": "test_cancellation_notification_marks_context_cancelled",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_cancellation_returns_error_code",
+      "name": "test_cancellation_returns_error_code",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_concurrent_cancellation_scenario",
+      "name": "test_concurrent_cancellation_scenario",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_contains_working_dir",
+      "name": "test_contains_working_dir",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_context_pack_respects_cancellation_checkpoint",
+      "name": "test_context_pack_respects_cancellation_checkpoint",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_detects_node_project",
+      "name": "test_detects_node_project",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_detects_python_project",
+      "name": "test_detects_python_project",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_history_tracking",
+      "name": "test_history_tracking",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_initialize",
+      "name": "test_initialize",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_initialize_declares_logging_capability",
+      "name": "test_initialize_declares_logging_capability",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_mcp_context_memory_roundtrip",
+      "name": "test_mcp_context_memory_roundtrip",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_mcp_estimate_cost_free_tool",
+      "name": "test_mcp_estimate_cost_free_tool",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_mcp_estimate_cost_paid_tool",
+      "name": "test_mcp_estimate_cost_paid_tool",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_mcp_invoke_dry_run",
+      "name": "test_mcp_invoke_dry_run",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_mcp_invoke_dry_run_json_out",
+      "name": "test_mcp_invoke_dry_run_json_out",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_mcp_invoke_paid_requires_confirm",
+      "name": "test_mcp_invoke_paid_requires_confirm",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_mcp_invoke_redacts_sensitive_response_fields",
+      "name": "test_mcp_invoke_redacts_sensitive_response_fields",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_mcp_map_terrain_tool_halts_for_missing_tool",
+      "name": "test_mcp_map_terrain_tool_halts_for_missing_tool",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_mcp_phase0_recon_tool_requires_sources",
+      "name": "test_mcp_phase0_recon_tool_requires_sources",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_mcp_tools_list_when_allowed",
+      "name": "test_mcp_tools_list_when_allowed",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_mcp_tools_require_remote_opt_in_for_local_profile",
+      "name": "test_mcp_tools_require_remote_opt_in_for_local_profile",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_mock_server_oversized_body_returns_413_with_content_length",
+      "name": "test_mock_server_oversized_body_returns_413_with_content_length",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_notification_no_response",
+      "name": "test_notification_no_response",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_phase0_recon_respects_cancellation_checkpoint",
+      "name": "test_phase0_recon_respects_cancellation_checkpoint",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_ping",
+      "name": "test_ping",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_public_absolute_endpoint_allowed_in_simulate",
+      "name": "test_public_absolute_endpoint_allowed_in_simulate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_read_then_write_passes_all_gates",
+      "name": "test_read_then_write_passes_all_gates",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_relative_endpoint_uses_base_url",
+      "name": "test_relative_endpoint_uses_base_url",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_route_with_nexus_exception_falls_back_local",
+      "name": "test_route_with_nexus_exception_falls_back_local",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_route_with_nexus_recommendation",
+      "name": "test_route_with_nexus_recommendation",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_route_without_nexus",
+      "name": "test_route_without_nexus",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_tools_call_list_directory",
+      "name": "test_tools_call_list_directory",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_tools_call_read_file",
+      "name": "test_tools_call_read_file",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_tools_call_unknown",
+      "name": "test_tools_call_unknown",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_tools_call_write_file",
+      "name": "test_tools_call_write_file",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_tools_list",
+      "name": "test_tools_list",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_tools_list_includes_builtin_and_extended",
+      "name": "test_tools_list_includes_builtin_and_extended",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_trust_gate_local_profile_blocked",
+      "name": "test_trust_gate_local_profile_blocked",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_trust_gate_requires_agent_id",
+      "name": "test_trust_gate_requires_agent_id",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_unknown_method",
+      "name": "test_unknown_method",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.test_write_without_read_blocked_end_to_end",
+      "name": "test_write_without_read_blocked_end_to_end",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.testbuildsystemprompt",
+      "name": "TestBuildSystemPrompt",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.testepistemicrouter",
+      "name": "TestEpistemicRouter",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.testmcpa2anegotiate",
+      "name": "TestMCPA2ANegotiate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.testmcpcancellation",
+      "name": "TestMCPCancellation",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.testmcpgatesequence",
+      "name": "TestMCPGateSequence",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.testmcpprotocol",
+      "name": "TestMCPProtocol",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.testmcpserver",
+      "name": "TestMCPServer",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.testmcptoolendpointssrf",
+      "name": "TestMCPToolEndpointSSRF",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.testmcptoollisting",
+      "name": "TestMCPToolListing",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.testmcptrustgate",
+      "name": "TestMCPTrustGate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.a4_sy_orchestration.vanguardmevrouteresult",
+      "name": "VanguardMevRouteResult",
+      "version": "0.1.0"
+    },
     {
       "change_type": "new",
       "id": "sy.source.ass_ade.add_task",
@@ -9,20 +651,8 @@
     },
     {
       "change_type": "new",
-      "id": "sy.source.ass_ade.aegis_mcp_proxy",
-      "name": "aegis_mcp_proxy",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "sy.source.ass_ade.atlas",
       "name": "atlas",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.avg_complexity",
-      "name": "avg_complexity",
       "version": "0.1.0"
     },
     {
@@ -39,20 +669,8 @@
     },
     {
       "change_type": "new",
-      "id": "sy.source.ass_ade.bridgeverify",
-      "name": "BridgeVerify",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "sy.source.ass_ade.build_handler",
       "name": "build_handler",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.build_system_prompt",
-      "name": "build_system_prompt",
       "version": "0.1.0"
     },
     {
@@ -93,18 +711,6 @@
     },
     {
       "change_type": "new",
-      "id": "sy.source.ass_ade.cie",
-      "name": "cie",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.collect_mcp_tools",
-      "name": "collect_mcp_tools",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "sy.source.ass_ade.collect_tool_status",
       "name": "collect_tool_status",
       "version": "0.1.0"
@@ -129,18 +735,6 @@
     },
     {
       "change_type": "new",
-      "id": "sy.source.ass_ade.defi_bridge_verify",
-      "name": "defi_bridge_verify",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.delayed_cancel",
-      "name": "delayed_cancel",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "sy.source.ass_ade.delete_task",
       "name": "delete_task",
       "version": "0.1.0"
@@ -155,12 +749,6 @@
       "change_type": "new",
       "id": "sy.source.ass_ade.detect_tool",
       "name": "detect_tool",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.discover",
-      "name": "discover",
       "version": "0.1.0"
     },
     {
@@ -183,18 +771,6 @@
     },
     {
       "change_type": "new",
-      "id": "sy.source.ass_ade.epistemicrouter",
-      "name": "EpistemicRouter",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.epistemicrouteresult",
-      "name": "EpistemicRouteResult",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "sy.source.ass_ade.estimate_cost",
       "name": "estimate_cost",
       "version": "0.1.0"
@@ -203,6 +779,12 @@
       "change_type": "new",
       "id": "sy.source.ass_ade.execute",
       "name": "execute",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.fake_run",
+      "name": "fake_run",
       "version": "0.1.0"
     },
     {
@@ -285,18 +867,6 @@
     },
     {
       "change_type": "new",
-      "id": "sy.source.ass_ade.handler",
-      "name": "handler",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.history",
-      "name": "history",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "sy.source.ass_ade.ide",
       "name": "ide",
       "version": "0.1.0"
@@ -327,20 +897,8 @@
     },
     {
       "change_type": "new",
-      "id": "sy.source.ass_ade.list_tools",
-      "name": "list_tools",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "sy.source.ass_ade.log_message",
       "name": "log_message",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.lora_flywheel",
-      "name": "lora_flywheel",
       "version": "0.1.0"
     },
     {
@@ -351,74 +909,8 @@
     },
     {
       "change_type": "new",
-      "id": "sy.source.ass_ade.main",
-      "name": "main",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.mcp_estimate_cost",
-      "name": "mcp_estimate_cost",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.mcp_inspect",
-      "name": "mcp_inspect",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.mcp_invoke",
-      "name": "mcp_invoke",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.mcp_mock_server",
-      "name": "mcp_mock_server",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.mcp_serve",
-      "name": "mcp_serve",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.mcp_tools",
-      "name": "mcp_tools",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.mcpserver",
-      "name": "MCPServer",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.mcptool",
-      "name": "MCPTool",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.mcpzerorouter",
-      "name": "MCPZeroRouter",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "sy.source.ass_ade.name",
       "name": "name",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.nexusservererror",
-      "name": "NexusServerError",
       "version": "0.1.0"
     },
     {
@@ -459,32 +951,8 @@
     },
     {
       "change_type": "new",
-      "id": "sy.source.ass_ade.register",
-      "name": "register",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.report",
-      "name": "report",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "sy.source.ass_ade.resolve_tool",
       "name": "resolve_tool",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.route",
-      "name": "route",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.run",
-      "name": "run",
       "version": "0.1.0"
     },
     {
@@ -497,12 +965,6 @@
       "change_type": "new",
       "id": "sy.source.ass_ade.sam",
       "name": "sam",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.server",
-      "name": "server",
       "version": "0.1.0"
     },
     {
@@ -521,12 +983,6 @@
       "change_type": "new",
       "id": "sy.source.ass_ade.sort_tasks_by_priority",
       "name": "sort_tasks_by_priority",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.start_server",
-      "name": "start_server",
       "version": "0.1.0"
     },
     {
@@ -561,38 +1017,8 @@
     },
     {
       "change_type": "new",
-      "id": "sy.source.ass_ade.tca",
-      "name": "tca",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "sy.source.ass_ade.tdmi",
       "name": "tdmi",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_5xx_raises_server_error",
-      "name": "test_5xx_raises_server_error",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_a2a_negotiate_invalid_remote",
-      "name": "test_a2a_negotiate_invalid_remote",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_absolute_localhost_endpoint_raises",
-      "name": "test_absolute_localhost_endpoint_raises",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_absolute_private_ip_endpoint_raises",
-      "name": "test_absolute_private_ip_endpoint_raises",
       "version": "0.1.0"
     },
     {
@@ -603,26 +1029,8 @@
     },
     {
       "change_type": "new",
-      "id": "sy.source.ass_ade.test_agent_loop_system_prompt_uses_dynamic_inventory",
-      "name": "test_agent_loop_system_prompt_uses_dynamic_inventory",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "sy.source.ass_ade.test_apply_includes_diff",
       "name": "test_apply_includes_diff",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_avg_complexity",
-      "name": "test_avg_complexity",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_avg_complexity_empty",
-      "name": "test_avg_complexity_empty",
       "version": "0.1.0"
     },
     {
@@ -645,12 +1053,6 @@
     },
     {
       "change_type": "new",
-      "id": "sy.source.ass_ade.test_cancellation_context_created_per_request",
-      "name": "test_cancellation_context_created_per_request",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "sy.source.ass_ade.test_cancellation_context_defaults_to_not_cancelled",
       "name": "test_cancellation_context_defaults_to_not_cancelled",
       "version": "0.1.0"
@@ -663,68 +1065,14 @@
     },
     {
       "change_type": "new",
-      "id": "sy.source.ass_ade.test_cancellation_notification_marks_context_cancelled",
-      "name": "test_cancellation_notification_marks_context_cancelled",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_cancellation_returns_error_code",
-      "name": "test_cancellation_returns_error_code",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "sy.source.ass_ade.test_cancelled_request_returns_error",
       "name": "test_cancelled_request_returns_error",
       "version": "0.1.0"
     },
     {
       "change_type": "new",
-      "id": "sy.source.ass_ade.test_concurrent_cancellation_scenario",
-      "name": "test_concurrent_cancellation_scenario",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_contains_working_dir",
-      "name": "test_contains_working_dir",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_context_pack_respects_cancellation_checkpoint",
-      "name": "test_context_pack_respects_cancellation_checkpoint",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_detects_node_project",
-      "name": "test_detects_node_project",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_detects_python_project",
-      "name": "test_detects_python_project",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_discovery_protocol_server_error",
-      "name": "test_discovery_protocol_server_error",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_ecosystem_coordination_happy_path",
-      "name": "test_ecosystem_coordination_happy_path",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_fail_fast_skips_remaining",
-      "name": "test_fail_fast_skips_remaining",
+      "id": "sy.source.ass_ade.test_detect_tool_uses_resolved_executable",
+      "name": "test_detect_tool_uses_resolved_executable",
       "version": "0.1.0"
     },
     {
@@ -735,50 +1083,14 @@
     },
     {
       "change_type": "new",
-      "id": "sy.source.ass_ade.test_history_tracking",
-      "name": "test_history_tracking",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_initialize",
-      "name": "test_initialize",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_initialize_declares_logging_capability",
-      "name": "test_initialize_declares_logging_capability",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "sy.source.ass_ade.test_invoke_tool_forwards_api_key",
       "name": "test_invoke_tool_forwards_api_key",
       "version": "0.1.0"
     },
     {
       "change_type": "new",
-      "id": "sy.source.ass_ade.test_last_cycle_report_none_before_step",
-      "name": "test_last_cycle_report_none_before_step",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_last_cycle_report_set_after_step",
-      "name": "test_last_cycle_report_set_after_step",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_loop_accepts_orchestrator_param",
-      "name": "test_loop_accepts_orchestrator_param",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_mainnet_by_default",
-      "name": "test_mainnet_by_default",
+      "id": "sy.source.ass_ade.test_llm_router_sends_dynamic_capability_prompt",
+      "name": "test_llm_router_sends_dynamic_capability_prompt",
       "version": "0.1.0"
     },
     {
@@ -795,78 +1107,6 @@
     },
     {
       "change_type": "new",
-      "id": "sy.source.ass_ade.test_mcp_context_memory_roundtrip",
-      "name": "test_mcp_context_memory_roundtrip",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_mcp_estimate_cost_free_tool",
-      "name": "test_mcp_estimate_cost_free_tool",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_mcp_estimate_cost_paid_tool",
-      "name": "test_mcp_estimate_cost_paid_tool",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_mcp_invoke_dry_run",
-      "name": "test_mcp_invoke_dry_run",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_mcp_invoke_dry_run_json_out",
-      "name": "test_mcp_invoke_dry_run_json_out",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_mcp_invoke_paid_requires_confirm",
-      "name": "test_mcp_invoke_paid_requires_confirm",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_mcp_invoke_redacts_sensitive_response_fields",
-      "name": "test_mcp_invoke_redacts_sensitive_response_fields",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_mcp_map_terrain_tool_halts_for_missing_tool",
-      "name": "test_mcp_map_terrain_tool_halts_for_missing_tool",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_mcp_phase0_recon_tool_requires_sources",
-      "name": "test_mcp_phase0_recon_tool_requires_sources",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_mcp_tools_list_when_allowed",
-      "name": "test_mcp_tools_list_when_allowed",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_mcp_tools_require_remote_opt_in_for_local_profile",
-      "name": "test_mcp_tools_require_remote_opt_in_for_local_profile",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_mock_server_oversized_body_returns_413_with_content_length",
-      "name": "test_mock_server_oversized_body_returns_413_with_content_length",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "sy.source.ass_ade.test_ncb_check_skipped_for_non_write_tools",
       "name": "test_ncb_check_skipped_for_non_write_tools",
       "version": "0.1.0"
@@ -875,12 +1115,6 @@
       "change_type": "new",
       "id": "sy.source.ass_ade.test_non_python_skipped_by_cie",
       "name": "test_non_python_skipped_by_cie",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_notification_no_response",
-      "name": "test_notification_no_response",
       "version": "0.1.0"
     },
     {
@@ -897,38 +1131,8 @@
     },
     {
       "change_type": "new",
-      "id": "sy.source.ass_ade.test_orchestrator_error_does_not_block_loop",
-      "name": "test_orchestrator_error_does_not_block_loop",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_orchestrator_on_step_end_called",
-      "name": "test_orchestrator_on_step_end_called",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_orchestrator_on_step_start_called",
-      "name": "test_orchestrator_on_step_start_called",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "sy.source.ass_ade.test_owasp_eval_injection_blocked",
       "name": "test_owasp_eval_injection_blocked",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_phase0_recon_respects_cancellation_checkpoint",
-      "name": "test_phase0_recon_respects_cancellation_checkpoint",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_ping",
-      "name": "test_ping",
       "version": "0.1.0"
     },
     {
@@ -941,12 +1145,6 @@
       "change_type": "new",
       "id": "sy.source.ass_ade.test_preview_returns_diff",
       "name": "test_preview_returns_diff",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_public_absolute_endpoint_allowed_in_simulate",
-      "name": "test_public_absolute_endpoint_allowed_in_simulate",
       "version": "0.1.0"
     },
     {
@@ -969,44 +1167,8 @@
     },
     {
       "change_type": "new",
-      "id": "sy.source.ass_ade.test_read_then_write_passes_all_gates",
-      "name": "test_read_then_write_passes_all_gates",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_register_adds_provider_at_runtime",
-      "name": "test_register_adds_provider_at_runtime",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "sy.source.ass_ade.test_rejected_write_captures_rejection",
       "name": "test_rejected_write_captures_rejection",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_relative_endpoint_uses_base_url",
-      "name": "test_relative_endpoint_uses_base_url",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_route_with_nexus_exception_falls_back_local",
-      "name": "test_route_with_nexus_exception_falls_back_local",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_route_with_nexus_recommendation",
-      "name": "test_route_with_nexus_recommendation",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_route_without_nexus",
-      "name": "test_route_without_nexus",
       "version": "0.1.0"
     },
     {
@@ -1023,62 +1185,14 @@
     },
     {
       "change_type": "new",
-      "id": "sy.source.ass_ade.test_step_without_orchestrator_still_works",
-      "name": "test_step_without_orchestrator_still_works",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "sy.source.ass_ade.test_syntax_error_blocked_by_cie",
       "name": "test_syntax_error_blocked_by_cie",
       "version": "0.1.0"
     },
     {
       "change_type": "new",
-      "id": "sy.source.ass_ade.test_system_prompt",
-      "name": "test_system_prompt",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "sy.source.ass_ade.test_tool_call_events",
       "name": "test_tool_call_events",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_tools",
-      "name": "test_tools",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_tools_call_list_directory",
-      "name": "test_tools_call_list_directory",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_tools_call_read_file",
-      "name": "test_tools_call_read_file",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_tools_call_unknown",
-      "name": "test_tools_call_unknown",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_tools_call_write_file",
-      "name": "test_tools_call_write_file",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_tools_list",
-      "name": "test_tools_list",
       "version": "0.1.0"
     },
     {
@@ -1091,30 +1205,6 @@
       "change_type": "new",
       "id": "sy.source.ass_ade.test_tools_list_includes_annotations_for_builtin_tools",
       "name": "test_tools_list_includes_annotations_for_builtin_tools",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_tools_list_includes_builtin_and_extended",
-      "name": "test_tools_list_includes_builtin_and_extended",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_trust_gate_local_profile_blocked",
-      "name": "test_trust_gate_local_profile_blocked",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_trust_gate_requires_agent_id",
-      "name": "test_trust_gate_requires_agent_id",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.test_unknown_method",
-      "name": "test_unknown_method",
       "version": "0.1.0"
     },
     {
@@ -1143,12 +1233,6 @@
     },
     {
       "change_type": "new",
-      "id": "sy.source.ass_ade.test_write_without_read_blocked_end_to_end",
-      "name": "test_write_without_read_blocked_end_to_end",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "sy.source.ass_ade.test_write_without_read_is_allowed_in_warn_mode",
       "name": "test_write_without_read_is_allowed_in_warn_mode",
       "version": "0.1.0"
@@ -1157,18 +1241,6 @@
       "change_type": "new",
       "id": "sy.source.ass_ade.test_write_without_read_is_blocked_in_block_mode",
       "name": "test_write_without_read_is_blocked_in_block_mode",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.testagentlooporchestrator",
-      "name": "TestAgentLoopOrchestrator",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.testbuildsystemprompt",
-      "name": "TestBuildSystemPrompt",
       "version": "0.1.0"
     },
     {
@@ -1191,62 +1263,8 @@
     },
     {
       "change_type": "new",
-      "id": "sy.source.ass_ade.testepistemicrouter",
-      "name": "TestEpistemicRouter",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
       "id": "sy.source.ass_ade.testloracaptureonwrite",
       "name": "TestLoRACaptureOnWrite",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.testmcpa2anegotiate",
-      "name": "TestMCPA2ANegotiate",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.testmcpcancellation",
-      "name": "TestMCPCancellation",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.testmcpgatesequence",
-      "name": "TestMCPGateSequence",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.testmcpprotocol",
-      "name": "TestMCPProtocol",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.testmcpserver",
-      "name": "TestMCPServer",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.testmcptoolendpointssrf",
-      "name": "TestMCPToolEndpointSSRF",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.testmcptoollisting",
-      "name": "TestMCPToolListing",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.testmcptrustgate",
-      "name": "TestMCPTrustGate",
       "version": "0.1.0"
     },
     {
@@ -1283,12 +1301,6 @@
       "change_type": "new",
       "id": "sy.source.ass_ade.update_task_status",
       "name": "update_task_status",
-      "version": "0.1.0"
-    },
-    {
-      "change_type": "new",
-      "id": "sy.source.ass_ade.vanguardmevrouteresult",
-      "name": "VanguardMevRouteResult",
       "version": "0.1.0"
     },
     {

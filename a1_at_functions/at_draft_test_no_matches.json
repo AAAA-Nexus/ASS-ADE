@@ -1,6 +1,6 @@
 {
-  "body": "    def test_no_matches(self, workspace: Path):\n        tool = GrepSearchTool(str(workspace))\n        r = tool.execute(pattern=\"ZZZZZ_NOTHING\")\n        assert \"No matches\" in r.output\n",
-  "body_hash": "16f1acd60dea25c9",
+  "body": "def test_no_matches(self, workspace: Path):\n    tool = GrepSearchTool(str(workspace))\n    r = tool.execute(pattern=\"ZZZZZ_NOTHING\")\n    assert \"No matches\" in r.output\n",
+  "body_hash": "18dc91281150cc5b",
   "body_truncated": false,
   "callers_of": [
     "GrepSearchTool",
@@ -8,13 +8,15 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testgrepsearch.py:12.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testgrepsearch.py:14.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_no_matches",
-  "imports": [],
+  "id": "at.source.a2_mo_composites.test_no_matches",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testgrepsearch.py:12"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testgrepsearch.py:14"
   },
   "kind": "pure_function",
   "made_of": [],

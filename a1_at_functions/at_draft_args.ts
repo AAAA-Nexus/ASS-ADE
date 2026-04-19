@@ -1,5 +1,5 @@
-// Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/bin/ass-ade.js:5
-// Component id: at.source.ass_ade.args  version: 0.1.0
+// Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_args.ts:5
+// Component id: at.source.a1_at_functions.args  version: 0.1.0
 
 const { execFileSync } = require('child_process');
 

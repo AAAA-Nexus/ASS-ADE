@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/context_memory.py:171
-# Component id: mo.source.ass_ade.store_vector_memory
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_store_vector_memory.py:7
+# Component id: mo.source.a2_mo_composites.store_vector_memory
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def store_vector_memory(

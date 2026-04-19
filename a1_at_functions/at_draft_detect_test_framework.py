@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_detect_test_framework.py:5
-# Component id: at.source.ass_ade.detect_test_framework
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_detect_test_framework.py:7
+# Component id: at.source.a1_at_functions.detect_test_framework
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def detect_test_framework(root: Path) -> str | None:

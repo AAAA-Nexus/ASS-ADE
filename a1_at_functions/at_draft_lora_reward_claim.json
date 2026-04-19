@@ -1,0 +1,33 @@
+{
+  "body": "def lora_reward_claim(\n    self,\n    agent_id: str | None = None,\n    *,\n    contribution_id: str | None = None,\n    **kwargs: Any,\n) -> dict[str, Any]:\n    \"\"\"POST /v1/lora/reward/claim \u2014 claim USDC payout for accepted samples.\"\"\"\n    payload: dict[str, Any] = {}\n    if agent_id is not None:\n        payload[\"agent_id\"] = agent_id\n    if contribution_id is not None:\n        payload[\"contribution_id\"] = contribution_id\n    payload.update(kwargs)\n    return self._post_raw(\"/v1/lora/reward/claim\", payload)\n",
+  "body_hash": "ba884038405d6f78",
+  "body_truncated": false,
+  "callers_of": [
+    "update",
+    "_post_raw"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_lora_reward_claim.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.lora_reward_claim",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_lora_reward_claim.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "lora_reward_claim",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for lora_reward_claim"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

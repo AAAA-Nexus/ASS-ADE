@@ -1,0 +1,32 @@
+{
+  "body": "def post_with_x402(self, path: str, body: dict | None = None) -> dict:\n    \"\"\"POST handling x402 Payment Required gracefully.\n\n    Returns a dict with payment details instead of raising when a 402 is received.\n    Includes both backward-compatible keys and a typed 'challenge' PaymentChallenge object.\n    \"\"\"\n    return self._post_with_x402(path, body)\n",
+  "body_hash": "b0d41344aff186b2",
+  "body_truncated": false,
+  "callers_of": [
+    "_post_with_x402"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_post_with_x402.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.post_with_x402",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_post_with_x402.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "post_with_x402",
+  "product_categories": [
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for post_with_x402"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

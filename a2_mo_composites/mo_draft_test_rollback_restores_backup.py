@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli.py:237
-# Component id: mo.source.ass_ade.test_rollback_restores_backup
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_test_rollback_restores_backup.py:7
+# Component id: mo.source.a2_mo_composites.test_rollback_restores_backup
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_rollback_restores_backup(tmp_path: Path) -> None:

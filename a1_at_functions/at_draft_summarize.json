@@ -1,6 +1,6 @@
 {
-  "body": "    def summarize(self) -> str:\n        if not self.user_profile and not self.project_contexts:\n            return \"No memory yet. Start chatting to build it up.\"\n        lines = [\"**Atomadic memory**\\n\"]\n        if self.user_profile:\n            lines.append(\"**You:**\")\n            tone = self.user_profile.get(\"dominant_tone\", \"unknown\")\n            lines.append(f\"  - Tone: {tone}\")\n            fav = self.user_profile.get(\"favorite_command\")\n            if fav:\n                lines.append(f\"  - Favorite command: `{fav}`\")\n            count = self.user_profile.get(\"session_interactions\", 0)\n            lines.append(f\"  - Total interactions: {count}\")\n        if self.project_contexts:\n            lines.append(\"\\n**Projects:**\")\n            for path, ctx in list(self.project_contexts.items())[-5:]:\n                name = Path(path).name\n                last = ctx.get(\"last_seen\", \"\")[:10]\n                n_cmds = len(ctx.get(\"commands_run\", []))\n                lines.append(f\"  - `{name}` \u2014 last seen {last}, {n_cmds} commands run\")\n        return \"\\n\".join(lines)\n",
-  "body_hash": "f1030b3fe6b832a5",
+  "body": "def summarize(self) -> str:\n    if not self.user_profile and not self.project_contexts:\n        return \"No memory yet. Start chatting to build it up.\"\n    lines = [\"**Atomadic memory**\\n\"]\n    if self.user_profile:\n        lines.append(\"**You:**\")\n        tone = self.user_profile.get(\"dominant_tone\", \"unknown\")\n        lines.append(f\"  - Tone: {tone}\")\n        fav = self.user_profile.get(\"favorite_command\")\n        if fav:\n            lines.append(f\"  - Favorite command: `{fav}`\")\n        count = self.user_profile.get(\"session_interactions\", 0)\n        lines.append(f\"  - Total interactions: {count}\")\n    if self.project_contexts:\n        lines.append(\"\\n**Projects:**\")\n        for path, ctx in list(self.project_contexts.items())[-5:]:\n            name = Path(path).name\n            last = ctx.get(\"last_seen\", \"\")[:10]\n            n_cmds = len(ctx.get(\"commands_run\", []))\n            lines.append(f\"  - `{name}` \u2014 last seen {last}, {n_cmds} commands run\")\n    return \"\\n\".join(lines)\n",
+  "body_hash": "6f371914aebc838c",
   "body_truncated": false,
   "callers_of": [
     "join",
@@ -12,38 +12,15 @@
     "Path"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/interpreter.py:315.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_summarize.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.summarize",
+  "id": "at.source.a1_at_functions.summarize",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "os",
-    "re",
-    "subprocess",
-    "sys",
-    "dataclasses.dataclass",
-    "dataclasses.field",
-    "datetime.datetime",
-    "datetime.timezone",
-    "pathlib.Path",
-    "typing.Any",
-    "httpx",
-    "ass_ade.agent.capabilities.build_atomadic_intent_prompt",
-    "ass_ade.agent.capabilities.command_path_exists",
-    "ass_ade.agent.capabilities.render_atomadic_help",
-    "dotenv.load_dotenv",
-    "time",
-    "shutil",
-    "shutil",
-    "importlib",
-    "sys",
-    "rich.console.Console",
-    "rich.markdown.Markdown"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/interpreter.py:315"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_summarize.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

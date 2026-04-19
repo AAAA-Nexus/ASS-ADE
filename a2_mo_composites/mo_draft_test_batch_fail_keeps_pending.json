@@ -1,6 +1,6 @@
 {
-  "body": "    def test_batch_fail_keeps_pending(self, tmp_path):\n        nexus = MagicMock()\n        nexus.lora_contribute.side_effect = RuntimeError(\"network error\")\n        nexus.lora_capture_fix.side_effect = RuntimeError(\"also broken\")\n        from ass_ade.agent.lora_flywheel import LoRAFlywheel\n        cfg = {\n            \"lora_flywheel\": {\n                \"pending_file\": str(tmp_path / \"pending.jsonl\"),\n                \"contributions_file\": str(tmp_path / \"contributions.jsonl\"),\n                \"batch_interval\": 50,\n                \"min_confidence\": 0.5,\n            }\n        }\n        fly = LoRAFlywheel(cfg, nexus=nexus, session_id=\"s1\")\n        fly.capture_fix(\"x\", \"y\")\n        result = fly.contribute_batch()\n        assert result.submitted == 0\n        assert result.error is not None\n        assert len(fly._pending) == 1  # still there\n",
-  "body_hash": "fc2ae82cebfdc5ce",
+  "body": "def test_batch_fail_keeps_pending(self, tmp_path):\n    nexus = MagicMock()\n    nexus.lora_contribute.side_effect = RuntimeError(\"network error\")\n    nexus.lora_capture_fix.side_effect = RuntimeError(\"also broken\")\n    from ass_ade.agent.lora_flywheel import LoRAFlywheel\n    cfg = {\n        \"lora_flywheel\": {\n            \"pending_file\": str(tmp_path / \"pending.jsonl\"),\n            \"contributions_file\": str(tmp_path / \"contributions.jsonl\"),\n            \"batch_interval\": 50,\n            \"min_confidence\": 0.5,\n        }\n    }\n    fly = LoRAFlywheel(cfg, nexus=nexus, session_id=\"s1\")\n    fly.capture_fix(\"x\", \"y\")\n    result = fly.contribute_batch()\n    assert result.submitted == 0\n    assert result.error is not None\n    assert len(fly._pending) == 1  # still there\n",
+  "body_hash": "1dc51f3aee489fb9",
   "body_truncated": false,
   "callers_of": [
     "MagicMock",
@@ -12,7 +12,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:496.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase_engines.py:496.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_batch_fail_keeps_pending",
@@ -67,12 +67,12 @@
     "ass_ade.agent.orchestrator.CycleReport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:496"
+    "source": "C:/!ass-ade/tests/test_phase_engines.py:496"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.capture_fix",
-    "at.source.ass_ade.contribute_batch"
+    "at.source.a1_at_functions.capture_fix",
+    "at.source.a1_at_functions.contribute_batch"
   ],
   "name": "test_batch_fail_keeps_pending",
   "product_categories": [

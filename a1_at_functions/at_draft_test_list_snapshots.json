@@ -1,6 +1,6 @@
 {
-  "body": "    def test_list_snapshots(self, history: FileHistory):\n        history.record(\"hello.py\", \"v1\")\n        history.record(\"hello.py\", \"v2\")\n\n        snaps = history.list_snapshots(\"hello.py\")\n        assert len(snaps) == 2\n        assert snaps[0].content == \"v1\"\n        assert snaps[1].content == \"v2\"\n",
-  "body_hash": "313528273d5ad6e7",
+  "body": "def test_list_snapshots(self, history: FileHistory):\n    history.record(\"hello.py\", \"v1\")\n    history.record(\"hello.py\", \"v2\")\n\n    snaps = history.list_snapshots(\"hello.py\")\n    assert len(snaps) == 2\n    assert snaps[0].content == \"v1\"\n    assert snaps[1].content == \"v2\"\n",
+  "body_hash": "dbc8300aef73355e",
   "body_truncated": false,
   "callers_of": [
     "record",
@@ -8,13 +8,15 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testfilehistory.py:49.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_list_snapshots.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_list_snapshots",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_list_snapshots",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testfilehistory.py:49"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_list_snapshots.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

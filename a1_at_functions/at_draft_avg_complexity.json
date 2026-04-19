@@ -1,26 +1,21 @@
 {
-  "body": "    def avg_complexity(self) -> float:\n        \"\"\"Average complexity across all routed messages.\"\"\"\n        if not self._history:\n            return 0.0\n        return sum(d.complexity for d in self._history) / len(self._history)\n",
-  "body_hash": "bb67daa942629efb",
+  "body": "def avg_complexity(self) -> float:\n    \"\"\"Average complexity across all routed messages.\"\"\"\n    if not self._history:\n        return 0.0\n    return sum(d.complexity for d in self._history) / len(self._history)\n",
+  "body_hash": "380c308fb32ba5d4",
   "body_truncated": false,
   "callers_of": [
     "sum",
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/routing.py:221.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_avg_complexity.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.avg_complexity",
+  "id": "at.source.a1_at_functions.avg_complexity",
   "imports": [
-    "__future__.annotations",
-    "re",
-    "collections.abc.Mapping",
-    "dataclasses.dataclass",
-    "enum.Enum",
-    "typing.Any"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/routing.py:221"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_avg_complexity.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

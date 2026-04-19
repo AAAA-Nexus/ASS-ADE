@@ -1,0 +1,32 @@
+{
+  "body": "def defi_contract_audit(self, contract_address: str, source_code: str | None = None, **kwargs: Any) -> SmartContractAudit:\n    \"\"\"/v1/defi/contract-audit \u2014 30-pattern smart contract audit cert (CVR-100). $0.15/audit\"\"\"\n    return self._post_model(\"/v1/defi/contract-audit\", SmartContractAudit, {\n        \"contract_address\": contract_address, \"source_code\": source_code, **kwargs,\n    })\n",
+  "body_hash": "4194b1569d015784",
+  "body_truncated": false,
+  "callers_of": [
+    "_post_model"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_defi_contract_audit.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.defi_contract_audit",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_defi_contract_audit.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "defi_contract_audit",
+  "product_categories": [
+    "SRG"
+  ],
+  "provides": [
+    "rebuild candidate for defi_contract_audit"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

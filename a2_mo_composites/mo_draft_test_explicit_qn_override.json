@@ -1,6 +1,6 @@
 {
-  "body": "    def test_explicit_qN_override(self) -> None:\n        w = WisdomEngine({})\n        report = w.run_audit({\"q1\": True, \"q2\": False, \"q3\": True})\n        # q1 and q3 explicitly True, q2 False\n        assert report.passed >= 2\n        found_q2_fail = any(f[\"id\"] == 2 for f in report.failures)\n        assert found_q2_fail\n",
-  "body_hash": "6d182d7cb9b5292e",
+  "body": "def test_explicit_qN_override(self) -> None:\n    w = WisdomEngine({})\n    report = w.run_audit({\"q1\": True, \"q2\": False, \"q3\": True})\n    # q1 and q3 explicitly True, q2 False\n    assert report.passed >= 2\n    found_q2_fail = any(f[\"id\"] == 2 for f in report.failures)\n    assert found_q2_fail\n",
+  "body_hash": "e1716f614267d8fd",
   "body_truncated": false,
   "callers_of": [
     "WisdomEngine",
@@ -8,13 +8,15 @@
     "any"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwisdomengine.py:34.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testwisdomengine.py:36.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.test_explicit_qn_override",
-  "imports": [],
+  "id": "mo.source.a2_mo_composites.test_explicit_qn_override",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwisdomengine.py:34"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testwisdomengine.py:36"
   },
   "kind": "engine_molecule",
   "made_of": [],

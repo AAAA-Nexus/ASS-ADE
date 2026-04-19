@@ -1,19 +1,21 @@
 {
-  "body": "    def test_too_long_raises(self) -> None:\n        with pytest.raises(ValueError, match=\"exceeds 256\"):\n            validate_session_id(\"x\" * 257)\n",
-  "body_hash": "14df869e2994d34e",
+  "body": "def test_too_long_raises(self) -> None:\n    with pytest.raises(ValueError, match=\"exceeds 256\"):\n        validate_session_id(\"x\" * 257)\n",
+  "body_hash": "8d49622c735e5c59",
   "body_truncated": false,
   "callers_of": [
     "raises",
     "validate_session_id"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidatesessionid.py:13.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testvalidatesessionid.py:15.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_too_long_raises",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_too_long_raises",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidatesessionid.py:13"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testvalidatesessionid.py:15"
   },
   "kind": "pure_function",
   "made_of": [],

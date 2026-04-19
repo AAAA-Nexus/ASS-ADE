@@ -29,13 +29,14 @@
     "parameters"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_train.py:5.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_train.py:7.",
   "exceptions_raised": [
     "RuntimeError"
   ],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.train",
+  "id": "at.source.a1_at_functions.train",
   "imports": [
+    "__future__.annotations",
     "torch",
     "datasets.Dataset",
     "peft.LoraConfig",
@@ -48,7 +49,7 @@
     "transformers.TrainingArguments"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_train.py:5"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_train.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

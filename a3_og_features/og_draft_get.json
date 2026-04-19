@@ -1,18 +1,20 @@
 {
-  "body": "    def get(self, name: str) -> Tool | None:\n        return self._tools.get(name)\n",
-  "body_hash": "a94724ee01f9e633",
+  "body": "def get(self, name: str) -> Tool | None:\n    return self._tools.get(name)\n",
+  "body_hash": "93410c6f7ce2c8e6",
   "body_truncated": false,
   "callers_of": [
     "get"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_toolregistry.py:14.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_toolregistry.py:16.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "og.source.ass_ade.get",
-  "imports": [],
+  "id": "og.source.a3_og_features.get",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_toolregistry.py:14"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_toolregistry.py:16"
   },
   "kind": "product_organism",
   "made_of": [],

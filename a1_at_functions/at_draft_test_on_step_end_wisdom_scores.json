@@ -1,0 +1,34 @@
+{
+  "body": "def test_on_step_end_wisdom_scores(self) -> None:\n    o = EngineOrchestrator({})\n    o.on_step_start(\"task\")\n    report = o.on_step_end(\"response\", {\n        \"recon_done\": True,\n        \"atlas_used\": True,\n        \"lifr_queried\": True,\n        \"memory_consulted\": True,\n        \"budget_ok\": True,\n        \"tool_calls\": [\"read_file\"],\n    })\n    assert report.wisdom_score > 0.0\n    assert report.wisdom_passed > 0\n",
+  "body_hash": "3f3e36e0426ab376",
+  "body_truncated": false,
+  "callers_of": [
+    "EngineOrchestrator",
+    "on_step_start",
+    "on_step_end"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_on_step_end_wisdom_scores.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.test_on_step_end_wisdom_scores",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_on_step_end_wisdom_scores.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_on_step_end_wisdom_scores",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_on_step_end_wisdom_scores"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

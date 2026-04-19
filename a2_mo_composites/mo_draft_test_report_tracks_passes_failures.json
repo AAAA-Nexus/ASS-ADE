@@ -1,6 +1,6 @@
 {
-  "body": "    def test_report_tracks_passes_failures(self):\n        from ass_ade.agent.cie import CIEPipeline\n        cie = CIEPipeline({\"cie\": {\"enable_lint\": False}})\n        cie.run(\"x = 1\\n\", \"python\")\n        cie.run(\"def bad(:\\n    pass\\n\", \"python\")\n        rep = cie.report()\n        assert rep[\"passes\"] >= 1\n        assert rep[\"failures\"] >= 1\n        assert 0.0 <= rep[\"pass_rate\"] <= 1.0\n",
-  "body_hash": "79a8c6ecdccf0841",
+  "body": "def test_report_tracks_passes_failures(self):\n    from ass_ade.agent.cie import CIEPipeline\n    cie = CIEPipeline({\"cie\": {\"enable_lint\": False}})\n    cie.run(\"x = 1\\n\", \"python\")\n    cie.run(\"def bad(:\\n    pass\\n\", \"python\")\n    rep = cie.report()\n    assert rep[\"passes\"] >= 1\n    assert rep[\"failures\"] >= 1\n    assert 0.0 <= rep[\"pass_rate\"] <= 1.0\n",
+  "body_hash": "f800aa48650beb04",
   "body_truncated": false,
   "callers_of": [
     "CIEPipeline",
@@ -8,7 +8,7 @@
     "report"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:384.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase_engines.py:384.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_report_tracks_passes_failures",
@@ -63,7 +63,7 @@
     "ass_ade.agent.orchestrator.CycleReport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:384"
+    "source": "C:/!ass-ade/tests/test_phase_engines.py:384"
   },
   "kind": "engine_molecule",
   "made_of": [],

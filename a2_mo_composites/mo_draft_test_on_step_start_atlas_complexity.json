@@ -1,19 +1,21 @@
 {
-  "body": "    def test_on_step_start_atlas_complexity(self) -> None:\n        o = EngineOrchestrator({})\n        result = o.on_step_start(\"a\" * 2000)  # long = high complexity\n        assert result[\"atlas_complexity\"] > 1.0\n",
-  "body_hash": "113b992955c22df8",
+  "body": "def test_on_step_start_atlas_complexity(self) -> None:\n    o = EngineOrchestrator({})\n    result = o.on_step_start(\"a\" * 2000)  # long = high complexity\n    assert result[\"atlas_complexity\"] > 1.0\n",
+  "body_hash": "a7781aa1f6055ddc",
   "body_truncated": false,
   "callers_of": [
     "EngineOrchestrator",
     "on_step_start"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testengineorchestrator.py:19.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testengineorchestrator.py:21.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.test_on_step_start_atlas_complexity",
-  "imports": [],
+  "id": "mo.source.a2_mo_composites.test_on_step_start_atlas_complexity",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testengineorchestrator.py:19"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testengineorchestrator.py:21"
   },
   "kind": "engine_molecule",
   "made_of": [],

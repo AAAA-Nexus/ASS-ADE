@@ -10,19 +10,20 @@
     "_first_sentence"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_collect_local_tools.py:5.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_collect_local_tools.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.collect_local_tools",
+  "id": "at.source.a1_at_functions.collect_local_tools",
   "imports": [
+    "__future__.annotations",
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_collect_local_tools.py:5"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_collect_local_tools.py:7"
   },
   "kind": "pure_function",
   "made_of": [
-    "qk.source.ass_ade.schemas"
+    "qk.source.a0_qk_constants.schemas"
   ],
   "name": "collect_local_tools",
   "product_categories": [

@@ -12,11 +12,12 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwisdompersistence.py:5.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testwisdompersistence.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.testwisdompersistence",
+  "id": "mo.source.a2_mo_composites.testwisdompersistence",
   "imports": [
+    "__future__.annotations",
     "ass_ade.agent.wisdom.WisdomEngine",
     "ass_ade.agent.wisdom.WisdomEngine",
     "ass_ade.agent.lora_flywheel.LoRAFlywheel",
@@ -24,7 +25,7 @@
     "ass_ade.agent.lora_flywheel.LoRAFlywheel"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwisdompersistence.py:5"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testwisdompersistence.py:7"
   },
   "kind": "engine_molecule",
   "made_of": [],

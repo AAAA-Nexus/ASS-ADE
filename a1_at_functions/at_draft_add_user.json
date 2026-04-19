@@ -1,19 +1,21 @@
 {
-  "body": "    def add_user(self, content: str) -> None:\n        self._messages.append(Message(role=\"user\", content=content))\n",
-  "body_hash": "228d0e05016a9f2f",
+  "body": "def add_user(self, content: str) -> None:\n    self._messages.append(Message(role=\"user\", content=content))\n",
+  "body_hash": "57003b3df4ff1011",
   "body_truncated": false,
   "callers_of": [
     "append",
     "Message"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_conversation.py:25.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_add_user.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.add_user",
-  "imports": [],
+  "id": "at.source.a1_at_functions.add_user",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_conversation.py:25"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_add_user.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

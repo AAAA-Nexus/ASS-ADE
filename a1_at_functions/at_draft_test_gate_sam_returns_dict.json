@@ -1,22 +1,21 @@
 {
-  "body": "    def test_gate_sam_returns_dict(self):\n        gates = self._make_gates()\n        result = gates.gate_sam(target=\"test_target\")\n        assert result is not None\n        assert \"trs\" in result\n        assert \"g23\" in result\n        assert \"composite\" in result\n        assert \"passed\" in result\n",
-  "body_hash": "242d93a2cec7a004",
+  "body": "def test_gate_sam_returns_dict(self):\n    gates = self._make_gates()\n    result = gates.gate_sam(target=\"test_target\")\n    assert result is not None\n    assert \"trs\" in result\n    assert \"g23\" in result\n    assert \"composite\" in result\n    assert \"passed\" in result\n",
+  "body_hash": "7c6815c2f473f913",
   "body_truncated": false,
   "callers_of": [
     "_make_gates",
     "gate_sam"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testqualitygatessam.py:13.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_gate_sam_returns_dict.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_gate_sam_returns_dict",
+  "id": "at.source.a1_at_functions.test_gate_sam_returns_dict",
   "imports": [
-    "ass_ade.agent.gates.QualityGates",
-    "ass_ade.agent.gates.QualityGates"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testqualitygatessam.py:13"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_gate_sam_returns_dict.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

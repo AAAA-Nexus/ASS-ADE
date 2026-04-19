@@ -1,6 +1,6 @@
 {
-  "body": "def enrich_components_with_bodies(\n    plan: dict[str, Any],\n    *,\n    max_body_chars: int = 40_000,\n) -> dict[str, Any]:\n    \"\"\"Attach extracted source bodies to every proposed component. Mutates ``plan``.\"\"\"\n    for prop in plan.get(\"proposed_components\") or []:\n        sym = prop.get(\"source_symbol\") or {}\n        src_path = sym.get(\"path\") or \"\"\n        name = sym.get(\"name\") or prop.get(\"name\")\n        lang = sym.get(\"language\") or \"python\"\n        if not src_path or not name:\n            continue\n        extracted = extract_body(src_path, name, lang)\n        if extracted is None:\n            continue\n        prop[\"body\"] = extracted.body[:max_body_chars]\n        prop[\"imports\"] = extracted.imports\n        prop[\"callers_of\"] = extracted.callers_of\n        prop[\"exceptions_raised\"] = extracted.exceptions_raised\n        prop[\"body_truncated\"] = len(extracted.body) > max_body_chars\n    return plan\n",
-  "body_hash": "df5bb124671716b1",
+  "body": "def enrich_components_with_bodies(\n    plan: dict[str, Any],\n    *,\n    max_body_chars: int | None = None,\n) -> dict[str, Any]:\n    \"\"\"Attach extracted source bodies to every proposed component. Mutates ``plan``.\"\"\"\n    for prop in plan.get(\"proposed_components\") or []:\n        sym = prop.get(\"source_symbol\") or {}\n        src_path = sym.get(\"path\") or \"\"\n        name = sym.get(\"name\") or prop.get(\"name\")\n        lang = sym.get(\"language\") or \"python\"\n        if not src_path or not name:\n            continue\n        extracted = extract_body(src_path, name, lang)\n        if extracted is None:\n            continue\n        if max_body_chars is None:\n            prop[\"body\"] = extracted.body\n            prop[\"body_truncated\"] = False\n        else:\n            prop[\"body\"] = extracted.body[:max_body_chars]\n            prop[\"body_truncated\"] = len(extracted.body) > max_body_chars\n        prop[\"imports\"] = extracted.imports\n        prop[\"callers_of\"] = extracted.callers_of\n        prop[\"exceptions_raised\"] = extracted.exceptions_raised\n    return plan\n",
+  "body_hash": "63af32c6f1c11f3b",
   "body_truncated": false,
   "callers_of": [
     "get",
@@ -8,7 +8,7 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/body_extractor.py:139.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/rebuild/body_extractor.py:147.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.enrich_components_with_bodies",
@@ -16,12 +16,13 @@
     "__future__.annotations",
     "ast",
     "re",
+    "textwrap",
     "dataclasses.dataclass",
     "pathlib.Path",
     "typing.Any"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/body_extractor.py:139"
+    "source": "C:/!ass-ade/src/ass_ade/engine/rebuild/body_extractor.py:147"
   },
   "kind": "engine_molecule",
   "made_of": [],

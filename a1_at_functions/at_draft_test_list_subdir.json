@@ -1,6 +1,6 @@
 {
-  "body": "    def test_list_subdir(self, workspace: Path):\n        tool = ListDirectoryTool(str(workspace))\n        r = tool.execute(path=\"sub\")\n        assert r.success\n        assert \"data.txt\" in r.output\n",
-  "body_hash": "d2f39e7b75a8e2a3",
+  "body": "def test_list_subdir(self, workspace: Path):\n    tool = ListDirectoryTool(str(workspace))\n    r = tool.execute(path=\"sub\")\n    assert r.success\n    assert \"data.txt\" in r.output\n",
+  "body_hash": "655fa515b6f8432c",
   "body_truncated": false,
   "callers_of": [
     "ListDirectoryTool",
@@ -8,13 +8,15 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testlistdirectory.py:13.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_list_subdir.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_list_subdir",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_list_subdir",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testlistdirectory.py:13"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_list_subdir.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def store_asset(self, asset: dict) -> str:\n        text = asset.get(\"summary\") or asset.get(\"name\") or str(asset)[:200]\n        meta = {\"kind\": \"asset\", \"asset\": asset}\n        result = store_vector_memory(\n            text=text,\n            namespace=ASSET_NS,\n            metadata=meta,\n            working_dir=self._working_dir,\n        )\n        self._assets += 1\n        return result.id\n",
-  "body_hash": "5a9c7396db658c52",
+  "body": "def store_asset(self, asset: dict) -> str:\n    text = asset.get(\"summary\") or asset.get(\"name\") or str(asset)[:200]\n    meta = {\"kind\": \"asset\", \"asset\": asset}\n    result = store_vector_memory(\n        text=text,\n        namespace=ASSET_NS,\n        metadata=meta,\n        working_dir=self._working_dir,\n    )\n    self._assets += 1\n    return result.id\n",
+  "body_hash": "7e07cdcb7fc8d323",
   "body_truncated": false,
   "callers_of": [
     "store_vector_memory",
@@ -8,15 +8,16 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_edee.py:32.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_edee.py:34.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.store_asset",
+  "id": "mo.source.a2_mo_composites.store_asset",
   "imports": [
+    "__future__.annotations",
     "ass_ade.agent.exif.EXIF"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_edee.py:32"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_edee.py:34"
   },
   "kind": "engine_molecule",
   "made_of": [],

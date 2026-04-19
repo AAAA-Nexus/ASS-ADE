@@ -7,22 +7,15 @@
     "build_local_certificate"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_certifier.py:105.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_build_local_certificate_version.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_build_local_certificate_version",
+  "id": "at.source.a1_at_functions.test_build_local_certificate_version",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "pathlib.Path",
-    "pytest",
-    "ass_ade.local.certifier.build_local_certificate",
-    "ass_ade.local.certifier.compute_codebase_digest",
-    "ass_ade.local.certifier.hash_file",
-    "ass_ade.local.certifier.render_certificate_text"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_certifier.py:105"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_build_local_certificate_version.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

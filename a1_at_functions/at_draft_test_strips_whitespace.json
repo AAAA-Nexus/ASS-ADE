@@ -1,18 +1,20 @@
 {
-  "body": "    def test_strips_whitespace(self) -> None:\n        assert validate_agent_id(\"  agent-1  \") == \"agent-1\"\n",
-  "body_hash": "8c1091d77e339c52",
+  "body": "def test_strips_whitespace(self) -> None:\n    assert validate_agent_id(\"  agent-1  \") == \"agent-1\"\n",
+  "body_hash": "1ea9c0a5297432ef",
   "body_truncated": false,
   "callers_of": [
     "validate_agent_id"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateagentid.py:11.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testvalidateagentid.py:13.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_strips_whitespace",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_strips_whitespace",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateagentid.py:11"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testvalidateagentid.py:13"
   },
   "kind": "pure_function",
   "made_of": [],

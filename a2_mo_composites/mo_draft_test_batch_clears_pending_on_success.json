@@ -1,6 +1,6 @@
 {
-  "body": "    def test_batch_clears_pending_on_success(self, tmp_path):\n        nexus = MagicMock()\n        nexus.lora_contribute.return_value = MagicMock(contribution_id=\"cid-123\")\n        from ass_ade.agent.lora_flywheel import LoRAFlywheel\n        cfg = {\n            \"lora_flywheel\": {\n                \"pending_file\": str(tmp_path / \"pending.jsonl\"),\n                \"contributions_file\": str(tmp_path / \"contributions.jsonl\"),\n                \"batch_interval\": 50,\n                \"min_confidence\": 0.5,\n            }\n        }\n        fly = LoRAFlywheel(cfg, nexus=nexus, session_id=\"s1\")\n        fly.capture_fix(\"x\", \"y\")\n        result = fly.contribute_batch()\n        assert result.submitted == 1\n        assert len(fly._pending) == 0\n",
-  "body_hash": "d0274007ad17f0af",
+  "body": "def test_batch_clears_pending_on_success(self, tmp_path):\n    nexus = MagicMock()\n    nexus.lora_contribute.return_value = MagicMock(contribution_id=\"cid-123\")\n    from ass_ade.agent.lora_flywheel import LoRAFlywheel\n    cfg = {\n        \"lora_flywheel\": {\n            \"pending_file\": str(tmp_path / \"pending.jsonl\"),\n            \"contributions_file\": str(tmp_path / \"contributions.jsonl\"),\n            \"batch_interval\": 50,\n            \"min_confidence\": 0.5,\n        }\n    }\n    fly = LoRAFlywheel(cfg, nexus=nexus, session_id=\"s1\")\n    fly.capture_fix(\"x\", \"y\")\n    result = fly.contribute_batch()\n    assert result.submitted == 1\n    assert len(fly._pending) == 0\n",
+  "body_hash": "b3a0b4d4a1aecebe",
   "body_truncated": false,
   "callers_of": [
     "MagicMock",
@@ -11,7 +11,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:459.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase_engines.py:459.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_batch_clears_pending_on_success",
@@ -66,12 +66,12 @@
     "ass_ade.agent.orchestrator.CycleReport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:459"
+    "source": "C:/!ass-ade/tests/test_phase_engines.py:459"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.capture_fix",
-    "at.source.ass_ade.contribute_batch"
+    "at.source.a1_at_functions.capture_fix",
+    "at.source.a1_at_functions.contribute_batch"
   ],
   "name": "test_batch_clears_pending_on_success",
   "product_categories": [

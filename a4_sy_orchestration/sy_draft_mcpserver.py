@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/mcp/server.py:441
-# Component id: sy.source.ass_ade.mcpserver
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_mcpserver.py:7
+# Component id: sy.source.a4_sy_orchestration.mcpserver
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class MCPServer:
@@ -179,7 +181,7 @@ class MCPServer:
 
     def run(self) -> None:
         """Run the stdio JSON-RPC loop. Reads from stdin, writes to stdout.
-        
+
         Dispatches tool calls to a thread pool to keep stdin responsive during
         long-running operations (e.g., agent loops, Nexus API calls).
         """
@@ -202,7 +204,7 @@ class MCPServer:
             # This keeps stdin responsive for new requests and cancellations.
             req_id = request.get("id")
             future = self._executor.submit(self._handle_worker, request)
-            
+
             # Track the future for cancellation support
             if req_id is not None:
                 with self._lock:
@@ -210,7 +212,7 @@ class MCPServer:
 
     def _handle_worker(self, request: dict[str, Any]) -> None:
         """Worker thread entry point. Calls _handle_sync and writes the response.
-        
+
         Runs in the thread pool executor. Handles any exceptions and ensures
         the response is written with proper serialization via _write_lock.
         """
@@ -231,7 +233,7 @@ class MCPServer:
 
     def _handle_sync(self, request: dict[str, Any]) -> dict[str, Any] | None:
         """Synchronous request handler. Can be called directly from tests or from worker threads.
-        
+
         Returns the response dict, or None for notifications.
         """
         req_id = request.get("id")
@@ -276,7 +278,7 @@ class MCPServer:
 
     def _handle(self, request: dict[str, Any]) -> dict[str, Any] | None:
         """Public request handler. Delegates to _handle_sync for synchronous execution.
-        
+
         Used by tests and any callers that expect synchronous responses.
         In production (run() method), requests are dispatched via thread pool instead.
         """
@@ -488,11 +490,11 @@ class MCPServer:
             return self._error(req_id, -32602, "required_capabilities must be an object")
 
         self._emit_progress(token, 0.0, message="Mapping required capabilities...")
-        
+
         # Cancellation checkpoint
         if cancellation_context and cancellation_context.check():
             return self._error(req_id, -32800, "Request cancelled")
-        
+
         hosted_tools: list[str] = []
         try:
             client = self._get_nexus_client()
@@ -540,11 +542,11 @@ class MCPServer:
             return self._error(req_id, -32602, "max_relevant_files must be an integer")
 
         self._emit_progress(token, 0.0, message="Running Phase 0 codebase recon...")
-        
+
         # Cancellation checkpoint
         if cancellation_context and cancellation_context.check():
             return self._error(req_id, -32800, "Request cancelled")
-        
+
         from ass_ade.recon import phase0_recon
 
         result = phase0_recon(
@@ -576,11 +578,11 @@ class MCPServer:
             return self._error(req_id, -32602, "source_urls must be an array")
 
         self._emit_progress(token, 0.0, message="Building context packet...")
-        
+
         # Cancellation checkpoint
         if cancellation_context and cancellation_context.check():
             return self._error(req_id, -32800, "Request cancelled")
-        
+
         from ass_ade.context_memory import build_context_packet
 
         packet = build_context_packet(
@@ -610,11 +612,11 @@ class MCPServer:
             return self._error(req_id, -32602, "metadata must be an object")
 
         self._emit_progress(token, 0.0, message="Storing vector memory...")
-        
+
         # Cancellation checkpoint
         if cancellation_context and cancellation_context.check():
             return self._error(req_id, -32800, "Request cancelled")
-        
+
         from ass_ade.context_memory import store_vector_memory
 
         result = store_vector_memory(
@@ -639,11 +641,11 @@ class MCPServer:
             return self._error(req_id, -32602, "query is required")
 
         self._emit_progress(token, 0.0, message="Querying vector memory...")
-        
+
         # Cancellation checkpoint
         if cancellation_context and cancellation_context.check():
             return self._error(req_id, -32800, "Request cancelled")
-        
+
         from ass_ade.context_memory import query_vector_memory
 
         result = query_vector_memory(
@@ -667,11 +669,11 @@ class MCPServer:
         if not agent_id:
             return self._error(req_id, -32602, "agent_id is required")
         self._emit_progress(token, 0.0, message="Starting trust gate evaluation...")
-        
+
         # Cancellation checkpoint
         if cancellation_context and cancellation_context.check():
             return self._error(req_id, -32800, "Request cancelled")
-        
+
         from ass_ade.workflows import trust_gate
         client = self._get_nexus_client()
         self._emit_progress(token, 0.2, message="Verifying identity...")
@@ -693,11 +695,11 @@ class MCPServer:
         if not text:
             return self._error(req_id, -32602, "text is required")
         self._emit_progress(token, 0.0, message="Starting output certification...")
-        
+
         # Cancellation checkpoint
         if cancellation_context and cancellation_context.check():
             return self._error(req_id, -32800, "Request cancelled")
-        
+
         from ass_ade.workflows import certify_output
         client = self._get_nexus_client()
         self._emit_progress(token, 0.2, message="Running hallucination oracle...")
@@ -727,11 +729,11 @@ class MCPServer:
         except json.JSONDecodeError:
             return self._error(req_id, -32602, "tool_input must be valid JSON")
         self._emit_progress(token, 0.0, message="Starting AEGIS safe execute...")
-        
+
         # Cancellation checkpoint
         if cancellation_context and cancellation_context.check():
             return self._error(req_id, -32800, "Request cancelled")
-        
+
         from ass_ade.workflows import safe_execute
         client = self._get_nexus_client()
         self._emit_progress(token, 0.3, message="Running security shield and prompt scan...")

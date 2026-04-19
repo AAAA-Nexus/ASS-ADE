@@ -1,6 +1,6 @@
 {
-  "body": "    def test_alert_severity_mapping(self) -> None:\n        b = BAS({})\n        high_kinds = [\"emergent_synergy\", \"gvu_jump\", \"trust_violation\", \"budget_exhaustion\"]\n        for kind in high_kinds:\n            a = Alert(kind=kind, severity=\"\", payload={}, ts=\"\")\n            b_alert = b.alert(kind, {})\n            assert b_alert.severity == \"high\", f\"{kind} should be high severity\"\n",
-  "body_hash": "b39d3292b95d5660",
+  "body": "def test_alert_severity_mapping(self) -> None:\n    b = BAS({})\n    high_kinds = [\"emergent_synergy\", \"gvu_jump\", \"trust_violation\", \"budget_exhaustion\"]\n    for kind in high_kinds:\n        a = Alert(kind=kind, severity=\"\", payload={}, ts=\"\")\n        b_alert = b.alert(kind, {})\n        assert b_alert.severity == \"high\", f\"{kind} should be high severity\"\n",
+  "body_hash": "c8a8efdf8842f568",
   "body_truncated": false,
   "callers_of": [
     "BAS",
@@ -8,13 +8,15 @@
     "alert"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbas.py:92.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_alert_severity_mapping.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_alert_severity_mapping",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_alert_severity_mapping",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbas.py:92"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_alert_severity_mapping.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

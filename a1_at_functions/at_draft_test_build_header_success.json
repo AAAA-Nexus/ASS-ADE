@@ -1,39 +1,21 @@
 {
-  "body": "    def test_build_header_success(self) -> None:\n        r = PaymentResult(success=True, txid=\"abc123\", signature_header=\"sig;pk;txid;8000\")\n        headers = build_payment_header(r)\n        assert \"PAYMENT-SIGNATURE\" in headers\n        assert headers[\"PAYMENT-SIGNATURE\"] == \"sig;pk;txid;8000\"\n",
-  "body_hash": "4557ff9516f9a1ea",
+  "body": "def test_build_header_success(self) -> None:\n    r = PaymentResult(success=True, txid=\"abc123\", signature_header=\"sig;pk;txid;8000\")\n    headers = build_payment_header(r)\n    assert \"PAYMENT-SIGNATURE\" in headers\n    assert headers[\"PAYMENT-SIGNATURE\"] == \"sig;pk;txid;8000\"\n",
+  "body_hash": "f6bd0218ac59b1c2",
   "body_truncated": false,
   "callers_of": [
     "PaymentResult",
     "build_payment_header"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:307.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testpaymentresult.py:8.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_build_header_success",
+  "id": "at.source.a2_mo_composites.test_build_header_success",
   "imports": [
-    "__future__.annotations",
-    "pathlib.Path",
-    "unittest.mock.MagicMock",
-    "unittest.mock.patch",
-    "pytest",
-    "typer.testing.CliRunner",
-    "ass_ade.cli.app",
-    "ass_ade.config.AssAdeConfig",
-    "ass_ade.config.write_default_config",
-    "ass_ade.nexus.x402.PaymentChallenge",
-    "ass_ade.nexus.x402.PaymentResult",
-    "ass_ade.nexus.x402.PaymentProof",
-    "ass_ade.nexus.x402.X402ClientFlow",
-    "ass_ade.nexus.x402.format_payment_consent",
-    "ass_ade.nexus.x402.get_chain_config",
-    "ass_ade.nexus.x402.build_payment_header",
-    "ass_ade.nexus.x402.ATOMADIC_TREASURY",
-    "ass_ade.nexus.x402.BASE_MAINNET_CHAIN_ID",
-    "ass_ade.nexus.x402.BASE_SEPOLIA_CHAIN_ID"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:307"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testpaymentresult.py:8"
   },
   "kind": "pure_function",
   "made_of": [],

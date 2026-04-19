@@ -1,7 +1,9 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_qualitygates.py:22
-# Component id: at.source.ass_ade.gate_log
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_gate_log.py:7
+# Component id: at.source.a1_at_functions.gate_log
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
-    def gate_log(self) -> list[GateResult]:
-        """Full log of gate results for this session."""
-        return list(self._gate_log)
+def gate_log(self) -> list[GateResult]:
+    """Full log of gate results for this session."""
+    return list(self._gate_log)

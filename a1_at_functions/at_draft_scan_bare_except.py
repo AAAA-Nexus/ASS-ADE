@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/local/enhancer.py:234
-# Component id: at.source.ass_ade.scan_bare_except
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_scan_bare_except.py:7
+# Component id: at.source.a1_at_functions.scan_bare_except
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def scan_bare_except(root: Path) -> list[dict[str, Any]]:

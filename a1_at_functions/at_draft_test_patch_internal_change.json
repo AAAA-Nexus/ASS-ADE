@@ -1,18 +1,20 @@
 {
-  "body": "    def test_patch_internal_change(self):\n        old = \"def foo():\\n    return 1\"\n        new = \"def foo():\\n    return 2\"\n        assert classify_change(old, new) == \"patch\"\n",
-  "body_hash": "63891473c3bd2c3e",
+  "body": "def test_patch_internal_change(self):\n    old = \"def foo():\\n    return 1\"\n    new = \"def foo():\\n    return 2\"\n    assert classify_change(old, new) == \"patch\"\n",
+  "body_hash": "939d7351c2b1acc7",
   "body_truncated": false,
   "callers_of": [
     "classify_change"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testclassifychange.py:10.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_patch_internal_change.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_patch_internal_change",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_patch_internal_change",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testclassifychange.py:10"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_patch_internal_change.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,16 +1,18 @@
 {
-  "body": "    class FakeClient:\n        def __init__(self, base_url: str, timeout: float = 20.0, transport=None, api_key: str | None = None):\n            pass\n\n        def __enter__(self):\n            return self\n\n        def __exit__(self, exc_type, exc, tb):\n            return False\n\n        def get_mcp_manifest(self):\n            return manifest\n",
-  "body_hash": "a79ae839f47fad03",
+  "body": "class FakeClient:\n    def __init__(self, base_url: str, timeout: float = 20.0, transport=None, api_key: str | None = None):\n        pass\n\n    def __enter__(self):\n        return self\n\n    def __exit__(self, exc_type, exc, tb):\n        return False\n\n    def get_mcp_manifest(self):\n        return manifest\n",
+  "body_hash": "1c6c3734b1bac11a",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_test_mcp_invoke_schema_validate_fails.py:10.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_test_mcp_invoke_schema_validate_fails.py:12.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "qk.source.ass_ade.fakeclient",
-  "imports": [],
+  "id": "qk.source.a0_qk_constants.fakeclient",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_test_mcp_invoke_schema_validate_fails.py:10"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_test_mcp_invoke_schema_validate_fails.py:12"
   },
   "kind": "invariant",
   "made_of": [],

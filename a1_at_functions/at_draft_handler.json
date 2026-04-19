@@ -1,18 +1,20 @@
 {
-  "body": "    def handler(request):\n        return httpx.Response(200, json={\"history\": [{\"reviewer\": \"rev1\", \"decision\": \"approved\"}]})\n",
-  "body_hash": "e7044ab5a9d8501e",
+  "body": "def handler(request):\n    return httpx.Response(200, json={\"history\": [{\"reviewer\": \"rev1\", \"decision\": \"approved\"}]})\n",
+  "body_hash": "6026972f4cb49dac",
   "body_truncated": false,
   "callers_of": [
     "Response"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_compliance_oversight_history_happy_path.py:7.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_compliance_oversight_history_happy_path.py:9.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.handler",
-  "imports": [],
+  "id": "at.source.a1_at_functions.handler",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_compliance_oversight_history_happy_path.py:7"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_compliance_oversight_history_happy_path.py:9"
   },
   "kind": "pure_function",
   "made_of": [],

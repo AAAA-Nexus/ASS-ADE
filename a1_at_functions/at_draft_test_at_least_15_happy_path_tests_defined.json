@@ -1,18 +1,20 @@
 {
-  "body": "    def test_at_least_15_happy_path_tests_defined(self) -> None:\n        \"\"\"This module should contain at least 15 test methods for happy paths.\"\"\"\n        # Count test methods (simple verification)\n        test_classes = [\n            TestAgentRun,\n            TestA2AValidate,\n            TestA2ADiscover,\n            TestInferenceTokenCount,\n            TestDataConvert,\n            TestSwarmPlan,\n            TestSwarmIntentClassify,\n            TestComplianceCheck,\n            TestTrustScore,\n            TestPipelineRun,\n            TestLLMChat,\n            TestWorkflowTrustGate,\n            TestWorkflowPhase0Recon,\n            TestWallet,\n            TestRatchetRegister,\n        ]\n        assert len(test_classes) == 15\n",
-  "body_hash": "6e57bae6d3f44b87",
+  "body": "def test_at_least_15_happy_path_tests_defined(self) -> None:\n    \"\"\"This module should contain at least 15 test methods for happy paths.\"\"\"\n    # Count test methods (simple verification)\n    test_classes = [\n        TestAgentRun,\n        TestA2AValidate,\n        TestA2ADiscover,\n        TestInferenceTokenCount,\n        TestDataConvert,\n        TestSwarmPlan,\n        TestSwarmIntentClassify,\n        TestComplianceCheck,\n        TestTrustScore,\n        TestPipelineRun,\n        TestLLMChat,\n        TestWorkflowTrustGate,\n        TestWorkflowPhase0Recon,\n        TestWallet,\n        TestRatchetRegister,\n    ]\n    assert len(test_classes) == 15\n",
+  "body_hash": "dc18bd5eeb15b598",
   "body_truncated": false,
   "callers_of": [
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testcoverageverification.py:8.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testcoverageverification.py:10.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_at_least_15_happy_path_tests_defined",
-  "imports": [],
+  "id": "at.source.a2_mo_composites.test_at_least_15_happy_path_tests_defined",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testcoverageverification.py:8"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testcoverageverification.py:10"
   },
   "kind": "pure_function",
   "made_of": [],

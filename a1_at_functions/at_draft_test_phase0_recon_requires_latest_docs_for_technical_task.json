@@ -7,26 +7,15 @@
     "phase0_recon"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_recon_context.py:47.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_phase0_recon_requires_latest_docs_for_technical_task.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_phase0_recon_requires_latest_docs_for_technical_task",
+  "id": "at.source.a1_at_functions.test_phase0_recon_requires_latest_docs_for_technical_task",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "pathlib.Path",
-    "typer.testing.CliRunner",
-    "ass_ade.cli.app",
-    "ass_ade.context_memory.VECTOR_DIMENSIONS",
-    "ass_ade.context_memory.build_context_packet",
-    "ass_ade.context_memory.query_vector_memory",
-    "ass_ade.context_memory.store_vector_memory",
-    "ass_ade.context_memory.vector_embed",
-    "ass_ade.mcp.server.MCPServer",
-    "ass_ade.recon.phase0_recon"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_recon_context.py:47"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_phase0_recon_requires_latest_docs_for_technical_task.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

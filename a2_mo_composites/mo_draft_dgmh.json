@@ -43,33 +43,22 @@
     "items"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/dgm_h.py:127.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_dgmh.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.dgmh",
+  "id": "mo.source.a2_mo_composites.dgmh",
   "imports": [
     "__future__.annotations",
-    "hashlib",
-    "json",
-    "math",
-    "random",
-    "dataclasses.asdict",
-    "dataclasses.dataclass",
-    "dataclasses.field",
-    "datetime.UTC",
-    "datetime.datetime",
-    "pathlib.Path",
-    "typing.Any",
     "ass_ade.agent.golden_runner.run_golden"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/dgm_h.py:127"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_dgmh.py:7"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.run_golden",
-    "at.source.ass_ade.propose_patch",
-    "at.source.ass_ade.simulate"
+    "at.source.a1_at_functions.run_golden",
+    "at.source.a1_at_functions.propose_patch",
+    "at.source.a1_at_functions.simulate"
   ],
   "name": "DGMH",
   "product_categories": [

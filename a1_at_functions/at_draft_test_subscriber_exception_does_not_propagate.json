@@ -1,6 +1,6 @@
 {
-  "body": "    def test_subscriber_exception_does_not_propagate(self) -> None:\n        b = BAS({})\n        b.subscribe(lambda a: (_ for _ in ()).throw(RuntimeError(\"boom\")))\n        # Should not raise\n        b.monitor_all({\"synergy\": 0.9})\n",
-  "body_hash": "996a51d2a243056c",
+  "body": "def test_subscriber_exception_does_not_propagate(self) -> None:\n    b = BAS({})\n    b.subscribe(lambda a: (_ for _ in ()).throw(RuntimeError(\"boom\")))\n    # Should not raise\n    b.monitor_all({\"synergy\": 0.9})\n",
+  "body_hash": "af50860778e444e8",
   "body_truncated": false,
   "callers_of": [
     "BAS",
@@ -10,13 +10,15 @@
     "RuntimeError"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbas.py:58.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_subscriber_exception_does_not_propagate.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_subscriber_exception_does_not_propagate",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_subscriber_exception_does_not_propagate",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbas.py:58"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_subscriber_exception_does_not_propagate.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -6,23 +6,15 @@
     "field"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/lora_flywheel.py:35.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_contribution.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.contribution",
+  "id": "mo.source.a2_mo_composites.contribution",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "logging",
-    "time",
-    "dataclasses.dataclass",
-    "dataclasses.field",
-    "pathlib.Path",
-    "typing.Any",
-    "hashlib"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/lora_flywheel.py:35"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_contribution.py:7"
   },
   "kind": "engine_molecule",
   "made_of": [],

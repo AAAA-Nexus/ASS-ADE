@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli_happy_path.py:281
-# Component id: mo.source.ass_ade.testcompliancecheck
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testcompliancecheck.py:7
+# Component id: mo.source.a2_mo_composites.testcompliancecheck
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class TestComplianceCheck:
@@ -17,14 +19,14 @@ class TestComplianceCheck:
             ],
             overall_verdict="COMPLIANT_WITH_MITIGATIONS",
         )
-        
+
         payload_file = tmp_path / "system.json"
         payload_file.write_text(json.dumps({"name": "MyAI"}), encoding="utf-8")
-        
+
         with patch("ass_ade.cli.NexusClient", return_value=_make_ctx_mgr(mock_nx)):
             result = runner.invoke(
                 app,
                 ["compliance", "check", str(payload_file), "--config", str(hybrid_config)],
             )
-        
+
         assert result.exit_code == 0

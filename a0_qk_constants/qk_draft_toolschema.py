@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/types.py:28
-# Component id: qk.source.ass_ade.toolschema
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_toolschema.py:7
+# Component id: qk.source.a0_qk_constants.toolschema
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class ToolSchema(BaseModel):

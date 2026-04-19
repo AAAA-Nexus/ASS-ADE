@@ -1,31 +1,21 @@
 {
-  "body": "    def close(self) -> None:\n        self._client.close()\n",
-  "body_hash": "2d8e4a2d8e3940de",
+  "body": "def close(self) -> None:\n    self._client.close()\n",
+  "body_hash": "1bb2408697e906cd",
   "body_truncated": false,
   "callers_of": [
     "close"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/provider.py:193.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_nexusclient.py:45.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.close",
+  "id": "mo.source.a2_mo_composites.close",
   "imports": [
     "__future__.annotations",
-    "json",
-    "uuid",
-    "collections.abc.Iterator",
-    "typing.Any",
-    "typing.Protocol",
-    "typing.runtime_checkable",
-    "httpx",
-    "ass_ade.engine.types.CompletionRequest",
-    "ass_ade.engine.types.CompletionResponse",
-    "ass_ade.engine.types.Message",
-    "ass_ade.engine.types.ToolCallRequest"
+    "ass_ade.nexus.resilience.build_resilient_transport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/provider.py:193"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_nexusclient.py:45"
   },
   "kind": "engine_molecule",
   "made_of": [],

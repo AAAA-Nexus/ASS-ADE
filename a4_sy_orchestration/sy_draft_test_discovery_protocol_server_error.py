@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_discovery_protocol_server_error.py:5
-# Component id: sy.source.ass_ade.test_discovery_protocol_server_error
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_test_discovery_protocol_server_error.py:7
+# Component id: sy.source.a2_mo_composites.test_discovery_protocol_server_error
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_discovery_protocol_server_error(method_name):

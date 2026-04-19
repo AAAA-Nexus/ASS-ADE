@@ -1,0 +1,32 @@
+{
+  "body": "def zero_trust_auth(self, agent_id: int, endpoint: str, capability: str, trust: float = 0.9984, **kwargs: Any) -> ZeroTrustResult:\n    \"\"\"/v1/auth/zero-trust \u2014 zero-trust auth primitive. agent_id must be a multiple of G_18 (324). $0.020/call\"\"\"\n    return self._post_model(\"/v1/auth/zero-trust\", ZeroTrustResult, {\n        \"agent_id\": agent_id, \"endpoint\": endpoint, \"capability\": capability, \"trust\": trust, **kwargs,\n    })\n",
+  "body_hash": "6a1e1e3b6f766a50",
+  "body_truncated": false,
+  "callers_of": [
+    "_post_model"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_zero_trust_auth.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.zero_trust_auth",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_zero_trust_auth.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "zero_trust_auth",
+  "product_categories": [
+    "IDT"
+  ],
+  "provides": [
+    "rebuild candidate for zero_trust_auth"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

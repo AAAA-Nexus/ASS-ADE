@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_certifier.py:46
-# Component id: at.source.ass_ade.test_compute_codebase_digest_basic
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_compute_codebase_digest_basic.py:7
+# Component id: at.source.a1_at_functions.test_compute_codebase_digest_basic
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_compute_codebase_digest_basic(tmp_path: Path) -> None:

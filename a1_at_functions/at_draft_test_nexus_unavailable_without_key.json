@@ -1,6 +1,6 @@
 {
-  "body": "    def test_nexus_unavailable_without_key(self, monkeypatch):\n        monkeypatch.delenv(\"AAAA_NEXUS_API_KEY\", raising=False)\n        profile = get_provider(\"nexus\")\n        assert profile.is_available() is False\n",
-  "body_hash": "1b80dc8369327423",
+  "body": "def test_nexus_unavailable_without_key(self, monkeypatch):\n    monkeypatch.delenv(\"AAAA_NEXUS_API_KEY\", raising=False)\n    profile = get_provider(\"nexus\")\n    assert profile.is_available() is False\n",
+  "body_hash": "afb02f9f21d580b1",
   "body_truncated": false,
   "callers_of": [
     "delenv",
@@ -8,21 +8,15 @@
     "is_available"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexusasprovider.py:14.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_nexus_unavailable_without_key.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_nexus_unavailable_without_key",
+  "id": "at.source.a1_at_functions.test_nexus_unavailable_without_key",
   "imports": [
-    "ass_ade.agent.lse.LSEEngine",
-    "ass_ade.config.AssAdeConfig",
-    "ass_ade.config.ProviderOverride",
-    "ass_ade.engine.provider.NexusProvider",
-    "ass_ade.engine.router.build_provider",
-    "ass_ade.config.AssAdeConfig",
-    "ass_ade.engine.router.build_provider"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexusasprovider.py:14"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_nexus_unavailable_without_key.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

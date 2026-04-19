@@ -1,0 +1,32 @@
+{
+  "body": "def efficiency_capture(self, interactions: list[dict], **kwargs: Any) -> EfficiencyResult:\n    \"\"\"/v1/efficiency \u2014 ROI signal across agent interactions (PAY-506). $0.040/call\"\"\"\n    return self._post_model(\"/v1/efficiency\", EfficiencyResult, {\"interactions\": interactions, **kwargs})\n",
+  "body_hash": "bcd8ff1dd94cebf1",
+  "body_truncated": false,
+  "callers_of": [
+    "_post_model"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_efficiency_capture.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.efficiency_capture",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_efficiency_capture.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "efficiency_capture",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for efficiency_capture"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

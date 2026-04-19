@@ -6,19 +6,15 @@
     "Field"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/models.py:350.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_agentregistry.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "og.source.ass_ade.agentregistry",
+  "id": "og.source.a3_og_features.agentregistry",
   "imports": [
-    "__future__.annotations",
-    "typing.Any",
-    "pydantic.BaseModel",
-    "pydantic.ConfigDict",
-    "pydantic.Field"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/models.py:350"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_agentregistry.py:7"
   },
   "kind": "product_organism",
   "made_of": [],

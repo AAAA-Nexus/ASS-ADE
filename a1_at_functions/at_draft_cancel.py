@@ -1,8 +1,10 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_cancellationcontext.py:17
-# Component id: at.source.ass_ade.cancel
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_cancel.py:7
+# Component id: at.source.a1_at_functions.cancel
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
-    def cancel(self) -> None:
-        """Mark this context as cancelled."""
-        with self._lock:
-            self._cancelled = True
+def cancel(self) -> None:
+    """Mark this context as cancelled."""
+    with self._lock:
+        self._cancelled = True

@@ -1,16 +1,17 @@
 {
-  "body": "    def describe_self(self) -> str:\n        try:\n            return render_atomadic_help(self.working_dir)\n        except Exception:\n            return (\n                \"I'm Atomadic, the front door of ASS-ADE.\\n\\n\"\n                \"I can rebuild, design, document, lint, certify, enhance, scan, \"\n                \"and evolve codebases. Just tell me what you want in plain English.\"\n            )\n",
-  "body_hash": "d5c50fbeededf301",
+  "body": "def describe_self(self) -> str:\n    try:\n        return render_atomadic_help(self.working_dir)\n    except Exception:\n        return (\n            \"I'm Atomadic, the front door of ASS-ADE.\\n\\n\"\n            \"I can rebuild, design, document, lint, certify, enhance, scan, \"\n            \"and evolve codebases. Just tell me what you want in plain English.\"\n        )\n",
+  "body_hash": "5dcc31fc59dbbd1e",
   "body_truncated": false,
   "callers_of": [
     "render_atomadic_help"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_atomadic.py:247.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_atomadic.py:249.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.describe_self",
+  "id": "at.source.a1_at_functions.describe_self",
   "imports": [
+    "__future__.annotations",
     "time",
     "shutil",
     "shutil",
@@ -18,7 +19,7 @@
     "sys"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_atomadic.py:247"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_atomadic.py:249"
   },
   "kind": "pure_function",
   "made_of": [],

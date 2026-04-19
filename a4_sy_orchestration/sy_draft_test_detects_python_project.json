@@ -1,6 +1,6 @@
 {
-  "body": "    def test_detects_python_project(self, tmp_path):\n        (tmp_path / \"pyproject.toml\").write_text(\"[project]\\n\")\n        prompt = build_system_prompt(str(tmp_path))\n        assert \"Python\" in prompt\n",
-  "body_hash": "1d3d5cfebb029506",
+  "body": "def test_detects_python_project(self, tmp_path):\n    (tmp_path / \"pyproject.toml\").write_text(\"[project]\\n\")\n    prompt = build_system_prompt(str(tmp_path))\n    assert \"Python\" in prompt\n",
+  "body_hash": "9101cfdee5a226bc",
   "body_truncated": false,
   "callers_of": [
     "write_text",
@@ -8,13 +8,15 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testbuildsystemprompt.py:11.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_testbuildsystemprompt.py:13.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "sy.source.ass_ade.test_detects_python_project",
-  "imports": [],
+  "id": "sy.source.a4_sy_orchestration.test_detects_python_project",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testbuildsystemprompt.py:11"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_testbuildsystemprompt.py:13"
   },
   "kind": "ecosystem_system",
   "made_of": [],

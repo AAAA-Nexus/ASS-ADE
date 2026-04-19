@@ -1,6 +1,6 @@
 {
-  "body": "    def test_route_with_nexus_recommendation(self):\n        nexus = type(\"NexusMock\", (), {\n            \"routing_recommend\": lambda self, **kwargs: {\n                \"model\": \"claude-sonnet-4\",\n                \"reason\": \"Nexus route picked for balanced complexity\",\n                \"confidence\": 0.62,\n                \"tier\": \"standard\",\n            }\n        })()\n        router = EpistemicRouter(nexus_client=nexus)\n        decision = router.route(\"Hello\")\n        assert decision.source == \"nexus\"\n        assert decision.recommended_model == \"claude-sonnet-4\"\n        assert decision.reason == \"Nexus route picked for balanced complexity\"\n        assert decision.tier == ModelTier.STANDARD\n        assert decision.complexity == 0.62\n",
-  "body_hash": "af4c81b8dc4ac1d1",
+  "body": "def test_route_with_nexus_recommendation(self):\n    nexus = type(\"NexusMock\", (), {\n        \"routing_recommend\": lambda self, **kwargs: {\n            \"model\": \"claude-sonnet-4\",\n            \"reason\": \"Nexus route picked for balanced complexity\",\n            \"confidence\": 0.62,\n            \"tier\": \"standard\",\n        }\n    })()\n    router = EpistemicRouter(nexus_client=nexus)\n    decision = router.route(\"Hello\")\n    assert decision.source == \"nexus\"\n    assert decision.recommended_model == \"claude-sonnet-4\"\n    assert decision.reason == \"Nexus route picked for balanced complexity\"\n    assert decision.tier == ModelTier.STANDARD\n    assert decision.complexity == 0.62\n",
+  "body_hash": "c76bcc7838c567f5",
   "body_truncated": false,
   "callers_of": [
     "EpistemicRouter",
@@ -8,13 +8,15 @@
     "type"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testepistemicrouter.py:29.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_testepistemicrouter.py:31.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "sy.source.ass_ade.test_route_with_nexus_recommendation",
-  "imports": [],
+  "id": "sy.source.a4_sy_orchestration.test_route_with_nexus_recommendation",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testepistemicrouter.py:29"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_testepistemicrouter.py:31"
   },
   "kind": "ecosystem_system",
   "made_of": [],

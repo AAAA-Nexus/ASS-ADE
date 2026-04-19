@@ -1,6 +1,6 @@
 {
-  "body": "    def test_handle_x402_parses_payment_details(self) -> None:\n        \"\"\"handle_x402 should extract amount, network, treasury from 402 body.\"\"\"\n        client = self._make_client()\n        mock_response = httpx.Response(\n            402,\n            json={\n                \"amount\": 0.008,\n                \"network\": \"base\",\n                \"address\": \"0xCBd9e4c44958ee76E0F941106Ea960D476c48FD9\",\n                \"endpoint\": \"/v1/trust/score\",\n                \"detail\": \"Payment required: $0.008 USDC\",\n            },\n        )\n        result = client.handle_x402(mock_response)\n        assert result[\"payment_required\"] is True\n        assert result[\"amount_usdc\"] == 0.008\n        assert result[\"network\"] == \"base\"\n        assert result[\"treasury\"] == \"0xCBd9e4c44958ee76E0F941106Ea960D476c48FD9\"\n        assert result[\"endpoint\"] == \"/v1/trust/score\"\n        client.close()\n",
-  "body_hash": "e213f60b087e9658",
+  "body": "def test_handle_x402_parses_payment_details(self) -> None:\n    \"\"\"handle_x402 should extract amount, network, treasury from 402 body.\"\"\"\n    client = self._make_client()\n    mock_response = httpx.Response(\n        402,\n        json={\n            \"amount\": 0.008,\n            \"network\": \"base\",\n            \"address\": \"0xCBd9e4c44958ee76E0F941106Ea960D476c48FD9\",\n            \"endpoint\": \"/v1/trust/score\",\n            \"detail\": \"Payment required: $0.008 USDC\",\n        },\n    )\n    result = client.handle_x402(mock_response)\n    assert result[\"payment_required\"] is True\n    assert result[\"amount_usdc\"] == 0.008\n    assert result[\"network\"] == \"base\"\n    assert result[\"treasury\"] == \"0xCBd9e4c44958ee76E0F941106Ea960D476c48FD9\"\n    assert result[\"endpoint\"] == \"/v1/trust/score\"\n    client.close()\n",
+  "body_hash": "a393dbd031f10be3",
   "body_truncated": false,
   "callers_of": [
     "_make_client",
@@ -9,15 +9,15 @@
     "close"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testx402paymenthandling.py:10.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_handle_x402_parses_payment_details.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_handle_x402_parses_payment_details",
+  "id": "at.source.a1_at_functions.test_handle_x402_parses_payment_details",
   "imports": [
-    "ass_ade.nexus.errors.NexusAuthError"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testx402paymenthandling.py:10"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_handle_x402_parses_payment_details.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

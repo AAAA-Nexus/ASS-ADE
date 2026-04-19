@@ -1,6 +1,6 @@
 {
-  "body": "    def test_search_chat_mode(self, tmp_path: Path) -> None:\n        \"\"\"Search with --chat flag should call internal_search_chat.\"\"\"\n        mock_nx = MagicMock()\n        mock_nx.internal_search_chat.return_value = {\n            \"success\": True,\n            \"result\": {\"response\": \"The Atomadic codex defines...\"},\n        }\n        with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n            result = runner.invoke(\n                app,\n                [\"search\", \"what is the codex\", \"--chat\", \"--config\", str(_hybrid_config(tmp_path))],\n                env={\"ATOMADIC_SESSION_TOKEN\": \"test-session-abc123\"},\n            )\n        assert result.exit_code == 0\n        mock_nx.internal_search_chat.assert_called_once()\n",
-  "body_hash": "3057bb779e5ca308",
+  "body": "def test_search_chat_mode(self, tmp_path: Path) -> None:\n    \"\"\"Search with --chat flag should call internal_search_chat.\"\"\"\n    mock_nx = MagicMock()\n    mock_nx.internal_search_chat.return_value = {\n        \"success\": True,\n        \"result\": {\"response\": \"The Atomadic codex defines...\"},\n    }\n    with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n        result = runner.invoke(\n            app,\n            [\"search\", \"what is the codex\", \"--chat\", \"--config\", str(_hybrid_config(tmp_path))],\n            env={\"ATOMADIC_SESSION_TOKEN\": \"test-session-abc123\"},\n        )\n    assert result.exit_code == 0\n    mock_nx.internal_search_chat.assert_called_once()\n",
+  "body_hash": "5018e7e83300e3ab",
   "body_truncated": false,
   "callers_of": [
     "MagicMock",
@@ -12,7 +12,7 @@
     "_hybrid_config"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_search_x402.py:74.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_search_x402.py:74.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_search_chat_mode",
@@ -33,7 +33,7 @@
     "ass_ade.nexus.errors.NexusAuthError"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_search_x402.py:74"
+    "source": "C:/!ass-ade/tests/test_search_x402.py:74"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,5 +1,5 @@
 {
-  "body": "def test_certify_output_verify_happy_path():\n    \"\"\"Test certify_output_verify GET endpoint.\"\"\"\n    def handler(request):\n        assert \"/v1/certify/output/\" in request.url.path and \"/verify\" in request.url.path\n        return httpx.Response(200, json={\"certificate_id\": \"cert_123\", \"verified\": True})\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        result = client.certify_output_verify(certificate_id=\"cert_123\")\n        assert result is not None\n",
+  "body": "def test_certify_output_verify_happy_path():\n    \"\"\"Test certify_output_verify GET endpoint.\"\"\"\n    def handler(request):\n        assert \"/v1/certify/output/\" in request.url.path and \"/verify\" in request.url.path\n        return httpx.Response(200, json={\"certificate_id\": \"cert_123\", \"verified\": True})\n\n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        result = client.certify_output_verify(certificate_id=\"cert_123\")\n        assert result is not None\n",
   "body_hash": "6800cefb4e4eee62",
   "body_truncated": false,
   "callers_of": [
@@ -9,7 +9,7 @@
     "certify_output_verify"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:795.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_nexus_client_comprehensive.py:795.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_certify_output_verify_happy_path",
@@ -144,7 +144,7 @@
     "ass_ade.nexus.models.EntropyResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:795"
+    "source": "C:/!ass-ade/tests/test_nexus_client_comprehensive.py:795"
   },
   "kind": "engine_molecule",
   "made_of": [],

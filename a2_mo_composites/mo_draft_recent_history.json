@@ -1,6 +1,6 @@
 {
-  "body": "    def recent_history(self, n: int = 5) -> list[dict]:\n        if not self._history_path.exists():\n            return []\n        lines = self._history_path.read_text(encoding=\"utf-8\").splitlines()\n        results = []\n        for line in reversed(lines[-n * 2:]):\n            try:\n                results.append(json.loads(line))\n                if len(results) >= n:\n                    break\n            except json.JSONDecodeError:\n                continue\n        return list(reversed(results))\n",
-  "body_hash": "00e63cd37742e9fd",
+  "body": "def recent_history(self, n: int = 5) -> list[dict]:\n    if not self._history_path.exists():\n        return []\n    lines = self._history_path.read_text(encoding=\"utf-8\").splitlines()\n    results = []\n    for line in reversed(lines[-n * 2:]):\n        try:\n            results.append(json.loads(line))\n            if len(results) >= n:\n                break\n        except json.JSONDecodeError:\n            continue\n    return list(reversed(results))\n",
+  "body_hash": "333e6a03be20cf44",
   "body_truncated": false,
   "callers_of": [
     "splitlines",
@@ -13,13 +13,15 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_memorystore.py:98.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_memorystore.py:100.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.recent_history",
-  "imports": [],
+  "id": "mo.source.a2_mo_composites.recent_history",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_memorystore.py:98"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_memorystore.py:100"
   },
   "kind": "engine_molecule",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def propose_patch(self) -> Patch:\n        self._proposals += 1\n        pid = hashlib.sha256(f\"patch:{self._proposals}\".encode()).hexdigest()[:12]\n        return Patch(id=pid, target=\"src/ass_ade/agent/loop.py\", diff=\"# synthesized improvement\")\n",
-  "body_hash": "69e4b8cd5de61a63",
+  "body": "def propose_patch(self) -> Patch:\n    self._proposals += 1\n    pid = hashlib.sha256(f\"patch:{self._proposals}\".encode()).hexdigest()[:12]\n    return Patch(id=pid, target=\"src/ass_ade/agent/loop.py\", diff=\"# synthesized improvement\")\n",
+  "body_hash": "7b7b714c47940f41",
   "body_truncated": false,
   "callers_of": [
     "Patch",
@@ -9,27 +9,15 @@
     "encode"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/dgm_h.py:144.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_propose_patch.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.propose_patch",
+  "id": "at.source.a1_at_functions.propose_patch",
   "imports": [
-    "__future__.annotations",
-    "hashlib",
-    "json",
-    "math",
-    "random",
-    "dataclasses.asdict",
-    "dataclasses.dataclass",
-    "dataclasses.field",
-    "datetime.UTC",
-    "datetime.datetime",
-    "pathlib.Path",
-    "typing.Any",
-    "ass_ade.agent.golden_runner.run_golden"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/dgm_h.py:144"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_propose_patch.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

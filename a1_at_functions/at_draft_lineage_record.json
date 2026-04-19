@@ -1,0 +1,32 @@
+{
+  "body": "def lineage_record(\n    self,\n    intent: str | None = None,\n    constraints: list[str] | None = None,\n    outcome: str | None = None,\n    *,\n    agent_id: str | None = None,\n    action: str | None = None,\n    **kwargs: Any,\n) -> LineageRecord:\n    \"\"\"/v1/lineage/record \u2014 hash-chained audit record (DLV-100). $0.060/call\"\"\"\n    resolved_intent = intent or action or (f\"agent:{agent_id}\" if agent_id else \"record\")\n    resolved_constraints = constraints or ([f\"agent_id:{agent_id}\"] if agent_id else [])\n    resolved_outcome = outcome or action or \"recorded\"\n    return self._post_model(\"/v1/lineage/record\", LineageRecord, {\n        \"intent\": resolved_intent, \"constraints\": resolved_constraints, \"outcome\": resolved_outcome, **kwargs,\n    })\n",
+  "body_hash": "d17ce6061cb3dfac",
+  "body_truncated": false,
+  "callers_of": [
+    "_post_model"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_lineage_record.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.lineage_record",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_lineage_record.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "lineage_record",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for lineage_record"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

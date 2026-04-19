@@ -1,6 +1,6 @@
 {
-  "body": "    def test_last_cycle_report_set_after_step(self) -> None:\n        o = EngineOrchestrator({})\n        loop = self._make_loop(orchestrator=o)\n        loop.step(\"Write hello world\")\n        assert loop.last_cycle_report is not None\n        assert isinstance(loop.last_cycle_report, CycleReport)\n",
-  "body_hash": "13c8324a04cf7713",
+  "body": "def test_last_cycle_report_set_after_step(self) -> None:\n    o = EngineOrchestrator({})\n    loop = self._make_loop(orchestrator=o)\n    loop.step(\"Write hello world\")\n    assert loop.last_cycle_report is not None\n    assert isinstance(loop.last_cycle_report, CycleReport)\n",
+  "body_hash": "4685c742d0a6cb1b",
   "body_truncated": false,
   "callers_of": [
     "EngineOrchestrator",
@@ -9,7 +9,7 @@
     "isinstance"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:444.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:444.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_last_cycle_report_set_after_step",
@@ -37,11 +37,11 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:444"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:444"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.step"
+    "at.source.a1_at_functions.step"
   ],
   "name": "test_last_cycle_report_set_after_step",
   "product_categories": [

@@ -1,19 +1,21 @@
 {
-  "body": "    def test_depth(self, history: FileHistory):\n        assert history.depth(\"hello.py\") == 0\n        history.record(\"hello.py\", \"v1\")\n        assert history.depth(\"hello.py\") == 1\n        history.record(\"hello.py\", \"v2\")\n        assert history.depth(\"hello.py\") == 2\n",
-  "body_hash": "4d1fda67611260a6",
+  "body": "def test_depth(self, history: FileHistory):\n    assert history.depth(\"hello.py\") == 0\n    history.record(\"hello.py\", \"v1\")\n    assert history.depth(\"hello.py\") == 1\n    history.record(\"hello.py\", \"v2\")\n    assert history.depth(\"hello.py\") == 2\n",
+  "body_hash": "f2ae0b94dc41b625",
   "body_truncated": false,
   "callers_of": [
     "record",
     "depth"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testfilehistory.py:18.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_depth.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_depth",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_depth",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testfilehistory.py:18"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_depth.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

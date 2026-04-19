@@ -1,6 +1,6 @@
 {
-  "body": "    def test_concurrent_cancellation_scenario(self, server: MCPServer) -> None:\n        \"\"\"Test cancellation in a concurrent scenario.\"\"\"\n        _initialize_server(server)\n\n        from ass_ade.mcp.cancellation import CancellationContext\n\n        req_id = 1002\n        ctx = CancellationContext()\n\n        def delayed_cancel():\n            time.sleep(0.05)\n            ctx.cancel()\n\n        # Start a thread that cancels after a delay\n        cancel_thread = threading.Thread(target=delayed_cancel)\n        cancel_thread.start()\n\n        # Simulate a long-running operation checking for cancellation\n        start_time = time.time()\n        while not ctx.check():\n            time.sleep(0.01)\n        elapsed = time.time() - start_time\n\n        cancel_thread.join()\n\n        # Should have taken roughly 50ms (the delay), not much more\n        assert 0.04 < elapsed < 0.2\n",
-  "body_hash": "129279f8fd1065f0",
+  "body": "def test_concurrent_cancellation_scenario(self, server: MCPServer) -> None:\n    \"\"\"Test cancellation in a concurrent scenario.\"\"\"\n    _initialize_server(server)\n\n    from ass_ade.mcp.cancellation import CancellationContext\n\n    req_id = 1002\n    ctx = CancellationContext()\n\n    def delayed_cancel():\n        time.sleep(0.05)\n        ctx.cancel()\n\n    # Start a thread that cancels after a delay\n    cancel_thread = threading.Thread(target=delayed_cancel)\n    cancel_thread.start()\n\n    # Simulate a long-running operation checking for cancellation\n    start_time = time.time()\n    while not ctx.check():\n        time.sleep(0.01)\n    elapsed = time.time() - start_time\n\n    cancel_thread.join()\n\n    # Should have taken roughly 50ms (the delay), not much more\n    assert 0.04 < elapsed < 0.2\n",
+  "body_hash": "1fbe73bef988950d",
   "body_truncated": false,
   "callers_of": [
     "_initialize_server",
@@ -14,17 +14,18 @@
     "check"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testmcpcancellation.py:110.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_testmcpcancellation.py:112.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "sy.source.ass_ade.test_concurrent_cancellation_scenario",
+  "id": "sy.source.a4_sy_orchestration.test_concurrent_cancellation_scenario",
   "imports": [
+    "__future__.annotations",
     "ass_ade.mcp.cancellation.CancellationContext",
     "ass_ade.mcp.cancellation.CancellationContext",
     "ass_ade.mcp.cancellation.CancellationContext"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testmcpcancellation.py:110"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_testmcpcancellation.py:112"
   },
   "kind": "ecosystem_system",
   "made_of": [],

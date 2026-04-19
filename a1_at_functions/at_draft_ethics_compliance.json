@@ -1,0 +1,32 @@
+{
+  "body": "def ethics_compliance(self, system_description: str, **kwargs: Any) -> EthicsCheckResult:\n    \"\"\"/v1/ethics/compliance \u2014 Prime Axiom audit with formal proof of safety. $0.040/call\"\"\"\n    return self._post_model(\"/v1/ethics/compliance\", EthicsCheckResult, {\"system_description\": system_description, **kwargs})\n",
+  "body_hash": "f8b3e96737dcaf53",
+  "body_truncated": false,
+  "callers_of": [
+    "_post_model"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_ethics_compliance.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.ethics_compliance",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_ethics_compliance.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "ethics_compliance",
+  "product_categories": [
+    "SRG"
+  ],
+  "provides": [
+    "rebuild candidate for ethics_compliance"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

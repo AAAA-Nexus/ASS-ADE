@@ -1,16 +1,18 @@
 {
-  "body": "    def teardown(self) -> None:\n        \"\"\"Mark the session as ended (client-side only).\"\"\"\n        self.session_id = None\n        self.epoch = 0\n        self._started = False\n",
-  "body_hash": "fde599ce321f1b40",
+  "body": "def teardown(self) -> None:\n    \"\"\"Mark the session as ended (client-side only).\"\"\"\n    self.session_id = None\n    self.epoch = 0\n    self._started = False\n",
+  "body_hash": "bcc0b23d3bece0cd",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_nexussession.py:64.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_teardown.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.teardown",
-  "imports": [],
+  "id": "at.source.a1_at_functions.teardown",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_nexussession.py:64"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_teardown.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

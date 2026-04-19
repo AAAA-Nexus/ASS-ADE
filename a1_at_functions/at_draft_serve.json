@@ -13,31 +13,15 @@
     "shutdown"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_training/serve_lora.py:163.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_serve.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.serve",
+  "id": "at.source.a1_at_functions.serve",
   "imports": [
-    "__future__.annotations",
-    "argparse",
-    "json",
-    "logging",
-    "sys",
-    "threading",
-    "http.server.BaseHTTPRequestHandler",
-    "http.server.HTTPServer",
-    "pathlib.Path",
-    "typing.Any",
-    "torch",
-    "peft.PeftModel",
-    "transformers.AutoModelForCausalLM",
-    "transformers.AutoTokenizer",
-    "torch",
-    "peft",
-    "transformers"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_training/serve_lora.py:163"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_serve.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

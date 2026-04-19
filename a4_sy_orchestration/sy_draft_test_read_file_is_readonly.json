@@ -1,6 +1,6 @@
 {
-  "body": "    def test_read_file_is_readonly(self) -> None:\n        server = MCPServer(\".\")\n        _initialize_server(server)\n        response = server._handle({\n            \"jsonrpc\": \"2.0\", \"id\": 1, \"method\": \"tools/list\", \"params\": {},\n        })\n        tools = {t[\"name\"]: t for t in response[\"result\"][\"tools\"]}\n        assert tools[\"read_file\"][\"annotations\"][\"readOnlyHint\"] is True\n        assert tools[\"read_file\"][\"annotations\"][\"destructiveHint\"] is False\n",
-  "body_hash": "127fabaa1384d52c",
+  "body": "def test_read_file_is_readonly(self) -> None:\n    server = MCPServer(\".\")\n    _initialize_server(server)\n    response = server._handle({\n        \"jsonrpc\": \"2.0\", \"id\": 1, \"method\": \"tools/list\", \"params\": {},\n    })\n    tools = {t[\"name\"]: t for t in response[\"result\"][\"tools\"]}\n    assert tools[\"read_file\"][\"annotations\"][\"readOnlyHint\"] is True\n    assert tools[\"read_file\"][\"annotations\"][\"destructiveHint\"] is False\n",
+  "body_hash": "8c74739c1bb730bc",
   "body_truncated": false,
   "callers_of": [
     "MCPServer",
@@ -8,7 +8,7 @@
     "_handle"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:291.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_extended.py:291.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.test_read_file_is_readonly",
@@ -23,7 +23,7 @@
     "httpx"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_extended.py:291"
+    "source": "C:/!ass-ade/tests/test_mcp_extended.py:291"
   },
   "kind": "ecosystem_system",
   "made_of": [],

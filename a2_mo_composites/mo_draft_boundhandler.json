@@ -1,16 +1,18 @@
 {
-  "body": "    class BoundHandler(_Handler):\n        pass\n",
-  "body_hash": "80054dcf799f0c5f",
+  "body": "class BoundHandler(_Handler):\n    pass\n",
+  "body_hash": "4b345f55c1c1f0a3",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_build_handler.py:7.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_build_handler.py:9.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.boundhandler",
-  "imports": [],
+  "id": "mo.source.a1_at_functions.boundhandler",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_build_handler.py:7"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_build_handler.py:9"
   },
   "kind": "engine_molecule",
   "made_of": [],

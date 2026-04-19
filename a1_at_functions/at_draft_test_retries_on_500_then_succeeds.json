@@ -1,6 +1,6 @@
 {
-  "body": "    def test_retries_on_500_then_succeeds(self) -> None:\n        inner = _CountingTransport([\n            httpx.Response(500),\n            httpx.Response(200),\n        ])\n        transport = RetryTransport(inner, max_retries=3, backoff_base=0.0)\n        response = transport.handle_request(httpx.Request(\"GET\", \"https://example.com\"))\n        assert response.status_code == 200\n        assert inner.call_count == 2\n",
-  "body_hash": "b67c3a283bc750d7",
+  "body": "def test_retries_on_500_then_succeeds(self) -> None:\n    inner = _CountingTransport([\n        httpx.Response(500),\n        httpx.Response(200),\n    ])\n    transport = RetryTransport(inner, max_retries=3, backoff_base=0.0)\n    response = transport.handle_request(httpx.Request(\"GET\", \"https://example.com\"))\n    assert response.status_code == 200\n    assert inner.call_count == 2\n",
+  "body_hash": "73e006cf491cb07a",
   "body_truncated": false,
   "callers_of": [
     "_CountingTransport",
@@ -10,13 +10,15 @@
     "Response"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testretrytransport.py:13.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_retries_on_500_then_succeeds.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_retries_on_500_then_succeeds",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_retries_on_500_then_succeeds",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testretrytransport.py:13"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_retries_on_500_then_succeeds.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_chutes_available_with_env_key(self, monkeypatch):\n        monkeypatch.setenv(\"CHUTES_API_TOKEN\", \"ct_test_key\")\n        profile = get_provider(\"chutes\")\n        assert profile.is_available() is True\n",
-  "body_hash": "56e28c7f1f455d92",
+  "body": "def test_chutes_available_with_env_key(self, monkeypatch):\n    monkeypatch.setenv(\"CHUTES_API_TOKEN\", \"ct_test_key\")\n    profile = get_provider(\"chutes\")\n    assert profile.is_available() is True\n",
+  "body_hash": "fa93e78410287b4e",
   "body_truncated": false,
   "callers_of": [
     "setenv",
@@ -8,15 +8,15 @@
     "is_available"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testchutesprovider.py:11.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_chutes_available_with_env_key.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_chutes_available_with_env_key",
+  "id": "at.source.a1_at_functions.test_chutes_available_with_env_key",
   "imports": [
-    "ass_ade.agent.lse.LSEEngine"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testchutesprovider.py:11"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_chutes_available_with_env_key.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

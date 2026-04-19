@@ -1,18 +1,20 @@
 {
-  "body": "    def test_all_profiles_have_all_three_tiers(self):\n        for name, profile in FREE_PROVIDERS.items():\n            for tier in ALL_TIERS:\n                assert tier in profile.models_by_tier, f\"{name} missing {tier} tier\"\n                assert profile.models_by_tier[tier], f\"{name} {tier} is empty\"\n",
-  "body_hash": "5204d809f44af310",
+  "body": "def test_all_profiles_have_all_three_tiers(self):\n    for name, profile in FREE_PROVIDERS.items():\n        for tier in ALL_TIERS:\n            assert tier in profile.models_by_tier, f\"{name} missing {tier} tier\"\n            assert profile.models_by_tier[tier], f\"{name} {tier} is empty\"\n",
+  "body_hash": "c195d9544b284875",
   "body_truncated": false,
   "callers_of": [
     "items"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testcataloginvariants.py:16.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_testcataloginvariants.py:18.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "qk.source.ass_ade.test_all_profiles_have_all_three_tiers",
-  "imports": [],
+  "id": "qk.source.a0_qk_constants.test_all_profiles_have_all_three_tiers",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testcataloginvariants.py:16"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_testcataloginvariants.py:18"
   },
   "kind": "invariant",
   "made_of": [],

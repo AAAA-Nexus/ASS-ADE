@@ -1,19 +1,21 @@
 {
-  "body": "    def add_modify(\n        self, path: str, old_string: str, new_string: str, description: str = \"\"\n    ) -> None:\n        self.edits.append(PlannedEdit(\n            kind=EditKind.MODIFY,\n            path=path,\n            old_string=old_string,\n            new_string=new_string,\n            description=description or f\"Edit {path}\",\n        ))\n        self.validated = False\n",
-  "body_hash": "037ac31e85641359",
+  "body": "def add_modify(\n    self, path: str, old_string: str, new_string: str, description: str = \"\"\n) -> None:\n    self.edits.append(PlannedEdit(\n        kind=EditKind.MODIFY,\n        path=path,\n        old_string=old_string,\n        new_string=new_string,\n        description=description or f\"Edit {path}\",\n    ))\n    self.validated = False\n",
+  "body_hash": "11e9d82215c31edf",
   "body_truncated": false,
   "callers_of": [
     "append",
     "PlannedEdit"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_editplan.py:22.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_add_modify.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.add_modify",
-  "imports": [],
+  "id": "at.source.a1_at_functions.add_modify",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_editplan.py:22"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_add_modify.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

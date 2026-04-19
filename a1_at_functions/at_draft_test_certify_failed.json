@@ -1,6 +1,6 @@
 {
-  "body": "    def test_certify_failed(self):\n        gates = QualityGates(_mock_nexus(rubric_passed=False, cert_score=0.3))\n        result = gates.certify(\"bad code\")\n        assert result is not None\n        assert result[\"passed\"] is False\n",
-  "body_hash": "4e6edbb1948269a9",
+  "body": "def test_certify_failed(self):\n    gates = QualityGates(_mock_nexus(rubric_passed=False, cert_score=0.3))\n    result = gates.certify(\"bad code\")\n    assert result is not None\n    assert result[\"passed\"] is False\n",
+  "body_hash": "e5ab907f5b99e677",
   "body_truncated": false,
   "callers_of": [
     "QualityGates",
@@ -8,19 +8,15 @@
     "_mock_nexus"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:102.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_certify_failed.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_certify_failed",
+  "id": "at.source.a1_at_functions.test_certify_failed",
   "imports": [
-    "__future__.annotations",
-    "typing.Any",
-    "unittest.mock.MagicMock",
-    "ass_ade.agent.gates.GateResult",
-    "ass_ade.agent.gates.QualityGates"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:102"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_certify_failed.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,0 +1,33 @@
+{
+  "body": "def fake_run(args, **kwargs):\n    calls.append(args)\n    return subprocess.CompletedProcess(args=args, returncode=0, stdout=\"11.9.0\\n\", stderr=\"\")\n",
+  "body_hash": "17f6f193786264cf",
+  "body_truncated": false,
+  "callers_of": [
+    "append",
+    "CompletedProcess"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_detect_tool_uses_resolved_executable.py:12.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.fake_run",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_detect_tool_uses_resolved_executable.py:12"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "fake_run",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for fake_run"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

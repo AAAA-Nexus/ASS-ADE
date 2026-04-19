@@ -1,30 +1,20 @@
 {
-  "body": "    def test_2xx_does_nothing(self) -> None:\n        for code in (200, 201, 204, 299):\n            raise_for_status(code)  # should not raise\n",
-  "body_hash": "ca3d9083cf2dcf9d",
+  "body": "def test_2xx_does_nothing(self) -> None:\n    for code in (200, 201, 204, 299):\n        raise_for_status(code)  # should not raise\n",
+  "body_hash": "226c0b4b47946019",
   "body_truncated": false,
   "callers_of": [
     "raise_for_status"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_errors.py:51.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_2xx_does_nothing.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_2xx_does_nothing",
+  "id": "at.source.a1_at_functions.test_2xx_does_nothing",
   "imports": [
-    "pytest",
-    "ass_ade.nexus.errors.NexusAuthError",
-    "ass_ade.nexus.errors.NexusCircuitOpen",
-    "ass_ade.nexus.errors.NexusConnectionError",
-    "ass_ade.nexus.errors.NexusError",
-    "ass_ade.nexus.errors.NexusPaymentRequired",
-    "ass_ade.nexus.errors.NexusRateLimited",
-    "ass_ade.nexus.errors.NexusServerError",
-    "ass_ade.nexus.errors.NexusTimeoutError",
-    "ass_ade.nexus.errors.NexusValidationError",
-    "ass_ade.nexus.errors.raise_for_status"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_errors.py:51"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_2xx_does_nothing.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

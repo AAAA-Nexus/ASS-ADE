@@ -1,19 +1,21 @@
 {
-  "body": "    def test_capability_gap_alert(self) -> None:\n        b = BAS({})\n        alerts = b.monitor_all({\"missing_capabilities\": [\"llm\", \"search\"]})\n        kinds = {a.kind for a in alerts}\n        assert \"capability_gap\" in kinds\n",
-  "body_hash": "01766fa3e6a8d7a1",
+  "body": "def test_capability_gap_alert(self) -> None:\n    b = BAS({})\n    alerts = b.monitor_all({\"missing_capabilities\": [\"llm\", \"search\"]})\n    kinds = {a.kind for a in alerts}\n    assert \"capability_gap\" in kinds\n",
+  "body_hash": "ebb3428ea6776d25",
   "body_truncated": false,
   "callers_of": [
     "BAS",
     "monitor_all"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbas.py:32.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_capability_gap_alert.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_capability_gap_alert",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_capability_gap_alert",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbas.py:32"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_capability_gap_alert.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

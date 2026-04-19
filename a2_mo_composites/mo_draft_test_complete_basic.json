@@ -1,6 +1,6 @@
 {
-  "body": "    def test_complete_basic(self, mock_client_cls):\n        mock_resp = MagicMock()\n        mock_resp.json.return_value = self._mock_response(\"Hello!\")\n        mock_resp.raise_for_status = MagicMock()\n\n        mock_instance = MagicMock()\n        mock_instance.post.return_value = mock_resp\n        mock_client_cls.return_value = mock_instance\n\n        provider = OpenAICompatibleProvider(base_url=\"http://test:8000/v1\", api_key=\"k\")\n        req = CompletionRequest(messages=[Message(role=\"user\", content=\"hi\")])\n        resp = provider.complete(req)\n\n        assert resp.message.content == \"Hello!\"\n        assert resp.finish_reason == \"stop\"\n        assert resp.model == \"test-model\"\n",
-  "body_hash": "28bbfabac57c6bb9",
+  "body": "def test_complete_basic(self, mock_client_cls):\n    mock_resp = MagicMock()\n    mock_resp.json.return_value = self._mock_response(\"Hello!\")\n    mock_resp.raise_for_status = MagicMock()\n\n    mock_instance = MagicMock()\n    mock_instance.post.return_value = mock_resp\n    mock_client_cls.return_value = mock_instance\n\n    provider = OpenAICompatibleProvider(base_url=\"http://test:8000/v1\", api_key=\"k\")\n    req = CompletionRequest(messages=[Message(role=\"user\", content=\"hi\")])\n    resp = provider.complete(req)\n\n    assert resp.message.content == \"Hello!\"\n    assert resp.finish_reason == \"stop\"\n    assert resp.model == \"test-model\"\n",
+  "body_hash": "cc6986b1e697d6d7",
   "body_truncated": false,
   "callers_of": [
     "patch",
@@ -12,7 +12,7 @@
     "Message"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine.py:85.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine.py:85.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_complete_basic",
@@ -43,7 +43,7 @@
     "ass_ade.engine.provider.MultiProvider"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine.py:85"
+    "source": "C:/!ass-ade/tests/test_engine.py:85"
   },
   "kind": "engine_molecule",
   "made_of": [],

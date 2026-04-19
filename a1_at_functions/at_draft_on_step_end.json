@@ -1,0 +1,62 @@
+{
+  "body": "def on_step_end(\n    self,\n    response: str,\n    cycle_state: dict,\n    agent_traces: dict | None = None,\n) -> CycleReport:\n    \"\"\"Called after final response. Runs full cycle analysis.\"\"\"\n    report = CycleReport(alerts=[])\n\n    # Wisdom: 50-question audit\n    try:\n        # Augment cycle_state with step metrics\n        cs = dict(cycle_state)\n        cs.setdefault(\"tool_calls\", list(self._step_tool_counts.keys()))\n        cs.setdefault(\"budget_ok\", True)\n        wisdom_report = self.wisdom.run_audit(cs)\n        report.wisdom_score = wisdom_report.score\n        report.wisdom_passed = wisdom_report.passed\n        report.wisdom_failed = wisdom_report.failed\n        report.conviction = wisdom_report.conviction\n        report.principles = self.wisdom.distill_principles(wisdom_report)\n        report.warnings = list(wisdom_report.warnings) if hasattr(wisdom_report, \"warnings\") else []\n        # Wisdom EMA (Phase 4): track session quality trend\n        self._wisdom_ema = 0.85 * self._wisdom_ema + 0.15 * wisdom_report.score\n        report.wisdom_ema = self._wisdom_ema\n        # Persist EMA so next session's conviction pre-gate is meaningful\n        self._persist_wisdom_ema(wisdom_report)\n        # Consecutive low wisdom tracking (for autopoietic trigger)\n        if wisdom_report.score < 0.3:\n            self._consecutive_low_wisdom += 1\n        else:\n            self._consecutive_low_wisdom = 0\n        # Principle persistence (Phase 4)\n        try:\n            self.wisdom.persist_principles(lora_flywheel=self._lora_flywheel)\n        except Exception:\n            pass\n    except Exception as exc:\n        _LOG.debug(\"wisdom.on_step_end failed: %s\", exc)\n\n    # TDMI: compute synergy from agent traces\n    try:\n        traces = agent_traces or {\n            tool: [float(i) for i in range(count)]\n            for tool, count in self._step_tool_counts.items()\n            if count > 1\n        }\n        if len(traces) >= 2:\n            synergy = self.tdmi.compute_synergy(traces)\n            report.synergy = synergy\n            report.synergy_emergent = synergy > self.tdmi._threshold\n        else:\n            report.synergy = 0.0\n    except Exception as exc:\n        _LOG.debug(\"tdmi.on_step_end failed: %s\", exc)\n\n    # GVU: update coefficient from wisdom score improvement\n    try:\n        if report.wisdom_score > 0:\n            coef = self.gvu.update([report.wisdom_score - 0.5])\n            report.gvu_coefficient = coef\n        else:\n            report.gvu_coefficient = self.gvu.compute_coefficient()\n    except Exception as exc:\n        _LOG.debug(\"gvu.on_step_end failed: %s\", exc)\n\n    # BAS: full monitor with all available metrics\n    try:\n        metrics = {\n            \"synergy\": report.synergy,\n            \"novelty\": report.wisdom_score,\n            \"gvu_delta\": max(0.0, report.gvu_coefficient - 1.0),\n            \"trust_score\": cycle_state.get(\"trust_score\", 1.0),\n            \"budget_pct\": cycle_state.get(\"budget_pct\", 0.0),\n            \"score_delta\": report.wisdom_score - cycle_state.get(\"last_wisdom_score\", report.wisdom_score),\n            \"tool_repeat_count\": max(self._step_tool_counts.values()) if self._step_tool_counts else 0,\n            \"missing_capabilities\": cycle_state.get(\"missing_capabilities\", []),\n        }\n        new_alerts = self.bas.monitor_all(metrics)\n        unflushed = self.bas.flush_alerts()\n        report.alerts = list(new_alerts) + [a for a in unflushed if a not in new_alerts]\n    except Exception as exc:\n        _LOG.debug(\"bas.on_step_end failed: %s\", exc)\n\n    # EDEE: capture experience trace\n    try:\n        self.edee.capture_trace(\"step_end\", {\n            \"summary\": response[:200] if response else \"\",\n            \"wisdom_score\": report.wisdom_score,\n            \"alerts\": len(report.alerts),\n            \"tool_calls\": list(self._step_tool_counts.keys()),\n        })\n    except Exception as exc:\n        _LOG.debug(\"edee.on_step_end failed: %s\", exc)\n\n    # Collect all engine reports\n    for name, getter in [\n        (\"atlas\", lambda: self._atlas),\n        (\"bas\", lambda: self._bas),\n        (\"wisdom\", lambda: self._wisdom),\n        (\"gvu\", lambda: self._gvu),\n        (\"tdmi\", lambda: self._tdmi),\n        (\"edee\", lambda: self._edee),\n        (\"lifr\", lambda: self._lifr),\n        (\"puppeteer\", lambda: self._puppeteer),\n        (\"lse\", lambda: self._lse),\n        (\"tca\", lambda: self._tca),\n        (\"cie\", lambda: self._cie),\n        (\"lora_flywheel\", lambda: self._lora_flywheel),\n    ]:\n        try:\n            engine = getter()\n            if engine is not None:\n                report.engine_reports[name] = engine.report()\n        except Exception:\n            pass\n\n    # Atlas subtasks from step start\n    report.atlas_subtasks = [s for s in report.engine_reports.get(\"atlas\", {}).get(\"subtasks\", [])]\n\n    # TCA stale files (Phase 2)\n    try:\n        stale = self.tca.get_stale_files()\n        report.tca_stale_files = [r.path for r in stale[:10]]\n    except Exception as exc:\n        _LOG.debug(\"tca.on_step_end failed: %s\", exc)\n\n    # LoRA Flywheel tick (Phase 5) \u2014 batch every RG_LOOP=47 steps\n    try:\n        batch_result = self.lora_flywheel.tick()\n        report.lora_pending = len(self._lora_flywheel._pending) if self._lora_flywheel else 0\n        if batch_result and batch_result.submitted > 0:\n            _LOG.info(\"LoRA batch submitted: %d contributions\", batch_result.submitted)\n    except Exception as exc:\n        _LOG.debug(\"lora_flywheel.on_step_end failed: %s\", exc)\n\n    # Autopoietic trigger check (Phase 5)\n    try:\n        if self._consecutive_low_wisdom >= 5 or self._consecutive_refine_failures >= 3:\n            report.autopoietic_triggered = True\n            try:\n                self.bas.alert(\"autopoietic_trigger\", {\n                    \"consecutive_low_wisdom\": self._consecutive_low_wisdom,\n                    \"consecutive_refine_failures\": self._consecutive_refine_failures,\n                })\n            except Exception:\n                pass\n            report.warnings.append(\n                f\"autopoietic_trigger:low_wisdom={self._consecutive_low_wisdom}\"\n            )\n    except Exception as exc:\n        _LOG.debug(\"autopoietic trigger check failed: %s\", exc)\n\n    # CIE stats from engine (Phase 3)\n    try:\n        if self._cie:\n            cie_rep = self._cie.report()\n            report.cie_passes = cie_rep.get(\"passes\", 0)\n            report.cie_failures = cie_rep.get(\"failures\", 0)\n    except Exception:\n        pass\n\n    return report\n",
+  "body_hash": "b8eb63043ae929bd",
+  "body_truncated": false,
+  "callers_of": [
+    "CycleReport",
+    "dict",
+    "setdefault",
+    "run_audit",
+    "distill_principles",
+    "_persist_wisdom_ema",
+    "monitor_all",
+    "flush_alerts",
+    "capture_trace",
+    "get_stale_files",
+    "tick",
+    "list",
+    "hasattr",
+    "persist_principles",
+    "debug",
+    "len",
+    "compute_synergy",
+    "update",
+    "compute_coefficient",
+    "max",
+    "get",
+    "getter",
+    "info",
+    "append",
+    "report",
+    "keys",
+    "alert",
+    "float",
+    "items",
+    "values",
+    "range"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_on_step_end.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.on_step_end",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_on_step_end.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "on_step_end",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for on_step_end"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

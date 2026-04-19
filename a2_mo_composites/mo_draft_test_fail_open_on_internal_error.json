@@ -1,23 +1,24 @@
 {
-  "body": "    def test_fail_open_on_internal_error(self):\n        lse = self._make({\"lse\": {\"default_tier\": \"balanced\"}})\n        # Corrupt internal state \u2014 should still return a decision\n        lse._trs_haiku_threshold = \"not_a_float\"  # type: ignore\n        decision = lse.select(trs_score=0.9)\n        assert decision.model is not None\n",
-  "body_hash": "e9d2b4c9e0c16bb3",
+  "body": "def test_fail_open_on_internal_error(self):\n    lse = self._make({\"lse\": {\"default_tier\": \"balanced\"}})\n    # Corrupt internal state \u2014 should still return a decision\n    lse._trs_haiku_threshold = \"not_a_float\"  # type: ignore\n    decision = lse.select(trs_score=0.9)\n    assert decision.model is not None\n",
+  "body_hash": "1ffe710f7ea04040",
   "body_truncated": false,
   "callers_of": [
     "_make",
     "select"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testlseengine.py:55.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testlseengine.py:57.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.test_fail_open_on_internal_error",
+  "id": "mo.source.a2_mo_composites.test_fail_open_on_internal_error",
   "imports": [
+    "__future__.annotations",
     "ass_ade.agent.lse.LSEEngine",
     "ass_ade.agent.providers.FREE_PROVIDERS",
     "ass_ade.agent.lse._LEGACY_TIER_TO_MODEL"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testlseengine.py:55"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testlseengine.py:57"
   },
   "kind": "engine_molecule",
   "made_of": [],

@@ -1,18 +1,20 @@
 {
-  "body": "    def test_identical(self):\n        body = \"def foo(): pass\"\n        assert classify_change(body, body) == \"none\"\n",
-  "body_hash": "62ee1b366c170066",
+  "body": "def test_identical(self):\n    body = \"def foo(): pass\"\n    assert classify_change(body, body) == \"none\"\n",
+  "body_hash": "d71884e919919655",
   "body_truncated": false,
   "callers_of": [
     "classify_change"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testclassifychange.py:6.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_identical.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_identical",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_identical",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testclassifychange.py:6"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_identical.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

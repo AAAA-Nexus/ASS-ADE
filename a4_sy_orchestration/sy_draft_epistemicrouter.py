@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/routing.py:181
-# Component id: sy.source.ass_ade.epistemicrouter
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_epistemicrouter.py:7
+# Component id: sy.source.a4_sy_orchestration.epistemicrouter
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class EpistemicRouter:

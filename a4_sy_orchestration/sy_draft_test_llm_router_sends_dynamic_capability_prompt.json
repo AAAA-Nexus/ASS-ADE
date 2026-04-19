@@ -1,0 +1,44 @@
+{
+  "body": "def test_llm_router_sends_dynamic_capability_prompt(monkeypatch, tmp_path: Path) -> None:\n    captured: dict[str, object] = {}\n\n    def fake_post(url: str, **kwargs):\n        captured[\"url\"] = url\n        captured[\"json\"] = kwargs[\"json\"]\n        response = MagicMock()\n        response.json.return_value = {\n            \"choices\": [\n                {\n                    \"message\": {\n                        \"content\": (\n                            '{\"type\":\"command\",\"intent\":\"help\",\"path\":null,'\n                            '\"output_path\":null,\"feature_desc\":null}'\n                        )\n                    }\n                }\n            ]\n        }\n        response.raise_for_status.return_value = None\n        return response\n\n    monkeypatch.setattr(interpreter, \"_pick_endpoint\", lambda: (\"https://llm.example/v1\", \"key\", \"model\"))\n    monkeypatch.setattr(interpreter.httpx, \"post\", fake_post)\n\n    result = interpreter._call_llm(\n        \"what can you do?\",\n        working_dir=tmp_path,\n        memory_context=\"preferred_tone=direct\",\n    )\n\n    assert result and result[\"intent\"] == \"help\"\n    payload = captured[\"json\"]\n    assert isinstance(payload, dict)\n    system_prompt = payload[\"messages\"][0][\"content\"]\n    assert \"Dynamic Capability Inventory\" in system_prompt\n    assert \"Runtime routing rules\" in system_prompt\n    assert \"`mcp serve`\" in system_prompt\n    assert \"preferred_tone=direct\" in system_prompt\n",
+  "body_hash": "d5e407808d5a26d3",
+  "body_truncated": false,
+  "callers_of": [
+    "setattr",
+    "_call_llm",
+    "isinstance",
+    "MagicMock"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_capabilities.py:69.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.test_llm_router_sends_dynamic_capability_prompt",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "unittest.mock.MagicMock",
+    "ass_ade.interpreter",
+    "ass_ade.agent.capabilities.build_atomadic_intent_prompt",
+    "ass_ade.agent.capabilities.command_path_exists",
+    "ass_ade.agent.capabilities.render_atomadic_help",
+    "ass_ade.agent.capabilities.sync_atomadic_prompt_capabilities",
+    "ass_ade.agent.context.build_system_prompt",
+    "ass_ade.interpreter.Atomadic"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/tests/test_capabilities.py:69"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "test_llm_router_sends_dynamic_capability_prompt",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_llm_router_sends_dynamic_capability_prompt"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_five_groups_of_ten(self) -> None:\n        from collections import Counter\n        groups = Counter(q[\"group\"] for q in AUDIT_QUESTIONS)\n        assert set(groups.keys()) == {\"foundational\", \"operational\", \"autonomous\", \"meta_cognition\", \"hyperagent\"}\n        assert all(v == 10 for v in groups.values())\n",
-  "body_hash": "e002631d44b39546",
+  "body": "def test_five_groups_of_ten(self) -> None:\n    from collections import Counter\n    groups = Counter(q[\"group\"] for q in AUDIT_QUESTIONS)\n    assert set(groups.keys()) == {\"foundational\", \"operational\", \"autonomous\", \"meta_cognition\", \"hyperagent\"}\n    assert all(v == 10 for v in groups.values())\n",
+  "body_hash": "6a8ae44b067d681e",
   "body_truncated": false,
   "callers_of": [
     "Counter",
@@ -10,7 +10,7 @@
     "values"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:42.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:42.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_five_groups_of_ten",
@@ -38,7 +38,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:42"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:42"
   },
   "kind": "engine_molecule",
   "made_of": [],

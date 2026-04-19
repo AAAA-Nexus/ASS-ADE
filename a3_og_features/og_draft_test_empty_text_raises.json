@@ -1,6 +1,6 @@
 {
-  "body": "    def test_empty_text_raises(self) -> None:\n        with pytest.raises(ValueError, match=\"must not be empty\"):\n            certify_output(_mock_client(), \"\")\n",
-  "body_hash": "5f5932dc541fabb8",
+  "body": "def test_empty_text_raises(self) -> None:\n    with pytest.raises(ValueError, match=\"must not be empty\"):\n        certify_output(_mock_client(), \"\")\n",
+  "body_hash": "7c66d6668f4fd3ca",
   "body_truncated": false,
   "callers_of": [
     "raises",
@@ -8,34 +8,15 @@
     "_mock_client"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_workflows.py:164.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_testcertifyoutput.py:20.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "og.source.ass_ade.test_empty_text_raises",
+  "id": "og.source.a3_og_features.test_empty_text_raises",
   "imports": [
-    "__future__.annotations",
-    "typing.Any",
-    "unittest.mock.MagicMock",
-    "pytest",
-    "ass_ade.nexus.errors.NexusServerError",
-    "ass_ade.nexus.models.AegisProxyResult",
-    "ass_ade.nexus.models.CertifiedOutput",
-    "ass_ade.nexus.models.ComplianceResult",
-    "ass_ade.nexus.models.EthicsCheckResult",
-    "ass_ade.nexus.models.HallucinationResult",
-    "ass_ade.nexus.models.IdentityVerification",
-    "ass_ade.nexus.models.LineageRecord",
-    "ass_ade.nexus.models.PromptScanResult",
-    "ass_ade.nexus.models.ReputationScore",
-    "ass_ade.nexus.models.ShieldResult",
-    "ass_ade.nexus.models.SybilCheckResult",
-    "ass_ade.nexus.models.TrustScore",
-    "ass_ade.workflows.certify_output",
-    "ass_ade.workflows.safe_execute",
-    "ass_ade.workflows.trust_gate"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_workflows.py:164"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_testcertifyoutput.py:20"
   },
   "kind": "product_organism",
   "made_of": [],

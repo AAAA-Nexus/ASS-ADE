@@ -1,6 +1,6 @@
 {
-  "body": "    def test_timeout(self, workspace: Path):\n        tool = RunCommandTool(str(workspace))\n        r = tool.execute(command=\"python -c \\\"import time; time.sleep(10)\\\"\", timeout=1)\n        assert not r.success\n        assert \"timed out\" in (r.error or \"\").lower()\n",
-  "body_hash": "61cdb0f630cdd9c7",
+  "body": "def test_timeout(self, workspace: Path):\n    tool = RunCommandTool(str(workspace))\n    r = tool.execute(command=\"python -c \\\"import time; time.sleep(10)\\\"\", timeout=1)\n    assert not r.success\n    assert \"timed out\" in (r.error or \"\").lower()\n",
+  "body_hash": "c77ddefe2fc2c083",
   "body_truncated": false,
   "callers_of": [
     "RunCommandTool",
@@ -9,26 +9,15 @@
     "lower"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:119.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_timeout.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_timeout",
+  "id": "at.source.a1_at_functions.test_timeout",
   "imports": [
-    "__future__.annotations",
-    "os",
-    "pathlib.Path",
-    "pytest",
-    "ass_ade.tools.builtin.EditFileTool",
-    "ass_ade.tools.builtin.GrepSearchTool",
-    "ass_ade.tools.builtin.ListDirectoryTool",
-    "ass_ade.tools.builtin.ReadFileTool",
-    "ass_ade.tools.builtin.RunCommandTool",
-    "ass_ade.tools.builtin.SearchFilesTool",
-    "ass_ade.tools.builtin.WriteFileTool",
-    "ass_ade.tools.registry.default_registry"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:119"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_timeout.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

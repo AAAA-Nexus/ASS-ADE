@@ -13,7 +13,7 @@
     "sorted"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/tier_purity.py:47.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/rebuild/tier_purity.py:47.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.check_tier_purity",
@@ -22,7 +22,7 @@
     "typing.Any"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/tier_purity.py:47"
+    "source": "C:/!ass-ade/src/ass_ade/engine/rebuild/tier_purity.py:47"
   },
   "kind": "engine_molecule",
   "made_of": [],

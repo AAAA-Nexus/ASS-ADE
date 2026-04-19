@@ -1,6 +1,6 @@
 {
-  "body": "    def test_parse_challenge_recipient_mismatch(self) -> None:\n        \"\"\"Recipient mismatches should be rejected before consent.\"\"\"\n        flow = X402ClientFlow()\n        challenge = flow.parse_challenge({\n            \"recipient\": \"0x0000000000000000000000000000000000000001\",\n            \"amount_micro_usdc\": 1000,\n            \"expires\": 9999999999,\n        })\n        assert challenge is None\n        assert \"treasury\" in flow.last_error.lower()\n",
-  "body_hash": "5e892e778b02cdeb",
+  "body": "def test_parse_challenge_recipient_mismatch(self) -> None:\n    \"\"\"Recipient mismatches should be rejected before consent.\"\"\"\n    flow = X402ClientFlow()\n    challenge = flow.parse_challenge({\n        \"recipient\": \"0x0000000000000000000000000000000000000001\",\n        \"amount_micro_usdc\": 1000,\n        \"expires\": 9999999999,\n    })\n    assert challenge is None\n    assert \"treasury\" in flow.last_error.lower()\n",
+  "body_hash": "c04002f4d0b946f2",
   "body_truncated": false,
   "callers_of": [
     "X402ClientFlow",
@@ -8,33 +8,15 @@
     "lower"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:195.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testx402clientflow.py:53.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_parse_challenge_recipient_mismatch",
+  "id": "at.source.a2_mo_composites.test_parse_challenge_recipient_mismatch",
   "imports": [
-    "__future__.annotations",
-    "pathlib.Path",
-    "unittest.mock.MagicMock",
-    "unittest.mock.patch",
-    "pytest",
-    "typer.testing.CliRunner",
-    "ass_ade.cli.app",
-    "ass_ade.config.AssAdeConfig",
-    "ass_ade.config.write_default_config",
-    "ass_ade.nexus.x402.PaymentChallenge",
-    "ass_ade.nexus.x402.PaymentResult",
-    "ass_ade.nexus.x402.PaymentProof",
-    "ass_ade.nexus.x402.X402ClientFlow",
-    "ass_ade.nexus.x402.format_payment_consent",
-    "ass_ade.nexus.x402.get_chain_config",
-    "ass_ade.nexus.x402.build_payment_header",
-    "ass_ade.nexus.x402.ATOMADIC_TREASURY",
-    "ass_ade.nexus.x402.BASE_MAINNET_CHAIN_ID",
-    "ass_ade.nexus.x402.BASE_SEPOLIA_CHAIN_ID"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:195"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testx402clientflow.py:53"
   },
   "kind": "pure_function",
   "made_of": [],

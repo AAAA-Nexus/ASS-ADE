@@ -1,16 +1,17 @@
 {
-  "body": "    def lora_flywheel(self):\n        if self._lora_flywheel is None:\n            from ass_ade.agent.lora_flywheel import LoRAFlywheel\n            self._lora_flywheel = LoRAFlywheel(self._config, self._nexus)\n        return self._lora_flywheel\n",
-  "body_hash": "6516f392c1b6ff49",
+  "body": "def lora_flywheel(self):\n    if self._lora_flywheel is None:\n        from ass_ade.agent.lora_flywheel import LoRAFlywheel\n        self._lora_flywheel = LoRAFlywheel(self._config, self._nexus)\n    return self._lora_flywheel\n",
+  "body_hash": "4522ceebf42f2e05",
   "body_truncated": false,
   "callers_of": [
     "LoRAFlywheel"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_engineorchestrator.py:209.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_engineorchestrator.py:211.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.lora_flywheel",
+  "id": "mo.source.a2_mo_composites.lora_flywheel",
   "imports": [
+    "__future__.annotations",
     "ass_ade.agent.atlas.Atlas",
     "ass_ade.agent.bas.BAS",
     "ass_ade.agent.wisdom.WisdomEngine",
@@ -33,7 +34,7 @@
     "json"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_engineorchestrator.py:209"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_engineorchestrator.py:211"
   },
   "kind": "engine_molecule",
   "made_of": [],

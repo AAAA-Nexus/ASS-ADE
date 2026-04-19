@@ -1,23 +1,24 @@
 {
-  "body": "    def test_critical_complexity_always_deep(self):\n        lse = self._make()\n        decision = lse.select(trs_score=0.9, complexity=\"critical\")\n        assert decision.tier == \"deep\"\n",
-  "body_hash": "d14837a91e1597d2",
+  "body": "def test_critical_complexity_always_deep(self):\n    lse = self._make()\n    decision = lse.select(trs_score=0.9, complexity=\"critical\")\n    assert decision.tier == \"deep\"\n",
+  "body_hash": "c6da55191893f3d7",
   "body_truncated": false,
   "callers_of": [
     "_make",
     "select"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testlseengine.py:38.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testlseengine.py:40.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.test_critical_complexity_always_deep",
+  "id": "mo.source.a2_mo_composites.test_critical_complexity_always_deep",
   "imports": [
+    "__future__.annotations",
     "ass_ade.agent.lse.LSEEngine",
     "ass_ade.agent.providers.FREE_PROVIDERS",
     "ass_ade.agent.lse._LEGACY_TIER_TO_MODEL"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testlseengine.py:38"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testlseengine.py:40"
   },
   "kind": "engine_molecule",
   "made_of": [],

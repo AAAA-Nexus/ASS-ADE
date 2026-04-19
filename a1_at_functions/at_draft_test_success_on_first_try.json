@@ -1,6 +1,6 @@
 {
-  "body": "    def test_success_on_first_try(self) -> None:\n        inner = _CountingTransport([httpx.Response(200)])\n        transport = RetryTransport(inner, max_retries=3, backoff_base=0.0)\n        response = transport.handle_request(httpx.Request(\"GET\", \"https://example.com\"))\n        assert response.status_code == 200\n        assert inner.call_count == 1\n",
-  "body_hash": "2d0d9f96163d7270",
+  "body": "def test_success_on_first_try(self) -> None:\n    inner = _CountingTransport([httpx.Response(200)])\n    transport = RetryTransport(inner, max_retries=3, backoff_base=0.0)\n    response = transport.handle_request(httpx.Request(\"GET\", \"https://example.com\"))\n    assert response.status_code == 200\n    assert inner.call_count == 1\n",
+  "body_hash": "a0bcc75abaac2b72",
   "body_truncated": false,
   "callers_of": [
     "_CountingTransport",
@@ -10,23 +10,15 @@
     "Response"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_resilience.py:47.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_success_on_first_try.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_success_on_first_try",
+  "id": "at.source.a1_at_functions.test_success_on_first_try",
   "imports": [
-    "__future__.annotations",
-    "httpx",
-    "pytest",
-    "ass_ade.nexus.errors.NexusCircuitOpen",
-    "ass_ade.nexus.errors.NexusConnectionError",
-    "ass_ade.nexus.errors.NexusTimeoutError",
-    "ass_ade.nexus.resilience.CircuitBreakerTransport",
-    "ass_ade.nexus.resilience.RetryTransport",
-    "ass_ade.nexus.resilience.build_resilient_transport"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_resilience.py:47"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_success_on_first_try.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

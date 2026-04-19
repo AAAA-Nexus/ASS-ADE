@@ -1,6 +1,6 @@
 {
-  "body": "    def test_relative_endpoint_uses_base_url(self) -> None:\n        \"\"\"Relative endpoints should be joined to base_url without SSRF validation.\"\"\"\n        from ass_ade.mcp.utils import simulate_invoke\n        \n        tool = MCPTool(\n            name=\"safe-tool\",\n            endpoint=\"/api/invoke\",\n            method=\"POST\",\n            paid=False,\n        )\n        \n        result = simulate_invoke(\"https://api.example.com\", tool)\n        assert result[\"endpoint\"] == \"https://api.example.com/api/invoke\"\n        assert not result[\"endpoint\"].startswith(\"//\")\n",
-  "body_hash": "068f6179df1136e8",
+  "body": "def test_relative_endpoint_uses_base_url(self) -> None:\n    \"\"\"Relative endpoints should be joined to base_url without SSRF validation.\"\"\"\n    from ass_ade.mcp.utils import simulate_invoke\n\n    tool = MCPTool(\n        name=\"safe-tool\",\n        endpoint=\"/api/invoke\",\n        method=\"POST\",\n        paid=False,\n    )\n\n    result = simulate_invoke(\"https://api.example.com\", tool)\n    assert result[\"endpoint\"] == \"https://api.example.com/api/invoke\"\n    assert not result[\"endpoint\"].startswith(\"//\")\n",
+  "body_hash": "beff96ef35035cf7",
   "body_truncated": false,
   "callers_of": [
     "MCPTool",
@@ -8,11 +8,12 @@
     "startswith"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testmcptoolendpointssrf.py:36.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_testmcptoolendpointssrf.py:38.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "sy.source.ass_ade.test_relative_endpoint_uses_base_url",
+  "id": "sy.source.a4_sy_orchestration.test_relative_endpoint_uses_base_url",
   "imports": [
+    "__future__.annotations",
     "ass_ade.mcp.utils.invoke_tool",
     "ass_ade.mcp.utils.invoke_tool",
     "ass_ade.mcp.utils.simulate_invoke",
@@ -20,7 +21,7 @@
     "ass_ade.mcp.utils.simulate_invoke"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testmcptoolendpointssrf.py:36"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_testmcptoolendpointssrf.py:38"
   },
   "kind": "ecosystem_system",
   "made_of": [],

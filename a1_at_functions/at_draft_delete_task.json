@@ -1,0 +1,30 @@
+{
+  "body": "def delete_task(self, task_id: str) -> bool:\n    \"\"\"Delete a task.\"\"\"\n    if task_id in self.tasks:\n        del self.tasks[task_id]\n        return True\n    return False\n",
+  "body_hash": "3ca4d4a2b757559a",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_delete_task.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.delete_task",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_delete_task.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "delete_task",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for delete_task"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

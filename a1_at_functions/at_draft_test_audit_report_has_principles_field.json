@@ -1,0 +1,35 @@
+{
+  "body": "def test_audit_report_has_principles_field(self) -> None:\n    w = WisdomEngine({})\n    report = w.run_audit({})\n    assert hasattr(report, \"principles\")\n    assert isinstance(report.principles, list)\n",
+  "body_hash": "372843c5be2bde6b",
+  "body_truncated": false,
+  "callers_of": [
+    "WisdomEngine",
+    "run_audit",
+    "hasattr",
+    "isinstance"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_audit_report_has_principles_field.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.test_audit_report_has_principles_field",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_audit_report_has_principles_field.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_audit_report_has_principles_field",
+  "product_categories": [
+    "SRG"
+  ],
+  "provides": [
+    "rebuild candidate for test_audit_report_has_principles_field"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,19 +1,21 @@
 {
-  "body": "    def test_system_message(self):\n        msg = Message(role=\"system\", content=\"You are an AI assistant.\")\n        tokens = estimate_message_tokens(msg)\n        assert tokens >= 5\n",
-  "body_hash": "f5ca3b4a24c8f586",
+  "body": "def test_system_message(self):\n    msg = Message(role=\"system\", content=\"You are an AI assistant.\")\n    tokens = estimate_message_tokens(msg)\n    assert tokens >= 5\n",
+  "body_hash": "c2be8ba77dec1c8e",
   "body_truncated": false,
   "callers_of": [
     "Message",
     "estimate_message_tokens"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testestimatemessagetokens.py:21.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_testestimatemessagetokens.py:23.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "qk.source.ass_ade.test_system_message",
-  "imports": [],
+  "id": "qk.source.a0_qk_constants.test_system_message",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testestimatemessagetokens.py:21"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_testestimatemessagetokens.py:23"
   },
   "kind": "invariant",
   "made_of": [],

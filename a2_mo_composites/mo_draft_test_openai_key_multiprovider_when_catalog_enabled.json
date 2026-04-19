@@ -1,6 +1,6 @@
 {
-  "body": "    def test_openai_key_multiprovider_when_catalog_enabled(self, monkeypatch):\n        \"\"\"With catalog providers AND OpenAI key, build_provider returns MultiProvider.\"\"\"\n        self._clear_provider_env()\n        monkeypatch.setenv(\"OPENAI_API_KEY\", \"sk-test\")\n        monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-groq\")\n\n        from ass_ade.config import AssAdeConfig\n        from ass_ade.engine.provider import MultiProvider\n\n        cfg = AssAdeConfig(profile=\"local\")\n        provider = build_provider(cfg)\n        assert isinstance(provider, MultiProvider)\n        assert \"openai\" in provider.providers\n        assert \"groq\" in provider.providers\n",
-  "body_hash": "8e0f56731e2d0335",
+  "body": "def test_openai_key_multiprovider_when_catalog_enabled(self, monkeypatch):\n    \"\"\"With catalog providers AND OpenAI key, build_provider returns MultiProvider.\"\"\"\n    self._clear_provider_env()\n    monkeypatch.setenv(\"OPENAI_API_KEY\", \"sk-test\")\n    monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-groq\")\n\n    from ass_ade.config import AssAdeConfig\n    from ass_ade.engine.provider import MultiProvider\n\n    cfg = AssAdeConfig(profile=\"local\")\n    provider = build_provider(cfg)\n    assert isinstance(provider, MultiProvider)\n    assert \"openai\" in provider.providers\n    assert \"groq\" in provider.providers\n",
+  "body_hash": "5e1e5534cef8dfdc",
   "body_truncated": false,
   "callers_of": [
     "_clear_provider_env",
@@ -10,7 +10,7 @@
     "isinstance"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine.py:215.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine.py:215.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_openai_key_multiprovider_when_catalog_enabled",
@@ -41,7 +41,7 @@
     "ass_ade.engine.provider.MultiProvider"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine.py:215"
+    "source": "C:/!ass-ade/tests/test_engine.py:215"
   },
   "kind": "engine_molecule",
   "made_of": [],

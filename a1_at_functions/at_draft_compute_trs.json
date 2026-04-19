@@ -1,6 +1,6 @@
 {
-  "body": "    def compute_trs(self, target: str) -> dict:\n        self._checks += 1\n        trust = 0.8\n        relevance = 0.8\n        security = 0.8\n        if self._nexus is not None:\n            try:\n                if hasattr(self._nexus, \"trust_score\"):\n                    r = self._nexus.trust_score(target)\n                    trust = float(getattr(r, \"score\", trust))\n                if hasattr(self._nexus, \"security_shield\"):\n                    r = self._nexus.security_shield({\"input\": target})\n                    security = 0.3 if getattr(r, \"blocked\", False) else 0.9\n            except Exception:\n                pass\n        return {\"trust\": trust, \"relevance\": relevance, \"security\": security}\n",
-  "body_hash": "f04c54d1d4425584",
+  "body": "def compute_trs(self, target: str) -> dict:\n    self._checks += 1\n    trust = 0.8\n    relevance = 0.8\n    security = 0.8\n    if self._nexus is not None:\n        try:\n            if hasattr(self._nexus, \"trust_score\"):\n                r = self._nexus.trust_score(target)\n                trust = float(getattr(r, \"score\", trust))\n            if hasattr(self._nexus, \"security_shield\"):\n                r = self._nexus.security_shield({\"input\": target})\n                security = 0.3 if getattr(r, \"blocked\", False) else 0.9\n        except Exception:\n            pass\n    return {\"trust\": trust, \"relevance\": relevance, \"security\": security}\n",
+  "body_hash": "9420b45c3bef2f62",
   "body_truncated": false,
   "callers_of": [
     "hasattr",
@@ -10,13 +10,15 @@
     "getattr"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_sam.py:13.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_compute_trs.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.compute_trs",
-  "imports": [],
+  "id": "at.source.a1_at_functions.compute_trs",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_sam.py:13"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_compute_trs.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

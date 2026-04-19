@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli.py:23
-# Component id: at.source.ass_ade.test_nexus_commands_require_remote_opt_in_for_local_profile
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_nexus_commands_require_remote_opt_in_for_local_profile.py:7
+# Component id: at.source.a1_at_functions.test_nexus_commands_require_remote_opt_in_for_local_profile
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_nexus_commands_require_remote_opt_in_for_local_profile(tmp_path: Path) -> None:

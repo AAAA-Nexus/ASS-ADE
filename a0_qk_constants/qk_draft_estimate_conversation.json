@@ -1,6 +1,6 @@
 {
-  "body": "    def estimate_conversation(\n        self,\n        messages: list[Message],\n        tools: list[ToolSchema] | None = None,\n    ) -> dict[str, int]:\n        \"\"\"Return a breakdown of token usage for the current conversation.\"\"\"\n        msg_tokens = sum(estimate_message_tokens(m) for m in messages)\n        tool_tokens = estimate_tools_tokens(tools or [])\n        return {\n            \"message_tokens\": msg_tokens,\n            \"tool_schema_tokens\": tool_tokens,\n            \"reserve\": self.reserve,\n            \"total_needed\": msg_tokens + tool_tokens + self.reserve,\n            \"context_window\": self.context_window,\n            \"headroom\": max(0, self.context_window - msg_tokens - tool_tokens - self.reserve),\n        }\n",
-  "body_hash": "697fc50f422d35dc",
+  "body": "def estimate_conversation(\n    self,\n    messages: list[Message],\n    tools: list[ToolSchema] | None = None,\n) -> dict[str, int]:\n    \"\"\"Return a breakdown of token usage for the current conversation.\"\"\"\n    msg_tokens = sum(estimate_message_tokens(m) for m in messages)\n    tool_tokens = estimate_tools_tokens(tools or [])\n    return {\n        \"message_tokens\": msg_tokens,\n        \"tool_schema_tokens\": tool_tokens,\n        \"reserve\": self.reserve,\n        \"total_needed\": msg_tokens + tool_tokens + self.reserve,\n        \"context_window\": self.context_window,\n        \"headroom\": max(0, self.context_window - msg_tokens - tool_tokens - self.reserve),\n    }\n",
+  "body_hash": "e1c068e94d69d296",
   "body_truncated": false,
   "callers_of": [
     "sum",
@@ -9,22 +9,15 @@
     "estimate_message_tokens"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/tokens.py:241.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_estimate_conversation.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "qk.source.ass_ade.estimate_conversation",
+  "id": "qk.source.a0_qk_constants.estimate_conversation",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "math",
-    "dataclasses.dataclass",
-    "typing.Any",
-    "ass_ade.engine.types.Message",
-    "ass_ade.engine.types.ToolSchema",
-    "tiktoken"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/tokens.py:241"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_estimate_conversation.py:7"
   },
   "kind": "invariant",
   "made_of": [],

@@ -1,18 +1,20 @@
 {
-  "body": "    def test_validate_missing_file(self) -> None:\n        result = runner.invoke(app, [\"a2a\", \"validate\", \"/nonexistent/agent.json\"])\n        assert result.exit_code == 1\n",
-  "body_hash": "60b413d9eab328a3",
+  "body": "def test_validate_missing_file(self) -> None:\n    result = runner.invoke(app, [\"a2a\", \"validate\", \"/nonexistent/agent.json\"])\n    assert result.exit_code == 1\n",
+  "body_hash": "2e194e0b691fa321",
   "body_truncated": false,
   "callers_of": [
     "invoke"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testa2avalidatecli.py:27.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testa2avalidatecli.py:29.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_validate_missing_file",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_validate_missing_file",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testa2avalidatecli.py:27"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testa2avalidatecli.py:29"
   },
   "kind": "pure_function",
   "made_of": [],

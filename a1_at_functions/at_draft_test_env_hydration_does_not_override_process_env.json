@@ -1,6 +1,6 @@
 {
-  "body": "    def test_env_hydration_does_not_override_process_env(self, tmp_path, monkeypatch):\n        from ass_ade.config import load_config\n        monkeypatch.setenv(\"GROQ_API_KEY\", \"from-process\")\n        (tmp_path / \".env\").write_text(\"GROQ_API_KEY=from-file\\n\")\n        (tmp_path / \".ass-ade\").mkdir()\n        load_config(tmp_path / \".ass-ade\" / \"config.json\")\n        # Process env wins\n        assert os.getenv(\"GROQ_API_KEY\") == \"from-process\"\n",
-  "body_hash": "503edc973e711308",
+  "body": "def test_env_hydration_does_not_override_process_env(self, tmp_path, monkeypatch):\n    from ass_ade.config import load_config\n    monkeypatch.setenv(\"GROQ_API_KEY\", \"from-process\")\n    (tmp_path / \".env\").write_text(\"GROQ_API_KEY=from-file\\n\")\n    (tmp_path / \".ass-ade\").mkdir()\n    load_config(tmp_path / \".ass-ade\" / \"config.json\")\n    # Process env wins\n    assert os.getenv(\"GROQ_API_KEY\") == \"from-process\"\n",
+  "body_hash": "7df98ba031009212",
   "body_truncated": false,
   "callers_of": [
     "setenv",
@@ -10,21 +10,16 @@
     "getenv"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testconfigproviderfields.py:52.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_env_hydration_does_not_override_process_env.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_env_hydration_does_not_override_process_env",
+  "id": "at.source.a1_at_functions.test_env_hydration_does_not_override_process_env",
   "imports": [
-    "ass_ade.config.AssAdeConfig",
-    "ass_ade.config.AssAdeConfig",
-    "ass_ade.config.AssAdeConfig",
-    "ass_ade.config.ProviderOverride",
-    "ass_ade.config.write_default_config",
-    "ass_ade.config.load_config",
+    "__future__.annotations",
     "ass_ade.config.load_config"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testconfigproviderfields.py:52"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_env_hydration_does_not_override_process_env.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

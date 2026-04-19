@@ -1,6 +1,6 @@
 {
-  "body": "    def test_max_rounds_safety(self, tmp_path):\n        \"\"\"If model keeps calling tools forever, loop terminates.\"\"\"\n        never_stop = CompletionResponse(\n            message=Message(\n                role=\"assistant\",\n                content=\"\",\n                tool_calls=[\n                    ToolCallRequest(id=\"c1\", name=\"echo\", arguments={\"text\": \"loop\"})\n                ],\n            ),\n            finish_reason=\"tool_calls\",\n        )\n        provider = _MockProvider([never_stop] * 30)\n        registry = ToolRegistry()\n        registry.register(_EchoTool())\n\n        loop = AgentLoop(\n            provider=provider,\n            registry=registry,\n            working_dir=str(tmp_path),\n        )\n        result = loop.step(\"Loop forever\")\n        assert result == MAX_ROUNDS_SENTINEL\n",
-  "body_hash": "3b7ab59f0f0feb6e",
+  "body": "def test_max_rounds_safety(self, tmp_path):\n    \"\"\"If model keeps calling tools forever, loop terminates.\"\"\"\n    never_stop = CompletionResponse(\n        message=Message(\n            role=\"assistant\",\n            content=\"\",\n            tool_calls=[\n                ToolCallRequest(id=\"c1\", name=\"echo\", arguments={\"text\": \"loop\"})\n            ],\n        ),\n        finish_reason=\"tool_calls\",\n    )\n    provider = _MockProvider([never_stop] * 30)\n    registry = ToolRegistry()\n    registry.register(_EchoTool())\n\n    loop = AgentLoop(\n        provider=provider,\n        registry=registry,\n        working_dir=str(tmp_path),\n    )\n    result = loop.step(\"Loop forever\")\n    assert result == MAX_ROUNDS_SENTINEL\n",
+  "body_hash": "61ca81c405ff1eed",
   "body_truncated": false,
   "callers_of": [
     "CompletionResponse",
@@ -15,27 +15,15 @@
     "ToolCallRequest"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_agent.py:281.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_max_rounds_safety.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_max_rounds_safety",
+  "id": "at.source.a1_at_functions.test_max_rounds_safety",
   "imports": [
-    "__future__.annotations",
-    "unittest.mock.MagicMock",
-    "ass_ade.agent.context.build_system_prompt",
-    "ass_ade.agent.conversation.Conversation",
-    "ass_ade.agent.gates.QualityGates",
-    "ass_ade.agent.loop.AgentLoop",
-    "ass_ade.agent.loop.MAX_ROUNDS_SENTINEL",
-    "ass_ade.engine.types.CompletionRequest",
-    "ass_ade.engine.types.CompletionResponse",
-    "ass_ade.engine.types.Message",
-    "ass_ade.engine.types.ToolCallRequest",
-    "ass_ade.tools.base.ToolResult",
-    "ass_ade.tools.registry.ToolRegistry"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_agent.py:281"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_max_rounds_safety.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

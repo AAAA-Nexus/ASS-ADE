@@ -1,6 +1,6 @@
 {
-  "body": "    def test_cancellation_context_is_thread_safe(self) -> None:\n        ctx = CancellationContext()\n        results = []\n\n        def check_many_times():\n            for _ in range(100):\n                results.append(ctx.check())\n                time.sleep(0.001)\n\n        def cancel_once():\n            time.sleep(0.01)\n            ctx.cancel()\n\n        threads = [threading.Thread(target=check_many_times) for _ in range(5)]\n        threads.append(threading.Thread(target=cancel_once))\n        for t in threads:\n            t.start()\n        for t in threads:\n            t.join()\n\n        # Should have some False and some True values\n        assert False in results\n        assert True in results\n",
-  "body_hash": "24dbca1e2f6a6329",
+  "body": "def test_cancellation_context_is_thread_safe(self) -> None:\n    ctx = CancellationContext()\n    results = []\n\n    def check_many_times():\n        for _ in range(100):\n            results.append(ctx.check())\n            time.sleep(0.001)\n\n    def cancel_once():\n        time.sleep(0.01)\n        ctx.cancel()\n\n    threads = [threading.Thread(target=check_many_times) for _ in range(5)]\n    threads.append(threading.Thread(target=cancel_once))\n    for t in threads:\n        t.start()\n    for t in threads:\n        t.join()\n\n    # Should have some False and some True values\n    assert False in results\n    assert True in results\n",
+  "body_hash": "cd340489966d13a0",
   "body_truncated": false,
   "callers_of": [
     "CancellationContext",
@@ -14,7 +14,7 @@
     "check"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_cancellation.py:47.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_cancellation.py:47.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.test_cancellation_context_is_thread_safe",
@@ -34,7 +34,7 @@
     "ass_ade.mcp.cancellation.CancellationContext"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_cancellation.py:47"
+    "source": "C:/!ass-ade/tests/test_mcp_cancellation.py:47"
   },
   "kind": "ecosystem_system",
   "made_of": [],

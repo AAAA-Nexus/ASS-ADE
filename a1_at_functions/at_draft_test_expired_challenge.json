@@ -1,18 +1,20 @@
 {
-  "body": "    def test_expired_challenge(self) -> None:\n        c = PaymentChallenge.from_response(\n            {\n                \"recipient\": \"0xCBd9e4c44958ee76E0F941106Ea960D476c48FD9\",\n                \"amount_micro_usdc\": 1,\n                \"expires\": 1,\n            }\n        )\n        assert c.is_expired\n",
-  "body_hash": "80fbaf6b9020db08",
+  "body": "def test_expired_challenge(self) -> None:\n    c = PaymentChallenge.from_response(\n        {\n            \"recipient\": \"0xCBd9e4c44958ee76E0F941106Ea960D476c48FD9\",\n            \"amount_micro_usdc\": 1,\n            \"expires\": 1,\n        }\n    )\n    assert c.is_expired\n",
+  "body_hash": "95e3a6c1e0dc4a56",
   "body_truncated": false,
   "callers_of": [
     "from_response"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpaymentchallenge.py:31.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testpaymentchallenge.py:33.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_expired_challenge",
-  "imports": [],
+  "id": "at.source.a2_mo_composites.test_expired_challenge",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpaymentchallenge.py:31"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testpaymentchallenge.py:33"
   },
   "kind": "pure_function",
   "made_of": [],

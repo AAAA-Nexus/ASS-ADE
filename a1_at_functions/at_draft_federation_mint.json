@@ -1,0 +1,32 @@
+{
+  "body": "def federation_mint(\n    self,\n    identity: dict | None = None,\n    platforms: list[str] | None = None,\n    *,\n    agent_id: str | None = None,\n    scope: str | None = None,\n    **kwargs: Any,\n) -> FederationToken:\n    \"\"\"/v1/federation/mint \u2014 cross-platform nxf_ identity token (AIF-100). $0.040/call\"\"\"\n    resolved_identity = identity or ({\"agent_id\": agent_id} if agent_id else {})\n    resolved_platforms = platforms or ([scope] if scope else [])\n    return self._post_model(\"/v1/federation/mint\", FederationToken, {\"identity\": resolved_identity, \"platforms\": resolved_platforms, **kwargs})\n",
+  "body_hash": "d132e7858d99869b",
+  "body_truncated": false,
+  "callers_of": [
+    "_post_model"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_federation_mint.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.federation_mint",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_federation_mint.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "federation_mint",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for federation_mint"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

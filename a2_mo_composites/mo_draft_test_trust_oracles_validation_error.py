@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:155
+# Extracted from C:/!ass-ade/tests/test_nexus_client_comprehensive.py:155
 # Component id: mo.source.ass_ade.test_trust_oracles_validation_error
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_trust_oracles_validation_error(method_name, args):

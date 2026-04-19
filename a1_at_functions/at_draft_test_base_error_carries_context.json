@@ -1,31 +1,21 @@
 {
-  "body": "    def test_base_error_carries_context(self) -> None:\n        err = NexusError(\"boom\", status_code=500, endpoint=\"/health\", retry_after=2.5)\n        assert err.detail == \"boom\"\n        assert err.status_code == 500\n        assert err.endpoint == \"/health\"\n        assert err.retry_after == 2.5\n        assert str(err) == \"boom\"\n",
-  "body_hash": "1bc51040a24ddd0b",
+  "body": "def test_base_error_carries_context(self) -> None:\n    err = NexusError(\"boom\", status_code=500, endpoint=\"/health\", retry_after=2.5)\n    assert err.detail == \"boom\"\n    assert err.status_code == 500\n    assert err.endpoint == \"/health\"\n    assert err.retry_after == 2.5\n    assert str(err) == \"boom\"\n",
+  "body_hash": "387561ad4ef6ce92",
   "body_truncated": false,
   "callers_of": [
     "NexusError",
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_errors.py:20.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_base_error_carries_context.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_base_error_carries_context",
+  "id": "at.source.a1_at_functions.test_base_error_carries_context",
   "imports": [
-    "pytest",
-    "ass_ade.nexus.errors.NexusAuthError",
-    "ass_ade.nexus.errors.NexusCircuitOpen",
-    "ass_ade.nexus.errors.NexusConnectionError",
-    "ass_ade.nexus.errors.NexusError",
-    "ass_ade.nexus.errors.NexusPaymentRequired",
-    "ass_ade.nexus.errors.NexusRateLimited",
-    "ass_ade.nexus.errors.NexusServerError",
-    "ass_ade.nexus.errors.NexusTimeoutError",
-    "ass_ade.nexus.errors.NexusValidationError",
-    "ass_ade.nexus.errors.raise_for_status"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_errors.py:20"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_base_error_carries_context.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

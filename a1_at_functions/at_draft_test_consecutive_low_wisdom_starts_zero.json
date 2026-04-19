@@ -1,0 +1,32 @@
+{
+  "body": "def test_consecutive_low_wisdom_starts_zero(self):\n    orch = self._make()\n    assert orch._consecutive_low_wisdom == 0\n",
+  "body_hash": "8f66eaecdbbf2ecf",
+  "body_truncated": false,
+  "callers_of": [
+    "_make"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_consecutive_low_wisdom_starts_zero.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.test_consecutive_low_wisdom_starts_zero",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_consecutive_low_wisdom_starts_zero.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_consecutive_low_wisdom_starts_zero",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_consecutive_low_wisdom_starts_zero"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

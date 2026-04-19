@@ -1,6 +1,6 @@
 {
-  "body": "    def compliance_step(ctx: dict[str, Any]) -> StepResult:\n        try:\n            result = client.compliance_check(text)\n            raw = result.model_dump() if hasattr(result, \"model_dump\") else {}\n            passed = raw.get(\"compliant\", False)\n            return StepResult(name=\"compliance_check\", status=StepStatus.PASSED if passed else StepStatus.FAILED, output=raw)\n        except Exception as exc:\n            return StepResult(name=\"compliance_check\", status=StepStatus.FAILED, error=str(exc))\n",
-  "body_hash": "e78b25e4faaae693",
+  "body": "def compliance_step(ctx: dict[str, Any]) -> StepResult:\n    try:\n        result = client.compliance_check(text)\n        raw = result.model_dump() if hasattr(result, \"model_dump\") else {}\n        passed = raw.get(\"compliant\", False)\n        return StepResult(name=\"compliance_check\", status=StepStatus.PASSED if passed else StepStatus.FAILED, output=raw)\n    except Exception as exc:\n        return StepResult(name=\"compliance_check\", status=StepStatus.FAILED, error=str(exc))\n",
+  "body_hash": "8998793a23311755",
   "body_truncated": false,
   "callers_of": [
     "compliance_check",
@@ -11,13 +11,15 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_certify_pipeline.py:34.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_certify_pipeline.py:36.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.compliance_step",
-  "imports": [],
+  "id": "at.source.a1_at_functions.compliance_step",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_certify_pipeline.py:34"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_certify_pipeline.py:36"
   },
   "kind": "pure_function",
   "made_of": [],

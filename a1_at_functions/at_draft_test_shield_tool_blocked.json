@@ -1,6 +1,6 @@
 {
-  "body": "    def test_shield_tool_blocked(self):\n        gates = QualityGates(_mock_nexus(shield_blocked=True))\n        result = gates.shield_tool(\"run_command\", {\"command\": \"rm -rf /\"})\n        assert result is not None\n        assert result[\"blocked\"] is True\n",
-  "body_hash": "c42009ce9115440f",
+  "body": "def test_shield_tool_blocked(self):\n    gates = QualityGates(_mock_nexus(shield_blocked=True))\n    result = gates.shield_tool(\"run_command\", {\"command\": \"rm -rf /\"})\n    assert result is not None\n    assert result[\"blocked\"] is True\n",
+  "body_hash": "9ca25b3e726bb916",
   "body_truncated": false,
   "callers_of": [
     "QualityGates",
@@ -8,13 +8,15 @@
     "_mock_nexus"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testqualitygates.py:44.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_shield_tool_blocked.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_shield_tool_blocked",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_shield_tool_blocked",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testqualitygates.py:44"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_shield_tool_blocked.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

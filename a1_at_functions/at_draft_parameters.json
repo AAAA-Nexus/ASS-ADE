@@ -1,16 +1,18 @@
 {
-  "body": "    def parameters(self) -> dict[str, Any]:\n        return {\n            \"type\": \"object\",\n            \"properties\": {\n                \"pattern\": {\"type\": \"string\", \"description\": \"Regex pattern (case-insensitive).\"},\n                \"include\": {\n                    \"type\": \"string\",\n                    \"description\": \"Glob to filter files (e.g., '**/*.py'). Default: all files.\",\n                },\n            },\n            \"required\": [\"pattern\"],\n        }\n",
-  "body_hash": "86a19066a243f263",
+  "body": "def parameters(self) -> dict[str, Any]:\n    return {\n        \"type\": \"object\",\n        \"properties\": {\n            \"pattern\": {\"type\": \"string\", \"description\": \"Regex pattern (case-insensitive).\"},\n            \"include\": {\n                \"type\": \"string\",\n                \"description\": \"Glob to filter files (e.g., '**/*.py'). Default: all files.\",\n            },\n        },\n        \"required\": [\"pattern\"],\n    }\n",
+  "body_hash": "40022959ac7ae012",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_grepsearchtool.py:20.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_grepsearchtool.py:22.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.parameters",
-  "imports": [],
+  "id": "at.source.a2_mo_composites.parameters",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_grepsearchtool.py:20"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_grepsearchtool.py:22"
   },
   "kind": "pure_function",
   "made_of": [],

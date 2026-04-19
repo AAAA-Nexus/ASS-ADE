@@ -1,6 +1,6 @@
 {
-  "body": "    def test_create_new(self, workspace: Path):\n        tool = WriteFileTool(str(workspace))\n        r = tool.execute(path=\"new.py\", content=\"x = 1\\n\")\n        assert r.success\n        assert (workspace / \"new.py\").read_text() == \"x = 1\\n\"\n",
-  "body_hash": "3b45ec5b935760ec",
+  "body": "def test_create_new(self, workspace: Path):\n    tool = WriteFileTool(str(workspace))\n    r = tool.execute(path=\"new.py\", content=\"x = 1\\n\")\n    assert r.success\n    assert (workspace / \"new.py\").read_text() == \"x = 1\\n\"\n",
+  "body_hash": "79bdf12ae43d6bde",
   "body_truncated": false,
   "callers_of": [
     "WriteFileTool",
@@ -9,26 +9,15 @@
     "read_text"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:59.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_create_new.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_create_new",
+  "id": "at.source.a1_at_functions.test_create_new",
   "imports": [
-    "__future__.annotations",
-    "os",
-    "pathlib.Path",
-    "pytest",
-    "ass_ade.tools.builtin.EditFileTool",
-    "ass_ade.tools.builtin.GrepSearchTool",
-    "ass_ade.tools.builtin.ListDirectoryTool",
-    "ass_ade.tools.builtin.ReadFileTool",
-    "ass_ade.tools.builtin.RunCommandTool",
-    "ass_ade.tools.builtin.SearchFilesTool",
-    "ass_ade.tools.builtin.WriteFileTool",
-    "ass_ade.tools.registry.default_registry"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:59"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_create_new.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

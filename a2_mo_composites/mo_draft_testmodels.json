@@ -10,30 +10,15 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:297.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testmodels.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.testmodels",
+  "id": "mo.source.a2_mo_composites.testmodels",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "unittest.mock.MagicMock",
-    "unittest.mock.patch",
-    "pytest",
-    "ass_ade.a2a.A2AAgentCard",
-    "ass_ade.a2a.A2AAuthentication",
-    "ass_ade.a2a.A2ASkill",
-    "ass_ade.a2a.ValidationIssue",
-    "ass_ade.a2a.ValidationReport",
-    "ass_ade.a2a.fetch_agent_card",
-    "ass_ade.a2a.local_agent_card",
-    "ass_ade.a2a.negotiate",
-    "ass_ade.a2a.validate_agent_card",
-    "httpx",
-    "httpx"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a.py:297"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testmodels.py:7"
   },
   "kind": "engine_molecule",
   "made_of": [],

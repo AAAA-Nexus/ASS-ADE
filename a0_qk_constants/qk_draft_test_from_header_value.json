@@ -1,18 +1,20 @@
 {
-  "body": "    def test_from_header_value(self) -> None:\n        \"\"\"PaymentProof should parse from HTTP header value.\"\"\"\n        header = \"sig123;0x1234;0xabc;8000\"\n        proof = PaymentProof.from_header_value(header)\n        assert proof is not None\n        assert proof.signature == \"sig123\"\n        assert proof.wallet_address == \"0x1234\"\n        assert proof.transaction_id == \"0xabc\"\n        assert proof.amount_micro_usdc == 8000\n",
-  "body_hash": "3fe4406349abc4e1",
+  "body": "def test_from_header_value(self) -> None:\n    \"\"\"PaymentProof should parse from HTTP header value.\"\"\"\n    header = \"sig123;0x1234;0xabc;8000\"\n    proof = PaymentProof.from_header_value(header)\n    assert proof is not None\n    assert proof.signature == \"sig123\"\n    assert proof.wallet_address == \"0x1234\"\n    assert proof.transaction_id == \"0xabc\"\n    assert proof.amount_micro_usdc == 8000\n",
+  "body_hash": "2d98be17f2a1b3db",
   "body_truncated": false,
   "callers_of": [
     "from_header_value"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testpaymentproof.py:38.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_testpaymentproof.py:40.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "qk.source.ass_ade.test_from_header_value",
-  "imports": [],
+  "id": "qk.source.a0_qk_constants.test_from_header_value",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testpaymentproof.py:38"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_testpaymentproof.py:40"
   },
   "kind": "invariant",
   "made_of": [],

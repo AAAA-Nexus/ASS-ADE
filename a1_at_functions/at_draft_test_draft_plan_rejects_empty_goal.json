@@ -7,17 +7,15 @@
     "draft_plan"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_planner.py:13.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_draft_plan_rejects_empty_goal.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_draft_plan_rejects_empty_goal",
+  "id": "at.source.a1_at_functions.test_draft_plan_rejects_empty_goal",
   "imports": [
-    "pytest",
-    "ass_ade.local.planner.draft_plan",
-    "ass_ade.local.planner.render_markdown"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_planner.py:13"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_draft_plan_rejects_empty_goal.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -14,22 +14,19 @@
     "get"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/puppeteer.py:27.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_puppeteer.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.puppeteer",
+  "id": "mo.source.a2_mo_composites.puppeteer",
   "imports": [
-    "__future__.annotations",
-    "dataclasses.dataclass",
-    "pathlib.Path",
-    "typing.Any"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/puppeteer.py:27"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_puppeteer.py:7"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.select_next_agent"
+    "at.source.a1_at_functions.select_next_agent"
   ],
   "name": "Puppeteer",
   "product_categories": [

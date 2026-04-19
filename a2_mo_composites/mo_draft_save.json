@@ -1,6 +1,6 @@
 {
-  "body": "    def save(self) -> None:\n        _MEMORY_DIR.mkdir(parents=True, exist_ok=True)\n        for attr, filename in [\n            (\"user_profile\", \"user_profile.json\"),\n            (\"project_contexts\", \"project_contexts.json\"),\n            (\"preferences\", \"preferences.json\"),\n        ]:\n            p = _MEMORY_DIR / filename\n            try:\n                p.write_text(\n                    json.dumps(getattr(self, attr), indent=2, default=str),\n                    encoding=\"utf-8\",\n                )\n            except OSError:\n                pass\n",
-  "body_hash": "4cb49554157a1212",
+  "body": "def save(self) -> None:\n    _MEMORY_DIR.mkdir(parents=True, exist_ok=True)\n    for attr, filename in [\n        (\"user_profile\", \"user_profile.json\"),\n        (\"project_contexts\", \"project_contexts.json\"),\n        (\"preferences\", \"preferences.json\"),\n    ]:\n        p = _MEMORY_DIR / filename\n        try:\n            p.write_text(\n                json.dumps(getattr(self, attr), indent=2, default=str),\n                encoding=\"utf-8\",\n            )\n        except OSError:\n            pass\n",
+  "body_hash": "ceb46a96d155a278",
   "body_truncated": false,
   "callers_of": [
     "mkdir",
@@ -9,13 +9,15 @@
     "getattr"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_memorystore.py:41.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_memorystore.py:43.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.save",
-  "imports": [],
+  "id": "mo.source.a2_mo_composites.save",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_memorystore.py:41"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_memorystore.py:43"
   },
   "kind": "engine_molecule",
   "made_of": [],

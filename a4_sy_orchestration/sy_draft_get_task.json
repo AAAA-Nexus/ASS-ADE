@@ -1,12 +1,12 @@
 {
-  "body": "    def get_task(self, task_id: str) -> Optional[Task]:\n        \"\"\"Retrieve a task by ID.\"\"\"\n        return self.tasks.get(task_id)\n",
-  "body_hash": "f0c12e4361e346e6",
+  "body": "def get_task(self, task_id: str) -> Optional[Task]:\n    \"\"\"Retrieve a task by ID.\"\"\"\n    return self.tasks.get(task_id)\n",
+  "body_hash": "a873b2e04fcaac17",
   "body_truncated": false,
   "callers_of": [
     "get"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/examples/02-rebuild-a-codebase/sample_project/main.py:102.",
+  "description": "Draft candidate from C:/!ass-ade/examples/02-rebuild-a-codebase/sample_project/main.py:102.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.get_task",
@@ -18,11 +18,11 @@
     "typing.Optional"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/examples/02-rebuild-a-codebase/sample_project/main.py:102"
+    "source": "C:/!ass-ade/examples/02-rebuild-a-codebase/sample_project/main.py:102"
   },
   "kind": "ecosystem_system",
   "made_of": [
-    "og.source.ass_ade.get"
+    "og.source.a3_og_features.get"
   ],
   "name": "get_task",
   "product_categories": [

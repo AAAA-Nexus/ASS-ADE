@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_new_commands.py:213
-# Component id: at.source.ass_ade.test_trust_score
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_trust_score.py:7
+# Component id: at.source.a1_at_functions.test_trust_score
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_trust_score(tmp_path: Path) -> None:

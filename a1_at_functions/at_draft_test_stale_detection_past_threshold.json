@@ -1,0 +1,35 @@
+{
+  "body": "def test_stale_detection_past_threshold(self, tmp_path):\n    tca = self._make(tmp_path)\n    # Manually plant an old timestamp (2 hours ago with 1h threshold)\n    tca._reads[\"/old.py\"] = time.time() - 7300\n    stale = tca.get_stale_files([\"/old.py\"])\n    assert len(stale) == 1\n    assert not stale[0].fresh\n",
+  "body_hash": "65b8b17d21dda3bb",
+  "body_truncated": false,
+  "callers_of": [
+    "_make",
+    "get_stale_files",
+    "time",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_stale_detection_past_threshold.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.test_stale_detection_past_threshold",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_stale_detection_past_threshold.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_stale_detection_past_threshold",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_stale_detection_past_threshold"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

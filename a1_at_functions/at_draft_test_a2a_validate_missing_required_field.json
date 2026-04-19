@@ -1,6 +1,6 @@
 {
-  "body": "    def test_a2a_validate_missing_required_field(self, tmp_path: Path) -> None:\n        \"\"\"Card with missing field test.\"\"\"\n        card = {\n            \"name\": \"TestAgent\",\n            \"description\": \"Missing endpoint\",\n            # endpoint missing\n        }\n        card_file = tmp_path / \"agent_card.json\"\n        card_file.write_text(json.dumps(card), encoding=\"utf-8\")\n        \n        result = runner.invoke(app, [\"a2a\", \"validate\", str(card_file)])\n        \n        # Command should complete (pass or fail)\n        assert result.exit_code in (0, 1, 2)\n",
-  "body_hash": "967b884c6a97e908",
+  "body": "def test_a2a_validate_missing_required_field(self, tmp_path: Path) -> None:\n    \"\"\"Card with missing field test.\"\"\"\n    card = {\n        \"name\": \"TestAgent\",\n        \"description\": \"Missing endpoint\",\n        # endpoint missing\n    }\n    card_file = tmp_path / \"agent_card.json\"\n    card_file.write_text(json.dumps(card), encoding=\"utf-8\")\n\n    result = runner.invoke(app, [\"a2a\", \"validate\", str(card_file)])\n\n    # Command should complete (pass or fail)\n    assert result.exit_code in (0, 1, 2)\n",
+  "body_hash": "6c3420d401e0aa05",
   "body_truncated": false,
   "callers_of": [
     "write_text",
@@ -9,32 +9,15 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli_happy_path.py:146.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testa2avalidate.py:26.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_a2a_validate_missing_required_field",
+  "id": "at.source.a1_at_functions.test_a2a_validate_missing_required_field",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "pathlib.Path",
-    "unittest.mock.MagicMock",
-    "unittest.mock.patch",
-    "pytest",
-    "typer.testing.CliRunner",
-    "ass_ade.cli.app",
-    "ass_ade.config.AssAdeConfig",
-    "ass_ade.config.write_default_config",
-    "ass_ade.nexus.models.AgentPlan",
-    "ass_ade.nexus.models.ComplianceResult",
-    "ass_ade.nexus.models.FormatConversion",
-    "ass_ade.nexus.models.InferenceResponse",
-    "ass_ade.nexus.models.IntentClassification",
-    "ass_ade.nexus.models.RatchetSession",
-    "ass_ade.nexus.models.TrustScore",
-    "ass_ade.pipeline.PipelineResult"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli_happy_path.py:146"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testa2avalidate.py:26"
   },
   "kind": "pure_function",
   "made_of": [],

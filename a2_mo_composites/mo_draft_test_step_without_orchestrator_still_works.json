@@ -1,6 +1,6 @@
 {
-  "body": "    def test_step_without_orchestrator_still_works(self) -> None:\n        loop = self._make_loop(orchestrator=None)\n        result = loop.step(\"Hello\")\n        assert isinstance(result, str)\n",
-  "body_hash": "1eb0147c8e80a1d9",
+  "body": "def test_step_without_orchestrator_still_works(self) -> None:\n    loop = self._make_loop(orchestrator=None)\n    result = loop.step(\"Hello\")\n    assert isinstance(result, str)\n",
+  "body_hash": "e0a0123931c6230f",
   "body_truncated": false,
   "callers_of": [
     "_make_loop",
@@ -8,7 +8,7 @@
     "isinstance"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:451.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:451.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_step_without_orchestrator_still_works",
@@ -36,11 +36,11 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:451"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:451"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.step"
+    "at.source.a1_at_functions.step"
   ],
   "name": "test_step_without_orchestrator_still_works",
   "product_categories": [

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_failed_steps_property(self) -> None:\n        result = PipelineResult(\n            name=\"test\",\n            steps=[\n                StepResult(name=\"s1\", status=StepStatus.PASSED),\n                StepResult(name=\"s2\", status=StepStatus.FAILED),\n            ],\n            passed=False,\n        )\n        assert len(result.failed_steps) == 1\n        assert result.failed_steps[0].name == \"s2\"\n",
-  "body_hash": "28e7f805d83ea906",
+  "body": "def test_failed_steps_property(self) -> None:\n    result = PipelineResult(\n        name=\"test\",\n        steps=[\n            StepResult(name=\"s1\", status=StepStatus.PASSED),\n            StepResult(name=\"s2\", status=StepStatus.FAILED),\n        ],\n        passed=False,\n    )\n    assert len(result.failed_steps) == 1\n    assert result.failed_steps[0].name == \"s2\"\n",
+  "body_hash": "3a765f79243876ff",
   "body_truncated": false,
   "callers_of": [
     "PipelineResult",
@@ -8,22 +8,15 @@
     "StepResult"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:247.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_failed_steps_property.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_failed_steps_property",
+  "id": "at.source.a1_at_functions.test_failed_steps_property",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "pathlib.Path",
-    "typing.Any",
-    "ass_ade.pipeline.Pipeline",
-    "ass_ade.pipeline.PipelineResult",
-    "ass_ade.pipeline.StepResult",
-    "ass_ade.pipeline.StepStatus"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:247"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_failed_steps_property.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

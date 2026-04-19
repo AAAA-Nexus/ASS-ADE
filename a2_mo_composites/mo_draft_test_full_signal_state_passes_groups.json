@@ -1,19 +1,21 @@
 {
-  "body": "    def test_full_signal_state_passes_groups(self) -> None:\n        w = WisdomEngine({})\n        cycle_state = {\n            \"recon_done\": True,\n            \"complexity_scored\": True,\n            \"tier\": \"hybrid\",\n            \"memory_consulted\": True,\n            \"lifr_queried\": True,\n            \"trace_captured\": True,\n            \"hallucination_checked\": True,\n            \"certified\": True,\n            \"map_terrain_done\": True,\n            \"atlas_used\": True,\n            \"tdmi_computed\": True,\n            \"budget_ok\": True,\n            \"tool_calls\": [\"read_file\"],\n        }\n        report = w.run_audit(cycle_state)\n        assert report.passed > 0\n        assert report.score > 0.0\n",
-  "body_hash": "9e8a5b5ad0b887a9",
+  "body": "def test_full_signal_state_passes_groups(self) -> None:\n    w = WisdomEngine({})\n    cycle_state = {\n        \"recon_done\": True,\n        \"complexity_scored\": True,\n        \"tier\": \"hybrid\",\n        \"memory_consulted\": True,\n        \"lifr_queried\": True,\n        \"trace_captured\": True,\n        \"hallucination_checked\": True,\n        \"certified\": True,\n        \"map_terrain_done\": True,\n        \"atlas_used\": True,\n        \"tdmi_computed\": True,\n        \"budget_ok\": True,\n        \"tool_calls\": [\"read_file\"],\n    }\n    report = w.run_audit(cycle_state)\n    assert report.passed > 0\n    assert report.score > 0.0\n",
+  "body_hash": "3f8785b8c356d925",
   "body_truncated": false,
   "callers_of": [
     "WisdomEngine",
     "run_audit"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwisdomengine.py:13.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testwisdomengine.py:15.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.test_full_signal_state_passes_groups",
-  "imports": [],
+  "id": "mo.source.a2_mo_composites.test_full_signal_state_passes_groups",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwisdomengine.py:13"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testwisdomengine.py:15"
   },
   "kind": "engine_molecule",
   "made_of": [],

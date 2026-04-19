@@ -1,5 +1,5 @@
 {
-  "body": "class TestDataConvert:\n    \"\"\"Test `data convert` command \u2014 convert structured data formats.\"\"\"\n\n    def test_data_convert_json_to_yaml(self, tmp_path: Path, hybrid_config: Path) -> None:\n        \"\"\"Data format conversion test.\"\"\"\n        json_file = tmp_path / \"config.json\"\n        json_file.write_text(json.dumps({\"name\": \"app\", \"version\": \"1.0\"}), encoding=\"utf-8\")\n        \n        mock_nx = MagicMock()\n        mock_nx.data_convert.return_value = FormatConversion(\n            result='name: app\\nversion: \"1.0\"',\n            from_format=\"json\",\n            to_format=\"yaml\",\n        )\n        \n        with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n            result = runner.invoke(\n                app,\n                [\"data\", \"convert\", str(json_file), \"yaml\", \"--config\", str(hybrid_config)],\n            )\n        \n        # May succeed or require remote flag\n        assert result.exit_code in (0, 2)\n",
+  "body": "class TestDataConvert:\n    \"\"\"Test `data convert` command \u2014 convert structured data formats.\"\"\"\n\n    def test_data_convert_json_to_yaml(self, tmp_path: Path, hybrid_config: Path) -> None:\n        \"\"\"Data format conversion test.\"\"\"\n        json_file = tmp_path / \"config.json\"\n        json_file.write_text(json.dumps({\"name\": \"app\", \"version\": \"1.0\"}), encoding=\"utf-8\")\n\n        mock_nx = MagicMock()\n        mock_nx.data_convert.return_value = FormatConversion(\n            result='name: app\\nversion: \"1.0\"',\n            from_format=\"json\",\n            to_format=\"yaml\",\n        )\n\n        with patch(\"ass_ade.cli.NexusClient\", return_value=_make_ctx_mgr(mock_nx)):\n            result = runner.invoke(\n                app,\n                [\"data\", \"convert\", str(json_file), \"yaml\", \"--config\", str(hybrid_config)],\n            )\n\n        # May succeed or require remote flag\n        assert result.exit_code in (0, 2)\n",
   "body_hash": "85441d66f4a0cd08",
   "body_truncated": false,
   "callers_of": [
@@ -13,36 +13,19 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli_happy_path.py:207.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testdataconvert.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.testdataconvert",
+  "id": "mo.source.a2_mo_composites.testdataconvert",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "pathlib.Path",
-    "unittest.mock.MagicMock",
-    "unittest.mock.patch",
-    "pytest",
-    "typer.testing.CliRunner",
-    "ass_ade.cli.app",
-    "ass_ade.config.AssAdeConfig",
-    "ass_ade.config.write_default_config",
-    "ass_ade.nexus.models.AgentPlan",
-    "ass_ade.nexus.models.ComplianceResult",
-    "ass_ade.nexus.models.FormatConversion",
-    "ass_ade.nexus.models.InferenceResponse",
-    "ass_ade.nexus.models.IntentClassification",
-    "ass_ade.nexus.models.RatchetSession",
-    "ass_ade.nexus.models.TrustScore",
-    "ass_ade.pipeline.PipelineResult"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli_happy_path.py:207"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testdataconvert.py:7"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.formatconversion"
+    "at.source.a1_at_functions.formatconversion"
   ],
   "name": "TestDataConvert",
   "product_categories": [

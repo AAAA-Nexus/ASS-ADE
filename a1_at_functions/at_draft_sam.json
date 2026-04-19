@@ -1,0 +1,33 @@
+{
+  "body": "def sam(self):\n    if self._sam is None:\n        from ass_ade.agent.sam import SAM\n        self._sam = SAM(self._config, self._nexus)\n    return self._sam\n",
+  "body_hash": "a34d71d381fee3cf",
+  "body_truncated": false,
+  "callers_of": [
+    "SAM"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_sam.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.sam",
+  "imports": [
+    "__future__.annotations",
+    "ass_ade.agent.sam.SAM"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_sam.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "sam",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for sam"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,19 +1,21 @@
 {
-  "body": "    def test_empty_content(self):\n        msg = Message(role=\"assistant\", content=\"\")\n        tokens = estimate_message_tokens(msg)\n        assert tokens == 4  # just overhead\n",
-  "body_hash": "87f82dc73e5f4fb6",
+  "body": "def test_empty_content(self):\n    msg = Message(role=\"assistant\", content=\"\")\n    tokens = estimate_message_tokens(msg)\n    assert tokens == 4  # just overhead\n",
+  "body_hash": "fda73f9fbc7d5e6a",
   "body_truncated": false,
   "callers_of": [
     "Message",
     "estimate_message_tokens"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testestimatemessagetokens.py:11.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_testestimatemessagetokens.py:13.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "qk.source.ass_ade.test_empty_content",
-  "imports": [],
+  "id": "qk.source.a0_qk_constants.test_empty_content",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testestimatemessagetokens.py:11"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_testestimatemessagetokens.py:13"
   },
   "kind": "invariant",
   "made_of": [],

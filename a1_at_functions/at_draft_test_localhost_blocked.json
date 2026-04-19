@@ -1,19 +1,21 @@
 {
-  "body": "    def test_localhost_blocked(self) -> None:\n        \"\"\"A2A should block attempts to fetch from localhost.\"\"\"\n        report = fetch_agent_card(\"https://localhost/.well-known/agent.json\")\n        assert not report.valid\n        assert len(report.errors) > 0\n        assert \"blocked\" in report.errors[0].message or \"loopback\" in report.errors[0].message\n",
-  "body_hash": "8620d005e1d7d573",
+  "body": "def test_localhost_blocked(self) -> None:\n    \"\"\"Absolute URLs to localhost should be blocked.\"\"\"\n    with pytest.raises(ValueError, match=\"private/loopback address\"):\n        _validate_absolute_endpoint(\"https://localhost/admin\")\n",
+  "body_hash": "c9875184cb56aa37",
   "body_truncated": false,
   "callers_of": [
-    "fetch_agent_card",
-    "len"
+    "raises",
+    "_validate_absolute_endpoint"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testa2afetchagentcardssrf.py:14.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testvalidateabsoluteendpoint.py:22.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_localhost_blocked",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_localhost_blocked",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testa2afetchagentcardssrf.py:14"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testvalidateabsoluteendpoint.py:22"
   },
   "kind": "pure_function",
   "made_of": [],

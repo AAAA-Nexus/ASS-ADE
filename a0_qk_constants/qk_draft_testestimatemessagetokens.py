@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tokens.py:47
-# Component id: qk.source.ass_ade.testestimatemessagetokens
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_testestimatemessagetokens.py:7
+# Component id: qk.source.a0_qk_constants.testestimatemessagetokens
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class TestEstimateMessageTokens:

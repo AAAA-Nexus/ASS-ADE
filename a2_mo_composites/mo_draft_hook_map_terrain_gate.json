@@ -1,6 +1,6 @@
 {
-  "body": "    def hook_map_terrain_gate(self, ctx: dict[str, Any]) -> dict[str, Any] | None:\n        try:\n            for method in (\"map_terrain\", \"nexus_map_terrain\"):\n                fn = getattr(self._client, method, None)\n                if fn is None:\n                    continue\n                try:\n                    result = fn(ctx)\n                    verdict = getattr(result, \"verdict\", None)\n                    if verdict is None and isinstance(result, dict):\n                        verdict = result.get(\"verdict\")\n                    return {\"verdict\": verdict or \"proceed\"}\n                except Exception:\n                    break\n            return {\"verdict\": \"proceed\", \"source\": \"fallback\"}\n        except Exception as exc:\n            logging.getLogger(__name__).warning(\"hook_map_terrain_gate failed: %s\", exc)\n            return None\n",
-  "body_hash": "70cc2c712807c0d2",
+  "body": "def hook_map_terrain_gate(self, ctx: dict[str, Any]) -> dict[str, Any] | None:\n    try:\n        for method in (\"map_terrain\", \"nexus_map_terrain\"):\n            fn = getattr(self._client, method, None)\n            if fn is None:\n                continue\n            try:\n                result = fn(ctx)\n                verdict = getattr(result, \"verdict\", None)\n                if verdict is None and isinstance(result, dict):\n                    verdict = result.get(\"verdict\")\n                return {\"verdict\": verdict or \"proceed\"}\n            except Exception:\n                break\n        return {\"verdict\": \"proceed\", \"source\": \"fallback\"}\n    except Exception as exc:\n        logging.getLogger(__name__).warning(\"hook_map_terrain_gate failed: %s\", exc)\n        return None\n",
+  "body_hash": "b624ff52cd2c2027",
   "body_truncated": false,
   "callers_of": [
     "getattr",
@@ -11,11 +11,12 @@
     "getLogger"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_qualitygates.py:392.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_qualitygates.py:394.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.hook_map_terrain_gate",
+  "id": "mo.source.a2_mo_composites.hook_map_terrain_gate",
   "imports": [
+    "__future__.annotations",
     "ast",
     "re",
     "json",
@@ -32,7 +33,7 @@
     "ass_ade.agent.sam.SAM"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_qualitygates.py:392"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_qualitygates.py:394"
   },
   "kind": "engine_molecule",
   "made_of": [],

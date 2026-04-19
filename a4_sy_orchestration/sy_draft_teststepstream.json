@@ -20,7 +20,7 @@
     "ToolCallRequest"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:231.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_server_streaming.py:231.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.teststepstream",
@@ -39,11 +39,11 @@
     "ass_ade.tools.registry.ToolRegistry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:231"
+    "source": "C:/!ass-ade/tests/test_mcp_server_streaming.py:231"
   },
   "kind": "ecosystem_system",
   "made_of": [
-    "og.source.ass_ade.toolregistry"
+    "og.source.a3_og_features.toolregistry"
   ],
   "name": "TestStepStream",
   "product_categories": [

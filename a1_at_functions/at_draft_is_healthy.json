@@ -1,18 +1,20 @@
 {
-  "body": "    def is_healthy(self) -> bool:\n        \"\"\"Return True if the session is active and has remaining calls.\"\"\"\n        if not self.is_active:\n            return False\n        try:\n            s = self.status()\n            remaining = s.remaining_calls\n            return remaining is None or remaining > 0\n        except NexusError:\n            return False\n",
-  "body_hash": "a7947521f8d003cd",
+  "body": "def is_healthy(self) -> bool:\n    \"\"\"Return True if the session is active and has remaining calls.\"\"\"\n    if not self.is_active:\n        return False\n    try:\n        s = self.status()\n        remaining = s.remaining_calls\n        return remaining is None or remaining > 0\n    except NexusError:\n        return False\n",
+  "body_hash": "00e9a755fce782cb",
   "body_truncated": false,
   "callers_of": [
     "status"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_nexussession.py:53.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_is_healthy.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.is_healthy",
-  "imports": [],
+  "id": "at.source.a1_at_functions.is_healthy",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_nexussession.py:53"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_is_healthy.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

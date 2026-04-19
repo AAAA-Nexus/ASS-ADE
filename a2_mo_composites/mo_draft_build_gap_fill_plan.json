@@ -25,7 +25,7 @@
     "dumps"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/gap_filler.py:237.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/rebuild/gap_filler.py:237.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.build_gap_fill_plan",
@@ -41,7 +41,7 @@
     "typing.Any"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/gap_filler.py:237"
+    "source": "C:/!ass-ade/src/ass_ade/engine/rebuild/gap_filler.py:237"
   },
   "kind": "engine_molecule",
   "made_of": [],

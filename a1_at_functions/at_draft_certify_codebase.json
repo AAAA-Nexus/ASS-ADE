@@ -1,0 +1,32 @@
+{
+  "body": "def certify_codebase(\n    self,\n    local_certificate: dict[str, Any],\n    agent_id: str | None = None,\n) -> CertifyResult:\n    \"\"\"Sign and certify a codebase via AAAA-Nexus PQC signing.\"\"\"\n    payload: dict[str, Any] = {\"certificate\": local_certificate}\n    if agent_id:\n        payload[\"agent_id\"] = agent_id\n    return self._post_model(\"/v1/certify/codebase\", CertifyResult, payload)\n",
+  "body_hash": "5490887a885c7c9f",
+  "body_truncated": false,
+  "callers_of": [
+    "_post_model"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_certify_codebase.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.certify_codebase",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_certify_codebase.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "certify_codebase",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for certify_codebase"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

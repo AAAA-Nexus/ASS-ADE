@@ -1,6 +1,6 @@
 {
-  "body": "    def test_start_creates_session(self) -> None:\n        session = NexusSession(_mock_client())\n        result = session.start(\"13608\")\n        assert session.is_active\n        assert session.session_id == \"sess-abc\"\n        assert result.session_id == \"sess-abc\"\n",
-  "body_hash": "03a1901189814589",
+  "body": "def test_start_creates_session(self) -> None:\n    session = NexusSession(_mock_client())\n    result = session.start(\"13608\")\n    assert session.is_active\n    assert session.session_id == \"sess-abc\"\n    assert result.session_id == \"sess-abc\"\n",
+  "body_hash": "0d255695515728d2",
   "body_truncated": false,
   "callers_of": [
     "NexusSession",
@@ -8,22 +8,15 @@
     "_mock_client"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_session.py:23.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_start_creates_session.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_start_creates_session",
+  "id": "at.source.a1_at_functions.test_start_creates_session",
   "imports": [
-    "__future__.annotations",
-    "hashlib",
-    "unittest.mock.MagicMock",
-    "pytest",
-    "ass_ade.nexus.models.RatchetAdvance",
-    "ass_ade.nexus.models.RatchetSession",
-    "ass_ade.nexus.models.RatchetStatus",
-    "ass_ade.nexus.session.NexusSession"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_session.py:23"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_start_creates_session.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

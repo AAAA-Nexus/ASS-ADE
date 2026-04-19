@@ -1,13 +1,13 @@
 {
-  "body": "    def list_all_tasks(self) -> List[Task]:\n        \"\"\"Get all tasks.\"\"\"\n        return list(self.tasks.values())\n",
-  "body_hash": "63ab097e87b47696",
+  "body": "def list_all_tasks(self) -> List[Task]:\n    \"\"\"Get all tasks.\"\"\"\n    return list(self.tasks.values())\n",
+  "body_hash": "9c381aaa3ef72bf7",
   "body_truncated": false,
   "callers_of": [
     "list",
     "values"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/examples/02-rebuild-a-codebase/sample_project/main.py:121.",
+  "description": "Draft candidate from C:/!ass-ade/examples/02-rebuild-a-codebase/sample_project/main.py:121.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.list_all_tasks",
@@ -19,7 +19,7 @@
     "typing.Optional"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/examples/02-rebuild-a-codebase/sample_project/main.py:121"
+    "source": "C:/!ass-ade/examples/02-rebuild-a-codebase/sample_project/main.py:121"
   },
   "kind": "ecosystem_system",
   "made_of": [],

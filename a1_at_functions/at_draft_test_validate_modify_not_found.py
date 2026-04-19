@@ -1,10 +1,12 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditplanexecutor.py:28
-# Component id: at.source.ass_ade.test_validate_modify_not_found
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_validate_modify_not_found.py:7
+# Component id: at.source.a1_at_functions.test_validate_modify_not_found
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
-    def test_validate_modify_not_found(self, executor: EditPlanExecutor):
-        plan = EditPlan()
-        plan.add_modify("main.py", "NONEXISTENT", "replacement")
-        errors = executor.validate(plan)
-        assert len(errors) == 1
-        assert "not found" in errors[0]
+def test_validate_modify_not_found(self, executor: EditPlanExecutor):
+    plan = EditPlan()
+    plan.add_modify("main.py", "NONEXISTENT", "replacement")
+    errors = executor.validate(plan)
+    assert len(errors) == 1
+    assert "not found" in errors[0]

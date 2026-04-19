@@ -1,18 +1,20 @@
 {
-  "body": "    def test_preserves_newlines_and_tabs(self) -> None:\n        text = \"Hello\\nWorld\\tFoo\"\n        assert validate_prompt(text) == text\n",
-  "body_hash": "37357aa4a40dd511",
+  "body": "def test_preserves_newlines_and_tabs(self) -> None:\n    text = \"Hello\\nWorld\\tFoo\"\n    assert validate_prompt(text) == text\n",
+  "body_hash": "d0a85f367a9d1349",
   "body_truncated": false,
   "callers_of": [
     "validate_prompt"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateprompt.py:15.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testvalidateprompt.py:17.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_preserves_newlines_and_tabs",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_preserves_newlines_and_tabs",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateprompt.py:15"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testvalidateprompt.py:17"
   },
   "kind": "pure_function",
   "made_of": [],

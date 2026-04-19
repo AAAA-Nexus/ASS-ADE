@@ -1,0 +1,32 @@
+{
+  "body": "def agent_reputation(self, agent_id: str, **kwargs: Any) -> dict:\n    \"\"\"/v1/agents/reputation \u2014 A2A compliance + trust score. $0.040/request\"\"\"\n    return self._post_raw(\"/v1/agents/reputation\", {\"agent_id\": agent_id, **kwargs})\n",
+  "body_hash": "2778ae55fb7144f1",
+  "body_truncated": false,
+  "callers_of": [
+    "_post_raw"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_agent_reputation.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.agent_reputation",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_agent_reputation.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "agent_reputation",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for agent_reputation"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_tier_prefix_from_id.py:5
-# Component id: at.source.ass_ade.tier_prefix_from_id
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_tier_prefix_from_id.py:7
+# Component id: at.source.a1_at_functions.tier_prefix_from_id
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def tier_prefix_from_id(dep_id: str) -> str | None:

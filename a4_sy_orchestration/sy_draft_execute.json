@@ -1,13 +1,13 @@
 {
-  "body": "    def execute(self, **kwargs):\n        return ToolResult(output=f\"echoed: {kwargs.get('text', '')}\")\n",
-  "body_hash": "285a71b3d217b648",
+  "body": "def execute(self, **kwargs):\n    return ToolResult(output=f\"echoed: {kwargs.get('text', '')}\")\n",
+  "body_hash": "62e3fb66d2be3807",
   "body_truncated": false,
   "callers_of": [
     "ToolResult",
     "get"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:227.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_server_streaming.py:227.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.execute",
@@ -26,11 +26,11 @@
     "ass_ade.tools.registry.ToolRegistry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:227"
+    "source": "C:/!ass-ade/tests/test_mcp_server_streaming.py:227"
   },
   "kind": "ecosystem_system",
   "made_of": [
-    "og.source.ass_ade.get"
+    "og.source.a3_og_features.get"
   ],
   "name": "execute",
   "product_categories": [

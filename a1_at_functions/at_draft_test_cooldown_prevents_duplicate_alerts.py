@@ -1,10 +1,12 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbas.py:72
-# Component id: at.source.ass_ade.test_cooldown_prevents_duplicate_alerts
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_cooldown_prevents_duplicate_alerts.py:7
+# Component id: at.source.a1_at_functions.test_cooldown_prevents_duplicate_alerts
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
-    def test_cooldown_prevents_duplicate_alerts(self) -> None:
-        b = BAS({"bas_cooldown_s": 3600.0})  # 1-hour cooldown
-        a1 = b.alert("gvu_jump", {"gvu_delta": 0.5})
-        a2 = b.alert("gvu_jump", {"gvu_delta": 0.6})
-        # second alert on cooldown
-        assert a2.cooldown_skipped
+def test_cooldown_prevents_duplicate_alerts(self) -> None:
+    b = BAS({"bas_cooldown_s": 3600.0})  # 1-hour cooldown
+    a1 = b.alert("gvu_jump", {"gvu_delta": 0.5})
+    a2 = b.alert("gvu_jump", {"gvu_delta": 0.6})
+    # second alert on cooldown
+    assert a2.cooldown_skipped

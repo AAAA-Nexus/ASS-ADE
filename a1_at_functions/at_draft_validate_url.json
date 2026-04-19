@@ -10,21 +10,17 @@
     "ValueError"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/validation.py:125.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_validate_url.py:7.",
   "exceptions_raised": [
     "ValueError"
   ],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.validate_url",
+  "id": "at.source.a1_at_functions.validate_url",
   "imports": [
-    "__future__.annotations",
-    "ipaddress",
-    "re",
-    "socket",
-    "urllib.parse.urlparse"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/validation.py:125"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_validate_url.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

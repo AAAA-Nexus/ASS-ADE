@@ -1,5 +1,5 @@
 {
-  "body": "def test_inference_stream_happy_path():\n    \"\"\"Test inference_stream (streaming endpoint).\"\"\"\n    def handler(request):\n        assert request.method == \"POST\"\n        return httpx.Response(200, text=\"stream1\\nstream2\\nstream3\\n\")\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        chunks = list(client.inference_stream(prompt=\"test prompt\"))\n        assert len(chunks) > 0\n",
+  "body": "def test_inference_stream_happy_path():\n    \"\"\"Test inference_stream (streaming endpoint).\"\"\"\n    def handler(request):\n        assert request.method == \"POST\"\n        return httpx.Response(200, text=\"stream1\\nstream2\\nstream3\\n\")\n\n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        chunks = list(client.inference_stream(prompt=\"test prompt\"))\n        assert len(chunks) > 0\n",
   "body_hash": "1766bfb40acb760d",
   "body_truncated": false,
   "callers_of": [
@@ -11,13 +11,15 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_inference_stream_happy_path.py:5.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_inference_stream_happy_path.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_inference_stream_happy_path",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_inference_stream_happy_path",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_inference_stream_happy_path.py:5"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_inference_stream_happy_path.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

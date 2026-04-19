@@ -21,28 +21,20 @@
     "Path"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/tools/builtin.py:155.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_editfiletool.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.editfiletool",
+  "id": "mo.source.a2_mo_composites.editfiletool",
   "imports": [
-    "__future__.annotations",
-    "difflib",
-    "re",
-    "shlex",
-    "subprocess",
-    "pathlib.Path",
-    "typing.Any",
-    "ass_ade.tools.base.ToolResult",
-    "ass_ade.tools.history.FileHistory"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/tools/builtin.py:155"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_editfiletool.py:7"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.count",
-    "at.source.ass_ade.record"
+    "at.source.a1_at_functions.count",
+    "at.source.a1_at_functions.record"
   ],
   "name": "EditFileTool",
   "product_categories": [

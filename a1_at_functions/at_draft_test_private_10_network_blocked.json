@@ -1,19 +1,21 @@
 {
-  "body": "    def test_private_10_network_blocked(self) -> None:\n        \"\"\"Absolute URLs to 10.x.x.x should be blocked.\"\"\"\n        with pytest.raises(ValueError, match=\"private/loopback address\"):\n            _validate_absolute_endpoint(\"https://10.0.0.1/admin\")\n",
-  "body_hash": "f07760102ca0806f",
+  "body": "def test_private_10_network_blocked(self) -> None:\n    \"\"\"Absolute URLs to 10.x.x.x should be blocked.\"\"\"\n    with pytest.raises(ValueError, match=\"private/loopback address\"):\n        _validate_absolute_endpoint(\"https://10.0.0.1/admin\")\n",
+  "body_hash": "043729697a7e111a",
   "body_truncated": false,
   "callers_of": [
     "raises",
     "_validate_absolute_endpoint"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateabsoluteendpoint.py:30.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testvalidateabsoluteendpoint.py:32.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_private_10_network_blocked",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_private_10_network_blocked",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateabsoluteendpoint.py:30"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testvalidateabsoluteendpoint.py:32"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,0 +1,32 @@
+{
+  "body": "def routing_recommend(self, task: str | None = None, *, prompt: str | None = None, **kwargs: Any) -> RoutingRecommend:\n    \"\"\"/v1/routing/recommend \u2014 map task to optimal model + routing tier. $0.020/call\"\"\"\n    return self._post_model(\n        \"/v1/routing/recommend\",\n        RoutingRecommend,\n        {\"task\": task or prompt or \"\", **kwargs},\n    )\n",
+  "body_hash": "0180e7ff98b64af0",
+  "body_truncated": false,
+  "callers_of": [
+    "_post_model"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_routing_recommend.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.routing_recommend",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_routing_recommend.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "routing_recommend",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for routing_recommend"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

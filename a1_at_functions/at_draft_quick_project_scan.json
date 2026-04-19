@@ -26,39 +26,15 @@
     "lstrip"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/interpreter.py:1454.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_quick_project_scan.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.quick_project_scan",
+  "id": "at.source.a1_at_functions.quick_project_scan",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "os",
-    "re",
-    "subprocess",
-    "sys",
-    "dataclasses.dataclass",
-    "dataclasses.field",
-    "datetime.datetime",
-    "datetime.timezone",
-    "pathlib.Path",
-    "typing.Any",
-    "httpx",
-    "ass_ade.agent.capabilities.build_atomadic_intent_prompt",
-    "ass_ade.agent.capabilities.command_path_exists",
-    "ass_ade.agent.capabilities.render_atomadic_help",
-    "dotenv.load_dotenv",
-    "time",
-    "shutil",
-    "shutil",
-    "importlib",
-    "sys",
-    "rich.console.Console",
-    "rich.markdown.Markdown",
-    "rich.markdown.Markdown"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/src/ass_ade/interpreter.py:1454"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_quick_project_scan.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

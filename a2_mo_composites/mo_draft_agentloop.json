@@ -55,28 +55,30 @@
     "on_tool_event"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_agentloop.py:5.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_agentloop.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.agentloop",
-  "imports": [],
+  "id": "mo.source.a2_mo_composites.agentloop",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_agentloop.py:5"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_agentloop.py:7"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.add_user",
-    "at.source.ass_ade.trim_to_budget",
-    "at.source.ass_ade.reset_delegation_depth",
-    "at.source.ass_ade.scan_prompt",
-    "at.source.ass_ade.add_assistant",
-    "at.source.ass_ade.trim",
-    "at.source.ass_ade.increment_delegation_depth",
-    "at.source.ass_ade.gate_sam",
-    "at.source.ass_ade.check_hallucination",
-    "at.source.ass_ade.add_tool_result",
-    "at.source.ass_ade.step",
-    "at.source.ass_ade.shield_tool"
+    "at.source.a1_at_functions.add_user",
+    "at.source.a1_at_functions.trim_to_budget",
+    "at.source.a1_at_functions.reset_delegation_depth",
+    "at.source.a1_at_functions.scan_prompt",
+    "at.source.a1_at_functions.add_assistant",
+    "at.source.a1_at_functions.trim",
+    "at.source.a1_at_functions.increment_delegation_depth",
+    "at.source.a1_at_functions.gate_sam",
+    "at.source.a1_at_functions.check_hallucination",
+    "at.source.a1_at_functions.add_tool_result",
+    "at.source.a1_at_functions.step",
+    "at.source.a1_at_functions.shield_tool"
   ],
   "name": "AgentLoop",
   "product_categories": [

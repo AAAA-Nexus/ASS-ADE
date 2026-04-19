@@ -22,32 +22,21 @@
     "model_dump"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/context_memory.py:171.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_store_vector_memory.py:7.",
   "exceptions_raised": [
     "ValueError"
   ],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.store_vector_memory",
+  "id": "mo.source.a2_mo_composites.store_vector_memory",
   "imports": [
-    "__future__.annotations",
-    "hashlib",
-    "json",
-    "math",
-    "re",
-    "datetime.UTC",
-    "datetime.datetime",
-    "pathlib.Path",
-    "typing.Any",
-    "pydantic.BaseModel",
-    "pydantic.Field",
-    "ass_ade.recon.phase0_recon"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/context_memory.py:171"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_store_vector_memory.py:7"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.vector_embed"
+    "at.source.a1_at_functions.vector_embed"
   ],
   "name": "store_vector_memory",
   "product_categories": [

@@ -1,0 +1,32 @@
+{
+  "body": "def memory_fence_create(self, namespace: str, **kwargs: Any) -> MemoryFence:\n    \"\"\"/v1/memory/fence \u2014 cross-tenant HMAC namespace boundary (MFN-100). $0.040/call\"\"\"\n    return self._post_model(\"/v1/memory/fence\", MemoryFence, {\"namespace\": namespace, **kwargs})\n",
+  "body_hash": "dc801358499c7580",
+  "body_truncated": false,
+  "callers_of": [
+    "_post_model"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_memory_fence_create.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.memory_fence_create",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_memory_fence_create.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "memory_fence_create",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for memory_fence_create"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

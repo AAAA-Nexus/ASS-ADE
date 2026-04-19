@@ -1,29 +1,20 @@
 {
-  "body": "    def is_open(self) -> bool:\n        if self._open_since is None:\n            return False\n        if time.monotonic() - self._open_since >= self._recovery_s:\n            return False  # half-open: allow a probe\n        return True\n",
-  "body_hash": "d3ac374461c05144",
+  "body": "def is_open(self) -> bool:\n    if self._open_since is None:\n        return False\n    if time.monotonic() - self._open_since >= self._recovery_s:\n        return False  # half-open: allow a probe\n    return True\n",
+  "body_hash": "5f51066816d58659",
   "body_truncated": false,
   "callers_of": [
     "monotonic"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/resilience.py:154.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_is_open.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.is_open",
+  "id": "at.source.a1_at_functions.is_open",
   "imports": [
-    "__future__.annotations",
-    "random",
-    "time",
-    "typing.TYPE_CHECKING",
-    "httpx",
-    "ass_ade.nexus.errors.NexusCircuitOpen",
-    "ass_ade.nexus.errors.NexusConnectionError",
-    "ass_ade.nexus.errors.NexusServerError",
-    "ass_ade.nexus.errors.NexusTimeoutError",
-    "ass_ade.mcp.cancellation.CancellationContext"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/resilience.py:154"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_is_open.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

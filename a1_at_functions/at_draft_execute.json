@@ -1,6 +1,6 @@
 {
-  "body": "    def execute(self, **kwargs: Any) -> ToolResult:\n        pattern = kwargs[\"pattern\"]\n        matches = sorted(self._cwd.glob(pattern))\n\n        filtered = [\n            m\n            for m in matches\n            if m.is_file()\n            and not any(p in _SKIP_DIRS for p in m.relative_to(self._cwd).parts)\n        ]\n\n        if not filtered:\n            return ToolResult(output=\"No matches found.\")\n\n        lines = [str(m.relative_to(self._cwd)) for m in filtered[:_MAX_GLOB_RESULTS]]\n        if len(filtered) > _MAX_GLOB_RESULTS:\n            lines.append(f\"... and {len(filtered) - _MAX_GLOB_RESULTS} more matches\")\n\n        return ToolResult(output=\"\\n\".join(lines))\n",
-  "body_hash": "f0f099080231d537",
+  "body": "def execute(self, **kwargs: Any) -> ToolResult:\n    pattern = kwargs[\"pattern\"]\n    matches = sorted(self._cwd.glob(pattern))\n\n    filtered = [\n        m\n        for m in matches\n        if m.is_file()\n        and not any(p in _SKIP_DIRS for p in m.relative_to(self._cwd).parts)\n    ]\n\n    if not filtered:\n        return ToolResult(output=\"No matches found.\")\n\n    lines = [str(m.relative_to(self._cwd)) for m in filtered[:_MAX_GLOB_RESULTS]]\n    if len(filtered) > _MAX_GLOB_RESULTS:\n        lines.append(f\"... and {len(filtered) - _MAX_GLOB_RESULTS} more matches\")\n\n    return ToolResult(output=\"\\n\".join(lines))\n",
+  "body_hash": "ee148abdeeb6acb3",
   "body_truncated": false,
   "callers_of": [
     "sorted",
@@ -15,13 +15,15 @@
     "any"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_searchfilestool.py:29.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_searchfilestool.py:31.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.execute",
-  "imports": [],
+  "id": "at.source.a2_mo_composites.execute",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_searchfilestool.py:29"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_searchfilestool.py:31"
   },
   "kind": "pure_function",
   "made_of": [],

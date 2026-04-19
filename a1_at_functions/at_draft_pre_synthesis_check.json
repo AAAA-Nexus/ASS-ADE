@@ -1,6 +1,6 @@
 {
-  "body": "    def pre_synthesis_check(self, candidate_paths: list[str]) -> dict[str, Any]:\n        \"\"\"Run freshness check for a list of candidate write targets.\n\n        Returns dict with: fresh_count, stale_paths, ncb_violated, gaps\n        \"\"\"\n        stale = self.get_stale_files([p for p in candidate_paths if p])\n        stale_paths = [r.path for r in stale]\n        return {\n            \"fresh_count\": len(candidate_paths) - len(stale_paths),\n            \"stale_paths\": stale_paths,\n            \"ncb_violated\": len(stale_paths) > 0,\n            \"gaps\": self.get_gaps(),\n        }\n",
-  "body_hash": "d086ad1b82df0954",
+  "body": "def pre_synthesis_check(self, candidate_paths: list[str]) -> dict[str, Any]:\n    \"\"\"Run freshness check for a list of candidate write targets.\n\n    Returns dict with: fresh_count, stale_paths, ncb_violated, gaps\n    \"\"\"\n    stale = self.get_stale_files([p for p in candidate_paths if p])\n    stale_paths = [r.path for r in stale]\n    return {\n        \"fresh_count\": len(candidate_paths) - len(stale_paths),\n        \"stale_paths\": stale_paths,\n        \"ncb_violated\": len(stale_paths) > 0,\n        \"gaps\": self.get_gaps(),\n    }\n",
+  "body_hash": "525bf1ec5a0b68f7",
   "body_truncated": false,
   "callers_of": [
     "get_stale_files",
@@ -8,22 +8,15 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/tca.py:135.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_pre_synthesis_check.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.pre_synthesis_check",
+  "id": "at.source.a1_at_functions.pre_synthesis_check",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "logging",
-    "time",
-    "dataclasses.dataclass",
-    "dataclasses.field",
-    "pathlib.Path",
-    "typing.Any"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/tca.py:135"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_pre_synthesis_check.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

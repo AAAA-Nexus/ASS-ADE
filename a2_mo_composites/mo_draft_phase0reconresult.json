@@ -6,30 +6,15 @@
     "Field"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/recon.py:110.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_phase0reconresult.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.phase0reconresult",
+  "id": "mo.source.a2_mo_composites.phase0reconresult",
   "imports": [
-    "__future__.annotations",
-    "ast",
-    "concurrent.futures",
-    "os",
-    "re",
-    "time",
-    "collections.defaultdict",
-    "dataclasses.dataclass",
-    "dataclasses.field",
-    "pathlib.Path",
-    "typing.Any",
-    "typing.Literal",
-    "pydantic.BaseModel",
-    "pydantic.Field",
-    "ass_ade.local.repo.DEFAULT_IGNORED_DIRS",
-    "ass_ade.local.repo.summarize_repo"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/recon.py:110"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_phase0reconresult.py:7"
   },
   "kind": "engine_molecule",
   "made_of": [],

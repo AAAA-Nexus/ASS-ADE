@@ -1,6 +1,6 @@
 {
-  "body": "    def test_multiple_matches(self, workspace: Path):\n        (workspace / \"dup.py\").write_text(\"a\\na\\na\\n\", encoding=\"utf-8\")\n        tool = EditFileTool(str(workspace))\n        r = tool.execute(path=\"dup.py\", old_string=\"a\", new_string=\"b\")\n        assert not r.success\n        assert \"3 locations\" in (r.error or \"\")\n",
-  "body_hash": "a84e726e89b3099a",
+  "body": "def test_multiple_matches(self, workspace: Path):\n    (workspace / \"dup.py\").write_text(\"a\\na\\na\\n\", encoding=\"utf-8\")\n    tool = EditFileTool(str(workspace))\n    r = tool.execute(path=\"dup.py\", old_string=\"a\", new_string=\"b\")\n    assert not r.success\n    assert \"3 locations\" in (r.error or \"\")\n",
+  "body_hash": "df0890369d90af07",
   "body_truncated": false,
   "callers_of": [
     "write_text",
@@ -9,13 +9,15 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditfile.py:18.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_multiple_matches.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_multiple_matches",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_multiple_matches",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditfile.py:18"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_multiple_matches.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

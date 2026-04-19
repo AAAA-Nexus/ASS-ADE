@@ -1,6 +1,6 @@
 {
-  "body": "    def test_audit_report_has_principles_field(self) -> None:\n        w = WisdomEngine({})\n        report = w.run_audit({})\n        assert hasattr(report, \"principles\")\n        assert isinstance(report.principles, list)\n",
-  "body_hash": "aef8347cea5a770a",
+  "body": "def test_audit_report_has_principles_field(self) -> None:\n    w = WisdomEngine({})\n    report = w.run_audit({})\n    assert hasattr(report, \"principles\")\n    assert isinstance(report.principles, list)\n",
+  "body_hash": "372843c5be2bde6b",
   "body_truncated": false,
   "callers_of": [
     "WisdomEngine",
@@ -9,13 +9,15 @@
     "isinstance"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwisdomengine.py:101.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testwisdomengine.py:103.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.test_audit_report_has_principles_field",
-  "imports": [],
+  "id": "mo.source.a2_mo_composites.test_audit_report_has_principles_field",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwisdomengine.py:101"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testwisdomengine.py:103"
   },
   "kind": "engine_molecule",
   "made_of": [],

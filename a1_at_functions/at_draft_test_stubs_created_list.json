@@ -1,6 +1,6 @@
 {
-  "body": "    def test_stubs_created_list(self, tmp_path):\n        from ass_ade.map_terrain import active_terrain_gate\n        result = active_terrain_gate(\n            [\"missing_engine_alpha\"],\n            working_dir=str(tmp_path),\n            write_stubs=False,  # don't write to disk in tests\n        )\n        assert len(result.stubs_created) == 1\n        assert result.stubs_created[0].capability_name == \"missing_engine_alpha\"\n",
-  "body_hash": "791bdea20970f929",
+  "body": "def test_stubs_created_list(self, tmp_path):\n    from ass_ade.map_terrain import active_terrain_gate\n    result = active_terrain_gate(\n        [\"missing_engine_alpha\"],\n        working_dir=str(tmp_path),\n        write_stubs=False,  # don't write to disk in tests\n    )\n    assert len(result.stubs_created) == 1\n    assert result.stubs_created[0].capability_name == \"missing_engine_alpha\"\n",
+  "body_hash": "dd536074cdb797fd",
   "body_truncated": false,
   "callers_of": [
     "active_terrain_gate",
@@ -8,18 +8,16 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testactiveterraingate.py:27.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_stubs_created_list.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_stubs_created_list",
+  "id": "at.source.a1_at_functions.test_stubs_created_list",
   "imports": [
-    "ass_ade.map_terrain.active_terrain_gate",
-    "ass_ade.map_terrain.active_terrain_gate",
-    "ass_ade.map_terrain.active_terrain_gate",
+    "__future__.annotations",
     "ass_ade.map_terrain.active_terrain_gate"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testactiveterraingate.py:27"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_stubs_created_list.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

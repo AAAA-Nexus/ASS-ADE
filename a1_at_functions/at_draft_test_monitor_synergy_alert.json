@@ -1,19 +1,21 @@
 {
-  "body": "    def test_monitor_synergy_alert(self) -> None:\n        b = BAS({\"synergy\": {\"threshold\": 0.5}})\n        a = b.monitor({\"synergy\": 0.8, \"novelty\": 0.0, \"gvu_delta\": 0.0})\n        assert a is not None\n        assert a.kind == \"emergent_synergy\"\n        assert a.severity == \"high\"\n",
-  "body_hash": "996f642c8f4595f8",
+  "body": "def test_monitor_synergy_alert(self) -> None:\n    b = BAS({\"synergy\": {\"threshold\": 0.5}})\n    a = b.monitor({\"synergy\": 0.8, \"novelty\": 0.0, \"gvu_delta\": 0.0})\n    assert a is not None\n    assert a.kind == \"emergent_synergy\"\n    assert a.severity == \"high\"\n",
+  "body_hash": "b67272aa56bbac39",
   "body_truncated": false,
   "callers_of": [
     "BAS",
     "monitor"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbas.py:6.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_monitor_synergy_alert.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_monitor_synergy_alert",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_monitor_synergy_alert",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbas.py:6"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_monitor_synergy_alert.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

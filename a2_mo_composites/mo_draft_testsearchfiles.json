@@ -8,26 +8,15 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:147.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testsearchfiles.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.testsearchfiles",
+  "id": "mo.source.a2_mo_composites.testsearchfiles",
   "imports": [
-    "__future__.annotations",
-    "os",
-    "pathlib.Path",
-    "pytest",
-    "ass_ade.tools.builtin.EditFileTool",
-    "ass_ade.tools.builtin.GrepSearchTool",
-    "ass_ade.tools.builtin.ListDirectoryTool",
-    "ass_ade.tools.builtin.ReadFileTool",
-    "ass_ade.tools.builtin.RunCommandTool",
-    "ass_ade.tools.builtin.SearchFilesTool",
-    "ass_ade.tools.builtin.WriteFileTool",
-    "ass_ade.tools.registry.default_registry"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tools_builtin.py:147"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testsearchfiles.py:7"
   },
   "kind": "engine_molecule",
   "made_of": [],

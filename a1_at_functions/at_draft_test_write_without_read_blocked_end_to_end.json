@@ -1,0 +1,34 @@
+{
+  "body": "def test_write_without_read_blocked_end_to_end(self, tmp_path):\n    server = _make_server(tmp_path)\n    server._ncb_mode = \"block\"\n    target = tmp_path / \"never_read.py\"\n    allow, reason = server._pre_tool_hook(\"write_file\", _mk_args(target, content=\"def x(): pass\"))\n    assert allow is False\n    assert \"NCB\" in reason\n",
+  "body_hash": "88719a1e367c1624",
+  "body_truncated": false,
+  "callers_of": [
+    "_make_server",
+    "_pre_tool_hook",
+    "_mk_args"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_write_without_read_blocked_end_to_end.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.test_write_without_read_blocked_end_to_end",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_write_without_read_blocked_end_to_end.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_write_without_read_blocked_end_to_end",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_write_without_read_blocked_end_to_end"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

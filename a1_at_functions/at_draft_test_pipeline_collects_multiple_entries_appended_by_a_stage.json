@@ -1,6 +1,6 @@
 {
-  "body": "    def test_pipeline_collects_multiple_entries_appended_by_a_stage(self):\n        gates = QualityGates(_mock_nexus())\n\n        original_scan = gates.scan_prompt\n\n        def scan_with_extra(text: str):\n            result = original_scan(text)\n            gates._gate_log.append(GateResult(gate=\"scan_extra\", passed=True, confidence=1.0))\n            return result\n\n        gates.scan_prompt = scan_with_extra  # type: ignore[method-assign]\n        results = gates.run_pipeline(prompt=\"safe\", output=\"safe\")\n\n        names = [r.gate for r in results]\n        assert \"prompt_scan\" in names\n        assert \"scan_extra\" in names\n",
-  "body_hash": "4d983d3cef1bc8fe",
+  "body": "def test_pipeline_collects_multiple_entries_appended_by_a_stage(self):\n    gates = QualityGates(_mock_nexus())\n\n    original_scan = gates.scan_prompt\n\n    def scan_with_extra(text: str):\n        result = original_scan(text)\n        gates._gate_log.append(GateResult(gate=\"scan_extra\", passed=True, confidence=1.0))\n        return result\n\n    gates.scan_prompt = scan_with_extra  # type: ignore[method-assign]\n    results = gates.run_pipeline(prompt=\"safe\", output=\"safe\")\n\n    names = [r.gate for r in results]\n    assert \"prompt_scan\" in names\n    assert \"scan_extra\" in names\n",
+  "body_hash": "84d3674537b14add",
   "body_truncated": false,
   "callers_of": [
     "QualityGates",
@@ -11,19 +11,15 @@
     "GateResult"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:163.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_pipeline_collects_multiple_entries_appended_by_a_stage.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_pipeline_collects_multiple_entries_appended_by_a_stage",
+  "id": "at.source.a1_at_functions.test_pipeline_collects_multiple_entries_appended_by_a_stage",
   "imports": [
-    "__future__.annotations",
-    "typing.Any",
-    "unittest.mock.MagicMock",
-    "ass_ade.agent.gates.GateResult",
-    "ass_ade.agent.gates.QualityGates"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:163"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_pipeline_collects_multiple_entries_appended_by_a_stage.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

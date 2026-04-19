@@ -1,18 +1,20 @@
 {
-  "body": "    def test_default_optional_fields_are_none(self) -> None:\n        err = NexusError(\"minimal\")\n        assert err.status_code is None\n        assert err.endpoint is None\n        assert err.retry_after is None\n",
-  "body_hash": "859ebbcff5921d58",
+  "body": "def test_default_optional_fields_are_none(self) -> None:\n    err = NexusError(\"minimal\")\n    assert err.status_code is None\n    assert err.endpoint is None\n    assert err.retry_after is None\n",
+  "body_hash": "9a4f7eb53d2f9b2c",
   "body_truncated": false,
   "callers_of": [
     "NexusError"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexuserrorhierarchy.py:29.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_default_optional_fields_are_none.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_default_optional_fields_are_none",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_default_optional_fields_are_none",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexuserrorhierarchy.py:29"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_default_optional_fields_are_none.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,30 +1,22 @@
 {
-  "body": "    def test_clean_code_passes_all_stages(self):\n        from ass_ade.agent.cie import CIEPipeline\n        cie = CIEPipeline({\"cie\": {\"enable_lint\": False, \"require_alphaverus\": False}})\n        code = \"def add(a: int, b: int) -> int:\\n    return a + b\\n\"\n        result = cie.run(code, \"python\")\n        assert result.ast_valid is True\n        assert result.owasp_clean is True\n        assert result.passed is True\n",
-  "body_hash": "e8ad9b597d64cc2d",
+  "body": "def test_clean_code_passes_all_stages(self):\n    from ass_ade.agent.cie import CIEPipeline\n    cie = CIEPipeline({\"cie\": {\"enable_lint\": False, \"require_alphaverus\": False}})\n    code = \"def add(a: int, b: int) -> int:\\n    return a + b\\n\"\n    result = cie.run(code, \"python\")\n    assert result.ast_valid is True\n    assert result.owasp_clean is True\n    assert result.passed is True\n",
+  "body_hash": "08b78137c8a78b59",
   "body_truncated": false,
   "callers_of": [
     "CIEPipeline",
     "run"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testciepipeline.py:50.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_clean_code_passes_all_stages.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_clean_code_passes_all_stages",
+  "id": "at.source.a1_at_functions.test_clean_code_passes_all_stages",
   "imports": [
-    "ass_ade.agent.cie.CIEPipeline",
-    "ass_ade.agent.cie.CIEPipeline",
-    "ass_ade.agent.cie.CIEPipeline",
-    "ass_ade.agent.cie.CIEPipeline",
-    "ass_ade.agent.cie.CIEPipeline",
-    "ass_ade.agent.cie.CIEPipeline",
-    "ass_ade.agent.cie.CIEPipeline",
-    "ass_ade.agent.cie.CIEPipeline",
-    "ass_ade.agent.cie.CIEPipeline",
+    "__future__.annotations",
     "ass_ade.agent.cie.CIEPipeline"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testciepipeline.py:50"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_clean_code_passes_all_stages.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_hooks_receive_config(self) -> None:\n        mock_client = MagicMock()\n        mock_client.certify_output_verify.return_value = MagicMock(rubric_passed=True)\n        config = {\"alphaverus\": {\"beam_width\": 2}}\n        gates = QualityGates(mock_client, config=config)\n        # hook_alphaverus_refine uses self._v18_config \u2014 verify it's the right dict\n        with patch(\"ass_ade.agent.alphaverus.AlphaVerus\") as MockAV:\n            instance = MockAV.return_value\n            instance.tree_search.return_value = MagicMock(code=\"x=1\", verified=True, score=0.9)\n            result = gates.hook_alphaverus_refine(\"x = 1\", \"x == 1\")\n            # AlphaVerus was instantiated with our config\n            MockAV.assert_called_once_with(config, mock_client)\n",
-  "body_hash": "6621e12da4027779",
+  "body": "def test_hooks_receive_config(self) -> None:\n    mock_client = MagicMock()\n    mock_client.certify_output_verify.return_value = MagicMock(rubric_passed=True)\n    config = {\"alphaverus\": {\"beam_width\": 2}}\n    gates = QualityGates(mock_client, config=config)\n    # hook_alphaverus_refine uses self._v18_config \u2014 verify it's the right dict\n    with patch(\"ass_ade.agent.alphaverus.AlphaVerus\") as MockAV:\n        instance = MockAV.return_value\n        instance.tree_search.return_value = MagicMock(code=\"x=1\", verified=True, score=0.9)\n        result = gates.hook_alphaverus_refine(\"x = 1\", \"x == 1\")\n        # AlphaVerus was instantiated with our config\n        MockAV.assert_called_once_with(config, mock_client)\n",
+  "body_hash": "eeece6c209254c89",
   "body_truncated": false,
   "callers_of": [
     "MagicMock",
@@ -10,13 +10,15 @@
     "assert_called_once_with"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testqualitygatesconfig.py:17.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testqualitygatesconfig.py:19.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.test_hooks_receive_config",
-  "imports": [],
+  "id": "mo.source.a2_mo_composites.test_hooks_receive_config",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testqualitygatesconfig.py:17"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testqualitygatesconfig.py:19"
   },
   "kind": "engine_molecule",
   "made_of": [],

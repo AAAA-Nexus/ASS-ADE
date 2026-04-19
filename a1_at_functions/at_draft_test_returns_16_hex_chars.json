@@ -1,6 +1,6 @@
 {
-  "body": "    def test_returns_16_hex_chars(self):\n        h = content_hash(\"test\")\n        assert len(h) == 16\n        assert all(c in \"0123456789abcdef\" for c in h)\n",
-  "body_hash": "3ad7d3a6271fc7b3",
+  "body": "def test_returns_16_hex_chars(self):\n    h = content_hash(\"test\")\n    assert len(h) == 16\n    assert all(c in \"0123456789abcdef\" for c in h)\n",
+  "body_hash": "3bc4a4c7de344bf3",
   "body_truncated": false,
   "callers_of": [
     "content_hash",
@@ -8,13 +8,15 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testcontenthash.py:15.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_returns_16_hex_chars.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_returns_16_hex_chars",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_returns_16_hex_chars",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testcontenthash.py:15"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_returns_16_hex_chars.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

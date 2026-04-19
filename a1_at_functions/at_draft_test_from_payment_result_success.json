@@ -1,39 +1,21 @@
 {
-  "body": "    def test_from_payment_result_success(self) -> None:\n        \"\"\"PaymentProof should parse from a successful PaymentResult.\"\"\"\n        result = PaymentResult(\n            success=True,\n            txid=\"0xabc123\",\n            signature_header=\"sig123;0x1234567890abcdef;0xabc123;8000\",\n            testnet=True,\n        )\n        proof = PaymentProof.from_payment_result(result)\n        assert proof is not None\n        assert proof.signature == \"sig123\"\n        assert proof.wallet_address == \"0x1234567890abcdef\"\n        assert proof.transaction_id == \"0xabc123\"\n        assert proof.amount_micro_usdc == 8000\n",
-  "body_hash": "d6de3fdbe04447cb",
+  "body": "def test_from_payment_result_success(self) -> None:\n    \"\"\"PaymentProof should parse from a successful PaymentResult.\"\"\"\n    result = PaymentResult(\n        success=True,\n        txid=\"0xabc123\",\n        signature_header=\"sig123;0x1234567890abcdef;0xabc123;8000\",\n        testnet=True,\n    )\n    proof = PaymentProof.from_payment_result(result)\n    assert proof is not None\n    assert proof.signature == \"sig123\"\n    assert proof.wallet_address == \"0x1234567890abcdef\"\n    assert proof.transaction_id == \"0xabc123\"\n    assert proof.amount_micro_usdc == 8000\n",
+  "body_hash": "040bc5329ba6afa8",
   "body_truncated": false,
   "callers_of": [
     "PaymentResult",
     "from_payment_result"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:89.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_from_payment_result_success.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_from_payment_result_success",
+  "id": "at.source.a1_at_functions.test_from_payment_result_success",
   "imports": [
-    "__future__.annotations",
-    "pathlib.Path",
-    "unittest.mock.MagicMock",
-    "unittest.mock.patch",
-    "pytest",
-    "typer.testing.CliRunner",
-    "ass_ade.cli.app",
-    "ass_ade.config.AssAdeConfig",
-    "ass_ade.config.write_default_config",
-    "ass_ade.nexus.x402.PaymentChallenge",
-    "ass_ade.nexus.x402.PaymentResult",
-    "ass_ade.nexus.x402.PaymentProof",
-    "ass_ade.nexus.x402.X402ClientFlow",
-    "ass_ade.nexus.x402.format_payment_consent",
-    "ass_ade.nexus.x402.get_chain_config",
-    "ass_ade.nexus.x402.build_payment_header",
-    "ass_ade.nexus.x402.ATOMADIC_TREASURY",
-    "ass_ade.nexus.x402.BASE_MAINNET_CHAIN_ID",
-    "ass_ade.nexus.x402.BASE_SEPOLIA_CHAIN_ID"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:89"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_from_payment_result_success.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

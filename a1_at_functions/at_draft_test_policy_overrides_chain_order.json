@@ -1,19 +1,21 @@
 {
-  "body": "    def test_policy_overrides_chain_order(self, monkeypatch):\n        monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-a\")\n        monkeypatch.setenv(\"GEMINI_API_KEY\", \"sk-b\")\n        # Policy forces gemini for balanced\n        match = select_provider_for_tier(\n            \"balanced\",\n            tier_policy={\"balanced\": \"gemini\"},\n        )\n        assert match is not None\n        profile, _ = match\n        assert profile.name == \"gemini\"\n",
-  "body_hash": "43166733bd5b5e7d",
+  "body": "def test_policy_overrides_chain_order(self, monkeypatch):\n    monkeypatch.setenv(\"GROQ_API_KEY\", \"sk-a\")\n    monkeypatch.setenv(\"GEMINI_API_KEY\", \"sk-b\")\n    # Policy forces gemini for balanced\n    match = select_provider_for_tier(\n        \"balanced\",\n        tier_policy={\"balanced\": \"gemini\"},\n    )\n    assert match is not None\n    profile, _ = match\n    assert profile.name == \"gemini\"\n",
+  "body_hash": "b5494d37df6922c2",
   "body_truncated": false,
   "callers_of": [
     "setenv",
     "select_provider_for_tier"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testselectproviderfortier.py:19.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_policy_overrides_chain_order.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_policy_overrides_chain_order",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_policy_overrides_chain_order",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testselectproviderfortier.py:19"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_policy_overrides_chain_order.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

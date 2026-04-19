@@ -1,12 +1,12 @@
 {
-  "body": "    def tdmi(self):\n        if self._tdmi is None:\n            from ass_ade.agent.tdmi import TDMI\n            self._tdmi = TDMI(self._config, self._nexus)\n        return self._tdmi\n",
-  "body_hash": "3065fb4b835c721b",
+  "body": "def tdmi(self):\n    if self._tdmi is None:\n        from ass_ade.agent.tdmi import TDMI\n        self._tdmi = TDMI(self._config, self._nexus)\n    return self._tdmi\n",
+  "body_hash": "acf1c55020bfe780",
   "body_truncated": false,
   "callers_of": [
     "TDMI"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/orchestrator.py:209.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/orchestrator.py:209.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.tdmi",
@@ -38,7 +38,7 @@
     "json"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/orchestrator.py:209"
+    "source": "C:/!ass-ade/src/ass_ade/agent/orchestrator.py:209"
   },
   "kind": "ecosystem_system",
   "made_of": [],

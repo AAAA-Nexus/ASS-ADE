@@ -1,6 +1,6 @@
 {
-  "body": "    def test_falls_back_on_failure(self):\n        from ass_ade.engine.provider import MultiProvider\n        from ass_ade.engine.types import CompletionRequest, Message\n        failing = self._make_provider(\"failing\", fails=True)\n        backup = self._make_provider(\"backup\")\n        mp = MultiProvider(\n            providers={\"failing\": failing, \"backup\": backup},\n            model_to_provider={\"model-x\": \"failing\"},\n            fallback_order=[\"failing\", \"backup\"],\n        )\n        req = CompletionRequest(messages=[Message(role=\"user\", content=\"hi\")], tools=[], model=\"model-x\")\n        resp = mp.complete(req)\n        assert mp.last_provider_name == \"backup\"\n        assert resp.message.content == \"from-backup\"\n        failing.complete.assert_called_once()\n        backup.complete.assert_called_once()\n",
-  "body_hash": "38eba9d0b05da1d0",
+  "body": "def test_falls_back_on_failure(self):\n    from ass_ade.engine.provider import MultiProvider\n    from ass_ade.engine.types import CompletionRequest, Message\n    failing = self._make_provider(\"failing\", fails=True)\n    backup = self._make_provider(\"backup\")\n    mp = MultiProvider(\n        providers={\"failing\": failing, \"backup\": backup},\n        model_to_provider={\"model-x\": \"failing\"},\n        fallback_order=[\"failing\", \"backup\"],\n    )\n    req = CompletionRequest(messages=[Message(role=\"user\", content=\"hi\")], tools=[], model=\"model-x\")\n    resp = mp.complete(req)\n    assert mp.last_provider_name == \"backup\"\n    assert resp.message.content == \"from-backup\"\n    failing.complete.assert_called_once()\n    backup.complete.assert_called_once()\n",
+  "body_hash": "837b84014ed816b7",
   "body_truncated": false,
   "callers_of": [
     "_make_provider",
@@ -11,28 +11,18 @@
     "Message"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testmultiprovider.py:34.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_falls_back_on_failure.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_falls_back_on_failure",
+  "id": "at.source.a1_at_functions.test_falls_back_on_failure",
   "imports": [
+    "__future__.annotations",
     "ass_ade.engine.provider.MultiProvider",
     "ass_ade.engine.types.CompletionRequest",
-    "ass_ade.engine.types.Message",
-    "ass_ade.engine.provider.MultiProvider",
-    "ass_ade.engine.types.CompletionRequest",
-    "ass_ade.engine.types.Message",
-    "ass_ade.engine.provider.MultiProvider",
-    "ass_ade.engine.types.CompletionRequest",
-    "ass_ade.engine.types.Message",
-    "ass_ade.engine.provider.MultiProvider",
-    "ass_ade.engine.types.CompletionRequest",
-    "ass_ade.engine.types.Message",
-    "ass_ade.engine.provider.MultiProvider",
-    "ass_ade.engine.provider.MultiProvider"
+    "ass_ade.engine.types.Message"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testmultiprovider.py:34"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_falls_back_on_failure.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

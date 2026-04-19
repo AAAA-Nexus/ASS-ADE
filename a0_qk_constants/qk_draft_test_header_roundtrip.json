@@ -1,6 +1,6 @@
 {
-  "body": "    def test_header_roundtrip(self) -> None:\n        \"\"\"PaymentProof should roundtrip through header format.\"\"\"\n        original = PaymentProof(\n            signature=\"sig456\",\n            wallet_address=\"0xabcdef\",\n            transaction_id=\"0x9876\",\n            amount_micro_usdc=5000,\n        )\n        header = original.to_header_value()\n        restored = PaymentProof.from_header_value(header)\n        assert restored == original\n",
-  "body_hash": "51dd49954d3b7fd6",
+  "body": "def test_header_roundtrip(self) -> None:\n    \"\"\"PaymentProof should roundtrip through header format.\"\"\"\n    original = PaymentProof(\n        signature=\"sig456\",\n        wallet_address=\"0xabcdef\",\n        transaction_id=\"0x9876\",\n        amount_micro_usdc=5000,\n    )\n    header = original.to_header_value()\n    restored = PaymentProof.from_header_value(header)\n    assert restored == original\n",
+  "body_hash": "29fea37484c249f7",
   "body_truncated": false,
   "callers_of": [
     "PaymentProof",
@@ -8,13 +8,15 @@
     "from_header_value"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testpaymentproof.py:48.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_testpaymentproof.py:50.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "qk.source.ass_ade.test_header_roundtrip",
-  "imports": [],
+  "id": "qk.source.a0_qk_constants.test_header_roundtrip",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testpaymentproof.py:48"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_testpaymentproof.py:50"
   },
   "kind": "invariant",
   "made_of": [],

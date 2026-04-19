@@ -1,44 +1,21 @@
 {
-  "body": "    def clear(cls) -> None:\n        for filename in [\n            \"user_profile.json\", \"project_contexts.json\",\n            \"preferences.json\", \"conversation_history.jsonl\",\n        ]:\n            p = _MEMORY_DIR / filename\n            if p.exists():\n                try:\n                    p.unlink()\n                except OSError:\n                    pass\n",
-  "body_hash": "bd066c56395d1fd1",
+  "body": "def clear(cls) -> None:\n    for filename in [\n        \"user_profile.json\", \"project_contexts.json\",\n        \"preferences.json\", \"conversation_history.jsonl\",\n    ]:\n        p = _MEMORY_DIR / filename\n        if p.exists():\n            try:\n                p.unlink()\n            except OSError:\n                pass\n",
+  "body_hash": "37994cf5bf6b55df",
   "body_truncated": false,
   "callers_of": [
     "exists",
     "unlink"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/interpreter.py:200.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_clear.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.clear",
+  "id": "at.source.a1_at_functions.clear",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "os",
-    "re",
-    "subprocess",
-    "sys",
-    "dataclasses.dataclass",
-    "dataclasses.field",
-    "datetime.datetime",
-    "datetime.timezone",
-    "pathlib.Path",
-    "typing.Any",
-    "httpx",
-    "ass_ade.agent.capabilities.build_atomadic_intent_prompt",
-    "ass_ade.agent.capabilities.command_path_exists",
-    "ass_ade.agent.capabilities.render_atomadic_help",
-    "dotenv.load_dotenv",
-    "time",
-    "shutil",
-    "shutil",
-    "importlib",
-    "sys",
-    "rich.console.Console",
-    "rich.markdown.Markdown"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/interpreter.py:200"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_clear.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

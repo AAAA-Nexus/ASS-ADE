@@ -1,20 +1,21 @@
 {
-  "body": "    def test_count_is_50(self) -> None:\n        assert len(AUDIT_QUESTIONS) == 50\n",
-  "body_hash": "7157c656c6eee520",
+  "body": "def test_count_is_50(self) -> None:\n    assert len(AUDIT_QUESTIONS) == 50\n",
+  "body_hash": "72d0699a0974c222",
   "body_truncated": false,
   "callers_of": [
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testauditquestions.py:6.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testauditquestions.py:8.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_count_is_50",
+  "id": "at.source.a2_mo_composites.test_count_is_50",
   "imports": [
+    "__future__.annotations",
     "collections.Counter"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testauditquestions.py:6"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testauditquestions.py:8"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_relative_endpoint_uses_base_url(self) -> None:\n        \"\"\"Relative endpoints should be joined to base_url without SSRF validation.\"\"\"\n        from ass_ade.mcp.utils import simulate_invoke\n        \n        tool = MCPTool(\n            name=\"safe-tool\",\n            endpoint=\"/api/invoke\",\n            method=\"POST\",\n            paid=False,\n        )\n        \n        result = simulate_invoke(\"https://api.example.com\", tool)\n        assert result[\"endpoint\"] == \"https://api.example.com/api/invoke\"\n        assert not result[\"endpoint\"].startswith(\"//\")\n",
-  "body_hash": "068f6179df1136e8",
+  "body": "def test_relative_endpoint_uses_base_url(self) -> None:\n    \"\"\"Relative endpoints should be joined to base_url without SSRF validation.\"\"\"\n    from ass_ade.mcp.utils import simulate_invoke\n\n    tool = MCPTool(\n        name=\"safe-tool\",\n        endpoint=\"/api/invoke\",\n        method=\"POST\",\n        paid=False,\n    )\n\n    result = simulate_invoke(\"https://api.example.com\", tool)\n    assert result[\"endpoint\"] == \"https://api.example.com/api/invoke\"\n    assert not result[\"endpoint\"].startswith(\"//\")\n",
+  "body_hash": "beff96ef35035cf7",
   "body_truncated": false,
   "callers_of": [
     "MCPTool",
@@ -8,27 +8,16 @@
     "startswith"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_ssrf_protection.py:166.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_relative_endpoint_uses_base_url.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_relative_endpoint_uses_base_url",
+  "id": "at.source.a1_at_functions.test_relative_endpoint_uses_base_url",
   "imports": [
-    "ipaddress",
-    "json",
-    "unittest.mock",
-    "pytest",
-    "ass_ade.a2a.fetch_agent_card",
-    "ass_ade.mcp.utils._validate_absolute_endpoint",
-    "ass_ade.nexus.models.MCPManifest",
-    "ass_ade.nexus.models.MCPTool",
-    "ass_ade.mcp.utils.invoke_tool",
-    "ass_ade.mcp.utils.invoke_tool",
-    "ass_ade.mcp.utils.simulate_invoke",
-    "ass_ade.mcp.utils.simulate_invoke",
+    "__future__.annotations",
     "ass_ade.mcp.utils.simulate_invoke"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_ssrf_protection.py:166"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_relative_endpoint_uses_base_url.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

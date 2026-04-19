@@ -1,6 +1,6 @@
 {
-  "body": "    def test_text_preview_truncated(self) -> None:\n        long_text = \"A\" * 200\n        result = certify_output(_mock_client(), long_text)\n        assert len(result.text_preview) == 120\n",
-  "body_hash": "064aef0aa11b1c25",
+  "body": "def test_text_preview_truncated(self) -> None:\n    long_text = \"A\" * 200\n    result = certify_output(_mock_client(), long_text)\n    assert len(result.text_preview) == 120\n",
+  "body_hash": "726dcb38cf134fe8",
   "body_truncated": false,
   "callers_of": [
     "certify_output",
@@ -8,34 +8,15 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_workflows.py:168.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_testcertifyoutput.py:24.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "og.source.ass_ade.test_text_preview_truncated",
+  "id": "og.source.a3_og_features.test_text_preview_truncated",
   "imports": [
-    "__future__.annotations",
-    "typing.Any",
-    "unittest.mock.MagicMock",
-    "pytest",
-    "ass_ade.nexus.errors.NexusServerError",
-    "ass_ade.nexus.models.AegisProxyResult",
-    "ass_ade.nexus.models.CertifiedOutput",
-    "ass_ade.nexus.models.ComplianceResult",
-    "ass_ade.nexus.models.EthicsCheckResult",
-    "ass_ade.nexus.models.HallucinationResult",
-    "ass_ade.nexus.models.IdentityVerification",
-    "ass_ade.nexus.models.LineageRecord",
-    "ass_ade.nexus.models.PromptScanResult",
-    "ass_ade.nexus.models.ReputationScore",
-    "ass_ade.nexus.models.ShieldResult",
-    "ass_ade.nexus.models.SybilCheckResult",
-    "ass_ade.nexus.models.TrustScore",
-    "ass_ade.workflows.certify_output",
-    "ass_ade.workflows.safe_execute",
-    "ass_ade.workflows.trust_gate"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_workflows.py:168"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_testcertifyoutput.py:24"
   },
   "kind": "product_organism",
   "made_of": [],

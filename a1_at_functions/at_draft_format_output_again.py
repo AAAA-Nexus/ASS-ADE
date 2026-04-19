@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_format_output_again.py:5
-# Component id: at.source.ass_ade.format_output_again
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_format_output_again.py:7
+# Component id: at.source.a1_at_functions.format_output_again
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def format_output_again(data):

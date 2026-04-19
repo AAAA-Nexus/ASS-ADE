@@ -1,0 +1,31 @@
+{
+  "body": "def test_legacy_fallback_uses_claude_model_ids(self):\n    \"\"\"When no free providers are configured, LSE falls back to Claude models.\"\"\"\n    from ass_ade.agent.lse import _LEGACY_TIER_TO_MODEL\n    assert \"claude\" in _LEGACY_TIER_TO_MODEL[\"fast\"]\n    assert \"claude\" in _LEGACY_TIER_TO_MODEL[\"balanced\"]\n    assert \"claude\" in _LEGACY_TIER_TO_MODEL[\"deep\"]\n",
+  "body_hash": "f730910c83207f76",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_legacy_fallback_uses_claude_model_ids.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.test_legacy_fallback_uses_claude_model_ids",
+  "imports": [
+    "__future__.annotations",
+    "ass_ade.agent.lse._LEGACY_TIER_TO_MODEL"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_legacy_fallback_uses_claude_model_ids.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_legacy_fallback_uses_claude_model_ids",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_legacy_fallback_uses_claude_model_ids"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

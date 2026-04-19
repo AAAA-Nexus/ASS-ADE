@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/workflows.py:234
-# Component id: og.source.ass_ade.safe_execute
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_safe_execute.py:7
+# Component id: og.source.a3_og_features.safe_execute
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def safe_execute(

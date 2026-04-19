@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_docs_engine.py:92
+# Extracted from C:/!ass-ade/tests/test_docs_engine.py:92
 # Component id: mo.source.ass_ade.test_scan_source_symbols_finds_functions
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_scan_source_symbols_finds_functions(tmp_path: Path) -> None:

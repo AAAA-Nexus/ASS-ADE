@@ -6,7 +6,7 @@
     "sorted"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/examples/02-rebuild-a-codebase/sample_project/main.py:69.",
+  "description": "Draft candidate from C:/!ass-ade/examples/02-rebuild-a-codebase/sample_project/main.py:69.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.sort_tasks_by_priority",
@@ -18,7 +18,7 @@
     "typing.Optional"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/examples/02-rebuild-a-codebase/sample_project/main.py:69"
+    "source": "C:/!ass-ade/examples/02-rebuild-a-codebase/sample_project/main.py:69"
   },
   "kind": "ecosystem_system",
   "made_of": [],

@@ -1,0 +1,32 @@
+{
+  "body": "def audit_verify(self, **kwargs: Any) -> AuditVerifyResult:\n    \"\"\"/v1/audit/verify \u2014 verify audit trail integrity. $0.040/request\"\"\"\n    return self._post_model(\"/v1/audit/verify\", AuditVerifyResult, kwargs or {})\n",
+  "body_hash": "4387dbfa5c67a950",
+  "body_truncated": false,
+  "callers_of": [
+    "_post_model"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_audit_verify.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.audit_verify",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_audit_verify.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "audit_verify",
+  "product_categories": [
+    "SRG"
+  ],
+  "provides": [
+    "rebuild candidate for audit_verify"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

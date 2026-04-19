@@ -16,37 +16,21 @@
     "model_dump"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/commands/workflow.py:179.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_workflow_safe_execute.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "og.source.ass_ade.workflow_safe_execute",
+  "id": "og.source.a3_og_features.workflow_safe_execute",
   "imports": [
     "__future__.annotations",
-    "json",
-    "pathlib.Path",
-    "typing.Annotated",
-    "typing.Any",
-    "httpx",
-    "typer",
-    "rich.console.Console",
-    "ass_ade.config.default_config_path",
-    "ass_ade.config.load_config",
-    "ass_ade.nexus.client.NexusClient",
-    "ass_ade.recon.phase0_recon",
     "ass_ade.nexus.errors.NexusError",
-    "ass_ade.workflows.trust_gate",
-    "ass_ade.nexus.errors.NexusError",
-    "ass_ade.workflows.certify_output",
-    "ass_ade.nexus.errors.NexusError",
-    "ass_ade.workflows.safe_execute",
-    "ass_ade.map_terrain.map_terrain"
+    "ass_ade.workflows.safe_execute"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/commands/workflow.py:179"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_workflow_safe_execute.py:7"
   },
   "kind": "product_organism",
   "made_of": [
-    "mo.source.ass_ade.nexusclient"
+    "mo.source.a2_mo_composites.nexusclient"
   ],
   "name": "workflow_safe_execute",
   "product_categories": [

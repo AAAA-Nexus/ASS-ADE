@@ -1,6 +1,6 @@
 {
-  "body": "    def test_pipeline_with_failures(self):\n        gates = QualityGates(_mock_nexus(threat_detected=True, verdict=\"unsafe\"))\n        results = gates.run_pipeline(prompt=\"bad\", output=\"wrong\")\n        failed = [r for r in results if not r.passed]\n        assert len(failed) >= 2  # scan and hallucination should fail\n",
-  "body_hash": "feeb00fabe7d711d",
+  "body": "def test_pipeline_with_failures(self):\n    gates = QualityGates(_mock_nexus(threat_detected=True, verdict=\"unsafe\"))\n    results = gates.run_pipeline(prompt=\"bad\", output=\"wrong\")\n    failed = [r for r in results if not r.passed]\n    assert len(failed) >= 2  # scan and hallucination should fail\n",
+  "body_hash": "15b40c37cf1ee625",
   "body_truncated": false,
   "callers_of": [
     "QualityGates",
@@ -9,19 +9,15 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:157.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_pipeline_with_failures.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_pipeline_with_failures",
+  "id": "at.source.a1_at_functions.test_pipeline_with_failures",
   "imports": [
-    "__future__.annotations",
-    "typing.Any",
-    "unittest.mock.MagicMock",
-    "ass_ade.agent.gates.GateResult",
-    "ass_ade.agent.gates.QualityGates"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_gates.py:157"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_pipeline_with_failures.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

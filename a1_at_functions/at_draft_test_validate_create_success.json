@@ -1,6 +1,6 @@
 {
-  "body": "    def test_validate_create_success(self, executor: EditPlanExecutor):\n        plan = EditPlan()\n        plan.add_create(\"brand_new.py\", \"content\")\n        errors = executor.validate(plan)\n        assert errors == []\n        assert plan.validated is True\n",
-  "body_hash": "8cb93e6730fa02ee",
+  "body": "def test_validate_create_success(self, executor: EditPlanExecutor):\n    plan = EditPlan()\n    plan.add_create(\"brand_new.py\", \"content\")\n    errors = executor.validate(plan)\n    assert errors == []\n    assert plan.validated is True\n",
+  "body_hash": "053a450002629b5a",
   "body_truncated": false,
   "callers_of": [
     "EditPlan",
@@ -8,21 +8,15 @@
     "validate"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:53.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_validate_create_success.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_validate_create_success",
+  "id": "at.source.a1_at_functions.test_validate_create_success",
   "imports": [
-    "__future__.annotations",
-    "pathlib.Path",
-    "pytest",
-    "ass_ade.tools.history.FileHistory",
-    "ass_ade.tools.plan.EditKind",
-    "ass_ade.tools.plan.EditPlan",
-    "ass_ade.tools.plan.EditPlanExecutor"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:53"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_validate_create_success.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

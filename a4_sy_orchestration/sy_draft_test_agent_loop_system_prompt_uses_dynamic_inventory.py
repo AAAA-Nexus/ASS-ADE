@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_capabilities.py:35
-# Component id: sy.source.ass_ade.test_agent_loop_system_prompt_uses_dynamic_inventory
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_test_agent_loop_system_prompt_uses_dynamic_inventory.py:7
+# Component id: sy.source.a4_sy_orchestration.test_agent_loop_system_prompt_uses_dynamic_inventory
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_agent_loop_system_prompt_uses_dynamic_inventory(tmp_path: Path) -> None:

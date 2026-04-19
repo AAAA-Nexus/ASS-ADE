@@ -1,27 +1,20 @@
 {
-  "body": "    def get_proof(self, payment: PaymentResult) -> PaymentProof | None:\n        \"\"\"Extract structured PaymentProof from a payment result.\"\"\"\n        return PaymentProof.from_payment_result(payment)\n",
-  "body_hash": "bd22b277bf859710",
+  "body": "def get_proof(self, payment: PaymentResult) -> PaymentProof | None:\n    \"\"\"Extract structured PaymentProof from a payment result.\"\"\"\n    return PaymentProof.from_payment_result(payment)\n",
+  "body_hash": "5ee8238b41f49c5f",
   "body_truncated": false,
   "callers_of": [
     "from_payment_result"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/x402.py:456.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_x402clientflow.py:93.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "qk.source.ass_ade.get_proof",
+  "id": "qk.source.a2_mo_composites.get_proof",
   "imports": [
-    "__future__.annotations",
-    "os",
-    "time",
-    "dataclasses.dataclass",
-    "typing.Any",
-    "eth_account.Account",
-    "web3.Web3",
-    "logging"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/x402.py:456"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_x402clientflow.py:93"
   },
   "kind": "invariant",
   "made_of": [],

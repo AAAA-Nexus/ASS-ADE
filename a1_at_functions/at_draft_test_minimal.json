@@ -1,18 +1,20 @@
 {
-  "body": "    def test_minimal(self):\n        m = Message(role=\"user\", content=\"hello\")\n        assert m.role == \"user\"\n        assert m.content == \"hello\"\n        assert m.tool_calls == []\n        assert m.tool_call_id is None\n",
-  "body_hash": "5f05a4393f708b6d",
+  "body": "def test_minimal(self):\n    m = Message(role=\"user\", content=\"hello\")\n    assert m.role == \"user\"\n    assert m.content == \"hello\"\n    assert m.tool_calls == []\n    assert m.tool_call_id is None\n",
+  "body_hash": "5a28d1b9beb96d4c",
   "body_truncated": false,
   "callers_of": [
     "Message"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testmessage.py:6.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_minimal.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_minimal",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_minimal",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testmessage.py:6"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_minimal.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/cycle_detector.py:60
+# Extracted from C:/!ass-ade/src/ass_ade/engine/rebuild/cycle_detector.py:60
 # Component id: mo.source.ass_ade.detect_cycles
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def detect_cycles(plan: dict[str, Any]) -> dict[str, Any]:

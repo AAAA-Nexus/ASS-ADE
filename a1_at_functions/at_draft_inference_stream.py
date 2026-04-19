@@ -1,0 +1,16 @@
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_inference_stream.py:7
+# Component id: at.source.a1_at_functions.inference_stream
+from __future__ import annotations
+
+__version__ = "0.1.0"
+
+def inference_stream(self, prompt: str, **kwargs: Any) -> Iterator[str]:
+    """/v1/inference/stream — streaming CoT inference. $0.100/call
+
+    Yields text chunks as they arrive via SSE / chunked response.
+    """
+    with self._client.stream("POST", "/v1/inference/stream", json={"prompt": prompt, **kwargs}) as r:
+        r.raise_for_status()
+        for chunk in r.iter_text():
+            if chunk:
+                yield chunk

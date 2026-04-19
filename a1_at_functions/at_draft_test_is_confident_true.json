@@ -1,0 +1,34 @@
+{
+  "body": "def test_is_confident_true(self) -> None:\n    w = WisdomEngine({\"sde\": {\"conviction_required\": 0.1}})\n    # full state\n    full = {f\"q{i}\": True for i in range(1, 51)}\n    w.run_audit(full)\n    assert w.is_confident\n",
+  "body_hash": "26fe9a7fb2948c41",
+  "body_truncated": false,
+  "callers_of": [
+    "WisdomEngine",
+    "run_audit",
+    "range"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_is_confident_true.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.test_is_confident_true",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_is_confident_true.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_is_confident_true",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_is_confident_true"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,16 +1,18 @@
 {
-  "body": "    def validated(self) -> bool:\n        # Require: no violations, improvement >= threshold AND > 2\u03c3 of noise.\n        return (\n            not self.constitutional_violation\n            and not self.violations\n            and self.improvement >= self.threshold\n            and self.improvement > (2.0 * self.noise_sigma)\n        )\n",
-  "body_hash": "8dd5d2d2a855370a",
+  "body": "def validated(self) -> bool:\n    # Require: no violations, improvement >= threshold AND > 2\u03c3 of noise.\n    return (\n        not self.constitutional_violation\n        and not self.violations\n        and self.improvement >= self.threshold\n        and self.improvement > (2.0 * self.noise_sigma)\n    )\n",
+  "body_hash": "1177ccf1a4b377d9",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_simulationresult.py:26.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_validated.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.validated",
-  "imports": [],
+  "id": "at.source.a1_at_functions.validated",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_simulationresult.py:26"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_validated.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,10 +1,12 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:239
+# Extracted from C:/!ass-ade/tests/test_engine_integration.py:239
 # Component id: mo.source.ass_ade.test_cooldown_prevents_duplicate_alerts
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
-    def test_cooldown_prevents_duplicate_alerts(self) -> None:
-        b = BAS({"bas_cooldown_s": 3600.0})  # 1-hour cooldown
-        a1 = b.alert("gvu_jump", {"gvu_delta": 0.5})
-        a2 = b.alert("gvu_jump", {"gvu_delta": 0.6})
-        # second alert on cooldown
-        assert a2.cooldown_skipped
+def test_cooldown_prevents_duplicate_alerts(self) -> None:
+    b = BAS({"bas_cooldown_s": 3600.0})  # 1-hour cooldown
+    a1 = b.alert("gvu_jump", {"gvu_delta": 0.5})
+    a2 = b.alert("gvu_jump", {"gvu_delta": 0.6})
+    # second alert on cooldown
+    assert a2.cooldown_skipped

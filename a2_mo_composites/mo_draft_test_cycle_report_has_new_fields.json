@@ -1,22 +1,23 @@
 {
-  "body": "    def test_cycle_report_has_new_fields(self):\n        from ass_ade.agent.orchestrator import CycleReport\n        report = CycleReport(alerts=[])\n        assert hasattr(report, \"wisdom_ema\")\n        assert hasattr(report, \"tca_stale_files\")\n        assert hasattr(report, \"cie_passes\")\n        assert hasattr(report, \"lora_pending\")\n        assert hasattr(report, \"autopoietic_triggered\")\n",
-  "body_hash": "eb83a7a5450971be",
+  "body": "def test_cycle_report_has_new_fields(self):\n    from ass_ade.agent.orchestrator import CycleReport\n    report = CycleReport(alerts=[])\n    assert hasattr(report, \"wisdom_ema\")\n    assert hasattr(report, \"tca_stale_files\")\n    assert hasattr(report, \"cie_passes\")\n    assert hasattr(report, \"lora_pending\")\n    assert hasattr(report, \"autopoietic_triggered\")\n",
+  "body_hash": "17316dda32837682",
   "body_truncated": false,
   "callers_of": [
     "CycleReport",
     "hasattr"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testengineorchestratorphase15.py:66.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testengineorchestratorphase15.py:68.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.test_cycle_report_has_new_fields",
+  "id": "mo.source.a2_mo_composites.test_cycle_report_has_new_fields",
   "imports": [
+    "__future__.annotations",
     "ass_ade.agent.orchestrator.EngineOrchestrator",
     "ass_ade.agent.orchestrator.CycleReport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testengineorchestratorphase15.py:66"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testengineorchestratorphase15.py:68"
   },
   "kind": "engine_molecule",
   "made_of": [],

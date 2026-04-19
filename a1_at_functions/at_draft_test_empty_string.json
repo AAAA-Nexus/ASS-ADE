@@ -1,19 +1,20 @@
 {
-  "body": "    def test_empty_string(self):\n        h = content_hash(\"\")\n        assert len(h) == 16\n",
-  "body_hash": "d313ebb837e436b6",
+  "body": "def test_empty_string(self):\n    assert classify_complexity(\"\") == 0.0\n",
+  "body_hash": "8e13aae0181a73ac",
   "body_truncated": false,
   "callers_of": [
-    "content_hash",
-    "len"
+    "classify_complexity"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testcontenthash.py:20.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_empty_string.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_empty_string",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_empty_string",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testcontenthash.py:20"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_empty_string.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

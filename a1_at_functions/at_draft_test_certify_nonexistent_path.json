@@ -6,20 +6,15 @@
     "invoke"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_new_codebase_commands.py:118.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_certify_nonexistent_path.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_certify_nonexistent_path",
+  "id": "at.source.a1_at_functions.test_certify_nonexistent_path",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "pathlib.Path",
-    "pytest",
-    "typer.testing.CliRunner",
-    "ass_ade.cli.app"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_new_codebase_commands.py:118"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_certify_nonexistent_path.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

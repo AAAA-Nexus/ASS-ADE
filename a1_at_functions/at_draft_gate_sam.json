@@ -1,6 +1,6 @@
 {
-  "body": "    def gate_sam(self, target: str, intent: str = \"\", impl: str = \"\") -> dict[str, Any] | None:\n        \"\"\"Run SAM TRS scoring + G23 gate as Stage 0 of the pipeline.\n\n        Returns None on failure (fail-open). Logs result to gate_log.\n        Blocks synthesis in hybrid/premium if TRS < 0.5.\n        \"\"\"\n        try:\n            from ass_ade.agent.sam import SAM\n\n            sam = SAM(self._v18_config, self._client)\n            trs = sam.compute_trs(target)\n            g23_ok = sam.validate_g23(intent, impl) if (intent and impl) else True\n            composite = (trs[\"trust\"] + trs[\"relevance\"] + trs[\"security\"]) / 3.0\n            passed = composite >= 0.5 and g23_ok\n            self._gate_log.append(GateResult(\n                gate=\"sam\",\n                passed=passed,\n                confidence=composite,\n                details={\"trs\": trs, \"g23\": g23_ok, \"composite\": composite},\n            ))\n            # TRS telemetry to Nexus in hybrid/premium\n            try:\n                if hasattr(self._client, \"reputation_record\"):\n                    if composite < 0.7:\n                        self._client.reputation_record(\n                            \"sam_gate\", success=False, quality=composite, latency_ms=0.0\n                        )\n                    elif composite >= 0.9:\n                        self._client.reputation_record(\n                            \"sam_gate\", success=True, quality=composite, latency_ms=0.0\n                        )\n            except Exception:\n                pass\n            return {\"trs\": trs, \"g23\": g23_ok, \"composite\": composite, \"passed\": passed}\n        except Exception as exc:\n            logging.getLogger(__name__).warning(\"gate_sam failed (fail-open): %s\", exc)\n            return None\n",
-  "body_hash": "db1474398dda4a8b",
+  "body": "def gate_sam(self, target: str, intent: str = \"\", impl: str = \"\") -> dict[str, Any] | None:\n    \"\"\"Run SAM TRS scoring + G23 gate as Stage 0 of the pipeline.\n\n    Returns None on failure (fail-open). Logs result to gate_log.\n    Blocks synthesis in hybrid/premium if TRS < 0.5.\n    \"\"\"\n    try:\n        from ass_ade.agent.sam import SAM\n\n        sam = SAM(self._v18_config, self._client)\n        trs = sam.compute_trs(target)\n        g23_ok = sam.validate_g23(intent, impl) if (intent and impl) else True\n        composite = (trs[\"trust\"] + trs[\"relevance\"] + trs[\"security\"]) / 3.0\n        passed = composite >= 0.5 and g23_ok\n        self._gate_log.append(GateResult(\n            gate=\"sam\",\n            passed=passed,\n            confidence=composite,\n            details={\"trs\": trs, \"g23\": g23_ok, \"composite\": composite},\n        ))\n        # TRS telemetry to Nexus in hybrid/premium\n        try:\n            if hasattr(self._client, \"reputation_record\"):\n                if composite < 0.7:\n                    self._client.reputation_record(\n                        \"sam_gate\", success=False, quality=composite, latency_ms=0.0\n                    )\n                elif composite >= 0.9:\n                    self._client.reputation_record(\n                        \"sam_gate\", success=True, quality=composite, latency_ms=0.0\n                    )\n        except Exception:\n            pass\n        return {\"trs\": trs, \"g23\": g23_ok, \"composite\": composite, \"passed\": passed}\n    except Exception as exc:\n        logging.getLogger(__name__).warning(\"gate_sam failed (fail-open): %s\", exc)\n        return None\n",
+  "body_hash": "ee89184c6ce904ae",
   "body_truncated": false,
   "callers_of": [
     "SAM",
@@ -14,28 +14,16 @@
     "getLogger"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_qualitygates.py:411.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_gate_sam.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.gate_sam",
+  "id": "at.source.a1_at_functions.gate_sam",
   "imports": [
-    "ast",
-    "re",
-    "json",
-    "datetime.UTC",
-    "datetime.datetime",
-    "pathlib.Path",
-    "ass_ade.agent.wisdom.WisdomEngine",
-    "ass_ade.agent.trust_gate.TrustVerificationGate",
-    "ass_ade.agent.proofbridge.ProofBridge",
-    "ass_ade.agent.alphaverus.AlphaVerus",
-    "ass_ade.agent.dgm_h.DGMH",
-    "ass_ade.agent.dgm_h.Patch",
-    "ass_ade.agent.golden_runner.run_golden",
+    "__future__.annotations",
     "ass_ade.agent.sam.SAM"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_qualitygates.py:411"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_gate_sam.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

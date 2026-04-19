@@ -1,0 +1,35 @@
+{
+  "body": "def edee(self):\n    if self._edee is None:\n        from ass_ade.agent.edee import EDEE\n        cfg = dict(self._config)\n        cfg.setdefault(\"working_dir\", self._working_dir)\n        self._edee = EDEE(cfg, self._nexus)\n    return self._edee\n",
+  "body_hash": "667c94f804f2232d",
+  "body_truncated": false,
+  "callers_of": [
+    "dict",
+    "setdefault",
+    "EDEE"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_edee.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.edee",
+  "imports": [
+    "__future__.annotations",
+    "ass_ade.agent.edee.EDEE"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_edee.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "edee",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for edee"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

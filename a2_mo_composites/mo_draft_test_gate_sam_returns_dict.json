@@ -1,13 +1,13 @@
 {
-  "body": "    def test_gate_sam_returns_dict(self):\n        gates = self._make_gates()\n        result = gates.gate_sam(target=\"test_target\")\n        assert result is not None\n        assert \"trs\" in result\n        assert \"g23\" in result\n        assert \"composite\" in result\n        assert \"passed\" in result\n",
-  "body_hash": "242d93a2cec7a004",
+  "body": "def test_gate_sam_returns_dict(self):\n    gates = self._make_gates()\n    result = gates.gate_sam(target=\"test_target\")\n    assert result is not None\n    assert \"trs\" in result\n    assert \"g23\" in result\n    assert \"composite\" in result\n    assert \"passed\" in result\n",
+  "body_hash": "7c6815c2f473f913",
   "body_truncated": false,
   "callers_of": [
     "_make_gates",
     "gate_sam"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:164.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase_engines.py:164.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_gate_sam_returns_dict",
@@ -62,11 +62,11 @@
     "ass_ade.agent.orchestrator.CycleReport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:164"
+    "source": "C:/!ass-ade/tests/test_phase_engines.py:164"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.gate_sam"
+    "at.source.a1_at_functions.gate_sam"
   ],
   "name": "test_gate_sam_returns_dict",
   "product_categories": [

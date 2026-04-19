@@ -1,6 +1,6 @@
 {
-  "body": "    def test_persistence_writes_jsonl(self, tmp_path: Path) -> None:\n        state_file = tmp_path / \"alerts.jsonl\"\n        b = BAS({\"bas_state_path\": str(state_file)})\n        b.alert(\"novelty_spike\", {\"novelty\": 0.8})\n        assert state_file.exists()\n        lines = [json.loads(line) for line in state_file.read_text().strip().splitlines()]\n        assert lines[0][\"kind\"] == \"novelty_spike\"\n",
-  "body_hash": "2de8dee8b6bd5194",
+  "body": "def test_persistence_writes_jsonl(self, tmp_path: Path) -> None:\n    state_file = tmp_path / \"alerts.jsonl\"\n    b = BAS({\"bas_state_path\": str(state_file)})\n    b.alert(\"novelty_spike\", {\"novelty\": 0.8})\n    assert state_file.exists()\n    lines = [json.loads(line) for line in state_file.read_text().strip().splitlines()]\n    assert lines[0][\"kind\"] == \"novelty_spike\"\n",
+  "body_hash": "4aa4bd7d74f2bf03",
   "body_truncated": false,
   "callers_of": [
     "BAS",
@@ -13,7 +13,7 @@
     "read_text"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:246.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:246.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_persistence_writes_jsonl",
@@ -41,7 +41,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:246"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:246"
   },
   "kind": "engine_molecule",
   "made_of": [],

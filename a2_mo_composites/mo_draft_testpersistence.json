@@ -14,26 +14,19 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:183.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testpersistence.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.testpersistence",
+  "id": "mo.source.a2_mo_composites.testpersistence",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "pathlib.Path",
-    "typing.Any",
-    "ass_ade.pipeline.Pipeline",
-    "ass_ade.pipeline.PipelineResult",
-    "ass_ade.pipeline.StepResult",
-    "ass_ade.pipeline.StepStatus"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:183"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testpersistence.py:7"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.add"
+    "at.source.a1_at_functions.add"
   ],
   "name": "TestPersistence",
   "product_categories": [

@@ -3,28 +3,21 @@
   "body_hash": "9af670460ecf5dfd",
   "body_truncated": false,
   "callers_of": [
-    "GPU",
     "join",
     "str",
     "run",
     "append"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/hf_space/app.py:46.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_run_training.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.run_training",
+  "id": "at.source.a1_at_functions.run_training",
   "imports": [
-    "__future__.annotations",
-    "os",
-    "subprocess",
-    "sys",
-    "pathlib.Path",
-    "gradio",
-    "spaces"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/hf_space/app.py:46"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_run_training.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

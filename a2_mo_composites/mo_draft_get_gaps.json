@@ -1,16 +1,18 @@
 {
-  "body": "    def get_gaps(self) -> list[dict[str, Any]]:\n        return [\n            {\"description\": g.description, \"source\": g.source, \"ts\": g.ts}\n            for g in self._gaps\n        ]\n",
-  "body_hash": "51a0bdb32c0c9a5f",
+  "body": "def get_gaps(self) -> list[dict[str, Any]]:\n    return [\n        {\"description\": g.description, \"source\": g.source, \"ts\": g.ts}\n        for g in self._gaps\n    ]\n",
+  "body_hash": "47b1b17089545814",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_tcaengine.py:92.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_tcaengine.py:94.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.get_gaps",
-  "imports": [],
+  "id": "mo.source.a2_mo_composites.get_gaps",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_tcaengine.py:92"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_tcaengine.py:94"
   },
   "kind": "engine_molecule",
   "made_of": [],

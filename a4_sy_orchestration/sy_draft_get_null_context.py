@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/mcp/cancellation.py:58
+# Extracted from C:/!ass-ade/src/ass_ade/mcp/cancellation.py:58
 # Component id: sy.source.ass_ade.get_null_context
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def get_null_context() -> CancellationContext:

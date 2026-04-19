@@ -1,13 +1,13 @@
 {
-  "body": "    def test_valid_python_passes_ast(self):\n        from ass_ade.agent.cie import CIEPipeline\n        cie = CIEPipeline({\"cie\": {\"enable_lint\": False, \"require_alphaverus\": False}})\n        result = cie.run(\"x = 1 + 2\\n\", \"python\")\n        assert result.ast_valid is True\n",
-  "body_hash": "006674b2bb89a0b9",
+  "body": "def test_valid_python_passes_ast(self):\n    from ass_ade.agent.cie import CIEPipeline\n    cie = CIEPipeline({\"cie\": {\"enable_lint\": False, \"require_alphaverus\": False}})\n    result = cie.run(\"x = 1 + 2\\n\", \"python\")\n    assert result.ast_valid is True\n",
+  "body_hash": "518647346e474da2",
   "body_truncated": false,
   "callers_of": [
     "CIEPipeline",
     "run"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:327.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_phase_engines.py:327.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_valid_python_passes_ast",
@@ -62,7 +62,7 @@
     "ass_ade.agent.orchestrator.CycleReport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase_engines.py:327"
+    "source": "C:/!ass-ade/tests/test_phase_engines.py:327"
   },
   "kind": "engine_molecule",
   "made_of": [],

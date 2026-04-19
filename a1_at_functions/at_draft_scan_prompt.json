@@ -1,6 +1,6 @@
 {
-  "body": "    def scan_prompt(self, text: str) -> dict[str, Any] | None:\n        \"\"\"Scan user input for injection attacks.\"\"\"\n        try:\n            result = self._client.prompt_inject_scan(text)\n            gate = GateResult(\n                gate=\"prompt_scan\",\n                passed=not (result.threat_detected or False),\n                confidence=result.confidence,\n                details={\"threat_level\": result.threat_level},\n            )\n            self._gate_log.append(gate)\n            return {\n                \"blocked\": result.threat_detected or False,\n                \"threat_level\": result.threat_level,\n                \"confidence\": result.confidence,\n            }\n        except Exception as _exc:  # noqa: BLE001\n            logging.getLogger(__name__).warning(\n                \"Gate %s failed (fail-open): %s: %s\",\n                \"scan_prompt\",\n                type(_exc).__name__,\n                _exc,\n            )\n            return None\n",
-  "body_hash": "c6fb7bbd5962ff6e",
+  "body": "def scan_prompt(self, text: str) -> dict[str, Any] | None:\n    \"\"\"Scan user input for injection attacks.\"\"\"\n    try:\n        result = self._client.prompt_inject_scan(text)\n        gate = GateResult(\n            gate=\"prompt_scan\",\n            passed=not (result.threat_detected or False),\n            confidence=result.confidence,\n            details={\"threat_level\": result.threat_level},\n        )\n        self._gate_log.append(gate)\n        return {\n            \"blocked\": result.threat_detected or False,\n            \"threat_level\": result.threat_level,\n            \"confidence\": result.confidence,\n        }\n    except Exception as _exc:  # noqa: BLE001\n        logging.getLogger(__name__).warning(\n            \"Gate %s failed (fail-open): %s: %s\",\n            \"scan_prompt\",\n            type(_exc).__name__,\n            _exc,\n        )\n        return None\n",
+  "body_hash": "0e384b82b0f188cc",
   "body_truncated": false,
   "callers_of": [
     "prompt_inject_scan",
@@ -11,28 +11,15 @@
     "type"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_qualitygates.py:26.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_scan_prompt.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.scan_prompt",
+  "id": "at.source.a1_at_functions.scan_prompt",
   "imports": [
-    "ast",
-    "re",
-    "json",
-    "datetime.UTC",
-    "datetime.datetime",
-    "pathlib.Path",
-    "ass_ade.agent.wisdom.WisdomEngine",
-    "ass_ade.agent.trust_gate.TrustVerificationGate",
-    "ass_ade.agent.proofbridge.ProofBridge",
-    "ass_ade.agent.alphaverus.AlphaVerus",
-    "ass_ade.agent.dgm_h.DGMH",
-    "ass_ade.agent.dgm_h.Patch",
-    "ass_ade.agent.golden_runner.run_golden",
-    "ass_ade.agent.sam.SAM"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_qualitygates.py:26"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_scan_prompt.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,7 +1,9 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_routing.py:109
-# Component id: at.source.ass_ade.test_avg_complexity_empty
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_avg_complexity_empty.py:7
+# Component id: at.source.a1_at_functions.test_avg_complexity_empty
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
-    def test_avg_complexity_empty(self):
-        router = EpistemicRouter()
-        assert router.avg_complexity == 0.0
+def test_avg_complexity_empty(self):
+    router = EpistemicRouter()
+    assert router.avg_complexity == 0.0

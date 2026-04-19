@@ -1,6 +1,8 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tokens.py:114
-# Component id: qk.source.ass_ade.test_case_insensitive
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_testcontextwindowfor.py:24
+# Component id: qk.source.a0_qk_constants.test_case_insensitive
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
-    def test_case_insensitive(self):
-        assert context_window_for("GPT-4O") == 128_000
+def test_case_insensitive(self):
+    assert context_window_for("GPT-4O") == 128_000

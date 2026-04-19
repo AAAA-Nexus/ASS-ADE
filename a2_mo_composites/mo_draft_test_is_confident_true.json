@@ -1,6 +1,6 @@
 {
-  "body": "    def test_is_confident_true(self) -> None:\n        w = WisdomEngine({\"sde\": {\"conviction_required\": 0.1}})\n        # full state\n        full = {f\"q{i}\": True for i in range(1, 51)}\n        w.run_audit(full)\n        assert w.is_confident\n",
-  "body_hash": "a021115553dff138",
+  "body": "def test_is_confident_true(self) -> None:\n    w = WisdomEngine({\"sde\": {\"conviction_required\": 0.1}})\n    # full state\n    full = {f\"q{i}\": True for i in range(1, 51)}\n    w.run_audit(full)\n    assert w.is_confident\n",
+  "body_hash": "26fe9a7fb2948c41",
   "body_truncated": false,
   "callers_of": [
     "WisdomEngine",
@@ -8,13 +8,15 @@
     "range"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwisdomengine.py:48.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testwisdomengine.py:50.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.test_is_confident_true",
-  "imports": [],
+  "id": "mo.source.a2_mo_composites.test_is_confident_true",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwisdomengine.py:48"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testwisdomengine.py:50"
   },
   "kind": "engine_molecule",
   "made_of": [],

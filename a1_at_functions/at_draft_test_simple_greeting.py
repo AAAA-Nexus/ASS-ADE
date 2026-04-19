@@ -1,7 +1,9 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_routing.py:16
-# Component id: at.source.ass_ade.test_simple_greeting
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_simple_greeting.py:7
+# Component id: at.source.a1_at_functions.test_simple_greeting
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
-    def test_simple_greeting(self):
-        c = classify_complexity("Hello!")
-        assert c < 0.3
+def test_simple_greeting(self):
+    c = classify_complexity("Hello!")
+    assert c < 0.3

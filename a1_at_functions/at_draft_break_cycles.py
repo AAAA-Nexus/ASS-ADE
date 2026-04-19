@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_break_cycles.py:5
-# Component id: at.source.ass_ade.break_cycles
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_break_cycles.py:7
+# Component id: at.source.a1_at_functions.break_cycles
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def break_cycles(plan: dict[str, Any], report: dict[str, Any]) -> dict[str, Any]:

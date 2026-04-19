@@ -1,6 +1,6 @@
 {
-  "body": "    def verify(self, code: str, spec: str) -> bool:\n        if self._nexus is not None and hasattr(self._nexus, \"certify_output_verify\"):\n            try:\n                result = self._nexus.certify_output_verify(code)\n                verdict = getattr(result, \"rubric_passed\", None)\n                if verdict is not None:\n                    return bool(verdict)\n            except Exception:\n                pass\n        metrics = _score(code, spec)\n        return _passes(metrics)\n",
-  "body_hash": "c125933b6927a995",
+  "body": "def verify(self, code: str, spec: str) -> bool:\n    if self._nexus is not None and hasattr(self._nexus, \"certify_output_verify\"):\n        try:\n            result = self._nexus.certify_output_verify(code)\n            verdict = getattr(result, \"rubric_passed\", None)\n            if verdict is not None:\n                return bool(verdict)\n        except Exception:\n            pass\n    metrics = _score(code, spec)\n    return _passes(metrics)\n",
+  "body_hash": "d01c6613e6879b34",
   "body_truncated": false,
   "callers_of": [
     "_score",
@@ -11,26 +11,15 @@
     "bool"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/alphaverus.py:179.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_verify.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.verify",
+  "id": "at.source.a1_at_functions.verify",
   "imports": [
-    "__future__.annotations",
-    "ast",
-    "os",
-    "re",
-    "subprocess",
-    "sys",
-    "dataclasses.dataclass",
-    "dataclasses.field",
-    "pathlib.Path",
-    "typing.Any",
-    "typing.Optional",
-    "radon.complexity.cc_visit"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/alphaverus.py:179"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_verify.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

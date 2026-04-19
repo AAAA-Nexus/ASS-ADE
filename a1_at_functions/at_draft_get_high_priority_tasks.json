@@ -1,19 +1,21 @@
 {
-  "body": "    def get_high_priority_tasks(self) -> List[Task]:\n        \"\"\"Get all high-priority and urgent tasks.\"\"\"\n        all_tasks = self.manager.list_all_tasks()\n        return filter_tasks_by_priority(all_tasks, TaskPriority.HIGH)\n",
-  "body_hash": "33c84ab3e1462bd6",
+  "body": "def get_high_priority_tasks(self) -> List[Task]:\n    \"\"\"Get all high-priority and urgent tasks.\"\"\"\n    all_tasks = self.manager.list_all_tasks()\n    return filter_tasks_by_priority(all_tasks, TaskPriority.HIGH)\n",
+  "body_hash": "adde263bd1f596f3",
   "body_truncated": false,
   "callers_of": [
     "list_all_tasks",
     "filter_tasks_by_priority"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_taskfilter.py:12.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_get_high_priority_tasks.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.get_high_priority_tasks",
-  "imports": [],
+  "id": "at.source.a1_at_functions.get_high_priority_tasks",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_taskfilter.py:12"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_get_high_priority_tasks.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

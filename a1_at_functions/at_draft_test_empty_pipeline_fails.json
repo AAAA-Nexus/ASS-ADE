@@ -1,6 +1,6 @@
 {
-  "body": "    def test_empty_pipeline_fails(self) -> None:\n        pipe = Pipeline(\"empty\")\n        result = pipe.run()\n        assert not result.passed\n        assert len(result.steps) == 0\n",
-  "body_hash": "d4776f8ca0e9bbef",
+  "body": "def test_empty_pipeline_fails(self) -> None:\n    pipe = Pipeline(\"empty\")\n    result = pipe.run()\n    assert not result.passed\n    assert len(result.steps) == 0\n",
+  "body_hash": "9472113e2411f4c7",
   "body_truncated": false,
   "callers_of": [
     "Pipeline",
@@ -8,22 +8,15 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:50.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_empty_pipeline_fails.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_empty_pipeline_fails",
+  "id": "at.source.a1_at_functions.test_empty_pipeline_fails",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "pathlib.Path",
-    "typing.Any",
-    "ass_ade.pipeline.Pipeline",
-    "ass_ade.pipeline.PipelineResult",
-    "ass_ade.pipeline.StepResult",
-    "ass_ade.pipeline.StepStatus"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:50"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_empty_pipeline_fails.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -31,28 +31,19 @@
     "now"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/bas.py:47.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_bas.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.bas",
+  "id": "mo.source.a2_mo_composites.bas",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "time",
-    "collections.abc.Callable",
-    "dataclasses.dataclass",
-    "dataclasses.field",
-    "datetime.UTC",
-    "datetime.datetime",
-    "pathlib.Path",
-    "typing.Any"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/bas.py:47"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_bas.py:7"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.monitor"
+    "at.source.a1_at_functions.monitor"
   ],
   "name": "BAS",
   "product_categories": [

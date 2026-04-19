@@ -1,27 +1,20 @@
 {
-  "body": "    def update_principles(self, principles: list[str]) -> list[str]:\n        for p in principles:\n            if p not in self._principles:\n                self._principles.append(p)\n",
-  "body_hash": "6f595d2a4c694335",
+  "body": "def update_principles(self, principles: list[str]) -> list[str]:\n    for p in principles:\n        if p not in self._principles:\n            self._principles.append(p)\n",
+  "body_hash": "5af1c6e9d6104f7a",
   "body_truncated": false,
   "callers_of": [
     "append"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/wisdom.py:179.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_update_principles.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.update_principles",
+  "id": "at.source.a1_at_functions.update_principles",
   "imports": [
-    "__future__.annotations",
-    "logging",
-    "dataclasses.dataclass",
-    "dataclasses.field",
-    "typing.Any",
-    "ass_ade.agent.audit_questions.AUDIT_QUESTIONS",
-    "ass_ade.context_memory.query_vector_memory",
-    "ass_ade.context_memory.store_vector_memory"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/wisdom.py:179"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_update_principles.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

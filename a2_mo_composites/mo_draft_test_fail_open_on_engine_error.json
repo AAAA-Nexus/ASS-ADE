@@ -1,6 +1,6 @@
 {
-  "body": "    def test_fail_open_on_engine_error(self) -> None:\n        o = EngineOrchestrator({})\n        # Corrupt the atlas to simulate failure\n        o._atlas = MagicMock()\n        o._atlas.decompose.side_effect = RuntimeError(\"engine crashed\")\n        o._atlas.complexity_score.side_effect = RuntimeError(\"engine crashed\")\n        # on_step_start should not raise\n        result = o.on_step_start(\"task\")\n        assert isinstance(result, dict)\n",
-  "body_hash": "31deaa1dea7de2fd",
+  "body": "def test_fail_open_on_engine_error(self) -> None:\n    o = EngineOrchestrator({})\n    # Corrupt the atlas to simulate failure\n    o._atlas = MagicMock()\n    o._atlas.decompose.side_effect = RuntimeError(\"engine crashed\")\n    o._atlas.complexity_score.side_effect = RuntimeError(\"engine crashed\")\n    # on_step_start should not raise\n    result = o.on_step_start(\"task\")\n    assert isinstance(result, dict)\n",
+  "body_hash": "ee39c1c8092545e7",
   "body_truncated": false,
   "callers_of": [
     "EngineOrchestrator",
@@ -10,35 +10,15 @@
     "isinstance"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:368.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_test_fail_open_on_engine_error.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.test_fail_open_on_engine_error",
+  "id": "mo.source.a2_mo_composites.test_fail_open_on_engine_error",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "time",
-    "pathlib.Path",
-    "unittest.mock.MagicMock",
-    "unittest.mock.patch",
-    "pytest",
-    "ass_ade.agent.audit_questions.AUDIT_QUESTIONS",
-    "ass_ade.agent.bas.BAS",
-    "ass_ade.agent.bas.Alert",
-    "ass_ade.agent.gates.QualityGates",
-    "ass_ade.agent.orchestrator.CycleReport",
-    "ass_ade.agent.orchestrator.EngineOrchestrator",
-    "ass_ade.agent.wisdom.AuditReport",
-    "ass_ade.agent.wisdom.WisdomEngine",
-    "collections.Counter",
-    "ass_ade.agent.loop.AgentLoop",
-    "ass_ade.engine.provider.ModelProvider",
-    "ass_ade.engine.types.CompletionResponse",
-    "ass_ade.engine.types.Message",
-    "ass_ade.tools.registry.default_registry"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:368"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_test_fail_open_on_engine_error.py:7"
   },
   "kind": "engine_molecule",
   "made_of": [],

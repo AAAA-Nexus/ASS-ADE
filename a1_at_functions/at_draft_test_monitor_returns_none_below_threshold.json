@@ -1,19 +1,21 @@
 {
-  "body": "    def test_monitor_returns_none_below_threshold(self) -> None:\n        b = BAS({})\n        a = b.monitor({\"synergy\": 0.1, \"novelty\": 0.1, \"gvu_delta\": 0.0})\n        assert a is None\n",
-  "body_hash": "42edbf8b81fdfbf5",
+  "body": "def test_monitor_returns_none_below_threshold(self) -> None:\n    b = BAS({})\n    a = b.monitor({\"synergy\": 0.1, \"novelty\": 0.1, \"gvu_delta\": 0.0})\n    assert a is None\n",
+  "body_hash": "f741d02c0d58d218",
   "body_truncated": false,
   "callers_of": [
     "BAS",
     "monitor"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbas.py:13.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_monitor_returns_none_below_threshold.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_monitor_returns_none_below_threshold",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_monitor_returns_none_below_threshold",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbas.py:13"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_monitor_returns_none_below_threshold.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_route_with_nexus_recommendation(self):\n        nexus = type(\"NexusMock\", (), {\n            \"routing_recommend\": lambda self, **kwargs: {\n                \"model\": \"claude-sonnet-4\",\n                \"reason\": \"Nexus route picked for balanced complexity\",\n                \"confidence\": 0.62,\n                \"tier\": \"standard\",\n            }\n        })()\n        router = EpistemicRouter(nexus_client=nexus)\n        decision = router.route(\"Hello\")\n        assert decision.source == \"nexus\"\n        assert decision.recommended_model == \"claude-sonnet-4\"\n        assert decision.reason == \"Nexus route picked for balanced complexity\"\n        assert decision.tier == ModelTier.STANDARD\n        assert decision.complexity == 0.62\n",
-  "body_hash": "af4c81b8dc4ac1d1",
+  "body": "def test_route_with_nexus_recommendation(self):\n    nexus = type(\"NexusMock\", (), {\n        \"routing_recommend\": lambda self, **kwargs: {\n            \"model\": \"claude-sonnet-4\",\n            \"reason\": \"Nexus route picked for balanced complexity\",\n            \"confidence\": 0.62,\n            \"tier\": \"standard\",\n        }\n    })()\n    router = EpistemicRouter(nexus_client=nexus)\n    decision = router.route(\"Hello\")\n    assert decision.source == \"nexus\"\n    assert decision.recommended_model == \"claude-sonnet-4\"\n    assert decision.reason == \"Nexus route picked for balanced complexity\"\n    assert decision.tier == ModelTier.STANDARD\n    assert decision.complexity == 0.62\n",
+  "body_hash": "c76bcc7838c567f5",
   "body_truncated": false,
   "callers_of": [
     "EpistemicRouter",
@@ -8,21 +8,15 @@
     "type"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_routing.py:113.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_route_with_nexus_recommendation.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_route_with_nexus_recommendation",
+  "id": "at.source.a1_at_functions.test_route_with_nexus_recommendation",
   "imports": [
-    "__future__.annotations",
-    "ass_ade.agent.routing.EpistemicRouter",
-    "ass_ade.agent.routing.ModelTier",
-    "ass_ade.agent.routing.RoutingDecision",
-    "ass_ade.agent.routing.classify_complexity",
-    "ass_ade.agent.routing.local_route",
-    "ass_ade.agent.routing.tier_for_complexity"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_routing.py:113"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_route_with_nexus_recommendation.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

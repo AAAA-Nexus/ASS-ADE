@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/cli.py:1023
-# Component id: sy.source.ass_ade.mcp_estimate_cost
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_mcp_estimate_cost.py:7
+# Component id: sy.source.a4_sy_orchestration.mcp_estimate_cost
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def mcp_estimate_cost(

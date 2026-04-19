@@ -1,10 +1,10 @@
 {
-  "body": "    def last_provider_name(self) -> str | None:\n        return self._last_provider_name\n",
-  "body_hash": "745bf933b7d3e7fa",
+  "body": "def last_provider_name(self) -> str | None:\n    return self._last_provider_name\n",
+  "body_hash": "638ab4abd3182e32",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/provider.py:310.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/provider.py:310.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.last_provider_name",
@@ -23,7 +23,7 @@
     "ass_ade.engine.types.ToolCallRequest"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/provider.py:310"
+    "source": "C:/!ass-ade/src/ass_ade/engine/provider.py:310"
   },
   "kind": "engine_molecule",
   "made_of": [],

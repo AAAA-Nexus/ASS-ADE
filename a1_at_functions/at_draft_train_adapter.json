@@ -30,27 +30,14 @@
     "time"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_train.py:101.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_train_adapter.py:7.",
   "exceptions_raised": [
     "RuntimeError"
   ],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.train_adapter",
+  "id": "at.source.a1_at_functions.train_adapter",
   "imports": [
     "__future__.annotations",
-    "argparse",
-    "hashlib",
-    "json",
-    "logging",
-    "os",
-    "sys",
-    "time",
-    "dataclasses.asdict",
-    "dataclasses.dataclass",
-    "pathlib.Path",
-    "typing.Any",
-    "httpx",
-    "subprocess",
     "torch",
     "datasets.Dataset",
     "peft.LoraConfig",
@@ -60,12 +47,10 @@
     "transformers.AutoTokenizer",
     "transformers.DataCollatorForLanguageModeling",
     "transformers.Trainer",
-    "transformers.TrainingArguments",
-    "huggingface_hub.HfApi",
-    "huggingface_hub.login"
+    "transformers.TrainingArguments"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/scripts/lora_train.py:101"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_train_adapter.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

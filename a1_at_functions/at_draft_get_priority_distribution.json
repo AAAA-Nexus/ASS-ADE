@@ -1,18 +1,20 @@
 {
-  "body": "    def get_priority_distribution(self) -> dict:\n        \"\"\"Get count of tasks by priority.\"\"\"\n        all_tasks = self.manager.list_all_tasks()\n        distribution = {p: 0 for p in TaskPriority}\n        for task in all_tasks:\n            distribution[task.priority] += 1\n        return distribution\n",
-  "body_hash": "5c6cd4f23e036ce7",
+  "body": "def get_priority_distribution(self) -> dict:\n    \"\"\"Get count of tasks by priority.\"\"\"\n    all_tasks = self.manager.list_all_tasks()\n    distribution = {p: 0 for p in TaskPriority}\n    for task in all_tasks:\n        distribution[task.priority] += 1\n    return distribution\n",
+  "body_hash": "634a723b3dc9766f",
   "body_truncated": false,
   "callers_of": [
     "list_all_tasks"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_taskreporter.py:22.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_get_priority_distribution.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.get_priority_distribution",
-  "imports": [],
+  "id": "at.source.a1_at_functions.get_priority_distribution",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_taskreporter.py:22"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_get_priority_distribution.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

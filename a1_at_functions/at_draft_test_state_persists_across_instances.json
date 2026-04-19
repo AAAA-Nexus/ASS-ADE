@@ -1,0 +1,36 @@
+{
+  "body": "def test_state_persists_across_instances(self, tmp_path):\n    from ass_ade.agent.tca import TCAEngine\n    cfg = {\"tca\": {\"state_file\": str(tmp_path / \"tca_reads.json\"), \"freshness_hours\": 24.0}}\n    tca1 = TCAEngine(cfg)\n    tca1.record_read(\"/persistent.py\")\n    tca2 = TCAEngine(cfg)\n    assert tca2.ncb_contract(\"/persistent.py\") is True\n",
+  "body_hash": "3a1eac0241a00e11",
+  "body_truncated": false,
+  "callers_of": [
+    "TCAEngine",
+    "record_read",
+    "ncb_contract",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_state_persists_across_instances.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.test_state_persists_across_instances",
+  "imports": [
+    "__future__.annotations",
+    "ass_ade.agent.tca.TCAEngine"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_state_persists_across_instances.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_state_persists_across_instances",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_state_persists_across_instances"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

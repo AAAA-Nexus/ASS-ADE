@@ -1,6 +1,6 @@
 {
-  "body": "    def run_audit(self, cycle_state: dict) -> AuditReport:\n        self._audits += 1\n        passed = 0\n        failed = 0\n        per_group: dict[str, dict] = {}\n        failures: list[dict] = []\n        warnings: list[str] = []\n\n        for q in AUDIT_QUESTIONS:\n            ok = self._answer(q, cycle_state)\n            g = per_group.setdefault(q[\"group\"], {\"passed\": 0, \"failed\": 0})\n            if ok:\n                passed += 1\n                g[\"passed\"] += 1\n            else:\n                failed += 1\n                g[\"failed\"] += 1\n                failures.append({\"id\": q[\"id\"], \"group\": q[\"group\"], \"text\": q[\"text\"]})\n\n        total = passed + failed\n        score = passed / total if total else 0.0\n        # Update conviction EMA.\n        self._conviction = 0.5 * self._conviction + 0.5 * score\n\n        # Low-conviction warning after the first audit.\n        if score < 0.3 and self._audits > 1:\n            warnings.append(\"low_conviction\")\n\n        return AuditReport(\n            total=total,\n            passed=passed,\n            failed=failed,\n            score=score,\n            conviction=self._conviction,\n            per_group=per_group,\n            failures=failures,\n            warnings=warnings,\n            principles=list(self._principles),\n        )\n",
-  "body_hash": "a06c14680217c05d",
+  "body": "def run_audit(self, cycle_state: dict) -> AuditReport:\n    self._audits += 1\n    passed = 0\n    failed = 0\n    per_group: dict[str, dict] = {}\n    failures: list[dict] = []\n    warnings: list[str] = []\n\n    for q in AUDIT_QUESTIONS:\n        ok = self._answer(q, cycle_state)\n        g = per_group.setdefault(q[\"group\"], {\"passed\": 0, \"failed\": 0})\n        if ok:\n            passed += 1\n            g[\"passed\"] += 1\n        else:\n            failed += 1\n            g[\"failed\"] += 1\n            failures.append({\"id\": q[\"id\"], \"group\": q[\"group\"], \"text\": q[\"text\"]})\n\n    total = passed + failed\n    score = passed / total if total else 0.0\n    # Update conviction EMA.\n    self._conviction = 0.5 * self._conviction + 0.5 * score\n\n    # Low-conviction warning after the first audit.\n    if score < 0.3 and self._audits > 1:\n        warnings.append(\"low_conviction\")\n\n    return AuditReport(\n        total=total,\n        passed=passed,\n        failed=failed,\n        score=score,\n        conviction=self._conviction,\n        per_group=per_group,\n        failures=failures,\n        warnings=warnings,\n        principles=list(self._principles),\n    )\n",
+  "body_hash": "5c88d35e1a183ef3",
   "body_truncated": false,
   "callers_of": [
     "AuditReport",
@@ -10,22 +10,15 @@
     "list"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/wisdom.py:89.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_run_audit.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.run_audit",
+  "id": "at.source.a1_at_functions.run_audit",
   "imports": [
-    "__future__.annotations",
-    "logging",
-    "dataclasses.dataclass",
-    "dataclasses.field",
-    "typing.Any",
-    "ass_ade.agent.audit_questions.AUDIT_QUESTIONS",
-    "ass_ade.context_memory.query_vector_memory",
-    "ass_ade.context_memory.store_vector_memory"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/wisdom.py:89"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_run_audit.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

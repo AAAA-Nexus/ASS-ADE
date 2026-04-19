@@ -25,22 +25,23 @@
     "model_for_tier"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_lseengine.py:5.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_lseengine.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.lseengine",
+  "id": "mo.source.a2_mo_composites.lseengine",
   "imports": [
+    "__future__.annotations",
     "ass_ade.agent.providers.get_provider"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_lseengine.py:5"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_lseengine.py:7"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.resolve_tier",
-    "at.source.ass_ade.select_provider_for_tier",
-    "at.source.ass_ade.get_provider",
-    "at.source.ass_ade.model_for_tier"
+    "at.source.a1_at_functions.resolve_tier",
+    "at.source.a1_at_functions.select_provider_for_tier",
+    "at.source.a1_at_functions.get_provider",
+    "at.source.a1_at_functions.model_for_tier"
   ],
   "name": "LSEEngine",
   "product_categories": [

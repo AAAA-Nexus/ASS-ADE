@@ -1,6 +1,6 @@
 {
-  "body": "    def can_pay(self, challenge: PaymentChallenge) -> bool:\n        \"\"\"Check if a challenge can be paid with current configuration.\n\n        Returns False and sets last_error if the challenge cannot be fulfilled.\n        \"\"\"\n        if challenge.is_expired:\n            self.last_error = \"Challenge has expired\"\n            return False\n\n        if challenge.amount_micro_usdc <= 0 or challenge.amount_micro_usdc > MAX_CHALLENGE_MICRO_USDC:\n            self.last_error = (\n                f\"Amount {challenge.amount_micro_usdc} outside valid range \"\n                f\"(1\u2013{MAX_CHALLENGE_MICRO_USDC})\"\n            )\n            return False\n\n        if challenge.recipient.strip().lower() != ATOMADIC_TREASURY.lower():\n            self.last_error = \"Recipient does not match expected treasury\"\n            return False\n\n        config = get_chain_config()\n        if challenge.chain_id and challenge.chain_id != config[\"chain_id\"]:\n            self.last_error = (\n                f\"Chain mismatch: challenge {challenge.chain_id} vs active {config['chain_id']}\"\n            )\n            return False\n\n        if challenge.token_address:\n            try:\n                if challenge.token_address.lower() != config[\"usdc_address\"].lower():\n                    self.last_error = (\n                        f\"Token mismatch: challenge {challenge.token_address} \"\n                        f\"vs expected {config['usdc_address']}\"\n                    )\n                    return False\n            except AttributeError as exc:\n                self.last_error = f\"Invalid token address: {exc}\"\n                return False\n\n        return True\n",
-  "body_hash": "276461122a541b62",
+  "body": "def can_pay(self, challenge: PaymentChallenge) -> bool:\n    \"\"\"Check if a challenge can be paid with current configuration.\n\n    Returns False and sets last_error if the challenge cannot be fulfilled.\n    \"\"\"\n    if challenge.is_expired:\n        self.last_error = \"Challenge has expired\"\n        return False\n\n    if challenge.amount_micro_usdc <= 0 or challenge.amount_micro_usdc > MAX_CHALLENGE_MICRO_USDC:\n        self.last_error = (\n            f\"Amount {challenge.amount_micro_usdc} outside valid range \"\n            f\"(1\u2013{MAX_CHALLENGE_MICRO_USDC})\"\n        )\n        return False\n\n    if challenge.recipient.strip().lower() != ATOMADIC_TREASURY.lower():\n        self.last_error = \"Recipient does not match expected treasury\"\n        return False\n\n    config = get_chain_config()\n    if challenge.chain_id and challenge.chain_id != config[\"chain_id\"]:\n        self.last_error = (\n            f\"Chain mismatch: challenge {challenge.chain_id} vs active {config['chain_id']}\"\n        )\n        return False\n\n    if challenge.token_address:\n        try:\n            if challenge.token_address.lower() != config[\"usdc_address\"].lower():\n                self.last_error = (\n                    f\"Token mismatch: challenge {challenge.token_address} \"\n                    f\"vs expected {config['usdc_address']}\"\n                )\n                return False\n        except AttributeError as exc:\n            self.last_error = f\"Invalid token address: {exc}\"\n            return False\n\n    return True\n",
+  "body_hash": "4eb4f42be35278ac",
   "body_truncated": false,
   "callers_of": [
     "get_chain_config",
@@ -8,13 +8,15 @@
     "strip"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_x402clientflow.py:38.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_x402clientflow.py:40.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.can_pay",
-  "imports": [],
+  "id": "mo.source.a2_mo_composites.can_pay",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_x402clientflow.py:38"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_x402clientflow.py:40"
   },
   "kind": "engine_molecule",
   "made_of": [

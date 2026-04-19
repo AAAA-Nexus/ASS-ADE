@@ -1,20 +1,21 @@
 {
-  "body": "    def test_legacy_fallback_uses_claude_model_ids(self):\n        \"\"\"When no free providers are configured, LSE falls back to Claude models.\"\"\"\n        from ass_ade.agent.lse import _LEGACY_TIER_TO_MODEL\n        assert \"claude\" in _LEGACY_TIER_TO_MODEL[\"fast\"]\n        assert \"claude\" in _LEGACY_TIER_TO_MODEL[\"balanced\"]\n        assert \"claude\" in _LEGACY_TIER_TO_MODEL[\"deep\"]\n",
-  "body_hash": "e2ef69ad5dd8fd53",
+  "body": "def test_legacy_fallback_uses_claude_model_ids(self):\n    \"\"\"When no free providers are configured, LSE falls back to Claude models.\"\"\"\n    from ass_ade.agent.lse import _LEGACY_TIER_TO_MODEL\n    assert \"claude\" in _LEGACY_TIER_TO_MODEL[\"fast\"]\n    assert \"claude\" in _LEGACY_TIER_TO_MODEL[\"balanced\"]\n    assert \"claude\" in _LEGACY_TIER_TO_MODEL[\"deep\"]\n",
+  "body_hash": "f730910c83207f76",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testlseengine.py:72.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testlseengine.py:74.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.test_legacy_fallback_uses_claude_model_ids",
+  "id": "mo.source.a2_mo_composites.test_legacy_fallback_uses_claude_model_ids",
   "imports": [
+    "__future__.annotations",
     "ass_ade.agent.lse.LSEEngine",
     "ass_ade.agent.providers.FREE_PROVIDERS",
     "ass_ade.agent.lse._LEGACY_TIER_TO_MODEL"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testlseengine.py:72"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testlseengine.py:74"
   },
   "kind": "engine_molecule",
   "made_of": [],

@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_collect_mcp_tools.py:5
-# Component id: sy.source.ass_ade.collect_mcp_tools
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_collect_mcp_tools.py:7
+# Component id: sy.source.a4_sy_orchestration.collect_mcp_tools
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def collect_mcp_tools(working_dir: str | Path = ".") -> list[CapabilityEntry]:

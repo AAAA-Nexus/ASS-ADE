@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/cli.py:2449
-# Component id: at.source.ass_ade.aegis_certify_epoch
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_aegis_certify_epoch.py:7
+# Component id: at.source.a1_at_functions.aegis_certify_epoch
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def aegis_certify_epoch(

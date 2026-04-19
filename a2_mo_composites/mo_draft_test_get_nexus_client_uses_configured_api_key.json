@@ -1,6 +1,6 @@
 {
-  "body": "    def test_get_nexus_client_uses_configured_api_key(self) -> None:\n        server = MCPServer(\".\")\n        cfg = AssAdeConfig(\n            profile=\"hybrid\",\n            nexus_base_url=\"https://atomadic.tech\",\n            request_timeout_s=12.0,\n            nexus_api_key=\"test-secret\",\n        )\n\n        with (\n            patch(\"ass_ade.config.load_config\", return_value=cfg),\n            patch(\"ass_ade.nexus.client.NexusClient\") as client_cls,\n        ):\n            client = server._get_nexus_client()\n\n        assert client is client_cls.return_value\n        client_cls.assert_called_once_with(\n            base_url=\"https://atomadic.tech\",\n            timeout=12.0,\n            api_key=\"test-secret\",\n        )\n",
-  "body_hash": "4f051bd916176387",
+  "body": "def test_get_nexus_client_uses_configured_api_key(self) -> None:\n    server = MCPServer(\".\")\n    cfg = AssAdeConfig(\n        profile=\"hybrid\",\n        nexus_base_url=\"https://atomadic.tech\",\n        request_timeout_s=12.0,\n        nexus_api_key=\"test-secret\",\n    )\n\n    with (\n        patch(\"ass_ade.config.load_config\", return_value=cfg),\n        patch(\"ass_ade.nexus.client.NexusClient\") as client_cls,\n    ):\n        client = server._get_nexus_client()\n\n    assert client is client_cls.return_value\n    client_cls.assert_called_once_with(\n        base_url=\"https://atomadic.tech\",\n        timeout=12.0,\n        api_key=\"test-secret\",\n    )\n",
+  "body_hash": "b1a5c7f20ce4c126",
   "body_truncated": false,
   "callers_of": [
     "MCPServer",
@@ -10,13 +10,15 @@
     "_get_nexus_client"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testmcptrustgate.py:33.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_testmcptrustgate.py:35.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.test_get_nexus_client_uses_configured_api_key",
-  "imports": [],
+  "id": "mo.source.a4_sy_orchestration.test_get_nexus_client_uses_configured_api_key",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testmcptrustgate.py:33"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_testmcptrustgate.py:35"
   },
   "kind": "engine_molecule",
   "made_of": [],

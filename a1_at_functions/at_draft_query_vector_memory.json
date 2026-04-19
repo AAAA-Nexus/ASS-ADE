@@ -19,28 +19,17 @@
     "round"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/context_memory.py:224.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_query_vector_memory.py:7.",
   "exceptions_raised": [
     "ValueError"
   ],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.query_vector_memory",
+  "id": "at.source.a1_at_functions.query_vector_memory",
   "imports": [
-    "__future__.annotations",
-    "hashlib",
-    "json",
-    "math",
-    "re",
-    "datetime.UTC",
-    "datetime.datetime",
-    "pathlib.Path",
-    "typing.Any",
-    "pydantic.BaseModel",
-    "pydantic.Field",
-    "ass_ade.recon.phase0_recon"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/context_memory.py:224"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_query_vector_memory.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

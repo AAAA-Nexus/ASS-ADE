@@ -1,13 +1,13 @@
 {
-  "body": "    def get_overdue_tasks(self) -> List[Task]:\n        \"\"\"Get all non-done tasks (would check dates in real impl).\"\"\"\n        all_tasks = self.manager.list_all_tasks()\n        return filter_tasks_by_status(all_tasks, TaskStatus.TODO)\n",
-  "body_hash": "fc36b0036145c2fc",
+  "body": "def get_overdue_tasks(self) -> List[Task]:\n    \"\"\"Get all non-done tasks (would check dates in real impl).\"\"\"\n    all_tasks = self.manager.list_all_tasks()\n    return filter_tasks_by_status(all_tasks, TaskStatus.TODO)\n",
+  "body_hash": "531b502cb97b04b0",
   "body_truncated": false,
   "callers_of": [
     "list_all_tasks",
     "filter_tasks_by_status"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/examples/02-rebuild-a-codebase/sample_project/main.py:159.",
+  "description": "Draft candidate from C:/!ass-ade/examples/02-rebuild-a-codebase/sample_project/main.py:159.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.get_overdue_tasks",
@@ -19,7 +19,7 @@
     "typing.Optional"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/examples/02-rebuild-a-codebase/sample_project/main.py:159"
+    "source": "C:/!ass-ade/examples/02-rebuild-a-codebase/sample_project/main.py:159"
   },
   "kind": "ecosystem_system",
   "made_of": [],

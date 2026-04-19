@@ -1,18 +1,20 @@
 {
-  "body": "    def test_empty_list(self):\n        assert estimate_tools_tokens([]) == 0\n",
-  "body_hash": "3b35bd9be72620da",
+  "body": "def test_empty_list(self):\n    assert estimate_tools_tokens([]) == 0\n",
+  "body_hash": "4e406b02bfabf060",
   "body_truncated": false,
   "callers_of": [
     "estimate_tools_tokens"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testestimatetoolstokens.py:6.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_test_empty_list.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "qk.source.ass_ade.test_empty_list",
-  "imports": [],
+  "id": "qk.source.a0_qk_constants.test_empty_list",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testestimatetoolstokens.py:6"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_test_empty_list.py:7"
   },
   "kind": "invariant",
   "made_of": [],

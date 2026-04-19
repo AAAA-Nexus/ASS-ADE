@@ -1,105 +1,108 @@
 """Auto-generated tier package."""
 
-from . import qk_draft_agent_token_budget  # noqa: F401
-from . import qk_draft_available  # noqa: F401
-from . import qk_draft_build_proof_headers  # noqa: F401
-from .qk_draft_context_window_for import context_window_for  # noqa: F401
-from .qk_draft_emit_certificate import emit_certificate  # noqa: F401
-from . import qk_draft_estimate_conversation  # noqa: F401
-from .qk_draft_estimate_message_tokens import estimate_message_tokens  # noqa: F401
-from .qk_draft_estimate_tokens import estimate_tokens  # noqa: F401
-from .qk_draft_estimate_tools_tokens import estimate_tools_tokens  # noqa: F401
-from . import qk_draft_estimated_tokens  # noqa: F401
-from .qk_draft_fairnessproof import FairnessProof  # noqa: F401
-from . import qk_draft_fakeclient  # noqa: F401
-from .qk_draft_federationtoken import FederationToken  # noqa: F401
-from . import qk_draft_for_model  # noqa: F401
-from . import qk_draft_from_header_value  # noqa: F401
-from . import qk_draft_from_payment_result  # noqa: F401
-from . import qk_draft_get_mcp_manifest  # noqa: F401
-from . import qk_draft_get_pricing_manifest  # noqa: F401
-from . import qk_draft_get_proof  # noqa: F401
-from .qk_draft_inference_token_count import inference_token_count  # noqa: F401
-from .qk_draft_lean4spec import Lean4Spec  # noqa: F401
-from .qk_draft_lineageproof import LineageProof  # noqa: F401
-from .qk_draft_materialize_plan import materialize_plan  # noqa: F401
-from .qk_draft_mcpmanifest import MCPManifest  # noqa: F401
-from . import qk_draft_messages_to_evict  # noqa: F401
-from .qk_draft_nexus_mcp_manifest import nexus_mcp_manifest  # noqa: F401
-from .qk_draft_paymentproof import PaymentProof  # noqa: F401
-from .qk_draft_pricingmanifest import PricingManifest  # noqa: F401
-from .qk_draft_proofbridge import ProofBridge  # noqa: F401
-from . import qk_draft_report  # noqa: F401
-from . import qk_draft_run  # noqa: F401
-from . import qk_draft_schemas  # noqa: F401
-from .qk_draft_swarm_token_budget import swarm_token_budget  # noqa: F401
-from . import qk_draft_test_all_profiles_have_all_three_tiers  # noqa: F401
-from . import qk_draft_test_all_profiles_have_display_name  # noqa: F401
-from . import qk_draft_test_available  # noqa: F401
-from . import qk_draft_test_build_proof_headers  # noqa: F401
-from . import qk_draft_test_case_insensitive  # noqa: F401
-from . import qk_draft_test_catalog_includes_groq_chutes_nexus  # noqa: F401
-from . import qk_draft_test_claude_model  # noqa: F401
-from . import qk_draft_test_cloud_providers_have_signup_url  # noqa: F401
-from . import qk_draft_test_code_block  # noqa: F401
-from . import qk_draft_test_empty_content  # noqa: F401
-from . import qk_draft_test_empty_list  # noqa: F401
-from . import qk_draft_test_empty_string  # noqa: F401
-from . import qk_draft_test_estimate_conversation  # noqa: F401
-from . import qk_draft_test_extended_tools_have_schemas  # noqa: F401
-from . import qk_draft_test_fallback_chain_contains_only_known_providers  # noqa: F401
-from . import qk_draft_test_for_model  # noqa: F401
-from . import qk_draft_test_from_header_value  # noqa: F401
-from . import qk_draft_test_from_payment_result_failure  # noqa: F401
-from . import qk_draft_test_from_payment_result_success  # noqa: F401
-from . import qk_draft_test_fuzzy_match  # noqa: F401
-from . import qk_draft_test_get_proof  # noqa: F401
-from . import qk_draft_test_header_roundtrip  # noqa: F401
-from . import qk_draft_test_internal_search_sends_session_token  # noqa: F401
-from . import qk_draft_test_known_model  # noqa: F401
-from . import qk_draft_test_llm_token_count_success  # noqa: F401
-from . import qk_draft_test_loads_from_manifest  # noqa: F401
-from . import qk_draft_test_local_providers_have_no_api_key_env  # noqa: F401
-from . import qk_draft_test_long_text  # noqa: F401
-from .qk_draft_test_mcp_invoke_schema_validate_fails import test_mcp_invoke_schema_validate_fails  # noqa: F401
-from . import qk_draft_test_message_with_name  # noqa: F401
-from . import qk_draft_test_messages_to_evict_over_budget  # noqa: F401
-from . import qk_draft_test_messages_to_evict_within_budget  # noqa: F401
-from .qk_draft_test_mock_server_serves_manifest import test_mock_server_serves_manifest  # noqa: F401
-from . import qk_draft_test_multiple_tools  # noqa: F401
-from . import qk_draft_test_nexus_is_marked_special  # noqa: F401
-from . import qk_draft_test_none_model  # noqa: F401
-from . import qk_draft_test_progress_token_extracted_from_meta  # noqa: F401
-from .qk_draft_test_rebuild_incremental_no_manifest import test_rebuild_incremental_no_manifest  # noqa: F401
-from . import qk_draft_test_returns_int  # noqa: F401
-from . import qk_draft_test_rg_loop_constant_is_47  # noqa: F401
-from . import qk_draft_test_schema  # noqa: F401
-from . import qk_draft_test_schemas  # noqa: F401
-from . import qk_draft_test_search_requires_session_token  # noqa: F401
-from . import qk_draft_test_short_text  # noqa: F401
-from . import qk_draft_test_simple_user_message  # noqa: F401
-from . import qk_draft_test_single_tool  # noqa: F401
-from . import qk_draft_test_system_message  # noqa: F401
-from . import qk_draft_test_system_messages_not_evicted  # noqa: F401
-from . import qk_draft_test_tier_aliases_include_canonical_and_claude  # noqa: F401
-from . import qk_draft_test_to_header_value  # noqa: F401
-from . import qk_draft_test_unknown_model  # noqa: F401
-from . import qk_draft_test_update_none_usage  # noqa: F401
-from . import qk_draft_test_utilization_after_update  # noqa: F401
-from . import qk_draft_test_utilization_zero  # noqa: F401
-from .qk_draft_testcataloginvariants import TestCatalogInvariants  # noqa: F401
-from .qk_draft_testcontextwindowfor import TestContextWindowFor  # noqa: F401
-from .qk_draft_testestimatemessagetokens import TestEstimateMessageTokens  # noqa: F401
-from .qk_draft_testestimatetokens import TestEstimateTokens  # noqa: F401
-from .qk_draft_testestimatetoolstokens import TestEstimateToolsTokens  # noqa: F401
-from .qk_draft_testinferencetokencount import TestInferenceTokenCount  # noqa: F401
-from .qk_draft_testpaymentproof import TestPaymentProof  # noqa: F401
-from .qk_draft_testtokenbudget import TestTokenBudget  # noqa: F401
-from .qk_draft_testtoolschema import TestToolSchema  # noqa: F401
-from . import qk_draft_to_header_value  # noqa: F401
-from . import qk_draft_token_budget  # noqa: F401
-from .qk_draft_toolschema import ToolSchema  # noqa: F401
-from . import qk_draft_translate  # noqa: F401
-from . import qk_draft_update_from_usage  # noqa: F401
-from . import qk_draft_utilization  # noqa: F401
-from .qk_draft_validate_rebuild import validate_rebuild  # noqa: F401
+__all__ = [
+    "qk_draft_agent_token_budget",
+    "qk_draft_available",
+    "qk_draft_build_proof_headers",
+    "qk_draft_context_window_for",
+    "qk_draft_emit_certificate",
+    "qk_draft_estimate_conversation",
+    "qk_draft_estimate_message_tokens",
+    "qk_draft_estimate_tokens",
+    "qk_draft_estimate_tools_tokens",
+    "qk_draft_estimated_tokens",
+    "qk_draft_fairnessproof",
+    "qk_draft_fakeclient",
+    "qk_draft_federationtoken",
+    "qk_draft_for_model",
+    "qk_draft_from_header_value",
+    "qk_draft_from_payment_result",
+    "qk_draft_get_mcp_manifest",
+    "qk_draft_get_pricing_manifest",
+    "qk_draft_get_proof",
+    "qk_draft_handler",
+    "qk_draft_inference_token_count",
+    "qk_draft_lean4spec",
+    "qk_draft_lineageproof",
+    "qk_draft_materialize_plan",
+    "qk_draft_mcpmanifest",
+    "qk_draft_messages_to_evict",
+    "qk_draft_nexus_mcp_manifest",
+    "qk_draft_paymentproof",
+    "qk_draft_pricingmanifest",
+    "qk_draft_proofbridge",
+    "qk_draft_report",
+    "qk_draft_run",
+    "qk_draft_schemas",
+    "qk_draft_swarm_token_budget",
+    "qk_draft_test_all_profiles_have_all_three_tiers",
+    "qk_draft_test_all_profiles_have_display_name",
+    "qk_draft_test_available",
+    "qk_draft_test_build_proof_headers",
+    "qk_draft_test_case_insensitive",
+    "qk_draft_test_catalog_includes_groq_chutes_nexus",
+    "qk_draft_test_claude_model",
+    "qk_draft_test_cloud_providers_have_signup_url",
+    "qk_draft_test_code_block",
+    "qk_draft_test_empty_content",
+    "qk_draft_test_empty_list",
+    "qk_draft_test_empty_string",
+    "qk_draft_test_estimate_conversation",
+    "qk_draft_test_extended_tools_have_schemas",
+    "qk_draft_test_fallback_chain_contains_only_known_providers",
+    "qk_draft_test_for_model",
+    "qk_draft_test_from_header_value",
+    "qk_draft_test_from_payment_result_failure",
+    "qk_draft_test_from_payment_result_success",
+    "qk_draft_test_fuzzy_match",
+    "qk_draft_test_get_proof",
+    "qk_draft_test_header_roundtrip",
+    "qk_draft_test_internal_search_sends_session_token",
+    "qk_draft_test_known_model",
+    "qk_draft_test_llm_token_count_success",
+    "qk_draft_test_loads_from_manifest",
+    "qk_draft_test_local_providers_have_no_api_key_env",
+    "qk_draft_test_long_text",
+    "qk_draft_test_mcp_invoke_schema_validate_fails",
+    "qk_draft_test_message_with_name",
+    "qk_draft_test_messages_to_evict_over_budget",
+    "qk_draft_test_messages_to_evict_within_budget",
+    "qk_draft_test_mock_server_serves_manifest",
+    "qk_draft_test_multiple_tools",
+    "qk_draft_test_nexus_is_marked_special",
+    "qk_draft_test_none_model",
+    "qk_draft_test_progress_token_extracted_from_meta",
+    "qk_draft_test_rebuild_incremental_no_manifest",
+    "qk_draft_test_returns_int",
+    "qk_draft_test_rg_loop_constant_is_47",
+    "qk_draft_test_schema",
+    "qk_draft_test_schemas",
+    "qk_draft_test_search_requires_session_token",
+    "qk_draft_test_short_text",
+    "qk_draft_test_simple_user_message",
+    "qk_draft_test_single_tool",
+    "qk_draft_test_system_message",
+    "qk_draft_test_system_messages_not_evicted",
+    "qk_draft_test_tier_aliases_include_canonical_and_claude",
+    "qk_draft_test_to_header_value",
+    "qk_draft_test_unknown_model",
+    "qk_draft_test_update_none_usage",
+    "qk_draft_test_utilization_after_update",
+    "qk_draft_test_utilization_zero",
+    "qk_draft_testcataloginvariants",
+    "qk_draft_testcontextwindowfor",
+    "qk_draft_testestimatemessagetokens",
+    "qk_draft_testestimatetokens",
+    "qk_draft_testestimatetoolstokens",
+    "qk_draft_testinferencetokencount",
+    "qk_draft_testpaymentproof",
+    "qk_draft_testtokenbudget",
+    "qk_draft_testtoolschema",
+    "qk_draft_to_header_value",
+    "qk_draft_token_budget",
+    "qk_draft_toolschema",
+    "qk_draft_translate",
+    "qk_draft_update_from_usage",
+    "qk_draft_utilization",
+    "qk_draft_validate_rebuild",
+]

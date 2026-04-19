@@ -1,6 +1,6 @@
 {
-  "body": "    def test_exhausts_retries_returns_last_response(self) -> None:\n        inner = _CountingTransport([\n            httpx.Response(503),\n            httpx.Response(503),\n            httpx.Response(503),\n        ])\n        transport = RetryTransport(inner, max_retries=3, backoff_base=0.0)\n        response = transport.handle_request(httpx.Request(\"GET\", \"https://example.com\"))\n        assert response.status_code == 503\n        assert inner.call_count == 3\n",
-  "body_hash": "448f6308e0b5626a",
+  "body": "def test_exhausts_retries_returns_last_response(self) -> None:\n    inner = _CountingTransport([\n        httpx.Response(503),\n        httpx.Response(503),\n        httpx.Response(503),\n    ])\n    transport = RetryTransport(inner, max_retries=3, backoff_base=0.0)\n    response = transport.handle_request(httpx.Request(\"GET\", \"https://example.com\"))\n    assert response.status_code == 503\n    assert inner.call_count == 3\n",
+  "body_hash": "4015c1f801ed1ae3",
   "body_truncated": false,
   "callers_of": [
     "_CountingTransport",
@@ -10,13 +10,15 @@
     "Response"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testretrytransport.py:32.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_exhausts_retries_returns_last_response.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_exhausts_retries_returns_last_response",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_exhausts_retries_returns_last_response",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testretrytransport.py:32"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_exhausts_retries_returns_last_response.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -6,21 +6,15 @@
     "map_terrain"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_map_terrain.py:117.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_map_terrain_halts_for_invalid_requirement_type.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_map_terrain_halts_for_invalid_requirement_type",
+  "id": "at.source.a1_at_functions.test_map_terrain_halts_for_invalid_requirement_type",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "pathlib.Path",
-    "typer.testing.CliRunner",
-    "ass_ade.cli.app",
-    "ass_ade.map_terrain.map_terrain",
-    "ass_ade.mcp.server.MCPServer"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_map_terrain.py:117"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_map_terrain_halts_for_invalid_requirement_type.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

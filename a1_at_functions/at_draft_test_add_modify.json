@@ -1,6 +1,6 @@
 {
-  "body": "    def test_add_modify(self):\n        plan = EditPlan()\n        plan.add_modify(\"main.py\", \"pass\", \"print('hello')\")\n        assert len(plan.edits) == 1\n        assert plan.edits[0].kind == EditKind.MODIFY\n",
-  "body_hash": "52c0cddb0543840f",
+  "body": "def test_add_modify(self):\n    plan = EditPlan()\n    plan.add_modify(\"main.py\", \"pass\", \"print('hello')\")\n    assert len(plan.edits) == 1\n    assert plan.edits[0].kind == EditKind.MODIFY\n",
+  "body_hash": "4e5091f09aa014f2",
   "body_truncated": false,
   "callers_of": [
     "EditPlan",
@@ -8,13 +8,15 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditplan.py:12.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_add_modify.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_add_modify",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_add_modify",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditplan.py:12"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_add_modify.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

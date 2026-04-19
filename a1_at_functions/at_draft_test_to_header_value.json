@@ -1,13 +1,13 @@
 {
-  "body": "    def test_to_header_value(self) -> None:\n        \"\"\"PaymentProof should format as HTTP header value.\"\"\"\n        proof = PaymentProof(\n            signature=\"sig123\",\n            wallet_address=\"0x1234\",\n            transaction_id=\"0xabc\",\n            amount_micro_usdc=8000,\n        )\n        header = proof.to_header_value()\n        assert header == \"sig123;0x1234;0xabc;8000\"\n",
-  "body_hash": "0ece67d38b193a8c",
+  "body": "def test_to_header_value(self) -> None:\n    \"\"\"PaymentProof should format as HTTP header value.\"\"\"\n    proof = PaymentProof(\n        signature=\"sig123\",\n        wallet_address=\"0x1234\",\n        transaction_id=\"0xabc\",\n        amount_micro_usdc=8000,\n    )\n    header = proof.to_header_value()\n    assert header == \"sig123;0x1234;0xabc;8000\"\n",
+  "body_hash": "0527f384f206d091",
   "body_truncated": false,
   "callers_of": [
     "PaymentProof",
     "to_header_value"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:110.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_x402_flow.py:110.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "at.source.ass_ade.test_to_header_value",
@@ -33,11 +33,11 @@
     "ass_ade.nexus.x402.BASE_SEPOLIA_CHAIN_ID"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_x402_flow.py:110"
+    "source": "C:/!ass-ade/tests/test_x402_flow.py:110"
   },
   "kind": "pure_function",
   "made_of": [
-    "qk.source.ass_ade.paymentproof"
+    "qk.source.a0_qk_constants.paymentproof"
   ],
   "name": "test_to_header_value",
   "product_categories": [

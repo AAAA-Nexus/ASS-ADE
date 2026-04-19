@@ -11,20 +11,21 @@
     "lower"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testchutesprovider.py:5.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testchutesprovider.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.testchutesprovider",
+  "id": "mo.source.a2_mo_composites.testchutesprovider",
   "imports": [
+    "__future__.annotations",
     "ass_ade.agent.lse.LSEEngine"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testchutesprovider.py:5"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testchutesprovider.py:7"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.get_provider",
-    "at.source.ass_ade.is_available"
+    "at.source.a1_at_functions.get_provider",
+    "at.source.a1_at_functions.is_available"
   ],
   "name": "TestChutesProvider",
   "product_categories": [

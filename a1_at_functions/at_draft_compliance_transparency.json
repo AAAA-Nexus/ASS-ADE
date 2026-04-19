@@ -1,0 +1,32 @@
+{
+  "body": "def compliance_transparency(self, system_id: str, period: str, **kwargs: Any) -> TransparencyReport:\n    \"\"\"/v1/compliance/transparency \u2014 quarterly transparency report (TRP-100). $0.080/report\"\"\"\n    return self._post_model(\"/v1/compliance/transparency\", TransparencyReport, {\n        \"system_id\": system_id, \"period\": period, **kwargs,\n    })\n",
+  "body_hash": "712cf84d3d7fe0b8",
+  "body_truncated": false,
+  "callers_of": [
+    "_post_model"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_compliance_transparency.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.compliance_transparency",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_compliance_transparency.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "compliance_transparency",
+  "product_categories": [
+    "SRG"
+  ],
+  "provides": [
+    "rebuild candidate for compliance_transparency"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

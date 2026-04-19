@@ -1,26 +1,20 @@
 {
-  "body": "    def test_valid_prompt(self) -> None:\n        assert validate_prompt(\"Hello world\") == \"Hello world\"\n",
-  "body_hash": "927386c053d0b724",
+  "body": "def test_valid_prompt(self) -> None:\n    assert validate_prompt(\"Hello world\") == \"Hello world\"\n",
+  "body_hash": "422d201c5d3c1763",
   "body_truncated": false,
   "callers_of": [
     "validate_prompt"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_validation.py:44.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_valid_prompt.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_valid_prompt",
+  "id": "at.source.a1_at_functions.test_valid_prompt",
   "imports": [
-    "pytest",
-    "ass_ade.nexus.validation._is_private_host",
-    "ass_ade.nexus.validation.validate_agent_id",
-    "ass_ade.nexus.validation.validate_prompt",
-    "ass_ade.nexus.validation.validate_session_id",
-    "ass_ade.nexus.validation.validate_url",
-    "ass_ade.nexus.validation.validate_usdc_amount"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_validation.py:44"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_valid_prompt.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

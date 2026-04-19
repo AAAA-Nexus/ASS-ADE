@@ -24,21 +24,15 @@
     "relative_to"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/local/certifier.py:45.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_compute_codebase_digest.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.compute_codebase_digest",
+  "id": "at.source.a1_at_functions.compute_codebase_digest",
   "imports": [
-    "__future__.annotations",
-    "hashlib",
-    "os",
-    "datetime.datetime",
-    "datetime.timezone",
-    "pathlib.Path",
-    "typing.Any"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/local/certifier.py:45"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_compute_codebase_digest.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

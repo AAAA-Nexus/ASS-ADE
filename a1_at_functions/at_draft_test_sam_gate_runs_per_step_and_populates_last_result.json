@@ -1,6 +1,6 @@
 {
-  "body": "    def test_sam_gate_runs_per_step_and_populates_last_result(self):\n        nexus = _make_nexus_mock()\n        gates = QualityGates(nexus, config={})\n        provider = _make_provider_returning_text(\"hello\")\n        registry = ToolRegistry()\n\n        loop = AgentLoop(\n            provider=provider,\n            registry=registry,\n            quality_gates=gates,\n        )\n\n        with patch(\"ass_ade.context_memory.vector_embed\", return_value=[0.1, 0.2, 0.3]):\n            loop.step(\"What is 1+1?\")\n\n        assert loop.last_sam_result is not None\n        assert \"trs\" in loop.last_sam_result\n        assert \"composite\" in loop.last_sam_result\n",
-  "body_hash": "33845bdaa3561007",
+  "body": "def test_sam_gate_runs_per_step_and_populates_last_result(self):\n    nexus = _make_nexus_mock()\n    gates = QualityGates(nexus, config={})\n    provider = _make_provider_returning_text(\"hello\")\n    registry = ToolRegistry()\n\n    loop = AgentLoop(\n        provider=provider,\n        registry=registry,\n        quality_gates=gates,\n    )\n\n    with patch(\"ass_ade.context_memory.vector_embed\", return_value=[0.1, 0.2, 0.3]):\n        loop.step(\"What is 1+1?\")\n\n    assert loop.last_sam_result is not None\n    assert \"trs\" in loop.last_sam_result\n    assert \"composite\" in loop.last_sam_result\n",
+  "body_hash": "0b2bbeb8cdc6e682",
   "body_truncated": false,
   "callers_of": [
     "_make_nexus_mock",
@@ -12,13 +12,15 @@
     "step"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testsaminagentloop.py:6.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_sam_gate_runs_per_step_and_populates_last_result.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_sam_gate_runs_per_step_and_populates_last_result",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_sam_gate_runs_per_step_and_populates_last_result",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testsaminagentloop.py:6"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_sam_gate_runs_per_step_and_populates_last_result.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

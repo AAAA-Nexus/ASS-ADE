@@ -1,6 +1,6 @@
 {
-  "body": "    def pre_synthesis_check(self, candidate_paths: list[str]) -> dict[str, Any]:\n        \"\"\"Run freshness check for a list of candidate write targets.\n\n        Returns dict with: fresh_count, stale_paths, ncb_violated, gaps\n        \"\"\"\n        stale = self.get_stale_files([p for p in candidate_paths if p])\n        stale_paths = [r.path for r in stale]\n        return {\n            \"fresh_count\": len(candidate_paths) - len(stale_paths),\n            \"stale_paths\": stale_paths,\n            \"ncb_violated\": len(stale_paths) > 0,\n            \"gaps\": self.get_gaps(),\n        }\n",
-  "body_hash": "d086ad1b82df0954",
+  "body": "def pre_synthesis_check(self, candidate_paths: list[str]) -> dict[str, Any]:\n    \"\"\"Run freshness check for a list of candidate write targets.\n\n    Returns dict with: fresh_count, stale_paths, ncb_violated, gaps\n    \"\"\"\n    stale = self.get_stale_files([p for p in candidate_paths if p])\n    stale_paths = [r.path for r in stale]\n    return {\n        \"fresh_count\": len(candidate_paths) - len(stale_paths),\n        \"stale_paths\": stale_paths,\n        \"ncb_violated\": len(stale_paths) > 0,\n        \"gaps\": self.get_gaps(),\n    }\n",
+  "body_hash": "525bf1ec5a0b68f7",
   "body_truncated": false,
   "callers_of": [
     "get_stale_files",
@@ -8,13 +8,15 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_tcaengine.py:98.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_tcaengine.py:100.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.pre_synthesis_check",
-  "imports": [],
+  "id": "mo.source.a2_mo_composites.pre_synthesis_check",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_tcaengine.py:98"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_tcaengine.py:100"
   },
   "kind": "engine_molecule",
   "made_of": [],

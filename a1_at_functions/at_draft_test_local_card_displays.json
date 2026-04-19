@@ -1,32 +1,20 @@
 {
-  "body": "    def test_local_card_displays(self) -> None:\n        result = runner.invoke(app, [\"a2a\", \"local-card\"])\n        assert result.exit_code == 0\n        assert \"ASS-ADE\" in result.stdout\n",
-  "body_hash": "9a680e9542026266",
+  "body": "def test_local_card_displays(self) -> None:\n    result = runner.invoke(app, [\"a2a\", \"local-card\"])\n    assert result.exit_code == 0\n    assert \"ASS-ADE\" in result.stdout\n",
+  "body_hash": "bfcec9fc7607559b",
   "body_truncated": false,
   "callers_of": [
     "invoke"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a_cli.py:140.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_local_card_displays.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_local_card_displays",
+  "id": "at.source.a1_at_functions.test_local_card_displays",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "pathlib.Path",
-    "unittest.mock.MagicMock",
-    "unittest.mock.patch",
-    "typer.testing.CliRunner",
-    "ass_ade.cli.app",
-    "ass_ade.config.AssAdeConfig",
-    "ass_ade.config.write_default_config",
-    "ass_ade.nexus.models.DiscoveryResult",
-    "ass_ade.nexus.models.DiscoveredAgent",
-    "ass_ade.a2a.A2AAgentCard",
-    "ass_ade.a2a.NegotiationResult"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_a2a_cli.py:140"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_local_card_displays.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,5 +1,5 @@
 {
-  "body": "def test_contract_attestation_happy_path():\n    \"\"\"Test contract_attestation GET endpoint.\"\"\"\n    def handler(request):\n        assert \"/v1/contract/attestation/\" in request.url.path\n        return httpx.Response(200, json={\"contract_id\": \"contract_123\", \"attestation\": \"certified\"})\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        result = client.contract_attestation(contract_id=\"contract_123\")\n        assert result is not None\n",
+  "body": "def test_contract_attestation_happy_path():\n    \"\"\"Test contract_attestation GET endpoint.\"\"\"\n    def handler(request):\n        assert \"/v1/contract/attestation/\" in request.url.path\n        return httpx.Response(200, json={\"contract_id\": \"contract_123\", \"attestation\": \"certified\"})\n\n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        result = client.contract_attestation(contract_id=\"contract_123\")\n        assert result is not None\n",
   "body_hash": "f25663ede9294cb2",
   "body_truncated": false,
   "callers_of": [
@@ -9,7 +9,7 @@
     "contract_attestation"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:716.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_nexus_client_comprehensive.py:716.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_contract_attestation_happy_path",
@@ -144,7 +144,7 @@
     "ass_ade.nexus.models.EntropyResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:716"
+    "source": "C:/!ass-ade/tests/test_nexus_client_comprehensive.py:716"
   },
   "kind": "engine_molecule",
   "made_of": [],

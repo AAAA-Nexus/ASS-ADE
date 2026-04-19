@@ -6,7 +6,7 @@
     "NullCancellationContext"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/mcp/cancellation.py:58.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/mcp/cancellation.py:58.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.get_null_context",
@@ -16,7 +16,7 @@
     "typing.Optional"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/mcp/cancellation.py:58"
+    "source": "C:/!ass-ade/src/ass_ade/mcp/cancellation.py:58"
   },
   "kind": "ecosystem_system",
   "made_of": [],

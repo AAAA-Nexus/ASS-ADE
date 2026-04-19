@@ -1,0 +1,33 @@
+{
+  "body": "def test_unread_file_is_stale(self, tmp_path):\n    tca = self._make(tmp_path)\n    report = tca.check_freshness(\"/never/read.py\")\n    assert report.fresh is False\n    assert report.last_read_ts is None\n",
+  "body_hash": "eb56452ce86b299e",
+  "body_truncated": false,
+  "callers_of": [
+    "_make",
+    "check_freshness"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_unread_file_is_stale.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.test_unread_file_is_stale",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_unread_file_is_stale.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_unread_file_is_stale",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_unread_file_is_stale"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

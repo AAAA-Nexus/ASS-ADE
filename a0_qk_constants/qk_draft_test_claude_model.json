@@ -1,29 +1,20 @@
 {
-  "body": "    def test_claude_model(self):\n        assert context_window_for(\"claude-opus-4\") == 200_000\n",
-  "body_hash": "211063889a309d40",
+  "body": "def test_claude_model(self):\n    assert context_window_for(\"claude-opus-4\") == 200_000\n",
+  "body_hash": "75fc0deb157d3b68",
   "body_truncated": false,
   "callers_of": [
     "context_window_for"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tokens.py:101.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_testcontextwindowfor.py:11.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "qk.source.ass_ade.test_claude_model",
+  "id": "qk.source.a0_qk_constants.test_claude_model",
   "imports": [
-    "__future__.annotations",
-    "ass_ade.engine.tokens.DEFAULT_CONTEXT_WINDOW",
-    "ass_ade.engine.tokens.RESPONSE_RESERVE",
-    "ass_ade.engine.tokens.TokenBudget",
-    "ass_ade.engine.tokens.context_window_for",
-    "ass_ade.engine.tokens.estimate_message_tokens",
-    "ass_ade.engine.tokens.estimate_tokens",
-    "ass_ade.engine.tokens.estimate_tools_tokens",
-    "ass_ade.engine.types.Message",
-    "ass_ade.engine.types.ToolSchema"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_tokens.py:101"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_testcontextwindowfor.py:11"
   },
   "kind": "invariant",
   "made_of": [],

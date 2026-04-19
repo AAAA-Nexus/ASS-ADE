@@ -1,6 +1,8 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testfilehistory.py:58
-# Component id: at.source.ass_ade.test_list_snapshots_empty
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_list_snapshots_empty.py:7
+# Component id: at.source.a1_at_functions.test_list_snapshots_empty
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
-    def test_list_snapshots_empty(self, history: FileHistory):
-        assert history.list_snapshots("nonexistent.py") == []
+def test_list_snapshots_empty(self, history: FileHistory):
+    assert history.list_snapshots("nonexistent.py") == []

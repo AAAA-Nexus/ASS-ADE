@@ -1,21 +1,22 @@
 {
-  "body": "    def test_cie_property_lazy_init(self):\n        orch = self._make()\n        cie = orch.cie\n        assert cie is not None\n",
-  "body_hash": "c596b6bf05696944",
+  "body": "def test_cie_property_lazy_init(self):\n    orch = self._make()\n    cie = orch.cie\n    assert cie is not None\n",
+  "body_hash": "21c8f24bdb9e9a04",
   "body_truncated": false,
   "callers_of": [
     "_make"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testengineorchestratorphase15.py:23.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testengineorchestratorphase15.py:25.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.test_cie_property_lazy_init",
+  "id": "mo.source.a2_mo_composites.test_cie_property_lazy_init",
   "imports": [
+    "__future__.annotations",
     "ass_ade.agent.orchestrator.EngineOrchestrator",
     "ass_ade.agent.orchestrator.CycleReport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testengineorchestratorphase15.py:23"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testengineorchestratorphase15.py:25"
   },
   "kind": "engine_molecule",
   "made_of": [],

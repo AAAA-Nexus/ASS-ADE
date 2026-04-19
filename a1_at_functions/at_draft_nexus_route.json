@@ -10,20 +10,15 @@
     "getattr"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/routing.py:133.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_nexus_route.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.nexus_route",
+  "id": "at.source.a1_at_functions.nexus_route",
   "imports": [
-    "__future__.annotations",
-    "re",
-    "collections.abc.Mapping",
-    "dataclasses.dataclass",
-    "enum.Enum",
-    "typing.Any"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/routing.py:133"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_nexus_route.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,18 +1,20 @@
 {
-  "body": "    def add_assistant(self, message: Message) -> None:\n        self._messages.append(message)\n",
-  "body_hash": "d4797c563aaa17ab",
+  "body": "def add_assistant(self, message: Message) -> None:\n    self._messages.append(message)\n",
+  "body_hash": "c19e78725b316d42",
   "body_truncated": false,
   "callers_of": [
     "append"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_conversation.py:28.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_add_assistant.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.add_assistant",
-  "imports": [],
+  "id": "at.source.a1_at_functions.add_assistant",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_conversation.py:28"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_add_assistant.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

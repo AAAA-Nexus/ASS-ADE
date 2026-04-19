@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_testmcpworkflowrouting.py:5
-# Component id: og.source.ass_ade.testmcpworkflowrouting
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_testmcpworkflowrouting.py:7
+# Component id: og.source.a3_og_features.testmcpworkflowrouting
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 class TestMCPWorkflowRouting:

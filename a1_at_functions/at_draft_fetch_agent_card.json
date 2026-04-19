@@ -1,5 +1,5 @@
 {
-  "body": "def fetch_agent_card(url: str, *, timeout: float = 10.0) -> ValidationReport:\n    \"\"\"Fetch and validate an agent card from a URL.\n\n    If the URL doesn't end with /.well-known/agent.json, it is appended.\n    \n    SSRF validation is performed immediately before the network request to\n    minimize the DNS rebinding TOCTOU window (time-of-check to time-of-use).\n    \"\"\"\n    if not url.endswith(\"/.well-known/agent.json\"):\n        url = url.rstrip(\"/\") + \"/.well-known/agent.json\"\n\n    # Early format check only (hostname, scheme)\n    parsed = urlparse(url)\n    if parsed.scheme != \"https\":\n        return ValidationReport(\n            valid=False,\n            issues=[ValidationIssue(\"error\", \"_fetch\", \"Only HTTPS URLs are permitted for agent card fetching.\")],\n        )\n    if not parsed.hostname:\n        return ValidationReport(\n            valid=False,\n            issues=[ValidationIssue(\"error\", \"_fetch\", \"URL has no hostname.\")],\n        )\n\n    try:\n        # CRITICAL: Re-validate immediately before the actual network request\n        # to minimize DNS rebinding TOCTOU attacks. We check that:\n        # 1. The hostname resolves\n        # 2. All resolved IPs are in public ranges (not private/loopback)\n        ssrf_err = _check_ssrf(url)\n        if ssrf_err:\n            return ValidationReport(\n                valid=False,\n                issues=[ValidationIssue(\"error\", \"_fetch\", ssrf_err)],\n            )\n        \n        resp = httpx.get(url, timeout=timeout, follow_redirects=False)\n        resp.raise_for_status()\n        data = resp.json()\n    except httpx.HTTPStatusError as exc:\n        return ValidationReport(\n            valid=False,\n            issues=[ValidationIssue(\"error\", \"_fetch\", f\"HTTP {exc.response.status_code}: {url}\")],\n        )\n    except httpx.RequestError as exc:\n        return ValidationReport(\n            valid=False,\n            issues=[ValidationIssue(\"error\", \"_fetch\", f\"Network error: {exc}\")],\n        )\n    except json.JSONDecodeError:\n        return ValidationReport(\n            valid=False,\n            issues=[ValidationIssue(\"error\", \"_fetch\", \"Response is not valid JSON\")],\n        )\n\n    return validate_agent_card(data)\n",
+  "body": "def fetch_agent_card(url: str, *, timeout: float = 10.0) -> ValidationReport:\n    \"\"\"Fetch and validate an agent card from a URL.\n\n    If the URL doesn't end with /.well-known/agent.json, it is appended.\n\n    SSRF validation is performed immediately before the network request to\n    minimize the DNS rebinding TOCTOU window (time-of-check to time-of-use).\n    \"\"\"\n    if not url.endswith(\"/.well-known/agent.json\"):\n        url = url.rstrip(\"/\") + \"/.well-known/agent.json\"\n\n    # Early format check only (hostname, scheme)\n    parsed = urlparse(url)\n    if parsed.scheme != \"https\":\n        return ValidationReport(\n            valid=False,\n            issues=[ValidationIssue(\"error\", \"_fetch\", \"Only HTTPS URLs are permitted for agent card fetching.\")],\n        )\n    if not parsed.hostname:\n        return ValidationReport(\n            valid=False,\n            issues=[ValidationIssue(\"error\", \"_fetch\", \"URL has no hostname.\")],\n        )\n\n    try:\n        # CRITICAL: Re-validate immediately before the actual network request\n        # to minimize DNS rebinding TOCTOU attacks. We check that:\n        # 1. The hostname resolves\n        # 2. All resolved IPs are in public ranges (not private/loopback)\n        ssrf_err = _check_ssrf(url)\n        if ssrf_err:\n            return ValidationReport(\n                valid=False,\n                issues=[ValidationIssue(\"error\", \"_fetch\", ssrf_err)],\n            )\n\n        resp = httpx.get(url, timeout=timeout, follow_redirects=False)\n        resp.raise_for_status()\n        data = resp.json()\n    except httpx.HTTPStatusError as exc:\n        return ValidationReport(\n            valid=False,\n            issues=[ValidationIssue(\"error\", \"_fetch\", f\"HTTP {exc.response.status_code}: {url}\")],\n        )\n    except httpx.RequestError as exc:\n        return ValidationReport(\n            valid=False,\n            issues=[ValidationIssue(\"error\", \"_fetch\", f\"Network error: {exc}\")],\n        )\n    except json.JSONDecodeError:\n        return ValidationReport(\n            valid=False,\n            issues=[ValidationIssue(\"error\", \"_fetch\", \"Response is not valid JSON\")],\n        )\n\n    return validate_agent_card(data)\n",
   "body_hash": "5a979872c2550588",
   "body_truncated": false,
   "callers_of": [
@@ -15,29 +15,15 @@
     "ValidationIssue"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/a2a/__init__.py:188.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_fetch_agent_card.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.fetch_agent_card",
+  "id": "at.source.a1_at_functions.fetch_agent_card",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "socket",
-    "dataclasses.dataclass",
-    "dataclasses.field",
-    "typing.Any",
-    "urllib.parse.urlparse",
-    "httpx",
-    "pydantic.BaseModel",
-    "pydantic.Field",
-    "pydantic.ValidationError",
-    "pydantic.field_validator",
-    "ass_ade.__version__",
-    "ass_ade.nexus.validation.validate_https_public_url",
-    "ass_ade.tools.registry.default_registry"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/a2a/__init__.py:188"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_fetch_agent_card.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

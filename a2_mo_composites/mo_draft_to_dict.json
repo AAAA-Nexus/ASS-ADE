@@ -1,16 +1,18 @@
 {
-  "body": "    def to_dict(self) -> dict[str, Any]:\n        return {\n            \"user_profile\": self.user_profile,\n            \"project_contexts\": self.project_contexts,\n            \"preferences\": self.preferences,\n        }\n",
-  "body_hash": "b13ec03feaccf6c4",
+  "body": "def to_dict(self) -> dict[str, Any]:\n    return {\n        \"user_profile\": self.user_profile,\n        \"project_contexts\": self.project_contexts,\n        \"preferences\": self.preferences,\n    }\n",
+  "body_hash": "ce5bfb6d16617086",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_memorystore.py:70.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_memorystore.py:72.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.to_dict",
-  "imports": [],
+  "id": "mo.source.a2_mo_composites.to_dict",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_memorystore.py:70"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_memorystore.py:72"
   },
   "kind": "engine_molecule",
   "made_of": [],

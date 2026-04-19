@@ -1,0 +1,32 @@
+{
+  "body": "def trust_phase_oracle(self, agent_id: str, **kwargs: Any) -> TrustPhaseResult:\n    \"\"\"/v1/oracle/v-ai \u2014 V_AI geometric trust phase. $0.020/request\"\"\"\n    return self._post_model(\"/v1/oracle/v-ai\", TrustPhaseResult, {\"agent_id\": agent_id, **kwargs})\n",
+  "body_hash": "6e70ce4775519857",
+  "body_truncated": false,
+  "callers_of": [
+    "_post_model"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_trust_phase_oracle.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.trust_phase_oracle",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_trust_phase_oracle.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "trust_phase_oracle",
+  "product_categories": [
+    "IDT"
+  ],
+  "provides": [
+    "rebuild candidate for trust_phase_oracle"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

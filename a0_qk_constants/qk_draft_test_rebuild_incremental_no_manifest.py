@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_cli.py:213
-# Component id: qk.source.ass_ade.test_rebuild_incremental_no_manifest
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_test_rebuild_incremental_no_manifest.py:7
+# Component id: qk.source.a0_qk_constants.test_rebuild_incremental_no_manifest
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_rebuild_incremental_no_manifest(tmp_path: Path) -> None:

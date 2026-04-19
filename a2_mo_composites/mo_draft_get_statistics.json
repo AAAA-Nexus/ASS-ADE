@@ -1,6 +1,6 @@
 {
-  "body": "    def get_statistics(self) -> dict:\n        \"\"\"Get task statistics.\"\"\"\n        all_tasks = self.list_all_tasks()\n        return {\n            \"total\": len(all_tasks),\n            \"by_status\": count_tasks_by_status(all_tasks),\n            \"completion_rate\": self._calculate_completion_rate(all_tasks),\n        }\n",
-  "body_hash": "01caf6edc69ee915",
+  "body": "def get_statistics(self) -> dict:\n    \"\"\"Get task statistics.\"\"\"\n    all_tasks = self.list_all_tasks()\n    return {\n        \"total\": len(all_tasks),\n        \"by_status\": count_tasks_by_status(all_tasks),\n        \"completion_rate\": self._calculate_completion_rate(all_tasks),\n    }\n",
+  "body_hash": "4d92f596b4f120f2",
   "body_truncated": false,
   "callers_of": [
     "list_all_tasks",
@@ -9,13 +9,15 @@
     "_calculate_completion_rate"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_taskmanager.py:44.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_taskmanager.py:46.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.get_statistics",
-  "imports": [],
+  "id": "mo.source.a2_mo_composites.get_statistics",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_taskmanager.py:44"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_taskmanager.py:46"
   },
   "kind": "engine_molecule",
   "made_of": [],

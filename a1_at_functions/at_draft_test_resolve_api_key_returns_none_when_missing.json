@@ -1,6 +1,6 @@
 {
-  "body": "    def test_resolve_api_key_returns_none_when_missing(self, monkeypatch):\n        monkeypatch.delenv(\"GROQ_API_KEY\", raising=False)\n        p = get_provider(\"groq\")\n        assert p.resolve_api_key() is None\n",
-  "body_hash": "582a95ec8a449c74",
+  "body": "def test_resolve_api_key_returns_none_when_missing(self, monkeypatch):\n    monkeypatch.delenv(\"GROQ_API_KEY\", raising=False)\n    p = get_provider(\"groq\")\n    assert p.resolve_api_key() is None\n",
+  "body_hash": "87dcdae900eb3a54",
   "body_truncated": false,
   "callers_of": [
     "delenv",
@@ -8,13 +8,15 @@
     "resolve_api_key"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testproviderprofile.py:17.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_resolve_api_key_returns_none_when_missing.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_resolve_api_key_returns_none_when_missing",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_resolve_api_key_returns_none_when_missing",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testproviderprofile.py:17"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_resolve_api_key_returns_none_when_missing.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

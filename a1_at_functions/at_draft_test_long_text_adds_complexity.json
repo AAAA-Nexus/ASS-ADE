@@ -1,18 +1,20 @@
 {
-  "body": "    def test_long_text_adds_complexity(self):\n        short = classify_complexity(\"Fix the bug\")\n        long_ = classify_complexity(\"Fix the bug \" + \"detailed context \" * 100)\n        assert long_ > short\n",
-  "body_hash": "6ceec7b33f29e8f4",
+  "body": "def test_long_text_adds_complexity(self):\n    short = classify_complexity(\"Fix the bug\")\n    long_ = classify_complexity(\"Fix the bug \" + \"detailed context \" * 100)\n    assert long_ > short\n",
+  "body_hash": "b326f0d0b58eafef",
   "body_truncated": false,
   "callers_of": [
     "classify_complexity"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testclassifycomplexity.py:27.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_long_text_adds_complexity.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_long_text_adds_complexity",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_long_text_adds_complexity",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testclassifycomplexity.py:27"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_long_text_adds_complexity.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

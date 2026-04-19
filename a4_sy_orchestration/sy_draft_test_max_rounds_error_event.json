@@ -1,6 +1,6 @@
 {
-  "body": "    def test_max_rounds_error_event(self, tmp_path):\n        never_stop = CompletionResponse(\n            message=Message(\n                role=\"assistant\",\n                content=\"\",\n                tool_calls=[\n                    ToolCallRequest(id=\"c1\", name=\"echo\", arguments={\"text\": \"loop\"})\n                ],\n            ),\n            finish_reason=\"tool_calls\",\n        )\n        provider = _MockProvider([never_stop] * 30)\n        registry = ToolRegistry()\n        registry.register(_EchoTool())\n\n        loop = AgentLoop(\n            provider=provider,\n            registry=registry,\n            working_dir=str(tmp_path),\n        )\n        events = list(loop.step_stream(\"Loop\"))\n        assert events[-1].kind == \"error\"\n        assert \"maximum\" in events[-1].text.lower()\n",
-  "body_hash": "7e63cefd5b5855ea",
+  "body": "def test_max_rounds_error_event(self, tmp_path):\n    never_stop = CompletionResponse(\n        message=Message(\n            role=\"assistant\",\n            content=\"\",\n            tool_calls=[\n                ToolCallRequest(id=\"c1\", name=\"echo\", arguments={\"text\": \"loop\"})\n            ],\n        ),\n        finish_reason=\"tool_calls\",\n    )\n    provider = _MockProvider([never_stop] * 30)\n    registry = ToolRegistry()\n    registry.register(_EchoTool())\n\n    loop = AgentLoop(\n        provider=provider,\n        registry=registry,\n        working_dir=str(tmp_path),\n    )\n    events = list(loop.step_stream(\"Loop\"))\n    assert events[-1].kind == \"error\"\n    assert \"maximum\" in events[-1].text.lower()\n",
+  "body_hash": "8a02c14df1a66ef0",
   "body_truncated": false,
   "callers_of": [
     "CompletionResponse",
@@ -17,7 +17,7 @@
     "ToolCallRequest"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:303.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_server_streaming.py:303.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.test_max_rounds_error_event",
@@ -36,11 +36,11 @@
     "ass_ade.tools.registry.ToolRegistry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:303"
+    "source": "C:/!ass-ade/tests/test_mcp_server_streaming.py:303"
   },
   "kind": "ecosystem_system",
   "made_of": [
-    "og.source.ass_ade.toolregistry"
+    "og.source.a3_og_features.toolregistry"
   ],
   "name": "test_max_rounds_error_event",
   "product_categories": [

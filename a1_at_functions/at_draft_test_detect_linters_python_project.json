@@ -8,23 +8,15 @@
     "detect_linters"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_linter.py:17.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_detect_linters_python_project.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_detect_linters_python_project",
+  "id": "at.source.a1_at_functions.test_detect_linters_python_project",
   "imports": [
-    "__future__.annotations",
-    "subprocess",
-    "pathlib.Path",
-    "unittest.mock.MagicMock",
-    "unittest.mock.patch",
-    "pytest",
-    "ass_ade.local.linter.detect_linters",
-    "ass_ade.local.linter.run_linters",
-    "ass_ade.local.linter.run_ruff"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_linter.py:17"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_detect_linters_python_project.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

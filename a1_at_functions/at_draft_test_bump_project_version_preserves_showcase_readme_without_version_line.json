@@ -1,0 +1,45 @@
+{
+  "body": "def test_bump_project_version_preserves_showcase_readme_without_version_line(tmp_path: Path) -> None:\n    (tmp_path / \"pyproject.toml\").write_text(\n        '[project]\\nname = \"demo\"\\nversion = \"0.0.1\"\\n',\n        encoding=\"utf-8\",\n    )\n    package_dir = tmp_path / \"src\" / \"ass_ade\"\n    package_dir.mkdir(parents=True)\n    (package_dir / \"__init__.py\").write_text('__version__ = \"0.0.1\"\\n', encoding=\"utf-8\")\n    readme = tmp_path / \"README.md\"\n    showcase = b\"# Showcase README\\r\\n\\r\\nNo version marker here.\\r\\n\"\n    readme.write_bytes(showcase)\n\n    result = bump_project_version(root=tmp_path, bump=\"patch\")\n\n    assert readme.read_bytes() == showcase\n    assert str(readme) not in result.files_updated\n",
+  "body_hash": "7a77fd6ddf685a0d",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "mkdir",
+    "write_bytes",
+    "bump_project_version",
+    "read_bytes",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_protocol.py:123.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.test_bump_project_version_preserves_showcase_readme_without_version_line",
+  "imports": [
+    "pathlib.Path",
+    "typer.testing.CliRunner",
+    "ass_ade.cli.app",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.protocol.cycle.render_protocol_markdown",
+    "ass_ade.protocol.cycle.run_protocol",
+    "ass_ade.protocol.evolution.bump_project_version",
+    "ass_ade.protocol.evolution.record_evolution_event",
+    "ass_ade.protocol.evolution.render_branch_evolution_demo"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/tests/test_protocol.py:123"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_bump_project_version_preserves_showcase_readme_without_version_line",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_bump_project_version_preserves_showcase_readme_without_version_line"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

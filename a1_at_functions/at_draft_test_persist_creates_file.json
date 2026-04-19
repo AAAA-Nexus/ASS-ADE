@@ -1,6 +1,6 @@
 {
-  "body": "    def test_persist_creates_file(self, tmp_path: Path) -> None:\n        pipe = Pipeline(\"persist\", persist_dir=str(tmp_path))\n        pipe.add(\"s1\", pass_step)\n        pipe.run()\n\n        files = list(tmp_path.glob(\"persist_*.json\"))\n        assert len(files) == 1\n\n        data = json.loads(files[0].read_text())\n        assert data[\"name\"] == \"persist\"\n        assert data[\"passed\"] is True\n        assert len(data[\"steps\"]) == 1\n",
-  "body_hash": "95d0747ee1a037d7",
+  "body": "def test_persist_creates_file(self, tmp_path: Path) -> None:\n    pipe = Pipeline(\"persist\", persist_dir=str(tmp_path))\n    pipe.add(\"s1\", pass_step)\n    pipe.run()\n\n    files = list(tmp_path.glob(\"persist_*.json\"))\n    assert len(files) == 1\n\n    data = json.loads(files[0].read_text())\n    assert data[\"name\"] == \"persist\"\n    assert data[\"passed\"] is True\n    assert len(data[\"steps\"]) == 1\n",
+  "body_hash": "f5d5459273368652",
   "body_truncated": false,
   "callers_of": [
     "Pipeline",
@@ -14,22 +14,15 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:184.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_persist_creates_file.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_persist_creates_file",
+  "id": "at.source.a1_at_functions.test_persist_creates_file",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "pathlib.Path",
-    "typing.Any",
-    "ass_ade.pipeline.Pipeline",
-    "ass_ade.pipeline.PipelineResult",
-    "ass_ade.pipeline.StepResult",
-    "ass_ade.pipeline.StepStatus"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_pipeline.py:184"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_persist_creates_file.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

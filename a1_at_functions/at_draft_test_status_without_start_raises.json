@@ -1,6 +1,6 @@
 {
-  "body": "    def test_status_without_start_raises(self) -> None:\n        session = NexusSession(_mock_client())\n        with pytest.raises(RuntimeError, match=\"No active session\"):\n            session.status()\n",
-  "body_hash": "c5759b542b011935",
+  "body": "def test_status_without_start_raises(self) -> None:\n    session = NexusSession(_mock_client())\n    with pytest.raises(RuntimeError, match=\"No active session\"):\n        session.status()\n",
+  "body_hash": "ae2a8bf66de60855",
   "body_truncated": false,
   "callers_of": [
     "NexusSession",
@@ -9,13 +9,15 @@
     "status"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexussession.py:24.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_status_without_start_raises.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_status_without_start_raises",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_status_without_start_raises",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexussession.py:24"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_status_without_start_raises.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

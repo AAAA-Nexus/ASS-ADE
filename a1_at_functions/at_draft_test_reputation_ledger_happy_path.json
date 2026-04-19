@@ -1,5 +1,5 @@
 {
-  "body": "def test_reputation_ledger_happy_path(method_name, response_json):\n    \"\"\"Test reputation ledger methods (happy path).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json=response_json)\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        if method_name == \"reputation_history\":\n            result = client.reputation_history(agent_id=\"agent_1\")\n        else:  # reputation_dispute\n            result = client.reputation_dispute(entry_id=\"entry_123\", reason=\"unfair_score\")\n        assert result is not None\n",
+  "body": "def test_reputation_ledger_happy_path(method_name, response_json):\n    \"\"\"Test reputation ledger methods (happy path).\"\"\"\n    def handler(request):\n        return httpx.Response(200, json=response_json)\n\n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        if method_name == \"reputation_history\":\n            result = client.reputation_history(agent_id=\"agent_1\")\n        else:  # reputation_dispute\n            result = client.reputation_dispute(entry_id=\"entry_123\", reason=\"unfair_score\")\n        assert result is not None\n",
   "body_hash": "704fb5a3fca9dc54",
   "body_truncated": false,
   "callers_of": [
@@ -10,13 +10,15 @@
     "reputation_dispute"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_reputation_ledger_happy_path.py:5.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_reputation_ledger_happy_path.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_reputation_ledger_happy_path",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_reputation_ledger_happy_path",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_test_reputation_ledger_happy_path.py:5"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_reputation_ledger_happy_path.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

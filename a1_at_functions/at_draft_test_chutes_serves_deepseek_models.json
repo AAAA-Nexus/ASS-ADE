@@ -1,21 +1,21 @@
 {
-  "body": "    def test_chutes_serves_deepseek_models(self):\n        profile = get_provider(\"chutes\")\n        assert \"deepseek\" in profile.models_by_tier[\"balanced\"].lower()\n        assert \"deepseek\" in profile.models_by_tier[\"deep\"].lower()\n",
-  "body_hash": "0e9196776ec3887b",
+  "body": "def test_chutes_serves_deepseek_models(self):\n    profile = get_provider(\"chutes\")\n    assert \"deepseek\" in profile.models_by_tier[\"balanced\"].lower()\n    assert \"deepseek\" in profile.models_by_tier[\"deep\"].lower()\n",
+  "body_hash": "9cc2aadd0273ed0d",
   "body_truncated": false,
   "callers_of": [
     "get_provider",
     "lower"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testchutesprovider.py:16.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_chutes_serves_deepseek_models.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_chutes_serves_deepseek_models",
+  "id": "at.source.a1_at_functions.test_chutes_serves_deepseek_models",
   "imports": [
-    "ass_ade.agent.lse.LSEEngine"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testchutesprovider.py:16"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_chutes_serves_deepseek_models.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

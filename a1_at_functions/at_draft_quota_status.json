@@ -1,0 +1,33 @@
+{
+  "body": "def quota_status(self, tree_id: str) -> QuotaStatus:\n    \"\"\"/v1/quota/tree/{id}/status \u2014 remaining budget + alerts. $0.020/call\"\"\"\n    return self._get_model(f\"/v1/quota/tree/{_pseg(tree_id, 'tree_id')}/status\", QuotaStatus)\n",
+  "body_hash": "514412b98c16aff1",
+  "body_truncated": false,
+  "callers_of": [
+    "_get_model",
+    "_pseg"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_quota_status.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.quota_status",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_quota_status.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "quota_status",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for quota_status"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

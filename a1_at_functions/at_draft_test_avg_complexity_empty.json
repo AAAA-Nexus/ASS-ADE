@@ -1,26 +1,20 @@
 {
-  "body": "    def test_avg_complexity_empty(self):\n        router = EpistemicRouter()\n        assert router.avg_complexity == 0.0\n",
-  "body_hash": "9cd4d8647ffd9bb8",
+  "body": "def test_avg_complexity_empty(self):\n    router = EpistemicRouter()\n    assert router.avg_complexity == 0.0\n",
+  "body_hash": "8a473e6f93f592c8",
   "body_truncated": false,
   "callers_of": [
     "EpistemicRouter"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_routing.py:109.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_avg_complexity_empty.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_avg_complexity_empty",
+  "id": "at.source.a1_at_functions.test_avg_complexity_empty",
   "imports": [
-    "__future__.annotations",
-    "ass_ade.agent.routing.EpistemicRouter",
-    "ass_ade.agent.routing.ModelTier",
-    "ass_ade.agent.routing.RoutingDecision",
-    "ass_ade.agent.routing.classify_complexity",
-    "ass_ade.agent.routing.local_route",
-    "ass_ade.agent.routing.tier_for_complexity"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_routing.py:109"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_avg_complexity_empty.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

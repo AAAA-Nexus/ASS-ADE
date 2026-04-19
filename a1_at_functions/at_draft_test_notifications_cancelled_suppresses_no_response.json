@@ -1,0 +1,33 @@
+{
+  "body": "def test_notifications_cancelled_suppresses_no_response(self) -> None:\n    \"\"\"notifications/cancelled has no id \u2014 server returns None.\"\"\"\n    server = MCPServer(\".\")\n    response = server._handle({\n        \"method\": \"notifications/cancelled\",\n        \"params\": {\"requestId\": 42, \"reason\": \"user cancel\"},\n    })\n    assert response is None\n",
+  "body_hash": "481454d26b5658e6",
+  "body_truncated": false,
+  "callers_of": [
+    "MCPServer",
+    "_handle"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_notifications_cancelled_suppresses_no_response.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.test_notifications_cancelled_suppresses_no_response",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_notifications_cancelled_suppresses_no_response.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_notifications_cancelled_suppresses_no_response",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_notifications_cancelled_suppresses_no_response"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,7 +1,8 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testcontenthash.py:20
-# Component id: at.source.ass_ade.test_empty_string
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_empty_string.py:7
+# Component id: at.source.a1_at_functions.test_empty_string
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
-    def test_empty_string(self):
-        h = content_hash("")
-        assert len(h) == 16
+def test_empty_string(self):
+    assert classify_complexity("") == 0.0

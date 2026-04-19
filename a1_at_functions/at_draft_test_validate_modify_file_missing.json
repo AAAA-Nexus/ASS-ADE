@@ -1,6 +1,6 @@
 {
-  "body": "    def test_validate_modify_file_missing(self, executor: EditPlanExecutor):\n        plan = EditPlan()\n        plan.add_modify(\"ghost.py\", \"old\", \"new\")\n        errors = executor.validate(plan)\n        assert len(errors) == 1\n",
-  "body_hash": "2ae0e26cbac0f854",
+  "body": "def test_validate_modify_file_missing(self, executor: EditPlanExecutor):\n    plan = EditPlan()\n    plan.add_modify(\"ghost.py\", \"old\", \"new\")\n    errors = executor.validate(plan)\n    assert len(errors) == 1\n",
+  "body_hash": "129a543d08f87b04",
   "body_truncated": false,
   "callers_of": [
     "EditPlan",
@@ -9,13 +9,15 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditplanexecutor.py:35.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_validate_modify_file_missing.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_validate_modify_file_missing",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_validate_modify_file_missing",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditplanexecutor.py:35"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_validate_modify_file_missing.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

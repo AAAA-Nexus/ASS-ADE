@@ -1,7 +1,9 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/client.py:1282
-# Component id: mo.source.ass_ade.bitnet_benchmark
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_nexusclient.py:1087
+# Component id: mo.source.a2_mo_composites.bitnet_benchmark
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
-    def bitnet_benchmark(self, model: str, n_tokens: int = 100, **kwargs: Any) -> BitNetBenchmarkResponse:
-        """POST /v1/bitnet/benchmark — inference benchmark for a 1-bit model (BIT-103). $0.020/call"""
-        return self._post_model("/v1/bitnet/benchmark", BitNetBenchmarkResponse, {"model": model, "n_tokens": n_tokens, **kwargs})
+def bitnet_benchmark(self, model: str, n_tokens: int = 100, **kwargs: Any) -> BitNetBenchmarkResponse:
+    """POST /v1/bitnet/benchmark — inference benchmark for a 1-bit model (BIT-103). $0.020/call"""
+    return self._post_model("/v1/bitnet/benchmark", BitNetBenchmarkResponse, {"model": model, "n_tokens": n_tokens, **kwargs})

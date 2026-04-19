@@ -18,30 +18,23 @@
     "encode"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_session.py:22.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testnexussession.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.testnexussession",
+  "id": "mo.source.a2_mo_composites.testnexussession",
   "imports": [
-    "__future__.annotations",
-    "hashlib",
-    "unittest.mock.MagicMock",
-    "pytest",
-    "ass_ade.nexus.models.RatchetAdvance",
-    "ass_ade.nexus.models.RatchetSession",
-    "ass_ade.nexus.models.RatchetStatus",
-    "ass_ade.nexus.session.NexusSession"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_session.py:22"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testnexussession.py:7"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.start",
-    "at.source.ass_ade.advance",
-    "at.source.ass_ade.is_healthy",
-    "at.source.ass_ade.teardown",
-    "at.source.ass_ade.status"
+    "at.source.a1_at_functions.start",
+    "at.source.a1_at_functions.advance",
+    "at.source.a1_at_functions.is_healthy",
+    "at.source.a1_at_functions.teardown",
+    "at.source.a1_at_functions.status"
   ],
   "name": "TestNexusSession",
   "product_categories": [

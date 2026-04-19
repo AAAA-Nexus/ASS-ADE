@@ -1,19 +1,21 @@
 {
-  "body": "    def preview(self, plan: EditPlan) -> str:\n        \"\"\"Return a combined diff of all edits in the plan.\"\"\"\n        if not plan.validated:\n            errs = self.validate(plan)\n            if errs:\n                return \"Validation errors:\\n\" + \"\\n\".join(f\"  \u2717 {e}\" for e in errs)\n        return \"\\n\\n\".join(\n            f\"--- {e.description} ---\\n{e.diff}\" for e in plan.edits if e.diff\n        )\n",
-  "body_hash": "d8da351af444bfb4",
+  "body": "def preview(self, plan: EditPlan) -> str:\n    \"\"\"Return a combined diff of all edits in the plan.\"\"\"\n    if not plan.validated:\n        errs = self.validate(plan)\n        if errs:\n            return \"Validation errors:\\n\" + \"\\n\".join(f\"  \u2717 {e}\" for e in errs)\n    return \"\\n\\n\".join(\n        f\"--- {e.description} ---\\n{e.diff}\" for e in plan.edits if e.diff\n    )\n",
+  "body_hash": "195a5ebd6b83f9c0",
   "body_truncated": false,
   "callers_of": [
     "join",
     "validate"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_editplanexecutor.py:111.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_preview.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.preview",
-  "imports": [],
+  "id": "at.source.a1_at_functions.preview",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_editplanexecutor.py:111"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_preview.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

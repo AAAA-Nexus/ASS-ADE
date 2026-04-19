@@ -1,19 +1,21 @@
 {
-  "body": "    def test_message_with_name(self):\n        msg = Message(role=\"tool\", content=\"result\", name=\"read_file\")\n        tokens = estimate_message_tokens(msg)\n        assert tokens >= 6  # overhead + name + content\n",
-  "body_hash": "fd8408a6aa8b5e9f",
+  "body": "def test_message_with_name(self):\n    msg = Message(role=\"tool\", content=\"result\", name=\"read_file\")\n    tokens = estimate_message_tokens(msg)\n    assert tokens >= 6  # overhead + name + content\n",
+  "body_hash": "b0ad0c31af4a6a0c",
   "body_truncated": false,
   "callers_of": [
     "Message",
     "estimate_message_tokens"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testestimatemessagetokens.py:16.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_testestimatemessagetokens.py:18.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "qk.source.ass_ade.test_message_with_name",
-  "imports": [],
+  "id": "qk.source.a0_qk_constants.test_message_with_name",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testestimatemessagetokens.py:16"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_testestimatemessagetokens.py:18"
   },
   "kind": "invariant",
   "made_of": [],

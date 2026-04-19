@@ -1,6 +1,6 @@
 {
-  "body": "    def test_not_found(self, workspace: Path):\n        tool = EditFileTool(str(workspace))\n        r = tool.execute(path=\"hello.py\", old_string=\"NOPE\", new_string=\"X\")\n        assert not r.success\n        assert \"not found\" in (r.error or \"\").lower()\n",
-  "body_hash": "89314545769aed07",
+  "body": "def test_not_found(self, workspace: Path):\n    tool = EditFileTool(str(workspace))\n    r = tool.execute(path=\"hello.py\", old_string=\"NOPE\", new_string=\"X\")\n    assert not r.success\n    assert \"not found\" in (r.error or \"\").lower()\n",
+  "body_hash": "5b58bcd41e1fec49",
   "body_truncated": false,
   "callers_of": [
     "EditFileTool",
@@ -9,13 +9,15 @@
     "lower"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditfile.py:12.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_not_found.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_not_found",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_not_found",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditfile.py:12"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_not_found.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.pytest_tmp/test_workflow_phase0_recon_rea0/src/main.py:1
-# Component id: og.source.ass_ade.main
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_main.py:7
+# Component id: og.source.a3_og_features.main
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def main(): pass

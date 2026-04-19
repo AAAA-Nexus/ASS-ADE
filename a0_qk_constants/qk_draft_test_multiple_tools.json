@@ -1,6 +1,6 @@
 {
-  "body": "    def test_multiple_tools(self):\n        tools = [\n            ToolSchema(name=f\"tool_{i}\", description=f\"Tool number {i}\", parameters={\"type\": \"object\"})\n            for i in range(5)\n        ]\n        tokens = estimate_tools_tokens(tools)\n        assert tokens > estimate_tools_tokens(tools[:1])\n",
-  "body_hash": "2bbd5522d477789e",
+  "body": "def test_multiple_tools(self):\n    tools = [\n        ToolSchema(name=f\"tool_{i}\", description=f\"Tool number {i}\", parameters={\"type\": \"object\"})\n        for i in range(5)\n    ]\n    tokens = estimate_tools_tokens(tools)\n    assert tokens > estimate_tools_tokens(tools[:1])\n",
+  "body_hash": "d63cc78f98ac7152",
   "body_truncated": false,
   "callers_of": [
     "estimate_tools_tokens",
@@ -8,13 +8,15 @@
     "range"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testestimatetoolstokens.py:18.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_testestimatetoolstokens.py:20.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "qk.source.ass_ade.test_multiple_tools",
-  "imports": [],
+  "id": "qk.source.a0_qk_constants.test_multiple_tools",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testestimatetoolstokens.py:18"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_testestimatetoolstokens.py:20"
   },
   "kind": "invariant",
   "made_of": [],

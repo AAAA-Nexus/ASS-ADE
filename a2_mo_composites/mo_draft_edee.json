@@ -19,27 +19,23 @@
     "distill_principles"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/edee.py:24.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_edee.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.edee",
+  "id": "mo.source.a2_mo_composites.edee",
   "imports": [
     "__future__.annotations",
-    "dataclasses.dataclass",
-    "typing.Any",
-    "ass_ade.context_memory.query_vector_memory",
-    "ass_ade.context_memory.store_vector_memory",
     "ass_ade.agent.exif.EXIF"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/edee.py:24"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_edee.py:7"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.query_vector_memory",
-    "at.source.ass_ade.explore",
-    "at.source.ass_ade.recall",
-    "at.source.ass_ade.capture_trace"
+    "at.source.a1_at_functions.query_vector_memory",
+    "at.source.a1_at_functions.explore",
+    "at.source.a1_at_functions.recall",
+    "at.source.a1_at_functions.capture_trace"
   ],
   "name": "EDEE",
   "product_categories": [

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_advance_increments_epoch(self) -> None:\n        session = NexusSession(_mock_client())\n        session.start(\"13608\")\n        session.advance()\n        assert session.epoch == 1\n",
-  "body_hash": "6f54d96d690ce370",
+  "body": "def test_advance_increments_epoch(self) -> None:\n    session = NexusSession(_mock_client())\n    session.start(\"13608\")\n    session.advance()\n    assert session.epoch == 1\n",
+  "body_hash": "10c2aaf6b0e125de",
   "body_truncated": false,
   "callers_of": [
     "NexusSession",
@@ -9,13 +9,15 @@
     "_mock_client"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexussession.py:13.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_advance_increments_epoch.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_advance_increments_epoch",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_advance_increments_epoch",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexussession.py:13"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_advance_increments_epoch.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

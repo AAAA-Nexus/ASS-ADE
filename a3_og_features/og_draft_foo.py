@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.pytest_tmp/test_scan_source_symbols_finds0/module.py:1
-# Component id: og.source.ass_ade.foo
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_foo.py:7
+# Component id: og.source.a3_og_features.foo
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def foo():

@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_map_terrain.py:117
-# Component id: at.source.ass_ade.test_map_terrain_halts_for_invalid_requirement_type
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_map_terrain_halts_for_invalid_requirement_type.py:7
+# Component id: at.source.a1_at_functions.test_map_terrain_halts_for_invalid_requirement_type
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def test_map_terrain_halts_for_invalid_requirement_type(tmp_path: Path) -> None:

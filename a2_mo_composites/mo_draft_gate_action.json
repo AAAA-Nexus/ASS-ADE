@@ -1,21 +1,22 @@
 {
-  "body": "    def gate_action(self, action: str, cycle_state: dict) -> tuple[bool, str]:\n        self.run_audit(cycle_state)\n        if self.is_confident:\n            return (True, \"conviction_met\")\n        return (\n            False,\n            f\"conviction {self._conviction:.2f} below required {self._conviction_required:.2f}\",\n        )\n",
-  "body_hash": "35bda086e2065980",
+  "body": "def gate_action(self, action: str, cycle_state: dict) -> tuple[bool, str]:\n    self.run_audit(cycle_state)\n    if self.is_confident:\n        return (True, \"conviction_met\")\n    return (\n        False,\n        f\"conviction {self._conviction:.2f} below required {self._conviction_required:.2f}\",\n    )\n",
+  "body_hash": "5216f8ac17046f6a",
   "body_truncated": false,
   "callers_of": [
     "run_audit"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_wisdomengine.py:214.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_wisdomengine.py:216.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.gate_action",
+  "id": "mo.source.a2_mo_composites.gate_action",
   "imports": [
+    "__future__.annotations",
     "ass_ade.context_memory.query_vector_memory",
     "ass_ade.context_memory.store_vector_memory"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_wisdomengine.py:214"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_wisdomengine.py:216"
   },
   "kind": "engine_molecule",
   "made_of": [],

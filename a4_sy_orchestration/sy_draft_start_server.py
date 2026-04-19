@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_start_server.py:5
-# Component id: sy.source.ass_ade.start_server
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_start_server.py:7
+# Component id: sy.source.a4_sy_orchestration.start_server
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def start_server(

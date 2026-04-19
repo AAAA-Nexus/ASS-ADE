@@ -1,6 +1,6 @@
 {
-  "body": "    def test_validate_create_conflict(self, executor: EditPlanExecutor):\n        plan = EditPlan()\n        plan.add_create(\"main.py\", \"conflict\")\n        errors = executor.validate(plan)\n        assert len(errors) == 1\n        assert \"already exists\" in errors[0]\n",
-  "body_hash": "923f66e84f1ae5a2",
+  "body": "def test_validate_create_conflict(self, executor: EditPlanExecutor):\n    plan = EditPlan()\n    plan.add_create(\"main.py\", \"conflict\")\n    errors = executor.validate(plan)\n    assert len(errors) == 1\n    assert \"already exists\" in errors[0]\n",
+  "body_hash": "1705f4a69a684ef3",
   "body_truncated": false,
   "callers_of": [
     "EditPlan",
@@ -9,13 +9,15 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditplanexecutor.py:13.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_validate_create_conflict.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_validate_create_conflict",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_validate_create_conflict",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testeditplanexecutor.py:13"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_validate_create_conflict.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

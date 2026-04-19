@@ -1,6 +1,6 @@
 {
-  "body": "    def record_read(self, path: str | Path) -> None:\n        \"\"\"Mark a file as freshly read. Call this from MCP read_file handler.\"\"\"\n        key = str(Path(path).resolve())\n        self._reads[key] = time.time()\n        self._save_state()\n",
-  "body_hash": "90a5433200888eff",
+  "body": "def record_read(self, path: str | Path) -> None:\n    \"\"\"Mark a file as freshly read. Call this from MCP read_file handler.\"\"\"\n    key = str(Path(path).resolve())\n    self._reads[key] = time.time()\n    self._save_state()\n",
+  "body_hash": "72e4405a76ee7c49",
   "body_truncated": false,
   "callers_of": [
     "str",
@@ -10,22 +10,15 @@
     "Path"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/tca.py:82.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_record_read.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.record_read",
+  "id": "at.source.a1_at_functions.record_read",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "logging",
-    "time",
-    "dataclasses.dataclass",
-    "dataclasses.field",
-    "pathlib.Path",
-    "typing.Any"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/tca.py:82"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_record_read.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

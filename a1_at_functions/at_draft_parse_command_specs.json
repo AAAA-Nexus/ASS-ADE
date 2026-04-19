@@ -9,31 +9,15 @@
     "EvolutionCommand"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/protocol/evolution.py:194.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_parse_command_specs.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.parse_command_specs",
+  "id": "at.source.a1_at_functions.parse_command_specs",
   "imports": [
-    "__future__.annotations",
-    "hashlib",
-    "json",
-    "re",
-    "shutil",
-    "subprocess",
-    "tomllib",
-    "datetime.datetime",
-    "datetime.timezone",
-    "pathlib.Path",
-    "typing.Any",
-    "typing.Iterable",
-    "pydantic.BaseModel",
-    "pydantic.ConfigDict",
-    "pydantic.Field",
-    "ass_ade.engine.rebuild.version_tracker.INITIAL_VERSION",
-    "ass_ade.engine.rebuild.version_tracker.bump_version"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/protocol/evolution.py:194"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_parse_command_specs.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

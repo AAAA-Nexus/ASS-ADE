@@ -1,0 +1,34 @@
+{
+  "body": "def test_on_step_end_gvu_updated(self) -> None:\n    o = EngineOrchestrator({})\n    o.on_step_start(\"task\")\n    report = o.on_step_end(\"response\", {})\n    assert report.gvu_coefficient > 0.0\n",
+  "body_hash": "390da5b21ea1f389",
+  "body_truncated": false,
+  "callers_of": [
+    "EngineOrchestrator",
+    "on_step_start",
+    "on_step_end"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_on_step_end_gvu_updated.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.test_on_step_end_gvu_updated",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_on_step_end_gvu_updated.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_on_step_end_gvu_updated",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_on_step_end_gvu_updated"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

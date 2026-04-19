@@ -1,18 +1,20 @@
 {
-  "body": "    def test_valid_amounts(self) -> None:\n        assert validate_usdc_amount(0.01) == 0.01\n        assert validate_usdc_amount(1_000_000.0) == 1_000_000.0\n",
-  "body_hash": "70dd3e4c51032870",
+  "body": "def test_valid_amounts(self) -> None:\n    assert validate_usdc_amount(0.01) == 0.01\n    assert validate_usdc_amount(1_000_000.0) == 1_000_000.0\n",
+  "body_hash": "d92816ce7bc54541",
   "body_truncated": false,
   "callers_of": [
     "validate_usdc_amount"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateusdcamount.py:6.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_valid_amounts.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_valid_amounts",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_valid_amounts",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateusdcamount.py:6"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_valid_amounts.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

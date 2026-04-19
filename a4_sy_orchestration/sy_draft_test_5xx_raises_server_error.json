@@ -1,19 +1,21 @@
 {
-  "body": "    def test_5xx_raises_server_error(self) -> None:\n        for code in (500, 502, 503, 504):\n            with pytest.raises(NexusServerError) as exc_info:\n                raise_for_status(code)\n            assert exc_info.value.status_code == code\n",
-  "body_hash": "67eb072a8abda05e",
+  "body": "def test_5xx_raises_server_error(self) -> None:\n    for code in (500, 502, 503, 504):\n        with pytest.raises(NexusServerError) as exc_info:\n            raise_for_status(code)\n        assert exc_info.value.status_code == code\n",
+  "body_hash": "6ec5f7158355d215",
   "body_truncated": false,
   "callers_of": [
     "raises",
     "raise_for_status"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testraiseforstatus.py:33.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testraiseforstatus.py:35.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "sy.source.ass_ade.test_5xx_raises_server_error",
-  "imports": [],
+  "id": "sy.source.a2_mo_composites.test_5xx_raises_server_error",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testraiseforstatus.py:33"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testraiseforstatus.py:35"
   },
   "kind": "ecosystem_system",
   "made_of": [],

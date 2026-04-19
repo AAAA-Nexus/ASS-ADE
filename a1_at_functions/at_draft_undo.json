@@ -1,6 +1,6 @@
 {
-  "body": "    def undo(self, rel_path: str) -> Snapshot | None:\n        \"\"\"Pop the most recent snapshot and restore the file.\n\n        Returns the snapshot that was restored, or None if no history.\n        \"\"\"\n        snap_dir = self._snapshot_dir(rel_path)\n        if not snap_dir.exists():\n            return None\n\n        snapshots = sorted(snap_dir.glob(\"*.snapshot\"))\n        if not snapshots:\n            return None\n\n        latest = snapshots[-1]\n        try:\n            data = json.loads(latest.read_text(encoding=\"utf-8\"))\n        except (json.JSONDecodeError, KeyError):\n            return None\n\n        snap = Snapshot(\n            path=data[\"path\"],\n            sequence=data[\"sequence\"],\n            timestamp=data[\"timestamp\"],\n            content=data[\"content\"],\n        )\n\n        # Restore the file\n        target = self._cwd / rel_path\n        target.parent.mkdir(parents=True, exist_ok=True)\n        target.write_text(snap.content, encoding=\"utf-8\")\n\n        # Remove the snapshot (consumed)\n        latest.unlink()\n\n        # Reset counter\n        if rel_path in self._counters:\n            self._counters[rel_path] = max(0, self._counters[rel_path] - 1)\n\n        return snap\n",
-  "body_hash": "8be56c0b5ad46349",
+  "body": "def undo(self, rel_path: str) -> Snapshot | None:\n    \"\"\"Pop the most recent snapshot and restore the file.\n\n    Returns the snapshot that was restored, or None if no history.\n    \"\"\"\n    snap_dir = self._snapshot_dir(rel_path)\n    if not snap_dir.exists():\n        return None\n\n    snapshots = sorted(snap_dir.glob(\"*.snapshot\"))\n    if not snapshots:\n        return None\n\n    latest = snapshots[-1]\n    try:\n        data = json.loads(latest.read_text(encoding=\"utf-8\"))\n    except (json.JSONDecodeError, KeyError):\n        return None\n\n    snap = Snapshot(\n        path=data[\"path\"],\n        sequence=data[\"sequence\"],\n        timestamp=data[\"timestamp\"],\n        content=data[\"content\"],\n    )\n\n    # Restore the file\n    target = self._cwd / rel_path\n    target.parent.mkdir(parents=True, exist_ok=True)\n    target.write_text(snap.content, encoding=\"utf-8\")\n\n    # Remove the snapshot (consumed)\n    latest.unlink()\n\n    # Reset counter\n    if rel_path in self._counters:\n        self._counters[rel_path] = max(0, self._counters[rel_path] - 1)\n\n    return snap\n",
+  "body_hash": "3407bd46f9f48895",
   "body_truncated": false,
   "callers_of": [
     "_snapshot_dir",
@@ -16,20 +16,15 @@
     "read_text"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/tools/history.py:102.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_undo.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.undo",
+  "id": "at.source.a1_at_functions.undo",
   "imports": [
-    "__future__.annotations",
-    "hashlib",
-    "json",
-    "time",
-    "dataclasses.dataclass",
-    "pathlib.Path"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/tools/history.py:102"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_undo.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

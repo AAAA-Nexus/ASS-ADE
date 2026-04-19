@@ -1,6 +1,6 @@
 {
-  "body": "    def test_syntax_error_blocked_by_cie(self, tmp_path):\n        server = _make_server(tmp_path)\n        target = tmp_path / \"broken.py\"\n        # Pre-write so undo_edit has something to roll back (not strictly needed here)\n        target.write_text(\"\")\n        args = {\"path\": str(target), \"content\": \"def broken(:\\n    pass\\n\"}\n        original = MagicMock(success=True, output=\"wrote\")\n        out = server._post_tool_hook(\"write_file\", args, original)\n        assert out.success is False\n        assert \"CIE REJECTED\" in (out.error or \"\")\n",
-  "body_hash": "45c5d2e0b89c46c3",
+  "body": "def test_syntax_error_blocked_by_cie(self, tmp_path):\n    server = _make_server(tmp_path)\n    target = tmp_path / \"broken.py\"\n    # Pre-write so undo_edit has something to roll back (not strictly needed here)\n    target.write_text(\"\")\n    args = {\"path\": str(target), \"content\": \"def broken(:\\n    pass\\n\"}\n    original = MagicMock(success=True, output=\"wrote\")\n    out = server._post_tool_hook(\"write_file\", args, original)\n    assert out.success is False\n    assert \"CIE REJECTED\" in (out.error or \"\")\n",
+  "body_hash": "9c400b508ee1f5d0",
   "body_truncated": false,
   "callers_of": [
     "_make_server",
@@ -10,13 +10,15 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testciegateonwrite.py:14.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_syntax_error_blocked_by_cie.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_syntax_error_blocked_by_cie",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_syntax_error_blocked_by_cie",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testciegateonwrite.py:14"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_syntax_error_blocked_by_cie.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def validate(self) -> PaymentChallenge:\n        \"\"\"Validate the challenge before any user consent or payment attempt.\"\"\"\n        if self.amount_micro_usdc <= 0:\n            raise ValueError(\"402 response missing required field: amount_micro_usdc\")\n        if self.amount_micro_usdc > MAX_CHALLENGE_MICRO_USDC:\n            raise ValueError(\n                f\"402 response amount {self.amount_micro_usdc} outside valid range \"\n                f\"(1-{MAX_CHALLENGE_MICRO_USDC})\"\n            )\n        if not self.recipient.strip():\n            raise ValueError(\"402 response missing required field: recipient\")\n        if self.recipient.strip().lower() != ATOMADIC_TREASURY.lower():\n            raise ValueError(\"402 response recipient does not match expected treasury\")\n        return self\n",
-  "body_hash": "ad53215dd9f7c1c3",
+  "body": "def validate(self) -> PaymentChallenge:\n    \"\"\"Validate the challenge before any user consent or payment attempt.\"\"\"\n    if self.amount_micro_usdc <= 0:\n        raise ValueError(\"402 response missing required field: amount_micro_usdc\")\n    if self.amount_micro_usdc > MAX_CHALLENGE_MICRO_USDC:\n        raise ValueError(\n            f\"402 response amount {self.amount_micro_usdc} outside valid range \"\n            f\"(1-{MAX_CHALLENGE_MICRO_USDC})\"\n        )\n    if not self.recipient.strip():\n        raise ValueError(\"402 response missing required field: recipient\")\n    if self.recipient.strip().lower() != ATOMADIC_TREASURY.lower():\n        raise ValueError(\"402 response recipient does not match expected treasury\")\n    return self\n",
+  "body_hash": "df473f835b00a00c",
   "body_truncated": false,
   "callers_of": [
     "ValueError",
@@ -8,15 +8,17 @@
     "lower"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_paymentchallenge.py:17.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_paymentchallenge.py:19.",
   "exceptions_raised": [
     "ValueError"
   ],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.validate",
-  "imports": [],
+  "id": "at.source.a2_mo_composites.validate",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_paymentchallenge.py:17"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_paymentchallenge.py:19"
   },
   "kind": "pure_function",
   "made_of": [],

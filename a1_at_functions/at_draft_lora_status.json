@@ -19,16 +19,17 @@
     "get"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_lora_status.py:5.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_lora_status.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.lora_status",
+  "id": "at.source.a1_at_functions.lora_status",
   "imports": [
+    "__future__.annotations",
     "ass_ade.agent.lora_flywheel.LoRAFlywheel",
     "ass_ade.agent.lora_flywheel.RG_LOOP"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_lora_status.py:5"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_lora_status.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

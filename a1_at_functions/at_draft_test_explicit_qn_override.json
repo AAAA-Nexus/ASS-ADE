@@ -1,0 +1,34 @@
+{
+  "body": "def test_explicit_qN_override(self) -> None:\n    w = WisdomEngine({})\n    report = w.run_audit({\"q1\": True, \"q2\": False, \"q3\": True})\n    # q1 and q3 explicitly True, q2 False\n    assert report.passed >= 2\n    found_q2_fail = any(f[\"id\"] == 2 for f in report.failures)\n    assert found_q2_fail\n",
+  "body_hash": "e1716f614267d8fd",
+  "body_truncated": false,
+  "callers_of": [
+    "WisdomEngine",
+    "run_audit",
+    "any"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_explicit_qn_override.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.test_explicit_qn_override",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_explicit_qn_override.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_explicit_qN_override",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_explicit_qN_override"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

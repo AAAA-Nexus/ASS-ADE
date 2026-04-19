@@ -1,6 +1,6 @@
 {
-  "body": "    def from_payment_result(cls, result: PaymentResult) -> PaymentProof | None:\n        \"\"\"Parse a PaymentProof from a successful PaymentResult.\"\"\"\n        if not result.success or not result.signature_header:\n            return None\n        try:\n            parts = result.signature_header.split(\";\")\n            if len(parts) != 4:\n                return None\n            sig, addr, txid, amount_str = parts\n            return cls(\n                signature=sig,\n                wallet_address=addr,\n                transaction_id=txid,\n                amount_micro_usdc=int(amount_str),\n            )\n        except (ValueError, IndexError):\n            return None\n",
-  "body_hash": "0e71a7c0512d32bf",
+  "body": "def from_payment_result(cls, result: PaymentResult) -> PaymentProof | None:\n    \"\"\"Parse a PaymentProof from a successful PaymentResult.\"\"\"\n    if not result.success or not result.signature_header:\n        return None\n    try:\n        parts = result.signature_header.split(\";\")\n        if len(parts) != 4:\n            return None\n        sig, addr, txid, amount_str = parts\n        return cls(\n            signature=sig,\n            wallet_address=addr,\n            transaction_id=txid,\n            amount_micro_usdc=int(amount_str),\n        )\n    except (ValueError, IndexError):\n        return None\n",
+  "body_hash": "d1b6f8642c5b5ca2",
   "body_truncated": false,
   "callers_of": [
     "split",
@@ -9,22 +9,15 @@
     "int"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/x402.py:138.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_from_payment_result.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.from_payment_result",
+  "id": "at.source.a1_at_functions.from_payment_result",
   "imports": [
-    "__future__.annotations",
-    "os",
-    "time",
-    "dataclasses.dataclass",
-    "typing.Any",
-    "eth_account.Account",
-    "web3.Web3",
-    "logging"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/nexus/x402.py:138"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_from_payment_result.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

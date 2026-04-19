@@ -1,18 +1,20 @@
 {
-  "body": "    def subscribe(self, callback: Callable[[Alert], None]) -> None:\n        self._subscribers.append(callback)\n",
-  "body_hash": "c56d6d742d114134",
+  "body": "def subscribe(self, callback: Callable[[Alert], None]) -> None:\n    self._subscribers.append(callback)\n",
+  "body_hash": "74637042d6cca1c5",
   "body_truncated": false,
   "callers_of": [
     "append"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_bas.py:48.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_subscribe.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.subscribe",
-  "imports": [],
+  "id": "at.source.a1_at_functions.subscribe",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_bas.py:48"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_subscribe.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def route(self, message: str) -> RoutingDecision:\n        \"\"\"Route a message using best available method.\"\"\"\n        if self._nexus is not None:\n            try:\n                result = self._nexus.routing_recommend(prompt=message)\n                confidence = _result_field(result, \"confidence\")\n                if isinstance(confidence, (int, float)):\n                    complexity = max(0.0, min(1.0, float(confidence)))\n                else:\n                    complexity = classify_complexity(message)\n\n                model_name = _result_field(result, \"model\") or _result_field(result, \"recommended_model\")\n                reason = _result_field(result, \"reason\", \"Nexus recommendation\")\n\n                decision = RoutingDecision(\n                    tier=_nexus_tier(result),\n                    complexity=complexity,\n                    recommended_model=str(model_name) if model_name else None,\n                    reason=str(reason),\n                    source=\"nexus\",\n                )\n            except Exception:\n                decision = local_route(message)\n        else:\n            decision = local_route(message)\n        self._history.append(decision)\n        return decision\n",
-  "body_hash": "fcc2444aebb24897",
+  "body": "def route(self, message: str) -> RoutingDecision:\n    \"\"\"Route a message using best available method.\"\"\"\n    if self._nexus is not None:\n        try:\n            result = self._nexus.routing_recommend(prompt=message)\n            confidence = _result_field(result, \"confidence\")\n            if isinstance(confidence, (int, float)):\n                complexity = max(0.0, min(1.0, float(confidence)))\n            else:\n                complexity = classify_complexity(message)\n\n            model_name = _result_field(result, \"model\") or _result_field(result, \"recommended_model\")\n            reason = _result_field(result, \"reason\", \"Nexus recommendation\")\n\n            decision = RoutingDecision(\n                tier=_nexus_tier(result),\n                complexity=complexity,\n                recommended_model=str(model_name) if model_name else None,\n                reason=str(reason),\n                source=\"nexus\",\n            )\n        except Exception:\n            decision = local_route(message)\n    else:\n        decision = local_route(message)\n    self._history.append(decision)\n    return decision\n",
+  "body_hash": "05eda93fcbdb5dc4",
   "body_truncated": false,
   "callers_of": [
     "append",
@@ -17,20 +17,15 @@
     "float"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/routing.py:188.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_route.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.route",
+  "id": "at.source.a1_at_functions.route",
   "imports": [
-    "__future__.annotations",
-    "re",
-    "collections.abc.Mapping",
-    "dataclasses.dataclass",
-    "enum.Enum",
-    "typing.Any"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/routing.py:188"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_route.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

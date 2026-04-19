@@ -1,5 +1,5 @@
 {
-  "body": "class TestErrorHandling:\n    \"\"\"Test graceful error handling for edge cases.\"\"\"\n\n    def test_data_convert_nonexistent_file(self, tmp_path: Path, hybrid_config: Path) -> None:\n        \"\"\"Data convert should error if input file doesn't exist.\"\"\"\n        result = runner.invoke(\n            app,\n            [\"data\", \"convert\", str(tmp_path / \"nonexistent.json\"), \"yaml\", \"--config\", str(hybrid_config)],\n        )\n        \n        # Should fail because file doesn't exist\n        assert result.exit_code != 0\n\n    def test_compliance_check_invalid_json(self, tmp_path: Path, hybrid_config: Path) -> None:\n        \"\"\"Compliance check should error if payload is invalid JSON.\"\"\"\n        bad_json = tmp_path / \"bad.json\"\n        bad_json.write_text(\"{ invalid json }\", encoding=\"utf-8\")\n        \n        result = runner.invoke(\n            app,\n            [\"compliance\", \"check\", str(bad_json), \"--config\", str(hybrid_config)],\n        )\n        \n        assert result.exit_code != 0\n",
+  "body": "class TestErrorHandling:\n    \"\"\"Test graceful error handling for edge cases.\"\"\"\n\n    def test_data_convert_nonexistent_file(self, tmp_path: Path, hybrid_config: Path) -> None:\n        \"\"\"Data convert should error if input file doesn't exist.\"\"\"\n        result = runner.invoke(\n            app,\n            [\"data\", \"convert\", str(tmp_path / \"nonexistent.json\"), \"yaml\", \"--config\", str(hybrid_config)],\n        )\n\n        # Should fail because file doesn't exist\n        assert result.exit_code != 0\n\n    def test_compliance_check_invalid_json(self, tmp_path: Path, hybrid_config: Path) -> None:\n        \"\"\"Compliance check should error if payload is invalid JSON.\"\"\"\n        bad_json = tmp_path / \"bad.json\"\n        bad_json.write_text(\"{ invalid json }\", encoding=\"utf-8\")\n\n        result = runner.invoke(\n            app,\n            [\"compliance\", \"check\", str(bad_json), \"--config\", str(hybrid_config)],\n        )\n\n        assert result.exit_code != 0\n",
   "body_hash": "5755e907986321df",
   "body_truncated": false,
   "callers_of": [
@@ -8,13 +8,15 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testerrorhandling.py:5.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testerrorhandling.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.testerrorhandling",
-  "imports": [],
+  "id": "mo.source.a2_mo_composites.testerrorhandling",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testerrorhandling.py:5"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testerrorhandling.py:7"
   },
   "kind": "engine_molecule",
   "made_of": [],

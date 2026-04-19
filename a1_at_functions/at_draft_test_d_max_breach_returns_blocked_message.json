@@ -1,6 +1,6 @@
 {
-  "body": "    def test_d_max_breach_returns_blocked_message(self):\n        provider = _make_provider_returning_text(\"ok\")\n        registry = ToolRegistry()\n        orchestrator = EngineOrchestrator({})\n        loop = AgentLoop(provider=provider, registry=registry, orchestrator=orchestrator)\n\n        # Simulate being inside a recursion by setting depth past D_MAX\n        loop._delegation_depth = D_MAX + 1\n        result = loop.step(\"[REFINE round 1/3] retry\")\n        assert \"D_MAX\" in result or \"delegation\" in result.lower()\n",
-  "body_hash": "a3c7c3308efe1010",
+  "body": "def test_d_max_breach_returns_blocked_message(self):\n    provider = _make_provider_returning_text(\"ok\")\n    registry = ToolRegistry()\n    orchestrator = EngineOrchestrator({})\n    loop = AgentLoop(provider=provider, registry=registry, orchestrator=orchestrator)\n\n    # Simulate being inside a recursion by setting depth past D_MAX\n    loop._delegation_depth = D_MAX + 1\n    result = loop.step(\"[REFINE round 1/3] retry\")\n    assert \"D_MAX\" in result or \"delegation\" in result.lower()\n",
+  "body_hash": "722bde241698aa3d",
   "body_truncated": false,
   "callers_of": [
     "_make_provider_returning_text",
@@ -11,33 +11,15 @@
     "lower"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase1_integration.py:162.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_d_max_breach_returns_blocked_message.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_d_max_breach_returns_blocked_message",
+  "id": "at.source.a1_at_functions.test_d_max_breach_returns_blocked_message",
   "imports": [
-    "__future__.annotations",
-    "unittest.mock.MagicMock",
-    "unittest.mock.patch",
-    "pytest",
-    "ass_ade.agent.gates.QualityGates",
-    "ass_ade.agent.loop.AgentLoop",
-    "ass_ade.agent.loop.D_MAX",
-    "ass_ade.agent.lse.LSEEngine",
-    "ass_ade.agent.orchestrator.EngineOrchestrator",
-    "ass_ade.engine.types.CompletionResponse",
-    "ass_ade.engine.types.Message",
-    "ass_ade.tools.registry.ToolRegistry",
-    "ass_ade.agent.bas._SEVERITY",
-    "ass_ade.commands.agent._render_phase1_header",
-    "io.StringIO",
-    "rich.console.Console",
-    "ass_ade.commands.agent._render_phase1_header",
-    "io.StringIO",
-    "rich.console.Console"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_phase1_integration.py:162"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_d_max_breach_returns_blocked_message.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

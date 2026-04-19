@@ -1,5 +1,5 @@
 {
-  "body": "def test_quota_status_happy_path():\n    \"\"\"Test quota_status GET endpoint.\"\"\"\n    def handler(request):\n        assert \"/v1/quota/tree/\" in request.url.path and \"/status\" in request.url.path\n        return httpx.Response(200, json={\"tree_id\": \"tree_123\", \"remaining_budget\": 9900, \"alerts\": []})\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        result = client.quota_status(tree_id=\"tree_123\")\n        assert result is not None\n",
+  "body": "def test_quota_status_happy_path():\n    \"\"\"Test quota_status GET endpoint.\"\"\"\n    def handler(request):\n        assert \"/v1/quota/tree/\" in request.url.path and \"/status\" in request.url.path\n        return httpx.Response(200, json={\"tree_id\": \"tree_123\", \"remaining_budget\": 9900, \"alerts\": []})\n\n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        result = client.quota_status(tree_id=\"tree_123\")\n        assert result is not None\n",
   "body_hash": "0607eeb5ae0e4146",
   "body_truncated": false,
   "callers_of": [
@@ -9,7 +9,7 @@
     "quota_status"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:783.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_nexus_client_comprehensive.py:783.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_quota_status_happy_path",
@@ -144,7 +144,7 @@
     "ass_ade.nexus.models.EntropyResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:783"
+    "source": "C:/!ass-ade/tests/test_nexus_client_comprehensive.py:783"
   },
   "kind": "engine_molecule",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def hook_aaaa_nexus_economic(self, action: dict[str, Any]) -> dict[str, Any] | None:\n        try:\n            x402 = getattr(self._client, \"x402\", None)\n            if x402 is None:\n                return {\"settled\": False, \"reason\": \"x402_unavailable\"}\n            amount = float(action.get(\"amount\", 0.0))\n            if hasattr(x402, \"settle\"):\n                receipt = x402.settle(amount=amount, recipient=action.get(\"recipient\", \"\"))\n                return {\"settled\": True, \"receipt\": str(receipt)[:256]}\n            return {\"settled\": False, \"reason\": \"no_settle_method\"}\n        except Exception as exc:\n            logging.getLogger(__name__).warning(\"hook_aaaa_nexus_economic failed: %s\", exc)\n            return None\n",
-  "body_hash": "36920bf1c7db4cc6",
+  "body": "def hook_aaaa_nexus_economic(self, action: dict[str, Any]) -> dict[str, Any] | None:\n    try:\n        x402 = getattr(self._client, \"x402\", None)\n        if x402 is None:\n            return {\"settled\": False, \"reason\": \"x402_unavailable\"}\n        amount = float(action.get(\"amount\", 0.0))\n        if hasattr(x402, \"settle\"):\n            receipt = x402.settle(amount=amount, recipient=action.get(\"recipient\", \"\"))\n            return {\"settled\": True, \"receipt\": str(receipt)[:256]}\n        return {\"settled\": False, \"reason\": \"no_settle_method\"}\n    except Exception as exc:\n        logging.getLogger(__name__).warning(\"hook_aaaa_nexus_economic failed: %s\", exc)\n        return None\n",
+  "body_hash": "7101d5a95003de6f",
   "body_truncated": false,
   "callers_of": [
     "getattr",
@@ -13,11 +13,12 @@
     "getLogger"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_qualitygates.py:215.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_qualitygates.py:217.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.hook_aaaa_nexus_economic",
+  "id": "mo.source.a2_mo_composites.hook_aaaa_nexus_economic",
   "imports": [
+    "__future__.annotations",
     "ast",
     "re",
     "json",
@@ -34,7 +35,7 @@
     "ass_ade.agent.sam.SAM"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_qualitygates.py:215"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_qualitygates.py:217"
   },
   "kind": "engine_molecule",
   "made_of": [],

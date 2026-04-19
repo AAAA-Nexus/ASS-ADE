@@ -6,25 +6,19 @@
     "classify_complexity"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_routing.py:15.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testclassifycomplexity.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.testclassifycomplexity",
+  "id": "mo.source.a2_mo_composites.testclassifycomplexity",
   "imports": [
-    "__future__.annotations",
-    "ass_ade.agent.routing.EpistemicRouter",
-    "ass_ade.agent.routing.ModelTier",
-    "ass_ade.agent.routing.RoutingDecision",
-    "ass_ade.agent.routing.classify_complexity",
-    "ass_ade.agent.routing.local_route",
-    "ass_ade.agent.routing.tier_for_complexity"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_routing.py:15"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testclassifycomplexity.py:7"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.classify_complexity"
+    "at.source.a1_at_functions.classify_complexity"
   ],
   "name": "TestClassifyComplexity",
   "product_categories": [

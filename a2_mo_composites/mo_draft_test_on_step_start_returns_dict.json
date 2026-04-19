@@ -1,6 +1,6 @@
 {
-  "body": "    def test_on_step_start_returns_dict(self) -> None:\n        o = EngineOrchestrator({})\n        result = o.on_step_start(\"implement auth system\")\n        assert isinstance(result, dict)\n        assert \"atlas_subtasks\" in result\n        assert \"puppeteer_next\" in result\n",
-  "body_hash": "684e69cb4baa3faf",
+  "body": "def test_on_step_start_returns_dict(self) -> None:\n    o = EngineOrchestrator({})\n    result = o.on_step_start(\"implement auth system\")\n    assert isinstance(result, dict)\n    assert \"atlas_subtasks\" in result\n    assert \"puppeteer_next\" in result\n",
+  "body_hash": "fc034b6f2dec58c3",
   "body_truncated": false,
   "callers_of": [
     "EngineOrchestrator",
@@ -8,13 +8,15 @@
     "isinstance"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testengineorchestrator.py:12.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testengineorchestrator.py:14.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.test_on_step_start_returns_dict",
-  "imports": [],
+  "id": "mo.source.a2_mo_composites.test_on_step_start_returns_dict",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testengineorchestrator.py:12"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testengineorchestrator.py:14"
   },
   "kind": "engine_molecule",
   "made_of": [],

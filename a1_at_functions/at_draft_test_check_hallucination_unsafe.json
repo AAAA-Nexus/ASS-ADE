@@ -1,6 +1,6 @@
 {
-  "body": "    def test_check_hallucination_unsafe(self):\n        gates = QualityGates(_mock_nexus(verdict=\"unsafe\", policy_epsilon=0.85))\n        result = gates.check_hallucination(\"Made up claim.\")\n        assert result is not None\n        assert result[\"verdict\"] == \"unsafe\"\n",
-  "body_hash": "cfcc90f7ffa545ae",
+  "body": "def test_check_hallucination_unsafe(self):\n    gates = QualityGates(_mock_nexus(verdict=\"unsafe\", policy_epsilon=0.85))\n    result = gates.check_hallucination(\"Made up claim.\")\n    assert result is not None\n    assert result[\"verdict\"] == \"unsafe\"\n",
+  "body_hash": "3ce377c284de44ba",
   "body_truncated": false,
   "callers_of": [
     "QualityGates",
@@ -8,13 +8,15 @@
     "_mock_nexus"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testqualitygates.py:32.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_check_hallucination_unsafe.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_check_hallucination_unsafe",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_check_hallucination_unsafe",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testqualitygates.py:32"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_check_hallucination_unsafe.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

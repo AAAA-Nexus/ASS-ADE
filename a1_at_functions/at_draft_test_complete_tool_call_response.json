@@ -1,6 +1,6 @@
 {
-  "body": "    def test_complete_tool_call_response(self):\n        tool_json = json.dumps({\"tool_call\": {\"name\": \"read_file\", \"arguments\": {\"path\": \"x.py\"}}})\n        mock_client = MagicMock()\n        mock_client.inference.return_value = MagicMock(\n            result=tool_json,\n            text=None,\n            model=\"llama-3.1-8b\",\n        )\n\n        provider = NexusProvider(mock_client)\n        req = CompletionRequest(\n            messages=[Message(role=\"user\", content=\"read x.py\")],\n            tools=[ToolSchema(name=\"read_file\", description=\"Read file\", parameters={\"type\": \"object\"})],\n        )\n        resp = provider.complete(req)\n\n        assert len(resp.message.tool_calls) == 1\n        assert resp.message.tool_calls[0].name == \"read_file\"\n        assert resp.finish_reason == \"tool_calls\"\n",
-  "body_hash": "e5f99f4133fcbe20",
+  "body": "def test_complete_tool_call_response(self):\n    tool_json = json.dumps({\"tool_call\": {\"name\": \"read_file\", \"arguments\": {\"path\": \"x.py\"}}})\n    mock_client = MagicMock()\n    mock_client.inference.return_value = MagicMock(\n        result=tool_json,\n        text=None,\n        model=\"llama-3.1-8b\",\n    )\n\n    provider = NexusProvider(mock_client)\n    req = CompletionRequest(\n        messages=[Message(role=\"user\", content=\"read x.py\")],\n        tools=[ToolSchema(name=\"read_file\", description=\"Read file\", parameters={\"type\": \"object\"})],\n    )\n    resp = provider.complete(req)\n\n    assert len(resp.message.tool_calls) == 1\n    assert resp.message.tool_calls[0].name == \"read_file\"\n    assert resp.finish_reason == \"tool_calls\"\n",
+  "body_hash": "46ea7003cef6cb97",
   "body_truncated": false,
   "callers_of": [
     "dumps",
@@ -13,17 +13,19 @@
     "ToolSchema"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexusprovider.py:22.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_complete_tool_call_response.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_complete_tool_call_response",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_complete_tool_call_response",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexusprovider.py:22"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_complete_tool_call_response.py:7"
   },
   "kind": "pure_function",
   "made_of": [
-    "qk.source.ass_ade.toolschema"
+    "qk.source.a0_qk_constants.toolschema"
   ],
   "name": "test_complete_tool_call_response",
   "product_categories": [

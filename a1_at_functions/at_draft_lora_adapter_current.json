@@ -1,0 +1,33 @@
+{
+  "body": "def lora_adapter_current(self, language: str = \"python\", **kwargs: Any) -> dict[str, Any]:\n    \"\"\"GET /v1/lora/adapter/{language} \u2014 latest adapter id for a language.\"\"\"\n    return self._get_raw(f\"/v1/lora/adapter/{_pseg(language, 'language')}\", **kwargs)\n",
+  "body_hash": "6bca57ade9ac1943",
+  "body_truncated": false,
+  "callers_of": [
+    "_get_raw",
+    "_pseg"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_lora_adapter_current.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.lora_adapter_current",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_lora_adapter_current.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "lora_adapter_current",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for lora_adapter_current"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

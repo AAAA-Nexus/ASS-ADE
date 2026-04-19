@@ -1,0 +1,32 @@
+{
+  "body": "def lora_capture_fix(self, *args: Any, **kwargs: Any) -> dict[str, Any]:\n    \"\"\"Alias for lora_buffer_capture \u2014 single (bad, good) sample.\"\"\"\n    return self.lora_buffer_capture(*args, **kwargs)\n",
+  "body_hash": "4fce1b53bafb7e31",
+  "body_truncated": false,
+  "callers_of": [
+    "lora_buffer_capture"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_lora_capture_fix.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.lora_capture_fix",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_lora_capture_fix.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "lora_capture_fix",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for lora_capture_fix"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

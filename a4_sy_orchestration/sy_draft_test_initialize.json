@@ -1,18 +1,20 @@
 {
-  "body": "    def test_initialize(self, server: MCPServer):\n        req = {\"jsonrpc\": \"2.0\", \"id\": 1, \"method\": \"initialize\", \"params\": {}}\n        resp = server._handle(req)\n        assert resp is not None\n        assert resp[\"id\"] == 1\n        result = resp[\"result\"]\n        assert result[\"protocolVersion\"] == \"2025-11-25\"\n        assert result[\"serverInfo\"][\"name\"] == \"ass-ade\"\n        assert \"tools\" in result[\"capabilities\"]\n",
-  "body_hash": "6b765704bc79a3bb",
+  "body": "def test_initialize(self, server: MCPServer):\n    req = {\"jsonrpc\": \"2.0\", \"id\": 1, \"method\": \"initialize\", \"params\": {}}\n    resp = server._handle(req)\n    assert resp is not None\n    assert resp[\"id\"] == 1\n    result = resp[\"result\"]\n    assert result[\"protocolVersion\"] == \"2025-11-25\"\n    assert result[\"serverInfo\"][\"name\"] == \"ass-ade\"\n    assert \"tools\" in result[\"capabilities\"]\n",
+  "body_hash": "38a03b6007742f9c",
   "body_truncated": false,
   "callers_of": [
     "_handle"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testmcpserver.py:11.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_testmcpserver.py:13.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "sy.source.ass_ade.test_initialize",
-  "imports": [],
+  "id": "sy.source.a4_sy_orchestration.test_initialize",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testmcpserver.py:11"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_testmcpserver.py:13"
   },
   "kind": "ecosystem_system",
   "made_of": [],

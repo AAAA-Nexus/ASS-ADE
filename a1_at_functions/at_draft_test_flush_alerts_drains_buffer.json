@@ -1,6 +1,6 @@
 {
-  "body": "    def test_flush_alerts_drains_buffer(self) -> None:\n        b = BAS({})\n        b.monitor_all({\"synergy\": 0.9, \"trust_score\": 0.1})\n        flushed = b.flush_alerts()\n        assert len(flushed) >= 1\n        # second flush is empty\n        assert b.flush_alerts() == []\n",
-  "body_hash": "8b48ac3ff16f6c0f",
+  "body": "def test_flush_alerts_drains_buffer(self) -> None:\n    b = BAS({})\n    b.monitor_all({\"synergy\": 0.9, \"trust_score\": 0.1})\n    flushed = b.flush_alerts()\n    assert len(flushed) >= 1\n    # second flush is empty\n    assert b.flush_alerts() == []\n",
+  "body_hash": "c1881137e9515a92",
   "body_truncated": false,
   "callers_of": [
     "BAS",
@@ -9,13 +9,15 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbas.py:64.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_flush_alerts_drains_buffer.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_flush_alerts_drains_buffer",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_flush_alerts_drains_buffer",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testbas.py:64"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_flush_alerts_drains_buffer.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

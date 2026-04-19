@@ -1,6 +1,6 @@
 {
-  "body": "    def test_route_without_nexus(self):\n        router = EpistemicRouter()\n        decision = router.route(\"Hello world\")\n        assert isinstance(decision, RoutingDecision)\n        assert decision.source == \"local\"\n",
-  "body_hash": "b381180bbc22180a",
+  "body": "def test_route_without_nexus(self):\n    router = EpistemicRouter()\n    decision = router.route(\"Hello world\")\n    assert isinstance(decision, RoutingDecision)\n    assert decision.source == \"local\"\n",
+  "body_hash": "272fbcc419a5e4c6",
   "body_truncated": false,
   "callers_of": [
     "EpistemicRouter",
@@ -8,13 +8,15 @@
     "isinstance"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testepistemicrouter.py:6.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_testepistemicrouter.py:8.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "sy.source.ass_ade.test_route_without_nexus",
-  "imports": [],
+  "id": "sy.source.a4_sy_orchestration.test_route_without_nexus",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a4_sy_orchestration/sy_draft_testepistemicrouter.py:6"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a4_sy_orchestration/sy_draft_testepistemicrouter.py:8"
   },
   "kind": "ecosystem_system",
   "made_of": [],

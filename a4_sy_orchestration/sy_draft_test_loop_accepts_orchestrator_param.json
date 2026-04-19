@@ -1,17 +1,18 @@
 {
-  "body": "    def test_loop_accepts_orchestrator_param(self) -> None:\n        o = EngineOrchestrator({})\n        loop = self._make_loop(orchestrator=o)\n        assert loop._orchestrator is o\n",
-  "body_hash": "4e1e0383593079ff",
+  "body": "def test_loop_accepts_orchestrator_param(self) -> None:\n    o = EngineOrchestrator({})\n    loop = self._make_loop(orchestrator=o)\n    assert loop._orchestrator is o\n",
+  "body_hash": "bce4b59affa9e24d",
   "body_truncated": false,
   "callers_of": [
     "EngineOrchestrator",
     "_make_loop"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testagentlooporchestrator.py:23.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testagentlooporchestrator.py:25.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "sy.source.ass_ade.test_loop_accepts_orchestrator_param",
+  "id": "sy.source.a2_mo_composites.test_loop_accepts_orchestrator_param",
   "imports": [
+    "__future__.annotations",
     "ass_ade.agent.loop.AgentLoop",
     "ass_ade.engine.provider.ModelProvider",
     "ass_ade.engine.types.CompletionResponse",
@@ -19,7 +20,7 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testagentlooporchestrator.py:23"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testagentlooporchestrator.py:25"
   },
   "kind": "ecosystem_system",
   "made_of": [],

@@ -1,0 +1,35 @@
+{
+  "body": "def test_extract_body_dedents_class_methods(tmp_path: Path) -> None:\n    source = tmp_path / \"sample.py\"\n    source.write_text(\n        \"class Widget:\\n\"\n        \"    def available(self) -> int:\\n\"\n        \"        return 1\\n\",\n        encoding=\"utf-8\",\n    )\n\n    extracted = extract_body(source, \"available\")\n\n    assert extracted is not None\n    assert extracted.body.startswith(\"def available\")\n    ast.parse(extracted.body)\n",
+  "body_hash": "1f9e92f8f95901cc",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "extract_body",
+    "startswith",
+    "parse"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_extract_body_dedents_class_methods.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.test_extract_body_dedents_class_methods",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_extract_body_dedents_class_methods.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_extract_body_dedents_class_methods",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_extract_body_dedents_class_methods"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

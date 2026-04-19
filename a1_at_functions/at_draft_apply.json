@@ -1,6 +1,6 @@
 {
-  "body": "    def apply(self, plan: EditPlan) -> ToolResult:\n        \"\"\"Apply a validated plan atomically.\n\n        If any edit fails, all previously applied edits in this plan\n        are rolled back via FileHistory.\n        \"\"\"\n        if not plan.validated:\n            return ToolResult(error=\"Plan must be validated before applying.\", success=False)\n\n        applied_paths: list[str] = []\n\n        try:\n            for edit in plan.edits:\n                target = self._cwd / edit.path\n\n                if edit.kind == EditKind.CREATE:\n                    target.parent.mkdir(parents=True, exist_ok=True)\n                    target.write_text(edit.new_string, encoding=\"utf-8\")\n                    applied_paths.append(edit.path)\n\n                elif edit.kind == EditKind.MODIFY:\n                    # Snapshot before mutation\n                    if edit._original_content is not None:\n                        self._history.record(edit.path, edit._original_content)\n                    text = target.read_text(encoding=\"utf-8\")\n                    new_text = text.replace(edit.old_string, edit.new_string, 1)\n                    target.write_text(new_text, encoding=\"utf-8\")\n                    applied_paths.append(edit.path)\n\n                elif edit.kind == EditKind.DELETE:\n                    if edit._original_content is not None:\n                        self._history.record(edit.path, edit._original_content)\n                    target.unlink()\n                    applied_paths.append(edit.path)\n\n        except Exception as exc:\n            # \u2500\u2500 Rollback \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n            for rpath in reversed(applied_paths):\n                try:\n                    self._history.undo(rpath)\n                except Exception:\n                    pass  # Best-effort rollback\n            plan.applied = False\n            return ToolResult(\n                error=f\"Plan failed at {edit.path}: {exc}. Rolled back {len(applied_paths)} edits.\",\n                success=False,\n            )\n\n        plan.applied = True\n        summary = \"\\n\".join(f\"  \u2713 {e.description}\" for e in plan.edits)\n        return ToolResult(output=f\"Applied {len(plan.edits)} edits:\\n{summary}\")\n",
-  "body_hash": "26edde19ec45af17",
+  "body": "def apply(self, plan: EditPlan) -> ToolResult:\n    \"\"\"Apply a validated plan atomically.\n\n    If any edit fails, all previously applied edits in this plan\n    are rolled back via FileHistory.\n    \"\"\"\n    if not plan.validated:\n        return ToolResult(error=\"Plan must be validated before applying.\", success=False)\n\n    applied_paths: list[str] = []\n\n    try:\n        for edit in plan.edits:\n            target = self._cwd / edit.path\n\n            if edit.kind == EditKind.CREATE:\n                target.parent.mkdir(parents=True, exist_ok=True)\n                target.write_text(edit.new_string, encoding=\"utf-8\")\n                applied_paths.append(edit.path)\n\n            elif edit.kind == EditKind.MODIFY:\n                # Snapshot before mutation\n                if edit._original_content is not None:\n                    self._history.record(edit.path, edit._original_content)\n                text = target.read_text(encoding=\"utf-8\")\n                new_text = text.replace(edit.old_string, edit.new_string, 1)\n                target.write_text(new_text, encoding=\"utf-8\")\n                applied_paths.append(edit.path)\n\n            elif edit.kind == EditKind.DELETE:\n                if edit._original_content is not None:\n                    self._history.record(edit.path, edit._original_content)\n                target.unlink()\n                applied_paths.append(edit.path)\n\n    except Exception as exc:\n        # \u2500\u2500 Rollback \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n        for rpath in reversed(applied_paths):\n            try:\n                self._history.undo(rpath)\n            except Exception:\n                pass  # Best-effort rollback\n        plan.applied = False\n        return ToolResult(\n            error=f\"Plan failed at {edit.path}: {exc}. Rolled back {len(applied_paths)} edits.\",\n            success=False,\n        )\n\n    plan.applied = True\n    summary = \"\\n\".join(f\"  \u2713 {e.description}\" for e in plan.edits)\n    return ToolResult(output=f\"Applied {len(plan.edits)} edits:\\n{summary}\")\n",
+  "body_hash": "a4e5ab11163386b8",
   "body_truncated": false,
   "callers_of": [
     "join",
@@ -17,22 +17,15 @@
     "unlink"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/tools/plan.py:143.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_apply.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.apply",
+  "id": "at.source.a1_at_functions.apply",
   "imports": [
-    "__future__.annotations",
-    "difflib",
-    "dataclasses.dataclass",
-    "dataclasses.field",
-    "enum.Enum",
-    "pathlib.Path",
-    "ass_ade.tools.base.ToolResult",
-    "ass_ade.tools.history.FileHistory"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/tools/plan.py:143"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_apply.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

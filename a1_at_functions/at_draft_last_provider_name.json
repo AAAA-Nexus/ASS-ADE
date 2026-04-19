@@ -1,16 +1,18 @@
 {
-  "body": "    def last_provider_name(self) -> str | None:\n        return self._last_provider_name\n",
-  "body_hash": "745bf933b7d3e7fa",
+  "body": "def last_provider_name(self) -> str | None:\n    return self._last_provider_name\n",
+  "body_hash": "638ab4abd3182e32",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_multiprovider.py:34.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_last_provider_name.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.last_provider_name",
-  "imports": [],
+  "id": "at.source.a1_at_functions.last_provider_name",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_multiprovider.py:34"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_last_provider_name.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

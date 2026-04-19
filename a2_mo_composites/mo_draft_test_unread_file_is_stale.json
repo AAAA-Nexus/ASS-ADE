@@ -1,22 +1,23 @@
 {
-  "body": "    def test_unread_file_is_stale(self, tmp_path):\n        tca = self._make(tmp_path)\n        report = tca.check_freshness(\"/never/read.py\")\n        assert report.fresh is False\n        assert report.last_read_ts is None\n",
-  "body_hash": "c73bb0760672e93d",
+  "body": "def test_unread_file_is_stale(self, tmp_path):\n    tca = self._make(tmp_path)\n    report = tca.check_freshness(\"/never/read.py\")\n    assert report.fresh is False\n    assert report.last_read_ts is None\n",
+  "body_hash": "eb56452ce86b299e",
   "body_truncated": false,
   "callers_of": [
     "_make",
     "check_freshness"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testtcaengine.py:18.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testtcaengine.py:20.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.test_unread_file_is_stale",
+  "id": "mo.source.a2_mo_composites.test_unread_file_is_stale",
   "imports": [
+    "__future__.annotations",
     "ass_ade.agent.tca.TCAEngine",
     "ass_ade.agent.tca.TCAEngine"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testtcaengine.py:18"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testtcaengine.py:20"
   },
   "kind": "engine_molecule",
   "made_of": [],

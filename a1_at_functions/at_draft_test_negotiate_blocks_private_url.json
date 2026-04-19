@@ -1,6 +1,6 @@
 {
-  "body": "    def test_negotiate_blocks_private_url(self, tmp_path: Path) -> None:\n        result = runner.invoke(\n            app, [\"a2a\", \"negotiate\", \"http://192.168.1.1/.well-known/agent.json\",\n                   \"--config\", str(_hybrid_config(tmp_path))]\n        )\n        assert result.exit_code == 1\n        assert \"Blocked\" in result.stdout\n",
-  "body_hash": "3c2826687ca8eaa8",
+  "body": "def test_negotiate_blocks_private_url(self, tmp_path: Path) -> None:\n    result = runner.invoke(\n        app, [\"a2a\", \"negotiate\", \"http://192.168.1.1/.well-known/agent.json\",\n               \"--config\", str(_hybrid_config(tmp_path))]\n    )\n    assert result.exit_code == 1\n    assert \"Blocked\" in result.stdout\n",
+  "body_hash": "cefe6ae255fc783b",
   "body_truncated": false,
   "callers_of": [
     "invoke",
@@ -8,16 +8,15 @@
     "_hybrid_config"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testa2anegotiatecli.py:6.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_negotiate_blocks_private_url.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_negotiate_blocks_private_url",
+  "id": "at.source.a1_at_functions.test_negotiate_blocks_private_url",
   "imports": [
-    "ass_ade.a2a.A2AAgentCard",
-    "ass_ade.a2a.NegotiationResult"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testa2anegotiatecli.py:6"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_negotiate_blocks_private_url.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

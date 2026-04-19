@@ -1,18 +1,20 @@
 {
-  "body": "    def test_complex_multi_step(self):\n        c = classify_complexity(\n            \"First, implement a REST API endpoint for user registration, \"\n            \"then write integration tests and create a database migration\"\n        )\n        assert c >= 0.5\n",
-  "body_hash": "309af23b58552d87",
+  "body": "def test_complex_multi_step(self):\n    c = classify_complexity(\n        \"First, implement a REST API endpoint for user registration, \"\n        \"then write integration tests and create a database migration\"\n    )\n    assert c >= 0.5\n",
+  "body_hash": "46591c03c9909d1c",
   "body_truncated": false,
   "callers_of": [
     "classify_complexity"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testclassifycomplexity.py:14.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_complex_multi_step.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_complex_multi_step",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_complex_multi_step",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testclassifycomplexity.py:14"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_complex_multi_step.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

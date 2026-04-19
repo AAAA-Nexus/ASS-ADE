@@ -1,19 +1,21 @@
 {
-  "body": "        def handler(request: httpx.Request) -> httpx.Response:\n            requests_made.append(request)\n            return httpx.Response(200, json={\"success\": True, \"result\": {}})\n",
-  "body_hash": "4ccc7e45443c2bf4",
+  "body": "def handler(request: httpx.Request) -> httpx.Response:\n    requests_made.append(request)\n    return httpx.Response(200, json={\"success\": True, \"result\": {}})\n",
+  "body_hash": "d6ea7d2c015f6496",
   "body_truncated": false,
   "callers_of": [
     "append",
     "Response"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexusclientsearch.py:10.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testnexusclientsearch.py:12.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.handler",
-  "imports": [],
+  "id": "mo.source.a2_mo_composites.handler",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testnexusclientsearch.py:10"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testnexusclientsearch.py:12"
   },
   "kind": "engine_molecule",
   "made_of": [],

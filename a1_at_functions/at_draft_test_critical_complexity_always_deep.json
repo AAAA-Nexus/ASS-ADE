@@ -1,0 +1,33 @@
+{
+  "body": "def test_critical_complexity_always_deep(self):\n    lse = self._make()\n    decision = lse.select(trs_score=0.9, complexity=\"critical\")\n    assert decision.tier == \"deep\"\n",
+  "body_hash": "c6da55191893f3d7",
+  "body_truncated": false,
+  "callers_of": [
+    "_make",
+    "select"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_critical_complexity_always_deep.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.test_critical_complexity_always_deep",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_critical_complexity_always_deep.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "test_critical_complexity_always_deep",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for test_critical_complexity_always_deep"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

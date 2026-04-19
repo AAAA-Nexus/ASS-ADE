@@ -1,6 +1,6 @@
 {
-  "body": "    def capture_trace(self, phase: str, data: dict) -> str:\n        text = f\"[{phase}] {data.get('summary', str(data)[:200])}\"\n        meta = {\"phase\": phase, \"data\": data, \"kind\": \"trace\"}\n        result = store_vector_memory(\n            text=text,\n            namespace=EXPERIENCE_NS,\n            metadata=meta,\n            working_dir=self._working_dir,\n        )\n        self._traces += 1\n        return result.id\n",
-  "body_hash": "989f20951facc096",
+  "body": "def capture_trace(self, phase: str, data: dict) -> str:\n    text = f\"[{phase}] {data.get('summary', str(data)[:200])}\"\n    meta = {\"phase\": phase, \"data\": data, \"kind\": \"trace\"}\n    result = store_vector_memory(\n        text=text,\n        namespace=EXPERIENCE_NS,\n        metadata=meta,\n        working_dir=self._working_dir,\n    )\n    self._traces += 1\n    return result.id\n",
+  "body_hash": "6bd7e5953527997d",
   "body_truncated": false,
   "callers_of": [
     "store_vector_memory",
@@ -8,15 +8,15 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_edee.py:20.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_capture_trace.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.capture_trace",
+  "id": "at.source.a1_at_functions.capture_trace",
   "imports": [
-    "ass_ade.agent.exif.EXIF"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_edee.py:20"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_capture_trace.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,17 +1,18 @@
 {
-  "body": "    def check_conviction_gate(self, tool_name: str, args: dict) -> bool:\n        \"\"\"Return True if the tool call should be BLOCKED due to low conviction.\n\n        Only blocks destructive tools when conviction is below threshold.\n        Fail-open: returns False (don't block) on any error.\n        \"\"\"\n        if tool_name not in self._destructive_tools:\n            return False\n        try:\n            conviction = self.wisdom.conviction if self._wisdom else 0.5\n            if conviction < self._conviction_threshold and self.wisdom._audits > 0:\n                _LOG.warning(\n                    \"Conviction gate: %s blocked (conviction=%.2f < %.2f)\",\n                    tool_name, conviction, self._conviction_threshold,\n                )\n                return True\n        except Exception as exc:\n            _LOG.debug(\"conviction gate check failed (fail-open): %s\", exc)\n        return False\n",
-  "body_hash": "c7bbd9e53b6c1930",
+  "body": "def check_conviction_gate(self, tool_name: str, args: dict) -> bool:\n    \"\"\"Return True if the tool call should be BLOCKED due to low conviction.\n\n    Only blocks destructive tools when conviction is below threshold.\n    Fail-open: returns False (don't block) on any error.\n    \"\"\"\n    if tool_name not in self._destructive_tools:\n        return False\n    try:\n        conviction = self.wisdom.conviction if self._wisdom else 0.5\n        if conviction < self._conviction_threshold and self.wisdom._audits > 0:\n            _LOG.warning(\n                \"Conviction gate: %s blocked (conviction=%.2f < %.2f)\",\n                tool_name, conviction, self._conviction_threshold,\n            )\n            return True\n    except Exception as exc:\n        _LOG.debug(\"conviction gate check failed (fail-open): %s\", exc)\n    return False\n",
+  "body_hash": "665f0391be136ce0",
   "body_truncated": false,
   "callers_of": [
     "warning",
     "debug"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_engineorchestrator.py:217.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_engineorchestrator.py:219.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.check_conviction_gate",
+  "id": "mo.source.a2_mo_composites.check_conviction_gate",
   "imports": [
+    "__future__.annotations",
     "ass_ade.agent.atlas.Atlas",
     "ass_ade.agent.bas.BAS",
     "ass_ade.agent.wisdom.WisdomEngine",
@@ -34,7 +35,7 @@
     "json"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_engineorchestrator.py:217"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_engineorchestrator.py:219"
   },
   "kind": "engine_molecule",
   "made_of": [],

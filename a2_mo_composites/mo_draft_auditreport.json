@@ -6,22 +6,15 @@
     "field"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/wisdom.py:14.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_auditreport.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.auditreport",
+  "id": "mo.source.a2_mo_composites.auditreport",
   "imports": [
-    "__future__.annotations",
-    "logging",
-    "dataclasses.dataclass",
-    "dataclasses.field",
-    "typing.Any",
-    "ass_ade.agent.audit_questions.AUDIT_QUESTIONS",
-    "ass_ade.context_memory.query_vector_memory",
-    "ass_ade.context_memory.store_vector_memory"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/wisdom.py:14"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_auditreport.py:7"
   },
   "kind": "engine_molecule",
   "made_of": [],

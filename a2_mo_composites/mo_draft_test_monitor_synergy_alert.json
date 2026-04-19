@@ -1,13 +1,13 @@
 {
-  "body": "    def test_monitor_synergy_alert(self) -> None:\n        b = BAS({\"synergy\": {\"threshold\": 0.5}})\n        a = b.monitor({\"synergy\": 0.8, \"novelty\": 0.0, \"gvu_delta\": 0.0})\n        assert a is not None\n        assert a.kind == \"emergent_synergy\"\n        assert a.severity == \"high\"\n",
-  "body_hash": "996f642c8f4595f8",
+  "body": "def test_monitor_synergy_alert(self) -> None:\n    b = BAS({\"synergy\": {\"threshold\": 0.5}})\n    a = b.monitor({\"synergy\": 0.8, \"novelty\": 0.0, \"gvu_delta\": 0.0})\n    assert a is not None\n    assert a.kind == \"emergent_synergy\"\n    assert a.severity == \"high\"\n",
+  "body_hash": "b67272aa56bbac39",
   "body_truncated": false,
   "callers_of": [
     "BAS",
     "monitor"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:173.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_engine_integration.py:173.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_monitor_synergy_alert",
@@ -35,11 +35,11 @@
     "ass_ade.tools.registry.default_registry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_engine_integration.py:173"
+    "source": "C:/!ass-ade/tests/test_engine_integration.py:173"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.monitor"
+    "at.source.a1_at_functions.monitor"
   ],
   "name": "test_monitor_synergy_alert",
   "product_categories": [

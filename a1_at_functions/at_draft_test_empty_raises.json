@@ -1,19 +1,21 @@
 {
-  "body": "    def test_empty_raises(self) -> None:\n        with pytest.raises(ValueError, match=\"must not be empty\"):\n            validate_agent_id(\"\")\n",
-  "body_hash": "fd43d3a597bf29ab",
+  "body": "def test_empty_raises(self) -> None:\n    with pytest.raises(ValueError, match=\"must not be empty\"):\n        validate_session_id(\"\")\n",
+  "body_hash": "e0065aa84489451e",
   "body_truncated": false,
   "callers_of": [
     "raises",
-    "validate_agent_id"
+    "validate_session_id"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateagentid.py:14.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testvalidatesessionid.py:11.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_empty_raises",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_empty_raises",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateagentid.py:14"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testvalidatesessionid.py:11"
   },
   "kind": "pure_function",
   "made_of": [],

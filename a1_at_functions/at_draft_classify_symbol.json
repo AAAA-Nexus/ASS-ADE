@@ -10,27 +10,15 @@
     "_slug"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/project_parser.py:192.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_classify_symbol.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.classify_symbol",
+  "id": "at.source.a1_at_functions.classify_symbol",
   "imports": [
-    "__future__.annotations",
-    "ast",
-    "datetime",
-    "json",
-    "os",
-    "re",
-    "dataclasses.asdict",
-    "dataclasses.dataclass",
-    "pathlib.Path",
-    "typing.Any",
-    "typing.Iterable",
-    "ass_ade.engine.rebuild.tiers.TIER_PREFIX",
-    "ass_ade.engine.rebuild.tiers.TIERS"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/engine/rebuild/project_parser.py:192"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_classify_symbol.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

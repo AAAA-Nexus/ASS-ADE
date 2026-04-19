@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/commands/workflow.py:211
-# Component id: og.source.ass_ade.workflow_map_terrain
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_workflow_map_terrain.py:7
+# Component id: og.source.a3_og_features.workflow_map_terrain
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def workflow_map_terrain(

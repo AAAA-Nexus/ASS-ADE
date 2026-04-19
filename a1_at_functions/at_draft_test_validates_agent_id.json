@@ -1,6 +1,6 @@
 {
-  "body": "    def test_validates_agent_id(self) -> None:\n        with pytest.raises(ValueError, match=\"must not be empty\"):\n            trust_gate(_mock_client(), \"\")\n",
-  "body_hash": "015ef3181a87c4db",
+  "body": "def test_validates_agent_id(self) -> None:\n    with pytest.raises(ValueError, match=\"must not be empty\"):\n        trust_gate(_mock_client(), \"\")\n",
+  "body_hash": "f7d73abb5f6caad3",
   "body_truncated": false,
   "callers_of": [
     "raises",
@@ -8,13 +8,15 @@
     "_mock_client"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_testtrustgate.py:45.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_testtrustgate.py:47.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_validates_agent_id",
-  "imports": [],
+  "id": "at.source.a3_og_features.test_validates_agent_id",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_testtrustgate.py:45"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_testtrustgate.py:47"
   },
   "kind": "pure_function",
   "made_of": [],

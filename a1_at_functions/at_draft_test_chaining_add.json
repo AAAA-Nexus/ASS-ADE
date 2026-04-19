@@ -1,6 +1,6 @@
 {
-  "body": "    def test_chaining_add(self) -> None:\n        pipe = Pipeline(\"chain\")\n        returned = pipe.add(\"s1\", pass_step).add(\"s2\", pass_step)\n        assert returned is pipe\n        assert len(pipe.step_names) == 2\n",
-  "body_hash": "60973214a8f4b5b6",
+  "body": "def test_chaining_add(self) -> None:\n    pipe = Pipeline(\"chain\")\n    returned = pipe.add(\"s1\", pass_step).add(\"s2\", pass_step)\n    assert returned is pipe\n    assert len(pipe.step_names) == 2\n",
+  "body_hash": "e27d916eae32eace",
   "body_truncated": false,
   "callers_of": [
     "Pipeline",
@@ -8,13 +8,15 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpipeline.py:43.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_chaining_add.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_chaining_add",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_chaining_add",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testpipeline.py:43"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_chaining_add.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

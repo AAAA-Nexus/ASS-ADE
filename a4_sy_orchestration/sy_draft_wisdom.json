@@ -1,13 +1,13 @@
 {
-  "body": "    def wisdom(self):\n        if self._wisdom is None:\n            from ass_ade.agent.wisdom import WisdomEngine\n            self._wisdom = WisdomEngine(self._config, self._nexus)\n            # Hydrate principles + conviction from prior sessions (Phase 4)\n            self._hydrate_wisdom(self._wisdom)\n        return self._wisdom\n",
-  "body_hash": "4c949e90b8c537e5",
+  "body": "def wisdom(self):\n    if self._wisdom is None:\n        from ass_ade.agent.wisdom import WisdomEngine\n        self._wisdom = WisdomEngine(self._config, self._nexus)\n        # Hydrate principles + conviction from prior sessions (Phase 4)\n        self._hydrate_wisdom(self._wisdom)\n    return self._wisdom\n",
+  "body_hash": "2553768e6b0a4018",
   "body_truncated": false,
   "callers_of": [
     "WisdomEngine",
     "_hydrate_wisdom"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/orchestrator.py:143.",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/orchestrator.py:143.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.wisdom",
@@ -39,7 +39,7 @@
     "json"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/orchestrator.py:143"
+    "source": "C:/!ass-ade/src/ass_ade/agent/orchestrator.py:143"
   },
   "kind": "ecosystem_system",
   "made_of": [],

@@ -1,5 +1,5 @@
 {
-  "body": "def test_consensus_result_happy_path():\n    \"\"\"Test consensus_result GET endpoint.\"\"\"\n    def handler(request):\n        assert \"/v1/consensus/session/\" in request.url.path and \"/result\" in request.url.path\n        return httpx.Response(200, json={\"session_id\": \"session_123\", \"winning_output\": \"output\", \"confidence\": 0.95})\n    \n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        result = client.consensus_result(session_id=\"session_123\")\n        assert result is not None\n",
+  "body": "def test_consensus_result_happy_path():\n    \"\"\"Test consensus_result GET endpoint.\"\"\"\n    def handler(request):\n        assert \"/v1/consensus/session/\" in request.url.path and \"/result\" in request.url.path\n        return httpx.Response(200, json={\"session_id\": \"session_123\", \"winning_output\": \"output\", \"confidence\": 0.95})\n\n    transport = httpx.MockTransport(handler)\n    with NexusClient(base_url=\"https://atomadic.tech\", transport=transport) as client:\n        result = client.consensus_result(session_id=\"session_123\")\n        assert result is not None\n",
   "body_hash": "35e0b85a1e829458",
   "body_truncated": false,
   "callers_of": [
@@ -9,7 +9,7 @@
     "consensus_result"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:771.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_nexus_client_comprehensive.py:771.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "mo.source.ass_ade.test_consensus_result_happy_path",
@@ -144,7 +144,7 @@
     "ass_ade.nexus.models.EntropyResult"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_nexus_client_comprehensive.py:771"
+    "source": "C:/!ass-ade/tests/test_nexus_client_comprehensive.py:771"
   },
   "kind": "engine_molecule",
   "made_of": [],

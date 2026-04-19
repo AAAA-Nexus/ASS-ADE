@@ -1,21 +1,22 @@
 {
-  "body": "    def update_principles(self, principles: list[str]) -> list[str]:\n        for p in principles:\n            if p not in self._principles:\n                self._principles.append(p)\n",
-  "body_hash": "6f595d2a4c694335",
+  "body": "def update_principles(self, principles: list[str]) -> list[str]:\n    for p in principles:\n        if p not in self._principles:\n            self._principles.append(p)\n",
+  "body_hash": "5af1c6e9d6104f7a",
   "body_truncated": false,
   "callers_of": [
     "append"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_wisdomengine.py:146.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_wisdomengine.py:148.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.update_principles",
+  "id": "mo.source.a2_mo_composites.update_principles",
   "imports": [
+    "__future__.annotations",
     "ass_ade.context_memory.query_vector_memory",
     "ass_ade.context_memory.store_vector_memory"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_wisdomengine.py:146"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_wisdomengine.py:148"
   },
   "kind": "engine_molecule",
   "made_of": [],

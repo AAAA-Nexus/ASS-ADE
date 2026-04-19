@@ -1,6 +1,6 @@
 {
-  "body": "    def test_agent_run_success_outputs_result(self, tmp_path: Path) -> None:\n        \"\"\"Agent run should output the task result.\"\"\"\n        # Mock the engine.router.build_provider function\n        with patch(\"ass_ade.engine.router.build_provider\") as mock_provider_builder, \\\n             patch(\"ass_ade.tools.registry.default_registry\") as mock_registry_builder, \\\n             patch(\"ass_ade.agent.loop.AgentLoop\") as mock_agent_class:\n            \n            # Mock provider, registry, and agent\n            mock_provider = MagicMock()\n            mock_provider_builder.return_value = mock_provider\n            \n            mock_registry = MagicMock()\n            mock_registry_builder.return_value = mock_registry\n            \n            mock_agent = MagicMock()\n            mock_agent.step.return_value = \"Task completed: analyzed 5 files\"\n            mock_agent_class.return_value = mock_agent\n            \n            config_path = tmp_path / \".ass-ade\" / \"config.json\"\n            write_default_config(config_path, config=AssAdeConfig(profile=\"local\"), overwrite=True)\n            \n            result = runner.invoke(\n                app,\n                [\"agent\", \"run\", \"Analyze the codebase structure\", \"--config\", str(config_path)],\n            )\n            \n            assert result.exit_code == 0\n            assert \"Task completed\" in result.stdout or \"analyzed\" in result.stdout\n",
-  "body_hash": "443b27bfee644ccf",
+  "body": "def test_agent_run_success_outputs_result(self, tmp_path: Path) -> None:\n    \"\"\"Agent run should output the task result.\"\"\"\n    # Mock the engine.router.build_provider function\n    with patch(\"ass_ade.engine.router.build_provider\") as mock_provider_builder, \\\n         patch(\"ass_ade.tools.registry.default_registry\") as mock_registry_builder, \\\n         patch(\"ass_ade.agent.loop.AgentLoop\") as mock_agent_class:\n\n        # Mock provider, registry, and agent\n        mock_provider = MagicMock()\n        mock_provider_builder.return_value = mock_provider\n\n        mock_registry = MagicMock()\n        mock_registry_builder.return_value = mock_registry\n\n        mock_agent = MagicMock()\n        mock_agent.step.return_value = \"Task completed: analyzed 5 files\"\n        mock_agent_class.return_value = mock_agent\n\n        config_path = tmp_path / \".ass-ade\" / \"config.json\"\n        write_default_config(config_path, config=AssAdeConfig(profile=\"local\"), overwrite=True)\n\n        result = runner.invoke(\n            app,\n            [\"agent\", \"run\", \"Analyze the codebase structure\", \"--config\", str(config_path)],\n        )\n\n        assert result.exit_code == 0\n        assert \"Task completed\" in result.stdout or \"analyzed\" in result.stdout\n",
+  "body_hash": "7feedb624293dce1",
   "body_truncated": false,
   "callers_of": [
     "patch",
@@ -11,13 +11,15 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testagentrun.py:8.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_agent_run_success_outputs_result.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_agent_run_success_outputs_result",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_agent_run_success_outputs_result",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testagentrun.py:8"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_agent_run_success_outputs_result.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

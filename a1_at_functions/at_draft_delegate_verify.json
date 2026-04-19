@@ -1,0 +1,32 @@
+{
+  "body": "def delegate_verify(\n    self,\n    chain: list[dict] | None = None,\n    *,\n    token: str | None = None,\n    **kwargs: Any,\n) -> DelegationValidation:\n    \"\"\"/v1/delegate/verify \u2014 full UCAN chain validation (D_MAX=23). $0.080/call\"\"\"\n    if chain is None:\n        chain = [{\"token\": token}] if token is not None else []\n    return self._post_model(\"/v1/delegate/verify\", DelegationValidation, {\"chain\": chain, **kwargs})\n",
+  "body_hash": "2b87d2ebd5895ad9",
+  "body_truncated": false,
+  "callers_of": [
+    "_post_model"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_delegate_verify.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.delegate_verify",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_delegate_verify.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "delegate_verify",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for delegate_verify"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

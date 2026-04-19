@@ -1,19 +1,21 @@
 {
-  "body": "    def record_gap(self, description: str, source: str = \"\") -> None:\n        \"\"\"Record a documentation gap discovered during synthesis.\"\"\"\n        self._gaps.append(GAPEntry(description=description, source=source))\n",
-  "body_hash": "1182fcdc6b540e46",
+  "body": "def record_gap(self, description: str, source: str = \"\") -> None:\n    \"\"\"Record a documentation gap discovered during synthesis.\"\"\"\n    self._gaps.append(GAPEntry(description=description, source=source))\n",
+  "body_hash": "ba40e2d36f7d0319",
   "body_truncated": false,
   "callers_of": [
     "append",
     "GAPEntry"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_tcaengine.py:88.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_tcaengine.py:90.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.record_gap",
-  "imports": [],
+  "id": "mo.source.a2_mo_composites.record_gap",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_tcaengine.py:88"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_tcaengine.py:90"
   },
   "kind": "engine_molecule",
   "made_of": [],

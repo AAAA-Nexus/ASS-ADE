@@ -9,22 +9,15 @@
     "read_text"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/local/linter.py:19.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_detect_linters.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.detect_linters",
+  "id": "at.source.a1_at_functions.detect_linters",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "re",
-    "shutil",
-    "subprocess",
-    "pathlib.Path",
-    "typing.Any",
-    "ass_ade.local.repo.DEFAULT_IGNORED_DIRS"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/local/linter.py:19"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_detect_linters.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

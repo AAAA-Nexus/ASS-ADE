@@ -1,18 +1,20 @@
 {
-  "body": "    def test_minor_new_function(self):\n        old = \"def foo(): pass\"\n        new = \"def foo(): pass\\ndef bar(): pass\"\n        assert classify_change(old, new) == \"minor\"\n",
-  "body_hash": "681b409857e7cc16",
+  "body": "def test_minor_new_function(self):\n    old = \"def foo(): pass\"\n    new = \"def foo(): pass\\ndef bar(): pass\"\n    assert classify_change(old, new) == \"minor\"\n",
+  "body_hash": "0c1626f58e9cc74b",
   "body_truncated": false,
   "callers_of": [
     "classify_change"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testclassifychange.py:15.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_minor_new_function.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_minor_new_function",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_minor_new_function",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testclassifychange.py:15"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_minor_new_function.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

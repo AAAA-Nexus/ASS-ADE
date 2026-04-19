@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/system.py:43
+# Extracted from C:/!ass-ade/src/ass_ade/system.py:44
 # Component id: sy.source.ass_ade.collect_tool_status
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def collect_tool_status(tools: tuple[str, ...] = DEFAULT_TOOLS) -> list[ToolStatus]:

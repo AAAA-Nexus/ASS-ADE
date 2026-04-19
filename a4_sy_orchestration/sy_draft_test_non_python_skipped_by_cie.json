@@ -1,6 +1,6 @@
 {
-  "body": "    def test_non_python_skipped_by_cie(self, tmp_path):\n        server = _make_server(tmp_path)\n        args = {\"path\": str(tmp_path / \"readme.txt\"), \"content\": \"raw text with eval()\"}\n        result = MagicMock(success=True, output=\"ok\")\n        out = server._post_tool_hook(\"write_file\", args, result)\n        # Text files aren't AST-validated or OWASP-scanned \u2192 pass through\n        assert out.success is True\n",
-  "body_hash": "e5c7aecdce90b265",
+  "body": "def test_non_python_skipped_by_cie(self, tmp_path):\n    server = _make_server(tmp_path)\n    args = {\"path\": str(tmp_path / \"readme.txt\"), \"content\": \"raw text with eval()\"}\n    result = MagicMock(success=True, output=\"ok\")\n    out = server._post_tool_hook(\"write_file\", args, result)\n    # Text files aren't AST-validated or OWASP-scanned \u2192 pass through\n    assert out.success is True\n",
+  "body_hash": "652bcc650f367d1a",
   "body_truncated": false,
   "callers_of": [
     "_make_server",
@@ -9,7 +9,7 @@
     "str"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_gates.py:115.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_gates.py:115.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.test_non_python_skipped_by_cie",
@@ -22,7 +22,7 @@
     "ass_ade.mcp.server.MCPServer"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_gates.py:115"
+    "source": "C:/!ass-ade/tests/test_mcp_gates.py:115"
   },
   "kind": "ecosystem_system",
   "made_of": [],

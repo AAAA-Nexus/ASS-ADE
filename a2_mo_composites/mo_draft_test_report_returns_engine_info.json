@@ -1,19 +1,21 @@
 {
-  "body": "    def test_report_returns_engine_info(self) -> None:\n        w = WisdomEngine({})\n        r = w.report()\n        assert r[\"engine\"] == \"wisdom\"\n        assert \"conviction\" in r and \"conviction_required\" in r\n",
-  "body_hash": "9e3bc64777c1f056",
+  "body": "def test_report_returns_engine_info(self) -> None:\n    w = WisdomEngine({})\n    r = w.report()\n    assert r[\"engine\"] == \"wisdom\"\n    assert \"conviction\" in r and \"conviction_required\" in r\n",
+  "body_hash": "8c63c67bdb4f6e3e",
   "body_truncated": false,
   "callers_of": [
     "WisdomEngine",
     "report"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwisdomengine.py:112.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testwisdomengine.py:114.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.test_report_returns_engine_info",
-  "imports": [],
+  "id": "mo.source.a2_mo_composites.test_report_returns_engine_info",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testwisdomengine.py:112"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_testwisdomengine.py:114"
   },
   "kind": "engine_molecule",
   "made_of": [],

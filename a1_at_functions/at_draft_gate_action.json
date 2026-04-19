@@ -1,27 +1,20 @@
 {
-  "body": "    def gate_action(self, action: str, cycle_state: dict) -> tuple[bool, str]:\n        self.run_audit(cycle_state)\n        if self.is_confident:\n            return (True, \"conviction_met\")\n        return (\n            False,\n            f\"conviction {self._conviction:.2f} below required {self._conviction_required:.2f}\",\n        )\n",
-  "body_hash": "35bda086e2065980",
+  "body": "def gate_action(self, action: str, cycle_state: dict) -> tuple[bool, str]:\n    self.run_audit(cycle_state)\n    if self.is_confident:\n        return (True, \"conviction_met\")\n    return (\n        False,\n        f\"conviction {self._conviction:.2f} below required {self._conviction_required:.2f}\",\n    )\n",
+  "body_hash": "5216f8ac17046f6a",
   "body_truncated": false,
   "callers_of": [
     "run_audit"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/wisdom.py:247.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_gate_action.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.gate_action",
+  "id": "at.source.a1_at_functions.gate_action",
   "imports": [
-    "__future__.annotations",
-    "logging",
-    "dataclasses.dataclass",
-    "dataclasses.field",
-    "typing.Any",
-    "ass_ade.agent.audit_questions.AUDIT_QUESTIONS",
-    "ass_ade.context_memory.query_vector_memory",
-    "ass_ade.context_memory.store_vector_memory"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/wisdom.py:247"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_gate_action.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

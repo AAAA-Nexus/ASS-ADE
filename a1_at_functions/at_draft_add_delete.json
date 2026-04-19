@@ -1,19 +1,21 @@
 {
-  "body": "    def add_delete(self, path: str, description: str = \"\") -> None:\n        self.edits.append(PlannedEdit(\n            kind=EditKind.DELETE,\n            path=path,\n            description=description or f\"Delete {path}\",\n        ))\n        self.validated = False\n",
-  "body_hash": "7475dce2dd3e3db5",
+  "body": "def add_delete(self, path: str, description: str = \"\") -> None:\n    self.edits.append(PlannedEdit(\n        kind=EditKind.DELETE,\n        path=path,\n        description=description or f\"Delete {path}\",\n    ))\n    self.validated = False\n",
+  "body_hash": "bf8fc4f395af3dfd",
   "body_truncated": false,
   "callers_of": [
     "append",
     "PlannedEdit"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_editplan.py:34.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_add_delete.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.add_delete",
-  "imports": [],
+  "id": "at.source.a1_at_functions.add_delete",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_editplan.py:34"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_add_delete.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

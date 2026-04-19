@@ -1,19 +1,21 @@
 {
-  "body": "    def test_dns_resolution_failure_handled(self) -> None:\n        \"\"\"DNS resolution failures should be caught and reported.\"\"\"\n        with pytest.raises(ValueError, match=\"private/loopback address\"):\n            # Invalid hostname that won't resolve\n            _validate_absolute_endpoint(\"https://this-domain-does-not-exist-12345-test.invalid/api\")\n",
-  "body_hash": "96098dab54eb2c08",
+  "body": "def test_dns_resolution_failure_handled(self) -> None:\n    \"\"\"DNS resolution failures should be caught and reported.\"\"\"\n    with pytest.raises(ValueError, match=\"private/loopback address\"):\n        # Invalid hostname that won't resolve\n        _validate_absolute_endpoint(\"https://this-domain-does-not-exist-12345-test.invalid/api\")\n",
+  "body_hash": "84ed11e86a889975",
   "body_truncated": false,
   "callers_of": [
     "raises",
     "_validate_absolute_endpoint"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateabsoluteendpoint.py:60.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testvalidateabsoluteendpoint.py:62.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_dns_resolution_failure_handled",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_dns_resolution_failure_handled",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_testvalidateabsoluteendpoint.py:60"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_testvalidateabsoluteendpoint.py:62"
   },
   "kind": "pure_function",
   "made_of": [],

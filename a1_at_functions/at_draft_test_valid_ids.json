@@ -1,26 +1,20 @@
 {
-  "body": "    def test_valid_ids(self) -> None:\n        assert validate_agent_id(\"agent-1\") == \"agent-1\"\n        assert validate_agent_id(\"13608\") == \"13608\"\n        assert validate_agent_id(\"my_agent.v2:latest\") == \"my_agent.v2:latest\"\n",
-  "body_hash": "25a529b95ee2e995",
+  "body": "def test_valid_ids(self) -> None:\n    assert validate_agent_id(\"agent-1\") == \"agent-1\"\n    assert validate_agent_id(\"13608\") == \"13608\"\n    assert validate_agent_id(\"my_agent.v2:latest\") == \"my_agent.v2:latest\"\n",
+  "body_hash": "d2816f4c3ea3e1ff",
   "body_truncated": false,
   "callers_of": [
     "validate_agent_id"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_validation.py:16.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_valid_ids.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_valid_ids",
+  "id": "at.source.a1_at_functions.test_valid_ids",
   "imports": [
-    "pytest",
-    "ass_ade.nexus.validation._is_private_host",
-    "ass_ade.nexus.validation.validate_agent_id",
-    "ass_ade.nexus.validation.validate_prompt",
-    "ass_ade.nexus.validation.validate_session_id",
-    "ass_ade.nexus.validation.validate_url",
-    "ass_ade.nexus.validation.validate_usdc_amount"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_validation.py:16"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_valid_ids.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

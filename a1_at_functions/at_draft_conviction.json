@@ -1,25 +1,18 @@
 {
-  "body": "    def conviction(self) -> float:\n        return self._conviction\n",
-  "body_hash": "76b12d86cdbab32f",
+  "body": "def conviction(self) -> float:\n    return self._conviction\n",
+  "body_hash": "731390bb6f0ac51f",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/wisdom.py:52.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_conviction.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.conviction",
+  "id": "at.source.a1_at_functions.conviction",
   "imports": [
-    "__future__.annotations",
-    "logging",
-    "dataclasses.dataclass",
-    "dataclasses.field",
-    "typing.Any",
-    "ass_ade.agent.audit_questions.AUDIT_QUESTIONS",
-    "ass_ade.context_memory.query_vector_memory",
-    "ass_ade.context_memory.store_vector_memory"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/wisdom.py:52"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_conviction.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,5 +1,7 @@
-# Extracted from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_plan.py:14
-# Component id: at.source.ass_ade.workspace
+# Extracted from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_workspace.py:7
+# Component id: at.source.a1_at_functions.workspace
+from __future__ import annotations
+
 __version__ = "0.1.0"
 
 def workspace(tmp_path: Path) -> Path:

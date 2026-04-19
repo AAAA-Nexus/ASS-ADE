@@ -1,0 +1,33 @@
+{
+  "body": "def handler(request: httpx.Request) -> httpx.Response:\n    requests_made.append(request)\n    return httpx.Response(200, json={\"success\": True, \"result\": {}})\n",
+  "body_hash": "d6ea7d2c015f6496",
+  "body_truncated": false,
+  "callers_of": [
+    "append",
+    "Response"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_test_internal_search_sends_session_token.py:11.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.a0_qk_constants.handler",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_test_internal_search_sends_session_token.py:11"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "handler",
+  "product_categories": [
+    "DCM"
+  ],
+  "provides": [
+    "rebuild candidate for handler"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

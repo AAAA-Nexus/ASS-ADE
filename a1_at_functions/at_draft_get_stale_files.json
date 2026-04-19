@@ -1,6 +1,6 @@
 {
-  "body": "    def get_stale_files(self, paths: list[str | Path] | None = None) -> list[FreshnessReport]:\n        \"\"\"Return stale freshness reports for all tracked paths (or given subset).\"\"\"\n        if paths is not None:\n            targets = [str(Path(p).resolve()) for p in paths]\n        else:\n            targets = list(self._reads.keys())\n        stale = []\n        for p in targets:\n            report = self.check_freshness(p)\n            if not report.fresh:\n                stale.append(report)\n        self._stale_count = len(stale)\n        return stale\n",
-  "body_hash": "8495bd5b762e1251",
+  "body": "def get_stale_files(self, paths: list[str | Path] | None = None) -> list[FreshnessReport]:\n    \"\"\"Return stale freshness reports for all tracked paths (or given subset).\"\"\"\n    if paths is not None:\n        targets = [str(Path(p).resolve()) for p in paths]\n    else:\n        targets = list(self._reads.keys())\n    stale = []\n    for p in targets:\n        report = self.check_freshness(p)\n        if not report.fresh:\n            stale.append(report)\n    self._stale_count = len(stale)\n    return stale\n",
+  "body_hash": "4b5794033034f577",
   "body_truncated": false,
   "callers_of": [
     "len",
@@ -13,22 +13,15 @@
     "Path"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/tca.py:111.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_get_stale_files.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.get_stale_files",
+  "id": "at.source.a1_at_functions.get_stale_files",
   "imports": [
-    "__future__.annotations",
-    "json",
-    "logging",
-    "time",
-    "dataclasses.dataclass",
-    "dataclasses.field",
-    "pathlib.Path",
-    "typing.Any"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/src/ass_ade/agent/tca.py:111"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_get_stale_files.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

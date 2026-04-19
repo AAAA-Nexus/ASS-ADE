@@ -1,16 +1,18 @@
 {
-  "body": "    def fake_execute(self: Atomadic, cmd: list[str]) -> str:\n        captured[\"cmd\"] = cmd\n        return '{\"profile\":\"local\"}'\n",
-  "body_hash": "16b9813603e92735",
+  "body": "def fake_execute(self: Atomadic, cmd: list[str]) -> str:\n    captured[\"cmd\"] = cmd\n    return '{\"profile\":\"local\"}'\n",
+  "body_hash": "745d0239d6cf1045",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_atomadic_dispatches_dynamic_cli_args.py:18.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_atomadic_dispatches_dynamic_cli_args.py:20.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.fake_execute",
-  "imports": [],
+  "id": "at.source.a1_at_functions.fake_execute",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a1_at_functions/at_draft_test_atomadic_dispatches_dynamic_cli_args.py:18"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_atomadic_dispatches_dynamic_cli_args.py:20"
   },
   "kind": "pure_function",
   "made_of": [],

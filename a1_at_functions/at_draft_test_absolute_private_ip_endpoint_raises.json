@@ -1,6 +1,6 @@
 {
-  "body": "    def test_absolute_private_ip_endpoint_raises(self) -> None:\n        \"\"\"Invoking a tool with private IP endpoint should raise ValueError.\"\"\"\n        from ass_ade.mcp.utils import invoke_tool\n        \n        tool = MCPTool(\n            name=\"internal-tool\",\n            endpoint=\"https://192.168.1.1/internal\",\n            method=\"GET\",\n            paid=False,\n        )\n        \n        with pytest.raises(ValueError, match=\"private/loopback address\"):\n            invoke_tool(\"https://api.example.com\", tool)\n",
-  "body_hash": "9e8fa2ae1fdd5a60",
+  "body": "def test_absolute_private_ip_endpoint_raises(self) -> None:\n    \"\"\"Invoking a tool with private IP endpoint should raise ValueError.\"\"\"\n    from ass_ade.mcp.utils import invoke_tool\n\n    tool = MCPTool(\n        name=\"internal-tool\",\n        endpoint=\"https://192.168.1.1/internal\",\n        method=\"GET\",\n        paid=False,\n    )\n\n    with pytest.raises(ValueError, match=\"private/loopback address\"):\n        invoke_tool(\"https://api.example.com\", tool)\n",
+  "body_hash": "7acec5baa432d3a0",
   "body_truncated": false,
   "callers_of": [
     "MCPTool",
@@ -8,27 +8,16 @@
     "invoke_tool"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_ssrf_protection.py:152.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_absolute_private_ip_endpoint_raises.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_absolute_private_ip_endpoint_raises",
+  "id": "at.source.a1_at_functions.test_absolute_private_ip_endpoint_raises",
   "imports": [
-    "ipaddress",
-    "json",
-    "unittest.mock",
-    "pytest",
-    "ass_ade.a2a.fetch_agent_card",
-    "ass_ade.mcp.utils._validate_absolute_endpoint",
-    "ass_ade.nexus.models.MCPManifest",
-    "ass_ade.nexus.models.MCPTool",
-    "ass_ade.mcp.utils.invoke_tool",
-    "ass_ade.mcp.utils.invoke_tool",
-    "ass_ade.mcp.utils.simulate_invoke",
-    "ass_ade.mcp.utils.simulate_invoke",
-    "ass_ade.mcp.utils.simulate_invoke"
+    "__future__.annotations",
+    "ass_ade.mcp.utils.invoke_tool"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_ssrf_protection.py:152"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_absolute_private_ip_endpoint_raises.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

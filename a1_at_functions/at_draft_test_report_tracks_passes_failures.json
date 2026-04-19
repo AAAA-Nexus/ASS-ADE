@@ -1,6 +1,6 @@
 {
-  "body": "    def test_report_tracks_passes_failures(self):\n        from ass_ade.agent.cie import CIEPipeline\n        cie = CIEPipeline({\"cie\": {\"enable_lint\": False}})\n        cie.run(\"x = 1\\n\", \"python\")\n        cie.run(\"def bad(:\\n    pass\\n\", \"python\")\n        rep = cie.report()\n        assert rep[\"passes\"] >= 1\n        assert rep[\"failures\"] >= 1\n        assert 0.0 <= rep[\"pass_rate\"] <= 1.0\n",
-  "body_hash": "79a8c6ecdccf0841",
+  "body": "def test_report_tracks_passes_failures(self):\n    from ass_ade.agent.cie import CIEPipeline\n    cie = CIEPipeline({\"cie\": {\"enable_lint\": False}})\n    cie.run(\"x = 1\\n\", \"python\")\n    cie.run(\"def bad(:\\n    pass\\n\", \"python\")\n    rep = cie.report()\n    assert rep[\"passes\"] >= 1\n    assert rep[\"failures\"] >= 1\n    assert 0.0 <= rep[\"pass_rate\"] <= 1.0\n",
+  "body_hash": "f800aa48650beb04",
   "body_truncated": false,
   "callers_of": [
     "CIEPipeline",
@@ -8,24 +8,16 @@
     "report"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testciepipeline.py:67.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_report_tracks_passes_failures.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_report_tracks_passes_failures",
+  "id": "at.source.a1_at_functions.test_report_tracks_passes_failures",
   "imports": [
-    "ass_ade.agent.cie.CIEPipeline",
-    "ass_ade.agent.cie.CIEPipeline",
-    "ass_ade.agent.cie.CIEPipeline",
-    "ass_ade.agent.cie.CIEPipeline",
-    "ass_ade.agent.cie.CIEPipeline",
-    "ass_ade.agent.cie.CIEPipeline",
-    "ass_ade.agent.cie.CIEPipeline",
-    "ass_ade.agent.cie.CIEPipeline",
-    "ass_ade.agent.cie.CIEPipeline",
+    "__future__.annotations",
     "ass_ade.agent.cie.CIEPipeline"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testciepipeline.py:67"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_report_tracks_passes_failures.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

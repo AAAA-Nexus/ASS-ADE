@@ -1,6 +1,6 @@
 {
-  "body": "    def test_history_tracking(self):\n        router = EpistemicRouter()\n        router.route(\"Hello\")\n        router.route(\"Write a complex algorithm with formal proof\")\n        assert len(router.history) == 2\n",
-  "body_hash": "5c254abab46611f0",
+  "body": "def test_history_tracking(self):\n    router = EpistemicRouter()\n    router.route(\"Hello\")\n    router.route(\"Write a complex algorithm with formal proof\")\n    assert len(router.history) == 2\n",
+  "body_hash": "11d80d919f116d5c",
   "body_truncated": false,
   "callers_of": [
     "EpistemicRouter",
@@ -8,21 +8,15 @@
     "len"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_routing.py:96.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_history_tracking.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_history_tracking",
+  "id": "at.source.a1_at_functions.test_history_tracking",
   "imports": [
-    "__future__.annotations",
-    "ass_ade.agent.routing.EpistemicRouter",
-    "ass_ade.agent.routing.ModelTier",
-    "ass_ade.agent.routing.RoutingDecision",
-    "ass_ade.agent.routing.classify_complexity",
-    "ass_ade.agent.routing.local_route",
-    "ass_ade.agent.routing.tier_for_complexity"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_routing.py:96"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_history_tracking.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

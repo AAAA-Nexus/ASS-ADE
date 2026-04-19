@@ -31,7 +31,7 @@ ass-ade enhance ./my-project
 ## Tier layout after rebuild
 
 ```
-!ass-ade-v0.0.1-final/
+!ass-ade-v0.1.0-evolved-20260419-005502/
 ├── a0_qk_constants/        # stateless invariants, constants, axioms
 ├── a1_at_functions/        # pure functions
 ├── a2_mo_composites/       # stateful compositions
@@ -54,4 +54,4 @@ ass-ade enhance ./my-project
 python -c "import json,hashlib; c=json.load(open('CERTIFICATE.json')); h=c.pop('certificate_sha256'); b=json.dumps(c,sort_keys=True).encode(); print('VERIFIED' if hashlib.sha256(b).hexdigest()==h else 'TAMPERED')"
 ```
 
-Rebuild tag: `20260418_220755` · Issued: 2026-04-19
+Rebuild tag: `20260419_005513` · Issued: 2026-04-19

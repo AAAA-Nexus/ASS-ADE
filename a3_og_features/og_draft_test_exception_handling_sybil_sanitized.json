@@ -1,6 +1,6 @@
 {
-  "body": "    def test_exception_handling_sybil_sanitized(self) -> None:\n        \"\"\"Exception in sybil_check should not leak raw exception to caller.\"\"\"\n        client = _mock_client()\n        client.sybil_check.side_effect = ValueError(\"Invalid agent signature\")\n        result = trust_gate(client, \"agent-bad-sig\")\n        sybil_step = next(s for s in result.steps if s.name == \"sybil_check\")\n        assert sybil_step.detail == \"step_failed\"\n        assert \"Invalid\" not in sybil_step.detail\n        assert \"signature\" not in sybil_step.detail\n",
-  "body_hash": "0b4fbc791f8e29c5",
+  "body": "def test_exception_handling_sybil_sanitized(self) -> None:\n    \"\"\"Exception in sybil_check should not leak raw exception to caller.\"\"\"\n    client = _mock_client()\n    client.sybil_check.side_effect = ValueError(\"Invalid agent signature\")\n    result = trust_gate(client, \"agent-bad-sig\")\n    sybil_step = next(s for s in result.steps if s.name == \"sybil_check\")\n    assert sybil_step.detail == \"step_failed\"\n    assert \"Invalid\" not in sybil_step.detail\n    assert \"signature\" not in sybil_step.detail\n",
+  "body_hash": "34b9042242cc6f07",
   "body_truncated": false,
   "callers_of": [
     "_mock_client",
@@ -9,13 +9,15 @@
     "next"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_testtrustgate.py:61.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_testtrustgate.py:63.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "og.source.ass_ade.test_exception_handling_sybil_sanitized",
-  "imports": [],
+  "id": "og.source.a3_og_features.test_exception_handling_sybil_sanitized",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a3_og_features/og_draft_testtrustgate.py:61"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a3_og_features/og_draft_testtrustgate.py:63"
   },
   "kind": "product_organism",
   "made_of": [],

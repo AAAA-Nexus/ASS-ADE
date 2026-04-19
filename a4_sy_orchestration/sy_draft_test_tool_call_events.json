@@ -1,6 +1,6 @@
 {
-  "body": "    def test_tool_call_events(self, tmp_path):\n        provider = _MockProvider([\n            CompletionResponse(\n                message=Message(\n                    role=\"assistant\",\n                    content=\"\",\n                    tool_calls=[\n                        ToolCallRequest(id=\"c1\", name=\"echo\", arguments={\"text\": \"x\"})\n                    ],\n                ),\n                finish_reason=\"tool_calls\",\n            ),\n            CompletionResponse(\n                message=Message(role=\"assistant\", content=\"Done.\"),\n                finish_reason=\"stop\",\n            ),\n        ])\n        registry = ToolRegistry()\n        registry.register(_EchoTool())\n\n        loop = AgentLoop(\n            provider=provider,\n            registry=registry,\n            working_dir=str(tmp_path),\n        )\n        events = list(loop.step_stream(\"Echo x\"))\n\n        kinds = [e.kind for e in events]\n        assert \"tool_call\" in kinds\n        assert \"tool_result\" in kinds\n        assert \"done\" in kinds\n\n        tool_event = next(e for e in events if e.kind == \"tool_call\")\n        assert tool_event.tool_name == \"echo\"\n\n        result_event = next(e for e in events if e.kind == \"tool_result\")\n        assert result_event.tool_result is not None\n        assert result_event.tool_result.success\n",
-  "body_hash": "5c73e29c33e4251b",
+  "body": "def test_tool_call_events(self, tmp_path):\n    provider = _MockProvider([\n        CompletionResponse(\n            message=Message(\n                role=\"assistant\",\n                content=\"\",\n                tool_calls=[\n                    ToolCallRequest(id=\"c1\", name=\"echo\", arguments={\"text\": \"x\"})\n                ],\n            ),\n            finish_reason=\"tool_calls\",\n        ),\n        CompletionResponse(\n            message=Message(role=\"assistant\", content=\"Done.\"),\n            finish_reason=\"stop\",\n        ),\n    ])\n    registry = ToolRegistry()\n    registry.register(_EchoTool())\n\n    loop = AgentLoop(\n        provider=provider,\n        registry=registry,\n        working_dir=str(tmp_path),\n    )\n    events = list(loop.step_stream(\"Echo x\"))\n\n    kinds = [e.kind for e in events]\n    assert \"tool_call\" in kinds\n    assert \"tool_result\" in kinds\n    assert \"done\" in kinds\n\n    tool_event = next(e for e in events if e.kind == \"tool_call\")\n    assert tool_event.tool_name == \"echo\"\n\n    result_event = next(e for e in events if e.kind == \"tool_result\")\n    assert result_event.tool_result is not None\n    assert result_event.tool_result.success\n",
+  "body_hash": "a7e50f7e8f0deb2a",
   "body_truncated": false,
   "callers_of": [
     "_MockProvider",
@@ -17,7 +17,7 @@
     "ToolCallRequest"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:249.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_server_streaming.py:249.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.test_tool_call_events",
@@ -36,11 +36,11 @@
     "ass_ade.tools.registry.ToolRegistry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:249"
+    "source": "C:/!ass-ade/tests/test_mcp_server_streaming.py:249"
   },
   "kind": "ecosystem_system",
   "made_of": [
-    "og.source.ass_ade.toolregistry"
+    "og.source.a3_og_features.toolregistry"
   ],
   "name": "test_tool_call_events",
   "product_categories": [

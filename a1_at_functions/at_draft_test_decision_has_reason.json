@@ -1,19 +1,21 @@
 {
-  "body": "    def test_decision_has_reason(self):\n        decision = local_route(\"Hello\")\n        assert \"heuristic\" in decision.reason.lower()\n",
-  "body_hash": "84b2b960a1cda60f",
+  "body": "def test_decision_has_reason(self):\n    decision = local_route(\"Hello\")\n    assert \"heuristic\" in decision.reason.lower()\n",
+  "body_hash": "e30b25ef8dd6f251",
   "body_truncated": false,
   "callers_of": [
     "local_route",
     "lower"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testlocalroute.py:17.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_decision_has_reason.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_decision_has_reason",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_decision_has_reason",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testlocalroute.py:17"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_decision_has_reason.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

@@ -1,6 +1,6 @@
 {
-  "body": "    def test_loads_from_manifest(self, tmp_path: Path):\n        manifest = {\n            \"components\": [\n                {\n                    \"id\": \"at.foo\",\n                    \"version\": \"0.2.1\",\n                    \"body_hash\": \"abc123\",\n                    \"body\": \"def foo(): pass\",\n                }\n            ]\n        }\n        p = tmp_path / \"MANIFEST.json\"\n        p.write_text(json.dumps(manifest), encoding=\"utf-8\")\n        result = load_prev_versions(p)\n        assert \"at.foo\" in result\n        assert result[\"at.foo\"][\"version\"] == \"0.2.1\"\n        assert result[\"at.foo\"][\"body_hash\"] == \"abc123\"\n",
-  "body_hash": "899adb12bdd9868b",
+  "body": "def test_loads_from_manifest(self, tmp_path: Path):\n    manifest = {\n        \"components\": [\n            {\n                \"id\": \"at.foo\",\n                \"version\": \"0.2.1\",\n                \"body_hash\": \"abc123\",\n                \"body\": \"def foo(): pass\",\n            }\n        ]\n    }\n    p = tmp_path / \"MANIFEST.json\"\n    p.write_text(json.dumps(manifest), encoding=\"utf-8\")\n    result = load_prev_versions(p)\n    assert \"at.foo\" in result\n    assert result[\"at.foo\"][\"version\"] == \"0.2.1\"\n    assert result[\"at.foo\"][\"body_hash\"] == \"abc123\"\n",
+  "body_hash": "b87f454d9560d7cf",
   "body_truncated": false,
   "callers_of": [
     "write_text",
@@ -8,13 +8,15 @@
     "dumps"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testloadprevversions.py:12.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_test_loads_from_manifest.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "qk.source.ass_ade.test_loads_from_manifest",
-  "imports": [],
+  "id": "qk.source.a0_qk_constants.test_loads_from_manifest",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testloadprevversions.py:12"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_test_loads_from_manifest.py:7"
   },
   "kind": "invariant",
   "made_of": [],

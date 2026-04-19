@@ -1,10 +1,10 @@
 {
-  "body": "    def parameters(self):\n        return {\"type\": \"object\", \"properties\": {\"text\": {\"type\": \"string\"}}}\n",
-  "body_hash": "ffec893e9dd575d3",
+  "body": "def parameters(self):\n    return {\"type\": \"object\", \"properties\": {\"text\": {\"type\": \"string\"}}}\n",
+  "body_hash": "e4f1d7b00db276d8",
   "body_truncated": false,
   "callers_of": [],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:224.",
+  "description": "Draft candidate from C:/!ass-ade/tests/test_mcp_server_streaming.py:224.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
   "id": "sy.source.ass_ade.parameters",
@@ -23,7 +23,7 @@
     "ass_ade.tools.registry.ToolRegistry"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_mcp_server_streaming.py:224"
+    "source": "C:/!ass-ade/tests/test_mcp_server_streaming.py:224"
   },
   "kind": "ecosystem_system",
   "made_of": [],

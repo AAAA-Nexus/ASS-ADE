@@ -1,18 +1,20 @@
 {
-  "body": "    def test_long_text(self):\n        text = \"The quick brown fox jumps over the lazy dog. \" * 100\n        result = estimate_tokens(text)\n        # ~4500 chars / 3.7 \u2248 ~1216 tokens\n        assert 800 < result < 2000\n",
-  "body_hash": "928debee15a0566b",
+  "body": "def test_long_text(self):\n    text = \"The quick brown fox jumps over the lazy dog. \" * 100\n    result = estimate_tokens(text)\n    # ~4500 chars / 3.7 \u2248 ~1216 tokens\n    assert 800 < result < 2000\n",
+  "body_hash": "64a949e478b9bc51",
   "body_truncated": false,
   "callers_of": [
     "estimate_tokens"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testestimatetokens.py:20.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_testestimatetokens.py:22.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "qk.source.ass_ade.test_long_text",
-  "imports": [],
+  "id": "qk.source.a0_qk_constants.test_long_text",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a0_qk_constants/qk_draft_testestimatetokens.py:20"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a0_qk_constants/qk_draft_testestimatetokens.py:22"
   },
   "kind": "invariant",
   "made_of": [],

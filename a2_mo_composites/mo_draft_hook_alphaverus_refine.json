@@ -1,6 +1,6 @@
 {
-  "body": "    def hook_alphaverus_refine(self, code: str, spec: str) -> dict[str, Any] | None:\n        try:\n            from ass_ade.agent.alphaverus import AlphaVerus\n            av = AlphaVerus(getattr(self, \"_v18_config\", {}) or {}, self._client)\n            result = av.tree_search(code, spec)\n            if result is None:\n                return {\"code\": code, \"verified\": False, \"score\": 0.0, \"passed\": False}\n            return {\n                \"code\": result.code,\n                \"verified\": result.verified,\n                \"score\": result.score,\n                \"passed\": True,\n            }\n        except Exception as exc:\n            logging.getLogger(__name__).warning(\"hook_alphaverus_refine failed: %s\", exc)\n            return None\n",
-  "body_hash": "fc5d059f0ca68092",
+  "body": "def hook_alphaverus_refine(self, code: str, spec: str) -> dict[str, Any] | None:\n    try:\n        from ass_ade.agent.alphaverus import AlphaVerus\n        av = AlphaVerus(getattr(self, \"_v18_config\", {}) or {}, self._client)\n        result = av.tree_search(code, spec)\n        if result is None:\n            return {\"code\": code, \"verified\": False, \"score\": 0.0, \"passed\": False}\n        return {\n            \"code\": result.code,\n            \"verified\": result.verified,\n            \"score\": result.score,\n            \"passed\": True,\n        }\n    except Exception as exc:\n        logging.getLogger(__name__).warning(\"hook_alphaverus_refine failed: %s\", exc)\n        return None\n",
+  "body_hash": "45b5d5b5bfbc48cc",
   "body_truncated": false,
   "callers_of": [
     "AlphaVerus",
@@ -10,11 +10,12 @@
     "getLogger"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_qualitygates.py:280.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_qualitygates.py:282.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "mo.source.ass_ade.hook_alphaverus_refine",
+  "id": "mo.source.a2_mo_composites.hook_alphaverus_refine",
   "imports": [
+    "__future__.annotations",
     "ast",
     "re",
     "json",
@@ -31,11 +32,11 @@
     "ass_ade.agent.sam.SAM"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_qualitygates.py:280"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a2_mo_composites/mo_draft_qualitygates.py:282"
   },
   "kind": "engine_molecule",
   "made_of": [
-    "at.source.ass_ade.tree_search"
+    "at.source.a1_at_functions.tree_search"
   ],
   "name": "hook_alphaverus_refine",
   "product_categories": [

@@ -1,18 +1,20 @@
 {
-  "body": "    def test_major_wins(self):\n        assert _aggregate_version([\"0.9.9\", \"1.0.0\", \"0.9.8\"]) == \"1.0.0\"\n",
-  "body_hash": "b20d69484ac76bb9",
+  "body": "def test_major_wins(self):\n    assert _aggregate_version([\"0.9.9\", \"1.0.0\", \"0.9.8\"]) == \"1.0.0\"\n",
+  "body_hash": "d27816b203c2cb52",
   "body_truncated": false,
   "callers_of": [
     "_aggregate_version"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testaggregateversion.py:15.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_major_wins.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_major_wins",
-  "imports": [],
+  "id": "at.source.a1_at_functions.test_major_wins",
+  "imports": [
+    "__future__.annotations"
+  ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testaggregateversion.py:15"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_major_wins.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

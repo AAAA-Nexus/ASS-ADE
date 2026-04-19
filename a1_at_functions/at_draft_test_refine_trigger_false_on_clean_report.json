@@ -1,6 +1,6 @@
 {
-  "body": "    def test_refine_trigger_false_on_clean_report(self):\n        from ass_ade.agent.orchestrator import CycleReport\n        loop = self._make_loop()\n        report = CycleReport(alerts=[], wisdom_score=0.8)\n        report.engine_reports[\"cie\"] = {\"patches_applied\": 0}\n        assert loop._check_refine_trigger(report) is False\n",
-  "body_hash": "848ea7df7faddccd",
+  "body": "def test_refine_trigger_false_on_clean_report(self):\n    from ass_ade.agent.orchestrator import CycleReport\n    loop = self._make_loop()\n    report = CycleReport(alerts=[], wisdom_score=0.8)\n    report.engine_reports[\"cie\"] = {\"patches_applied\": 0}\n    assert loop._check_refine_trigger(report) is False\n",
+  "body_hash": "a48ebe2a341f293e",
   "body_truncated": false,
   "callers_of": [
     "_make_loop",
@@ -8,19 +8,16 @@
     "_check_refine_trigger"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testagentloopphase1.py:45.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_refine_trigger_false_on_clean_report.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_refine_trigger_false_on_clean_report",
+  "id": "at.source.a1_at_functions.test_refine_trigger_false_on_clean_report",
   "imports": [
-    "unittest.mock.MagicMock",
-    "ass_ade.agent.loop.AgentLoop",
-    "ass_ade.agent.lse.LSEEngine",
-    "ass_ade.agent.loop.D_MAX",
+    "__future__.annotations",
     "ass_ade.agent.orchestrator.CycleReport"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/beautiful-dubinsky-c2cb48/a2_mo_composites/mo_draft_testagentloopphase1.py:45"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_refine_trigger_false_on_clean_report.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

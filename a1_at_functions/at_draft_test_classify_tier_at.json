@@ -7,33 +7,15 @@
     "_classify_tier"
   ],
   "component_schema": "ASSADE-SPEC-003",
-  "description": "Draft candidate from C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_parallel_recon.py:217.",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_classify_tier_at.py:7.",
   "exceptions_raised": [],
   "fulfills_blueprints": [],
-  "id": "at.source.ass_ade.test_classify_tier_at",
+  "id": "at.source.a1_at_functions.test_classify_tier_at",
   "imports": [
-    "__future__.annotations",
-    "ast",
-    "textwrap",
-    "pathlib.Path",
-    "pytest",
-    "typer.testing.CliRunner",
-    "ass_ade.cli.app",
-    "ass_ade.recon.ReconReport",
-    "ass_ade.recon._classify_tier",
-    "ass_ade.recon._count_test_functions",
-    "ass_ade.recon._dependency_agent",
-    "ass_ade.recon._doc_agent",
-    "ass_ade.recon._iter_files",
-    "ass_ade.recon._scout_agent",
-    "ass_ade.recon._test_agent",
-    "ass_ade.recon._tier_agent",
-    "ass_ade.recon.run_parallel_recon",
-    "time",
-    "json"
+    "__future__.annotations"
   ],
   "interfaces": {
-    "source": "C:/!ass-ade/.claude/worktrees/adoring-boyd-0e3a8f/tests/test_parallel_recon.py:217"
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_test_classify_tier_at.py:7"
   },
   "kind": "pure_function",
   "made_of": [],

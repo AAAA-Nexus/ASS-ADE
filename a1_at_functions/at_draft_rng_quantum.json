@@ -1,0 +1,32 @@
+{
+  "body": "def rng_quantum(self, count: int = 1, **kwargs: Any) -> RngResult:\n    \"\"\"/v1/rng/quantum \u2014 quantum-seeded RNG with proof. $0.020/request\"\"\"\n    return self._get_model(\"/v1/rng/quantum\", RngResult, count=count, **kwargs)\n",
+  "body_hash": "60891458c6ad7320",
+  "body_truncated": false,
+  "callers_of": [
+    "_get_model"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_rng_quantum.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.a1_at_functions.rng_quantum",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-evoMERGE-g3-20260419-003649/a1_at_functions/at_draft_rng_quantum.py:7"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "rng_quantum",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for rng_quantum"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}
