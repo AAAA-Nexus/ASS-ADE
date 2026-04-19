@@ -1,0 +1,72 @@
+name: Auto-Evolution Cycle
+on:
+  schedule:
+    - cron: '*/20 * * * *'  # Every 20 minutes
+  workflow_dispatch: {}      # Manual trigger for testing
+
+jobs:
+  evolve:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install ASS-ADE
+        run: pip install -e ".[dev]"
+
+      - name: Create evolution branch
+        run: |
+          BRANCH="auto-evolve/$(date +%Y%m%d-%H%M)"
+          git checkout -b $BRANCH
+          echo "BRANCH=$BRANCH" >> $GITHUB_ENV
+
+      - name: Run enhancement scan
+        run: ass-ade enhance . --json > enhance_scan.json 2>&1 || true
+
+      - name: Run recon
+        run: ass-ade recon . --json > recon_report.json 2>&1 || true
+
+      - name: Apply top enhancement
+        run: ass-ade enhance . --apply 1 2>&1 || true
+
+      - name: Generate evolution report
+        run: |
+          echo "# Auto-Evolution Report" > EVOLUTION_CYCLE.md
+          echo "Branch: $BRANCH" >> EVOLUTION_CYCLE.md
+          echo "Date: $(date -u)" >> EVOLUTION_CYCLE.md
+          echo "" >> EVOLUTION_CYCLE.md
+          echo "## Enhancement Applied" >> EVOLUTION_CYCLE.md
+          cat enhance_scan.json >> EVOLUTION_CYCLE.md 2>/dev/null || echo "No scan results" >> EVOLUTION_CYCLE.md
+
+      - name: Commit and push branch
+        run: |
+          git config user.name "ASS-ADE Auto-Evolve"
+          git config user.email "evolve@atomadic.tech"
+          git add -A
+          # Only push when real source files changed (not just generated reports)
+          PY_CHANGES=$(git diff --cached --name-only | grep -v '^EVOLUTION_CYCLE\.md$' \
+            | grep -v '^enhance_scan\.json$' | grep -v '^recon_report\.json$' | wc -l | tr -d ' ')
+          if [ "$PY_CHANGES" -eq 0 ]; then
+            echo "No meaningful source changes — skipping commit and PR"
+            exit 0
+          fi
+          git commit -m "auto-evolution: $(date +%Y%m%d-%H%M) cycle"
+          git push origin $BRANCH
+
+      - name: Create PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create \
+            --title "Auto-Evolution: $(date +%Y%m%d-%H%M)" \
+            --body "Automated evolution cycle. Review diff for interesting improvements." \
+            --base main \
+            --head $BRANCH || true

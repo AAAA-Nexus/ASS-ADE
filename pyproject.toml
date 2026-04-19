@@ -11,5 +11,8 @@ requires-python = ">=3.11"
 [project.scripts]
 ass-ade = "scripts.cli:main"
 
+[project.optional-dependencies]
+dev = []
+
 [tool.hatch.build.targets.wheel]
 packages = ["."]
