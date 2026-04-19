@@ -1,0 +1,33 @@
+{
+  "body": "def tier_prefix_from_id(dep_id: str) -> str | None:\n    \"\"\"Return the two-letter tier prefix from a component id like ``at.parse.foo``.\"\"\"\n    if \".\" not in dep_id:\n        return None\n    prefix = dep_id.split(\".\", 1)[0]\n    return prefix if prefix in _PREFIX_TO_TIER else None\n",
+  "body_hash": "87359b60b26f8441",
+  "body_truncated": false,
+  "callers_of": [
+    "split"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/rebuild/tier_purity.py:33.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.tier_prefix_from_id",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/engine/rebuild/tier_purity.py:33"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "tier_prefix_from_id",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for tier_prefix_from_id"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

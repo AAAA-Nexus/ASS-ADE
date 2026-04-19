@@ -1,0 +1,55 @@
+{
+  "body": "def build_capability_snapshot(working_dir: str | Path = \".\") -> CapabilitySnapshot:\n    cwd = str(Path(working_dir).resolve())\n    now = datetime.now(timezone.utc).replace(microsecond=0).isoformat()\n    if now.endswith(\"+00:00\"):\n        now = f\"{now[:-6]}Z\"\n    return CapabilitySnapshot(\n        generated_at_utc=now,\n        working_dir=cwd,\n        cli_commands=collect_cli_commands(),\n        local_tools=collect_local_tools(cwd),\n        mcp_tools=collect_mcp_tools(cwd),\n        agents=collect_agents(cwd),\n        hooks=collect_hooks(cwd),\n    )\n",
+  "body_hash": "3c8c4cb490523159",
+  "body_truncated": false,
+  "callers_of": [
+    "str",
+    "isoformat",
+    "endswith",
+    "CapabilitySnapshot",
+    "resolve",
+    "replace",
+    "collect_cli_commands",
+    "collect_local_tools",
+    "collect_mcp_tools",
+    "collect_agents",
+    "collect_hooks",
+    "Path",
+    "now"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/capabilities.py:183.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.build_capability_snapshot",
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "typer.main",
+    "ass_ade.cli.app",
+    "ass_ade.tools.registry.default_registry",
+    "ass_ade.mcp.server._WORKFLOW_TOOLS"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/capabilities.py:183"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "build_capability_snapshot",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for build_capability_snapshot"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

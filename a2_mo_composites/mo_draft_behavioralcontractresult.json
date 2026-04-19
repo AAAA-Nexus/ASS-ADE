@@ -1,0 +1,34 @@
+{
+  "body": "class BehavioralContractResult(NexusModel):\n    \"\"\"/v1/contract/verify \u2014 BCV-100\"\"\"\n    verified: bool | None = None\n    contract_id: str | None = None\n    d_max_ok: bool | None = None\n    policy_epsilon_ok: bool | None = None\n    tau_trust_ok: bool | None = None\n",
+  "body_hash": "d49c486ad6b6092e",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/models.py:575.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.behavioralcontractresult",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/nexus/models.py:575"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "BehavioralContractResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for BehavioralContractResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

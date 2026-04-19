@@ -1,0 +1,43 @@
+{
+  "body": "def providers(self) -> dict[str, \"ModelProvider\"]:\n    return dict(self._providers)\n",
+  "body_hash": "83550313d1467e34",
+  "body_truncated": false,
+  "callers_of": [
+    "dict"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/provider.py:306.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.providers",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "uuid",
+    "collections.abc.Iterator",
+    "typing.Any",
+    "typing.Protocol",
+    "typing.runtime_checkable",
+    "httpx",
+    "ass_ade.engine.types.CompletionRequest",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolCallRequest"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/engine/provider.py:306"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "providers",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for providers"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

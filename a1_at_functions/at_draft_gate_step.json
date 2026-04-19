@@ -1,0 +1,43 @@
+{
+  "body": "def gate_step(ctx: dict[str, Any]) -> StepResult:\n    trust_score = ctx.get(\"trust_score\", 0)\n    rep_tier = ctx.get(\"reputation_tier\")\n    identity_ok = ctx.get(\"identity_passed\", False)\n    sybil_ok = ctx.get(\"sybil_passed\", False)\n\n    if not identity_ok or not sybil_ok:\n        verdict = \"DENY\"\n    elif trust_score < 0.5:\n        verdict = \"DENY\"\n    elif trust_score < 0.7 and rep_tier not in {\"gold\", \"platinum\"}:\n        verdict = \"WARN\"\n    else:\n        verdict = \"ALLOW\"\n\n    ctx[\"verdict\"] = verdict\n    passed = verdict != \"DENY\"\n    return StepResult(\n        name=\"gate_decision\",\n        status=StepStatus.PASSED if passed else StepStatus.FAILED,\n        output={\"verdict\": verdict, \"trust_score\": trust_score, \"reputation_tier\": rep_tier},\n    )\n",
+  "body_hash": "eb4877e3cdcca0a8",
+  "body_truncated": false,
+  "callers_of": [
+    "get",
+    "StepResult"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/pipeline.py:286.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.gate_step",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "time",
+    "collections.abc.Callable",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "enum.Enum",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Protocol",
+    "ass_ade.nexus.validation.validate_agent_id"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/pipeline.py:286"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "gate_step",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for gate_step"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

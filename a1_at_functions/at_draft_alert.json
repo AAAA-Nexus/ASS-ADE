@@ -1,0 +1,50 @@
+{
+  "body": "def alert(self, kind: str, payload: dict) -> Alert | None:\n    now = time.time()\n    last_ts = self._last_alert_ts.get(kind)\n    if last_ts is not None and (now - last_ts) < self._cooldown_s:\n        # On cooldown \u2014 return most recent alert of this kind (if any), marked skipped\n        for existing in reversed(self._alerts):\n            if existing.kind == kind:\n                skipped = Alert(\n                    kind=existing.kind,\n                    severity=existing.severity,\n                    payload=existing.payload,\n                    ts=existing.ts,\n                    cooldown_skipped=True,\n                )\n                return skipped\n        return None\n\n    sev = _SEVERITY.get(kind, \"medium\")\n    a = Alert(\n        kind=kind,\n        severity=sev,\n        payload=payload,\n        ts=datetime.now(UTC).isoformat(),\n        cooldown_skipped=False,\n    )\n    self._alerts.append(a)\n    self._unflushed.append(a)\n    self._last_alert_ts[kind] = now\n    self._alerts_total += 1\n\n    # Persist\n    self._persist_alert(a)\n\n    # Notify subscribers\n    self._notify_subscribers(a)\n\n    # Record to reputation if high severity\n    if self._nexus is not None and a.severity == \"high\":\n        try:\n            self._nexus.reputation_record(\n                agent_id=\"bas\",\n                success=False,\n                quality=0.0,\n                latency_ms=0.0,\n            )\n        except Exception:\n            pass\n\n    return a\n",
+  "body_hash": "2503305b510316d6",
+  "body_truncated": false,
+  "callers_of": [
+    "time",
+    "get",
+    "Alert",
+    "append",
+    "_persist_alert",
+    "_notify_subscribers",
+    "reversed",
+    "isoformat",
+    "reputation_record",
+    "now"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/bas.py:100.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.alert",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "time",
+    "collections.abc.Callable",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.UTC",
+    "datetime.datetime",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/bas.py:100"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "alert",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for alert"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

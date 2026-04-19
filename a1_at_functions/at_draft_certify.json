@@ -1,0 +1,54 @@
+{
+  "body": "def certify(self, output: str) -> dict[str, Any] | None:\n    \"\"\"Certify final output quality against a rubric.\"\"\"\n    try:\n        result = self._client.certify_output(\n            output=output,\n            rubric=[\"correctness\", \"safety\", \"completeness\"],\n        )\n        gate = GateResult(\n            gate=\"certify\",\n            passed=result.rubric_passed,\n            confidence=result.score,\n            details={\"certificate_id\": result.certificate_id},\n        )\n        self._gate_log.append(gate)\n        return {\n            \"certificate_id\": result.certificate_id,\n            \"score\": result.score,\n            \"passed\": result.rubric_passed,\n        }\n    except Exception as _exc:  # noqa: BLE001\n        logging.getLogger(__name__).warning(\n            \"Gate %s failed (fail-open): %s: %s\",\n            \"certify\",\n            type(_exc).__name__,\n            _exc,\n        )\n        return None\n",
+  "body_hash": "13815fda802685f6",
+  "body_truncated": false,
+  "callers_of": [
+    "certify_output",
+    "GateResult",
+    "append",
+    "warning",
+    "getLogger",
+    "type"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/gates.py:131.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.certify",
+  "imports": [
+    "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "ast",
+    "re",
+    "json",
+    "datetime.UTC",
+    "datetime.datetime",
+    "pathlib.Path",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "ass_ade.agent.trust_gate.TrustVerificationGate",
+    "ass_ade.agent.proofbridge.ProofBridge",
+    "ass_ade.agent.alphaverus.AlphaVerus",
+    "ass_ade.agent.dgm_h.DGMH",
+    "ass_ade.agent.dgm_h.Patch",
+    "ass_ade.agent.golden_runner.run_golden",
+    "ass_ade.agent.sam.SAM"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/gates.py:131"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "certify",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for certify"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

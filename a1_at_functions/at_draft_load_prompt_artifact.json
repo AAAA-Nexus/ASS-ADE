@@ -1,0 +1,50 @@
+{
+  "body": "def load_prompt_artifact(\n    *,\n    working_dir: str | Path = \".\",\n    prompt_text: str | None = None,\n    prompt_path: str | Path | None = None,\n    source_label: str | None = None,\n) -> PromptArtifact:\n    if bool(prompt_text) == bool(prompt_path):\n        raise ValueError(\"provide exactly one of prompt_text or prompt_path\")\n\n    if prompt_text is not None:\n        return PromptArtifact(source=source_label or \"inline\", text=prompt_text)\n\n    root = Path(working_dir).resolve()\n    path = _resolve_under(root, prompt_path or \"\")\n    return PromptArtifact(\n        source=source_label or path.relative_to(root).as_posix(),\n        text=path.read_text(encoding=\"utf-8\", errors=\"replace\"),\n    )\n",
+  "body_hash": "7ee6b529e8096d98",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "_resolve_under",
+    "PromptArtifact",
+    "bool",
+    "ValueError",
+    "Path",
+    "read_text",
+    "as_posix",
+    "relative_to"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/prompt_toolkit.py:89.",
+  "exceptions_raised": [
+    "ValueError"
+  ],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.load_prompt_artifact",
+  "imports": [
+    "__future__.annotations",
+    "difflib",
+    "hashlib",
+    "json",
+    "re",
+    "pathlib.Path",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/prompt_toolkit.py:89"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "load_prompt_artifact",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for load_prompt_artifact"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

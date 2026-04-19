@@ -1,0 +1,39 @@
+{
+  "body": "def pre_action_verify(self, action: dict) -> bool:\n    self._checks += 1\n    if self._nexus is not None:\n        for method in (\"trust_gate\", \"nexus_trust_gate\"):\n            fn = getattr(self._nexus, method, None)\n            if fn is None:\n                continue\n            try:\n                result = fn(action)\n                ok = getattr(result, \"allowed\", None)\n                if ok is None and isinstance(result, dict):\n                    ok = result.get(\"allowed\")\n                if ok is not None:\n                    if not ok:\n                        self._denied += 1\n                    return bool(ok)\n            except Exception:\n                break\n    risk = str(action.get(\"risk\", \"\")).lower()\n    if risk in {\"high\", \"critical\"}:\n        self._denied += 1\n        return False\n    return True\n",
+  "body_hash": "f7fbaf7346531a3b",
+  "body_truncated": false,
+  "callers_of": [
+    "lower",
+    "getattr",
+    "str",
+    "fn",
+    "get",
+    "isinstance",
+    "bool"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/trust_gate.py:15.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.pre_action_verify",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/trust_gate.py:15"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "pre_action_verify",
+  "product_categories": [
+    "IDT"
+  ],
+  "provides": [
+    "rebuild candidate for pre_action_verify"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

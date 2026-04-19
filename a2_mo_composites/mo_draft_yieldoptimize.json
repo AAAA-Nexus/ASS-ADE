@@ -1,0 +1,36 @@
+{
+  "body": "class YieldOptimize(NexusModel):\n    \"\"\"/v1/defi/yield-optimize \u2014 YLD-100\"\"\"\n    allocations: list[dict] = Field(default_factory=list)\n    expected_apy: float | None = None\n    alpha_above_baseline: float | None = None\n",
+  "body_hash": "a51efe48f8c963b5",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/models.py:761.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.yieldoptimize",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/nexus/models.py:761"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "YieldOptimize",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for YieldOptimize"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

@@ -1,0 +1,36 @@
+{
+  "body": "class DiscoveryResult(NexusModel):\n    \"\"\"/v1/discovery/search and /v1/discovery/recommend\"\"\"\n    agents: list[DiscoveredAgent] = Field(default_factory=list)\n    total: int | None = None\n    query: Any = None\n",
+  "body_hash": "9e7bdc351d8a7b39",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/models.py:343.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.discoveryresult",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/nexus/models.py:343"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "DiscoveryResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for DiscoveryResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

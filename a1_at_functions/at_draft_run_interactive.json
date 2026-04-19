@@ -1,0 +1,72 @@
+{
+  "body": "def run_interactive(working_dir: Path | None = None) -> None:\n    \"\"\"Drop into an interactive Atomadic session (REPL).\"\"\"\n    try:\n        from rich.console import Console\n        from rich.markdown import Markdown\n        console: Console | None = Console()\n        use_rich = True\n    except ImportError:\n        console = None\n        use_rich = False\n\n    wdir = working_dir or Path.cwd()\n    agent = Atomadic(working_dir=wdir)\n\n    is_first_visit = not bool(agent.memory.user_profile)\n\n    # First-visit setup wizard (non-blocking \u2014 user can press Enter through it)\n    if is_first_visit:\n        _run_setup_wizard(console, use_rich, agent)\n\n    # Lightweight scan (under 2 s) \u2014 results cached on agent\n    scan = quick_project_scan(wdir)\n    agent._startup_scan = scan\n    greeting_text, suggestions = _build_startup_greeting(scan, agent.memory, wdir, is_first_visit)\n    agent._startup_suggestions = suggestions\n\n    if use_rich and console:\n        from rich.markdown import Markdown as _Markdown\n        console.print()\n        console.print(f\"[bold cyan]{greeting_text}[/bold cyan]\")\n        console.print(f\"\\n[dim]Working dir: {wdir}   \u00b7   type 'exit' to quit[/dim]\\n\")\n    else:\n        print(f\"\\n{greeting_text}\")\n        print(f\"\\nWorking dir: {wdir}   \u00b7   type 'exit' to quit\\n\")\n\n    while True:\n        try:\n            user_input = input(\"you \u2192 \").strip()\n        except (EOFError, KeyboardInterrupt):\n            msg = \"\\nGoodbye!\"\n            if use_rich and console:\n                console.print(f\"[dim]{msg}[/dim]\")\n            else:\n                print(msg)\n            break\n\n        if user_input.lower() in {\"exit\", \"quit\", \"bye\", \"q\"}:\n            msg = \"Goodbye!\"\n            if use_rich and console:\n                console.print(f\"[dim]{msg}[/dim]\")\n            else:\n                print(msg)\n            break\n\n        if user_input.lower() in {\"help\", \"?\", \"what can you do\"}:\n            desc = agent.describe_self()\n            if use_rich and console:\n                console.print()\n                console.print(Markdown(desc))\n                console.print()\n            else:\n                print(f\"\\n{desc}\\n\")\n            continue\n\n        if not user_input:\n            continue\n\n        response = agent.process(user_input)\n        if use_rich and console:\n            console.print(f\"\\n[bold green]Atomadic[/bold green] \u2192\")\n            console.print(Markdown(response))\n            console.print()\n        else:\n            print(f\"\\nAtomadic \u2192 {response}\\n\")\n",
+  "body_hash": "3198364eb20f6bb2",
+  "body_truncated": false,
+  "callers_of": [
+    "Atomadic",
+    "quick_project_scan",
+    "_build_startup_greeting",
+    "Console",
+    "cwd",
+    "bool",
+    "_run_setup_wizard",
+    "print",
+    "process",
+    "strip",
+    "lower",
+    "describe_self",
+    "Markdown",
+    "input"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/interpreter.py:1938.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.run_interactive",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "os",
+    "re",
+    "subprocess",
+    "sys",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "httpx",
+    "ass_ade.agent.capabilities.build_atomadic_intent_prompt",
+    "ass_ade.agent.capabilities.command_path_exists",
+    "ass_ade.agent.capabilities.render_capability_prompt_section",
+    "ass_ade.agent.capabilities.render_atomadic_help",
+    "dotenv.load_dotenv",
+    "ass_ade.config.load_config",
+    "time",
+    "shutil",
+    "shutil",
+    "importlib",
+    "sys",
+    "rich.console.Console",
+    "rich.markdown.Markdown",
+    "rich.markdown.Markdown",
+    "ass_ade.config.AssAdeConfig"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/interpreter.py:1938"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "run_interactive",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for run_interactive"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,48 @@
+{
+  "body": "class EvolutionGitState(BaseModel):\n    available: bool\n    branch: str = \"unknown\"\n    commit: str = \"unknown\"\n    dirty: bool = False\n    staged: int = 0\n    unstaged: int = 0\n    untracked: int = 0\n    status: list[str] = Field(default_factory=list)\n",
+  "body_hash": "d41dbfd8b1d7dbaa",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/protocol/evolution.py:33.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.evolutiongitstate",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "re",
+    "shutil",
+    "subprocess",
+    "tomllib",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field",
+    "ass_ade.engine.rebuild.version_tracker.INITIAL_VERSION",
+    "ass_ade.engine.rebuild.version_tracker.bump_version"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/protocol/evolution.py:33"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "EvolutionGitState",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for EvolutionGitState"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

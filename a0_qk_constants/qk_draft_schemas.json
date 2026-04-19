@@ -1,0 +1,54 @@
+{
+  "body": "def schemas(self) -> list[ToolSchema]:\n    return [\n        ToolSchema(\n            name=t.name,\n            description=t.description,\n            parameters=t.parameters,\n        )\n        for t in self._tools.values()\n    ]\n",
+  "body_hash": "f5f4a021120a5b32",
+  "body_truncated": false,
+  "callers_of": [
+    "ToolSchema",
+    "values"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/tools/registry.py:29.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.schemas",
+  "imports": [
+    "__future__.annotations",
+    "importlib.util",
+    "inspect",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.engine.types.ToolSchema",
+    "ass_ade.tools.base.Tool",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.builtin.EditFileTool",
+    "ass_ade.tools.builtin.GrepSearchTool",
+    "ass_ade.tools.builtin.ListDirectoryTool",
+    "ass_ade.tools.builtin.ReadFileTool",
+    "ass_ade.tools.builtin.RunCommandTool",
+    "ass_ade.tools.builtin.SearchFilesTool",
+    "ass_ade.tools.builtin.UndoEditTool",
+    "ass_ade.tools.builtin.WriteFileTool",
+    "ass_ade.tools.history.FileHistory",
+    "ass_ade.tools.prompt.PromptDiffTool",
+    "ass_ade.tools.prompt.PromptHashTool",
+    "ass_ade.tools.prompt.PromptProposeTool",
+    "ass_ade.tools.prompt.PromptSectionTool",
+    "ass_ade.tools.prompt.PromptValidateTool"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/tools/registry.py:29"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "schemas",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for schemas"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

@@ -1,0 +1,56 @@
+{
+  "body": "def compute_codebase_digest(root: Path) -> dict[str, Any]:\n    root = root.resolve()\n    file_hashes: dict[str, str] = {}\n\n    for dirpath, dirs, files in os.walk(root, topdown=True):\n        dirs[:] = [d for d in dirs if d not in _IGNORE_DIRS]\n        for filename in files:\n            if any(filename.endswith(sfx) for sfx in _IGNORE_SUFFIXES):\n                continue\n            abs_path = Path(dirpath) / filename\n            rel_path = abs_path.relative_to(root).as_posix()\n            file_hashes[rel_path] = hash_file(abs_path)\n\n    sorted_pairs = sorted(file_hashes.items())\n\n    combined = \"\".join(f\"{rel}{digest}\" for rel, digest in sorted_pairs)\n    root_digest = hashlib.sha256(combined.encode()).hexdigest()\n\n    truncated = dict(sorted_pairs[:500])\n\n    return {\n        \"root\": str(root),\n        \"file_count\": len(file_hashes),\n        \"root_digest\": root_digest,\n        \"files\": truncated,\n        \"computed_at\": datetime.now(timezone.utc).isoformat(),\n        \"algorithm\": \"sha256\",\n    }\n",
+  "body_hash": "a471d8a6b1b8ff81",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "walk",
+    "sorted",
+    "join",
+    "hexdigest",
+    "dict",
+    "items",
+    "str",
+    "len",
+    "isoformat",
+    "any",
+    "as_posix",
+    "hash_file",
+    "sha256",
+    "Path",
+    "encode",
+    "now",
+    "endswith",
+    "relative_to"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/local/certifier.py:45.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.compute_codebase_digest",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "os",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/local/certifier.py:45"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "compute_codebase_digest",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for compute_codebase_digest"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

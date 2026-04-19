@@ -1,0 +1,47 @@
+{
+  "audit": {
+    "structure": {
+      "chain_depth": {
+        "conformant": true,
+        "limit": 23,
+        "observed_max": 3,
+        "violations": 0
+      },
+      "duplicate_ids": {
+        "conformant": true,
+        "count": 0,
+        "fraction": 0.0
+      },
+      "pass_rate": {
+        "conformant": true,
+        "floor": 0.99,
+        "observed": 1.0
+      },
+      "tier_distribution": {
+        "a0_qk_constants": 37,
+        "a1_at_functions": 424,
+        "a2_mo_composites": 459,
+        "a3_og_features": 21,
+        "a4_sy_orchestration": 64
+      }
+    },
+    "summary": {
+      "by_code": {},
+      "by_severity": {},
+      "findings_total": 0,
+      "pass_rate": 1.0,
+      "structure_conformant": true
+    },
+    "total": 1000,
+    "valid": 1000
+  },
+  "certificate_sha256": "961b58ae752af2b79d8c0282b1fbf38adef67fec5153c2e25ae74f8efb96f2eb",
+  "certificate_version": "ASSADE-SPEC-CERT-1",
+  "issued_at": "2026-04-19T19:54:55.031398+00:00",
+  "issuer": "ass_ade.engine.schema_rebuilder",
+  "rebuild_tag": "20260419_125450",
+  "schema_covered": "ASSADE-SPEC-003",
+  "source_plan_digest": "e4445c240631022e",
+  "target_root": "C:/!ass-ade-v0.2.0/20260419_125450",
+  "written_count": 1004
+}

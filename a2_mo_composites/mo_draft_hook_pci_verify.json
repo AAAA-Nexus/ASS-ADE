@@ -1,0 +1,58 @@
+{
+  "body": "def hook_pci_verify(self, code: str, lang: str = \"python\", spec: str | None = None) -> dict[str, Any] | None:\n    import ast\n    import re\n    try:\n        findings: list[str] = []\n        cc = 1\n        if lang == \"python\":\n            try:\n                tree = ast.parse(code)\n                for node in ast.walk(tree):\n                    if isinstance(node, (ast.If, ast.For, ast.While, ast.And, ast.Or, ast.ExceptHandler)):\n                        cc += 1\n            except SyntaxError as exc:\n                findings.append(f\"syntax:{exc.msg}\")\n                cc = 999\n        owasp_patterns = [\n            (r\"eval\\s*\\(\", \"a03_injection_eval\"),\n            (r\"exec\\s*\\(\", \"a03_injection_exec\"),\n            (r\"subprocess\\.[a-z_]+\\([^)]*shell\\s*=\\s*True\", \"a03_shell_injection\"),\n            (r\"pickle\\.loads?\\s*\\(\", \"a08_deserialization\"),\n            (r\"md5\\s*\\(|sha1\\s*\\(\", \"a02_weak_hash\"),\n        ]\n        for pat, code_id in owasp_patterns:\n            if re.search(pat, code):\n                findings.append(code_id)\n        cc_ok = cc <= 7\n        lean4_ok = True\n        if spec and \"sorry\" in spec:\n            lean4_ok = False\n        passed = cc_ok and not findings and lean4_ok\n        self._gate_log.append(GateResult(\n            gate=\"pci_verify\",\n            passed=passed,\n            confidence=1.0 if passed else 0.3,\n            details={\"cc\": cc, \"findings\": findings, \"lean4_ok\": lean4_ok},\n        ))\n        return {\"cc\": cc, \"findings\": findings, \"passed\": passed, \"lean4_ok\": lean4_ok}\n    except Exception as exc:\n        logging.getLogger(__name__).warning(\"hook_pci_verify failed: %s\", exc)\n        return None\n",
+  "body_hash": "80af5254c577fd3b",
+  "body_truncated": false,
+  "callers_of": [
+    "append",
+    "search",
+    "GateResult",
+    "warning",
+    "parse",
+    "walk",
+    "isinstance",
+    "getLogger"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/gates.py:259.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.hook_pci_verify",
+  "imports": [
+    "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "ast",
+    "re",
+    "json",
+    "datetime.UTC",
+    "datetime.datetime",
+    "pathlib.Path",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "ass_ade.agent.trust_gate.TrustVerificationGate",
+    "ass_ade.agent.proofbridge.ProofBridge",
+    "ass_ade.agent.alphaverus.AlphaVerus",
+    "ass_ade.agent.dgm_h.DGMH",
+    "ass_ade.agent.dgm_h.Patch",
+    "ass_ade.agent.golden_runner.run_golden",
+    "ass_ade.agent.sam.SAM"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/gates.py:259"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.search"
+  ],
+  "name": "hook_pci_verify",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for hook_pci_verify"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

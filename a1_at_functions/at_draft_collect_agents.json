@@ -1,0 +1,50 @@
+{
+  "body": "def collect_agents(working_dir: str | Path = \".\") -> list[CapabilityEntry]:\n    root = _repo_root_from_working_dir(working_dir)\n    agents_dir = root / \"agents\"\n    if not agents_dir.is_dir():\n        return []\n    entries: list[CapabilityEntry] = []\n    for path in sorted(agents_dir.glob(\"*.agent.md\")):\n        entries.append(\n            CapabilityEntry(\n                kind=\"agent\",\n                name=path.stem.replace(\".agent\", \"\"),\n                description=_read_agent_description(path),\n            )\n        )\n    return entries\n",
+  "body_hash": "b48ad82f8afced37",
+  "body_truncated": false,
+  "callers_of": [
+    "_repo_root_from_working_dir",
+    "sorted",
+    "is_dir",
+    "glob",
+    "append",
+    "CapabilityEntry",
+    "replace",
+    "_read_agent_description"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/capabilities.py:154.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.collect_agents",
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "typer.main",
+    "ass_ade.cli.app",
+    "ass_ade.tools.registry.default_registry",
+    "ass_ade.mcp.server._WORKFLOW_TOOLS"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/capabilities.py:154"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "collect_agents",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for collect_agents"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

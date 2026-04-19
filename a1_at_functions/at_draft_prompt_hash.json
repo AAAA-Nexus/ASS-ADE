@@ -1,0 +1,46 @@
+{
+  "body": "def prompt_hash(\n    *,\n    working_dir: str | Path = \".\",\n    prompt_text: str | None = None,\n    prompt_path: str | Path | None = None,\n) -> PromptHashResult:\n    artifact = load_prompt_artifact(\n        working_dir=working_dir,\n        prompt_text=prompt_text,\n        prompt_path=prompt_path,\n    )\n    encoded = artifact.text.encode()\n    return PromptHashResult(\n        source=artifact.source,\n        sha256=hashlib.sha256(encoded).hexdigest(),\n        bytes=len(encoded),\n        lines=len(artifact.text.splitlines()),\n    )\n",
+  "body_hash": "77be6554e5968439",
+  "body_truncated": false,
+  "callers_of": [
+    "load_prompt_artifact",
+    "encode",
+    "PromptHashResult",
+    "hexdigest",
+    "len",
+    "splitlines",
+    "sha256"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/prompt_toolkit.py:110.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.prompt_hash",
+  "imports": [
+    "__future__.annotations",
+    "difflib",
+    "hashlib",
+    "json",
+    "re",
+    "pathlib.Path",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/prompt_toolkit.py:110"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "prompt_hash",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for prompt_hash"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

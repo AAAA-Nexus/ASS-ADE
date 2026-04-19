@@ -1,0 +1,37 @@
+{
+  "body": "def resolve_tier(tier: str) -> str:\n    \"\"\"Normalize a tier name (e.g., 'haiku' \u2192 'fast'). Returns canonical tier.\"\"\"\n    return TIER_ALIASES.get(tier.lower(), tier.lower())\n",
+  "body_hash": "7f4a603c353ab0de",
+  "body_truncated": false,
+  "callers_of": [
+    "get",
+    "lower"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/providers.py:380.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.resolve_tier",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/providers.py:380"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "resolve_tier",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for resolve_tier"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

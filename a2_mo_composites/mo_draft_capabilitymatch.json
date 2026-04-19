@@ -1,0 +1,36 @@
+{
+  "body": "class CapabilityMatch(NexusModel):\n    \"\"\"/v1/agents/capabilities/match\"\"\"\n    matches: list[DiscoveredAgent] = Field(default_factory=list)\n    task: str | None = None\n",
+  "body_hash": "e83ce4256bd9656c",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/models.py:405.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.capabilitymatch",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/nexus/models.py:405"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "CapabilityMatch",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for CapabilityMatch"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

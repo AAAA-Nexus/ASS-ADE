@@ -1,0 +1,43 @@
+{
+  "body": "class PaymentProof:\n    \"\"\"Structured proof of x402 payment for request retry.\n\n    The payment proof is encoded as an HTTP header: PAYMENT-SIGNATURE\n    Format: <signature_hex>;<wallet_address>;<transaction_id>;<amount_micro_usdc>\n\n    This structure formalizes the contract between client (who creates it)\n    and server (who validates it).\n    \"\"\"\n    signature: str  # hex-encoded transaction signature\n    wallet_address: str  # sender's wallet address (checksummed)\n    transaction_id: str  # blockchain transaction ID\n    amount_micro_usdc: int  # USDC amount in micro units\n\n    @classmethod\n    def from_payment_result(cls, result: PaymentResult) -> PaymentProof | None:\n        \"\"\"Parse a PaymentProof from a successful PaymentResult.\"\"\"\n        if not result.success or not result.signature_header:\n            return None\n        try:\n            parts = result.signature_header.split(\";\")\n            if len(parts) != 4:\n                return None\n            sig, addr, txid, amount_str = parts\n            return cls(\n                signature=sig,\n                wallet_address=addr,\n                transaction_id=txid,\n                amount_micro_usdc=int(amount_str),\n            )\n        except (ValueError, IndexError):\n            return None\n\n    def to_header_value(self) -> str:\n        \"\"\"Format as HTTP header value (PAYMENT-SIGNATURE).\"\"\"\n        return f\"{self.signature};{self.wallet_address};{self.transaction_id};{self.amount_micro_usdc}\"\n\n    @classmethod\n    def from_header_value(cls, header_value: str) -> PaymentProof | None:\n        \"\"\"Parse from HTTP header value (PAYMENT-SIGNATURE).\"\"\"\n        try:\n            parts = header_value.split(\";\")\n            if len(parts) != 4:\n                return None\n            sig, addr, txid, amount_str = parts\n            return cls(\n                signature=sig,\n                wallet_address=addr,\n                transaction_id=txid,\n                amount_micro_usdc=int(amount_str),\n            )\n        except (ValueError, IndexError):\n            return None\n",
+  "body_hash": "193e02fa6460ed91",
+  "body_truncated": false,
+  "callers_of": [
+    "split",
+    "cls",
+    "len",
+    "int"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/x402.py:123.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.paymentproof",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "time",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "eth_account.Account",
+    "web3.Web3",
+    "logging"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/nexus/x402.py:123"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "PaymentProof",
+  "product_categories": [
+    "DCM",
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for PaymentProof"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

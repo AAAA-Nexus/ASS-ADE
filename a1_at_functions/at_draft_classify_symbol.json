@@ -1,0 +1,48 @@
+{
+  "body": "def classify_symbol(\n    symbol: Symbol,\n    root_id: str,\n    registry: list[dict[str, Any]],\n) -> dict[str, Any]:\n    tier = classify_tier(symbol)\n    prefix = TIER_PREFIX[tier]\n    match = _registry_match(symbol, registry)\n    component_id = match or f\"{prefix}.source.{_slug(root_id)}.{_slug(symbol.name)}\"\n    return {\n        \"source_symbol\": asdict(symbol),\n        \"tier\": tier,\n        \"candidate_id\": component_id,\n        \"registry_match\": match,\n        \"product_categories\": product_categories(symbol),\n        \"status\": \"mapped\" if match else \"gap\",\n    }\n",
+  "body_hash": "2c1c9545bfbeb96b",
+  "body_truncated": false,
+  "callers_of": [
+    "classify_tier",
+    "_registry_match",
+    "asdict",
+    "product_categories",
+    "_slug"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/rebuild/project_parser.py:196.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.classify_symbol",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "datetime",
+    "json",
+    "os",
+    "re",
+    "dataclasses.asdict",
+    "dataclasses.dataclass",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "ass_ade.engine.rebuild.tiers.TIER_PREFIX",
+    "ass_ade.engine.rebuild.tiers.TIERS"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/engine/rebuild/project_parser.py:196"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "classify_symbol",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for classify_symbol"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

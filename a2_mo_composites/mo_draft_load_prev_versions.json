@@ -1,0 +1,41 @@
+{
+  "body": "def load_prev_versions(prev_manifest_path: Path | None) -> dict[str, dict[str, Any]]:\n    \"\"\"Load version data from a previous build's MANIFEST.json.\n\n    Returns a dict keyed by component id with keys:\n    ``version``, ``body_hash``, ``body``.\n    \"\"\"\n    if prev_manifest_path is None or not prev_manifest_path.exists():\n        return {}\n    try:\n        manifest = json.loads(prev_manifest_path.read_text(encoding=\"utf-8\"))\n    except (json.JSONDecodeError, OSError):\n        return {}\n    result: dict[str, dict[str, Any]] = {}\n    for comp in manifest.get(\"components\") or []:\n        cid = comp.get(\"id\")\n        if cid:\n            result[cid] = {\n                \"version\": comp.get(\"version\", INITIAL_VERSION),\n                \"body_hash\": comp.get(\"body_hash\", \"\"),\n                \"body\": comp.get(\"body\", \"\"),\n            }\n    return result\n",
+  "body_hash": "11f195e6a1f893a3",
+  "body_truncated": false,
+  "callers_of": [
+    "loads",
+    "get",
+    "exists",
+    "read_text"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/rebuild/version_tracker.py:222.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.load_prev_versions",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "hashlib",
+    "json",
+    "re",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/engine/rebuild/version_tracker.py:222"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "load_prev_versions",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for load_prev_versions"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

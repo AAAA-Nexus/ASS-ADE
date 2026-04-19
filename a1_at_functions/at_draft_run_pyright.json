@@ -1,0 +1,45 @@
+{
+  "body": "def run_pyright(root: Path) -> dict[str, Any]:\n    if not shutil.which(\"pyright\"):\n        return {\"linter\": \"pyright\", \"ok\": None, \"error\": \"pyright not found\"}\n\n    cmd = [\"pyright\", \"--outputjson\", str(root)]\n\n    try:\n        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=120, encoding=\"utf-8\", errors=\"replace\")\n        raw = proc.stdout or proc.stderr or \"\"\n        try:\n            data = json.loads(raw) if raw.strip() else {}\n        except json.JSONDecodeError:\n            return {\"linter\": \"pyright\", \"ok\": False, \"raw\": raw, \"error\": \"failed to parse output\"}\n\n        general_diag = data.get(\"generalDiagnostics\") or []\n        findings: list[dict[str, Any]] = []\n        error_count = 0\n        warning_count = 0\n\n        for item in general_diag:\n            severity = item.get(\"severity\", \"error\")\n            finding = {\n                \"file\": item.get(\"file\", \"\"),\n                \"row\": (item.get(\"range\") or {}).get(\"start\", {}).get(\"line\", 0),\n                \"col\": (item.get(\"range\") or {}).get(\"start\", {}).get(\"character\", 0),\n                \"code\": item.get(\"rule\", \"\"),\n                \"message\": item.get(\"message\", \"\"),\n            }\n            findings.append(finding)\n            if severity == \"warning\":\n                warning_count += 1\n            elif severity == \"error\":\n                error_count += 1\n\n        summary = data.get(\"summary\") or {}\n        ok = summary.get(\"errorCount\", error_count) == 0\n\n        return {\n            \"linter\": \"pyright\",\n            \"ok\": ok,\n            \"error_count\": error_count,\n            \"warning_count\": warning_count,\n            \"findings\": findings,\n            \"raw\": raw,\n        }\n    except subprocess.TimeoutExpired:\n        return {\"linter\": \"pyright\", \"ok\": None, \"error\": \"timed out\"}\n    except Exception as exc:\n        return {\"linter\": \"pyright\", \"ok\": None, \"error\": str(exc)}\n",
+  "body_hash": "1aa2bfda5a6f0234",
+  "body_truncated": false,
+  "callers_of": [
+    "which",
+    "str",
+    "run",
+    "get",
+    "append",
+    "strip",
+    "loads"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/local/linter.py:152.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.run_pyright",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "re",
+    "shutil",
+    "subprocess",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.local.repo.DEFAULT_IGNORED_DIRS"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/local/linter.py:152"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "run_pyright",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for run_pyright"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

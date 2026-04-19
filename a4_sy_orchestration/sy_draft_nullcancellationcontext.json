@@ -1,0 +1,32 @@
+{
+  "body": "class NullCancellationContext(CancellationContext):\n    \"\"\"No-op cancellation context for operations that don't support cancellation.\"\"\"\n\n    def cancel(self) -> None:\n        \"\"\"Do nothing.\"\"\"\n        pass\n\n    def check(self) -> bool:\n        \"\"\"Always return False \u2014 never cancelled.\"\"\"\n        return False\n",
+  "body_hash": "d213d0e2465c96f6",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/mcp/cancellation.py:46.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.nullcancellationcontext",
+  "imports": [
+    "__future__.annotations",
+    "threading",
+    "typing.Optional"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/mcp/cancellation.py:46"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "NullCancellationContext",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for NullCancellationContext"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

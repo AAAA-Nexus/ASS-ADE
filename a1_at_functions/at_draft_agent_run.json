@@ -1,0 +1,71 @@
+{
+  "body": "def agent_run(\n    task: Annotated[str, typer.Argument(help=\"Task for the agent to execute.\")],\n    config: Path | None = CONFIG_OPTION,\n    working_dir: Annotated[Path, typer.Option(help=\"Working directory for the agent.\")] = Path(\".\"),\n    model: Annotated[str | None, typer.Option(help=\"Specific model to use.\")] = None,\n) -> None:\n    \"\"\"Execute a single task using the agent.\"\"\"\n    from ass_ade.agent.loop import AgentLoop\n    from ass_ade.agent.gates import QualityGates\n    from ass_ade.agent.lse import LSEEngine\n    from ass_ade.agent.orchestrator import EngineOrchestrator\n    from ass_ade.engine.router import build_provider\n    from ass_ade.tools.registry import default_registry\n    from ass_ade.nexus.client import NexusClient\n\n    _, settings = _resolve_config(config)\n    provider = build_provider(settings)\n    registry = default_registry(str(working_dir.resolve()))\n\n    gates_client = None\n    try:\n        gates = None\n        nexus_for_engines = None\n        if settings.profile in {\"hybrid\", \"premium\"} and settings.nexus_api_key:\n            gates_client = NexusClient(\n                base_url=settings.nexus_base_url,\n                timeout=settings.request_timeout_s,\n                api_key=settings.nexus_api_key,\n                agent_id=settings.agent_id,  # auto-deduct Nexus credit\n            )\n            gates = QualityGates(gates_client)\n            nexus_for_engines = gates_client\n\n        lse_cfg = _lse_config_from_settings(settings)\n        lse = LSEEngine(lse_cfg)\n        orchestrator = EngineOrchestrator(lse_cfg, nexus=nexus_for_engines, working_dir=str(working_dir.resolve()))\n\n        agent = AgentLoop(\n            provider=provider,\n            registry=registry,\n            working_dir=str(working_dir.resolve()),\n            model=model or settings.agent_model,\n            quality_gates=gates,\n            orchestrator=orchestrator,\n            lse=lse,\n        )\n\n        with console.status(\"[bold yellow]Executing task...[/bold yellow]\"):\n            response = agent.step(task)\n\n        console.print(response)\n        _render_phase1_header(agent)\n    finally:\n        if gates_client:\n            gates_client.close()\n",
+  "body_hash": "fa346e2939c63e42",
+  "body_truncated": false,
+  "callers_of": [
+    "Path",
+    "_resolve_config",
+    "build_provider",
+    "default_registry",
+    "str",
+    "_lse_config_from_settings",
+    "LSEEngine",
+    "EngineOrchestrator",
+    "AgentLoop",
+    "print",
+    "_render_phase1_header",
+    "resolve",
+    "NexusClient",
+    "QualityGates",
+    "status",
+    "step",
+    "close",
+    "Argument",
+    "Option"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/commands/agent.py:151.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.agent_run",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "typing.Annotated",
+    "typing.Any",
+    "typer",
+    "rich.console.Console",
+    "ass_ade.config.default_config_path",
+    "ass_ade.config.load_config",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.agent.orchestrator.EngineOrchestrator",
+    "ass_ade.engine.router.build_provider",
+    "ass_ade.tools.registry.default_registry",
+    "ass_ade.nexus.client.NexusClient",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.agent.orchestrator.EngineOrchestrator",
+    "ass_ade.engine.router.build_provider",
+    "ass_ade.tools.registry.default_registry",
+    "ass_ade.nexus.client.NexusClient"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/commands/agent.py:151"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "agent_run",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for agent_run"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,54 @@
+{
+  "body": "def workflow_phase0_recon(\n    task_description: str = typer.Argument(..., help=\"Task to recon before execution.\"),\n    source: list[str] = typer.Option(\n        [], \"--source\", help=\"Official source URL already researched.\"\n    ),\n    path: Path = REPO_PATH_OPTION,\n    max_files: int = typer.Option(20, help=\"Maximum relevant files to return.\"),\n    json_out: bool = typer.Option(False, \"--json\", help=\"Output raw JSON.\"),\n) -> None:\n    \"\"\"Never Code Blind gate: repo recon plus required latest-doc source targets.\"\"\"\n    from ass_ade.recon import phase0_recon\n\n    result = phase0_recon(\n        task_description=task_description,\n        working_dir=path,\n        provided_sources=source,\n        max_relevant_files=max_files,\n    )\n\n    if json_out:\n        _print_json(result.model_dump(), redact=True)\n        return\n\n    color = \"green\" if result.verdict == \"READY_FOR_PHASE_1\" else \"yellow\"\n    console.print(f\"[{color}]Phase 0 Recon: {result.verdict}[/{color}]\")\n    if result.research_targets:\n        console.print(\"[bold]Research targets:[/bold]\")\n        for target in result.research_targets:\n            hint = f\" ({target.suggested_url})\" if target.suggested_url else \"\"\n            console.print(f\"  - {target.topic}{hint}\")\n    if result.codebase.relevant_files:\n        console.print(\"[bold]Relevant files:[/bold]\")\n        for rel in result.codebase.relevant_files:\n            console.print(f\"  - {rel}\")\n    if result.required_actions:\n        console.print(\"[bold]Required before code:[/bold]\")\n        for action in result.required_actions:\n            console.print(f\"  - {action}\")\n    console.print(f\"Next: {result.next_action}\")\n",
+  "body_hash": "9edf696f3f4e4f7c",
+  "body_truncated": false,
+  "callers_of": [
+    "Argument",
+    "Option",
+    "phase0_recon",
+    "print",
+    "_print_json",
+    "model_dump"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/commands/workflow.py:74.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "og.source.ass_ade.workflow_phase0_recon",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "httpx",
+    "typer",
+    "rich.console.Console",
+    "ass_ade.config.default_config_path",
+    "ass_ade.config.load_config",
+    "ass_ade.nexus.client.NexusClient",
+    "ass_ade.recon.phase0_recon",
+    "ass_ade.nexus.errors.NexusError",
+    "ass_ade.workflows.trust_gate",
+    "ass_ade.nexus.errors.NexusError",
+    "ass_ade.workflows.certify_output",
+    "ass_ade.nexus.errors.NexusError",
+    "ass_ade.workflows.safe_execute",
+    "ass_ade.map_terrain.map_terrain"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/commands/workflow.py:74"
+  },
+  "kind": "product_organism",
+  "made_of": [],
+  "name": "workflow_phase0_recon",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for workflow_phase0_recon"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a3_og_features",
+  "version": "0.1.0"
+}

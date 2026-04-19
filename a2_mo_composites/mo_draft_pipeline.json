@@ -1,0 +1,61 @@
+{
+  "body": "class Pipeline:\n    \"\"\"Composable workflow pipeline with sequential step execution.\n\n    Steps are functions that take a context dict and return a StepResult.\n    Context is shared across all steps, allowing data to flow through\n    the pipeline.\n    \"\"\"\n\n    def __init__(\n        self,\n        name: str,\n        *,\n        fail_fast: bool = True,\n        persist_dir: str | None = None,\n        on_progress: ProgressCallback | None = None,\n    ) -> None:\n        self._name = name\n        self._steps: list[_StepEntry] = []\n        self._fail_fast = fail_fast\n        self._persist_dir = persist_dir\n        self._on_progress = on_progress\n\n    @property\n    def name(self) -> str:\n        return self._name\n\n    @property\n    def step_names(self) -> list[str]:\n        return [s.name for s in self._steps]\n\n    def add(self, name: str, fn: StepFunction) -> Pipeline:\n        \"\"\"Add a step to the pipeline. Returns self for chaining.\"\"\"\n        self._steps.append(_StepEntry(name=name, fn=fn))\n        return self\n\n    def run(self, context: dict[str, Any] | None = None) -> PipelineResult:\n        \"\"\"Execute the pipeline sequentially.\n\n        Returns the full PipelineResult with all step outcomes.\n        \"\"\"\n        ctx = dict(context or {})\n        results: list[StepResult] = []\n        total = len(self._steps)\n        pipeline_start = time.monotonic()\n        should_skip = False\n\n        for i, entry in enumerate(self._steps):\n            if should_skip:\n                sr = StepResult(name=entry.name, status=StepStatus.SKIPPED)\n                results.append(sr)\n                if self._on_progress:\n                    self._on_progress(entry.name, StepStatus.SKIPPED, i + 1, total)\n                continue\n\n            if self._on_progress:\n                self._on_progress(entry.name, StepStatus.RUNNING, i + 1, total)\n\n            step_start = time.monotonic()\n            try:\n                sr = entry.fn(ctx)\n                if not sr.duration_ms:\n                    sr.duration_ms = (time.monotonic() - step_start) * 1000\n            except Exception as exc:\n                sr = StepResult(\n                    name=entry.name,\n                    status=StepStatus.FAILED,\n                    error=str(exc),\n                    duration_ms=(time.monotonic() - step_start) * 1000,\n                )\n\n            # Ensure name matches\n            sr.name = entry.name\n            results.append(sr)\n\n            # Merge step output into shared context\n            if sr.output:\n                ctx[entry.name] = sr.output\n\n            if self._on_progress:\n                self._on_progress(entry.name, sr.status, i + 1, total)\n\n            if sr.status == StepStatus.FAILED and self._fail_fast:\n                should_skip = True\n\n        pipeline_duration = (time.monotonic() - pipeline_start) * 1000\n        all_passed = all(s.status in (StepStatus.PASSED, StepStatus.SKIPPED) for s in results)\n        no_failures = not any(s.status == StepStatus.FAILED for s in results)\n\n        result = PipelineResult(\n            name=self._name,\n            steps=results,\n            context=ctx,\n            passed=bool(results) and all_passed and no_failures,\n            duration_ms=pipeline_duration,\n        )\n\n        # Persist result if configured\n        if self._persist_dir:\n            self._persist(result)\n\n        return result\n\n    def _persist(self, result: PipelineResult) -> None:\n        \"\"\"Save pipeline result to disk.\"\"\"\n        out_dir = Path(self._persist_dir)\n        out_dir.mkdir(parents=True, exist_ok=True)\n        ts = time.time_ns()\n        filename = f\"{self._name}_{ts}.json\"\n        data = {\n            \"name\": result.name,\n            \"passed\": result.passed,\n            \"duration_ms\": result.duration_ms,\n            \"steps\": [\n                {\n                    \"name\": s.name,\n                    \"status\": s.status.value,\n                    \"output\": s.output,\n                    \"error\": s.error,\n                    \"duration_ms\": s.duration_ms,\n                }\n                for s in result.steps\n            ],\n        }\n        (out_dir / filename).write_text(json.dumps(data, indent=2), encoding=\"utf-8\")\n",
+  "body_hash": "8ebe85b4bbf326d3",
+  "body_truncated": false,
+  "callers_of": [
+    "append",
+    "dict",
+    "len",
+    "monotonic",
+    "enumerate",
+    "all",
+    "PipelineResult",
+    "Path",
+    "mkdir",
+    "time_ns",
+    "write_text",
+    "_StepEntry",
+    "any",
+    "_persist",
+    "dumps",
+    "StepResult",
+    "_on_progress",
+    "fn",
+    "bool",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/pipeline.py:101.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.pipeline",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "time",
+    "collections.abc.Callable",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "enum.Enum",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Protocol",
+    "ass_ade.nexus.validation.validate_agent_id"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/pipeline.py:101"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "Pipeline",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for Pipeline"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

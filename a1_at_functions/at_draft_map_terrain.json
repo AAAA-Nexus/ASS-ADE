@@ -1,0 +1,66 @@
+{
+  "body": "def map_terrain(\n    *,\n    task_description: str,\n    required_capabilities: dict[str, list[str]],\n    agent_id: str = \"ass-ade-local\",\n    max_development_budget_usdc: float = 1.0,\n    auto_invent_if_missing: bool = False,\n    invention_constraints: dict[str, Any] | None = None,\n    working_dir: str | Path = \".\",\n    hosted_tools: list[str] | None = None,\n) -> MapTerrainResult:\n    \"\"\"Apply the MAP = TERRAIN gate for one task.\"\"\"\n    constraints = invention_constraints or {}\n    root = Path(working_dir).resolve()\n    inventory = build_capability_inventory(working_dir=root, hosted_tools=hosted_tools)\n    inventory_check: dict[str, dict[str, str]] = {key: {} for key in _CAPABILITY_TYPES}\n    invalid_requirements: dict[str, str] = {}\n    missing: list[MissingCapability] = []\n\n    for raw_type, names in required_capabilities.items():\n        cap_type = _normalize_type(raw_type)\n        if cap_type is None:\n            invalid_requirements[str(raw_type)] = \"unsupported capability type\"\n            continue\n        normalized_names = _coerce_required_names(names)\n        if not normalized_names:\n            # Empty groups mean \"no requirements\" for that type.\n            continue\n        for raw_name in normalized_names:\n            name = str(raw_name)\n            normalized_name = _slug(name)\n            exists = normalized_name in inventory[cap_type]\n            if (\n                not exists\n                and cap_type == \"tools\"\n                and normalized_name.startswith(\"nexus_\")\n            ):\n                exists = normalized_name[6:] in inventory[cap_type]\n            inventory_check[cap_type][name] = \"exists\" if exists else \"missing\"\n            if exists:\n                continue\n            missing.append(\n                MissingCapability(\n                    name=name,\n                    type=cap_type[:-1].title(),\n                    type_key=cap_type,\n                    specification=_specification(\n                        task_description=task_description,\n                        cap_type=cap_type,\n                        name=name,\n                        constraints=constraints,\n                    ),\n                    recommended_creation_tool=_CREATION_TOOL_BY_TYPE[cap_type],\n                    estimated_fuel_cost=_FUEL_BY_TYPE[cap_type],\n                    verification_criteria=_verification_criteria(cap_type, constraints),\n                    human_approval_required=cap_type in {\"agents\", \"harnesses\"},\n                )\n            )\n\n    if invalid_requirements:\n        inventory_check[\"requirements\"] = invalid_requirements\n        return MapTerrainResult(\n            verdict=\"HALT_AND_INVENT\",\n            missing_capabilities=missing,\n            inventory_check=inventory_check,\n            development_plan=DevelopmentPlan(\n                steps=[\n                    \"1. Fix required_capabilities schema and capability types.\",\n                    \"2. Re-run MAP = TERRAIN gate.\",\n                ],\n                total_estimated_time_seconds=30,\n                auto_invent_triggered=False,\n            ),\n            next_action=\"Correct capability requirements before retrying original task.\",\n        )\n\n    if not missing:\n        return MapTerrainResult(\n            verdict=\"PROCEED\",\n            inventory_check=inventory_check,\n            next_action=\"Continue to Phase 3 synthesis.\",\n        )\n\n    total_cost = sum(item.estimated_fuel_cost for item in missing)\n    auto_allowed = auto_invent_if_missing and total_cost <= max_development_budget_usdc\n    created_assets: list[str] = []\n    if auto_allowed:\n        for item in missing:\n            created_assets.extend(\n                _materialize_capability_asset(\n                    agent_id=agent_id,\n                    working_dir=root,\n                    task_description=task_description,\n                    item=item,\n                )\n            )\n\n    return MapTerrainResult(\n        verdict=\"HALT_AND_INVENT\",\n        missing_capabilities=missing,\n        inventory_check=inventory_check,\n        development_plan=DevelopmentPlan(\n            steps=[\n                \"1. Synthesize capability blueprint and repo-native asset contract.\",\n                \"2. Materialize the tiered rebuild packet (qk/at/mo/og/sy).\",\n                \"3. Run rebuild audit and certificate issuance.\",\n                \"4. Run the enhancement scanner and review follow-up findings.\",\n                \"5. Register the asset in Asset Memory and retry the original task.\",\n            ],\n            total_estimated_time_seconds=max(45, len(missing) * 90),\n            auto_invent_triggered=auto_allowed,\n            created_assets=created_assets,\n        ),\n        next_action=(\n            f\"Review generated capability packet(s) for agent {agent_id} and rerun MAP = TERRAIN.\"\n            if auto_allowed\n            else \"Execute the capability development plan before retrying the original task.\"\n        ),\n    )\n",
+  "body_hash": "680fcf0db0b63526",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "build_capability_inventory",
+    "items",
+    "sum",
+    "MapTerrainResult",
+    "_normalize_type",
+    "_coerce_required_names",
+    "Path",
+    "str",
+    "_slug",
+    "append",
+    "extend",
+    "DevelopmentPlan",
+    "startswith",
+    "MissingCapability",
+    "_materialize_capability_asset",
+    "max",
+    "title",
+    "_specification",
+    "_verification_criteria",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/map_terrain.py:1047.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.map_terrain",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "re",
+    "time",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Literal",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "ass_ade.tools.registry.default_registry",
+    "ass_ade.engine.rebuild.schema_materializer.emit_certificate",
+    "ass_ade.engine.rebuild.schema_materializer.materialize_plan",
+    "ass_ade.engine.rebuild.schema_materializer.validate_rebuild",
+    "ass_ade.local.enhancer.build_enhancement_report"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/map_terrain.py:1047"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "map_terrain",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for map_terrain"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

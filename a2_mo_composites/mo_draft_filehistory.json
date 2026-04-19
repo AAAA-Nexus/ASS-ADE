@@ -1,0 +1,61 @@
+{
+  "body": "class FileHistory:\n    \"\"\"Manages undo history for file mutations.\n\n    Stores snapshots in .ass-ade/history/ under the working directory.\n    \"\"\"\n\n    def __init__(self, working_dir: str = \".\", max_depth: int = 20) -> None:\n        self._cwd = Path(working_dir).resolve()\n        self._history_dir = self._cwd / \".ass-ade\" / \"history\"\n        self._max_depth = max_depth\n        self._counters: dict[str, int] = {}\n\n    def _file_hash(self, rel_path: str) -> str:\n        return hashlib.sha256(rel_path.encode()).hexdigest()[:16]\n\n    def _snapshot_dir(self, rel_path: str) -> Path:\n        return self._history_dir / self._file_hash(rel_path)\n\n    def _next_seq(self, rel_path: str) -> int:\n        if rel_path not in self._counters:\n            snap_dir = self._snapshot_dir(rel_path)\n            if snap_dir.exists():\n                existing = sorted(snap_dir.glob(\"*.snapshot\"))\n                if existing:\n                    try:\n                        last = json.loads(existing[-1].read_text(encoding=\"utf-8\"))\n                        self._counters[rel_path] = last[\"sequence\"] + 1\n                    except (json.JSONDecodeError, KeyError):\n                        self._counters[rel_path] = len(existing)\n                else:\n                    self._counters[rel_path] = 0\n            else:\n                self._counters[rel_path] = 0\n        seq = self._counters[rel_path]\n        self._counters[rel_path] = seq + 1\n        return seq\n\n    def record(self, rel_path: str, content: str) -> Snapshot:\n        \"\"\"Record current file content before a mutation.\"\"\"\n        seq = self._next_seq(rel_path)\n        snap = Snapshot(\n            path=rel_path,\n            sequence=seq,\n            timestamp=time.time(),\n            content=content,\n        )\n\n        snap_dir = self._snapshot_dir(rel_path)\n        snap_dir.mkdir(parents=True, exist_ok=True)\n\n        snap_file = snap_dir / f\"{seq:06d}.snapshot\"\n        snap_file.write_text(\n            json.dumps({\n                \"path\": snap.path,\n                \"sequence\": snap.sequence,\n                \"timestamp\": snap.timestamp,\n                \"content\": snap.content,\n            }),\n            encoding=\"utf-8\",\n        )\n\n        # Prune old snapshots\n        self._prune(rel_path)\n\n        return snap\n\n    def undo(self, rel_path: str) -> Snapshot | None:\n        \"\"\"Pop the most recent snapshot and restore the file.\n\n        Returns the snapshot that was restored, or None if no history.\n        \"\"\"\n        snap_dir = self._snapshot_dir(rel_path)\n        if not snap_dir.exists():\n            return None\n\n        snapshots = sorted(snap_dir.glob(\"*.snapshot\"))\n        if not snapshots:\n            return None\n\n        latest = snapshots[-1]\n        try:\n            data = json.loads(latest.read_text(encoding=\"utf-8\"))\n        except (json.JSONDecodeError, KeyError):\n            return None\n\n        snap = Snapshot(\n            path=data[\"path\"],\n            sequence=data[\"sequence\"],\n            timestamp=data[\"timestamp\"],\n            content=data[\"content\"],\n        )\n\n        # Restore the file\n        target = self._cwd / rel_path\n        target.parent.mkdir(parents=True, exist_ok=True)\n        target.write_text(snap.content, encoding=\"utf-8\")\n\n        # Remove the snapshot (consumed)\n        latest.unlink()\n\n        # Reset counter\n        if rel_path in self._counters:\n            self._counters[rel_path] = max(0, self._counters[rel_path] - 1)\n\n        return snap\n\n    def list_snapshots(self, rel_path: str) -> list[Snapshot]:\n        \"\"\"List all snapshots for a file, oldest first.\"\"\"\n        snap_dir = self._snapshot_dir(rel_path)\n        if not snap_dir.exists():\n            return []\n\n        result: list[Snapshot] = []\n        for f in sorted(snap_dir.glob(\"*.snapshot\")):\n            try:\n                data = json.loads(f.read_text(encoding=\"utf-8\"))\n                result.append(Snapshot(\n                    path=data[\"path\"],\n                    sequence=data[\"sequence\"],\n                    timestamp=data[\"timestamp\"],\n                    content=data[\"content\"],\n                ))\n            except (json.JSONDecodeError, KeyError):\n                continue\n        return result\n\n    def depth(self, rel_path: str) -> int:\n        \"\"\"Number of undo steps available for a file.\"\"\"\n        snap_dir = self._snapshot_dir(rel_path)\n        if not snap_dir.exists():\n            return 0\n        return len(list(snap_dir.glob(\"*.snapshot\")))\n\n    def _prune(self, rel_path: str) -> None:\n        \"\"\"Remove oldest snapshots beyond max_depth.\"\"\"\n        snap_dir = self._snapshot_dir(rel_path)\n        if not snap_dir.exists():\n            return\n\n        snapshots = sorted(snap_dir.glob(\"*.snapshot\"))\n        while len(snapshots) > self._max_depth:\n            snapshots[0].unlink()\n            snapshots.pop(0)\n",
+  "body_hash": "da01ba30c645a447",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "_next_seq",
+    "Snapshot",
+    "_snapshot_dir",
+    "mkdir",
+    "write_text",
+    "_prune",
+    "sorted",
+    "unlink",
+    "len",
+    "hexdigest",
+    "_file_hash",
+    "exists",
+    "dumps",
+    "glob",
+    "loads",
+    "max",
+    "list",
+    "pop",
+    "Path",
+    "time",
+    "read_text",
+    "append",
+    "sha256",
+    "encode"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/tools/history.py:36.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.filehistory",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "time",
+    "dataclasses.dataclass",
+    "pathlib.Path"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/tools/history.py:36"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "FileHistory",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for FileHistory"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

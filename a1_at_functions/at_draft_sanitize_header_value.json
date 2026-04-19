@@ -1,0 +1,40 @@
+{
+  "body": "def sanitize_header_value(value: str, field_name: str = \"header value\") -> str:\n    \"\"\"Strip whitespace and reject any HTTP header-injection characters.\n\n    CR (``\\\\r``), LF (``\\\\n``), and NUL (``\\\\x00``) in an HTTP header value\n    allow request-splitting / CRLF injection attacks (OWASP A03).\n    Raises ``ValueError`` if any such character is present after stripping.\n    \"\"\"\n    value = value.strip()\n    if _HEADER_INJECTION_RE.search(value):\n        raise ValueError(\n            f\"{field_name} contains disallowed control characters \"\n            \"(CR, LF, or other control characters are not permitted in \"\n            \"HTTP header values \u2014 potential header injection).\"\n        )\n    return value\n",
+  "body_hash": "3d9761084873e992",
+  "body_truncated": false,
+  "callers_of": [
+    "strip",
+    "search",
+    "ValueError"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/validation.py:150.",
+  "exceptions_raised": [
+    "ValueError"
+  ],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.sanitize_header_value",
+  "imports": [
+    "__future__.annotations",
+    "ipaddress",
+    "re",
+    "socket",
+    "urllib.parse.urlparse"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/nexus/validation.py:150"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "sanitize_header_value",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for sanitize_header_value"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

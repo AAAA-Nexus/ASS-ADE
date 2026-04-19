@@ -1,0 +1,72 @@
+{
+  "body": "def materialize_plan(\n    plan: dict[str, Any],\n    *,\n    out_dir: Path,\n    rebuild_tag: str | None = None,\n    prev_manifest_path: Path | None = None,\n) -> dict[str, Any]:\n    \"\"\"Write each source module (whole file) to its dominant tier directory.\n\n    Instead of extracting individual function bodies into separate files\n    (which strips imports and class context), we copy the WHOLE source file\n    to the appropriate tier folder.  Multiple components from the same source\n    file are deduplicated: the file is written once to the tier where most of\n    its symbols land.\n\n    JSON component-spec artifacts are still written per component for metadata\n    and audit purposes.\n\n    Args:\n        plan:               Gap-fill plan from ``gap_filler.build_gap_fill_plan``.\n        out_dir:            Parent directory for the timestamped rebuild folder.\n        rebuild_tag:        Optional timestamp tag; auto-generated when omitted.\n        prev_manifest_path: MANIFEST.json from a previous build for version continuity.\n    \"\"\"\n    tag = rebuild_tag or dt.datetime.now().strftime(\"%Y%m%d_%H%M%S\")\n    target_root = out_dir / tag\n    _assert_under_root(target_root, out_dir)\n    target_root.mkdir(parents=True, exist_ok=True)\n\n    prev_versions = load_prev_versions(prev_manifest_path)\n\n    # \u2500\u2500 Step 0: Determine dominant tier per source file \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    # Count how many components from each source file land in each tier.\n    # The file goes to the tier that claims the most of its symbols.\n    file_tier_votes: dict[str, dict[str, int]] = {}\n    for proposal in plan.get(\"proposed_components\") or []:\n        src_sym = proposal.get(\"source_symbol\") or {}\n        src_path = src_sym.get(\"path\") or \"\"\n        lang = (src_sym.get(\"language\") or \"python\").lower()\n        if src_path and lang == \"python\":\n            tier = proposal.get(\"tier\") or \"a1_at_functions\"\n            votes = file_tier_votes.setdefault(src_path, {})\n            votes[tier] = votes.get(tier, 0) + 1\n\n    file_to_tier: dict[str, str] = {\n        src: _dominant_tier(votes)\n        for src, votes in file_tier_votes.items()\n        if votes\n    }\n\n    # \u2500\u2500 Step 1: Copy whole source modules (one per source file) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    # Each unique source file is written exactly once to its dominant tier dir.\n    written_modules: dict[str, str] = {}  # source_path_str \u2192 written dest path\n    for src_path_str, tier in sorted(file_to_tier.items()):\n        src_path = Path(src_path_str)\n        if not src_path.exists():\n            continue\n        tier_dir = target_root / tier\n        tier_dir.mkdir(parents=True, exist_ok=True)\n\n        dest_name = src_path.name\n        dest_file = tier_dir / dest_name\n        # Resolve name conflicts with a counter suffix\n        counter = 1\n        while dest_file.exists():\n            dest_file = tier_dir / f\"{src_path.stem}_{counter}{src_path.suffix}\"\n            counter += 1\n\n        _assert_under_root(dest_file, out_dir)\n        try:\n            content = src_path.read_text(encoding=\"utf-8\", errors=\"ignore\")\n        except OSError:\n            continue\n        dest_file.write_text(content, encoding=\"utf-8\")\n        written_modules[src_path_str] = dest_file.as_posix()\n\n    # \u2500\u2500 Step 2: Write JSON component-spec artifacts \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    written: list[dict[str, Any]] = []\n    by_tier: dict[str, int] = {}\n    tier_module_versions: dict[str, list[dict[str, Any]]] = {}\n\n    for proposal in plan.get(\"proposed_components\") or []:\n        tier = proposal.get(\"tier\") or \"a1_at_functions\"\n        prefix = TIER_PREFIX.get(tier, \"at\")\n        tier_dir = target_root / tier\n        tier_dir.mkdir(parents=True, exist_ok=True)\n        name_slug = _slug(proposal.get(\"name\") or \"component\")\n        json_file = tier_dir / f\"{prefix}_draft_{name_slug}.json\"\n        _assert_under_root(json_file, out_dir)\n\n        artifact = _make_component_artifact(proposal)\n        body = proposal.get(\"body\") or \"\"\n        src_sym = proposal.get(\"source_symbol\") or {}\n        lang = (src_sym.get(\"language\") or \"python\").lower()\n\n        version, change_type = assign_version(artifact[\"id\"], body, lang, prev_versions)\n        artifact[\"version\"] = version\n        artifact[\"body_hash\"] = content_hash(body)\n        if change_type == \"major\":\n            artifact[\"compat_warning\"] = \"public API removed or renamed \u2014 review before shipping\"\n\n        json_file.write_text(\n            json.dumps(artifact, indent=2, sort_keys=True) + \"\\n\", encoding=\"utf-8\"\n        )\n\n        tier_module_versions.setdefault(tier, []).append({\n            \"id\": artifact[\"id\"],\n            \"name\": artifact[\"name\"],\n            \"version\": version,\n            \"change_type\": change_type,\n        })\n\n        src_path_str = (proposal.get(\"source_symbol\") or {}).get(\"path\") or \"\"\n        sibling_emitted = written_modules.get(src_path_str)\n\n        written.append({\n            \"body_hash\": artifact[\"body_hash\"],\n            \"change_type\": change_type,\n            \"fulfills_blueprints\": artifact[\"fulfills_blueprints\"],\n            \"id\": artifact[\"id\"],\n            \"kind\": artifact[\"kind\"],\n            \"name\": artifact[\"name\"],\n            \"path\": json_file.as_posix(),\n            \"source_file\": sibling_emitted,\n            \"tier\": tier,\n            \"version\": version,\n        })\n        by_tier[tier] = by_tier.get(tier, 0) + 1\n\n    # \u2500\u2500 Step 3: Write per-tier VERSION.json \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    tier_versions: dict[str, str] = {}\n    for tier, modules in tier_module_versions.items():\n        tier_dir = target_root / tier\n        write_tier_version_file(tier_dir, tier, modules)\n        tier_versions[tier] = _aggregate_version([m[\"version\"] for m in modules])\n\n    write_project_version_file(target_root, tier_versions, tag)\n\n    manifest_path = target_root / \"MANIFEST.json\"\n    _assert_under_root(manifest_path, out_dir)\n    manifest = {\n        \"schema\": COMPONENT_SCHEMA,\n        \"rebuild_tag\": tag,\n        \"materialized_at\": dt.datetime.now(dt.timezone.utc).isoformat(),\n        \"source_plan_digest\": plan.get(\"content_digest\"),\n        \"counts\": {\"total\": len(written), \"by_tier\": by_tier},\n        \"tier_versions\": tier_versions,\n        \"components\": written,\n    }\n    manifest_path.write_text(\n        json.dumps(manifest, indent=2, sort_keys=True) + \"\\n\", encoding=\"utf-8\"\n    )\n\n    pointer = out_dir / \"latest.txt\"\n    _assert_under_root(pointer, out_dir)\n    pointer.write_text(target_root.as_posix() + \"\\n\", encoding=\"utf-8\")\n\n    return {\n        \"rebuild_tag\": tag,\n        \"target_root\": target_root.as_posix(),\n        \"manifest_path\": manifest_path.as_posix(),\n        \"pointer\": pointer.as_posix(),\n        \"written_count\": len(written),\n        \"by_tier\": by_tier,\n        \"tier_versions\": tier_versions,\n        \"written_modules\": list(written_modules.values()),\n    }\n",
+  "body_hash": "ed02bca9cb20795d",
+  "body_truncated": false,
+  "callers_of": [
+    "_assert_under_root",
+    "mkdir",
+    "load_prev_versions",
+    "sorted",
+    "items",
+    "write_project_version_file",
+    "write_text",
+    "strftime",
+    "get",
+    "lower",
+    "_dominant_tier",
+    "Path",
+    "exists",
+    "as_posix",
+    "_slug",
+    "_make_component_artifact",
+    "assign_version",
+    "content_hash",
+    "append",
+    "write_tier_version_file",
+    "_aggregate_version",
+    "isoformat",
+    "len",
+    "list",
+    "setdefault",
+    "read_text",
+    "dumps",
+    "values",
+    "now"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/rebuild/schema_materializer.py:105.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.materialize_plan",
+  "imports": [
+    "__future__.annotations",
+    "datetime",
+    "hashlib",
+    "json",
+    "re",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.engine.rebuild.version_tracker._aggregate_version",
+    "ass_ade.engine.rebuild.version_tracker.assign_version",
+    "ass_ade.engine.rebuild.version_tracker.content_hash",
+    "ass_ade.engine.rebuild.version_tracker.load_prev_versions",
+    "ass_ade.engine.rebuild.version_tracker.write_project_version_file",
+    "ass_ade.engine.rebuild.version_tracker.write_tier_version_file"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/engine/rebuild/schema_materializer.py:105"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "materialize_plan",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for materialize_plan"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

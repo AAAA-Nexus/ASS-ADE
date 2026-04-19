@@ -1,0 +1,51 @@
+{
+  "body": "class EpistemicRouter:\n    \"\"\"Stateful router that tracks routing history for session analytics.\"\"\"\n\n    def __init__(self, nexus_client: Any = None) -> None:\n        self._nexus = nexus_client\n        self._history: list[RoutingDecision] = []\n\n    def route(self, message: str) -> RoutingDecision:\n        \"\"\"Route a message using best available method.\"\"\"\n        if self._nexus is not None:\n            try:\n                result = self._nexus.routing_recommend(prompt=message)\n                confidence = _result_field(result, \"confidence\")\n                if isinstance(confidence, (int, float)):\n                    complexity = max(0.0, min(1.0, float(confidence)))\n                else:\n                    complexity = classify_complexity(message)\n\n                model_name = _result_field(result, \"model\") or _result_field(result, \"recommended_model\")\n                reason = _result_field(result, \"reason\", \"Nexus recommendation\")\n\n                decision = RoutingDecision(\n                    tier=_nexus_tier(result),\n                    complexity=complexity,\n                    recommended_model=str(model_name) if model_name else None,\n                    reason=str(reason),\n                    source=\"nexus\",\n                )\n            except Exception:\n                decision = local_route(message)\n        else:\n            decision = local_route(message)\n        self._history.append(decision)\n        return decision\n\n    @property\n    def history(self) -> list[RoutingDecision]:\n        return list(self._history)\n\n    @property\n    def avg_complexity(self) -> float:\n        \"\"\"Average complexity across all routed messages.\"\"\"\n        if not self._history:\n            return 0.0\n        return sum(d.complexity for d in self._history) / len(self._history)\n",
+  "body_hash": "b4208b2ae6ecef46",
+  "body_truncated": false,
+  "callers_of": [
+    "append",
+    "list",
+    "local_route",
+    "sum",
+    "len",
+    "routing_recommend",
+    "_result_field",
+    "isinstance",
+    "RoutingDecision",
+    "max",
+    "classify_complexity",
+    "min",
+    "_nexus_tier",
+    "str",
+    "float"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/routing.py:181.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.epistemicrouter",
+  "imports": [
+    "__future__.annotations",
+    "re",
+    "collections.abc.Mapping",
+    "dataclasses.dataclass",
+    "enum.Enum",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/routing.py:181"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "EpistemicRouter",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for EpistemicRouter"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

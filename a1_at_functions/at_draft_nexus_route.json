@@ -1,0 +1,41 @@
+{
+  "body": "async def nexus_route(\n    message: str,\n    nexus_client: Any,\n    available_models: list[str] | None = None,\n) -> RoutingDecision:\n    \"\"\"Route using AAAA-Nexus epistemic routing endpoints.\n\n    Falls back to local routing if Nexus is unavailable.\n    \"\"\"\n    try:\n        result = nexus_client.routing_recommend(\n            prompt=message,\n            available_models=available_models or [],\n        )\n        return RoutingDecision(\n            tier=_nexus_tier(result),\n            complexity=getattr(result, \"complexity\", 0.5),\n            recommended_model=getattr(result, \"recommended_model\", None),\n            reason=getattr(result, \"reason\", \"Nexus recommendation\"),\n            source=\"nexus\",\n        )\n    except Exception:\n        return local_route(message)\n",
+  "body_hash": "a90a7e265ff14a9e",
+  "body_truncated": false,
+  "callers_of": [
+    "routing_recommend",
+    "RoutingDecision",
+    "local_route",
+    "_nexus_tier",
+    "getattr"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/routing.py:133.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.nexus_route",
+  "imports": [
+    "__future__.annotations",
+    "re",
+    "collections.abc.Mapping",
+    "dataclasses.dataclass",
+    "enum.Enum",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/routing.py:133"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "nexus_route",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for nexus_route"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

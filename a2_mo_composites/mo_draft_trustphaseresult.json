@@ -1,0 +1,34 @@
+{
+  "body": "class TrustPhaseResult(NexusModel):\n    \"\"\"/v1/oracle/v-ai \u2014 V_AI phase oracle\"\"\"\n    phase: float | None = None\n    certified: bool | None = None\n    monotonicity_preserved: bool | None = None\n",
+  "body_hash": "1a3f6a64fe896f88",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/models.py:138.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.trustphaseresult",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/nexus/models.py:138"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "TrustPhaseResult",
+  "product_categories": [
+    "IDT"
+  ],
+  "provides": [
+    "rebuild candidate for TrustPhaseResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

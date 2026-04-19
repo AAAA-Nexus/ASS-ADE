@@ -1,0 +1,34 @@
+{
+  "body": "class EntropyResult(NexusModel):\n    \"\"\"/v1/oracle/entropy\"\"\"\n    entropy_bits: float | None = None\n    epoch: int | None = None\n    verdict: str | None = None\n",
+  "body_hash": "99b6e729c78ba8d3",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/models.py:145.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.entropyresult",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/nexus/models.py:145"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "EntropyResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for EntropyResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

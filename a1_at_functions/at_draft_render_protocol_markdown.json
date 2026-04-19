@@ -1,0 +1,42 @@
+{
+  "body": "def render_protocol_markdown(report: ProtocolReport) -> str:\n    lines = [\n        f\"# {report.protocol_name}\",\n        \"\",\n        f\"Goal: {report.goal}\",\n        \"\",\n        \"## Assessment\",\n        \"\",\n        f\"- Root: {report.assessment.root}\",\n        f\"- Profile: {report.assessment.profile}\",\n        f\"- Files: {report.assessment.total_files}\",\n        f\"- Directories: {report.assessment.total_dirs}\",\n        f\"- Top-level entries: {', '.join(report.assessment.top_level_entries[:12]) or 'none'}\",\n        \"\",\n        \"## Design\",\n        \"\",\n    ]\n    lines.extend(f\"{index}. {step}\" for index, step in enumerate(report.design_steps, start=1))\n    lines.extend([\"\", \"## Audit\", \"\"])\n    lines.extend(\n        f\"- [{'PASS' if check.passed else 'FAIL'}] {check.name}: {check.detail}\" for check in report.audit\n    )\n    lines.extend([\"\", \"## Recommendations\", \"\"])\n    lines.extend(f\"- {item}\" for item in report.recommendations)\n    lines.extend([\"\", \"## Summary\", \"\", report.summary])\n    return \"\\n\".join(lines)\n",
+  "body_hash": "283da069120cc7a5",
+  "body_truncated": false,
+  "callers_of": [
+    "extend",
+    "join",
+    "enumerate"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/protocol/cycle.py:175.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.render_protocol_markdown",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "pydantic.BaseModel",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.local.planner.draft_plan",
+    "ass_ade.local.repo.RepoSummary",
+    "ass_ade.local.repo.summarize_repo",
+    "ass_ade.system.ToolStatus",
+    "ass_ade.system.collect_tool_status"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/protocol/cycle.py:175"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "render_protocol_markdown",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for render_protocol_markdown"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

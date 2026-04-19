@@ -1,0 +1,52 @@
+{
+  "body": "def token_budget(self) -> TokenBudget:\n    return self._conversation.budget\n",
+  "body_hash": "efc67302f6533076",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/loop.py:108.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.token_budget",
+  "imports": [
+    "__future__.annotations",
+    "collections.abc.Callable",
+    "collections.abc.Iterator",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any",
+    "typing.Literal",
+    "ass_ade.agent.context.build_system_prompt",
+    "ass_ade.agent.conversation.Conversation",
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.agent.lse.LSEDecision",
+    "ass_ade.agent.orchestrator.CycleReport",
+    "ass_ade.agent.orchestrator.EngineOrchestrator",
+    "ass_ade.agent.routing.EpistemicRouter",
+    "ass_ade.agent.routing.RoutingDecision",
+    "ass_ade.engine.provider.ModelProvider",
+    "ass_ade.engine.provider.OpenAICompatibleProvider",
+    "ass_ade.engine.tokens.TokenBudget",
+    "ass_ade.engine.types.CompletionRequest",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.registry.ToolRegistry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/loop.py:108"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "token_budget",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for token_budget"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

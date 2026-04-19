@@ -1,0 +1,36 @@
+{
+  "body": "def resolve_api_key(self, config_key: str | None = None) -> str | None:\n    \"\"\"Resolve the API key: config override \u2192 env var \u2192 default.\"\"\"\n    if config_key:\n        return config_key\n    if self.api_key_env:\n        env_val = os.getenv(self.api_key_env)\n        if env_val:\n            return env_val\n    return self.api_key_default\n",
+  "body_hash": "725dc25ee02a7d35",
+  "body_truncated": false,
+  "callers_of": [
+    "getenv"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/providers.py:63.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.resolve_api_key",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/providers.py:63"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "resolve_api_key",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for resolve_api_key"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

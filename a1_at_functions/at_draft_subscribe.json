@@ -1,0 +1,41 @@
+{
+  "body": "def subscribe(self, callback: Callable[[Alert], None]) -> None:\n    self._subscribers.append(callback)\n",
+  "body_hash": "74637042d6cca1c5",
+  "body_truncated": false,
+  "callers_of": [
+    "append"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/bas.py:90.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.subscribe",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "time",
+    "collections.abc.Callable",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.UTC",
+    "datetime.datetime",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/bas.py:90"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "subscribe",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for subscribe"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

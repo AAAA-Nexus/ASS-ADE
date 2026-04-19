@@ -1,0 +1,47 @@
+{
+  "body": "class Phase0ReconResult(BaseModel):\n    verdict: ReconVerdict\n    task_description: str\n    codebase: CodebaseRecon\n    research_targets: list[ResearchTarget] = Field(default_factory=list)\n    provided_sources: list[str] = Field(default_factory=list)\n    required_actions: list[str] = Field(default_factory=list)\n    next_action: str\n",
+  "body_hash": "3ad03bde2171336b",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/recon.py:110.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.phase0reconresult",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "concurrent.futures",
+    "os",
+    "re",
+    "time",
+    "collections.defaultdict",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Literal",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "ass_ade.local.repo.DEFAULT_IGNORED_DIRS",
+    "ass_ade.local.repo.summarize_repo"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/recon.py:110"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "Phase0ReconResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for Phase0ReconResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

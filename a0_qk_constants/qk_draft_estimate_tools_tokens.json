@@ -1,0 +1,40 @@
+{
+  "body": "def estimate_tools_tokens(tools: list[ToolSchema]) -> int:\n    \"\"\"Estimate tokens consumed by tool schemas in the request.\"\"\"\n    if not tools:\n        return 0\n    # Each tool schema ~ serialized JSON\n    total = 0\n    for t in tools:\n        total += estimate_tokens(t.name)\n        total += estimate_tokens(t.description)\n        total += estimate_tokens(json.dumps(t.parameters))\n        total += 8  # schema framing overhead\n    return total\n",
+  "body_hash": "2f474670c45ecbe7",
+  "body_truncated": false,
+  "callers_of": [
+    "estimate_tokens",
+    "dumps"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/tokens.py:127.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.ass_ade.estimate_tools_tokens",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "math",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolSchema",
+    "tiktoken"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/engine/tokens.py:127"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "estimate_tools_tokens",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for estimate_tools_tokens"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

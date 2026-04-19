@@ -1,0 +1,39 @@
+{
+  "body": "def gate_action(self, action: str, cycle_state: dict) -> tuple[bool, str]:\n    self.run_audit(cycle_state)\n    if self.is_confident:\n        return (True, \"conviction_met\")\n    return (\n        False,\n        f\"conviction {self._conviction:.2f} below required {self._conviction_required:.2f}\",\n    )\n",
+  "body_hash": "5216f8ac17046f6a",
+  "body_truncated": false,
+  "callers_of": [
+    "run_audit"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/wisdom.py:247.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.gate_action",
+  "imports": [
+    "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any",
+    "ass_ade.agent.audit_questions.AUDIT_QUESTIONS",
+    "ass_ade.context_memory.query_vector_memory",
+    "ass_ade.context_memory.store_vector_memory"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/wisdom.py:247"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "gate_action",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for gate_action"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

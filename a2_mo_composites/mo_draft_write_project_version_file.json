@@ -1,0 +1,44 @@
+{
+  "body": "def write_project_version_file(\n    target_root: Path,\n    tier_versions: dict[str, str],\n    rebuild_tag: str,\n) -> str:\n    \"\"\"Write a plain-text ``VERSION`` file at the rebuild root.\n\n    Format::\n\n        0.2.1\n        rebuild_tag=20260418_153000\n        tiers=a0_qk_constants,a1_at_functions,...\n\n    Returns:\n        Absolute path of the written file.\n    \"\"\"\n    project_version = _aggregate_version(list(tier_versions.values())) if tier_versions else INITIAL_VERSION\n    lines = [\n        project_version,\n        f\"rebuild_tag={rebuild_tag}\",\n        f\"tiers={','.join(sorted(tier_versions))}\",\n    ]\n    path = target_root / \"VERSION\"\n    path.write_text(\"\\n\".join(lines) + \"\\n\", encoding=\"utf-8\")\n    return path.as_posix()\n",
+  "body_hash": "627e5f09879ca67c",
+  "body_truncated": false,
+  "callers_of": [
+    "write_text",
+    "as_posix",
+    "_aggregate_version",
+    "list",
+    "join",
+    "values",
+    "sorted"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/rebuild/version_tracker.py:193.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.write_project_version_file",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "hashlib",
+    "json",
+    "re",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/engine/rebuild/version_tracker.py:193"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "write_project_version_file",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for write_project_version_file"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

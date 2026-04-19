@@ -1,0 +1,35 @@
+{
+  "body": "def collect_tool_status(tools: tuple[str, ...] = DEFAULT_TOOLS) -> list[ToolStatus]:\n    return [detect_tool(tool) for tool in tools]\n",
+  "body_hash": "4c2a26910e3946e0",
+  "body_truncated": false,
+  "callers_of": [
+    "detect_tool"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/system.py:44.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.collect_tool_status",
+  "imports": [
+    "__future__.annotations",
+    "subprocess",
+    "dataclasses.dataclass",
+    "shutil.which"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/system.py:44"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "collect_tool_status",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for collect_tool_status"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

@@ -1,0 +1,57 @@
+{
+  "body": "class Turn:\n    user: str\n    tone: str\n    intent: str\n    path: str\n    command: list[str]\n    output: str\n    response: str\n",
+  "body_hash": "d9698d2ab42dfff2",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/interpreter.py:623.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.turn",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "os",
+    "re",
+    "subprocess",
+    "sys",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "httpx",
+    "ass_ade.agent.capabilities.build_atomadic_intent_prompt",
+    "ass_ade.agent.capabilities.command_path_exists",
+    "ass_ade.agent.capabilities.render_capability_prompt_section",
+    "ass_ade.agent.capabilities.render_atomadic_help",
+    "dotenv.load_dotenv",
+    "ass_ade.config.load_config",
+    "time",
+    "shutil",
+    "shutil",
+    "importlib",
+    "sys",
+    "rich.console.Console",
+    "rich.markdown.Markdown",
+    "rich.markdown.Markdown",
+    "ass_ade.config.AssAdeConfig"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/interpreter.py:623"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "Turn",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for Turn"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

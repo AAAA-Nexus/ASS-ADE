@@ -1,0 +1,52 @@
+{
+  "body": "def sync_atomadic_prompt_capabilities(\n    *,\n    repo_root: str | Path = \".\",\n    prompt_path: str | Path = \"agents/atomadic_interpreter.md\",\n) -> Path:\n    \"\"\"Refresh the generated capability block in the Atomadic prompt artifact.\"\"\"\n    root = Path(repo_root).resolve()\n    target = Path(prompt_path)\n    if not target.is_absolute():\n        target = root / target\n    target.parent.mkdir(parents=True, exist_ok=True)\n    marker = \"\\n---\\n\\n## Current Capabilities\"\n    if target.exists():\n        text = target.read_text(encoding=\"utf-8\")\n        if marker in text:\n            text = text[: text.index(marker)].rstrip()\n    else:\n        text = \"# Atomadic Nexus Interpreter\\n\"\n    target.write_text(\n        f\"{text.rstrip()}\\n\\n{render_markdown_capability_section(root)}\",\n        encoding=\"utf-8\",\n    )\n    return target\n",
+  "body_hash": "1cd668932b31caac",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "Path",
+    "mkdir",
+    "exists",
+    "write_text",
+    "is_absolute",
+    "read_text",
+    "rstrip",
+    "render_markdown_capability_section",
+    "index"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/capabilities.py:555.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.sync_atomadic_prompt_capabilities",
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "typer.main",
+    "ass_ade.cli.app",
+    "ass_ade.tools.registry.default_registry",
+    "ass_ade.mcp.server._WORKFLOW_TOOLS"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/capabilities.py:555"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "sync_atomadic_prompt_capabilities",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for sync_atomadic_prompt_capabilities"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

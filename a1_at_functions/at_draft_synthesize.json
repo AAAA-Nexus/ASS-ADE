@@ -1,0 +1,35 @@
+{
+  "body": "def synthesize(self, arch: Arch) -> Agent:\n    code = (\n        f\"class Agent_{arch.name}:\\n\"\n        f\"    traits = {arch.traits!r}\\n\"\n        f\"    def run(self, ctx):\\n\"\n        f\"        return {{'arch': {arch.name!r}}}\\n\"\n    )\n    return Agent(name=f\"agent_{arch.name}\", arch=arch, code=code)\n",
+  "body_hash": "942dd625de4221d3",
+  "body_truncated": false,
+  "callers_of": [
+    "Agent"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/severa.py:37.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.synthesize",
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/severa.py:37"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "synthesize",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for synthesize"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

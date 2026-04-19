@@ -1,0 +1,58 @@
+{
+  "body": "def certify_output(client: NexusClient, text: str) -> CertifyResult:\n    \"\"\"Multi-step output certification: hallucination \u2192 ethics \u2192 compliance \u2192 certify \u2192 lineage.\n\n    Returns a certificate ID that can be verified later.\n    \"\"\"\n    text = validate_prompt(text)\n    result = CertifyResult(text_preview=text[:120])\n\n    # Step 1: Hallucination oracle\n    try:\n        hall = client.hallucination_oracle(text)\n        result.hallucination_verdict = getattr(hall, \"verdict\", None)\n    except _WORKFLOW_ERRORS:\n        _LOG.warning(\"Hallucination oracle failed during certification\", exc_info=True)\n        result.hallucination_verdict = \"error\"\n\n    # Step 2: Ethics check\n    try:\n        eth = client.ethics_check(text)\n        eth_raw = eth.model_dump() if hasattr(eth, \"model_dump\") else {}\n        result.ethics_verdict = \"safe\" if eth_raw.get(\"safe\") else str(eth_raw.get(\"safe\", \"unknown\"))\n    except _WORKFLOW_ERRORS:\n        _LOG.warning(\"Ethics check failed during certification\", exc_info=True)\n        result.ethics_verdict = \"error\"\n\n    # Step 3: Compliance check\n    try:\n        comp = client.compliance_check(text)\n        comp_raw = comp.model_dump() if hasattr(comp, \"model_dump\") else {}\n        result.compliance_verdict = \"compliant\" if comp_raw.get(\"compliant\") else str(comp_raw.get(\"compliant\", \"unknown\"))\n    except _WORKFLOW_ERRORS:\n        _LOG.warning(\"Compliance check failed during certification\", exc_info=True)\n        result.compliance_verdict = \"error\"\n\n    # Step 4: Certify output via AAAA-Nexus\n    try:\n        cert = client.certify_output(text, rubric=[\"accuracy\", \"safety\", \"compliance\"])\n        cert_raw = cert.model_dump() if hasattr(cert, \"model_dump\") else {}\n        result.certificate_id = cert_raw.get(\"certificate_id\")\n    except _WORKFLOW_ERRORS:\n        _LOG.warning(\"Output certification failed\", exc_info=True)\n        result.certificate_id = None\n\n    # Step 5: Lineage record\n    try:\n        lin = client.lineage_record(\n            intent=\"output_certification\",\n            constraints=[\"hallucination_check\", \"ethics_check\", \"compliance_check\"],\n            outcome=f\"certificate={result.certificate_id or 'none'}\",\n        )\n        lin_raw = lin.model_dump() if hasattr(lin, \"model_dump\") else {}\n        result.lineage_id = lin_raw.get(\"record_id\")\n    except _WORKFLOW_ERRORS:\n        _LOG.warning(\"Lineage recording failed during certification\", exc_info=True)\n        result.lineage_id = None\n\n    result.passed = (\n        result.hallucination_verdict not in (None, \"error\", \"unsafe\")\n        and result.ethics_verdict not in (None, \"error\")\n        and result.certificate_id is not None\n    )\n\n    return result\n",
+  "body_hash": "3e6762358edb1d1f",
+  "body_truncated": false,
+  "callers_of": [
+    "validate_prompt",
+    "CertifyResult",
+    "hallucination_oracle",
+    "getattr",
+    "ethics_check",
+    "compliance_check",
+    "certify_output",
+    "get",
+    "lineage_record",
+    "warning",
+    "hasattr",
+    "model_dump",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/workflows.py:164.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "og.source.ass_ade.certify_output",
+  "imports": [
+    "__future__.annotations",
+    "logging",
+    "typing.Any",
+    "httpx",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "ass_ade.nexus.client.NexusClient",
+    "ass_ade.nexus.errors.NexusError",
+    "ass_ade.nexus.validation.validate_agent_id",
+    "ass_ade.nexus.validation.validate_prompt"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/workflows.py:164"
+  },
+  "kind": "product_organism",
+  "made_of": [
+    "mo.source.ass_ade.hallucination_oracle",
+    "mo.source.ass_ade.ethics_check",
+    "mo.source.ass_ade.compliance_check",
+    "mo.source.ass_ade.lineage_record"
+  ],
+  "name": "certify_output",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for certify_output"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a3_og_features",
+  "version": "0.1.0"
+}

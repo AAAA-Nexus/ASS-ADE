@@ -1,0 +1,36 @@
+{
+  "body": "class MCPTool(NexusModel):\n    name: str | None = None\n    endpoint: str | None = None\n    method: str | None = None\n    paid: bool | None = None\n    inputSchema: dict | None = Field(default=None)\n    cost: CostEstimate | None = None\n",
+  "body_hash": "61f7f85d1f2a7c36",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/models.py:91.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.mcptool",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/nexus/models.py:91"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "MCPTool",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for MCPTool"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

@@ -1,0 +1,37 @@
+{
+  "body": "def display_amount(self) -> str:\n    if self.amount_usdc:\n        return f\"${self.amount_usdc:.6f} USDC\"\n    return f\"{self.amount_micro_usdc} micro-USDC\"\n",
+  "body_hash": "f64e0c182196b66d",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/x402.py:106.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.display_amount",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "time",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "eth_account.Account",
+    "web3.Web3",
+    "logging"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/nexus/x402.py:106"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "display_amount",
+  "product_categories": [
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for display_amount"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

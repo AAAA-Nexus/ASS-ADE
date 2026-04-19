@@ -1,0 +1,223 @@
+{
+  "module_count": 36,
+  "modules": [
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.agent_token_budget",
+      "name": "agent_token_budget",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.available",
+      "name": "available",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.build_proof_headers",
+      "name": "build_proof_headers",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.context_window_for",
+      "name": "context_window_for",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.emit_certificate",
+      "name": "emit_certificate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.estimate_conversation",
+      "name": "estimate_conversation",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.estimate_message_tokens",
+      "name": "estimate_message_tokens",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.estimate_tokens",
+      "name": "estimate_tokens",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.estimate_tools_tokens",
+      "name": "estimate_tools_tokens",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.estimated_tokens",
+      "name": "estimated_tokens",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.fairnessproof",
+      "name": "FairnessProof",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.federationtoken",
+      "name": "FederationToken",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.for_model",
+      "name": "for_model",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.get_mcp_manifest",
+      "name": "get_mcp_manifest",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.get_pricing_manifest",
+      "name": "get_pricing_manifest",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.get_proof",
+      "name": "get_proof",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.inference_token_count",
+      "name": "inference_token_count",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.lean4spec",
+      "name": "Lean4Spec",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.lineageproof",
+      "name": "LineageProof",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.materialize_plan",
+      "name": "materialize_plan",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.mcpmanifest",
+      "name": "MCPManifest",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.messages_to_evict",
+      "name": "messages_to_evict",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.nexus_mcp_manifest",
+      "name": "nexus_mcp_manifest",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.paymentproof",
+      "name": "PaymentProof",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.pricingmanifest",
+      "name": "PricingManifest",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.proofbridge",
+      "name": "ProofBridge",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.report",
+      "name": "report",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.run",
+      "name": "run",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.schemas",
+      "name": "schemas",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.swarm_token_budget",
+      "name": "swarm_token_budget",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.token_budget",
+      "name": "token_budget",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.toolschema",
+      "name": "ToolSchema",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.translate",
+      "name": "translate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.update_from_usage",
+      "name": "update_from_usage",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.utilization",
+      "name": "utilization",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "qk.source.ass_ade.validate_rebuild",
+      "name": "validate_rebuild",
+      "version": "0.1.0"
+    }
+  ],
+  "tier": "a0_qk_constants",
+  "tier_version": "0.1.0"
+}

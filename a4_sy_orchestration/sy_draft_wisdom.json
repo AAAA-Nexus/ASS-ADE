@@ -1,0 +1,57 @@
+{
+  "body": "def wisdom(self):\n    if self._wisdom is None:\n        from ass_ade.agent.wisdom import WisdomEngine\n        self._wisdom = WisdomEngine(self._config, self._nexus)\n        # Hydrate principles + conviction from prior sessions (Phase 4)\n        self._hydrate_wisdom(self._wisdom)\n    return self._wisdom\n",
+  "body_hash": "2553768e6b0a4018",
+  "body_truncated": false,
+  "callers_of": [
+    "WisdomEngine",
+    "_hydrate_wisdom"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/orchestrator.py:143.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.wisdom",
+  "imports": [
+    "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any",
+    "ass_ade.agent.atlas.Atlas",
+    "ass_ade.agent.bas.BAS",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "pathlib.Path",
+    "json",
+    "pathlib.Path",
+    "ass_ade.agent.gvu.GVU",
+    "ass_ade.agent.tdmi.TDMI",
+    "ass_ade.agent.edee.EDEE",
+    "ass_ade.agent.lifr_graph.LIFRGraph",
+    "ass_ade.agent.puppeteer.Puppeteer",
+    "ass_ade.agent.sam.SAM",
+    "ass_ade.agent.ide.IDE",
+    "ass_ade.agent.severa.Severa",
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.agent.tca.TCAEngine",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel",
+    "ass_ade.map_terrain.active_terrain_gate",
+    "json"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/orchestrator.py:143"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "wisdom",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for wisdom"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

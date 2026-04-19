@@ -1,0 +1,50 @@
+{
+  "body": "def render_capability_prompt_section(\n    working_dir: str | Path = \".\",\n    *,\n    max_cli: int = 90,\n    max_tools: int = 30,\n    max_mcp: int = 40,\n    max_agents: int = 20,\n) -> str:\n    snapshot = build_capability_snapshot(working_dir)\n    highlighted_cli = _select_entries(\n        snapshot.cli_commands,\n        [\n            \"doctor\",\n            \"recon\",\n            \"eco-scan\",\n            \"context pack\",\n            \"context store\",\n            \"context query\",\n            \"design\",\n            \"rebuild\",\n            \"enhance\",\n            \"lint\",\n            \"certify\",\n            \"protocol evolution-record\",\n            \"protocol evolution-demo\",\n            \"protocol version-bump\",\n            \"prompt sync-agent\",\n            \"mcp serve\",\n            \"mcp tools\",\n            \"nexus overview\",\n            \"nexus mcp-manifest\",\n        ],\n    )\n    nexus_mcp_tools = [item for item in snapshot.mcp_tools if item.name.startswith(\"nexus_\")]\n    lines = [\n        \"## Dynamic Capability Inventory\",\n        \"\",\n        \"This section is generated at prompt-build time from the code on disk.\",\n        \"Treat it as the authoritative capability map for this session.\",\n        \"\",\n        f\"Generated at: {snapshot.generated_at_utc}\",\n        f\"Working directory: {snapshot.working_dir}\",\n        \"\",\n        \"### Capability summary\",\n        \"\",\n        *_format_count_summary(snapshot),\n        \"\",\n        \"### Top-level CLI groups\",\n        \"\",\n        _format_top_level_cli_groups(snapshot),\n        \"\",\n        \"### Runtime routing rules\",\n        \"\",\n        \"- Prefer exact command paths listed in this inventory over static examples or memory.\",\n        \"- If a user asks what Atomadic can do, answer from this inventory and mention its generated timestamp.\",\n        \"- For CLI dispatch, emit command tokens that begin with one of the listed command paths.\",\n        \"- For tools, use only local agent tools or MCP tools listed below unless a live discovery command adds more.\",\n        \"- Hosted `nexus_*` MCP tools must appear here or be discovered with `mcp tools` / `nexus mcp-manifest` before use.\",\n        \"- When a needed capability is absent, use `map_terrain`, `phase0_recon`, or a clarifying question instead of inventing it.\",\n        \"\",\n        \"### High-signal command paths\",\n        \"\",\n        *_format_entries(highlighted_cli, limit=40),\n        \"\",\n        \"### CLI command paths\",\n        \"\",\n        *_format_entries(snapshot.cli_commands, limit=max_cli),\n        \"\",\n        \"### Local agent tools\",\n        \"\",\n        *_format_entries(snapshot.local_tools, limit=max_tools),\n        \"\",\n        \"### MCP stdio tools\",\n        \"\",\n        *_format_entries(snapshot.mcp_tools, limit=max_mcp),\n        \"\",\n        \"### Hosted Nexus MCP tools discovered in this session\",\n        \"\",\n        *_format_entries(nexus_mcp_tools, limit=max_mcp),\n        \"\",\n        \"### Repo agents\",\n        \"\",\n        *_format_entries(snapshot.agents, limit=max_agents),\n    ]\n    if snapshot.hooks:\n        lines.extend([\"\", \"### Hooks\", \"\", *_format_entries(snapshot.hooks, limit=20)])\n    return \"\\n\".join(lines)\n",
+  "body_hash": "43c723d3a070d8fc",
+  "body_truncated": false,
+  "callers_of": [
+    "build_capability_snapshot",
+    "_select_entries",
+    "join",
+    "_format_top_level_cli_groups",
+    "extend",
+    "startswith",
+    "_format_count_summary",
+    "_format_entries"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/capabilities.py:236.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.render_capability_prompt_section",
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "typer.main",
+    "ass_ade.cli.app",
+    "ass_ade.tools.registry.default_registry",
+    "ass_ade.mcp.server._WORKFLOW_TOOLS"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/capabilities.py:236"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "render_capability_prompt_section",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for render_capability_prompt_section"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

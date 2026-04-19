@@ -1,0 +1,45 @@
+{
+  "body": "def status(self) -> LoRAStatus:\n    kind_counts: dict[str, int] = {}\n    for c in self._pending:\n        kind_counts[c.kind] = kind_counts.get(c.kind, 0) + 1\n\n    adapter_version = self._adapter_version\n    quality_score = 0.0\n    if self._nexus:\n        try:\n            s = getattr(self._nexus, \"lora_adapter_current\", lambda: None)()\n            if s:\n                adapter_version = str(getattr(s, \"version\", adapter_version))\n                quality_score = float(getattr(s, \"quality_score\", 0.0))\n        except Exception:\n            pass\n\n    next_batch = self._batch_interval - (self._step_count % self._batch_interval)\n    return LoRAStatus(\n        adapter_version=adapter_version,\n        contribution_count=self._total_contributed + len(self._pending),\n        principle_count=kind_counts.get(\"principle\", 0),\n        fix_count=kind_counts.get(\"fix\", 0),\n        rejection_count=kind_counts.get(\"rejection\", 0),\n        ratchet_epoch=self._ratchet_epoch,\n        pending_count=len(self._pending),\n        next_batch_step=next_batch,\n        quality_score=quality_score,\n    )\n",
+  "body_hash": "85ebd5883e7c6b14",
+  "body_truncated": false,
+  "callers_of": [
+    "LoRAStatus",
+    "get",
+    "len",
+    "getattr",
+    "str",
+    "float"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/lora_flywheel.py:312.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.status",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "logging",
+    "time",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "pathlib.Path",
+    "typing.Any",
+    "hashlib"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/lora_flywheel.py:312"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "status",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for status"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

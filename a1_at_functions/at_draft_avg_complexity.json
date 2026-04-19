@@ -1,0 +1,38 @@
+{
+  "body": "def avg_complexity(self) -> float:\n    \"\"\"Average complexity across all routed messages.\"\"\"\n    if not self._history:\n        return 0.0\n    return sum(d.complexity for d in self._history) / len(self._history)\n",
+  "body_hash": "380c308fb32ba5d4",
+  "body_truncated": false,
+  "callers_of": [
+    "sum",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/routing.py:221.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.avg_complexity",
+  "imports": [
+    "__future__.annotations",
+    "re",
+    "collections.abc.Mapping",
+    "dataclasses.dataclass",
+    "enum.Enum",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/routing.py:221"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "avg_complexity",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for avg_complexity"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,36 @@
+{
+  "body": "def add_assistant(self, message: Message) -> None:\n    self._messages.append(message)\n",
+  "body_hash": "c19e78725b316d42",
+  "body_truncated": false,
+  "callers_of": [
+    "append"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/conversation.py:41.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.add_assistant",
+  "imports": [
+    "__future__.annotations",
+    "ass_ade.engine.tokens.TokenBudget",
+    "ass_ade.engine.tokens.estimate_message_tokens",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolSchema"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/conversation.py:41"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "add_assistant",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for add_assistant"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

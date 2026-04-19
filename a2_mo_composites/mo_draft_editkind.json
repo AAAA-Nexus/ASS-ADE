@@ -1,0 +1,37 @@
+{
+  "body": "class EditKind(str, Enum):\n    CREATE = \"create\"\n    MODIFY = \"modify\"\n    DELETE = \"delete\"\n",
+  "body_hash": "85d676b4e65627e8",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/tools/plan.py:29.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.editkind",
+  "imports": [
+    "__future__.annotations",
+    "difflib",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "enum.Enum",
+    "pathlib.Path",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.history.FileHistory"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/tools/plan.py:29"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "EditKind",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for EditKind"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

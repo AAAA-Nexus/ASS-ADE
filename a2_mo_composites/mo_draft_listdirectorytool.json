@@ -1,0 +1,52 @@
+{
+  "body": "class ListDirectoryTool:\n    \"\"\"List files and directories.\"\"\"\n\n    def __init__(self, working_dir: str = \".\") -> None:\n        self._cwd = Path(working_dir).resolve()\n\n    @property\n    def name(self) -> str:\n        return \"list_directory\"\n\n    @property\n    def description(self) -> str:\n        return \"List files and directories. Entries ending with / are directories.\"\n\n    @property\n    def parameters(self) -> dict[str, Any]:\n        return {\n            \"type\": \"object\",\n            \"properties\": {\n                \"path\": {\n                    \"type\": \"string\",\n                    \"description\": \"Directory path (default: working directory).\",\n                },\n            },\n        }\n\n    def execute(self, **kwargs: Any) -> ToolResult:\n        path = _resolve(self._cwd, kwargs.get(\"path\", \".\"))\n        try:\n            path.relative_to(self._cwd)\n        except ValueError:\n            return ToolResult(error=\"Cannot list directories outside the working directory.\", success=False)\n        if not path.is_dir():\n            return ToolResult(error=f\"Not a directory: {kwargs.get('path', '.')}\", success=False)\n\n        entries = sorted(path.iterdir(), key=lambda p: (not p.is_dir(), p.name.lower()))\n        lines: list[str] = []\n        for entry in entries[:_MAX_DIR_ENTRIES]:\n            suffix = \"/\" if entry.is_dir() else \"\"\n            lines.append(f\"{entry.name}{suffix}\")\n\n        if len(entries) > _MAX_DIR_ENTRIES:\n            lines.append(f\"... and {len(entries) - _MAX_DIR_ENTRIES} more entries\")\n\n        return ToolResult(output=\"\\n\".join(lines))\n",
+  "body_hash": "3f017a776068a60b",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "_resolve",
+    "sorted",
+    "ToolResult",
+    "get",
+    "relative_to",
+    "is_dir",
+    "iterdir",
+    "append",
+    "len",
+    "Path",
+    "join",
+    "lower"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/tools/builtin.py:326.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.listdirectorytool",
+  "imports": [
+    "__future__.annotations",
+    "difflib",
+    "re",
+    "shlex",
+    "subprocess",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.history.FileHistory"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/tools/builtin.py:326"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "ListDirectoryTool",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ListDirectoryTool"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

@@ -1,0 +1,34 @@
+{
+  "body": "class IdentityVerification(NexusModel):\n    \"\"\"/v1/identity/verify\"\"\"\n    decision: str | None = None     # \"allow\" | \"deny\" | \"flag\"\n    actor: str | None = None\n    uniqueness_coefficient: float | None = None\n    topology_proof: str | None = None\n",
+  "body_hash": "44a405bcb6bea765",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/models.py:238.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.identityverification",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/nexus/models.py:238"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "IdentityVerification",
+  "product_categories": [
+    "IDT"
+  ],
+  "provides": [
+    "rebuild candidate for IdentityVerification"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

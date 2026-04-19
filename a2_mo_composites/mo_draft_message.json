@@ -1,0 +1,35 @@
+{
+  "body": "class Message(BaseModel):\n    \"\"\"A single message in a conversation.\"\"\"\n\n    role: str  # \"system\" | \"user\" | \"assistant\" | \"tool\"\n    content: str = \"\"\n    tool_calls: list[ToolCallRequest] = Field(default_factory=list)\n    tool_call_id: str | None = None\n    name: str | None = None\n",
+  "body_hash": "a7c80584b3049435",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/types.py:18.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.message",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/engine/types.py:18"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "Message",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for Message"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

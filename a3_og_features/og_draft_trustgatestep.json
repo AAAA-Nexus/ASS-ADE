@@ -1,0 +1,41 @@
+{
+  "body": "class TrustGateStep(BaseModel):\n    name: str\n    passed: bool\n    detail: str = \"\"\n    raw: dict[str, Any] = Field(default_factory=dict)\n",
+  "body_hash": "7d84a8ffc136d94b",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/workflows.py:32.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "og.source.ass_ade.trustgatestep",
+  "imports": [
+    "__future__.annotations",
+    "logging",
+    "typing.Any",
+    "httpx",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "ass_ade.nexus.client.NexusClient",
+    "ass_ade.nexus.errors.NexusError",
+    "ass_ade.nexus.validation.validate_agent_id",
+    "ass_ade.nexus.validation.validate_prompt"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/workflows.py:32"
+  },
+  "kind": "product_organism",
+  "made_of": [],
+  "name": "TrustGateStep",
+  "product_categories": [
+    "IDT"
+  ],
+  "provides": [
+    "rebuild candidate for TrustGateStep"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a3_og_features",
+  "version": "0.1.0"
+}

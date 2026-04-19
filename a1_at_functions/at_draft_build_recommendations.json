@@ -1,0 +1,41 @@
+{
+  "body": "def build_recommendations(audit: list[ProtocolAuditCheck], goal: str) -> list[str]:\n    recommendations: list[str] = []\n\n    if not any(check.name == \"Protocol docs are public-safe\" and check.passed for check in audit):\n        recommendations.append(\n            \"Document the public-safe protocol cycle so contributors know what ASS-ADE may and may not inherit from private backend patterns.\"\n        )\n\n    if not any(check.name == \"Standalone local value exists\" and check.passed for check in audit):\n        recommendations.append(\n            \"Add another local-only capability so the public repo keeps earning attention even without remote endpoints.\"\n        )\n\n    for check in audit:\n        if check.name == \"Local mode is the default\" and not check.passed:\n            recommendations.append(\"Reset profile to 'local' in config: ass-ade config set profile local\")\n        elif check.name == \"Public shell scaffold present\" and not check.passed:\n            recommendations.append(\"Run 'ass-ade init' to create the required scaffold structure\")\n        elif check.name == \"Remote contract boundary preserved\" and not check.passed:\n            recommendations.append(\"Remove any private backend references from public-facing modules\")\n\n    recommendations.append(f\"Use the next enhancement cycle to target: {goal}\")\n    recommendations.append(\n        \"Prefer typed public contracts, degraded local fallbacks, and explicit remote opt-in over reproducing backend logic locally.\"\n    )\n    return recommendations\n",
+  "body_hash": "e54114859cf7f9fd",
+  "body_truncated": false,
+  "callers_of": [
+    "append",
+    "any"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/protocol/cycle.py:125.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.build_recommendations",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "pydantic.BaseModel",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.local.planner.draft_plan",
+    "ass_ade.local.repo.RepoSummary",
+    "ass_ade.local.repo.summarize_repo",
+    "ass_ade.system.ToolStatus",
+    "ass_ade.system.collect_tool_status"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/protocol/cycle.py:125"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "build_recommendations",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for build_recommendations"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

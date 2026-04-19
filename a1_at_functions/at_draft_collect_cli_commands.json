@@ -1,0 +1,44 @@
+{
+  "body": "def collect_cli_commands() -> list[CapabilityEntry]:\n    \"\"\"Return current CLI command paths by introspecting the Typer app.\"\"\"\n    try:\n        click_root = _get_click_root()\n        return _walk_click_command(click_root)\n    except Exception:\n        return []\n",
+  "body_hash": "2f257e2a32b5237f",
+  "body_truncated": false,
+  "callers_of": [
+    "_get_click_root",
+    "_walk_click_command"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/capabilities.py:80.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.collect_cli_commands",
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "typer.main",
+    "ass_ade.cli.app",
+    "ass_ade.tools.registry.default_registry",
+    "ass_ade.mcp.server._WORKFLOW_TOOLS"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/capabilities.py:80"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "collect_cli_commands",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for collect_cli_commands"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

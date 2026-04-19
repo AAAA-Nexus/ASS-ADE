@@ -1,0 +1,67 @@
+{
+  "body": "def phase0_recon(\n    *,\n    task_description: str,\n    working_dir: str | Path = \".\",\n    provided_sources: list[str] | None = None,\n    max_relevant_files: int = 20,\n) -> Phase0ReconResult:\n    \"\"\"Run Phase 0 recon and return whether later phases may proceed.\"\"\"\n    if not task_description.strip():\n        raise ValueError(\"task_description must not be empty\")\n\n    root = Path(working_dir).resolve()\n    summary = summarize_repo(root)\n    task_tokens = _tokens(task_description)\n    files = _walk_files(root)\n    scored = sorted(\n        ((path, _score_file(path.relative_to(root), task_tokens)) for path in files),\n        key=lambda item: (-item[1], str(item[0])),\n    )\n    relevant = [\n        _rel(root, path)\n        for path, score in scored\n        if score > 0\n    ][:max_relevant_files]\n    tests = [\n        _rel(root, path)\n        for path in files\n        if \"test\" in str(path.relative_to(root)).replace(\"\\\\\", \"/\").lower()\n    ][:max_relevant_files]\n    docs = [\n        _rel(root, path)\n        for path in files\n        if path.suffix.lower() == \".md\" or \"docs\" in path.parts\n    ][:max_relevant_files]\n    configs = [\n        _rel(root, path)\n        for path in files\n        if path.name in _IMPORTANT_NAMES or path.suffix.lower() in {\".toml\", \".yaml\", \".yml\"}\n    ][:max_relevant_files]\n\n    sources = [source for source in (provided_sources or []) if source.strip()]\n    research_targets = _suggest_research(task_description)\n    required_actions: list[str] = []\n    verdict: ReconVerdict = \"READY_FOR_PHASE_1\"\n\n    if not relevant:\n        verdict = \"RECON_REQUIRED\"\n        required_actions.append(\"Inspect the repository enough to identify relevant files.\")\n\n    if _is_technical(task_description) and research_targets and not sources:\n        verdict = \"RECON_REQUIRED\"\n        required_actions.append(\n            \"Perform latest technical-document research and attach source URLs before coding.\"\n        )\n\n    return Phase0ReconResult(\n        verdict=verdict,\n        task_description=task_description,\n        codebase=CodebaseRecon(\n            root=str(root),\n            total_files=summary.total_files,\n            total_dirs=summary.total_dirs,\n            file_types=summary.file_types,\n            top_level_entries=summary.top_level_entries,\n            relevant_files=relevant,\n            test_files=tests,\n            docs_files=docs,\n            config_files=configs,\n        ),\n        research_targets=research_targets,\n        provided_sources=sources,\n        required_actions=required_actions,\n        next_action=(\n            \"Continue to Phase 1 context analysis.\"\n            if verdict == \"READY_FOR_PHASE_1\"\n            else \"Complete required recon before MAP = TERRAIN or code changes.\"\n        ),\n    )\n",
+  "body_hash": "00d25827ca8bf680",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "summarize_repo",
+    "_tokens",
+    "_walk_files",
+    "sorted",
+    "_suggest_research",
+    "Phase0ReconResult",
+    "strip",
+    "ValueError",
+    "append",
+    "_is_technical",
+    "Path",
+    "_rel",
+    "CodebaseRecon",
+    "_score_file",
+    "relative_to",
+    "str",
+    "lower",
+    "replace"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/recon.py:186.",
+  "exceptions_raised": [
+    "ValueError"
+  ],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.phase0_recon",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "concurrent.futures",
+    "os",
+    "re",
+    "time",
+    "collections.defaultdict",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Literal",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "ass_ade.local.repo.DEFAULT_IGNORED_DIRS",
+    "ass_ade.local.repo.summarize_repo"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/recon.py:186"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "phase0_recon",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for phase0_recon"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

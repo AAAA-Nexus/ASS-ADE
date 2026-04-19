@@ -1,0 +1,42 @@
+{
+  "body": "def from_payment_result(cls, result: PaymentResult) -> PaymentProof | None:\n    \"\"\"Parse a PaymentProof from a successful PaymentResult.\"\"\"\n    if not result.success or not result.signature_header:\n        return None\n    try:\n        parts = result.signature_header.split(\";\")\n        if len(parts) != 4:\n            return None\n        sig, addr, txid, amount_str = parts\n        return cls(\n            signature=sig,\n            wallet_address=addr,\n            transaction_id=txid,\n            amount_micro_usdc=int(amount_str),\n        )\n    except (ValueError, IndexError):\n        return None\n",
+  "body_hash": "d1b6f8642c5b5ca2",
+  "body_truncated": false,
+  "callers_of": [
+    "split",
+    "cls",
+    "len",
+    "int"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/x402.py:138.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.from_payment_result",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "time",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "eth_account.Account",
+    "web3.Web3",
+    "logging"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/nexus/x402.py:138"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "from_payment_result",
+  "product_categories": [
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for from_payment_result"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

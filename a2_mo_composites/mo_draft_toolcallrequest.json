@@ -1,0 +1,35 @@
+{
+  "body": "class ToolCallRequest(BaseModel):\n    \"\"\"A tool invocation requested by a model.\"\"\"\n\n    id: str\n    name: str\n    arguments: dict[str, Any] = Field(default_factory=dict)\n",
+  "body_hash": "c6c487851053ffa6",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/types.py:10.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.toolcallrequest",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/engine/types.py:10"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "ToolCallRequest",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ToolCallRequest"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

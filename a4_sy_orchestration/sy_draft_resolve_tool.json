@@ -1,0 +1,45 @@
+{
+  "body": "def resolve_tool(manifest: MCPManifest, identifier: str) -> MCPTool | None:\n    \"\"\"Resolve a tool by index (1-based) or name.\n\n    identifier may be a numeric string referencing the manifest list index,\n    or a tool name.\n    \"\"\"\n    if identifier.isdigit():\n        idx = int(identifier) - 1\n        if 0 <= idx < len(manifest.tools):\n            return manifest.tools[idx]\n        return None\n\n    for tool in manifest.tools:\n        if tool.name and tool.name.lower() == identifier.lower():\n            return tool\n    return None\n",
+  "body_hash": "590cd9652915e79b",
+  "body_truncated": false,
+  "callers_of": [
+    "isdigit",
+    "int",
+    "len",
+    "lower"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/mcp/utils.py:23.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.resolve_tool",
+  "imports": [
+    "__future__.annotations",
+    "time",
+    "typing.Any",
+    "httpx",
+    "jsonschema",
+    "jsonschema.ValidationError",
+    "ass_ade.nexus.models.CostEstimate",
+    "ass_ade.nexus.models.MCPManifest",
+    "ass_ade.nexus.models.MCPTool",
+    "ass_ade.nexus.validation.sanitize_header_value",
+    "ass_ade.nexus.validation.validate_https_public_url"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/mcp/utils.py:23"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "resolve_tool",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for resolve_tool"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

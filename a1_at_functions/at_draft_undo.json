@@ -1,0 +1,47 @@
+{
+  "body": "def undo(self, rel_path: str) -> Snapshot | None:\n    \"\"\"Pop the most recent snapshot and restore the file.\n\n    Returns the snapshot that was restored, or None if no history.\n    \"\"\"\n    snap_dir = self._snapshot_dir(rel_path)\n    if not snap_dir.exists():\n        return None\n\n    snapshots = sorted(snap_dir.glob(\"*.snapshot\"))\n    if not snapshots:\n        return None\n\n    latest = snapshots[-1]\n    try:\n        data = json.loads(latest.read_text(encoding=\"utf-8\"))\n    except (json.JSONDecodeError, KeyError):\n        return None\n\n    snap = Snapshot(\n        path=data[\"path\"],\n        sequence=data[\"sequence\"],\n        timestamp=data[\"timestamp\"],\n        content=data[\"content\"],\n    )\n\n    # Restore the file\n    target = self._cwd / rel_path\n    target.parent.mkdir(parents=True, exist_ok=True)\n    target.write_text(snap.content, encoding=\"utf-8\")\n\n    # Remove the snapshot (consumed)\n    latest.unlink()\n\n    # Reset counter\n    if rel_path in self._counters:\n        self._counters[rel_path] = max(0, self._counters[rel_path] - 1)\n\n    return snap\n",
+  "body_hash": "3407bd46f9f48895",
+  "body_truncated": false,
+  "callers_of": [
+    "_snapshot_dir",
+    "sorted",
+    "Snapshot",
+    "mkdir",
+    "write_text",
+    "unlink",
+    "exists",
+    "glob",
+    "loads",
+    "max",
+    "read_text"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/tools/history.py:102.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.undo",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "time",
+    "dataclasses.dataclass",
+    "pathlib.Path"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/tools/history.py:102"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "undo",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for undo"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

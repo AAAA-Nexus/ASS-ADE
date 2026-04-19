@@ -1,0 +1,51 @@
+{
+  "body": "def parse_command_specs(items: Iterable[str]) -> list[EvolutionCommand]:\n    commands: list[EvolutionCommand] = []\n    for item in items:\n        text = item.strip()\n        if not text:\n            continue\n        status = \"recorded\"\n        notes = \"\"\n        command = text\n        if \"::\" in text:\n            prefix, command = text.split(\"::\", 1)\n            for part in prefix.split(\",\"):\n                if \"=\" not in part:\n                    continue\n                key, value = part.split(\"=\", 1)\n                if key.strip() == \"status\":\n                    status = value.strip() or status\n                elif key.strip() == \"notes\":\n                    notes = value.strip()\n        commands.append(EvolutionCommand(command=command.strip(), status=status, notes=notes))\n    return commands\n",
+  "body_hash": "aa79f0c85228593c",
+  "body_truncated": false,
+  "callers_of": [
+    "strip",
+    "append",
+    "split",
+    "EvolutionCommand"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/protocol/evolution.py:194.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.parse_command_specs",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "re",
+    "shutil",
+    "subprocess",
+    "tomllib",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field",
+    "ass_ade.engine.rebuild.version_tracker.INITIAL_VERSION",
+    "ass_ade.engine.rebuild.version_tracker.bump_version"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/protocol/evolution.py:194"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "parse_command_specs",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for parse_command_specs"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

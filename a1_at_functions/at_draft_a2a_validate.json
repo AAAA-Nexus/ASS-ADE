@@ -1,0 +1,55 @@
+{
+  "body": "def a2a_validate(\n    agent_card_path: Annotated[Path, typer.Argument(help=\"Path to the card.\")],\n) -> None:\n    \"\"\"Validate an A2A agent card format and structure.\"\"\"\n    from ass_ade.a2a import validate_agent_card\n\n    if not agent_card_path.exists():\n        console.print(f\"[red]Error:[/red] File not found: {agent_card_path}\")\n        raise typer.Exit(code=1)\n\n    try:\n        data = json.loads(agent_card_path.read_text(encoding=\"utf-8\"))\n    except json.JSONDecodeError as exc:\n        console.print(f\"[red]Error:[/red] Failed to parse JSON: {exc}\")\n        raise typer.Exit(code=1) from exc\n\n    # Use library validation\n    report = validate_agent_card(data)\n\n    # Display validation results\n    if report.valid:\n        console.print(\"[green]\u2713 Valid A2A Agent Card[/green]\")\n    else:\n        console.print(\"[red]\u2717 Invalid A2A Agent Card[/red]\")\n\n    # Show errors\n    if report.errors:\n        console.print(\"\\n[red]Errors:[/red]\")\n        for issue in report.errors:\n            console.print(f\"  \u2022 {issue.field}: {issue.message}\")\n\n    # Show warnings\n    if report.warnings:\n        console.print(\"\\n[yellow]Warnings:[/yellow]\")\n        for issue in report.warnings:\n            console.print(f\"  \u2022 {issue.field}: {issue.message}\")\n\n    # Show parsed card\n    if report.card:\n        console.print(\"\\n[bold]Card Details:[/bold]\")\n        console.print(json.dumps(report.card.model_dump(), indent=2), markup=False)\n\n    # Exit with error code if validation failed\n    if not report.valid:\n        raise typer.Exit(code=1)\n",
+  "body_hash": "6b89c7670c8143ef",
+  "body_truncated": false,
+  "callers_of": [
+    "validate_agent_card",
+    "exists",
+    "print",
+    "Exit",
+    "loads",
+    "read_text",
+    "dumps",
+    "Argument",
+    "model_dump"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/commands/a2a.py:51.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.a2a_validate",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Annotated",
+    "typing.Any",
+    "httpx",
+    "typer",
+    "rich.console.Console",
+    "ass_ade.a2a.fetch_agent_card",
+    "ass_ade.a2a.local_agent_card",
+    "ass_ade.a2a.negotiate",
+    "ass_ade.config.default_config_path",
+    "ass_ade.config.load_config",
+    "ass_ade.nexus.client.NexusClient",
+    "ass_ade.a2a.validate_agent_card",
+    "ass_ade.nexus.validation.validate_url"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/commands/a2a.py:51"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "a2a_validate",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for a2a_validate"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

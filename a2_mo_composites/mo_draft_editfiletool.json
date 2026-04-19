@@ -1,0 +1,58 @@
+{
+  "body": "class EditFileTool:\n    \"\"\"Search-and-replace edit in a file.\n\n    The ``old_string`` must match exactly one location in the file.\n    \"\"\"\n\n    def __init__(self, working_dir: str = \".\", history: FileHistory | None = None) -> None:\n        self._cwd = Path(working_dir).resolve()\n        self._history = history\n\n    @property\n    def name(self) -> str:\n        return \"edit_file\"\n\n    @property\n    def description(self) -> str:\n        return (\n            \"Edit a file by replacing exact text. The old_string must match exactly \"\n            \"one location. Include enough context (3+ surrounding lines) to be unique.\"\n        )\n\n    @property\n    def parameters(self) -> dict[str, Any]:\n        return {\n            \"type\": \"object\",\n            \"properties\": {\n                \"path\": {\"type\": \"string\", \"description\": \"File path relative to the working directory.\"},\n                \"old_string\": {\"type\": \"string\", \"description\": \"Exact text to find (must appear exactly once).\"},\n                \"new_string\": {\"type\": \"string\", \"description\": \"Replacement text.\"},\n                \"preview\": {\"type\": \"boolean\", \"description\": \"If true, return diff without applying. Default: false.\"},\n            },\n            \"required\": [\"path\", \"old_string\", \"new_string\"],\n        }\n\n    def execute(self, **kwargs: Any) -> ToolResult:\n        path = _resolve(self._cwd, kwargs[\"path\"])\n        try:\n            path.relative_to(self._cwd)\n        except ValueError:\n            return ToolResult(error=\"Cannot edit files outside the working directory.\", success=False)\n        if not path.is_file():\n            return ToolResult(error=f\"File not found: {kwargs['path']}\", success=False)\n\n        old_string = kwargs[\"old_string\"]\n        new_string = kwargs[\"new_string\"]\n        preview = kwargs.get(\"preview\", False)\n\n        text = path.read_text(encoding=\"utf-8\")\n        count = text.count(old_string)\n\n        if count == 0:\n            return ToolResult(error=\"old_string not found in file.\", success=False)\n        if count > 1:\n            return ToolResult(\n                error=f\"old_string matches {count} locations. Add more context to be unique.\",\n                success=False,\n            )\n\n        new_text = text.replace(old_string, new_string, 1)\n\n        # Generate unified diff\n        diff = difflib.unified_diff(\n            text.splitlines(keepends=True),\n            new_text.splitlines(keepends=True),\n            fromfile=f\"a/{kwargs['path']}\",\n            tofile=f\"b/{kwargs['path']}\",\n        )\n        diff_str = \"\".join(diff)\n\n        if preview:\n            return ToolResult(output=diff_str or \"(no changes)\")\n\n        # Record undo snapshot before mutation\n        if self._history:\n            rel = str(path.relative_to(self._cwd))\n            self._history.record(rel, text)\n\n        path.write_text(new_text, encoding=\"utf-8\")\n        return ToolResult(output=f\"Applied edit to {kwargs['path']}\\n\\n{diff_str}\")\n",
+  "body_hash": "fbdf4624e8d661ce",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "_resolve",
+    "get",
+    "read_text",
+    "count",
+    "replace",
+    "unified_diff",
+    "join",
+    "write_text",
+    "ToolResult",
+    "relative_to",
+    "is_file",
+    "splitlines",
+    "str",
+    "record",
+    "Path"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/tools/builtin.py:155.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.editfiletool",
+  "imports": [
+    "__future__.annotations",
+    "difflib",
+    "re",
+    "shlex",
+    "subprocess",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.history.FileHistory"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/tools/builtin.py:155"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.count",
+    "at.source.ass_ade.record"
+  ],
+  "name": "EditFileTool",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for EditFileTool"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

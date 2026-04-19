@@ -1,0 +1,44 @@
+{
+  "body": "class A2ACapabilities(BaseModel):\n    \"\"\"Agent capability flags per A2A spec.\"\"\"\n\n    streaming: bool = False\n    pushNotifications: bool = False\n    stateTransitionHistory: bool = False\n",
+  "body_hash": "a3fe52629f6d1f92",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/a2a/__init__.py:71.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.a2acapabilities",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "socket",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any",
+    "urllib.parse.urlparse",
+    "httpx",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "pydantic.ValidationError",
+    "pydantic.field_validator",
+    "ass_ade.__version__",
+    "ass_ade.nexus.validation.validate_https_public_url",
+    "ass_ade.tools.registry.default_registry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/a2a/__init__.py:71"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "A2ACapabilities",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for A2ACapabilities"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

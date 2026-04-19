@@ -1,0 +1,46 @@
+{
+  "body": "class NegotiationResult:\n    \"\"\"Result of comparing two agent cards for interop.\"\"\"\n\n    compatible: bool\n    shared_skills: list[str] = field(default_factory=list)\n    local_only: list[str] = field(default_factory=list)\n    remote_only: list[str] = field(default_factory=list)\n    auth_compatible: bool = True\n    notes: list[str] = field(default_factory=list)\n",
+  "body_hash": "72c86313da139d74",
+  "body_truncated": false,
+  "callers_of": [
+    "field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/a2a/__init__.py:250.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.negotiationresult",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "socket",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any",
+    "urllib.parse.urlparse",
+    "httpx",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "pydantic.ValidationError",
+    "pydantic.field_validator",
+    "ass_ade.__version__",
+    "ass_ade.nexus.validation.validate_https_public_url",
+    "ass_ade.tools.registry.default_registry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/a2a/__init__.py:250"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "NegotiationResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for NegotiationResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

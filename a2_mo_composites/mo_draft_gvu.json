@@ -1,0 +1,59 @@
+{
+  "body": "class GVU:\n    def __init__(self, config: dict, nexus: Any | None = None):\n        self._config = config\n        self._nexus = nexus\n        self._state_path = Path(config.get(\"gvu_state_path\", str(_STATE_PATH)))\n        self._state = self._load()\n\n    def _load(self) -> dict:\n        if self._state_path.exists():\n            try:\n                return json.loads(self._state_path.read_text(encoding=\"utf-8\"))\n            except (OSError, ValueError):\n                pass\n        return {\"coefficient\": 1.0, \"history\": []}\n\n    def _save(self) -> None:\n        self._state_path.parent.mkdir(parents=True, exist_ok=True)\n        self._state_path.write_text(json.dumps(self._state, indent=2), encoding=\"utf-8\")\n\n    def compute_coefficient(self) -> float:\n        history = self._state.get(\"history\") or []\n        if not history:\n            return max(1e-6, float(self._state.get(\"coefficient\", 1.0)))\n        recent = history[-20:]\n        deltas = [float(h.get(\"delta\", 0.0)) for h in recent]\n        avg = sum(deltas) / len(deltas)\n        base = float(self._state.get(\"coefficient\", 1.0))\n        coef = max(1e-6, base * (1.0 + avg))\n        self._state[\"coefficient\"] = coef\n        return coef\n\n    def update(self, improvements: list[float] | float) -> float:\n        if isinstance(improvements, (int, float)):\n            deltas = [float(improvements)]\n        else:\n            deltas = [float(x) for x in improvements]\n        total = sum(deltas)\n        base = float(self._state.get(\"coefficient\", 1.0))\n        new_coef = max(1e-6, base * (1.0 + total / max(1, len(deltas))))\n        entry = {\n            \"ts\": datetime.now(UTC).isoformat(),\n            \"delta\": total / max(1, len(deltas)),\n            \"coefficient\": new_coef,\n        }\n        self._state[\"history\"] = (self._state.get(\"history\") or []) + [entry]\n        self._state[\"coefficient\"] = new_coef\n        self._save()\n        return new_coef\n\n    def run(self, ctx: dict) -> dict:\n        if \"improvements\" in ctx:\n            coef = self.update(ctx[\"improvements\"])\n        else:\n            coef = self.compute_coefficient()\n        return {\"coefficient\": coef, \"history_len\": len(self._state.get(\"history\") or [])}\n\n    def report(self) -> dict:\n        return {\n            \"engine\": \"gvu\",\n            \"coefficient\": float(self._state.get(\"coefficient\", 1.0)),\n            \"history_len\": len(self._state.get(\"history\") or []),\n            \"state_path\": str(self._state_path),\n        }\n",
+  "body_hash": "cc074fa7052ce96f",
+  "body_truncated": false,
+  "callers_of": [
+    "Path",
+    "_load",
+    "exists",
+    "mkdir",
+    "write_text",
+    "float",
+    "max",
+    "isinstance",
+    "sum",
+    "_save",
+    "get",
+    "dumps",
+    "len",
+    "isoformat",
+    "update",
+    "compute_coefficient",
+    "str",
+    "loads",
+    "read_text",
+    "now"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/gvu.py:13.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.gvu",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "datetime.UTC",
+    "datetime.datetime",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/gvu.py:13"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.update",
+    "at.source.ass_ade.compute_coefficient"
+  ],
+  "name": "GVU",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for GVU"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

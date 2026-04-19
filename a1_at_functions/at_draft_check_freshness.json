@@ -1,0 +1,45 @@
+{
+  "body": "def check_freshness(self, path: str | Path) -> FreshnessReport:\n    \"\"\"Check whether a file is fresh (read within threshold).\"\"\"\n    key = str(Path(path).resolve())\n    ts = self._reads.get(key)\n    now = time.time()\n    if ts is None:\n        return FreshnessReport(\n            path=key, fresh=False, last_read_ts=None,\n            age_hours=None, threshold_hours=self._threshold_hours,\n        )\n    age_hours = (now - ts) / 3600.0\n    return FreshnessReport(\n        path=key,\n        fresh=age_hours <= self._threshold_hours,\n        last_read_ts=ts,\n        age_hours=round(age_hours, 2),\n        threshold_hours=self._threshold_hours,\n    )\n",
+  "body_hash": "6f43c6b41d1ef52b",
+  "body_truncated": false,
+  "callers_of": [
+    "str",
+    "get",
+    "time",
+    "FreshnessReport",
+    "resolve",
+    "round",
+    "Path"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/tca.py:88.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.check_freshness",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "logging",
+    "time",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/tca.py:88"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "check_freshness",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for check_freshness"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

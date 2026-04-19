@@ -1,0 +1,38 @@
+{
+  "body": "def strongconnect(v: str) -> None:\n    index[v] = index_counter[0]\n    lowlinks[v] = index_counter[0]\n    index_counter[0] += 1\n    stack.append(v)\n    on_stack[v] = True\n\n    for w in full_graph.get(v, []):\n        if w not in index:\n            strongconnect(w)\n            lowlinks[v] = min(lowlinks[v], lowlinks[w])\n        elif on_stack.get(w, False):\n            lowlinks[v] = min(lowlinks[v], index[w])\n\n    if lowlinks[v] == index[v]:\n        scc: list[str] = []\n        while True:\n            w = stack.pop()\n            on_stack[w] = False\n            scc.append(w)\n            if w == v:\n                break\n        if len(scc) > 1:\n            sccs.append(scc)\n",
+  "body_hash": "d0cb7bea73dcff16",
+  "body_truncated": false,
+  "callers_of": [
+    "append",
+    "get",
+    "strongconnect",
+    "min",
+    "pop",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/rebuild/cycle_detector.py:28.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.strongconnect",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/engine/rebuild/cycle_detector.py:28"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "strongconnect",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for strongconnect"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

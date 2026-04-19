@@ -1,0 +1,46 @@
+{
+  "body": "def run_protocol(goal: str, root: Path, settings: AssAdeConfig) -> ProtocolReport:\n    assessment = build_assessment(root, settings)\n    audit = build_audit(root, settings)\n    design_steps = draft_plan(goal, max_steps=6)\n    recommendations = build_recommendations(audit, goal)\n    passed = sum(1 for item in audit if item.passed)\n\n    summary = (\n        f\"Completed a public-safe enhancement cycle for '{goal}'. \"\n        f\"Audit passed {passed}/{len(audit)} checks in {settings.profile} profile.\"\n    )\n\n    return ProtocolReport(\n        goal=goal,\n        assessment=assessment,\n        design_steps=design_steps,\n        audit=audit,\n        recommendations=recommendations,\n        summary=summary,\n    )\n",
+  "body_hash": "eec631a374380b0a",
+  "body_truncated": false,
+  "callers_of": [
+    "build_assessment",
+    "build_audit",
+    "draft_plan",
+    "build_recommendations",
+    "sum",
+    "ProtocolReport",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/protocol/cycle.py:153.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.run_protocol",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "pydantic.BaseModel",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.local.planner.draft_plan",
+    "ass_ade.local.repo.RepoSummary",
+    "ass_ade.local.repo.summarize_repo",
+    "ass_ade.system.ToolStatus",
+    "ass_ade.system.collect_tool_status"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/protocol/cycle.py:153"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "run_protocol",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for run_protocol"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

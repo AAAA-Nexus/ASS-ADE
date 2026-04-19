@@ -1,0 +1,39 @@
+{
+  "body": "def recall(self, task_embedding: Any, k: int = 5) -> list[dict]:\n    q = task_embedding if isinstance(task_embedding, str) else str(task_embedding)\n    result = query_vector_memory(\n        query=q,\n        namespace=EXPERIENCE_NS,\n        top_k=k,\n        working_dir=self._working_dir,\n    )\n    return [{\"id\": m.id, \"score\": m.score, \"text\": m.text, \"metadata\": m.metadata} for m in result.matches]\n",
+  "body_hash": "aa5bede5780ebf0d",
+  "body_truncated": false,
+  "callers_of": [
+    "query_vector_memory",
+    "isinstance",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/edee.py:63.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.recall",
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "ass_ade.context_memory.query_vector_memory",
+    "ass_ade.context_memory.store_vector_memory",
+    "ass_ade.agent.exif.EXIF"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/edee.py:63"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "recall",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for recall"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

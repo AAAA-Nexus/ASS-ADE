@@ -1,0 +1,34 @@
+{
+  "body": "class PromptScanResult(NexusModel):\n    \"\"\"/v1/prompts/inject-scan and /v1/security/prompt-scan\"\"\"\n    threat_detected: bool | None = None\n    threat_level: str | None = None  # \"none\" | \"low\" | \"medium\" | \"high\"\n    confidence: float | None = None\n    threat_report: dict | None = None\n",
+  "body_hash": "4922b2d539760fce",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/models.py:420.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.promptscanresult",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/nexus/models.py:420"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "PromptScanResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for PromptScanResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

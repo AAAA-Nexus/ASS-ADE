@@ -1,0 +1,43 @@
+{
+  "body": "def persist_principles(self, lora_flywheel: Any = None) -> int:\n    \"\"\"Persist distilled principles to context_memory and optionally LoRA flywheel.\n\n    Returns the count of new principles contributed.\n    \"\"\"\n    if not self._principles:\n        return 0\n    new_count = 0\n    # Store in context_memory for cross-session recall\n    try:\n        from ass_ade.context_memory import store_vector_memory\n        for p in self._principles:\n            store_vector_memory(\n                text=p,\n                namespace=\"wisdom_principle\",\n                metadata={\"type\": \"wisdom_principle\", \"conviction\": self._conviction},\n            )\n        new_count = len(self._principles)\n    except Exception as exc:\n        _log.debug(\"WisdomEngine: context_memory persist failed: %s\", exc)\n\n    # Contribute to LoRA flywheel if conviction is high enough\n    if lora_flywheel is not None and self._conviction >= 0.7 and new_count >= 3:\n        try:\n            for p in self._principles:\n                lora_flywheel.capture_principle(p, confidence=self._conviction)\n        except Exception as exc:\n            _log.debug(\"WisdomEngine: LoRA flywheel capture failed: %s\", exc)\n\n    return new_count\n    return list(self._principles)\n",
+  "body_hash": "8aed53522389aecf",
+  "body_truncated": false,
+  "callers_of": [
+    "list",
+    "len",
+    "store_vector_memory",
+    "debug",
+    "capture_principle"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/wisdom.py:212.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.persist_principles",
+  "imports": [
+    "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any",
+    "ass_ade.agent.audit_questions.AUDIT_QUESTIONS",
+    "ass_ade.context_memory.query_vector_memory",
+    "ass_ade.context_memory.store_vector_memory"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/wisdom.py:212"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "persist_principles",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for persist_principles"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

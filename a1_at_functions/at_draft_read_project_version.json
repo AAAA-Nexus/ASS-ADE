@@ -1,0 +1,57 @@
+{
+  "body": "def read_project_version(root: Path) -> str:\n    root = root.resolve()\n    pyproject = root / \"pyproject.toml\"\n    if pyproject.exists():\n        try:\n            data = tomllib.loads(pyproject.read_text(encoding=\"utf-8\"))\n            version = data.get(\"project\", {}).get(\"version\")\n            if isinstance(version, str) and version.strip():\n                return version.strip()\n        except (OSError, tomllib.TOMLDecodeError):\n            pass\n\n    init_file = root / \"src\" / \"ass_ade\" / \"__init__.py\"\n    if init_file.exists():\n        match = re.search(\n            r\"^__version__\\s*=\\s*['\\\"]([^'\\\"]+)['\\\"]\",\n            init_file.read_text(encoding=\"utf-8\"),\n            flags=re.MULTILINE,\n        )\n        if match:\n            return match.group(1)\n\n    version_file = root / \"VERSION\"\n    if version_file.exists():\n        lines = version_file.read_text(encoding=\"utf-8\").splitlines()\n        if lines and lines[0].strip():\n            return lines[0].strip()\n    return INITIAL_VERSION\n",
+  "body_hash": "86ffc37c0471b704",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "exists",
+    "search",
+    "splitlines",
+    "loads",
+    "get",
+    "read_text",
+    "group",
+    "strip",
+    "isinstance"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/protocol/evolution.py:133.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.read_project_version",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "re",
+    "shutil",
+    "subprocess",
+    "tomllib",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field",
+    "ass_ade.engine.rebuild.version_tracker.INITIAL_VERSION",
+    "ass_ade.engine.rebuild.version_tracker.bump_version"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/protocol/evolution.py:133"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "read_project_version",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for read_project_version"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,51 @@
+{
+  "body": "def command_path_exists(args: list[str], working_dir: str | Path = \".\") -> bool:\n    \"\"\"Return True if args starts with a known CLI command path.\"\"\"\n    if not args:\n        return False\n    tokens = [str(item).strip() for item in args if str(item).strip()]\n    if not tokens:\n        return False\n    try:\n        command = _get_click_root()\n    except Exception:\n        snapshot = build_capability_snapshot(working_dir)\n        return \" \".join(tokens[:1]) in snapshot.cli_paths\n\n    matched = 0\n    while matched < len(tokens):\n        commands = getattr(command, \"commands\", None)\n        if not isinstance(commands, dict):\n            break\n        next_token = tokens[matched]\n        if next_token not in commands:\n            break\n        command = commands[next_token]\n        matched += 1\n\n    if matched == 0:\n        return False\n    if matched == len(tokens):\n        return True\n\n    # A group with subcommands should not accept an unknown subcommand token.\n    remaining = tokens[matched:]\n    if getattr(command, \"commands\", None) and remaining and not remaining[0].startswith(\"-\"):\n        return False\n    return True\n",
+  "body_hash": "215ebd8712ec4ffe",
+  "body_truncated": false,
+  "callers_of": [
+    "strip",
+    "_get_click_root",
+    "len",
+    "getattr",
+    "build_capability_snapshot",
+    "isinstance",
+    "startswith",
+    "str",
+    "join"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/capabilities.py:460.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.command_path_exists",
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "typer.main",
+    "ass_ade.cli.app",
+    "ass_ade.tools.registry.default_registry",
+    "ass_ade.mcp.server._WORKFLOW_TOOLS"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/capabilities.py:460"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "command_path_exists",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for command_path_exists"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

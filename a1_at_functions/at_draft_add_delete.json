@@ -1,0 +1,40 @@
+{
+  "body": "def add_delete(self, path: str, description: str = \"\") -> None:\n    self.edits.append(PlannedEdit(\n        kind=EditKind.DELETE,\n        path=path,\n        description=description or f\"Delete {path}\",\n    ))\n    self.validated = False\n",
+  "body_hash": "bf8fc4f395af3dfd",
+  "body_truncated": false,
+  "callers_of": [
+    "append",
+    "PlannedEdit"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/tools/plan.py:80.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.add_delete",
+  "imports": [
+    "__future__.annotations",
+    "difflib",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "enum.Enum",
+    "pathlib.Path",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.history.FileHistory"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/tools/plan.py:80"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "add_delete",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for add_delete"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

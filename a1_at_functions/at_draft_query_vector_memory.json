@@ -1,0 +1,58 @@
+{
+  "body": "def query_vector_memory(\n    *,\n    query: str,\n    namespace: str = \"default\",\n    top_k: int = 5,\n    working_dir: str | Path = \".\",\n) -> VectorMemoryQueryResult:\n    \"\"\"Return nearest local vector memories for a query.\"\"\"\n    if not query.strip():\n        raise ValueError(\"query must not be empty\")\n    namespace = namespace.strip() or \"default\"\n    top_k = max(1, min(int(top_k), 25))\n\n    query_vector = vector_embed(query)\n    scored: list[tuple[float, VectorMemoryRecord]] = []\n    for record in _iter_memory(_memory_path(working_dir)):\n        if record.namespace != namespace:\n            continue\n        scored.append((_dot(query_vector, record.vector), record))\n\n    scored.sort(key=lambda item: item[0], reverse=True)\n    matches = [\n        VectorMemoryMatch(\n            id=record.id,\n            namespace=record.namespace,\n            score=round(score, 6),\n            text=record.text,\n            metadata=record.metadata,\n            created_at=record.created_at,\n        )\n        for score, record in scored[:top_k]\n    ]\n    return VectorMemoryQueryResult(\n        query=query,\n        namespace=namespace,\n        matches=matches,\n    )\n",
+  "body_hash": "ddbaffa5eee789ee",
+  "body_truncated": false,
+  "callers_of": [
+    "max",
+    "vector_embed",
+    "_iter_memory",
+    "sort",
+    "VectorMemoryQueryResult",
+    "strip",
+    "ValueError",
+    "min",
+    "_memory_path",
+    "append",
+    "VectorMemoryMatch",
+    "int",
+    "_dot",
+    "round"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/context_memory.py:224.",
+  "exceptions_raised": [
+    "ValueError"
+  ],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.query_vector_memory",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "math",
+    "re",
+    "datetime.UTC",
+    "datetime.datetime",
+    "pathlib.Path",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "ass_ade.recon.phase0_recon"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/context_memory.py:224"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "query_vector_memory",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for query_vector_memory"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

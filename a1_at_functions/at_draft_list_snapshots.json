@@ -1,0 +1,44 @@
+{
+  "body": "def list_snapshots(self, rel_path: str) -> list[Snapshot]:\n    \"\"\"List all snapshots for a file, oldest first.\"\"\"\n    snap_dir = self._snapshot_dir(rel_path)\n    if not snap_dir.exists():\n        return []\n\n    result: list[Snapshot] = []\n    for f in sorted(snap_dir.glob(\"*.snapshot\")):\n        try:\n            data = json.loads(f.read_text(encoding=\"utf-8\"))\n            result.append(Snapshot(\n                path=data[\"path\"],\n                sequence=data[\"sequence\"],\n                timestamp=data[\"timestamp\"],\n                content=data[\"content\"],\n            ))\n        except (json.JSONDecodeError, KeyError):\n            continue\n    return result\n",
+  "body_hash": "1afdc616a5846f5a",
+  "body_truncated": false,
+  "callers_of": [
+    "_snapshot_dir",
+    "sorted",
+    "exists",
+    "glob",
+    "loads",
+    "append",
+    "read_text",
+    "Snapshot"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/tools/history.py:142.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.list_snapshots",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "time",
+    "dataclasses.dataclass",
+    "pathlib.Path"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/tools/history.py:142"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "list_snapshots",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for list_snapshots"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

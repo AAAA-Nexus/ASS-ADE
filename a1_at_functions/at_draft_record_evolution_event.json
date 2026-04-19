@@ -1,0 +1,71 @@
+{
+  "body": "def record_evolution_event(\n    *,\n    root: Path,\n    event_type: str,\n    summary: str,\n    version: str = \"\",\n    rebuild_path: Path | None = None,\n    commands: list[EvolutionCommand] | None = None,\n    metrics: dict[str, Any] | None = None,\n    reports: list[str] | None = None,\n    artifacts: list[str] | None = None,\n    rationale: str = \"\",\n    next_steps: list[str] | None = None,\n    lineage_ids: list[str] | None = None,\n    timestamp_utc: str = \"\",\n) -> EvolutionRecordResult:\n    root = root.resolve()\n    timestamp = timestamp_utc or datetime.now(timezone.utc).replace(microsecond=0).isoformat()\n    if timestamp.endswith(\"+00:00\"):\n        timestamp = f\"{timestamp[:-6]}Z\"\n    version_value = version.strip() or read_project_version(root)\n    event_id = _event_id(timestamp, event_type, summary)\n    event = EvolutionEvent(\n        event_id=event_id,\n        timestamp_utc=timestamp,\n        event_type=event_type,\n        summary=summary,\n        version=version_value,\n        root=str(root),\n        git=collect_git_state(root),\n        commands=commands or [],\n        metrics=metrics or {},\n        reports=reports or [],\n        artifacts=artifacts or [],\n        rationale=rationale,\n        next_steps=next_steps or [],\n        rebuild=collect_rebuild_summary(rebuild_path),\n        certificates=collect_certificate_summaries(root, rebuild_path),\n        lineage_ids=lineage_ids if lineage_ids is not None else collect_lineage_ids(root),\n    )\n\n    evolution_dir = root / DEFAULT_EVOLUTION_DIR\n    events_dir = root / DEFAULT_EVENTS_DIR\n    ledger_path = root / DEFAULT_LEDGER_PATH\n    markdown_path = root / DEFAULT_MARKDOWN_PATH\n    evolution_dir.mkdir(parents=True, exist_ok=True)\n    events_dir.mkdir(parents=True, exist_ok=True)\n    snapshot_path = events_dir / _event_filename(timestamp, event_id)\n\n    payload = event.model_dump(mode=\"json\", by_alias=True)\n    snapshot_path.write_text(f\"{json.dumps(payload, indent=2, default=str)}\\n\", encoding=\"utf-8\")\n    with ledger_path.open(\"a\", encoding=\"utf-8\") as fh:\n        fh.write(f\"{json.dumps(payload, sort_keys=True, default=str)}\\n\")\n\n    events = _load_ledger(root)\n    markdown_path.write_text(f\"{render_evolution_markdown(root, events)}\\n\", encoding=\"utf-8\")\n    return EvolutionRecordResult(\n        event=event,\n        ledger_path=str(ledger_path),\n        snapshot_path=str(snapshot_path),\n        markdown_path=str(markdown_path),\n    )\n",
+  "body_hash": "cfe9fdb78a727ee6",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "endswith",
+    "_event_id",
+    "EvolutionEvent",
+    "mkdir",
+    "model_dump",
+    "write_text",
+    "_load_ledger",
+    "EvolutionRecordResult",
+    "isoformat",
+    "strip",
+    "read_project_version",
+    "_event_filename",
+    "open",
+    "write",
+    "str",
+    "collect_git_state",
+    "collect_rebuild_summary",
+    "collect_certificate_summaries",
+    "replace",
+    "collect_lineage_ids",
+    "dumps",
+    "render_evolution_markdown",
+    "now"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/protocol/evolution.py:424.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.record_evolution_event",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "re",
+    "shutil",
+    "subprocess",
+    "tomllib",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field",
+    "ass_ade.engine.rebuild.version_tracker.INITIAL_VERSION",
+    "ass_ade.engine.rebuild.version_tracker.bump_version"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/protocol/evolution.py:424"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "record_evolution_event",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for record_evolution_event"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

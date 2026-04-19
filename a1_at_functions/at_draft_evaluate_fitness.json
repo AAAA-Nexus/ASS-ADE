@@ -1,0 +1,35 @@
+{
+  "body": "def evaluate_fitness(self, cand: Candidate) -> float:\n    novelty = 0.1 * (cand.features[0] + cand.features[1])\n    return min(1.0, cand.fitness + novelty)\n",
+  "body_hash": "daf58b1ec0dd61cd",
+  "body_truncated": false,
+  "callers_of": [
+    "min"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/ide.py:42.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.evaluate_fitness",
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/ide.py:42"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "evaluate_fitness",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for evaluate_fitness"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

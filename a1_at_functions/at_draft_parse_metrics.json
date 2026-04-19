@@ -1,0 +1,53 @@
+{
+  "body": "def parse_metrics(items: Iterable[str]) -> dict[str, Any]:\n    metrics: dict[str, Any] = {}\n    for item in items:\n        for part in item.split(\",\"):\n            if not part.strip():\n                continue\n            if \"=\" not in part:\n                raise ValueError(f\"Metric must use key=value format: {part}\")\n            key, value = part.split(\"=\", 1)\n            key = key.strip()\n            if not key:\n                raise ValueError(\"Metric key cannot be empty\")\n            metrics[key] = _coerce_metric_value(value)\n    return metrics\n",
+  "body_hash": "78c0861215a4c4f6",
+  "body_truncated": false,
+  "callers_of": [
+    "split",
+    "strip",
+    "_coerce_metric_value",
+    "ValueError"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/protocol/evolution.py:178.",
+  "exceptions_raised": [
+    "ValueError"
+  ],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.parse_metrics",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "re",
+    "shutil",
+    "subprocess",
+    "tomllib",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field",
+    "ass_ade.engine.rebuild.version_tracker.INITIAL_VERSION",
+    "ass_ade.engine.rebuild.version_tracker.bump_version"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/protocol/evolution.py:178"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "parse_metrics",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for parse_metrics"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

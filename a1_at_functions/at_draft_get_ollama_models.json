@@ -1,0 +1,64 @@
+{
+  "body": "def get_ollama_models() -> list[str]:\n    \"\"\"Probe local Ollama and return all available model names.\n\n    Used only during `ass-ade setup` to present a model selection menu.\n    NOT called at interpreter runtime \u2014 use the configured model from config instead.\n    \"\"\"\n    try:\n        tags = httpx.get(\"http://localhost:11434/api/tags\", timeout=1.5).json()\n        models = [m[\"name\"] for m in tags.get(\"models\", [])]\n        if not models:\n            return []\n        # Sort: preferred instruction-tuned models first, base weights last\n        def _sort_key(name: str) -> tuple[int, str]:\n            low = name.lower()\n            for i, pref in enumerate(_OLLAMA_MODEL_PREFS):\n                if pref in low and \"base\" not in low:\n                    return (i, name)\n            return (len(_OLLAMA_MODEL_PREFS), name)\n        return sorted(models, key=_sort_key)\n    except Exception:\n        return []\n",
+  "body_hash": "30b4ee2a2b70f3e1",
+  "body_truncated": false,
+  "callers_of": [
+    "json",
+    "sorted",
+    "lower",
+    "enumerate",
+    "get",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/interpreter.py:109.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.get_ollama_models",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "os",
+    "re",
+    "subprocess",
+    "sys",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "httpx",
+    "ass_ade.agent.capabilities.build_atomadic_intent_prompt",
+    "ass_ade.agent.capabilities.command_path_exists",
+    "ass_ade.agent.capabilities.render_capability_prompt_section",
+    "ass_ade.agent.capabilities.render_atomadic_help",
+    "dotenv.load_dotenv",
+    "ass_ade.config.load_config",
+    "time",
+    "shutil",
+    "shutil",
+    "importlib",
+    "sys",
+    "rich.console.Console",
+    "rich.markdown.Markdown",
+    "rich.markdown.Markdown",
+    "ass_ade.config.AssAdeConfig"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/interpreter.py:109"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "get_ollama_models",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for get_ollama_models"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

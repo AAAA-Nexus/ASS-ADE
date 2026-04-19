@@ -1,0 +1,127 @@
+{
+  "module_count": 20,
+  "modules": [
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.agentregistry",
+      "name": "AgentRegistry",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.certify_output",
+      "name": "certify_output",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.certifyresult",
+      "name": "CertifyResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.default_registry",
+      "name": "default_registry",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.discovery_registry",
+      "name": "discovery_registry",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.execute",
+      "name": "execute",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.get",
+      "name": "get",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.list_tools",
+      "name": "list_tools",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.register",
+      "name": "register",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.safe_execute",
+      "name": "safe_execute",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.safeexecuteresult",
+      "name": "SafeExecuteResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.toolregistry",
+      "name": "ToolRegistry",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.trust_gate",
+      "name": "trust_gate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.trustgateresult",
+      "name": "TrustGateResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.trustgatestep",
+      "name": "TrustGateStep",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.workflow_certify",
+      "name": "workflow_certify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.workflow_map_terrain",
+      "name": "workflow_map_terrain",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.workflow_phase0_recon",
+      "name": "workflow_phase0_recon",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.workflow_safe_execute",
+      "name": "workflow_safe_execute",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.ass_ade.workflow_trust_gate",
+      "name": "workflow_trust_gate",
+      "version": "0.1.0"
+    }
+  ],
+  "tier": "a3_og_features",
+  "tier_version": "0.1.0"
+}

@@ -1,0 +1,59 @@
+{
+  "body": "def invoke_tool(\n    base_url: str,\n    tool: MCPTool,\n    payload: Any | None = None,\n    timeout: float = 20.0,\n    retries: int = 3,\n    backoff_base: float = 0.5,\n    api_key: str | None = None,\n    transport: httpx.BaseTransport | None = None,\n) -> httpx.Response:\n    \"\"\"Invoke an MCP tool endpoint with exponential backoff retries.\n\n    - If `tool.endpoint` is absolute, it is validated for SSRF safety before use.\n    - Otherwise the endpoint is joined to `base_url`.\n    - The method defaults to POST when unspecified.\n    - Retries on 429 and 5xx responses using exponential backoff.\n    - Raises ValueError if an absolute endpoint fails SSRF validation.\n    \"\"\"\n    method = (tool.method or \"POST\").upper()\n    endpoint = tool.endpoint or \"\"\n    if endpoint.startswith(\"http://\") or endpoint.startswith(\"https://\"):\n        # Absolute endpoint: validate for SSRF safety before use\n        url = _validate_absolute_endpoint(endpoint)\n    else:\n        url = base_url.rstrip(\"/\") + \"/\" + endpoint.lstrip(\"/\")\n\n    headers: dict[str, str] = {\"User-Agent\": \"ass-ade/1.0.0\"}\n    if api_key:\n        safe_key = sanitize_header_value(api_key.strip(), \"api_key\")\n        headers[\"Authorization\"] = f\"Bearer {safe_key}\"\n        headers[\"X-API-Key\"] = safe_key\n\n    last_exc: httpx.HTTPError | None = None\n    with httpx.Client(timeout=timeout, headers=headers, transport=transport) as client:\n        for attempt in range(max(1, retries)):\n            try:\n                if method == \"GET\":\n                    response = client.get(url, params=payload)\n                else:\n                    response = client.request(method, url, json=payload)\n\n                if response.status_code in (429, 500, 502, 503, 504) and attempt < retries - 1:\n                    time.sleep(backoff_base * (2 ** attempt))\n                    continue\n\n                return response\n            except httpx.HTTPError as exc:\n                last_exc = exc\n                if attempt < retries - 1:\n                    time.sleep(backoff_base * (2 ** attempt))\n\n    if last_exc is not None:\n        raise last_exc\n    raise httpx.HTTPError(\"invoke_tool: all retries exhausted\")\n",
+  "body_hash": "31b785125c3f6693",
+  "body_truncated": false,
+  "callers_of": [
+    "upper",
+    "HTTPError",
+    "startswith",
+    "_validate_absolute_endpoint",
+    "sanitize_header_value",
+    "Client",
+    "range",
+    "lstrip",
+    "strip",
+    "max",
+    "rstrip",
+    "get",
+    "request",
+    "sleep"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/mcp/utils.py:41.",
+  "exceptions_raised": [
+    "last_exc"
+  ],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.invoke_tool",
+  "imports": [
+    "__future__.annotations",
+    "time",
+    "typing.Any",
+    "httpx",
+    "jsonschema",
+    "jsonschema.ValidationError",
+    "ass_ade.nexus.models.CostEstimate",
+    "ass_ade.nexus.models.MCPManifest",
+    "ass_ade.nexus.models.MCPTool",
+    "ass_ade.nexus.validation.sanitize_header_value",
+    "ass_ade.nexus.validation.validate_https_public_url"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/mcp/utils.py:41"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [
+    "og.source.ass_ade.get"
+  ],
+  "name": "invoke_tool",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for invoke_tool"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

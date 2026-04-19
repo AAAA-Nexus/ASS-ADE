@@ -1,0 +1,51 @@
+{
+  "body": "def propose_components(\n    gaps: list[dict[str, Any]],\n    root_id: str = \"\",\n) -> list[ProposedComponent]:\n    \"\"\"Turn raw gap records from the ingestor into deduplicated tier proposals.\"\"\"\n    by_key: dict[str, ProposedComponent] = {}\n    for gap in gaps:\n        symbol = gap.get(\"source_symbol\") or {}\n        name = str(symbol.get(\"name\") or \"\")\n        if not name or name.startswith(\"_\"):\n            continue\n        tier = gap.get(\"tier\") or \"a1_at_functions\"\n        categories = _normalize_categories(gap.get(\"product_categories\"))\n        dkey = _dedup_key(tier, name, categories)\n        cid = gap.get(\"candidate_id\") or (\n            f\"{_tier_prefix(tier)}.source.{_slug(root_id)}.{_slug(name)}\"\n        )\n        prop = ProposedComponent(\n            id=cid,\n            tier=tier,\n            kind=_kind_for(tier, str(symbol.get(\"kind\") or \"\")),\n            name=name,\n            source_symbol=symbol,\n            product_categories=categories,\n            description=f\"Draft candidate from {symbol.get('path', '')}:{symbol.get('line', 0)}.\",\n            dedup_key=dkey,\n        )\n        incumbent = by_key.get(dkey)\n        if incumbent is None or _proposal_sort_key(prop) < _proposal_sort_key(incumbent):\n            by_key[dkey] = prop\n    return sorted(by_key.values(), key=_proposal_sort_key)\n",
+  "body_hash": "84775f7a2c4a1e59",
+  "body_truncated": false,
+  "callers_of": [
+    "sorted",
+    "str",
+    "_normalize_categories",
+    "_dedup_key",
+    "ProposedComponent",
+    "get",
+    "values",
+    "startswith",
+    "_kind_for",
+    "_proposal_sort_key",
+    "_tier_prefix",
+    "_slug"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/rebuild/gap_filler.py:123.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.propose_components",
+  "imports": [
+    "__future__.annotations",
+    "datetime",
+    "hashlib",
+    "json",
+    "re",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/engine/rebuild/gap_filler.py:123"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "propose_components",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for propose_components"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

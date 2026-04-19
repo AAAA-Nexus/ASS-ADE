@@ -1,0 +1,34 @@
+{
+  "body": "class ContradictionResult(NexusModel):\n    \"\"\"/v1/agents/contradiction\"\"\"\n    contradicts: bool | None = None\n    confidence: float | None = None\n    explanation: str | None = None\n",
+  "body_hash": "937c68526168ac79",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/models.py:391.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.contradictionresult",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/nexus/models.py:391"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "ContradictionResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ContradictionResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

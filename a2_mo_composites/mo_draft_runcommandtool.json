@@ -1,0 +1,54 @@
+{
+  "body": "class RunCommandTool:\n    \"\"\"Execute a shell command in the working directory.\"\"\"\n\n    def __init__(self, working_dir: str = \".\") -> None:\n        self._cwd = Path(working_dir).resolve()\n\n    @property\n    def name(self) -> str:\n        return \"run_command\"\n\n    @property\n    def description(self) -> str:\n        return \"Execute a shell command and return stdout/stderr. Use for running tests, builds, linters, etc.\"\n\n    @property\n    def parameters(self) -> dict[str, Any]:\n        return {\n            \"type\": \"object\",\n            \"properties\": {\n                \"command\": {\"type\": \"string\", \"description\": \"Shell command to execute.\"},\n                \"timeout\": {\"type\": \"integer\", \"description\": \"Timeout in seconds (default 30, max 120).\"},\n            },\n            \"required\": [\"command\"],\n        }\n\n    def execute(self, **kwargs: Any) -> ToolResult:\n        command = kwargs[\"command\"]\n        timeout = min(int(kwargs.get(\"timeout\", 30)), 120)\n\n        try:\n            parts = shlex.split(command)\n        except ValueError as exc:\n            return ToolResult(error=f\"Invalid command syntax: {exc}\", success=False)\n\n        if not parts:\n            return ToolResult(error=\"Empty command.\", success=False)\n\n        executable = parts[0].lower()\n        # Strip path prefix so \"C:\\\\Python\\\\python.exe\" \u2192 \"python.exe\" \u2192 \"python\"\n        executable_stem = re.split(r\"[\\\\/]\", executable)[-1]\n        executable_stem = re.sub(r\"\\.(exe|cmd|bat)$\", \"\", executable_stem)\n        if executable_stem not in _ALLOWED_COMMANDS:\n            return ToolResult(\n                error=(\n                    f\"Command blocked: '{parts[0]}' is not in the allowed list. \"\n                    f\"Allowed: {', '.join(sorted(_ALLOWED_COMMANDS))}\"\n                ),\n                success=False,\n            )\n\n        try:\n            result = subprocess.run(\n                parts,\n                shell=False,\n                cwd=str(self._cwd),\n                capture_output=True,\n                text=True,\n                timeout=timeout,\n            )\n        except subprocess.TimeoutExpired:\n            return ToolResult(error=f\"Command timed out after {timeout}s.\", success=False)\n        except OSError as exc:\n            return ToolResult(error=str(exc), success=False)\n\n        output_parts: list[str] = []\n        if result.stdout:\n            output_parts.append(result.stdout)\n        if result.stderr:\n            output_parts.append(f\"[stderr]\\n{result.stderr}\")\n\n        output = \"\\n\".join(output_parts) or \"(no output)\"\n        if len(output) > _MAX_CMD_OUTPUT:\n            output = output[:_MAX_CMD_OUTPUT] + \"\\n... [truncated at 50KB]\"\n\n        return ToolResult(\n            output=f\"[exit code: {result.returncode}]\\n{output}\",\n            success=result.returncode == 0,\n        )\n",
+  "body_hash": "60feb3115fa43e9d",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "min",
+    "lower",
+    "sub",
+    "ToolResult",
+    "int",
+    "split",
+    "run",
+    "append",
+    "join",
+    "len",
+    "Path",
+    "get",
+    "str",
+    "sorted"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/tools/builtin.py:241.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.runcommandtool",
+  "imports": [
+    "__future__.annotations",
+    "difflib",
+    "re",
+    "shlex",
+    "subprocess",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.history.FileHistory"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/tools/builtin.py:241"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "RunCommandTool",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for RunCommandTool"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

@@ -1,0 +1,49 @@
+{
+  "body": "def gate_log(self) -> list[GateResult]:\n    \"\"\"Full log of gate results for this session.\"\"\"\n    return list(self._gate_log)\n",
+  "body_hash": "8f8b26a2151befe9",
+  "body_truncated": false,
+  "callers_of": [
+    "list"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/gates.py:52.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.gate_log",
+  "imports": [
+    "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "ast",
+    "re",
+    "json",
+    "datetime.UTC",
+    "datetime.datetime",
+    "pathlib.Path",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "ass_ade.agent.trust_gate.TrustVerificationGate",
+    "ass_ade.agent.proofbridge.ProofBridge",
+    "ass_ade.agent.alphaverus.AlphaVerus",
+    "ass_ade.agent.dgm_h.DGMH",
+    "ass_ade.agent.dgm_h.Patch",
+    "ass_ade.agent.golden_runner.run_golden",
+    "ass_ade.agent.sam.SAM"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/gates.py:52"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "gate_log",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for gate_log"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,67 @@
+{
+  "body": "def providers_show(\n    name: Annotated[str, typer.Argument(help=\"Provider name (e.g., groq, gemini).\")],\n    config: Path | None = CONFIG_OPTION,\n) -> None:\n    \"\"\"Show details for a single provider.\"\"\"\n    _, settings = _resolve_config(config)\n    profile = get_provider(name)\n    if profile is None:\n        console.print(f\"[red]Unknown provider:[/red] {name}\")\n        console.print(f\"Available: {', '.join(list_providers())}\")\n        raise typer.Exit(code=1)\n\n    user_override = settings.providers.get(name)\n    user_key = user_override.api_key if user_override else None\n    user_models = user_override.models_by_tier if user_override else None\n    user_enabled = user_override.enabled if user_override else True\n\n    resolved_key = profile.resolve_api_key(user_key)\n    available = profile.is_available(user_key)\n\n    t = Table(title=f\"Provider: {profile.display_name}\")\n    t.add_column(\"Field\")\n    t.add_column(\"Value\")\n    t.add_row(\"Name\", profile.name)\n    t.add_row(\"Base URL\", (user_override.base_url if user_override and user_override.base_url else profile.base_url) or \"(none)\")\n    t.add_row(\"Auth env\", profile.api_key_env or \"(no key)\")\n    t.add_row(\"Has key\", \"[green]yes[/green]\" if resolved_key else \"[red]no[/red]\")\n    t.add_row(\"Enabled\", \"[green]yes[/green]\" if user_enabled else \"[red]no[/red]\")\n    t.add_row(\"Available\", \"[green]yes[/green]\" if available else \"[red]no[/red]\")\n    t.add_row(\"Local\", \"yes\" if profile.local else \"no\")\n    t.add_row(\"Free tier\", \"yes\")\n    if profile.rate_limit:\n        t.add_row(\"Rate limit\", profile.rate_limit)\n    if profile.signup_url:\n        t.add_row(\"Signup\", profile.signup_url)\n\n    for tier in (\"fast\", \"balanced\", \"deep\"):\n        default = profile.models_by_tier.get(tier, \"\u2014\")\n        if user_models and user_models.get(tier):\n            t.add_row(f\"Model ({tier})\", f\"{user_models[tier]} [dim](override)[/dim]\")\n        else:\n            t.add_row(f\"Model ({tier})\", default)\n\n    console.print(t)\n    if profile.notes:\n        console.print(f\"\\n[dim]{profile.notes}[/dim]\")\n",
+  "body_hash": "12fbf6d8e91da64d",
+  "body_truncated": false,
+  "callers_of": [
+    "_resolve_config",
+    "get_provider",
+    "get",
+    "resolve_api_key",
+    "is_available",
+    "Table",
+    "add_column",
+    "add_row",
+    "print",
+    "Exit",
+    "Argument",
+    "join",
+    "list_providers"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/commands/providers.py:127.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.providers_show",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "os",
+    "pathlib.Path",
+    "typing.Annotated",
+    "typing.Any",
+    "httpx",
+    "typer",
+    "rich.console.Console",
+    "rich.table.Table",
+    "ass_ade.agent.providers.DEFAULT_FALLBACK_CHAIN",
+    "ass_ade.agent.providers.FREE_PROVIDERS",
+    "ass_ade.agent.providers.TIER_ALIASES",
+    "ass_ade.agent.providers.ProviderProfile",
+    "ass_ade.agent.providers.detect_available_providers",
+    "ass_ade.agent.providers.get_provider",
+    "ass_ade.agent.providers.list_providers",
+    "ass_ade.agent.providers.resolve_tier",
+    "ass_ade.agent.providers.select_provider_for_tier",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.ProviderOverride",
+    "ass_ade.config.default_config_path",
+    "ass_ade.config.load_config",
+    "ass_ade.config.write_default_config"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/commands/providers.py:127"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "providers_show",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for providers_show"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

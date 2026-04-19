@@ -1,0 +1,56 @@
+{
+  "body": "class CircuitBreakerTransport(httpx.BaseTransport):\n    \"\"\"Trip after ``failure_threshold`` consecutive failures within ``window_s``.\n\n    Once open, all calls raise ``NexusCircuitOpen`` until ``recovery_s``\n    elapses, then a single probe is allowed (half-open state).\n    \"\"\"\n\n    def __init__(\n        self,\n        wrapped: httpx.BaseTransport | None = None,\n        *,\n        failure_threshold: int = 5,\n        window_s: float = 60.0,\n        recovery_s: float = 30.0,\n    ) -> None:\n        self._wrapped = wrapped or httpx.HTTPTransport()\n        self._failure_threshold = failure_threshold\n        self._window_s = window_s\n        self._recovery_s = recovery_s\n        self._failures: list[float] = []\n        self._open_since: float | None = None\n\n    @property\n    def is_open(self) -> bool:\n        if self._open_since is None:\n            return False\n        if time.monotonic() - self._open_since >= self._recovery_s:\n            return False  # half-open: allow a probe\n        return True\n\n    def handle_request(self, request: httpx.Request) -> httpx.Response:\n        if self.is_open:\n            raise NexusCircuitOpen(\n                \"Circuit breaker is open \u2014 calls blocked temporarily\",\n                endpoint=str(request.url),\n            )\n\n        try:\n            response = self._wrapped.handle_request(request)\n        except Exception:\n            self._record_failure()\n            raise\n\n        if response.status_code >= 500:\n            self._record_failure()\n        else:\n            self._reset()\n\n        return response\n\n    def _record_failure(self) -> None:\n        now = time.monotonic()\n        self._failures = [t for t in self._failures if now - t < self._window_s]\n        self._failures.append(now)\n        if len(self._failures) >= self._failure_threshold:\n            self._open_since = now\n\n    def _reset(self) -> None:\n        self._failures.clear()\n        self._open_since = None\n\n    def close(self) -> None:\n        self._wrapped.close()\n",
+  "body_hash": "4e9327ddfc138846",
+  "body_truncated": false,
+  "callers_of": [
+    "monotonic",
+    "append",
+    "clear",
+    "close",
+    "HTTPTransport",
+    "NexusCircuitOpen",
+    "handle_request",
+    "_record_failure",
+    "_reset",
+    "len",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/resilience.py:131.",
+  "exceptions_raised": [
+    "NexusCircuitOpen"
+  ],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.circuitbreakertransport",
+  "imports": [
+    "__future__.annotations",
+    "random",
+    "time",
+    "typing.TYPE_CHECKING",
+    "httpx",
+    "ass_ade.nexus.errors.NexusCircuitOpen",
+    "ass_ade.nexus.errors.NexusConnectionError",
+    "ass_ade.nexus.errors.NexusServerError",
+    "ass_ade.nexus.errors.NexusTimeoutError",
+    "ass_ade.mcp.cancellation.CancellationContext"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/nexus/resilience.py:131"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.clear",
+    "at.source.ass_ade.handle_request"
+  ],
+  "name": "CircuitBreakerTransport",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for CircuitBreakerTransport"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

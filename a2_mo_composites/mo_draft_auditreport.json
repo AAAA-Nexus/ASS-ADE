@@ -1,0 +1,39 @@
+{
+  "body": "class AuditReport:\n    total: int\n    passed: int\n    failed: int\n    score: float\n    conviction: float\n    per_group: dict[str, dict] = field(default_factory=dict)\n    failures: list[dict] = field(default_factory=list)\n    warnings: list[str] = field(default_factory=list)\n    principles: list[str] = field(default_factory=list)\n",
+  "body_hash": "3c00bbd735a3eb7a",
+  "body_truncated": false,
+  "callers_of": [
+    "field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/wisdom.py:14.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.auditreport",
+  "imports": [
+    "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any",
+    "ass_ade.agent.audit_questions.AUDIT_QUESTIONS",
+    "ass_ade.context_memory.query_vector_memory",
+    "ass_ade.context_memory.store_vector_memory"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/wisdom.py:14"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "AuditReport",
+  "product_categories": [
+    "SRG"
+  ],
+  "provides": [
+    "rebuild candidate for AuditReport"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

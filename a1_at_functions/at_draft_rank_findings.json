@@ -1,0 +1,36 @@
+{
+  "body": "def rank_findings(findings: list[dict[str, Any]]) -> list[dict[str, Any]]:\n    impact_order = {\"high\": 0, \"medium\": 1, \"low\": 2}\n    effort_order = {\"low\": 0, \"medium\": 1, \"high\": 2}\n    ranked = sorted(\n        findings,\n        key=lambda f: (impact_order.get(f.get(\"impact\", \"low\"), 2), effort_order.get(f.get(\"effort\", \"medium\"), 1)),\n    )\n    for i, finding in enumerate(ranked, start=1):\n        finding[\"id\"] = i\n    return ranked\n",
+  "body_hash": "505d232e3d46461d",
+  "body_truncated": false,
+  "callers_of": [
+    "sorted",
+    "enumerate",
+    "get"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/local/enhancer.py:321.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.rank_findings",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/local/enhancer.py:321"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "rank_findings",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for rank_findings"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,44 @@
+{
+  "body": "class PromptHashTool(_PromptToolBase):\n    @property\n    def name(self) -> str:\n        return \"prompt_hash\"\n\n    @property\n    def description(self) -> str:\n        return \"Return SHA-256 metadata for an explicit prompt file or prompt text.\"\n\n    @property\n    def parameters(self) -> dict[str, Any]:\n        return {\n            \"type\": \"object\",\n            \"properties\": {\n                \"prompt_path\": {\"type\": \"string\", \"description\": \"Repo-relative prompt file.\"},\n                \"prompt_text\": {\"type\": \"string\", \"description\": \"Inline prompt text.\"},\n            },\n        }\n\n    def execute(self, **kwargs: Any) -> ToolResult:\n        return self._json(prompt_hash(working_dir=self._cwd, **kwargs))\n",
+  "body_hash": "efaf541edc2538e0",
+  "body_truncated": false,
+  "callers_of": [
+    "_json",
+    "prompt_hash"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/tools/prompt.py:29.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.prompthashtool",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.prompt_toolkit.prompt_diff",
+    "ass_ade.prompt_toolkit.prompt_hash",
+    "ass_ade.prompt_toolkit.prompt_propose",
+    "ass_ade.prompt_toolkit.prompt_section",
+    "ass_ade.prompt_toolkit.prompt_validate",
+    "ass_ade.tools.base.ToolResult"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/tools/prompt.py:29"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.prompt_hash"
+  ],
+  "name": "PromptHashTool",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for PromptHashTool"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

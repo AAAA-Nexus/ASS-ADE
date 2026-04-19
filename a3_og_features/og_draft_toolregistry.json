@@ -1,0 +1,61 @@
+{
+  "body": "class ToolRegistry:\n    \"\"\"Registry of available tools.\"\"\"\n\n    def __init__(self) -> None:\n        self._tools: dict[str, Tool] = {}\n\n    def register(self, tool: Tool) -> None:\n        self._tools[tool.name] = tool\n\n    def get(self, name: str) -> Tool | None:\n        return self._tools.get(name)\n\n    def list_tools(self) -> list[str]:\n        return sorted(self._tools)\n\n    def schemas(self) -> list[ToolSchema]:\n        return [\n            ToolSchema(\n                name=t.name,\n                description=t.description,\n                parameters=t.parameters,\n            )\n            for t in self._tools.values()\n        ]\n\n    def execute(self, name: str, **kwargs: Any) -> ToolResult:\n        tool = self._tools.get(name)\n        if tool is None:\n            return ToolResult(output=\"\", error=f\"Unknown tool: {name}\", success=False)\n        try:\n            return tool.execute(**kwargs)\n        except (\n            AttributeError,\n            LookupError,\n            OSError,\n            RuntimeError,\n            TypeError,\n            ValueError,\n        ) as exc:\n            return ToolResult(output=\"\", error=str(exc), success=False)\n",
+  "body_hash": "ee58f3c68bad3d9c",
+  "body_truncated": false,
+  "callers_of": [
+    "get",
+    "sorted",
+    "ToolSchema",
+    "ToolResult",
+    "execute",
+    "values",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/tools/registry.py:14.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "og.source.ass_ade.toolregistry",
+  "imports": [
+    "__future__.annotations",
+    "importlib.util",
+    "inspect",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.engine.types.ToolSchema",
+    "ass_ade.tools.base.Tool",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.builtin.EditFileTool",
+    "ass_ade.tools.builtin.GrepSearchTool",
+    "ass_ade.tools.builtin.ListDirectoryTool",
+    "ass_ade.tools.builtin.ReadFileTool",
+    "ass_ade.tools.builtin.RunCommandTool",
+    "ass_ade.tools.builtin.SearchFilesTool",
+    "ass_ade.tools.builtin.UndoEditTool",
+    "ass_ade.tools.builtin.WriteFileTool",
+    "ass_ade.tools.history.FileHistory",
+    "ass_ade.tools.prompt.PromptDiffTool",
+    "ass_ade.tools.prompt.PromptHashTool",
+    "ass_ade.tools.prompt.PromptProposeTool",
+    "ass_ade.tools.prompt.PromptSectionTool",
+    "ass_ade.tools.prompt.PromptValidateTool"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/tools/registry.py:14"
+  },
+  "kind": "product_organism",
+  "made_of": [
+    "mo.source.ass_ade.toolresult"
+  ],
+  "name": "ToolRegistry",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ToolRegistry"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a3_og_features",
+  "version": "0.1.0"
+}

@@ -1,0 +1,56 @@
+{
+  "body": "class EDEE:\n    def __init__(self, config: dict, nexus: Any | None = None):\n        self._config = config\n        self._nexus = nexus\n        self._working_dir = config.get(\"working_dir\", \".\")\n        self._traces = 0\n        self._assets = 0\n        self._exif = None\n\n    def _get_exif(self):\n        if self._exif is None:\n            from ass_ade.agent.exif import EXIF\n            self._exif = EXIF(self._config, self._nexus)\n        return self._exif\n\n    def capture_trace(self, phase: str, data: dict) -> str:\n        text = f\"[{phase}] {data.get('summary', str(data)[:200])}\"\n        meta = {\"phase\": phase, \"data\": data, \"kind\": \"trace\"}\n        result = store_vector_memory(\n            text=text,\n            namespace=EXPERIENCE_NS,\n            metadata=meta,\n            working_dir=self._working_dir,\n        )\n        self._traces += 1\n        return result.id\n\n    def store_asset(self, asset: dict) -> str:\n        text = asset.get(\"summary\") or asset.get(\"name\") or str(asset)[:200]\n        meta = {\"kind\": \"asset\", \"asset\": asset}\n        result = store_vector_memory(\n            text=text,\n            namespace=ASSET_NS,\n            metadata=meta,\n            working_dir=self._working_dir,\n        )\n        self._assets += 1\n        return result.id\n\n    def recall(self, task_embedding: Any, k: int = 5) -> list[dict]:\n        q = task_embedding if isinstance(task_embedding, str) else str(task_embedding)\n        result = query_vector_memory(\n            query=q,\n            namespace=EXPERIENCE_NS,\n            top_k=k,\n            working_dir=self._working_dir,\n        )\n        return [{\"id\": m.id, \"score\": m.score, \"text\": m.text, \"metadata\": m.metadata} for m in result.matches]\n\n    def distill_principles(self) -> list[Principle]:\n        result = query_vector_memory(\n            query=\"principle\",\n            namespace=EXPERIENCE_NS,\n            top_k=10,\n            working_dir=self._working_dir,\n        )\n        return [\n            Principle(text=m.text, weight=m.score, source_traces=1)\n            for m in result.matches\n        ]\n\n    def exif_explore(self, missing_skill: str, env: dict | None = None):\n        return self._get_exif().explore(missing_skill, env or {\"name\": \"default\"})\n\n    def run(self, ctx: dict) -> dict:\n        op = ctx.get(\"op\", \"recall\")\n        if op == \"capture\":\n            return {\"id\": self.capture_trace(ctx.get(\"phase\", \"unknown\"), ctx.get(\"data\", {}))}\n        if op == \"asset\":\n            return {\"id\": self.store_asset(ctx.get(\"asset\", {}))}\n        if op == \"distill\":\n            return {\"principles\": [p.__dict__ for p in self.distill_principles()]}\n        return {\"matches\": self.recall(ctx.get(\"query\", \"\"), int(ctx.get(\"k\", 5)))}\n\n    def report(self) -> dict:\n        return {\n            \"engine\": \"edee\",\n            \"traces\": self._traces,\n            \"assets\": self._assets,\n        }\n",
+  "body_hash": "6f78cdd3f44b9fc1",
+  "body_truncated": false,
+  "callers_of": [
+    "get",
+    "store_vector_memory",
+    "query_vector_memory",
+    "explore",
+    "EXIF",
+    "isinstance",
+    "str",
+    "Principle",
+    "recall",
+    "_get_exif",
+    "capture_trace",
+    "store_asset",
+    "int",
+    "distill_principles"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/edee.py:24.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.edee",
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "ass_ade.context_memory.query_vector_memory",
+    "ass_ade.context_memory.store_vector_memory",
+    "ass_ade.agent.exif.EXIF"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/edee.py:24"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.query_vector_memory",
+    "at.source.ass_ade.explore",
+    "at.source.ass_ade.recall",
+    "at.source.ass_ade.capture_trace",
+    "at.source.ass_ade.distill_principles"
+  ],
+  "name": "EDEE",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for EDEE"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

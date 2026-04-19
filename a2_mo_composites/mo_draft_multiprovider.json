@@ -1,0 +1,59 @@
+{
+  "body": "class MultiProvider:\n    \"\"\"Routes each CompletionRequest to the right underlying provider by model.\n\n    Holds a dict of {provider_name: ModelProvider} and a reverse map from\n    model id \u2192 provider_name. If the requested model is unknown, falls back\n    to the first provider in fallback order. On HTTP/network errors, tries\n    the next provider in the fallback chain.\n\n    Used by the LSE-enabled AgentLoop: when LSE picks model X for step N,\n    MultiProvider finds which underlying provider serves X and routes the call\n    there. The next step can route to a completely different provider.\n    \"\"\"\n\n    def __init__(\n        self,\n        providers: dict[str, \"ModelProvider\"],\n        model_to_provider: dict[str, str] | None = None,\n        fallback_order: list[str] | None = None,\n    ) -> None:\n        self._providers = dict(providers)\n        self._model_to_provider = dict(model_to_provider or {})\n        self._fallback_order = list(fallback_order or providers.keys())\n        self._last_provider_name: str | None = None\n\n    @property\n    def providers(self) -> dict[str, \"ModelProvider\"]:\n        return dict(self._providers)\n\n    @property\n    def last_provider_name(self) -> str | None:\n        return self._last_provider_name\n\n    @property\n    def model_name(self) -> str:\n        # For compatibility with the OpenAICompatibleProvider property\n        if self._providers and self._fallback_order:\n            first = self._providers.get(self._fallback_order[0])\n            if first is not None and hasattr(first, \"model_name\"):\n                return first.model_name  # type: ignore[no-any-return]\n        return \"multi-provider\"\n\n    def register(self, name: str, provider: \"ModelProvider\", models: list[str] | None = None) -> None:\n        \"\"\"Add a provider to the router at runtime.\"\"\"\n        self._providers[name] = provider\n        if name not in self._fallback_order:\n            self._fallback_order.append(name)\n        for m in models or []:\n            self._model_to_provider[m] = name\n\n    def close(self) -> None:\n        for p in self._providers.values():\n            close = getattr(p, \"close\", None)\n            if callable(close):\n                try:\n                    close()\n                except Exception:\n                    pass\n\n    def complete(self, request: CompletionRequest) -> CompletionResponse:\n        \"\"\"Route a request to the right provider, with automatic fallback.\"\"\"\n        order = self._select_order(request.model)\n        last_error: Exception | None = None\n        for name in order:\n            provider = self._providers.get(name)\n            if provider is None:\n                continue\n            try:\n                response = provider.complete(request)\n                self._last_provider_name = name\n                return response\n            except httpx.HTTPError as exc:\n                last_error = exc\n                continue\n            except Exception as exc:  # noqa: BLE001\n                last_error = exc\n                continue\n        # All providers failed \u2014 re-raise the last error so the caller sees it.\n        if last_error is not None:\n            raise last_error\n        raise RuntimeError(\"MultiProvider: no providers configured\")\n\n    def _select_order(self, model: str | None) -> list[str]:\n        \"\"\"Compute provider-try order for a given model.\"\"\"\n        if not model:\n            return list(self._fallback_order)\n        primary = self._model_to_provider.get(model)\n        if primary is None:\n            return list(self._fallback_order)\n        order = [primary]\n        order.extend(n for n in self._fallback_order if n != primary)\n        return order\n",
+  "body_hash": "a3e116ae764de52c",
+  "body_truncated": false,
+  "callers_of": [
+    "dict",
+    "list",
+    "values",
+    "_select_order",
+    "RuntimeError",
+    "get",
+    "extend",
+    "append",
+    "getattr",
+    "callable",
+    "keys",
+    "hasattr",
+    "complete",
+    "close"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/provider.py:281.",
+  "exceptions_raised": [
+    "RuntimeError",
+    "last_error"
+  ],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.multiprovider",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "uuid",
+    "collections.abc.Iterator",
+    "typing.Any",
+    "typing.Protocol",
+    "typing.runtime_checkable",
+    "httpx",
+    "ass_ade.engine.types.CompletionRequest",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolCallRequest"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/engine/provider.py:281"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "MultiProvider",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for MultiProvider"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

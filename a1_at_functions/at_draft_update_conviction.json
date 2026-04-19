@@ -1,0 +1,37 @@
+{
+  "body": "def update_conviction(self) -> float:\n    return self._conviction\n",
+  "body_hash": "4c4d8c964e2d463b",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/wisdom.py:259.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.update_conviction",
+  "imports": [
+    "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any",
+    "ass_ade.agent.audit_questions.AUDIT_QUESTIONS",
+    "ass_ade.context_memory.query_vector_memory",
+    "ass_ade.context_memory.store_vector_memory"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/wisdom.py:259"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "update_conviction",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for update_conviction"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

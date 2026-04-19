@@ -1,0 +1,35 @@
+{
+  "body": "class ToolRef:\n    name: str\n    score: float\n    server: str = \"\"\n    metadata: dict[str, Any] = field(default_factory=dict)\n",
+  "body_hash": "252030228f28bef4",
+  "body_truncated": false,
+  "callers_of": [
+    "field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/mcp/zero_router.py:9.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.toolref",
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/mcp/zero_router.py:9"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "ToolRef",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ToolRef"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

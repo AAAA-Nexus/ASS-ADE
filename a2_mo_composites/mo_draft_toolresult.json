@@ -1,0 +1,34 @@
+{
+  "body": "class ToolResult(BaseModel):\n    \"\"\"Result of a tool execution.\"\"\"\n\n    output: str = \"\"\n    error: str | None = None\n    success: bool = True\n",
+  "body_hash": "9b9d21c38a4cb37a",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/tools/base.py:10.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.toolresult",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "typing.Protocol",
+    "typing.runtime_checkable",
+    "pydantic.BaseModel"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/tools/base.py:10"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "ToolResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ToolResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

@@ -1,0 +1,37 @@
+{
+  "body": "class PaymentResult:\n    \"\"\"Result of an x402 payment attempt.\"\"\"\n    success: bool\n    txid: str = \"\"\n    signature_header: str = \"\"\n    error: str = \"\"\n    testnet: bool = False\n",
+  "body_hash": "01f72b089bcd3ab2",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/x402.py:113.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.paymentresult",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "time",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "eth_account.Account",
+    "web3.Web3",
+    "logging"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/nexus/x402.py:113"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "PaymentResult",
+  "product_categories": [
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for PaymentResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

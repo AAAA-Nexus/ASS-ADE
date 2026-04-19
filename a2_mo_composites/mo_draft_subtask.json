@@ -1,0 +1,35 @@
+{
+  "body": "class SubTask:\n    id: str\n    description: str\n    priority: float\n    deps: list[str] = field(default_factory=list)\n",
+  "body_hash": "d57a51597999360a",
+  "body_truncated": false,
+  "callers_of": [
+    "field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/atlas.py:9.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.subtask",
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/atlas.py:9"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "SubTask",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for SubTask"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

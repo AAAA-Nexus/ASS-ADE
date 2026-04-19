@@ -1,0 +1,73 @@
+{
+  "body": "def agent_chat(\n    config: Path | None = CONFIG_OPTION,\n    working_dir: Annotated[Path, typer.Option(help=\"Working directory for the agent.\")] = Path(\".\"),\n    model: Annotated[str | None, typer.Option(help=\"Specific model to use.\")] = None,\n) -> None:\n    \"\"\"Interactive agent chat session.\"\"\"\n    from ass_ade.agent.loop import AgentLoop\n    from ass_ade.agent.gates import QualityGates\n    from ass_ade.agent.lse import LSEEngine\n    from ass_ade.agent.orchestrator import EngineOrchestrator\n    from ass_ade.engine.router import build_provider\n    from ass_ade.tools.registry import default_registry\n    from ass_ade.nexus.client import NexusClient\n\n    _, settings = _resolve_config(config)\n    provider = build_provider(settings)\n    registry = default_registry(str(working_dir.resolve()))\n\n    gates_client = None\n    try:\n        gates = None\n        nexus_for_engines = None\n        if settings.profile in {\"hybrid\", \"premium\"} and settings.nexus_api_key:\n            gates_client = NexusClient(\n                base_url=settings.nexus_base_url,\n                timeout=settings.request_timeout_s,\n                api_key=settings.nexus_api_key,\n                agent_id=settings.agent_id,  # auto-deduct Nexus credit\n            )\n            gates = QualityGates(gates_client)\n            nexus_for_engines = gates_client\n\n        lse_cfg = _lse_config_from_settings(settings)\n        lse = LSEEngine(lse_cfg)\n        orchestrator = EngineOrchestrator(lse_cfg, nexus=nexus_for_engines, working_dir=str(working_dir.resolve()))\n\n        agent = AgentLoop(\n            provider=provider,\n            registry=registry,\n            working_dir=str(working_dir.resolve()),\n            model=model or settings.agent_model,\n            quality_gates=gates,\n            orchestrator=orchestrator,\n            lse=lse,\n        )\n\n        msg = f\"[bold green]ASS-ADE Agent Ready[/bold green] (Model: {model or settings.agent_model} | Profile: {settings.profile})\"\n        console.print(msg)\n        console.print(\"[dim]Type 'exit' or 'quit' to end the session.[/dim]\\n\")\n\n        while True:\n            try:\n                line = console.input(\"[bold blue]user[/bold blue]> \").strip()\n                if line.lower() in {\"exit\", \"quit\"}:\n                    break\n                if not line:\n                    continue\n\n                with console.status(\"[bold yellow]thinking...[/bold yellow]\"):\n                    response = agent.step(line)\n\n                console.print(f\"\\n[bold magenta]assistant[/bold magenta]> {response}\\n\")\n                _render_phase1_header(agent)\n\n            except EOFError:\n                break\n            except KeyboardInterrupt:\n                console.print(\"\\n[yellow]Session interrupted.[/yellow]\")\n                break\n            except Exception as exc:\n                console.print(f\"[bold red]Error:[/bold red] {exc}\")\n    finally:\n        if gates_client:\n            gates_client.close()\n",
+  "body_hash": "64ef0dc670ad365d",
+  "body_truncated": false,
+  "callers_of": [
+    "Path",
+    "_resolve_config",
+    "build_provider",
+    "default_registry",
+    "str",
+    "_lse_config_from_settings",
+    "LSEEngine",
+    "EngineOrchestrator",
+    "AgentLoop",
+    "print",
+    "resolve",
+    "NexusClient",
+    "QualityGates",
+    "close",
+    "Option",
+    "strip",
+    "_render_phase1_header",
+    "lower",
+    "status",
+    "step",
+    "input"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/commands/agent.py:41.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.agent_chat",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "typing.Annotated",
+    "typing.Any",
+    "typer",
+    "rich.console.Console",
+    "ass_ade.config.default_config_path",
+    "ass_ade.config.load_config",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.agent.orchestrator.EngineOrchestrator",
+    "ass_ade.engine.router.build_provider",
+    "ass_ade.tools.registry.default_registry",
+    "ass_ade.nexus.client.NexusClient",
+    "ass_ade.agent.loop.AgentLoop",
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.agent.orchestrator.EngineOrchestrator",
+    "ass_ade.engine.router.build_provider",
+    "ass_ade.tools.registry.default_registry",
+    "ass_ade.nexus.client.NexusClient"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/commands/agent.py:41"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "agent_chat",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for agent_chat"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

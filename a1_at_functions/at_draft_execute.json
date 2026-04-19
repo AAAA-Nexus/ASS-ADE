@@ -1,0 +1,42 @@
+{
+  "body": "def execute(self, **kwargs: Any) -> ToolResult:\n    return self._json(prompt_hash(working_dir=self._cwd, **kwargs))\n",
+  "body_hash": "5a515a1052adfdc1",
+  "body_truncated": false,
+  "callers_of": [
+    "_json",
+    "prompt_hash"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/tools/prompt.py:126.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.execute",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.prompt_toolkit.prompt_diff",
+    "ass_ade.prompt_toolkit.prompt_hash",
+    "ass_ade.prompt_toolkit.prompt_propose",
+    "ass_ade.prompt_toolkit.prompt_section",
+    "ass_ade.prompt_toolkit.prompt_validate",
+    "ass_ade.tools.base.ToolResult"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/tools/prompt.py:126"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "execute",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for execute"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,36 @@
+{
+  "body": "def messages(self) -> list[Message]:\n    return list(self._messages)\n",
+  "body_hash": "d13e3df1f7dd8efc",
+  "body_truncated": false,
+  "callers_of": [
+    "list"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/conversation.py:28.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.messages",
+  "imports": [
+    "__future__.annotations",
+    "ass_ade.engine.tokens.TokenBudget",
+    "ass_ade.engine.tokens.estimate_message_tokens",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolSchema"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/conversation.py:28"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "messages",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for messages"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

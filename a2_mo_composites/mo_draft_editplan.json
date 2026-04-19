@@ -1,0 +1,41 @@
+{
+  "body": "class EditPlan:\n    \"\"\"A batch of file operations to apply atomically.\"\"\"\n\n    edits: list[PlannedEdit] = field(default_factory=list)\n    description: str = \"\"\n    validated: bool = False\n    applied: bool = False\n\n    def add_create(self, path: str, content: str, description: str = \"\") -> None:\n        self.edits.append(PlannedEdit(\n            kind=EditKind.CREATE,\n            path=path,\n            new_string=content,\n            description=description or f\"Create {path}\",\n        ))\n        self.validated = False\n\n    def add_modify(\n        self, path: str, old_string: str, new_string: str, description: str = \"\"\n    ) -> None:\n        self.edits.append(PlannedEdit(\n            kind=EditKind.MODIFY,\n            path=path,\n            old_string=old_string,\n            new_string=new_string,\n            description=description or f\"Edit {path}\",\n        ))\n        self.validated = False\n\n    def add_delete(self, path: str, description: str = \"\") -> None:\n        self.edits.append(PlannedEdit(\n            kind=EditKind.DELETE,\n            path=path,\n            description=description or f\"Delete {path}\",\n        ))\n        self.validated = False\n",
+  "body_hash": "78ff9d213d5a32a7",
+  "body_truncated": false,
+  "callers_of": [
+    "field",
+    "append",
+    "PlannedEdit"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/tools/plan.py:51.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.editplan",
+  "imports": [
+    "__future__.annotations",
+    "difflib",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "enum.Enum",
+    "pathlib.Path",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.history.FileHistory"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/tools/plan.py:51"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "EditPlan",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for EditPlan"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

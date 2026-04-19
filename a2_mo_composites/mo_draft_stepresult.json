@@ -1,0 +1,42 @@
+{
+  "body": "class StepResult:\n    \"\"\"Result of a single pipeline step.\"\"\"\n\n    name: str\n    status: StepStatus\n    output: dict[str, Any] = field(default_factory=dict)\n    error: str = \"\"\n    duration_ms: float = 0.0\n",
+  "body_hash": "dc0ec7e3d151a736",
+  "body_truncated": false,
+  "callers_of": [
+    "field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/pipeline.py:47.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.stepresult",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "time",
+    "collections.abc.Callable",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "enum.Enum",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Protocol",
+    "ass_ade.nexus.validation.validate_agent_id"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/pipeline.py:47"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "StepResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for StepResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

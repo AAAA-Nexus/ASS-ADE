@@ -1,0 +1,35 @@
+{
+  "body": "def report(self) -> dict:\n    return {\n        \"engine\": \"mcp_zero_router\",\n        \"catalog_size\": len(self._catalog),\n        \"calls\": self._calls,\n    }\n",
+  "body_hash": "21f8634133604730",
+  "body_truncated": false,
+  "callers_of": [
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/mcp/zero_router.py:55.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.report",
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/mcp/zero_router.py:55"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "report",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for report"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

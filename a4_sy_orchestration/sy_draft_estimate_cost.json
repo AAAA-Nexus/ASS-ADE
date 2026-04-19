@@ -1,0 +1,43 @@
+{
+  "body": "def estimate_cost(tool: MCPTool) -> CostEstimate | None:\n    \"\"\"Return the cost metadata for a tool, or None if the tool is free / metadata unavailable.\"\"\"\n    if tool.cost is not None:\n        return tool.cost\n    if bool(tool.paid):\n        # Manifest declares paid but no cost detail; return a placeholder.\n        return CostEstimate(notes=\"paid tool \u2013 no cost detail in manifest\")\n    return None\n",
+  "body_hash": "b2964f3e308d33ca",
+  "body_truncated": false,
+  "callers_of": [
+    "bool",
+    "CostEstimate"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/mcp/utils.py:122.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.estimate_cost",
+  "imports": [
+    "__future__.annotations",
+    "time",
+    "typing.Any",
+    "httpx",
+    "jsonschema",
+    "jsonschema.ValidationError",
+    "ass_ade.nexus.models.CostEstimate",
+    "ass_ade.nexus.models.MCPManifest",
+    "ass_ade.nexus.models.MCPTool",
+    "ass_ade.nexus.validation.sanitize_header_value",
+    "ass_ade.nexus.validation.validate_https_public_url"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/mcp/utils.py:122"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "estimate_cost",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for estimate_cost"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

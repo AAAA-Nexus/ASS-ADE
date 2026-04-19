@@ -1,0 +1,36 @@
+{
+  "body": "class CompensationResult(NexusModel):\n    \"\"\"/v1/rollback/saga/{id}/compensate \u2014 RBK-100\"\"\"\n    saga_id: str | None = None\n    compensated_steps: list[str] = Field(default_factory=list)\n    success: bool | None = None\n",
+  "body_hash": "f283199970a40841",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/models.py:675.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.compensationresult",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/nexus/models.py:675"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "CompensationResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for CompensationResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

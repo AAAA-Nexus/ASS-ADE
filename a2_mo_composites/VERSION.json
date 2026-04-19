@@ -1,0 +1,2755 @@
+{
+  "module_count": 458,
+  "modules": [
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.a2aagentcard",
+      "name": "A2AAgentCard",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.a2aauthentication",
+      "name": "A2AAuthentication",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.a2acapabilities",
+      "name": "A2ACapabilities",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.a2aprovider",
+      "name": "A2AProvider",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.a2askill",
+      "name": "A2ASkill",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.activeterrainverdict",
+      "name": "ActiveTerrainVerdict",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.aegis_certify_epoch",
+      "name": "aegis_certify_epoch",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.aegis_epistemic_route",
+      "name": "aegis_epistemic_route",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.aegis_mcp_proxy",
+      "name": "aegis_mcp_proxy",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.aegisproxyresult",
+      "name": "AegisProxyResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.agent",
+      "name": "Agent",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.agent_capabilities_match",
+      "name": "agent_capabilities_match",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.agent_contradiction",
+      "name": "agent_contradiction",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.agent_intent_classify",
+      "name": "agent_intent_classify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.agent_plan",
+      "name": "agent_plan",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.agent_quarantine",
+      "name": "agent_quarantine",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.agent_register",
+      "name": "agent_register",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.agent_reputation",
+      "name": "agent_reputation",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.agent_semantic_diff",
+      "name": "agent_semantic_diff",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.agent_topology",
+      "name": "agent_topology",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.agentcard",
+      "name": "AgentCard",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.agentloop",
+      "name": "AgentLoop",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.agentref",
+      "name": "AgentRef",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.agentregistration",
+      "name": "AgentRegistration",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.agentskill",
+      "name": "AgentSkill",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.aibom_drift",
+      "name": "aibom_drift",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.aibomdriftresult",
+      "name": "AibomDriftResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.alert",
+      "name": "Alert",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.alphaverus",
+      "name": "AlphaVerus",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.anthropicprovider",
+      "name": "AnthropicProvider",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.arch",
+      "name": "Arch",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.assadeconfig",
+      "name": "AssAdeConfig",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.assess_blueprint_fulfillment",
+      "name": "assess_blueprint_fulfillment",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.assign_version",
+      "name": "assign_version",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.atlas",
+      "name": "Atlas",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.audit_log",
+      "name": "audit_log",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.audit_verify",
+      "name": "audit_verify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.auditlogentry",
+      "name": "AuditLogEntry",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.auditreport",
+      "name": "AuditReport",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.auditverifyresult",
+      "name": "AuditVerifyResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.authenticationinfo",
+      "name": "AuthenticationInfo",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.authorize_action",
+      "name": "authorize_action",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.authorizeactionresult",
+      "name": "AuthorizeActionResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.bas",
+      "name": "BAS",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.batchresult",
+      "name": "BatchResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.behavioralcontractresult",
+      "name": "BehavioralContractResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.billing_outcome",
+      "name": "billing_outcome",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.bitnet_benchmark",
+      "name": "bitnet_benchmark",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.bitnet_inference",
+      "name": "bitnet_inference",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.bitnet_models",
+      "name": "bitnet_models",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.bitnet_quantize",
+      "name": "bitnet_quantize",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.bitnet_status",
+      "name": "bitnet_status",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.bitnet_stream",
+      "name": "bitnet_stream",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.bitnetbenchmarkresponse",
+      "name": "BitNetBenchmarkResponse",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.bitnetinferenceresponse",
+      "name": "BitNetInferenceResponse",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.bitnetmodel",
+      "name": "BitNetModel",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.bitnetmodelsresponse",
+      "name": "BitNetModelsResponse",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.bitnetquantizeresponse",
+      "name": "BitNetQuantizeResponse",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.break_cycles",
+      "name": "break_cycles",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.build_gap_fill_plan",
+      "name": "build_gap_fill_plan",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.build_local_analysis",
+      "name": "build_local_analysis",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.build_provider",
+      "name": "build_provider",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.bump_version",
+      "name": "bump_version",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.candidate",
+      "name": "Candidate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.capabilityentry",
+      "name": "CapabilityEntry",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.capabilitymatch",
+      "name": "CapabilityMatch",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.capabilitysnapshot",
+      "name": "CapabilitySnapshot",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.certifiedoutput",
+      "name": "CertifiedOutput",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.certify_codebase",
+      "name": "certify_codebase",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.certify_output",
+      "name": "certify_output",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.certify_output_verify",
+      "name": "certify_output_verify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.certifyresult",
+      "name": "CertifyResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.check_tier_purity",
+      "name": "check_tier_purity",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.ciepipeline",
+      "name": "CIEPipeline",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.cieresult",
+      "name": "CIEResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.circuitbreakertransport",
+      "name": "CircuitBreakerTransport",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.classify_change",
+      "name": "classify_change",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.close",
+      "name": "close",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.codebaserecon",
+      "name": "CodebaseRecon",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.collect_hooks",
+      "name": "collect_hooks",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.compensationresult",
+      "name": "CompensationResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.complete",
+      "name": "complete",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.completionrequest",
+      "name": "CompletionRequest",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.completionresponse",
+      "name": "CompletionResponse",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.compliance_check",
+      "name": "compliance_check",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.compliance_eu_ai_act",
+      "name": "compliance_eu_ai_act",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.compliance_explain",
+      "name": "compliance_explain",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.compliance_fairness",
+      "name": "compliance_fairness",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.compliance_incident",
+      "name": "compliance_incident",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.compliance_incidents",
+      "name": "compliance_incidents",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.compliance_lineage",
+      "name": "compliance_lineage",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.compliance_oversight",
+      "name": "compliance_oversight",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.compliance_oversight_history",
+      "name": "compliance_oversight_history",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.compliance_transparency",
+      "name": "compliance_transparency",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.compliancecert",
+      "name": "ComplianceCert",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.complianceresult",
+      "name": "ComplianceResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.consensus_result",
+      "name": "consensus_result",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.consensus_vote",
+      "name": "consensus_vote",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.consensussession",
+      "name": "ConsensusSession",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.content_hash",
+      "name": "content_hash",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.context_store_command",
+      "name": "context_store_command",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.contextfile",
+      "name": "ContextFile",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.contextpacket",
+      "name": "ContextPacket",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.contract_attestation",
+      "name": "contract_attestation",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.contract_verify",
+      "name": "contract_verify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.contradictionresult",
+      "name": "ContradictionResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.contribution",
+      "name": "Contribution",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.conversation",
+      "name": "Conversation",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.costattribution",
+      "name": "CostAttribution",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.costestimate",
+      "name": "CostEstimate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.costs_attribute",
+      "name": "costs_attribute",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.crypto_toolkit",
+      "name": "crypto_toolkit",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.data_convert",
+      "name": "data_convert",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.datavalidation",
+      "name": "DataValidation",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.defi_bridge_verify",
+      "name": "defi_bridge_verify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.defi_contract_audit",
+      "name": "defi_contract_audit",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.defi_liquidation_check",
+      "name": "defi_liquidation_check",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.defi_optimize",
+      "name": "defi_optimize",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.defi_oracle_verify",
+      "name": "defi_oracle_verify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.defi_risk_score",
+      "name": "defi_risk_score",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.defi_yield_optimize",
+      "name": "defi_yield_optimize",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.delegate_receipt",
+      "name": "delegate_receipt",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.delegate_verify",
+      "name": "delegate_verify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.delegationvalidation",
+      "name": "DelegationValidation",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.derive_made_of_graph",
+      "name": "derive_made_of_graph",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.design_blueprint",
+      "name": "design_blueprint",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.detect_ci",
+      "name": "detect_ci",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.detect_cycles",
+      "name": "detect_cycles",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.detect_languages",
+      "name": "detect_languages",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.detect_test_framework",
+      "name": "detect_test_framework",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.dev_starter",
+      "name": "dev_starter",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.developmentplan",
+      "name": "DevelopmentPlan",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.dgmh",
+      "name": "DGMH",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.discoveredagent",
+      "name": "DiscoveredAgent",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.discovery_recommend",
+      "name": "discovery_recommend",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.discovery_registry",
+      "name": "discovery_registry",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.discovery_search",
+      "name": "discovery_search",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.discoveryresult",
+      "name": "DiscoveryResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.docs_generate",
+      "name": "docs_generate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.docsresult",
+      "name": "DocsResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.drift_certificate",
+      "name": "drift_certificate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.drift_check",
+      "name": "drift_check",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.edee",
+      "name": "EDEE",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.editfiletool",
+      "name": "EditFileTool",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.editkind",
+      "name": "EditKind",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.editplan",
+      "name": "EditPlan",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.editplanexecutor",
+      "name": "EditPlanExecutor",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.efficiency_capture",
+      "name": "efficiency_capture",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.efficiencyresult",
+      "name": "EfficiencyResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.embed",
+      "name": "embed",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.embedresponse",
+      "name": "EmbedResponse",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.emit_runnable_package",
+      "name": "emit_runnable_package",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.enforce_tier_purity",
+      "name": "enforce_tier_purity",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.engine_report",
+      "name": "engine_report",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.engineorchestrator",
+      "name": "EngineOrchestrator",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.enhance_apply",
+      "name": "enhance_apply",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.enhance_scan",
+      "name": "enhance_scan",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.enhanceapplyresult",
+      "name": "EnhanceApplyResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.enhancescanresult",
+      "name": "EnhanceScanResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.enrich_components_with_bodies",
+      "name": "enrich_components_with_bodies",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.entropy_oracle",
+      "name": "entropy_oracle",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.entropyresult",
+      "name": "EntropyResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.escrow_arbitrate",
+      "name": "escrow_arbitrate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.escrow_create",
+      "name": "escrow_create",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.escrow_dispute",
+      "name": "escrow_dispute",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.escrow_release",
+      "name": "escrow_release",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.escrow_status",
+      "name": "escrow_status",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.escrowcreated",
+      "name": "EscrowCreated",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.escrowresult",
+      "name": "EscrowResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.ethics_check",
+      "name": "ethics_check",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.ethics_compliance",
+      "name": "ethics_compliance",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.ethicscheckresult",
+      "name": "EthicsCheckResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.evolutioncommand",
+      "name": "EvolutionCommand",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.evolutionevent",
+      "name": "EvolutionEvent",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.evolutiongitstate",
+      "name": "EvolutionGitState",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.evolutionrecordresult",
+      "name": "EvolutionRecordResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.exif",
+      "name": "EXIF",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.explaincert",
+      "name": "ExplainCert",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.extract_body",
+      "name": "extract_body",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.extractedbody",
+      "name": "ExtractedBody",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.federation_mint",
+      "name": "federation_mint",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.federation_portability",
+      "name": "federation_portability",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.federation_verify",
+      "name": "federation_verify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.filehistory",
+      "name": "FileHistory",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.forge_badge",
+      "name": "forge_badge",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.forge_delta_submit",
+      "name": "forge_delta_submit",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.forge_leaderboard",
+      "name": "forge_leaderboard",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.forge_quarantine",
+      "name": "forge_quarantine",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.forge_verify",
+      "name": "forge_verify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.forgebadgeresult",
+      "name": "ForgeBadgeResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.forgedeltasubmitresult",
+      "name": "ForgeDeltaSubmitResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.forgeleaderboardentry",
+      "name": "ForgeLeaderboardEntry",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.forgeleaderboardresponse",
+      "name": "ForgeLeaderboardResponse",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.forgequarantineresponse",
+      "name": "ForgeQuarantineResponse",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.forgeverifyresult",
+      "name": "ForgeVerifyResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.freshnessreport",
+      "name": "FreshnessReport",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.gapentry",
+      "name": "GAPEntry",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.gateresult",
+      "name": "GateResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.get_agent_card",
+      "name": "get_agent_card",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.get_health",
+      "name": "get_health",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.get_metrics",
+      "name": "get_metrics",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.get_openapi",
+      "name": "get_openapi",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.get_payment_fee",
+      "name": "get_payment_fee",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.governance_vote",
+      "name": "governance_vote",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.grepsearchtool",
+      "name": "GrepSearchTool",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.gvu",
+      "name": "GVU",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.hallucination_oracle",
+      "name": "hallucination_oracle",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.hallucinationresult",
+      "name": "HallucinationResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.handle_x402",
+      "name": "handle_x402",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.healthstatus",
+      "name": "HealthStatus",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.hook_50_audit",
+      "name": "hook_50_audit",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.hook_aaaa_nexus_economic",
+      "name": "hook_aaaa_nexus_economic",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.hook_alphaverus_refine",
+      "name": "hook_alphaverus_refine",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.hook_deception_monitor",
+      "name": "hook_deception_monitor",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.hook_map_terrain_gate",
+      "name": "hook_map_terrain_gate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.hook_pci_verify",
+      "name": "hook_pci_verify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.hook_trustbench_verify",
+      "name": "hook_trustbench_verify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.hook_verispec_synthesize",
+      "name": "hook_verispec_synthesize",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.ide",
+      "name": "IDE",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.identity_verify",
+      "name": "identity_verify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.identityverification",
+      "name": "IdentityVerification",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.incidentreport",
+      "name": "IncidentReport",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.inference",
+      "name": "inference",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.inference_stream",
+      "name": "inference_stream",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.inferenceresponse",
+      "name": "InferenceResponse",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.intentclassification",
+      "name": "IntentClassification",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.internal_search",
+      "name": "internal_search",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.internal_search_chat",
+      "name": "internal_search_chat",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.inventionstub",
+      "name": "InventionStub",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.last_provider_name",
+      "name": "last_provider_name",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.lifrgraph",
+      "name": "LIFRGraph",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.lineage_record",
+      "name": "lineage_record",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.lineage_trace",
+      "name": "lineage_trace",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.lint_analyze",
+      "name": "lint_analyze",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.lintresult",
+      "name": "LintResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.liquidationcheck",
+      "name": "LiquidationCheck",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.listdirectorytool",
+      "name": "ListDirectoryTool",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.load_prev_versions",
+      "name": "load_prev_versions",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.load_project_metadata",
+      "name": "load_project_metadata",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.lora_adapter_current",
+      "name": "lora_adapter_current",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.lora_buffer_capture",
+      "name": "lora_buffer_capture",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.lora_buffer_inspect",
+      "name": "lora_buffer_inspect",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.lora_capture_fix",
+      "name": "lora_capture_fix",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.lora_contribute",
+      "name": "lora_contribute",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.lora_credit_balance",
+      "name": "lora_credit_balance",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.lora_reward_claim",
+      "name": "lora_reward_claim",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.lora_status",
+      "name": "lora_status",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.loraflywheel",
+      "name": "LoRAFlywheel",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.lsedecision",
+      "name": "LSEDecision",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.lseengine",
+      "name": "LSEEngine",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.map_terrain",
+      "name": "map_terrain",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.mapterrainresult",
+      "name": "MapTerrainResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.match",
+      "name": "Match",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.memory_fence_audit",
+      "name": "memory_fence_audit",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.memory_fence_create",
+      "name": "memory_fence_create",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.memory_trim",
+      "name": "memory_trim",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.memoryfence",
+      "name": "MemoryFence",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.memorystore",
+      "name": "MemoryStore",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.memorytrimresult",
+      "name": "MemoryTrimResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.message",
+      "name": "Message",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.metaedit",
+      "name": "MetaEdit",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.mev_protect",
+      "name": "mev_protect",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.mev_status",
+      "name": "mev_status",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.mevprotectresult",
+      "name": "MevProtectResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.mevstatusresult",
+      "name": "MevStatusResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.missingcapability",
+      "name": "MissingCapability",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.model_name",
+      "name": "model_name",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.modelprovider",
+      "name": "ModelProvider",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.modeltier",
+      "name": "ModelTier",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.multiprovider",
+      "name": "MultiProvider",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.negotiationresult",
+      "name": "NegotiationResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.nexusautherror",
+      "name": "NexusAuthError",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.nexuscircuitopen",
+      "name": "NexusCircuitOpen",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.nexusclient",
+      "name": "NexusClient",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.nexusconnectionerror",
+      "name": "NexusConnectionError",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.nexuserror",
+      "name": "NexusError",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.nexusmodel",
+      "name": "NexusModel",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.nexuspaymentrequired",
+      "name": "NexusPaymentRequired",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.nexusprovider",
+      "name": "NexusProvider",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.nexusratelimited",
+      "name": "NexusRateLimited",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.nexussession",
+      "name": "NexusSession",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.nexustimeouterror",
+      "name": "NexusTimeoutError",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.nexusvalidationerror",
+      "name": "NexusValidationError",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.openaicompatibleprovider",
+      "name": "OpenAICompatibleProvider",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.openapidocument",
+      "name": "OpenApiDocument",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.openapiinfo",
+      "name": "OpenApiInfo",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.oversightevent",
+      "name": "OversightEvent",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.patch",
+      "name": "Patch",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.paymentchallenge",
+      "name": "PaymentChallenge",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.paymentfee",
+      "name": "PaymentFee",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.paymentresult",
+      "name": "PaymentResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.phase0reconresult",
+      "name": "Phase0ReconResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.pipeline",
+      "name": "Pipeline",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.pipelineresult",
+      "name": "PipelineResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.plannededit",
+      "name": "PlannedEdit",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.platformmetrics",
+      "name": "PlatformMetrics",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.portabilitycheck",
+      "name": "PortabilityCheck",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.post_with_x402",
+      "name": "post_with_x402",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.pqcsignresult",
+      "name": "PqcSignResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.principle",
+      "name": "Principle",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.prompt_download",
+      "name": "prompt_download",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.prompt_inject_scan",
+      "name": "prompt_inject_scan",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.prompt_optimize",
+      "name": "prompt_optimize",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.promptartifact",
+      "name": "PromptArtifact",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.promptdiffresult",
+      "name": "PromptDiffResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.promptdifftool",
+      "name": "PromptDiffTool",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.prompthashresult",
+      "name": "PromptHashResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.prompthashtool",
+      "name": "PromptHashTool",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.promptoptimized",
+      "name": "PromptOptimized",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.promptproposalresult",
+      "name": "PromptProposalResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.promptproposetool",
+      "name": "PromptProposeTool",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.promptscanresult",
+      "name": "PromptScanResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.promptsectionresult",
+      "name": "PromptSectionResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.promptsectiontool",
+      "name": "PromptSectionTool",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.propose_components",
+      "name": "propose_components",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.proposedcomponent",
+      "name": "ProposedComponent",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.protocolassessment",
+      "name": "ProtocolAssessment",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.protocolauditcheck",
+      "name": "ProtocolAuditCheck",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.protocolreport",
+      "name": "ProtocolReport",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.provideroverride",
+      "name": "ProviderOverride",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.providerprofile",
+      "name": "ProviderProfile",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.providers",
+      "name": "providers",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.puppeteer",
+      "name": "Puppeteer",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.qualitygates",
+      "name": "QualityGates",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.quarantineresult",
+      "name": "QuarantineResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.quota_draw",
+      "name": "quota_draw",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.quota_status",
+      "name": "quota_status",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.quota_tree_create",
+      "name": "quota_tree_create",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.quotadrawresult",
+      "name": "QuotaDrawResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.quotatree",
+      "name": "QuotaTree",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.ratchet_advance",
+      "name": "ratchet_advance",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.ratchet_probe",
+      "name": "ratchet_probe",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.ratchet_register",
+      "name": "ratchet_register",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.ratchet_status",
+      "name": "ratchet_status",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.ratchetproberesult",
+      "name": "RatchetProbeResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.ratchetsession",
+      "name": "RatchetSession",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.readfiletool",
+      "name": "ReadFileTool",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.rebuild_project",
+      "name": "rebuild_project",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.reconreport",
+      "name": "ReconReport",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.register",
+      "name": "register",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.render_local_docs",
+      "name": "render_local_docs",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.render_rebuild_summary",
+      "name": "render_rebuild_summary",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.reposummary",
+      "name": "RepoSummary",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.reputation_dispute",
+      "name": "reputation_dispute",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.reputation_history",
+      "name": "reputation_history",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.reputation_record",
+      "name": "reputation_record",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.reputation_score",
+      "name": "reputation_score",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.request_with_payment_headers",
+      "name": "request_with_payment_headers",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.researchtarget",
+      "name": "ResearchTarget",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.resilient",
+      "name": "resilient",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.retrytransport",
+      "name": "RetryTransport",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.rng_quantum",
+      "name": "rng_quantum",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.rng_verify",
+      "name": "rng_verify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.rngresult",
+      "name": "RngResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.routing_recommend",
+      "name": "routing_recommend",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.routing_think",
+      "name": "routing_think",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.routingdecision",
+      "name": "RoutingDecision",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.runcommandtool",
+      "name": "RunCommandTool",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.saga_checkpoint",
+      "name": "saga_checkpoint",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.saga_compensate",
+      "name": "saga_compensate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.saga_register",
+      "name": "saga_register",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.sagarollback",
+      "name": "SagaRollback",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.sam",
+      "name": "SAM",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.scan_source_symbols",
+      "name": "scan_source_symbols",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.searchfilestool",
+      "name": "SearchFilesTool",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.security_pqc_sign",
+      "name": "security_pqc_sign",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.security_prompt_scan",
+      "name": "security_prompt_scan",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.security_shield",
+      "name": "security_shield",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.security_zero_day",
+      "name": "security_zero_day",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.semanticdiff",
+      "name": "SemanticDiff",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.severa",
+      "name": "Severa",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.shieldresult",
+      "name": "ShieldResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.simulationresult",
+      "name": "SimulationResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.sip",
+      "name": "SIP",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.skillartifact",
+      "name": "SkillArtifact",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.sla_breach",
+      "name": "sla_breach",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.sla_register",
+      "name": "sla_register",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.sla_report",
+      "name": "sla_report",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.sla_status",
+      "name": "sla_status",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.slaregistration",
+      "name": "SlaRegistration",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.slaresult",
+      "name": "SlaResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.smartcontractaudit",
+      "name": "SmartContractAudit",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.snapshot",
+      "name": "Snapshot",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.spending_authorize",
+      "name": "spending_authorize",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.spending_budget",
+      "name": "spending_budget",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.spendingauthresult",
+      "name": "SpendingAuthResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.spendingbudgetresult",
+      "name": "SpendingBudgetResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.starterkit",
+      "name": "StarterKit",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.stepfunction",
+      "name": "StepFunction",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.stepresult",
+      "name": "StepResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.stepstatus",
+      "name": "StepStatus",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.store",
+      "name": "store",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.store_asset",
+      "name": "store_asset",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.store_vector_memory",
+      "name": "store_vector_memory",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.stream",
+      "name": "stream",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.streamevent",
+      "name": "StreamEvent",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.strongconnect",
+      "name": "strongconnect",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.subtask",
+      "name": "SubTask",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.swarm_inbox",
+      "name": "swarm_inbox",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.swarm_relay",
+      "name": "swarm_relay",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.swarmrelayresult",
+      "name": "SwarmRelayResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.sybil_check",
+      "name": "sybil_check",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.sybilcheckresult",
+      "name": "SybilCheckResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.synthesize_missing_components",
+      "name": "synthesize_missing_components",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.synthesize_verified_code",
+      "name": "synthesize_verified_code",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.tcaengine",
+      "name": "TCAEngine",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.tdmi",
+      "name": "TDMI",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.text_keywords",
+      "name": "text_keywords",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.text_sentiment",
+      "name": "text_sentiment",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.text_summarize",
+      "name": "text_summarize",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.textsummary",
+      "name": "TextSummary",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.thinkroute",
+      "name": "ThinkRoute",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.threat_score",
+      "name": "threat_score",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.tier_prefix_from_id",
+      "name": "tier_prefix_from_id",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.tool",
+      "name": "Tool",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.toolcallrequest",
+      "name": "ToolCallRequest",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.toolresult",
+      "name": "ToolResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.transparencyreport",
+      "name": "TransparencyReport",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.trialpolicy",
+      "name": "TrialPolicy",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.trsscore",
+      "name": "TRSScore",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.trust_decay",
+      "name": "trust_decay",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.trust_gate",
+      "name": "trust_gate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.trust_history",
+      "name": "trust_history",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.trust_phase_oracle",
+      "name": "trust_phase_oracle",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.trust_score",
+      "name": "trust_score",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.trustdecayresult",
+      "name": "TrustDecayResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.trustphaseresult",
+      "name": "TrustPhaseResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.trustverificationgate",
+      "name": "TrustVerificationGate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.turn",
+      "name": "Turn",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.undoedittool",
+      "name": "UndoEditTool",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.validationissue",
+      "name": "ValidationIssue",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.validationreport",
+      "name": "ValidationReport",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.vanguard_govern_session",
+      "name": "vanguard_govern_session",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.vanguard_lock_and_verify",
+      "name": "vanguard_lock_and_verify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.vanguard_mev_route",
+      "name": "vanguard_mev_route",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.vanguard_redteam",
+      "name": "vanguard_redteam",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.vanguard_start_session",
+      "name": "vanguard_start_session",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.vanguardescrowresult",
+      "name": "VanguardEscrowResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.vanguardredteamresult",
+      "name": "VanguardRedTeamResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.vanguardsessionresult",
+      "name": "VanguardSessionResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.vectormemorymatch",
+      "name": "VectorMemoryMatch",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.vectormemoryqueryresult",
+      "name": "VectorMemoryQueryResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.vectormemoryrecord",
+      "name": "VectorMemoryRecord",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.vectormemorystoreresult",
+      "name": "VectorMemoryStoreResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.verifiedcode",
+      "name": "VerifiedCode",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.versionbumpresult",
+      "name": "VersionBumpResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.vrf_draw",
+      "name": "vrf_draw",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.vrf_verify_draw",
+      "name": "vrf_verify_draw",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.vrfverify",
+      "name": "VrfVerify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.wisdomengine",
+      "name": "WisdomEngine",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.write_project_version_file",
+      "name": "write_project_version_file",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.write_tier_version_file",
+      "name": "write_tier_version_file",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.writefiletool",
+      "name": "WriteFileTool",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.x402clientflow",
+      "name": "X402ClientFlow",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.yieldoptimize",
+      "name": "YieldOptimize",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.zero_trust_auth",
+      "name": "zero_trust_auth",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.zerodayresult",
+      "name": "ZeroDayResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "mo.source.ass_ade.zerotrustresult",
+      "name": "ZeroTrustResult",
+      "version": "0.1.0"
+    }
+  ],
+  "tier": "a2_mo_composites",
+  "tier_version": "0.1.0"
+}

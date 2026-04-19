@@ -1,0 +1,385 @@
+{
+  "module_count": 63,
+  "modules": [
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.aegis_mcp_proxy",
+      "name": "aegis_mcp_proxy",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.atlas",
+      "name": "atlas",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.bas",
+      "name": "bas",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.boundhandler",
+      "name": "BoundHandler",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.bridgeverify",
+      "name": "BridgeVerify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.build_handler",
+      "name": "build_handler",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.build_system_prompt",
+      "name": "build_system_prompt",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.cancel",
+      "name": "cancel",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.cancellationcontext",
+      "name": "CancellationContext",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.check",
+      "name": "check",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.check_conviction_gate",
+      "name": "check_conviction_gate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.cie",
+      "name": "cie",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.collect_mcp_tools",
+      "name": "collect_mcp_tools",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.collect_tool_status",
+      "name": "collect_tool_status",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.cyclereport",
+      "name": "CycleReport",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.defi_bridge_verify",
+      "name": "defi_bridge_verify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.detect_tool",
+      "name": "detect_tool",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.discover",
+      "name": "discover",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.do_get",
+      "name": "do_GET",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.do_post",
+      "name": "do_POST",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.edee",
+      "name": "edee",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.epistemicrouter",
+      "name": "EpistemicRouter",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.epistemicrouteresult",
+      "name": "EpistemicRouteResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.estimate_cost",
+      "name": "estimate_cost",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.get_null_context",
+      "name": "get_null_context",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.gvu",
+      "name": "gvu",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.ide",
+      "name": "ide",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.invoke_tool",
+      "name": "invoke_tool",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.is_cancelled",
+      "name": "is_cancelled",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.lifr",
+      "name": "lifr",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.log_message",
+      "name": "log_message",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.lora_flywheel",
+      "name": "lora_flywheel",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.lse",
+      "name": "lse",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.mcp_estimate_cost",
+      "name": "mcp_estimate_cost",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.mcp_inspect",
+      "name": "mcp_inspect",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.mcp_invoke",
+      "name": "mcp_invoke",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.mcp_mock_server",
+      "name": "mcp_mock_server",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.mcp_serve",
+      "name": "mcp_serve",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.mcp_tools",
+      "name": "mcp_tools",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.mcpserver",
+      "name": "MCPServer",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.mcptool",
+      "name": "MCPTool",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.mcpzerorouter",
+      "name": "MCPZeroRouter",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.nexusservererror",
+      "name": "NexusServerError",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.nullcancellationcontext",
+      "name": "NullCancellationContext",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.on_step_end",
+      "name": "on_step_end",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.on_step_start",
+      "name": "on_step_start",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.on_tool_event",
+      "name": "on_tool_event",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.puppeteer",
+      "name": "puppeteer",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.register",
+      "name": "register",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.report",
+      "name": "report",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.resolve_tool",
+      "name": "resolve_tool",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.route",
+      "name": "route",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.run",
+      "name": "run",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.sam",
+      "name": "sam",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.severa",
+      "name": "severa",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.simulate_invoke",
+      "name": "simulate_invoke",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.start_server",
+      "name": "start_server",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.tca",
+      "name": "tca",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.tdmi",
+      "name": "tdmi",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.toolref",
+      "name": "ToolRef",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.toolstatus",
+      "name": "ToolStatus",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.vanguardmevrouteresult",
+      "name": "VanguardMevRouteResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "sy.source.ass_ade.wisdom",
+      "name": "wisdom",
+      "version": "0.1.0"
+    }
+  ],
+  "tier": "a4_sy_orchestration",
+  "tier_version": "0.1.0"
+}

@@ -1,0 +1,34 @@
+{
+  "body": "class ExplainCert(NexusModel):\n    \"\"\"/v1/compliance/explain \u2014 XPL-100\"\"\"\n    certificate_id: str | None = None\n    feature_attribution: dict | None = None\n    gdpr_art22_ready: bool | None = None\n",
+  "body_hash": "4d12fd2c43b54fc0",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/models.py:777.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.explaincert",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/nexus/models.py:777"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "ExplainCert",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ExplainCert"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

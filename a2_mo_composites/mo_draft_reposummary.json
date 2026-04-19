@@ -1,0 +1,36 @@
+{
+  "body": "class RepoSummary:\n    root: Path\n    total_files: int\n    total_dirs: int\n    file_types: dict[str, int]\n    top_level_entries: list[str]\n",
+  "body_hash": "85fd7d2596e4857d",
+  "body_truncated": false,
+  "callers_of": [
+    "dataclass"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/local/repo.py:27.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.reposummary",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "collections.Counter",
+    "dataclasses.dataclass",
+    "pathlib.Path"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/local/repo.py:27"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "RepoSummary",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for RepoSummary"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

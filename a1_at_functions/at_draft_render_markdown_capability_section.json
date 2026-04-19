@@ -1,0 +1,43 @@
+{
+  "body": "def render_markdown_capability_section(working_dir: str | Path = \".\") -> str:\n    return (\n        \"---\\n\\n\"\n        \"## Current Capabilities\\n\\n\"\n        \"*Auto-generated from the live CLI, tool registry, MCP server, agents, and hooks.*\\n\\n\"\n        f\"{render_capability_prompt_section(working_dir, max_cli=160, max_tools=60, max_mcp=80)}\\n\"\n    )\n",
+  "body_hash": "c363f21b37b2e3a5",
+  "body_truncated": false,
+  "callers_of": [
+    "render_capability_prompt_section"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/capabilities.py:546.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.render_markdown_capability_section",
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "typer.main",
+    "ass_ade.cli.app",
+    "ass_ade.tools.registry.default_registry",
+    "ass_ade.mcp.server._WORKFLOW_TOOLS"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/capabilities.py:546"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "render_markdown_capability_section",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for render_markdown_capability_section"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

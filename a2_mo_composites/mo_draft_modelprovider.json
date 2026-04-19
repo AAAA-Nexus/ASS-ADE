@@ -1,0 +1,41 @@
+{
+  "body": "class ModelProvider(Protocol):\n    \"\"\"Protocol for LLM providers.\"\"\"\n\n    def complete(self, request: CompletionRequest) -> CompletionResponse: ...\n",
+  "body_hash": "5b17ec062a5dedc4",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/provider.py:21.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.modelprovider",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "uuid",
+    "collections.abc.Iterator",
+    "typing.Any",
+    "typing.Protocol",
+    "typing.runtime_checkable",
+    "httpx",
+    "ass_ade.engine.types.CompletionRequest",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolCallRequest"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/engine/provider.py:21"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "ModelProvider",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ModelProvider"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

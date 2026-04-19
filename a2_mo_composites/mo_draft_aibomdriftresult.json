@@ -1,0 +1,34 @@
+{
+  "body": "class AibomDriftResult(NexusModel):\n    \"\"\"/v1/aibom/drift\"\"\"\n    drift_detected: bool | None = None\n    lineage_hash: str | None = None\n    verification_status: str | None = None\n",
+  "body_hash": "0bfd7672e1bf4f42",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/models.py:482.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.aibomdriftresult",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/nexus/models.py:482"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "AibomDriftResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for AibomDriftResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

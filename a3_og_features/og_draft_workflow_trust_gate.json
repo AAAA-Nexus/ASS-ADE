@@ -1,0 +1,62 @@
+{
+  "body": "def workflow_trust_gate(\n    agent_id: str = typer.Argument(..., help=\"Agent ID to gate-check.\"),\n    config: Path | None = CONFIG_OPTION,\n    allow_remote: bool = ALLOW_REMOTE_OPTION,\n    json_out: bool = typer.Option(False, \"--json\", help=\"Output raw JSON.\"),\n) -> None:\n    \"\"\"Multi-step agent trust gating: identity \u2192 sybil \u2192 trust \u2192 reputation \u2192 verdict.\"\"\"\n    from ass_ade.nexus.errors import NexusError\n    from ass_ade.workflows import trust_gate\n\n    _, settings = _resolve_config(config)\n    _require_remote_access(settings, allow_remote)\n    try:\n        with NexusClient(\n            base_url=settings.nexus_base_url,\n            timeout=settings.request_timeout_s,\n            api_key=settings.nexus_api_key,\n        ) as client:\n            result = trust_gate(client, agent_id)\n    except NexusError as exc:\n        console.print(f\"[red]Workflow error: {exc.detail}[/red]\")\n        raise typer.Exit(code=3) from exc\n    except httpx.HTTPError as exc:\n        _nexus_err(exc)\n        return\n    if json_out:\n        _print_json(result.model_dump())\n    else:\n        color = {\"ALLOW\": \"green\", \"WARN\": \"yellow\", \"DENY\": \"red\"}.get(\n            result.verdict, \"white\"\n        )\n        console.print(f\"[{color}]Verdict: {result.verdict}[/{color}]\")\n        console.print(f\"  Agent ID: {result.agent_id}\")\n        console.print(f\"  Trust Score: {result.trust_score}\")\n        console.print(f\"  Reputation: {result.reputation_tier}\")\n        for step in result.steps:\n            mark = \"\u2713\" if step.passed else \"\u2717\"\n            console.print(f\"  [{mark}] {step.name}: {step.detail}\")\n",
+  "body_hash": "ae72256e1eec0f2e",
+  "body_truncated": false,
+  "callers_of": [
+    "Argument",
+    "Option",
+    "_resolve_config",
+    "_require_remote_access",
+    "_print_json",
+    "get",
+    "print",
+    "NexusClient",
+    "trust_gate",
+    "Exit",
+    "_nexus_err",
+    "model_dump"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/commands/workflow.py:115.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "og.source.ass_ade.workflow_trust_gate",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "httpx",
+    "typer",
+    "rich.console.Console",
+    "ass_ade.config.default_config_path",
+    "ass_ade.config.load_config",
+    "ass_ade.nexus.client.NexusClient",
+    "ass_ade.recon.phase0_recon",
+    "ass_ade.nexus.errors.NexusError",
+    "ass_ade.workflows.trust_gate",
+    "ass_ade.nexus.errors.NexusError",
+    "ass_ade.workflows.certify_output",
+    "ass_ade.nexus.errors.NexusError",
+    "ass_ade.workflows.safe_execute",
+    "ass_ade.map_terrain.map_terrain"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/commands/workflow.py:115"
+  },
+  "kind": "product_organism",
+  "made_of": [
+    "mo.source.ass_ade.nexusclient"
+  ],
+  "name": "workflow_trust_gate",
+  "product_categories": [
+    "IDT"
+  ],
+  "provides": [
+    "rebuild candidate for workflow_trust_gate"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a3_og_features",
+  "version": "0.1.0"
+}

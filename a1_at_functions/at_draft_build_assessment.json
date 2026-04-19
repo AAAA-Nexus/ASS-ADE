@@ -1,0 +1,44 @@
+{
+  "body": "def build_assessment(root: Path, settings: AssAdeConfig) -> ProtocolAssessment:\n    repo_summary: RepoSummary = summarize_repo(root)\n    toolchain = collect_tool_status()\n\n    return ProtocolAssessment(\n        root=str(repo_summary.root),\n        total_files=repo_summary.total_files,\n        total_dirs=repo_summary.total_dirs,\n        top_level_entries=repo_summary.top_level_entries,\n        file_types=repo_summary.file_types,\n        toolchain=_tool_status_payload(toolchain),\n        profile=settings.profile,\n        local_mode_default=settings.profile == \"local\",\n    )\n",
+  "body_hash": "a4a17d33b21e1eb0",
+  "body_truncated": false,
+  "callers_of": [
+    "summarize_repo",
+    "collect_tool_status",
+    "ProtocolAssessment",
+    "str",
+    "_tool_status_payload"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/protocol/cycle.py:52.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.build_assessment",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "pydantic.BaseModel",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.local.planner.draft_plan",
+    "ass_ade.local.repo.RepoSummary",
+    "ass_ade.local.repo.summarize_repo",
+    "ass_ade.system.ToolStatus",
+    "ass_ade.system.collect_tool_status"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/protocol/cycle.py:52"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "build_assessment",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for build_assessment"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,39 @@
+{
+  "body": "def classify_complexity(message: str) -> float:\n    \"\"\"Estimate task complexity from a user message.\n\n    Returns a score in [0, 1].\n    \"\"\"\n    c_code = 0.3 if _CODE_PATTERN.search(message) else 0.0\n    c_length = min(0.3, len(message) / 3000)\n    c_multi = 0.2 if _MULTI_STEP_PATTERN.search(message) else 0.0\n    c_formal = 0.2 if _FORMAL_PATTERN.search(message) else 0.0\n    return min(1.0, c_code + c_length + c_multi + c_formal)\n",
+  "body_hash": "6324b8cf8e9b7ebc",
+  "body_truncated": false,
+  "callers_of": [
+    "min",
+    "search",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/routing.py:97.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.classify_complexity",
+  "imports": [
+    "__future__.annotations",
+    "re",
+    "collections.abc.Mapping",
+    "dataclasses.dataclass",
+    "enum.Enum",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/routing.py:97"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "classify_complexity",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for classify_complexity"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

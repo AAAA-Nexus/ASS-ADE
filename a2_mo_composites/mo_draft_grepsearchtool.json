@@ -1,0 +1,60 @@
+{
+  "body": "class GrepSearchTool:\n    \"\"\"Search file contents by regex pattern.\"\"\"\n\n    def __init__(self, working_dir: str = \".\") -> None:\n        self._cwd = Path(working_dir).resolve()\n\n    @property\n    def name(self) -> str:\n        return \"grep_search\"\n\n    @property\n    def description(self) -> str:\n        return \"Search file contents for a regex pattern. Returns matching lines with file:line: prefix.\"\n\n    @property\n    def parameters(self) -> dict[str, Any]:\n        return {\n            \"type\": \"object\",\n            \"properties\": {\n                \"pattern\": {\"type\": \"string\", \"description\": \"Regex pattern (case-insensitive).\"},\n                \"include\": {\n                    \"type\": \"string\",\n                    \"description\": \"Glob to filter files (e.g., '**/*.py'). Default: all files.\",\n                },\n            },\n            \"required\": [\"pattern\"],\n        }\n\n    def execute(self, **kwargs: Any) -> ToolResult:\n        pattern_str = kwargs[\"pattern\"]\n        include = kwargs.get(\"include\", \"**/*\")\n\n        try:\n            pattern = re.compile(pattern_str, re.IGNORECASE)\n        except re.error as exc:\n            return ToolResult(error=f\"Invalid regex: {exc}\", success=False)\n\n        results: list[str] = []\n        for filepath in sorted(self._cwd.glob(include)):\n            if not filepath.is_file():\n                continue\n            parts = filepath.relative_to(self._cwd).parts\n            if any(p in _SKIP_DIRS for p in parts):\n                continue\n\n            try:\n                text = filepath.read_text(encoding=\"utf-8\", errors=\"replace\")\n            except OSError:\n                continue\n\n            rel = str(filepath.relative_to(self._cwd))\n            for i, line in enumerate(text.splitlines(), 1):\n                if pattern.search(line):\n                    results.append(f\"{rel}:{i}: {line.rstrip()}\")\n                    if len(results) >= _MAX_GREP_MATCHES:\n                        results.append(\"... [truncated at 100 matches]\")\n                        return ToolResult(output=\"\\n\".join(results))\n\n        if not results:\n            return ToolResult(output=\"No matches found.\")\n        return ToolResult(output=\"\\n\".join(results))\n",
+  "body_hash": "9c8801e253cb912d",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "get",
+    "sorted",
+    "ToolResult",
+    "compile",
+    "glob",
+    "any",
+    "str",
+    "enumerate",
+    "Path",
+    "is_file",
+    "relative_to",
+    "read_text",
+    "splitlines",
+    "search",
+    "join",
+    "append",
+    "len",
+    "rstrip"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/tools/builtin.py:428.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.grepsearchtool",
+  "imports": [
+    "__future__.annotations",
+    "difflib",
+    "re",
+    "shlex",
+    "subprocess",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.history.FileHistory"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/tools/builtin.py:428"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.search"
+  ],
+  "name": "GrepSearchTool",
+  "product_categories": [
+    "DCM"
+  ],
+  "provides": [
+    "rebuild candidate for GrepSearchTool"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

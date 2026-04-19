@@ -1,0 +1,42 @@
+{
+  "body": "class ProviderOverride(BaseModel):\n    \"\"\"User override for a single provider.\n\n    All fields optional \u2014 only populate what you want to override from the\n    built-in catalog. `api_key` is never written to disk from defaults.\n    \"\"\"\n    enabled: bool = True\n    api_key: str | None = Field(default=None, repr=False)\n    base_url: str | None = None  # override the catalog default (e.g., private endpoint)\n    models_by_tier: dict[str, str] | None = None  # override tier \u2192 model id mapping\n",
+  "body_hash": "3fa18aecabad5dce",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/config.py:16.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.provideroverride",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "stat",
+    "pathlib.Path",
+    "typing.Literal",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "ass_ade.nexus.validation.sanitize_header_value",
+    "ass_ade.nexus.validation.validate_api_key",
+    "ass_ade.nexus.validation.validate_url",
+    "json"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/config.py:16"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "ProviderOverride",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ProviderOverride"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

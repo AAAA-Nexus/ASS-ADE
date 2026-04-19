@@ -1,0 +1,56 @@
+{
+  "body": "def hook_aaaa_nexus_economic(self, action: dict[str, Any]) -> dict[str, Any] | None:\n    try:\n        x402 = getattr(self._client, \"x402\", None)\n        if x402 is None:\n            return {\"settled\": False, \"reason\": \"x402_unavailable\"}\n        amount = float(action.get(\"amount\", 0.0))\n        if hasattr(x402, \"settle\"):\n            receipt = x402.settle(amount=amount, recipient=action.get(\"recipient\", \"\"))\n            return {\"settled\": True, \"receipt\": str(receipt)[:256]}\n        return {\"settled\": False, \"reason\": \"no_settle_method\"}\n    except Exception as exc:\n        logging.getLogger(__name__).warning(\"hook_aaaa_nexus_economic failed: %s\", exc)\n        return None\n",
+  "body_hash": "7101d5a95003de6f",
+  "body_truncated": false,
+  "callers_of": [
+    "getattr",
+    "float",
+    "hasattr",
+    "get",
+    "settle",
+    "warning",
+    "str",
+    "getLogger"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/gates.py:245.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.hook_aaaa_nexus_economic",
+  "imports": [
+    "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "ast",
+    "re",
+    "json",
+    "datetime.UTC",
+    "datetime.datetime",
+    "pathlib.Path",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "ass_ade.agent.trust_gate.TrustVerificationGate",
+    "ass_ade.agent.proofbridge.ProofBridge",
+    "ass_ade.agent.alphaverus.AlphaVerus",
+    "ass_ade.agent.dgm_h.DGMH",
+    "ass_ade.agent.dgm_h.Patch",
+    "ass_ade.agent.golden_runner.run_golden",
+    "ass_ade.agent.sam.SAM"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/gates.py:245"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "hook_aaaa_nexus_economic",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for hook_aaaa_nexus_economic"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

@@ -1,0 +1,51 @@
+{
+  "body": "class PaymentChallenge:\n    \"\"\"Parsed x402 payment challenge from a 402 response.\"\"\"\n    amount_micro_usdc: int\n    amount_usdc: float\n    recipient: str\n    nonce: str\n    expires: int\n    chain_id: int\n    token_address: str\n    endpoint: str\n    x402_version: str = \"2.1\"\n\n    def validate(self) -> PaymentChallenge:\n        \"\"\"Validate the challenge before any user consent or payment attempt.\"\"\"\n        if self.amount_micro_usdc <= 0:\n            raise ValueError(\"402 response missing required field: amount_micro_usdc\")\n        if self.amount_micro_usdc > MAX_CHALLENGE_MICRO_USDC:\n            raise ValueError(\n                f\"402 response amount {self.amount_micro_usdc} outside valid range \"\n                f\"(1-{MAX_CHALLENGE_MICRO_USDC})\"\n            )\n        if not self.recipient.strip():\n            raise ValueError(\"402 response missing required field: recipient\")\n        if self.recipient.strip().lower() != ATOMADIC_TREASURY.lower():\n            raise ValueError(\"402 response recipient does not match expected treasury\")\n        return self\n\n    @classmethod\n    def from_response(cls, body: dict) -> PaymentChallenge:\n        \"\"\"Parse a 402 JSON response body into a PaymentChallenge.\"\"\"\n        recipient = body.get(\"recipient\", \"\")\n        amount_raw = body.get(\"amount_micro_usdc\", 0)\n        if not recipient:\n            raise ValueError(\"402 response missing required field: recipient\")\n        try:\n            amount = int(amount_raw)\n        except (TypeError, ValueError):\n            raise ValueError(\"402 response field amount_micro_usdc must be an integer\") from None\n        challenge = cls(\n            amount_micro_usdc=amount,\n            amount_usdc=float(body.get(\"amount_usdc\", 0)),\n            recipient=recipient,\n            nonce=body.get(\"nonce\", \"\"),\n            expires=body.get(\"expires\", 0),\n            chain_id=body.get(\"chain_id\", BASE_MAINNET_CHAIN_ID),\n            token_address=body.get(\"token_address\") or body.get(\"sdk_hints\", {}).get(\"token_address\", \"\"),\n            endpoint=body.get(\"endpoint\", \"\"),\n            x402_version=body.get(\"x402_version\", \"2.1\"),\n        )\n        return challenge.validate()\n\n    @property\n    def is_expired(self) -> bool:\n        return time.time() > self.expires if self.expires else False\n\n    @property\n    def display_amount(self) -> str:\n        if self.amount_usdc:\n            return f\"${self.amount_usdc:.6f} USDC\"\n        return f\"{self.amount_micro_usdc} micro-USDC\"\n",
+  "body_hash": "9543e8ee92675d95",
+  "body_truncated": false,
+  "callers_of": [
+    "get",
+    "cls",
+    "validate",
+    "ValueError",
+    "strip",
+    "lower",
+    "int",
+    "float",
+    "time"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/x402.py:50.",
+  "exceptions_raised": [
+    "ValueError"
+  ],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.paymentchallenge",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "time",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "eth_account.Account",
+    "web3.Web3",
+    "logging"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/nexus/x402.py:50"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.validate"
+  ],
+  "name": "PaymentChallenge",
+  "product_categories": [
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for PaymentChallenge"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

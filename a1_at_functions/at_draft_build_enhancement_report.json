@@ -1,0 +1,41 @@
+{
+  "body": "def build_enhancement_report(root: Path) -> dict[str, Any]:\n    scanners = [\n        scan_missing_tests,\n        scan_long_functions,\n        scan_missing_docs,\n        scan_security_patterns,\n        scan_bare_except,\n        scan_missing_type_hints,\n        scan_todo_fixme,\n    ]\n    all_findings: list[dict[str, Any]] = []\n    for scanner in scanners:\n        try:\n            all_findings.extend(scanner(root))\n        except Exception:\n            pass\n\n    ranked = rank_findings(all_findings)\n\n    by_impact: dict[str, int] = {\"high\": 0, \"medium\": 0, \"low\": 0}\n    by_category: dict[str, int] = {}\n    for f in ranked:\n        impact = f.get(\"impact\", \"low\")\n        by_impact[impact] = by_impact.get(impact, 0) + 1\n        cat = f.get(\"category\", \"unknown\")\n        by_category[cat] = by_category.get(cat, 0) + 1\n\n    scanned = len(_walk_python_files(root))\n\n    return {\n        \"root\": str(root.resolve()),\n        \"total_findings\": len(ranked),\n        \"by_impact\": by_impact,\n        \"by_category\": by_category,\n        \"findings\": ranked,\n        \"scanned_files\": scanned,\n    }\n",
+  "body_hash": "143e6dae0e66e5e3",
+  "body_truncated": false,
+  "callers_of": [
+    "rank_findings",
+    "len",
+    "get",
+    "_walk_python_files",
+    "str",
+    "extend",
+    "resolve",
+    "scanner"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/local/enhancer.py:333.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.build_enhancement_report",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/local/enhancer.py:333"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "build_enhancement_report",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for build_enhancement_report"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

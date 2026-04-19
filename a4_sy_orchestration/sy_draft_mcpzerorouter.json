@@ -1,0 +1,49 @@
+{
+  "body": "class MCPZeroRouter:\n    def __init__(self, config: dict, nexus: Any | None = None):\n        self._config = config\n        self._nexus = nexus\n        self._catalog: list[ToolRef] = []\n        self._calls = 0\n\n    def register(self, tool: ToolRef) -> None:\n        self._catalog.append(tool)\n\n    def discover(self, capability_embedding: Any, k: int = 5) -> list[ToolRef]:\n        self._calls += 1\n        if self._nexus is not None and hasattr(self._nexus, \"discovery_search\"):\n            try:\n                cap = capability_embedding if isinstance(capability_embedding, str) else str(capability_embedding)\n                result = self._nexus.discovery_search(cap, limit=k)\n                tools: list[ToolRef] = []\n                items = getattr(result, \"results\", None) or getattr(result, \"tools\", None) or []\n                for idx, item in enumerate(items[:k]):\n                    name = getattr(item, \"name\", None) or (item.get(\"name\") if isinstance(item, dict) else f\"tool_{idx}\")\n                    score = getattr(item, \"score\", None) or (item.get(\"score\") if isinstance(item, dict) else 1.0 - idx * 0.1)\n                    server = getattr(item, \"server\", \"\") or (item.get(\"server\", \"\") if isinstance(item, dict) else \"\")\n                    tools.append(ToolRef(name=name, score=float(score), server=server))\n                if tools:\n                    return tools\n            except Exception:\n                pass\n        return self._catalog[:k]\n\n    def route(self, capability_str: str) -> ToolRef | None:\n        candidates = self.discover(capability_str, k=1)\n        return candidates[0] if candidates else None\n\n    def run(self, ctx: dict) -> dict:\n        cap = ctx.get(\"capability\", \"\")\n        k = int(ctx.get(\"k\", 5))\n        tools = self.discover(cap, k)\n        return {\"tools\": [{\"name\": t.name, \"score\": t.score, \"server\": t.server} for t in tools]}\n\n    def report(self) -> dict:\n        return {\n            \"engine\": \"mcp_zero_router\",\n            \"catalog_size\": len(self._catalog),\n            \"calls\": self._calls,\n        }\n",
+  "body_hash": "4bf09d5e98f2ec45",
+  "body_truncated": false,
+  "callers_of": [
+    "append",
+    "discover",
+    "get",
+    "int",
+    "hasattr",
+    "len",
+    "discovery_search",
+    "enumerate",
+    "isinstance",
+    "str",
+    "getattr",
+    "ToolRef",
+    "float"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/mcp/zero_router.py:16.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade.mcpzerorouter",
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/mcp/zero_router.py:16"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [
+    "og.source.ass_ade.get"
+  ],
+  "name": "MCPZeroRouter",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for MCPZeroRouter"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

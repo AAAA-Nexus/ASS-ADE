@@ -1,0 +1,40 @@
+{
+  "body": "def validate_https_public_url(value: str, field_name: str = \"URL\") -> str:\n    \"\"\"Require an HTTPS URL that resolves to a public, non-loopback host.\"\"\"\n    value = validate_url(value)\n    parsed = urlparse(value)\n    if parsed.scheme != \"https\":\n        raise ValueError(f\"{field_name} must use https scheme (got '{parsed.scheme}').\")\n    return value\n",
+  "body_hash": "477c3a2f93af2272",
+  "body_truncated": false,
+  "callers_of": [
+    "validate_url",
+    "urlparse",
+    "ValueError"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/validation.py:141.",
+  "exceptions_raised": [
+    "ValueError"
+  ],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.validate_https_public_url",
+  "imports": [
+    "__future__.annotations",
+    "ipaddress",
+    "re",
+    "socket",
+    "urllib.parse.urlparse"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/nexus/validation.py:141"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "validate_https_public_url",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for validate_https_public_url"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

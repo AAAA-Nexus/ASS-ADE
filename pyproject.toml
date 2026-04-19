@@ -1,0 +1,15 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ass_ade_rebuild"
+version = "0.2.0"
+description = "ASS-ADE v0.2.0 — functional rebuild, product works out of the box"
+requires-python = ">=3.11"
+
+[project.scripts]
+ass-ade = "scripts.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]

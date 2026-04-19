@@ -1,0 +1,64 @@
+{
+  "body": "class RetryTransport(httpx.BaseTransport):\n    \"\"\"Retry on 429 and 5xx with exponential backoff + jitter.\n\n    Respects the ``Retry-After`` response header when present.\n    Supports cooperative cancellation via optional CancellationContext.\n    \"\"\"\n\n    RETRYABLE_STATUS = frozenset({429, 500, 502, 503, 504})\n\n    def __init__(\n        self,\n        wrapped: httpx.BaseTransport | None = None,\n        *,\n        max_retries: int = 3,\n        backoff_base: float = 0.5,\n        backoff_max: float = 8.0,\n        cancellation_context: CancellationContext | None = None,\n    ) -> None:\n        self._wrapped = wrapped or httpx.HTTPTransport()\n        self._max_retries = max(1, max_retries)\n        self._backoff_base = backoff_base\n        self._backoff_max = backoff_max\n        self._cancellation_context = cancellation_context\n\n    def handle_request(self, request: httpx.Request) -> httpx.Response:\n        last_response: httpx.Response | None = None\n        last_exc: Exception | None = None\n\n        for attempt in range(self._max_retries):\n            # Check for cancellation before each attempt\n            if self._cancellation_context and self._cancellation_context.check():\n                raise NexusConnectionError(\n                    \"Request cancelled during retry loop\",\n                    endpoint=str(request.url),\n                )\n\n            try:\n                response = self._wrapped.handle_request(request)\n            except httpx.TimeoutException as exc:\n                last_exc = exc\n                if attempt < self._max_retries - 1:\n                    self._sleep(attempt)\n                    continue\n                raise NexusTimeoutError(\n                    f\"Timeout after {self._max_retries} attempts: {exc}\",\n                    endpoint=str(request.url),\n                ) from exc\n            except httpx.ConnectError as exc:\n                last_exc = exc\n                if attempt < self._max_retries - 1:\n                    self._sleep(attempt)\n                    continue\n                raise NexusConnectionError(\n                    f\"Connection failed after {self._max_retries} attempts: {exc}\",\n                    endpoint=str(request.url),\n                ) from exc\n\n            if response.status_code not in self.RETRYABLE_STATUS:\n                return response\n\n            last_response = response\n\n            if attempt < self._max_retries - 1:\n                retry_after = self._parse_retry_after(response)\n                self._sleep(attempt, retry_after)\n\n        # All retries exhausted \u2014 return the last response so the caller can inspect\n        if last_response is not None:\n            return last_response\n\n        if last_exc is not None:\n            raise NexusConnectionError(\n                f\"All {self._max_retries} retries exhausted\",\n                endpoint=str(request.url),\n            ) from last_exc\n\n        raise NexusServerError(\"Retries exhausted with no response\", endpoint=str(request.url))\n\n    def _sleep(self, attempt: int, retry_after: float | None = None) -> None:\n        if retry_after is not None and retry_after > 0:\n            time.sleep(min(retry_after, self._backoff_max))\n            return\n        delay = min(self._backoff_base * (2**attempt), self._backoff_max)\n        jitter = random.uniform(0, delay * 0.25)  # noqa: S311\n        time.sleep(delay + jitter)\n\n    @staticmethod\n    def _parse_retry_after(response: httpx.Response) -> float | None:\n        raw = response.headers.get(\"retry-after\")\n        if raw is None:\n            return None\n        try:\n            return float(raw)\n        except (ValueError, TypeError):\n            return None\n\n    def close(self) -> None:\n        self._wrapped.close()\n",
+  "body_hash": "8bf792d8f3e2e3ca",
+  "body_truncated": false,
+  "callers_of": [
+    "frozenset",
+    "max",
+    "range",
+    "NexusServerError",
+    "min",
+    "uniform",
+    "sleep",
+    "get",
+    "close",
+    "HTTPTransport",
+    "NexusConnectionError",
+    "float",
+    "check",
+    "handle_request",
+    "_parse_retry_after",
+    "_sleep",
+    "str",
+    "NexusTimeoutError"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/resilience.py:31.",
+  "exceptions_raised": [
+    "NexusServerError",
+    "NexusConnectionError",
+    "NexusTimeoutError"
+  ],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.retrytransport",
+  "imports": [
+    "__future__.annotations",
+    "random",
+    "time",
+    "typing.TYPE_CHECKING",
+    "httpx",
+    "ass_ade.nexus.errors.NexusCircuitOpen",
+    "ass_ade.nexus.errors.NexusConnectionError",
+    "ass_ade.nexus.errors.NexusServerError",
+    "ass_ade.nexus.errors.NexusTimeoutError",
+    "ass_ade.mcp.cancellation.CancellationContext"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/nexus/resilience.py:31"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.handle_request"
+  ],
+  "name": "RetryTransport",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for RetryTransport"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

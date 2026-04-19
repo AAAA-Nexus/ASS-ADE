@@ -1,0 +1,64 @@
+{
+  "body": "def greeting(self, working_dir: Path) -> str | None:\n    if not self.user_profile:\n        return None\n    parts: list[str] = []\n    tone = self.user_profile.get(\"dominant_tone\", \"formal\")\n    path_key = str(working_dir.resolve())\n    ctx = self.project_contexts.get(path_key, {})\n    recent = self.recent_history(3)\n\n    if tone == TONE_CASUAL:\n        parts.append(\"Hey, welcome back!\")\n    else:\n        parts.append(\"Welcome back.\")\n\n    if ctx:\n        last_cmds = [e.get(\"intent\") for e in ctx.get(\"commands_run\", [])[-3:]]\n        if last_cmds:\n            last = last_cmds[-1]\n            if tone == TONE_CASUAL:\n                parts.append(f\"Last time here we ran `{last}` on this project.\")\n            else:\n                parts.append(f\"Last operation on this project: `{last}`.\")\n\n    fav = self.user_profile.get(\"favorite_command\")\n    if fav and fav != \"chat\":\n        if tone == TONE_CASUAL:\n            parts.append(f\"Quick tip: `{fav}` is your most-used command.\")\n        else:\n            parts.append(f\"Most-used command: `{fav}`.\")\n\n    return \" \".join(parts) if parts else None\n",
+  "body_hash": "0478e3d8af83839a",
+  "body_truncated": false,
+  "callers_of": [
+    "get",
+    "str",
+    "recent_history",
+    "resolve",
+    "append",
+    "join"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/interpreter.py:444.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.greeting",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "os",
+    "re",
+    "subprocess",
+    "sys",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "httpx",
+    "ass_ade.agent.capabilities.build_atomadic_intent_prompt",
+    "ass_ade.agent.capabilities.command_path_exists",
+    "ass_ade.agent.capabilities.render_capability_prompt_section",
+    "ass_ade.agent.capabilities.render_atomadic_help",
+    "dotenv.load_dotenv",
+    "ass_ade.config.load_config",
+    "time",
+    "shutil",
+    "shutil",
+    "importlib",
+    "sys",
+    "rich.console.Console",
+    "rich.markdown.Markdown",
+    "rich.markdown.Markdown",
+    "ass_ade.config.AssAdeConfig"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/interpreter.py:444"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "greeting",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for greeting"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

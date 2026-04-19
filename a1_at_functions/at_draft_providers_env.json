@@ -1,0 +1,60 @@
+{
+  "body": "def providers_env(\n    config: Path | None = CONFIG_OPTION,\n) -> None:\n    \"\"\"Print env-var hints + signup URLs for every provider.\"\"\"\n    table = Table(title=\"Provider env vars\")\n    table.add_column(\"Provider\", style=\"bold\")\n    table.add_column(\"Env var\")\n    table.add_column(\"Set?\")\n    table.add_column(\"Signup\")\n\n    for name, profile in FREE_PROVIDERS.items():\n        env_name = profile.api_key_env or \"(no key)\"\n        set_status = \"[green]\u2713[/green]\" if (profile.api_key_env and os.getenv(profile.api_key_env)) else \"[dim]\u2014[/dim]\"\n        if profile.local:\n            set_status = \"[yellow]local[/yellow]\"\n        signup = profile.signup_url or \"\"\n        table.add_row(profile.display_name, env_name, set_status, signup)\n    console.print(table)\n    console.print(\"\\n[dim]Add any of these to your .env file at the project root.[/dim]\")\n",
+  "body_hash": "0a660237fe474ea9",
+  "body_truncated": false,
+  "callers_of": [
+    "Table",
+    "add_column",
+    "items",
+    "print",
+    "add_row",
+    "getenv"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/commands/providers.py:336.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.providers_env",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "os",
+    "pathlib.Path",
+    "typing.Annotated",
+    "typing.Any",
+    "httpx",
+    "typer",
+    "rich.console.Console",
+    "rich.table.Table",
+    "ass_ade.agent.providers.DEFAULT_FALLBACK_CHAIN",
+    "ass_ade.agent.providers.FREE_PROVIDERS",
+    "ass_ade.agent.providers.TIER_ALIASES",
+    "ass_ade.agent.providers.ProviderProfile",
+    "ass_ade.agent.providers.detect_available_providers",
+    "ass_ade.agent.providers.get_provider",
+    "ass_ade.agent.providers.list_providers",
+    "ass_ade.agent.providers.resolve_tier",
+    "ass_ade.agent.providers.select_provider_for_tier",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.ProviderOverride",
+    "ass_ade.config.default_config_path",
+    "ass_ade.config.load_config",
+    "ass_ade.config.write_default_config"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/commands/providers.py:336"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "providers_env",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for providers_env"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

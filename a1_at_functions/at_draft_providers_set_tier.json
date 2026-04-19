@@ -1,0 +1,65 @@
+{
+  "body": "def providers_set_tier(\n    tier: Annotated[str, typer.Argument(help=\"Tier name: fast / balanced / deep (or haiku / sonnet / opus).\")],\n    provider: Annotated[str, typer.Argument(help=\"Provider to use for this tier.\")],\n    model: Annotated[str | None, typer.Option(help=\"Override the model id for this (provider, tier) pair.\")] = None,\n    config: Path | None = CONFIG_OPTION,\n) -> None:\n    \"\"\"Pin a tier to a specific provider (e.g., 'balanced \u2192 groq').\"\"\"\n    canonical = resolve_tier(tier)\n    if canonical not in (\"fast\", \"balanced\", \"deep\"):\n        console.print(f\"[red]Unknown tier:[/red] {tier}\")\n        raise typer.Exit(code=1)\n    profile = get_provider(provider)\n    if profile is None:\n        console.print(f\"[red]Unknown provider:[/red] {provider}\")\n        raise typer.Exit(code=1)\n    target, settings = _resolve_config(config)\n    settings.tier_policy[canonical] = provider\n    if model:\n        current = settings.providers.get(provider) or ProviderOverride()\n        models = dict(current.models_by_tier or {})\n        models[canonical] = model\n        current.models_by_tier = models\n        settings.providers[provider] = current\n    _save_config(target, settings)\n    console.print(f\"[green]\u2713[/green] {canonical} \u2192 {provider}\" + (f\" (model={model})\" if model else \"\"))\n",
+  "body_hash": "64295ee7f3783380",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve_tier",
+    "get_provider",
+    "_resolve_config",
+    "_save_config",
+    "print",
+    "Exit",
+    "dict",
+    "get",
+    "ProviderOverride",
+    "Argument",
+    "Option"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/commands/providers.py:269.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade.providers_set_tier",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "os",
+    "pathlib.Path",
+    "typing.Annotated",
+    "typing.Any",
+    "httpx",
+    "typer",
+    "rich.console.Console",
+    "rich.table.Table",
+    "ass_ade.agent.providers.DEFAULT_FALLBACK_CHAIN",
+    "ass_ade.agent.providers.FREE_PROVIDERS",
+    "ass_ade.agent.providers.TIER_ALIASES",
+    "ass_ade.agent.providers.ProviderProfile",
+    "ass_ade.agent.providers.detect_available_providers",
+    "ass_ade.agent.providers.get_provider",
+    "ass_ade.agent.providers.list_providers",
+    "ass_ade.agent.providers.resolve_tier",
+    "ass_ade.agent.providers.select_provider_for_tier",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.ProviderOverride",
+    "ass_ade.config.default_config_path",
+    "ass_ade.config.load_config",
+    "ass_ade.config.write_default_config"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/commands/providers.py:269"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "providers_set_tier",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for providers_set_tier"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

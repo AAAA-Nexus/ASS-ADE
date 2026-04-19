@@ -1,0 +1,44 @@
+{
+  "body": "def detect_test_framework(root: Path) -> str | None:\n    if (root / \"pytest.ini\").exists():\n        return \"pytest\"\n\n    pyproject = root / \"pyproject.toml\"\n    if pyproject.exists():\n        try:\n            raw = pyproject.read_text(encoding=\"utf-8\")\n            if \"[tool.pytest\" in raw:\n                return \"pytest\"\n        except Exception:\n            pass\n\n    for name in (\"jest.config.js\", \"jest.config.ts\", \"jest.config.mjs\", \"jest.config.cjs\"):\n        if (root / name).exists():\n            return \"jest\"\n\n    cargo = root / \"Cargo.toml\"\n    if cargo.exists():\n        try:\n            raw = cargo.read_text(encoding=\"utf-8\")\n            if \"[dev-dependencies]\" in raw:\n                return \"cargo-test\"\n        except Exception:\n            pass\n\n    if (root / \"go.mod\").exists():\n        return \"go-test\"\n\n    return None\n",
+  "body_hash": "0440ddef50dcf12e",
+  "body_truncated": false,
+  "callers_of": [
+    "exists",
+    "read_text"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/local/docs_engine.py:177.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.detect_test_framework",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "re",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.local.repo.DEFAULT_IGNORED_DIRS",
+    "ass_ade.local.repo.summarize_repo",
+    "json",
+    "tomllib",
+    "tomllib",
+    "tomli",
+    "tomli"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/local/docs_engine.py:177"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "detect_test_framework",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for detect_test_framework"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

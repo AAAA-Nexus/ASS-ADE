@@ -1,0 +1,34 @@
+{
+  "body": "class MevStatusResult(NexusModel):\n    \"\"\"GET /v1/mev/status (MEV-101)\"\"\"\n    bundle_id: str | None = None\n    status: str | None = None   # \"pending\" | \"submitted\" | \"confirmed\" | \"failed\"\n    included_in_block: int | None = None\n    mev_saved_usd: float | None = None\n",
+  "body_hash": "cd2c810e3fd711e3",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/nexus/models.py:1047.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.mevstatusresult",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/nexus/models.py:1047"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "MevStatusResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for MevStatusResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

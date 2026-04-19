@@ -1,0 +1,49 @@
+{
+  "body": "class Atlas:\n    def __init__(self, config: dict, nexus: Any | None = None):\n        self._config = config\n        self._nexus = nexus\n        self._threshold = float((config.get(\"atlas\") or {}).get(\"complexity_threshold\", 0.7))\n        self._decompositions = 0\n\n    @staticmethod\n    def complexity_score(spec: str, fan_out: int = 0) -> float:\n        return len(spec) / 1000.0 + fan_out / 10.0\n\n    def decompose(self, task: str, complexity: float | None = None) -> list[SubTask]:\n        score = complexity if complexity is not None else self.complexity_score(task)\n        if score <= self._threshold:\n            return [SubTask(id=\"t0\", description=task, priority=1.0)]\n        self._decompositions += 1\n        chunks = [c.strip() for c in task.split(\".\") if c.strip()]\n        if len(chunks) < 2:\n            mid = max(1, len(task) // 2)\n            chunks = [task[:mid].strip(), task[mid:].strip()]\n        subs: list[SubTask] = []\n        prev: str | None = None\n        for i, chunk in enumerate(chunks):\n            sid = f\"t{i}\"\n            deps = [prev] if prev else []\n            subs.append(SubTask(id=sid, description=chunk, priority=1.0 - i * 0.1, deps=deps))\n            prev = sid\n        return subs\n\n    def run(self, ctx: dict) -> dict:\n        task = ctx.get(\"task\", \"\")\n        complexity = ctx.get(\"complexity\")\n        subs = self.decompose(task, complexity)\n        return {\n            \"complexity\": self.complexity_score(task, int(ctx.get(\"fan_out\", 0))),\n            \"subtasks\": [s.__dict__ for s in subs],\n        }\n\n    def report(self) -> dict:\n        return {\n            \"engine\": \"atlas\",\n            \"threshold\": self._threshold,\n            \"decompositions\": self._decompositions,\n        }\n",
+  "body_hash": "6f00b12a5527f62d",
+  "body_truncated": false,
+  "callers_of": [
+    "float",
+    "enumerate",
+    "get",
+    "decompose",
+    "complexity_score",
+    "strip",
+    "len",
+    "max",
+    "append",
+    "SubTask",
+    "split",
+    "int"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/agent/atlas.py:16.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.ass_ade.atlas",
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/agent/atlas.py:16"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.ass_ade.decompose",
+    "at.source.ass_ade.complexity_score"
+  ],
+  "name": "Atlas",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for Atlas"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}
