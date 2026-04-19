@@ -25,7 +25,15 @@ tests.txt
 .mcp.json
 
 # Dev-only directories (not part of the published output)
-src/
+# Use file-level patterns so we can unignore the rebuild engine subpackage
+src/*
+!src/ass_ade/
+src/ass_ade/*
+!src/ass_ade/__init__.py
+!src/ass_ade/engine/
+src/ass_ade/engine/*
+!src/ass_ade/engine/__init__.py
+!src/ass_ade/engine/rebuild/
 tests/
 agents/
 docs/

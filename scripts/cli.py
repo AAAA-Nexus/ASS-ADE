@@ -1,4 +1,4 @@
-"""ASS-ADE CLI — recon and enhancement scanning for CI workflows."""
+"""ASS-ADE CLI — recon, enhancement, and rebuild tools for CI workflows."""
 import argparse
 import json
 import sys
@@ -95,6 +95,63 @@ def cmd_enhance(args):
           f"Enhance: {len(opps)} opportunities found")
 
 
+def cmd_rebuild(args):
+    try:
+        from ass_ade.engine.rebuild.orchestrator import rebuild_project, render_rebuild_summary
+    except ImportError as exc:
+        print(f"Error: rebuild engine not available — {exc}", file=sys.stderr)
+        sys.exit(1)
+
+    source = Path(args.source).resolve()
+    output = Path(args.output).resolve()
+
+    if not source.exists():
+        print(f"Error: source path does not exist: {source}", file=sys.stderr)
+        sys.exit(1)
+
+    print(f"Rebuilding {source} -> {output} ...", file=sys.stderr)
+    result = rebuild_project(
+        source,
+        output,
+        enrich_bodies=not args.no_enrich,
+        emit_package=not args.no_package,
+    )
+
+    if args.json:
+        print(json.dumps(result, indent=2))
+    else:
+        print(render_rebuild_summary(result))
+
+    pkg = result.get("phases", {}).get("package", {})
+    if pkg.get("error"):
+        sys.exit(2)
+
+
+def cmd_doctor(args):
+    """Quick health check — verify the package is importable and the CLI works."""
+    checks = {}
+
+    # Check tier directories exist
+    root = Path(args.path).resolve()
+    for tier in TIERS:
+        tier_dir = root / tier
+        checks[tier] = tier_dir.exists()
+
+    # Check pyproject.toml
+    checks["pyproject.toml"] = (root / "pyproject.toml").exists()
+
+    # Check __init__.py
+    checks["__init__.py"] = (root / "__init__.py").exists()
+
+    all_ok = all(checks.values())
+    status = "ok" if all_ok else "degraded"
+    result = {"status": status, "checks": checks}
+    print(json.dumps(result, indent=2) if args.json else
+          f"Doctor: {status} — {sum(checks.values())}/{len(checks)} checks passed")
+    if not all_ok:
+        sys.exit(1)
+
+
 def main():
     parser = argparse.ArgumentParser(prog="ass-ade", description="ASS-ADE CI tools")
     sub = parser.add_subparsers(dest="command")
@@ -109,11 +166,26 @@ def main():
     enhance_p.add_argument("--apply", type=int, default=0, metavar="N",
                            help="Apply top N enhancements")
 
+    rebuild_p = sub.add_parser("rebuild", help="Rebuild a project into a tier-partitioned package")
+    rebuild_p.add_argument("source", help="Source directory to scan")
+    rebuild_p.add_argument("output", help="Output directory for the rebuild package")
+    rebuild_p.add_argument("--no-enrich", action="store_true", help="Skip body enrichment")
+    rebuild_p.add_argument("--no-package", action="store_true", help="Skip package emission")
+    rebuild_p.add_argument("--json", action="store_true", help="Output full JSON receipt")
+
+    doctor_p = sub.add_parser("doctor", help="Health check for a rebuild package")
+    doctor_p.add_argument("path", nargs="?", default=".")
+    doctor_p.add_argument("--json", action="store_true")
+
     args = parser.parse_args()
     if args.command == "recon":
         cmd_recon(args)
     elif args.command == "enhance":
         cmd_enhance(args)
+    elif args.command == "rebuild":
+        cmd_rebuild(args)
+    elif args.command == "doctor":
+        cmd_doctor(args)
     else:
         parser.print_help()
         sys.exit(1)
