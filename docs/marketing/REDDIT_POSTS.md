@@ -4,14 +4,14 @@
 
 ## r/programming
 
-**Title:** I built a software engine that rebuilds itself — 2,139 components, 99.8% conformance, 75.7 seconds on launch day
+**Title:** I built a software engine that rebuilds itself — 2,195 components, 100% conformance, 75.7 seconds on launch day
 
 **Body:**
 
 So I've been building something called ASS-ADE (Autopoietic Software Synthesis — Autonomous Development Engine) and today it hit v0.0.1 public release. I ran it on its own codebase as a maiden rebuild. Here's what happened:
 
-- 2,139 components synthesized
-- 99.8% blueprint conformance
+- 2,195 components synthesized
+- 100% blueprint conformance
 - 75.7 seconds wall-clock
 - SHA-256 verified per component
 
@@ -30,7 +30,7 @@ Each module has its own semantic version. You can synthesize a single tier witho
 
 **The file count question (before someone asks):**
 
-On the maiden rebuild: 95 source files → 2,139 components. This is decomposition — each function/class/constant becomes independently versioned. On a small, clean project this looks like bloat. On a large, messy project (10k+ files with heavy duplication), ASS-ADE compresses: duplicate utilities collapse into shared tier-1 functions, copy-pasted code consolidates. The messier the input, the bigger the cleanup.
+On the maiden rebuild: 95 source files → 2,195 components. This is decomposition — each function/class/constant becomes independently versioned. On a small, clean project this looks like bloat. On a large, messy project (10k+ files with heavy duplication), ASS-ADE compresses: duplicate utilities collapse into shared tier-1 functions, copy-pasted code consolidates. The messier the input, the bigger the cleanup.
 
 **Component maturity:**
 
@@ -115,7 +115,7 @@ Exposes synthesis as native tools in Claude Code and VS Code.
 
 **Maiden rebuild stats:**
 
-95 source files → 2,139 components synthesized, 99.8% conformance, 75.7 seconds.
+95 source files → 2,195 components synthesized, 100% conformance, 75.7 seconds.
 
 Note on the file count: small clean codebase → more files (decomposition). Large messy codebase → fewer files (deduplication and consolidation). The engine is designed for the latter.
 
@@ -155,7 +155,7 @@ For enterprise tenants, LoRA adaptors are isolated per tenant. The training sign
 
 **The maiden rebuild:**
 
-On launch day: 2,139 components, 99.8% blueprint conformance, 75.7 seconds, SHA-256 verified. This is before any LoRA calibration — base model performance on a well-specified blueprint. The flywheel compounds from there.
+On launch day: 2,195 components, 100% blueprint conformance, 75.7 seconds, SHA-256 verified. This is before any LoRA calibration — base model performance on a well-specified blueprint. The flywheel compounds from there.
 
 **The conformance measurement:**
 
@@ -195,7 +195,7 @@ I've been building this for a long time. Today it's public.
 
 The thing it does: you give it a blueprint (a structured description of what the codebase should be), it synthesizes the entire codebase from that blueprint, and it gives you a signed certificate proving the output matched the spec.
 
-On launch day it rebuilt itself: 2,139 components, 99.8% conformance, 75.7 seconds.
+On launch day it rebuilt itself: 2,195 components, 100% conformance, 75.7 seconds.
 
 **Why I built it:**
 

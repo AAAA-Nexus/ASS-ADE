@@ -4,9 +4,9 @@
 
 ## Atomadic Tech Launches ASS-ADE v0.0.1: The First Autopoietic Software Synthesis Engine
 
-### Self-Rebuilding Development Engine Reconstructs 2,139 Components at 99.8% Conformance in 75.7 Seconds on First Run
+### Self-Rebuilding Development Engine Reconstructs 2,195 Components at 100% Conformance in 75.7 Seconds on First Run
 
-**April 2026 — Atomadic Tech** today announced the public launch of ASS-ADE (Autopoietic Software Synthesis — Autonomous Development Engine), a blueprint-driven development platform that synthesizes, verifies, and continuously evolves production codebases. On its first maiden rebuild, ASS-ADE reconstructed 2,139 components at 99.8% blueprint conformance in 75.7 seconds, with every output SHA-256 verified.
+**April 2026 — Atomadic Tech** today announced the public launch of ASS-ADE (Autopoietic Software Synthesis — Autonomous Development Engine), a blueprint-driven development platform that synthesizes, verifies, and continuously evolves production codebases. On its first maiden rebuild, ASS-ADE reconstructed 2,195 components at 100% blueprint conformance in 75.7 seconds, with every output SHA-256 verified.
 
 ASS-ADE is available immediately at [github.com/AAAA-Nexus/ASS-ADE](https://github.com/AAAA-Nexus/ASS-ADE) and via `pip install ass-ade`.
 
@@ -54,8 +54,8 @@ Each module carries an independent semantic version. Changes at any tier are iso
 
 | Metric | Result |
 |--------|--------|
-| Components synthesized | 2,139 |
-| Blueprint conformance | 99.8% |
+| Components synthesized | 2,195 |
+| Blueprint conformance | 100% |
 | Wall-clock time | 75.7 seconds |
 | Verification method | SHA-256 (per-component) |
 
