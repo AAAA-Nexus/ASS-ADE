@@ -37,6 +37,7 @@ examples/
 scripts/*
 !scripts/__init__.py
 !scripts/lora_train.py
+!scripts/cli.py
 tools/
 training_data/
 mcp/

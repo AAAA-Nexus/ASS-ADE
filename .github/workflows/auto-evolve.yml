@@ -15,7 +15,7 @@ jobs:
           python-version: '3.12'
 
       - name: Install ASS-ADE
-        run: pip install ass-ade
+        run: pip install -e ".[dev]"
 
       - name: Create evolution branch
         run: |
@@ -46,7 +46,13 @@ jobs:
           git config user.name "ASS-ADE Auto-Evolve"
           git config user.email "evolve@atomadic.tech"
           git add -A
-          git diff --cached --quiet && echo "No changes to commit" && exit 0
+          # Only push when real source files changed (not just generated reports)
+          PY_CHANGES=$(git diff --cached --name-only | grep -v '^EVOLUTION_CYCLE\.md$' \
+            | grep -v '^enhance_scan\.json$' | grep -v '^recon_report\.json$' | wc -l | tr -d ' ')
+          if [ "$PY_CHANGES" -eq 0 ]; then
+            echo "No meaningful source changes — skipping commit and PR"
+            exit 0
+          fi
           git commit -m "auto-evolution: $(date +%Y%m%d-%H%M) cycle"
           git push origin $BRANCH
 
