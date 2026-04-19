@@ -64,6 +64,11 @@ ECO_SCAN_REPORT.md
 EVOLUTION.md
 SUCCESS_STORIES.md
 
+# Protect showcase README from being overwritten by rebuild engine output
+# README.md is pinned — add it back to tracking explicitly if you want to update it
+# git update-index --no-skip-worktree README.md && git add README.md
+README.md
+
 # OS
 .DS_Store
 Thumbs.db
