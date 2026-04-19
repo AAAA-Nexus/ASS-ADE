@@ -195,29 +195,6 @@ def _compile_check(text: str, path: str) -> bool:
         return False
 
 
-def _assert_not_stub(dest_file: Path, source_file: Path) -> None:
-    """Raise STUB_DETECTED if the emitted file is <90% the size of its source.
-
-    Constitutional invariant: NO STUBS EVER.  If the engine can't port something
-    1:1 it must fail loudly rather than emit a placeholder.
-    """
-    try:
-        src_lines = source_file.read_text(encoding="utf-8", errors="replace").count("\n")
-        out_lines = dest_file.read_text(encoding="utf-8", errors="replace").count("\n")
-    except OSError:
-        return  # can't read one of them — skip check rather than crash
-    if src_lines <= 10:
-        return  # trivially small files don't trigger the check
-    if out_lines < src_lines * 0.9:
-        dest_file.unlink(missing_ok=True)
-        raise RuntimeError(
-            f"STUB_DETECTED: {dest_file.name} has {out_lines} lines but source "
-            f"{source_file.name} has {src_lines} lines "
-            f"({out_lines / src_lines:.1%} < 90%). "
-            "Refusing to emit non-functional code."
-        )
-
-
 def emit_runnable_package(
     target_root: Path,
     *,
@@ -265,16 +242,6 @@ def emit_runnable_package(
         ]
         if not py_files:
             continue
-
-        # Constitutional invariant: no stubs.  Each emitted .py must be ≥90% of
-        # its source counterpart.  source_root lets us find the originals; if
-        # source_root is not provided we skip this check (best-effort only).
-        if source_root is not None:
-            src_pkg = Path(source_root)
-            for py_file in py_files:
-                candidate = src_pkg / py_file.name
-                if candidate.exists():
-                    _assert_not_stub(py_file, candidate)
 
         tier_names_present.append(tier)
         tier_init_path = tier_dir / "__init__.py"

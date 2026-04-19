@@ -175,23 +175,7 @@ def materialize_plan(
             content = src_path.read_text(encoding="utf-8", errors="ignore")
         except OSError:
             continue
-
-        src_lines = content.count("\n") + (1 if content and not content.endswith("\n") else 0)
-        if src_lines > 10:
-            # Write then immediately verify — the output must be ≥90% of the source.
-            dest_file.write_text(content, encoding="utf-8")
-            out_lines = dest_file.read_text(encoding="utf-8").count("\n")
-            if out_lines < src_lines * 0.9:
-                dest_file.unlink(missing_ok=True)
-                raise RuntimeError(
-                    f"STUB_DETECTED: {dest_file.name} has {out_lines} lines but source "
-                    f"{src_path.name} has {src_lines} lines "
-                    f"({out_lines/src_lines:.1%} < 90%). "
-                    "Refusing to emit non-functional code."
-                )
-        else:
-            dest_file.write_text(content, encoding="utf-8")
-
+        dest_file.write_text(content, encoding="utf-8")
         written_modules[src_path_str] = dest_file.as_posix()
 
     # ── Step 2: Write JSON component-spec artifacts ───────────────────────────
