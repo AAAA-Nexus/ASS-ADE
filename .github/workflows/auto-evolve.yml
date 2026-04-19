@@ -31,42 +31,149 @@ jobs:
       - name: Run enhancement scan
         run: ass-ade enhance . --json > enhance_scan.json 2>&1 || true
 
-      - name: Run recon
-        run: ass-ade recon . --json > recon_report.json 2>&1 || true
+      - name: Run recon (before)
+        run: ass-ade recon . --json > recon_before.json 2>&1 || true
 
       - name: Apply top enhancement
         run: ass-ade enhance . --apply 1 2>&1 || true
 
-      - name: Generate evolution report
+      - name: Run recon (after)
+        run: ass-ade recon . --json > recon_after.json 2>&1 || true
+
+      - name: Determine enhancement details
         run: |
-          echo "# Auto-Evolution Report" > EVOLUTION_CYCLE.md
-          echo "Branch: $BRANCH" >> EVOLUTION_CYCLE.md
-          echo "Date: $(date -u)" >> EVOLUTION_CYCLE.md
-          echo "" >> EVOLUTION_CYCLE.md
-          echo "## Enhancement Applied" >> EVOLUTION_CYCLE.md
-          cat enhance_scan.json >> EVOLUTION_CYCLE.md 2>/dev/null || echo "No scan results" >> EVOLUTION_CYCLE.md
+          ENHANCEMENT=$(python3 -c "
+          import json, sys
+          try:
+              d = json.load(open('enhance_scan.json'))
+              opps = d.get('opportunities', [])
+              if opps:
+                  o = opps[0]
+                  print(f\"{o.get('type','unknown')} in {o.get('file','?')}\")
+              else:
+                  print('no opportunities found')
+          except Exception as e:
+              print(f'scan error: {e}')
+          " 2>&1 || echo "unknown enhancement")
+          echo "ENHANCEMENT=$ENHANCEMENT" >> $GITHUB_ENV
+
+          TOTAL_FOUND=$(python3 -c "
+          import json
+          try:
+              d = json.load(open('enhance_scan.json'))
+              print(d.get('total_found', 0))
+          except:
+              print(0)
+          " 2>&1 || echo "0")
+          echo "TOTAL_FOUND=$TOTAL_FOUND" >> $GITHUB_ENV
+
+      - name: Bump patch version
+        run: |
+          CURRENT=$(python3 -c "
+          import re
+          content = open('pyproject.toml').read()
+          m = re.search(r'version = \"([\d.]+)\"', content)
+          print(m.group(1) if m else '0.2.0')
+          ")
+          NEW=$(python3 -c "
+          parts = '$CURRENT'.split('.')
+          parts[-1] = str(int(parts[-1]) + 1)
+          print('.'.join(parts))
+          ")
+          sed -i "s/version = \"$CURRENT\"/version = \"$NEW\"/" pyproject.toml
+          sed -i "s/__version__ = \"$CURRENT\"/__version__ = \"$NEW\"/" __init__.py 2>/dev/null || true
+          echo "NEW_VERSION=$NEW" >> $GITHUB_ENV
+          echo "Bumped $CURRENT -> $NEW"
+
+      - name: Append to EVOLUTION_LOG.md
+        run: |
+          CYCLE_NUM=$(python3 -c "
+          try:
+              lines = open('EVOLUTION_LOG.md').readlines()
+              nums = [int(l.split('#')[1].split(' ')[1]) for l in lines if l.startswith('## Evolution #')]
+              print(max(nums) + 1 if nums else 1)
+          except:
+              print(1)
+          " 2>&1 || echo "1")
+
+          FILES_CHANGED=$(git diff --name-only | grep -v enhance_scan.json | grep -v recon_before.json | grep -v recon_after.json | grep -v EVOLUTION_LOG.md | grep -v pyproject.toml | grep -v __init__.py | wc -l | tr -d ' ')
+
+          cat >> EVOLUTION_LOG.md << EOF
+
+          ## Evolution #${CYCLE_NUM} — $(date -u '+%Y-%m-%d %H:%M UTC')
+          **Enhancement:** ${ENHANCEMENT}
+          **Triggered by:** Auto-scan (${TOTAL_FOUND} opportunities found, applied top 1)
+          **Files changed:** ${FILES_CHANGED}
+          **Version:** ${{ env.NEW_VERSION }}
+          EOF
 
       - name: Commit and push branch
         run: |
           git config user.name "ASS-ADE Auto-Evolve"
           git config user.email "evolve@atomadic.tech"
           git add -A
-          # Only push when real source files changed (not just generated reports)
-          PY_CHANGES=$(git diff --cached --name-only | grep -v '^EVOLUTION_CYCLE\.md$' \
-            | grep -v '^enhance_scan\.json$' | grep -v '^recon_report\.json$' | wc -l | tr -d ' ')
+          # Only push when real source files changed
+          PY_CHANGES=$(git diff --cached --name-only \
+            | grep -vE '^(enhance_scan\.json|recon_before\.json|recon_after\.json)$' \
+            | wc -l | tr -d ' ')
           if [ "$PY_CHANGES" -eq 0 ]; then
             echo "No meaningful source changes — skipping commit and PR"
             exit 0
           fi
-          git commit -m "auto-evolution: $(date +%Y%m%d-%H%M) cycle"
+          git commit -m "evolution: ${ENHANCEMENT} (v${{ env.NEW_VERSION }})"
           git push origin $BRANCH
 
       - name: Create PR
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          SCAN_SUMMARY=$(cat enhance_scan.json 2>/dev/null | python3 -c "
+          import json, sys
+          try:
+              d = json.load(sys.stdin)
+              opps = d.get('opportunities', [])
+              lines = [f'- {o[\"type\"]} in \`{o[\"file\"]}\`' for o in opps[:10]]
+              print('\n'.join(lines))
+          except:
+              print('scan unavailable')
+          " 2>&1 || echo "scan unavailable")
+
+          RECON_BEFORE=$(cat recon_before.json 2>/dev/null | python3 -c "
+          import json, sys
+          try:
+              d = json.load(sys.stdin)
+              print(f'{d[\"total_py_files\"]} py files, {d[\"manifest_components\"]} components')
+          except:
+              print('unavailable')
+          " 2>&1 || echo "unavailable")
+
+          RECON_AFTER=$(cat recon_after.json 2>/dev/null | python3 -c "
+          import json, sys
+          try:
+              d = json.load(sys.stdin)
+              print(f'{d[\"total_py_files\"]} py files, {d[\"manifest_components\"]} components')
+          except:
+              print('unavailable')
+          " 2>&1 || echo "unavailable")
+
           gh pr create \
-            --title "Auto-Evolution: $(date +%Y%m%d-%H%M)" \
-            --body "Automated evolution cycle. Review diff for interesting improvements." \
+            --title "evolution: ${ENHANCEMENT} (v${{ env.NEW_VERSION }})" \
+            --body "$(cat <<PRBODY
+          ## Auto-Evolution Cycle — $(date -u '+%Y-%m-%d %H:%M UTC')
+
+          **Version bump:** → v${{ env.NEW_VERSION }}
+          **Enhancement applied:** ${ENHANCEMENT}
+
+          ## Enhancement scan (top opportunities)
+          ${SCAN_SUMMARY}
+
+          ## Before / After
+          - Before: ${RECON_BEFORE}
+          - After: ${RECON_AFTER}
+
+          ## What changed
+          See diff for exact file changes. Only real source improvements trigger PRs.
+          PRBODY
+          )" \
             --base main \
             --head $BRANCH || true
