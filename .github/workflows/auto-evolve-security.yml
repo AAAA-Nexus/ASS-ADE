@@ -1,8 +1,11 @@
 name: Auto-Evolution — Security
 on:
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '*/7 * * * *'
   workflow_dispatch: {}
+
+# Personality: conservative/protective — only apply changes with a clear security benefit.
+# Skips if no genuine security findings are present.
 
 jobs:
   evolve-security:
@@ -22,45 +25,86 @@ jobs:
       - name: Install ASS-ADE
         run: pip install -e ".[dev]"
 
+      # Phase 0 — Bootstrap recon
+      - name: Phase 0 — Bootstrap recon
+        run: ass-ade recon . --json > recon_before.json 2>&1 || true
+
+      # Phase 1 — Assessment scan (full)
+      - name: Phase 1 — Assessment scan
+        run: ass-ade enhance . --json > enhance_scan_raw.json 2>&1 || true
+
+      # Phase 2 — Context filter: security track (conservative/protective)
+      - name: Phase 2 — Context filter (security track)
+        run: |
+          python3 -c "
+          import json
+          try:
+              d = json.load(open('enhance_scan_raw.json'))
+              security_types = {
+                  'eval_usage', 'exec_usage', 'input_validation', 'sql_injection',
+                  'command_injection', 'hardcoded_secret', 'insecure_hash',
+                  'bare_except', 'security', 'path_traversal', 'open_redirect',
+              }
+              opps = d.get('opportunities', [])
+              sec_opps = [o for o in opps if any(t in o.get('type','').lower() for t in security_types)]
+              # conservative: only apply if we have a genuine security finding
+              d['opportunities'] = sec_opps
+              d['total_found'] = len(sec_opps)
+              json.dump(d, open('enhance_scan.json','w'), indent=2)
+              print(f'Security findings: {len(sec_opps)} of {len(opps)} total')
+          except Exception as e:
+              json.dump({'opportunities':[], 'total_found':0, 'error':str(e)}, open('enhance_scan.json','w'))
+          " 2>&1 || true
+
+          CYCLE_NUM=$(python3 -c "
+          try:
+              lines = open('EVOLUTION_LOG.md').readlines()
+              nums = [int(l.split('#')[-1].split(' ')[0])
+                      for l in lines if l.strip().startswith('## Evolution #')]
+              print(max(nums) + 1 if nums else 1)
+          except:
+              print(1)
+          " 2>&1 || echo "1")
+          echo "CYCLE_NUM=$CYCLE_NUM" >> $GITHUB_ENV
+
+          TOTAL_FOUND=$(python3 -c "
+          import json
+          try:
+              d = json.load(open('enhance_scan.json'))
+              print(d.get('total_found', 0))
+          except:
+              print(0)
+          " 2>&1 || echo "0")
+          echo "TOTAL_FOUND=$TOTAL_FOUND" >> $GITHUB_ENV
+
       - name: Create evolution branch
         run: |
           BRANCH="auto-evolve/security-$(date +%Y%m%d-%H%M)"
           git checkout -b $BRANCH
           echo "BRANCH=$BRANCH" >> $GITHUB_ENV
 
-      - name: Run enhancement scan (security filter)
+      # Phase 3 — Synthesis: apply top security fix (conservative: max 1)
+      - name: Phase 3 — Synthesis (conservative security apply)
         run: |
-          ass-ade enhance . --json > enhance_scan_raw.json 2>&1 || true
-          python3 -c "
+          COUNT=$(python3 -c "
           import json
-          try:
-              d = json.load(open('enhance_scan_raw.json'))
-              security_types = {'eval_usage', 'exec_usage', 'input_validation', 'sql_injection',
-                                'command_injection', 'hardcoded_secret', 'insecure_hash',
-                                'bare_except', 'security'}
-              opps = d.get('opportunities', [])
-              sec_opps = [o for o in opps if any(t in o.get('type','').lower() for t in security_types)]
-              if not sec_opps:
-                  # fall back to any opportunity as placeholder
-                  sec_opps = opps[:1]
-              d['opportunities'] = sec_opps
-              d['total_found'] = len(sec_opps)
-              json.dump(d, open('enhance_scan.json','w'), indent=2)
-          except Exception as e:
-              json.dump({'opportunities':[], 'total_found':0, 'error':str(e)}, open('enhance_scan.json','w'))
-          " 2>&1 || true
-
-      - name: Apply top security enhancement
-        run: |
-          COUNT=$(python3 -c "import json; d=json.load(open('enhance_scan.json')); print(d.get('total_found',0))" 2>&1 || echo 0)
+          d = json.load(open('enhance_scan.json'))
+          print(d.get('total_found', 0))
+          " 2>&1 || echo "0")
           if [ "$COUNT" -gt 0 ]; then
+            echo "Applying top 1 security fix (conservative mode)"
             ass-ade enhance . --apply 1 2>&1 || true
           else
-            echo "No security opportunities found — skipping"
+            echo "No security opportunities — skipping apply"
             exit 0
           fi
 
-      - name: Determine enhancement details
+      # Phase 4 — Audit recon
+      - name: Phase 4 — Audit recon
+        run: ass-ade recon . --json > recon_after.json 2>&1 || true
+
+      # Phase 5 — Autopoiesis validate
+      - name: Phase 5 — Autopoiesis validate
         run: |
           ENHANCEMENT=$(python3 -c "
           import json
@@ -96,23 +140,18 @@ jobs:
 
       - name: Append to EVOLUTION_LOG.md
         run: |
-          CYCLE_NUM=$(python3 -c "
-          try:
-              lines = open('EVOLUTION_LOG.md').readlines()
-              nums = [int(l.split('#')[1].split(' ')[1]) for l in lines if l.startswith('## Evolution #')]
-              print(max(nums) + 1 if nums else 1)
-          except:
-              print(1)
-          " 2>&1 || echo "1")
-          FILES_CHANGED=$(git diff --name-only | grep -vE '^(enhance_scan.*\.json|EVOLUTION_LOG\.md|pyproject\.toml|__init__\.py)$' | wc -l | tr -d ' ')
+          FILES_CHANGED=$(git diff --name-only \
+            | grep -vE '^(enhance_scan.*\.json|EVOLUTION_LOG\.md|pyproject\.toml|__init__\.py)$' \
+            | wc -l | tr -d ' ')
           cat >> EVOLUTION_LOG.md << EOF
 
-          ## Evolution #${CYCLE_NUM} [SECURITY] — $(date -u '+%Y-%m-%d %H:%M UTC')
-          **Enhancement:** ${ENHANCEMENT}
-          **Lane:** security (eval/exec/injection/secrets/bare-except fixes)
-          **Files changed:** ${FILES_CHANGED}
-          **Version:** ${{ env.NEW_VERSION }}
-          EOF
+## Evolution #${{ env.CYCLE_NUM }} [SECURITY] — $(date -u '+%Y-%m-%d %H:%M UTC')
+**Enhancement:** ${{ env.ENHANCEMENT }}
+**Lane:** security — eval/exec removal, input validation, injection fixes
+**Personality:** conservative/protective (max 1 change per cycle)
+**Files changed:** ${FILES_CHANGED}
+**Version:** ${{ env.NEW_VERSION }}
+EOF
 
       - name: Commit and push branch
         run: |
@@ -126,8 +165,8 @@ jobs:
             echo "No security changes — skipping"
             exit 0
           fi
-          git commit -m "evolution/security: ${ENHANCEMENT} (v${{ env.NEW_VERSION }})"
-          git push origin $BRANCH
+          git commit -m "evolution/security: ${{ env.ENHANCEMENT }} (v${{ env.NEW_VERSION }})"
+          git push origin ${{ env.BRANCH }}
 
       - name: Create PR
         env:
@@ -144,18 +183,19 @@ jobs:
               print('scan unavailable')
           " 2>&1 || echo "scan unavailable")
           gh pr create \
-            --title "[SECURITY] evolution: ${ENHANCEMENT} (v${{ env.NEW_VERSION }})" \
+            --title "[SECURITY] evolution: ${{ env.ENHANCEMENT }} (v${{ env.NEW_VERSION }})" \
             --body "$(cat <<PRBODY
-          ## Security Evolution — $(date -u '+%Y-%m-%d %H:%M UTC')
+## Security Evolution Cycle #${{ env.CYCLE_NUM }} — $(date -u '+%Y-%m-%d %H:%M UTC')
 
-          **Version:** → v${{ env.NEW_VERSION }}
-          **Lane:** SECURITY — eval/exec removal, input validation, injection fixes
+**Version:** → v${{ env.NEW_VERSION }}
+**Lane:** SECURITY — eval/exec removal, input validation, injection fixes
+**Personality:** conservative/protective — one verified security fix per cycle
 
-          ## Security findings applied
-          ${SCAN_SUMMARY}
+## Security findings applied
+${SCAN_SUMMARY}
 
-          > Part of the ASS-ADE three-lane evolution system (general / security / quality).
-          PRBODY
+> Part of the ASS-ADE five-lane evolution system (general / security / quality / features / performance).
+PRBODY
           )" \
             --base main \
-            --head $BRANCH || true
+            --head ${{ env.BRANCH }} || true

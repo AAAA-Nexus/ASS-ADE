@@ -1,8 +1,8 @@
 name: Auto-Evolution Cycle
 on:
   schedule:
-    - cron: '*/20 * * * *'  # Every 20 minutes
-  workflow_dispatch: {}      # Manual trigger for testing
+    - cron: '*/5 * * * *'
+  workflow_dispatch: {}
 
 jobs:
   evolve:
@@ -22,28 +22,136 @@ jobs:
       - name: Install ASS-ADE
         run: pip install -e ".[dev]"
 
+      # Phase 0 — Bootstrap recon
+      - name: Phase 0 — Bootstrap recon
+        run: ass-ade recon . --json > recon_before.json 2>&1 || true
+
+      # Phase 1 — Assessment scan
+      - name: Phase 1 — Assessment scan
+        run: ass-ade enhance . --json > enhance_scan.json 2>&1 || true
+
+      # Phase 2 — Context: determine cycle level
+      - name: Phase 2 — Context (cycle level)
+        run: |
+          CYCLE_NUM=$(python3 -c "
+          try:
+              lines = open('EVOLUTION_LOG.md').readlines()
+              nums = [int(l.split('#')[-1].split(' ')[0])
+                      for l in lines if l.strip().startswith('## Evolution #')]
+              print(max(nums) + 1 if nums else 1)
+          except:
+              print(1)
+          " 2>&1 || echo "1")
+          echo "CYCLE_NUM=$CYCLE_NUM" >> $GITHUB_ENV
+
+          LEVEL=$(python3 -c "
+          n = int('$CYCLE_NUM')
+          if n <= 50:   print(1)
+          elif n <= 200: print(2)
+          elif n <= 500: print(3)
+          else:          print(4)
+          " 2>&1 || echo "1")
+          echo "EVOLUTION_LEVEL=$LEVEL" >> $GITHUB_ENV
+
+          TOTAL_FOUND=$(python3 -c "
+          import json
+          try:
+              d = json.load(open('enhance_scan.json'))
+              print(d.get('total_found', 0))
+          except:
+              print(0)
+          " 2>&1 || echo "0")
+          echo "TOTAL_FOUND=$TOTAL_FOUND" >> $GITHUB_ENV
+
+          # Level 4: detect low-impact scan and pick specialization area
+          BRANCH_AREA="general"
+          if [ "$LEVEL" = "4" ]; then
+            BRANCH_AREA=$(python3 -c "
+          import json
+          from collections import Counter
+          try:
+              d = json.load(open('enhance_scan.json'))
+              opps = d.get('opportunities', [])
+              cosmetic = {'missing_module_docstring','missing_function_docstring','unused_import','dead_code'}
+              total = len(opps)
+              cosmetic_count = sum(1 for o in opps if o.get('type','') in cosmetic)
+              if total > 0 and cosmetic_count / total > 0.7:
+                  files = [o.get('file','unknown').split('/')[0] for o in opps[:10]]
+                  area = Counter(files).most_common(1)[0][0] if files else 'core'
+                  print(area.replace('/','-').replace('.',''))
+              else:
+                  print('general')
+          except:
+              print('general')
+          " 2>&1 || echo "general")
+          fi
+          echo "BRANCH_AREA=$BRANCH_AREA" >> $GITHUB_ENV
+          echo "Cycle $CYCLE_NUM → Level $LEVEL (area: $BRANCH_AREA)"
+
       - name: Create evolution branch
         run: |
-          BRANCH="auto-evolve/$(date +%Y%m%d-%H%M)"
+          if [ "${{ env.EVOLUTION_LEVEL }}" = "4" ] && [ "${{ env.BRANCH_AREA }}" != "general" ]; then
+            BRANCH="auto-evolve/deep-${{ env.BRANCH_AREA }}-$(date +%Y%m%d-%H%M)"
+          else
+            BRANCH="auto-evolve/$(date +%Y%m%d-%H%M)"
+          fi
           git checkout -b $BRANCH
           echo "BRANCH=$BRANCH" >> $GITHUB_ENV
 
-      - name: Run enhancement scan
-        run: ass-ade enhance . --json > enhance_scan.json 2>&1 || true
+      # Phase 3 — Synthesis: apply level-aware enhancements
+      - name: Phase 3 — Synthesis (level-aware apply)
+        run: |
+          LEVEL="${{ env.EVOLUTION_LEVEL }}"
+          if [ "$LEVEL" = "1" ]; then
+            echo "Level 1 (cycles 0-50): single enhancement"
+            ass-ade enhance . --apply 1 2>&1 || true
+          elif [ "$LEVEL" = "2" ]; then
+            echo "Level 2 (cycles 51-200): multi-apply top 3"
+            ass-ade enhance . --apply 1,2,3 2>&1 || true
+          elif [ "$LEVEL" = "3" ]; then
+            echo "Level 3 (cycles 201-500): blueprint-design + apply"
+            IMPROVEMENT=$(python3 -c "
+          import json
+          try:
+              d = json.load(open('enhance_scan.json'))
+              opps = d.get('opportunities', [])
+              types = list(dict.fromkeys(o.get('type','') for o in opps[:5]))
+              print('improve: ' + ', '.join(types[:3]))
+          except:
+              print('improve code quality and structure')
+          " 2>&1 || echo "improve code quality and structure")
+            ass-ade design "$IMPROVEMENT" 2>&1 || true
+            ass-ade enhance . --apply 1,2,3 2>&1 || true
+          else
+            echo "Level 4 (cycles 500+): deep-area apply top 5"
+            ass-ade enhance . --apply 1,2,3,4,5 2>&1 || true
+          fi
 
-      - name: Run recon (before)
-        run: ass-ade recon . --json > recon_before.json 2>&1 || true
-
-      - name: Apply top enhancement
-        run: ass-ade enhance . --apply 1 2>&1 || true
-
-      - name: Run recon (after)
+      # Phase 4 — Audit recon
+      - name: Phase 4 — Audit recon
         run: ass-ade recon . --json > recon_after.json 2>&1 || true
 
-      - name: Determine enhancement details
+      # Phase 5 — Autopoiesis: validate improvement, skip if none
+      - name: Phase 5 — Autopoiesis validate
         run: |
+          IMPROVEMENT_DELTA=$(python3 -c "
+          import json
+          try:
+              before = json.load(open('recon_before.json'))
+              after  = json.load(open('recon_after.json'))
+              b_files = before.get('total_py_files', 0)
+              a_files = after.get('total_py_files', 0)
+              b_comp  = before.get('manifest_components', 0)
+              a_comp  = after.get('manifest_components', 0)
+              delta = (a_files - b_files) + (a_comp - b_comp)
+              print(delta)
+          except:
+              print(0)
+          " 2>&1 || echo "0")
+          echo "IMPROVEMENT_DELTA=$IMPROVEMENT_DELTA" >> $GITHUB_ENV
+
           ENHANCEMENT=$(python3 -c "
-          import json, sys
+          import json
           try:
               d = json.load(open('enhance_scan.json'))
               opps = d.get('opportunities', [])
@@ -56,16 +164,6 @@ jobs:
               print(f'scan error: {e}')
           " 2>&1 || echo "unknown enhancement")
           echo "ENHANCEMENT=$ENHANCEMENT" >> $GITHUB_ENV
-
-          TOTAL_FOUND=$(python3 -c "
-          import json
-          try:
-              d = json.load(open('enhance_scan.json'))
-              print(d.get('total_found', 0))
-          except:
-              print(0)
-          " 2>&1 || echo "0")
-          echo "TOTAL_FOUND=$TOTAL_FOUND" >> $GITHUB_ENV
 
       - name: Bump patch version
         run: |
@@ -87,32 +185,31 @@ jobs:
 
       - name: Append to EVOLUTION_LOG.md
         run: |
-          CYCLE_NUM=$(python3 -c "
-          try:
-              lines = open('EVOLUTION_LOG.md').readlines()
-              nums = [int(l.split('#')[1].split(' ')[1]) for l in lines if l.startswith('## Evolution #')]
-              print(max(nums) + 1 if nums else 1)
-          except:
-              print(1)
-          " 2>&1 || echo "1")
+          FILES_CHANGED=$(git diff --name-only \
+            | grep -vE '^(enhance_scan\.json|recon_before\.json|recon_after\.json|EVOLUTION_LOG\.md|pyproject\.toml|__init__\.py)$' \
+            | wc -l | tr -d ' ')
 
-          FILES_CHANGED=$(git diff --name-only | grep -v enhance_scan.json | grep -v recon_before.json | grep -v recon_after.json | grep -v EVOLUTION_LOG.md | grep -v pyproject.toml | grep -v __init__.py | wc -l | tr -d ' ')
+          LEVEL_LABEL=$(python3 -c "
+          labels = {'1': 'L1-single', '2': 'L2-multi', '3': 'L3-blueprint', '4': 'L4-deep'}
+          print(labels.get('${{ env.EVOLUTION_LEVEL }}', 'L?'))
+          " 2>&1 || echo "L?")
 
           cat >> EVOLUTION_LOG.md << EOF
 
-          ## Evolution #${CYCLE_NUM} — $(date -u '+%Y-%m-%d %H:%M UTC')
-          **Enhancement:** ${ENHANCEMENT}
-          **Triggered by:** Auto-scan (${TOTAL_FOUND} opportunities found, applied top 1)
-          **Files changed:** ${FILES_CHANGED}
-          **Version:** ${{ env.NEW_VERSION }}
-          EOF
+## Evolution #${{ env.CYCLE_NUM }} — $(date -u '+%Y-%m-%d %H:%M UTC')
+**Level:** ${{ env.EVOLUTION_LEVEL }} (${LEVEL_LABEL})
+**Enhancement:** ${{ env.ENHANCEMENT }}
+**Triggered by:** Auto-scan (${{ env.TOTAL_FOUND }} opportunities found)
+**Delta:** ${{ env.IMPROVEMENT_DELTA }}
+**Files changed:** ${FILES_CHANGED}
+**Version:** ${{ env.NEW_VERSION }}
+EOF
 
       - name: Commit and push branch
         run: |
           git config user.name "ASS-ADE Auto-Evolve"
           git config user.email "evolve@atomadic.tech"
           git add -A
-          # Only push when real source files changed
           PY_CHANGES=$(git diff --cached --name-only \
             | grep -vE '^(enhance_scan\.json|recon_before\.json|recon_after\.json)$' \
             | wc -l | tr -d ' ')
@@ -120,8 +217,8 @@ jobs:
             echo "No meaningful source changes — skipping commit and PR"
             exit 0
           fi
-          git commit -m "evolution: ${ENHANCEMENT} (v${{ env.NEW_VERSION }})"
-          git push origin $BRANCH
+          git commit -m "evolution(L${{ env.EVOLUTION_LEVEL }}): ${{ env.ENHANCEMENT }} (v${{ env.NEW_VERSION }})"
+          git push origin ${{ env.BRANCH }}
 
       - name: Create PR
         env:
@@ -156,24 +253,31 @@ jobs:
               print('unavailable')
           " 2>&1 || echo "unavailable")
 
+          LEVEL_DESC=$(python3 -c "
+          descs = {'1': 'single enhancement', '2': 'multi-apply top 3', '3': 'blueprint-design + apply', '4': 'deep-area top 5'}
+          print(descs.get('${{ env.EVOLUTION_LEVEL }}', 'unknown'))
+          " 2>&1 || echo "unknown")
+
           gh pr create \
-            --title "evolution: ${ENHANCEMENT} (v${{ env.NEW_VERSION }})" \
+            --title "evolution(L${{ env.EVOLUTION_LEVEL }}): ${{ env.ENHANCEMENT }} (v${{ env.NEW_VERSION }})" \
             --body "$(cat <<PRBODY
-          ## Auto-Evolution Cycle — $(date -u '+%Y-%m-%d %H:%M UTC')
+## Auto-Evolution Cycle #${{ env.CYCLE_NUM }} — $(date -u '+%Y-%m-%d %H:%M UTC')
 
-          **Version bump:** → v${{ env.NEW_VERSION }}
-          **Enhancement applied:** ${ENHANCEMENT}
+**Level:** ${{ env.EVOLUTION_LEVEL }} — ${LEVEL_DESC}
+**Version bump:** → v${{ env.NEW_VERSION }}
+**Enhancement applied:** ${{ env.ENHANCEMENT }}
+**Improvement delta:** ${{ env.IMPROVEMENT_DELTA }}
 
-          ## Enhancement scan (top opportunities)
-          ${SCAN_SUMMARY}
+## Enhancement scan (top opportunities)
+${SCAN_SUMMARY}
 
-          ## Before / After
-          - Before: ${RECON_BEFORE}
-          - After: ${RECON_AFTER}
+## Before / After
+- Before: ${RECON_BEFORE}
+- After: ${RECON_AFTER}
 
-          ## What changed
-          See diff for exact file changes. Only real source improvements trigger PRs.
-          PRBODY
+## What changed
+See diff for exact file changes. Only real source improvements trigger PRs.
+PRBODY
           )" \
             --base main \
-            --head $BRANCH || true
+            --head ${{ env.BRANCH }} || true

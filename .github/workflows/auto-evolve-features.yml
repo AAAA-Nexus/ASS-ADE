@@ -1,14 +1,14 @@
-name: Auto-Evolution — Quality
+name: Auto-Evolution — Features
 on:
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: '*/8 * * * *'
   workflow_dispatch: {}
 
-# Personality: thorough/systematic — exhaustive quality pass, top 3 per cycle,
-# covers docstrings, bare-except, dead code, unused imports, long functions.
+# Personality: creative/additive — uses blueprint design to propose new capabilities,
+# favors generative improvements over pure cleanup.
 
 jobs:
-  evolve-quality:
+  evolve-features:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -33,27 +33,27 @@ jobs:
       - name: Phase 1 — Assessment scan
         run: ass-ade enhance . --json > enhance_scan_raw.json 2>&1 || true
 
-      # Phase 2 — Context filter: quality track (thorough/systematic)
-      - name: Phase 2 — Context filter (quality track)
+      # Phase 2 — Context: creative feature synthesis
+      - name: Phase 2 — Context (features track)
         run: |
           python3 -c "
           import json
           try:
               d = json.load(open('enhance_scan_raw.json'))
-              quality_types = {
-                  'missing_module_docstring', 'missing_function_docstring',
-                  'missing_tests', 'bare_except', 'long_function',
-                  'unused_import', 'dead_code', 'quality', 'docstring',
-                  'missing_type_hint', 'complex_function', 'nested_function',
+              # features track: prefer opportunities that add capability
+              feature_types = {
+                  'missing_feature', 'incomplete_implementation', 'enhancement_opportunity',
+                  'missing_method', 'stub_implementation', 'todo', 'fixme',
               }
               opps = d.get('opportunities', [])
-              qual_opps = [o for o in opps if any(t in o.get('type','').lower() for t in quality_types)]
-              if not qual_opps:
-                  qual_opps = opps[:3]
-              d['opportunities'] = qual_opps
-              d['total_found'] = len(qual_opps)
+              feat_opps = [o for o in opps if any(t in o.get('type','').lower() for t in feature_types)]
+              # creative fallback: use all opportunities for design-driven improvement
+              if not feat_opps:
+                  feat_opps = opps
+              d['opportunities'] = feat_opps
+              d['total_found'] = len(feat_opps)
               json.dump(d, open('enhance_scan.json','w'), indent=2)
-              print(f'Quality findings: {len(qual_opps)} of {len(opps)} total')
+              print(f'Feature opportunities: {len(feat_opps)} of {len(opps)} total')
           except Exception as e:
               json.dump({'opportunities':[], 'total_found':0, 'error':str(e)}, open('enhance_scan.json','w'))
           " 2>&1 || true
@@ -79,27 +79,36 @@ jobs:
           " 2>&1 || echo "0")
           echo "TOTAL_FOUND=$TOTAL_FOUND" >> $GITHUB_ENV
 
+          # Synthesize a creative improvement goal from top findings
+          DESIGN_GOAL=$(python3 -c "
+          import json
+          try:
+              d = json.load(open('enhance_scan.json'))
+              opps = d.get('opportunities', [])
+              types = list(dict.fromkeys(o.get('type','') for o in opps[:5]))
+              files = list(dict.fromkeys(o.get('file','') for o in opps[:3]))
+              goal = 'add capability: ' + ', '.join(types[:3])
+              if files:
+                  goal += ' in ' + ', '.join(files[:2])
+              print(goal)
+          except:
+              print('add capability and improve extensibility')
+          " 2>&1 || echo "add capability and improve extensibility")
+          echo "DESIGN_GOAL=$DESIGN_GOAL" >> $GITHUB_ENV
+
       - name: Create evolution branch
         run: |
-          BRANCH="auto-evolve/quality-$(date +%Y%m%d-%H%M)"
+          BRANCH="auto-evolve/features-$(date +%Y%m%d-%H%M)"
           git checkout -b $BRANCH
           echo "BRANCH=$BRANCH" >> $GITHUB_ENV
 
-      # Phase 3 — Synthesis: systematic top-3 quality pass
-      - name: Phase 3 — Synthesis (thorough quality apply)
+      # Phase 3 — Synthesis: design-first feature addition
+      - name: Phase 3 — Synthesis (creative feature design + apply)
         run: |
-          COUNT=$(python3 -c "
-          import json
-          d = json.load(open('enhance_scan.json'))
-          print(d.get('total_found', 0))
-          " 2>&1 || echo "0")
-          if [ "$COUNT" -gt 0 ]; then
-            echo "Applying top 3 quality fixes (thorough/systematic mode)"
-            ass-ade enhance . --apply 1,2,3 2>&1 || true
-          else
-            echo "No quality opportunities — skipping"
-            exit 0
-          fi
+          echo "Running blueprint design: ${{ env.DESIGN_GOAL }}"
+          ass-ade design "${{ env.DESIGN_GOAL }}" 2>&1 || true
+          echo "Applying top 2 feature enhancements"
+          ass-ade enhance . --apply 1,2 2>&1 || true
 
       # Phase 4 — Audit recon
       - name: Phase 4 — Audit recon
@@ -117,10 +126,10 @@ jobs:
                   o = opps[0]
                   print(f\"{o.get('type','unknown')} in {o.get('file','?')}\")
               else:
-                  print('no quality opportunities found')
+                  print('blueprint design applied')
           except Exception as e:
               print(f'scan error: {e}')
-          " 2>&1 || echo "unknown")
+          " 2>&1 || echo "feature design applied")
           echo "ENHANCEMENT=$ENHANCEMENT" >> $GITHUB_ENV
 
       - name: Bump patch version
@@ -147,10 +156,11 @@ jobs:
             | wc -l | tr -d ' ')
           cat >> EVOLUTION_LOG.md << EOF
 
-## Evolution #${{ env.CYCLE_NUM }} [QUALITY] — $(date -u '+%Y-%m-%d %H:%M UTC')
+## Evolution #${{ env.CYCLE_NUM }} [FEATURES] — $(date -u '+%Y-%m-%d %H:%M UTC')
 **Enhancement:** ${{ env.ENHANCEMENT }}
-**Lane:** quality — docstrings, bare-except, long functions, dead code, unused imports
-**Personality:** thorough/systematic (top 3 per cycle)
+**Design goal:** ${{ env.DESIGN_GOAL }}
+**Lane:** features — blueprint design, new capabilities, extensibility
+**Personality:** creative/additive (design-first, top 2 per cycle)
 **Files changed:** ${FILES_CHANGED}
 **Version:** ${{ env.NEW_VERSION }}
 EOF
@@ -164,10 +174,10 @@ EOF
             | grep -vE '^(enhance_scan.*\.json)$' \
             | wc -l | tr -d ' ')
           if [ "$PY_CHANGES" -eq 0 ]; then
-            echo "No quality changes — skipping"
+            echo "No feature changes generated — skipping"
             exit 0
           fi
-          git commit -m "evolution/quality: ${{ env.ENHANCEMENT }} (v${{ env.NEW_VERSION }})"
+          git commit -m "evolution/features: ${{ env.ENHANCEMENT }} (v${{ env.NEW_VERSION }})"
           git push origin ${{ env.BRANCH }}
 
       - name: Create PR
@@ -204,15 +214,18 @@ EOF
           " 2>&1 || echo "unavailable")
 
           gh pr create \
-            --title "[QUALITY] evolution: ${{ env.ENHANCEMENT }} (v${{ env.NEW_VERSION }})" \
+            --title "[FEATURES] evolution: ${{ env.ENHANCEMENT }} (v${{ env.NEW_VERSION }})" \
             --body "$(cat <<PRBODY
-## Quality Evolution Cycle #${{ env.CYCLE_NUM }} — $(date -u '+%Y-%m-%d %H:%M UTC')
+## Features Evolution Cycle #${{ env.CYCLE_NUM }} — $(date -u '+%Y-%m-%d %H:%M UTC')
 
 **Version:** → v${{ env.NEW_VERSION }}
-**Lane:** QUALITY — docstrings, bare-except, long functions, dead code, unused imports
-**Personality:** thorough/systematic — top 3 quality fixes per cycle
+**Lane:** FEATURES — blueprint design, new capabilities, extensibility improvements
+**Personality:** creative/additive — design-first approach, top 2 per cycle
 
-## Quality findings applied
+## Design goal
+${{ env.DESIGN_GOAL }}
+
+## Feature opportunities targeted
 ${SCAN_SUMMARY}
 
 ## Before / After
