@@ -64,10 +64,10 @@ ECO_SCAN_REPORT.md
 EVOLUTION.md
 SUCCESS_STORIES.md
 
-# Protect showcase README from being overwritten by rebuild engine output
-# README.md is pinned — add it back to tracking explicitly if you want to update it
-# git update-index --no-skip-worktree README.md && git add README.md
-README.md
+# Auto-generated numbered docs (don't overwrite manually curated versions)
+0_README.md
+# README.md is the showcase — NOT auto-generated, always tracked
+!README.md
 
 # OS
 .DS_Store

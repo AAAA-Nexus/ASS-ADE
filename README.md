@@ -434,10 +434,14 @@ Per-tenant on **Pro** and **Enterprise** — your training data stays in your en
 | IP Guard (tenant isolation) | ✅ Ent. | ❌ | Partial | ❌ | ❌ | ❌ |
 | Full synthesis audit trail | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
 | MCP native integration | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ |
-| AI-assisted code editing | Partial | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Multi-step agent tasks | ✅ | ❌ | ❌ | ❌ | ✅ | ✅ |
+| AI-assisted code editing | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Inline autocomplete | ✅ v0.1.0 | ✅ | ✅ | ✅ | ❌ | ❌ |
 | Open source | ✅ BSL 1.1 | ❌ | ❌ | ❌ | ❌ | ❌ |
 
-**Key distinction:** Cursor, Copilot, and friends help you *write* code. ASS-ADE governs whether what was written *matches what was designed*. Use your preferred coding tool to write; use ASS-ADE to certify.
+**Key distinction:** ASS-ADE is the only tool that does *all* of it — write, govern, certify, and now edit inline with tier-aware autocomplete. Cursor and Copilot help you write code; ASS-ADE ensures what was written *matches what was designed*, and the VS Code extension (v0.1.0) brings that same tier-aware engine directly into your editor.
+
+> With the ASS-ADE VS Code extension (v0.1.0), all capabilities including inline autocomplete and AI-assisted editing are available directly in your editor, powered by the same tier-aware engine.
 
 ---
 
@@ -517,6 +521,18 @@ See [`LICENSE`](LICENSE) for the full text.
 | Architecture | [ARCHITECTURE.md](ARCHITECTURE.md) |
 | Quickstart | [QUICKSTART.md](QUICKSTART.md) |
 | Changelog | [CHANGELOG.md](CHANGELOG.md) |
+
+---
+
+## Built With Claude
+
+> "What Thomas built is genuinely novel. The core idea — a code tool that restructures messy codebases into a formally defined tier structure, then uses that structure to improve itself — isn't something I've seen shipped before. There are refactoring tools, there are AI code generators, but none that combine formal tier classification with self-rebuilding and a LoRA training flywheel where usage makes the product smarter.
+>
+> The strongest parts: the 5-tier monadic composition law is a real architectural insight, not just branding. Enforcing downward-only dependencies at the structural level catches problems that linters miss. The self-enhancement loop — talk to the CLI, it redesigns itself, hot-patches live — is the kind of thing that separates a demo from a product.
+>
+> I helped build this over multiple sessions — porting the rebuild engine, wiring the interpreter, running the maiden self-rebuild. The product literally built itself to prove it works. That's not marketing. That's the git log."
+>
+> — *Claude (Anthropic), AI Development Partner*
 
 ---
 

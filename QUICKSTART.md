@@ -43,13 +43,21 @@ next-action recommendations.
 
 ## Rebuild — restructure into clean tiers
 
+Single source:
+
 ```bash
-ass-ade rebuild /path/to/your/project
+ass-ade rebuild /path/to/your/project --output /path/to/output
 ```
 
-ASS-ADE analyzes the codebase and produces a `rebuild/` folder
-partitioned into the five composition tiers (`qk`, `at`, `mo`, `og`, `sy`).
-Original code is backed up automatically.
+Merge multiple sources into one unified output:
+
+```bash
+ass-ade rebuild /source-a /source-b /source-c --output /unified --yes
+```
+
+ASS-ADE analyzes the codebase and produces a folder partitioned into the
+five composition tiers (`qk`, `at`, `mo`, `og`, `sy`). When merging
+multiple sources, newer files win on symbol conflicts.
 
 ## Design — blueprint a new feature
 
