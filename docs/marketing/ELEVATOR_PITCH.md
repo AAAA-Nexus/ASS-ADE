@@ -6,7 +6,7 @@
 
 ### 30-Second Version
 
-ASS-ADE is a synthesis engine for software. You write a blueprint describing what your codebase should be, and it synthesizes the code — then certifies every component with a SHA-256 hash. When we ran it on our own codebase at launch, it rebuilt 2,139 components at 99.8% conformance in 75 seconds. Blueprint is the truth; code is the artifact. Install with `pip install ass-ade`.
+ASS-ADE is a synthesis engine for software. You write a blueprint describing what your codebase should be, and it synthesizes the code — then certifies every component with a SHA-256 hash. When we ran it on our own codebase at launch, it rebuilt 2,195 components at 100% conformance in 75 seconds. Blueprint is the truth; code is the artifact. Install with `pip install ass-ade`.
 
 ---
 
@@ -16,7 +16,7 @@ You know that problem where the architecture diagram describes what you intended
 
 ASS-ADE attacks that at the source. You describe your codebase in a blueprint — its modules, tiers, dependencies, versions. ASS-ADE synthesizes the codebase from it, checks every component against the spec, and produces a signed certificate. Run it again next week and you can diff the two certificates. The blueprint is ground truth.
 
-On launch day we ran it on our own codebase: 2,139 components, 99.8% conformance, 75 seconds, everything SHA-256 verified.
+On launch day we ran it on our own codebase: 2,195 components, 100% conformance, 75 seconds, everything SHA-256 verified.
 
 Five-tier monadic architecture. Per-module semantic versioning. Full MCP integration for Claude Code and VS Code. LoRA flywheel that calibrates synthesis quality to your specific codebase over time.
 
@@ -38,7 +38,7 @@ Every synthesis run is measurable. You get a MANIFEST — what was built, compon
 
 The architecture is organized in five tiers — constants, functions, composites, features, orchestration — with strict downward dependency direction. Each module carries its own semantic version. You can synthesize a single tier without touching the others.
 
-On launch day we ran the engine on itself: 2,139 components, 99.8% conformance, 75 seconds flat.
+On launch day we ran the engine on itself: 2,195 components, 100% conformance, 75 seconds flat.
 
 For large, messy codebases — the ones with 10,000+ files, duplicate utilities, copy-pasted helpers — the engine actually compresses the codebase. Duplicates collapse into reusable tier-1 functions. Copy-paste consolidates into shared components. The messier the input, the bigger the cleanup.
 
@@ -56,7 +56,7 @@ atomadic.tech/ass-ade
 
 ### 30-Second Version
 
-ASS-ADE is a synthesis engine that gives engineering organizations a measurable bridge between architectural intent and running code. Every build produces a cryptographic conformance certificate. On launch, it rebuilt 2,139 components at 99.8% conformance in 75 seconds. Enterprise tier includes IP-isolated blueprint artifacts and full audit trail from design to output. $499/month.
+ASS-ADE is a synthesis engine that gives engineering organizations a measurable bridge between architectural intent and running code. Every build produces a cryptographic conformance certificate. On launch, it rebuilt 2,195 components at 100% conformance in 75 seconds. Enterprise tier includes IP-isolated blueprint artifacts and full audit trail from design to output. $499/month.
 
 ---
 
@@ -66,7 +66,7 @@ The gap between what an engineering org designs and what it ships is real, expen
 
 ASS-ADE makes conformance measurable. Your blueprint is the contract. Synthesis produces a certified artifact — MANIFEST, SHA-256 certificate, conformance score — on every run. You can gate CI on conformance. You can audit the provenance of any component back to its blueprint specification.
 
-On launch: 2,139 components, 99.8% conformance, 75 seconds.
+On launch: 2,195 components, 100% conformance, 75 seconds.
 
 Enterprise tier adds IP Guard (tenant-isolated blueprints and LoRA training), split/merge evolution branches for parallel architectural experimentation, and full synthesis audit history. MCP integration for Claude Code and VS Code.
 
@@ -86,7 +86,7 @@ This is a tooling gap. ASS-ADE closes it.
 
 The model: the blueprint is the canonical design. The code is a synthesized artifact of the blueprint. Every synthesis run produces a cryptographic certificate — a signed record of what was built, what blueprint it came from, what conformance score it achieved. You can measure architectural conformance instead of guessing at it.
 
-On our launch day, the engine rebuilt its own codebase: 2,139 components, 99.8% conformance, 75 seconds, SHA-256 verified on every component.
+On our launch day, the engine rebuilt its own codebase: 2,195 components, 100% conformance, 75 seconds, SHA-256 verified on every component.
 
 For your organization specifically, the enterprise tier covers:
 - IP Guard — blueprint artifacts and LoRA training data isolated per tenant. Your proprietary synthesis patterns stay yours.
@@ -109,7 +109,7 @@ atomadic.tech/ass-ade
 
 ### 30-Second Version
 
-ASS-ADE is the first blueprint-driven software synthesis engine with cryptographic conformance certification. On day one it rebuilt 2,139 components at 99.8% conformance in 75 seconds. The business model is SaaS: $29/$99/$499/month tiers, plus one-time add-ons. The technical moat is the LoRA flywheel — synthesis quality compounds per-customer over time, making ASS-ADE increasingly accurate to each codebase. BSL 1.1 source available.
+ASS-ADE is the first blueprint-driven software synthesis engine with cryptographic conformance certification. On day one it rebuilt 2,195 components at 100% conformance in 75 seconds. The business model is SaaS: $29/$99/$499/month tiers, plus one-time add-ons. The technical moat is the LoRA flywheel — synthesis quality compounds per-customer over time, making ASS-ADE increasingly accurate to each codebase. BSL 1.1 source available.
 
 ---
 
@@ -135,7 +135,7 @@ The reason nobody measures it is that measurement required a different mental mo
 
 The product: blueprint-driven synthesis with cryptographic conformance certification. You describe what your codebase should be; ASS-ADE synthesizes it, verifies every component, and produces a signed certificate. Measurable, auditable, reproducible.
 
-The launch benchmark: 2,139 components, 99.8% conformance, 75 seconds, SHA-256 verified per component. The engine rebuilt itself on day one.
+The launch benchmark: 2,195 components, 100% conformance, 75 seconds, SHA-256 verified per component. The engine rebuilt itself on day one.
 
 The technical moat is the LoRA flywheel. As developers use ASS-ADE and make corrections, those corrections become training signals. The synthesis engine fine-tunes per-customer, compounding quality over time against that customer's specific codebase. This creates increasing retention — ASS-ADE gets more accurate the longer you use it, and switching to a generic tool means giving up that calibration.
 

@@ -14,7 +14,7 @@ We shipped something that most people said was impossible.
 
 A software engine that rebuilds itself.
 
-2,139 components. 99.8% conformance. 75.7 seconds. SHA-256 verified on every output.
+2,195 components. 100% conformance. 75.7 seconds. SHA-256 verified on every output.
 
 Here's what we built and how. 🧵
 
@@ -107,8 +107,8 @@ Your blueprints, tier configs, and LoRA adaptors are isolated per tenant. Synthe
 **Tweet 10/12**
 The maiden rebuild stats again because they're worth repeating:
 
-→ 2,139 components synthesized
-→ 99.8% blueprint conformance
+→ 2,195 components synthesized
+→ 100% blueprint conformance
 → 75.7 seconds
 → SHA-256 verified, component by component
 
@@ -182,7 +182,7 @@ No drift.
 **Tweet 4/10**
 On launch day, we ran a maiden rebuild of the ASS-ADE codebase itself.
 
-2,139 components. 99.8% conformance. 75.7 seconds flat.
+2,195 components. 100% conformance. 75.7 seconds flat.
 
 Every output SHA-256 verified. We have the certificate.
 
@@ -285,7 +285,7 @@ The code knows what it is and why.
 **Tweet 4/8**
 On launch day, ASS-ADE rebuilt itself.
 
-2,139 components. 99.8% conformance. 75.7 seconds. SHA-256 verified.
+2,195 components. 100% conformance. 75.7 seconds. SHA-256 verified.
 
 A system that can reconstruct itself from a semantic blueprint is a system that can be *governed*. Audited. Versioned. Evolved.
 

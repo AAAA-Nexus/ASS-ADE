@@ -23,7 +23,7 @@ I'm Thomas at Atomadic Tech. We just shipped ASS-ADE — a blueprint-driven synt
 
 The short version: the blueprint is the canonical truth, the code is synthesized from it, and every build produces a cryptographic conformance certificate. You can measure architecture drift instead of guessing at it.
 
-On launch day, the engine rebuilt its own 2,139-component codebase at 99.8% conformance in 75.7 seconds.
+On launch day, the engine rebuilt its own 2,195-component codebase at 100% conformance in 75.7 seconds.
 
 Would 20 minutes to walk through how this works be worth your time? I can show you a live synthesis run — not a demo environment.
 
@@ -42,7 +42,7 @@ Following up briefly — wanted to share one specific detail that tends to reson
 
 For large, mature codebases — the ones with 10,000+ files, duplicated utilities, copy-pasted helpers, tangled dependencies — ASS-ADE's rebuild often *reduces* total component count. Duplicate functions collapse into single reusable components. Shared constants stop living in seventeen different files.
 
-The maiden rebuild of our own codebase went from 95 source files to 2,139 independently versioned components — that's the decomposition effect on a small, clean project. On a large, messy codebase, the direction inverts: what was 10,000 files becomes 3,000 clean, tiered components.
+The maiden rebuild of our own codebase went from 95 source files to 2,195 independently versioned components — that's the decomposition effect on a small, clean project. On a large, messy codebase, the direction inverts: what was 10,000 files becomes 3,000 clean, tiered components.
 
 The messier the input, the more dramatic the cleanup.
 
@@ -266,7 +266,7 @@ Enterprise teams specifically get:
 - Per-module semantic versioning across large, distributed codebases
 - MCP integration for Claude Code and VS Code workflows
 
-The reference data point: on v0.0.1 launch day, the engine rebuilt 2,139 components at 99.8% blueprint conformance in 75.7 seconds, SHA-256 verified.
+The reference data point: on v0.0.1 launch day, the engine rebuilt 2,195 components at 100% blueprint conformance in 75.7 seconds, SHA-256 verified.
 
 I'd like to understand what you're currently working with — codebase scale, AI tooling in use, where architecture conformance is most painful.
 

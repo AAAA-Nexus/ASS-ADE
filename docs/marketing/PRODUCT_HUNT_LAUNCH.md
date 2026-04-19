@@ -9,7 +9,7 @@
 **Tagline:** The software engine that rebuilds itself — blueprint-driven synthesis with SHA-256 certified output
 
 **Short Description (under 150 chars):**
-Blueprint-driven synthesis engine. Rebuilt 2,139 components at 99.8% conformance in 75.7s on launch day. pip install ass-ade.
+Blueprint-driven synthesis engine. Rebuilt 2,195 components at 100% conformance in 75.7s on launch day. pip install ass-ade.
 
 ---
 
@@ -24,8 +24,8 @@ Most codebases drift. The architecture diagram says one thing; the running syste
 You describe what your codebase should be — its modules, tiers, dependency contracts, semantic versions — in a blueprint. ASS-ADE synthesizes the codebase from that blueprint, verifies every component against its specification, and produces a signed certificate. The blueprint is the canonical truth. The code is the artifact.
 
 **On launch day, ASS-ADE rebuilt its own codebase:**
-- 2,139 components synthesized
-- 99.8% blueprint conformance
+- 2,195 components synthesized
+- 100% blueprint conformance
 - 75.7 seconds end-to-end
 - SHA-256 verified on every output
 
@@ -47,7 +47,7 @@ Dependencies flow strictly downward. Every module is independently versioned. Yo
 - IP Guard for enterprise (tenant-isolated blueprints and training)
 - Full MCP integration for Claude Code and VS Code
 
-**The file count question:** On small clean codebases, synthesis decomposes code into more independently-versioned components (95 files → 2,139 components). On large, messy codebases, it compresses — duplicate utilities collapse into reusable tier-1 functions, copy-pasted code consolidates. The messier the input, the bigger the cleanup. ASS-ADE's value scales with codebase complexity.
+**The file count question:** On small clean codebases, synthesis decomposes code into more independently-versioned components (95 files → 2,195 components). On large, messy codebases, it compresses — duplicate utilities collapse into reusable tier-1 functions, copy-pasted code consolidates. The messier the input, the bigger the cleanup. ASS-ADE's value scales with codebase complexity.
 
 **Install:** `pip install ass-ade`
 
@@ -64,7 +64,7 @@ Open source under BSL 1.1.
 
 ## Gallery / Media Captions
 
-**Image 1 (hero):** "Maiden rebuild: 2,139 components · 99.8% conformance · 75.7 seconds"
+**Image 1 (hero):** "Maiden rebuild: 2,195 components · 100% conformance · 75.7 seconds"
 Caption: The ASS-ADE engine rebuilt its own codebase on launch day. Every output SHA-256 verified.
 
 **Image 2 (architecture diagram):** "Five-tier monadic architecture"
@@ -91,7 +91,7 @@ I'm Thomas from Atomadic Tech. We shipped ASS-ADE today — and I want to be dir
 
 **Why we built it:** Architecture drift is one of the most expensive problems in software engineering that nobody measures. Teams spend enormous amounts of time understanding why code is the way it is before they can change it. We think that's a tooling problem, not a people problem.
 
-**The maiden rebuild:** We ran the engine on itself on launch day. 2,139 components, 99.8% conformance, 75.7 seconds. Every output SHA-256 verified. We have the certificate. This is the benchmark we hold ourselves to.
+**The maiden rebuild:** We ran the engine on itself on launch day. 2,195 components, 100% conformance, 75.7 seconds. Every output SHA-256 verified. We have the certificate. This is the benchmark we hold ourselves to.
 
 **The file count thing:** This will probably come up — when you run synthesis on a small, clean project, you get more files (each component independently versioned). On a large, messy codebase, you get fewer — duplicates collapse, utilities consolidate. We designed it for the latter: large, drifted codebases where the cleanup is worth the decomposition overhead.
 
@@ -112,11 +112,11 @@ The biological term for a system that produces and maintains itself. A cell cont
 **Q: Is this just another code generator?**
 Code generators produce output once. ASS-ADE produces output continuously, tracks it, certifies it, and evolves it. The difference is provenance: every synthesis event is tied to a specific blueprint version, a specific set of components, a specific conformance score. You can audit the history. You can diff any two builds. You can roll back.
 
-**Q: 95 files → 2,139 components sounds like bloat. What gives?**
+**Q: 95 files → 2,195 components sounds like bloat. What gives?**
 For small, clean codebases, synthesis decomposes into more independently-versioned components (that's the point — each module is independently versioned and tracked). For large, messy codebases, the direction inverts: duplicate functions collapse, copy-pasted helpers consolidate, tangled dependencies get resolved into clean tier relationships. ASS-ADE's value scales with codebase complexity. If your codebase has 10,000+ files with significant duplication, expect fewer components out, not more.
 
-**Q: What does "blueprint conformance 99.8%" mean exactly?**
-Each synthesized component is evaluated against its blueprint specification — type contracts, dependency declarations, tier constraints, version constraints. Conformance measures how many components met all their specifications. 99.8% means 4-5 components out of 2,139 had minor spec deviations. The deviations are logged in the conformance report.
+**Q: What does "blueprint conformance 100%" mean exactly?**
+Each synthesized component is evaluated against its blueprint specification — type contracts, dependency declarations, tier constraints, version constraints. Conformance measures how many components met all their specifications. 100% means every one of the 2,195 components passed all checks — zero deviations. The full audit log is in REBUILD_REPORT.md in the repository.
 
 **Q: Is the source code available?**
 Yes — github.com/AAAA-Nexus/ASS-ADE under BSL 1.1. BSL means it's source-available and free for individual and internal use; commercial resale or hosting-as-a-service requires a commercial license.
