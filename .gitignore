@@ -34,7 +34,9 @@ docs/
 benchmarks/
 blueprints/
 examples/
-scripts/
+scripts/*
+!scripts/__init__.py
+!scripts/lora_train.py
 tools/
 training_data/
 mcp/
