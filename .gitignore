@@ -29,6 +29,8 @@ src/
 tests/
 agents/
 docs/
+!docs/marketing/
+!docs/marketing/**
 benchmarks/
 blueprints/
 examples/
