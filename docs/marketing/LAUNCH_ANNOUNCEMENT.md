@@ -90,6 +90,40 @@ Full docs at [atomadic.tech/ass-ade](https://atomadic.tech/ass-ade). Source at [
 
 Starter plan is $29/month. Pro is $99/month. Enterprise starts at $499/month. If you want to try blueprints before subscribing, the Blueprint Bundle is $19 and the Prompt Pack is $9.
 
+## ASS-CLAW: Multi-Repo Merge Demo (April 2026)
+
+We pushed the engine further: three major open-source projects, merged into a single certified monadic tree in one command.
+
+**Input repos:**
+- **OpenClaw** (361K ⭐) — multi-platform 2D game engine
+- **ClawCode** — Python-heavy CLI platform, 6 circular import cycles, single files over 214 KB
+- **Oh My Claude Code** (30K ⭐) — TypeScript Claude Code config framework
+
+**What happened:**
+```bash
+ass-ade rebuild openclaw clawcode oh-my-claudecode \
+  --output ASS-CLAW --yes --no-forge
+```
+
+| Metric | Result |
+|--------|--------|
+| Input files | 4,106 across 3 repos |
+| Output components | **92,305 classified** |
+| Circular imports | 6 → **0** (dissolved by reconstruction) |
+| Purity violations fixed | **8,257** |
+| Audit pass rate | **100%** |
+| Wall-clock time | **~24 minutes** |
+
+The reentrant rebuild capability — added in the same release — means ASS-CLAW can now be rebuilt again. And again. Each pass re-classifies, re-verifies, and re-certifies the entire tree without any manual intervention.
+
+```bash
+# Rebuild the already-rebuilt tree (new in feat/reentrant-rebuild-fix)
+ass-ade rebuild ./ASS-CLAW --output ./ASS-CLAW-v2
+# 729 source files → 2,399 components, 100% audit, ~4 minutes
+```
+
+This is what infinite evolution loops look like in practice.
+
 ## What's Next
 
 We're not done. The maiden rebuild was proof of concept at scale. The next milestone is continuous rebuild — where the synthesis loop runs on every significant commit, and conformance is a CI gate, not a manual check.

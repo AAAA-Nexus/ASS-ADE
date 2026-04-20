@@ -5,11 +5,18 @@
 ## Show HN Post
 
 **Title:**
-Show HN: ASS-ADE – a software engine that rebuilds itself (2,195 components, 100% conformance, 75.7s)
+Show HN: ASS-ADE – rebuilt itself (2,195 components, 75.7s), then merged 3 OSS repos into 92,305 components (100% audit, 8,257 purity violations fixed)
 
 **Body:**
 
-ASS-ADE (Autopoietic Software Synthesis – Autonomous Development Engine) is a blueprint-driven synthesis engine I've been building. Today it rebuilt its own codebase on launch day: 2,195 components, 100% blueprint conformance, 75.7 seconds, SHA-256 verified per component.
+ASS-ADE (Autopoietic Software Synthesis – Autonomous Development Engine) is a blueprint-driven synthesis engine. It rebuilt its own codebase on launch day (2,195 components, 100% conformance, 75.7s), then we stress-tested the merge-rebuild path on three CLAW-ecosystem repos.
+
+**ASS-CLAW demo (April 2026):**
+- Input: OpenClaw (361K ⭐ game engine), ClawCode (6 circular import cycles, 214 KB monolith files), Oh My Claude Code (30K ⭐ TS framework) — 4,106 files total
+- Output: 92,305 classified components, 0 circular imports, 8,257 purity violations fixed, 100% audit pass, ~24 min wall-clock
+- One command: `ass-ade rebuild openclaw clawcode oh-my-claudecode --output ASS-CLAW --yes --no-forge`
+
+**Reentrant rebuild (new this week):** ASS-ADE can now rebuild its own output. The engine previously skipped tier-named directories (`a0_qk_constants` through `a4_sy_orchestration`) during source scanning, making it impossible to re-ingest a rebuilt tree. That's fixed — tier exclusion is now opt-in via `ASS_ADE_SKIP_TIER_DIRS=1`. We ran `ass-ade rebuild ASS-CLAW --output ASS-CLAW-v2`: 729 source files → 2,399 components, 100% audit, ~4 min. Infinite evolution loops are now possible.
 
 The core idea: the blueprint is the canonical truth, the code is a synthesized artifact. Every synthesis run produces a MANIFEST (what was built), a CERTIFICATE (cryptographic proof), and a conformance score. You can diff two blueprints before synthesizing. You can roll back to any prior blueprint state. You can open parallel evolution branches, synthesize both, and merge the winner.
 

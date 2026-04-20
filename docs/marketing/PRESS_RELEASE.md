@@ -4,9 +4,22 @@
 
 ## Atomadic Tech Launches ASS-ADE v0.0.1: The First Autopoietic Software Synthesis Engine
 
-### Self-Rebuilding Development Engine Reconstructs 2,195 Components at 100% Conformance in 75.7 Seconds on First Run
+### Self-Rebuilding Development Engine Merges Three Major Open-Source Repos Into 92,305 Certified Components — and Then Rebuilds Its Own Output
 
-**April 2026 — Atomadic Tech** today announced the public launch of ASS-ADE (Autopoietic Software Synthesis — Autonomous Development Engine), a blueprint-driven development platform that synthesizes, verifies, and continuously evolves production codebases. On its first maiden rebuild, ASS-ADE reconstructed 2,195 components at 100% blueprint conformance in 75.7 seconds, with every output SHA-256 verified.
+**April 2026 — Atomadic Tech** today announced two milestones for ASS-ADE (Autopoietic Software Synthesis — Autonomous Development Engine): the ASS-CLAW merge-rebuild demo, which consolidated three major open-source repositories (OpenClaw, 361K ⭐; ClawCode; and Oh My Claude Code, 30K ⭐) into a single certified monadic tree of 92,305 components at 100% audit pass rate; and the reentrant rebuild capability, which allows ASS-ADE to rebuild its own previously rebuilt output — enabling infinite evolution loops.
+
+**ASS-CLAW Merge Demo (2026-04-20):**
+- 4,106 input files across 3 repositories
+- 92,305 classified output components
+- 6 circular import cycles dissolved to 0
+- 8,257 purity violations fixed
+- 100% audit pass rate
+- ~24 minutes wall-clock time
+
+**Reentrant Rebuild:**
+The engine previously excluded all tier-named directories from source scanning, making it impossible to re-ingest a rebuilt tree. This fix makes tier exclusion opt-in, unlocking iterative refinement cycles without manual intervention. Proof-of-concept run: ASS-CLAW (729 source files) → ASS-CLAW-v2 (2,399 components, 100% audit, ~4 minutes).
+
+On its first maiden rebuild, ASS-ADE also reconstructed 2,195 of its own components at 100% blueprint conformance in 75.7 seconds, with every output SHA-256 verified.
 
 ASS-ADE is available immediately at [github.com/AAAA-Nexus/ASS-ADE](https://github.com/AAAA-Nexus/ASS-ADE) and via `pip install ass-ade`.
 

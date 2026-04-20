@@ -331,3 +331,90 @@ BSL 1.1. Starter: $29/mo.
 If you're building something that needs to last — this is the foundation.
 
 ---
+
+## Thread 3: ASS-CLAW Merge Demo + Reentrant Rebuild
+
+**Target:** Developers who maintain large/messy codebases, open-source contributors
+**Tone:** "we stress-tested this thing hard"
+
+---
+
+**Tweet 1/8**
+We took three massive open-source repos and pointed ASS-ADE at all of them at once.
+
+OpenClaw (361K ⭐), ClawCode (6 circular import cycles), Oh My Claude Code (30K ⭐).
+
+4,106 files in.
+92,305 certified components out.
+100% audit pass.
+24 minutes.
+
+Here's what that means. 🧵
+
+---
+
+**Tweet 2/8**
+ClawCode had a 214 KB single Python file.
+
+Yes. One file. 214 KB.
+
+ASS-ADE ingested it, decomposed it into semantically distinct units, classified each unit into the right tier, and emitted clean components — all without a human annotating a single line.
+
+---
+
+**Tweet 3/8**
+The engine found 6 circular import cycles across ClawCode's Python layer.
+
+After reconstruction: 0 cycles.
+
+Not patched. Not suppressed. Dissolved — by rebuilding the dependency graph from semantic structure rather than inheriting the mess.
+
+---
+
+**Tweet 4/8**
+8,257 purity violations were fixed during reconstruction.
+
+These are places where logic lived in the wrong tier — a2 code in a3 files, a3 logic in a4 scripts. The rebuild engine re-classifies and re-routes everything according to the five-tier monadic law.
+
+---
+
+**Tweet 5/8**
+Oh My Claude Code is TypeScript. OpenClaw is C++/Swift/Kotlin.
+
+The merge output is Python-first but the semantic models are language-agnostic.
+
+The key insight: the *structure* of what a function does, not what language it's written in, determines which tier it belongs to.
+
+---
+
+**Tweet 6/8**
+Here's the new feature that made this possible: reentrant rebuild.
+
+Previously, the engine skipped tier-named directories (a0_qk_constants, a1_at_functions, etc.) during scanning. That meant you couldn't re-ingest a rebuilt tree.
+
+We fixed that.
+
+---
+
+**Tweet 7/8**
+Proof: we rebuilt ASS-CLAW again.
+
+`ass-ade rebuild ./ASS-CLAW --output ./ASS-CLAW-v2`
+
+729 source files (already tier-structured) → 2,399 components.
+100% audit pass. ~4 minutes.
+
+This is what an infinite evolution loop looks like.
+
+---
+
+**Tweet 8/8**
+Three repos, one rebuild, 92,305 classified components.
+
+`ass-ade rebuild openclaw clawcode oh-my-claudecode --output ASS-CLAW --yes --no-forge`
+
+The engine doesn't care how messy the input is. It produces a clean, certified, tier-structured output every time.
+
+github.com/atomadictech/ass-ade
+
+---
