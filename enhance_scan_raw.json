@@ -1,15 +1,13 @@
 {
   "root": "/home/runner/work/ASS-ADE/ASS-ADE",
-  "total_findings": 52,
+  "total_findings": 40,
   "by_impact": {
-    "high": 20,
-    "medium": 10,
+    "high": 10,
+    "medium": 8,
     "low": 22
   },
   "by_category": {
-    "security": 10,
     "missing_tests": 10,
-    "bare_except": 2,
     "long_function": 8,
     "missing_docs": 8,
     "missing_types": 8,
@@ -18,106 +16,6 @@
   "findings": [
     {
       "id": 1,
-      "category": "security",
-      "title": "Unsafe deserialization via pickle.loads",
-      "description": "Unsafe deserialization via pickle.loads at a1_at_functions/cli.py:7002.",
-      "file": "a1_at_functions/cli.py",
-      "line": 7002,
-      "impact": "high",
-      "effort": "low"
-    },
-    {
-      "id": 2,
-      "category": "security",
-      "title": "Use of eval()",
-      "description": "Use of eval() at a1_at_functions/cli.py:7003.",
-      "file": "a1_at_functions/cli.py",
-      "line": 7003,
-      "impact": "high",
-      "effort": "low"
-    },
-    {
-      "id": 3,
-      "category": "security",
-      "title": "Use of eval()",
-      "description": "Use of eval() at a1_at_functions/dgm_h.py:158.",
-      "file": "a1_at_functions/dgm_h.py",
-      "line": 158,
-      "impact": "high",
-      "effort": "low"
-    },
-    {
-      "id": 4,
-      "category": "security",
-      "title": "Use of exec()",
-      "description": "Use of exec() at a1_at_functions/dgm_h.py:158.",
-      "file": "a1_at_functions/dgm_h.py",
-      "line": 158,
-      "impact": "high",
-      "effort": "low"
-    },
-    {
-      "id": 5,
-      "category": "security",
-      "title": "Unsafe deserialization via pickle.loads",
-      "description": "Unsafe deserialization via pickle.loads at a1_at_functions/enhancer.py:173.",
-      "file": "a1_at_functions/enhancer.py",
-      "line": 173,
-      "impact": "high",
-      "effort": "low"
-    },
-    {
-      "id": 6,
-      "category": "security",
-      "title": "Use of eval()",
-      "description": "Use of eval() at a1_at_functions/enhancer.py:174.",
-      "file": "a1_at_functions/enhancer.py",
-      "line": 174,
-      "impact": "high",
-      "effort": "low"
-    },
-    {
-      "id": 7,
-      "category": "security",
-      "title": "Use of exec()",
-      "description": "Use of exec() at a1_at_functions/enhancer.py:175.",
-      "file": "a1_at_functions/enhancer.py",
-      "line": 175,
-      "impact": "high",
-      "effort": "low"
-    },
-    {
-      "id": 8,
-      "category": "security",
-      "title": "Use of eval()",
-      "description": "Use of eval() at a1_at_functions/interpreter.py:1741.",
-      "file": "a1_at_functions/interpreter.py",
-      "line": 1741,
-      "impact": "high",
-      "effort": "low"
-    },
-    {
-      "id": 9,
-      "category": "security",
-      "title": "Use of exec()",
-      "description": "Use of exec() at a1_at_functions/interpreter.py:1741.",
-      "file": "a1_at_functions/interpreter.py",
-      "line": 1741,
-      "impact": "high",
-      "effort": "low"
-    },
-    {
-      "id": 10,
-      "category": "security",
-      "title": "Assertions used for control flow",
-      "description": "assert used for control flow at src/ass_ade/agent/audit_questions.py:63.",
-      "file": "src/ass_ade/agent/audit_questions.py",
-      "line": 63,
-      "impact": "high",
-      "effort": "low"
-    },
-    {
-      "id": 11,
       "category": "missing_tests",
       "title": "No tests for alphaverus.py",
       "description": "src/ass_ade/agent/alphaverus.py has no corresponding test file under tests/.",
@@ -127,7 +25,7 @@
       "effort": "medium"
     },
     {
-      "id": 12,
+      "id": 2,
       "category": "missing_tests",
       "title": "No tests for atlas.py",
       "description": "src/ass_ade/agent/atlas.py has no corresponding test file under tests/.",
@@ -137,7 +35,7 @@
       "effort": "medium"
     },
     {
-      "id": 13,
+      "id": 3,
       "category": "missing_tests",
       "title": "No tests for audit_questions.py",
       "description": "src/ass_ade/agent/audit_questions.py has no corresponding test file under tests/.",
@@ -147,7 +45,7 @@
       "effort": "medium"
     },
     {
-      "id": 14,
+      "id": 4,
       "category": "missing_tests",
       "title": "No tests for bas.py",
       "description": "src/ass_ade/agent/bas.py has no corresponding test file under tests/.",
@@ -157,17 +55,7 @@
       "effort": "medium"
     },
     {
-      "id": 15,
-      "category": "missing_tests",
-      "title": "No tests for capabilities.py",
-      "description": "src/ass_ade/agent/capabilities.py has no corresponding test file under tests/.",
-      "file": "src/ass_ade/agent/capabilities.py",
-      "line": null,
-      "impact": "high",
-      "effort": "medium"
-    },
-    {
-      "id": 16,
+      "id": 5,
       "category": "missing_tests",
       "title": "No tests for cie.py",
       "description": "src/ass_ade/agent/cie.py has no corresponding test file under tests/.",
@@ -177,7 +65,7 @@
       "effort": "medium"
     },
     {
-      "id": 17,
+      "id": 6,
       "category": "missing_tests",
       "title": "No tests for context.py",
       "description": "src/ass_ade/agent/context.py has no corresponding test file under tests/.",
@@ -187,7 +75,7 @@
       "effort": "medium"
     },
     {
-      "id": 18,
+      "id": 7,
       "category": "missing_tests",
       "title": "No tests for conversation.py",
       "description": "src/ass_ade/agent/conversation.py has no corresponding test file under tests/.",
@@ -197,7 +85,7 @@
       "effort": "medium"
     },
     {
-      "id": 19,
+      "id": 8,
       "category": "missing_tests",
       "title": "No tests for dgm_h.py",
       "description": "src/ass_ade/agent/dgm_h.py has no corresponding test file under tests/.",
@@ -207,7 +95,7 @@
       "effort": "medium"
     },
     {
-      "id": 20,
+      "id": 9,
       "category": "missing_tests",
       "title": "No tests for edee.py",
       "description": "src/ass_ade/agent/edee.py has no corresponding test file under tests/.",
@@ -217,27 +105,17 @@
       "effort": "medium"
     },
     {
-      "id": 21,
-      "category": "bare_except",
-      "title": "Bare except clause",
-      "description": "Bare except: in a1_at_functions/cli.py:7005 catches all exceptions including SystemExit.",
-      "file": "a1_at_functions/cli.py",
-      "line": 7005,
-      "impact": "medium",
-      "effort": "low"
+      "id": 10,
+      "category": "missing_tests",
+      "title": "No tests for exif.py",
+      "description": "src/ass_ade/agent/exif.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/agent/exif.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
     },
     {
-      "id": 22,
-      "category": "bare_except",
-      "title": "Bare except clause",
-      "description": "Bare except: in src/ass_ade/cli.py:7005 catches all exceptions including SystemExit.",
-      "file": "src/ass_ade/cli.py",
-      "line": 7005,
-      "impact": "medium",
-      "effort": "low"
-    },
-    {
-      "id": 23,
+      "id": 11,
       "category": "long_function",
       "title": "Long function: materialize_plan",
       "description": "materialize_plan spans ~153 lines in a0_qk_constants/schema_materializer.py.",
@@ -247,7 +125,7 @@
       "effort": "medium"
     },
     {
-      "id": 24,
+      "id": 12,
       "category": "long_function",
       "title": "Long function: validate_rebuild",
       "description": "validate_rebuild spans ~83 lines in a0_qk_constants/schema_materializer.py.",
@@ -257,7 +135,7 @@
       "effort": "medium"
     },
     {
-      "id": 25,
+      "id": 13,
       "category": "long_function",
       "title": "Long function: _audit_structure",
       "description": "_audit_structure spans ~73 lines in a0_qk_constants/schema_materializer.py.",
@@ -267,7 +145,7 @@
       "effort": "medium"
     },
     {
-      "id": 26,
+      "id": 14,
       "category": "long_function",
       "title": "Long function: agent_chat",
       "description": "agent_chat spans ~64 lines in a1_at_functions/agent.py.",
@@ -277,7 +155,7 @@
       "effort": "medium"
     },
     {
-      "id": 27,
+      "id": 15,
       "category": "long_function",
       "title": "Long function: render_capability_prompt_section",
       "description": "render_capability_prompt_section spans ~86 lines in a1_at_functions/capabilities.py.",
@@ -287,7 +165,7 @@
       "effort": "medium"
     },
     {
-      "id": 28,
+      "id": 16,
       "category": "long_function",
       "title": "Long function: build_atomadic_intent_prompt",
       "description": "build_atomadic_intent_prompt spans ~73 lines in a1_at_functions/capabilities.py.",
@@ -297,7 +175,7 @@
       "effort": "medium"
     },
     {
-      "id": 29,
+      "id": 17,
       "category": "long_function",
       "title": "Long function: doctor",
       "description": "doctor spans ~66 lines in a1_at_functions/cli.py.",
@@ -307,7 +185,7 @@
       "effort": "medium"
     },
     {
-      "id": 30,
+      "id": 18,
       "category": "long_function",
       "title": "Long function: credits",
       "description": "credits spans ~55 lines in a1_at_functions/cli.py.",
@@ -317,7 +195,7 @@
       "effort": "medium"
     },
     {
-      "id": 31,
+      "id": 19,
       "category": "missing_docs",
       "title": "Missing docstring: Lean4Spec",
       "description": "Lean4Spec in a0_qk_constants/proofbridge.py has no docstring.",
@@ -327,7 +205,7 @@
       "effort": "low"
     },
     {
-      "id": 32,
+      "id": 20,
       "category": "missing_docs",
       "title": "Missing docstring: ProofBridge",
       "description": "ProofBridge in a0_qk_constants/proofbridge.py has no docstring.",
@@ -337,7 +215,7 @@
       "effort": "low"
     },
     {
-      "id": 33,
+      "id": 21,
       "category": "missing_docs",
       "title": "Missing docstring: translate",
       "description": "translate in a0_qk_constants/proofbridge.py has no docstring.",
@@ -347,7 +225,7 @@
       "effort": "low"
     },
     {
-      "id": 34,
+      "id": 22,
       "category": "missing_docs",
       "title": "Missing docstring: run",
       "description": "run in a0_qk_constants/proofbridge.py has no docstring.",
@@ -357,7 +235,7 @@
       "effort": "low"
     },
     {
-      "id": 35,
+      "id": 23,
       "category": "missing_docs",
       "title": "Missing docstring: report",
       "description": "report in a0_qk_constants/proofbridge.py has no docstring.",
@@ -367,7 +245,7 @@
       "effort": "low"
     },
     {
-      "id": 36,
+      "id": 24,
       "category": "missing_docs",
       "title": "Missing docstring: materialize_plan",
       "description": "materialize_plan in a0_qk_constants/schema_materializer.py has no docstring.",
@@ -377,7 +255,7 @@
       "effort": "low"
     },
     {
-      "id": 37,
+      "id": 25,
       "category": "missing_docs",
       "title": "Missing docstring: emit_certificate",
       "description": "emit_certificate in a0_qk_constants/schema_materializer.py has no docstring.",
@@ -387,7 +265,7 @@
       "effort": "low"
     },
     {
-      "id": 38,
+      "id": 26,
       "category": "missing_docs",
       "title": "Missing docstring: for_model",
       "description": "for_model in a0_qk_constants/tokens.py has no docstring.",
@@ -397,7 +275,7 @@
       "effort": "low"
     },
     {
-      "id": 39,
+      "id": 27,
       "category": "missing_types",
       "title": "Missing return type hint: materialize_plan",
       "description": "materialize_plan in a0_qk_constants/schema_materializer.py has no return type annotation.",
@@ -407,7 +285,7 @@
       "effort": "low"
     },
     {
-      "id": 40,
+      "id": 28,
       "category": "missing_types",
       "title": "Missing return type hint: emit_certificate",
       "description": "emit_certificate in a0_qk_constants/schema_materializer.py has no return type annotation.",
@@ -417,7 +295,7 @@
       "effort": "low"
     },
     {
-      "id": 41,
+      "id": 29,
       "category": "missing_types",
       "title": "Missing return type hint: messages_to_evict",
       "description": "messages_to_evict in a0_qk_constants/tokens.py has no return type annotation.",
@@ -427,7 +305,7 @@
       "effort": "low"
     },
     {
-      "id": 42,
+      "id": 30,
       "category": "missing_types",
       "title": "Missing return type hint: estimate_conversation",
       "description": "estimate_conversation in a0_qk_constants/tokens.py has no return type annotation.",
@@ -437,7 +315,7 @@
       "effort": "low"
     },
     {
-      "id": 43,
+      "id": 31,
       "category": "missing_types",
       "title": "Missing return type hint: a2a_validate",
       "description": "a2a_validate in a1_at_functions/a2a.py has no return type annotation.",
@@ -447,7 +325,7 @@
       "effort": "low"
     },
     {
-      "id": 44,
+      "id": 32,
       "category": "missing_types",
       "title": "Missing return type hint: a2a_negotiate",
       "description": "a2a_negotiate in a1_at_functions/a2a.py has no return type annotation.",
@@ -457,7 +335,7 @@
       "effort": "low"
     },
     {
-      "id": 45,
+      "id": 33,
       "category": "missing_types",
       "title": "Missing return type hint: a2a_discover",
       "description": "a2a_discover in a1_at_functions/a2a.py has no return type annotation.",
@@ -467,7 +345,7 @@
       "effort": "low"
     },
     {
-      "id": 46,
+      "id": 34,
       "category": "missing_types",
       "title": "Missing return type hint: agent_chat",
       "description": "agent_chat in a1_at_functions/agent.py has no return type annotation.",
@@ -477,7 +355,7 @@
       "effort": "low"
     },
     {
-      "id": 47,
+      "id": 35,
       "category": "technical_debt",
       "title": "Technical debt marker: # TODO",
       "description": "# TODO: add error handling",
@@ -487,7 +365,7 @@
       "effort": "medium"
     },
     {
-      "id": 48,
+      "id": 36,
       "category": "technical_debt",
       "title": "Technical debt marker: # FIXME",
       "description": "# FIXME: this is slow",
@@ -497,17 +375,17 @@
       "effort": "medium"
     },
     {
-      "id": 49,
+      "id": 37,
       "category": "technical_debt",
       "title": "Technical debt marker: # TODO",
       "description": "markers = (\"# TODO\", \"# FIXME\", \"# HACK\", \"# XXX\")",
       "file": "a1_at_functions/enhancer.py",
-      "line": 297,
+      "line": 304,
       "impact": "low",
       "effort": "medium"
     },
     {
-      "id": 50,
+      "id": 38,
       "category": "technical_debt",
       "title": "Technical debt marker: # TODO",
       "description": "can_stream = isinstance(self._provider, OpenAICompatibleProvider)  # TODO: implement real streaming",
@@ -517,7 +395,7 @@
       "effort": "medium"
     },
     {
-      "id": 51,
+      "id": 39,
       "category": "technical_debt",
       "title": "Technical debt marker: # TODO",
       "description": "pass  # TODO: implement real streaming \u2014 currently emits single 'done' event",
@@ -527,7 +405,7 @@
       "effort": "medium"
     },
     {
-      "id": 52,
+      "id": 40,
       "category": "technical_debt",
       "title": "Technical debt marker: # TODO",
       "description": "\"code\": f\"# TODO unverified synthesis for: {spec[:120]}\\npass\\n\",",
@@ -537,5 +415,5 @@
       "effort": "medium"
     }
   ],
-  "scanned_files": 191
+  "scanned_files": 303
 }
