@@ -186,58 +186,62 @@ jobs:
       - name: Create PR
         env:
           GH_TOKEN: ${{ secrets.AAAA_NEXUS_OWNER_TOKEN || secrets.GITHUB_TOKEN }}
+          CYCLE_NUM: ${{ env.CYCLE_NUM }}
+          EVOLUTION_LEVEL: ${{ env.EVOLUTION_LEVEL }}
+          ENHANCEMENT: ${{ env.ENHANCEMENT }}
+          NEW_VERSION: ${{ env.NEW_VERSION }}
+          IMPROVEMENT_DELTA: ${{ env.IMPROVEMENT_DELTA }}
         run: |
-          SCAN_SUMMARY=$(cat enhance_scan.json 2>/dev/null | python3 -c "
-          import json, sys
+          python3 - << 'PYEOF'
+          import json, os, subprocess
+          from datetime import datetime, timezone
+
+          cycle = os.environ.get('CYCLE_NUM', '1')
+          level = os.environ.get('EVOLUTION_LEVEL', '1')
+          enhancement = os.environ.get('ENHANCEMENT', 'unknown')
+          version = os.environ.get('NEW_VERSION', '0.3.0')
+          delta = os.environ.get('IMPROVEMENT_DELTA', '0')
+
+          level_descs = {'1': 'single enhancement', '2': 'multi-apply top 3', '3': 'blueprint+apply', '4': 'deep-area top 5'}
+          level_desc = level_descs.get(level, 'unknown')
+
           try:
-              d = json.load(sys.stdin)
+              d = json.load(open('enhance_scan.json'))
               findings = d.get('findings', [])
-              lines = [f'- {o[\"category\"]} in \`{o[\"file\"]}\`' for o in findings[:10]]
-              print('\n'.join(lines) if lines else 'No findings')
-          except:
-              print('scan unavailable')
-          " 2>&1 || echo "scan unavailable")
+              scan = '\n'.join([f"- {o.get('category','?')} in {o.get('file','?')}" for o in findings[:10]]) or 'No findings'
+          except Exception:
+              scan = 'scan unavailable'
 
-          RECON_BEFORE=$(cat recon_before.json 2>/dev/null | python3 -c "
-          import json, sys
-          try:
-              d = json.load(sys.stdin)
-              print(f'{d.get(\"total_py_files\",0)} py files, {d.get(\"manifest_components\",0)} components')
-          except:
-              print('unavailable')
-          " 2>&1 || echo "unavailable")
+          def recon_summary(fname):
+              try:
+                  d = json.load(open(fname))
+                  return f"{d.get('total_py_files',0)} py files, {d.get('manifest_components',0)} components"
+              except Exception:
+                  return 'unavailable'
 
-          RECON_AFTER=$(cat recon_after.json 2>/dev/null | python3 -c "
-          import json, sys
-          try:
-              d = json.load(sys.stdin)
-              print(f'{d.get(\"total_py_files\",0)} py files, {d.get(\"manifest_components\",0)} components')
-          except:
-              print('unavailable')
-          " 2>&1 || echo "unavailable")
+          now = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')
+          body = f"""Auto-Evolution Cycle #{cycle} -- {now}
 
-          LEVEL_DESC=$(python3 -c "
-          descs = {'1': 'single enhancement', '2': 'multi-apply top 3', '3': 'blueprint-design + apply', '4': 'deep-area top 5'}
-          print(descs.get('${{ env.EVOLUTION_LEVEL }}', 'unknown'))
-          " 2>&1 || echo "unknown")
+          Level: {level} -- {level_desc}
+          Version bump: v{version}
+          Enhancement applied: {enhancement}
+          Improvement delta: {delta}
+
+          Enhancement scan (top opportunities)
+          {scan}
+
+          Before: {recon_summary('recon_before.json')}
+          After: {recon_summary('recon_after.json')}
+
+          See diff for exact file changes. Log and version always update each cycle."""
+
+          with open('/tmp/pr_body.txt', 'w') as f:
+              f.write(body)
+          print('PR body written')
+          PYEOF
 
           gh pr create \
-            --title "evolution(L${{ env.EVOLUTION_LEVEL }}): ${{ env.ENHANCEMENT }} (v${{ env.NEW_VERSION }})" \
-            --body "## Auto-Evolution Cycle #${{ env.CYCLE_NUM }} -- $(date -u '+%Y-%m-%d %H:%M UTC')
-
-**Level:** ${{ env.EVOLUTION_LEVEL }} -- ${LEVEL_DESC}
-**Version bump:** v${{ env.NEW_VERSION }}
-**Enhancement applied:** ${{ env.ENHANCEMENT }}
-**Improvement delta:** ${{ env.IMPROVEMENT_DELTA }}
-
-## Enhancement scan (top opportunities)
-${SCAN_SUMMARY}
-
-## Before / After
-- Before: ${RECON_BEFORE}
-- After: ${RECON_AFTER}
-
-## What changed
-See diff for exact file changes. Log and version always update each cycle." \
+            --title "evolution(L${EVOLUTION_LEVEL}): ${ENHANCEMENT} (v${NEW_VERSION})" \
+            --body-file /tmp/pr_body.txt \
             --head "${{ env.BRANCH }}" \
             --base "main" || echo "PR creation failed (may already exist)"
