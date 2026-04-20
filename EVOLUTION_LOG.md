@@ -21,3 +21,11 @@ Each entry is added by the auto-evolve workflow on every merged PR.
 **Python files changed:** 0
 0
 **Version:** 0.3.1
+
+## Evolution #17 [FEATURES] -- 2026-04-20 14:59 UTC
+**Enhancement:** missing_tests in src/ass_ade/agent/alphaverus.py
+**Applied:** 2 fixes
+**Design goal:** improve: missing_tests in src/ass_ade/agent/alphaverus.py, src/ass_ade/agent/atlas.py
+**Lane:** features -- missing docs, technical debt, new capabilities
+**Personality:** creative/additive (top 2 per cycle)
+**Python files changed:** 0
