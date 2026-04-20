@@ -11,6 +11,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       - uses: actions/setup-python@v5
         with:
@@ -66,15 +67,16 @@ jobs:
           echo "TOTAL_FOUND=$TOTAL_FOUND" >> $GITHUB_ENV
           echo "Cycle $CYCLE_NUM level $LEVEL total_found $TOTAL_FOUND"
 
-      - name: Create evolution branch
+      - name: Configure git credentials
+        env:
+          PAT: ${{ secrets.AAAA_NEXUS_OWNER_TOKEN }}
         run: |
-          # Configure git to use PAT for push operations
           git config user.name "ASS-ADE Auto-Evolve"
           git config user.email "evolve@atomadic.tech"
-          PAT="${{ secrets.AAAA_NEXUS_OWNER_TOKEN }}"
-          if [ -n "$PAT" ]; then
-            git remote set-url origin "https://x-access-token:${PAT}@github.com/AAAA-Nexus/ASS-ADE.git"
-          fi
+          git remote set-url origin "https://x-access-token:${PAT}@github.com/AAAA-Nexus/ASS-ADE.git"
+
+      - name: Create evolution branch
+        run: |
           BRANCH="auto-evolve/$(date +%Y%m%d-%H%M)"
           git checkout -b $BRANCH
           echo "BRANCH=$BRANCH" >> $GITHUB_ENV
