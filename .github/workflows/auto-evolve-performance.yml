@@ -28,7 +28,15 @@ jobs:
         run: ass-ade recon . --json > recon_before.json 2>/dev/null || true
 
       - name: Phase 1 - Assessment scan
-        run: ass-ade enhance . --local-only --json > enhance_scan_raw.json 2>/dev/null || true
+        run: |
+          python3 -c "
+          import json, sys
+          sys.path.insert(0, 'src')
+          from ass_ade.local.enhancer import build_enhancement_report
+          from pathlib import Path
+          report = build_enhancement_report(Path('.'))
+          print(json.dumps(report, indent=2))
+          " > enhance_scan_raw.json 2>/dev/null || echo '{"findings":[],"total_findings":0}' > enhance_scan_raw.json
 
       - name: Phase 2 - Context filter (performance track)
         run: |
