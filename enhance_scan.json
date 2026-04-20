@@ -20,9 +20,9 @@
       "id": 1,
       "category": "security",
       "title": "Unsafe deserialization via pickle.loads",
-      "description": "Unsafe deserialization via pickle.loads at a1_at_functions/cli.py:7002.",
-      "file": "a1_at_functions/cli.py",
-      "line": 7002,
+      "description": "Unsafe deserialization via pickle.loads at .ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/cli.py:7025.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/cli.py",
+      "line": 7025,
       "impact": "high",
       "effort": "low"
     },
@@ -30,9 +30,9 @@
       "id": 2,
       "category": "security",
       "title": "Use of eval()",
-      "description": "Use of eval() at a1_at_functions/cli.py:7003.",
-      "file": "a1_at_functions/cli.py",
-      "line": 7003,
+      "description": "Use of eval() at .ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/cli.py:7026.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/cli.py",
+      "line": 7026,
       "impact": "high",
       "effort": "low"
     },
@@ -40,8 +40,8 @@
       "id": 3,
       "category": "security",
       "title": "Use of eval()",
-      "description": "Use of eval() at a1_at_functions/dgm_h.py:158.",
-      "file": "a1_at_functions/dgm_h.py",
+      "description": "Use of eval() at .ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/dgm_h.py:158.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/dgm_h.py",
       "line": 158,
       "impact": "high",
       "effort": "low"
@@ -50,8 +50,8 @@
       "id": 4,
       "category": "security",
       "title": "Use of exec()",
-      "description": "Use of exec() at a1_at_functions/dgm_h.py:158.",
-      "file": "a1_at_functions/dgm_h.py",
+      "description": "Use of exec() at .ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/dgm_h.py:158.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/dgm_h.py",
       "line": 158,
       "impact": "high",
       "effort": "low"
@@ -60,8 +60,8 @@
       "id": 5,
       "category": "security",
       "title": "Unsafe deserialization via pickle.loads",
-      "description": "Unsafe deserialization via pickle.loads at a1_at_functions/enhancer.py:173.",
-      "file": "a1_at_functions/enhancer.py",
+      "description": "Unsafe deserialization via pickle.loads at .ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/enhancer.py:173.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/enhancer.py",
       "line": 173,
       "impact": "high",
       "effort": "low"
@@ -70,8 +70,8 @@
       "id": 6,
       "category": "security",
       "title": "Use of eval()",
-      "description": "Use of eval() at a1_at_functions/enhancer.py:174.",
-      "file": "a1_at_functions/enhancer.py",
+      "description": "Use of eval() at .ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/enhancer.py:174.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/enhancer.py",
       "line": 174,
       "impact": "high",
       "effort": "low"
@@ -80,8 +80,8 @@
       "id": 7,
       "category": "security",
       "title": "Use of exec()",
-      "description": "Use of exec() at a1_at_functions/enhancer.py:175.",
-      "file": "a1_at_functions/enhancer.py",
+      "description": "Use of exec() at .ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/enhancer.py:175.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/enhancer.py",
       "line": 175,
       "impact": "high",
       "effort": "low"
@@ -90,8 +90,8 @@
       "id": 8,
       "category": "security",
       "title": "Use of eval()",
-      "description": "Use of eval() at a1_at_functions/interpreter.py:1741.",
-      "file": "a1_at_functions/interpreter.py",
+      "description": "Use of eval() at .ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/interpreter.py:1741.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/interpreter.py",
       "line": 1741,
       "impact": "high",
       "effort": "low"
@@ -100,8 +100,8 @@
       "id": 9,
       "category": "security",
       "title": "Use of exec()",
-      "description": "Use of exec() at a1_at_functions/interpreter.py:1741.",
-      "file": "a1_at_functions/interpreter.py",
+      "description": "Use of exec() at .ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/interpreter.py:1741.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/interpreter.py",
       "line": 1741,
       "impact": "high",
       "effort": "low"
@@ -109,10 +109,10 @@
     {
       "id": 10,
       "category": "security",
-      "title": "Assertions used for control flow",
-      "description": "assert used for control flow at src/ass_ade/agent/audit_questions.py:63.",
-      "file": "src/ass_ade/agent/audit_questions.py",
-      "line": 63,
+      "title": "Unsafe deserialization via pickle.loads",
+      "description": "Unsafe deserialization via pickle.loads at a1_at_functions/cli.py:7002.",
+      "file": "a1_at_functions/cli.py",
+      "line": 7002,
       "impact": "high",
       "effort": "low"
     },
@@ -120,9 +120,9 @@
       "id": 21,
       "category": "bare_except",
       "title": "Bare except clause",
-      "description": "Bare except: in a1_at_functions/cli.py:7005 catches all exceptions including SystemExit.",
-      "file": "a1_at_functions/cli.py",
-      "line": 7005,
+      "description": "Bare except: in .ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/cli.py:7028 catches all exceptions including SystemExit.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/cli.py",
+      "line": 7028,
       "impact": "medium",
       "effort": "low"
     },
@@ -130,12 +130,12 @@
       "id": 22,
       "category": "bare_except",
       "title": "Bare except clause",
-      "description": "Bare except: in src/ass_ade/cli.py:7005 catches all exceptions including SystemExit.",
+      "description": "Bare except: in src/ass_ade/cli.py:7043 catches all exceptions including SystemExit.",
       "file": "src/ass_ade/cli.py",
-      "line": 7005,
+      "line": 7043,
       "impact": "medium",
       "effort": "low"
     }
   ],
-  "scanned_files": 191
+  "scanned_files": 405
 }

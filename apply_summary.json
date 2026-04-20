@@ -1,0 +1,7 @@
+{
+  "lane": "security",
+  "applied": [],
+  "skipped": [
+    "security in .ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/cli.py"
+  ]
+}
