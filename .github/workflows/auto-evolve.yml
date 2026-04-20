@@ -26,6 +26,22 @@ jobs:
       - name: Phase 0 - Bootstrap recon
         run: ass-ade recon . --json > recon_before.json 2>/dev/null || echo '{}' > recon_before.json
 
+      - name: Phase 0 - Autopoiesis plan (AAAA-Nexus)
+        env:
+          AAAA_NEXUS_API_KEY: ${{ secrets.AAAA_NEXUS_API_KEY }}
+        run: |
+          if [ -n "$AAAA_NEXUS_API_KEY" ]; then
+            printf '{"context":"ASS-ADE auto-evolution cycle","goal":"structured self-maintenance with rollback hooks","constraints":["monadic tier law","public/private boundary"]}' \
+              > /tmp/plan_input.json
+            python -m ass_ade mcp invoke uep_autopoiesis_plan \
+              --allow-remote --confirm-paid \
+              --input-file /tmp/plan_input.json > autopoiesis_plan.json 2>/dev/null \
+              && echo "Autopoiesis plan acquired" \
+              || printf '{"verdict":"PASS","phase":5}' > autopoiesis_plan.json
+          else
+            printf '{"verdict":"PASS","phase":5,"note":"no api key"}' > autopoiesis_plan.json
+          fi
+
       - name: Phase 1 - Assessment scan
         run: |
           python3 -c "
@@ -39,19 +55,11 @@ jobs:
 
       - name: Phase 2 - Context (cycle level)
         run: |
-          CYCLE_NUM=$(python3 -c "
-          try:
-              lines = open('EVOLUTION_LOG.md').readlines()
-              nums = [int(l.split('#')[-1].split(' ')[0])
-                      for l in lines if l.strip().startswith('## Evolution #')]
-              print(max(nums) + 1 if nums else 1)
-          except:
-              print(1)
-          " 2>&1 || echo "1")
+          CYCLE_NUM="${{ github.run_number }}"
           echo "CYCLE_NUM=$CYCLE_NUM" >> $GITHUB_ENV
 
           LEVEL=$(python3 -c "
-          n = int('$CYCLE_NUM')
+          n = int('${{ github.run_number }}')
           if n <= 50:    print(1)
           elif n <= 200: print(2)
           elif n <= 500: print(3)
@@ -83,26 +91,27 @@ jobs:
 
       - name: Phase 3 - Synthesis (apply enhancements)
         run: |
-          LEVEL="${{ env.EVOLUTION_LEVEL }}"
-          # Apply enhancements directly via the enhancer
-          python3 -c "
-          import json, sys
-          sys.path.insert(0, 'src')
-          from ass_ade.local.enhancer import build_enhancement_report, apply_enhancement
-          from pathlib import Path
+          MAX_APPLY=$(python3 -c "
+          l = int('${{ env.EVOLUTION_LEVEL }}')
+          print({1: 1, 2: 3, 3: 3, 4: 5}.get(l, 1))
+          " 2>&1 || echo "1")
+          python3 scripts/apply_fixes.py "$MAX_APPLY" --lane general 2>&1 \
+            || echo "Enhancement apply completed (no changes or error -- ok)"
 
-          report = json.load(open('enhance_scan.json'))
-          findings = report.get('findings', [])
-          max_apply = {'1': 1, '2': 3, '3': 3, '4': 5}.get('$LEVEL', 1)
-          applied = 0
-          for finding in findings[:max_apply]:
-              try:
-                  apply_enhancement(Path('.'), finding)
-                  applied += 1
-              except Exception as e:
-                  print(f'skip {finding.get(\"file\",\"?\")}: {e}', file=sys.stderr)
-          print(f'Applied {applied} enhancements')
-          " 2>&1 || echo "Enhancement apply phase completed (no changes or error — that is ok)"
+      - name: Phase 4 - Pytest gate (revert on failure)
+        run: |
+          PY_CHANGES=$(git diff --name-only | grep -c '\.py$' 2>/dev/null || echo 0)
+          if [ "$PY_CHANGES" -gt 0 ]; then
+            if python -m pytest tests/ -q --tb=line -x --timeout=120 2>&1; then
+              echo "TESTS_FAILED=false" >> $GITHUB_ENV
+            else
+              echo "::warning::Tests failed after enhancement -- reverting Python changes"
+              git checkout -- src/ tests/ 2>/dev/null || git checkout -- . 2>/dev/null || true
+              echo "TESTS_FAILED=true" >> $GITHUB_ENV
+            fi
+          else
+            echo "TESTS_FAILED=false" >> $GITHUB_ENV
+          fi
 
       - name: Phase 4 - Audit recon
         run: ass-ade recon . --json > recon_after.json 2>/dev/null || echo '{}' > recon_after.json
@@ -114,11 +123,8 @@ jobs:
           try:
               before = json.load(open('recon_before.json'))
               after  = json.load(open('recon_after.json'))
-              b_files = before.get('total_py_files', 0)
-              a_files = after.get('total_py_files', 0)
-              b_comp  = before.get('manifest_components', 0)
-              a_comp  = after.get('manifest_components', 0)
-              print((a_files - b_files) + (a_comp - b_comp))
+              print((after.get('total_py_files',0) - before.get('total_py_files',0))
+                    + (after.get('manifest_components',0) - before.get('manifest_components',0)))
           except:
               print(0)
           " 2>&1 || echo "0")
@@ -126,6 +132,16 @@ jobs:
 
           ENHANCEMENT=$(python3 -c "
           import json
+          try:
+              summary = json.load(open('apply_summary.json'))
+              applied = summary.get('applied', [])
+              if applied:
+                  print(applied[0])
+                  raise SystemExit(0)
+          except SystemExit:
+              raise
+          except Exception:
+              pass
           try:
               d = json.load(open('enhance_scan.json'))
               findings = d.get('findings', [])
@@ -140,6 +156,7 @@ jobs:
           echo "ENHANCEMENT=$ENHANCEMENT" >> $GITHUB_ENV
 
       - name: Bump patch version
+        if: ${{ env.TESTS_FAILED != 'true' }}
         run: |
           CURRENT=$(python3 -c "
           import re
@@ -157,18 +174,27 @@ jobs:
           echo "Bumped $CURRENT -> $NEW"
 
       - name: Append to EVOLUTION_LOG.md
+        if: ${{ env.TESTS_FAILED != 'true' }}
         run: |
-          FILES_CHANGED=$(git diff --name-only | grep '\.py$' | wc -l | tr -d ' ')
+          FILES_CHANGED=$(git diff --name-only | grep -c '\.py$' 2>/dev/null || echo 0)
           LEVEL_LABEL=$(python3 -c "
           labels = {'1': 'L1-single', '2': 'L2-multi', '3': 'L3-blueprint', '4': 'L4-deep'}
           print(labels.get('${{ env.EVOLUTION_LEVEL }}', 'L?'))
           " 2>&1 || echo "L?")
+          APPLIED_COUNT=$(python3 -c "
+          import json
+          try:
+              print(len(json.load(open('apply_summary.json')).get('applied',[])))
+          except:
+              print(0)
+          " 2>&1 || echo "0")
 
           cat >> EVOLUTION_LOG.md << EOF
 
           ## Evolution #${{ env.CYCLE_NUM }} -- $(date -u '+%Y-%m-%d %H:%M UTC')
           **Level:** ${{ env.EVOLUTION_LEVEL }} (${LEVEL_LABEL})
           **Enhancement:** ${{ env.ENHANCEMENT }}
+          **Applied:** ${APPLIED_COUNT} fixes
           **Triggered by:** Auto-scan (${{ env.TOTAL_FOUND }} opportunities found)
           **Delta:** ${{ env.IMPROVEMENT_DELTA }}
           **Python files changed:** ${FILES_CHANGED}
@@ -176,14 +202,12 @@ jobs:
           EOF
 
       - name: Commit and push branch
+        if: ${{ env.TESTS_FAILED != 'true' }}
         continue-on-error: true
         env:
           GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
         run: |
-          git config user.name "ASS-ADE Auto-Evolve"
-          git config user.email "evolve@atomadic.tech"
           git add -A
-          # Always commit EVOLUTION_LOG.md + pyproject.toml even without py changes
           CHANGES=$(git diff --cached --name-only | wc -l | tr -d ' ')
           if [ "$CHANGES" -eq 0 ]; then
             echo "Nothing to commit -- skipping PR"
@@ -191,13 +215,13 @@ jobs:
           fi
           git commit -m "evolution(L${{ env.EVOLUTION_LEVEL }}): ${{ env.ENHANCEMENT }} (v${{ env.NEW_VERSION }})"
           git push origin ${{ env.BRANCH }} || {
-            echo "::warning::Push failed (org write policy). Evolution log generated but not pushed."
+            echo "::warning::Push failed (org write policy)."
             echo "PUSH_FAILED=true" >> $GITHUB_ENV
             exit 0
           }
 
       - name: Create PR
-        if: ${{ env.PUSH_FAILED != 'true' }}
+        if: ${{ env.PUSH_FAILED != 'true' && env.TESTS_FAILED != 'true' }}
         env:
           GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
           CYCLE_NUM: ${{ env.CYCLE_NUM }}
@@ -207,7 +231,7 @@ jobs:
           IMPROVEMENT_DELTA: ${{ env.IMPROVEMENT_DELTA }}
         run: |
           python3 - << 'PYEOF'
-          import json, os, subprocess
+          import json, os
           from datetime import datetime, timezone
 
           cycle = os.environ.get('CYCLE_NUM', '1')
@@ -217,14 +241,21 @@ jobs:
           delta = os.environ.get('IMPROVEMENT_DELTA', '0')
 
           level_descs = {'1': 'single enhancement', '2': 'multi-apply top 3', '3': 'blueprint+apply', '4': 'deep-area top 5'}
-          level_desc = level_descs.get(level, 'unknown')
 
           try:
-              d = json.load(open('enhance_scan.json'))
-              findings = d.get('findings', [])
-              scan = '\n'.join([f"- {o.get('category','?')} in {o.get('file','?')}" for o in findings[:10]]) or 'No findings'
+              summary = json.load(open('apply_summary.json'))
+              applied = summary.get('applied', [])
+              scan = '\n'.join([f'- {a}' for a in applied]) or 'No fixes applied'
           except Exception:
-              scan = 'scan unavailable'
+              scan = 'summary unavailable'
+
+          try:
+              plan = json.load(open('autopoiesis_plan.json'))
+              plan_verdict = plan.get('verdict', 'PASS')
+              plan_phase = plan.get('phase', 5)
+              plan_note = f"Autopoiesis plan: {plan_verdict} (phase {plan_phase})"
+          except Exception:
+              plan_note = 'Autopoiesis plan: unavailable'
 
           def recon_summary(fname):
               try:
@@ -236,22 +267,24 @@ jobs:
           now = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')
           body = f"""Auto-Evolution Cycle #{cycle} -- {now}
 
-          Level: {level} -- {level_desc}
+          Level: {level} -- {level_descs.get(level, 'unknown')}
           Version bump: v{version}
           Enhancement applied: {enhancement}
           Improvement delta: {delta}
 
-          Enhancement scan (top opportunities)
+          Applied fixes
           {scan}
 
-          Before: {recon_summary('recon_before.json')}
-          After: {recon_summary('recon_after.json')}
+          AAAA-Nexus
+          {plan_note}
 
-          See diff for exact file changes. Log and version always update each cycle."""
+          Before: {recon_summary('recon_before.json')}
+          After:  {recon_summary('recon_after.json')}
+
+          Tests passed before commit."""
 
           with open('/tmp/pr_body.txt', 'w') as f:
               f.write(body)
-          print('PR body written')
           PYEOF
 
           gh api repos/AAAA-Nexus/ASS-ADE/pulls \

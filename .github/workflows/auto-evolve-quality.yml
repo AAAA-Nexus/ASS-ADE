@@ -63,16 +63,7 @@ jobs:
               print(f'Scan parse error: {e}')
           " 2>&1 || true
 
-          CYCLE_NUM=$(python3 -c "
-          try:
-              lines = open('EVOLUTION_LOG.md').readlines()
-              nums = [int(l.split('#')[-1].split(' ')[0])
-                      for l in lines if l.strip().startswith('## Evolution #')]
-              print(max(nums) + 1 if nums else 1)
-          except:
-              print(1)
-          " 2>&1 || echo "1")
-          echo "CYCLE_NUM=$CYCLE_NUM" >> $GITHUB_ENV
+          echo "CYCLE_NUM=${{ github.run_number }}" >> $GITHUB_ENV
 
           TOTAL_FOUND=$(python3 -c "
           import json
@@ -89,11 +80,28 @@ jobs:
           BRANCH="auto-evolve/quality-$(date +%Y%m%d-%H%M%S)"
           git checkout -b $BRANCH
           echo "BRANCH=$BRANCH" >> $GITHUB_ENV
+          git config user.name "ASS-ADE Auto-Evolve"
+          git config user.email "evolve@atomadic.tech"
 
       - name: Phase 3 - Apply quality fixes
         run: |
           echo "Quality findings: ${{ env.TOTAL_FOUND }}"
           python3 scripts/apply_fixes.py 3 --lane quality 2>&1 || true
+
+      - name: Phase 4 - Pytest gate (revert on failure)
+        run: |
+          PY_CHANGES=$(git diff --name-only | grep -c '\.py$' 2>/dev/null || echo 0)
+          if [ "$PY_CHANGES" -gt 0 ]; then
+            if python -m pytest tests/ -q --tb=line -x --timeout=120 2>&1; then
+              echo "TESTS_FAILED=false" >> $GITHUB_ENV
+            else
+              echo "::warning::Tests failed after quality enhancement -- reverting"
+              git checkout -- src/ tests/ 2>/dev/null || git checkout -- . 2>/dev/null || true
+              echo "TESTS_FAILED=true" >> $GITHUB_ENV
+            fi
+          else
+            echo "TESTS_FAILED=false" >> $GITHUB_ENV
+          fi
 
       - name: Phase 4 - Audit recon
         run: ass-ade recon . --json > recon_after.json 2>/dev/null || true
@@ -102,6 +110,16 @@ jobs:
         run: |
           ENHANCEMENT=$(python3 -c "
           import json
+          try:
+              summary = json.load(open('apply_summary.json'))
+              applied = summary.get('applied', [])
+              if applied:
+                  print(applied[0])
+                  raise SystemExit(0)
+          except SystemExit:
+              raise
+          except Exception:
+              pass
           try:
               d = json.load(open('enhance_scan.json'))
               findings = d.get('findings', [])
@@ -115,106 +133,73 @@ jobs:
           " 2>&1 || echo "unknown")
           echo "ENHANCEMENT=$ENHANCEMENT" >> $GITHUB_ENV
 
-      - name: Bump patch version
-        run: |
-          CURRENT=$(python3 -c "
-          import re
-          content = open('pyproject.toml').read()
-          m = re.search(r'version = \"([\d.]+)\"', content)
-          print(m.group(1) if m else '0.2.0')
-          ")
-          NEW=$(python3 -c "
-          parts = '$CURRENT'.split('.')
-          parts[-1] = str(int(parts[-1]) + 1)
-          print('.'.join(parts))
-          ")
-          sed -i "s/version = \"$CURRENT\"/version = \"$NEW\"/" pyproject.toml
-          sed -i "s/__version__ = \"$CURRENT\"/__version__ = \"$NEW\"/" __init__.py 2>/dev/null || true
-          echo "NEW_VERSION=$NEW" >> $GITHUB_ENV
-
       - name: Append to EVOLUTION_LOG.md
+        if: ${{ env.TESTS_FAILED != 'true' }}
         run: |
-          FILES_CHANGED=$(git diff --name-only | grep '\.py$' | wc -l | tr -d ' ')
+          FILES_CHANGED=$(git diff --name-only | grep -c '\.py$' 2>/dev/null || echo 0)
+          APPLIED_COUNT=$(python3 -c "
+          import json
+          try:
+              print(len(json.load(open('apply_summary.json')).get('applied',[])))
+          except:
+              print(0)
+          " 2>&1 || echo "0")
           cat >> EVOLUTION_LOG.md << EOF
 
           ## Evolution #${{ env.CYCLE_NUM }} [QUALITY] -- $(date -u '+%Y-%m-%d %H:%M UTC')
           **Enhancement:** ${{ env.ENHANCEMENT }}
+          **Applied:** ${APPLIED_COUNT} fixes
           **Lane:** quality -- docstrings, bare_except, type hints, dead code
           **Personality:** thorough/systematic (top 3 per cycle)
           **Python files changed:** ${FILES_CHANGED}
-          **Version:** ${{ env.NEW_VERSION }}
           EOF
 
       - name: Commit and push branch
+        if: ${{ env.TESTS_FAILED != 'true' }}
         continue-on-error: true
         env:
           GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
         run: |
-          git config user.name "ASS-ADE Auto-Evolve"
-          git config user.email "evolve@atomadic.tech"
           git add -A
-          PY_CHANGES=$(git diff --cached --name-only | grep '\.py$' | wc -l | tr -d ' ')
+          PY_CHANGES=$(git diff --cached --name-only | grep -c '\.py$' 2>/dev/null || echo 0)
           if [ "$PY_CHANGES" -eq 0 ]; then
             echo "No Python source changes -- skipping commit and PR"
             exit 0
           fi
-          git commit -m "evolution/quality: ${{ env.ENHANCEMENT }} (v${{ env.NEW_VERSION }})"
+          git commit -m "evolution/quality: ${{ env.ENHANCEMENT }}"
           git push origin ${{ env.BRANCH }} || {
-            echo "::warning::Push failed (org write policy). Evolution log generated but not pushed."
+            echo "::warning::Push failed (org write policy)."
             echo "PUSH_FAILED=true" >> $GITHUB_ENV
             exit 0
           }
 
       - name: Create PR
-        if: ${{ env.PUSH_FAILED != 'true' }}
+        if: ${{ env.PUSH_FAILED != 'true' && env.TESTS_FAILED != 'true' }}
         env:
           GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
         run: |
-          SCAN_SUMMARY=$(cat enhance_scan.json 2>/dev/null | python3 -c "
+          SCAN_SUMMARY=$(python3 -c "
           import json, sys
           try:
-              d = json.load(sys.stdin)
-              findings = d.get('findings', [])
-              lines = [f'- \`{o[\"category\"]}\` in \`{o[\"file\"]}\`' for o in findings[:10]]
-              print('\n'.join(lines))
+              summary = json.load(open('apply_summary.json'))
+              applied = summary.get('applied', [])
+              print('\n'.join([f'- {a}' for a in applied]) or 'No fixes applied')
           except:
-              print('scan unavailable')
-          " 2>&1 || echo "scan unavailable")
-
-          RECON_BEFORE=$(cat recon_before.json 2>/dev/null | python3 -c "
-          import json, sys
-          try:
-              d = json.load(sys.stdin)
-              print(f'{d[\"total_py_files\"]} py files, {d[\"manifest_components\"]} components')
-          except:
-              print('unavailable')
-          " 2>&1 || echo "unavailable")
-
-          RECON_AFTER=$(cat recon_after.json 2>/dev/null | python3 -c "
-          import json, sys
-          try:
-              d = json.load(sys.stdin)
-              print(f'{d[\"total_py_files\"]} py files, {d[\"manifest_components\"]} components')
-          except:
-              print('unavailable')
+              print('summary unavailable')
           " 2>&1 || echo "unavailable")
 
           gh api repos/AAAA-Nexus/ASS-ADE/pulls \
             -X POST \
-            -f title="[QUALITY] evolution: ${{ env.ENHANCEMENT }} (v${{ env.NEW_VERSION }})" \
+            -f title="[QUALITY] evolution: ${{ env.ENHANCEMENT }}" \
             -f body="$(cat <<PRBODY
           ## Quality Evolution Cycle #${{ env.CYCLE_NUM }} -- $(date -u '+%Y-%m-%d %H:%M UTC')
 
-          **Version:** v${{ env.NEW_VERSION }}
           **Lane:** QUALITY -- docstrings, bare_except, type hints, dead code
           **Personality:** thorough/systematic -- top 3 quality fixes per cycle
+          **Tests:** passed before commit
 
-          ## Quality findings applied
+          ## Applied fixes
           ${SCAN_SUMMARY}
-
-          ## Before / After
-          - Before: ${RECON_BEFORE}
-          - After: ${RECON_AFTER}
 
           > Part of the ASS-ADE five-lane evolution system.
           PRBODY

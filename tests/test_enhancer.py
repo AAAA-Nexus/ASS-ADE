@@ -6,6 +6,7 @@ from typing import Any
 import pytest
 
 from ass_ade.local.enhancer import (
+    apply_enhancement,
     build_enhancement_report,
     rank_findings,
     scan_bare_except,
@@ -219,3 +220,86 @@ def test_build_enhancement_report_no_crash_empty_dir(tmp_path: Path) -> None:
 
     assert isinstance(report, dict)
     assert "total_findings" in report
+
+
+# ---------------------------------------------------------------------------
+# apply_enhancement
+# ---------------------------------------------------------------------------
+
+
+def test_apply_enhancement_fixes_bare_except(tmp_path: Path) -> None:
+    src = tmp_path / "module.py"
+    src.write_text("try:\n    pass\nexcept:\n    pass\n", encoding="utf-8")
+    finding = {"category": "bare_except", "file": "module.py", "line": 3}
+
+    result = apply_enhancement(tmp_path, finding)
+
+    assert result is True
+    assert "except Exception:" in src.read_text(encoding="utf-8")
+
+
+def test_apply_enhancement_bare_except_wrong_line_returns_false(tmp_path: Path) -> None:
+    src = tmp_path / "module.py"
+    src.write_text("try:\n    pass\nexcept:\n    pass\n", encoding="utf-8")
+    finding = {"category": "bare_except", "file": "module.py", "line": 99}
+
+    result = apply_enhancement(tmp_path, finding)
+
+    assert result is False
+
+
+def test_apply_enhancement_adds_docstring(tmp_path: Path) -> None:
+    src = tmp_path / "module.py"
+    src.write_text("def run():\n    return 1\n", encoding="utf-8")
+    finding = {"category": "missing_docs", "file": "module.py", "line": 1}
+
+    result = apply_enhancement(tmp_path, finding)
+
+    assert result is True
+    text = src.read_text(encoding="utf-8")
+    assert '"""' in text
+
+
+def test_apply_enhancement_skips_already_documented(tmp_path: Path) -> None:
+    src = tmp_path / "module.py"
+    src.write_text('def run():\n    """Already documented."""\n    return 1\n', encoding="utf-8")
+    original = src.read_text(encoding="utf-8")
+    finding = {"category": "missing_docs", "file": "module.py", "line": 1}
+
+    result = apply_enhancement(tmp_path, finding)
+
+    assert result is False
+    assert src.read_text(encoding="utf-8") == original
+
+
+def test_apply_enhancement_generates_test_stub(tmp_path: Path) -> None:
+    (tmp_path / "src" / "mypkg").mkdir(parents=True)
+    (tmp_path / "tests").mkdir()
+    src_rel = "src/mypkg/widget.py"
+    (tmp_path / src_rel).write_text("def do(): pass\n", encoding="utf-8")
+    finding = {"category": "missing_tests", "file": src_rel}
+
+    result = apply_enhancement(tmp_path, finding)
+
+    assert result is True
+    stub = tmp_path / "tests" / "test_widget.py"
+    assert stub.exists()
+    assert "importable" in stub.read_text(encoding="utf-8")
+
+
+def test_apply_enhancement_unknown_category_returns_false(tmp_path: Path) -> None:
+    src = tmp_path / "module.py"
+    src.write_text("x = 1\n", encoding="utf-8")
+    finding = {"category": "long_function", "file": "module.py", "line": 1}
+
+    result = apply_enhancement(tmp_path, finding)
+
+    assert result is False
+
+
+def test_apply_enhancement_missing_file_returns_false(tmp_path: Path) -> None:
+    finding = {"category": "bare_except", "file": "nonexistent.py", "line": 1}
+
+    result = apply_enhancement(tmp_path, finding)
+
+    assert result is False
