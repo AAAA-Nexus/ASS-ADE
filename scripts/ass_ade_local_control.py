@@ -1381,6 +1381,400 @@ def cmd_refresh(args: argparse.Namespace) -> int:
     return 0 if registry_validation["valid"] else 1
 
 
+CHAIN_SCHEMA = "ass-ade.control-chain-entry.v1"
+CHAIN_GENESIS = "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+
+
+def _sha256_bytes(payload: bytes) -> str:
+    return "sha256:" + hashlib.sha256(payload).hexdigest()
+
+
+def _canonical_json(obj: Any) -> bytes:
+    return json.dumps(obj, sort_keys=True, separators=(",", ":")).encode("utf-8")
+
+
+def chain_path(control_root: Path) -> Path:
+    return control_root.resolve() / "logs" / "control-chain.jsonl"
+
+
+def chain_head(control_root: Path) -> str:
+    path = chain_path(control_root)
+    if not path.exists():
+        return CHAIN_GENESIS
+    last = None
+    with path.open("r", encoding="utf-8") as handle:
+        for line in handle:
+            line = line.strip()
+            if line:
+                last = line
+    if not last:
+        return CHAIN_GENESIS
+    try:
+        return str(json.loads(last).get("hash") or CHAIN_GENESIS)
+    except json.JSONDecodeError:
+        return CHAIN_GENESIS
+
+
+def chain_next_seq(control_root: Path) -> int:
+    path = chain_path(control_root)
+    if not path.exists():
+        return 0
+    count = 0
+    with path.open("r", encoding="utf-8") as handle:
+        for line in handle:
+            if line.strip():
+                count += 1
+    return count
+
+
+def append_chain(
+    control_root: Path,
+    *,
+    command: str,
+    args: dict[str, Any],
+    payload: dict[str, Any],
+    nexus_audit_id: str | None = None,
+) -> dict[str, Any]:
+    control_root = control_root.resolve()
+    (control_root / "logs").mkdir(parents=True, exist_ok=True)
+    prev = chain_head(control_root)
+    seq = chain_next_seq(control_root)
+    ts = utc_now()
+    args_hash = _sha256_bytes(_canonical_json(args))
+    payload_hash = _sha256_bytes(_canonical_json(payload))
+    material = "|".join([prev, str(seq), ts, command, args_hash, payload_hash]).encode("utf-8")
+    entry = {
+        "schema": CHAIN_SCHEMA,
+        "seq": seq,
+        "ts": ts,
+        "command": command,
+        "args_hash": args_hash,
+        "payload_hash": payload_hash,
+        "prev_hash": prev,
+        "hash": _sha256_bytes(material),
+        "nexus_audit_id": nexus_audit_id,
+    }
+    with chain_path(control_root).open("a", encoding="utf-8") as handle:
+        handle.write(json.dumps(entry, sort_keys=True) + "\n")
+    return entry
+
+
+def verify_chain(control_root: Path) -> dict[str, Any]:
+    path = chain_path(control_root)
+    if not path.exists():
+        return {"schema": "ass-ade.control-chain-verify.v1", "valid": True, "entries": 0, "head": CHAIN_GENESIS, "errors": []}
+    errors: list[str] = []
+    prev = CHAIN_GENESIS
+    count = 0
+    head = CHAIN_GENESIS
+    with path.open("r", encoding="utf-8") as handle:
+        for lineno, raw in enumerate(handle, start=1):
+            raw = raw.strip()
+            if not raw:
+                continue
+            try:
+                entry = json.loads(raw)
+            except json.JSONDecodeError as exc:
+                errors.append(f"line {lineno}: invalid json: {exc}")
+                continue
+            if entry.get("prev_hash") != prev:
+                errors.append(f"line {lineno}: prev_hash mismatch (expected {prev})")
+            if entry.get("seq") != count:
+                errors.append(f"line {lineno}: seq mismatch (expected {count})")
+            material = "|".join([
+                str(entry.get("prev_hash") or ""),
+                str(entry.get("seq") if entry.get("seq") is not None else ""),
+                str(entry.get("ts") or ""),
+                str(entry.get("command") or ""),
+                str(entry.get("args_hash") or ""),
+                str(entry.get("payload_hash") or ""),
+            ]).encode("utf-8")
+            expected = _sha256_bytes(material)
+            if entry.get("hash") != expected:
+                errors.append(f"line {lineno}: hash mismatch (expected {expected})")
+            prev = str(entry.get("hash") or prev)
+            head = prev
+            count += 1
+    return {
+        "schema": "ass-ade.control-chain-verify.v1",
+        "valid": not errors,
+        "entries": count,
+        "head": head,
+        "errors": errors,
+    }
+
+
+CLASS_PROMOTION_TARGETS = {
+    "experiment": ("candidate", "outputs/candidates"),
+    "candidate": ("release", "outputs/releases"),
+}
+
+
+def _latest_release_snapshot(control_root: Path) -> Path | None:
+    releases_dir = control_root / "outputs" / "releases"
+    if not releases_dir.exists():
+        return None
+    snaps: list[Path] = []
+    for child in releases_dir.iterdir():
+        if child.is_dir():
+            candidate = child / "feature-snapshot.json"
+            if candidate.exists():
+                snaps.append(candidate)
+    if not snaps:
+        return None
+    return max(snaps, key=lambda p: p.stat().st_mtime)
+
+
+def _registry_status_for(repo: Path, capability_id: str) -> str | None:
+    registry = load_capability_registry(repo)
+    for cap in registry.get("capabilities", []):
+        if isinstance(cap, dict) and str(cap.get("id")) == capability_id:
+            return str(cap.get("status") or "missing")
+    return None
+
+
+def promote_output(
+    *,
+    source: Path,
+    repo: Path,
+    control_root: Path,
+    target_class: str,
+    capability_id: str | None,
+    pin: bool,
+    skip_stress: bool = False,
+) -> dict[str, Any]:
+    source = source.resolve()
+    repo = repo.resolve()
+    control_root = control_root.resolve()
+
+    gate_trace: list[dict[str, Any]] = []
+
+    def _record(name: str, status: str, detail: Any = None) -> None:
+        gate_trace.append({"gate": name, "status": status, "detail": detail})
+
+    # Gate 1: source must be under ass-ade-github-latest (canonical-mirror) lineage
+    metadata_path = source / "ASS_ADE_OUTPUT.json"
+    if not metadata_path.exists():
+        _record("source_present", "DENY", "missing ASS_ADE_OUTPUT.json")
+        return {"verdict": "REJECT", "gates": gate_trace, "source": str(source)}
+    try:
+        source_meta = json.loads(metadata_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        _record("source_parseable", "DENY", str(exc))
+        return {"verdict": "REJECT", "gates": gate_trace, "source": str(source)}
+    source_repo = str(((source_meta.get("source") or {}).get("path")) or "")
+    if source_repo and Path(source_repo).resolve() != repo:
+        _record("source_from_canonical_mirror", "DENY", source_repo)
+        return {"verdict": "REJECT", "gates": gate_trace, "source": str(source)}
+    _record("source_from_canonical_mirror", "PASS", source_repo)
+
+    # Gate 2: validate-output
+    validation = validate_output(source)
+    if not validation["valid"]:
+        _record("validate_output", "DENY", validation["errors"])
+        return {"verdict": "REJECT", "gates": gate_trace, "source": str(source), "validation": validation}
+    _record("validate_output", "PASS", validation.get("warnings", []))
+
+    # Gate 3: target must be a valid promotion
+    current_class = str(source_meta.get("class") or "")
+    expected_next, target_subdir = CLASS_PROMOTION_TARGETS.get(current_class, (None, None))
+    if target_class != expected_next:
+        _record("valid_promotion_path", "DENY", f"{current_class} -> {target_class} not allowed")
+        return {"verdict": "REJECT", "gates": gate_trace, "source": str(source)}
+    _record("valid_promotion_path", "PASS", f"{current_class} -> {target_class}")
+
+    # Gate 4: stress-gain vs last release (skipped for first release baseline)
+    baseline_snapshot = _latest_release_snapshot(control_root)
+    if baseline_snapshot is None and not skip_stress:
+        _record("stress_gain", "SKIP", "no prior release snapshot (first release)")
+    elif skip_stress:
+        _record("stress_gain", "SKIP", "skip_stress=true")
+    else:
+        candidate_snapshot = feature_snapshot(repo, collect_pytest=False)
+        baseline = json.loads(baseline_snapshot.read_text(encoding="utf-8"))
+        report = compare_snapshots(baseline, candidate_snapshot)
+        if not report["passed"]:
+            _record("stress_gain", "DENY", report["growth_signals"])
+            return {"verdict": "REJECT", "gates": gate_trace, "source": str(source), "stress_report": report}
+        _record("stress_gain", "PASS", report["growth_signals"])
+
+    # Gate 5: capability status rank must have improved if declared
+    if capability_id:
+        current_status = _registry_status_for(repo, capability_id)
+        if current_status is None:
+            _record("capability_declared", "DENY", f"capability_id {capability_id} not in registry")
+            return {"verdict": "REJECT", "gates": gate_trace, "source": str(source)}
+        # baseline rank: status from registry at last release (best-effort — use current for first release)
+        if baseline_snapshot is not None:
+            baseline = json.loads(baseline_snapshot.read_text(encoding="utf-8"))
+            baseline_rank = STATUS_RANK.get(str((baseline.get("capabilities") or {}).get(capability_id) or "missing"), 0)
+            current_rank = STATUS_RANK.get(current_status, 0)
+            if current_rank <= baseline_rank:
+                _record("capability_rank_improved", "DENY", f"{capability_id}: {baseline_rank} -> {current_rank}")
+                return {"verdict": "REJECT", "gates": gate_trace, "source": str(source)}
+            _record("capability_rank_improved", "PASS", f"{capability_id}: {baseline_rank} -> {current_rank}")
+        else:
+            _record("capability_rank_improved", "SKIP", "first release baseline")
+
+    # Gate 6/7: Nexus drift/hallucination — offline skipped, recorded for audit
+    _record("nexus_drift_check", "SKIP", "offline: call via atomadic_uep nexus_gates at runtime")
+    _record("nexus_hallucination_oracle", "SKIP", "offline: call via atomadic_uep nexus_gates at runtime")
+    if target_class == "release":
+        _record("nexus_certify_output", "SKIP", "offline: stamp certificate hash post-install")
+
+    # Perform the move
+    target_dir = control_root / target_subdir / source.name
+    if target_dir.exists():
+        _record("target_collision", "DENY", str(target_dir))
+        return {"verdict": "REJECT", "gates": gate_trace, "source": str(source)}
+    target_dir.parent.mkdir(parents=True, exist_ok=True)
+    source.rename(target_dir)
+
+    # Update metadata on the moved output
+    new_meta = dict(source_meta)
+    new_meta["class"] = target_class
+    new_meta["path"] = str(target_dir)
+    new_meta["retention"] = retention_for(target_class, pin)
+    new_meta["promoted_from"] = source_meta.get("path")
+    new_meta["promoted_at"] = utc_now()
+    if capability_id:
+        lineage = dict(new_meta.get("lineage") or {})
+        lineage["capability_id"] = capability_id
+        new_meta["lineage"] = lineage
+    # Also write a feature-snapshot alongside for future releases
+    if target_class == "release":
+        snap = feature_snapshot(repo, collect_pytest=False)
+        write_json(target_dir / "feature-snapshot.json", snap)
+    write_json(target_dir / "ASS_ADE_OUTPUT.json", new_meta)
+    _record("move_and_restamp", "PASS", str(target_dir))
+
+    entry = append_chain(
+        control_root,
+        command="promote",
+        args={"source": str(source), "target_class": target_class, "capability_id": capability_id, "pin": pin},
+        payload={"gates": gate_trace, "new_output_path": str(target_dir)},
+    )
+
+    return {
+        "schema": "ass-ade.promote-result.v1",
+        "verdict": "PASS",
+        "gates": gate_trace,
+        "source": str(source),
+        "target": str(target_dir),
+        "target_class": target_class,
+        "capability_id": capability_id,
+        "chain_entry": entry,
+    }
+
+
+def retire_outputs(
+    control_root: Path,
+    *,
+    lane: str | None = None,
+    output_class: str | None = None,
+    dry_run: bool = False,
+) -> dict[str, Any]:
+    control_root = control_root.resolve()
+    today = datetime.now(timezone.utc).date()
+    archive_root = control_root / "archive" / today.strftime("%Y")
+    retired: list[dict[str, Any]] = []
+    skipped: list[dict[str, Any]] = []
+
+    search_dirs = []
+    if output_class in (None, "experiment"):
+        search_dirs.append(control_root / "outputs" / "experiments")
+    if output_class in (None, "candidate"):
+        search_dirs.append(control_root / "outputs" / "candidates")
+
+    for search_dir in search_dirs:
+        if not search_dir.exists():
+            continue
+        for child in sorted(search_dir.iterdir()):
+            if not child.is_dir():
+                continue
+            metadata_path = child / "ASS_ADE_OUTPUT.json"
+            if not metadata_path.exists():
+                skipped.append({"path": str(child), "reason": "no metadata"})
+                continue
+            try:
+                meta = json.loads(metadata_path.read_text(encoding="utf-8"))
+            except json.JSONDecodeError:
+                skipped.append({"path": str(child), "reason": "invalid metadata"})
+                continue
+            retention = meta.get("retention") or {}
+            if retention.get("pin"):
+                skipped.append({"path": str(child), "reason": "pinned"})
+                continue
+            expires = retention.get("expires")
+            if not expires:
+                skipped.append({"path": str(child), "reason": "no expiry"})
+                continue
+            try:
+                expiry_date = datetime.fromisoformat(expires).date()
+            except ValueError:
+                skipped.append({"path": str(child), "reason": f"invalid expires: {expires}"})
+                continue
+            if expiry_date > today:
+                skipped.append({"path": str(child), "reason": f"expires {expires}"})
+                continue
+            lane_lineage = (meta.get("lineage") or {}).get("lane")
+            if lane and lane_lineage != slugify(lane):
+                skipped.append({"path": str(child), "reason": f"lane {lane_lineage} != {lane}"})
+                continue
+            destination = archive_root / child.name
+            retired.append({"path": str(child), "archive": str(destination), "expires": expires})
+            if not dry_run:
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                child.rename(destination)
+
+    result = {
+        "schema": "ass-ade.retire-result.v1",
+        "created_at": utc_now(),
+        "dry_run": dry_run,
+        "retired": retired,
+        "skipped": skipped,
+    }
+    if not dry_run and retired:
+        append_chain(
+            control_root,
+            command="retire",
+            args={"lane": lane, "class": output_class, "dry_run": dry_run},
+            payload={"retired_count": len(retired), "paths": [r["path"] for r in retired]},
+        )
+    return result
+
+
+def cmd_promote(args: argparse.Namespace) -> int:
+    result = promote_output(
+        source=Path(args.source).expanduser().resolve(),
+        repo=Path(args.repo).expanduser().resolve(),
+        control_root=Path(args.root).expanduser().resolve(),
+        target_class=args.target_class,
+        capability_id=args.capability_id,
+        pin=args.pin,
+        skip_stress=args.skip_stress,
+    )
+    print(json.dumps(result, indent=2, sort_keys=True))
+    return 0 if result.get("verdict") == "PASS" else 1
+
+
+def cmd_retire(args: argparse.Namespace) -> int:
+    result = retire_outputs(
+        Path(args.root).expanduser().resolve(),
+        lane=args.lane,
+        output_class=args.output_class,
+        dry_run=args.dry_run,
+    )
+    print(json.dumps(result, indent=2, sort_keys=True))
+    return 0
+
+
+def cmd_verify_chain(args: argparse.Namespace) -> int:
+    result = verify_chain(Path(args.root).expanduser().resolve())
+    print(json.dumps(result, indent=2, sort_keys=True))
+    return 0 if result["valid"] else 1
+
+
 def build_parser() -> argparse.ArgumentParser:
     parent = default_parent()
     control = default_control_root(parent)
@@ -1456,6 +1850,44 @@ def build_parser() -> argparse.ArgumentParser:
     p_refresh.add_argument("--collect-pytest", action="store_true", help="Run pytest collection for baseline snapshot.")
     p_refresh.add_argument("--docs", action="store_true", help="Regenerate generated docs.")
     p_refresh.set_defaults(func=cmd_refresh)
+
+    p_promote = sub.add_parser(
+        "promote",
+        help="Promote an experiment to candidate or candidate to release through fail-closed gates.",
+    )
+    p_promote.add_argument("source", help="Source rebuild output directory to promote.")
+    p_promote.add_argument(
+        "--target-class",
+        required=True,
+        choices=["candidate", "release"],
+        help="Target output class.",
+    )
+    p_promote.add_argument("--repo", default=str(Path.cwd()), help="Canonical repo root (canonical-mirror).")
+    p_promote.add_argument("--root", default=str(control), help="Control root.")
+    p_promote.add_argument("--capability-id", help="Capability id being advanced by this promotion.")
+    p_promote.add_argument("--pin", action="store_true", help="Pin the promoted output for retention.")
+    p_promote.add_argument(
+        "--skip-stress",
+        action="store_true",
+        help="Skip stress-gain (only for emergency rollbacks; recorded in chain).",
+    )
+    p_promote.set_defaults(func=cmd_promote)
+
+    p_retire = sub.add_parser("retire", help="Archive expired experiments and candidates honoring pin + expires.")
+    p_retire.add_argument("--root", default=str(control), help="Control root.")
+    p_retire.add_argument("--lane", help="Only retire outputs on this lane slug.")
+    p_retire.add_argument(
+        "--class",
+        dest="output_class",
+        choices=["experiment", "candidate"],
+        help="Restrict to one output class.",
+    )
+    p_retire.add_argument("--dry-run", action="store_true", help="Report what would be retired without moving.")
+    p_retire.set_defaults(func=cmd_retire)
+
+    p_chain = sub.add_parser("verify-chain", help="Replay and verify the control-chain audit log.")
+    p_chain.add_argument("--root", default=str(control), help="Control root.")
+    p_chain.set_defaults(func=cmd_verify_chain)
 
     return parser
 

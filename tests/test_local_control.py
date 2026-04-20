@@ -241,3 +241,166 @@ def test_mermaid_renderers_use_json_ledgers(tmp_path: Path) -> None:
     assert "flowchart TD" in local
     assert "flowchart LR" in status
     assert "CONTROL_INDEX.json" in lifecycle
+
+
+def _stamp_experiment(
+    repo: Path,
+    control: Path,
+    *,
+    slug: str,
+    lane: str = "quality",
+) -> Path:
+    """Create a validly-stamped experiment output rooted in `repo`."""
+    exp_dir = control / "outputs" / "experiments" / slug
+    exp_dir.mkdir(parents=True)
+    (exp_dir / "MANIFEST.json").write_text("{}", encoding="utf-8")
+    (exp_dir / "CERTIFICATE.json").write_text('{"certificate_sha256":"0"}', encoding="utf-8")
+    (exp_dir / "REBUILD_REPORT.md").write_text(
+        "\n".join(
+            [
+                "# Rebuild Report",
+                "**Rebuild tag**: `20260420_000000`",
+                "| Components written | 1 |",
+                "| `a1_at_functions` | 1 |",
+                "- **Pass rate**: 100.0%",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    metadata = lc.build_output_metadata(
+        exp_dir,
+        output_class="experiment",
+        lane=lane,
+        source=repo,
+        branch=f"evo/{lane}/{slug}",
+        slug=slug,
+        parent_output_id=None,
+        pin=False,
+    )
+    lc.write_json(exp_dir / "ASS_ADE_OUTPUT.json", metadata)
+    return exp_dir
+
+
+def test_append_and_verify_chain(tmp_path: Path) -> None:
+    control = tmp_path / "control"
+    lc.ensure_control_tree(control)
+
+    assert lc.verify_chain(control)["head"] == lc.CHAIN_GENESIS
+
+    first = lc.append_chain(control, command="promote", args={"x": 1}, payload={"ok": True})
+    second = lc.append_chain(control, command="retire", args={"y": 2}, payload={"ok": True})
+
+    assert first["prev_hash"] == lc.CHAIN_GENESIS
+    assert second["prev_hash"] == first["hash"]
+
+    result = lc.verify_chain(control)
+    assert result["valid"] is True
+    assert result["entries"] == 2
+    assert result["head"] == second["hash"]
+
+
+def test_verify_chain_detects_tamper(tmp_path: Path) -> None:
+    control = tmp_path / "control"
+    lc.ensure_control_tree(control)
+    lc.append_chain(control, command="promote", args={}, payload={"seq": 0})
+    lc.append_chain(control, command="promote", args={}, payload={"seq": 1})
+
+    chain = lc.chain_path(control)
+    lines = chain.read_text(encoding="utf-8").splitlines()
+    first = json.loads(lines[0])
+    first["payload_hash"] = "sha256:" + ("a" * 64)
+    lines[0] = json.dumps(first, sort_keys=True)
+    chain.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+    result = lc.verify_chain(control)
+    assert result["valid"] is False
+    assert any("hash mismatch" in err for err in result["errors"])
+
+
+def test_promote_experiment_to_candidate(tmp_path: Path) -> None:
+    repo = tmp_path / "repo"
+    control = tmp_path / "control"
+    _write_min_repo(repo, capability_status="partial")
+    lc.ensure_control_tree(control)
+
+    exp = _stamp_experiment(repo, control, slug="exp1")
+
+    result = lc.promote_output(
+        source=exp,
+        repo=repo,
+        control_root=control,
+        target_class="candidate",
+        capability_id=None,
+        pin=False,
+        skip_stress=True,
+    )
+
+    assert result["verdict"] == "PASS", result
+    assert not exp.exists()
+    moved = Path(result["target"])
+    assert moved.parent.name == "candidates"
+    assert moved.exists()
+    meta = json.loads((moved / "ASS_ADE_OUTPUT.json").read_text(encoding="utf-8"))
+    assert meta["class"] == "candidate"
+    assert meta["promoted_from"]
+
+    verify = lc.verify_chain(control)
+    assert verify["valid"] is True
+    assert verify["entries"] == 1
+
+
+def test_promote_rejects_invalid_transition(tmp_path: Path) -> None:
+    repo = tmp_path / "repo"
+    control = tmp_path / "control"
+    _write_min_repo(repo, capability_status="partial")
+    lc.ensure_control_tree(control)
+
+    exp = _stamp_experiment(repo, control, slug="exp2")
+
+    result = lc.promote_output(
+        source=exp,
+        repo=repo,
+        control_root=control,
+        target_class="release",  # illegal jump from experiment
+        capability_id=None,
+        pin=False,
+        skip_stress=True,
+    )
+
+    assert result["verdict"] == "REJECT"
+    assert exp.exists(), "source must remain in place on REJECT"
+    gate_names = [g["gate"] for g in result["gates"]]
+    assert "valid_promotion_path" in gate_names
+
+
+def test_retire_honors_pin_and_expires(tmp_path: Path) -> None:
+    repo = tmp_path / "repo"
+    control = tmp_path / "control"
+    _write_min_repo(repo, capability_status="partial")
+    lc.ensure_control_tree(control)
+
+    expired = _stamp_experiment(repo, control, slug="expired")
+    pinned = _stamp_experiment(repo, control, slug="pinned")
+    fresh = _stamp_experiment(repo, control, slug="fresh")
+
+    # Force expiry on `expired`, pin `pinned`
+    expired_meta = json.loads((expired / "ASS_ADE_OUTPUT.json").read_text(encoding="utf-8"))
+    expired_meta["retention"]["expires"] = "2000-01-01"
+    lc.write_json(expired / "ASS_ADE_OUTPUT.json", expired_meta)
+
+    pinned_meta = json.loads((pinned / "ASS_ADE_OUTPUT.json").read_text(encoding="utf-8"))
+    pinned_meta["retention"] = {"pin": True, "expires": None, "reason": "test pin"}
+    lc.write_json(pinned / "ASS_ADE_OUTPUT.json", pinned_meta)
+
+    result = lc.retire_outputs(control, lane=None, output_class="experiment", dry_run=False)
+
+    retired_paths = {r["path"] for r in result["retired"]}
+    assert str(expired) in retired_paths
+    assert pinned.exists(), "pinned experiment must not be retired"
+    assert fresh.exists(), "unexpired experiment must not be retired"
+    assert not expired.exists(), "expired experiment was moved"
+
+    # Chain should record the retire
+    verify = lc.verify_chain(control)
+    assert verify["entries"] == 1
+    assert verify["valid"] is True
