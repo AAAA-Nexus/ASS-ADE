@@ -36,7 +36,6 @@ _BASE_EXCLUDED_DIRS = {
 _TIER_DIRS = {
     "a0_qk_constants", "a1_at_functions", "a2_mo_composites",
     "a3_og_features", "a4_sy_orchestration",
-    "mo_engines", "og_swarm", "sy_manifold",
 }
 
 EXCLUDED_DIRS: frozenset[str] = frozenset(

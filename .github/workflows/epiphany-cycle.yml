@@ -1,0 +1,155 @@
+# Epiphany → Breakthrough engine + editable install smoke (see root pyproject.toml).
+name: epiphany-cycle
+
+on:
+  push:
+    paths:
+      - "pyproject.toml"
+      - "README.md"
+      - "CONTRIBUTING.md"
+      - "src/ass_ade/cli.py"
+      - "src/ass_ade/engine/rebuild/epiphany_cycle.py"
+      - "src/ass_ade/local/planner.py"
+      - "src/ass_ade/local/uep_evolution_orchestrate.py"
+      - "src/ass_ade/mcp/server.py"
+      - "src/ass_ade/tools/builtin.py"
+      - "mcp/server.json"
+      - "docs/demos/README.md"
+      - "docs/atomadic-triple-lane-handbook.md"
+      - "docs/RELEASE_CHECKLIST.md"
+      - "docs/NEXUS_AND_TRUST_SURFACES.md"
+      - "docs/FORGE_NARROW_SLICE.md"
+      - ".ass-ade/final-form-audit.log"
+      - "tests/test_epiphany_cycle.py"
+      - "tests/test_mcp_extended.py"
+      - "tests/test_mcp_manifest_parity.py"
+      - "tests/test_demos_and_import_budget.py"
+      - "tests/test_monadic_purity.py"
+      - "tests/test_check_evolution_context.py"
+      - "scripts/check_evolution_context.py"
+      - "scripts/github_evolution_control.py"
+      - "scripts/uep_evolution_orchestrator.py"
+      - ".ass-ade/github-evolution-control.json"
+      - ".github/workflows/auto-evolve-cycle.yml"
+      - "tests/test_github_evolution_control.py"
+      - ".ass-ade/tier-map.json"
+      - ".ass-ade/ass-ade-suite-roadmap.json"
+      - ".ass-ade/terrain-index.v0.json"
+      - ".ass-ade/autonomous/mcp-hooks-compatibility.v0.json"
+      - ".github/dependabot.yml"
+      - ".github/workflows/epiphany-cycle.yml"
+      - ".github/workflows/security-audit.yml"
+      - ".github/workflows/perf-durations.yml"
+      - ".github/workflows/pr-labeled-ass-ade.yml"
+      - ".github/workflows/evolution-orchestrate.yml"
+      - ".github/ISSUE_TEMPLATE/**"
+      - ".github/pull_request_template.md"
+      - "tests/test_mcp_privileged_builtin_tools.py"
+      - "tests/test_github_ci_layout.py"
+      - "tests/test_uep_evolution_orchestrate.py"
+      - "tests/test_docs_promotion_layout.py"
+      - "tests/test_final_form_nexus_docs.py"
+      - ".ass-ade/specs/**"
+      - ".ass-ade/evolution-runs/default-task.md"
+  pull_request:
+    paths:
+      - "pyproject.toml"
+      - "README.md"
+      - "CONTRIBUTING.md"
+      - "src/ass_ade/cli.py"
+      - "src/ass_ade/engine/rebuild/epiphany_cycle.py"
+      - "src/ass_ade/local/planner.py"
+      - "src/ass_ade/local/uep_evolution_orchestrate.py"
+      - "src/ass_ade/mcp/server.py"
+      - "src/ass_ade/tools/builtin.py"
+      - "mcp/server.json"
+      - "docs/demos/README.md"
+      - "docs/atomadic-triple-lane-handbook.md"
+      - "docs/RELEASE_CHECKLIST.md"
+      - "docs/NEXUS_AND_TRUST_SURFACES.md"
+      - "docs/FORGE_NARROW_SLICE.md"
+      - ".ass-ade/final-form-audit.log"
+      - "tests/test_epiphany_cycle.py"
+      - "tests/test_mcp_extended.py"
+      - "tests/test_mcp_manifest_parity.py"
+      - "tests/test_demos_and_import_budget.py"
+      - "tests/test_monadic_purity.py"
+      - "tests/test_check_evolution_context.py"
+      - "scripts/check_evolution_context.py"
+      - "scripts/github_evolution_control.py"
+      - "scripts/uep_evolution_orchestrator.py"
+      - ".ass-ade/github-evolution-control.json"
+      - ".github/workflows/auto-evolve-cycle.yml"
+      - "tests/test_github_evolution_control.py"
+      - ".ass-ade/tier-map.json"
+      - ".ass-ade/ass-ade-suite-roadmap.json"
+      - ".ass-ade/terrain-index.v0.json"
+      - ".ass-ade/autonomous/mcp-hooks-compatibility.v0.json"
+      - ".github/dependabot.yml"
+      - ".github/workflows/epiphany-cycle.yml"
+      - ".github/workflows/security-audit.yml"
+      - ".github/workflows/perf-durations.yml"
+      - ".github/workflows/pr-labeled-ass-ade.yml"
+      - ".github/workflows/evolution-orchestrate.yml"
+      - ".github/ISSUE_TEMPLATE/**"
+      - ".github/pull_request_template.md"
+      - "tests/test_mcp_privileged_builtin_tools.py"
+      - "tests/test_github_ci_layout.py"
+      - "tests/test_uep_evolution_orchestrate.py"
+      - "tests/test_docs_promotion_layout.py"
+      - "tests/test_final_form_nexus_docs.py"
+      - ".ass-ade/specs/**"
+      - ".ass-ade/evolution-runs/default-task.md"
+
+jobs:
+  evolution-context:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: REFINE radar must cite MCP changes (PR)
+        if: github.event_name == 'pull_request'
+        run: |
+          python scripts/check_evolution_context.py \
+            --roadmap .ass-ade/ass-ade-suite-roadmap.json \
+            --git-range "${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }}"
+      - name: REFINE radar must carry progress (push)
+        if: github.event_name != 'pull_request'
+        run: |
+          python scripts/check_evolution_context.py \
+            --roadmap .ass-ade/ass-ade-suite-roadmap.json
+
+  python-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install editable (dev) + full pytest
+        run: |
+          python -m pip install -U pip
+          python -m pip install -e ".[dev]"
+          python -m pytest tests/ -q --tb=line --durations=20
+
+  mcp-tool-listing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install editable (dev)
+        run: |
+          python -m pip install -U pip
+          python -m pip install -e ".[dev]"
+      - name: MCP tools/list includes epiphany_breakthrough_cycle
+        run: |
+          python -m pytest \
+            tests/test_mcp_extended.py::TestMCPToolListing::test_tools_list_includes_builtin_and_extended \
+            tests/test_mcp_extended.py::TestMCPToolListing::test_extended_tools_have_schemas \
+            -q --tb=short
