@@ -251,8 +251,9 @@ jobs:
           print('PR body written')
           PYEOF
 
-          gh pr create \
-            --title "evolution(L${EVOLUTION_LEVEL}): ${ENHANCEMENT} (v${NEW_VERSION})" \
-            --body-file /tmp/pr_body.txt \
-            --head "${{ env.BRANCH }}" \
-            --base "main" || echo "PR creation failed (may already exist)"
+          gh api repos/AAAA-Nexus/ASS-ADE/pulls \
+            -X POST \
+            -f title="evolution(L${EVOLUTION_LEVEL}): ${ENHANCEMENT} (v${NEW_VERSION})" \
+            -f body="$(cat /tmp/pr_body.txt)" \
+            -f head="${{ env.BRANCH }}" \
+            -f base="main" || echo "PR creation failed (may already exist)"
