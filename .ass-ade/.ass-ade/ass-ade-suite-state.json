@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "ass-ade.suite-state.v1",
+  "generatedAt": "2026-04-20T03:35:40.723751+00:00",
+  "repoRoot": "C:\\!aaaa-nexus\\!ass-ade",
+  "canonicalPath": "C:\\!aaaa-nexus\\!ass-ade\\.ass-ade\\ass-ade-suite-state.json",
+  "howToRegenerate": "python \"C:\\Users\\atoma\\.cursor\\atomadic\\setup_cursor_atomadic.py\"  optional: --two-way [--prefer=newest|cursor|prompt]",
+  "pairedRoadmapFile": "C:\\!aaaa-nexus\\!ass-ade\\.ass-ade\\ass-ade-suite-roadmap.json",
+  "mcpManifest": {
+    "path": "C:\\!aaaa-nexus\\!ass-ade\\mcp\\server.json",
+    "name": "ass-ade",
+    "version": "1.0.0",
+    "toolCount": 24,
+    "tools": [
+      "a2a_negotiate",
+      "a2a_validate",
+      "ask_agent",
+      "certify_output",
+      "context_memory_query",
+      "context_memory_store",
+      "context_pack",
+      "edit_file",
+      "epiphany_breakthrough_cycle",
+      "grep_search",
+      "list_directory",
+      "map_terrain",
+      "phase0_recon",
+      "prompt_diff",
+      "prompt_hash",
+      "prompt_propose",
+      "prompt_section",
+      "prompt_validate",
+      "read_file",
+      "run_command",
+      "safe_execute",
+      "search_files",
+      "trust_gate",
+      "write_file"
+    ]
+  },
+  "srcPackages": [
+    "a2a",
+    "agent",
+    "aso",
+    "commands",
+    "engine",
+    "local",
+    "mcp",
+    "nexus",
+    "prompts",
+    "protocol",
+    "tools"
+  ],
+  "surfaceChecks": {
+    "tierMapJson": true,
+    "nexusClientPy": true,
+    "nexusX402Py": true,
+    "mcpServerPy": true,
+    "cliMain": true
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "body": "def record_read(self, path: str | Path) -> None:\n    \"\"\"Mark a file as freshly read. Call this from MCP read_file handler.\"\"\"\n    key = str(Path(path).resolve())\n    self._reads[key] = time.time()\n    self._save_state()\n",
+  "body_hash": "72e4405a76ee7c49",
+  "body_truncated": false,
+  "callers_of": [
+    "str",
+    "time",
+    "_save_state",
+    "resolve",
+    "Path"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/tca.py:82.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.record_read",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "logging",
+    "time",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/tca.py:82"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "record_read",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for record_read"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

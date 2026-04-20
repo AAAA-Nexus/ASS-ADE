@@ -1,0 +1,55 @@
+{
+  "body": "def propose_feature_blueprint(\n    description: str,\n    *,\n    feature_name: str | None = None,\n    target: Path | None = None,\n    base_url: str = DEFAULT_BASE_URL,\n    api_key: str | None = None,\n    agent_id: str | None = None,\n    allow_fallback: bool = False,\n) -> dict[str, Any]:\n    \"\"\"Propose a tier-aligned blueprint for ``description``.\n\n    No heuristic fallback: if Nexus is unreachable or returns unusable\n    content, :class:`RuntimeError` is raised with the attempted base URL\n    so the caller can see exactly what failed. The legacy placeholder\n    fallback is retained only for test fixtures; production callers must\n    leave ``allow_fallback=False``.\n    \"\"\"\n    api_key = api_key or os.environ.get(\"AAAA_NEXUS_API_KEY\")\n    agent_id = agent_id or os.environ.get(\"AAAA_NEXUS_AGENT_ID\")\n\n    proposed = _propose_via_nexus(\n        description,\n        target=target,\n        base_url=base_url,\n        api_key=api_key,\n        agent_id=agent_id,\n    )\n    source = \"nexus\"\n    if proposed is None:\n        if not allow_fallback:\n            from ass_ade.engine.rebuild.synthesis import consume_last_nexus_error\n            detail = consume_last_nexus_error() or \"no detail available\"\n            raise RuntimeError(\n                f\"Feature proposal failed against {base_url}. \"\n                f\"Reason: {detail}. Check AAAA_NEXUS_API_KEY and AAAA_NEXUS_BASE_URL.\"\n            )\n        proposed = [{\n            \"name\": (_slug(description)[:32] or \"feature\") + \"_entry\",\n            \"tier\": \"a3_og_features\",\n            \"purpose\": description[:160],\n            \"signature\": \"def entry(*args, **kwargs) -> None:\",\n        }]\n        source = \"fallback\"\n\n    feature_slug = _slug(feature_name or description)[:48] or \"feature\"\n    components = [\n        {\n            \"id\": _component_id(c),\n            \"name\": _slug(c[\"name\"]),\n            \"tier\": c[\"tier\"],\n            \"purpose\": c.get(\"purpose\", \"\"),\n            \"signature\": c.get(\"signature\", \"\"),\n        }\n        for c in proposed\n    ]\n    tiers_used = sorted({c[\"tier\"] for c in components})\n\n    return {\n        \"schema\": \"AAAA-SPEC-004\",\n        \"blueprint_id\": f\"bp_{feature_slug}\",\n        \"blueprint_name\": feature_name or description[:80],\n        \"description\": description,\n        \"components\": components,\n        \"tiers\": tiers_used,\n        \"metadata\": {\n            \"generator\": \"ass-ade/feature\",\n            \"source\": source,\n            \"generated_at\": datetime.now(timezone.utc).isoformat(),\n            \"target\": str(target) if target else None,\n        },\n    }\n",
+  "body_hash": "8457cdaecc70861b",
+  "body_truncated": false,
+  "callers_of": [
+    "_propose_via_nexus",
+    "sorted",
+    "get",
+    "RuntimeError",
+    "_slug",
+    "_component_id",
+    "isoformat",
+    "consume_last_nexus_error",
+    "str",
+    "now"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/feature.py:153.",
+  "exceptions_raised": [
+    "RuntimeError"
+  ],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.propose_feature_blueprint",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "os",
+    "re",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.engine.rebuild.synthesis.DEFAULT_BASE_URL",
+    "ass_ade.engine.rebuild.synthesis._extract_nexus_content",
+    "ass_ade.engine.rebuild.synthesis._record_nexus_error",
+    "httpx",
+    "ass_ade.engine.rebuild.synthesis.consume_last_nexus_error"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/feature.py:153"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "propose_feature_blueprint",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for propose_feature_blueprint"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

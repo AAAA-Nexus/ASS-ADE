@@ -1,0 +1,47 @@
+{
+  "body": "class GateResult:\n    \"\"\"Structured result from a quality gate.\"\"\"\n\n    gate: str\n    passed: bool\n    confidence: float = 0.0\n    details: dict[str, Any] | None = None\n",
+  "body_hash": "bddf2968cafdbf41",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/gates.py:26.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.gateresult",
+  "imports": [
+    "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "ast",
+    "re",
+    "json",
+    "datetime.UTC",
+    "datetime.datetime",
+    "pathlib.Path",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "ass_ade.agent.trust_gate.TrustVerificationGate",
+    "ass_ade.agent.proofbridge.ProofBridge",
+    "ass_ade.agent.alphaverus.AlphaVerus",
+    "ass_ade.agent.dgm_h.DGMH",
+    "ass_ade.agent.dgm_h.Patch",
+    "ass_ade.agent.golden_runner.run_golden",
+    "ass_ade.agent.sam.SAM"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/gates.py:26"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "GateResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for GateResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

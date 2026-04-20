@@ -1,0 +1,54 @@
+{
+  "body": "class StreamEvent:\n    \"\"\"An event emitted during streaming agent execution.\"\"\"\n\n    kind: Literal[\"token\", \"tool_call\", \"tool_result\", \"blocked\", \"done\", \"error\"]\n    text: str = \"\"\n    tool_name: str = \"\"\n    tool_args: dict[str, Any] = field(default_factory=dict)\n    tool_result: ToolResult | None = None\n",
+  "body_hash": "54a3a48cc099c73a",
+  "body_truncated": false,
+  "callers_of": [
+    "field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/loop.py:41.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.streamevent",
+  "imports": [
+    "__future__.annotations",
+    "collections.abc.Callable",
+    "collections.abc.Iterator",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any",
+    "typing.Literal",
+    "ass_ade.agent.context.build_system_prompt",
+    "ass_ade.agent.conversation.Conversation",
+    "ass_ade.agent.gates.QualityGates",
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.agent.lse.LSEDecision",
+    "ass_ade.agent.orchestrator.CycleReport",
+    "ass_ade.agent.orchestrator.EngineOrchestrator",
+    "ass_ade.agent.routing.EpistemicRouter",
+    "ass_ade.agent.routing.RoutingDecision",
+    "ass_ade.engine.provider.ModelProvider",
+    "ass_ade.engine.provider.OpenAICompatibleProvider",
+    "ass_ade.engine.tokens.TokenBudget",
+    "ass_ade.engine.types.CompletionRequest",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.registry.ToolRegistry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/loop.py:41"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "StreamEvent",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for StreamEvent"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

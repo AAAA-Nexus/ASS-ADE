@@ -1,0 +1,45 @@
+{
+  "body": "def cmd_rebuild(args):\n    try:\n        from ass_ade.engine.rebuild.orchestrator import rebuild_project, render_rebuild_summary\n    except ImportError as exc:\n        print(f\"Error: rebuild engine not available \u2014 {exc}\", file=sys.stderr)\n        sys.exit(1)\n\n    source = Path(args.source).resolve()\n    output = Path(args.output).resolve()\n\n    if not source.exists():\n        print(f\"Error: source path does not exist: {source}\", file=sys.stderr)\n        sys.exit(1)\n\n    print(f\"Rebuilding {source} -> {output} ...\", file=sys.stderr)\n    result = rebuild_project(\n        source,\n        output,\n        enrich_bodies=not args.no_enrich,\n        emit_package=not args.no_package,\n    )\n\n    if args.json:\n        print(json.dumps(result, indent=2))\n    else:\n        print(render_rebuild_summary(result))\n\n    pkg = result.get(\"phases\", {}).get(\"package\", {})\n    if pkg.get(\"error\"):\n        sys.exit(2)\n",
+  "body_hash": "79e9dad9317c1843",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "print",
+    "rebuild_project",
+    "get",
+    "exists",
+    "exit",
+    "Path",
+    "dumps",
+    "render_rebuild_summary"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-v0.2.0/scripts/cli.py:98.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade_v0_2_0.cmd_rebuild",
+  "imports": [
+    "argparse",
+    "json",
+    "sys",
+    "pathlib.Path",
+    "ass_ade.engine.rebuild.orchestrator.rebuild_project",
+    "ass_ade.engine.rebuild.orchestrator.render_rebuild_summary"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-v0.2.0/scripts/cli.py:98"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "cmd_rebuild",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for cmd_rebuild"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

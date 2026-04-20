@@ -1,0 +1,47 @@
+{
+  "body": "def main():\n    parser = argparse.ArgumentParser(prog=\"ass-ade\", description=\"ASS-ADE CI tools\")\n    sub = parser.add_subparsers(dest=\"command\")\n\n    recon_p = sub.add_parser(\"recon\", help=\"Repo reconnaissance scan\")\n    recon_p.add_argument(\"path\", nargs=\"?\", default=\".\")\n    recon_p.add_argument(\"--json\", action=\"store_true\")\n\n    enhance_p = sub.add_parser(\"enhance\", help=\"Enhancement scan / apply\")\n    enhance_p.add_argument(\"path\", nargs=\"?\", default=\".\")\n    enhance_p.add_argument(\"--json\", action=\"store_true\")\n    enhance_p.add_argument(\"--apply\", type=int, default=0, metavar=\"N\",\n                           help=\"Apply top N enhancements\")\n\n    rebuild_p = sub.add_parser(\"rebuild\", help=\"Rebuild a project into a tier-partitioned package\")\n    rebuild_p.add_argument(\"source\", help=\"Source directory to scan\")\n    rebuild_p.add_argument(\"output\", help=\"Output directory for the rebuild package\")\n    rebuild_p.add_argument(\"--no-enrich\", action=\"store_true\", help=\"Skip body enrichment\")\n    rebuild_p.add_argument(\"--no-package\", action=\"store_true\", help=\"Skip package emission\")\n    rebuild_p.add_argument(\"--json\", action=\"store_true\", help=\"Output full JSON receipt\")\n\n    doctor_p = sub.add_parser(\"doctor\", help=\"Health check for a rebuild package\")\n    doctor_p.add_argument(\"path\", nargs=\"?\", default=\".\")\n    doctor_p.add_argument(\"--json\", action=\"store_true\")\n\n    args = parser.parse_args()\n    if args.command == \"recon\":\n        cmd_recon(args)\n    elif args.command == \"enhance\":\n        cmd_enhance(args)\n    elif args.command == \"rebuild\":\n        cmd_rebuild(args)\n    elif args.command == \"doctor\":\n        cmd_doctor(args)\n    else:\n        parser.print_help()\n        sys.exit(1)\n",
+  "body_hash": "dd4dec1ed411fea2",
+  "body_truncated": false,
+  "callers_of": [
+    "ArgumentParser",
+    "add_subparsers",
+    "add_parser",
+    "add_argument",
+    "parse_args",
+    "cmd_recon",
+    "cmd_enhance",
+    "cmd_rebuild",
+    "cmd_doctor",
+    "print_help",
+    "exit"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-v0.2.0/scripts/cli.py:155.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.ass_ade_v0_2_0.main",
+  "imports": [
+    "argparse",
+    "json",
+    "sys",
+    "pathlib.Path",
+    "ass_ade.engine.rebuild.orchestrator.rebuild_project",
+    "ass_ade.engine.rebuild.orchestrator.render_rebuild_summary"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-v0.2.0/scripts/cli.py:155"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "main",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for main"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

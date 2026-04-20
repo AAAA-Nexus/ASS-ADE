@@ -1,0 +1,33 @@
+{
+  "body": "class ToolSchema(BaseModel):\n    \"\"\"Describes a tool the model may invoke.\"\"\"\n\n    name: str\n    description: str\n    parameters: dict[str, Any]\n",
+  "body_hash": "4ad1408d9a261089",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/engine/types.py:28.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.src.toolschema",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/engine/types.py:28"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "ToolSchema",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ToolSchema"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

@@ -1,0 +1,54 @@
+{
+  "body": "def validate_agent_card(data: dict[str, Any]) -> ValidationReport:\n    \"\"\"Validate a raw dict against the A2A agent card schema.\n\n    Returns a ValidationReport with structured findings.\n    \"\"\"\n    issues: list[ValidationIssue] = []\n\n    # Required fields\n    if \"name\" not in data or not data.get(\"name\", \"\").strip():\n        issues.append(ValidationIssue(\"error\", \"name\", \"Agent card must have a non-empty 'name' field\"))\n\n    # Parse into model\n    try:\n        card = A2AAgentCard.model_validate(data)\n    except ValidationError as exc:\n        issues.append(ValidationIssue(\"error\", \"_parse\", f\"Failed to parse agent card: {exc}\"))\n        return ValidationReport(valid=False, issues=issues)\n\n    # Structural warnings\n    if not card.description:\n        issues.append(ValidationIssue(\"warning\", \"description\", \"Missing description \u2014 agents should describe themselves\"))\n\n    if not card.url:\n        issues.append(ValidationIssue(\"warning\", \"url\", \"Missing url \u2014 no way to reach this agent\"))\n    elif card.url:\n        parsed = urlparse(card.url)\n        if parsed.scheme not in (\"http\", \"https\"):\n            issues.append(ValidationIssue(\"error\", \"url\", f\"Invalid URL scheme: {parsed.scheme}\"))\n\n    if not card.version:\n        issues.append(ValidationIssue(\"warning\", \"version\", \"Missing version \u2014 consider semver\"))\n\n    if not card.skills:\n        issues.append(ValidationIssue(\"warning\", \"skills\", \"No skills advertised \u2014 agent has no discoverable capabilities\"))\n\n    for i, skill in enumerate(card.skills):\n        if not skill.id:\n            issues.append(ValidationIssue(\"error\", f\"skills[{i}].id\", \"Skill must have an id\"))\n        if not skill.name:\n            issues.append(ValidationIssue(\"error\", f\"skills[{i}].name\", \"Skill must have a name\"))\n\n    if card.authentication and not card.authentication.schemes:\n        issues.append(ValidationIssue(\"warning\", \"authentication.schemes\", \"Authentication declared but no schemes listed\"))\n\n    has_errors = any(i.severity == \"error\" for i in issues)\n    return ValidationReport(valid=not has_errors, issues=issues, card=card)\n",
+  "body_hash": "d00135f38797e500",
+  "body_truncated": false,
+  "callers_of": [
+    "enumerate",
+    "any",
+    "ValidationReport",
+    "append",
+    "model_validate",
+    "strip",
+    "ValidationIssue",
+    "urlparse",
+    "get"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/a2a/__init__.py:137.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.validate_agent_card",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "socket",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any",
+    "urllib.parse.urlparse",
+    "httpx",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "pydantic.ValidationError",
+    "pydantic.field_validator",
+    "ass_ade.__version__",
+    "ass_ade.nexus.validation.validate_https_public_url",
+    "ass_ade.tools.registry.default_registry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/a2a/__init__.py:137"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "validate_agent_card",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for validate_agent_card"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

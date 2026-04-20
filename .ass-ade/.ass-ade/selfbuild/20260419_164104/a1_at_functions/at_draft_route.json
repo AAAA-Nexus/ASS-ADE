@@ -1,0 +1,48 @@
+{
+  "body": "def route(self, message: str) -> RoutingDecision:\n    \"\"\"Route a message using best available method.\"\"\"\n    if self._nexus is not None:\n        try:\n            result = self._nexus.routing_recommend(prompt=message)\n            confidence = _result_field(result, \"confidence\")\n            if isinstance(confidence, (int, float)):\n                complexity = max(0.0, min(1.0, float(confidence)))\n            else:\n                complexity = classify_complexity(message)\n\n            model_name = _result_field(result, \"model\") or _result_field(result, \"recommended_model\")\n            reason = _result_field(result, \"reason\", \"Nexus recommendation\")\n\n            decision = RoutingDecision(\n                tier=_nexus_tier(result),\n                complexity=complexity,\n                recommended_model=str(model_name) if model_name else None,\n                reason=str(reason),\n                source=\"nexus\",\n            )\n        except Exception:\n            decision = local_route(message)\n    else:\n        decision = local_route(message)\n    self._history.append(decision)\n    return decision\n",
+  "body_hash": "05eda93fcbdb5dc4",
+  "body_truncated": false,
+  "callers_of": [
+    "append",
+    "local_route",
+    "routing_recommend",
+    "_result_field",
+    "isinstance",
+    "RoutingDecision",
+    "max",
+    "classify_complexity",
+    "min",
+    "_nexus_tier",
+    "str",
+    "float"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/routing.py:188.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.route",
+  "imports": [
+    "__future__.annotations",
+    "re",
+    "collections.abc.Mapping",
+    "dataclasses.dataclass",
+    "enum.Enum",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/routing.py:188"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "route",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for route"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

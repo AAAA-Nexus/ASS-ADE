@@ -1,0 +1,48 @@
+{
+  "body": "def collect_monadic_tiers(working_dir: str | Path = \".\") -> list[CapabilityEntry]:\n    root = _repo_root_from_working_dir(working_dir)\n    manifest_counts = _manifest_tier_counts(root)\n    return [\n        CapabilityEntry(\n            kind=\"tier\",\n            name=f\"{name}/\",\n            description=(\n                f\"{description}; {manifest_counts[name]} manifest components\"\n                if name in manifest_counts\n                else description\n            ),\n        )\n        for name, description in _MONADIC_TIERS.items()\n        if (root / name).is_dir()\n    ]\n",
+  "body_hash": "3684dd419860b3b9",
+  "body_truncated": false,
+  "callers_of": [
+    "_repo_root_from_working_dir",
+    "_manifest_tier_counts",
+    "CapabilityEntry",
+    "items",
+    "is_dir"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/capabilities.py:350.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.collect_monadic_tiers",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "typer.main",
+    "ass_ade.cli.app",
+    "ass_ade.tools.registry.default_registry",
+    "ass_ade.mcp.server._WORKFLOW_TOOLS"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/capabilities.py:350"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "collect_monadic_tiers",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for collect_monadic_tiers"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

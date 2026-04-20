@@ -1,0 +1,46 @@
+{
+  "body": "class MapTerrainResult(BaseModel):\n    verdict: Verdict\n    missing_capabilities: list[MissingCapability] = Field(default_factory=list)\n    inventory_check: dict[str, dict[str, str]] = Field(default_factory=dict)\n    development_plan: DevelopmentPlan | None = None\n    next_action: str\n",
+  "body_hash": "c7031cf950533ab3",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/map_terrain.py:152.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.mapterrainresult",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "re",
+    "time",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Literal",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "ass_ade.tools.registry.default_registry",
+    "ass_ade.engine.rebuild.schema_materializer.emit_certificate",
+    "ass_ade.engine.rebuild.schema_materializer.materialize_plan",
+    "ass_ade.engine.rebuild.schema_materializer.validate_rebuild",
+    "ass_ade.local.enhancer.build_enhancement_report"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/map_terrain.py:152"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "MapTerrainResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for MapTerrainResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

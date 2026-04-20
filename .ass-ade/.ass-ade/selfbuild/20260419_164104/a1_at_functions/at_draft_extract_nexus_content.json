@@ -1,0 +1,37 @@
+{
+  "body": "def extract_nexus_content(data: Any) -> str:\n    \"\"\"Pull the assistant text out of a Nexus ``/v1/inference`` response.\n\n    Handles both the flat ``{\"response\": ...}`` / ``{\"output\": ...}`` /\n    ``{\"text\": ...}`` shapes and the OpenAI-style\n    ``{\"choices\": [{\"message\": {\"content\": ...}}]}`` shape. Surrounding\n    markdown fences are stripped.\n    \"\"\"\n    if not isinstance(data, dict):\n        return \"\"\n    raw: str = \"\"\n    for key in (\"response\", \"output\", \"text\"):\n        val = data.get(key)\n        if isinstance(val, str) and val.strip():\n            raw = val\n            break\n    if not raw:\n        choices = data.get(\"choices\")\n        if isinstance(choices, list) and choices:\n            first = choices[0] if isinstance(choices[0], dict) else {}\n            msg = first.get(\"message\") if isinstance(first, dict) else None\n            if isinstance(msg, dict) and isinstance(msg.get(\"content\"), str):\n                raw = msg[\"content\"]\n            elif isinstance(first, dict) and isinstance(first.get(\"text\"), str):\n                raw = first[\"text\"]\n    return strip_markdown_fences(raw) if raw else \"\"\n",
+  "body_hash": "bfbb68c636fda4b7",
+  "body_truncated": false,
+  "callers_of": [
+    "isinstance",
+    "get",
+    "strip_markdown_fences",
+    "strip"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/rebuild/nexus_parse.py:29.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.extract_nexus_content",
+  "imports": [
+    "__future__.annotations",
+    "re",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/engine/rebuild/nexus_parse.py:29"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "extract_nexus_content",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for extract_nexus_content"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

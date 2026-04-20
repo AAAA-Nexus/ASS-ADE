@@ -1,0 +1,34 @@
+{
+  "body": "def get_null_context() -> CancellationContext:\n    \"\"\"Get a singleton no-op cancellation context.\"\"\"\n    return NullCancellationContext()\n",
+  "body_hash": "2aa8b4e053f78086",
+  "body_truncated": false,
+  "callers_of": [
+    "NullCancellationContext"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/mcp/cancellation.py:58.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.src.get_null_context",
+  "imports": [
+    "__future__.annotations",
+    "threading",
+    "typing.Optional"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/mcp/cancellation.py:58"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "get_null_context",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for get_null_context"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

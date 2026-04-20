@@ -1,0 +1,47 @@
+{
+  "body": "def scan_missing_docs(root: Path) -> list[dict[str, Any]]:\n    findings: list[dict[str, Any]] = []\n    counter = 1\n    for path in _walk_python_files(root):\n        lines = _read_lines(path)\n        for i, line in enumerate(lines):\n            stripped = line.lstrip()\n            if not (stripped.startswith(\"def \") or stripped.startswith(\"class \")):\n                continue\n            name_part = stripped.split(\"(\")[0].split(\" \", 1)[-1].strip().rstrip(\":\")\n            if name_part.startswith(\"_\"):\n                continue\n            has_doc = False\n            for j in range(i + 1, min(i + 4, len(lines))):\n                next_stripped = lines[j].lstrip()\n                if next_stripped.startswith('\"\"\"') or next_stripped.startswith(\"'''\"):\n                    has_doc = True\n                    break\n                if next_stripped and not next_stripped.startswith(\"#\"):\n                    break\n            if not has_doc:\n                rel = str(path.relative_to(root))\n                findings.append({\n                    \"id\": counter,\n                    \"category\": \"missing_docs\",\n                    \"title\": f\"Missing docstring: {name_part}\",\n                    \"description\": f\"{name_part} in {rel} has no docstring.\",\n                    \"file\": rel,\n                    \"line\": i + 1,\n                    \"impact\": \"low\",\n                    \"effort\": \"low\",\n                })\n                counter += 1\n                if len(findings) >= 8:\n                    return findings\n    return findings\n",
+  "body_hash": "635c326a4896581e",
+  "body_truncated": false,
+  "callers_of": [
+    "_walk_python_files",
+    "_read_lines",
+    "enumerate",
+    "lstrip",
+    "rstrip",
+    "startswith",
+    "range",
+    "min",
+    "str",
+    "append",
+    "strip",
+    "len",
+    "relative_to",
+    "split"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/local/enhancer.py:131.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.scan_missing_docs",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/local/enhancer.py:131"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "scan_missing_docs",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for scan_missing_docs"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

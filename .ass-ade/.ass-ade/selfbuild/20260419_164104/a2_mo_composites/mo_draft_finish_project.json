@@ -1,0 +1,58 @@
+{
+  "body": "def finish_project(\n    root: Path,\n    *,\n    base_url: str = DEFAULT_BASE_URL,\n    api_key: str | None = None,\n    agent_id: str | None = None,\n    out_dir: Path | None = None,\n    apply_in_place: bool = False,\n    max_refinement_attempts: int = 3,\n    max_functions: int = 100,\n) -> dict[str, Any]:\n    api_key = api_key or os.environ.get(\"AAAA_NEXUS_API_KEY\")\n    agent_id = agent_id or os.environ.get(\"AAAA_NEXUS_AGENT_ID\")\n\n    targets = scan_path(root)[:max_functions]\n    completed: list[dict[str, Any]] = []\n    rejected: list[dict[str, Any]] = []\n    refinement_trace: list[dict[str, Any]] = []\n\n    out_dir = out_dir or (root / \".ass-ade\" / \"patches\")\n    out_dir.mkdir(parents=True, exist_ok=True)\n\n    # Group by file so we can apply multiple patches per file consistently.\n    by_file: dict[Path, list[IncompleteFunction]] = {}\n    for fn in targets:\n        by_file.setdefault(fn.path, []).append(fn)\n\n    for path, fns in by_file.items():\n        try:\n            original = path.read_text(encoding=\"utf-8\")\n        except (OSError, UnicodeDecodeError) as exc:\n            rejected.append({\"path\": str(path), \"reason\": f\"unreadable: {exc}\"})\n            continue\n        patched = original\n        # Process bottom-up so line numbers remain valid.\n        for fn in sorted(fns, key=lambda f: -f.lineno):\n            body, attempts = complete_function(\n                fn,\n                base_url=base_url,\n                api_key=api_key,\n                agent_id=agent_id,\n                max_refinement_attempts=max_refinement_attempts,\n            )\n            refinement_trace.append({\n                \"path\": str(path), \"qualname\": fn.qualname, \"attempts\": attempts,\n            })\n            if body is None:\n                rejected.append({\n                    \"path\": str(path),\n                    \"qualname\": fn.qualname,\n                    \"reason\": \"refinement_exhausted\",\n                })\n                continue\n            patched = _apply_body(patched, fn, body)\n            completed.append({\n                \"path\": str(path),\n                \"qualname\": fn.qualname,\n                \"reason\": fn.reason,\n            })\n\n        if patched != original:\n            patch_file = out_dir / (path.stem + path.suffix + \".patched\")\n            patch_file.write_text(patched, encoding=\"utf-8\")\n            if apply_in_place:\n                path.write_text(patched, encoding=\"utf-8\")\n\n    receipt = {\n        \"schema\": \"ASSADE-FINISH-001\",\n        \"root\": str(root),\n        \"scanned_functions\": len(targets),\n        \"completed_count\": len(completed),\n        \"rejected_count\": len(rejected),\n        \"applied_in_place\": apply_in_place,\n        \"out_dir\": str(out_dir),\n        \"completed\": completed,\n        \"rejected\": rejected,\n        \"refinement_trace\": refinement_trace,\n        \"finished_at\": datetime.now(timezone.utc).isoformat(),\n    }\n    (out_dir / \"finish_receipt.json\").write_text(\n        json.dumps(receipt, indent=2), encoding=\"utf-8\"\n    )\n    return receipt\n",
+  "body_hash": "dbc2ddcf0f42928b",
+  "body_truncated": false,
+  "callers_of": [
+    "mkdir",
+    "items",
+    "write_text",
+    "get",
+    "scan_path",
+    "append",
+    "sorted",
+    "str",
+    "len",
+    "isoformat",
+    "dumps",
+    "read_text",
+    "complete_function",
+    "_apply_body",
+    "setdefault",
+    "now"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/finish.py:279.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.finish_project",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "json",
+    "os",
+    "dataclasses.dataclass",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.engine.rebuild.synthesis.DEFAULT_BASE_URL",
+    "ass_ade.engine.rebuild.synthesis._cie_gate",
+    "ass_ade.engine.rebuild.synthesis._synthesize_via_nexus"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/finish.py:279"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "finish_project",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for finish_project"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

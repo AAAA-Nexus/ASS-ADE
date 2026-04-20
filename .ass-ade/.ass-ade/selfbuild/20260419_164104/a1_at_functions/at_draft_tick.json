@@ -1,0 +1,40 @@
+{
+  "body": "def tick(self) -> BatchResult | None:\n    \"\"\"Advance step counter. Returns BatchResult if batch was submitted.\"\"\"\n    self._step_count += 1\n    if self._step_count % self._batch_interval == 0 and self._pending:\n        return self.contribute_batch()\n    return None\n",
+  "body_hash": "ee2daf15e616a201",
+  "body_truncated": false,
+  "callers_of": [
+    "contribute_batch"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/lora_flywheel.py:191.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.tick",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "logging",
+    "time",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "pathlib.Path",
+    "typing.Any",
+    "hashlib"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/lora_flywheel.py:191"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "tick",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for tick"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

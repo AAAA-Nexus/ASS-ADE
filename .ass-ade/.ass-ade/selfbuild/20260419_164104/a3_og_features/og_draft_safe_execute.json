@@ -1,0 +1,53 @@
+{
+  "body": "def safe_execute(\n    client: NexusClient,\n    tool_name: str,\n    tool_input: str = \"\",\n    *,\n    agent_id: str | None = None,\n) -> SafeExecuteResult:\n    \"\"\"AEGIS-wrapped MCP tool execution: shield \u2192 scan \u2192 proxy \u2192 certify.\n\n    Uses the AEGIS MCP proxy for firewalled execution rather than direct invocation.\n    \"\"\"\n    result = SafeExecuteResult(tool_name=tool_name)\n\n    # Step 1: Security shield \u2014 sanitise payload\n    try:\n        shield = client.security_shield({\"tool\": tool_name, \"input\": tool_input})\n        shield_raw = shield.model_dump() if hasattr(shield, \"model_dump\") else {}\n        result.shield_passed = not shield_raw.get(\"blocked\", False)\n    except _WORKFLOW_ERRORS:\n        _LOG.warning(\"Security shield failed for tool=%s\", tool_name, exc_info=True)\n        result.shield_passed = False\n\n    # Step 2: Prompt injection scan\n    if tool_input:\n        try:\n            scan = client.prompt_inject_scan(tool_input)\n            scan_raw = scan.model_dump() if hasattr(scan, \"model_dump\") else {}\n            result.prompt_scan_passed = not scan_raw.get(\"threat_detected\", False)\n        except _WORKFLOW_ERRORS:\n            _LOG.warning(\"Prompt scan failed for tool=%s\", tool_name, exc_info=True)\n            result.prompt_scan_passed = False\n    else:\n        result.prompt_scan_passed = True\n\n    # Step 3: AEGIS MCP proxy execute\n    try:\n        proxy_result = client.aegis_mcp_proxy(\n            tool=tool_name,\n            tool_input=tool_input,\n            agent_id=agent_id,\n        )\n        result.invocation_result = proxy_result.model_dump() if hasattr(proxy_result, \"model_dump\") else {}\n    except _WORKFLOW_ERRORS:\n        _LOG.warning(\n            \"AEGIS MCP proxy failed for tool=%s, agent_id=%s\",\n            tool_name,\n            agent_id,\n            exc_info=True,\n        )\n        result.invocation_result = {\"error\": \"proxy_failed\"}\n\n    # Step 4: Optional output certification\n    output_text = str(result.invocation_result.get(\"tool_result\", result.invocation_result.get(\"allowed\", \"\")))\n    if output_text and result.shield_passed and result.prompt_scan_passed:\n        try:\n            cert = client.certify_output(output_text, rubric=[\"tool_safety\", \"output_integrity\"])\n            cert_raw = cert.model_dump() if hasattr(cert, \"model_dump\") else {}\n            result.certificate_id = cert_raw.get(\"certificate_id\")\n        except _WORKFLOW_ERRORS:\n            _LOG.warning(\"Output certification failed for tool=%s\", tool_name, exc_info=True)\n\n    return result\n",
+  "body_hash": "129859b85d8ca8bd",
+  "body_truncated": false,
+  "callers_of": [
+    "SafeExecuteResult",
+    "str",
+    "security_shield",
+    "aegis_mcp_proxy",
+    "get",
+    "hasattr",
+    "model_dump",
+    "warning",
+    "prompt_inject_scan",
+    "certify_output"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/workflows.py:234.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "og.source.src.safe_execute",
+  "imports": [
+    "__future__.annotations",
+    "logging",
+    "typing.Any",
+    "httpx",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "ass_ade.nexus.client.NexusClient",
+    "ass_ade.nexus.errors.NexusError",
+    "ass_ade.nexus.validation.validate_agent_id",
+    "ass_ade.nexus.validation.validate_prompt"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/workflows.py:234"
+  },
+  "kind": "product_organism",
+  "made_of": [
+    "mo.source.src.security_shield",
+    "mo.source.src.prompt_inject_scan"
+  ],
+  "name": "safe_execute",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for safe_execute"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a3_og_features",
+  "version": "0.1.0"
+}

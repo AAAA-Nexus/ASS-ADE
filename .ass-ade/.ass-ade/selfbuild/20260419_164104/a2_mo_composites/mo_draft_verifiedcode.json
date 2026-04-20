@@ -1,0 +1,43 @@
+{
+  "body": "class VerifiedCode:\n    code: str\n    verified: bool\n    score: float\n    trace: list[str] = field(default_factory=list)\n    metrics: dict[str, Any] = field(default_factory=dict)\n",
+  "body_hash": "cef5fe102699a6df",
+  "body_truncated": false,
+  "callers_of": [
+    "field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/alphaverus.py:47.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.verifiedcode",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "os",
+    "re",
+    "subprocess",
+    "sys",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Optional",
+    "radon.complexity.cc_visit"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/alphaverus.py:47"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "VerifiedCode",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for VerifiedCode"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

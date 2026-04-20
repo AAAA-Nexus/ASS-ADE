@@ -1,0 +1,34 @@
+{
+  "body": "class ForgeQuarantineResponse(NexusModel):\n    \"\"\"POST /v1/forge/quarantine\"\"\"\n    quarantined: Any = None\n    model_id: str | None = None\n    reason: str | None = None\n    count: int | None = None\n",
+  "body_hash": "5ecdfc4e5465b09e",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:1079.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.forgequarantineresponse",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:1079"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "ForgeQuarantineResponse",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ForgeQuarantineResponse"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

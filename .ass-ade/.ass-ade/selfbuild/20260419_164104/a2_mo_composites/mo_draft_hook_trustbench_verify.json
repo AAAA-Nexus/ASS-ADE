@@ -1,0 +1,58 @@
+{
+  "body": "def hook_trustbench_verify(self, action: dict[str, Any]) -> bool | None:\n    try:\n        from ass_ade.agent.trust_gate import TrustVerificationGate\n        gate = TrustVerificationGate(getattr(self, \"_v18_config\", {}) or {}, self._client)\n        ok = gate.pre_action_verify(action)\n        self._gate_log.append(GateResult(\n            gate=\"trustbench_verify\",\n            passed=ok,\n            confidence=1.0 if ok else 0.0,\n            details={\"action\": str(action)[:200]},\n        ))\n        return ok\n    except Exception as exc:\n        logging.getLogger(__name__).warning(\"hook_trustbench_verify failed: %s\", exc)\n        return None\n",
+  "body_hash": "41fcce6a2b68b983",
+  "body_truncated": false,
+  "callers_of": [
+    "TrustVerificationGate",
+    "pre_action_verify",
+    "append",
+    "GateResult",
+    "warning",
+    "getattr",
+    "getLogger",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/gates.py:204.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.hook_trustbench_verify",
+  "imports": [
+    "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "ast",
+    "re",
+    "json",
+    "datetime.UTC",
+    "datetime.datetime",
+    "pathlib.Path",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "ass_ade.agent.trust_gate.TrustVerificationGate",
+    "ass_ade.agent.proofbridge.ProofBridge",
+    "ass_ade.agent.alphaverus.AlphaVerus",
+    "ass_ade.agent.dgm_h.DGMH",
+    "ass_ade.agent.dgm_h.Patch",
+    "ass_ade.agent.golden_runner.run_golden",
+    "ass_ade.agent.sam.SAM"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/gates.py:204"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.src.pre_action_verify"
+  ],
+  "name": "hook_trustbench_verify",
+  "product_categories": [
+    "IDT"
+  ],
+  "provides": [
+    "rebuild candidate for hook_trustbench_verify"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

@@ -1,0 +1,53 @@
+{
+  "body": "def write_default_config(\n    path: Path | None = None,\n    config: AssAdeConfig | None = None,\n    *,\n    overwrite: bool = False,\n) -> Path:\n    target = path or default_config_path()\n    target.parent.mkdir(parents=True, exist_ok=True)\n    if target.exists() and not overwrite:\n        return target\n\n    # Do not write sensitive API keys into the default config file.\n    # This includes nexus_api_key AND every provider override's api_key.\n    cfg = config or AssAdeConfig()\n    payload_dict = cfg.model_dump(exclude={\"nexus_api_key\"})\n    # Strip api_key from each provider override (secrets never go to disk)\n    providers = payload_dict.get(\"providers\") or {}\n    for override in providers.values():\n        if isinstance(override, dict):\n            override.pop(\"api_key\", None)\n    import json as _json\n    payload = _json.dumps(payload_dict, indent=2)\n    target.write_text(f\"{payload}\\n\", encoding=\"utf-8\")\n    # Restrict permissions to owner read/write only (0o600) so the config\n    # directory is not world-readable on shared systems (OWASP A05).\n    try:\n        target.chmod(stat.S_IRUSR | stat.S_IWUSR)\n    except (OSError, NotImplementedError):\n        pass  # Best-effort; Windows does not support POSIX permission bits.\n    return target\n",
+  "body_hash": "5b6c1356934cfc57",
+  "body_truncated": false,
+  "callers_of": [
+    "mkdir",
+    "model_dump",
+    "values",
+    "dumps",
+    "write_text",
+    "default_config_path",
+    "exists",
+    "AssAdeConfig",
+    "get",
+    "isinstance",
+    "chmod",
+    "pop"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/config.py:152.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.write_default_config",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "stat",
+    "pathlib.Path",
+    "typing.Literal",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "ass_ade.nexus.validation.sanitize_header_value",
+    "ass_ade.nexus.validation.validate_api_key",
+    "ass_ade.nexus.validation.validate_url",
+    "json"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/config.py:152"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "write_default_config",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for write_default_config"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

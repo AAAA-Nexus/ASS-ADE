@@ -1,0 +1,53 @@
+{
+  "body": "def emit_certificate(\n    rebuild_receipt: dict[str, Any],\n    audit: dict[str, Any],\n    *,\n    out_dir: Path | None = None,\n) -> dict[str, Any]:\n    \"\"\"Write a SHA-256-bound rebuild certificate next to the rebuild folder.\"\"\"\n    target_root = Path(rebuild_receipt.get(\"target_root\", \"\") or (out_dir or Path(\".\")))\n    cert_path = target_root / \"CERTIFICATE.json\"\n\n    body = {\n        \"certificate_version\": \"ASSADE-SPEC-CERT-1\",\n        \"issued_at\": dt.datetime.now(dt.timezone.utc).isoformat(),\n        \"rebuild_tag\": rebuild_receipt.get(\"rebuild_tag\"),\n        \"source_plan_digest\": rebuild_receipt.get(\"source_plan_digest\"),\n        \"target_root\": rebuild_receipt.get(\"target_root\"),\n        \"written_count\": rebuild_receipt.get(\"written_count\"),\n        \"audit\": {\n            \"total\": audit.get(\"total\"),\n            \"valid\": audit.get(\"valid\"),\n            \"summary\": audit.get(\"summary\"),\n            \"structure\": audit.get(\"structure\"),\n        },\n        \"issuer\": \"ass_ade.engine.schema_rebuilder\",\n        \"schema_covered\": COMPONENT_SCHEMA,\n    }\n    blob = json.dumps(body, sort_keys=True).encode(\"utf-8\")\n    body[\"certificate_sha256\"] = hashlib.sha256(blob).hexdigest()\n    cert_path.write_text(\n        json.dumps(body, indent=2, sort_keys=True) + \"\\n\", encoding=\"utf-8\"\n    )\n    return {\n        \"certificate_path\": cert_path.as_posix(),\n        \"certificate_sha256\": body[\"certificate_sha256\"],\n        \"structure_conformant\": audit.get(\"summary\", {}).get(\"structure_conformant\", False),\n    }\n",
+  "body_hash": "41f64bcead6777e7",
+  "body_truncated": false,
+  "callers_of": [
+    "Path",
+    "encode",
+    "hexdigest",
+    "write_text",
+    "isoformat",
+    "get",
+    "as_posix",
+    "dumps",
+    "sha256",
+    "now"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/rebuild/schema_materializer.py:473.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.src.emit_certificate",
+  "imports": [
+    "__future__.annotations",
+    "datetime",
+    "hashlib",
+    "json",
+    "re",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.engine.rebuild.version_tracker._aggregate_version",
+    "ass_ade.engine.rebuild.version_tracker.assign_version",
+    "ass_ade.engine.rebuild.version_tracker.content_hash",
+    "ass_ade.engine.rebuild.version_tracker.load_prev_versions",
+    "ass_ade.engine.rebuild.version_tracker.write_project_version_file",
+    "ass_ade.engine.rebuild.version_tracker.write_tier_version_file"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/engine/rebuild/schema_materializer.py:473"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "emit_certificate",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for emit_certificate"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

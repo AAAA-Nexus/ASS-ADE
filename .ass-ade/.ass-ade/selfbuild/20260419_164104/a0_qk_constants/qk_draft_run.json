@@ -1,0 +1,37 @@
+{
+  "body": "def run(self, ctx: dict) -> dict:\n    spec = self.translate(ctx.get(\"description\", \"\"))\n    return {\"name\": spec.name, \"source\": spec.source, \"has_sorry\": spec.has_sorry}\n",
+  "body_hash": "93ddbd8fdbd6810b",
+  "body_truncated": false,
+  "callers_of": [
+    "translate",
+    "get"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/proofbridge.py:56.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.src.run",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "re",
+    "dataclasses.dataclass",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/proofbridge.py:56"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "run",
+  "product_categories": [
+    "DCM"
+  ],
+  "provides": [
+    "rebuild candidate for run"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

@@ -1,0 +1,11 @@
+{
+  "schema": "ass-ade-pipeline-v1",
+  "hooks": {
+    "pre_rebuild": "hooks/pre_rebuild.py",
+    "post_rebuild": [
+      "hooks/post_rebuild.py",
+      "hooks/post_rebuild_docs.py"
+    ]
+  },
+  "default_profile": "hybrid"
+}

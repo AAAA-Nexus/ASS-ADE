@@ -1,0 +1,55 @@
+{
+  "body": "def load_config(path: Path | None = None) -> AssAdeConfig:\n    if path is None:\n        env_config = os.getenv(\"ASS_ADE_CONFIG\")\n        target = Path(env_config) if env_config else default_config_path()\n    else:\n        target = path\n    if not target.exists():\n        cfg = AssAdeConfig()\n    else:\n        cfg = AssAdeConfig.model_validate_json(target.read_text(encoding=\"utf-8\"))\n\n    # Allow API key override via environment variable or .env file.\n    # Environment wins over .env file.\n    api_key = os.getenv(\"AAAA_NEXUS_API_KEY\")\n    if not api_key:\n        # Prefer a .env located at the project root near the config file.\n        # If the config lives at <root>/.ass-ade/config.json, look in <root>/.env.\n        search_root = target.parent.parent if target.parent.name == \".ass-ade\" else target.parent\n        env_path = search_root / \".env\"\n        if env_path.exists():\n            try:\n                for line in env_path.read_text(encoding=\"utf-8\").splitlines():\n                    line = line.strip()\n                    if not line or line.startswith(\"#\"):\n                        continue\n                    if \"=\" not in line:\n                        continue\n                    k, v = line.split(\"=\", 1)\n                    if k.strip() == \"AAAA_NEXUS_API_KEY\":\n                        api_key = v.strip()\n                        break\n            except OSError:\n                api_key = None\n\n    if api_key:\n        try:\n            cfg.nexus_api_key = validate_api_key(api_key)\n        except ValueError:\n            # Malformed key (control chars / too long) \u2014 ignore and fall through\n            # without logging the raw value to avoid leaking credentials.\n            cfg.nexus_api_key = None\n\n    # Optional base URL override via env \u2014 must be a valid http/https URL.\n    base_url = os.getenv(\"AAAA_NEXUS_BASE_URL\")\n    if base_url:\n        try:\n            cfg.nexus_base_url = validate_url(base_url)\n        except ValueError:\n            pass  # Keep the config-file default; ignore the invalid env value.\n\n    # Load .env values into os.environ so provider env vars (GROQ_API_KEY etc.)\n    # are discoverable by the provider catalog. File-based vars never override\n    # explicit process env.\n    _hydrate_env_file(target)\n\n    return cfg\n",
+  "body_hash": "58009dfdb68d6604",
+  "body_truncated": false,
+  "callers_of": [
+    "getenv",
+    "_hydrate_env_file",
+    "exists",
+    "AssAdeConfig",
+    "model_validate_json",
+    "Path",
+    "default_config_path",
+    "read_text",
+    "validate_api_key",
+    "validate_url",
+    "splitlines",
+    "strip",
+    "split",
+    "startswith"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/config.py:74.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.load_config",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "stat",
+    "pathlib.Path",
+    "typing.Literal",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "ass_ade.nexus.validation.sanitize_header_value",
+    "ass_ade.nexus.validation.validate_api_key",
+    "ass_ade.nexus.validation.validate_url",
+    "json"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/config.py:74"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "load_config",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for load_config"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

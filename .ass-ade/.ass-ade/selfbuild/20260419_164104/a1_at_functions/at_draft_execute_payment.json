@@ -1,0 +1,39 @@
+{
+  "body": "def execute_payment(self, challenge: PaymentChallenge) -> PaymentResult:\n    \"\"\"Submit payment for the challenge.\n\n    Returns PaymentResult with success status and details.\n    Calls the lower-level submit_payment() function.\n    \"\"\"\n    return submit_payment(challenge)\n",
+  "body_hash": "d08f4ac8b31da2f1",
+  "body_truncated": false,
+  "callers_of": [
+    "submit_payment"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/x402.py:444.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.execute_payment",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "time",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "eth_account.Account",
+    "web3.Web3",
+    "logging"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/x402.py:444"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "execute_payment",
+  "product_categories": [
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for execute_payment"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

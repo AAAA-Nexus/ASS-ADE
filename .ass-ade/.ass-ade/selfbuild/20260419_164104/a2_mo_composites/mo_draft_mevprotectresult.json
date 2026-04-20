@@ -1,0 +1,34 @@
+{
+  "body": "class MevProtectResult(NexusModel):\n    \"\"\"POST /v1/mev/protect (MEV-100)\"\"\"\n    bundle_id: str | None = None\n    protected: bool | None = None\n    strategy: str | None = None\n    estimated_mev_saved_usd: float | None = None\n    submission_time_ms: int | None = None\n",
+  "body_hash": "d499abcd8a59b08b",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:1038.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.mevprotectresult",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:1038"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "MevProtectResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for MevProtectResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

@@ -1,0 +1,35 @@
+{
+  "body": "def route(self, capability_str: str) -> ToolRef | None:\n    candidates = self.discover(capability_str, k=1)\n    return candidates[0] if candidates else None\n",
+  "body_hash": "9ff1b721968f9b58",
+  "body_truncated": false,
+  "callers_of": [
+    "discover"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/mcp/zero_router.py:45.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.src.route",
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/mcp/zero_router.py:45"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "route",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for route"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

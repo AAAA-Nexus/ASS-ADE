@@ -1,0 +1,46 @@
+{
+  "body": "class EvolutionCommand(BaseModel):\n    command: str\n    status: str = \"recorded\"\n    notes: str = \"\"\n",
+  "body_hash": "81df726637279cf9",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/protocol/evolution.py:27.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.evolutioncommand",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "re",
+    "shutil",
+    "subprocess",
+    "tomllib",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field",
+    "ass_ade.engine.rebuild.version_tracker.INITIAL_VERSION",
+    "ass_ade.engine.rebuild.version_tracker.bump_version"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/protocol/evolution.py:27"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "EvolutionCommand",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for EvolutionCommand"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

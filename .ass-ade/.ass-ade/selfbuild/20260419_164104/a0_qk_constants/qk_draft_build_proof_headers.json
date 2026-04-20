@@ -1,0 +1,40 @@
+{
+  "body": "def build_proof_headers(self, payment: PaymentResult) -> dict[str, str]:\n    \"\"\"Build HTTP headers from a successful payment for request retry.\"\"\"\n    return build_payment_header(payment)\n",
+  "body_hash": "7fbb665dffcdef00",
+  "body_truncated": false,
+  "callers_of": [
+    "build_payment_header"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/x402.py:452.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.src.build_proof_headers",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "time",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "eth_account.Account",
+    "web3.Web3",
+    "logging"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/x402.py:452"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "build_proof_headers",
+  "product_categories": [
+    "DCM",
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for build_proof_headers"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

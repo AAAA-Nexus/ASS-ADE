@@ -1,0 +1,68 @@
+{
+  "body": "def append_history(self, turn: \"Turn\") -> None:\n    try:\n        entry = {\n            \"ts\": datetime.now(timezone.utc).isoformat(),\n            \"user\": turn.user,\n            \"intent\": turn.intent,\n            \"tone\": turn.tone,\n            \"path\": turn.path,\n            \"ok\": \"[error\" not in (turn.output or \"\").lower(),\n        }\n        lines: list[str] = []\n        if self._history_path.exists():\n            lines = self._history_path.read_text(encoding=\"utf-8\").splitlines()\n        lines.append(json.dumps(entry))\n        lines = lines[-_HISTORY_MAX:]\n        self._history_path.write_text(\"\\n\".join(lines) + \"\\n\", encoding=\"utf-8\")\n    except OSError:\n        pass\n",
+  "body_hash": "ed0de8330a9f9fa0",
+  "body_truncated": false,
+  "callers_of": [
+    "exists",
+    "append",
+    "write_text",
+    "isoformat",
+    "splitlines",
+    "dumps",
+    "lower",
+    "join",
+    "now",
+    "read_text"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/interpreter.py:384.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.append_history",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "os",
+    "re",
+    "subprocess",
+    "sys",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "httpx",
+    "ass_ade.agent.capabilities.build_atomadic_intent_prompt",
+    "ass_ade.agent.capabilities.command_path_exists",
+    "ass_ade.agent.capabilities.render_capability_prompt_section",
+    "ass_ade.agent.capabilities.render_atomadic_help",
+    "dotenv.load_dotenv",
+    "ass_ade.config.load_config",
+    "time",
+    "shutil",
+    "shutil",
+    "importlib",
+    "sys",
+    "rich.console.Console",
+    "rich.markdown.Markdown",
+    "rich.markdown.Markdown",
+    "ass_ade.config.AssAdeConfig"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/interpreter.py:384"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "append_history",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for append_history"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,6 @@
+{
+  "schema": "ass-ade.swarm-config.v0",
+  "topology": "adaptive",
+  "shared_memory_endpoint": null,
+  "notes": "ASO SIE lane — set endpoint when a vetted shared-memory service is deployed."
+}

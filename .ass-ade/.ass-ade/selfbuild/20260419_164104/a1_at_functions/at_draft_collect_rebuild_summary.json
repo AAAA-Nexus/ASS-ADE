@@ -1,0 +1,58 @@
+{
+  "body": "def collect_rebuild_summary(rebuild_path: Path | None) -> dict[str, Any]:\n    if rebuild_path is None:\n        return {}\n    root = rebuild_path.resolve()\n    if not root.exists():\n        return {\"path\": str(root), \"exists\": False}\n\n    summary: dict[str, Any] = {\"path\": str(root), \"exists\": True}\n    version_file = root / \"VERSION\"\n    if version_file.exists():\n        lines = version_file.read_text(encoding=\"utf-8\").splitlines()\n        if lines:\n            summary[\"version\"] = lines[0].strip()\n    manifest = _read_json(root / \"MANIFEST.json\")\n    if manifest:\n        components = manifest.get(\"components\")\n        if isinstance(components, list):\n            summary[\"component_count\"] = len(components)\n        tier_distribution = manifest.get(\"tier_distribution\")\n        if isinstance(tier_distribution, dict):\n            summary[\"tier_distribution\"] = tier_distribution\n    cert = _certificate_summary(root / \"CERTIFICATE.json\")\n    if cert:\n        summary[\"certificate\"] = cert\n    report_path = root / \"REBUILD_REPORT.md\"\n    if report_path.exists():\n        summary[\"report\"] = str(report_path)\n    return summary\n",
+  "body_hash": "5e45e6cf2d5583c2",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "exists",
+    "_read_json",
+    "_certificate_summary",
+    "str",
+    "splitlines",
+    "get",
+    "isinstance",
+    "strip",
+    "len",
+    "read_text"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/protocol/evolution.py:258.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.collect_rebuild_summary",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "re",
+    "shutil",
+    "subprocess",
+    "tomllib",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field",
+    "ass_ade.engine.rebuild.version_tracker.INITIAL_VERSION",
+    "ass_ade.engine.rebuild.version_tracker.bump_version"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/protocol/evolution.py:258"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "collect_rebuild_summary",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for collect_rebuild_summary"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

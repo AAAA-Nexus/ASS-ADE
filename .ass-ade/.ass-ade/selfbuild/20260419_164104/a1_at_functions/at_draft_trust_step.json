@@ -1,0 +1,47 @@
+{
+  "body": "def trust_step(ctx: dict[str, Any]) -> StepResult:\n    try:\n        result = client.trust_score(aid)\n        raw = result.model_dump() if hasattr(result, \"model_dump\") else {}\n        score = raw.get(\"score\", 0)\n        passed = score >= 0.5\n        ctx[\"trust_score\"] = score\n        return StepResult(name=\"trust_score\", status=StepStatus.PASSED if passed else StepStatus.FAILED, output=raw)\n    except Exception as exc:\n        return StepResult(name=\"trust_score\", status=StepStatus.FAILED, error=str(exc))\n",
+  "body_hash": "2083aa30e506e2d6",
+  "body_truncated": false,
+  "callers_of": [
+    "trust_score",
+    "get",
+    "StepResult",
+    "hasattr",
+    "model_dump",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/pipeline.py:266.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.trust_step",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "time",
+    "collections.abc.Callable",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "enum.Enum",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Protocol",
+    "ass_ade.nexus.validation.validate_agent_id"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/pipeline.py:266"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "trust_step",
+  "product_categories": [
+    "IDT"
+  ],
+  "provides": [
+    "rebuild candidate for trust_step"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

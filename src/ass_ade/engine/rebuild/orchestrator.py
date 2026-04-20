@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import datetime as dt
 import json
+import os
 from pathlib import Path
 from typing import Any, Union
 
@@ -38,6 +39,21 @@ def _merge_by_tier(by_tier_list: list[dict[str, int]]) -> dict[str, int]:
     return merged
 
 
+def _resolve_vendor_repo_root(source_paths: list[Path]) -> Path | None:
+    """Find a repo root that contains ``src/ass_ade`` (canonical ASS-ADE layout)."""
+    for raw in source_paths:
+        cur = Path(raw).resolve()
+        for _ in range(12):
+            init_py = cur / "src" / "ass_ade" / "__init__.py"
+            if init_py.is_file():
+                return cur
+            parent = cur.parent
+            if parent == cur:
+                break
+            cur = parent
+    return None
+
+
 def rebuild_project(
     source_path: Union[Path, list[Path]],
     output_dir: Path,
@@ -47,6 +63,7 @@ def rebuild_project(
     break_cycles_if_found: bool = True,
     enforce_purity: bool = True,
     emit_package: bool = True,
+    package_copy_dotenv: bool = True,
     synthesize_gaps: bool = False,
     # Registry / blueprints
     registry: list[dict[str, Any]] | None = None,
@@ -72,6 +89,7 @@ def rebuild_project(
         break_cycles_if_found: Remove dependency cycles automatically.
         enforce_purity:        Strip tier-law-violating edges.
         emit_package:          Write ``__init__.py`` + ``pyproject.toml``.
+        package_copy_dotenv:   When vendoring ``src/ass_ade``, copy repo ``.env`` if present.
         synthesize_gaps:       Synthesize missing blueprint components via Nexus.
         registry:              Optional pre-built component registry for gap matching.
         blueprints:            Optional list of blueprint dicts for fulfillment tracking.
@@ -199,16 +217,22 @@ def rebuild_project(
     # ── Phase 7: Package ──────────────────────────────────────────────────────
     if emit_package:
         primary_source = source_paths[0] if source_paths else None
+        vendor_repo = _resolve_vendor_repo_root(source_paths)
         try:
             pkg = emit_runnable_package(
                 target_root,
                 control_root=output_dir,
                 source_root=primary_source,
+                vendor_repo_root=vendor_repo,
+                copy_dotenv=package_copy_dotenv
+                and os.getenv("ASS_ADE_PACKAGE_SKIP_DOTENV", "").lower() not in ("1", "true", "yes"),
             )
             phases["package"] = {
                 "importable": pkg["importable"],
                 "pyproject": pkg["pyproject"],
                 "init_files": len(pkg["init_files"]),
+                "vendored_ass_ade": pkg.get("vendored_ass_ade", False),
+                "support_copies": pkg.get("support_copies", {}),
             }
         except Exception as exc:  # noqa: BLE001
             phases["package"] = {"error": str(exc)}

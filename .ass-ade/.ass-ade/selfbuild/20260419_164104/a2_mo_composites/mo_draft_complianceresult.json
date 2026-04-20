@@ -1,0 +1,36 @@
+{
+  "body": "class ComplianceResult(NexusModel):\n    \"\"\"/v1/compliance/check and /v1/compliance/eu-ai-act\"\"\"\n    compliant: bool | None = None\n    frameworks: list[str] = Field(default_factory=list)\n    certificate_id: str | None = None\n    gaps: list[str] = Field(default_factory=list)\n",
+  "body_hash": "7a17ffb30a38ea7f",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:474.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.complianceresult",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:474"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "ComplianceResult",
+  "product_categories": [
+    "SRG"
+  ],
+  "provides": [
+    "rebuild candidate for ComplianceResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

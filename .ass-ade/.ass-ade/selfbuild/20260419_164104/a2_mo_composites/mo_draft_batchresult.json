@@ -1,0 +1,38 @@
+{
+  "body": "class BatchResult:\n    submitted: int\n    contribution_id: str | None\n    error: str | None = None\n    reward_claimed: bool = False\n",
+  "body_hash": "f7a0c0d786e5eeb5",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/lora_flywheel.py:44.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.batchresult",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "logging",
+    "time",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "pathlib.Path",
+    "typing.Any",
+    "hashlib"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/lora_flywheel.py:44"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "BatchResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for BatchResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

@@ -1,0 +1,36 @@
+{
+  "body": "class BoundHandler(_Handler):\n    pass\n",
+  "body_hash": "4b345f55c1c1f0a3",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/mcp/mock_server.py:89.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.src.boundhandler",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "threading",
+    "http.server.BaseHTTPRequestHandler",
+    "http.server.HTTPServer",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/mcp/mock_server.py:89"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "BoundHandler",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for BoundHandler"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

@@ -1,0 +1,44 @@
+{
+  "body": "class PromptProposeTool(_PromptToolBase):\n    @property\n    def name(self) -> str:\n        return \"prompt_propose\"\n\n    @property\n    def description(self) -> str:\n        return \"Create a prompt self-improvement proposal for an explicit prompt artifact.\"\n\n    @property\n    def parameters(self) -> dict[str, Any]:\n        return {\n            \"type\": \"object\",\n            \"properties\": {\n                \"objective\": {\"type\": \"string\", \"description\": \"Improvement objective.\"},\n                \"prompt_path\": {\"type\": \"string\", \"description\": \"Repo-relative prompt file.\"},\n                \"prompt_text\": {\"type\": \"string\", \"description\": \"Inline prompt text.\"},\n            },\n            \"required\": [\"objective\"],\n        }\n\n    def execute(self, **kwargs: Any) -> ToolResult:\n        return self._json(prompt_propose(working_dir=self._cwd, **kwargs))\n",
+  "body_hash": "ed7b4b497073ebad",
+  "body_truncated": false,
+  "callers_of": [
+    "_json",
+    "prompt_propose"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/tools/prompt.py:130.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.promptproposetool",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.prompt_toolkit.prompt_diff",
+    "ass_ade.prompt_toolkit.prompt_hash",
+    "ass_ade.prompt_toolkit.prompt_propose",
+    "ass_ade.prompt_toolkit.prompt_section",
+    "ass_ade.prompt_toolkit.prompt_validate",
+    "ass_ade.tools.base.ToolResult"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/tools/prompt.py:130"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.src.prompt_propose"
+  ],
+  "name": "PromptProposeTool",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for PromptProposeTool"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

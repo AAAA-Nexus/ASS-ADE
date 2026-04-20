@@ -1,0 +1,34 @@
+{
+  "body": "class ThinkRoute(NexusModel):\n    \"\"\"/v1/routing/think \u2014 POP-1207\"\"\"\n    complexity: Any = None   # \"low\" | \"medium\" | \"high\"\n    recommended_tier: str | None = None\n    recommended_model: str | None = None\n",
+  "body_hash": "cf7b54d1bbfe5191",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:907.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.thinkroute",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:907"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "ThinkRoute",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ThinkRoute"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

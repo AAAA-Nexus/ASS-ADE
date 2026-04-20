@@ -1,0 +1,40 @@
+{
+  "body": "def is_healthy(self) -> bool:\n    \"\"\"Return True if the session is active and has remaining calls.\"\"\"\n    if not self.is_active:\n        return False\n    try:\n        s = self.status()\n        remaining = s.remaining_calls\n        return remaining is None or remaining > 0\n    except NexusError:\n        return False\n",
+  "body_hash": "00e9a755fce782cb",
+  "body_truncated": false,
+  "callers_of": [
+    "status"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/session.py:66.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.is_healthy",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "ass_ade.nexus.client.NexusClient",
+    "ass_ade.nexus.errors.NexusError",
+    "ass_ade.nexus.models.RatchetAdvance",
+    "ass_ade.nexus.models.RatchetSession",
+    "ass_ade.nexus.models.RatchetStatus",
+    "ass_ade.nexus.validation.validate_agent_id",
+    "ass_ade.nexus.validation.validate_session_id"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/session.py:66"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "is_healthy",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for is_healthy"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

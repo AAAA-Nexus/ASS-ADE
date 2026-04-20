@@ -1,0 +1,43 @@
+{
+  "body": "class VectorMemoryQueryResult(BaseModel):\n    query: str\n    namespace: str\n    matches: list[VectorMemoryMatch] = Field(default_factory=list)\n",
+  "body_hash": "500fe58b509b0c36",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/context_memory.py:69.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.vectormemoryqueryresult",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "math",
+    "re",
+    "datetime.UTC",
+    "datetime.datetime",
+    "pathlib.Path",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "ass_ade.recon.phase0_recon"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/context_memory.py:69"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "VectorMemoryQueryResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for VectorMemoryQueryResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

@@ -1,0 +1,37 @@
+{
+  "body": "class SkillArtifact:\n    skill: str\n    feasibility: float\n    samples: int\n    trace: list[dict] = field(default_factory=list)\n    ready: bool = False\n",
+  "body_hash": "4e3724e6d3a81bfb",
+  "body_truncated": false,
+  "callers_of": [
+    "field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/exif.py:11.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.skillartifact",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "random",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/exif.py:11"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "SkillArtifact",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for SkillArtifact"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

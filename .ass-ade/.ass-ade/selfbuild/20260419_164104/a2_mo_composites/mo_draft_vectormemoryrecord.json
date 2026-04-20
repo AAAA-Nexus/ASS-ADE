@@ -1,0 +1,43 @@
+{
+  "body": "class VectorMemoryRecord(BaseModel):\n    id: str\n    namespace: str\n    text: str\n    vector: list[float]\n    metadata: dict[str, Any] = Field(default_factory=dict)\n    created_at: str\n",
+  "body_hash": "76d1535aba8552aa",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/context_memory.py:45.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.vectormemoryrecord",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "math",
+    "re",
+    "datetime.UTC",
+    "datetime.datetime",
+    "pathlib.Path",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "ass_ade.recon.phase0_recon"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/context_memory.py:45"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "VectorMemoryRecord",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for VectorMemoryRecord"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

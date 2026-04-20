@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "atomadic.context-pack.v1",
+  "generatedAt": "2026-04-21T12:00:00+00:00",
+  "intent": {
+    "summary": "Seed pack for REFINE — documents verificationEvidence pattern for /context-pack",
+    "deliverables": ["verificationEvidence on hops", "in-process MCP smoke tests"]
+  },
+  "paths": {
+    "repoRoot": "C:/!aaaa-nexus/!ass-ade",
+    "packDir": "C:/!aaaa-nexus/!ass-ade/.ass-ade/context-packs/seed-refine-20260420"
+  },
+  "repoMap": {
+    "tierMap": ".ass-ade/tier-map.json",
+    "tiersSampled": ["a0-a4 per tier-map when present"],
+    "hotPaths": ["mcp/server.json", "src/ass_ade/mcp/server.py", "tests/test_mcp_research_radar_fixture.py"],
+    "testsAndCommands": ["pytest tests/test_mcp_research_radar_fixture.py -q"]
+  },
+  "webResearch": {
+    "hops": [
+      {
+        "id": "H1-mcp-ecosystem",
+        "queries": ["arxiv MCP tool corpus 2603.23802"],
+        "findingSummary": "External MCP ecosystem scale + action-tool growth — use for policy only until stats reproduced (DEFER file).",
+        "verificationEvidence": {
+          "kind": "test",
+          "ref": "tests/test_mcp_research_radar_fixture.py::test_mcp_server_json_contains_golden_tool_trio",
+          "note": "Manifest golden trio gate; distractor names must not ship."
+        }
+      },
+      {
+        "id": "H1b-ai-breakthroughs",
+        "queries": ["agent tool-use evaluation MCPAgentBench"],
+        "findingSummary": "Benchmarks emphasize distractors + multi-step tool calls — align with future harness work.",
+        "verificationEvidence": {
+          "kind": "test",
+          "ref": "tests/test_mcp_research_radar_fixture.py::test_mcp_in_process_map_terrain_tool_call_returns_proceed",
+          "note": "In-process tools/call smoke for map_terrain (PROCEED path)."
+        }
+      },
+      {
+        "id": "H2-llm-verification",
+        "queries": ["LLM code verification survey 2025"],
+        "findingSummary": "Iterative repair + mutation-guided testing narratives — tie to reviewer + test gates.",
+        "verificationEvidence": {
+          "kind": "test",
+          "ref": "tests/test_mcp_research_radar_fixture.py::test_nexus_public_contract_slice_still_parses",
+          "note": "Nexus client contract slice mock (health + MCP manifest parse)."
+        }
+      },
+      {
+        "id": "H3-recursive-synthesis",
+        "queries": [],
+        "findingSummary": "Pack + preWrite gate + tier enforcer as complementary clamps — procedural synthesis.",
+        "verificationEvidence": {
+          "kind": "path",
+          "ref": ".ass-ade/research-radar/DEFER-paper-statistics.md",
+          "note": "DEFER for unreproduced paper statistics; revisit when evidence lands."
+        }
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/2603.23802",
+        "retrievedAt": "2026-04-20T12:00:00+00:00",
+        "supports": ["H1-mcp-ecosystem"]
+      }
+    ]
+  },
+  "techDocs": {
+    "stackFingerprint": {
+      "mcpManifest": "mcp/server.json",
+      "note": "Fill pyproject/Cargo when present; this seed is MCP-focused."
+    },
+    "deliverableScopes": []
+  },
+  "risksAndGaps": [
+    "ToolACE-style routing still not implemented — research spike only.",
+    "Paper percentages DEFER — see .ass-ade/research-radar/DEFER-paper-statistics.md"
+  ],
+  "verdict": "PASS"
+}

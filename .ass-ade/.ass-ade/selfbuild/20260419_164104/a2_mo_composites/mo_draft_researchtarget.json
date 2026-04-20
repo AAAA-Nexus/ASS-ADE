@@ -1,0 +1,45 @@
+{
+  "body": "class ResearchTarget(BaseModel):\n    topic: str\n    query: str\n    suggested_url: str | None = None\n    status: str = \"required\"\n",
+  "body_hash": "5bad18132cbfaebd",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/recon.py:91.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.researchtarget",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "concurrent.futures",
+    "os",
+    "re",
+    "time",
+    "collections.defaultdict",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Literal",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "ass_ade.local.repo.DEFAULT_IGNORED_DIRS",
+    "ass_ade.local.repo.summarize_repo"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/recon.py:91"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "ResearchTarget",
+  "product_categories": [
+    "DCM"
+  ],
+  "provides": [
+    "rebuild candidate for ResearchTarget"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

@@ -1,0 +1,34 @@
+{
+  "body": "class AuthorizeActionResult(NexusModel):\n    \"\"\"/v1/authorize/action \u2014 OAP-100\"\"\"\n    decision: str | None = None   # \"allow\" | \"deny\"\n    risk_tier: str | None = None\n    delegation_depth_ok: bool | None = None\n    identity_check_passed: bool | None = None\n",
+  "body_hash": "d0e8054db1b827dc",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:538.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.authorizeactionresult",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:538"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "AuthorizeActionResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for AuthorizeActionResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

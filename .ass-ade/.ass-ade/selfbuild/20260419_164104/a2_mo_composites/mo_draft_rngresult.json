@@ -1,0 +1,36 @@
+{
+  "body": "class RngResult(NexusModel):\n    \"\"\"/v1/rng/quantum\"\"\"\n    numbers: list[float] = Field(default_factory=list)\n    seed_ts: str | None = None\n    proof: str | None = None\n    verified: bool | None = None\n",
+  "body_hash": "972b7f4308c7efc3",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:192.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.rngresult",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:192"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "RngResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for RngResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

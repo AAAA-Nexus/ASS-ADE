@@ -1,0 +1,2677 @@
+{
+  "module_count": 445,
+  "modules": [
+    {
+      "change_type": "new",
+      "id": "at.source.ass_ade_v0_2_0.cmd_doctor",
+      "name": "cmd_doctor",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.ass_ade_v0_2_0.cmd_enhance",
+      "name": "cmd_enhance",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.ass_ade_v0_2_0.cmd_rebuild",
+      "name": "cmd_rebuild",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.ass_ade_v0_2_0.cmd_recon",
+      "name": "cmd_recon",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.a2a_discover",
+      "name": "a2a_discover",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.a2a_local_card",
+      "name": "a2a_local_card",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.a2a_negotiate",
+      "name": "a2a_negotiate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.a2a_validate",
+      "name": "a2a_validate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.active_terrain_gate",
+      "name": "active_terrain_gate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.add",
+      "name": "add",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.add_assistant",
+      "name": "add_assistant",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.add_create",
+      "name": "add_create",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.add_delete",
+      "name": "add_delete",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.add_modify",
+      "name": "add_modify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.add_tool_result",
+      "name": "add_tool_result",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.add_user",
+      "name": "add_user",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.advance",
+      "name": "advance",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.aegis_certify_epoch",
+      "name": "aegis_certify_epoch",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.aegis_epistemic_route",
+      "name": "aegis_epistemic_route",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.agent_chat",
+      "name": "agent_chat",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.agent_run",
+      "name": "agent_run",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.alert",
+      "name": "alert",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.append_history",
+      "name": "append_history",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.apply",
+      "name": "apply",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.atomadic",
+      "name": "Atomadic",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.avg_complexity",
+      "name": "avg_complexity",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.backup_file",
+      "name": "backup_file",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.bitnet_benchmark",
+      "name": "bitnet_benchmark",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.bitnet_chat",
+      "name": "bitnet_chat",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.bitnet_models",
+      "name": "bitnet_models",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.bitnet_status",
+      "name": "bitnet_status",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.bitnet_stream",
+      "name": "bitnet_stream",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.budget",
+      "name": "budget",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.build_assessment",
+      "name": "build_assessment",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.build_atomadic_intent_prompt",
+      "name": "build_atomadic_intent_prompt",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.build_audit",
+      "name": "build_audit",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.build_blueprint",
+      "name": "build_blueprint",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.build_capability_inventory",
+      "name": "build_capability_inventory",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.build_capability_snapshot",
+      "name": "build_capability_snapshot",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.build_context_packet",
+      "name": "build_context_packet",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.build_enhancement_report",
+      "name": "build_enhancement_report",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.build_local_certificate",
+      "name": "build_local_certificate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.build_payment_header",
+      "name": "build_payment_header",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.build_recommendations",
+      "name": "build_recommendations",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.build_resilient_transport",
+      "name": "build_resilient_transport",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.bump_project_version",
+      "name": "bump_project_version",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.calculate_next_version",
+      "name": "calculate_next_version",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.can_pay",
+      "name": "can_pay",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.capture_fix",
+      "name": "capture_fix",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.capture_principle",
+      "name": "capture_principle",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.capture_rejection",
+      "name": "capture_rejection",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.capture_trace",
+      "name": "capture_trace",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.certify",
+      "name": "certify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.certify_command",
+      "name": "certify_command",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.certify_pipeline",
+      "name": "certify_pipeline",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.certify_step",
+      "name": "certify_step",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.check_freshness",
+      "name": "check_freshness",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.check_hallucination",
+      "name": "check_hallucination",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.classify_complexity",
+      "name": "classify_complexity",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.classify_symbol",
+      "name": "classify_symbol",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.classify_tier",
+      "name": "classify_tier",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.clear",
+      "name": "clear",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.cli_paths",
+      "name": "cli_paths",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.close",
+      "name": "close",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.collect_agents",
+      "name": "collect_agents",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.collect_certificate_summaries",
+      "name": "collect_certificate_summaries",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.collect_cli_commands",
+      "name": "collect_cli_commands",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.collect_dynamic_abilities",
+      "name": "collect_dynamic_abilities",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.collect_git_state",
+      "name": "collect_git_state",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.collect_lineage_ids",
+      "name": "collect_lineage_ids",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.collect_local_tools",
+      "name": "collect_local_tools",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.collect_monadic_tiers",
+      "name": "collect_monadic_tiers",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.collect_rebuild_summary",
+      "name": "collect_rebuild_summary",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.collect_skills",
+      "name": "collect_skills",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.collect_surface_locations",
+      "name": "collect_surface_locations",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.command_path_exists",
+      "name": "command_path_exists",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.complexity_score",
+      "name": "complexity_score",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.compliance_check",
+      "name": "compliance_check",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.compliance_drift_cert",
+      "name": "compliance_drift_cert",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.compliance_drift_check",
+      "name": "compliance_drift_check",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.compliance_eu_ai_act",
+      "name": "compliance_eu_ai_act",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.compliance_fairness",
+      "name": "compliance_fairness",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.compliance_incident",
+      "name": "compliance_incident",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.compliance_step",
+      "name": "compliance_step",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.compute_codebase_digest",
+      "name": "compute_codebase_digest",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.compute_coefficient",
+      "name": "compute_coefficient",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.compute_synergy",
+      "name": "compute_synergy",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.compute_trs",
+      "name": "compute_trs",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.context_pack_command",
+      "name": "context_pack_command",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.context_query_command",
+      "name": "context_query_command",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.contribute_batch",
+      "name": "contribute_batch",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.control_authorize",
+      "name": "control_authorize",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.control_federation_mint",
+      "name": "control_federation_mint",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.control_lineage_record",
+      "name": "control_lineage_record",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.control_lineage_trace",
+      "name": "control_lineage_trace",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.control_spending_authorize",
+      "name": "control_spending_authorize",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.control_spending_budget",
+      "name": "control_spending_budget",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.conversation",
+      "name": "conversation",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.conviction",
+      "name": "conviction",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.count",
+      "name": "count",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.counts",
+      "name": "counts",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.credits",
+      "name": "credits",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.data_convert",
+      "name": "data_convert",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.data_format_convert",
+      "name": "data_format_convert",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.data_validate_json",
+      "name": "data_validate_json",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.decompose",
+      "name": "decompose",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.default_config_path",
+      "name": "default_config_path",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.defi_liquidation_check",
+      "name": "defi_liquidation_check",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.defi_optimize",
+      "name": "defi_optimize",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.defi_oracle_verify",
+      "name": "defi_oracle_verify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.defi_risk_score",
+      "name": "defi_risk_score",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.defi_yield_optimize",
+      "name": "defi_yield_optimize",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.delegation_depth",
+      "name": "delegation_depth",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.delegation_validate",
+      "name": "delegation_validate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.delta",
+      "name": "delta",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.depth",
+      "name": "depth",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.describe_self",
+      "name": "describe_self",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.description",
+      "name": "description",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.design_command",
+      "name": "design_command",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.detect_available_providers",
+      "name": "detect_available_providers",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.detect_linters",
+      "name": "detect_linters",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.dev_crypto_toolkit",
+      "name": "dev_crypto_toolkit",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.dev_routing_think",
+      "name": "dev_routing_think",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.dev_starter",
+      "name": "dev_starter",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.discovery_recommend",
+      "name": "discovery_recommend",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.discovery_search",
+      "name": "discovery_search",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.display_amount",
+      "name": "display_amount",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.distill_principles",
+      "name": "distill_principles",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.docs_command",
+      "name": "docs_command",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.doctor",
+      "name": "doctor",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.draft_plan",
+      "name": "draft_plan",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.eco_scan",
+      "name": "eco_scan",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.enhance_command",
+      "name": "enhance_command",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.errors",
+      "name": "errors",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.escrow_arbitrate",
+      "name": "escrow_arbitrate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.escrow_create",
+      "name": "escrow_create",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.escrow_dispute",
+      "name": "escrow_dispute",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.escrow_release",
+      "name": "escrow_release",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.escrow_status",
+      "name": "escrow_status",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.ethics_step",
+      "name": "ethics_step",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.evaluate_fitness",
+      "name": "evaluate_fitness",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.execute",
+      "name": "execute",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.execute_payment",
+      "name": "execute_payment",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.exif_explore",
+      "name": "exif_explore",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.explore",
+      "name": "explore",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.extract_json_array",
+      "name": "extract_json_array",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.extract_nexus_content",
+      "name": "extract_nexus_content",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.extract_symbols",
+      "name": "extract_symbols",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.failed_steps",
+      "name": "failed_steps",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.fetch_agent_card",
+      "name": "fetch_agent_card",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.flush_alerts",
+      "name": "flush_alerts",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.forge_badge",
+      "name": "forge_badge",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.forge_delta_submit",
+      "name": "forge_delta_submit",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.forge_leaderboard",
+      "name": "forge_leaderboard",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.forge_quarantine",
+      "name": "forge_quarantine",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.forge_verify",
+      "name": "forge_verify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.format_payment_consent",
+      "name": "format_payment_consent",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.formatconversion",
+      "name": "FormatConversion",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.from_header_value",
+      "name": "from_header_value",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.from_payment_result",
+      "name": "from_payment_result",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.from_response",
+      "name": "from_response",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.full_cycle",
+      "name": "full_cycle",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.gate_action",
+      "name": "gate_action",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.gate_log",
+      "name": "gate_log",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.gate_sam",
+      "name": "gate_sam",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.gate_step",
+      "name": "gate_step",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.generate_sip",
+      "name": "generate_sip",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.get_chain_config",
+      "name": "get_chain_config",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.get_gaps",
+      "name": "get_gaps",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.get_ollama_models",
+      "name": "get_ollama_models",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.get_provider",
+      "name": "get_provider",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.get_stale_files",
+      "name": "get_stale_files",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.get_trust_score",
+      "name": "get_trust_score",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.greeting",
+      "name": "greeting",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.hallucination_step",
+      "name": "hallucination_step",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.handle_request",
+      "name": "handle_request",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.hash_file",
+      "name": "hash_file",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.history",
+      "name": "history",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.hook_dgm_h_validate",
+      "name": "hook_dgm_h_validate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.hook_meta_edit_validate",
+      "name": "hook_meta_edit_validate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.hydrate_from_memory",
+      "name": "hydrate_from_memory",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.identity_delegate_verify",
+      "name": "identity_delegate_verify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.identity_step",
+      "name": "identity_step",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.identity_sybil_check",
+      "name": "identity_sybil_check",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.identity_verify",
+      "name": "identity_verify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.increment_delegation_depth",
+      "name": "increment_delegation_depth",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.ingest_project",
+      "name": "ingest_project",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.init",
+      "name": "init",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.interpreter_chat",
+      "name": "interpreter_chat",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.is_active",
+      "name": "is_active",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.is_available",
+      "name": "is_available",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.is_confident",
+      "name": "is_confident",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.is_expired",
+      "name": "is_expired",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.is_healthy",
+      "name": "is_healthy",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.is_open",
+      "name": "is_open",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.is_testnet",
+      "name": "is_testnet",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.iter_source_files",
+      "name": "iter_source_files",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.last_cycle_report",
+      "name": "last_cycle_report",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.last_lse_decision",
+      "name": "last_lse_decision",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.last_routing",
+      "name": "last_routing",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.last_sam_result",
+      "name": "last_sam_result",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.lint_command",
+      "name": "lint_command",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.list_blueprints",
+      "name": "list_blueprints",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.list_providers",
+      "name": "list_providers",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.list_snapshots",
+      "name": "list_snapshots",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.llm_chat",
+      "name": "llm_chat",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.llm_stream",
+      "name": "llm_stream",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.load",
+      "name": "load",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.load_config",
+      "name": "load_config",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.load_prompt_artifact",
+      "name": "load_prompt_artifact",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.local_agent_card",
+      "name": "local_agent_card",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.local_route",
+      "name": "local_route",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.local_train",
+      "name": "local_train",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.lora_credit",
+      "name": "lora_credit",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.lora_status",
+      "name": "lora_status",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.lora_train",
+      "name": "lora_train",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.map_terrain",
+      "name": "map_terrain",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.memory_clear",
+      "name": "memory_clear",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.memory_export",
+      "name": "memory_export",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.memory_show",
+      "name": "memory_show",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.messages",
+      "name": "messages",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.mev_protect",
+      "name": "mev_protect",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.mev_status",
+      "name": "mev_status",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.model_for_tier",
+      "name": "model_for_tier",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.monitor",
+      "name": "monitor",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.monitor_all",
+      "name": "monitor_all",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.name",
+      "name": "name",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.name_not_empty",
+      "name": "name_not_empty",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.ncb_contract",
+      "name": "ncb_contract",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.negotiate",
+      "name": "negotiate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.nexus_agent_card",
+      "name": "nexus_agent_card",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.nexus_health",
+      "name": "nexus_health",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.nexus_overview",
+      "name": "nexus_overview",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.nexus_route",
+      "name": "nexus_route",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.normalize_branch_tracks",
+      "name": "normalize_branch_tracks",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.on_progress",
+      "name": "on_progress",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.oracle_entropy",
+      "name": "oracle_entropy",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.oracle_hallucination",
+      "name": "oracle_hallucination",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.oracle_trust_decay",
+      "name": "oracle_trust_decay",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.oracle_trust_phase",
+      "name": "oracle_trust_phase",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.parameters",
+      "name": "parameters",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.parse_challenge",
+      "name": "parse_challenge",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.parse_command_specs",
+      "name": "parse_command_specs",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.parse_metrics",
+      "name": "parse_metrics",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.pay",
+      "name": "pay",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.persist_principles",
+      "name": "persist_principles",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.phase0_recon",
+      "name": "phase0_recon",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.pipeline_certify",
+      "name": "pipeline_certify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.pipeline_history",
+      "name": "pipeline_history",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.pipeline_run",
+      "name": "pipeline_run",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.pipeline_status",
+      "name": "pipeline_status",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.pipeline_trust_gate",
+      "name": "pipeline_trust_gate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.plan",
+      "name": "plan",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.pre_action_verify",
+      "name": "pre_action_verify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.pre_synthesis_check",
+      "name": "pre_synthesis_check",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.preview",
+      "name": "preview",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.process",
+      "name": "process",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.product_categories",
+      "name": "product_categories",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.prompt_diff",
+      "name": "prompt_diff",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.prompt_diff_command",
+      "name": "prompt_diff_command",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.prompt_hash",
+      "name": "prompt_hash",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.prompt_hash_command",
+      "name": "prompt_hash_command",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.prompt_propose",
+      "name": "prompt_propose",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.prompt_propose_command",
+      "name": "prompt_propose_command",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.prompt_section",
+      "name": "prompt_section",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.prompt_section_command",
+      "name": "prompt_section_command",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.prompt_sync_agent_command",
+      "name": "prompt_sync_agent_command",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.prompt_validate",
+      "name": "prompt_validate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.prompt_validate_command",
+      "name": "prompt_validate_command",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.promptvalidateresult",
+      "name": "PromptValidateResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.promptvalidatetool",
+      "name": "PromptValidateTool",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.propose_meta_edit",
+      "name": "propose_meta_edit",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.propose_patch",
+      "name": "propose_patch",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.protocol_evolution_demo",
+      "name": "protocol_evolution_demo",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.protocol_evolution_record",
+      "name": "protocol_evolution_record",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.protocol_run",
+      "name": "protocol_run",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.protocol_version_bump",
+      "name": "protocol_version_bump",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.provider_for_model",
+      "name": "provider_for_model",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.providers_disable",
+      "name": "providers_disable",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.providers_enable",
+      "name": "providers_enable",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.providers_env",
+      "name": "providers_env",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.providers_list",
+      "name": "providers_list",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.providers_set_chain",
+      "name": "providers_set_chain",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.providers_set_key",
+      "name": "providers_set_key",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.providers_set_tier",
+      "name": "providers_set_tier",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.providers_show",
+      "name": "providers_show",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.providers_test",
+      "name": "providers_test",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.query",
+      "name": "query",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.query_vector_memory",
+      "name": "query_vector_memory",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.quick_project_scan",
+      "name": "quick_project_scan",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.raise_for_status",
+      "name": "raise_for_status",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.rank_findings",
+      "name": "rank_findings",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.ratchet_advance",
+      "name": "ratchet_advance",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.ratchet_register",
+      "name": "ratchet_register",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.ratchet_status",
+      "name": "ratchet_status",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.read_project_version",
+      "name": "read_project_version",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.rebuild_codebase",
+      "name": "rebuild_codebase",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.recall",
+      "name": "recall",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.recent_history",
+      "name": "recent_history",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.recon_command",
+      "name": "recon_command",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.record",
+      "name": "record",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.record_evolution_event",
+      "name": "record_evolution_event",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.record_gap",
+      "name": "record_gap",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.record_read",
+      "name": "record_read",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.register",
+      "name": "register",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.register",
+      "name": "register",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.register_blueprint_app",
+      "name": "register_blueprint_app",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.register_commands",
+      "name": "register_commands",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.register_selfbuild_app",
+      "name": "register_selfbuild_app",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.render_atomadic_help",
+      "name": "render_atomadic_help",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.render_branch_evolution_demo",
+      "name": "render_branch_evolution_demo",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.render_capability_prompt_section",
+      "name": "render_capability_prompt_section",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.render_certificate_text",
+      "name": "render_certificate_text",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.render_evolution_markdown",
+      "name": "render_evolution_markdown",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.render_markdown",
+      "name": "render_markdown",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.render_markdown_capability_section",
+      "name": "render_markdown_capability_section",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.render_protocol_markdown",
+      "name": "render_protocol_markdown",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.repo_summary",
+      "name": "repo_summary",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.report",
+      "name": "report",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.report",
+      "name": "report",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.reputation_history",
+      "name": "reputation_history",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.reputation_record",
+      "name": "reputation_record",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.reputation_score",
+      "name": "reputation_score",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.reputation_step",
+      "name": "reputation_step",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.reset_delegation_depth",
+      "name": "reset_delegation_depth",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.resolve_api_key",
+      "name": "resolve_api_key",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.resolve_tier",
+      "name": "resolve_tier",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.rollback_command",
+      "name": "rollback_command",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.route",
+      "name": "route",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.run",
+      "name": "run",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.run",
+      "name": "run",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.run_audit",
+      "name": "run_audit",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.run_golden",
+      "name": "run_golden",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.run_interactive",
+      "name": "run_interactive",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.run_linters",
+      "name": "run_linters",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.run_parallel_recon",
+      "name": "run_parallel_recon",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.run_pipeline",
+      "name": "run_pipeline",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.run_protocol",
+      "name": "run_protocol",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.run_pyright",
+      "name": "run_pyright",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.run_ruff",
+      "name": "run_ruff",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.safe_path_segment",
+      "name": "safe_path_segment",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.sam_status",
+      "name": "sam_status",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.sanitize_header_value",
+      "name": "sanitize_header_value",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.save",
+      "name": "save",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.scan",
+      "name": "scan",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.scan_bare_except",
+      "name": "scan_bare_except",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.scan_long_functions",
+      "name": "scan_long_functions",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.scan_missing_docs",
+      "name": "scan_missing_docs",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.scan_missing_tests",
+      "name": "scan_missing_tests",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.scan_missing_type_hints",
+      "name": "scan_missing_type_hints",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.scan_prompt",
+      "name": "scan_prompt",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.scan_security_patterns",
+      "name": "scan_security_patterns",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.scan_todo_fixme",
+      "name": "scan_todo_fixme",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.search",
+      "name": "search",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.security_pqc_sign",
+      "name": "security_pqc_sign",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.security_prompt_scan",
+      "name": "security_prompt_scan",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.security_shield",
+      "name": "security_shield",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.security_threat_score",
+      "name": "security_threat_score",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.security_zero_day_scan",
+      "name": "security_zero_day_scan",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.select",
+      "name": "select",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.select_next_agent",
+      "name": "select_next_agent",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.select_provider_for_tier",
+      "name": "select_provider_for_tier",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.setup_command",
+      "name": "setup_command",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.shield_tool",
+      "name": "shield_tool",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.simulate",
+      "name": "simulate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.sla_breach",
+      "name": "sla_breach",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.sla_register",
+      "name": "sla_register",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.sla_report",
+      "name": "sla_report",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.sla_status",
+      "name": "sla_status",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.slugify",
+      "name": "slugify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.start",
+      "name": "start",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.status",
+      "name": "status",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.step",
+      "name": "step",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.step_names",
+      "name": "step_names",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.step_stream",
+      "name": "step_stream",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.strip_markdown_fences",
+      "name": "strip_markdown_fences",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.submit_payment",
+      "name": "submit_payment",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.subscribe",
+      "name": "subscribe",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.summarize",
+      "name": "summarize",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.summarize_repo",
+      "name": "summarize_repo",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.summary",
+      "name": "summary",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.swarm_contradiction",
+      "name": "swarm_contradiction",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.swarm_intent_classify",
+      "name": "swarm_intent_classify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.swarm_plan",
+      "name": "swarm_plan",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.swarm_relay",
+      "name": "swarm_relay",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.swarm_semantic_diff",
+      "name": "swarm_semantic_diff",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.sybil_step",
+      "name": "sybil_step",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.symbol",
+      "name": "Symbol",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.sync_atomadic_prompt_capabilities",
+      "name": "sync_atomadic_prompt_capabilities",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.synthesize",
+      "name": "synthesize",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.tca_status",
+      "name": "tca_status",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.teardown",
+      "name": "teardown",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.text_keywords",
+      "name": "text_keywords",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.text_sentiment",
+      "name": "text_sentiment",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.text_summarize",
+      "name": "text_summarize",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.tick",
+      "name": "tick",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.tier_for_complexity",
+      "name": "tier_for_complexity",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.to_dict",
+      "name": "to_dict",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.to_header_value",
+      "name": "to_header_value",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.to_markdown",
+      "name": "to_markdown",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.top_level_cli_groups",
+      "name": "top_level_cli_groups",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.tree_search",
+      "name": "tree_search",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.trim",
+      "name": "trim",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.trim_context",
+      "name": "trim_context",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.trim_to_budget",
+      "name": "trim_to_budget",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.trust_gate_pipeline",
+      "name": "trust_gate_pipeline",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.trust_history",
+      "name": "trust_history",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.trust_score",
+      "name": "trust_score",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.trust_step",
+      "name": "trust_step",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.tutorial_command",
+      "name": "tutorial_command",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.undo",
+      "name": "undo",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.update",
+      "name": "update",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.update_conviction",
+      "name": "update_conviction",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.update_from_turn",
+      "name": "update_from_turn",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.update_principles",
+      "name": "update_principles",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.validate",
+      "name": "validate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.validate",
+      "name": "validate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.validate_acyclic",
+      "name": "validate_acyclic",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.validate_agent_card",
+      "name": "validate_agent_card",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.validate_agent_id",
+      "name": "validate_agent_id",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.validate_api_key",
+      "name": "validate_api_key",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.validate_blueprint",
+      "name": "validate_blueprint",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.validate_g23",
+      "name": "validate_g23",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.validate_https_public_url",
+      "name": "validate_https_public_url",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.validate_payload",
+      "name": "validate_payload",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.validate_prompt",
+      "name": "validate_prompt",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.validate_session_id",
+      "name": "validate_session_id",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.validate_url",
+      "name": "validate_url",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.validate_usdc_amount",
+      "name": "validate_usdc_amount",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.validated",
+      "name": "validated",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.vanguard_epoch_certify",
+      "name": "vanguard_epoch_certify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.vanguard_govern_session",
+      "name": "vanguard_govern_session",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.vanguard_lock_and_verify",
+      "name": "vanguard_lock_and_verify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.vanguard_mev_route",
+      "name": "vanguard_mev_route",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.vanguard_redteam",
+      "name": "vanguard_redteam",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.vanguard_wallet_session",
+      "name": "vanguard_wallet_session",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.vector_embed",
+      "name": "vector_embed",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.verify",
+      "name": "verify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.vrf_draw",
+      "name": "vrf_draw",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.vrf_verify",
+      "name": "vrf_verify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.wallet",
+      "name": "wallet",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.warnings",
+      "name": "warnings",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.wisdom_report",
+      "name": "wisdom_report",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.write_branch_evolution_demo",
+      "name": "write_branch_evolution_demo",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "at.source.src.write_default_config",
+      "name": "write_default_config",
+      "version": "0.1.0"
+    }
+  ],
+  "tier": "a1_at_functions",
+  "tier_version": "0.1.0"
+}

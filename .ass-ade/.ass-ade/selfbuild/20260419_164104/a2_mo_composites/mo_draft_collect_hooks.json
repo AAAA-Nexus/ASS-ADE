@@ -1,0 +1,49 @@
+{
+  "body": "def collect_hooks(working_dir: str | Path = \".\") -> list[CapabilityEntry]:\n    root = _repo_root_from_working_dir(working_dir)\n    hooks_dir = root / \"hooks\"\n    if not hooks_dir.is_dir():\n        return []\n    return [\n        CapabilityEntry(kind=\"hook\", name=path.name, description=\"\")\n        for path in sorted(hooks_dir.glob(\"*.py\"))\n        if not path.name.startswith(\"_\")\n    ]\n",
+  "body_hash": "e1b70dfde7610946",
+  "body_truncated": false,
+  "callers_of": [
+    "_repo_root_from_working_dir",
+    "is_dir",
+    "CapabilityEntry",
+    "sorted",
+    "glob",
+    "startswith"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/capabilities.py:287.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.collect_hooks",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "typer.main",
+    "ass_ade.cli.app",
+    "ass_ade.tools.registry.default_registry",
+    "ass_ade.mcp.server._WORKFLOW_TOOLS"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/capabilities.py:287"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "collect_hooks",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for collect_hooks"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

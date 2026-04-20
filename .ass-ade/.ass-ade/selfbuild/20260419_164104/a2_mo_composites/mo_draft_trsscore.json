@@ -1,0 +1,33 @@
+{
+  "body": "class TRSScore:\n    trust: float\n    relevance: float\n    security: float\n",
+  "body_hash": "b22c264025bee26f",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/sam.py:11.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.trsscore",
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "ass_ade.context_memory.vector_embed"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/sam.py:11"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "TRSScore",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TRSScore"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

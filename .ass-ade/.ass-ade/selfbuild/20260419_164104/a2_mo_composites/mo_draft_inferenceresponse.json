@@ -1,0 +1,34 @@
+{
+  "body": "class InferenceResponse(NexusModel):\n    \"\"\"/v1/inference and /v1/embed\"\"\"\n    result: str | None = None\n    text: str | None = None          # alias used by some versions\n    tokens_used: int | None = None\n    model: str | None = None\n    latency_ms: float | None = None\n    helix_metadata: dict | None = None\n",
+  "body_hash": "9cd5a6b50d9a15a7",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:110.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.inferenceresponse",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:110"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "InferenceResponse",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for InferenceResponse"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

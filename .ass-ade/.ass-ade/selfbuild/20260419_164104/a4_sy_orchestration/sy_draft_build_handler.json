@@ -1,0 +1,36 @@
+{
+  "body": "def build_handler(manifest: dict) -> type[_Handler]:\n    \"\"\"Return a handler class with the given manifest bound.\"\"\"\n    class BoundHandler(_Handler):\n        pass\n    BoundHandler.manifest = manifest\n    return BoundHandler\n",
+  "body_hash": "44b6874370d12fe2",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/mcp/mock_server.py:87.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.src.build_handler",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "threading",
+    "http.server.BaseHTTPRequestHandler",
+    "http.server.HTTPServer",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/mcp/mock_server.py:87"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "build_handler",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for build_handler"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

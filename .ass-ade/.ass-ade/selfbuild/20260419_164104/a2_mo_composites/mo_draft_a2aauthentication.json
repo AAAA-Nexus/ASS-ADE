@@ -1,0 +1,46 @@
+{
+  "body": "class A2AAuthentication(BaseModel):\n    \"\"\"Authentication requirements for the agent.\"\"\"\n\n    schemes: list[str] = Field(default_factory=list)  # e.g. [\"bearer\", \"x402\"]\n    credentials: str | None = None  # human-readable note\n",
+  "body_hash": "f2a4c22735461ab8",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/a2a/__init__.py:57.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.a2aauthentication",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "socket",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any",
+    "urllib.parse.urlparse",
+    "httpx",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "pydantic.ValidationError",
+    "pydantic.field_validator",
+    "ass_ade.__version__",
+    "ass_ade.nexus.validation.validate_https_public_url",
+    "ass_ade.tools.registry.default_registry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/a2a/__init__.py:57"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "A2AAuthentication",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for A2AAuthentication"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

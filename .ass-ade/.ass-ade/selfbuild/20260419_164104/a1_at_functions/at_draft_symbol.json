@@ -1,0 +1,42 @@
+{
+  "body": "class Symbol:\n    name: str\n    kind: str\n    language: str\n    path: str\n    line: int\n",
+  "body_hash": "adbdf36a97c7058a",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/project_parser.py:50.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.symbol",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "datetime",
+    "json",
+    "os",
+    "re",
+    "dataclasses.asdict",
+    "dataclasses.dataclass",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "ass_ade.engine.rebuild.tiers.TIER_PREFIX",
+    "ass_ade.engine.rebuild.tiers.TIERS"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/project_parser.py:50"
+  },
+  "kind": "pure_class",
+  "made_of": [],
+  "name": "Symbol",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for Symbol"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

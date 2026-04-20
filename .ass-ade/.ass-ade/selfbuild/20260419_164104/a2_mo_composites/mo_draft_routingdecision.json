@@ -1,0 +1,35 @@
+{
+  "body": "class RoutingDecision:\n    \"\"\"Result of an epistemic routing decision.\"\"\"\n\n    tier: ModelTier\n    complexity: float  # \u2208 [0, 1]\n    recommended_model: str | None = None\n    reason: str = \"\"\n    source: str = \"local\"  # \"local\" | \"nexus\"\n",
+  "body_hash": "8d7632d933e58aba",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/routing.py:87.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.routingdecision",
+  "imports": [
+    "__future__.annotations",
+    "re",
+    "collections.abc.Mapping",
+    "dataclasses.dataclass",
+    "enum.Enum",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/routing.py:87"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "RoutingDecision",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for RoutingDecision"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

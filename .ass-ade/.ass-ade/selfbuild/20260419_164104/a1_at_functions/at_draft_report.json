@@ -1,0 +1,31 @@
+{
+  "body": "def report(self) -> dict:\n    return {\n        \"engine\": \"trust_gate\",\n        \"checks\": self._checks,\n        \"denied\": self._denied,\n    }\n",
+  "body_hash": "c4cd01544627ec05",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/trust_gate.py:56.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.report",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/trust_gate.py:56"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "report",
+  "product_categories": [
+    "IDT"
+  ],
+  "provides": [
+    "rebuild candidate for report"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

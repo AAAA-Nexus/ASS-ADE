@@ -1,0 +1,52 @@
+{
+  "body": "def build_atomadic_intent_prompt(\n    working_dir: str | Path = \".\",\n    *,\n    memory_context: str | None = None,\n) -> str:\n    \"\"\"Build the live LLM intent-classifier prompt with current capabilities.\n\n    Loads agents/atomadic_interpreter.md dynamically so changes to the agent\n    definition are picked up without code modifications. Also incorporates\n    any ONBOARDING.md or RECON_REPORT.md found in working_dir.\n    \"\"\"\n    wdir = Path(working_dir).resolve()\n    repo_root = _find_repo_root(wdir)\n\n    agent_definition = _load_agent_md(repo_root)\n    context_files = _load_project_context_files(wdir)\n    capability_section = render_capability_prompt_section(\n        working_dir,\n        max_cli=240,\n        max_tools=30,\n        max_mcp=40,\n        max_agents=20,\n    )\n\n    identity_block = agent_definition if agent_definition else (\n        \"You are Atomadic, the intelligent front door of ASS-ADE (Autonomous Sovereign\\n\"\n        \"System: Atomadic Development Environment), a CLI for analyzing, rebuilding,\\n\"\n        \"documenting, certifying, and evolving codebases.\"\n    )\n\n    extra_sections: list[str] = []\n    if memory_context:\n        extra_sections.append(f\"## User Context\\n{memory_context}\")\n    if context_files:\n        extra_sections.append(f\"## Project Onboarding Context\\n{context_files}\")\n    extra_block = \"\\n\\n\".join(extra_sections)\n\n    return f\"\"\"\\\n{identity_block}\n\n{extra_block + chr(10) + chr(10) if extra_block else \"\"}\\\nClassify the user's message and respond with ONLY a single valid JSON object.\nDo not use markdown fences. Do not add prose outside the JSON object.\n\nCore front-door intents (read descriptions carefully to avoid misclassification):\n- rebuild      \u2014 restructure an entire codebase into a clean 5-tier monadic layout\n- design       \u2014 create a spec/blueprint for a NEW tool, feature, component, or idea (even if the user says \"documentation tool\" or \"API\"; the VERB is \"design/plan/spec\")\n- add-feature  \u2014 add a new feature, endpoint, tool, skill, or component IN-PLACE to the current project (triggers: \"add a \u2026\", \"create a \u2026\", \"build a \u2026\", \"add an endpoint\", \"add health check\")\n- docs         \u2014 generate documentation (README, ARCHITECTURE, etc.) for EXISTING code\n- lint         \u2014 check code quality, style, or bugs with static analysis (NOT for \"scan this project\" which is recon)\n- certify      \u2014 sign or certify a codebase with a tamper-evident certificate\n- enhance      \u2014 proactively scan for improvements and suggest/apply enhancements\n- eco-scan     \u2014 monadic compliance check across the full ecosystem\n- recon        \u2014 explore, survey, or understand what a repo contains (triggers: \"scan this\", \"overview\", \"what's in this\", \"understand this\")\n- doctor       \u2014 health check: are tools, services, and connections working?\n- self-enhance \u2014 evolve the CLI itself (add colors, ASCII art, spinners, progress bars)\n- clean        \u2014 delete or purge old rebuild folders, backups, or evolved artifacts (triggers: \"clean up\", \"delete old\", \"remove old\", \"purge\")\n- help         \u2014 list available commands and capabilities\n- chat         \u2014 general conversation, questions about concepts\n\nDISAMBIGUATION RULES:\n- \"design a [thing]\" \u2192 design (not docs, even if [thing] contains the word \"documentation\")\n- \"scan this project\" / \"give me an overview\" / \"what's in this repo\" \u2192 recon (not lint)\n- \"add a [noun]\" / \"add an [noun]\" / \"create a [noun]\" \u2192 add-feature (not lint, even if noun is \"health check\")\n- \"clean up old rebuild\" / \"delete old builds\" \u2192 clean (not rebuild)\n- \"check code quality\" / \"find bugs\" / \"fix bugs\" / \"what's wrong\" / \"run linter\" \u2192 lint (not rebuild, not recon)\n- \"make it faster\" / \"speed this up\" / \"optimize\" / \"improve performance\" \u2192 enhance (NOT rebuild)\n- \"fix the bugs\" / \"there are bugs\" / \"fix issues\" \u2192 lint (NOT rebuild)\n- rebuild is ONLY for explicit whole-project restructuring: the user must say \"rebuild\", \"restructure\", \"reorganize\", \"rewrite\", or \"overhaul\". Vague improvement requests are NEVER rebuild.\n\nIf the message maps to a core front-door intent:\n  {{\"type\":\"command\",\"intent\":\"<core intent>\",\"path\":\"<input path or null>\",\"output_path\":\"<output path or null, only for rebuild>\",\"feature_desc\":\"<feature description or null>\"}}\n\nIf the message maps to another known ASS-ADE CLI command from the dynamic\ninventory, dispatch it exactly through cli_args:\n  {{\"type\":\"command\",\"intent\":\"cli\",\"cli_args\":[\"protocol\",\"evolution-record\"],\"path\":null,\"output_path\":null,\"feature_desc\":null}}\n\nIf the user asks what commands are available, what you can do, or says \"help\":\n  {{\"type\":\"command\",\"intent\":\"help\",\"path\":null,\"output_path\":null,\"feature_desc\":null}}\n\nIf the message is general conversation:\n  {{\"type\":\"chat\",\"response\":\"<short conversational reply>\"}}\n\nPrefer exact CLI command paths from the inventory. Do not invent command names.\nFor file paths, preserve user-provided [datetime] or {{datetime}} tokens exactly.\n\n{capability_section}\n\"\"\"\n",
+  "body_hash": "2b3c0588749766c4",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "_find_repo_root",
+    "_load_agent_md",
+    "_load_project_context_files",
+    "render_capability_prompt_section",
+    "join",
+    "append",
+    "Path",
+    "chr"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/capabilities.py:770.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.build_atomadic_intent_prompt",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "typer.main",
+    "ass_ade.cli.app",
+    "ass_ade.tools.registry.default_registry",
+    "ass_ade.mcp.server._WORKFLOW_TOOLS"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/capabilities.py:770"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "build_atomadic_intent_prompt",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for build_atomadic_intent_prompt"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

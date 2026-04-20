@@ -1,0 +1,53 @@
+{
+  "body": "def scan_file(path: Path) -> list[IncompleteFunction]:\n    try:\n        source = path.read_text(encoding=\"utf-8\")\n    except (OSError, UnicodeDecodeError):\n        return []\n    try:\n        tree = ast.parse(source)\n    except SyntaxError:\n        return []\n\n    results: list[IncompleteFunction] = []\n\n    def visit(node: ast.AST, stack: list[str]) -> None:\n        for child in ast.iter_child_nodes(node):\n            if isinstance(child, (ast.FunctionDef, ast.AsyncFunctionDef)):\n                fqn = stack + [child.name]\n                reason = _body_is_stub(child)\n                if reason is not None:\n                    results.append(\n                        IncompleteFunction(\n                            path=path,\n                            qualname=\".\".join(fqn),\n                            lineno=child.lineno,\n                            end_lineno=child.end_lineno or child.lineno,\n                            col_offset=child.col_offset,\n                            signature=_signature(source, child),\n                            docstring=_docstring(child),\n                            reason=reason,\n                        )\n                    )\n                visit(child, fqn)\n            elif isinstance(child, ast.ClassDef):\n                visit(child, stack + [child.name])\n            else:\n                visit(child, stack)\n\n    visit(tree, [])\n    return results\n",
+  "body_hash": "aec2c3543a31332c",
+  "body_truncated": false,
+  "callers_of": [
+    "visit",
+    "read_text",
+    "parse",
+    "iter_child_nodes",
+    "isinstance",
+    "_body_is_stub",
+    "append",
+    "IncompleteFunction",
+    "join",
+    "_signature",
+    "_docstring"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/finish.py:94.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.scan_file",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "json",
+    "os",
+    "dataclasses.dataclass",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.engine.rebuild.synthesis.DEFAULT_BASE_URL",
+    "ass_ade.engine.rebuild.synthesis._cie_gate",
+    "ass_ade.engine.rebuild.synthesis._synthesize_via_nexus"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/finish.py:94"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "scan_file",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for scan_file"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

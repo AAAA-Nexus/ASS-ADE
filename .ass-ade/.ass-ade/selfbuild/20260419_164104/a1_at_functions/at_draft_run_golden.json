@@ -1,0 +1,53 @@
+{
+  "body": "def run_golden(\n    task_path: Path,\n    tasks_limit: int = 10,\n    repeats: int = 10,\n    *,\n    prompt_suffix: str = \"\",\n    seed: int | None = None,\n) -> dict[str, Any]:\n    \"\"\"Run the golden task set and return per-task + aggregate metrics.\n\n    Parameters\n    ----------\n    task_path : Path\n        JSONL file with tasks ({id, kind, prompt, expected_contains}).\n    tasks_limit : int\n        Max tasks to load from the file.\n    repeats : int\n        Repeats per task; audit_pass is averaged across repeats.\n    prompt_suffix : str\n        Extra text appended to the synthetic response \u2014 lets the DGM-H\n        \"after\" run measure prompt-level influence of a proposed patch.\n    seed : int | None\n        Deterministic seed. When None, noise is still injected but repeats\n        differ; pass a stable seed for before/after reproducibility.\n    \"\"\"\n    task_path = Path(task_path)\n    tasks = _load_tasks(task_path, tasks_limit)\n    if not tasks:\n        return {\n            \"per_task\": [],\n            \"aggregate\": {\"pass_rate\": 0.0, \"avg_tokens\": 0.0, \"task_count\": 0, \"repeats\": repeats},\n            \"source\": str(task_path),\n            \"empty\": True,\n        }\n\n    rng_seed = seed\n    if rng_seed is None:\n        digest = hashlib.sha256((str(task_path) + prompt_suffix).encode(\"utf-8\")).hexdigest()\n        rng_seed = int(digest[:8], 16)\n    rng = random.Random(rng_seed)\n\n    per_task: list[dict[str, Any]] = []\n    total_pass = 0\n    total_runs = 0\n    total_tokens = 0\n    for task in tasks:\n        passes = 0\n        tokens_sum = 0\n        for _ in range(repeats):\n            scored = _score_task(task, rng, prompt_suffix=prompt_suffix)\n            passes += 1 if scored[\"pass\"] else 0\n            tokens_sum += int(scored[\"tokens\"])\n            total_runs += 1\n        pass_rate = passes / max(1, repeats)\n        avg_tokens = tokens_sum / max(1, repeats)\n        total_pass += passes\n        total_tokens += tokens_sum\n        per_task.append({\n            \"id\": task.get(\"id\"),\n            \"kind\": task.get(\"kind\"),\n            \"pass_rate\": pass_rate,\n            \"avg_tokens\": avg_tokens,\n            \"repeats\": repeats,\n        })\n\n    aggregate_pass_rate = total_pass / max(1, total_runs)\n    aggregate_tokens = total_tokens / max(1, total_runs)\n    # Noise floor: stdev across per-task pass rates as a cheap \u03c3 estimate.\n    if len(per_task) > 1:\n        mean = sum(p[\"pass_rate\"] for p in per_task) / len(per_task)\n        var = sum((p[\"pass_rate\"] - mean) ** 2 for p in per_task) / len(per_task)\n        noise_sigma = math.sqrt(var)\n    else:\n        noise_sigma = 0.05\n    return {\n        \"per_task\": per_task,\n        \"aggregate\": {\n            \"pass_rate\": aggregate_pass_rate,\n            \"avg_tokens\": aggregate_tokens,\n            \"task_count\": len(tasks),\n            \"repeats\": repeats,\n            \"noise_sigma\": noise_sigma,\n        },\n        \"source\": str(task_path),\n        \"seed\": rng_seed,\n    }\n",
+  "body_hash": "a30da0c53d9fadba",
+  "body_truncated": false,
+  "callers_of": [
+    "Path",
+    "_load_tasks",
+    "Random",
+    "hexdigest",
+    "int",
+    "range",
+    "append",
+    "max",
+    "len",
+    "sqrt",
+    "str",
+    "_score_task",
+    "sum",
+    "sha256",
+    "get",
+    "encode"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/golden_runner.py:72.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.run_golden",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "math",
+    "random",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/golden_runner.py:72"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "run_golden",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for run_golden"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

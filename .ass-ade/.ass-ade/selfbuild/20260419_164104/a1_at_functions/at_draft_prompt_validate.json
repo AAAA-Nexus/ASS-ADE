@@ -1,0 +1,60 @@
+{
+  "body": "def prompt_validate(\n    *,\n    manifest_path: str | Path,\n    working_dir: str | Path = \".\",\n    prompt_text: str | None = None,\n    prompt_path: str | Path | None = None,\n    prompt_name: str | None = None,\n) -> PromptValidateResult:\n    root = Path(working_dir).resolve()\n    manifest_file = _resolve_under(root, manifest_path)\n    artifact = load_prompt_artifact(\n        working_dir=root,\n        prompt_text=prompt_text,\n        prompt_path=prompt_path,\n    )\n    prompt_digest = hashlib.sha256(artifact.text.encode()).hexdigest()\n\n    try:\n        manifest = json.loads(manifest_file.read_text(encoding=\"utf-8\"))\n    except json.JSONDecodeError as exc:\n        raise ValueError(f\"manifest is not valid JSON: {exc}\") from exc\n    if not isinstance(manifest, dict):\n        raise ValueError(\"manifest must be a JSON object\")\n\n    expected = _extract_expected_hash(manifest, prompt_name=prompt_name)\n    signature_present = bool(manifest.get(\"signature\") or manifest.get(\"signatures\"))\n    notes: list[str] = []\n    if expected is None:\n        notes.append(\"No expected prompt hash found in manifest.\")\n    if signature_present:\n        notes.append(\"Signature metadata is present; local toolkit verifies hash only.\")\n    else:\n        notes.append(\"No signature metadata present; local toolkit verifies hash only.\")\n\n    return PromptValidateResult(\n        source=artifact.source,\n        sha256=prompt_digest,\n        expected_sha256=expected,\n        valid=bool(expected and prompt_digest.lower() == expected.lower()),\n        manifest_path=manifest_file.relative_to(root).as_posix(),\n        manifest_signature_present=signature_present,\n        signature_verified=False,\n        notes=notes,\n    )\n",
+  "body_hash": "161cc8654c50a061",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "_resolve_under",
+    "load_prompt_artifact",
+    "hexdigest",
+    "_extract_expected_hash",
+    "bool",
+    "PromptValidateResult",
+    "loads",
+    "isinstance",
+    "ValueError",
+    "append",
+    "Path",
+    "sha256",
+    "read_text",
+    "get",
+    "as_posix",
+    "encode",
+    "relative_to",
+    "lower"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/prompt_toolkit.py:146.",
+  "exceptions_raised": [
+    "ValueError"
+  ],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.prompt_validate",
+  "imports": [
+    "__future__.annotations",
+    "difflib",
+    "hashlib",
+    "json",
+    "re",
+    "pathlib.Path",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/prompt_toolkit.py:146"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "prompt_validate",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for prompt_validate"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,45 @@
+{
+  "body": "class TrustVerificationGate:\n    def __init__(self, config: dict, nexus: Any | None = None):\n        self._config = config\n        self._nexus = nexus\n        self._checks = 0\n        self._denied = 0\n        self._scores: dict[str, float] = {}\n\n    def pre_action_verify(self, action: dict) -> bool:\n        self._checks += 1\n        if self._nexus is not None:\n            for method in (\"trust_gate\", \"nexus_trust_gate\"):\n                fn = getattr(self._nexus, method, None)\n                if fn is None:\n                    continue\n                try:\n                    result = fn(action)\n                    ok = getattr(result, \"allowed\", None)\n                    if ok is None and isinstance(result, dict):\n                        ok = result.get(\"allowed\")\n                    if ok is not None:\n                        if not ok:\n                            self._denied += 1\n                        return bool(ok)\n                except Exception:\n                    break\n        risk = str(action.get(\"risk\", \"\")).lower()\n        if risk in {\"high\", \"critical\"}:\n            self._denied += 1\n            return False\n        return True\n\n    def get_trust_score(self, agent_id: str) -> float:\n        if agent_id in self._scores:\n            return self._scores[agent_id]\n        if self._nexus is not None and hasattr(self._nexus, \"trust_score\"):\n            try:\n                r = self._nexus.trust_score(agent_id)\n                score = float(getattr(r, \"score\", 0.5))\n                self._scores[agent_id] = score\n                return score\n            except Exception:\n                pass\n        return 0.5\n\n    def run(self, ctx: dict) -> dict:\n        ok = self.pre_action_verify(ctx.get(\"action\", {}))\n        return {\"allowed\": ok}\n\n    def report(self) -> dict:\n        return {\n            \"engine\": \"trust_gate\",\n            \"checks\": self._checks,\n            \"denied\": self._denied,\n        }\n",
+  "body_hash": "c9f7860548887e5b",
+  "body_truncated": false,
+  "callers_of": [
+    "lower",
+    "pre_action_verify",
+    "hasattr",
+    "get",
+    "getattr",
+    "str",
+    "trust_score",
+    "float",
+    "fn",
+    "isinstance",
+    "bool"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/trust_gate.py:7.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.trustverificationgate",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/trust_gate.py:7"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.src.pre_action_verify"
+  ],
+  "name": "TrustVerificationGate",
+  "product_categories": [
+    "IDT"
+  ],
+  "provides": [
+    "rebuild candidate for TrustVerificationGate"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

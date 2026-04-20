@@ -1,0 +1,47 @@
+{
+  "body": "def simulate_invoke(base_url: str, tool: MCPTool, payload: Any | None = None) -> dict:\n    \"\"\"Return a simulation summary of invoking the given tool without network I/O.\n\n    The result is a JSON-serializable dict suitable for printing to users or\n    CI systems when doing a dry-run. Absolute endpoints are validated for SSRF safety.\n    Raises ValueError if an absolute endpoint fails validation.\n    \"\"\"\n    endpoint = tool.endpoint or \"\"\n    if endpoint.startswith(\"http://\") or endpoint.startswith(\"https://\"):\n        # Absolute endpoint: validate for SSRF safety\n        url = _validate_absolute_endpoint(endpoint)\n    else:\n        url = base_url.rstrip(\"/\") + \"/\" + endpoint.lstrip(\"/\")\n\n    return {\n        \"simulated\": True,\n        \"tool\": tool.name,\n        \"method\": (tool.method or \"POST\").upper(),\n        \"endpoint\": url,\n        \"paid\": bool(tool.paid),\n        \"payload_preview\": payload,\n        \"note\": \"dry-run; no network request performed\",\n    }\n",
+  "body_hash": "6f34ef6f8e68e480",
+  "body_truncated": false,
+  "callers_of": [
+    "startswith",
+    "_validate_absolute_endpoint",
+    "upper",
+    "bool",
+    "lstrip",
+    "rstrip"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/mcp/utils.py:97.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.src.simulate_invoke",
+  "imports": [
+    "__future__.annotations",
+    "time",
+    "typing.Any",
+    "httpx",
+    "jsonschema",
+    "jsonschema.ValidationError",
+    "ass_ade.nexus.models.CostEstimate",
+    "ass_ade.nexus.models.MCPManifest",
+    "ass_ade.nexus.models.MCPTool",
+    "ass_ade.nexus.validation.sanitize_header_value",
+    "ass_ade.nexus.validation.validate_https_public_url"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/mcp/utils.py:97"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "simulate_invoke",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for simulate_invoke"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

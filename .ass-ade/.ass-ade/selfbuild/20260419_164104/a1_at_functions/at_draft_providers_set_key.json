@@ -1,0 +1,58 @@
+{
+  "body": "def providers_set_key(\n    provider: Annotated[str, typer.Argument(help=\"Provider name to set the API key for.\")],\n    api_key: Annotated[str, typer.Argument(help=\"API key value. NOT written to disk; session only.\")],\n    config: Path | None = CONFIG_OPTION,\n) -> None:\n    \"\"\"Set a provider API key for this shell session (not persisted).\n\n    For persistent keys, set the provider's env var in your .env file.\n    Running `ass-ade providers env` prints the env vars per provider.\n    \"\"\"\n    profile = get_provider(provider)\n    if profile is None:\n        console.print(f\"[red]Unknown provider:[/red] {provider}\")\n        raise typer.Exit(code=1)\n    if not profile.api_key_env:\n        console.print(f\"[yellow]{provider} doesn't use an API key.[/yellow]\")\n        raise typer.Exit(code=0)\n    os.environ[profile.api_key_env] = api_key\n    console.print(\n        f\"[green]\u2713[/green] {profile.api_key_env} set for this session.\\n\"\n        f\"[dim]To persist, add [bold]{profile.api_key_env}=...[/bold] to your .env file.[/dim]\"\n    )\n",
+  "body_hash": "551c432aeb66d28a",
+  "body_truncated": false,
+  "callers_of": [
+    "get_provider",
+    "print",
+    "Exit",
+    "Argument"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/commands/providers.py:296.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.providers_set_key",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "os",
+    "pathlib.Path",
+    "typing.Annotated",
+    "typing.Any",
+    "httpx",
+    "typer",
+    "rich.console.Console",
+    "rich.table.Table",
+    "ass_ade.agent.providers.DEFAULT_FALLBACK_CHAIN",
+    "ass_ade.agent.providers.FREE_PROVIDERS",
+    "ass_ade.agent.providers.TIER_ALIASES",
+    "ass_ade.agent.providers.ProviderProfile",
+    "ass_ade.agent.providers.detect_available_providers",
+    "ass_ade.agent.providers.get_provider",
+    "ass_ade.agent.providers.list_providers",
+    "ass_ade.agent.providers.resolve_tier",
+    "ass_ade.agent.providers.select_provider_for_tier",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.ProviderOverride",
+    "ass_ade.config.default_config_path",
+    "ass_ade.config.load_config",
+    "ass_ade.config.write_default_config"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/commands/providers.py:296"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "providers_set_key",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for providers_set_key"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

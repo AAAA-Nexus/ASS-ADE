@@ -1,0 +1,37 @@
+{
+  "body": "class PlannedEdit:\n    \"\"\"A single file operation within an edit plan.\"\"\"\n\n    kind: EditKind\n    path: str  # relative to working dir\n    old_string: str = \"\"  # for MODIFY\n    new_string: str = \"\"  # for MODIFY and CREATE\n    description: str = \"\"\n    diff: str = \"\"  # populated during validation\n\n    # Internal state\n    _original_content: str | None = None\n",
+  "body_hash": "532393625799512d",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/tools/plan.py:36.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.plannededit",
+  "imports": [
+    "__future__.annotations",
+    "difflib",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "enum.Enum",
+    "pathlib.Path",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.history.FileHistory"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/tools/plan.py:36"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "PlannedEdit",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for PlannedEdit"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

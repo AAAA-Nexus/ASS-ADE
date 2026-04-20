@@ -1,0 +1,44 @@
+{
+  "body": "class PipelineResult:\n    \"\"\"Result of an entire pipeline execution.\"\"\"\n\n    name: str\n    steps: list[StepResult] = field(default_factory=list)\n    context: dict[str, Any] = field(default_factory=dict)\n    passed: bool = False\n    duration_ms: float = 0.0\n\n    @property\n    def failed_steps(self) -> list[StepResult]:\n        return [s for s in self.steps if s.status == StepStatus.FAILED]\n\n    @property\n    def summary(self) -> str:\n        total = len(self.steps)\n        passed = sum(1 for s in self.steps if s.status == StepStatus.PASSED)\n        failed = sum(1 for s in self.steps if s.status == StepStatus.FAILED)\n        skipped = sum(1 for s in self.steps if s.status == StepStatus.SKIPPED)\n        verdict = \"PASSED\" if self.passed else \"FAILED\"\n        return f\"[{verdict}] {self.name}: {passed}/{total} passed, {failed} failed, {skipped} skipped ({self.duration_ms:.0f}ms)\"\n",
+  "body_hash": "134b9f996390c231",
+  "body_truncated": false,
+  "callers_of": [
+    "field",
+    "len",
+    "sum"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/pipeline.py:58.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.pipelineresult",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "time",
+    "collections.abc.Callable",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "enum.Enum",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Protocol",
+    "ass_ade.nexus.validation.validate_agent_id"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/pipeline.py:58"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "PipelineResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for PipelineResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

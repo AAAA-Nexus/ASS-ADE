@@ -1,0 +1,36 @@
+{
+  "body": "class AgentRegistry(NexusModel):\n    \"\"\"/v1/discovery/registry\"\"\"\n    agents: list[DiscoveredAgent] = Field(default_factory=list)\n    total_registered: int | None = None\n",
+  "body_hash": "5ace581937ef9dc4",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:350.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "og.source.src.agentregistry",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:350"
+  },
+  "kind": "product_organism",
+  "made_of": [],
+  "name": "AgentRegistry",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for AgentRegistry"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a3_og_features",
+  "version": "0.1.0"
+}

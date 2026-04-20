@@ -1,0 +1,47 @@
+{
+  "body": "def cmd_recon(args):\n    root = Path(args.path).resolve()\n    tier_counts = {}\n    total_py = 0\n    for tier in TIERS:\n        count = len(list((root / tier).glob(\"*.py\"))) if (root / tier).exists() else 0\n        tier_counts[tier] = count\n        total_py += count\n\n    manifest_components = 0\n    cert_written = 0\n    try:\n        manifest_components = len(json.loads((root / \"MANIFEST.json\").read_text())[\"components\"])\n    except Exception:\n        pass\n    try:\n        cert_written = json.loads((root / \"CERTIFICATE.json\").read_text()).get(\"written_count\", 0)\n    except Exception:\n        pass\n\n    result = {\n        \"status\": \"ok\",\n        \"tier_py_files\": tier_counts,\n        \"total_py_files\": total_py,\n        \"manifest_components\": manifest_components,\n        \"cert_written_count\": cert_written,\n        \"enhancements_available\": 0,\n    }\n    print(json.dumps(result, indent=2) if args.json else\n          f\"Recon: {total_py} py files, {manifest_components} manifest components\")\n",
+  "body_hash": "56bc81b24a97eb6f",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "print",
+    "len",
+    "get",
+    "Path",
+    "exists",
+    "dumps",
+    "list",
+    "loads",
+    "glob",
+    "read_text"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-v0.2.0/scripts/cli.py:16.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade_v0_2_0.cmd_recon",
+  "imports": [
+    "argparse",
+    "json",
+    "sys",
+    "pathlib.Path",
+    "ass_ade.engine.rebuild.orchestrator.rebuild_project",
+    "ass_ade.engine.rebuild.orchestrator.render_rebuild_summary"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-v0.2.0/scripts/cli.py:16"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "cmd_recon",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for cmd_recon"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

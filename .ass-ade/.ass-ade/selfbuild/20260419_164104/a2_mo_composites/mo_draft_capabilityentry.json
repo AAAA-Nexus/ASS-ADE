@@ -1,0 +1,44 @@
+{
+  "body": "class CapabilityEntry:\n    kind: str\n    name: str\n    description: str = \"\"\n",
+  "body_hash": "9d7fdefc148ce496",
+  "body_truncated": false,
+  "callers_of": [
+    "dataclass"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/capabilities.py:19.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.capabilityentry",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "typer.main",
+    "ass_ade.cli.app",
+    "ass_ade.tools.registry.default_registry",
+    "ass_ade.mcp.server._WORKFLOW_TOOLS"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/capabilities.py:19"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "CapabilityEntry",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for CapabilityEntry"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

@@ -1,0 +1,57 @@
+{
+  "body": "def engine_report(self) -> dict:\n    \"\"\"Combined report from all initialized engines.\"\"\"\n    reports: dict[str, Any] = {}\n    for name, getter in [\n        (\"atlas\", lambda: self._atlas),\n        (\"bas\", lambda: self._bas),\n        (\"wisdom\", lambda: self._wisdom),\n        (\"gvu\", lambda: self._gvu),\n        (\"tdmi\", lambda: self._tdmi),\n        (\"edee\", lambda: self._edee),\n        (\"severa\", lambda: self._severa),\n        (\"ide\", lambda: self._ide),\n        (\"lifr\", lambda: self._lifr),\n        (\"puppeteer\", lambda: self._puppeteer),\n        (\"sam\", lambda: self._sam),\n        (\"lse\", lambda: self._lse),\n        (\"tca\", lambda: self._tca),\n        (\"cie\", lambda: self._cie),\n        (\"lora_flywheel\", lambda: self._lora_flywheel),\n    ]:\n        engine = getter()\n        if engine is not None:\n            try:\n                reports[name] = engine.report()\n            except Exception:\n                pass\n    return reports\n",
+  "body_hash": "7e97ad96f2444843",
+  "body_truncated": false,
+  "callers_of": [
+    "getter",
+    "report"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/orchestrator.py:572.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.engine_report",
+  "imports": [
+    "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any",
+    "ass_ade.agent.atlas.Atlas",
+    "ass_ade.agent.bas.BAS",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "pathlib.Path",
+    "json",
+    "pathlib.Path",
+    "ass_ade.agent.gvu.GVU",
+    "ass_ade.agent.tdmi.TDMI",
+    "ass_ade.agent.edee.EDEE",
+    "ass_ade.agent.lifr_graph.LIFRGraph",
+    "ass_ade.agent.puppeteer.Puppeteer",
+    "ass_ade.agent.sam.SAM",
+    "ass_ade.agent.ide.IDE",
+    "ass_ade.agent.severa.Severa",
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.agent.tca.TCAEngine",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel",
+    "ass_ade.map_terrain.active_terrain_gate",
+    "json"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/orchestrator.py:572"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "engine_report",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for engine_report"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

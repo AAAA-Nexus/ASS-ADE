@@ -1,0 +1,54 @@
+{
+  "body": "def run_pipeline(self, *, prompt: str, output: str, intent: str = \"\", impl: str = \"\") -> list[GateResult]:\n    \"\"\"Run the full gate pipeline on a prompt\u2192output pair.\n\n    Stage 0 (Phase 1): SAM TRS scoring + G23 gate\n    Stage 1: prompt injection scan\n    Stage 2: hallucination oracle\n    Stage 3: output certification\n\n    Returns the list of gate results. Does not block \u2014 callers\n    should inspect the results and act accordingly.\n    \"\"\"\n    results: list[GateResult] = []\n\n    # Stage 0: SAM (Phase 1)\n    log_before = len(self._gate_log)\n    self.gate_sam(target=prompt, intent=intent or prompt, impl=impl or output)\n    if len(self._gate_log) > log_before:\n        results.extend(self._gate_log[log_before:])\n\n    log_before = len(self._gate_log)\n    scan = self.scan_prompt(prompt)\n    if scan and len(self._gate_log) > log_before:\n        results.extend(self._gate_log[log_before:])\n\n    log_before = len(self._gate_log)\n    halluc = self.check_hallucination(output)\n    if halluc and len(self._gate_log) > log_before:\n        results.extend(self._gate_log[log_before:])\n\n    log_before = len(self._gate_log)\n    cert = self.certify(output)\n    if cert and len(self._gate_log) > log_before:\n        results.extend(self._gate_log[log_before:])\n\n    return results\n",
+  "body_hash": "9b384661fe9be289",
+  "body_truncated": false,
+  "callers_of": [
+    "len",
+    "gate_sam",
+    "scan_prompt",
+    "check_hallucination",
+    "certify",
+    "extend"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/gates.py:479.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.run_pipeline",
+  "imports": [
+    "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "ast",
+    "re",
+    "json",
+    "datetime.UTC",
+    "datetime.datetime",
+    "pathlib.Path",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "ass_ade.agent.trust_gate.TrustVerificationGate",
+    "ass_ade.agent.proofbridge.ProofBridge",
+    "ass_ade.agent.alphaverus.AlphaVerus",
+    "ass_ade.agent.dgm_h.DGMH",
+    "ass_ade.agent.dgm_h.Patch",
+    "ass_ade.agent.golden_runner.run_golden",
+    "ass_ade.agent.sam.SAM"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/gates.py:479"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "run_pipeline",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for run_pipeline"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

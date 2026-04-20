@@ -1,0 +1,37 @@
+{
+  "body": "def get_provider(name: str) -> ProviderProfile | None:\n    \"\"\"Fetch a provider profile by name (case-insensitive).\"\"\"\n    return FREE_PROVIDERS.get(name.lower())\n",
+  "body_hash": "a8d79db49ff692e4",
+  "body_truncated": false,
+  "callers_of": [
+    "get",
+    "lower"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/providers.py:350.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.get_provider",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/providers.py:350"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "get_provider",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for get_provider"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

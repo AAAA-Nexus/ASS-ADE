@@ -1,0 +1,47 @@
+{
+  "body": "def sybil_step(ctx: dict[str, Any]) -> StepResult:\n    try:\n        result = client.sybil_check(aid)\n        raw = result.model_dump() if hasattr(result, \"model_dump\") else {}\n        risk = raw.get(\"sybil_risk\", \"low\")\n        passed = risk != \"high\"\n        ctx[\"sybil_passed\"] = passed\n        return StepResult(name=\"sybil_check\", status=StepStatus.PASSED if passed else StepStatus.FAILED, output=raw)\n    except Exception as exc:\n        return StepResult(name=\"sybil_check\", status=StepStatus.FAILED, error=str(exc))\n",
+  "body_hash": "c37f227c128244cd",
+  "body_truncated": false,
+  "callers_of": [
+    "sybil_check",
+    "get",
+    "StepResult",
+    "hasattr",
+    "model_dump",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/pipeline.py:255.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.sybil_step",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "time",
+    "collections.abc.Callable",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "enum.Enum",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Protocol",
+    "ass_ade.nexus.validation.validate_agent_id"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/pipeline.py:255"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "sybil_step",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for sybil_step"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

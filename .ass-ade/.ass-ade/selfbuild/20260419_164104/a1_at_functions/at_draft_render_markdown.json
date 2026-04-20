@@ -1,0 +1,34 @@
+{
+  "body": "def render_markdown(goal: str, steps: list[str]) -> str:\n    lines = [\"# Draft Plan\", \"\", f\"Goal: {goal}\", \"\"]\n    lines.extend(f\"{index}. {step}\" for index, step in enumerate(steps, start=1))\n    return \"\\n\".join(lines)\n",
+  "body_hash": "dc1cacd1056117dd",
+  "body_truncated": false,
+  "callers_of": [
+    "extend",
+    "join",
+    "enumerate"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/local/planner.py:49.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.render_markdown",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/local/planner.py:49"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "render_markdown",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for render_markdown"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

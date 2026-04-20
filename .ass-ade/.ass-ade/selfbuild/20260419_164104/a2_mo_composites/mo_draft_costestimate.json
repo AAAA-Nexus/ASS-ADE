@@ -1,0 +1,34 @@
+{
+  "body": "class CostEstimate(NexusModel):\n    currency: str = \"USDC\"\n    unit_cost: float | None = None\n    rate_limit_rpm: int | None = None\n    rate_limit_tpm: int | None = None\n    notes: str | None = None\n",
+  "body_hash": "8ed7620a1c5bb9bf",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:83.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.costestimate",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:83"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "CostEstimate",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for CostEstimate"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

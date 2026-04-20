@@ -1,0 +1,39 @@
+{
+  "body": "def update_principles(self, principles: list[str]) -> list[str]:\n    for p in principles:\n        if p not in self._principles:\n            self._principles.append(p)\n",
+  "body_hash": "5af1c6e9d6104f7a",
+  "body_truncated": false,
+  "callers_of": [
+    "append"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/wisdom.py:179.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.update_principles",
+  "imports": [
+    "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any",
+    "ass_ade.agent.audit_questions.AUDIT_QUESTIONS",
+    "ass_ade.context_memory.query_vector_memory",
+    "ass_ade.context_memory.store_vector_memory"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/wisdom.py:179"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "update_principles",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for update_principles"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

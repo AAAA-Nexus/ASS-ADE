@@ -1,0 +1,30 @@
+{
+  "body": "class NexusServerError(NexusError):\n    \"\"\"Server-side error (5xx).\"\"\"\n",
+  "body_hash": "1877105f6a5f386a",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/errors.py:48.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.src.nexusservererror",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/errors.py:48"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "NexusServerError",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for NexusServerError"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

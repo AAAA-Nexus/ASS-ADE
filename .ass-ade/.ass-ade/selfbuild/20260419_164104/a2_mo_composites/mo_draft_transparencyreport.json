@@ -1,0 +1,34 @@
+{
+  "body": "class TransparencyReport(NexusModel):\n    \"\"\"/v1/compliance/transparency \u2014 TRP-100\"\"\"\n    report_id: str | None = None\n    period: str | None = None\n    pdf_url: str | None = None\n    machine_readable: dict | None = None\n",
+  "body_hash": "a642ab05b3b0939b",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:806.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.transparencyreport",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:806"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "TransparencyReport",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TransparencyReport"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

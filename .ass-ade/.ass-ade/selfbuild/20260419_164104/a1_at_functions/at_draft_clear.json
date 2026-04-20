@@ -1,0 +1,60 @@
+{
+  "body": "def clear(cls) -> None:\n    for filename in [\n        \"user_profile.json\", \"project_contexts.json\",\n        \"preferences.json\", \"conversation_history.jsonl\",\n    ]:\n        p = _MEMORY_DIR / filename\n        if p.exists():\n            try:\n                p.unlink()\n            except OSError:\n                pass\n",
+  "body_hash": "37994cf5bf6b55df",
+  "body_truncated": false,
+  "callers_of": [
+    "exists",
+    "unlink"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/interpreter.py:363.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.clear",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "os",
+    "re",
+    "subprocess",
+    "sys",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "httpx",
+    "ass_ade.agent.capabilities.build_atomadic_intent_prompt",
+    "ass_ade.agent.capabilities.command_path_exists",
+    "ass_ade.agent.capabilities.render_capability_prompt_section",
+    "ass_ade.agent.capabilities.render_atomadic_help",
+    "dotenv.load_dotenv",
+    "ass_ade.config.load_config",
+    "time",
+    "shutil",
+    "shutil",
+    "importlib",
+    "sys",
+    "rich.console.Console",
+    "rich.markdown.Markdown",
+    "rich.markdown.Markdown",
+    "ass_ade.config.AssAdeConfig"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/interpreter.py:363"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "clear",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for clear"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

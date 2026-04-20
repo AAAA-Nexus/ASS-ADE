@@ -1,0 +1,34 @@
+{
+  "body": "class PromptOptimized(NexusModel):\n    \"\"\"/v1/prompts/optimize\"\"\"\n    original_tokens: int | None = None\n    optimized_tokens: int | None = None\n    optimized_prompt: str | None = None\n    savings_pct: float | None = None\n",
+  "body_hash": "67d51882e82b845e",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:428.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.promptoptimized",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:428"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "PromptOptimized",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for PromptOptimized"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

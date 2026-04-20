@@ -1,0 +1,36 @@
+{
+  "body": "class QuotaTree(NexusModel):\n    \"\"\"/v1/quota/tree \u2014 QTA-100\"\"\"\n    tree_id: str | None = None\n    total_budget: int | None = None\n    children: list[dict] = Field(default_factory=list)\n",
+  "body_hash": "c5e6fd858f70b2de",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:631.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.quotatree",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:631"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "QuotaTree",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for QuotaTree"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

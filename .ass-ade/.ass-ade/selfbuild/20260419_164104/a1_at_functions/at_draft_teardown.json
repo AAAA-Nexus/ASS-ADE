@@ -1,0 +1,38 @@
+{
+  "body": "def teardown(self) -> None:\n    \"\"\"Mark the session as ended (client-side only).\"\"\"\n    self.session_id = None\n    self.epoch = 0\n    self._started = False\n",
+  "body_hash": "bcc0b23d3bece0cd",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/session.py:77.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.teardown",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "ass_ade.nexus.client.NexusClient",
+    "ass_ade.nexus.errors.NexusError",
+    "ass_ade.nexus.models.RatchetAdvance",
+    "ass_ade.nexus.models.RatchetSession",
+    "ass_ade.nexus.models.RatchetStatus",
+    "ass_ade.nexus.validation.validate_agent_id",
+    "ass_ade.nexus.validation.validate_session_id"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/session.py:77"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "teardown",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for teardown"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

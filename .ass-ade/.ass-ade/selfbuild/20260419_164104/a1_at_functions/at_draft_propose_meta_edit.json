@@ -1,0 +1,47 @@
+{
+  "body": "def propose_meta_edit(self) -> MetaEdit:\n    mid = hashlib.sha256(f\"meta:{self._proposals}\".encode()).hexdigest()[:12]\n    return MetaEdit(id=mid, procedure=\"propose_patch\", description=\"tighten search heuristic\")\n",
+  "body_hash": "d46b3230856157f6",
+  "body_truncated": false,
+  "callers_of": [
+    "MetaEdit",
+    "hexdigest",
+    "sha256",
+    "encode"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/dgm_h.py:149.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.propose_meta_edit",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "math",
+    "random",
+    "dataclasses.asdict",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.UTC",
+    "datetime.datetime",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.agent.golden_runner.run_golden"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/dgm_h.py:149"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "propose_meta_edit",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for propose_meta_edit"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

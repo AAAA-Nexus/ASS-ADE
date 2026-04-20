@@ -1,0 +1,46 @@
+{
+  "body": "def iter_source_files(root: Path) -> Iterable[Path]:\n    for dirpath, dirnames, filenames in os.walk(root):\n        dirnames[:] = [name for name in dirnames if name not in EXCLUDED_DIRS]\n        for filename in filenames:\n            path = Path(dirpath) / filename\n            if path.suffix.lower() in SOURCE_SUFFIXES:\n                yield path\n",
+  "body_hash": "b1c78c015d2ce374",
+  "body_truncated": false,
+  "callers_of": [
+    "walk",
+    "Path",
+    "lower"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/project_parser.py:66.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.iter_source_files",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "datetime",
+    "json",
+    "os",
+    "re",
+    "dataclasses.asdict",
+    "dataclasses.dataclass",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "ass_ade.engine.rebuild.tiers.TIER_PREFIX",
+    "ass_ade.engine.rebuild.tiers.TIERS"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/project_parser.py:66"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "iter_source_files",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for iter_source_files"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

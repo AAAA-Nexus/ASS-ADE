@@ -1,0 +1,30 @@
+{
+  "body": "class NexusConnectionError(NexusError):\n    \"\"\"Network unreachable, DNS failure, or TLS error.\"\"\"\n",
+  "body_hash": "b38867bcc158078c",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/errors.py:28.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.nexusconnectionerror",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/errors.py:28"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "NexusConnectionError",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for NexusConnectionError"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

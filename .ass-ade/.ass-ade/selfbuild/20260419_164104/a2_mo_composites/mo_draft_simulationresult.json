@@ -1,0 +1,44 @@
+{
+  "body": "class SimulationResult:\n    \"\"\"Real DGM-H simulation result with per-cycle telemetry.\"\"\"\n\n    patch_id: str\n    cycles: int\n    improvement: float\n    weighted_before: float\n    weighted_after: float\n    noise_sigma: float\n    constitutional_violation: bool\n    per_cycle_metrics: list[dict[str, Any]] = field(default_factory=list)\n    violations: list[str] = field(default_factory=list)\n    artifact_path: str | None = None\n    threshold: float = _VALIDATION_THRESHOLD\n\n    # \u2500\u2500 Back-compat aliases for existing gates code \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    @property\n    def delta(self) -> float:\n        return self.improvement\n\n    @property\n    def validated(self) -> bool:\n        # Require: no violations, improvement >= threshold AND > 2\u03c3 of noise.\n        return (\n            not self.constitutional_violation\n            and not self.violations\n            and self.improvement >= self.threshold\n            and self.improvement > (2.0 * self.noise_sigma)\n        )\n",
+  "body_hash": "97329f1f183b91dd",
+  "body_truncated": false,
+  "callers_of": [
+    "field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/dgm_h.py:49.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.simulationresult",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "math",
+    "random",
+    "dataclasses.asdict",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.UTC",
+    "datetime.datetime",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.agent.golden_runner.run_golden"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/dgm_h.py:49"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "SimulationResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for SimulationResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

@@ -1,0 +1,44 @@
+{
+  "body": "class A2AProvider(BaseModel):\n    \"\"\"Organization or individual providing the agent.\"\"\"\n\n    organization: str = \"\"\n    url: str = \"\"\n",
+  "body_hash": "7392ba8ec5c5cceb",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/a2a/__init__.py:64.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.a2aprovider",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "socket",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any",
+    "urllib.parse.urlparse",
+    "httpx",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "pydantic.ValidationError",
+    "pydantic.field_validator",
+    "ass_ade.__version__",
+    "ass_ade.nexus.validation.validate_https_public_url",
+    "ass_ade.tools.registry.default_registry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/a2a/__init__.py:64"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "A2AProvider",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for A2AProvider"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

@@ -1,0 +1,68 @@
+{
+  "body": "def providers_list(\n    config: Path | None = CONFIG_OPTION,\n    all_providers: Annotated[bool, typer.Option(\"--all\", help=\"Show all catalog entries, not just available ones.\")] = False,\n) -> None:\n    \"\"\"List available (or all) LLM providers with tier \u2192 model mapping.\"\"\"\n    _, settings = _resolve_config(config)\n    config_providers = {\n        name: override.model_dump() for name, override in settings.providers.items()\n    }\n\n    available = {p.name for p in detect_available_providers(config_providers)}\n\n    table = Table(title=\"Free LLM Providers\")\n    table.add_column(\"Provider\", style=\"bold\")\n    table.add_column(\"Status\")\n    table.add_column(\"Fast tier\")\n    table.add_column(\"Balanced tier\")\n    table.add_column(\"Deep tier\")\n    table.add_column(\"Auth env\")\n\n    for name, profile in FREE_PROVIDERS.items():\n        if not all_providers and name not in available and not profile.local:\n            continue\n        if name in available:\n            status = \"[green]\u25cf ready[/green]\"\n        elif profile.local:\n            status = \"[yellow]\u25cf local (check if running)[/yellow]\"\n        else:\n            status = \"[dim]\u25cb no key[/dim]\"\n        table.add_row(\n            profile.display_name,\n            status,\n            profile.models_by_tier.get(\"fast\", \"\u2014\"),\n            profile.models_by_tier.get(\"balanced\", \"\u2014\"),\n            profile.models_by_tier.get(\"deep\", \"\u2014\"),\n            profile.api_key_env or \"(none)\",\n        )\n    console.print(table)\n\n    if not available:\n        console.print(\n            \"\\n[yellow]No cloud providers have API keys set.[/yellow]\\n\"\n            \"Run [bold]ass-ade providers env[/bold] to see signup URLs + env-var hints.\\n\"\n            \"Or run [bold]ollama serve[/bold] locally for a no-key fallback.\"\n        )\n\n    # Show active fallback chain\n    chain = list(settings.provider_fallback_chain) or DEFAULT_FALLBACK_CHAIN\n    console.print(f\"\\n[bold]Fallback chain:[/bold] {' \u2192 '.join(chain[:8])}{'...' if len(chain) > 8 else ''}\")\n    if settings.tier_policy:\n        console.print(f\"[bold]Tier policy:[/bold] {dict(settings.tier_policy)}\")\n",
+  "body_hash": "34c06d2c9194fd08",
+  "body_truncated": false,
+  "callers_of": [
+    "_resolve_config",
+    "Table",
+    "add_column",
+    "items",
+    "print",
+    "model_dump",
+    "add_row",
+    "list",
+    "detect_available_providers",
+    "get",
+    "Option",
+    "join",
+    "dict",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/commands/providers.py:74.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.providers_list",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "os",
+    "pathlib.Path",
+    "typing.Annotated",
+    "typing.Any",
+    "httpx",
+    "typer",
+    "rich.console.Console",
+    "rich.table.Table",
+    "ass_ade.agent.providers.DEFAULT_FALLBACK_CHAIN",
+    "ass_ade.agent.providers.FREE_PROVIDERS",
+    "ass_ade.agent.providers.TIER_ALIASES",
+    "ass_ade.agent.providers.ProviderProfile",
+    "ass_ade.agent.providers.detect_available_providers",
+    "ass_ade.agent.providers.get_provider",
+    "ass_ade.agent.providers.list_providers",
+    "ass_ade.agent.providers.resolve_tier",
+    "ass_ade.agent.providers.select_provider_for_tier",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.config.ProviderOverride",
+    "ass_ade.config.default_config_path",
+    "ass_ade.config.load_config",
+    "ass_ade.config.write_default_config"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/commands/providers.py:74"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "providers_list",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for providers_list"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

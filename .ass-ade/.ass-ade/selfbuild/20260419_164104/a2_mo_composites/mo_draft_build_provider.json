@@ -1,0 +1,68 @@
+{
+  "body": "def build_provider(config: AssAdeConfig) -> ModelProvider:\n    \"\"\"Build the provider stack for this config.\n\n    Returns a `MultiProvider` if more than one provider is available, or a\n    single provider instance if only one fits. Callers shouldn't care \u2014 they\n    just invoke `.complete(request)`.\n    \"\"\"\n    # Lazy import to break the circular dependency\n    # (engine/__init__ \u2192 router \u2192 agent.providers \u2192 agent/__init__ \u2192 agent.loop \u2192 tools.registry \u2192 engine.types)\n    from ass_ade.agent.providers import (\n        DEFAULT_FALLBACK_CHAIN,\n        FREE_PROVIDERS,\n        detect_available_providers,\n    )\n\n    # 1. Explicit env override \u2014 highest priority, bypass catalog\n    provider_url = os.getenv(\"ASS_ADE_PROVIDER_URL\")\n    if provider_url:\n        return OpenAICompatibleProvider(\n            base_url=provider_url,\n            api_key=os.getenv(\"ASS_ADE_PROVIDER_KEY\", \"\"),\n            model=os.getenv(\"ASS_ADE_MODEL\", \"default\"),\n        )\n\n    # 2. OpenAI env key \u2192 always add it as a registered provider\n    # (Users who set OPENAI_API_KEY explicitly get it in the chain, but it\n    # isn't listed in FREE_PROVIDERS because it's not free.)\n    openai_key = os.getenv(\"OPENAI_API_KEY\")\n    anthropic_key = os.getenv(\"ANTHROPIC_API_KEY\")\n\n    # 3. Build provider map from catalog\n    config_providers = {\n        name: override.model_dump() for name, override in config.providers.items()\n    } if hasattr(config, \"providers\") else {}\n\n    available_profiles = detect_available_providers(config_providers)\n\n    providers: dict[str, ModelProvider] = {}\n    model_to_provider: dict[str, str] = {}\n\n    for profile in available_profiles:\n        if profile.base_url is None:\n            continue  # requires custom URL (e.g., cloudflare); skip until user provides\n        user_override = config_providers.get(profile.name, {}) if config_providers else {}\n\n        # \u2500\u2500 Special providers (Nexus) use their own class \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n        if profile.special and profile.name == \"nexus\":\n            # Priority: per-provider override \u2192 env var \u2192 top-level nexus_api_key\n            api_key = (\n                profile.resolve_api_key(config_key=user_override.get(\"api_key\"))\n                or config.nexus_api_key\n            )\n            if api_key and config.profile != \"local\":\n                from ass_ade.nexus.client import NexusClient\n\n                nexus_base = user_override.get(\"base_url\") or profile.base_url or config.nexus_base_url\n                client = NexusClient(\n                    base_url=nexus_base,\n                    api_key=api_key,\n                    agent_id=config.agent_id,  # claim accrued LoRA credit automatically\n                )\n                providers[\"nexus\"] = NexusProvider(client)\n                override_models = user_override.get(\"models_by_tier\") or {}\n                for model_id in {**profile.models_by_tier, **override_models}.values():\n                    if model_id:\n                        model_to_provider[model_id] = \"nexus\"\n            continue\n\n        base_url = user_override.get(\"base_url\") or profile.base_url\n        api_key = profile.resolve_api_key(config_key=user_override.get(\"api_key\"))\n        default_model = _default_model(profile, user_override)\n        inst = OpenAICompatibleProvider(\n            base_url=base_url,\n            api_key=api_key or \"\",\n            model=default_model,\n            timeout=config.request_timeout_s if config.request_timeout_s >= 10 else 60.0,\n        )\n        providers[profile.name] = inst\n        # Register every model id this provider can serve\n        override_models = user_override.get(\"models_by_tier\") or {}\n        for tier, model_id in {**profile.models_by_tier, **override_models}.items():\n            if model_id:\n                model_to_provider[model_id] = profile.name\n\n    # 4. Add OpenAI if key present (bypasses free catalog)\n    if openai_key:\n        providers[\"openai\"] = OpenAICompatibleProvider(\n            base_url=os.getenv(\"OPENAI_BASE_URL\", \"https://api.openai.com/v1\"),\n            api_key=openai_key,\n            model=os.getenv(\"ASS_ADE_MODEL\", \"gpt-4o\"),\n        )\n        model_to_provider.setdefault(\"gpt-4o\", \"openai\")\n        model_to_provider.setdefault(\"gpt-4o-mini\", \"openai\")\n\n    # 5. Add Anthropic if key present (native Messages API)\n    if anthropic_key:\n        providers[\"anthropic\"] = AnthropicProvider(\n            api_key=anthropic_key,\n            model=os.getenv(\"ASS_ADE_MODEL\", \"claude-sonnet-4-6\"),\n        )\n        for m in (\"claude-sonnet-4-6\", \"claude-opus-4-7\", \"claude-haiku-4-5-20251001\"):\n            model_to_provider.setdefault(m, \"anthropic\")\n\n    # 6. Nexus handled above via catalog \u2014 skip duplicate wiring\n\n    # 7. If nothing is configured, fall back to Ollama on localhost (free, local)\n    if not providers:\n        ollama_host = os.getenv(\"OLLAMA_HOST\", \"http://localhost:11434\")\n        return OpenAICompatibleProvider(\n            base_url=f\"{ollama_host}/v1\",\n            api_key=\"ollama\",\n            model=os.getenv(\"ASS_ADE_MODEL\", \"qwen2.5-coder:7b\"),\n        )\n\n    # 8. Build MultiProvider with configured fallback order\n    fallback_order = _build_fallback_order(config, providers)\n    # Single-provider shortcut (no routing overhead)\n    if len(providers) == 1:\n        return next(iter(providers.values()))\n    return MultiProvider(\n        providers=providers,\n        model_to_provider=model_to_provider,\n        fallback_order=fallback_order,\n    )\n",
+  "body_hash": "8624ecf049be6253",
+  "body_truncated": false,
+  "callers_of": [
+    "getenv",
+    "detect_available_providers",
+    "_build_fallback_order",
+    "MultiProvider",
+    "OpenAICompatibleProvider",
+    "hasattr",
+    "resolve_api_key",
+    "_default_model",
+    "items",
+    "setdefault",
+    "AnthropicProvider",
+    "len",
+    "next",
+    "model_dump",
+    "get",
+    "iter",
+    "NexusClient",
+    "NexusProvider",
+    "values"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/engine/router.py:37.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.build_provider",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "typing.Any",
+    "typing.TYPE_CHECKING",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.engine.provider.AnthropicProvider",
+    "ass_ade.engine.provider.ModelProvider",
+    "ass_ade.engine.provider.MultiProvider",
+    "ass_ade.engine.provider.NexusProvider",
+    "ass_ade.engine.provider.OpenAICompatibleProvider",
+    "ass_ade.agent.providers.ProviderProfile",
+    "ass_ade.agent.providers.DEFAULT_FALLBACK_CHAIN",
+    "ass_ade.agent.providers.FREE_PROVIDERS",
+    "ass_ade.agent.providers.detect_available_providers",
+    "ass_ade.agent.providers.DEFAULT_FALLBACK_CHAIN",
+    "ass_ade.nexus.client.NexusClient"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/engine/router.py:37"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.src.detect_available_providers",
+    "at.source.src.resolve_api_key"
+  ],
+  "name": "build_provider",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for build_provider"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

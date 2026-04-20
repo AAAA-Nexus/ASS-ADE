@@ -1,0 +1,12 @@
+{
+  "engine": "TEE",
+  "objective": "Observable swarm + MCP behavior with human-gated auto-fixes.",
+  "steps": [
+    "Define OTel resource attributes + span names in ``.ass-ade/aso/telemetry_metrics.schema.json``.",
+    "Export counters/histograms for MCP ``tools/call`` latency and token estimates where instrumented.",
+    "Route regressions to ``/epiphany`` + ``@evolutionary-manager`` with rollback + tests."
+  ],
+  "defer": [
+    "AgentOps / Phoenix dashboards \u2014 wire after collector is running in CI or local compose."
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "body": "class IncompleteFunction:\n    path: Path\n    qualname: str\n    lineno: int\n    end_lineno: int\n    col_offset: int\n    signature: str\n    docstring: str | None\n    reason: str  # \"pass\" | \"ellipsis\" | \"not_implemented\" | \"todo_only\" | \"return_none_only\"\n",
+  "body_hash": "7f92efc4dfbd6f33",
+  "body_truncated": false,
+  "callers_of": [
+    "dataclass"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/finish.py:31.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.incompletefunction",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "json",
+    "os",
+    "dataclasses.dataclass",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.engine.rebuild.synthesis.DEFAULT_BASE_URL",
+    "ass_ade.engine.rebuild.synthesis._cie_gate",
+    "ass_ade.engine.rebuild.synthesis._synthesize_via_nexus"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/finish.py:31"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "IncompleteFunction",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for IncompleteFunction"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

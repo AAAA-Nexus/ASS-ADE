@@ -1,0 +1,48 @@
+{
+  "body": "class VersionBumpResult(BaseModel):\n    old_version: str\n    new_version: str\n    bump: str\n    dry_run: bool\n    files_updated: list[str] = Field(default_factory=list)\n    backup_dir: str = \"\"\n    files_backed_up: list[str] = Field(default_factory=list)\n",
+  "body_hash": "f5707d2e9dbe4924",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/protocol/evolution.py:73.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.versionbumpresult",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "re",
+    "shutil",
+    "subprocess",
+    "tomllib",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field",
+    "ass_ade.engine.rebuild.version_tracker.INITIAL_VERSION",
+    "ass_ade.engine.rebuild.version_tracker.bump_version"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/protocol/evolution.py:73"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "VersionBumpResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for VersionBumpResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

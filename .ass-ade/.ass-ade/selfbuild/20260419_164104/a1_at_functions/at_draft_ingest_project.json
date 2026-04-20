@@ -1,0 +1,58 @@
+{
+  "body": "def ingest_project(\n    source_root: Path,\n    root_id: str = \"source\",\n    *,\n    registry: list[dict[str, Any]] | None = None,\n    emit_drafts: bool = False,\n    draft_dir: Path | None = None,\n    progress_callback: \"Any | None\" = None,\n) -> dict[str, Any]:\n    \"\"\"Scan ``source_root`` and return an ingestion report dict.\n\n    Args:\n        source_root: Directory to scan.\n        root_id: Logical identifier for this project root.\n        registry: Optional list of existing component specs for registry matching.\n        emit_drafts: Write draft JSON files for each gap.\n        draft_dir: Where to write draft files (only used when ``emit_drafts`` is True).\n        progress_callback: Optional callable(current, total) called per file processed.\n    \"\"\"\n    registry = registry or []\n    symbols: list[Symbol] = []\n    all_files = list(iter_source_files(source_root))\n    total_files = len(all_files)\n    for idx, path in enumerate(all_files, 1):\n        symbols.extend(extract_symbols(path))\n        if progress_callback is not None:\n            try:\n                progress_callback(idx, total_files)\n            except Exception:\n                pass\n\n    candidates = [classify_symbol(s, root_id, registry) for s in symbols]\n    gaps = [c for c in candidates if c[\"status\"] == \"gap\"]\n    draft_paths: list[str] = []\n    if emit_drafts and draft_dir is not None:\n        draft_paths = _emit_draft_components(gaps, root_id, draft_dir)\n\n    by_tier: dict[str, int] = {}\n    for c in candidates:\n        tier = c[\"tier\"]\n        by_tier[tier] = by_tier.get(tier, 0) + 1\n\n    files_scanned = total_files\n    return {\n        \"ingestion_schema\": INGESTION_SCHEMA,\n        \"generated_at\": dt.datetime.now(dt.timezone.utc).isoformat(),\n        \"source_root\": source_root.as_posix(),\n        \"root_id\": root_id,\n        \"mode\": \"draft-components\" if emit_drafts else \"report-only\",\n        \"summary\": {\n            \"files_scanned\": files_scanned,\n            \"symbols\": len(symbols),\n            \"candidate_components\": len(candidates),\n            \"mapped\": sum(1 for c in candidates if c[\"status\"] == \"mapped\"),\n            \"gaps\": len(gaps),\n            \"drafts_written\": len(draft_paths),\n            \"by_tier\": by_tier,\n        },\n        \"symbols\": [asdict(s) for s in symbols],\n        \"candidate_components\": candidates,\n        \"gaps\": gaps,\n        \"draft_paths\": draft_paths,\n    }\n",
+  "body_hash": "50012e71e866d891",
+  "body_truncated": false,
+  "callers_of": [
+    "list",
+    "len",
+    "enumerate",
+    "iter_source_files",
+    "extend",
+    "classify_symbol",
+    "_emit_draft_components",
+    "isoformat",
+    "as_posix",
+    "extract_symbols",
+    "get",
+    "sum",
+    "asdict",
+    "progress_callback",
+    "now"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/project_parser.py:215.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.ingest_project",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "datetime",
+    "json",
+    "os",
+    "re",
+    "dataclasses.asdict",
+    "dataclasses.dataclass",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "ass_ade.engine.rebuild.tiers.TIER_PREFIX",
+    "ass_ade.engine.rebuild.tiers.TIERS"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/project_parser.py:215"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "ingest_project",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ingest_project"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

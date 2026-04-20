@@ -1,0 +1,133 @@
+{
+  "module_count": 21,
+  "modules": [
+    {
+      "change_type": "new",
+      "id": "og.source.src.agentregistry",
+      "name": "AgentRegistry",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.src.certify_output",
+      "name": "certify_output",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.src.certifyresult",
+      "name": "CertifyResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.src.default_registry",
+      "name": "default_registry",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.src.discovery_registry",
+      "name": "discovery_registry",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.src.execute",
+      "name": "execute",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.src.get",
+      "name": "get",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.src.list_tools",
+      "name": "list_tools",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.src.propose",
+      "name": "propose",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.src.register",
+      "name": "register",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.src.safe_execute",
+      "name": "safe_execute",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.src.safeexecuteresult",
+      "name": "SafeExecuteResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.src.toolregistry",
+      "name": "ToolRegistry",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.src.trust_gate",
+      "name": "trust_gate",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.src.trustgateresult",
+      "name": "TrustGateResult",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.src.trustgatestep",
+      "name": "TrustGateStep",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.src.workflow_certify",
+      "name": "workflow_certify",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.src.workflow_map_terrain",
+      "name": "workflow_map_terrain",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.src.workflow_phase0_recon",
+      "name": "workflow_phase0_recon",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.src.workflow_safe_execute",
+      "name": "workflow_safe_execute",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "og.source.src.workflow_trust_gate",
+      "name": "workflow_trust_gate",
+      "version": "0.1.0"
+    }
+  ],
+  "tier": "a3_og_features",
+  "tier_version": "0.1.0"
+}

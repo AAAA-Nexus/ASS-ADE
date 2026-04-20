@@ -1,0 +1,37 @@
+{
+  "body": "def provider_for_model(model: str) -> str | None:\n    \"\"\"Reverse-lookup: which provider serves this model id?\n\n    Used by the MultiProvider to route a CompletionRequest.model back to the\n    correct underlying OpenAICompatibleProvider instance.\n    \"\"\"\n    if not model:\n        return None\n    for name, profile in FREE_PROVIDERS.items():\n        for candidate in profile.models_by_tier.values():\n            if candidate == model:\n                return name\n    return None\n",
+  "body_hash": "bb43b0f752330306",
+  "body_truncated": false,
+  "callers_of": [
+    "items",
+    "values"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/providers.py:443.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.provider_for_model",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/providers.py:443"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "provider_for_model",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for provider_for_model"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,65 @@
+{
+  "body": "def synthesize_missing_components(\n    plan: dict[str, Any],\n    *,\n    base_url: str = DEFAULT_BASE_URL,\n    api_key: str | None = None,\n    agent_id: str | None = None,\n    allow_stub_fallback: bool = False,\n    strict_no_stubs: bool = True,\n    max_synthesize: int = 50,\n    max_refinement_attempts: int = 3,\n) -> dict[str, Any]:\n    \"\"\"Synthesize components listed in blueprint ``still_unfulfilled``. Mutates ``plan``.\n\n    Production path (``strict_no_stubs=True``, the default) runs an iterative\n    refinement loop against AAAA-Nexus: on each CIE-gate failure the findings\n    are fed back into the next prompt, up to ``max_refinement_attempts`` tries.\n    If the loop exhausts, a :class:`SynthesisFailure` is raised listing the\n    components that could not be produced cleanly.\n\n    Legacy behaviour (one-shot + deterministic stub) is still available by\n    setting ``allow_stub_fallback=True`` and ``strict_no_stubs=False`` \u2014 this\n    is intended for tests and offline demos.\n\n    Returns a receipt with ``synthesized_count``, ``lora_used``, ``stub_used``,\n    ``rejected``, ``refinement_trace``, and ``synthesized_at``.\n    \"\"\"\n    api_key = api_key or os.environ.get(\"AAAA_NEXUS_API_KEY\")\n    agent_id = agent_id or os.environ.get(\"AAAA_NEXUS_AGENT_ID\")\n\n    synthesized_ids: list[str] = []\n    rejected: list[dict[str, Any]] = []\n    refinement_trace: list[dict[str, Any]] = []\n    stub_used = 0\n    lora_used = 0\n\n    for bp in plan.get(\"blueprint_fulfillment\") or []:\n        missing = list(bp.get(\"still_unfulfilled\") or [])\n        if not missing:\n            continue\n        for cid in missing:\n            if len(synthesized_ids) >= max_synthesize:\n                break\n            tier = _tier_from_id(cid)\n            language = _infer_language(cid)\n            context = (\n                f\"Blueprint: {bp.get('blueprint_name') or bp.get('blueprint_id')}\\n\"\n                f\"Required component: {cid}\\n\"\n                f\"Target tier: {tier}\"\n            )\n            adapter_id = _fetch_current_adapter(base_url, language, api_key) if api_key else None\n\n            body: str | None = None\n            source = \"lora\"\n            attempt_findings: list[str] = []\n            attempts_log: list[dict[str, Any]] = []\n            feedback: str | None = None\n            for attempt in range(1, max(1, max_refinement_attempts) + 1):\n                candidate = _synthesize_via_nexus(\n                    cid, tier, bp.get(\"blueprint_id\") or \"\",\n                    context,\n                    base_url=base_url, api_key=api_key, agent_id=agent_id,\n                    language=language, adapter_id=adapter_id,\n                    feedback=feedback,\n                )\n                if candidate is None:\n                    attempts_log.append({\"attempt\": attempt, \"status\": \"no_response\"})\n                    break\n                ok, findings = _cie_gate(candidate, language)\n                attempts_log.append({\n                    \"attempt\": attempt,\n                    \"status\": \"passed\" if ok else \"cie_rejected\",\n                    \"findings\": findings,\n                })\n                if ok:\n                    body = candidate\n                    break\n                attempt_findings = findings\n                feedback = \"; \".join(findings)\n\n            if attempts_log:\n                refinement_trace.append({\n                    \"id\": cid,\n                    \"tier\": tier,\n                    \"language\": language,\n                    \"attempts\": attempts_log,\n                })\n\n            if body is None and allow_stub_fallback:\n                candidate = _stub_body(cid, tier, language)\n                ok, findings = _cie_gate(candidate, language)\n                if ok:\n                    body = candidate\n                    source = \"stub\"\n                    stub_used += 1\n\n            if body is None:\n                rejected.append({\n                    \"id\": cid,\n                    \"reason\": \"refinement_exhausted\",\n                    \"findings\": attempt_findings,\n                    \"attempts\": len(attempts_log),\n                })\n                continue\n\n            if source == \"lora\":\n                lora_used += 1\n\n            comp = _synthesized_component(cid, body, language, bp.get(\"blueprint_id\") or \"\", source)\n            plan.setdefault(\"proposed_components\", []).append(comp)\n            synthesized_ids.append(cid)\n            bp.setdefault(\"satisfied_by_synthesis\", []).append({\n                \"required\": cid, \"synthesis_source\": source\n            })\n            if cid in bp.get(\"still_unfulfilled\", []):\n                bp[\"still_unfulfilled\"].remove(cid)\n            bp[\"fully_satisfied\"] = len(bp.get(\"still_unfulfilled\") or []) == 0\n\n    receipt: dict[str, Any] = {\n        \"synthesized_count\": len(synthesized_ids),\n        \"synthesized_ids\": synthesized_ids,\n        \"lora_used\": lora_used,\n        \"stub_used\": stub_used,\n        \"rejected\": rejected,\n        \"refinement_trace\": refinement_trace,\n        \"base_url\": base_url,\n        \"last_nexus_error\": consume_last_nexus_error(),\n        \"synthesized_at\": dt.datetime.now(dt.timezone.utc).isoformat(),\n    }\n    plan.setdefault(\"summary\", {})[\"synthesis\"] = {\n        \"synthesized_count\": receipt[\"synthesized_count\"],\n        \"lora_used\": lora_used,\n        \"stub_used\": stub_used,\n        \"rejected_count\": len(rejected),\n        \"refinement_attempts_total\": sum(len(t[\"attempts\"]) for t in refinement_trace),\n    }\n\n    if strict_no_stubs and rejected:\n        ids = \", \".join(r[\"id\"] for r in rejected)\n        raise SynthesisFailure(\n            f\"Synthesis failed for {len(rejected)} component(s) after \"\n            f\"{max_refinement_attempts} refinement attempt(s): {ids}. \"\n            f\"Set strict_no_stubs=False with allow_stub_fallback=True to accept stubs.\"\n        )\n\n    return receipt\n",
+  "body_hash": "ca603905bfa3ac20",
+  "body_truncated": false,
+  "callers_of": [
+    "get",
+    "list",
+    "len",
+    "consume_last_nexus_error",
+    "isoformat",
+    "setdefault",
+    "sum",
+    "join",
+    "SynthesisFailure",
+    "_tier_from_id",
+    "_infer_language",
+    "range",
+    "_synthesized_component",
+    "append",
+    "_fetch_current_adapter",
+    "_synthesize_via_nexus",
+    "_cie_gate",
+    "_stub_body",
+    "remove",
+    "now",
+    "max"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/rebuild/synthesis.py:284.",
+  "exceptions_raised": [
+    "SynthesisFailure"
+  ],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.synthesize_missing_components",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "datetime",
+    "importlib.resources",
+    "os",
+    "re",
+    "typing.Any",
+    "ass_ade.engine.rebuild.nexus_parse.extract_json_array",
+    "ass_ade.engine.rebuild.nexus_parse.extract_nexus_content",
+    "ass_ade.engine.rebuild.nexus_parse.slugify",
+    "ass_ade.engine.rebuild.nexus_parse.strip_markdown_fences",
+    "httpx"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/engine/rebuild/synthesis.py:284"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "synthesize_missing_components",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for synthesize_missing_components"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

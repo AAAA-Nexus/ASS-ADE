@@ -1,0 +1,34 @@
+{
+  "body": "class AuditVerifyResult(NexusModel):\n    \"\"\"/v1/audit/verify\"\"\"\n    intact: bool | None = None\n    chain_length: int | None = None\n    first_entry: str | None = None\n    last_entry: str | None = None\n",
+  "body_hash": "9a2b68ddf9ce0b00",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:496.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.auditverifyresult",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:496"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "AuditVerifyResult",
+  "product_categories": [
+    "SRG"
+  ],
+  "provides": [
+    "rebuild candidate for AuditVerifyResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

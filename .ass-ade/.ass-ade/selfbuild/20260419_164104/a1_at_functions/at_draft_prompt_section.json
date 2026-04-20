@@ -1,0 +1,46 @@
+{
+  "body": "def prompt_section(\n    *,\n    section: str,\n    working_dir: str | Path = \".\",\n    prompt_text: str | None = None,\n    prompt_path: str | Path | None = None,\n) -> PromptSectionResult:\n    artifact = load_prompt_artifact(\n        working_dir=working_dir,\n        prompt_text=prompt_text,\n        prompt_path=prompt_path,\n    )\n    found = _xml_section(artifact.text, section) or _markdown_section(artifact.text, section)\n    if found is None:\n        return PromptSectionResult(source=artifact.source, section=section, found=False)\n    return PromptSectionResult(\n        source=artifact.source,\n        section=section,\n        found=True,\n        text=found,\n        sha256=hashlib.sha256(found.encode()).hexdigest(),\n    )\n",
+  "body_hash": "439fc10a1bb30aae",
+  "body_truncated": false,
+  "callers_of": [
+    "load_prompt_artifact",
+    "PromptSectionResult",
+    "_xml_section",
+    "_markdown_section",
+    "hexdigest",
+    "sha256",
+    "encode"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/prompt_toolkit.py:231.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.prompt_section",
+  "imports": [
+    "__future__.annotations",
+    "difflib",
+    "hashlib",
+    "json",
+    "re",
+    "pathlib.Path",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/prompt_toolkit.py:231"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "prompt_section",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for prompt_section"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

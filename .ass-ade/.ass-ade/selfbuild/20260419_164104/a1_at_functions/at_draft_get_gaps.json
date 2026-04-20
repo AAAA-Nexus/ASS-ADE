@@ -1,0 +1,37 @@
+{
+  "body": "def get_gaps(self) -> list[dict[str, Any]]:\n    return [\n        {\"description\": g.description, \"source\": g.source, \"ts\": g.ts}\n        for g in self._gaps\n    ]\n",
+  "body_hash": "47b1b17089545814",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/tca.py:129.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.get_gaps",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "logging",
+    "time",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/tca.py:129"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "get_gaps",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for get_gaps"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

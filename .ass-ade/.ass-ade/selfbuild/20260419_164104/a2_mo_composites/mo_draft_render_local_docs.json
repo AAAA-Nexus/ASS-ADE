@@ -1,0 +1,59 @@
+{
+  "body": "def render_local_docs(analysis: dict[str, Any], output_dir: Path) -> dict[str, Path]:\n    output_dir.mkdir(parents=True, exist_ok=True)\n    written: dict[str, Path] = {}\n\n    meta: dict[str, Any] = analysis.get(\"metadata\") or {}\n    symbols: list[dict[str, Any]] = analysis.get(\"symbols\") or []\n    languages: dict[str, int] = analysis.get(\"languages\") or {}\n    ci: list[str] = analysis.get(\"ci\") or []\n    test_fw = analysis.get(\"test_framework\")\n    summary: dict[str, Any] = analysis.get(\"summary\") or {}\n    entry_points: list[str] = meta.get(\"entry_points\") or []\n    lang_hint: str = meta.get(\"language_hint\") or (next(iter(languages), None) or \"unknown\")\n    project_name: str = meta.get(\"name\") or Path(analysis.get(\"root\", \"project\")).name\n    version: str = meta.get(\"version\") or \"0.1.0\"\n    description: str = meta.get(\"description\") or \"\"\n\n    classes = [s for s in symbols if s[\"kind\"] == \"class\"][:20]\n    functions = [s for s in symbols if s[\"kind\"] == \"function\"][:20]\n\n    lang_badge = f\"![Language]({lang_hint})\" if lang_hint else \"\"\n    test_badge = f\"![Tests]({test_fw})\" if test_fw else \"\"\n\n    install_line = \"\"\n    if lang_hint == \"python\":\n        install_line = \"pip install .\"\n    elif lang_hint == \"javascript\":\n        install_line = \"npm install\"\n    elif lang_hint == \"rust\":\n        install_line = \"cargo build --release\"\n    elif lang_hint == \"go\":\n        install_line = \"go build ./...\"\n\n    quickstart_lines = []\n    if install_line:\n        quickstart_lines.append(f\"```\\n{install_line}\\n```\")\n    if entry_points:\n        quickstart_lines.append(f\"```\\n{entry_points[0]} --help\\n```\")\n\n    top_classes_md = \"\\n\".join(f\"- `{c['name']}` ({c['file']})\" for c in classes) or \"_none detected_\"\n    top_funcs_md = \"\\n\".join(f\"- `{f['name']}` ({f['file']})\" for f in functions) or \"_none detected_\"\n\n    readme = f\"\"\"# {project_name}\n\n{description}\n\n**Version:** {version}\n{lang_badge} {test_badge}\n\n## Installation\n\n{chr(10).join(quickstart_lines) if quickstart_lines else \"_See project documentation._\"}\n\n## Entry Points\n\n{chr(10).join(f\"- `{ep}`\" for ep in entry_points) or \"_none detected_\"}\n\n## Key Classes\n\n{top_classes_md}\n\n## Key Functions\n\n{top_funcs_md}\n\n## CI\n\n{chr(10).join(f\"- {c}\" for c in ci) or \"_none detected_\"}\n\"\"\"\n    written[\"README.md\"] = _write(output_dir / \"README.md\", readme)\n\n    top_dirs = summary.get(\"top_level_entries\") or []\n    mermaid_nodes = \"\\n    \".join(f\"root --> {d}\" for d in top_dirs[:12])\n    arch = f\"\"\"# Architecture\n\n## Repository Overview\n\n- **Total files:** {summary.get(\"total_files\", \"?\")}\n- **Total directories:** {summary.get(\"total_dirs\", \"?\")}\n- **Primary language:** {lang_hint}\n- **Detected languages:** {\", \".join(languages.keys())}\n\n## Top-Level Structure\n\n```mermaid\nflowchart TD\n    root[{project_name}]\n    {mermaid_nodes}\n```\n\n## Entry Points\n\n{chr(10).join(f\"- `{ep}`\" for ep in entry_points) or \"_none detected_\"}\n\n## Test Framework\n\n{test_fw or \"_none detected_\"}\n\n## CI Systems\n\n{chr(10).join(f\"- {c}\" for c in ci) or \"_none detected_\"}\n\"\"\"\n    written[\"ARCHITECTURE.md\"] = _write(output_dir / \"ARCHITECTURE.md\", arch)\n\n    by_file: dict[str, list[dict[str, Any]]] = {}\n    for s in symbols:\n        by_file.setdefault(s[\"file\"], []).append(s)\n\n    features_sections: list[str] = []\n    for filepath, syms in list(by_file.items())[:30]:\n        lines = [f\"### `{filepath}`\", \"\"]\n        for s in syms:\n            lines.append(f\"- **{s['kind']}** `{s['name']}`\")\n        features_sections.append(\"\\n\".join(lines))\n\n    features = f\"\"\"# Features\n\nExtracted from {len(by_file)} source files.\n\n{chr(10).join(features_sections)}\n\"\"\"\n    written[\"FEATURES.md\"] = _write(output_dir / \"FEATURES.md\", features)\n\n    user_guide = f\"\"\"# User Guide\n\n## Installation\n\n{chr(10).join(quickstart_lines) if quickstart_lines else \"_See project documentation._\"}\n\n## Quickstart\n\n1. Install the project using the command above.\n2. Run `{entry_points[0] if entry_points else project_name} --help` to see available commands.\n3. Consult ARCHITECTURE.md for a structural overview.\n\n## Common Tasks\n\n| Task | Command |\n|------|---------|\n| Install | `{install_line or \"see docs\"}` |\n| Run tests | `{_test_command(lang_hint, test_fw)}` |\n| Build | `{_build_command(lang_hint)}` |\n\n## Configuration\n\nConfiguration is typically discovered automatically. See the project README for environment-specific options.\n\"\"\"\n    written[\"USER_GUIDE.md\"] = _write(output_dir / \"USER_GUIDE.md\", user_guide)\n\n    gitignore = _gitignore_for(lang_hint, languages)\n    written[\".gitignore\"] = _write(output_dir / \".gitignore\", gitignore)\n\n    contributing = f\"\"\"# Contributing\n\nThank you for your interest in contributing to **{project_name}**!\n\n## Getting Started\n\n1. Fork the repository and clone it locally.\n2. Install dependencies: `{install_line or \"see README\"}`\n3. Create a feature branch: `git checkout -b feature/your-feature`\n4. Make your changes, add tests where applicable.\n5. Run the test suite: `{_test_command(lang_hint, test_fw)}`\n6. Commit with a clear message and open a pull request.\n\n## Code Style\n\n- Follow the existing code style and conventions.\n- Keep functions focused and single-purpose.\n- Document non-obvious logic with comments that explain *why*, not *what*.\n\n## Reporting Issues\n\nOpen a GitHub issue with reproduction steps and expected vs. actual behavior.\n\"\"\"\n    written[\"CONTRIBUTING.md\"] = _write(output_dir / \"CONTRIBUTING.md\", contributing)\n\n    changelog = f\"\"\"# Changelog\n\nAll notable changes to **{project_name}** will be documented here.\n\nFormat follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).\n\n## [Unreleased]\n\n### Added\n\n### Changed\n\n### Fixed\n\n### Removed\n\"\"\"\n    written[\"CHANGELOG.md\"] = _write(output_dir / \"CHANGELOG.md\", changelog)\n\n    return written\n",
+  "body_hash": "5cba3abc11919f39",
+  "body_truncated": false,
+  "callers_of": [
+    "mkdir",
+    "get",
+    "_write",
+    "join",
+    "_gitignore_for",
+    "append",
+    "list",
+    "next",
+    "Path",
+    "items",
+    "len",
+    "_test_command",
+    "_build_command",
+    "iter",
+    "keys",
+    "setdefault",
+    "chr"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/local/docs_engine.py:268.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.render_local_docs",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "re",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.local.repo.DEFAULT_IGNORED_DIRS",
+    "ass_ade.local.repo.summarize_repo",
+    "json",
+    "tomllib",
+    "tomllib",
+    "tomli",
+    "tomli"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/local/docs_engine.py:268"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "render_local_docs",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for render_local_docs"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

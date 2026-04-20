@@ -1,0 +1,58 @@
+{
+  "body": "class NexusSession:\n    \"\"\"Manages a single RatchetGate session lifecycle.\"\"\"\n\n    def __init__(self, client: NexusClient) -> None:\n        self._client = client\n        self.session_id: str | None = None\n        self.epoch: int = 0\n        self._started = False\n\n    @property\n    def is_active(self) -> bool:\n        return self._started and self.session_id is not None\n\n    def start(self, agent_id: str) -> RatchetSession:\n        \"\"\"Register a new RatchetGate session.\"\"\"\n        validate_agent_id(agent_id)\n        # RatchetGate expects agent_id as an int multiple of G_18 (324)\n        # The server handles the constraint; we send the raw value\n        result = self._client.ratchet_register(\n            int(agent_id) if agent_id.isdigit() else (\n                int.from_bytes(hashlib.sha256(agent_id.encode(\"utf-8\")).digest()[:4], \"big\") & 0x7FFFFFFF\n            )\n        )\n        self.session_id = result.session_id\n        self.epoch = result.epoch or 0\n        self._started = True\n        return result\n\n    def advance(self) -> RatchetAdvance:\n        \"\"\"Advance the session epoch and re-key.\"\"\"\n        if not self.is_active:\n            raise RuntimeError(\"No active session. Call start() first.\")\n        if self.session_id is None:\n            raise RuntimeError(\"session_id must not be None\")\n        validate_session_id(self.session_id)\n        result = self._client.ratchet_advance(self.session_id)\n        self.epoch = result.new_epoch or self.epoch + 1\n        return result\n\n    def status(self) -> RatchetStatus:\n        \"\"\"Check current session health.\"\"\"\n        if not self.is_active:\n            raise RuntimeError(\"No active session. Call start() first.\")\n        if self.session_id is None:\n            raise RuntimeError(\"session_id must not be None\")\n        validate_session_id(self.session_id)\n        return self._client.ratchet_status(self.session_id)\n\n    def is_healthy(self) -> bool:\n        \"\"\"Return True if the session is active and has remaining calls.\"\"\"\n        if not self.is_active:\n            return False\n        try:\n            s = self.status()\n            remaining = s.remaining_calls\n            return remaining is None or remaining > 0\n        except NexusError:\n            return False\n\n    def teardown(self) -> None:\n        \"\"\"Mark the session as ended (client-side only).\"\"\"\n        self.session_id = None\n        self.epoch = 0\n        self._started = False\n",
+  "body_hash": "923118ce37c72984",
+  "body_truncated": false,
+  "callers_of": [
+    "validate_agent_id",
+    "ratchet_register",
+    "validate_session_id",
+    "ratchet_advance",
+    "ratchet_status",
+    "RuntimeError",
+    "status",
+    "isdigit",
+    "int",
+    "from_bytes",
+    "digest",
+    "sha256",
+    "encode"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/session.py:18.",
+  "exceptions_raised": [
+    "RuntimeError"
+  ],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.nexussession",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "ass_ade.nexus.client.NexusClient",
+    "ass_ade.nexus.errors.NexusError",
+    "ass_ade.nexus.models.RatchetAdvance",
+    "ass_ade.nexus.models.RatchetSession",
+    "ass_ade.nexus.models.RatchetStatus",
+    "ass_ade.nexus.validation.validate_agent_id",
+    "ass_ade.nexus.validation.validate_session_id"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/session.py:18"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.src.validate_agent_id",
+    "at.source.src.validate_session_id",
+    "at.source.src.status"
+  ],
+  "name": "NexusSession",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for NexusSession"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

@@ -1,0 +1,34 @@
+{
+  "body": "def report(self) -> dict:\n    return {\"engine\": \"proofbridge\", \"translations\": self._translations}\n",
+  "body_hash": "3eb57648afc545a5",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/proofbridge.py:60.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.src.report",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "re",
+    "dataclasses.dataclass",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/proofbridge.py:60"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "report",
+  "product_categories": [
+    "DCM"
+  ],
+  "provides": [
+    "rebuild candidate for report"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

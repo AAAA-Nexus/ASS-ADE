@@ -1,0 +1,57 @@
+{
+  "body": "def collect_dynamic_abilities(working_dir: str | Path = \".\") -> list[CapabilityEntry]:\n    \"\"\"Discover evolving abilities from asset memory and capability manifests.\"\"\"\n    root = _repo_root_from_working_dir(working_dir)\n    entries: list[CapabilityEntry] = []\n\n    asset_memory = root / \".ass-ade\" / \"assets.json\"\n    data = _load_json_file(asset_memory)\n    if isinstance(data, dict):\n        entries.extend(_entries_from_ability_items(data.get(\"assets\"), source=\".ass-ade/assets.json\"))\n    elif isinstance(data, list):\n        entries.extend(_entries_from_ability_items(data, source=\".ass-ade/assets.json\"))\n\n    manifest_candidates: list[Path] = []\n    for relpath in (\n        \"ass-ade.capabilities.json\",\n        \".ass-ade/capabilities.json\",\n        \".ass-ade/abilities.json\",\n        \".ass-ade/features.json\",\n    ):\n        candidate = root / relpath\n        if candidate.is_file():\n            manifest_candidates.append(candidate)\n\n    generated_root = root / \".ass-ade\" / \"capability-development\" / \"generated\"\n    if generated_root.is_dir():\n        manifest_candidates.extend(sorted(generated_root.glob(\"*/manifest.json\")))\n\n    seen: set[str] = {entry.name for entry in entries}\n    for manifest_path in manifest_candidates:\n        for entry in _entries_from_capability_manifest(manifest_path, root):\n            if entry.name not in seen:\n                entries.append(entry)\n                seen.add(entry.name)\n\n    for entry in _entries_from_rebuild_cheatsheet(root):\n        if entry.name not in seen:\n            entries.append(entry)\n            seen.add(entry.name)\n\n    return sorted(entries, key=lambda item: item.name)\n",
+  "body_hash": "498daa45f9a0554c",
+  "body_truncated": false,
+  "callers_of": [
+    "_repo_root_from_working_dir",
+    "_load_json_file",
+    "isinstance",
+    "is_dir",
+    "_entries_from_rebuild_cheatsheet",
+    "sorted",
+    "extend",
+    "is_file",
+    "_entries_from_capability_manifest",
+    "_entries_from_ability_items",
+    "append",
+    "add",
+    "get",
+    "glob"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/capabilities.py:514.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.collect_dynamic_abilities",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "typer.main",
+    "ass_ade.cli.app",
+    "ass_ade.tools.registry.default_registry",
+    "ass_ade.mcp.server._WORKFLOW_TOOLS"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/capabilities.py:514"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "collect_dynamic_abilities",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for collect_dynamic_abilities"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

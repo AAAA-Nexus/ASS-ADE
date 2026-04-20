@@ -1,0 +1,41 @@
+{
+  "body": "def validate_agent_id(value: str) -> str:\n    \"\"\"Non-empty, max 256 chars, safe characters only.\"\"\"\n    value = value.strip()\n    if not value:\n        raise ValueError(\"Agent ID must not be empty.\")\n    if len(value) > 256:\n        raise ValueError(f\"Agent ID exceeds 256 characters (got {len(value)}).\")\n    if not _SAFE_ID_RE.match(value):\n        raise ValueError(\n            \"Agent ID contains invalid characters. \"\n            \"Allowed: alphanumeric, dash, underscore, dot, colon.\"\n        )\n    return value\n",
+  "body_hash": "0499cd0c15228e11",
+  "body_truncated": false,
+  "callers_of": [
+    "strip",
+    "ValueError",
+    "len",
+    "match"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/validation.py:80.",
+  "exceptions_raised": [
+    "ValueError"
+  ],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.validate_agent_id",
+  "imports": [
+    "__future__.annotations",
+    "ipaddress",
+    "re",
+    "socket",
+    "urllib.parse.urlparse"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/validation.py:80"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "validate_agent_id",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for validate_agent_id"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

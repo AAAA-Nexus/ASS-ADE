@@ -1,0 +1,60 @@
+{
+  "body": "def active_terrain_gate(\n    required_capabilities: list[str],\n    context: dict[str, Any] | None = None,\n    working_dir: str | Path = \".\",\n    write_stubs: bool = True,\n) -> ActiveTerrainVerdict:\n    \"\"\"Active MAP=TERRAIN loop: check capabilities, HALT and invent stubs for missing ones.\n\n    For each missing capability:\n      1. Generate a Python invention stub (raises NotImplementedError with spec)\n      2. Return HALT_AND_INVENT with stub paths\n\n    Args:\n        required_capabilities: List of capability names needed for the task.\n        context: Optional dict with 'task_description' and 'cap_type' hints.\n        working_dir: Project root for stub placement.\n        write_stubs: If True, write stub files to disk. Set False in tests.\n\n    Returns:\n        ActiveTerrainVerdict with verdict PROCEED or HALT_AND_INVENT.\n    \"\"\"\n    ctx = context or {}\n    root = Path(working_dir).resolve()\n    task_description = ctx.get(\"task_description\", \"unknown task\")\n    default_cap_type = _normalize_type(str(ctx.get(\"cap_type\", \"tools\"))) or \"tools\"\n\n    # Build current inventory\n    inventory = build_capability_inventory(working_dir=root)\n    all_known: set[str] = set()\n    for names in inventory.values():\n        all_known.update(names)\n\n    present: list[str] = []\n    missing_names: list[str] = []\n    for cap in required_capabilities:\n        slug = _slug(cap)\n        if slug in all_known:\n            present.append(cap)\n        else:\n            missing_names.append(cap)\n\n    if not missing_names:\n        return ActiveTerrainVerdict(\n            verdict=\"PROCEED\",\n            capabilities_present=present,\n            capabilities_missing=[],\n            next_action=\"All required capabilities present. Proceed to synthesis.\",\n        )\n\n    stubs: list[InventionStub] = []\n    for cap_name in missing_names:\n        spec = (\n            f\"Capability '{cap_name}' required for: {task_description}. \"\n            \"Must provide a stable Python interface with fail-open design.\"\n        )\n        criteria = [\n            \"Stable __init__(config, nexus) signature.\",\n            \"Returns structured dataclass or dict.\",\n            \"Fail-open: exceptions are caught and logged.\",\n            \"Unit tests pass in local mode without Nexus.\",\n        ]\n        stub_path = \"\"\n        if write_stubs:\n            stub_path = _write_invention_stub(\n                name=cap_name,\n                cap_type=default_cap_type,\n                spec_summary=spec,\n                verification_criteria=criteria,\n                src_root=root,\n            )\n        stubs.append(\n            InventionStub(\n                capability_name=cap_name,\n                stub_path=stub_path,\n                spec_summary=spec,\n                verification_criteria=criteria,\n            )\n        )\n\n    return ActiveTerrainVerdict(\n        verdict=\"HALT_AND_INVENT\",\n        stubs_created=stubs,\n        capabilities_present=present,\n        capabilities_missing=missing_names,\n        next_action=(\n            f\"HALTED. {len(missing_names)} capability implementation packet(s) created. \"\n            \"Review the generated assets before retrying the original task.\"\n        ),\n    )\n",
+  "body_hash": "10212e87810cfd94",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "get",
+    "build_capability_inventory",
+    "set",
+    "values",
+    "ActiveTerrainVerdict",
+    "_normalize_type",
+    "update",
+    "_slug",
+    "append",
+    "Path",
+    "str",
+    "_write_invention_stub",
+    "InventionStub",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/map_terrain.py:1217.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.active_terrain_gate",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "re",
+    "time",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Literal",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "ass_ade.tools.registry.default_registry",
+    "ass_ade.engine.rebuild.schema_materializer.emit_certificate",
+    "ass_ade.engine.rebuild.schema_materializer.materialize_plan",
+    "ass_ade.engine.rebuild.schema_materializer.validate_rebuild",
+    "ass_ade.local.enhancer.build_enhancement_report"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/map_terrain.py:1217"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "active_terrain_gate",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for active_terrain_gate"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

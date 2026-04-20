@@ -1,0 +1,41 @@
+{
+  "body": "def select_provider_for_tier(\n    tier: str,\n    *,\n    fallback_chain: list[str] | None = None,\n    config_providers: dict[str, Any] | None = None,\n    tier_policy: dict[str, str] | None = None,\n) -> tuple[ProviderProfile, str] | None:\n    \"\"\"Select (provider, model) for a given tier.\n\n    Priority:\n      1. `tier_policy[tier]` \u2014 explicit user override (\"use gemini for balanced\")\n      2. First provider in `fallback_chain` that is available AND has a model for this tier\n      3. None if nothing matches (caller must handle)\n    \"\"\"\n    canonical = resolve_tier(tier)\n    overrides = config_providers or {}\n\n    # 1. Explicit tier \u2192 provider policy\n    if tier_policy and canonical in tier_policy:\n        pref_name = tier_policy[canonical]\n        profile = get_provider(pref_name)\n        if profile is not None:\n            user_override = overrides.get(pref_name) if overrides else None\n            user_key = None\n            override_models = None\n            if isinstance(user_override, dict):\n                user_key = user_override.get(\"api_key\")\n                override_models = user_override.get(\"models_by_tier\")\n            if profile.is_available(config_key=user_key):\n                model = profile.model_for_tier(canonical, override=override_models)\n                if model:\n                    return profile, model\n\n    # 2. Fallback chain\n    chain = fallback_chain or DEFAULT_FALLBACK_CHAIN\n    for name in chain:\n        profile = get_provider(name)\n        if profile is None:\n            continue\n        user_override = overrides.get(name) if overrides else None\n        user_key = None\n        override_models = None\n        enabled = True\n        if isinstance(user_override, dict):\n            user_key = user_override.get(\"api_key\")\n            override_models = user_override.get(\"models_by_tier\")\n            enabled = user_override.get(\"enabled\", True)\n        if not enabled:\n            continue\n        if not profile.is_available(config_key=user_key):\n            continue\n        model = profile.model_for_tier(canonical, override=override_models)\n        if model:\n            return profile, model\n\n    return None\n",
+  "body_hash": "95913d4b9baf021f",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve_tier",
+    "get_provider",
+    "isinstance",
+    "model_for_tier",
+    "is_available",
+    "get"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/providers.py:385.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.select_provider_for_tier",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/providers.py:385"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "select_provider_for_tier",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for select_provider_for_tier"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

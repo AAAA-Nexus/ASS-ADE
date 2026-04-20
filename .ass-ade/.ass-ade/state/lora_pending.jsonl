@@ -1,0 +1,4 @@
+{"kind": "fix", "content": {"original": "", "fixed": "def f(): return 1\n", "context": {"path": "C:\\Users\\atoma\\AppData\\Local\\Temp\\pytest-of-atoma\\pytest-1170\\test_valid_python_passes_cie0\\ok.py", "language": "python", "tool": "write_file"}}, "ts": 1776658777.1523986, "session_id": "mcp:1739427279504", "confidence": 1.0}
+{"kind": "rejection", "content": {"candidate": "def broken(:\n    pass\n", "reason": "SyntaxError:1:invalid syntax"}, "ts": 1776658777.1684706, "session_id": "mcp:1739427278160", "confidence": 0.9}
+{"kind": "rejection", "content": {"candidate": "result = eval(user_input)\n", "reason": "A03_injection_eval"}, "ts": 1776658777.409276, "session_id": "mcp:1739425821664", "confidence": 0.9}
+{"kind": "fix", "content": {"original": "", "fixed": "x = 1\n", "context": {"path": "new.py", "language": "python", "tool": "write_file"}}, "ts": 1776658777.9048736, "session_id": "mcp:1739425822816", "confidence": 1.0}

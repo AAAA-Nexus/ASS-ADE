@@ -1,0 +1,45 @@
+{
+  "body": "def capture_principle(self, principle: str, confidence: float = 0.8) -> str:\n    \"\"\"Capture a WisdomEngine-distilled principle as a training signal.\"\"\"\n    if not self._enabled or confidence < self._min_confidence:\n        return \"\"\n    cid = f\"principle_{int(time.time())}_{len(self._pending)}\"\n    c = Contribution(\n        kind=\"principle\",\n        content={\"principle\": principle[:500]},\n        session_id=self._session_id,\n        confidence=confidence,\n    )\n    self._pending.append(c)\n    self._save_pending()\n    return cid\n",
+  "body_hash": "d3b04ca7597652f8",
+  "body_truncated": false,
+  "callers_of": [
+    "Contribution",
+    "append",
+    "_save_pending",
+    "int",
+    "len",
+    "time"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/lora_flywheel.py:159.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.capture_principle",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "logging",
+    "time",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "pathlib.Path",
+    "typing.Any",
+    "hashlib"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/lora_flywheel.py:159"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "capture_principle",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for capture_principle"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

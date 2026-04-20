@@ -1,0 +1,39 @@
+{
+  "body": "def extract_json_array(text: str) -> str:\n    \"\"\"Extract the first top-level JSON array from arbitrary model output.\n\n    Handles fenced ```json blocks, leading prose/headings, and trailing\n    commentary. Deterministic: scans for the first ``[`` and tracks\n    bracket depth with string-literal awareness.\n    \"\"\"\n    s = text.strip()\n    fence = re.search(r\"```(?:json)?\\s*\\n(.*?)```\", s, re.DOTALL)\n    if fence:\n        s = fence.group(1).strip()\n    start = s.find(\"[\")\n    if start == -1:\n        return s\n    depth = 0\n    in_str = False\n    escape = False\n    for i in range(start, len(s)):\n        ch = s[i]\n        if in_str:\n            if escape:\n                escape = False\n            elif ch == \"\\\\\":\n                escape = True\n            elif ch == '\"':\n                in_str = False\n            continue\n        if ch == '\"':\n            in_str = True\n        elif ch == \"[\":\n            depth += 1\n        elif ch == \"]\":\n            depth -= 1\n            if depth == 0:\n                return s[start : i + 1]\n    return s[start:]\n",
+  "body_hash": "26ce8bdd29d88eec",
+  "body_truncated": false,
+  "callers_of": [
+    "strip",
+    "search",
+    "find",
+    "range",
+    "len",
+    "group"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/rebuild/nexus_parse.py:57.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.extract_json_array",
+  "imports": [
+    "__future__.annotations",
+    "re",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/engine/rebuild/nexus_parse.py:57"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "extract_json_array",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for extract_json_array"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

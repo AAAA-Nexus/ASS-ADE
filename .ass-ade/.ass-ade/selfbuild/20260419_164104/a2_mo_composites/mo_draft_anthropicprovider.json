@@ -1,0 +1,55 @@
+{
+  "body": "class AnthropicProvider:\n    \"\"\"Calls the Anthropic Messages API directly.\n\n    Uses the native /v1/messages endpoint \u2014 NOT the OpenAI-compat shim,\n    which does not exist on api.anthropic.com.\n    \"\"\"\n\n    def __init__(\n        self,\n        *,\n        api_key: str,\n        model: str = \"claude-sonnet-4-20250514\",\n        timeout: float = 120.0,\n    ) -> None:\n        self._client = httpx.Client(\n            base_url=\"https://api.anthropic.com\",\n            headers={\n                \"x-api-key\": api_key,\n                \"anthropic-version\": \"2023-06-01\",\n                \"content-type\": \"application/json\",\n            },\n            timeout=timeout,\n        )\n        self._default_model = model\n\n    def close(self) -> None:\n        self._client.close()\n\n    @property\n    def model_name(self) -> str:\n        return self._default_model\n\n    def complete(self, request: CompletionRequest) -> CompletionResponse:\n        model = request.model or self._default_model\n\n        # Split system message out \u2014 Anthropic requires it as a top-level field.\n        system = \"\"\n        messages: list[dict[str, Any]] = []\n        for msg in request.messages:\n            if msg.role == \"system\":\n                system = msg.content\n            elif msg.role == \"tool\":\n                # Tool results use a user message with tool_result content blocks.\n                messages.append({\n                    \"role\": \"user\",\n                    \"content\": [{\n                        \"type\": \"tool_result\",\n                        \"tool_use_id\": msg.tool_call_id or \"\",\n                        \"content\": msg.content,\n                    }],\n                })\n            elif msg.tool_calls:\n                # Assistant turn that includes tool calls.\n                content: list[dict[str, Any]] = []\n                if msg.content:\n                    content.append({\"type\": \"text\", \"text\": msg.content})\n                for tc in msg.tool_calls:\n                    content.append({\n                        \"type\": \"tool_use\",\n                        \"id\": tc.id,\n                        \"name\": tc.name,\n                        \"input\": tc.arguments,\n                    })\n                messages.append({\"role\": \"assistant\", \"content\": content})\n            else:\n                messages.append({\"role\": msg.role, \"content\": msg.content})\n\n        body: dict[str, Any] = {\n            \"model\": model,\n            \"max_tokens\": request.max_tokens,\n            \"messages\": messages,\n        }\n        if system:\n            body[\"system\"] = system\n        if request.tools:\n            body[\"tools\"] = [\n                {\n                    \"name\": t.name,\n                    \"description\": t.description,\n                    \"input_schema\": t.parameters,\n                }\n                for t in request.tools\n            ]\n\n        resp = self._client.post(\"/v1/messages\", json=body)\n        resp.raise_for_status()\n        data = resp.json()\n\n        text_parts: list[str] = []\n        tool_calls: list[ToolCallRequest] = []\n        for block in data.get(\"content\", []):\n            if block.get(\"type\") == \"text\":\n                text_parts.append(block[\"text\"])\n            elif block.get(\"type\") == \"tool_use\":\n                tool_calls.append(ToolCallRequest(\n                    id=block[\"id\"],\n                    name=block[\"name\"],\n                    arguments=block.get(\"input\", {}),\n                ))\n\n        message = Message(\n            role=\"assistant\",\n            content=\"\".join(text_parts),\n            tool_calls=tool_calls,\n        )\n        return CompletionResponse(\n            message=message,\n            model=data.get(\"model\"),\n            finish_reason=data.get(\"stop_reason\"),\n            usage=data.get(\"usage\"),\n        )\n",
+  "body_hash": "793cb817c6e480ac",
+  "body_truncated": false,
+  "callers_of": [
+    "Client",
+    "close",
+    "post",
+    "raise_for_status",
+    "json",
+    "get",
+    "Message",
+    "CompletionResponse",
+    "append",
+    "join",
+    "ToolCallRequest"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/engine/provider.py:168.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.anthropicprovider",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "uuid",
+    "collections.abc.Iterator",
+    "typing.Any",
+    "typing.Protocol",
+    "typing.runtime_checkable",
+    "httpx",
+    "ass_ade.engine.types.CompletionRequest",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolCallRequest"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/engine/provider.py:168"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.src.raise_for_status"
+  ],
+  "name": "AnthropicProvider",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for AnthropicProvider"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

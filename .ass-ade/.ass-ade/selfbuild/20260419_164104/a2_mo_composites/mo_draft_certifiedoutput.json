@@ -1,0 +1,34 @@
+{
+  "body": "class CertifiedOutput(NexusModel):\n    \"\"\"/v1/certify/output \u2014 OCN-100\"\"\"\n    certificate_id: str | None = None\n    score: float | None = None\n    rubric_passed: bool | None = None\n    valid_until: str | None = None\n",
+  "body_hash": "585fe5f2caca14e8",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:653.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.certifiedoutput",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:653"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "CertifiedOutput",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for CertifiedOutput"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

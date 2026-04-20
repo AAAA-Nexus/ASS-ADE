@@ -1,0 +1,46 @@
+{
+  "body": "def cmd_doctor(args):\n    \"\"\"Quick health check \u2014 verify the package is importable and the CLI works.\"\"\"\n    checks = {}\n\n    # Check tier directories exist\n    root = Path(args.path).resolve()\n    for tier in TIERS:\n        tier_dir = root / tier\n        checks[tier] = tier_dir.exists()\n\n    # Check pyproject.toml\n    checks[\"pyproject.toml\"] = (root / \"pyproject.toml\").exists()\n\n    # Check __init__.py\n    checks[\"__init__.py\"] = (root / \"__init__.py\").exists()\n\n    all_ok = all(checks.values())\n    status = \"ok\" if all_ok else \"degraded\"\n    result = {\"status\": status, \"checks\": checks}\n    print(json.dumps(result, indent=2) if args.json else\n          f\"Doctor: {status} \u2014 {sum(checks.values())}/{len(checks)} checks passed\")\n    if not all_ok:\n        sys.exit(1)\n",
+  "body_hash": "f7bade4ef1aee001",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "exists",
+    "all",
+    "print",
+    "values",
+    "exit",
+    "Path",
+    "dumps",
+    "sum",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-v0.2.0/scripts/cli.py:130.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.ass_ade_v0_2_0.cmd_doctor",
+  "imports": [
+    "argparse",
+    "json",
+    "sys",
+    "pathlib.Path",
+    "ass_ade.engine.rebuild.orchestrator.rebuild_project",
+    "ass_ade.engine.rebuild.orchestrator.render_rebuild_summary"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-v0.2.0/scripts/cli.py:130"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "cmd_doctor",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for cmd_doctor"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

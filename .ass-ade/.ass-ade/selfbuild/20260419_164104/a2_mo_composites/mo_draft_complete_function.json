@@ -1,0 +1,52 @@
+{
+  "body": "def complete_function(\n    fn: IncompleteFunction,\n    *,\n    base_url: str,\n    api_key: str | None,\n    agent_id: str | None,\n    max_refinement_attempts: int = 3,\n) -> tuple[str | None, list[dict[str, Any]]]:\n    context_parts = [\n        f\"File: {fn.path.name}\",\n        f\"Function: {fn.qualname}\",\n        f\"Reason for completion: {fn.reason}\",\n        f\"Signature:\\n{fn.signature}\",\n    ]\n    if fn.docstring:\n        context_parts.append(f\"Docstring:\\n{fn.docstring}\")\n    context = \"\\n\\n\".join(context_parts)\n\n    attempts: list[dict[str, Any]] = []\n    feedback: str | None = None\n    for attempt in range(1, max(1, max_refinement_attempts) + 1):\n        candidate = _synthesize_via_nexus(\n            component_id=fn.qualname,\n            tier=\"a2_mo_composites\",\n            blueprint_id=f\"finish:{fn.path.name}\",\n            context=context,\n            base_url=base_url,\n            api_key=api_key,\n            agent_id=agent_id,\n            language=\"python\",\n            adapter_id=None,\n            feedback=feedback,\n        )\n        if candidate is None:\n            attempts.append({\"attempt\": attempt, \"status\": \"no_response\"})\n            break\n        # Strip a leading markdown fence if the model ignored instructions.\n        candidate = _strip_code_fence(candidate)\n        # Accept only the *body* (not a redefinition of the function).\n        body_only = _extract_body_only(candidate, fn.qualname.split(\".\")[-1])\n        target = body_only or candidate\n        probe = \"def _probe():\\n    pass\\n\\n\" + (target if _looks_like_body(target) else candidate)\n        ok, findings = _cie_gate(probe, \"python\")\n        attempts.append({\n            \"attempt\": attempt,\n            \"status\": \"passed\" if ok else \"cie_rejected\",\n            \"findings\": findings,\n        })\n        if ok:\n            return target, attempts\n        feedback = \"; \".join(findings)\n    return None, attempts\n",
+  "body_hash": "04b1c967d76620a6",
+  "body_truncated": false,
+  "callers_of": [
+    "join",
+    "range",
+    "append",
+    "_synthesize_via_nexus",
+    "_strip_code_fence",
+    "_extract_body_only",
+    "_cie_gate",
+    "max",
+    "split",
+    "_looks_like_body"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/finish.py:178.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.complete_function",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "json",
+    "os",
+    "dataclasses.dataclass",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.engine.rebuild.synthesis.DEFAULT_BASE_URL",
+    "ass_ade.engine.rebuild.synthesis._cie_gate",
+    "ass_ade.engine.rebuild.synthesis._synthesize_via_nexus"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/finish.py:178"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "complete_function",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for complete_function"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

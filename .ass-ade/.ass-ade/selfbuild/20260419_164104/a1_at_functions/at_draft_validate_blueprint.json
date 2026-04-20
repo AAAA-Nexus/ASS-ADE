@@ -1,0 +1,48 @@
+{
+  "body": "def validate_blueprint(\n    spec: Path = typer.Argument(..., help=\"Path to blueprint JSON.\"),\n) -> None:\n    \"\"\"Validate a blueprint file against the minimum schema.\"\"\"\n    data = _load_blueprint(spec)\n    problems = _validate_blueprint(data)\n    if problems:\n        _console.print(f\"[red]invalid[/red] ({len(problems)} issue(s)):\")\n        for p in problems:\n            _console.print(f\"  - {p}\")\n        raise typer.Exit(code=1)\n    _console.print(f\"[green]valid[/green] ({data.get('schema', 'unknown schema')})\")\n",
+  "body_hash": "644a3b4418231e6b",
+  "body_truncated": false,
+  "callers_of": [
+    "command",
+    "Argument",
+    "_load_blueprint",
+    "_validate_blueprint",
+    "print",
+    "Exit",
+    "get",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/commands/blueprint.py:104.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.validate_blueprint",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "os",
+    "pathlib.Path",
+    "typing.Any",
+    "typer",
+    "rich.console.Console",
+    "rich.table.Table",
+    "ass_ade.engine.rebuild.orchestrator.rebuild_project",
+    "ass_ade.engine.rebuild.synthesis.SynthesisFailure"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/commands/blueprint.py:104"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "validate_blueprint",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for validate_blueprint"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

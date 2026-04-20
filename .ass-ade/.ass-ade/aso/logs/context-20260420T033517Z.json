@@ -1,0 +1,13 @@
+{
+  "engine": "COE",
+  "objective": "Reduce MCP tool-schema surface area without breaking contracts.",
+  "steps": [
+    "Inventory ``mcp/server.json`` + ``~/.cursor/mcp.json`` tool counts and serialized size.",
+    "Flag servers whose manifest JSON exceeds ~2000 tokens **after** local measurement (do not claim ratios without benchmarks).",
+    "Design ``get_tool_schema`` / ``invoke_tool`` shim (mcp-compressor-class) behind a feature flag.",
+    "Record before/after token + latency in ``.ass-ade/aso/logs/context-<ts>.json``."
+  ],
+  "defer": [
+    "Rootless ``execute_script`` sandbox is a separate threat-model + CI harness \u2014 not implied here."
+  ]
+}

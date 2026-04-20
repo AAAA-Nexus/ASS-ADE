@@ -1,0 +1,34 @@
+{
+  "body": "class ForgeDeltaSubmitResult(NexusModel):\n    \"\"\"POST /v1/forge/delta/submit\"\"\"\n    submission_id: str | None = None\n    accepted: bool | None = None\n    delta_score: float | None = None\n    reward_usdc: float | None = None\n",
+  "body_hash": "24ab058c2ca1d0d1",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:1087.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.forgedeltasubmitresult",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:1087"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "ForgeDeltaSubmitResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ForgeDeltaSubmitResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

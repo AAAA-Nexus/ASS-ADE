@@ -1,0 +1,30 @@
+{
+  "body": "class NexusTimeoutError(NexusError):\n    \"\"\"Request exceeded the configured timeout.\"\"\"\n",
+  "body_hash": "fbc696f24b2dc98b",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/errors.py:32.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.nexustimeouterror",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/errors.py:32"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "NexusTimeoutError",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for NexusTimeoutError"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

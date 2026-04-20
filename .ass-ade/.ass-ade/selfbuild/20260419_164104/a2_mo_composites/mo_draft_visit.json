@@ -1,0 +1,51 @@
+{
+  "body": "def visit(node: ast.AST, stack: list[str]) -> None:\n    for child in ast.iter_child_nodes(node):\n        if isinstance(child, (ast.FunctionDef, ast.AsyncFunctionDef)):\n            fqn = stack + [child.name]\n            reason = _body_is_stub(child)\n            if reason is not None:\n                results.append(\n                    IncompleteFunction(\n                        path=path,\n                        qualname=\".\".join(fqn),\n                        lineno=child.lineno,\n                        end_lineno=child.end_lineno or child.lineno,\n                        col_offset=child.col_offset,\n                        signature=_signature(source, child),\n                        docstring=_docstring(child),\n                        reason=reason,\n                    )\n                )\n            visit(child, fqn)\n        elif isinstance(child, ast.ClassDef):\n            visit(child, stack + [child.name])\n        else:\n            visit(child, stack)\n",
+  "body_hash": "ae278f3c3a66a601",
+  "body_truncated": false,
+  "callers_of": [
+    "iter_child_nodes",
+    "isinstance",
+    "_body_is_stub",
+    "visit",
+    "append",
+    "IncompleteFunction",
+    "join",
+    "_signature",
+    "_docstring"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/finish.py:106.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.visit",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "json",
+    "os",
+    "dataclasses.dataclass",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.engine.rebuild.synthesis.DEFAULT_BASE_URL",
+    "ass_ade.engine.rebuild.synthesis._cie_gate",
+    "ass_ade.engine.rebuild.synthesis._synthesize_via_nexus"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/finish.py:106"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "visit",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for visit"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

@@ -1,0 +1,47 @@
+{
+  "body": "def select(\n    self,\n    *,\n    trs_score: float = 0.8,\n    complexity: str = \"medium\",\n    budget_remaining: int = 8000,\n    user_model_override: str | None = None,\n) -> LSEDecision:\n    \"\"\"Select the optimal model for a step.\n\n    Args:\n        trs_score: SAM TRS composite score [0,1].\n        complexity: EpistemicRouter complexity bucket.\n        budget_remaining: Estimated remaining output tokens.\n        user_model_override: Explicit model from CLI/config (always wins).\n    \"\"\"\n    try:\n        return self._select_inner(trs_score, complexity, budget_remaining, user_model_override)\n    except Exception as exc:\n        _log.warning(\"LSE selection failed (fail-open): %s\", exc)\n        legacy = _LEGACY_TIER_TO_MODEL.get(self._default_tier, _LEGACY_TIER_TO_MODEL[TIER_BALANCED])\n        return LSEDecision(\n            model=legacy,\n            tier=self._default_tier,\n            reason=\"fallback\",\n            trs_score=trs_score,\n            complexity=complexity,\n            provider=None,\n        )\n",
+  "body_hash": "a8b4f209bdeabfaf",
+  "body_truncated": false,
+  "callers_of": [
+    "_select_inner",
+    "warning",
+    "get",
+    "LSEDecision"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/lse.py:98.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.select",
+  "imports": [
+    "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "ass_ade.agent.providers.ALL_TIERS",
+    "ass_ade.agent.providers.TIER_ALIASES",
+    "ass_ade.agent.providers.TIER_BALANCED",
+    "ass_ade.agent.providers.TIER_DEEP",
+    "ass_ade.agent.providers.TIER_FAST",
+    "ass_ade.agent.providers.ProviderProfile",
+    "ass_ade.agent.providers.resolve_tier",
+    "ass_ade.agent.providers.select_provider_for_tier",
+    "ass_ade.agent.providers.get_provider"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/lse.py:98"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "select",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for select"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

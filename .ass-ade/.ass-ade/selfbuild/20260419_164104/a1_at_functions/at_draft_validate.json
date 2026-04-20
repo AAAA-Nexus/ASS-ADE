@@ -1,0 +1,43 @@
+{
+  "body": "def validate(self) -> PaymentChallenge:\n    \"\"\"Validate the challenge before any user consent or payment attempt.\"\"\"\n    if self.amount_micro_usdc <= 0:\n        raise ValueError(\"402 response missing required field: amount_micro_usdc\")\n    if self.amount_micro_usdc > MAX_CHALLENGE_MICRO_USDC:\n        raise ValueError(\n            f\"402 response amount {self.amount_micro_usdc} outside valid range \"\n            f\"(1-{MAX_CHALLENGE_MICRO_USDC})\"\n        )\n    if not self.recipient.strip():\n        raise ValueError(\"402 response missing required field: recipient\")\n    if self.recipient.strip().lower() != ATOMADIC_TREASURY.lower():\n        raise ValueError(\"402 response recipient does not match expected treasury\")\n    return self\n",
+  "body_hash": "df473f835b00a00c",
+  "body_truncated": false,
+  "callers_of": [
+    "ValueError",
+    "strip",
+    "lower"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/x402.py:62.",
+  "exceptions_raised": [
+    "ValueError"
+  ],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.validate",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "time",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "eth_account.Account",
+    "web3.Web3",
+    "logging"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/x402.py:62"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "validate",
+  "product_categories": [
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for validate"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

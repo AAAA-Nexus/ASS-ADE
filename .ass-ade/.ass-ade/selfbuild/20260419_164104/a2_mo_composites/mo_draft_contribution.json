@@ -1,0 +1,40 @@
+{
+  "body": "class Contribution:\n    kind: str          # \"fix\", \"principle\", \"rejection\"\n    content: dict[str, Any]\n    ts: float = field(default_factory=time.time)\n    session_id: str = \"\"\n    confidence: float = 1.0\n",
+  "body_hash": "f4a8fbd8b114c87a",
+  "body_truncated": false,
+  "callers_of": [
+    "field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/lora_flywheel.py:35.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.contribution",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "logging",
+    "time",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "pathlib.Path",
+    "typing.Any",
+    "hashlib"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/lora_flywheel.py:35"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "Contribution",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for Contribution"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

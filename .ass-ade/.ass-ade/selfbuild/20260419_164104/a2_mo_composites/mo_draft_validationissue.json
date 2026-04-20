@@ -1,0 +1,44 @@
+{
+  "body": "class ValidationIssue:\n    \"\"\"A single validation finding.\"\"\"\n\n    severity: str  # \"error\" | \"warning\" | \"info\"\n    field: str\n    message: str\n",
+  "body_hash": "a5e02973c2cfef1f",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/a2a/__init__.py:112.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.validationissue",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "socket",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any",
+    "urllib.parse.urlparse",
+    "httpx",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "pydantic.ValidationError",
+    "pydantic.field_validator",
+    "ass_ade.__version__",
+    "ass_ade.nexus.validation.validate_https_public_url",
+    "ass_ade.tools.registry.default_registry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/a2a/__init__.py:112"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "ValidationIssue",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ValidationIssue"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

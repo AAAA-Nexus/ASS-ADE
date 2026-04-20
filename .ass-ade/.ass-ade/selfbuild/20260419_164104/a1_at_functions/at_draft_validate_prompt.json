@@ -1,0 +1,42 @@
+{
+  "body": "def validate_prompt(value: str) -> str:\n    \"\"\"Non-empty, max 32 KB, strip control characters.\"\"\"\n    if not value or not value.strip():\n        raise ValueError(\"Prompt must not be empty.\")\n    # Strip control chars except newline and tab\n    cleaned = re.sub(r\"[\\x00-\\x08\\x0b\\x0c\\x0e-\\x1f\\x7f]\", \"\", value)\n    if len(cleaned.encode(\"utf-8\")) > MAX_PROMPT_BYTES:\n        raise ValueError(f\"Prompt exceeds {MAX_PROMPT_BYTES:,} bytes.\")\n    return cleaned\n",
+  "body_hash": "7d7ea552583fd55e",
+  "body_truncated": false,
+  "callers_of": [
+    "sub",
+    "ValueError",
+    "len",
+    "strip",
+    "encode"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/validation.py:95.",
+  "exceptions_raised": [
+    "ValueError"
+  ],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.validate_prompt",
+  "imports": [
+    "__future__.annotations",
+    "ipaddress",
+    "re",
+    "socket",
+    "urllib.parse.urlparse"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/validation.py:95"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "validate_prompt",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for validate_prompt"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,52 @@
+{
+  "body": "def write_branch_evolution_demo(\n    *,\n    root: Path,\n    branches: Iterable[str],\n    iterations: int,\n    output: Path | None = None,\n) -> Path:\n    root = root.resolve()\n    target = output if output is not None else root / DEFAULT_DEMO_PATH\n    if not target.is_absolute():\n        target = root / target\n    target.parent.mkdir(parents=True, exist_ok=True)\n    target.write_text(\n        f\"{render_branch_evolution_demo(root=root, branches=branches, iterations=iterations)}\\n\",\n        encoding=\"utf-8\",\n    )\n    return target\n",
+  "body_hash": "83c5002e79dcd234",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "mkdir",
+    "write_text",
+    "is_absolute",
+    "render_branch_evolution_demo"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/protocol/evolution.py:755.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.write_branch_evolution_demo",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "re",
+    "shutil",
+    "subprocess",
+    "tomllib",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field",
+    "ass_ade.engine.rebuild.version_tracker.INITIAL_VERSION",
+    "ass_ade.engine.rebuild.version_tracker.bump_version"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/protocol/evolution.py:755"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "write_branch_evolution_demo",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for write_branch_evolution_demo"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

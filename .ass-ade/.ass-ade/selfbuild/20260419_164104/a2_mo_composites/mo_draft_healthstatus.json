@@ -1,0 +1,34 @@
+{
+  "body": "class HealthStatus(NexusModel):\n    status: str\n    version: str | None = None\n    build: str | None = None\n    epoch: int | None = None\n",
+  "body_hash": "b3b19c8ec1591d97",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:28.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.healthstatus",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:28"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "HealthStatus",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for HealthStatus"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

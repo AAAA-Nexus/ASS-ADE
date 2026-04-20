@@ -1,0 +1,36 @@
+{
+  "body": "class ForgeLeaderboardResponse(NexusModel):\n    \"\"\"GET /v1/forge/leaderboard\"\"\"\n    entries: list[ForgeLeaderboardEntry] = Field(default_factory=list)\n    epoch: int | None = None\n",
+  "body_hash": "c74e20bc280c6289",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:1065.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.forgeleaderboardresponse",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:1065"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "ForgeLeaderboardResponse",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ForgeLeaderboardResponse"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

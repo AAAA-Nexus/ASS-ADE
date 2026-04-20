@@ -1,0 +1,34 @@
+{
+  "body": "class AgentSkill(NexusModel):\n    id: str | None = None\n    name: str | None = None\n",
+  "body_hash": "c51de18c86c4831d",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:53.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.agentskill",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:53"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "AgentSkill",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for AgentSkill"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

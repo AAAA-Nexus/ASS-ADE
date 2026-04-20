@@ -1,0 +1,37 @@
+{
+  "body": "class SynthesisFailure(RuntimeError):\n    \"\"\"Raised when strict no-stubs synthesis cannot produce a clean body.\"\"\"\n",
+  "body_hash": "47e02ce420841a44",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/synthesis.py:30.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.synthesisfailure",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "datetime",
+    "importlib.resources",
+    "os",
+    "re",
+    "typing.Any",
+    "httpx"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/synthesis.py:30"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "SynthesisFailure",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for SynthesisFailure"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

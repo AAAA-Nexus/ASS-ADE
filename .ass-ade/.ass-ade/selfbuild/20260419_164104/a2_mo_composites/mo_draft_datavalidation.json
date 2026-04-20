@@ -1,0 +1,36 @@
+{
+  "body": "class DataValidation(NexusModel):\n    \"\"\"/v1/data/validate-json\"\"\"\n    valid: bool | None = None\n    errors: list[dict] = Field(default_factory=list)\n    error_paths: list[str] = Field(default_factory=list)\n",
+  "body_hash": "7b655f35447a651b",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:853.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.datavalidation",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:853"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "DataValidation",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for DataValidation"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

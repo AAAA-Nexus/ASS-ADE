@@ -1,0 +1,54 @@
+{
+  "body": "def emit_runnable_package(\n    target_root: Path,\n    *,\n    package_name: str = \"ass_ade_rebuild\",\n    control_root: Path | None = None,\n    source_root: Path | None = None,\n) -> dict[str, Any]:\n    \"\"\"Turn a rebuild folder into a pip-installable Python package.\n\n    Args:\n        target_root:   The rebuild output folder (e.g. ``output/20260418_153000``).\n        package_name:  Name for the generated package.\n        control_root:  Safety boundary \u2014 writes must stay inside this directory.\n        source_root:   Original source directory; used to read dependencies and\n                       CLI entry points from its ``pyproject.toml``.\n\n    Returns:\n        Dict with ``package_root``, ``init_files``, ``pyproject``, ``importable``.\n    \"\"\"\n    target_root = Path(target_root).resolve()\n    if control_root is None:\n        control_root = target_root\n\n    _enforce_boundary(target_root, control_root)\n\n    # Read source project metadata (deps + scripts)\n    source_deps: list[str] = []\n    source_scripts: dict[str, str] = {}\n    if source_root is not None:\n        source_deps, source_scripts = _read_source_pyproject(Path(source_root))\n\n    init_files: list[str] = []\n    importable: bool = True\n    tier_names_present: list[str] = []\n\n    for tier in TIER_NAMES:\n        tier_dir = target_root / tier\n        if not tier_dir.is_dir():\n            continue\n        # Include ALL .py files in the tier directory (not just draft-prefixed ones)\n        py_files = [\n            f\n            for f in sorted(tier_dir.iterdir())\n            if f.is_file() and f.suffix == \".py\" and f.name != \"__init__.py\"\n        ]\n        if not py_files:\n            continue\n\n        tier_names_present.append(tier)\n        tier_init_path = tier_dir / \"__init__.py\"\n        _enforce_boundary(tier_init_path, control_root)\n        tier_init_text = _build_tier_init(py_files)\n        tier_init_path.write_text(tier_init_text, encoding=\"utf-8\")\n        init_files.append(str(tier_init_path))\n        if not _compile_check(tier_init_text, str(tier_init_path)):\n            importable = False\n\n    top_init_path = target_root / \"__init__.py\"\n    _enforce_boundary(top_init_path, control_root)\n    top_init_text = _build_top_init(tier_names_present)\n    top_init_path.write_text(top_init_text, encoding=\"utf-8\")\n    init_files.append(str(top_init_path))\n    if not _compile_check(top_init_text, str(top_init_path)):\n        importable = False\n\n    # Determine CLI entry points: prefer source scripts, fall back to detection\n    entry_points = source_scripts or _find_cli_entry_point(tier_names_present, target_root)\n\n    pyproject_path = target_root / \"pyproject.toml\"\n    _enforce_boundary(pyproject_path, control_root)\n    pyproject_path.write_text(\n        _build_pyproject(package_name, deps=source_deps or None, entry_points=entry_points or None),\n        encoding=\"utf-8\",\n    )\n\n    return {\n        \"package_root\": str(target_root),\n        \"init_files\": init_files,\n        \"pyproject\": str(pyproject_path),\n        \"importable\": importable,\n    }\n",
+  "body_hash": "ecb6e40805e7110c",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "_enforce_boundary",
+    "_build_top_init",
+    "write_text",
+    "append",
+    "_read_source_pyproject",
+    "_build_tier_init",
+    "str",
+    "_compile_check",
+    "_find_cli_entry_point",
+    "_build_pyproject",
+    "Path",
+    "is_dir",
+    "sorted",
+    "iterdir",
+    "is_file"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/rebuild/package_emitter.py:198.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.emit_runnable_package",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "re",
+    "sys",
+    "pathlib.Path",
+    "typing.Any",
+    "tomllib",
+    "tomli"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/engine/rebuild/package_emitter.py:198"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "emit_runnable_package",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for emit_runnable_package"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

@@ -1,0 +1,34 @@
+{
+  "body": "class ForgeVerifyResult(NexusModel):\n    \"\"\"POST /v1/forge/verify\"\"\"\n    verified: bool | None = None\n    agent_id: str | None = None\n    score: float | None = None\n    badge_awarded: str | None = None\n",
+  "body_hash": "aa9ea33fa0d4867b",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:1071.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.forgeverifyresult",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:1071"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "ForgeVerifyResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ForgeVerifyResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

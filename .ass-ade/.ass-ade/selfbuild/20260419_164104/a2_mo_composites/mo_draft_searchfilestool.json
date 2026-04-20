@@ -1,0 +1,51 @@
+{
+  "body": "class SearchFilesTool:\n    \"\"\"Find files matching a glob pattern.\"\"\"\n\n    def __init__(self, working_dir: str = \".\") -> None:\n        self._cwd = Path(working_dir).resolve()\n\n    @property\n    def name(self) -> str:\n        return \"search_files\"\n\n    @property\n    def description(self) -> str:\n        return \"Find files matching a glob pattern (e.g., '**/*.py', 'src/**/*.ts').\"\n\n    @property\n    def parameters(self) -> dict[str, Any]:\n        return {\n            \"type\": \"object\",\n            \"properties\": {\n                \"pattern\": {\"type\": \"string\", \"description\": \"Glob pattern to match files.\"},\n            },\n            \"required\": [\"pattern\"],\n        }\n\n    def execute(self, **kwargs: Any) -> ToolResult:\n        pattern = kwargs[\"pattern\"]\n        matches = sorted(self._cwd.glob(pattern))\n\n        filtered = [\n            m\n            for m in matches\n            if m.is_file()\n            and not any(p in _SKIP_DIRS for p in m.relative_to(self._cwd).parts)\n        ]\n\n        if not filtered:\n            return ToolResult(output=\"No matches found.\")\n\n        lines = [str(m.relative_to(self._cwd)) for m in filtered[:_MAX_GLOB_RESULTS]]\n        if len(filtered) > _MAX_GLOB_RESULTS:\n            lines.append(f\"... and {len(filtered) - _MAX_GLOB_RESULTS} more matches\")\n\n        return ToolResult(output=\"\\n\".join(lines))\n",
+  "body_hash": "dd0d91260eabcc4b",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "sorted",
+    "ToolResult",
+    "glob",
+    "str",
+    "len",
+    "append",
+    "Path",
+    "relative_to",
+    "join",
+    "is_file",
+    "any"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/tools/builtin.py:378.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.searchfilestool",
+  "imports": [
+    "__future__.annotations",
+    "difflib",
+    "re",
+    "shlex",
+    "subprocess",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.history.FileHistory"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/tools/builtin.py:378"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "SearchFilesTool",
+  "product_categories": [
+    "DCM"
+  ],
+  "provides": [
+    "rebuild candidate for SearchFilesTool"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

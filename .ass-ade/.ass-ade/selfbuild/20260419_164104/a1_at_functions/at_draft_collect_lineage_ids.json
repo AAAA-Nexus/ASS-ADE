@@ -1,0 +1,57 @@
+{
+  "body": "def collect_lineage_ids(root: Path) -> list[str]:\n    birth_dir = root.resolve() / \".ass-ade\" / \"birth\"\n    if not birth_dir.exists():\n        return []\n    lineage_ids: list[str] = []\n    for path in sorted(birth_dir.glob(\"*.response.json\")):\n        data = _read_json(path)\n        for key in (\"lineage_id\", \"lineageId\", \"id\"):\n            value = data.get(key)\n            if isinstance(value, str) and value.startswith(\"dlv-\"):\n                lineage_ids.append(value)\n        nested = data.get(\"lineage\")\n        if isinstance(nested, dict):\n            value = nested.get(\"id\")\n            if isinstance(value, str) and value.startswith(\"dlv-\"):\n                lineage_ids.append(value)\n    return sorted(set(lineage_ids))\n",
+  "body_hash": "f16537739fcf0fb6",
+  "body_truncated": false,
+  "callers_of": [
+    "sorted",
+    "exists",
+    "glob",
+    "_read_json",
+    "get",
+    "isinstance",
+    "set",
+    "resolve",
+    "startswith",
+    "append"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/protocol/evolution.py:288.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.collect_lineage_ids",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "re",
+    "shutil",
+    "subprocess",
+    "tomllib",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field",
+    "ass_ade.engine.rebuild.version_tracker.INITIAL_VERSION",
+    "ass_ade.engine.rebuild.version_tracker.bump_version"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/protocol/evolution.py:288"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "collect_lineage_ids",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for collect_lineage_ids"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,42 @@
+{
+  "body": "def detect_linters(root: Path) -> list[str]:\n    found: list[str] = []\n\n    pyproject = root / \"pyproject.toml\"\n    pyproject_raw = \"\"\n    if pyproject.exists():\n        try:\n            pyproject_raw = pyproject.read_text(encoding=\"utf-8\")\n        except Exception:\n            pass\n\n    ruff_toml = root / \"ruff.toml\"\n    if (pyproject_raw and \"[tool.ruff]\" in pyproject_raw) or ruff_toml.exists():\n        if shutil.which(\"ruff\"):\n            found.append(\"ruff\")\n\n    mypy_ini = root / \"mypy.ini\"\n    if mypy_ini.exists() or (pyproject_raw and \"[tool.mypy]\" in pyproject_raw):\n        if shutil.which(\"mypy\"):\n            found.append(\"mypy\")\n\n    if pyproject_raw and \"[tool.pyright]\" in pyproject_raw:\n        if shutil.which(\"pyright\"):\n            found.append(\"pyright\")\n\n    for name in (\n        \".eslintrc\",\n        \".eslintrc.js\",\n        \".eslintrc.cjs\",\n        \".eslintrc.mjs\",\n        \".eslintrc.json\",\n        \".eslintrc.yaml\",\n        \".eslintrc.yml\",\n    ):\n        if (root / name).exists():\n            if shutil.which(\"eslint\"):\n                found.append(\"eslint\")\n            break\n\n    for name in (\n        \".prettierrc\",\n        \".prettierrc.js\",\n        \".prettierrc.cjs\",\n        \".prettierrc.mjs\",\n        \".prettierrc.json\",\n        \".prettierrc.yaml\",\n        \".prettierrc.yml\",\n        \".prettierrc.toml\",\n        \"prettier.config.js\",\n        \"prettier.config.cjs\",\n    ):\n        if (root / name).exists():\n            if shutil.which(\"prettier\"):\n                found.append(\"prettier\")\n            break\n\n    if (root / \"Cargo.toml\").exists() and shutil.which(\"cargo\"):\n        found.append(\"clippy\")\n\n    if (root / \"go.mod\").exists() and shutil.which(\"go\"):\n        found.append(\"go-vet\")\n\n    return found\n",
+  "body_hash": "68b466f3ba17940e",
+  "body_truncated": false,
+  "callers_of": [
+    "exists",
+    "which",
+    "append",
+    "read_text"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/local/linter.py:19.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.detect_linters",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "re",
+    "shutil",
+    "subprocess",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.local.repo.DEFAULT_IGNORED_DIRS"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/local/linter.py:19"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "detect_linters",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for detect_linters"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

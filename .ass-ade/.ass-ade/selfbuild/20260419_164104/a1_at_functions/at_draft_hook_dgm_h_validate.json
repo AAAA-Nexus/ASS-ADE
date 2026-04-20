@@ -1,0 +1,60 @@
+{
+  "body": "def hook_dgm_h_validate(self, patch: Any) -> dict[str, Any] | None:\n    try:\n        from ass_ade.agent.dgm_h import DGMH, Patch\n        dgm = DGMH(getattr(self, \"_v18_config\", {}) or {}, self._client)\n        if not isinstance(patch, Patch):\n            patch = Patch(\n                id=str(getattr(patch, \"id\", \"p0\")),\n                target=str(getattr(patch, \"target\", \"\")),\n                diff=str(getattr(patch, \"diff\", patch)),\n            )\n        sim = dgm.simulate(patch)\n        self._gate_log.append(GateResult(\n            gate=\"dgm_h_validate\",\n            passed=sim.validated,\n            confidence=max(0.0, min(1.0, sim.delta)),\n            details={\"cycles\": sim.cycles, \"violations\": sim.violations},\n        ))\n        return {\"validated\": sim.validated, \"delta\": sim.delta, \"cycles\": sim.cycles}\n    except Exception as exc:\n        logging.getLogger(__name__).warning(\"hook_dgm_h_validate failed: %s\", exc)\n        return None\n",
+  "body_hash": "9991b4d9f42ffe70",
+  "body_truncated": false,
+  "callers_of": [
+    "DGMH",
+    "simulate",
+    "append",
+    "isinstance",
+    "Patch",
+    "GateResult",
+    "warning",
+    "getattr",
+    "str",
+    "max",
+    "getLogger",
+    "min"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/gates.py:327.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.hook_dgm_h_validate",
+  "imports": [
+    "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "ast",
+    "re",
+    "json",
+    "datetime.UTC",
+    "datetime.datetime",
+    "pathlib.Path",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "ass_ade.agent.trust_gate.TrustVerificationGate",
+    "ass_ade.agent.proofbridge.ProofBridge",
+    "ass_ade.agent.alphaverus.AlphaVerus",
+    "ass_ade.agent.dgm_h.DGMH",
+    "ass_ade.agent.dgm_h.Patch",
+    "ass_ade.agent.golden_runner.run_golden",
+    "ass_ade.agent.sam.SAM"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/gates.py:327"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "hook_dgm_h_validate",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for hook_dgm_h_validate"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

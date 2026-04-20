@@ -1,0 +1,47 @@
+{
+  "body": "def emit_tier_map(\n    target_root: Path,\n    tier_map: dict[str, dict[str, str]],\n    *,\n    package_name: str = \"ass_ade_rebuild\",\n    control_root: Path | None = None,\n) -> str:\n    \"\"\"Write .ass-ade/tier-map.json \u2014 master file \u2192 tier assignment map.\"\"\"\n    control_root = control_root or target_root\n    ass_ade_dir = target_root / \".ass-ade\"\n    ass_ade_dir.mkdir(parents=True, exist_ok=True)\n    tier_map_path = ass_ade_dir / \"tier-map.json\"\n    _enforce_boundary(tier_map_path, control_root)\n    payload = {\n        \"files\": tier_map,\n        \"generated_at\": dt.datetime.now(dt.timezone.utc).isoformat(),\n        \"package\": package_name,\n        \"version\": \"0.2.0\",\n    }\n    tier_map_path.write_text(\n        json.dumps(payload, indent=2, sort_keys=True) + \"\\n\", encoding=\"utf-8\"\n    )\n    return tier_map_path.as_posix()\n",
+  "body_hash": "e221a3327d1cc9cc",
+  "body_truncated": false,
+  "callers_of": [
+    "mkdir",
+    "_enforce_boundary",
+    "write_text",
+    "as_posix",
+    "isoformat",
+    "dumps",
+    "now"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/package_emitter.py:324.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.emit_tier_map",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "datetime",
+    "json",
+    "re",
+    "sys",
+    "pathlib.Path",
+    "typing.Any",
+    "tomllib",
+    "tomli"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/package_emitter.py:324"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "emit_tier_map",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for emit_tier_map"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

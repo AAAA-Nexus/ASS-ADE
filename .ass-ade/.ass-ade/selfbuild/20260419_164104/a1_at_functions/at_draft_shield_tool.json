@@ -1,0 +1,54 @@
+{
+  "body": "def shield_tool(self, tool_name: str, arguments: dict[str, Any]) -> dict[str, Any] | None:\n    \"\"\"Shield a tool call through Nexus security.\"\"\"\n    try:\n        result = self._client.security_shield({\"tool\": tool_name, **arguments})\n        gate = GateResult(\n            gate=\"tool_shield\",\n            passed=not (result.blocked or False),\n            confidence=1.0,\n            details={\"tool\": tool_name, \"sanitized\": result.sanitized},\n        )\n        self._gate_log.append(gate)\n        return {\n            \"blocked\": result.blocked or False,\n            \"sanitized\": result.sanitized,\n            \"reason\": \"security policy\" if result.blocked else None,\n        }\n    except Exception as _exc:  # noqa: BLE001\n        logging.getLogger(__name__).warning(\n            \"Gate %s failed (fail-open): %s: %s\",\n            \"shield_tool\",\n            type(_exc).__name__,\n            _exc,\n        )\n        return None\n",
+  "body_hash": "2c7ef69875d1de18",
+  "body_truncated": false,
+  "callers_of": [
+    "security_shield",
+    "GateResult",
+    "append",
+    "warning",
+    "getLogger",
+    "type"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/gates.py:106.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.shield_tool",
+  "imports": [
+    "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "ast",
+    "re",
+    "json",
+    "datetime.UTC",
+    "datetime.datetime",
+    "pathlib.Path",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "ass_ade.agent.trust_gate.TrustVerificationGate",
+    "ass_ade.agent.proofbridge.ProofBridge",
+    "ass_ade.agent.alphaverus.AlphaVerus",
+    "ass_ade.agent.dgm_h.DGMH",
+    "ass_ade.agent.dgm_h.Patch",
+    "ass_ade.agent.golden_runner.run_golden",
+    "ass_ade.agent.sam.SAM"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/gates.py:106"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "shield_tool",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for shield_tool"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

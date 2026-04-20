@@ -1,0 +1,43 @@
+{
+  "body": "def build_resilient_transport(\n    *,\n    max_retries: int = 3,\n    backoff_base: float = 0.5,\n    circuit_failure_threshold: int = 5,\n    circuit_window_s: float = 60.0,\n    circuit_recovery_s: float = 30.0,\n    cancellation_context: CancellationContext | None = None,\n) -> httpx.BaseTransport:\n    \"\"\"Build a composed transport stack: CircuitBreaker (outer) \u2192 Retry (middle) \u2192 HTTP (inner).\n\n    Requests traverse: CircuitBreaker \u2192 Retry \u2192 HTTP.\n\n    Args:\n        cancellation_context: Optional context for cooperative cancellation support.\n            If provided, the retry transport will check for cancellation between\n            retry attempts and abort with NexusConnectionError if cancelled.\n    \"\"\"\n    base = httpx.HTTPTransport()\n    retrying = RetryTransport(\n        base,\n        max_retries=max_retries,\n        backoff_base=backoff_base,\n        cancellation_context=cancellation_context,\n    )\n    return CircuitBreakerTransport(\n        retrying,\n        failure_threshold=circuit_failure_threshold,\n        window_s=circuit_window_s,\n        recovery_s=circuit_recovery_s,\n    )\n",
+  "body_hash": "a15687805932ef7b",
+  "body_truncated": false,
+  "callers_of": [
+    "HTTPTransport",
+    "RetryTransport",
+    "CircuitBreakerTransport"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/resilience.py:196.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.build_resilient_transport",
+  "imports": [
+    "__future__.annotations",
+    "random",
+    "time",
+    "typing.TYPE_CHECKING",
+    "httpx",
+    "ass_ade.nexus.errors.NexusCircuitOpen",
+    "ass_ade.nexus.errors.NexusConnectionError",
+    "ass_ade.nexus.errors.NexusServerError",
+    "ass_ade.nexus.errors.NexusTimeoutError",
+    "ass_ade.mcp.cancellation.CancellationContext"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/resilience.py:196"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "build_resilient_transport",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for build_resilient_transport"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

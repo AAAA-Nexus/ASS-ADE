@@ -1,0 +1,51 @@
+{
+  "body": "def collect_surface_locations(working_dir: str | Path = \".\") -> list[CapabilityEntry]:\n    root = _repo_root_from_working_dir(working_dir)\n    entries: list[CapabilityEntry] = []\n\n    for dirname, description in _SURFACE_DIRS.items():\n        path = root / dirname\n        if path.is_dir():\n            entries.append(\n                CapabilityEntry(\n                    kind=\"surface\",\n                    name=f\"{_relative_name(root, path)}/\",\n                    description=description,\n                )\n            )\n\n    source_surfaces = {\n        \"src/ass_ade\": \"Runtime package source\",\n        \"src/ass_ade/tools\": \"Registered local tool implementations\",\n        \"src/ass_ade/tools/generated\": \"Generated local tool implementations\",\n        \"src/ass_ade/agent\": \"Agent loop and engine modules\",\n        \"src/ass_ade/mcp\": \"MCP server implementation\",\n    }\n    for relpath, description in source_surfaces.items():\n        path = root / relpath\n        if path.is_dir():\n            entries.append(\n                CapabilityEntry(\n                    kind=\"surface\",\n                    name=f\"{relpath}/\",\n                    description=description,\n                )\n            )\n\n    for relpath, description in _SURFACE_FILES.items():\n        path = root / relpath\n        if path.is_file():\n            if relpath == \"MANIFEST.json\":\n                total = _manifest_component_total(root)\n                if total is not None:\n                    description = f\"{description} ({total} components)\"\n            entries.append(\n                CapabilityEntry(\n                    kind=\"surface\",\n                    name=relpath,\n                    description=description,\n                )\n            )\n\n    return entries\n",
+  "body_hash": "5f9ee442afdedf98",
+  "body_truncated": false,
+  "callers_of": [
+    "_repo_root_from_working_dir",
+    "items",
+    "is_dir",
+    "is_file",
+    "append",
+    "CapabilityEntry",
+    "_manifest_component_total",
+    "_relative_name"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/capabilities.py:299.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.collect_surface_locations",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "typer.main",
+    "ass_ade.cli.app",
+    "ass_ade.tools.registry.default_registry",
+    "ass_ade.mcp.server._WORKFLOW_TOOLS"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/capabilities.py:299"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "collect_surface_locations",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for collect_surface_locations"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

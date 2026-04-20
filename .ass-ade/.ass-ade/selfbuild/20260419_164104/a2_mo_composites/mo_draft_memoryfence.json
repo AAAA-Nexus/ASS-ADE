@@ -1,0 +1,34 @@
+{
+  "body": "class MemoryFence(NexusModel):\n    \"\"\"/v1/memory/fence \u2014 MFN-100\"\"\"\n    fence_id: str | None = None\n    namespace: str | None = None\n    hmac_key_set: bool | None = None\n",
+  "body_hash": "6758fed04ff97251",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:682.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.memoryfence",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:682"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "MemoryFence",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for MemoryFence"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

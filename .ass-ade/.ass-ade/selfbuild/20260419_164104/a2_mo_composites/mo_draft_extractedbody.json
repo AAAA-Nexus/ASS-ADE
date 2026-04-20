@@ -1,0 +1,36 @@
+{
+  "body": "class ExtractedBody:\n    source_path: str\n    source_line: int\n    symbol_name: str\n    language: str\n    body: str\n    imports: list[str]\n    callers_of: list[str]\n    exceptions_raised: list[str]\n",
+  "body_hash": "e6562801481af16c",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/body_extractor.py:20.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.extractedbody",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "re",
+    "textwrap",
+    "dataclasses.dataclass",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/body_extractor.py:20"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "ExtractedBody",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ExtractedBody"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

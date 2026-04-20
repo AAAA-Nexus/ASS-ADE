@@ -1,0 +1,36 @@
+{
+  "body": "def slugify(text: str) -> str:\n    \"\"\"CamelCase- and punctuation-aware slug: ``TokenBucket`` \u2192 ``token_bucket``.\"\"\"\n    spaced = re.sub(r\"(?<=[a-z0-9])(?=[A-Z])\", \" \", text)\n    out = re.sub(r\"[^a-z0-9]+\", \"_\", spaced.lower()).strip(\"_\")\n    return out or \"component\"\n",
+  "body_hash": "f3f3b5d9a0a17338",
+  "body_truncated": false,
+  "callers_of": [
+    "sub",
+    "strip",
+    "lower"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/rebuild/nexus_parse.py:95.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.slugify",
+  "imports": [
+    "__future__.annotations",
+    "re",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/engine/rebuild/nexus_parse.py:95"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "slugify",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for slugify"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

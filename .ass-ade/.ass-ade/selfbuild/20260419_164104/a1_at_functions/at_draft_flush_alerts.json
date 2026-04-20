@@ -1,0 +1,42 @@
+{
+  "body": "def flush_alerts(self) -> list[Alert]:\n    \"\"\"Drain and return the unflushed alerts buffer.\"\"\"\n    drained = list(self._unflushed)\n    self._unflushed.clear()\n    return drained\n",
+  "body_hash": "872f7c9f15f2c9a3",
+  "body_truncated": false,
+  "callers_of": [
+    "list",
+    "clear"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/bas.py:216.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.flush_alerts",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "time",
+    "collections.abc.Callable",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.UTC",
+    "datetime.datetime",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/bas.py:216"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "flush_alerts",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for flush_alerts"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

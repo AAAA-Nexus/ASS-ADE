@@ -1,0 +1,44 @@
+{
+  "body": "def warnings(self) -> list[ValidationIssue]:\n    return [i for i in self.issues if i.severity == \"warning\"]\n",
+  "body_hash": "0984d210aa7fe99f",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/a2a/__init__.py:133.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.warnings",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "socket",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any",
+    "urllib.parse.urlparse",
+    "httpx",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "pydantic.ValidationError",
+    "pydantic.field_validator",
+    "ass_ade.__version__",
+    "ass_ade.nexus.validation.validate_https_public_url",
+    "ass_ade.tools.registry.default_registry"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/a2a/__init__.py:133"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "warnings",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for warnings"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

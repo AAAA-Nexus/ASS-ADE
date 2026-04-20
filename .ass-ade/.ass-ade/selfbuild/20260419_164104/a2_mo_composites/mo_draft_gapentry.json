@@ -1,0 +1,39 @@
+{
+  "body": "class GAPEntry:\n    description: str\n    ts: float = field(default_factory=time.time)\n    source: str = \"\"\n",
+  "body_hash": "d2bf7b950f0e3400",
+  "body_truncated": false,
+  "callers_of": [
+    "field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/tca.py:36.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.gapentry",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "logging",
+    "time",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/tca.py:36"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "GAPEntry",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for GAPEntry"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

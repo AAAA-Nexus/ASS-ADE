@@ -1,0 +1,51 @@
+{
+  "body": "class EXIF:\n    def __init__(self, config: dict, nexus: Any | None = None):\n        self._config = config\n        self._nexus = nexus\n        self._budget = int((config.get(\"exif\") or {}).get(\"exploration_budget\", 50))\n        self._explorations = 0\n\n    def _simulate_action(self, skill: str, env: dict, step: int) -> dict:\n        seed = int(hashlib.sha256(f\"{skill}:{step}\".encode()).hexdigest()[:8], 16)\n        rng = random.Random(seed)\n        success = rng.random()\n        return {\"step\": step, \"action\": f\"probe_{step}\", \"success\": success, \"env\": env.get(\"name\", \"\")}\n\n    def explore(self, missing_skill: str, env: dict, budget: int | None = None) -> SkillArtifact:\n        n = budget if budget is not None else self._budget\n        self._explorations += 1\n        trace: list[dict] = []\n        successes = 0\n        for i in range(n):\n            sample = self._simulate_action(missing_skill, env, i)\n            trace.append(sample)\n            if sample[\"success\"] >= 0.5:\n                successes += 1\n        feasibility = successes / max(1, n)\n        return SkillArtifact(\n            skill=missing_skill,\n            feasibility=feasibility,\n            samples=n,\n            trace=trace[-5:],\n            ready=feasibility >= 0.5,\n        )\n\n    def run(self, ctx: dict) -> dict:\n        artifact = self.explore(\n            ctx.get(\"skill\", \"\"),\n            ctx.get(\"env\", {}),\n            ctx.get(\"budget\"),\n        )\n        return {\n            \"skill\": artifact.skill,\n            \"feasibility\": artifact.feasibility,\n            \"samples\": artifact.samples,\n            \"ready\": artifact.ready,\n            \"tail_trace\": artifact.trace,\n        }\n\n    def report(self) -> dict:\n        return {\n            \"engine\": \"exif\",\n            \"budget\": self._budget,\n            \"explorations\": self._explorations,\n        }\n",
+  "body_hash": "e5c4da9fdc982629",
+  "body_truncated": false,
+  "callers_of": [
+    "int",
+    "Random",
+    "random",
+    "range",
+    "SkillArtifact",
+    "explore",
+    "get",
+    "_simulate_action",
+    "append",
+    "max",
+    "hexdigest",
+    "sha256",
+    "encode"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/exif.py:19.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.exif",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "random",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/exif.py:19"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.src.explore"
+  ],
+  "name": "EXIF",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for EXIF"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

@@ -1,0 +1,57 @@
+{
+  "body": "def check_conviction_gate(self, tool_name: str, args: dict) -> bool:\n    \"\"\"Return True if the tool call should be BLOCKED due to low conviction.\n\n    Only blocks destructive tools when conviction is below threshold.\n    Fail-open: returns False (don't block) on any error.\n    \"\"\"\n    if tool_name not in self._destructive_tools:\n        return False\n    try:\n        conviction = self.wisdom.conviction if self._wisdom else 0.5\n        if conviction < self._conviction_threshold and self.wisdom._audits > 0:\n            _LOG.warning(\n                \"Conviction gate: %s blocked (conviction=%.2f < %.2f)\",\n                tool_name, conviction, self._conviction_threshold,\n            )\n            return True\n    except Exception as exc:\n        _LOG.debug(\"conviction gate check failed (fail-open): %s\", exc)\n    return False\n",
+  "body_hash": "665f0391be136ce0",
+  "body_truncated": false,
+  "callers_of": [
+    "warning",
+    "debug"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/orchestrator.py:293.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.src.check_conviction_gate",
+  "imports": [
+    "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any",
+    "ass_ade.agent.atlas.Atlas",
+    "ass_ade.agent.bas.BAS",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "pathlib.Path",
+    "json",
+    "pathlib.Path",
+    "ass_ade.agent.gvu.GVU",
+    "ass_ade.agent.tdmi.TDMI",
+    "ass_ade.agent.edee.EDEE",
+    "ass_ade.agent.lifr_graph.LIFRGraph",
+    "ass_ade.agent.puppeteer.Puppeteer",
+    "ass_ade.agent.sam.SAM",
+    "ass_ade.agent.ide.IDE",
+    "ass_ade.agent.severa.Severa",
+    "ass_ade.agent.lse.LSEEngine",
+    "ass_ade.agent.tca.TCAEngine",
+    "ass_ade.agent.cie.CIEPipeline",
+    "ass_ade.agent.lora_flywheel.LoRAFlywheel",
+    "ass_ade.map_terrain.active_terrain_gate",
+    "json"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/orchestrator.py:293"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "check_conviction_gate",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for check_conviction_gate"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

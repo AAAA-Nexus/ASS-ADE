@@ -1,0 +1,41 @@
+{
+  "body": "def close(self) -> None:\n    self._wrapped.close()\n",
+  "body_hash": "1bdb7622ec08c70a",
+  "body_truncated": false,
+  "callers_of": [
+    "close"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/resilience.py:127.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.close",
+  "imports": [
+    "__future__.annotations",
+    "random",
+    "time",
+    "typing.TYPE_CHECKING",
+    "httpx",
+    "ass_ade.nexus.errors.NexusCircuitOpen",
+    "ass_ade.nexus.errors.NexusConnectionError",
+    "ass_ade.nexus.errors.NexusServerError",
+    "ass_ade.nexus.errors.NexusTimeoutError",
+    "ass_ade.mcp.cancellation.CancellationContext"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/resilience.py:127"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "close",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for close"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

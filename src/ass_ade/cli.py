@@ -8,6 +8,17 @@ import sys
 from pathlib import Path
 from typing import Annotated, Any, List, Optional
 
+# Auto-load .env so CLI commands pick up AAAA_NEXUS_API_KEY and friends
+# without requiring the user to export them manually each session.
+try:
+    from dotenv import load_dotenv as _load_dotenv
+    for _candidate in (Path.cwd() / ".env", Path(__file__).resolve().parents[3] / ".env"):
+        if _candidate.is_file():
+            _load_dotenv(_candidate, override=False)
+            break
+except ImportError:
+    pass
+
 import httpx
 import typer
 from pydantic import BaseModel
@@ -116,6 +127,25 @@ app.add_typer(agent_app, name="agent")
 app.add_typer(a2a_app, name="a2a")
 app.add_typer(pipeline_app, name="pipeline")
 
+# Blueprint → production-grade build (iterative refinement, no stubs)
+from ass_ade.commands.blueprint import blueprint_app  # noqa: E402
+app.add_typer(blueprint_app, name="blueprint")
+
+# Cap-B: complete partial codebases
+from ass_ade.commands.finish import finish_app  # noqa: E402
+app.add_typer(finish_app, name="finish")
+
+# Cap-C: propose blueprints for new features
+from ass_ade.commands.feature import feature_app  # noqa: E402
+app.add_typer(feature_app, name="feature")
+
+# Self-rebuild: run monadic decomposition over !ass-ade* siblings
+from ass_ade.commands.selfbuild import selfbuild_app  # noqa: E402
+app.add_typer(selfbuild_app, name="selfbuild")
+
+from ass_ade.commands.aso import aso_app  # noqa: E402
+app.add_typer(aso_app, name="optimize")
+
 providers_app = typer.Typer(help="Manage free LLM providers (Groq, Gemini, OpenRouter, Ollama, ...).")
 app.add_typer(providers_app, name="providers")
 
@@ -207,7 +237,11 @@ ALLOW_REMOTE_OPTION = typer.Option(
 REMOTE_PROBE_OPTION = typer.Option(
     None,
     "--remote/--no-remote",
-    help="Probe the configured AAAA-Nexus base URL. Defaults to disabled in local profile.",
+    help=(
+        "Probe the configured AAAA-Nexus base URL. Local profile never auto-probes "
+        "(even if AAAA_NEXUS_API_KEY is set); use --remote to enable. Hybrid/premium "
+        "default to probing; use --no-remote to skip."
+    ),
 )
 REPO_PATH_ARGUMENT = typer.Argument(
     Path("."),
@@ -303,7 +337,11 @@ def _print_json(payload: Any, *, redact: bool = False) -> None:
 def _should_probe_remote(settings: Any, remote: bool | None) -> bool:
     if remote is not None:
         return remote
-    # Auto-enable remote when an API key is configured — no need to change profile
+    # Local profile: never auto-probe, even if an API key is present in the
+    # environment (keys are still used for explicit remote commands). Matches
+    # `doctor --help` and keeps `ass-ade doctor` deterministic under tests.
+    if settings.profile == "local":
+        return False
     if getattr(settings, "nexus_api_key", None):
         return True
     return settings.profile in {"hybrid", "premium"}

@@ -1,0 +1,36 @@
+{
+  "body": "def draft_plan(goal: str, max_steps: int = 5) -> list[str]:\n    if not goal.strip():\n        raise ValueError(\"Goal must not be empty.\")\n\n    _, steps = _detect_track(goal)\n    intro = f\"Define success criteria for: {goal.strip()}\"\n    plan = [intro, *steps]\n    return plan[:max_steps]\n",
+  "body_hash": "2c556c943eca3598",
+  "body_truncated": false,
+  "callers_of": [
+    "_detect_track",
+    "strip",
+    "ValueError"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/local/planner.py:39.",
+  "exceptions_raised": [
+    "ValueError"
+  ],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.draft_plan",
+  "imports": [
+    "__future__.annotations"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/local/planner.py:39"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "draft_plan",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for draft_plan"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

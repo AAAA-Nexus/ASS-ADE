@@ -1,0 +1,41 @@
+{
+  "body": "def depth(self, rel_path: str) -> int:\n    \"\"\"Number of undo steps available for a file.\"\"\"\n    snap_dir = self._snapshot_dir(rel_path)\n    if not snap_dir.exists():\n        return 0\n    return len(list(snap_dir.glob(\"*.snapshot\")))\n",
+  "body_hash": "5889d9fd327e9097",
+  "body_truncated": false,
+  "callers_of": [
+    "_snapshot_dir",
+    "len",
+    "exists",
+    "list",
+    "glob"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/tools/history.py:162.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.depth",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "time",
+    "dataclasses.dataclass",
+    "pathlib.Path"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/tools/history.py:162"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "depth",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for depth"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

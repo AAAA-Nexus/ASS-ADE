@@ -1,0 +1,52 @@
+{
+  "body": "class ReadFileTool:\n    \"\"\"Read file contents, optionally a specific line range.\"\"\"\n\n    def __init__(self, working_dir: str = \".\") -> None:\n        self._cwd = Path(working_dir).resolve()\n\n    @property\n    def name(self) -> str:\n        return \"read_file\"\n\n    @property\n    def description(self) -> str:\n        return \"Read the contents of a file. Use start_line/end_line for partial reads (1-based, inclusive).\"\n\n    @property\n    def parameters(self) -> dict[str, Any]:\n        return {\n            \"type\": \"object\",\n            \"properties\": {\n                \"path\": {\"type\": \"string\", \"description\": \"File path relative to the working directory.\"},\n                \"start_line\": {\"type\": \"integer\", \"description\": \"First line to read (1-based). Omit for full file.\"},\n                \"end_line\": {\"type\": \"integer\", \"description\": \"Last line to read (1-based, inclusive).\"},\n            },\n            \"required\": [\"path\"],\n        }\n\n    def execute(self, **kwargs: Any) -> ToolResult:\n        path = _resolve(self._cwd, kwargs[\"path\"])\n        try:\n            path.relative_to(self._cwd)\n        except ValueError:\n            return ToolResult(error=\"Cannot read files outside the working directory.\", success=False)\n        if not path.is_file():\n            return ToolResult(error=f\"File not found: {kwargs['path']}\", success=False)\n\n        text = path.read_text(encoding=\"utf-8\", errors=\"replace\")\n        lines = text.splitlines(keepends=True)\n\n        start = kwargs.get(\"start_line\")\n        end = kwargs.get(\"end_line\")\n        if start is not None:\n            start = max(1, int(start)) - 1\n            end = int(end) if end else len(lines)\n            lines = lines[start:end]\n\n        content = \"\".join(lines)\n        if len(content) > _MAX_FILE_OUTPUT:\n            content = content[:_MAX_FILE_OUTPUT] + \"\\n... [truncated at 100KB]\"\n        return ToolResult(output=content)\n",
+  "body_hash": "7aecc7e0494ba479",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "_resolve",
+    "read_text",
+    "splitlines",
+    "get",
+    "join",
+    "ToolResult",
+    "relative_to",
+    "is_file",
+    "len",
+    "Path",
+    "max",
+    "int"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/tools/builtin.py:49.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.readfiletool",
+  "imports": [
+    "__future__.annotations",
+    "difflib",
+    "re",
+    "shlex",
+    "subprocess",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.history.FileHistory"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/tools/builtin.py:49"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "ReadFileTool",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ReadFileTool"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

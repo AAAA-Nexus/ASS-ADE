@@ -1,0 +1,68 @@
+{
+  "body": "class TCAEngine:\n    \"\"\"Technical Context Acquisition \u2014 NCB freshness enforcement.\"\"\"\n\n    def __init__(self, config: dict[str, Any] | None = None, nexus: Any = None) -> None:\n        self._config = config or {}\n        self._nexus = nexus\n        cfg = self._config.get(\"tca\") or {}\n        self._threshold_hours = float(cfg.get(\"freshness_hours\", _DEFAULT_FRESHNESS_HOURS))\n        # Root the state file under working_dir if provided; else default to CWD.\n        # This makes the freshness map survive MCP server restarts and lets\n        # multiple projects each have their own TCA state.\n        working_dir = self._config.get(\"working_dir\") or cfg.get(\"working_dir\") or \".\"\n        default_state = Path(working_dir) / \".ass-ade\" / \"state\" / \"tca_reads.json\"\n        self._state_file = Path(cfg.get(\"state_file\", str(default_state)))\n        self._reads: dict[str, float] = {}  # path \u2192 timestamp\n        self._gaps: list[GAPEntry] = []\n        self._stale_count = 0\n        self._load_state()\n\n    # \u2500\u2500 Persistence \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n    def _load_state(self) -> None:\n        try:\n            if self._state_file.exists():\n                data = json.loads(self._state_file.read_text(encoding=\"utf-8\"))\n                self._reads = {k: float(v) for k, v in data.get(\"reads\", {}).items()}\n        except Exception as exc:\n            _log.debug(\"TCA state load failed: %s\", exc)\n\n    def _save_state(self) -> None:\n        try:\n            self._state_file.parent.mkdir(parents=True, exist_ok=True)\n            self._state_file.write_text(\n                json.dumps({\"reads\": self._reads}, indent=2), encoding=\"utf-8\"\n            )\n        except Exception as exc:\n            _log.debug(\"TCA state save failed: %s\", exc)\n\n    # \u2500\u2500 Public API \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n    def record_read(self, path: str | Path) -> None:\n        \"\"\"Mark a file as freshly read. Call this from MCP read_file handler.\"\"\"\n        key = str(Path(path).resolve())\n        self._reads[key] = time.time()\n        self._save_state()\n\n    def check_freshness(self, path: str | Path) -> FreshnessReport:\n        \"\"\"Check whether a file is fresh (read within threshold).\"\"\"\n        key = str(Path(path).resolve())\n        ts = self._reads.get(key)\n        now = time.time()\n        if ts is None:\n            return FreshnessReport(\n                path=key, fresh=False, last_read_ts=None,\n                age_hours=None, threshold_hours=self._threshold_hours,\n            )\n        age_hours = (now - ts) / 3600.0\n        return FreshnessReport(\n            path=key,\n            fresh=age_hours <= self._threshold_hours,\n            last_read_ts=ts,\n            age_hours=round(age_hours, 2),\n            threshold_hours=self._threshold_hours,\n        )\n\n    def ncb_contract(self, target_path: str | Path) -> bool:\n        \"\"\"Return True if NCB contract is satisfied (file was read before writing).\"\"\"\n        return self.check_freshness(target_path).fresh\n\n    def get_stale_files(self, paths: list[str | Path] | None = None) -> list[FreshnessReport]:\n        \"\"\"Return stale freshness reports for all tracked paths (or given subset).\"\"\"\n        if paths is not None:\n            targets = [str(Path(p).resolve()) for p in paths]\n        else:\n            targets = list(self._reads.keys())\n        stale = []\n        for p in targets:\n            report = self.check_freshness(p)\n            if not report.fresh:\n                stale.append(report)\n        self._stale_count = len(stale)\n        return stale\n\n    def record_gap(self, description: str, source: str = \"\") -> None:\n        \"\"\"Record a documentation gap discovered during synthesis.\"\"\"\n        self._gaps.append(GAPEntry(description=description, source=source))\n\n    def get_gaps(self) -> list[dict[str, Any]]:\n        return [\n            {\"description\": g.description, \"source\": g.source, \"ts\": g.ts}\n            for g in self._gaps\n        ]\n\n    def pre_synthesis_check(self, candidate_paths: list[str]) -> dict[str, Any]:\n        \"\"\"Run freshness check for a list of candidate write targets.\n\n        Returns dict with: fresh_count, stale_paths, ncb_violated, gaps\n        \"\"\"\n        stale = self.get_stale_files([p for p in candidate_paths if p])\n        stale_paths = [r.path for r in stale]\n        return {\n            \"fresh_count\": len(candidate_paths) - len(stale_paths),\n            \"stale_paths\": stale_paths,\n            \"ncb_violated\": len(stale_paths) > 0,\n            \"gaps\": self.get_gaps(),\n        }\n\n    def report(self) -> dict[str, Any]:\n        return {\n            \"engine\": \"tca\",\n            \"tracked_files\": len(self._reads),\n            \"stale_count\": self._stale_count,\n            \"gap_count\": len(self._gaps),\n            \"threshold_hours\": self._threshold_hours,\n        }\n",
+  "body_hash": "4354abc472166fe2",
+  "body_truncated": false,
+  "callers_of": [
+    "float",
+    "Path",
+    "_load_state",
+    "str",
+    "time",
+    "_save_state",
+    "get",
+    "FreshnessReport",
+    "len",
+    "append",
+    "get_stale_files",
+    "exists",
+    "mkdir",
+    "write_text",
+    "resolve",
+    "check_freshness",
+    "list",
+    "GAPEntry",
+    "get_gaps",
+    "loads",
+    "debug",
+    "dumps",
+    "round",
+    "keys",
+    "read_text",
+    "items"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/tca.py:42.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.tcaengine",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "logging",
+    "time",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/tca.py:42"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.src.get_stale_files",
+    "at.source.src.check_freshness",
+    "at.source.src.get_gaps"
+  ],
+  "name": "TCAEngine",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for TCAEngine"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

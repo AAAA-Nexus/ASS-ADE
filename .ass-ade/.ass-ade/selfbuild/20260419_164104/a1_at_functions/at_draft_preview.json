@@ -1,0 +1,40 @@
+{
+  "body": "def preview(self, plan: EditPlan) -> str:\n    \"\"\"Return a combined diff of all edits in the plan.\"\"\"\n    if not plan.validated:\n        errs = self.validate(plan)\n        if errs:\n            return \"Validation errors:\\n\" + \"\\n\".join(f\"  \u2717 {e}\" for e in errs)\n    return \"\\n\\n\".join(\n        f\"--- {e.description} ---\\n{e.diff}\" for e in plan.edits if e.diff\n    )\n",
+  "body_hash": "195a5ebd6b83f9c0",
+  "body_truncated": false,
+  "callers_of": [
+    "join",
+    "validate"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/tools/plan.py:195.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.preview",
+  "imports": [
+    "__future__.annotations",
+    "difflib",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "enum.Enum",
+    "pathlib.Path",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.history.FileHistory"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/tools/plan.py:195"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "preview",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for preview"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

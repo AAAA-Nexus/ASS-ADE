@@ -1,0 +1,60 @@
+{
+  "body": "def execute(self, name: str, **kwargs: Any) -> ToolResult:\n    tool = self._tools.get(name)\n    if tool is None:\n        return ToolResult(output=\"\", error=f\"Unknown tool: {name}\", success=False)\n    try:\n        return tool.execute(**kwargs)\n    except (\n        AttributeError,\n        LookupError,\n        OSError,\n        RuntimeError,\n        TypeError,\n        ValueError,\n    ) as exc:\n        return ToolResult(output=\"\", error=str(exc), success=False)\n",
+  "body_hash": "091934f419d10579",
+  "body_truncated": false,
+  "callers_of": [
+    "get",
+    "ToolResult",
+    "execute",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/tools/registry.py:41.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "og.source.src.execute",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "importlib.util",
+    "inspect",
+    "json",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.engine.types.ToolSchema",
+    "ass_ade.tools.base.Tool",
+    "ass_ade.tools.base.ToolResult",
+    "ass_ade.tools.builtin.EditFileTool",
+    "ass_ade.tools.builtin.GrepSearchTool",
+    "ass_ade.tools.builtin.ListDirectoryTool",
+    "ass_ade.tools.builtin.ReadFileTool",
+    "ass_ade.tools.builtin.RunCommandTool",
+    "ass_ade.tools.builtin.SearchFilesTool",
+    "ass_ade.tools.builtin.UndoEditTool",
+    "ass_ade.tools.builtin.WriteFileTool",
+    "ass_ade.tools.history.FileHistory",
+    "ass_ade.tools.prompt.PromptDiffTool",
+    "ass_ade.tools.prompt.PromptHashTool",
+    "ass_ade.tools.prompt.PromptProposeTool",
+    "ass_ade.tools.prompt.PromptSectionTool",
+    "ass_ade.tools.prompt.PromptValidateTool"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/tools/registry.py:41"
+  },
+  "kind": "product_organism",
+  "made_of": [
+    "mo.source.src.toolresult"
+  ],
+  "name": "execute",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for execute"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a3_og_features",
+  "version": "0.1.0"
+}

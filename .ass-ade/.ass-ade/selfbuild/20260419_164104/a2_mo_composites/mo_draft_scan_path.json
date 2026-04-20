@@ -1,0 +1,48 @@
+{
+  "body": "def scan_path(root: Path) -> list[IncompleteFunction]:\n    incomplete: list[IncompleteFunction] = []\n    if root.is_file() and root.suffix == \".py\":\n        return scan_file(root)\n    for py in sorted(root.rglob(\"*.py\")):\n        # Skip test and build artifacts.\n        parts = set(py.parts)\n        if parts & {\"__pycache__\", \".venv\", \"venv\", \"build\", \"dist\", \".ass-ade\"}:\n            continue\n        incomplete.extend(scan_file(py))\n    return incomplete\n",
+  "body_hash": "0944b53feb61e2d2",
+  "body_truncated": false,
+  "callers_of": [
+    "sorted",
+    "is_file",
+    "scan_file",
+    "rglob",
+    "set",
+    "extend"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/finish.py:134.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.scan_path",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "json",
+    "os",
+    "dataclasses.dataclass",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.engine.rebuild.synthesis.DEFAULT_BASE_URL",
+    "ass_ade.engine.rebuild.synthesis._cie_gate",
+    "ass_ade.engine.rebuild.synthesis._synthesize_via_nexus"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/finish.py:134"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "scan_path",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for scan_path"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

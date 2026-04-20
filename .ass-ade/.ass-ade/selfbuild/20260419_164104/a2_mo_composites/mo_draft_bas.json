@@ -1,0 +1,69 @@
+{
+  "body": "class BAS:\n    def __init__(self, config: dict, nexus: Any | None = None):\n        self._config = config\n        self._nexus = nexus\n        self._alerts: list[Alert] = []\n        self._unflushed: list[Alert] = []\n        self._subscribers: list[Callable[[Alert], None]] = []\n        self._last_alert_ts: dict[str, float] = {}\n        self._cooldown_s: float = float(config.get(\"bas_cooldown_s\", 60.0))\n\n        syn = config.get(\"synergy\") or {}\n        self._synergy_threshold = float(syn.get(\"threshold\", 0.6))\n        self._novelty_threshold = float((config.get(\"sde\") or {}).get(\"novelty_threshold\", 0.75))\n\n        # Persistence path\n        path_override = config.get(\"bas_state_path\")\n        self._persist_path: Path = Path(path_override) if path_override else _DEFAULT_STATE_PATH\n\n        # Count existing persisted alerts\n        self._alerts_total: int = self._load_alert_count()\n\n    def _load_alert_count(self) -> int:\n        \"\"\"Count existing alert lines in the persist file without loading all content.\"\"\"\n        try:\n            if not self._persist_path.exists():\n                return 0\n            count = 0\n            with self._persist_path.open(\"r\", encoding=\"utf-8\") as f:\n                for _ in f:\n                    count += 1\n            return count\n        except OSError:\n            return 0\n\n    def _persist_alert(self, a: Alert) -> None:\n        \"\"\"Append an alert to the JSONL file, creating directories as needed.\"\"\"\n        try:\n            self._persist_path.parent.mkdir(parents=True, exist_ok=True)\n            with self._persist_path.open(\"a\", encoding=\"utf-8\") as f:\n                f.write(json.dumps(a.__dict__) + \"\\n\")\n        except OSError:\n            pass\n\n    def subscribe(self, callback: Callable[[Alert], None]) -> None:\n        self._subscribers.append(callback)\n\n    def _notify_subscribers(self, a: Alert) -> None:\n        for cb in self._subscribers:\n            try:\n                cb(a)\n            except Exception:\n                pass\n\n    def alert(self, kind: str, payload: dict) -> Alert | None:\n        now = time.time()\n        last_ts = self._last_alert_ts.get(kind)\n        if last_ts is not None and (now - last_ts) < self._cooldown_s:\n            # On cooldown \u2014 return most recent alert of this kind (if any), marked skipped\n            for existing in reversed(self._alerts):\n                if existing.kind == kind:\n                    skipped = Alert(\n                        kind=existing.kind,\n                        severity=existing.severity,\n                        payload=existing.payload,\n                        ts=existing.ts,\n                        cooldown_skipped=True,\n                    )\n                    return skipped\n            return None\n\n        sev = _SEVERITY.get(kind, \"medium\")\n        a = Alert(\n            kind=kind,\n            severity=sev,\n            payload=payload,\n            ts=datetime.now(UTC).isoformat(),\n            cooldown_skipped=False,\n        )\n        self._alerts.append(a)\n        self._unflushed.append(a)\n        self._last_alert_ts[kind] = now\n        self._alerts_total += 1\n\n        # Persist\n        self._persist_alert(a)\n\n        # Notify subscribers\n        self._notify_subscribers(a)\n\n        # Record to reputation if high severity\n        if self._nexus is not None and a.severity == \"high\":\n            try:\n                self._nexus.reputation_record(\n                    agent_id=\"bas\",\n                    success=False,\n                    quality=0.0,\n                    latency_ms=0.0,\n                )\n            except Exception:\n                pass\n\n        return a\n\n    def monitor(self, metrics: dict) -> Alert | None:\n        synergy = float(metrics.get(\"synergy\", 0.0))\n        novelty = float(metrics.get(\"novelty\", 0.0))\n        gvu = float(metrics.get(\"gvu_delta\", 0.0))\n        if synergy > self._synergy_threshold:\n            return self.alert(\"emergent_synergy\", {\"synergy\": synergy})\n        if novelty > self._novelty_threshold:\n            return self.alert(\"novelty_spike\", {\"novelty\": novelty})\n        if gvu > 0.1:\n            return self.alert(\"gvu_jump\", {\"gvu_delta\": gvu})\n        return None\n\n    def monitor_all(self, metrics: dict) -> list[Alert]:\n        \"\"\"Check all thresholds and return all alerts fired.\"\"\"\n        fired: list[Alert] = []\n\n        synergy = float(metrics.get(\"synergy\", 0.0))\n        if synergy > self._synergy_threshold:\n            a = self.alert(\"emergent_synergy\", {\"synergy\": synergy})\n            if a is not None:\n                fired.append(a)\n\n        novelty = float(metrics.get(\"novelty\", 0.0))\n        if novelty > self._novelty_threshold:\n            a = self.alert(\"novelty_spike\", {\"novelty\": novelty})\n            if a is not None:\n                fired.append(a)\n\n        gvu = float(metrics.get(\"gvu_delta\", 0.0))\n        if gvu > 0.1:\n            a = self.alert(\"gvu_jump\", {\"gvu_delta\": gvu})\n            if a is not None:\n                fired.append(a)\n\n        missing_caps = metrics.get(\"missing_capabilities\")\n        if isinstance(missing_caps, list) and len(missing_caps) > 0:\n            a = self.alert(\"capability_gap\", {\"missing_capabilities\": list(missing_caps)})\n            if a is not None:\n                fired.append(a)\n\n        trust_score = float(metrics.get(\"trust_score\", 1.0))\n        if trust_score < 0.3:\n            a = self.alert(\"trust_violation\", {\"trust_score\": trust_score})\n            if a is not None:\n                fired.append(a)\n\n        budget_pct = float(metrics.get(\"budget_pct\", 0.0))\n        if budget_pct > 0.9:\n            a = self.alert(\"budget_exhaustion\", {\"budget_pct\": budget_pct})\n            if a is not None:\n                fired.append(a)\n\n        score_delta = float(metrics.get(\"score_delta\", 0.0))\n        if score_delta < -0.2:\n            a = self.alert(\"quality_regression\", {\"score_delta\": score_delta})\n            if a is not None:\n                fired.append(a)\n\n        tool_repeat = int(metrics.get(\"tool_repeat_count\", 0))\n        if tool_repeat > 3:\n            a = self.alert(\"loop_detected\", {\"tool_repeat_count\": tool_repeat})\n            if a is not None:\n                fired.append(a)\n\n        return fired\n\n    def flush_alerts(self) -> list[Alert]:\n        \"\"\"Drain and return the unflushed alerts buffer.\"\"\"\n        drained = list(self._unflushed)\n        self._unflushed.clear()\n        return drained\n\n    def run(self, ctx: dict) -> dict:\n        alert = self.monitor(ctx.get(\"metrics\", {}))\n        return {\"alert\": alert.__dict__ if alert else None}\n\n    def report(self) -> dict:\n        return {\n            \"engine\": \"bas\",\n            \"alerts_total\": self._alerts_total,\n            \"alerts_session\": len(self._alerts),\n            \"unflushed\": len(self._unflushed),\n            \"subscribers\": len(self._subscribers),\n            \"last\": self._alerts[-1].__dict__ if self._alerts else None,\n            \"cooldown_s\": self._cooldown_s,\n        }\n",
+  "body_hash": "5091e07f022f3a5e",
+  "body_truncated": false,
+  "callers_of": [
+    "float",
+    "get",
+    "_load_alert_count",
+    "append",
+    "time",
+    "Alert",
+    "_persist_alert",
+    "_notify_subscribers",
+    "int",
+    "list",
+    "clear",
+    "monitor",
+    "Path",
+    "mkdir",
+    "reversed",
+    "alert",
+    "isinstance",
+    "len",
+    "exists",
+    "open",
+    "write",
+    "cb",
+    "isoformat",
+    "reputation_record",
+    "dumps",
+    "now"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/bas.py:47.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.bas",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "time",
+    "collections.abc.Callable",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "datetime.UTC",
+    "datetime.datetime",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/bas.py:47"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.src.clear",
+    "at.source.src.monitor"
+  ],
+  "name": "BAS",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for BAS"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

@@ -1,0 +1,42 @@
+{
+  "body": "def query(self, spec_text: str, top_k: int = 5) -> list[Match]:\n    self._queries += 1\n    result = query_vector_memory(\n        query=spec_text,\n        namespace=self._namespace,\n        top_k=top_k,\n        working_dir=self._working_dir,\n    )\n    matches: list[Match] = []\n    for m in result.matches:\n        if m.score < self._threshold:\n            continue\n        payload = (m.metadata or {}).get(\"payload\") or {}\n        matches.append(\n            Match(\n                id=m.id,\n                score=m.score,\n                spec=payload.get(\"spec\", m.text),\n                code=payload.get(\"code\", \"\"),\n                proof=payload.get(\"proof\", \"\"),\n                metadata=m.metadata or {},\n            )\n        )\n    return matches\n",
+  "body_hash": "06d6d105be86eff2",
+  "body_truncated": false,
+  "callers_of": [
+    "query_vector_memory",
+    "append",
+    "get",
+    "Match"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/lifr_graph.py:56.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.query",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "dataclasses.dataclass",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.context_memory.VectorMemoryMatch",
+    "ass_ade.context_memory.query_vector_memory",
+    "ass_ade.context_memory.store_vector_memory"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/lifr_graph.py:56"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "query",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for query"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

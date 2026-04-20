@@ -1,0 +1,38 @@
+{
+  "body": "class PromptHashResult(BaseModel):\n    source: str\n    sha256: str\n    bytes: int\n    lines: int\n",
+  "body_hash": "13df1a1900d8763a",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/prompt_toolkit.py:28.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.prompthashresult",
+  "imports": [
+    "__future__.annotations",
+    "difflib",
+    "hashlib",
+    "json",
+    "re",
+    "pathlib.Path",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/prompt_toolkit.py:28"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "PromptHashResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for PromptHashResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

@@ -1,0 +1,34 @@
+{
+  "body": "def run(self, ctx: dict) -> dict:\n    ok = self.pre_action_verify(ctx.get(\"action\", {}))\n    return {\"allowed\": ok}\n",
+  "body_hash": "2f4599e84ce193ee",
+  "body_truncated": false,
+  "callers_of": [
+    "pre_action_verify",
+    "get"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/trust_gate.py:52.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.run",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/trust_gate.py:52"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "run",
+  "product_categories": [
+    "IDT"
+  ],
+  "provides": [
+    "rebuild candidate for run"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

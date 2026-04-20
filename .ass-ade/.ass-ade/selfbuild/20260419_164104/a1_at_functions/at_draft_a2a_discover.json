@@ -1,0 +1,56 @@
+{
+  "body": "def a2a_discover(\n    capability: Annotated[str, typer.Argument(help=\"Capability to search for.\")],\n    config: Path | None = CONFIG_OPTION,\n    allow_remote: bool = ALLOW_REMOTE_OPTION,\n) -> None:\n    \"\"\"Discover agents matching a capability.\"\"\"\n    _, settings = _resolve_config(config)\n    _require_remote_access(settings, allow_remote)\n\n    try:\n        with NexusClient(\n            base_url=settings.nexus_base_url,\n            timeout=settings.request_timeout_s,\n            api_key=settings.nexus_api_key,\n        ) as client:\n            results = client.discovery_search(capability=capability)\n            # Convert to JSON-serializable format\n            if hasattr(results, 'model_dump'):\n                results_dict = results.model_dump()\n            else:\n                results_dict = results\n            console.print(json.dumps(results_dict, indent=2), markup=False)\n    except httpx.HTTPError as exc:\n        _nexus_err(exc)\n",
+  "body_hash": "e1c24c14b0bcd707",
+  "body_truncated": false,
+  "callers_of": [
+    "_resolve_config",
+    "_require_remote_access",
+    "NexusClient",
+    "discovery_search",
+    "hasattr",
+    "print",
+    "_nexus_err",
+    "Argument",
+    "model_dump",
+    "dumps"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/commands/a2a.py:133.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.a2a_discover",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "pathlib.Path",
+    "typing.Annotated",
+    "typing.Any",
+    "httpx",
+    "typer",
+    "rich.console.Console",
+    "ass_ade.a2a.fetch_agent_card",
+    "ass_ade.a2a.local_agent_card",
+    "ass_ade.a2a.negotiate",
+    "ass_ade.config.default_config_path",
+    "ass_ade.config.load_config",
+    "ass_ade.nexus.client.NexusClient",
+    "ass_ade.a2a.validate_agent_card",
+    "ass_ade.nexus.validation.validate_url"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/commands/a2a.py:133"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "a2a_discover",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for a2a_discover"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

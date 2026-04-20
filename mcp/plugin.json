@@ -1,0 +1,16 @@
+{
+  "schema_version": "v1",
+  "display_name": "ASS-ADE",
+  "description": "Design blueprints, rebuild codebases, generate docs, lint, certify -- from any IDE.",
+  "icon": "https://atomadic.tech/assets/ass-ade-icon.png",
+  "server": {
+    "type": "stdio",
+    "command": "python",
+    "args": ["-m", "ass_ade", "mcp", "serve"]
+  },
+  "install": {
+    "pip": "ass-ade",
+    "npm": "ass-ade"
+  },
+  "documentation": "https://atomadic.tech/docs/ass-ade"
+}

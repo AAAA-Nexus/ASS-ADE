@@ -1,0 +1,56 @@
+{
+  "body": "def run_parallel_recon(path: str | Path = \".\") -> ReconReport:\n    \"\"\"Run all 5 recon agents in parallel and return a consolidated ReconReport.\n\n    Completes in < 5 seconds for repos with < 500 files.\n    All analysis is local \u2014 no LLM calls, no network requests.\n    \"\"\"\n    root = Path(path).resolve()\n    t0 = time.monotonic()\n\n    files = _iter_files(root)\n\n    with concurrent.futures.ThreadPoolExecutor(max_workers=5) as pool:\n        f_scout = pool.submit(_scout_agent, root, files)\n        f_dep   = pool.submit(_dependency_agent, root, files)\n        f_tier  = pool.submit(_tier_agent, root, files)\n        f_test  = pool.submit(_test_agent, root, files)\n        f_doc   = pool.submit(_doc_agent, root, files)\n\n        scout      = f_scout.result()\n        dependency = f_dep.result()\n        tier       = f_tier.result()\n        test       = f_test.result()\n        doc        = f_doc.result()\n\n    recs, next_action = _build_recommendations(scout, dependency, tier, test, doc)\n    duration_ms = (time.monotonic() - t0) * 1000\n\n    return ReconReport(\n        root=str(root),\n        duration_ms=duration_ms,\n        scout=scout,\n        dependency=dependency,\n        tier=tier,\n        test=test,\n        doc=doc,\n        recommendations=recs,\n        next_action=next_action,\n    )\n",
+  "body_hash": "f28fa0b02806dc84",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "monotonic",
+    "_iter_files",
+    "_build_recommendations",
+    "ReconReport",
+    "ThreadPoolExecutor",
+    "submit",
+    "result",
+    "Path",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/recon.py:881.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.run_parallel_recon",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "concurrent.futures",
+    "os",
+    "re",
+    "time",
+    "collections.defaultdict",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Literal",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "ass_ade.local.repo.DEFAULT_IGNORED_DIRS",
+    "ass_ade.local.repo.summarize_repo"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/recon.py:881"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "run_parallel_recon",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for run_parallel_recon"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

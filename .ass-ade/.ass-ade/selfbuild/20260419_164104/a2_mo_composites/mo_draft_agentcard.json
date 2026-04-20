@@ -1,0 +1,36 @@
+{
+  "body": "class AgentCard(NexusModel):\n    name: str\n    version: str | None = None\n    capabilities: Any = None\n    skills: list[AgentSkill] = Field(default_factory=list)\n    trialPolicy: TrialPolicy | None = None\n    authentication: AuthenticationInfo | None = None\n    payment: dict | None = None\n    endpoints: str | None = None\n",
+  "body_hash": "4635629d05e1ae98",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:58.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.agentcard",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:58"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "AgentCard",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for AgentCard"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

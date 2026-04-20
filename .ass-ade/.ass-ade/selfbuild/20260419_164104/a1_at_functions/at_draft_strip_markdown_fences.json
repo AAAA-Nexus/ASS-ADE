@@ -1,0 +1,37 @@
+{
+  "body": "def strip_markdown_fences(text: str) -> str:\n    \"\"\"Strip a single surrounding ```lang fenced block if present.\"\"\"\n    if not isinstance(text, str):\n        return \"\"\n    m = _FENCE_RE.match(text.strip())\n    if m:\n        return m.group(\"body\")\n    return text\n",
+  "body_hash": "0a4a9c47e6fa76a6",
+  "body_truncated": false,
+  "callers_of": [
+    "match",
+    "isinstance",
+    "strip",
+    "group"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/rebuild/nexus_parse.py:19.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.strip_markdown_fences",
+  "imports": [
+    "__future__.annotations",
+    "re",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/engine/rebuild/nexus_parse.py:19"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "strip_markdown_fences",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for strip_markdown_fences"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

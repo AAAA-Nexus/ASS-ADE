@@ -1,0 +1,54 @@
+{
+  "body": "def collect_git_state(root: Path) -> EvolutionGitState:\n    root = root.resolve()\n    ok_status, status_text = _run_git(root, [\"status\", \"--short\"])\n    ok_branch, branch = _run_git(root, [\"rev-parse\", \"--abbrev-ref\", \"HEAD\"])\n    ok_commit, commit = _run_git(root, [\"rev-parse\", \"--short\", \"HEAD\"])\n    if not ok_status:\n        return EvolutionGitState(available=False)\n\n    lines = [line for line in status_text.splitlines() if line.strip()]\n    staged = 0\n    unstaged = 0\n    untracked = 0\n    for line in lines:\n        marker = line[:2]\n        if marker == \"??\":\n            untracked += 1\n            continue\n        if marker[:1].strip():\n            staged += 1\n        if len(marker) > 1 and marker[1:2].strip():\n            unstaged += 1\n\n    return EvolutionGitState(\n        available=True,\n        branch=branch if ok_branch and branch else \"unknown\",\n        commit=commit if ok_commit and commit else \"unknown\",\n        dirty=bool(lines),\n        staged=staged,\n        unstaged=unstaged,\n        untracked=untracked,\n        status=lines[:200],\n    )\n",
+  "body_hash": "9d7e6d666bc57747",
+  "body_truncated": false,
+  "callers_of": [
+    "resolve",
+    "_run_git",
+    "EvolutionGitState",
+    "strip",
+    "splitlines",
+    "bool",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/protocol/evolution.py:99.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.collect_git_state",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "re",
+    "shutil",
+    "subprocess",
+    "tomllib",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field",
+    "ass_ade.engine.rebuild.version_tracker.INITIAL_VERSION",
+    "ass_ade.engine.rebuild.version_tracker.bump_version"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/protocol/evolution.py:99"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "collect_git_state",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for collect_git_state"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

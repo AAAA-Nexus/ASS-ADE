@@ -1,0 +1,46 @@
+{
+  "body": "def emit_agent_configs(\n    target_root: Path,\n    *,\n    package_name: str = \"ass_ade_rebuild\",\n    control_root: Path | None = None,\n) -> dict[str, str]:\n    \"\"\"Write .claude/CLAUDE.md, .vscode/tasks.json, .ass-ade/config.json.\"\"\"\n    control_root = control_root or target_root\n    written: dict[str, str] = {}\n\n    claude_dir = target_root / \".claude\"\n    claude_dir.mkdir(parents=True, exist_ok=True)\n    claude_md = claude_dir / \"CLAUDE.md\"\n    _enforce_boundary(claude_md, control_root)\n    claude_md.write_text(\n        f\"# {package_name} \u2014 Tier-Aware Rebuild\\n\\n\"\n        \"## Layout\\n\"\n        f\"- `src/{package_name}/` \u2014 installable Python package (src layout)\\n\"\n        \"- `a0_qk_constants/` through `a4_sy_orchestration/` \u2014 tier overlays with TIER_OVERLAY.json\\n\"\n        \"- `.ass-ade/tier-map.json` \u2014 master file \u2192 tier assignment map\\n\\n\"\n        \"## Tiers\\n\"\n        \"| Tier | Classification |\\n\"\n        \"|------|----------------|\\n\"\n        \"| a0_qk_constants | constant |\\n\"\n        \"| a1_at_functions | pure_function |\\n\"\n        \"| a2_mo_composites | composite |\\n\"\n        \"| a3_og_features | feature |\\n\"\n        \"| a4_sy_orchestration | orchestrator |\\n\\n\"\n        \"## Install\\n\"\n        \"```\\npip install -e .\\n```\\n\",\n        encoding=\"utf-8\",\n    )\n    written[\"claude_md\"] = claude_md.as_posix()\n\n    vscode_dir = target_root / \".vscode\"\n    vscode_dir.mkdir(parents=True, exist_ok=True)\n    tasks_path = vscode_dir / \"tasks.json\"\n    _enforce_boundary(tasks_path, control_root)\n    tasks_payload = {\n        \"version\": \"2.0.0\",\n        \"tasks\": [\n            {\n                \"group\": \"build\",\n                \"label\": \"ass-ade: install package\",\n                \"options\": {\"cwd\": \"${workspaceFolder}\"},\n                \"type\": \"shell\",\n                \"command\": \"pip install -e .\",\n            },\n            {\n                \"label\": \"ass-ade: validate rebuild\",\n                \"options\": {\"cwd\": \"${workspaceFolder}\"},\n                \"type\": \"shell\",\n                \"command\": (\n                    \"python -c \\\"\"\n                    \"from ass_ade.engine.rebuild.schema_materializer import validate_rebuild; \"\n                    \"from pathlib import Path; import json; \"\n                    \"print(json.dumps(validate_rebuild(Path('.')), indent=2))\\\"\"\n                ),\n            },\n        ],\n    }\n    tasks_path.write_text(json.dumps(tasks_payload, indent=2) + \"\\n\", encoding=\"utf-8\")\n    written[\"vscode_tasks\"] = tasks_path.as_posix()\n\n    ass_ade_dir = target_root / \".ass-ade\"\n    ass_ade_dir.mkdir(parents=True, exist_ok=True)\n    config_path = ass_ade_dir / \"config.json\"\n    _enforce_boundary(config_path, control_root)\n    config_payload = {\n        \"package_name\": package_name,\n        \"schema\": \"ASSADE-LAYOUT-1\",\n        \"src_layout\": f\"src/{package_name}\",\n        \"tier_map\": \".ass-ade/tier-map.json\",\n        \"tiers\": list(TIER_NAMES),\n    }\n    config_path.write_text(\n        json.dumps(config_payload, indent=2, sort_keys=True) + \"\\n\", encoding=\"utf-8\"\n    )\n    written[\"ass_ade_config\"] = config_path.as_posix()\n\n    return written\n",
+  "body_hash": "e39e263ad861bafa",
+  "body_truncated": false,
+  "callers_of": [
+    "mkdir",
+    "_enforce_boundary",
+    "write_text",
+    "as_posix",
+    "list",
+    "dumps"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/package_emitter.py:349.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.emit_agent_configs",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "datetime",
+    "json",
+    "re",
+    "sys",
+    "pathlib.Path",
+    "typing.Any",
+    "tomllib",
+    "tomli"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/package_emitter.py:349"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "emit_agent_configs",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for emit_agent_configs"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

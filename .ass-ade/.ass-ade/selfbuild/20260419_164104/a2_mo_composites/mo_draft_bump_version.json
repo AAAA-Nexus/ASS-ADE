@@ -1,0 +1,39 @@
+{
+  "body": "def bump_version(current: str, change_type: str) -> str:\n    \"\"\"Bump a semver string by 'major', 'minor', or 'patch'.\"\"\"\n    parsed = _parse_semver(current)\n    if parsed is None:\n        return INITIAL_VERSION\n    major, minor, patch = parsed\n    if change_type == \"major\":\n        return _fmt(major + 1, 0, 0)\n    if change_type == \"minor\":\n        return _fmt(major, minor + 1, 0)\n    return _fmt(major, minor, patch + 1)\n",
+  "body_hash": "d3e915449e9a4655",
+  "body_truncated": false,
+  "callers_of": [
+    "_parse_semver",
+    "_fmt"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/version_tracker.py:40.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.bump_version",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "hashlib",
+    "json",
+    "re",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/version_tracker.py:40"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "bump_version",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for bump_version"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

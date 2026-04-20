@@ -1,0 +1,66 @@
+{
+  "body": "def hook_meta_edit_validate(self, meta_edit: Any) -> dict[str, Any] | None:\n    \"\"\"Validate a meta-edit by running N=5 sample tasks before and after.\n\n    Passes iff audit_pass_rate_delta >= 0.05. Results are persisted to\n    .ass-ade/state/meta_edit_audits/{timestamp}.json.\n    \"\"\"\n    import json\n    from datetime import UTC, datetime\n    from pathlib import Path\n\n    try:\n        from ass_ade.agent.golden_runner import run_golden\n\n        cfg = getattr(self, \"_v18_config\", {}) or {}\n        golden_path = Path(\n            (cfg.get(\"dgm_h\") or {}).get(\"golden_task_path\", \".ass-ade/golden/tasks.jsonl\")\n        )\n        audits_dir = Path(\n            (cfg.get(\"dgm_h\") or {}).get(\"meta_audit_dir\", \".ass-ade/state/meta_edit_audits\")\n        )\n\n        me_id = str(getattr(meta_edit, \"id\", \"meta_edit\"))\n        me_desc = str(getattr(meta_edit, \"description\", \"\") or getattr(meta_edit, \"procedure\", \"\"))\n\n        before = run_golden(golden_path, tasks_limit=5, repeats=1, prompt_suffix=\"\", seed=11)\n        after = run_golden(\n            golden_path,\n            tasks_limit=5,\n            repeats=1,\n            prompt_suffix=f\"meta_edit:{me_id}:{me_desc[:80]}\",\n            seed=13,\n        )\n        before_rate = float(before.get(\"aggregate\", {}).get(\"pass_rate\", 0.0))\n        after_rate = float(after.get(\"aggregate\", {}).get(\"pass_rate\", 0.0))\n        delta = after_rate - before_rate\n        ok = delta >= 0.05\n\n        artifact: dict[str, Any] = {\n            \"meta_edit_id\": me_id,\n            \"description\": me_desc,\n            \"before_rate\": before_rate,\n            \"after_rate\": after_rate,\n            \"delta\": delta,\n            \"validated\": ok,\n            \"before_per_task\": before.get(\"per_task\", []),\n            \"after_per_task\": after.get(\"per_task\", []),\n            \"ts\": datetime.now(UTC).isoformat(),\n        }\n        try:\n            audits_dir.mkdir(parents=True, exist_ok=True)\n            ts = datetime.now(UTC).strftime(\"%Y%m%dT%H%M%S%f\")\n            (audits_dir / f\"{ts}_{me_id}.json\").write_text(\n                json.dumps(artifact, indent=2), encoding=\"utf-8\"\n            )\n        except OSError:\n            pass\n\n        self._gate_log.append(GateResult(\n            gate=\"meta_edit_validate\",\n            passed=ok,\n            confidence=max(0.0, min(1.0, 0.5 + delta)),\n            details={\"before_rate\": before_rate, \"after_rate\": after_rate, \"delta\": delta},\n        ))\n        return {\n            \"before_rate\": before_rate,\n            \"after_rate\": after_rate,\n            \"delta\": delta,\n            \"validated\": ok,\n        }\n    except Exception as exc:\n        logging.getLogger(__name__).warning(\"hook_meta_edit_validate failed: %s\", exc)\n        return None\n",
+  "body_hash": "7d55c50fb8e7819a",
+  "body_truncated": false,
+  "callers_of": [
+    "Path",
+    "str",
+    "run_golden",
+    "float",
+    "append",
+    "getattr",
+    "get",
+    "isoformat",
+    "mkdir",
+    "strftime",
+    "write_text",
+    "GateResult",
+    "warning",
+    "dumps",
+    "now",
+    "max",
+    "getLogger",
+    "min"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/gates.py:349.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.hook_meta_edit_validate",
+  "imports": [
+    "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "ast",
+    "re",
+    "json",
+    "datetime.UTC",
+    "datetime.datetime",
+    "pathlib.Path",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "ass_ade.agent.trust_gate.TrustVerificationGate",
+    "ass_ade.agent.proofbridge.ProofBridge",
+    "ass_ade.agent.alphaverus.AlphaVerus",
+    "ass_ade.agent.dgm_h.DGMH",
+    "ass_ade.agent.dgm_h.Patch",
+    "ass_ade.agent.golden_runner.run_golden",
+    "ass_ade.agent.sam.SAM"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/gates.py:349"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "hook_meta_edit_validate",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for hook_meta_edit_validate"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

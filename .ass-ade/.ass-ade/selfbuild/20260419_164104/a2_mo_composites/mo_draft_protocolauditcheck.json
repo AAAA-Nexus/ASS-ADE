@@ -1,0 +1,38 @@
+{
+  "body": "class ProtocolAuditCheck(BaseModel):\n    name: str\n    passed: bool\n    detail: str\n",
+  "body_hash": "2fa935c2ae7beac8",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/protocol/cycle.py:13.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.protocolauditcheck",
+  "imports": [
+    "__future__.annotations",
+    "pathlib.Path",
+    "pydantic.BaseModel",
+    "ass_ade.config.AssAdeConfig",
+    "ass_ade.local.planner.draft_plan",
+    "ass_ade.local.repo.RepoSummary",
+    "ass_ade.local.repo.summarize_repo",
+    "ass_ade.system.ToolStatus",
+    "ass_ade.system.collect_tool_status"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/protocol/cycle.py:13"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "ProtocolAuditCheck",
+  "product_categories": [
+    "SRG"
+  ],
+  "provides": [
+    "rebuild candidate for ProtocolAuditCheck"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

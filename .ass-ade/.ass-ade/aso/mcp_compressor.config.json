@@ -1,0 +1,7 @@
+{
+  "schemaVersion": "ass-ade.aso.mcp-compressor.v0",
+  "description": "Placeholder for MCP compressor / lazy schema proxy — tune after benchmarks.",
+  "shimTools": ["get_tool_schema", "invoke_tool"],
+  "featureFlagEnv": "ASS_ADE_ASO_MCP_COMPRESSOR",
+  "notes": "Do not wrap production MCP servers until rollback + tests are in place."
+}

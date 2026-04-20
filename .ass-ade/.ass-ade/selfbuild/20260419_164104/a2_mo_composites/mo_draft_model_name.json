@@ -1,0 +1,41 @@
+{
+  "body": "def model_name(self) -> str:\n    return self._default_model\n",
+  "body_hash": "4a30b5dd2029a5f1",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/engine/provider.py:197.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.model_name",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "uuid",
+    "collections.abc.Iterator",
+    "typing.Any",
+    "typing.Protocol",
+    "typing.runtime_checkable",
+    "httpx",
+    "ass_ade.engine.types.CompletionRequest",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolCallRequest"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/engine/provider.py:197"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "model_name",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for model_name"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

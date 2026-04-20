@@ -1,0 +1,34 @@
+{
+  "body": "class AgentRegistration(NexusModel):\n    \"\"\"/v1/agents/register\"\"\"\n    agent_id: Any = None\n    registered: Any = None\n",
+  "body_hash": "8b8b625b3d81bf62",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:358.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.agentregistration",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:358"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "AgentRegistration",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for AgentRegistration"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

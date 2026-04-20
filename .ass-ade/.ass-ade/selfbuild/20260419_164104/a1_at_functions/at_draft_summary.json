@@ -1,0 +1,50 @@
+{
+  "body": "def summary(self) -> str:\n    s = self.scout\n    t = self.test\n    d = self.doc\n    dep = self.dependency\n\n    parts = [\n        f\"Repo at `{self.root}` contains {s['total_files']} files\"\n        f\" ({s['source_files']} source, {s['test_files_count']} test-related)\"\n        f\" across {s['max_depth']} directory levels\"\n        f\" ({s['total_size_kb']} KB total).\",\n    ]\n    if dep[\"has_circular_deps\"]:\n        parts.append(f\"Circular import detected ({len(dep['circular_deps'])} cycle(s)).\")\n    parts.append(\n        f\"Test coverage: {t['test_functions']} test functions\"\n        f\" across {t['test_files']} test files\"\n        f\" (ratio {t['coverage_ratio']}).\"\n    )\n    if d[\"doc_coverage\"] < 0.5:\n        parts.append(f\"Documentation coverage is low ({d['doc_coverage']:.0%}).\")\n    else:\n        parts.append(f\"Documentation coverage: {d['doc_coverage']:.0%}.\")\n    dominant = self.tier.get(\"dominant_tier\", \"unknown\")\n    parts.append(f\"Dominant tier: `{dominant}`.\")\n    return \" \".join(parts)\n",
+  "body_hash": "517183287efa06db",
+  "body_truncated": false,
+  "callers_of": [
+    "append",
+    "get",
+    "join",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/recon.py:697.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.summary",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "concurrent.futures",
+    "os",
+    "re",
+    "time",
+    "collections.defaultdict",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Literal",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "ass_ade.local.repo.DEFAULT_IGNORED_DIRS",
+    "ass_ade.local.repo.summarize_repo"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/recon.py:697"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "summary",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for summary"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,52 @@
+{
+  "body": "class X402ClientFlow:\n    \"\"\"Orchestrates the full client-side x402 payment flow.\n\n    This helper encapsulates the complete flow from receiving a 402 challenge\n    to submitting the paid request retry. It provides a reusable, typed path\n    for applications that need to handle x402 payments programmatically.\n\n    Usage::\n\n        flow = X402ClientFlow()\n        challenge = flow.parse_challenge(response_dict)\n        if not flow.can_pay(challenge):\n            raise ValueError(f\"Cannot pay: {flow.last_error}\")\n        payment = flow.execute_payment(challenge)\n        if payment.success:\n            headers = flow.build_proof_headers(payment)\n            # ... submit retry with headers\n    \"\"\"\n\n    def __init__(self) -> None:\n        self.last_error: str = \"\"\n\n    def parse_challenge(self, response_dict: dict) -> PaymentChallenge | None:\n        \"\"\"Parse a 402 response dict into a PaymentChallenge.\n\n        Returns None if parsing fails; check last_error for details.\n        \"\"\"\n        try:\n            return PaymentChallenge.from_response(response_dict)\n        except ValueError as e:\n            self.last_error = str(e)\n            return None\n\n    def can_pay(self, challenge: PaymentChallenge) -> bool:\n        \"\"\"Check if a challenge can be paid with current configuration.\n\n        Returns False and sets last_error if the challenge cannot be fulfilled.\n        \"\"\"\n        if challenge.is_expired:\n            self.last_error = \"Challenge has expired\"\n            return False\n\n        if challenge.amount_micro_usdc <= 0 or challenge.amount_micro_usdc > MAX_CHALLENGE_MICRO_USDC:\n            self.last_error = (\n                f\"Amount {challenge.amount_micro_usdc} outside valid range \"\n                f\"(1\u2013{MAX_CHALLENGE_MICRO_USDC})\"\n            )\n            return False\n\n        if challenge.recipient.strip().lower() != ATOMADIC_TREASURY.lower():\n            self.last_error = \"Recipient does not match expected treasury\"\n            return False\n\n        config = get_chain_config()\n        if challenge.chain_id and challenge.chain_id != config[\"chain_id\"]:\n            self.last_error = (\n                f\"Chain mismatch: challenge {challenge.chain_id} vs active {config['chain_id']}\"\n            )\n            return False\n\n        if challenge.token_address:\n            try:\n                if challenge.token_address.lower() != config[\"usdc_address\"].lower():\n                    self.last_error = (\n                        f\"Token mismatch: challenge {challenge.token_address} \"\n                        f\"vs expected {config['usdc_address']}\"\n                    )\n                    return False\n            except AttributeError as exc:\n                self.last_error = f\"Invalid token address: {exc}\"\n                return False\n\n        return True\n\n    def execute_payment(self, challenge: PaymentChallenge) -> PaymentResult:\n        \"\"\"Submit payment for the challenge.\n\n        Returns PaymentResult with success status and details.\n        Calls the lower-level submit_payment() function.\n        \"\"\"\n        return submit_payment(challenge)\n\n    def build_proof_headers(self, payment: PaymentResult) -> dict[str, str]:\n        \"\"\"Build HTTP headers from a successful payment for request retry.\"\"\"\n        return build_payment_header(payment)\n\n    def get_proof(self, payment: PaymentResult) -> PaymentProof | None:\n        \"\"\"Extract structured PaymentProof from a payment result.\"\"\"\n        return PaymentProof.from_payment_result(payment)\n",
+  "body_hash": "670e750d189422d9",
+  "body_truncated": false,
+  "callers_of": [
+    "get_chain_config",
+    "submit_payment",
+    "build_payment_header",
+    "from_payment_result",
+    "from_response",
+    "lower",
+    "str",
+    "strip"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/x402.py:370.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.x402clientflow",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "time",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "eth_account.Account",
+    "web3.Web3",
+    "logging"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/x402.py:370"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.src.get_chain_config",
+    "at.source.src.submit_payment",
+    "at.source.src.build_payment_header",
+    "at.source.src.from_payment_result",
+    "at.source.src.from_response"
+  ],
+  "name": "X402ClientFlow",
+  "product_categories": [
+    "PAY"
+  ],
+  "provides": [
+    "rebuild candidate for X402ClientFlow"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

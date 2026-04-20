@@ -1,0 +1,46 @@
+{
+  "body": "def get_stale_files(self, paths: list[str | Path] | None = None) -> list[FreshnessReport]:\n    \"\"\"Return stale freshness reports for all tracked paths (or given subset).\"\"\"\n    if paths is not None:\n        targets = [str(Path(p).resolve()) for p in paths]\n    else:\n        targets = list(self._reads.keys())\n    stale = []\n    for p in targets:\n        report = self.check_freshness(p)\n        if not report.fresh:\n            stale.append(report)\n    self._stale_count = len(stale)\n    return stale\n",
+  "body_hash": "4b5794033034f577",
+  "body_truncated": false,
+  "callers_of": [
+    "len",
+    "list",
+    "check_freshness",
+    "str",
+    "keys",
+    "append",
+    "resolve",
+    "Path"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/tca.py:111.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.get_stale_files",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "logging",
+    "time",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/tca.py:111"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "get_stale_files",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for get_stale_files"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

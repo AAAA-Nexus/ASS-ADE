@@ -1,0 +1,39 @@
+{
+  "body": "def register_selfbuild_app(parent: typer.Typer) -> None:\n    \"\"\"Mount ``selfbuild`` under a parent Typer app.\"\"\"\n    parent.add_typer(selfbuild_app, name=\"selfbuild\")\n",
+  "body_hash": "486df154884f2d01",
+  "body_truncated": false,
+  "callers_of": [
+    "add_typer"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/commands/selfbuild.py:95.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.register_selfbuild_app",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "pathlib.Path",
+    "typer",
+    "rich.console.Console",
+    "rich.table.Table",
+    "ass_ade.engine.rebuild.orchestrator.rebuild_project",
+    "ass_ade.engine.rebuild.orchestrator.render_rebuild_summary"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/commands/selfbuild.py:95"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "register_selfbuild_app",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for register_selfbuild_app"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

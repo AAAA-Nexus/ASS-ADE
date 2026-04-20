@@ -1,0 +1,32 @@
+{
+  "body": "def cancel(self) -> None:\n    \"\"\"Mark this context as cancelled.\"\"\"\n    with self._lock:\n        self._cancelled = True\n",
+  "body_hash": "671e097361b21295",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/mcp/cancellation.py:25.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.src.cancel",
+  "imports": [
+    "__future__.annotations",
+    "threading",
+    "typing.Optional"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/mcp/cancellation.py:25"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "cancel",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for cancel"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}

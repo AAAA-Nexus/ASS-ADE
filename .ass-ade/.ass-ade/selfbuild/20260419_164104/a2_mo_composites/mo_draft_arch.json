@@ -1,0 +1,35 @@
+{
+  "body": "class Arch:\n    name: str\n    score: float\n    traits: list[str] = field(default_factory=list)\n",
+  "body_hash": "7596c9deb2672d79",
+  "body_truncated": false,
+  "callers_of": [
+    "field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/severa.py:9.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.arch",
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/severa.py:9"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "Arch",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for Arch"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

@@ -1,0 +1,54 @@
+{
+  "body": "def check_hallucination(self, text: str) -> dict[str, Any] | None:\n    \"\"\"Check model output for hallucination using \u03b5-KL divergence scoring.\"\"\"\n    try:\n        result = self._client.hallucination_oracle(text)\n        gate = GateResult(\n            gate=\"hallucination\",\n            passed=result.verdict != \"unsafe\",\n            confidence=result.confidence,\n            details={\"verdict\": result.verdict, \"policy_epsilon\": result.policy_epsilon},\n        )\n        self._gate_log.append(gate)\n        return {\n            \"verdict\": result.verdict,\n            \"confidence\": result.confidence,\n            \"policy_epsilon\": result.policy_epsilon,\n        }\n    except Exception as _exc:  # noqa: BLE001\n        logging.getLogger(__name__).warning(\n            \"Gate %s failed (fail-open): %s: %s\",\n            \"check_hallucination\",\n            type(_exc).__name__,\n            _exc,\n        )\n        return None\n",
+  "body_hash": "7642afcb0ce6425c",
+  "body_truncated": false,
+  "callers_of": [
+    "hallucination_oracle",
+    "GateResult",
+    "append",
+    "warning",
+    "getLogger",
+    "type"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/gates.py:81.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.check_hallucination",
+  "imports": [
+    "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "ast",
+    "re",
+    "json",
+    "datetime.UTC",
+    "datetime.datetime",
+    "pathlib.Path",
+    "ass_ade.agent.wisdom.WisdomEngine",
+    "ass_ade.agent.trust_gate.TrustVerificationGate",
+    "ass_ade.agent.proofbridge.ProofBridge",
+    "ass_ade.agent.alphaverus.AlphaVerus",
+    "ass_ade.agent.dgm_h.DGMH",
+    "ass_ade.agent.dgm_h.Patch",
+    "ass_ade.agent.golden_runner.run_golden",
+    "ass_ade.agent.sam.SAM"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/gates.py:81"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "check_hallucination",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for check_hallucination"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

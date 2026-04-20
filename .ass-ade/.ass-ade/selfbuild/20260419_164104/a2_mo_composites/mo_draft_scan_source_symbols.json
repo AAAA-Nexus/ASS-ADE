@@ -1,0 +1,54 @@
+{
+  "body": "def scan_source_symbols(root: Path, max_files: int = 200) -> list[dict[str, Any]]:\n    _def_re = re.compile(r\"^(?:async\\s+)?def\\s+([A-Za-z_]\\w*)\")\n    _class_re = re.compile(r\"^class\\s+([A-Za-z_]\\w*)\")\n    symbols: list[dict[str, Any]] = []\n    files_seen = 0\n\n    _ignored = DEFAULT_IGNORED_DIRS | {\".venv\"}\n\n    for dirpath, dirs, files in os.walk(root, topdown=True):\n        dirs[:] = [d for d in dirs if d not in _ignored]\n        for filename in files:\n            if not filename.endswith(\".py\"):\n                continue\n            if files_seen >= max_files:\n                break\n            files_seen += 1\n            full_path = Path(dirpath) / filename\n            try:\n                rel = str(full_path.relative_to(root))\n                for line in full_path.read_text(encoding=\"utf-8\", errors=\"replace\").splitlines():\n                    stripped = line.lstrip()\n                    m = _class_re.match(stripped)\n                    if m:\n                        symbols.append({\"file\": rel, \"kind\": \"class\", \"name\": m.group(1)})\n                        continue\n                    m = _def_re.match(stripped)\n                    if m:\n                        symbols.append({\"file\": rel, \"kind\": \"function\", \"name\": m.group(1)})\n            except Exception:\n                pass\n\n    return symbols\n",
+  "body_hash": "323f8f8de24f6bcd",
+  "body_truncated": false,
+  "callers_of": [
+    "compile",
+    "walk",
+    "endswith",
+    "Path",
+    "str",
+    "splitlines",
+    "relative_to",
+    "lstrip",
+    "match",
+    "read_text",
+    "append",
+    "group"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/local/docs_engine.py:143.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.scan_source_symbols",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "re",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.local.repo.DEFAULT_IGNORED_DIRS",
+    "ass_ade.local.repo.summarize_repo",
+    "json",
+    "tomllib",
+    "tomllib",
+    "tomli",
+    "tomli"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/local/docs_engine.py:143"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "scan_source_symbols",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for scan_source_symbols"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

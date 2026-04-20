@@ -1,0 +1,36 @@
+{
+  "body": "class ZeroDayResult(NexusModel):\n    \"\"\"/v1/security/zero-day\"\"\"\n    vulnerable: bool | None = None\n    patterns_matched: list[str] = Field(default_factory=list)\n    severity: str | None = None\n",
+  "body_hash": "cbc163712a946d2b",
+  "body_truncated": false,
+  "callers_of": [
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:444.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.zerodayresult",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:444"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "ZeroDayResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ZeroDayResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

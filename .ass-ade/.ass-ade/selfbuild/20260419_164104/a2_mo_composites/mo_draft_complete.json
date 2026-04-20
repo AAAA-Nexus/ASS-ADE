@@ -1,0 +1,41 @@
+{
+  "body": "def complete(self, request: CompletionRequest) -> CompletionResponse: ...\n",
+  "body_hash": "af48c258198148fe",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/engine/provider.py:200.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.complete",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "uuid",
+    "collections.abc.Iterator",
+    "typing.Any",
+    "typing.Protocol",
+    "typing.runtime_checkable",
+    "httpx",
+    "ass_ade.engine.types.CompletionRequest",
+    "ass_ade.engine.types.CompletionResponse",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolCallRequest"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/engine/provider.py:200"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "complete",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for complete"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

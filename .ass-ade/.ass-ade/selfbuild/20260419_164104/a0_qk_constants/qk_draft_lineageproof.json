@@ -1,0 +1,34 @@
+{
+  "body": "class LineageProof(NexusModel):\n    \"\"\"/v1/compliance/lineage \u2014 LIN-100\"\"\"\n    chain_hash: str | None = None\n    stages: int | None = None\n    integrity_ok: bool | None = None\n",
+  "body_hash": "7f88e9385b7eb8d7",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:784.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.src.lineageproof",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/nexus/models.py:784"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "LineageProof",
+  "product_categories": [
+    "DCM"
+  ],
+  "provides": [
+    "rebuild candidate for LineageProof"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

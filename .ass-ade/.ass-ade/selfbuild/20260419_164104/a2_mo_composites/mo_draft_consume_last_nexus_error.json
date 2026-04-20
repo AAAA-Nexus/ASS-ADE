@@ -1,0 +1,41 @@
+{
+  "body": "def consume_last_nexus_error() -> str | None:\n    \"\"\"Return and clear the most recent Nexus failure. Used by orchestrators.\"\"\"\n    global _LAST_NEXUS_ERROR\n    msg = _LAST_NEXUS_ERROR\n    _LAST_NEXUS_ERROR = None\n    return msg\n",
+  "body_hash": "3901049d7468388c",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade/src/ass_ade/engine/rebuild/synthesis.py:51.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.consume_last_nexus_error",
+  "imports": [
+    "__future__.annotations",
+    "ast",
+    "datetime",
+    "importlib.resources",
+    "os",
+    "re",
+    "typing.Any",
+    "ass_ade.engine.rebuild.nexus_parse.extract_json_array",
+    "ass_ade.engine.rebuild.nexus_parse.extract_nexus_content",
+    "ass_ade.engine.rebuild.nexus_parse.slugify",
+    "ass_ade.engine.rebuild.nexus_parse.strip_markdown_fences",
+    "httpx"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade/src/ass_ade/engine/rebuild/synthesis.py:51"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "consume_last_nexus_error",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for consume_last_nexus_error"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

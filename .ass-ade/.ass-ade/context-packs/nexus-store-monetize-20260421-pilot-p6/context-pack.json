@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "atomadic.context-pack.v1",
+  "generatedAt": "2026-04-21T16:15:00+00:00",
+  "intent": {
+    "summary": "P6 reload — implement hosted MCP OAuth alignment, x402 audit vs docs, ASS-ADE billable tool catalog; residual from nexus plan round 1.",
+    "deliverables": [
+      "Worker: /.well-known/oauth-protected-resource + /mcp JSON-RPC behavior vs MCP 2025-11-25 HTTP auth",
+      "Rust: nexus-pay vs https://docs.x402.org/core-concepts/http-402",
+      "!ass-ade: mcp/server.json metering hooks + parity tests"
+    ]
+  },
+  "paths": {
+    "repoRoot": "C:/!aaaa-nexus",
+    "packDir": "C:/!aaaa-nexus/!ass-ade/.ass-ade/context-packs/nexus-store-monetize-20260421-pilot-p6"
+  },
+  "repoMap": {
+    "tierMap": "!ass-ade/.ass-ade/tier-map.json",
+    "tiersSampled": ["a2", "a3"],
+    "hotPaths": [
+      "!aaaa-nexus-storefront/src/lib.rs",
+      "!aaaa-nexus-storefront/src/router.rs",
+      "!aaaa-nexus-storefront/crates/nexus-pay/src/x402.rs",
+      "!ass-ade/mcp/server.json"
+    ],
+    "testsAndCommands": [
+      "python -m pytest tests/test_mcp_manifest_parity.py -q",
+      "(DEFER) cargo test -p nexus-pay --manifest-path !aaaa-nexus-storefront/Cargo.toml"
+    ]
+  },
+  "webResearch": {
+    "hops": [
+      {
+        "id": "H1-residual-mcp-auth",
+        "queries": [],
+        "findingSummary": "Carry forward MCP HTTP authorization from parent research.md; implementation gap on Worker.",
+        "verificationEvidence": {
+          "kind": "path",
+          "ref": "https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization",
+          "note": "No code change yet — pack readiness for T4."
+        }
+      }
+    ],
+    "sources": []
+  },
+  "techDocs": {
+    "stackFingerprint": {
+      "parentContextPack": "!ass-ade/.ass-ade/context-packs/nexus-store-monetize-20260421-1530/context-pack.json",
+      "parentPlan": ".ato-plans/active/nexus-mcp-storefront-revenue-20260421-1530/plan.md"
+    },
+    "deliverableScopes": []
+  },
+  "risksAndGaps": [
+    "Live payment and OAuth need wrangler secrets — human gate [S].",
+    "Revenue proof requires analytics — [H]."
+  ],
+  "verdict": "PASS"
+}

@@ -1,0 +1,35 @@
+{
+  "body": "class ModelTier(str, Enum):\n    FAST = \"fast\"\n    STANDARD = \"standard\"\n    DEEP = \"deep\"\n",
+  "body_hash": "28e8b540e82f0973",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/routing.py:37.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.modeltier",
+  "imports": [
+    "__future__.annotations",
+    "re",
+    "collections.abc.Mapping",
+    "dataclasses.dataclass",
+    "enum.Enum",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/routing.py:37"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "ModelTier",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ModelTier"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

@@ -1,0 +1,38 @@
+{
+  "body": "class PromptSectionResult(BaseModel):\n    source: str\n    section: str\n    found: bool\n    text: str = \"\"\n    sha256: str | None = None\n",
+  "body_hash": "5b4becee8559d364",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/prompt_toolkit.py:46.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.promptsectionresult",
+  "imports": [
+    "__future__.annotations",
+    "difflib",
+    "hashlib",
+    "json",
+    "re",
+    "pathlib.Path",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/prompt_toolkit.py:46"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "PromptSectionResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for PromptSectionResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

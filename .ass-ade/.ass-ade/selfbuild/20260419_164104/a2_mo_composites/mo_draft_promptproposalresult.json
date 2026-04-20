@@ -1,0 +1,38 @@
+{
+  "body": "class PromptProposalResult(BaseModel):\n    proposal_id: str\n    source: str\n    prompt_sha256: str\n    objective: str\n    recommended_changes: list[str]\n    verification_criteria: list[str]\n    requires_human_approval: bool = True\n    next_action: str\n",
+  "body_hash": "af88b373238207d5",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/prompt_toolkit.py:64.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.promptproposalresult",
+  "imports": [
+    "__future__.annotations",
+    "difflib",
+    "hashlib",
+    "json",
+    "re",
+    "pathlib.Path",
+    "typing.Any",
+    "pydantic.BaseModel",
+    "pydantic.Field"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/prompt_toolkit.py:64"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "PromptProposalResult",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for PromptProposalResult"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

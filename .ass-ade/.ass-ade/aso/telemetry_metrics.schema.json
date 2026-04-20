@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ass-ade.aso.telemetry-metrics.v0",
+  "title": "ASO Telemetry & Evolution — metric names (OTel-ready)",
+  "type": "object",
+  "required": ["schemaVersion", "metrics"],
+  "properties": {
+    "schemaVersion": { "const": "ass-ade.telemetry-metrics.v0" },
+    "metrics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "kind", "unit"],
+        "properties": {
+          "name": { "type": "string" },
+          "kind": {
+            "type": "string",
+            "enum": ["counter", "histogram", "gauge"]
+          },
+          "unit": { "type": "string" },
+          "description": { "type": "string" }
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "schemaVersion": "ass-ade.telemetry-metrics.v0",
+      "metrics": [
+        {
+          "name": "mcp.tools.call.latency_ms",
+          "kind": "histogram",
+          "unit": "ms",
+          "description": "MCP tools/call server-side latency"
+        },
+        {
+          "name": "mcp.manifest.estimated_tokens",
+          "kind": "gauge",
+          "unit": "tokens",
+          "description": "Heuristic manifest size for budgeting"
+        }
+      ]
+    }
+  ]
+}

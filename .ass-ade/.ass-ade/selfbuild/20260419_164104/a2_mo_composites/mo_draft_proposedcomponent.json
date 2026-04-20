@@ -1,0 +1,40 @@
+{
+  "body": "class ProposedComponent:\n    id: str\n    tier: str\n    kind: str\n    name: str\n    source_symbol: dict[str, Any]\n    product_categories: list[str]\n    fulfills_blueprints: list[str] = field(default_factory=list)\n    made_of: list[str] = field(default_factory=list)\n    description: str = \"\"\n    dedup_key: str = \"\"\n",
+  "body_hash": "37bdfff1dd20644e",
+  "body_truncated": false,
+  "callers_of": [
+    "field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/gap_filler.py:37.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.proposedcomponent",
+  "imports": [
+    "__future__.annotations",
+    "datetime",
+    "hashlib",
+    "json",
+    "re",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/gap_filler.py:37"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "ProposedComponent",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ProposedComponent"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

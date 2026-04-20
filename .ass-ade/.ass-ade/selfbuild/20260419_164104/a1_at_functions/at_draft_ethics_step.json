@@ -1,0 +1,47 @@
+{
+  "body": "def ethics_step(ctx: dict[str, Any]) -> StepResult:\n    try:\n        result = client.ethics_check(text)\n        raw = result.model_dump() if hasattr(result, \"model_dump\") else {}\n        passed = raw.get(\"safe\", False)\n        return StepResult(name=\"ethics_check\", status=StepStatus.PASSED if passed else StepStatus.FAILED, output=raw)\n    except Exception as exc:\n        return StepResult(name=\"ethics_check\", status=StepStatus.FAILED, error=str(exc))\n",
+  "body_hash": "dd2cc820884a33e2",
+  "body_truncated": false,
+  "callers_of": [
+    "ethics_check",
+    "get",
+    "StepResult",
+    "hasattr",
+    "model_dump",
+    "str"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/pipeline.py:343.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.ethics_step",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "time",
+    "collections.abc.Callable",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "enum.Enum",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Protocol",
+    "ass_ade.nexus.validation.validate_agent_id"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/pipeline.py:343"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "ethics_step",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ethics_step"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

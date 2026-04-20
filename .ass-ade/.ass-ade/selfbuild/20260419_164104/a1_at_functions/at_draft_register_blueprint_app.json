@@ -1,0 +1,41 @@
+{
+  "body": "def register_blueprint_app(parent: typer.Typer) -> None:\n    \"\"\"Attach the blueprint sub-app to a parent typer.\n\n    Kept as a helper so integration tests and alternative CLI front-ends can\n    mount the command without importing the top-level ``ass_ade.cli`` module.\n    \"\"\"\n    parent.add_typer(blueprint_app, name=\"blueprint\")\n",
+  "body_hash": "676ab19807308a04",
+  "body_truncated": false,
+  "callers_of": [
+    "add_typer"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/commands/blueprint.py:193.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.register_blueprint_app",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "os",
+    "pathlib.Path",
+    "typing.Any",
+    "typer",
+    "rich.console.Console",
+    "rich.table.Table",
+    "ass_ade.engine.rebuild.orchestrator.rebuild_project",
+    "ass_ade.engine.rebuild.synthesis.SynthesisFailure"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/commands/blueprint.py:193"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "register_blueprint_app",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for register_blueprint_app"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,34 @@
+{
+  "body": "class Tool(Protocol):\n    \"\"\"Protocol for ASS-ADE tools.\"\"\"\n\n    @property\n    def name(self) -> str: ...\n\n    @property\n    def description(self) -> str: ...\n\n    @property\n    def parameters(self) -> dict[str, Any]: ...\n\n    def execute(self, **kwargs: Any) -> ToolResult: ...\n",
+  "body_hash": "5676c27c1ab15ea7",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/tools/base.py:19.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.tool",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any",
+    "typing.Protocol",
+    "typing.runtime_checkable",
+    "pydantic.BaseModel"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/tools/base.py:19"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "Tool",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for Tool"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

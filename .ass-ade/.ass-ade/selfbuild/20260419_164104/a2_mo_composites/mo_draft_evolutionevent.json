@@ -1,0 +1,49 @@
+{
+  "body": "class EvolutionEvent(BaseModel):\n    model_config = ConfigDict(populate_by_name=True)\n\n    schema_id: str = Field(default=EVOLUTION_SCHEMA, alias=\"schema\")\n    event_id: str\n    timestamp_utc: str\n    event_type: str\n    summary: str\n    version: str\n    root: str\n    git: EvolutionGitState\n    commands: list[EvolutionCommand] = Field(default_factory=list)\n    metrics: dict[str, Any] = Field(default_factory=dict)\n    reports: list[str] = Field(default_factory=list)\n    artifacts: list[str] = Field(default_factory=list)\n    rationale: str = \"\"\n    next_steps: list[str] = Field(default_factory=list)\n    rebuild: dict[str, Any] = Field(default_factory=dict)\n    certificates: list[dict[str, Any]] = Field(default_factory=list)\n    lineage_ids: list[str] = Field(default_factory=list)\n",
+  "body_hash": "e520068ae925e5b5",
+  "body_truncated": false,
+  "callers_of": [
+    "ConfigDict",
+    "Field"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/protocol/evolution.py:44.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.evolutionevent",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "json",
+    "re",
+    "shutil",
+    "subprocess",
+    "tomllib",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any",
+    "typing.Iterable",
+    "pydantic.BaseModel",
+    "pydantic.ConfigDict",
+    "pydantic.Field",
+    "ass_ade.engine.rebuild.version_tracker.INITIAL_VERSION",
+    "ass_ade.engine.rebuild.version_tracker.bump_version"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/protocol/evolution.py:44"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "EvolutionEvent",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for EvolutionEvent"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

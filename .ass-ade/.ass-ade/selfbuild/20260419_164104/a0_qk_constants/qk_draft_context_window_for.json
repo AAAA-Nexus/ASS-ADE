@@ -1,0 +1,40 @@
+{
+  "body": "def context_window_for(model: str | None) -> int:\n    \"\"\"Look up the context window for a model name.\n\n    Performs fuzzy matching: if the exact name isn't in the table,\n    checks if any key is a substring of the model name (handles\n    provider-prefixed names like 'ollama/llama-3.1-8b').\n    \"\"\"\n    if not model:\n        return DEFAULT_CONTEXT_WINDOW\n\n    low = model.lower()\n    if low in _CONTEXT_WINDOWS:\n        return _CONTEXT_WINDOWS[low]\n\n    for key, val in _CONTEXT_WINDOWS.items():\n        if key in low or low in key:\n            return val\n\n    return DEFAULT_CONTEXT_WINDOW\n",
+  "body_hash": "5d9b8a361658c224",
+  "body_truncated": false,
+  "callers_of": [
+    "lower",
+    "items"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/engine/tokens.py:141.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "qk.source.src.context_window_for",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "math",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "ass_ade.engine.types.Message",
+    "ass_ade.engine.types.ToolSchema",
+    "tiktoken"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/engine/tokens.py:141"
+  },
+  "kind": "invariant",
+  "made_of": [],
+  "name": "context_window_for",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for context_window_for"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a0_qk_constants",
+  "version": "0.1.0"
+}

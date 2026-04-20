@@ -1,0 +1,33 @@
+{
+  "body": "def validate_acyclic(plan: dict[str, Any]) -> bool:\n    \"\"\"Return True iff the plan's ``made_of`` graph contains no cycles.\"\"\"\n    return detect_cycles(plan)[\"acyclic\"]\n",
+  "body_hash": "712acff8d9f58f81",
+  "body_truncated": false,
+  "callers_of": [
+    "detect_cycles"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/cycle_detector.py:152.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.validate_acyclic",
+  "imports": [
+    "__future__.annotations",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/engine/rebuild/cycle_detector.py:152"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "validate_acyclic",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for validate_acyclic"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

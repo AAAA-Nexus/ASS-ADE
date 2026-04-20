@@ -1,0 +1,120 @@
+{
+  "schemaVersion": "atomadic.context-pack.v1",
+  "generatedAt": "2026-04-21T15:30:00+00:00",
+  "intent": {
+    "summary": "Enhance AAAA-Nexus hosted MCP on atomadic.tech and tighten monetization (x402 + API key + OAuth discovery per MCP 2025-11-25).",
+    "deliverables": [
+      "Worker /mcp + well-known OAuth metadata parity with MCP HTTP auth spec",
+      "x402 V2 header audit vs docs.x402.org and nexus-pay crate",
+      "Billable MCP tool SKUs with manifest parity in !ass-ade/mcp/server.json",
+      "Optional: Aegis mcp-proxy execute pricing consistency (utils.rs fee table)"
+    ]
+  },
+  "paths": {
+    "repoRoot": "C:/!aaaa-nexus",
+    "packDir": "C:/!aaaa-nexus/!ass-ade/.ass-ade/context-packs/nexus-store-monetize-20260421-1530"
+  },
+  "repoMap": {
+    "tierMap": "!ass-ade/.ass-ade/tier-map.json",
+    "tiersSampled": ["a0", "a1", "a2", "a3", "a4"],
+    "hotPaths": [
+      "!aaaa-nexus-storefront/src/router.rs",
+      "!aaaa-nexus-storefront/src/lib.rs",
+      "!aaaa-nexus-storefront/crates/nexus-pay/src/x402.rs",
+      "!aaaa-nexus-storefront/src/payments.rs",
+      "!aaaa-nexus-storefront/src/aegis.rs",
+      "!ass-ade/mcp/server.json",
+      "!ass-ade/src/ass_ade/mcp/server.py"
+    ],
+    "testsAndCommands": [
+      "pytest tests/test_mcp_manifest_parity.py tests/test_mcp_research_radar_fixture.py -q",
+      "python scripts/check_evolution_context.py",
+      "(storefront) cargo test -p nexus-pay  # when changing x402 crate"
+    ]
+  },
+  "webResearch": {
+    "hops": [
+      {
+        "id": "H1-mcp-http-auth",
+        "queries": ["MCP 2025-11-25 authorization HTTP"],
+        "findingSummary": "HTTP-based MCP should conform to OAuth 2.1 subset and protected resource metadata for discovery.",
+        "verificationEvidence": {
+          "kind": "path",
+          "ref": "https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization",
+          "note": "Primary spec URL; implement against fetched text in Worker."
+        }
+      },
+      {
+        "id": "H1b-ai-mcp-bench",
+        "queries": ["MCPAgentBench arxiv tool retrieval distractors"],
+        "findingSummary": "Benchmarks stress tool selection under many distractor tools — narrows SKUs + clear pricing beats raw tool sprawl.",
+        "verificationEvidence": {
+          "kind": "path",
+          "ref": "https://arxiv.org/abs/2512.24565",
+          "note": "Hop 1b — external modality; product policy only until harnessed in CI."
+        }
+      },
+      {
+        "id": "H2-x402-v2",
+        "queries": ["x402 HTTP 402 PAYMENT-REQUIRED header"],
+        "findingSummary": "Official docs define Base64 JSON in PAYMENT-* headers; audit nexus-pay comments vs doc.",
+        "verificationEvidence": {
+          "kind": "path",
+          "ref": "https://docs.x402.org/core-concepts/http-402",
+          "note": "Compare to !aaaa-nexus-storefront/crates/nexus-pay/src/x402.rs"
+        }
+      },
+      {
+        "id": "H3-cloudflare-remote-mcp",
+        "queries": ["Cloudflare Workers remote MCP"],
+        "findingSummary": "CF documents remote MCP server deployment on edge — align ops runbook with Worker wrangler.toml.",
+        "verificationEvidence": {
+          "kind": "path",
+          "ref": "https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp",
+          "note": "Ops/hosting evidence; not a revenue proof."
+        }
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization",
+        "retrievedAt": "2026-04-21T15:30:00+00:00",
+        "supports": ["H1-mcp-http-auth"]
+      },
+      {
+        "url": "https://docs.x402.org/core-concepts/http-402",
+        "retrievedAt": "2026-04-21T15:30:00+00:00",
+        "supports": ["H2-x402-v2"]
+      },
+      {
+        "url": "https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp",
+        "retrievedAt": "2026-04-21T15:30:00+00:00",
+        "supports": ["H3-cloudflare-remote-mcp"]
+      },
+      {
+        "url": "https://arxiv.org/abs/2512.24565",
+        "retrievedAt": "2026-04-21T15:30:00+00:00",
+        "supports": ["H1b-ai-mcp-bench"]
+      }
+    ]
+  },
+  "techDocs": {
+    "stackFingerprint": {
+      "worker": "!aaaa-nexus-storefront/wrangler.toml",
+      "rustWorkspace": "!aaaa-nexus-storefront/Cargo.toml",
+      "mcpManifest": "!ass-ade/mcp/server.json",
+      "mcpProtocol": "2025-11-25"
+    },
+    "deliverableScopes": [
+      "Hosted MCP JSON-RPC + OAuth discovery on Cloudflare Worker",
+      "x402 settlement path shared with API-key gated routes",
+      "ASS-ADE stdio manifest alignment for developer discovery"
+    ]
+  },
+  "risksAndGaps": [
+    "Revenue 'ASAP' requires live traffic + pricing experiments — not provable from repo alone [H].",
+    "OAuth without IdP secrets in CI will block full auth E2E until wrangler secrets configured [S].",
+    "MCP tool sprawl increases retrieval failure per MCPAgentBench — gate new tools with metering + tests."
+  ],
+  "verdict": "PASS"
+}

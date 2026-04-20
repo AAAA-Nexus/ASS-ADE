@@ -1,0 +1,57 @@
+{
+  "body": "def trust_gate(client: NexusClient, agent_id: str) -> TrustGateResult:\n    \"\"\"Multi-step agent trust gating: identity \u2192 sybil \u2192 trust \u2192 reputation \u2192 gate decision.\n\n    Gate logic (public-safe, deterministic):\n      - identity fail   \u2192 DENY\n      - sybil detected  \u2192 DENY\n      - trust < 0.5     \u2192 DENY\n      - trust < 0.7 and reputation not in {gold, platinum} \u2192 WARN\n      - otherwise       \u2192 ALLOW\n    \"\"\"\n    agent_id = validate_agent_id(agent_id)\n    steps: list[TrustGateStep] = []\n    verdict = \"ALLOW\"\n\n    # Step 1: Identity verification\n    try:\n        id_result = client.identity_verify(agent_id)\n        id_raw = id_result.model_dump() if hasattr(id_result, \"model_dump\") else {}\n        decision = id_raw.get(\"decision\", \"allow\")\n        id_passed = decision != \"deny\"\n        steps.append(TrustGateStep(name=\"identity_verify\", passed=id_passed, detail=f\"decision={decision}\", raw=id_raw))\n        if not id_passed:\n            verdict = \"DENY\"\n    except _WORKFLOW_ERRORS:\n        _LOG.warning(\"Identity verification failed for agent_id=%s\", agent_id, exc_info=True)\n        steps.append(TrustGateStep(name=\"identity_verify\", passed=False, detail=\"step_failed\"))\n        verdict = \"DENY\"\n\n    # Step 2: Sybil check\n    try:\n        sybil_result = client.sybil_check(agent_id)\n        sybil_raw = sybil_result.model_dump() if hasattr(sybil_result, \"model_dump\") else {}\n        sybil_risk = sybil_raw.get(\"sybil_risk\", \"low\")\n        sybil_ok = sybil_risk != \"high\"\n        steps.append(TrustGateStep(name=\"sybil_check\", passed=sybil_ok, detail=f\"sybil_risk={sybil_risk}\", raw=sybil_raw))\n        if not sybil_ok:\n            verdict = \"DENY\"\n    except _WORKFLOW_ERRORS:\n        _LOG.warning(\"Sybil check failed for agent_id=%s\", agent_id, exc_info=True)\n        steps.append(TrustGateStep(name=\"sybil_check\", passed=False, detail=\"step_failed\"))\n\n    # Step 3: Trust score\n    trust_score_val: float | None = None\n    try:\n        trust_result = client.trust_score(agent_id)\n        trust_raw = trust_result.model_dump() if hasattr(trust_result, \"model_dump\") else {}\n        trust_score_val = trust_raw.get(\"score\")\n        score_ok = trust_score_val is not None and trust_score_val >= 0.5\n        steps.append(TrustGateStep(\n            name=\"trust_score\", passed=score_ok,\n            detail=f\"score={trust_score_val}, tier={trust_raw.get('tier', 'unknown')}\",\n            raw=trust_raw,\n        ))\n        if trust_score_val is not None and trust_score_val < 0.5:\n            verdict = \"DENY\"\n    except _WORKFLOW_ERRORS:\n        _LOG.warning(\"Trust score check failed for agent_id=%s\", agent_id, exc_info=True)\n        steps.append(TrustGateStep(name=\"trust_score\", passed=False, detail=\"step_failed\"))\n\n    # Step 4: Reputation score\n    reputation_tier: str | None = None\n    try:\n        rep_result = client.reputation_score(agent_id)\n        rep_raw = rep_result.model_dump() if hasattr(rep_result, \"model_dump\") else {}\n        reputation_tier = rep_raw.get(\"tier\")\n        rep_ok = reputation_tier is not None\n        steps.append(TrustGateStep(\n            name=\"reputation_score\", passed=rep_ok,\n            detail=f\"tier={reputation_tier}, fee_multiplier={rep_raw.get('fee_multiplier', 'n/a')}\",\n            raw=rep_raw,\n        ))\n    except _WORKFLOW_ERRORS:\n        _LOG.warning(\"Reputation score check failed for agent_id=%s\", agent_id, exc_info=True)\n        steps.append(TrustGateStep(name=\"reputation_score\", passed=False, detail=\"step_failed\"))\n\n    # Step 5: Gate decision\n    if verdict == \"ALLOW\" and trust_score_val is not None and trust_score_val < 0.7:\n        if reputation_tier not in {\"gold\", \"platinum\"}:\n            verdict = \"WARN\"\n\n    return TrustGateResult(\n        agent_id=agent_id,\n        verdict=verdict,\n        steps=steps,\n        trust_score=trust_score_val,\n        reputation_tier=reputation_tier,\n    )\n",
+  "body_hash": "24305e72023e6707",
+  "body_truncated": false,
+  "callers_of": [
+    "validate_agent_id",
+    "TrustGateResult",
+    "identity_verify",
+    "get",
+    "append",
+    "sybil_check",
+    "trust_score",
+    "reputation_score",
+    "hasattr",
+    "model_dump",
+    "TrustGateStep",
+    "warning"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/workflows.py:70.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "og.source.src.trust_gate",
+  "imports": [
+    "__future__.annotations",
+    "logging",
+    "typing.Any",
+    "httpx",
+    "pydantic.BaseModel",
+    "pydantic.Field",
+    "ass_ade.nexus.client.NexusClient",
+    "ass_ade.nexus.errors.NexusError",
+    "ass_ade.nexus.validation.validate_agent_id",
+    "ass_ade.nexus.validation.validate_prompt"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/workflows.py:70"
+  },
+  "kind": "product_organism",
+  "made_of": [
+    "mo.source.src.identity_verify",
+    "mo.source.src.sybil_check",
+    "mo.source.src.trust_score",
+    "mo.source.src.reputation_score"
+  ],
+  "name": "trust_gate",
+  "product_categories": [
+    "IDT"
+  ],
+  "provides": [
+    "rebuild candidate for trust_gate"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a3_og_features",
+  "version": "0.1.0"
+}

@@ -1,0 +1,50 @@
+{
+  "body": "def scan(\n    path: Path = typer.Argument(Path(\".\"), help=\"Project root to scan.\"),\n    limit: int = typer.Option(50, help=\"Maximum items to list.\"),\n) -> None:\n    \"\"\"List incomplete functions/methods detected under ``path``.\"\"\"\n    items = scan_path(path.resolve())\n    if not items:\n        _console.print(\"[green]no incomplete functions detected[/green]\")\n        return\n    table = Table(title=f\"Incomplete functions under {path}\")\n    table.add_column(\"file\", style=\"cyan\")\n    table.add_column(\"qualname\")\n    table.add_column(\"line\", justify=\"right\")\n    table.add_column(\"reason\", style=\"yellow\")\n    for fn in items[:limit]:\n        table.add_row(str(fn.path), fn.qualname, str(fn.lineno), fn.reason)\n    _console.print(table)\n    _console.print(f\"\\ntotal: {len(items)}\")\n",
+  "body_hash": "b1ffd02f275cb6b4",
+  "body_truncated": false,
+  "callers_of": [
+    "command",
+    "Argument",
+    "Option",
+    "scan_path",
+    "Table",
+    "add_column",
+    "print",
+    "Path",
+    "resolve",
+    "add_row",
+    "str",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/commands/finish.py:19.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.scan",
+  "imports": [
+    "__future__.annotations",
+    "os",
+    "pathlib.Path",
+    "typer",
+    "rich.console.Console",
+    "rich.table.Table",
+    "ass_ade.engine.rebuild.finish.finish_project",
+    "ass_ade.engine.rebuild.finish.scan_path"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/commands/finish.py:19"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "scan",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for scan"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

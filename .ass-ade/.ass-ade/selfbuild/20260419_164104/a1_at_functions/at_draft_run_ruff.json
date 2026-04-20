@@ -1,0 +1,47 @@
+{
+  "body": "def run_ruff(root: Path, fix: bool = False) -> dict[str, Any]:\n    if not shutil.which(\"ruff\"):\n        return {\"linter\": \"ruff\", \"ok\": None, \"error\": \"ruff not found\"}\n\n    cmd = [\n        \"ruff\", \"check\", str(root), \"--output-format\", \"json\",\n        \"--exclude\", \".pytest_tmp\",\n    ]\n    if fix:\n        cmd.append(\"--fix\")\n\n    try:\n        proc = subprocess.run(\n            cmd, capture_output=True, text=True, timeout=60,\n            encoding=\"utf-8\", errors=\"replace\",\n        )\n        # Use stdout only for JSON \u2014 stderr is ruff's error/status channel.\n        raw = proc.stdout or \"\"\n        if not raw.strip():\n            # ruff produced no JSON output; treat as environment error, not a lint failure\n            err = proc.stderr.strip() or \"ruff produced no output\"\n            return {\n                \"linter\": \"ruff\", \"ok\": None, \"error\": err,\n                \"findings\": [], \"error_count\": 0, \"warning_count\": 0,\n            }\n        try:\n            data = json.loads(raw)\n        except json.JSONDecodeError:\n            return {\n                \"linter\": \"ruff\", \"ok\": None, \"raw\": raw, \"error\": \"failed to parse output\",\n                \"findings\": [], \"error_count\": 0, \"warning_count\": 0,\n            }\n\n        findings: list[dict[str, Any]] = []\n        error_count = 0\n        warning_count = 0\n\n        for item in data:\n            code: str = item.get(\"code\") or \"\"\n            location = item.get(\"location\") or {}\n            finding = {\n                \"file\": item.get(\"filename\", \"\"),\n                \"row\": location.get(\"row\", 0),\n                \"col\": location.get(\"column\", 0),\n                \"code\": code,\n                \"message\": item.get(\"message\", \"\"),\n            }\n            findings.append(finding)\n            # E/F codes are errors; W codes are warnings\n            if code.startswith(\"W\"):\n                warning_count += 1\n            else:\n                error_count += 1\n\n        return {\n            \"linter\": \"ruff\",\n            \"ok\": len(findings) == 0,\n            \"error_count\": error_count,\n            \"warning_count\": warning_count,\n            \"findings\": findings,\n            \"raw\": raw,\n        }\n    except subprocess.TimeoutExpired:\n        return {\"linter\": \"ruff\", \"ok\": None, \"error\": \"timed out\"}\n    except Exception as exc:\n        return {\"linter\": \"ruff\", \"ok\": None, \"error\": str(exc)}\n",
+  "body_hash": "87e5fa80754343cf",
+  "body_truncated": false,
+  "callers_of": [
+    "which",
+    "str",
+    "append",
+    "run",
+    "strip",
+    "loads",
+    "startswith",
+    "get",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/local/linter.py:84.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.run_ruff",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "re",
+    "shutil",
+    "subprocess",
+    "pathlib.Path",
+    "typing.Any",
+    "ass_ade.local.repo.DEFAULT_IGNORED_DIRS"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/local/linter.py:84"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "run_ruff",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for run_ruff"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

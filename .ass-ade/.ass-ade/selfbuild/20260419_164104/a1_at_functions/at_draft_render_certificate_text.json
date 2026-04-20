@@ -1,0 +1,39 @@
+{
+  "body": "def render_certificate_text(cert: dict[str, Any]) -> str:\n    digest = cert.get(\"digest\", {})\n    root_digest = digest.get(\"root_digest\", \"\")\n    sig = cert.get(\"signature\")\n    valid = cert.get(\"valid\", False)\n\n    lines = [\n        \"ASS-ADE Codebase Certificate\",\n        \"=\" * 40,\n        f\"Schema:      {cert.get('schema', '')}\",\n        f\"Version:     {cert.get('version', '')}\",\n        f\"Root:        {digest.get('root', '')}\",\n        f\"File count:  {digest.get('file_count', 0)}\",\n        f\"Root digest: {root_digest[:32]}\",\n        f\"Computed at: {digest.get('computed_at', '')}\",\n        f\"Valid:       {valid}\",\n        f\"Signature:   {'present' if sig else 'none'}\",\n    ]\n    return \"\\n\".join(lines)\n",
+  "body_hash": "7a5b779a8f4feac2",
+  "body_truncated": false,
+  "callers_of": [
+    "get",
+    "join"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/local/certifier.py:87.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "at.source.src.render_certificate_text",
+  "imports": [
+    "__future__.annotations",
+    "hashlib",
+    "os",
+    "datetime.datetime",
+    "datetime.timezone",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/local/certifier.py:87"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "render_certificate_text",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for render_certificate_text"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

@@ -1,0 +1,48 @@
+{
+  "body": "class IDE:\n    def __init__(self, config: dict, nexus: Any | None = None):\n        self._config = config\n        self._nexus = nexus\n        self._grid: dict[tuple[int, int], Candidate] = {}\n        self._searches = 0\n\n    def _seed(self) -> list[Candidate]:\n        base = [\n            Candidate(id=\"c0\", features=(0, 0), fitness=0.3, payload={\"kind\": \"baseline\"}),\n            Candidate(id=\"c1\", features=(1, 0), fitness=0.6, payload={\"kind\": \"variant\"}),\n            Candidate(id=\"c2\", features=(1, 1), fitness=0.75, payload={\"kind\": \"variant\"}),\n            Candidate(id=\"c3\", features=(2, 1), fitness=0.82, payload={\"kind\": \"novel\"}),\n        ]\n        for c in base:\n            current = self._grid.get(c.features)\n            if current is None or c.fitness > current.fitness:\n                self._grid[c.features] = c\n        return base\n\n    def evaluate_fitness(self, cand: Candidate) -> float:\n        novelty = 0.1 * (cand.features[0] + cand.features[1])\n        return min(1.0, cand.fitness + novelty)\n\n    def search(self) -> list[Candidate]:\n        self._searches += 1\n        self._seed()\n        return sorted(self._grid.values(), key=lambda c: c.fitness, reverse=True)\n\n    def generate_sip(self, top: list[Candidate]) -> SIP:\n        head = top[:3]\n        summary = \"; \".join(f\"{c.id}@{c.fitness:.2f}\" for c in head)\n        return SIP(top=head, summary=summary)\n\n    def run(self, ctx: dict) -> dict:\n        top = self.search()\n        sip = self.generate_sip(top)\n        return {\n            \"grid_size\": len(self._grid),\n            \"top\": [c.__dict__ for c in sip.top],\n            \"summary\": sip.summary,\n        }\n\n    def report(self) -> dict:\n        return {\"engine\": \"ide\", \"searches\": self._searches, \"grid_size\": len(self._grid)}\n",
+  "body_hash": "2408e6dde6f6e7c5",
+  "body_truncated": false,
+  "callers_of": [
+    "min",
+    "_seed",
+    "sorted",
+    "join",
+    "SIP",
+    "search",
+    "generate_sip",
+    "Candidate",
+    "get",
+    "values",
+    "len"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/ide.py:22.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.ide",
+  "imports": [
+    "__future__.annotations",
+    "dataclasses.dataclass",
+    "dataclasses.field",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/ide.py:22"
+  },
+  "kind": "engine_molecule",
+  "made_of": [
+    "at.source.src.search",
+    "at.source.src.generate_sip"
+  ],
+  "name": "IDE",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for IDE"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

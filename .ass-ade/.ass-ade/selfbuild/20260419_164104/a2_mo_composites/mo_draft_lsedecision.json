@@ -1,0 +1,42 @@
+{
+  "body": "class LSEDecision:\n    model: str\n    tier: str\n    reason: str\n    trs_score: float\n    complexity: str\n    provider: str | None = None  # provider name from catalog (e.g., \"groq\")\n",
+  "body_hash": "756f141e7f4ede97",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/agent/lse.py:61.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "mo.source.src.lsedecision",
+  "imports": [
+    "__future__.annotations",
+    "logging",
+    "dataclasses.dataclass",
+    "typing.Any",
+    "ass_ade.agent.providers.ALL_TIERS",
+    "ass_ade.agent.providers.TIER_ALIASES",
+    "ass_ade.agent.providers.TIER_BALANCED",
+    "ass_ade.agent.providers.TIER_DEEP",
+    "ass_ade.agent.providers.TIER_FAST",
+    "ass_ade.agent.providers.ProviderProfile",
+    "ass_ade.agent.providers.resolve_tier",
+    "ass_ade.agent.providers.select_provider_for_tier",
+    "ass_ade.agent.providers.get_provider"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/agent/lse.py:61"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "LSEDecision",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for LSEDecision"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

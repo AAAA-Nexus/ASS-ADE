@@ -1,0 +1,36 @@
+{
+  "body": "def log_message(self, fmt: str, *args: Any) -> None:  # silence stdlib logging\n    pass\n",
+  "body_hash": "99c252d2bb23ba29",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!ass-ade-rebuild-work/src/ass_ade/mcp/mock_server.py:40.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "sy.source.src.log_message",
+  "imports": [
+    "__future__.annotations",
+    "json",
+    "threading",
+    "http.server.BaseHTTPRequestHandler",
+    "http.server.HTTPServer",
+    "pathlib.Path",
+    "typing.Any"
+  ],
+  "interfaces": {
+    "source": "C:/!ass-ade-rebuild-work/src/ass_ade/mcp/mock_server.py:40"
+  },
+  "kind": "ecosystem_system",
+  "made_of": [],
+  "name": "log_message",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for log_message"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a4_sy_orchestration",
+  "version": "0.1.0"
+}
