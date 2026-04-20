@@ -1,7 +1,7 @@
 {
   "lane": "general",
-  "applied": [],
-  "skipped": [
-    "security in .ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/cli.py"
-  ]
+  "applied": [
+    "missing_tests in src/ass_ade/agent/alphaverus.py"
+  ],
+  "skipped": []
 }
