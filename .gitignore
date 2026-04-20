@@ -1,7 +1,10 @@
-﻿__pycache__/
+__pycache__/
 *.pyc
 *.pyo
 .venv/
 *.egg-info/
 dist/
 build/
+
+# Auto-generated docs output — do not commit over the showcase README.md
+0_README.md
