@@ -43,6 +43,7 @@ ass-ade doctor                                       # environment audit
 ass-ade recon ./my-project                           # understand what's there
 ass-ade rebuild ./my-project --output ./rebuilt      # produce 5-tier output
 ass-ade certify ./rebuilt                            # fingerprint the result
+ass-ade rebuild ./messy-project --output ./fixed --forge  # classify + LLM-fix
 
 # Verify the certificate
 python - <<'EOF'
@@ -205,6 +206,72 @@ ass-ade certify ./myapp                              # fingerprint the result
 
 ---
 
+## Forge Phase — LLM-Powered Code Improvement
+
+After classify & materialize, the optional `--forge` flag activates two components
+that analyze and actually improve the code — not just organize it.
+
+**`EpiphanyEngine`** AST-scans the materialized output and generates a task plan:
+one focused ticket per issue per function/class (missing docstrings, hardcoded
+`debug=True`, missing 404 handling, unresolved `# TODO` comments).
+
+**`ForgeLoop`** executes the plan in parallel — one focused LLM call per task,
+`ast.parse` validation before every write. Tasks on different files run
+concurrently; tasks on the same file serialize to prevent line-number drift.
+Uses your provider chain from `.env`: **Groq → Cerebras → Mistral → OpenRouter → Ollama**.
+
+### Live Demo: 2-file Flask app with real production anti-patterns
+
+```python
+# BEFORE — real production anti-patterns
+def get_product(id):              # no docstring
+    p = Product.query.get(id)     # crashes if product not found
+    return jsonify({"id": p.id})
+
+app.run(debug=True)               # hardcoded
+
+class Product(db.Model):          # no docstring
+    ...
+```
+
+```python
+# AFTER — forge output (all 6 changes verified with ast.parse)
+import os                                        # added
+
+def get_product(id):
+    """Retrieve product details by id.
+
+    Args:
+        id (int): The unique identifier of the product.
+
+    Returns:
+        dict: JSON with id, name, price, and stock.
+    """
+    p = Product.query.get(id)
+    if p is None:                                # 404 handling added
+        return jsonify({"error": "Not found"}), 404
+    return jsonify({"id": p.id, ...})
+
+app.run(debug=os.getenv("FLASK_DEBUG", "0") == "1")  # env-driven
+
+class Product(db.Model):
+    """Represents a product with id, name, price, and stock."""  # added
+    ...
+```
+
+**Result: 6/6 tasks applied across 2 files. Certificate re-issued. All verified.**
+
+```
+[Phase 5]  Materialize: 4 components (2 modules)
+[Phase 5b] Forge     : 6/6 fixes applied (2 files) — model=llama-3.3-70b-versatile
+[Phase 6]  Audit     : 4/4 clean (100.0%), conformant
+[Cert]     SHA-256   : cd17e2d8a84a6755...
+```
+
+See [`docs/FORGE_PHASE.md`](docs/FORGE_PHASE.md) for full architecture and provider configuration.
+
+---
+
 ## Rebuild Pipeline
 
 ```mermaid
@@ -228,7 +295,7 @@ graph LR
 | `doctor` | Environment audit — Python, toolchain, config |
 | `recon [PATH]` | 5-agent parallel recon, no LLM, < 5 s |
 | `eco-scan [PATH]` | Monadic compliance — tier violations, circular deps |
-| `rebuild [PATH] [OUTPUT]` | Rebuild into 5-tier certified output |
+| `rebuild [PATH] [OUTPUT] [--forge]` | Rebuild + optional LLM improvement pass (Epiphany → ForgeLoop) |
 | `rollback` | Restore previous rebuild backup |
 | `enhance [PATH]` | Blueprint-driven enhancement advisor |
 | `docs [PATH]` | Auto-generate full documentation suite |
@@ -426,6 +493,7 @@ Per-tenant on **Pro** and **Enterprise** — your training data stays in your en
 | Capability | ASS-ADE | Cursor | Copilot | Windsurf | Devin | Claude Code |
 |-----------|:-------:|:------:|:-------:|:--------:|:-----:|:-----------:|
 | Blueprint-driven synthesis | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| LLM code improvement (Forge) | ✅ | ❌ | Partial | ❌ | ✅ | ❌ |
 | SHA-256 conformance certificate | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
 | Architecture drift detection | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
 | Per-module semantic versioning | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
@@ -463,6 +531,7 @@ Full details at [atomadic.tech](https://atomadic.tech).
 | Milestone | Status |
 |-----------|--------|
 | Maiden self-rebuild (2,195 components, 100% conformance) | ✅ Done |
+| Forge phase — Epiphany + ForgeLoop LLM code improvement | ✅ Done |
 | MCP server — MCP 2025-11-25 full spec | ✅ Done |
 | A2A agent negotiation protocol | ✅ Done |
 | LoRA flywheel | ✅ Done |
