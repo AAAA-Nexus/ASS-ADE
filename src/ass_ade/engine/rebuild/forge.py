@@ -67,32 +67,37 @@ def _hydrate_env_from_project() -> None:
     _load_env_file(Path.home() / ".ass-ade" / ".env")
 
 
-_PROVIDER_SPECS: list[tuple[str, str, str]] = [
-    ("GROQ_API_KEY",       "https://api.groq.com/openai/v1",         "llama-3.3-70b-versatile"),
-    ("CEREBRAS_API_KEY",   "https://api.cerebras.ai/v1",              "llama3.3-70b"),
-    ("MISTRAL_API_KEY",    "https://api.mistral.ai/v1",               "mistral-large-latest"),
-    ("TOGETHER_API_KEY",   "https://api.together.xyz/v1",             "meta-llama/Llama-3-70b-chat-hf"),
-    ("OPENROUTER_API_KEY", "https://openrouter.ai/api/v1",            "meta-llama/llama-3.3-70b-instruct"),
+# Each spec: (env_key, base_url, model, completions_path)
+# completions_path defaults to "/chat/completions" when omitted.
+_PROVIDER_SPECS: list[tuple[str, str, str, str]] = [
+    # AAAA-Nexus first — our own inference API, no rate limits for internal use
+    ("AAAA_NEXUS_API_KEY",  "https://atomadic.tech",                   "llama-3.1-8b",                    "/v1/inference"),
+    ("GROQ_API_KEY",        "https://api.groq.com/openai/v1",          "llama-3.3-70b-versatile",         "/chat/completions"),
+    ("CEREBRAS_API_KEY",    "https://api.cerebras.ai/v1",              "llama3.3-70b",                    "/chat/completions"),
+    ("MISTRAL_API_KEY",     "https://api.mistral.ai/v1",               "mistral-large-latest",            "/chat/completions"),
+    ("TOGETHER_API_KEY",    "https://api.together.xyz/v1",             "meta-llama/Llama-3-70b-chat-hf",  "/chat/completions"),
+    ("OPENROUTER_API_KEY",  "https://openrouter.ai/api/v1",            "meta-llama/llama-3.3-70b-instruct", "/chat/completions"),
 ]
 
 
-def _build_cloud_provider(env_key: str, base_url: str, model: str) -> Any:
+def _build_cloud_provider(env_key: str, base_url: str, model: str, completions_path: str = "/chat/completions") -> Any:
     from ass_ade.engine.provider import OpenAICompatibleProvider
     return OpenAICompatibleProvider(base_url=base_url, api_key=os.environ[env_key],
-                                    model=model, timeout=60.0)
+                                    model=model, timeout=60.0,
+                                    completions_path=completions_path)
 
 
 def _get_all_providers() -> list[Any]:
     """Return one provider per available API key — used for multi-provider parallel.
 
     Each file group in execute_plan is assigned to a different provider so that
-    e.g. Groq handles app.py while Cerebras handles models.py simultaneously.
+    e.g. AAAA-Nexus handles app.py while Groq handles models.py simultaneously.
     """
     _hydrate_env_from_project()
     providers = []
-    for env_key, base_url, model in _PROVIDER_SPECS:
+    for env_key, base_url, model, completions_path in _PROVIDER_SPECS:
         if os.getenv(env_key):
-            providers.append(_build_cloud_provider(env_key, base_url, model))
+            providers.append(_build_cloud_provider(env_key, base_url, model, completions_path))
             log.debug("Forge pool: added %s", env_key.split("_API_KEY")[0].split("_TOKEN")[0])
     if not providers:
         providers.append(_get_provider())
@@ -102,7 +107,7 @@ def _get_all_providers() -> list[Any]:
 def _get_provider() -> Any:
     """Return a single cached provider — used when only one provider is needed.
 
-    Priority: Groq → Cerebras → Mistral → Together → OpenRouter → Ollama fallback.
+    Priority: AAAA-Nexus → Groq → Cerebras → Mistral → Together → OpenRouter → Ollama fallback.
     """
     global _provider
     if _provider is not None:
@@ -110,9 +115,9 @@ def _get_provider() -> Any:
 
     _hydrate_env_from_project()
 
-    for env_key, base_url, model in _PROVIDER_SPECS:
+    for env_key, base_url, model, completions_path in _PROVIDER_SPECS:
         if os.getenv(env_key):
-            _provider = _build_cloud_provider(env_key, base_url, model)
+            _provider = _build_cloud_provider(env_key, base_url, model, completions_path)
             log.info("Forge provider: %s @ %s", env_key.split("_API_KEY")[0], base_url)
             return _provider
 
@@ -442,12 +447,14 @@ def _call_llm(system: str, user: str, model: str, provider: Any = None) -> str |
         "max_tokens": 2048,
     }
 
+    completions_path = getattr(provider, "_completions_path", "/chat/completions")
     for attempt in range(2):
         try:
-            resp = client.post("/chat/completions", json=body)
+            resp = client.post(completions_path, json=body)
             if resp.status_code == 429:
                 import time
-                wait = float(resp.headers.get("retry-after", "5"))
+                # Cap at 30s — never stall the whole run for a cloud rate-limit window
+                wait = min(float(resp.headers.get("retry-after", "5")), 30.0)
                 log.warning("Rate limited by %s — waiting %.0fs", type(provider).__name__, wait)
                 time.sleep(wait)
                 continue

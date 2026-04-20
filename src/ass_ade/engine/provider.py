@@ -38,6 +38,7 @@ class OpenAICompatibleProvider:
         api_key: str = "",
         model: str = "gpt-4o",
         timeout: float = 120.0,
+        completions_path: str = "/chat/completions",
     ) -> None:
         headers: dict[str, str] = {"Content-Type": "application/json"}
         if api_key:
@@ -48,6 +49,7 @@ class OpenAICompatibleProvider:
             timeout=timeout,
         )
         self._default_model = model
+        self._completions_path = completions_path
 
     def close(self) -> None:
         self._client.close()
@@ -77,7 +79,7 @@ class OpenAICompatibleProvider:
                 for t in request.tools
             ]
 
-        resp = self._client.post("/chat/completions", json=body)
+        resp = self._client.post(self._completions_path, json=body)
         resp.raise_for_status()
         data = resp.json()
 
@@ -127,7 +129,7 @@ class OpenAICompatibleProvider:
             "max_tokens": request.max_tokens,
             "stream": True,
         }
-        with self._client.stream("POST", "/chat/completions", json=body) as resp:
+        with self._client.stream("POST", self._completions_path, json=body) as resp:
             resp.raise_for_status()
             for line in resp.iter_lines():
                 if not line or not line.startswith("data: "):
