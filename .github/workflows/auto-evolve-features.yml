@@ -208,27 +208,28 @@ jobs:
               print('unavailable')
           " 2>&1 || echo "unavailable")
 
-          BODY="## Features Evolution Cycle #${{ env.CYCLE_NUM }} -- $(date -u '+%Y-%m-%d %H:%M UTC')
-
-**Version:** v${{ env.NEW_VERSION }}
-**Lane:** FEATURES -- missing docs, technical debt, new capabilities
-**Personality:** creative/additive -- design-first, top 2 per cycle
-
-## Design goal
-${{ env.DESIGN_GOAL }}
-
-## Feature opportunities
-${SCAN_SUMMARY}
-
-## Before / After
-- Before: ${RECON_BEFORE}
-- After: ${RECON_AFTER}
-
-> Part of the ASS-ADE five-lane evolution system."
-
           gh api repos/AAAA-Nexus/ASS-ADE/pulls \
             -X POST \
             -f title="[FEATURES] evolution: ${{ env.ENHANCEMENT }} (v${{ env.NEW_VERSION }})" \
-            -f body="$BODY" \
+            -f body="$(cat <<PRBODY
+          ## Features Evolution Cycle #${{ env.CYCLE_NUM }} -- $(date -u '+%Y-%m-%d %H:%M UTC')
+
+          **Version:** v${{ env.NEW_VERSION }}
+          **Lane:** FEATURES -- missing docs, technical debt, new capabilities
+          **Personality:** creative/additive -- design-first, top 2 per cycle
+
+          ## Design goal
+          ${{ env.DESIGN_GOAL }}
+
+          ## Feature opportunities
+          ${SCAN_SUMMARY}
+
+          ## Before / After
+          - Before: ${RECON_BEFORE}
+          - After: ${RECON_AFTER}
+
+          > Part of the ASS-ADE five-lane evolution system.
+          PRBODY
+          )" \
             -f head="${{ env.BRANCH }}" \
             -f base="main" || true

@@ -191,24 +191,25 @@ jobs:
               print('unavailable')
           " 2>&1 || echo "unavailable")
 
-          BODY="## Quality Evolution Cycle #${{ env.CYCLE_NUM }} -- $(date -u '+%Y-%m-%d %H:%M UTC')
-
-**Version:** v${{ env.NEW_VERSION }}
-**Lane:** QUALITY -- docstrings, bare_except, type hints, dead code
-**Personality:** thorough/systematic -- top 3 quality fixes per cycle
-
-## Quality findings applied
-${SCAN_SUMMARY}
-
-## Before / After
-- Before: ${RECON_BEFORE}
-- After: ${RECON_AFTER}
-
-> Part of the ASS-ADE five-lane evolution system."
-
           gh api repos/AAAA-Nexus/ASS-ADE/pulls \
             -X POST \
             -f title="[QUALITY] evolution: ${{ env.ENHANCEMENT }} (v${{ env.NEW_VERSION }})" \
-            -f body="$BODY" \
+            -f body="$(cat <<PRBODY
+          ## Quality Evolution Cycle #${{ env.CYCLE_NUM }} -- $(date -u '+%Y-%m-%d %H:%M UTC')
+
+          **Version:** v${{ env.NEW_VERSION }}
+          **Lane:** QUALITY -- docstrings, bare_except, type hints, dead code
+          **Personality:** thorough/systematic -- top 3 quality fixes per cycle
+
+          ## Quality findings applied
+          ${SCAN_SUMMARY}
+
+          ## Before / After
+          - Before: ${RECON_BEFORE}
+          - After: ${RECON_AFTER}
+
+          > Part of the ASS-ADE five-lane evolution system.
+          PRBODY
+          )" \
             -f head="${{ env.BRANCH }}" \
             -f base="main" || true

@@ -169,20 +169,21 @@ jobs:
           except:
               print('scan unavailable')
           " 2>&1 || echo "scan unavailable")
-          BODY="## Security Evolution Cycle #${{ env.CYCLE_NUM }} -- $(date -u '+%Y-%m-%d %H:%M UTC')
-
-**Version:** v${{ env.NEW_VERSION }}
-**Lane:** SECURITY -- bare_except, eval/exec removal, input validation
-**Personality:** conservative/protective -- one verified security fix per cycle
-
-## Security findings applied
-${SCAN_SUMMARY}
-
-> Part of the ASS-ADE five-lane evolution system."
-
           gh api repos/AAAA-Nexus/ASS-ADE/pulls \
             -X POST \
             -f title="[SECURITY] evolution: ${{ env.ENHANCEMENT }} (v${{ env.NEW_VERSION }})" \
-            -f body="$BODY" \
+            -f body="$(cat <<PRBODY
+          ## Security Evolution Cycle #${{ env.CYCLE_NUM }} -- $(date -u '+%Y-%m-%d %H:%M UTC')
+
+          **Version:** v${{ env.NEW_VERSION }}
+          **Lane:** SECURITY -- bare_except, eval/exec removal, input validation
+          **Personality:** conservative/protective -- one verified security fix per cycle
+
+          ## Security findings applied
+          ${SCAN_SUMMARY}
+
+          > Part of the ASS-ADE five-lane evolution system.
+          PRBODY
+          )" \
             -f head="${{ env.BRANCH }}" \
             -f base="main" || true
