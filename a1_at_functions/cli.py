@@ -7002,7 +7002,7 @@ def doStuff(x, y, z):
         data = pickle.loads(x)  # unsafe
         result = eval(y)  # unsafe
         return data, result
-    except:
+    except Exception:
         pass
 
 def another_function_with_too_many_lines():
