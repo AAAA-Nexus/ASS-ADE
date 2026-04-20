@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+*.whl
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# ASS-ADE rebuild outputs (generated, not source)
+/ass-ade-self-rebuild/
+/ASS-CLAW-v2/
+
+# Staging dirs created by rebuild engine
+.ass-ade-*_rebuild_staging/
+*_rebuild_staging/
+
+# Secrets / local config
+.env
+.env.local
+stripe_price_ids.json
+
+# Large generated training data
+training_data/
+
+# Dist packages
+dist/

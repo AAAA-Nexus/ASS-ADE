@@ -1,0 +1,13 @@
+Analyzing C:\!ass-ade-release
+Detected: atomadic_rebuild (py, json, md), 3924 files
+Generating local docs -> C:\!ass-ade-release
+
+  ✓ C:\!ass-ade-release\README.md
+  ✓ C:\!ass-ade-release\ARCHITECTURE.md
+  ✓ C:\!ass-ade-release\FEATURES.md
+  ✓ C:\!ass-ade-release\USER_GUIDE.md
+  ✓ C:\!ass-ade-release\.gitignore
+  ✓ C:\!ass-ade-release\CONTRIBUTING.md
+  ✓ C:\!ass-ade-release\CHANGELOG.md
+
+[OK] 7 docs written to C:\!ass-ade-release

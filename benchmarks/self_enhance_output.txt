@@ -1,0 +1,65 @@
+Scanning C:\!ass-ade for enhancement opportunities…
+Local scan: 298 files, 20 high / 10 medium / 22 low impact findings
+               Enhancement Opportunities (52 total, showing 20)                
+┌──────┬──────────┬──────────┬────────────────────┬─────────────┬─────────────┐
+│ ID   │ Impact   │ Effort   │ Category           │ Title       │ File        │
+├──────┼──────────┼──────────┼────────────────────┼─────────────┼─────────────┤
+│ 1    │ high     │ low      │ security           │ Use of      │ .pytest_tm… │
+│      │          │          │                    │ eval()      │             │
+│ 2    │ high     │ low      │ security           │ Unsafe      │ .pytest_tm… │
+│      │          │          │                    │ deserializ… │             │
+│      │          │          │                    │ via         │             │
+│      │          │          │                    │ pickle.loa… │             │
+│ 3    │ high     │ low      │ security           │ Assertions  │ scripts\bu… │
+│      │          │          │                    │ used for    │             │
+│      │          │          │                    │ control     │             │
+│      │          │          │                    │ flow        │             │
+│ 4    │ high     │ low      │ security           │ Assertions  │ scripts\bu… │
+│      │          │          │                    │ used for    │             │
+│      │          │          │                    │ control     │             │
+│      │          │          │                    │ flow        │             │
+│ 5    │ high     │ low      │ security           │ Assertions  │ src\ass_ad… │
+│      │          │          │                    │ used for    │             │
+│      │          │          │                    │ control     │             │
+│      │          │          │                    │ flow        │             │
+│ 6    │ high     │ low      │ security           │ Use of      │ src\ass_ad… │
+│      │          │          │                    │ eval()      │             │
+│ 7    │ high     │ low      │ security           │ Use of      │ src\ass_ad… │
+│      │          │          │                    │ exec()      │             │
+│ 8    │ high     │ low      │ security           │ Unsafe      │ src\ass_ad… │
+│      │          │          │                    │ deserializ… │             │
+│      │          │          │                    │ via         │             │
+│      │          │          │                    │ pickle.loa… │             │
+│ 9    │ high     │ low      │ security           │ Use of      │ src\ass_ad… │
+│      │          │          │                    │ eval()      │             │
+│ 10   │ high     │ low      │ security           │ Use of      │ src\ass_ad… │
+│      │          │          │                    │ exec()      │             │
+│ 11   │ high     │ medium   │ missing_tests      │ No tests    │ src\ass_ad… │
+│      │          │          │                    │ for         │             │
+│      │          │          │                    │ alphaverus… │             │
+│ 12   │ high     │ medium   │ missing_tests      │ No tests    │ src\ass_ad… │
+│      │          │          │                    │ for         │             │
+│      │          │          │                    │ atlas.py    │             │
+│ 13   │ high     │ medium   │ missing_tests      │ No tests    │ src\ass_ad… │
+│      │          │          │                    │ for         │             │
+│      │          │          │                    │ audit_ques… │             │
+│ 14   │ high     │ medium   │ missing_tests      │ No tests    │ src\ass_ad… │
+│      │          │          │                    │ for bas.py  │             │
+│ 15   │ high     │ medium   │ missing_tests      │ No tests    │ src\ass_ad… │
+│      │          │          │                    │ for cie.py  │             │
+│ 16   │ high     │ medium   │ missing_tests      │ No tests    │ src\ass_ad… │
+│      │          │          │                    │ for         │             │
+│      │          │          │                    │ context.py  │             │
+│ 17   │ high     │ medium   │ missing_tests      │ No tests    │ src\ass_ad… │
+│      │          │          │                    │ for         │             │
+│      │          │          │                    │ conversati… │             │
+│ 18   │ high     │ medium   │ missing_tests      │ No tests    │ src\ass_ad… │
+│      │          │          │                    │ for         │             │
+│      │          │          │                    │ dgm_h.py    │             │
+│ 19   │ high     │ medium   │ missing_tests      │ No tests    │ src\ass_ad… │
+│      │          │          │                    │ for edee.py │             │
+│ 20   │ high     │ medium   │ missing_tests      │ No tests    │ src\ass_ad… │
+│      │          │          │                    │ for exif.py │             │
+└──────┴──────────┴──────────┴────────────────────┴─────────────┴─────────────┘
+
+Apply selected findings with: ass-ade enhance . --apply 1,2,3

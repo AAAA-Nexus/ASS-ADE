@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ass-ade"
+version = "0.1.0"
+description = "Autonomous Sovereign System: Atomadic Development Environment (ASS-ADE)"
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.28,<0.29",
+    "pydantic>=2.11,<3",
+    "python-dotenv>=1.0,<2",
+    "rich>=14,<15",
+    "typer>=0.15,<1",
+    "jsonschema>=4.23,<5",
+]
+
+[project.optional-dependencies]
+dev = [
+    "anyio>=4.0",
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+]
+
+[project.scripts]
+ass-ade = "ass_ade.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]

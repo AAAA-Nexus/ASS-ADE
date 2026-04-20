@@ -1,0 +1,21 @@
+{
+  "schema": "mcp-server-v1",
+  "name": "ass-ade",
+  "version": "1.0.0",
+  "description": "ASS-ADE developer shell -- design, rebuild, docs, lint, certify, enhance",
+  "protocol": "2025-11-25",
+  "transport": "stdio",
+  "command": "python",
+  "args": ["-m", "ass_ade", "mcp", "serve"],
+  "tools": [
+    "map_terrain", "read_file", "write_file", "edit_file", "list_directory",
+    "grep_search", "search_files", "run_command", "safe_execute",
+    "trust_gate", "certify_output", "a2a_validate", "a2a_negotiate",
+    "context_pack", "phase0_recon", "epiphany_breakthrough_cycle", "prompt_hash", "prompt_validate",
+    "prompt_section", "prompt_diff", "prompt_propose",
+    "context_memory_store", "context_memory_query", "ask_agent"
+  ],
+  "categories": ["developer-tools", "code-quality", "documentation", "ai-agents"],
+  "homepage": "https://atomadic.tech",
+  "repository": "https://github.com/atomadictech/ass-ade"
+}

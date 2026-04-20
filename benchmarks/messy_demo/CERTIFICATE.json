@@ -1,0 +1,29 @@
+{
+  "schema": "ASS-ADE-CERT-001",
+  "version": "unknown",
+  "digest": {
+    "root": "C:\\!ass-ade\\benchmarks\\messy_demo",
+    "file_count": 12,
+    "root_digest": "8f6ad62cb7fb92813630ee9e1620324579c1fa9773790d1d28112c1aa72f55f5",
+    "files": {
+      ".gitignore": "66820b4550db834c493a61752535456e9ec221bc9f7b59790530b9995f4852fb",
+      "ARCHITECTURE.md": "a0cd5683914293f42257200226b055cd8944da0916d35de11ac04290e4d96083",
+      "CERTIFICATE.json": "7aced8f8912eac5675bfe526214e49629ddca0bd9f1cc60ef8ad08c63300959c",
+      "CHANGELOG.md": "25ac3aa3b829740c652b97268df83725e95904b7142eef7ac73ee55ebfb551d0",
+      "CONTRIBUTING.md": "e7c987d105880a433a601a0592c5b081f4441dc3a01d4a8c40e62bc90c5ef5ec",
+      "FEATURES.md": "a581e3253749befee753b82e05c403ce3254206f1e8d9273916d032a2017116f",
+      "README.md": "7e637dd140e756efd8ea1f63857ab930ead883b017b19ca52fe713e4ea2ca0b2",
+      "USER_GUIDE.md": "eba2800b6e0651cec85d1c3001500cb083899ca1ce5b80336b8d10fe13ac90ff",
+      "config.py": "69377307e391d20ce09306cd119e30cd15bea0ef93a1366f120a7716efe5a90e",
+      "helpers.py": "f66ece9eae755a8cf7b8206c1f5340c9096028019367a5d4adf6e3ab710cc0f7",
+      "main.py": "a1f85cf649d67c5fbb5701f151ff8b0d535ef189f8ba3e133476c2794f689aca",
+      "utils.py": "169926a78e562dcf6833a939bde7079b96a6f1dad0fbbcc55be264a9ddce60cb"
+    },
+    "computed_at": "2026-04-18T19:44:17.311476+00:00",
+    "algorithm": "sha256"
+  },
+  "signed_by": null,
+  "signature": null,
+  "valid": false,
+  "issuer": "atomadic.tech"
+}
