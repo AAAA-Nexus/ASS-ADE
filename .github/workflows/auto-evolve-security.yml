@@ -83,7 +83,7 @@ jobs:
 
       - name: Create evolution branch
         run: |
-          BRANCH="auto-evolve/security-$(date +%Y%m%d-%H%M)"
+          BRANCH="auto-evolve/security-$(date +%Y%m%d-%H%M%S)"
           git checkout -b $BRANCH
           echo "BRANCH=$BRANCH" >> $GITHUB_ENV
 
