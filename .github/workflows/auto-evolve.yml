@@ -69,7 +69,7 @@ jobs:
 
       - name: Configure git credentials
         env:
-          PAT: ${{ secrets.AAAA_NEXUS_OWNER_TOKEN }}
+          PAT: ${{ secrets.GH_PAT }}
         run: |
           git config user.name "ASS-ADE Auto-Evolve"
           git config user.email "evolve@atomadic.tech"
@@ -178,7 +178,7 @@ jobs:
       - name: Commit and push branch
         continue-on-error: true
         env:
-          GH_TOKEN: ${{ secrets.AAAA_NEXUS_OWNER_TOKEN || secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
         run: |
           git add -A
           # Always commit EVOLUTION_LOG.md + pyproject.toml even without py changes
@@ -196,7 +196,7 @@ jobs:
 
       - name: Create PR
         env:
-          GH_TOKEN: ${{ secrets.AAAA_NEXUS_OWNER_TOKEN || secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
           CYCLE_NUM: ${{ env.CYCLE_NUM }}
           EVOLUTION_LEVEL: ${{ env.EVOLUTION_LEVEL }}
           ENHANCEMENT: ${{ env.ENHANCEMENT }}
