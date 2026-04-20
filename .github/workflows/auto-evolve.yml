@@ -176,6 +176,7 @@ jobs:
           EOF
 
       - name: Commit and push branch
+        continue-on-error: true
         env:
           GH_TOKEN: ${{ secrets.AAAA_NEXUS_OWNER_TOKEN || secrets.GITHUB_TOKEN }}
         run: |
@@ -187,7 +188,11 @@ jobs:
             exit 0
           fi
           git commit -m "evolution(L${{ env.EVOLUTION_LEVEL }}): ${{ env.ENHANCEMENT }} (v${{ env.NEW_VERSION }})"
-          git push origin ${{ env.BRANCH }}
+          git push origin ${{ env.BRANCH }} || {
+            echo "::warning::Push failed (org write policy). Evolution log generated but not pushed."
+            echo "PUSH_FAILED=true" >> $GITHUB_ENV
+            exit 0
+          }
 
       - name: Create PR
         env:
