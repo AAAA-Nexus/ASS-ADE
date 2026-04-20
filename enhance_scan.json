@@ -1,6 +1,6 @@
 {
   "root": "/home/runner/work/ASS-ADE/ASS-ADE",
-  "total_findings": 12,
+  "total_findings": 52,
   "by_impact": {
     "high": 20,
     "medium": 10,
@@ -20,9 +20,9 @@
       "id": 1,
       "category": "security",
       "title": "Unsafe deserialization via pickle.loads",
-      "description": "Unsafe deserialization via pickle.loads at a1_at_functions/cli.py:7002.",
-      "file": "a1_at_functions/cli.py",
-      "line": 7002,
+      "description": "Unsafe deserialization via pickle.loads at .ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/cli.py:7025.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/cli.py",
+      "line": 7025,
       "impact": "high",
       "effort": "low"
     },
@@ -30,9 +30,9 @@
       "id": 2,
       "category": "security",
       "title": "Use of eval()",
-      "description": "Use of eval() at a1_at_functions/cli.py:7003.",
-      "file": "a1_at_functions/cli.py",
-      "line": 7003,
+      "description": "Use of eval() at .ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/cli.py:7026.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/cli.py",
+      "line": 7026,
       "impact": "high",
       "effort": "low"
     },
@@ -40,8 +40,8 @@
       "id": 3,
       "category": "security",
       "title": "Use of eval()",
-      "description": "Use of eval() at a1_at_functions/dgm_h.py:158.",
-      "file": "a1_at_functions/dgm_h.py",
+      "description": "Use of eval() at .ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/dgm_h.py:158.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/dgm_h.py",
       "line": 158,
       "impact": "high",
       "effort": "low"
@@ -50,8 +50,8 @@
       "id": 4,
       "category": "security",
       "title": "Use of exec()",
-      "description": "Use of exec() at a1_at_functions/dgm_h.py:158.",
-      "file": "a1_at_functions/dgm_h.py",
+      "description": "Use of exec() at .ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/dgm_h.py:158.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/dgm_h.py",
       "line": 158,
       "impact": "high",
       "effort": "low"
@@ -60,8 +60,8 @@
       "id": 5,
       "category": "security",
       "title": "Unsafe deserialization via pickle.loads",
-      "description": "Unsafe deserialization via pickle.loads at a1_at_functions/enhancer.py:173.",
-      "file": "a1_at_functions/enhancer.py",
+      "description": "Unsafe deserialization via pickle.loads at .ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/enhancer.py:173.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/enhancer.py",
       "line": 173,
       "impact": "high",
       "effort": "low"
@@ -70,8 +70,8 @@
       "id": 6,
       "category": "security",
       "title": "Use of eval()",
-      "description": "Use of eval() at a1_at_functions/enhancer.py:174.",
-      "file": "a1_at_functions/enhancer.py",
+      "description": "Use of eval() at .ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/enhancer.py:174.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/enhancer.py",
       "line": 174,
       "impact": "high",
       "effort": "low"
@@ -80,8 +80,8 @@
       "id": 7,
       "category": "security",
       "title": "Use of exec()",
-      "description": "Use of exec() at a1_at_functions/enhancer.py:175.",
-      "file": "a1_at_functions/enhancer.py",
+      "description": "Use of exec() at .ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/enhancer.py:175.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/enhancer.py",
       "line": 175,
       "impact": "high",
       "effort": "low"
@@ -90,8 +90,8 @@
       "id": 8,
       "category": "security",
       "title": "Use of eval()",
-      "description": "Use of eval() at a1_at_functions/interpreter.py:1741.",
-      "file": "a1_at_functions/interpreter.py",
+      "description": "Use of eval() at .ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/interpreter.py:1741.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/interpreter.py",
       "line": 1741,
       "impact": "high",
       "effort": "low"
@@ -100,8 +100,8 @@
       "id": 9,
       "category": "security",
       "title": "Use of exec()",
-      "description": "Use of exec() at a1_at_functions/interpreter.py:1741.",
-      "file": "a1_at_functions/interpreter.py",
+      "description": "Use of exec() at .ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/interpreter.py:1741.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/interpreter.py",
       "line": 1741,
       "impact": "high",
       "effort": "low"
@@ -109,20 +109,120 @@
     {
       "id": 10,
       "category": "security",
-      "title": "Assertions used for control flow",
-      "description": "assert used for control flow at src/ass_ade/agent/audit_questions.py:63.",
-      "file": "src/ass_ade/agent/audit_questions.py",
-      "line": 63,
+      "title": "Unsafe deserialization via pickle.loads",
+      "description": "Unsafe deserialization via pickle.loads at a1_at_functions/cli.py:7002.",
+      "file": "a1_at_functions/cli.py",
+      "line": 7002,
       "impact": "high",
       "effort": "low"
+    },
+    {
+      "id": 11,
+      "category": "missing_tests",
+      "title": "No tests for alphaverus.py",
+      "description": "src/ass_ade/agent/alphaverus.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/agent/alphaverus.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 12,
+      "category": "missing_tests",
+      "title": "No tests for atlas.py",
+      "description": "src/ass_ade/agent/atlas.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/agent/atlas.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 13,
+      "category": "missing_tests",
+      "title": "No tests for audit_questions.py",
+      "description": "src/ass_ade/agent/audit_questions.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/agent/audit_questions.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 14,
+      "category": "missing_tests",
+      "title": "No tests for bas.py",
+      "description": "src/ass_ade/agent/bas.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/agent/bas.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 15,
+      "category": "missing_tests",
+      "title": "No tests for cie.py",
+      "description": "src/ass_ade/agent/cie.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/agent/cie.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 16,
+      "category": "missing_tests",
+      "title": "No tests for context.py",
+      "description": "src/ass_ade/agent/context.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/agent/context.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 17,
+      "category": "missing_tests",
+      "title": "No tests for conversation.py",
+      "description": "src/ass_ade/agent/conversation.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/agent/conversation.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 18,
+      "category": "missing_tests",
+      "title": "No tests for dgm_h.py",
+      "description": "src/ass_ade/agent/dgm_h.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/agent/dgm_h.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 19,
+      "category": "missing_tests",
+      "title": "No tests for edee.py",
+      "description": "src/ass_ade/agent/edee.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/agent/edee.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 20,
+      "category": "missing_tests",
+      "title": "No tests for exif.py",
+      "description": "src/ass_ade/agent/exif.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/agent/exif.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
     },
     {
       "id": 21,
       "category": "bare_except",
       "title": "Bare except clause",
-      "description": "Bare except: in a1_at_functions/cli.py:7005 catches all exceptions including SystemExit.",
-      "file": "a1_at_functions/cli.py",
-      "line": 7005,
+      "description": "Bare except: in .ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/cli.py:7028 catches all exceptions including SystemExit.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/cli.py",
+      "line": 7028,
       "impact": "medium",
       "effort": "low"
     },
@@ -130,12 +230,312 @@
       "id": 22,
       "category": "bare_except",
       "title": "Bare except clause",
-      "description": "Bare except: in src/ass_ade/cli.py:7005 catches all exceptions including SystemExit.",
+      "description": "Bare except: in src/ass_ade/cli.py:7043 catches all exceptions including SystemExit.",
       "file": "src/ass_ade/cli.py",
-      "line": 7005,
+      "line": 7043,
       "impact": "medium",
       "effort": "low"
+    },
+    {
+      "id": 23,
+      "category": "long_function",
+      "title": "Long function: materialize_plan",
+      "description": "materialize_plan spans ~190 lines in .ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/schema_materializer.py.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/schema_materializer.py",
+      "line": 105,
+      "impact": "medium",
+      "effort": "medium"
+    },
+    {
+      "id": 24,
+      "category": "long_function",
+      "title": "Long function: validate_rebuild",
+      "description": "validate_rebuild spans ~83 lines in .ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/schema_materializer.py.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/schema_materializer.py",
+      "line": 340,
+      "impact": "medium",
+      "effort": "medium"
+    },
+    {
+      "id": 25,
+      "category": "long_function",
+      "title": "Long function: _audit_structure",
+      "description": "_audit_structure spans ~73 lines in .ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/schema_materializer.py.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/schema_materializer.py",
+      "line": 449,
+      "impact": "medium",
+      "effort": "medium"
+    },
+    {
+      "id": 26,
+      "category": "long_function",
+      "title": "Long function: materialize_plan",
+      "description": "materialize_plan spans ~140 lines in .ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/schema_materializer_1.py.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/schema_materializer_1.py",
+      "line": 105,
+      "impact": "medium",
+      "effort": "medium"
+    },
+    {
+      "id": 27,
+      "category": "long_function",
+      "title": "Long function: validate_rebuild",
+      "description": "validate_rebuild spans ~83 lines in .ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/schema_materializer_1.py.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/schema_materializer_1.py",
+      "line": 282,
+      "impact": "medium",
+      "effort": "medium"
+    },
+    {
+      "id": 28,
+      "category": "long_function",
+      "title": "Long function: _audit_structure",
+      "description": "_audit_structure spans ~73 lines in .ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/schema_materializer_1.py.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/schema_materializer_1.py",
+      "line": 391,
+      "impact": "medium",
+      "effort": "medium"
+    },
+    {
+      "id": 29,
+      "category": "long_function",
+      "title": "Long function: agent_chat",
+      "description": "agent_chat spans ~64 lines in .ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/agent.py.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/agent.py",
+      "line": 41,
+      "impact": "medium",
+      "effort": "medium"
+    },
+    {
+      "id": 30,
+      "category": "long_function",
+      "title": "Long function: build_blueprint",
+      "description": "build_blueprint spans ~67 lines in .ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/blueprint.py.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/blueprint.py",
+      "line": 119,
+      "impact": "medium",
+      "effort": "medium"
+    },
+    {
+      "id": 31,
+      "category": "missing_docs",
+      "title": "Missing docstring: Lean4Spec",
+      "description": "Lean4Spec in .ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/proofbridge.py has no docstring.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/proofbridge.py",
+      "line": 11,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 32,
+      "category": "missing_docs",
+      "title": "Missing docstring: ProofBridge",
+      "description": "ProofBridge in .ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/proofbridge.py has no docstring.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/proofbridge.py",
+      "line": 20,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 33,
+      "category": "missing_docs",
+      "title": "Missing docstring: translate",
+      "description": "translate in .ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/proofbridge.py has no docstring.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/proofbridge.py",
+      "line": 32,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 34,
+      "category": "missing_docs",
+      "title": "Missing docstring: run",
+      "description": "run in .ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/proofbridge.py has no docstring.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/proofbridge.py",
+      "line": 56,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 35,
+      "category": "missing_docs",
+      "title": "Missing docstring: report",
+      "description": "report in .ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/proofbridge.py has no docstring.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/proofbridge.py",
+      "line": 60,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 36,
+      "category": "missing_docs",
+      "title": "Missing docstring: materialize_plan",
+      "description": "materialize_plan in .ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/schema_materializer.py has no docstring.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/schema_materializer.py",
+      "line": 105,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 37,
+      "category": "missing_docs",
+      "title": "Missing docstring: emit_certificate",
+      "description": "emit_certificate in .ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/schema_materializer.py has no docstring.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/schema_materializer.py",
+      "line": 531,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 38,
+      "category": "missing_docs",
+      "title": "Missing docstring: materialize_plan",
+      "description": "materialize_plan in .ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/schema_materializer_1.py has no docstring.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/schema_materializer_1.py",
+      "line": 105,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 39,
+      "category": "missing_types",
+      "title": "Missing return type hint: materialize_plan",
+      "description": "materialize_plan in .ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/schema_materializer.py has no return type annotation.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/schema_materializer.py",
+      "line": 105,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 40,
+      "category": "missing_types",
+      "title": "Missing return type hint: emit_certificate",
+      "description": "emit_certificate in .ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/schema_materializer.py has no return type annotation.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/schema_materializer.py",
+      "line": 531,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 41,
+      "category": "missing_types",
+      "title": "Missing return type hint: materialize_plan",
+      "description": "materialize_plan in .ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/schema_materializer_1.py has no return type annotation.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/schema_materializer_1.py",
+      "line": 105,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 42,
+      "category": "missing_types",
+      "title": "Missing return type hint: emit_certificate",
+      "description": "emit_certificate in .ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/schema_materializer_1.py has no return type annotation.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/schema_materializer_1.py",
+      "line": 473,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 43,
+      "category": "missing_types",
+      "title": "Missing return type hint: messages_to_evict",
+      "description": "messages_to_evict in .ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/tokens.py has no return type annotation.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/tokens.py",
+      "line": 208,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 44,
+      "category": "missing_types",
+      "title": "Missing return type hint: estimate_conversation",
+      "description": "estimate_conversation in .ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/tokens.py has no return type annotation.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a0_qk_constants/tokens.py",
+      "line": 241,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 45,
+      "category": "missing_types",
+      "title": "Missing return type hint: a2a_validate",
+      "description": "a2a_validate in .ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/a2a.py has no return type annotation.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/a2a.py",
+      "line": 51,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 46,
+      "category": "missing_types",
+      "title": "Missing return type hint: a2a_negotiate",
+      "description": "a2a_negotiate in .ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/a2a.py has no return type annotation.",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/a2a.py",
+      "line": 98,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 47,
+      "category": "technical_debt",
+      "title": "Technical debt marker: # TODO",
+      "description": "# TODO: add error handling",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/cli.py",
+      "line": 7048,
+      "impact": "low",
+      "effort": "medium"
+    },
+    {
+      "id": 48,
+      "category": "technical_debt",
+      "title": "Technical debt marker: # FIXME",
+      "description": "# FIXME: this is slow",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/cli.py",
+      "line": 7057,
+      "impact": "low",
+      "effort": "medium"
+    },
+    {
+      "id": 49,
+      "category": "technical_debt",
+      "title": "Technical debt marker: # TODO",
+      "description": "markers = (\"# TODO\", \"# FIXME\", \"# HACK\", \"# XXX\")",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/enhancer.py",
+      "line": 297,
+      "impact": "low",
+      "effort": "medium"
+    },
+    {
+      "id": 50,
+      "category": "technical_debt",
+      "title": "Technical debt marker: # TODO",
+      "description": "can_stream = isinstance(self._provider, OpenAICompatibleProvider)  # TODO: implement real streaming",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/loop.py",
+      "line": 408,
+      "impact": "low",
+      "effort": "medium"
+    },
+    {
+      "id": 51,
+      "category": "technical_debt",
+      "title": "Technical debt marker: # TODO",
+      "description": "pass  # TODO: implement real streaming \u2014 currently emits single 'done' event",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a1_at_functions/loop.py",
+      "line": 460,
+      "impact": "low",
+      "effort": "medium"
+    },
+    {
+      "id": 52,
+      "category": "technical_debt",
+      "title": "Technical debt marker: # TODO",
+      "description": "\"code\": f\"# TODO unverified synthesis for: {spec[:120]}\\npass\\n\",",
+      "file": ".ass-ade/.ass-ade/selfbuild/20260419_164104/a2_mo_composites/client.py",
+      "line": 969,
+      "impact": "low",
+      "effort": "medium"
     }
   ],
-  "scanned_files": 191
+  "scanned_files": 405
 }
