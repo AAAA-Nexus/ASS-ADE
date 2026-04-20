@@ -7,12 +7,22 @@ name = "ass-ade"
 version = "0.2.0"
 description = "ASS-ADE v0.2.0 — functional rebuild, product works out of the box"
 requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.27.0",
+    "typer>=0.12.0",
+    "pydantic>=2.0.0",
+    "rich>=13.0.0",
+    "anyio>=4.0.0",
+]
 
 [project.scripts]
 ass-ade = "ass_ade.cli:app"
 
 [project.optional-dependencies]
-dev = []
+dev = [
+    "pytest>=8.0.0",
+    "pytest-anyio>=0.0.0",
+]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/ass_ade"]

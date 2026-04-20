@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.AAAA_NEXUS_OWNER_TOKEN }}
 
       - uses: actions/setup-python@v5
         with:
@@ -25,10 +25,10 @@ jobs:
         run: pip install -e ".[dev]"
 
       - name: Phase 0 - Bootstrap recon
-        run: ass-ade recon . --json > recon_before.json 2>&1 || true
+        run: ass-ade recon . --json > recon_before.json 2>/dev/null || true
 
       - name: Phase 1 - Assessment scan
-        run: ass-ade enhance . --json > enhance_scan_raw.json 2>&1 || true
+        run: ass-ade enhance . --local-only --json > enhance_scan_raw.json 2>/dev/null || true
 
       - name: Phase 2 - Context filter (quality track)
         run: |
@@ -37,21 +37,22 @@ jobs:
           try:
               d = json.load(open('enhance_scan_raw.json'))
               quality_types = {
-                  'missing_module_docstring', 'missing_function_docstring',
+                  'missing_docs', 'missing_function_docstring', 'missing_module_docstring',
                   'missing_tests', 'bare_except', 'long_function',
                   'unused_import', 'dead_code', 'quality', 'docstring',
-                  'missing_type_hint', 'complex_function', 'nested_function',
+                  'missing_types', 'missing_type_hint', 'complex_function',
               }
-              opps = d.get('opportunities', [])
-              qual_opps = [o for o in opps if any(t in o.get('type','').lower() for t in quality_types)]
-              if not qual_opps:
-                  qual_opps = opps[:3]
-              d['opportunities'] = qual_opps
-              d['total_found'] = len(qual_opps)
+              findings = d.get('findings', [])
+              qual_findings = [o for o in findings if any(t in o.get('category','').lower() for t in quality_types)]
+              if not qual_findings:
+                  qual_findings = findings[:3]
+              d['findings'] = qual_findings
+              d['total_findings'] = len(qual_findings)
               json.dump(d, open('enhance_scan.json','w'), indent=2)
-              print(f'Quality findings: {len(qual_opps)} of {len(opps)} total')
+              print(f'Quality findings: {len(qual_findings)} of {len(findings)} total')
           except Exception as e:
-              json.dump({'opportunities':[], 'total_found':0, 'error':str(e)}, open('enhance_scan.json','w'))
+              json.dump({'findings':[], 'total_findings':0, 'error':str(e)}, open('enhance_scan.json','w'))
+              print(f'Scan parse error: {e}')
           " 2>&1 || true
 
           CYCLE_NUM=$(python3 -c "
@@ -69,7 +70,7 @@ jobs:
           import json
           try:
               d = json.load(open('enhance_scan.json'))
-              print(d.get('total_found', 0))
+              print(d.get('total_findings', 0))
           except:
               print(0)
           " 2>&1 || echo "0")
@@ -81,23 +82,13 @@ jobs:
           git checkout -b $BRANCH
           echo "BRANCH=$BRANCH" >> $GITHUB_ENV
 
-      - name: Phase 3 - Synthesis (thorough quality apply)
+      - name: Phase 3 - Apply quality fixes
         run: |
-          COUNT=$(python3 -c "
-          import json
-          d = json.load(open('enhance_scan.json'))
-          print(d.get('total_found', 0))
-          " 2>&1 || echo "0")
-          if [ "$COUNT" -gt 0 ]; then
-            echo "Applying top 3 quality fixes (thorough/systematic mode)"
-            ass-ade enhance . --apply 1,2,3 2>&1 || true
-          else
-            echo "No quality opportunities -- skipping"
-            exit 0
-          fi
+          echo "Quality findings: ${{ env.TOTAL_FOUND }}"
+          python3 scripts/apply_fixes.py 3 --lane quality 2>&1 || true
 
       - name: Phase 4 - Audit recon
-        run: ass-ade recon . --json > recon_after.json 2>&1 || true
+        run: ass-ade recon . --json > recon_after.json 2>/dev/null || true
 
       - name: Phase 5 - Autopoiesis validate
         run: |
@@ -105,10 +96,10 @@ jobs:
           import json
           try:
               d = json.load(open('enhance_scan.json'))
-              opps = d.get('opportunities', [])
-              if opps:
-                  o = opps[0]
-                  print(f\"{o.get('type','unknown')} in {o.get('file','?')}\")
+              findings = d.get('findings', [])
+              if findings:
+                  o = findings[0]
+                  print(f\"{o.get('category','unknown')} in {o.get('file','?')}\")
               else:
                   print('no quality opportunities found')
           except Exception as e:
@@ -135,16 +126,14 @@ jobs:
 
       - name: Append to EVOLUTION_LOG.md
         run: |
-          FILES_CHANGED=$(git diff --name-only \
-            | grep -vE '^(enhance_scan.*\.json|EVOLUTION_LOG\.md|pyproject\.toml|__init__\.py)$' \
-            | wc -l | tr -d ' ')
+          FILES_CHANGED=$(git diff --name-only | grep '\.py$' | wc -l | tr -d ' ')
           cat >> EVOLUTION_LOG.md << EOF
 
           ## Evolution #${{ env.CYCLE_NUM }} [QUALITY] -- $(date -u '+%Y-%m-%d %H:%M UTC')
           **Enhancement:** ${{ env.ENHANCEMENT }}
-          **Lane:** quality -- docstrings, bare-except, long functions, dead code, unused imports
+          **Lane:** quality -- docstrings, bare_except, type hints, dead code
           **Personality:** thorough/systematic (top 3 per cycle)
-          **Files changed:** ${FILES_CHANGED}
+          **Python files changed:** ${FILES_CHANGED}
           **Version:** ${{ env.NEW_VERSION }}
           EOF
 
@@ -153,11 +142,9 @@ jobs:
           git config user.name "ASS-ADE Auto-Evolve"
           git config user.email "evolve@atomadic.tech"
           git add -A
-          PY_CHANGES=$(git diff --cached --name-only \
-            | grep -vE '^(enhance_scan.*\.json)$' \
-            | wc -l | tr -d ' ')
+          PY_CHANGES=$(git diff --cached --name-only | grep '\.py$' | wc -l | tr -d ' ')
           if [ "$PY_CHANGES" -eq 0 ]; then
-            echo "No quality changes -- skipping"
+            echo "No Python source changes -- skipping commit and PR"
             exit 0
           fi
           git commit -m "evolution/quality: ${{ env.ENHANCEMENT }} (v${{ env.NEW_VERSION }})"
@@ -165,14 +152,14 @@ jobs:
 
       - name: Create PR
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.AAAA_NEXUS_OWNER_TOKEN }}
         run: |
           SCAN_SUMMARY=$(cat enhance_scan.json 2>/dev/null | python3 -c "
           import json, sys
           try:
               d = json.load(sys.stdin)
-              opps = d.get('opportunities', [])
-              lines = [f'- \`{o[\"type\"]}\` in \`{o[\"file\"]}\`' for o in opps[:10]]
+              findings = d.get('findings', [])
+              lines = [f'- \`{o[\"category\"]}\` in \`{o[\"file\"]}\`' for o in findings[:10]]
               print('\n'.join(lines))
           except:
               print('scan unavailable')
@@ -202,7 +189,7 @@ jobs:
           ## Quality Evolution Cycle #${{ env.CYCLE_NUM }} -- $(date -u '+%Y-%m-%d %H:%M UTC')
 
           **Version:** v${{ env.NEW_VERSION }}
-          **Lane:** QUALITY -- docstrings, bare-except, long functions, dead code, unused imports
+          **Lane:** QUALITY -- docstrings, bare_except, type hints, dead code
           **Personality:** thorough/systematic -- top 3 quality fixes per cycle
 
           ## Quality findings applied

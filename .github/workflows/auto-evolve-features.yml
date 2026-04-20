@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.AAAA_NEXUS_OWNER_TOKEN }}
 
       - uses: actions/setup-python@v5
         with:
@@ -25,10 +25,10 @@ jobs:
         run: pip install -e ".[dev]"
 
       - name: Phase 0 - Bootstrap recon
-        run: ass-ade recon . --json > recon_before.json 2>&1 || true
+        run: ass-ade recon . --json > recon_before.json 2>/dev/null || true
 
       - name: Phase 1 - Assessment scan
-        run: ass-ade enhance . --json > enhance_scan_raw.json 2>&1 || true
+        run: ass-ade enhance . --local-only --json > enhance_scan_raw.json 2>/dev/null || true
 
       - name: Phase 2 - Context (features track)
         run: |
@@ -37,19 +37,21 @@ jobs:
           try:
               d = json.load(open('enhance_scan_raw.json'))
               feature_types = {
-                  'missing_feature', 'incomplete_implementation', 'enhancement_opportunity',
-                  'missing_method', 'stub_implementation', 'todo', 'fixme',
+                  'missing_tests', 'technical_debt', 'todo', 'fixme',
+                  'missing_feature', 'incomplete_implementation', 'stub_implementation',
+                  'bare_except', 'missing_docs', 'missing_function_docstring',
               }
-              opps = d.get('opportunities', [])
-              feat_opps = [o for o in opps if any(t in o.get('type','').lower() for t in feature_types)]
-              if not feat_opps:
-                  feat_opps = opps
-              d['opportunities'] = feat_opps
-              d['total_found'] = len(feat_opps)
+              findings = d.get('findings', [])
+              feat_findings = [o for o in findings if any(t in o.get('category','').lower() for t in feature_types)]
+              if not feat_findings:
+                  feat_findings = findings
+              d['findings'] = feat_findings
+              d['total_findings'] = len(feat_findings)
               json.dump(d, open('enhance_scan.json','w'), indent=2)
-              print(f'Feature opportunities: {len(feat_opps)} of {len(opps)} total')
+              print(f'Feature opportunities: {len(feat_findings)} of {len(findings)} total')
           except Exception as e:
-              json.dump({'opportunities':[], 'total_found':0, 'error':str(e)}, open('enhance_scan.json','w'))
+              json.dump({'findings':[], 'total_findings':0, 'error':str(e)}, open('enhance_scan.json','w'))
+              print(f'Scan parse error: {e}')
           " 2>&1 || true
 
           CYCLE_NUM=$(python3 -c "
@@ -67,7 +69,7 @@ jobs:
           import json
           try:
               d = json.load(open('enhance_scan.json'))
-              print(d.get('total_found', 0))
+              print(d.get('total_findings', 0))
           except:
               print(0)
           " 2>&1 || echo "0")
@@ -77,16 +79,16 @@ jobs:
           import json
           try:
               d = json.load(open('enhance_scan.json'))
-              opps = d.get('opportunities', [])
-              types = list(dict.fromkeys(o.get('type','') for o in opps[:5]))
-              files = list(dict.fromkeys(o.get('file','') for o in opps[:3]))
-              goal = 'add capability: ' + ', '.join(types[:3])
+              findings = d.get('findings', [])
+              categories = list(dict.fromkeys(o.get('category','') for o in findings[:5]))
+              files = list(dict.fromkeys(o.get('file','') for o in findings[:3]))
+              goal = 'improve: ' + ', '.join(categories[:3])
               if files:
                   goal += ' in ' + ', '.join(files[:2])
               print(goal)
           except:
-              print('add capability and improve extensibility')
-          " 2>&1 || echo "add capability and improve extensibility")
+              print('improve code quality and extensibility')
+          " 2>&1 || echo "improve code quality and extensibility")
           echo "DESIGN_GOAL=$DESIGN_GOAL" >> $GITHUB_ENV
 
       - name: Create evolution branch
@@ -95,15 +97,14 @@ jobs:
           git checkout -b $BRANCH
           echo "BRANCH=$BRANCH" >> $GITHUB_ENV
 
-      - name: Phase 3 - Synthesis (creative design + apply)
+      - name: Phase 3 - Apply feature improvements
         run: |
-          echo "Blueprint design goal: ${{ env.DESIGN_GOAL }}"
-          ass-ade design "${{ env.DESIGN_GOAL }}" 2>&1 || true
-          echo "Applying top 2 enhancements"
-          ass-ade enhance . --apply 1,2 2>&1 || true
+          echo "Feature opportunities: ${{ env.TOTAL_FOUND }}"
+          echo "Design goal: ${{ env.DESIGN_GOAL }}"
+          python3 scripts/apply_fixes.py 2 --lane features 2>&1 || true
 
       - name: Phase 4 - Audit recon
-        run: ass-ade recon . --json > recon_after.json 2>&1 || true
+        run: ass-ade recon . --json > recon_after.json 2>/dev/null || true
 
       - name: Phase 5 - Autopoiesis validate
         run: |
@@ -111,15 +112,15 @@ jobs:
           import json
           try:
               d = json.load(open('enhance_scan.json'))
-              opps = d.get('opportunities', [])
-              if opps:
-                  o = opps[0]
-                  print(f\"{o.get('type','unknown')} in {o.get('file','?')}\")
+              findings = d.get('findings', [])
+              if findings:
+                  o = findings[0]
+                  print(f\"{o.get('category','unknown')} in {o.get('file','?')}\")
               else:
-                  print('blueprint design applied')
+                  print('no feature opportunities found')
           except Exception as e:
               print(f'scan error: {e}')
-          " 2>&1 || echo "feature design applied")
+          " 2>&1 || echo "unknown")
           echo "ENHANCEMENT=$ENHANCEMENT" >> $GITHUB_ENV
 
       - name: Bump patch version
@@ -141,17 +142,15 @@ jobs:
 
       - name: Append to EVOLUTION_LOG.md
         run: |
-          FILES_CHANGED=$(git diff --name-only \
-            | grep -vE '^(enhance_scan.*\.json|EVOLUTION_LOG\.md|pyproject\.toml|__init__\.py)$' \
-            | wc -l | tr -d ' ')
+          FILES_CHANGED=$(git diff --name-only | grep '\.py$' | wc -l | tr -d ' ')
           cat >> EVOLUTION_LOG.md << EOF
 
           ## Evolution #${{ env.CYCLE_NUM }} [FEATURES] -- $(date -u '+%Y-%m-%d %H:%M UTC')
           **Enhancement:** ${{ env.ENHANCEMENT }}
           **Design goal:** ${{ env.DESIGN_GOAL }}
-          **Lane:** features -- blueprint design, new capabilities, extensibility
-          **Personality:** creative/additive (design-first, top 2 per cycle)
-          **Files changed:** ${FILES_CHANGED}
+          **Lane:** features -- missing docs, technical debt, new capabilities
+          **Personality:** creative/additive (top 2 per cycle)
+          **Python files changed:** ${FILES_CHANGED}
           **Version:** ${{ env.NEW_VERSION }}
           EOF
 
@@ -160,11 +159,9 @@ jobs:
           git config user.name "ASS-ADE Auto-Evolve"
           git config user.email "evolve@atomadic.tech"
           git add -A
-          PY_CHANGES=$(git diff --cached --name-only \
-            | grep -vE '^(enhance_scan.*\.json)$' \
-            | wc -l | tr -d ' ')
+          PY_CHANGES=$(git diff --cached --name-only | grep '\.py$' | wc -l | tr -d ' ')
           if [ "$PY_CHANGES" -eq 0 ]; then
-            echo "No feature changes -- skipping"
+            echo "No Python source changes -- skipping commit and PR"
             exit 0
           fi
           git commit -m "evolution/features: ${{ env.ENHANCEMENT }} (v${{ env.NEW_VERSION }})"
@@ -172,14 +169,14 @@ jobs:
 
       - name: Create PR
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.AAAA_NEXUS_OWNER_TOKEN }}
         run: |
           SCAN_SUMMARY=$(cat enhance_scan.json 2>/dev/null | python3 -c "
           import json, sys
           try:
               d = json.load(sys.stdin)
-              opps = d.get('opportunities', [])
-              lines = [f'- \`{o[\"type\"]}\` in \`{o[\"file\"]}\`' for o in opps[:10]]
+              findings = d.get('findings', [])
+              lines = [f'- \`{o[\"category\"]}\` in \`{o[\"file\"]}\`' for o in findings[:10]]
               print('\n'.join(lines))
           except:
               print('scan unavailable')
@@ -209,7 +206,7 @@ jobs:
           ## Features Evolution Cycle #${{ env.CYCLE_NUM }} -- $(date -u '+%Y-%m-%d %H:%M UTC')
 
           **Version:** v${{ env.NEW_VERSION }}
-          **Lane:** FEATURES -- blueprint design, new capabilities, extensibility
+          **Lane:** FEATURES -- missing docs, technical debt, new capabilities
           **Personality:** creative/additive -- design-first, top 2 per cycle
 
           ## Design goal
