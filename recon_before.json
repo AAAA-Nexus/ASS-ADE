@@ -1,12 +1,12 @@
 Running recon on /home/runner/work/ASS-ADE/ASS-ADE …
 {
   "root": "/home/runner/work/ASS-ADE/ASS-ADE",
-  "duration_ms": 7024.9103710000045,
-  "summary": "Repo at `/home/runner/work/ASS-ADE/ASS-ADE` contains 1403 files (304 source, 79 test-related) across 4 directory levels (8521.9 KB total). Test coverage: 1074 test functions across 67 test files (ratio 0.31). Documentation coverage is low (44%). Dominant tier: `at`.",
+  "duration_ms": 7607.308191999998,
+  "summary": "Repo at `/home/runner/work/ASS-ADE/ASS-ADE` contains 1407 files (304 source, 79 test-related) across 4 directory levels (8557.1 KB total). Test coverage: 1074 test functions across 67 test files (ratio 0.31). Documentation coverage is low (44%). Dominant tier: `at`.",
   "scout": {
-    "total_files": 1403,
-    "total_size_bytes": 8726395,
-    "total_size_kb": 8521.9,
+    "total_files": 1407,
+    "total_size_bytes": 8762504,
+    "total_size_kb": 8557.1,
     "max_depth": 4,
     "top_level": [
       ".github",
@@ -23,6 +23,8 @@ Running recon on /home/runner/work/ASS-ADE/ASS-ADE …
       "a2_mo_composites",
       "a3_og_features",
       "a4_sy_orchestration",
+      "apply_summary.json",
+      "autopoiesis_plan.json",
       "capabilities",
       "docs",
       "enhance_scan.json",
@@ -38,10 +40,10 @@ Running recon on /home/runner/work/ASS-ADE/ASS-ADE …
       "tests"
     ],
     "by_extension": {
-      ".json": 1017,
+      ".json": 1019,
       ".py": 303,
-      ".md": 62,
-      ".yml": 11,
+      ".md": 63,
+      ".yml": 12,
       ".mmd": 3,
       "[no_ext]": 2,
       ".ipynb": 2,
@@ -190,7 +192,7 @@ Running recon on /home/runner/work/ASS-ADE/ASS-ADE …
   "doc": {
     "has_readme": true,
     "readme_path": "README.md",
-    "doc_files": 63,
+    "doc_files": 64,
     "doc_file_paths": [
       "README.md",
       "AGENTS.md",
@@ -229,4 +231,4 @@ Running recon on /home/runner/work/ASS-ADE/ASS-ADE …
   ],
   "next_action": "Run `ass-ade lint` for detailed style and security findings."
 }
-Completed in 7025 ms
+Completed in 7607 ms
