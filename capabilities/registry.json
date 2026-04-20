@@ -1,0 +1,256 @@
+{
+  "schema": "ass-ade.capability-registry.v1",
+  "last_verified": "2026-04-20",
+  "status_scale": {
+    "complete": 3,
+    "partial": 2,
+    "planned": 1,
+    "missing": 0,
+    "deprecated": -1
+  },
+  "capabilities": [
+    {
+      "id": "core.public_cli",
+      "name": "Public-safe Python CLI shell",
+      "area": "core",
+      "status": "complete",
+      "evidence": ["src/ass_ade/cli.py", "tests/test_cli.py", "tests/test_cli_happy_path.py"],
+      "notes": "Broad Typer command surface with local-first defaults."
+    },
+    {
+      "id": "core.config_profiles",
+      "name": "Local, hybrid, and premium config profiles",
+      "area": "core",
+      "status": "complete",
+      "evidence": ["src/ass_ade/config.py", "tests/test_config.py"]
+    },
+    {
+      "id": "core.repo_inspection",
+      "name": "Local repository inspection",
+      "area": "core",
+      "status": "complete",
+      "evidence": ["src/ass_ade/local/repo.py", "tests/test_repo_summary.py"]
+    },
+    {
+      "id": "core.public_private_guardrails",
+      "name": "Public/private boundary guardrails",
+      "area": "core",
+      "status": "complete",
+      "evidence": ["AGENTS.md", "CONTRIBUTING.md", "docs/dev-stack.md"]
+    },
+    {
+      "id": "blueprint.design",
+      "name": "Blueprint design from prompt or context",
+      "area": "blueprint",
+      "status": "complete",
+      "evidence": ["src/ass_ade/engine/rebuild/feature.py", "src/ass_ade/commands/feature.py", "tests/test_feature_proposer.py"]
+    },
+    {
+      "id": "blueprint.validate",
+      "name": "Blueprint registry and validation",
+      "area": "blueprint",
+      "status": "complete",
+      "evidence": ["src/ass_ade/commands/blueprint.py", "tests/test_blueprint_command.py"]
+    },
+    {
+      "id": "rebuild.engine",
+      "name": "Five-tier rebuild engine",
+      "area": "rebuild",
+      "status": "complete",
+      "evidence": ["src/ass_ade/engine/rebuild/orchestrator.py", "tests/test_engine.py", "tests/test_phase1_integration.py"]
+    },
+    {
+      "id": "rebuild.tier_purity",
+      "name": "Monadic tier purity checks",
+      "area": "rebuild",
+      "status": "complete",
+      "evidence": ["src/ass_ade/engine/rebuild/tier_purity.py", "tests/test_monadic_purity.py"]
+    },
+    {
+      "id": "rebuild.version_tracking",
+      "name": "Per-artifact and aggregate version tracking",
+      "area": "rebuild",
+      "status": "complete",
+      "evidence": ["src/ass_ade/engine/rebuild/version_tracker.py", "tests/test_version_tracker.py"]
+    },
+    {
+      "id": "rebuild.output_governance",
+      "name": "Dedicated local rebuild output metadata and validation",
+      "area": "rebuild",
+      "status": "complete",
+      "evidence": ["schemas/ass_ade_output.schema.json", "scripts/ass_ade_local_control.py", "tests/test_local_control.py"],
+      "notes": "Added for local split-evolution and merge-sibling maintenance."
+    },
+    {
+      "id": "certification.local",
+      "name": "Local codebase certification",
+      "area": "certification",
+      "status": "complete",
+      "evidence": ["src/ass_ade/local/certifier.py", "tests/test_certifier.py"]
+    },
+    {
+      "id": "docs.engine",
+      "name": "Local docs generation and repository documentation synthesis",
+      "area": "docs",
+      "status": "complete",
+      "evidence": ["src/ass_ade/local/docs_engine.py", "tests/test_docs_engine.py"]
+    },
+    {
+      "id": "quality.enhance_scan",
+      "name": "Local enhancement scanner",
+      "area": "quality",
+      "status": "complete",
+      "evidence": ["src/ass_ade/local/enhancer.py", "tests/test_enhancer.py"]
+    },
+    {
+      "id": "quality.linter",
+      "name": "Monadic linter facade",
+      "area": "quality",
+      "status": "complete",
+      "evidence": ["src/ass_ade/local/linter.py", "tests/test_linter.py"]
+    },
+    {
+      "id": "nexus.typed_client",
+      "name": "Typed AAAA-Nexus public client layer",
+      "area": "nexus",
+      "status": "complete",
+      "evidence": ["src/ass_ade/nexus/client.py", "src/ass_ade/nexus/models.py", "tests/test_nexus_client_comprehensive.py"]
+    },
+    {
+      "id": "nexus.resilience",
+      "name": "Retry, timeout, and circuit-breaker transports",
+      "area": "nexus",
+      "status": "complete",
+      "evidence": ["src/ass_ade/nexus/resilience.py", "tests/test_resilience.py"]
+    },
+    {
+      "id": "nexus.validation",
+      "name": "Boundary input validation and SSRF protections",
+      "area": "nexus",
+      "status": "complete",
+      "evidence": ["src/ass_ade/nexus/validation.py", "tests/test_validation.py", "tests/test_ssrf_protection.py"]
+    },
+    {
+      "id": "mcp.remote_discovery",
+      "name": "Remote MCP discovery, inspect, dry-run, and invocation",
+      "area": "mcp",
+      "status": "complete",
+      "evidence": ["src/ass_ade/cli.py", "tests/test_mcp.py", "tests/test_mcp_extended.py"]
+    },
+    {
+      "id": "mcp.local_server",
+      "name": "ASS-ADE local MCP server",
+      "area": "mcp",
+      "status": "partial",
+      "evidence": ["src/ass_ade/mcp/server.py", "tests/test_mcp_server_streaming.py"],
+      "notes": "Works locally; editor-grade threading and VS Code polish remain open."
+    },
+    {
+      "id": "a2a.validate_discover_negotiate",
+      "name": "A2A validate, discover, negotiate, and local-card",
+      "area": "a2a",
+      "status": "complete",
+      "evidence": ["src/ass_ade/a2a/__init__.py", "src/ass_ade/commands/a2a.py", "tests/test_a2a.py", "tests/test_a2a_cli.py"]
+    },
+    {
+      "id": "a2a.task_lifecycle",
+      "name": "A2A task lifecycle and coordination state",
+      "area": "a2a",
+      "status": "missing",
+      "evidence": ["docs/implementation-status.md", "docs/gap-report.md"]
+    },
+    {
+      "id": "agent.shell",
+      "name": "Agent shell with tools, streaming events, and quality gates",
+      "area": "agent",
+      "status": "complete",
+      "evidence": ["src/ass_ade/agent/loop.py", "src/ass_ade/tools/builtin.py", "tests/test_agent.py", "tests/test_tools_builtin.py"]
+    },
+    {
+      "id": "agent.token_memory",
+      "name": "Token-aware per-run conversation memory",
+      "area": "agent",
+      "status": "complete",
+      "evidence": ["src/ass_ade/agent/conversation.py", "tests/test_agent.py", "tests/test_tokens.py"]
+    },
+    {
+      "id": "agent.durable_memory",
+      "name": "Durable cross-session agent memory",
+      "area": "agent",
+      "status": "missing",
+      "evidence": ["docs/gap-report.md", "docs/next-moves.md"]
+    },
+    {
+      "id": "agent.coordination",
+      "name": "First-class multi-agent coordination loop",
+      "area": "agent",
+      "status": "missing",
+      "evidence": ["docs/e2e-workflow-gaps.md", "docs/roadmap.md"]
+    },
+    {
+      "id": "workflow.hero_trust_certify_safe",
+      "name": "Trust-gate, certify, and safe-execute hero workflows",
+      "area": "workflow",
+      "status": "complete",
+      "evidence": ["src/ass_ade/workflows.py", "tests/test_workflows.py"]
+    },
+    {
+      "id": "workflow.pipeline_sequential",
+      "name": "Sequential pipeline engine with persistence",
+      "area": "workflow",
+      "status": "complete",
+      "evidence": ["src/ass_ade/pipeline.py", "tests/test_pipeline.py"]
+    },
+    {
+      "id": "workflow.pipeline_graph",
+      "name": "Graph workflows and reusable coordination templates",
+      "area": "workflow",
+      "status": "partial",
+      "evidence": ["docs/capability-matrix.md", "docs/roadmap.md"]
+    },
+    {
+      "id": "payment.x402_low_level",
+      "name": "Low-level x402 challenge and proof handling",
+      "area": "payment",
+      "status": "partial",
+      "evidence": ["src/ass_ade/nexus/x402.py", "tests/test_x402_flow.py", "tests/test_search_x402.py"]
+    },
+    {
+      "id": "payment.cost_consent_budget",
+      "name": "Cost estimation, consent, and budget UX",
+      "area": "payment",
+      "status": "missing",
+      "evidence": ["docs/capability-matrix.md", "docs/next-moves.md"]
+    },
+    {
+      "id": "provider.multi_model",
+      "name": "Multi-provider model routing",
+      "area": "provider",
+      "status": "complete",
+      "evidence": ["src/ass_ade/engine/provider.py", "src/ass_ade/commands/providers.py", "tests/test_free_providers.py"]
+    },
+    {
+      "id": "context.pack_vector_memory",
+      "name": "Context packets and local vector memory primitives",
+      "area": "context",
+      "status": "complete",
+      "evidence": ["src/ass_ade/context_memory.py", "tests/test_recon_context.py"],
+      "notes": "Primitive context memory exists; durable agent memory is tracked separately."
+    },
+    {
+      "id": "ide.vscode_extension",
+      "name": "VS Code extension and editor-native UX",
+      "area": "ide",
+      "status": "missing",
+      "evidence": ["docs/roadmap.md", "docs/next-moves.md"]
+    },
+    {
+      "id": "evolution.split_merge_stress_gate",
+      "name": "Split-evolution, merge-sibling, and feature-gain stress gate",
+      "area": "evolution",
+      "status": "complete",
+      "evidence": ["scripts/ass_ade_local_control.py", "docs/local-control.md", "docs/stress-test-evolution-gain.md", "tests/test_local_control.py"],
+      "notes": "Added to prove evolutions gain measurable features before promotion."
+    }
+  ]
+}

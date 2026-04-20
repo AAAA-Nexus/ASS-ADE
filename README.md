@@ -9,10 +9,10 @@
   Blueprint is truth. Code is artifact.
 </pre>
 
-[![Version](https://img.shields.io/badge/version-0.1.1-blue)](VERSION)
-[![Components](https://img.shields.io/badge/components-2%2C196-blueviolet)](MANIFEST.json)
+[![Version](https://img.shields.io/badge/version-0.3.0-blue)](VERSION)
+[![Components](https://img.shields.io/badge/components-1%2C004-blueviolet)](MANIFEST.json)
 [![Conformance](https://img.shields.io/badge/conformance-100%25-brightgreen)](CERTIFICATE.json)
-[![Tests](https://img.shields.io/badge/tests-3%2C800-brightgreen)](BIRTH_CERTIFICATE.md)
+[![Tests](https://img.shields.io/badge/tests-1%2C273-brightgreen)](tests/)
 [![License](https://img.shields.io/badge/license-BSL%201.1-orange)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.11%2B-blue)](pyproject.toml)
 [![MCP](https://img.shields.io/badge/MCP-2025--11--25-purple)](a4_sy_orchestration/)
@@ -157,13 +157,13 @@ On April 19, 2026 — v0.0.1 launch day — ASS-ADE rebuilt its own codebase.
 | Source tests | **3,800** |
 | MANIFEST SHA-256 | `2ea0e6b0bed7e47f…` |
 
-**Current state** (rebuild `20260418_220755`):
+**Current public snapshot** (v0.3.0):
 
 | Metric | Value |
 |--------|-------|
-| Components | **2,589** (+394 since birth) |
-| Pass rate | **100%** |
-| Certificate SHA-256 | `ac51fb5864a1078e…` |
+| Manifest components | **1,004** |
+| Local test suite | **1,274 passing** |
+| Certificate SHA-256 | `961b58ae752af2…` |
 
 ### On File Count and Monadic Decomposition
 

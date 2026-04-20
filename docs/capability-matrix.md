@@ -1,92 +1,133 @@
 # Capability Matrix
 
+Generated from `capabilities/registry.json`.
+
+## Summary
+
+| Status | Count |
+| --- | ---: |
+| OK | 26 |
+| PARTIAL | 3 |
+| MISSING | 5 |
+
 ## Legend
 
-- ✅ Complete
-- ⚠️ Partial
-- ❌ Missing
-
-## Core Product Surface
-
-| Capability | Status | Notes |
-| --- | ---: | --- |
-| Public-safe Python CLI shell | ✅ | implemented and broad |
-| Local config and profiles | ✅ | local, hybrid, premium |
-| Local repo inspection | ✅ | doctor, repo summary, planning, protocol cycle |
-| Local-first standalone value | ✅ | current core promise holds |
-| Public/private guardrails | ✅ | documented and enforced in repo guidance |
-
-## AAAA-Nexus Client Layer
-
-| Capability | Status | Notes |
-| --- | ---: | --- |
-| Typed client for public endpoints | ✅ | broad surface implemented |
-| Typed models and parsing | ✅ | production-grade |
-| Structured errors | ✅ | implemented |
-| Retry and circuit breaker | ✅ | implemented |
-| Input validation | ✅ | validated at boundary |
-| Policy preflight gate (`nexus_policy_preflight`) | ❌ | new hybrid capability |
-| Trusted RAG augment (`nexus_trusted_rag_augment`) | ❌ | new hybrid capability |
-| Synthesis guard (`nexus_synthesis_guard`) | ❌ | new hybrid capability |
-| AHA detect (`nexus_aha_detect`) | ❌ | new premium capability |
-| Autopoiesis plan (`nexus_autopoiesis_plan`) | ❌ | new premium capability |
-| Trace certify (`nexus_trace_certify`) | ❌ | new premium capability |
-
-## MCP
-
-| Capability | Status | Notes |
-| --- | ---: | --- |
-| Remote MCP discovery | ✅ | supported |
-| Remote MCP inspect and invoke | ✅ | supported |
-| Dry-run invocation | ✅ | supported |
-| Local mock MCP server | ✅ | supported |
-| ASS-ADE MCP server | ✅ | current stdio roster on `2025-11-25`; prefer the live manifest over hard-coded counts |
-| MCP manifest alignment | ✅ | current docs should reflect shipped state |
+- `OK`: implemented and covered by local evidence.
+- `PARTIAL`: usable, but with known product or integration gaps.
+- `PLANNED`: accepted direction, not yet built.
+- `MISSING`: known gap.
+- `DEPRECATED`: intentionally retired.
 
 ## A2A
 
-| Capability | Status | Notes |
-| --- | ---: | --- |
-| Public A2A discovery | ✅ | supported |
-| Validate agent card | ✅ | implemented |
-| Negotiate capabilities | ✅ | implemented |
-| Local card generation | ✅ | implemented |
-| Capability matching and coordination flows | ⚠️ | primitives present; orchestration thin |
+| ID | Capability | Status | Evidence | Notes |
+| --- | --- | ---: | --- | --- |
+| `a2a.task_lifecycle` | A2A task lifecycle and coordination state | MISSING | `docs/implementation-status.md`, `docs/gap-report.md` |  |
+| `a2a.validate_discover_negotiate` | A2A validate, discover, negotiate, and local-card | OK | `src/ass_ade/a2a/__init__.py`, `src/ass_ade/commands/a2a.py`, `tests/test_a2a.py`, +1 more |  |
 
-## Agent Shell
+## Agent
 
-| Capability | Status | Notes |
-| --- | ---: | --- |
-| Multi-model provider layer | ✅ | implemented |
-| Local tool execution | ✅ | implemented |
-| Tool safety gating | ✅ | implemented |
-| Diff preview and edit support | ✅ | implemented |
-| Streaming loop output | ✅ | implemented |
-| Interactive chat mode | ✅ | implemented |
-| Single-shot run mode | ✅ | implemented |
-| Token-aware conversation memory | ✅ | per-run only |
-| Durable agent memory | ❌ | not implemented |
-| Multi-agent coordination | ❌ | not implemented as a first-class loop |
+| ID | Capability | Status | Evidence | Notes |
+| --- | --- | ---: | --- | --- |
+| `agent.coordination` | First-class multi-agent coordination loop | MISSING | `docs/e2e-workflow-gaps.md`, `docs/roadmap.md` |  |
+| `agent.durable_memory` | Durable cross-session agent memory | MISSING | `docs/gap-report.md`, `docs/next-moves.md` |  |
+| `agent.shell` | Agent shell with tools, streaming events, and quality gates | OK | `src/ass_ade/agent/loop.py`, `src/ass_ade/tools/builtin.py`, `tests/test_agent.py`, +1 more |  |
+| `agent.token_memory` | Token-aware per-run conversation memory | OK | `src/ass_ade/agent/conversation.py`, `tests/test_agent.py`, `tests/test_tokens.py` |  |
 
-## Workflows And Pipelines
+## Blueprint
 
-| Capability | Status | Notes |
-| --- | ---: | --- |
-| trust-gate workflow | ✅ | implemented |
-| certify workflow | ✅ | implemented |
-| safe-execute workflow | ✅ | implemented |
-| Sequential pipeline composition | ✅ | implemented |
-| Progress callbacks | ✅ | implemented |
-| Persistence and audit trail | ✅ | implemented for pipeline runs |
-| Graph workflows | ⚠️ | richer orchestration still missing |
-| Workflow templates | ⚠️ | limited |
+| ID | Capability | Status | Evidence | Notes |
+| --- | --- | ---: | --- | --- |
+| `blueprint.design` | Blueprint design from prompt or context | OK | `src/ass_ade/engine/rebuild/feature.py`, `src/ass_ade/commands/feature.py`, `tests/test_feature_proposer.py` |  |
+| `blueprint.validate` | Blueprint registry and validation | OK | `src/ass_ade/commands/blueprint.py`, `tests/test_blueprint_command.py` |  |
 
-## Distribution And UX
+## Certification
 
-| Capability | Status | Notes |
-| --- | ---: | --- |
-| Python package | ✅ | current distribution mode |
-| CI quality gate | ✅ | pytest, lint, type-check |
-| VS Code extension | ❌ | not started |
-| x402 payment UX | ❌ | not started |
-| Cost estimation and consent UX | ❌ | not started |
+| ID | Capability | Status | Evidence | Notes |
+| --- | --- | ---: | --- | --- |
+| `certification.local` | Local codebase certification | OK | `src/ass_ade/local/certifier.py`, `tests/test_certifier.py` |  |
+
+## Context
+
+| ID | Capability | Status | Evidence | Notes |
+| --- | --- | ---: | --- | --- |
+| `context.pack_vector_memory` | Context packets and local vector memory primitives | OK | `src/ass_ade/context_memory.py`, `tests/test_recon_context.py` | Primitive context memory exists; durable agent memory is tracked separately. |
+
+## Core
+
+| ID | Capability | Status | Evidence | Notes |
+| --- | --- | ---: | --- | --- |
+| `core.config_profiles` | Local, hybrid, and premium config profiles | OK | `src/ass_ade/config.py`, `tests/test_config.py` |  |
+| `core.public_cli` | Public-safe Python CLI shell | OK | `src/ass_ade/cli.py`, `tests/test_cli.py`, `tests/test_cli_happy_path.py` | Broad Typer command surface with local-first defaults. |
+| `core.public_private_guardrails` | Public/private boundary guardrails | OK | `AGENTS.md`, `CONTRIBUTING.md`, `docs/dev-stack.md` |  |
+| `core.repo_inspection` | Local repository inspection | OK | `src/ass_ade/local/repo.py`, `tests/test_repo_summary.py` |  |
+
+## Docs
+
+| ID | Capability | Status | Evidence | Notes |
+| --- | --- | ---: | --- | --- |
+| `docs.engine` | Local docs generation and repository documentation synthesis | OK | `src/ass_ade/local/docs_engine.py`, `tests/test_docs_engine.py` |  |
+
+## Evolution
+
+| ID | Capability | Status | Evidence | Notes |
+| --- | --- | ---: | --- | --- |
+| `evolution.split_merge_stress_gate` | Split-evolution, merge-sibling, and feature-gain stress gate | OK | `scripts/ass_ade_local_control.py`, `docs/local-control.md`, `docs/stress-test-evolution-gain.md`, +1 more | Added to prove evolutions gain measurable features before promotion. |
+
+## Ide
+
+| ID | Capability | Status | Evidence | Notes |
+| --- | --- | ---: | --- | --- |
+| `ide.vscode_extension` | VS Code extension and editor-native UX | MISSING | `docs/roadmap.md`, `docs/next-moves.md` |  |
+
+## Mcp
+
+| ID | Capability | Status | Evidence | Notes |
+| --- | --- | ---: | --- | --- |
+| `mcp.local_server` | ASS-ADE local MCP server | PARTIAL | `src/ass_ade/mcp/server.py`, `tests/test_mcp_server_streaming.py` | Works locally; editor-grade threading and VS Code polish remain open. |
+| `mcp.remote_discovery` | Remote MCP discovery, inspect, dry-run, and invocation | OK | `src/ass_ade/cli.py`, `tests/test_mcp.py`, `tests/test_mcp_extended.py` |  |
+
+## Nexus
+
+| ID | Capability | Status | Evidence | Notes |
+| --- | --- | ---: | --- | --- |
+| `nexus.resilience` | Retry, timeout, and circuit-breaker transports | OK | `src/ass_ade/nexus/resilience.py`, `tests/test_resilience.py` |  |
+| `nexus.typed_client` | Typed AAAA-Nexus public client layer | OK | `src/ass_ade/nexus/client.py`, `src/ass_ade/nexus/models.py`, `tests/test_nexus_client_comprehensive.py` |  |
+| `nexus.validation` | Boundary input validation and SSRF protections | OK | `src/ass_ade/nexus/validation.py`, `tests/test_validation.py`, `tests/test_ssrf_protection.py` |  |
+
+## Payment
+
+| ID | Capability | Status | Evidence | Notes |
+| --- | --- | ---: | --- | --- |
+| `payment.cost_consent_budget` | Cost estimation, consent, and budget UX | MISSING | `docs/capability-matrix.md`, `docs/next-moves.md` |  |
+| `payment.x402_low_level` | Low-level x402 challenge and proof handling | PARTIAL | `src/ass_ade/nexus/x402.py`, `tests/test_x402_flow.py`, `tests/test_search_x402.py` |  |
+
+## Provider
+
+| ID | Capability | Status | Evidence | Notes |
+| --- | --- | ---: | --- | --- |
+| `provider.multi_model` | Multi-provider model routing | OK | `src/ass_ade/engine/provider.py`, `src/ass_ade/commands/providers.py`, `tests/test_free_providers.py` |  |
+
+## Quality
+
+| ID | Capability | Status | Evidence | Notes |
+| --- | --- | ---: | --- | --- |
+| `quality.enhance_scan` | Local enhancement scanner | OK | `src/ass_ade/local/enhancer.py`, `tests/test_enhancer.py` |  |
+| `quality.linter` | Monadic linter facade | OK | `src/ass_ade/local/linter.py`, `tests/test_linter.py` |  |
+
+## Rebuild
+
+| ID | Capability | Status | Evidence | Notes |
+| --- | --- | ---: | --- | --- |
+| `rebuild.engine` | Five-tier rebuild engine | OK | `src/ass_ade/engine/rebuild/orchestrator.py`, `tests/test_engine.py`, `tests/test_phase1_integration.py` |  |
+| `rebuild.output_governance` | Dedicated local rebuild output metadata and validation | OK | `schemas/ass_ade_output.schema.json`, `scripts/ass_ade_local_control.py`, `tests/test_local_control.py` | Added for local split-evolution and merge-sibling maintenance. |
+| `rebuild.tier_purity` | Monadic tier purity checks | OK | `src/ass_ade/engine/rebuild/tier_purity.py`, `tests/test_monadic_purity.py` |  |
+| `rebuild.version_tracking` | Per-artifact and aggregate version tracking | OK | `src/ass_ade/engine/rebuild/version_tracker.py`, `tests/test_version_tracker.py` |  |
+
+## Workflow
+
+| ID | Capability | Status | Evidence | Notes |
+| --- | --- | ---: | --- | --- |
+| `workflow.hero_trust_certify_safe` | Trust-gate, certify, and safe-execute hero workflows | OK | `src/ass_ade/workflows.py`, `tests/test_workflows.py` |  |
+| `workflow.pipeline_graph` | Graph workflows and reusable coordination templates | PARTIAL | `docs/capability-matrix.md`, `docs/roadmap.md` |  |
+| `workflow.pipeline_sequential` | Sequential pipeline engine with persistence | OK | `src/ass_ade/pipeline.py`, `tests/test_pipeline.py` |  |

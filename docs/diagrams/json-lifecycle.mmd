@@ -1,0 +1,21 @@
+flowchart LR
+  refresh["refresh --collect-pytest --docs"]
+  inventory["inventory/latest.json"]
+  outputs["ASS_ADE_OUTPUT.json files"]
+  stress["outputs/stress/*.json"]
+  registry["capabilities/registry.json"]
+  index["CONTROL_INDEX.json"]
+  matrix["docs/capability-matrix.md"]
+  status["docs/local-control-status.md"]
+  diagrams["docs/diagrams/*.mmd"]
+  refresh --> inventory
+  refresh --> stress
+  refresh --> registry
+  inventory --> index
+  outputs --> index
+  stress --> index
+  registry --> index
+  registry --> matrix
+  index --> status
+  index --> diagrams
+  registry --> diagrams

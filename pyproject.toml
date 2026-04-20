@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "ass-ade"
 version = "0.3.0"
-description = "ASS-ADE v0.3.0 — merged rebuild: all folders unified, 1266 tests pass"
+description = "ASS-ADE v0.3.0 - merged rebuild: all folders unified, 1274 tests pass"
 requires-python = ">=3.11"
 dependencies = [
     "httpx>=0.28,<0.29",

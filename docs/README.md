@@ -10,6 +10,8 @@ the public-safe set below as the release surface.
 - [remote-hybrid-guide.md](remote-hybrid-guide.md): Explicit remote opt-in and
   AAAA-Nexus contract usage.
 - [capability-matrix.md](capability-matrix.md): Feature matrix.
+- [../capabilities/registry.json](../capabilities/registry.json): Capability
+  source of truth for growth tracking.
 - [protocol.md](protocol.md): Public enhancement protocol.
 - [evolution-workflow.md](evolution-workflow.md): Split-branch evolution demo,
   merge rule, and version bump workflow.
@@ -18,7 +20,15 @@ the public-safe set below as the release surface.
 - [gap-report.md](gap-report.md): Verified gaps.
 - [implementation-status.md](implementation-status.md): Live and missing
   capability dashboard.
+- [local-control.md](local-control.md): Local folder, output, split-evolution,
+  and merge-sibling control contract.
+- [local-control-status.md](local-control-status.md): Generated status from
+  the local control JSON ledgers.
+- [mermaid-diagrams.md](mermaid-diagrams.md): Generated Mermaid diagrams from
+  the local control and capability ledgers.
 - [roadmap.md](roadmap.md): Public roadmap.
+- [stress-test-evolution-gain.md](stress-test-evolution-gain.md): Stress gate
+  for proving evolutions gained capability.
 
 ## Release Rule
 

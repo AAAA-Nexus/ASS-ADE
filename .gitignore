@@ -5,6 +5,10 @@ __pycache__/
 *.egg-info/
 dist/
 build/
+.ass-ade/state/
+.ass-ade/vector-memory/
+.ass-ade/tmp/
+.pytest_tmp/
 
 # Auto-generated docs output — do not commit over the showcase README.md
 0_README.md

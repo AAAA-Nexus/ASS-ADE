@@ -1,0 +1,272 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://atomadic.tech/schemas/ass-ade-output.schema.json",
+  "title": "ASS-ADE rebuild output metadata",
+  "type": "object",
+  "required": [
+    "schema",
+    "output_id",
+    "class",
+    "created_at",
+    "path",
+    "source",
+    "lineage",
+    "artifacts",
+    "gates",
+    "retention"
+  ],
+  "properties": {
+    "schema": {
+      "const": "ass-ade.rebuild-output.v1"
+    },
+    "output_id": {
+      "type": "string",
+      "pattern": "^rb_[0-9]{8}T[0-9]{6}Z__[a-z0-9-]+__[a-f0-9]{7,12}__[a-z0-9-]+$"
+    },
+    "class": {
+      "enum": [
+        "experiment",
+        "candidate",
+        "release",
+        "archive"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "path": {
+      "type": "string"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "repo",
+        "ref",
+        "sha",
+        "dirty"
+      ],
+      "properties": {
+        "repo": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sha": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-f0-9]{7,40}$"
+        },
+        "dirty": {
+          "type": "boolean"
+        },
+        "dirty_items": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "lineage": {
+      "type": "object",
+      "required": [
+        "lane",
+        "branch",
+        "parent_output_id"
+      ],
+      "properties": {
+        "lane": {
+          "type": "string"
+        },
+        "branch": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "parent_output_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "merge_sibling_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "pr": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      }
+    },
+    "artifacts": {
+      "type": "object",
+      "required": [
+        "manifest",
+        "certificate",
+        "rebuild_report"
+      ],
+      "properties": {
+        "manifest": {
+          "$ref": "#/$defs/file_artifact"
+        },
+        "certificate": {
+          "$ref": "#/$defs/file_artifact"
+        },
+        "rebuild_report": {
+          "$ref": "#/$defs/file_artifact"
+        },
+        "components_written": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "tier_counts": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "pass_rate": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "certificate_sha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "gates": {
+      "type": "object",
+      "required": [
+        "pytest",
+        "certify",
+        "lint",
+        "docs_synced",
+        "version_synced"
+      ],
+      "properties": {
+        "pytest": {
+          "type": "string"
+        },
+        "certify": {
+          "type": "string"
+        },
+        "lint": {
+          "type": "string"
+        },
+        "docs_synced": {
+          "type": [
+            "boolean",
+            "string"
+          ]
+        },
+        "version_synced": {
+          "type": [
+            "boolean",
+            "string"
+          ]
+        },
+        "stress_gain": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "retention": {
+      "type": "object",
+      "required": [
+        "pin",
+        "expires",
+        "reason"
+      ],
+      "properties": {
+        "pin": {
+          "type": "boolean"
+        },
+        "expires": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "reason": {
+          "type": "string"
+        }
+      }
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "file_artifact": {
+      "type": "object",
+      "required": [
+        "present",
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "present": {
+          "type": "boolean"
+        },
+        "path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "size_bytes": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

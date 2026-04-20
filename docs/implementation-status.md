@@ -1,8 +1,8 @@
 # ASS-ADE Implementation Status
 
-**Verified**: 2026-04-16  
-**Codebase**: `c:\!ass-ade`  
-**Package Version**: 1.0.0  
+**Verified**: 2026-04-20  
+**Codebase**: `C:\!aaaa-nexus\ass-ade-github-latest`  
+**Package Version**: 0.3.0  
 **Status**: Production-grade public shell with the next major gap in durable agent memory and coordination
 
 ---
@@ -22,8 +22,8 @@ The next priority gaps are:
 
 ### Verified Working Surface
 
-- ✅ Package version is `1.0.0`
-- ✅ 793 tests are passing (1 failure in CLI workflow path resolution)
+- ✅ Package version is `0.3.0`
+- ✅ 1,274 tests are passing locally
 - ✅ MCP server advertises `2025-11-25`
 - ✅ A2A commands include validate, discover, negotiate, and local-card
 - ✅ Pipeline engine supports progress callbacks and persistence
@@ -55,7 +55,7 @@ The next priority gaps are:
 | Agent coordination layer | ❌ Missing | primitives exist; coordinator does not |
 | VS Code extension | ❌ Missing | no extension scaffold yet |
 | x402 payment UX | ❌ Missing | low-level support only |
-| Test coverage | ✅ Strong | 793 passing tests (794 total)
+| Test coverage | ✅ Strong | 1,274 passing tests
 
 ---
 
