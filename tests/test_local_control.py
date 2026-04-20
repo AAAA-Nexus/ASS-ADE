@@ -239,7 +239,7 @@ def test_mermaid_renderers_use_json_ledgers(tmp_path: Path) -> None:
     lifecycle = lc.render_json_lifecycle_mermaid()
 
     assert "flowchart TD" in local
-    assert "flowchart LR" in status
+    assert "flowchart TD" in status  # capability status uses TD (area-grouped, not flat LR fan-out)
     assert "CONTROL_INDEX.json" in lifecycle
 
 

@@ -67,54 +67,35 @@ flowchart TD
 ## Capability Status
 
 ```mermaid
-flowchart LR
-  registry["capabilities/registry.json"]
-  docs["docs/capability-matrix.md"]
-  registry --> docs
+flowchart TD
+  registry["capabilities/registry.json\n34 total"]
 
-  subgraph Status[Capability status]
-    status_complete["complete: 26"]
-    registry --> status_complete
-    status_partial["partial: 3"]
-    registry --> status_partial
-    status_missing["missing: 5"]
-    registry --> status_missing
+  subgraph Overall[Overall status]
+    ov_complete["OK complete: 26"]
+    ov_partial["~ partial: 3"]
+    ov_missing["GAP missing: 5"]
   end
+  registry --> Overall
 
-  subgraph Areas[Capability areas]
-    area_a2a["a2a: 2"]
-    registry --> area_a2a
-    area_agent["agent: 4"]
-    registry --> area_agent
-    area_blueprint["blueprint: 2"]
-    registry --> area_blueprint
-    area_certification["certification: 1"]
-    registry --> area_certification
-    area_context["context: 1"]
-    registry --> area_context
-    area_core["core: 4"]
-    registry --> area_core
-    area_docs["docs: 1"]
-    registry --> area_docs
-    area_evolution["evolution: 1"]
-    registry --> area_evolution
-    area_ide["ide: 1"]
-    registry --> area_ide
-    area_mcp["mcp: 2"]
-    registry --> area_mcp
-    area_nexus["nexus: 3"]
-    registry --> area_nexus
-    area_payment["payment: 2"]
-    registry --> area_payment
-    area_provider["provider: 1"]
-    registry --> area_provider
-    area_quality["quality: 2"]
-    registry --> area_quality
-    area_rebuild["rebuild: 4"]
-    registry --> area_rebuild
-    area_workflow["workflow: 3"]
-    registry --> area_workflow
+  subgraph Areas[By area]
+    area_a2a["A2A [C:1 M:1]"]
+    area_agent["Agent [C:2 M:2]"]
+    area_blueprint["Blueprint [C:2]"]
+    area_certification["Certification [C:1]"]
+    area_context["Context [C:1]"]
+    area_core["Core [C:4]"]
+    area_docs["Docs [C:1]"]
+    area_evolution["Evolution [C:1]"]
+    area_ide["IDE [M:1]"]
+    area_mcp["MCP [C:1 P:1]"]
+    area_nexus["Nexus [C:3]"]
+    area_payment["Payment [P:1 M:1]"]
+    area_provider["Provider [C:1]"]
+    area_quality["Quality [C:2]"]
+    area_rebuild["Rebuild [C:4]"]
+    area_workflow["Workflow [C:2 P:1]"]
   end
+  registry --> Areas
 ```
 
 Standalone Mermaid files are written under `docs/diagrams/`.

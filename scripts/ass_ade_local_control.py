@@ -784,6 +784,29 @@ def status_icon(status: str) -> str:
     }.get(status, status.upper() or "UNKNOWN")
 
 
+_AREA_TITLE_OVERRIDES: dict[str, str] = {
+    "a2a": "A2A",
+    "mcp": "MCP",
+    "ide": "IDE",
+    "api": "API",
+}
+
+_LEGEND_DESCRIPTIONS: dict[str, str] = {
+    "complete": "`OK`: implemented and covered by local evidence.",
+    "partial": "`PARTIAL`: usable, but with known product or integration gaps.",
+    "planned": "`PLANNED`: accepted direction, not yet built.",
+    "missing": "`MISSING`: known gap.",
+    "deprecated": "`DEPRECATED`: intentionally retired.",
+}
+
+
+def _area_title(area: str) -> str:
+    key = area.lower().replace("_", "").replace("-", "")
+    if key in _AREA_TITLE_OVERRIDES:
+        return _AREA_TITLE_OVERRIDES[key]
+    return area.replace("_", " ").replace("-", " ").title()
+
+
 def render_capability_matrix(repo: Path) -> str:
     registry = load_capability_registry(repo)
     caps = [cap for cap in registry.get("capabilities", []) if isinstance(cap, dict)]
@@ -796,10 +819,11 @@ def render_capability_matrix(repo: Path) -> str:
         status = str(cap.get("status") or "missing")
         status_counts[status] = status_counts.get(status, 0) + 1
 
+    # Sort areas: surface missing/partial first within each area by sorting caps
     lines = [
         "# Capability Matrix",
         "",
-        "Generated from `capabilities/registry.json`.",
+        f"> Generated: {utc_now()}  |  source: `capabilities/registry.json`",
         "",
         "## Summary",
         "",
@@ -810,21 +834,50 @@ def render_capability_matrix(repo: Path) -> str:
         count = status_counts.get(status, 0)
         if count:
             lines.append(f"| {status_icon(status)} | {count} |")
-    lines.extend(["", "## Legend", "", "- `OK`: implemented and covered by local evidence.", "- `PARTIAL`: usable, but with known product or integration gaps.", "- `PLANNED`: accepted direction, not yet built.", "- `MISSING`: known gap.", "- `DEPRECATED`: intentionally retired."])
+
+    # Legend: only show statuses that actually appear
+    present_statuses = [s for s in ("complete", "partial", "planned", "missing", "deprecated") if status_counts.get(s, 0)]
+    lines.extend(["", "## Legend", ""])
+    for status in present_statuses:
+        lines.append(f"- {_LEGEND_DESCRIPTIONS[status]}")
+
+    # Gaps section: missing and partial capabilities upfront
+    gap_caps = [c for c in caps if str(c.get("status") or "missing") in ("missing", "partial")]
+    if gap_caps:
+        lines.extend(["", "## Gaps (action required)", ""])
+        for cap in sorted(gap_caps, key=lambda c: (str(c.get("status") or ""), str(c.get("id") or ""))):
+            icon = status_icon(str(cap.get("status") or "missing"))
+            lines.append(f"- `{cap.get('id', '')}` — {cap.get('name', '')} [{icon}]")
+
+    _STATUS_PRIORITY = {"missing": 0, "partial": 1, "planned": 2, "complete": 3, "deprecated": 4}
+
+    has_notes = any(cap.get("notes") for cap in caps)
+    header = "| ID | Capability | Status | Evidence |" + (" Notes |" if has_notes else "")
+    sep = "| --- | --- | :---: | --- |" + (" --- |" if has_notes else "")
 
     for area in sorted(grouped):
-        title = area.replace("_", " ").replace("-", " ").title()
-        lines.extend(["", f"## {title}", "", "| ID | Capability | Status | Evidence | Notes |", "| --- | --- | ---: | --- | --- |"])
-        for cap in sorted(grouped[area], key=lambda item: str(item.get("id"))):
+        title = _area_title(area)
+        lines.extend(["", f"## {title}", "", header, sep])
+        sorted_caps = sorted(
+            grouped[area],
+            key=lambda c: (_STATUS_PRIORITY.get(str(c.get("status") or "missing"), 99), str(c.get("id") or "")),
+        )
+        for cap in sorted_caps:
             evidence_items = cap.get("evidence", [])
-            evidence = ", ".join(f"`{item}`" for item in evidence_items[:3]) if isinstance(evidence_items, list) else ""
-            if isinstance(evidence_items, list) and len(evidence_items) > 3:
-                evidence += f", +{len(evidence_items) - 3} more"
-            notes = str(cap.get("notes") or "")
-            lines.append(
+            if isinstance(evidence_items, list):
+                ev_links = [f"[`{e}`]({e})" if not e.startswith("http") else f"[{e}]({e})" for e in evidence_items[:3]]
+                evidence = ", ".join(ev_links)
+                if len(evidence_items) > 3:
+                    evidence += f" (+{len(evidence_items) - 3} more)"
+            else:
+                evidence = ""
+            row = (
                 f"| `{cap.get('id', '')}` | {cap.get('name', '')} | "
-                f"{status_icon(str(cap.get('status') or 'missing'))} | {evidence} | {notes} |"
+                f"{status_icon(str(cap.get('status') or 'missing'))} | {evidence} |"
             )
+            if has_notes:
+                row += f" {cap.get('notes') or ''} |"
+            lines.append(row)
     lines.append("")
     return "\n".join(lines)
 
@@ -852,14 +905,39 @@ def render_control_status(control_root: Path) -> str:
         role = str(item.get("role") or "unknown")
         role_counts[role] = role_counts.get(role, 0) + 1
 
+    # Audit chain state
+    chain_result = verify_chain(control_root)
+    chain_entries = chain_result.get("entries", 0)
+    chain_head_val = str(chain_result.get("head") or "genesis")
+    chain_head_short = chain_head_val[:24] if chain_head_val != "genesis" else "genesis (empty)"
+    chain_valid = "valid" if chain_result.get("valid") else "INVALID"
+
+    # Registry gaps from index
+    registry_info = index.get("registry") or {}
+    reg_statuses = registry_info.get("statuses") or {}
+    missing_count = reg_statuses.get("missing", 0)
+    partial_count = reg_statuses.get("partial", 0)
+
     lines = [
         "# Local Control Status",
         "",
-        "Generated from local control JSON ledgers.",
+        f"> Generated: {utc_now()}",
         "",
         f"- Control root: `{control_root}`",
         f"- Inventory: `{inventory_path}`",
         f"- Index: `{index_path}`",
+        "",
+        "## Audit Chain",
+        "",
+        f"| Entries | Head (24 chars) | Valid |",
+        "| ---: | --- | --- |",
+        f"| {chain_entries} | `{chain_head_short}` | {chain_valid} |",
+        "",
+        "## Registry",
+        "",
+        f"| Capabilities | Complete | Partial | Missing |",
+        "| ---: | ---: | ---: | ---: |",
+        f"| {registry_info.get('capability_count', 0)} | {reg_statuses.get('complete', 0)} | {partial_count} | {missing_count} |",
         "",
         "## Sibling Roles",
         "",
@@ -868,19 +946,34 @@ def render_control_status(control_root: Path) -> str:
     ]
     for role, count in sorted(role_counts.items()):
         lines.append(f"| `{role}` | {count} |")
-    lines.extend(["", "## Siblings", "", "| Name | Role | Git | Metadata | Components | Size MB |", "| --- | --- | --- | --- | ---: | ---: |"])
+
+    lines.extend([
+        "",
+        "## Siblings",
+        "",
+        "| Name | Role | Branch | SHA | Dirty | Metadata | Components | Size MB | Last Write |",
+        "| --- | --- | --- | --- | ---: | --- | ---: | ---: | --- |",
+    ])
     for item in siblings:
         git = item.get("git") or {}
-        git_state = "no"
         if git.get("is_git"):
-            git_state = "dirty" if git.get("dirty") else "clean"
+            branch = git.get("branch") or "—"
+            sha = str(git.get("head") or "")[:8] or "—"
+            dirty_items = git.get("dirty_items", 0) or 0
+            dirty_cell = str(dirty_items) if dirty_items else "—"
+        else:
+            branch = "—"
+            sha = "—"
+            dirty_cell = "—"
         artifact = item.get("artifact") or {}
         components = artifact.get("components_written")
-        components_text = str(components) if isinstance(components, int) else ""
+        components_text = str(components) if isinstance(components, int) else "—"
         stats = item.get("stats") or {}
+        last_write = str(item.get("last_write") or "")[:16].replace("T", " ")
         lines.append(
-            f"| `{item.get('name', '')}` | `{item.get('role', '')}` | {git_state} | "
-            f"{'yes' if item.get('has_output_metadata') else 'no'} | {components_text} | {stats.get('size_mb', '')} |"
+            f"| `{item.get('name', '')}` | `{item.get('role', '')}` | {branch} | `{sha}` | "
+            f"{dirty_cell} | {'yes' if item.get('has_output_metadata') else 'no'} | "
+            f"{components_text} | {stats.get('size_mb', '—')} | {last_write} |"
         )
 
     outputs = index.get("outputs", []) if isinstance(index.get("outputs"), list) else []
@@ -967,37 +1060,53 @@ def render_local_control_mermaid(control_root: Path) -> str:
 
 
 def render_capability_status_mermaid(repo: Path) -> str:
+    """Area-grouped capability status diagram.
+
+    Each area is a subgraph node showing complete/partial/missing counts.
+    Avoids the flat fan-out hairball of connecting every node to registry.
+    """
     registry = load_capability_registry(repo)
     caps = [cap for cap in registry.get("capabilities", []) if isinstance(cap, dict)]
-    status_counts: dict[str, int] = {}
-    area_counts: dict[str, int] = {}
+
+    # Build per-area status breakdown
+    area_status: dict[str, dict[str, int]] = {}
+    overall: dict[str, int] = {}
     for cap in caps:
         status = str(cap.get("status") or "missing")
         area = str(cap.get("area") or "uncategorized")
-        status_counts[status] = status_counts.get(status, 0) + 1
-        area_counts[area] = area_counts.get(area, 0) + 1
+        area_status.setdefault(area, {})
+        area_status[area][status] = area_status[area].get(status, 0) + 1
+        overall[status] = overall.get(status, 0) + 1
 
     lines = [
-        "flowchart LR",
-        '  registry["capabilities/registry.json"]',
-        '  docs["docs/capability-matrix.md"]',
-        "  registry --> docs",
+        "flowchart TD",
+        f'  registry["capabilities/registry.json\\n{len(caps)} total"]',
         "",
-        "  subgraph Status[Capability status]",
+        "  subgraph Overall[Overall status]",
     ]
-    for status in ("complete", "partial", "planned", "missing", "deprecated"):
-        count = status_counts.get(status, 0)
+    for status in ("complete", "partial", "missing", "planned", "deprecated"):
+        count = overall.get(status, 0)
         if count:
-            node = mermaid_id("status", status)
-            lines.append(f'    {node}["{status}: {count}"]')
-            lines.append(f"    registry --> {node}")
+            node = mermaid_id("ov", status)
+            icon = {"complete": "OK", "partial": "~", "missing": "GAP", "planned": "→", "deprecated": "X"}.get(status, status)
+            lines.append(f'    {node}["{icon} {status}: {count}"]')
     lines.append("  end")
-    lines.extend(["", "  subgraph Areas[Capability areas]"])
-    for area, count in sorted(area_counts.items()):
+    lines.append("  registry --> Overall")
+    lines.append("")
+
+    # One node per area showing counts inline
+    lines.append("  subgraph Areas[By area]")
+    for area in sorted(area_status):
         node = mermaid_id("area", area)
-        lines.append(f'    {node}["{mermaid_label(area)}: {count}"]')
-        lines.append(f"    registry --> {node}")
+        counts = area_status[area]
+        parts = []
+        for st in ("complete", "partial", "missing"):
+            if counts.get(st):
+                parts.append(f"{st[0].upper()}:{counts[st]}")
+        label = f"{_area_title(area)} [{' '.join(parts)}]"
+        lines.append(f'    {node}["{mermaid_label(label)}"]')
     lines.append("  end")
+    lines.append("  registry --> Areas")
     lines.append("")
     return "\n".join(lines)
 
