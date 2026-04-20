@@ -1,0 +1,9 @@
+{
+  "lane": "quality",
+  "applied": [
+    "missing_tests in src/ass_ade/agent/alphaverus.py",
+    "missing_tests in src/ass_ade/agent/atlas.py",
+    "missing_tests in src/ass_ade/agent/audit_questions.py"
+  ],
+  "skipped": []
+}
