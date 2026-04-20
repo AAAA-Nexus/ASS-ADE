@@ -60,4 +60,5 @@ AUDIT_QUESTIONS: list[dict] = [
     {"id": 50, "group": "hyperagent", "text": "Prompt evolution validated via prompt_toolkit before applying?"},
 ]
 
-assert len(AUDIT_QUESTIONS) == 50
+if len(AUDIT_QUESTIONS) != 50:
+    raise ValueError(f"AUDIT_QUESTIONS must have exactly 50 entries, got {len(AUDIT_QUESTIONS)}")

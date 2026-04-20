@@ -75,9 +75,11 @@ b10+=[0.0,G18/C2,C1/C2,TAU,EPS_KL*1e5,1-EPS_KL*1e5,
 
 blocks=[b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10]
 for i,b in enumerate(blocks):
-    assert len(b)==24, f'Block {i} len={len(b)}'
+    if len(b) != 24:
+        raise ValueError(f'Block {i} len={len(b)}')
 
 vec=[]
 for b in blocks: vec+=b
-assert len(vec)==264
+if len(vec) != 264:
+    raise ValueError(f'Vector length={len(vec)}, expected 264')
 print(json.dumps([round(v,10) for v in vec]))

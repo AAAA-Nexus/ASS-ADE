@@ -69,7 +69,7 @@ class _Model:
         )
         _log.info("applying LoRA adapter from %s…", self.adapter_dir)
         self._model = PeftModel.from_pretrained(base, str(self.adapter_dir))
-        self._model.eval()
+        self._model.eval()  # nosec — PyTorch inference mode, not builtin eval()
         _log.info("model ready")
 
     def ensure_loaded(self) -> None:
@@ -81,7 +81,8 @@ class _Model:
         import torch
 
         self.ensure_loaded()
-        assert self._model is not None and self._tokenizer is not None
+        if self._model is None or self._tokenizer is None:
+            raise RuntimeError("Model or tokenizer failed to load")
 
         inputs = self._tokenizer(prompt, return_tensors="pt")
         use_gpu = next(self._model.parameters()).is_cuda

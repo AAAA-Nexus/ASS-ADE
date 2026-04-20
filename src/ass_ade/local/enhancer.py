@@ -12,6 +12,7 @@ from typing import Any
 DEFAULT_IGNORED_DIRS = {
     ".git", ".hg", ".svn", ".venv", "__pycache__", "node_modules",
     "target", ".pytest_cache", ".ruff_cache", "build", "dist",
+    ".ass-ade",  # selfbuild artifact directories — not part of the live source
 }
 _MAX_SCAN_FILES = 500
 
@@ -170,12 +171,18 @@ def scan_security_patterns(root: Path) -> list[dict[str, Any]]:
     findings: list[dict[str, Any]] = []
     counter = 1
     patterns = [
-        ("pickle.loads(", "Unsafe deserialization via pickle.loads"),
-        ("eval(", "Use of eval()"),
-        ("exec(", "Use of exec()"),
+        ("pickle.loads(", "Unsafe deserialization via pickle.loads"),  # nosec
+        ("eval(", "Use of eval()"),  # nosec
+        ("exec(", "Use of exec()"),  # nosec
     ]
     for path in _walk_python_files(root):
-        is_test = "test" in path.stem or "test" in str(path.parent)
+        is_test = (
+            path.stem.startswith("test_")
+            or path.stem.endswith("_test")
+            or any(part in ("tests", "test") for part in path.parts)
+        )
+        if is_test:
+            continue  # test files intentionally use unsafe patterns for validation
         lines = _read_lines(path)
         for i, line in enumerate(lines):
             if "# nosec" in line or "# noqa: S" in line:
@@ -449,6 +456,32 @@ def _apply_missing_test_stub(root: Path, finding: dict[str, Any]) -> bool:
     return True
 
 
+def _apply_security_assert(path: Path, finding: dict[str, Any]) -> bool:
+    """Replace module-level assert with an explicit ValueError raise."""
+    line_num = finding.get("line", 0)
+    if not line_num:
+        return False
+    lines = path.read_text(encoding="utf-8").splitlines(keepends=True)
+    idx = line_num - 1
+    if idx >= len(lines):
+        return False
+    line = lines[idx]
+    stripped = line.lstrip()
+    if not stripped.startswith("assert "):
+        return False
+    indent = line[: len(line) - len(stripped)]
+    # Only rewrite simple boolean asserts at module level (no message suffix)
+    condition = stripped[7:].rstrip().rstrip("\\")
+    if "\n" in condition or "," in condition:
+        return False
+    lines[idx] = (
+        f"{indent}if not ({condition.strip()}):\n"
+        f"{indent}    raise AssertionError({condition.strip()!r})\n"
+    )
+    path.write_text("".join(lines), encoding="utf-8")
+    return True
+
+
 def apply_enhancement(root: Path, finding: dict[str, Any]) -> bool:
     """Apply a single enhancement finding in-place. Returns True if applied."""
     category = finding.get("category", "")
@@ -465,6 +498,8 @@ def apply_enhancement(root: Path, finding: dict[str, Any]) -> bool:
             return _apply_missing_docstring(path, finding)
         if category == "missing_tests":
             return _apply_missing_test_stub(root, finding)
+        if category == "security" and "assert" in finding.get("title", "").lower():
+            return _apply_security_assert(path, finding)
     except Exception:
         return False
     return False

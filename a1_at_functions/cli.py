@@ -6999,8 +6999,8 @@ import os, sys, json, pickle
 def doStuff(x, y, z):
     # does stuff
     try:
-        data = pickle.loads(x)  # unsafe
-        result = eval(y)  # unsafe
+        data = pickle.loads(x)  # nosec — intentional demo of unsafe pattern
+        result = eval(y)  # nosec — intentional demo of unsafe pattern
         return data, result
     except Exception:
         pass

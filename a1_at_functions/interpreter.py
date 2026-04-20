@@ -1738,7 +1738,7 @@ def quick_project_scan(path: Path) -> dict:
 
     # Security scan — cap at 200 files to stay fast
     security_findings = 0
-    _sec_patterns = (b"eval(", b"exec(", b"shell=True")
+    _sec_patterns = (b"eval(", b"exec(", b"shell=True")  # nosec — byte patterns for detection
     for pyf in py_source_files[:200]:
         try:
             raw = pyf.read_bytes()

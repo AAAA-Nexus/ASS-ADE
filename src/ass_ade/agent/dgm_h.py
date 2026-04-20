@@ -155,9 +155,9 @@ class DGMH:
         violations: list[str] = []
         low = (patch.diff or "").lower()
         for needle in (
-            "eval(", "exec(", "__import__", "pickle.load", "pickle.loads",
-            "shell=true", "os.system(", "subprocess.popen", "compile(",
-            "yaml.load(", "marshal.load",
+            "eval(", "exec(", "__import__", "pickle.load", "pickle.loads",  # nosec
+            "shell=true", "os.system(", "subprocess.popen", "compile(",  # nosec
+            "yaml.load(", "marshal.load",  # nosec
         ):
             if needle in low:
                 violations.append(f"forbidden:{needle}")

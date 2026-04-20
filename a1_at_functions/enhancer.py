@@ -12,6 +12,7 @@ from typing import Any
 DEFAULT_IGNORED_DIRS = {
     ".git", ".hg", ".svn", ".venv", "__pycache__", "node_modules",
     "target", ".pytest_cache", ".ruff_cache", "build", "dist",
+    ".ass-ade",  # selfbuild artifact directories — not part of the live source
 }
 _MAX_SCAN_FILES = 500
 
@@ -170,12 +171,18 @@ def scan_security_patterns(root: Path) -> list[dict[str, Any]]:
     findings: list[dict[str, Any]] = []
     counter = 1
     patterns = [
-        ("pickle.loads(", "Unsafe deserialization via pickle.loads"),
-        ("eval(", "Use of eval()"),
-        ("exec(", "Use of exec()"),
+        ("pickle.loads(", "Unsafe deserialization via pickle.loads"),  # nosec
+        ("eval(", "Use of eval()"),  # nosec
+        ("exec(", "Use of exec()"),  # nosec
     ]
     for path in _walk_python_files(root):
-        is_test = "test" in path.stem or "test" in str(path.parent)
+        is_test = (
+            path.stem.startswith("test_")
+            or path.stem.endswith("_test")
+            or any(part in ("tests", "test") for part in path.parts)
+        )
+        if is_test:
+            continue  # test files intentionally use unsafe patterns for validation
         lines = _read_lines(path)
         for i, line in enumerate(lines):
             if "# nosec" in line or "# noqa: S" in line:

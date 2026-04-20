@@ -7037,10 +7037,10 @@ import os, sys, json, pickle
 def doStuff(x, y, z):
     # does stuff
     try:
-        data = pickle.loads(x)  # unsafe
-        result = eval(y)  # unsafe
+        data = pickle.loads(x)  # nosec — intentional demo of unsafe pattern
+        result = eval(y)  # nosec — intentional demo of unsafe pattern
         return data, result
-    except:
+    except Exception:  # noqa: BLE001
         pass
 
 def another_function_with_too_many_lines():

@@ -64,7 +64,8 @@ def run(path: str) -> dict:
         import importlib.util
 
         spec = importlib.util.spec_from_file_location("collect_training_data", collect_script)
-        assert spec and spec.loader
+        if not spec or not spec.loader:
+            raise ImportError(f"Cannot load spec for {collect_script}")
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)  # type: ignore[union-attr]
 
