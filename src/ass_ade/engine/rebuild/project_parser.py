@@ -27,7 +27,6 @@ EXCLUDED_DIRS = {
     ".ass-ade", ".atomadic", ".claude", ".cursor", ".github", ".vscode",
     "a0_qk_constants", "a1_at_functions", "a2_mo_composites",
     "a3_og_features", "a4_sy_orchestration",
-    "mo_engines", "og_swarm", "sy_manifold",
 }
 MAX_FILE_BYTES = 750_000
 

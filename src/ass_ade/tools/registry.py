@@ -79,9 +79,6 @@ _ROOT_MONADIC_DIRS = (
     "a2_mo_composites",
     "a3_og_features",
     "a4_sy_orchestration",
-    "mo_engines",
-    "og_swarm",
-    "sy_manifold",
 )
 
 

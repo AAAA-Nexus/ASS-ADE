@@ -184,9 +184,6 @@ _MONADIC_TIERS: dict[str, str] = {
     "a2_mo_composites": "ASS-ADE mo composites tier",
     "a3_og_features": "ASS-ADE og features tier",
     "a4_sy_orchestration": "ASS-ADE sy orchestration tier",
-    "mo_engines": "Monadic engine layer",
-    "og_swarm": "Organism swarm layer",
-    "sy_manifold": "System manifold layer",
 }
 
 

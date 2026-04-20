@@ -43,8 +43,6 @@ code that satisfies a component specification inside a tier-partitioned codebase
 - `tier`, `ratchet_period`, `min_distance`, `checksum`, `trust_threshold`,
   `block_dim`, `residual_normalized`.
 
-Do NOT emit any internal research vocabulary (`47-epoch drift`, `v18 pillar`,
-`DGM-H`, `G23`, `Lean4`, `ProofBridge`, `Leech`, `Monster`, `Golay`, `kissing
-number`). These are banned in public-surface code.
+Do NOT emit any sovereign invariant terms, codex-derived constants, or internal mathematical identifiers. These are banned in public-surface code.
 
 Now read the specific prompt below and emit the body.

@@ -4009,7 +4009,7 @@ def eco_scan(
     # ── External script path (when atomadic-ecosystem is installed) ───────────
     _eco_root = os.environ.get("ATOMADIC_ECOSYSTEM_ROOT", "")
     if _eco_root:
-        _eco_script = Path(_eco_root) / "sy_manifold" / "sy_eco_scan.py"
+        _eco_script = Path(_eco_root) / "a4_sy_orchestration" / "sy_eco_scan.py"
         if _eco_script.exists():
             cmd: list[str] = [_sys.executable, str(_eco_script), str(target)]
             if json_out:
