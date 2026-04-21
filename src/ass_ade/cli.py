@@ -6307,6 +6307,117 @@ def docs_command(
     console.print(f"\n[green][OK][/green] {len(written)} docs written to {out}")
 
 
+@app.command("transpile")
+def transpile_command(
+    path: Path = typer.Argument(..., help="File or directory of foreign-language sources."),
+    output: Path = typer.Option(
+        Path("transpiled"),
+        "--output",
+        "-o",
+        help="Output directory (for tree) or output file (for single file).",
+    ),
+    language: str | None = typer.Option(
+        None,
+        "--language",
+        "-l",
+        help="Force a specific source language (swift|typescript|kotlin|rust|python).",
+    ),
+    only: str | None = typer.Option(
+        None,
+        help="Comma-separated allow-list of languages when walking a directory.",
+    ),
+    json_out: bool = typer.Option(False, "--json", help="Print summary as JSON."),
+    verbose: bool = typer.Option(False, "-v", "--verbose", help="Show per-file results."),
+) -> None:
+    """Multi-language transpile: Swift / TypeScript / Kotlin / Rust -> Python.
+
+    Closes the gap exposed by the ASS-CLAW merge, where non-Python sources
+    produced JSON blueprints instead of runnable Python. Each foreign file
+    yields a Python module with function signatures, class scaffolds, and
+    the original body preserved as a comment block so human reviewers can
+    fill in the implementation.
+
+    Examples:
+        ass-ade transpile ./ios/Models.swift -o ./py_mirror
+        ass-ade transpile ./frontend/src --only typescript
+        ass-ade transpile ./rust_crate -o ./out --json
+    """
+    from ass_ade.engine.transpile import (
+        TranspileError,
+        detect_language,
+        transpile_file,
+        transpile_tree,
+    )
+
+    src = path.expanduser().resolve()
+    if not src.exists():
+        console.print(f"[red]error[/red] path not found: {src}")
+        raise typer.Exit(code=2)
+
+    summaries: list[dict[str, object]] = []
+
+    try:
+        if src.is_file():
+            out_file = output if output.suffix == ".py" else output / (src.stem + ".py")
+            result = transpile_file(src, output_path=out_file, language=language)
+            summaries.append(
+                {
+                    "source": str(src),
+                    "output": str(out_file),
+                    "language": result.source_language,
+                    "backend": result.backend,
+                    "functions": len(result.functions),
+                    "classes": len(result.classes),
+                    "imports": len(result.imports),
+                    "warnings": list(result.warnings),
+                }
+            )
+        else:
+            languages_tuple = (
+                tuple(l.strip() for l in only.split(",") if l.strip()) if only else None
+            )
+            results = transpile_tree(src, output_root=output, languages=languages_tuple)
+            for rel, r in results.items():
+                summaries.append(
+                    {
+                        "source": rel,
+                        "language": r.source_language,
+                        "backend": r.backend,
+                        "functions": len(r.functions),
+                        "classes": len(r.classes),
+                        "imports": len(r.imports),
+                        "warnings": list(r.warnings),
+                    }
+                )
+    except TranspileError as exc:
+        console.print(f"[red]error[/red] {exc}")
+        raise typer.Exit(code=1) from exc
+
+    if json_out:
+        import json as _json
+
+        console.print(_json.dumps(summaries, indent=2))
+        return
+
+    total = len(summaries)
+    by_lang: dict[str, int] = {}
+    for s in summaries:
+        lang_key = str(s["language"])
+        by_lang[lang_key] = by_lang.get(lang_key, 0) + 1
+
+    console.print(f"[green][OK][/green] transpiled {total} file(s) -> {output}")
+    for lang, count in sorted(by_lang.items()):
+        console.print(f"  {lang}: {count}")
+
+    if verbose:
+        for s in summaries:
+            warn = f" [yellow]{len(s['warnings'])} warnings[/yellow]" if s["warnings"] else ""
+            console.print(
+                f"  [dim]{s['language']}[/dim] {s['source']} "
+                f"(functions={s['functions']}, classes={s['classes']}){warn}"
+            )
+
+
 @app.command("lint")
 def lint_command(
     path: Path = typer.Argument(Path("."), help="Folder to lint."),
