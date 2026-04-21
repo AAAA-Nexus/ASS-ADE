@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ass-ade"
-version = "0.1.0"
+version = "0.1.1"
 description = "Autonomous Sovereign System: Atomadic Development Environment (ASS-ADE)"
 requires-python = ">=3.11"
 dependencies = [
