@@ -1,0 +1,101 @@
+{
+  "schemaVersion": "atomadic.context-pack.v1",
+  "generatedAt": "2026-04-20T02:53:00Z",
+  "intent": {
+    "summary": "Make the emitted consumer workspace `!ass-ade-dev` fully functional out-of-the-box: correct declared runtime deps, editable/wheel install, CLI entrypoint, and documented verification; align with canonical `!ass-ade` rebuild emitter where drift occurs.",
+    "deliverables": [
+      "`pyproject.toml` declares all imports reachable from `ass_ade.cli` on a clean venv",
+      "`python -m venv .venv && pip install -e . && ass-ade --help` succeeds without PYTHONPATH",
+      "Document emitter hot paths and re-emit workflow so future regenerations do not drop deps",
+      "Optional follow-up: copy or smoke-test subset from canonical `tests/` into emitted dev (not in current emitter)"
+    ]
+  },
+  "paths": {
+    "repoRoot": "C:\\!aaaa-nexus\\!ass-ade",
+    "packDir": "C:\\!aaaa-nexus\\!ass-ade\\.ass-ade\\context-packs\\ass-ade-dev-fully-functional-20260420-0253",
+    "consumerRoot": "C:\\!aaaa-nexus\\!ass-ade-dev"
+  },
+  "repoMap": {
+    "tierMap": ".ass-ade/tier-map.json",
+    "tiersSampled": ["a0", "a1", "a2", "a3", "a4"],
+    "hotPaths": [
+      "src/ass_ade/engine/rebuild/package_emitter.py — `_DEFAULT_PYPROJECT_DEPS`, `emit_runnable_package` (a2)",
+      "src/ass_ade/engine/rebuild/orchestrator.py — rebuild pipeline, calls emitter (a3)",
+      "src/ass_ade/cli.py — Typer app, imports `ass_ade.mcp.utils` (a4)",
+      "src/ass_ade/mcp/utils.py — `jsonschema` at import time (a1)"
+    ],
+    "testsAndCommands": [
+      "Canonical: `cd C:\\!aaaa-nexus\\!ass-ade && pytest` (subset: tests touching rebuild if time-boxed)",
+      "Consumer OOTB: `cd C:\\!aaaa-nexus\\!ass-ade-dev && python -m venv .venv && .venv\\Scripts\\pip install -e . && .venv\\Scripts\\ass-ade --help`",
+      "Wheel: `python -m build` or `hatch build` from `!ass-ade-dev` when build tool present"
+    ]
+  },
+  "webResearch": {
+    "hops": [
+      {
+        "id": "H1-hatch-multi-package",
+        "queries": [
+          "Hatchling wheel packages multiple top-level packages pyproject.toml"
+        ],
+        "findingSummary": "Hatch documents `[tool.hatch.build.targets.wheel]` with explicit `packages = [...]` for non-default layouts; editable installs use wheel target selection for path setup.",
+        "verificationEvidence": {
+          "kind": "path",
+          "ref": "C:\\!aaaa-nexus\\!ass-ade-dev\\pyproject.toml",
+          "note": "Consumer already lists ass_ade + a0–a4 under hatch wheel packages; matches Hatch docs pattern."
+        }
+      },
+      {
+        "id": "H1b-mcp-agent-benchmarks",
+        "queries": [
+          "arXiv MCP tool calling agents benchmark 2025 2026"
+        ],
+        "findingSummary": "Recent arXiv work (e.g. MCPAgentBench, MCPToolBench++, MCPMark) stresses realistic multi-step MCP tool use and retrieval under large tool catalogs—relevant to why `ass_ade.cli` wires MCP helpers and payload validation early in the import graph.",
+        "verificationEvidence": {
+          "kind": "DEFER",
+          "ref": "https://arxiv.org/abs/2512.24565",
+          "note": "Literature claim only; no local benchmark reproduction in this pack."
+        }
+      }
+    ],
+    "sources": [
+      "https://hatch.pypa.io/latest/config/build/#packages",
+      "https://arxiv.org/abs/2512.24565",
+      "https://arxiv.org/abs/2508.07575",
+      "https://peps.python.org/pep-0660/"
+    ]
+  },
+  "techDocs": {
+    "stackFingerprint": {
+      "python": ">=3.11",
+      "buildBackend": "hatchling",
+      "cli": "typer",
+      "http": "httpx",
+      "models": "pydantic",
+      "terminal": "rich",
+      "env": "python-dotenv",
+      "validation": "jsonschema>=4.23,<5"
+    },
+    "deliverableScopes": [
+      {
+        "deliverable": "Editable install + CLI",
+        "officialRefs": [
+          "https://pip.pypa.io/en/stable/topics/local-project-installs/#editable-installs",
+          "https://hatch.pypa.io/latest/config/build/#dev-mode"
+        ]
+      },
+      {
+        "deliverable": "Wheel contents for multi top-level dirs",
+        "officialRefs": [
+          "https://hatch.pypa.io/latest/config/build/#packages"
+        ]
+      }
+    ]
+  },
+  "risksAndGaps": [
+    "Emitted `!ass-ade-dev` can drift from canonical `package_emitter._DEFAULT_PYPROJECT_DEPS` if root `pyproject.toml` is not regenerated after emitter changes (jsonschema was present in vendored emitter but missing from consumer root deps until this session).",
+    "No `tests/` directory in `!ass-ade-dev`; CI cannot mirror canonical pytest without emitter/orchestrator extension.",
+    "sdist vs wheel: Hatch `packages` is wheel-oriented; sdist file selection may need explicit `include` if publishing to PyPI (see Hatch issues on global vs target tables).",
+    "AAAA-Nexus and MCP runtime behavior still require valid keys and network; OOTB here means import/install/CLI only."
+  ],
+  "verdict": "PASS"
+}

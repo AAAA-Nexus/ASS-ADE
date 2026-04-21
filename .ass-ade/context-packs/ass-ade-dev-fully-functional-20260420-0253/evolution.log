@@ -1,0 +1,1 @@
+2026-04-20T02:53:00Z scope=ass-ade-dev-ootb note=Confirmed jsonschema drift root pyproject vs emitter; patched consumer deps; smoke venv PASS

@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "ass-ade.github-evolution-control.v1",
+  "global": {
+    "evolutionBranchPrefix": "auto-evolve/",
+    "maxOpenEvolutionPrs": 8,
+    "denyCommitPathPrefixes": [
+      ".ass-ade/builds/",
+      ".ass-ade/selfbuild/"
+    ]
+  },
+  "lanes": {
+    "cycle": {
+      "enabled": true,
+      "branchPrefix": "auto-evolve/",
+      "maxOpenPrsForLane": null
+    },
+    "quality": {
+      "enabled": true,
+      "branchPrefix": "auto-evolve/quality",
+      "maxOpenPrsForLane": 3
+    },
+    "security": {
+      "enabled": true,
+      "branchPrefix": "auto-evolve/security",
+      "maxOpenPrsForLane": 2
+    },
+    "performance": {
+      "enabled": true,
+      "branchPrefix": "auto-evolve/performance",
+      "maxOpenPrsForLane": 2
+    },
+    "features": {
+      "enabled": true,
+      "branchPrefix": "auto-evolve/features",
+      "maxOpenPrsForLane": 3
+    }
+  }
+}

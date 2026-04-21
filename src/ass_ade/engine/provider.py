@@ -39,10 +39,14 @@ class OpenAICompatibleProvider:
         model: str = "gpt-4o",
         timeout: float = 120.0,
         completions_path: str = "/chat/completions",
+        auth_scheme: str = "bearer",
     ) -> None:
         headers: dict[str, str] = {"Content-Type": "application/json"}
         if api_key:
-            headers["Authorization"] = f"Bearer {api_key}"
+            if auth_scheme == "x-api-key":
+                headers["x-api-key"] = api_key
+            else:
+                headers["Authorization"] = f"Bearer {api_key}"
         self._client = httpx.Client(
             base_url=base_url.rstrip("/"),
             headers=headers,

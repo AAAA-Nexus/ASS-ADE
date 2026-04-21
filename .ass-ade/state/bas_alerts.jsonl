@@ -1,0 +1,372 @@
+{"kind": "delegation_depth_breach", "severity": "high", "payload": {"depth": 34, "limit": 32}, "ts": "2026-04-20T13:08:18.211626+00:00", "cooldown_skipped": false}
+{"kind": "delegation_depth_breach", "severity": "high", "payload": {"depth": 33, "limit": 32}, "ts": "2026-04-20T13:08:18.308433+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.8}, "ts": "2026-04-20T13:09:25.341683+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T13:09:25.354786+00:00", "cooldown_skipped": false}
+{"kind": "novelty_spike", "severity": "medium", "payload": {"novelty": 0.9}, "ts": "2026-04-20T13:09:25.355615+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.1}, "ts": "2026-04-20T13:09:25.356301+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {"budget_pct": 0.95}, "ts": "2026-04-20T13:09:25.356920+00:00", "cooldown_skipped": false}
+{"kind": "capability_gap", "severity": "medium", "payload": {"missing_capabilities": ["llm", "search"]}, "ts": "2026-04-20T13:09:25.368339+00:00", "cooldown_skipped": false}
+{"kind": "quality_regression", "severity": "medium", "payload": {"score_delta": -0.5}, "ts": "2026-04-20T13:09:25.379365+00:00", "cooldown_skipped": false}
+{"kind": "loop_detected", "severity": "medium", "payload": {"tool_repeat_count": 5}, "ts": "2026-04-20T13:09:25.392161+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T13:09:25.403895+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T13:09:25.415075+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T13:09:25.425365+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.1}, "ts": "2026-04-20T13:09:25.426336+00:00", "cooldown_skipped": false}
+{"kind": "gvu_jump", "severity": "high", "payload": {"gvu_delta": 0.5}, "ts": "2026-04-20T13:09:25.438334+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {}, "ts": "2026-04-20T13:09:25.469903+00:00", "cooldown_skipped": false}
+{"kind": "gvu_jump", "severity": "high", "payload": {}, "ts": "2026-04-20T13:09:25.470573+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {}, "ts": "2026-04-20T13:09:25.471295+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {}, "ts": "2026-04-20T13:09:25.471965+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T13:09:25.483541+00:00", "cooldown_skipped": false}
+{"kind": "loop_detected", "severity": "medium", "payload": {"tool_repeat_count": 4}, "ts": "2026-04-20T13:09:25.658812+00:00", "cooldown_skipped": false}
+{"kind": "novelty_spike", "severity": "medium", "payload": {"novelty": 0.8}, "ts": "2026-04-20T13:09:25.928850+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.05}, "ts": "2026-04-20T13:09:26.465848+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {"budget_pct": 0.99}, "ts": "2026-04-20T13:09:26.466410+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.8}, "ts": "2026-04-20T13:38:20.686788+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T13:38:20.696704+00:00", "cooldown_skipped": false}
+{"kind": "novelty_spike", "severity": "medium", "payload": {"novelty": 0.9}, "ts": "2026-04-20T13:38:20.697647+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.1}, "ts": "2026-04-20T13:38:20.698755+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {"budget_pct": 0.95}, "ts": "2026-04-20T13:38:20.699358+00:00", "cooldown_skipped": false}
+{"kind": "capability_gap", "severity": "medium", "payload": {"missing_capabilities": ["llm", "search"]}, "ts": "2026-04-20T13:38:20.708420+00:00", "cooldown_skipped": false}
+{"kind": "quality_regression", "severity": "medium", "payload": {"score_delta": -0.5}, "ts": "2026-04-20T13:38:20.718732+00:00", "cooldown_skipped": false}
+{"kind": "loop_detected", "severity": "medium", "payload": {"tool_repeat_count": 5}, "ts": "2026-04-20T13:38:20.728341+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T13:38:20.737552+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T13:38:20.747195+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T13:38:20.757176+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.1}, "ts": "2026-04-20T13:38:20.757753+00:00", "cooldown_skipped": false}
+{"kind": "gvu_jump", "severity": "high", "payload": {"gvu_delta": 0.5}, "ts": "2026-04-20T13:38:20.766610+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {}, "ts": "2026-04-20T13:38:20.791142+00:00", "cooldown_skipped": false}
+{"kind": "gvu_jump", "severity": "high", "payload": {}, "ts": "2026-04-20T13:38:20.791824+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {}, "ts": "2026-04-20T13:38:20.792324+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {}, "ts": "2026-04-20T13:38:20.792810+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T13:38:20.804042+00:00", "cooldown_skipped": false}
+{"kind": "loop_detected", "severity": "medium", "payload": {"tool_repeat_count": 4}, "ts": "2026-04-20T13:38:20.911297+00:00", "cooldown_skipped": false}
+{"kind": "novelty_spike", "severity": "medium", "payload": {"novelty": 0.8}, "ts": "2026-04-20T13:38:21.144562+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.05}, "ts": "2026-04-20T13:38:21.615546+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {"budget_pct": 0.99}, "ts": "2026-04-20T13:38:21.616024+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.8}, "ts": "2026-04-20T13:39:19.789373+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T13:39:19.801760+00:00", "cooldown_skipped": false}
+{"kind": "novelty_spike", "severity": "medium", "payload": {"novelty": 0.9}, "ts": "2026-04-20T13:39:19.802189+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.1}, "ts": "2026-04-20T13:39:19.802744+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {"budget_pct": 0.95}, "ts": "2026-04-20T13:39:19.803273+00:00", "cooldown_skipped": false}
+{"kind": "capability_gap", "severity": "medium", "payload": {"missing_capabilities": ["llm", "search"]}, "ts": "2026-04-20T13:39:19.815252+00:00", "cooldown_skipped": false}
+{"kind": "quality_regression", "severity": "medium", "payload": {"score_delta": -0.5}, "ts": "2026-04-20T13:39:19.828018+00:00", "cooldown_skipped": false}
+{"kind": "loop_detected", "severity": "medium", "payload": {"tool_repeat_count": 5}, "ts": "2026-04-20T13:39:19.837873+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T13:39:19.848854+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T13:39:19.862231+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T13:39:19.871756+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.1}, "ts": "2026-04-20T13:39:19.872521+00:00", "cooldown_skipped": false}
+{"kind": "gvu_jump", "severity": "high", "payload": {"gvu_delta": 0.5}, "ts": "2026-04-20T13:39:19.885874+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {}, "ts": "2026-04-20T13:39:19.911412+00:00", "cooldown_skipped": false}
+{"kind": "gvu_jump", "severity": "high", "payload": {}, "ts": "2026-04-20T13:39:19.912023+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {}, "ts": "2026-04-20T13:39:19.912537+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {}, "ts": "2026-04-20T13:39:19.913042+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T13:39:19.924703+00:00", "cooldown_skipped": false}
+{"kind": "loop_detected", "severity": "medium", "payload": {"tool_repeat_count": 4}, "ts": "2026-04-20T13:39:20.041444+00:00", "cooldown_skipped": false}
+{"kind": "novelty_spike", "severity": "medium", "payload": {"novelty": 0.8}, "ts": "2026-04-20T13:39:20.233151+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.05}, "ts": "2026-04-20T13:39:20.730359+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {"budget_pct": 0.99}, "ts": "2026-04-20T13:39:20.730811+00:00", "cooldown_skipped": false}
+{"kind": "delegation_depth_breach", "severity": "high", "payload": {"depth": 34, "limit": 32}, "ts": "2026-04-20T13:40:01.890213+00:00", "cooldown_skipped": false}
+{"kind": "delegation_depth_breach", "severity": "high", "payload": {"depth": 33, "limit": 32}, "ts": "2026-04-20T13:40:01.992343+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.8}, "ts": "2026-04-20T13:40:58.469991+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T13:40:58.482679+00:00", "cooldown_skipped": false}
+{"kind": "novelty_spike", "severity": "medium", "payload": {"novelty": 0.9}, "ts": "2026-04-20T13:40:58.484039+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.1}, "ts": "2026-04-20T13:40:58.484897+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {"budget_pct": 0.95}, "ts": "2026-04-20T13:40:58.485704+00:00", "cooldown_skipped": false}
+{"kind": "capability_gap", "severity": "medium", "payload": {"missing_capabilities": ["llm", "search"]}, "ts": "2026-04-20T13:40:58.497859+00:00", "cooldown_skipped": false}
+{"kind": "quality_regression", "severity": "medium", "payload": {"score_delta": -0.5}, "ts": "2026-04-20T13:40:58.513746+00:00", "cooldown_skipped": false}
+{"kind": "loop_detected", "severity": "medium", "payload": {"tool_repeat_count": 5}, "ts": "2026-04-20T13:40:58.525841+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T13:40:58.536058+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T13:40:58.549555+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T13:40:58.562734+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.1}, "ts": "2026-04-20T13:40:58.563152+00:00", "cooldown_skipped": false}
+{"kind": "gvu_jump", "severity": "high", "payload": {"gvu_delta": 0.5}, "ts": "2026-04-20T13:40:58.571968+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {}, "ts": "2026-04-20T13:40:58.607082+00:00", "cooldown_skipped": false}
+{"kind": "gvu_jump", "severity": "high", "payload": {}, "ts": "2026-04-20T13:40:58.607533+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {}, "ts": "2026-04-20T13:40:58.608206+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {}, "ts": "2026-04-20T13:40:58.608686+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T13:40:58.621778+00:00", "cooldown_skipped": false}
+{"kind": "loop_detected", "severity": "medium", "payload": {"tool_repeat_count": 4}, "ts": "2026-04-20T13:40:58.731409+00:00", "cooldown_skipped": false}
+{"kind": "novelty_spike", "severity": "medium", "payload": {"novelty": 0.8}, "ts": "2026-04-20T13:40:58.989053+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.05}, "ts": "2026-04-20T13:40:59.437622+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {"budget_pct": 0.99}, "ts": "2026-04-20T13:40:59.437939+00:00", "cooldown_skipped": false}
+{"kind": "delegation_depth_breach", "severity": "high", "payload": {"depth": 34, "limit": 32}, "ts": "2026-04-20T13:41:37.240005+00:00", "cooldown_skipped": false}
+{"kind": "delegation_depth_breach", "severity": "high", "payload": {"depth": 33, "limit": 32}, "ts": "2026-04-20T13:41:37.345743+00:00", "cooldown_skipped": false}
+{"kind": "delegation_depth_breach", "severity": "high", "payload": {"depth": 34, "limit": 32}, "ts": "2026-04-20T13:42:34.337950+00:00", "cooldown_skipped": false}
+{"kind": "delegation_depth_breach", "severity": "high", "payload": {"depth": 33, "limit": 32}, "ts": "2026-04-20T13:42:34.417365+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.8}, "ts": "2026-04-20T16:58:30.478052+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T16:58:30.487051+00:00", "cooldown_skipped": false}
+{"kind": "novelty_spike", "severity": "medium", "payload": {"novelty": 0.9}, "ts": "2026-04-20T16:58:30.487051+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.1}, "ts": "2026-04-20T16:58:30.487051+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {"budget_pct": 0.95}, "ts": "2026-04-20T16:58:30.488052+00:00", "cooldown_skipped": false}
+{"kind": "capability_gap", "severity": "medium", "payload": {"missing_capabilities": ["llm", "search"]}, "ts": "2026-04-20T16:58:30.501296+00:00", "cooldown_skipped": false}
+{"kind": "quality_regression", "severity": "medium", "payload": {"score_delta": -0.5}, "ts": "2026-04-20T16:58:30.509296+00:00", "cooldown_skipped": false}
+{"kind": "loop_detected", "severity": "medium", "payload": {"tool_repeat_count": 5}, "ts": "2026-04-20T16:58:30.519304+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T16:58:30.532304+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T16:58:30.541447+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T16:58:30.550158+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.1}, "ts": "2026-04-20T16:58:30.551158+00:00", "cooldown_skipped": false}
+{"kind": "gvu_jump", "severity": "high", "payload": {"gvu_delta": 0.5}, "ts": "2026-04-20T16:58:30.560632+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {}, "ts": "2026-04-20T16:58:30.581866+00:00", "cooldown_skipped": false}
+{"kind": "gvu_jump", "severity": "high", "payload": {}, "ts": "2026-04-20T16:58:30.582867+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {}, "ts": "2026-04-20T16:58:30.582867+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {}, "ts": "2026-04-20T16:58:30.583867+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T16:58:30.595935+00:00", "cooldown_skipped": false}
+{"kind": "loop_detected", "severity": "medium", "payload": {"tool_repeat_count": 4}, "ts": "2026-04-20T16:58:30.692267+00:00", "cooldown_skipped": false}
+{"kind": "novelty_spike", "severity": "medium", "payload": {"novelty": 0.8}, "ts": "2026-04-20T16:58:30.963511+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.05}, "ts": "2026-04-20T16:58:31.371812+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {"budget_pct": 0.99}, "ts": "2026-04-20T16:58:31.371812+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.8}, "ts": "2026-04-20T17:00:27.415777+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T17:00:27.415777+00:00", "cooldown_skipped": false}
+{"kind": "novelty_spike", "severity": "medium", "payload": {"novelty": 0.9}, "ts": "2026-04-20T17:00:27.415777+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.1}, "ts": "2026-04-20T17:00:27.431466+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {"budget_pct": 0.95}, "ts": "2026-04-20T17:00:27.431466+00:00", "cooldown_skipped": false}
+{"kind": "capability_gap", "severity": "medium", "payload": {"missing_capabilities": ["llm", "search"]}, "ts": "2026-04-20T17:00:27.431466+00:00", "cooldown_skipped": false}
+{"kind": "quality_regression", "severity": "medium", "payload": {"score_delta": -0.5}, "ts": "2026-04-20T17:00:27.447559+00:00", "cooldown_skipped": false}
+{"kind": "loop_detected", "severity": "medium", "payload": {"tool_repeat_count": 5}, "ts": "2026-04-20T17:00:27.462706+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T17:00:27.470435+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T17:00:27.470435+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T17:00:27.485934+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.1}, "ts": "2026-04-20T17:00:27.485934+00:00", "cooldown_skipped": false}
+{"kind": "gvu_jump", "severity": "high", "payload": {"gvu_delta": 0.5}, "ts": "2026-04-20T17:00:27.485934+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {}, "ts": "2026-04-20T17:00:27.518754+00:00", "cooldown_skipped": false}
+{"kind": "gvu_jump", "severity": "high", "payload": {}, "ts": "2026-04-20T17:00:27.518754+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {}, "ts": "2026-04-20T17:00:27.518754+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {}, "ts": "2026-04-20T17:00:27.518754+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T17:00:27.533870+00:00", "cooldown_skipped": false}
+{"kind": "loop_detected", "severity": "medium", "payload": {"tool_repeat_count": 4}, "ts": "2026-04-20T17:00:27.630879+00:00", "cooldown_skipped": false}
+{"kind": "novelty_spike", "severity": "medium", "payload": {"novelty": 0.8}, "ts": "2026-04-20T17:00:27.810032+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.05}, "ts": "2026-04-20T17:00:28.193049+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {"budget_pct": 0.99}, "ts": "2026-04-20T17:00:28.193049+00:00", "cooldown_skipped": false}
+{"kind": "delegation_depth_breach", "severity": "high", "payload": {"depth": 34, "limit": 32}, "ts": "2026-04-20T17:01:12.350286+00:00", "cooldown_skipped": false}
+{"kind": "delegation_depth_breach", "severity": "high", "payload": {"depth": 33, "limit": 32}, "ts": "2026-04-20T17:01:12.435688+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.8}, "ts": "2026-04-20T17:01:51.663453+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T17:01:51.675743+00:00", "cooldown_skipped": false}
+{"kind": "novelty_spike", "severity": "medium", "payload": {"novelty": 0.9}, "ts": "2026-04-20T17:01:51.675743+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.1}, "ts": "2026-04-20T17:01:51.675743+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {"budget_pct": 0.95}, "ts": "2026-04-20T17:01:51.676769+00:00", "cooldown_skipped": false}
+{"kind": "capability_gap", "severity": "medium", "payload": {"missing_capabilities": ["llm", "search"]}, "ts": "2026-04-20T17:01:51.685699+00:00", "cooldown_skipped": false}
+{"kind": "quality_regression", "severity": "medium", "payload": {"score_delta": -0.5}, "ts": "2026-04-20T17:01:51.701789+00:00", "cooldown_skipped": false}
+{"kind": "loop_detected", "severity": "medium", "payload": {"tool_repeat_count": 5}, "ts": "2026-04-20T17:01:51.710796+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T17:01:51.717628+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T17:01:51.735006+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T17:01:51.744535+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.1}, "ts": "2026-04-20T17:01:51.744535+00:00", "cooldown_skipped": false}
+{"kind": "gvu_jump", "severity": "high", "payload": {"gvu_delta": 0.5}, "ts": "2026-04-20T17:01:51.758068+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {}, "ts": "2026-04-20T17:01:51.773722+00:00", "cooldown_skipped": false}
+{"kind": "gvu_jump", "severity": "high", "payload": {}, "ts": "2026-04-20T17:01:51.773722+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {}, "ts": "2026-04-20T17:01:51.773722+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {}, "ts": "2026-04-20T17:01:51.773722+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T17:01:51.794736+00:00", "cooldown_skipped": false}
+{"kind": "loop_detected", "severity": "medium", "payload": {"tool_repeat_count": 4}, "ts": "2026-04-20T17:01:51.884300+00:00", "cooldown_skipped": false}
+{"kind": "novelty_spike", "severity": "medium", "payload": {"novelty": 0.8}, "ts": "2026-04-20T17:01:52.085188+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.05}, "ts": "2026-04-20T17:01:52.467857+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {"budget_pct": 0.99}, "ts": "2026-04-20T17:01:52.467857+00:00", "cooldown_skipped": false}
+{"kind": "delegation_depth_breach", "severity": "high", "payload": {"depth": 34, "limit": 32}, "ts": "2026-04-20T17:02:41.291916+00:00", "cooldown_skipped": false}
+{"kind": "delegation_depth_breach", "severity": "high", "payload": {"depth": 33, "limit": 32}, "ts": "2026-04-20T17:02:41.384748+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.8}, "ts": "2026-04-20T17:03:27.982505+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T17:03:27.982505+00:00", "cooldown_skipped": false}
+{"kind": "novelty_spike", "severity": "medium", "payload": {"novelty": 0.9}, "ts": "2026-04-20T17:03:27.982505+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.1}, "ts": "2026-04-20T17:03:27.982505+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {"budget_pct": 0.95}, "ts": "2026-04-20T17:03:27.998312+00:00", "cooldown_skipped": false}
+{"kind": "capability_gap", "severity": "medium", "payload": {"missing_capabilities": ["llm", "search"]}, "ts": "2026-04-20T17:03:28.008941+00:00", "cooldown_skipped": false}
+{"kind": "quality_regression", "severity": "medium", "payload": {"score_delta": -0.5}, "ts": "2026-04-20T17:03:28.015716+00:00", "cooldown_skipped": false}
+{"kind": "loop_detected", "severity": "medium", "payload": {"tool_repeat_count": 5}, "ts": "2026-04-20T17:03:28.031455+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T17:03:28.047338+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T17:03:28.058067+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T17:03:28.068820+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.1}, "ts": "2026-04-20T17:03:28.068820+00:00", "cooldown_skipped": false}
+{"kind": "gvu_jump", "severity": "high", "payload": {"gvu_delta": 0.5}, "ts": "2026-04-20T17:03:28.069820+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {}, "ts": "2026-04-20T17:03:28.101753+00:00", "cooldown_skipped": false}
+{"kind": "gvu_jump", "severity": "high", "payload": {}, "ts": "2026-04-20T17:03:28.101753+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {}, "ts": "2026-04-20T17:03:28.101753+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {}, "ts": "2026-04-20T17:03:28.101753+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T17:03:28.115280+00:00", "cooldown_skipped": false}
+{"kind": "loop_detected", "severity": "medium", "payload": {"tool_repeat_count": 4}, "ts": "2026-04-20T17:03:28.260445+00:00", "cooldown_skipped": false}
+{"kind": "novelty_spike", "severity": "medium", "payload": {"novelty": 0.8}, "ts": "2026-04-20T17:03:28.558943+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.05}, "ts": "2026-04-20T17:03:29.062996+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {"budget_pct": 0.99}, "ts": "2026-04-20T17:03:29.062996+00:00", "cooldown_skipped": false}
+{"kind": "delegation_depth_breach", "severity": "high", "payload": {"depth": 34, "limit": 32}, "ts": "2026-04-20T17:04:14.619576+00:00", "cooldown_skipped": false}
+{"kind": "delegation_depth_breach", "severity": "high", "payload": {"depth": 33, "limit": 32}, "ts": "2026-04-20T17:04:14.747940+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.8}, "ts": "2026-04-20T18:30:05.073253+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T18:30:05.087271+00:00", "cooldown_skipped": false}
+{"kind": "novelty_spike", "severity": "medium", "payload": {"novelty": 0.9}, "ts": "2026-04-20T18:30:05.087271+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.1}, "ts": "2026-04-20T18:30:05.087271+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {"budget_pct": 0.95}, "ts": "2026-04-20T18:30:05.087271+00:00", "cooldown_skipped": false}
+{"kind": "capability_gap", "severity": "medium", "payload": {"missing_capabilities": ["llm", "search"]}, "ts": "2026-04-20T18:30:05.099678+00:00", "cooldown_skipped": false}
+{"kind": "quality_regression", "severity": "medium", "payload": {"score_delta": -0.5}, "ts": "2026-04-20T18:30:05.111178+00:00", "cooldown_skipped": false}
+{"kind": "loop_detected", "severity": "medium", "payload": {"tool_repeat_count": 5}, "ts": "2026-04-20T18:30:05.121930+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T18:30:05.133880+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T18:30:05.145724+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T18:30:05.156016+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.1}, "ts": "2026-04-20T18:30:05.156016+00:00", "cooldown_skipped": false}
+{"kind": "gvu_jump", "severity": "high", "payload": {"gvu_delta": 0.5}, "ts": "2026-04-20T18:30:05.167761+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {}, "ts": "2026-04-20T18:30:05.197036+00:00", "cooldown_skipped": false}
+{"kind": "gvu_jump", "severity": "high", "payload": {}, "ts": "2026-04-20T18:30:05.197036+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {}, "ts": "2026-04-20T18:30:05.199041+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {}, "ts": "2026-04-20T18:30:05.199041+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T18:30:05.213208+00:00", "cooldown_skipped": false}
+{"kind": "loop_detected", "severity": "medium", "payload": {"tool_repeat_count": 4}, "ts": "2026-04-20T18:30:05.384869+00:00", "cooldown_skipped": false}
+{"kind": "novelty_spike", "severity": "medium", "payload": {"novelty": 0.8}, "ts": "2026-04-20T18:30:05.766650+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.05}, "ts": "2026-04-20T18:30:06.379701+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {"budget_pct": 0.99}, "ts": "2026-04-20T18:30:06.379701+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.8}, "ts": "2026-04-20T18:31:09.660018+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T18:31:09.676025+00:00", "cooldown_skipped": false}
+{"kind": "novelty_spike", "severity": "medium", "payload": {"novelty": 0.9}, "ts": "2026-04-20T18:31:09.676025+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.1}, "ts": "2026-04-20T18:31:09.676025+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {"budget_pct": 0.95}, "ts": "2026-04-20T18:31:09.676025+00:00", "cooldown_skipped": false}
+{"kind": "capability_gap", "severity": "medium", "payload": {"missing_capabilities": ["llm", "search"]}, "ts": "2026-04-20T18:31:09.686099+00:00", "cooldown_skipped": false}
+{"kind": "quality_regression", "severity": "medium", "payload": {"score_delta": -0.5}, "ts": "2026-04-20T18:31:09.696553+00:00", "cooldown_skipped": false}
+{"kind": "loop_detected", "severity": "medium", "payload": {"tool_repeat_count": 5}, "ts": "2026-04-20T18:31:09.718071+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T18:31:09.734770+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T18:31:09.744887+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T18:31:09.750449+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.1}, "ts": "2026-04-20T18:31:09.750449+00:00", "cooldown_skipped": false}
+{"kind": "gvu_jump", "severity": "high", "payload": {"gvu_delta": 0.5}, "ts": "2026-04-20T18:31:09.769168+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {}, "ts": "2026-04-20T18:31:09.788961+00:00", "cooldown_skipped": false}
+{"kind": "gvu_jump", "severity": "high", "payload": {}, "ts": "2026-04-20T18:31:09.788961+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {}, "ts": "2026-04-20T18:31:09.788961+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {}, "ts": "2026-04-20T18:31:09.788961+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T18:31:09.808088+00:00", "cooldown_skipped": false}
+{"kind": "loop_detected", "severity": "medium", "payload": {"tool_repeat_count": 4}, "ts": "2026-04-20T18:31:09.929970+00:00", "cooldown_skipped": false}
+{"kind": "novelty_spike", "severity": "medium", "payload": {"novelty": 0.8}, "ts": "2026-04-20T18:31:10.237820+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.05}, "ts": "2026-04-20T18:31:10.766434+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {"budget_pct": 0.99}, "ts": "2026-04-20T18:31:10.767433+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.8}, "ts": "2026-04-20T18:32:13.753864+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T18:32:13.768036+00:00", "cooldown_skipped": false}
+{"kind": "novelty_spike", "severity": "medium", "payload": {"novelty": 0.9}, "ts": "2026-04-20T18:32:13.768036+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.1}, "ts": "2026-04-20T18:32:13.768036+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {"budget_pct": 0.95}, "ts": "2026-04-20T18:32:13.768036+00:00", "cooldown_skipped": false}
+{"kind": "capability_gap", "severity": "medium", "payload": {"missing_capabilities": ["llm", "search"]}, "ts": "2026-04-20T18:32:13.777255+00:00", "cooldown_skipped": false}
+{"kind": "quality_regression", "severity": "medium", "payload": {"score_delta": -0.5}, "ts": "2026-04-20T18:32:13.783273+00:00", "cooldown_skipped": false}
+{"kind": "loop_detected", "severity": "medium", "payload": {"tool_repeat_count": 5}, "ts": "2026-04-20T18:32:13.787631+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T18:32:13.805708+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T18:32:13.816402+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T18:32:13.826073+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.1}, "ts": "2026-04-20T18:32:13.826073+00:00", "cooldown_skipped": false}
+{"kind": "gvu_jump", "severity": "high", "payload": {"gvu_delta": 0.5}, "ts": "2026-04-20T18:32:13.838430+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {}, "ts": "2026-04-20T18:32:13.873037+00:00", "cooldown_skipped": false}
+{"kind": "gvu_jump", "severity": "high", "payload": {}, "ts": "2026-04-20T18:32:13.873037+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {}, "ts": "2026-04-20T18:32:13.873037+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {}, "ts": "2026-04-20T18:32:13.873037+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T18:32:13.889070+00:00", "cooldown_skipped": false}
+{"kind": "loop_detected", "severity": "medium", "payload": {"tool_repeat_count": 4}, "ts": "2026-04-20T18:32:14.045857+00:00", "cooldown_skipped": false}
+{"kind": "novelty_spike", "severity": "medium", "payload": {"novelty": 0.8}, "ts": "2026-04-20T18:32:14.429430+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.05}, "ts": "2026-04-20T18:32:14.991257+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {"budget_pct": 0.99}, "ts": "2026-04-20T18:32:14.991257+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.8}, "ts": "2026-04-20T20:35:25.020688+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T20:35:25.032943+00:00", "cooldown_skipped": false}
+{"kind": "novelty_spike", "severity": "medium", "payload": {"novelty": 0.9}, "ts": "2026-04-20T20:35:25.032943+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.1}, "ts": "2026-04-20T20:35:25.032943+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {"budget_pct": 0.95}, "ts": "2026-04-20T20:35:25.032943+00:00", "cooldown_skipped": false}
+{"kind": "capability_gap", "severity": "medium", "payload": {"missing_capabilities": ["llm", "search"]}, "ts": "2026-04-20T20:35:25.045116+00:00", "cooldown_skipped": false}
+{"kind": "quality_regression", "severity": "medium", "payload": {"score_delta": -0.5}, "ts": "2026-04-20T20:35:25.056634+00:00", "cooldown_skipped": false}
+{"kind": "loop_detected", "severity": "medium", "payload": {"tool_repeat_count": 5}, "ts": "2026-04-20T20:35:25.062891+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T20:35:25.075323+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T20:35:25.081470+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T20:35:25.093807+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.1}, "ts": "2026-04-20T20:35:25.093807+00:00", "cooldown_skipped": false}
+{"kind": "gvu_jump", "severity": "high", "payload": {"gvu_delta": 0.5}, "ts": "2026-04-20T20:35:25.105736+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {}, "ts": "2026-04-20T20:35:25.135617+00:00", "cooldown_skipped": false}
+{"kind": "gvu_jump", "severity": "high", "payload": {}, "ts": "2026-04-20T20:35:25.135617+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {}, "ts": "2026-04-20T20:35:25.135617+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {}, "ts": "2026-04-20T20:35:25.135617+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T20:35:25.148539+00:00", "cooldown_skipped": false}
+{"kind": "loop_detected", "severity": "medium", "payload": {"tool_repeat_count": 4}, "ts": "2026-04-20T20:35:25.257247+00:00", "cooldown_skipped": false}
+{"kind": "novelty_spike", "severity": "medium", "payload": {"novelty": 0.8}, "ts": "2026-04-20T20:35:25.536353+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.05}, "ts": "2026-04-20T20:35:25.948181+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {"budget_pct": 0.99}, "ts": "2026-04-20T20:35:25.948181+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.8}, "ts": "2026-04-20T20:38:20.221972+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T20:38:20.234278+00:00", "cooldown_skipped": false}
+{"kind": "novelty_spike", "severity": "medium", "payload": {"novelty": 0.9}, "ts": "2026-04-20T20:38:20.234278+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.1}, "ts": "2026-04-20T20:38:20.234278+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {"budget_pct": 0.95}, "ts": "2026-04-20T20:38:20.234278+00:00", "cooldown_skipped": false}
+{"kind": "capability_gap", "severity": "medium", "payload": {"missing_capabilities": ["llm", "search"]}, "ts": "2026-04-20T20:38:20.252511+00:00", "cooldown_skipped": false}
+{"kind": "quality_regression", "severity": "medium", "payload": {"score_delta": -0.5}, "ts": "2026-04-20T20:38:20.266635+00:00", "cooldown_skipped": false}
+{"kind": "loop_detected", "severity": "medium", "payload": {"tool_repeat_count": 5}, "ts": "2026-04-20T20:38:20.282104+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T20:38:20.294395+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T20:38:20.306238+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T20:38:20.312353+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.1}, "ts": "2026-04-20T20:38:20.318118+00:00", "cooldown_skipped": false}
+{"kind": "gvu_jump", "severity": "high", "payload": {"gvu_delta": 0.5}, "ts": "2026-04-20T20:38:20.330505+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {}, "ts": "2026-04-20T20:38:20.358502+00:00", "cooldown_skipped": false}
+{"kind": "gvu_jump", "severity": "high", "payload": {}, "ts": "2026-04-20T20:38:20.358502+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {}, "ts": "2026-04-20T20:38:20.359502+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {}, "ts": "2026-04-20T20:38:20.359502+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T20:38:20.367180+00:00", "cooldown_skipped": false}
+{"kind": "loop_detected", "severity": "medium", "payload": {"tool_repeat_count": 4}, "ts": "2026-04-20T20:38:20.488932+00:00", "cooldown_skipped": false}
+{"kind": "novelty_spike", "severity": "medium", "payload": {"novelty": 0.8}, "ts": "2026-04-20T20:38:20.746640+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.05}, "ts": "2026-04-20T20:38:21.178700+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {"budget_pct": 0.99}, "ts": "2026-04-20T20:38:21.179357+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.8}, "ts": "2026-04-20T20:39:45.366090+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T20:39:45.384131+00:00", "cooldown_skipped": false}
+{"kind": "novelty_spike", "severity": "medium", "payload": {"novelty": 0.9}, "ts": "2026-04-20T20:39:45.384131+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.1}, "ts": "2026-04-20T20:39:45.389222+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {"budget_pct": 0.95}, "ts": "2026-04-20T20:39:45.389222+00:00", "cooldown_skipped": false}
+{"kind": "capability_gap", "severity": "medium", "payload": {"missing_capabilities": ["llm", "search"]}, "ts": "2026-04-20T20:39:45.402353+00:00", "cooldown_skipped": false}
+{"kind": "quality_regression", "severity": "medium", "payload": {"score_delta": -0.5}, "ts": "2026-04-20T20:39:45.414255+00:00", "cooldown_skipped": false}
+{"kind": "loop_detected", "severity": "medium", "payload": {"tool_repeat_count": 5}, "ts": "2026-04-20T20:39:45.426488+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T20:39:45.440419+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T20:39:45.456371+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T20:39:45.468431+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.1}, "ts": "2026-04-20T20:39:45.468431+00:00", "cooldown_skipped": false}
+{"kind": "gvu_jump", "severity": "high", "payload": {"gvu_delta": 0.5}, "ts": "2026-04-20T20:39:45.480854+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {}, "ts": "2026-04-20T20:39:45.511264+00:00", "cooldown_skipped": false}
+{"kind": "gvu_jump", "severity": "high", "payload": {}, "ts": "2026-04-20T20:39:45.511264+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {}, "ts": "2026-04-20T20:39:45.511264+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {}, "ts": "2026-04-20T20:39:45.511264+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T20:39:45.530102+00:00", "cooldown_skipped": false}
+{"kind": "loop_detected", "severity": "medium", "payload": {"tool_repeat_count": 4}, "ts": "2026-04-20T20:39:45.653963+00:00", "cooldown_skipped": false}
+{"kind": "novelty_spike", "severity": "medium", "payload": {"novelty": 0.8}, "ts": "2026-04-20T20:39:45.947665+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.05}, "ts": "2026-04-20T20:39:46.564789+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {"budget_pct": 0.99}, "ts": "2026-04-20T20:39:46.564789+00:00", "cooldown_skipped": false}
+{"kind": "delegation_depth_breach", "severity": "high", "payload": {"depth": 34, "limit": 32}, "ts": "2026-04-20T20:41:25.752014+00:00", "cooldown_skipped": false}
+{"kind": "delegation_depth_breach", "severity": "high", "payload": {"depth": 33, "limit": 32}, "ts": "2026-04-20T20:41:25.826044+00:00", "cooldown_skipped": false}
+{"kind": "delegation_depth_breach", "severity": "high", "payload": {"depth": 34, "limit": 32}, "ts": "2026-04-20T20:41:57.725216+00:00", "cooldown_skipped": false}
+{"kind": "delegation_depth_breach", "severity": "high", "payload": {"depth": 33, "limit": 32}, "ts": "2026-04-20T20:41:57.827881+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.8}, "ts": "2026-04-20T20:43:19.082360+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T20:43:19.101094+00:00", "cooldown_skipped": false}
+{"kind": "novelty_spike", "severity": "medium", "payload": {"novelty": 0.9}, "ts": "2026-04-20T20:43:19.101094+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.1}, "ts": "2026-04-20T20:43:19.101094+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {"budget_pct": 0.95}, "ts": "2026-04-20T20:43:19.106340+00:00", "cooldown_skipped": false}
+{"kind": "capability_gap", "severity": "medium", "payload": {"missing_capabilities": ["llm", "search"]}, "ts": "2026-04-20T20:43:19.112968+00:00", "cooldown_skipped": false}
+{"kind": "quality_regression", "severity": "medium", "payload": {"score_delta": -0.5}, "ts": "2026-04-20T20:43:19.124910+00:00", "cooldown_skipped": false}
+{"kind": "loop_detected", "severity": "medium", "payload": {"tool_repeat_count": 5}, "ts": "2026-04-20T20:43:19.137049+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T20:43:19.142950+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T20:43:19.155097+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T20:43:19.173521+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.1}, "ts": "2026-04-20T20:43:19.173521+00:00", "cooldown_skipped": false}
+{"kind": "gvu_jump", "severity": "high", "payload": {"gvu_delta": 0.5}, "ts": "2026-04-20T20:43:19.185972+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {}, "ts": "2026-04-20T20:43:19.228374+00:00", "cooldown_skipped": false}
+{"kind": "gvu_jump", "severity": "high", "payload": {}, "ts": "2026-04-20T20:43:19.228374+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {}, "ts": "2026-04-20T20:43:19.228374+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {}, "ts": "2026-04-20T20:43:19.228374+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-20T20:43:19.252085+00:00", "cooldown_skipped": false}
+{"kind": "loop_detected", "severity": "medium", "payload": {"tool_repeat_count": 4}, "ts": "2026-04-20T20:43:19.421916+00:00", "cooldown_skipped": false}
+{"kind": "novelty_spike", "severity": "medium", "payload": {"novelty": 0.8}, "ts": "2026-04-20T20:43:19.698071+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.05}, "ts": "2026-04-20T20:43:20.264527+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {"budget_pct": 0.99}, "ts": "2026-04-20T20:43:20.264527+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.8}, "ts": "2026-04-21T00:59:12.750770+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-21T00:59:12.768597+00:00", "cooldown_skipped": false}
+{"kind": "novelty_spike", "severity": "medium", "payload": {"novelty": 0.9}, "ts": "2026-04-21T00:59:12.768597+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.1}, "ts": "2026-04-21T00:59:12.768597+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {"budget_pct": 0.95}, "ts": "2026-04-21T00:59:12.768597+00:00", "cooldown_skipped": false}
+{"kind": "capability_gap", "severity": "medium", "payload": {"missing_capabilities": ["llm", "search"]}, "ts": "2026-04-21T00:59:12.786826+00:00", "cooldown_skipped": false}
+{"kind": "quality_regression", "severity": "medium", "payload": {"score_delta": -0.5}, "ts": "2026-04-21T00:59:12.798913+00:00", "cooldown_skipped": false}
+{"kind": "loop_detected", "severity": "medium", "payload": {"tool_repeat_count": 5}, "ts": "2026-04-21T00:59:12.817095+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-21T00:59:12.829202+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-21T00:59:12.847870+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-21T00:59:12.860074+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.1}, "ts": "2026-04-21T00:59:12.860074+00:00", "cooldown_skipped": false}
+{"kind": "gvu_jump", "severity": "high", "payload": {"gvu_delta": 0.5}, "ts": "2026-04-21T00:59:12.877859+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {}, "ts": "2026-04-21T00:59:12.913512+00:00", "cooldown_skipped": false}
+{"kind": "gvu_jump", "severity": "high", "payload": {}, "ts": "2026-04-21T00:59:12.914255+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {}, "ts": "2026-04-21T00:59:12.914255+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {}, "ts": "2026-04-21T00:59:12.914255+00:00", "cooldown_skipped": false}
+{"kind": "emergent_synergy", "severity": "high", "payload": {"synergy": 0.9}, "ts": "2026-04-21T00:59:12.931655+00:00", "cooldown_skipped": false}
+{"kind": "loop_detected", "severity": "medium", "payload": {"tool_repeat_count": 4}, "ts": "2026-04-21T00:59:13.138113+00:00", "cooldown_skipped": false}
+{"kind": "novelty_spike", "severity": "medium", "payload": {"novelty": 0.8}, "ts": "2026-04-21T00:59:13.568591+00:00", "cooldown_skipped": false}
+{"kind": "trust_violation", "severity": "high", "payload": {"trust_score": 0.05}, "ts": "2026-04-21T00:59:14.271433+00:00", "cooldown_skipped": false}
+{"kind": "budget_exhaustion", "severity": "high", "payload": {"budget_pct": 0.99}, "ts": "2026-04-21T00:59:14.271433+00:00", "cooldown_skipped": false}
+{"kind": "delegation_depth_breach", "severity": "high", "payload": {"depth": 34, "limit": 32}, "ts": "2026-04-21T01:00:06.359097+00:00", "cooldown_skipped": false}
+{"kind": "delegation_depth_breach", "severity": "high", "payload": {"depth": 33, "limit": 32}, "ts": "2026-04-21T01:00:06.485884+00:00", "cooldown_skipped": false}

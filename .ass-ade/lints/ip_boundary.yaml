@@ -1,0 +1,81 @@
+# T-E1a IP-boundary lint configuration.
+#
+# Used by !ass-ade/src/ass_ade/a1_at_functions/ip_boundary_linter.py and
+# the pre-commit hook at !ass-ade/.ass-ade/hooks/ip_boundary_precommit.sh.
+#
+# Keep this file in sync with the Forbidden-content section of
+# .ato-plans/active/autopoietic-ai-research-enhance-assade-r2-20260420-0212/contract-schema.md
+# — `contract-schema.md` is the source of truth; this is its machine-readable mirror.
+#
+# severity values (inherited from tasks.json T-E2):
+#   CRITICAL  — numeric constants from the private codex
+#   HIGH      — private names / theorem-layer mnemonics / paper refs
+#   MEDIUM    — sovereign-invariant names when they appear outside the private repo
+#
+# Every match in the target text is emitted as a structured finding; the
+# linter itself is pure (no I/O outside reading the scan target).
+
+schema: ass-ade/lints/ip_boundary/v1
+
+forbidden_names:
+  - { pattern: "MHED",           severity: HIGH }
+  - { pattern: "TOE",            severity: HIGH }
+  - { pattern: "Leech",          severity: HIGH }
+  - { pattern: "Monster",        severity: HIGH }
+  - { pattern: "Golay",          severity: HIGH }
+  - { pattern: "Niemeier",       severity: HIGH }
+  - { pattern: "Moonshine",      severity: HIGH }
+  - { pattern: "G_18",           severity: HIGH }
+  - { pattern: "D_MAX",          severity: HIGH }
+  - { pattern: "RG_LOOP",        severity: HIGH }
+  - { pattern: "TAU_TRUST",      severity: MEDIUM }
+  - { pattern: "SIGMA_NOISE",    severity: HIGH }
+  - { pattern: "DRIFT_MAX",      severity: HIGH }
+  - { pattern: "V_AI",           severity: HIGH }
+  - { pattern: "OMEGA_0",        severity: MEDIUM }
+  - { pattern: "BERRY_TOP",      severity: MEDIUM }
+
+forbidden_regex:
+  # Numeric constants: each is anchored with word boundaries so ordinary
+  # code using unrelated numerics of the same magnitude does not trip
+  # unless it also collocates with a forbidden_name on the same line.
+  - { pattern: '\b196884\b',            severity: CRITICAL }
+  - { pattern: '\b196560\b',            severity: CRITICAL }
+  - { pattern: '\b196883\b',            severity: CRITICAL }
+  - { pattern: '\b1820\s*/\s*1823\b',   severity: CRITICAL }
+  - { pattern: '\b32\s*dB\b',           severity: CRITICAL }
+  - { pattern: '\b0\.6776\b',           severity: CRITICAL }
+  - { pattern: '\b137\.035999\d*\b',    severity: CRITICAL }
+  - { pattern: '\b1836\.15267343\b',    severity: CRITICAL }
+  - { pattern: '\barxiv:2510\.15681\b', severity: HIGH }
+
+# Collocation-gated regex: ordinary small integers (324, 23, 47) are too
+# common to ban outright. Only emit a finding when the line ALSO contains
+# a forbidden_name from the list above.
+forbidden_collocations:
+  # Note: 1823 is NOT listed here — the regex `\b1820\s*/\s*1823\b` already
+  # catches every meaningful occurrence with more precision and avoids
+  # double-firing on the same line.
+  - { integers: [324, 23, 47], companions: ["G_18","D_MAX","RG_LOOP","TAU_TRUST","Leech","Monster","Golay","Niemeier","Moonshine","MHED","TOE"] }
+
+# Paths the CI job should scan (relative to the workspace root that runs
+# the linter). The linter itself is path-agnostic; these are policy for CI.
+scan_targets_public:
+  - "!aaaa-nexus-storefront"
+  - "!aaaa-nexus-github"
+  - "!aaaa-nexus-mcp/src"
+  - "!aaaa-nexus-mcp/docs"
+  - "!aaaa-nexus-mcp/README.md"
+  - "!aaaa-nexus-mcp/plugin.json"
+  - "!aaaa-nexus-mcp/server.json"
+
+scan_targets_ass_ade_public_surface:
+  - "!ass-ade/README.md"
+  - "!ass-ade/src/ass_ade/a0_qk_constants"
+
+# Paths that are allowed to name the private concepts (internal only).
+# The linter skips these entirely.
+allow_paths:
+  - "!mhed-codex/**"
+  - "!ass-ade/.ass-ade/lints/ip_boundary.yaml"
+  - ".ato-plans/**"   # plan folders are private to the workspace

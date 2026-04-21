@@ -1,0 +1,1 @@
+{"schema":"AAAA-SPEC-004","blueprint_id":"bp_calc","blueprint_name":"tiny calculator","description":"tiny calculator feature","components":[{"id":"at_add","tier":"a1_at_functions","name":"add","purpose":"add two ints","signature":"def add(a: int, b: int) -> int"}],"tiers":["a1_at_functions"]}

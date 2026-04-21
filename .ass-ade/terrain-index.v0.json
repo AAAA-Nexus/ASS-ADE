@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "ass-ade.terrain-index.v0",
+  "title": "ASS-ADE — MAP = TERRAIN (canonical extension map)",
+  "mapEqualsTerrain": {
+    "rule": "Prefer extending existing ass_ade / AAAA-Nexus / .ass-ade artifacts before adding parallel manifests, ad hoc MCP servers, or undocumented hook scripts.",
+    "primaryCode": "src/ass_ade/",
+    "monadicLaw": ".ass-ade/tier-map.json",
+    "publicMcpContract": "mcp/server.json",
+    "swarmLaneGraphs": ".ass-ade/autonomous/se-lane-graph.v0.json",
+    "mcpHooksCompat": ".ass-ade/autonomous/mcp-hooks-compatibility.v0.json",
+    "suiteRoadmap": ".ass-ade/ass-ade-suite-roadmap.json",
+    "suiteState": ".ass-ade/ass-ade-suite-state.json",
+    "swarmRuntime": ".ass-ade/swarm/config.json",
+    "asoSurface": "src/ass_ade/commands/aso.py",
+    "mcpServeEntry": "python -m ass_ade mcp serve",
+    "contextPackGate": "scripts/context_pack_gate.py",
+    "demosTerrainProof": "docs/demos/",
+    "proofReadySpecs": ".ass-ade/specs/",
+    "tripleLaneHandbook": "docs/atomadic-triple-lane-handbook.md",
+    "releaseChecklist": "docs/RELEASE_CHECKLIST.md",
+    "nexusTrustSurfacesDoc": "docs/NEXUS_AND_TRUST_SURFACES.md",
+    "forgeNarrowSliceDoc": "docs/FORGE_NARROW_SLICE.md",
+    "finalFormAuditLog": ".ass-ade/final-form-audit.log"
+  },
+  "cursorHostPointers": {
+    "note": "Host-specific JSON lives outside this repo; document ids and env var names only.",
+    "cursorMcpUserPath": "~/.cursor/mcp.json",
+    "cursorHooksUserPath": "~/.cursor/hooks.json",
+    "expectedServerIds": ["aaaa-nexus", "ass-ade"]
+  },
+  "acceptanceChecklist": [
+    "New MCP tools: extend mcp/server.json + registry; run tests/test_mcp_manifest_parity.py and tests/test_mcp_extended.py.",
+    "New hooks: document in mcp-hooks-compatibility.v0.json; no secrets in commands.",
+    "New Python: route via tier-map.json; no upward imports between a0–a4.",
+    "Emitted consumer rebuilds: emit_runnable_package merge + smoke tests (see package_emitter).",
+    "Privileged MCP tools: follow .ass-ade/specs/trust-gate-mcp-envelope.spec.md; extend tests/test_mcp_privileged_builtin_tools.py when tightening run_command / path rules."
+  ]
+}

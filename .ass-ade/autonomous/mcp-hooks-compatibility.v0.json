@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "ass-ade.mcp-hooks-compat.v0",
+  "title": "Compatibility matrix — ASS-ADE MCP + Cursor hooks (refine slice)",
+  "surfaces": [
+    {
+      "id": "cursor-hooks-json",
+      "path": "~/.cursor/hooks.json",
+      "dependsOn": ["python on PATH", "scripts/context_pack_gate.py", "scripts/enforce_tiers.py", "scripts/mcp_evolution_reminder.py"],
+      "backwardCompat": "Adding afterFileEdit entries is additive; older Cursor ignores unknown keys. Removing a hook block is safe rollback.",
+      "rollback": "git restore hooks.json from last known-good commit; set ATOMADIC_SKIP_CONTEXT_PACK / ATOMADIC_SKIP_MCP_EVOLUTION_HINT as temporary bypass."
+    },
+    {
+      "id": "cursor-mcp-json",
+      "path": "~/.cursor/mcp.json",
+      "dependsOn": ["aaaa-nexus HTTP MCP", "ass-ade stdio python -m ass_ade mcp serve"],
+      "backwardCompat": "New MCP servers must not rename existing server ids without migration note in PR.",
+      "rollback": "Restore mcp.json; restart Cursor; verify tools/list for each server."
+    },
+    {
+      "id": "ass-ade-mcp-manifest",
+      "path": "mcp/server.json",
+      "dependsOn": ["tests/test_mcp_extended.py", "tests/test_mcp_research_radar_fixture.py"],
+      "backwardCompat": "Golden tool trio + schema stability; distractor names must not appear as shipped tools.",
+      "rollback": "git restore mcp/server.json; re-run pytest tests/test_mcp_research_radar_fixture.py -q"
+    },
+    {
+      "id": "aso-cli",
+      "path": "src/ass_ade/commands/aso.py",
+      "dependsOn": ["src/ass_ade/aso/*", "ass-ade optimize Typer registration in cli.py"],
+      "backwardCompat": "Subcommands are additive; default behavior is log-only under .ass-ade/aso/logs/.",
+      "rollback": "git restore src/ass_ade/commands/aso.py src/ass_ade/cli.py; remove .ass-ade/aso/logs/* if desired."
+    },
+    {
+      "id": "github-dependabot",
+      "path": ".github/dependabot.yml",
+      "dependsOn": ["pyproject.toml"],
+      "backwardCompat": "Weekly PRs only; disabling file removes automation without breaking builds.",
+      "rollback": "git restore .github/dependabot.yml; close open Dependabot PRs if undesired."
+    },
+    {
+      "id": "github-security-audit",
+      "path": ".github/workflows/security-audit.yml",
+      "dependsOn": ["pip-audit on ubuntu-latest", "pyproject optional dev extras"],
+      "backwardCompat": "Schedule + workflow_dispatch only; no PR blocking until explicitly wired.",
+      "rollback": "git restore .github/workflows/security-audit.yml; delete workflow run history optional."
+    },
+    {
+      "id": "github-pr-labeled-smoke",
+      "path": ".github/workflows/pr-labeled-ass-ade.yml",
+      "dependsOn": ["CONTRIBUTING.md label contract", "scripts/check_evolution_context.py"],
+      "backwardCompat": "Job is skipped unless PR carries ass-ade-blueprint or ass-ade-feature label.",
+      "rollback": "git restore .github/workflows/pr-labeled-ass-ade.yml; remove labels from open PRs if undesired."
+    },
+    {
+      "id": "github-issue-templates",
+      "path": ".github/ISSUE_TEMPLATE/",
+      "dependsOn": ["CONTRIBUTING.md", ".github/pull_request_template.md"],
+      "backwardCompat": "Markdown templates are additive; removing the folder restores GitHub default issue experience.",
+      "rollback": "git restore .github/ISSUE_TEMPLATE .github/pull_request_template.md"
+    },
+    {
+      "id": "ass-ade-specs-mcp-envelope",
+      "path": ".ass-ade/specs/trust-gate-mcp-envelope.spec.md",
+      "dependsOn": ["tests/test_mcp_privileged_builtin_tools.py", "src/ass_ade/tools/builtin.py"],
+      "backwardCompat": "Spec is documentation-only; deleting the file does not change runtime behavior.",
+      "rollback": "git restore .ass-ade/specs/trust-gate-mcp-envelope.spec.md"
+    },
+    {
+      "id": "docs-triple-lane-handbook",
+      "path": "docs/atomadic-triple-lane-handbook.md",
+      "dependsOn": ["README.md", ".ass-ade/terrain-index.v0.json", "CONTRIBUTING.md"],
+      "backwardCompat": "Markdown-only; removal restores prior contributor onboarding text in README only.",
+      "rollback": "git restore docs/atomadic-triple-lane-handbook.md README.md .ass-ade/terrain-index.v0.json"
+    },
+    {
+      "id": "docs-nexus-trust-surfaces",
+      "path": "docs/NEXUS_AND_TRUST_SURFACES.md",
+      "dependsOn": ["src/ass_ade/nexus/client.py", "tests/test_mcp_extended.py", "tests/test_final_form_nexus_docs.py"],
+      "backwardCompat": "Documentation-only.",
+      "rollback": "git restore docs/NEXUS_AND_TRUST_SURFACES.md"
+    },
+    {
+      "id": "docs-forge-narrow-slice",
+      "path": "docs/FORGE_NARROW_SLICE.md",
+      "dependsOn": [".ass-ade/final-form-audit.log", "tests/test_final_form_nexus_docs.py"],
+      "backwardCompat": "Documentation + optional audit log.",
+      "rollback": "git restore docs/FORGE_NARROW_SLICE.md .ass-ade/final-form-audit.log"
+    }
+  ]
+}

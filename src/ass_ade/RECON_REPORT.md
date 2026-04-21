@@ -1,22 +1,22 @@
 # RECON_REPORT
 
 **Path:** `C:\!aaaa-nexus\!ass-ade\src\ass_ade`  
-**Duration:** 2156 ms
+**Duration:** 2328 ms
 
 ## Summary
 
-Repo at `C:\!aaaa-nexus\!ass-ade\src\ass_ade` contains 136 files (134 source, 0 test-related) across 2 directory levels (1518.8 KB total). Test coverage: 0 test functions across 0 test files (ratio 0.0). Documentation coverage: 63%. Dominant tier: `at`.
+Repo at `C:\!aaaa-nexus\!ass-ade\src\ass_ade` contains 137 files (134 source, 0 test-related) across 2 directory levels (1522.5 KB total). Test coverage: 0 test functions across 0 test files (ratio 0.0). Documentation coverage: 63%. Dominant tier: `at`.
 
 ## Scout
 
-- Files: 136 (1518.8 KB)
+- Files: 137 (1522.5 KB)
 - Source files: 134
 - Max depth: 2
-- Top-level: README.md, __init__.py, __main__.py, a0_qk_constants, a1_at_functions, a2_mo_composites, a2a, a3_og_features, agent, aso
+- Top-level: README.md, RECON_REPORT.md, __init__.py, __main__.py, a0_qk_constants, a1_at_functions, a2_mo_composites, a2a, a3_og_features, agent
 
 **By extension:**
   - `.py`: 134
-  - `.md`: 2
+  - `.md`: 3
 
 ## Dependencies
 
@@ -38,7 +38,7 @@ Repo at `C:\!aaaa-nexus\!ass-ade\src\ass_ade` contains 136 files (134 source, 0 
   - map_terrain.py (at, 45KB — may span tiers)
   - recon.py (at, 30KB — may span tiers)
   - agent/capabilities.py (at, 35KB — may span tiers)
-  - engine/rebuild/forge.py (at, 25KB — may span tiers)
+  - engine/rebuild/forge.py (at, 26KB — may span tiers)
   - engine/rebuild/schema_materializer.py (at, 19KB — may span tiers)
   - nexus/models.py (at, 38KB — may span tiers)
   - protocol/evolution.py (at, 26KB — may span tiers)
@@ -64,7 +64,7 @@ Repo at `C:\!aaaa-nexus\!ass-ade\src\ass_ade` contains 136 files (134 source, 0 
 ## Documentation
 
 - README: yes
-- Doc files: 2
+- Doc files: 3
 - Public callables: 1261
 - Documented: 792 (63%)
 

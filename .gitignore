@@ -43,3 +43,41 @@ training_data/
 
 # Dist packages
 dist/
+
+# Self-build noise (previous rebuild swallowed site-packages into .ass-ade/selfbuild/)
+.ass-ade/selfbuild/
+.ass-ade/builds/
+.ass-ade/stage/
+.ass-ade/rebuild_*/
+
+# Live scenario runs (ephemeral)
+scenario_*_live/
+scenario_*_out/
+scenario_*/out/
+scenario_*/.ass-ade/
+
+# Scheduler state
+.claude/scheduled_tasks.lock
+
+# Flat-tier build outputs (auto-generated from blueprints; not source)
+# Root-level a0_*/, a1_*/, a2_*/, a3_*/, a4_*/ are build outputs mirroring src/ass_ade/a0_*/ etc.
+/a0_qk_constants/
+/a1_at_functions/
+/a2_mo_composites/
+/a3_og_features/
+/a4_sy_orchestration/
+/blueprints/
+/mo_engines/
+/og_swarm/
+/sy_manifold/
+/harnesses/
+/scenarios/
+
+# Cursor/claude sidecar working trees (separate repos)
+/.claude/worktrees/
+/.cursor/workspace.json
+/.omc/
+
+# reports from this consolidation wave
+/reports/
+

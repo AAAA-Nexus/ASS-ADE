@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "ass-ade.autonomous-lane.v0",
+  "uepSection": "5-autonomous-software-engineering",
+  "description": "Reusable workflow graph for swarm-autonomous refine — MAP = TERRAIN; extend ass-ade/aaaa-nexus before parallel mechanisms.",
+  "workflowGraphs": {
+    "refine": {
+      "complexity": "low",
+      "orderedNodes": [
+        {
+          "id": "terrain",
+          "role": "tool-discovery-mcpzero",
+          "action": "Map MCP manifests, Cursor hooks, ASS-ADE CLI extensions (aso, epiphany, gates); list deltas vs prior commit."
+        },
+        {
+          "id": "implement",
+          "role": "python-specialist-stateful",
+          "action": "Minimal integration glue; keep imports monadic; add or extend tests."
+        },
+        {
+          "id": "audit",
+          "role": "ass-ade-nexus-enforcer",
+          "action": "Manifest diff summary, backward-compat notes, rollback path; verify no embedded secrets."
+        },
+        {
+          "id": "verify",
+          "role": "code-reviewer-multiagent",
+          "action": "Independent read of public surfaces (mcp.json, hooks, server.json)."
+        }
+      ]
+    },
+    "backbone-upgrade": {
+      "complexity": "high",
+      "orderedNodes": [
+        {
+          "id": "terrain",
+          "role": "tool-discovery-mcpzero",
+          "action": "Full terrain map including Nexus delegation depth and MCP tool registry."
+        },
+        {
+          "id": "design",
+          "role": "devops-puppeteer",
+          "action": "CI/feature flags, staged rollout, observability hooks."
+        },
+        {
+          "id": "implement",
+          "role": "python-specialist-stateful",
+          "action": "Stateful clients, compose a2/a3 modules; no secrets in repo."
+        },
+        {
+          "id": "verify",
+          "role": "code-reviewer-multiagent",
+          "action": "Named tests + rollback drill documented in PR."
+        }
+      ]
+    }
+  },
+  "rollbackHints": {
+    "cursorHooks": "Restore from git: the repo or dotfiles branch that owns hooks.json; or remove the last afterFileEdit block and re-run suite sync.",
+    "cursorMcp": "Revert ~/.cursor/mcp.json from VCS backup; re-run setup_cursor_atomadic.py to merge manifests.",
+    "assAdeSwarmConfig": "git restore .ass-ade/swarm/config.json (or copy prior JSON from PR description).",
+    "assAdeAsoLogs": "Logs under .ass-ade/aso/logs/ are disposable; delete to reset ASO telemetry drafts."
+  },
+  "secretsPolicy": "No API keys or tokens in JSON, hooks, or commands — env vars only; document required env names in AGENTS.md or .env.example."
+}

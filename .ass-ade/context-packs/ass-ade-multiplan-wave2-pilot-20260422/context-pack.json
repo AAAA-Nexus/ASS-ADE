@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "atomadic.context-pack.v1",
+  "generatedAt": "2026-04-22T18:35:00+00:00",
+  "intent": {
+    "summary": "Post-ato-pilot wave2: MCP run_command production hardening, GitHub templates, CI durations, trust-gate envelope spec, terrain index updates.",
+    "deliverables": [
+      "src/ass_ade/tools/builtin.py hardened RunCommandTool",
+      "tests/test_mcp_privileged_builtin_tools.py",
+      ".ass-ade/specs/trust-gate-mcp-envelope.spec.md",
+      ".github/ISSUE_TEMPLATE + pull_request_template.md"
+    ]
+  },
+  "paths": {
+    "repoRoot": "C:\\!aaaa-nexus\\!ass-ade",
+    "packDir": "C:\\!aaaa-nexus\\!ass-ade\\.ass-ade\\context-packs\\ass-ade-multiplan-wave2-pilot-20260422"
+  },
+  "repoMap": {
+    "tierMap": ".ass-ade/tier-map.json",
+    "hotPaths": [
+      "src/ass_ade/tools/builtin.py",
+      "src/ass_ade/mcp/server.py",
+      ".github/workflows/epiphany-cycle.yml"
+    ],
+    "testsAndCommands": [
+      "pytest tests/",
+      "python scripts/atomadic_dev_harness.py --quick"
+    ]
+  },
+  "webResearch": { "hops": [], "sources": [] },
+  "techDocs": { "stackFingerprint": {}, "deliverableScopes": [] },
+  "risksAndGaps": [
+    "ASS_ADE_ALLOW_INLINE_RUN_COMMAND=1 disables inline blocks — document to operators only."
+  ],
+  "verdict": "PASS"
+}

@@ -1,0 +1,169 @@
+{
+  "schemaVersion": "ass-ade.suite-roadmap.v1",
+  "documentRole": "ass_ade_repo_roadmap",
+  "pairedStateDocument": "C:\\!aaaa-nexus\\!ass-ade\\.ass-ade\\ass-ade-suite-state.json",
+  "linkedGlobalDocuments": {
+    "atomadicSuiteVision": "C:\\Users\\atoma\\.cursor\\atomadic\\atomadic-suite-vision.json",
+    "atomadicSuiteInventory": "C:\\Users\\atoma\\.cursor\\atomadic\\atomadic-suite-inventory.json"
+  },
+  "howToCompare": "python \"C:\\Users\\atoma\\.cursor\\scripts\\compare_ass_ade.py\"",
+  "goals": [
+    {
+      "id": "doctor-local-determinism",
+      "summary": "Local profile: ass-ade doctor does not auto-probe Nexus unless --remote; keys still available for explicit commands."
+    },
+    {
+      "id": "ci-python-tests-full",
+      "summary": "GitHub workflow runs pip install -e .[dev] then pytest tests/ on guarded path changes."
+    }
+  ],
+  "milestones": [
+    {
+      "id": "ms-refine-20260419-suite-green",
+      "summary": "1256 pytest passed locally; python-tests job in epiphany-cycle.yml runs full tests/",
+      "status": "done"
+    }
+  ],
+  "growthNotes": [
+    "[2026-04-22 atomadic-final-form] docs/NEXUS_AND_TRUST_SURFACES.md + docs/FORGE_NARROW_SLICE.md + .ass-ade/final-form-audit.log + tests/test_final_form_nexus_docs.py; T7 hosted MCP parity DEFER to !aaaa-nexus-storefront.",
+    "[2026-04-22 ato-pilot eeep-plan] docs/atomadic-triple-lane-handbook.md + docs/RELEASE_CHECKLIST.md; README.md links; terrain-index tripleLaneHandbook + releaseChecklist; tests/test_docs_promotion_layout.py.",
+    "[2026-04-22 ato-pilot wave2] run_command blocks python -c / node -e by default (ASS_ADE_ALLOW_INLINE_RUN_COMMAND=1 escape); tests/test_mcp_privileged_builtin_tools.py; .ass-ade/specs/trust-gate-mcp-envelope.spec.md; GitHub issue templates + pull_request_template.md; epiphany-cycle pytest --durations=20; CONTRIBUTING.md Windows pytest + doctor/Nexus pointers.",
+    "[2026-04-20 long-haul] tests/test_demos_and_import_budget.py + docs/demos/README.md \u2014 demo PASS markers + loose CLI import budget; epiphany-cycle path filter wired.",
+    "[2026-04-20 ato-pilot multi-hop] CI lanes: .github/dependabot.yml; workflows security-audit.yml (pip-audit schedule) + perf-durations.yml (pytest --durations); epiphany-cycle path filters extended for terrain-index + new workflows.",
+    "[2026-04-20 swarm-coord] Mirror global researchRadar: benchmark new MCP tools (MCPAgentBench / MCP-Atlas class) before expanding action surfaces; cite arxiv:2603.23802, 2601.08276, 2512.24565 in planning\u2014not production claims.",
+    "[2026-04-20 swarm-coord] Recursive epiphany: pair breadth-first MCP catalogs with depth-first verification (Frontiers fcomp.2025.1655469; Meta ACH narrative)\u2014Forge harness + reviewer gates must own evidence, not chat prose.",
+    "[2026-04-20 swarm-coord] Ops: keep /context-pack + preWrite gate as default developer preflight in monadic repos; refresh this roadmap growthNotes when researchRadar cycles.",
+    "[2026-04-20 REFINE proceed] Landed tests/test_mcp_research_radar_fixture.py + .ass-ade/research-radar/DEFER-paper-statistics.md; context-pack hop schema now documents verificationEvidence.",
+    "[2026-04-20 proceed] /epiphany command documents MCP content[0].text + RECON_REQUIRED; epiphany_breakthrough_local.py + inventory scripts.epiphanyBreakthroughLocal for agents without stdio MCP.",
+    "[2026-04-20 autopilot-cursor] .ass-ade/terrain-index.v0.json \u2014 canonical MAP=TERRAIN index; roadmap.terrainIndex; .omc/autopilot/spec.md for OMC handoff.",
+    "[2026-04-20 swarm-autonomous refine] .ass-ade/autonomous/se-lane-graph.v0.json + mcp-hooks-compatibility.v0.json; /swarm-autonomous command expanded with terrain, refine graph, rollback, verdict closeout.",
+    "[2026-04-19 REFINE] researchRadar REFINE closed to PASS after doctor probe fix + full pytest green; goals/milestones populated for suite sync.",
+    "[2026-04-19 swarm-autonomous] tests/test_mcp_manifest_parity.py \u2014 mcp/server.json tool ids must be subset of registry \u222a _WORKFLOW_TOOLS (drift gate; no MCP surface expansion).",
+    "[2026-04-20 REFINE] doctor --remote/--no-remote help aligned with _should_probe_remote; tests/test_cli.py covers local+env key, hybrid default probe, local --remote.",
+    "[2026-04-21 REFINE closeout] seed context-pack verdict PASS; .ato-plans status evidence pytest PASS 1256; ASS-ADE T3 monadic ratchet evidence; Lane W research verdict PASS (bounded residual).",
+    "[2026-04-22 REFINE] !aaaa-nexus-storefront: pricing_manifest free tier lists HEAD+POST /mcp; mcp_rpc unit tests (catalog unique names + tools/list schema); cargo test --lib 38 passed.",
+    "[2026-04-22 REFINE] storefront warning sweep: internal_search Headers mut removed; trust_history_handler _env; emit_metric #[allow(dead_code)]; removed unused prompt_from_body (aegis) + hamming (sys); cargo check/test clean."
+  ],
+  "phases": [
+    {
+      "id": "ass-ade-now",
+      "label": "Verified ASS-ADE surface",
+      "summary": "MCP stdio tools, Nexus client, rebuild engine \u2014 see paired state JSON.",
+      "deliverables": [
+        {
+          "id": "mcp-tools-published",
+          "note": "Listed in ass-ade-suite-state.json mcpManifest.tools"
+        },
+        {
+          "id": "nexus-x402-client",
+          "note": "Grounded when surfaceChecks.nexusX402Py is true"
+        }
+      ]
+    },
+    {
+      "id": "ass-ade-sovereign-ade",
+      "label": "Sovereign / autopoietic ADE",
+      "summary": "Aligns with global vision Phase 5 and ass-ade-autopoiesis skill.",
+      "deliverables": [
+        {
+          "id": "recursive-forge-loop",
+          "note": "Terrain: surfaceChecks.recursiveForgeLoopArtifacts (.ass-ade/autonomous/*.v0.json)"
+        },
+        {
+          "id": "hosted-mcp-parity",
+          "note": "Terrain: surfaceChecks.hostedMcpStorefrontRpc (sibling !aaaa-nexus-storefront/src/mcp_rpc.rs)"
+        }
+      ]
+    }
+  ],
+  "researchRadar": {
+    "schema": "ass-ade.research-radar.v1",
+    "mirrorsGlobal": "C:/Users/atoma/.cursor/atomadic/atomadic-suite-vision.json#researchRadar",
+    "generatedAt": "2026-04-20T20:00:00+00:00",
+    "assAdeEpiphanies": [
+      "MCP corpus growth implies ass_ade tool registry must stay typed, versioned, and metered\u2014align mcp/server.json changes with Nexus pricing where billable.",
+      "Verification literature reinforces rebuild engine + nexus client tests as first-class gates before autopoiesis expands scope.",
+      "Next cycle: diff new arXiv IDs against researchRadar.hops.sources; append a fourth hop here when contradictions appear."
+    ],
+    "verdict": "PASS",
+    "refinementProgress": [
+      {
+        "id": "fixture-mcp-golden-trio",
+        "status": "done",
+        "evidence": "C:/!aaaa-nexus/!ass-ade/tests/test_mcp_research_radar_fixture.py"
+      },
+      {
+        "id": "defer-paper-stats",
+        "status": "done",
+        "evidence": "C:/!aaaa-nexus/!ass-ade/.ass-ade/research-radar/DEFER-paper-statistics.md"
+      },
+      {
+        "id": "mcp-in-process-list-call",
+        "status": "done",
+        "evidence": "C:/!aaaa-nexus/!ass-ade/tests/test_mcp_research_radar_fixture.py"
+      },
+      {
+        "id": "seed-context-pack-on-disk",
+        "status": "done",
+        "evidence": "C:/!aaaa-nexus/!ass-ade/.ass-ade/context-packs/seed-refine-20260420/context-pack.json (verdict PASS 2026-04-21)"
+      },
+      {
+        "id": "ato-plan-refine-closeout-20260421",
+        "status": "done",
+        "evidence": "C:/!aaaa-nexus/.ato-plans/active/ass-ade-atomadic-final-form-20260419-1800/status.json; C:/!aaaa-nexus/.ato-plans/active/global-atomadic-dev-env-20260419-1936/status.json"
+      },
+      {
+        "id": "epiphany-command-local-parity",
+        "status": "done",
+        "evidence": "C:/Users/atoma/.cursor/commands/epiphany.md; C:/!aaaa-nexus/!ass-ade/scripts/epiphany_breakthrough_local.py"
+      },
+      {
+        "id": "refine-doctor-ci-20260419",
+        "status": "done",
+        "evidence": "C:/!aaaa-nexus/!ass-ade/src/ass_ade/cli.py; C:/!aaaa-nexus/!ass-ade/pyproject.toml; C:/!aaaa-nexus/!ass-ade/.github/workflows/epiphany-cycle.yml; pytest tests/ (1256 passed)"
+      },
+      {
+        "id": "swarm-autonomous-mcp-manifest-parity",
+        "status": "done",
+        "evidence": "C:/!aaaa-nexus/!ass-ade/tests/test_mcp_manifest_parity.py; mcp/server.json (no tool list change)"
+      },
+      {
+        "id": "storefront-mcp-pricing-refine-20260422",
+        "status": "done",
+        "evidence": "C:/!aaaa-nexus/!aaaa-nexus-storefront/src/lib.rs (pricing_manifest free tier HEAD+POST /mcp); C:/!aaaa-nexus/!aaaa-nexus-storefront/src/mcp_rpc.rs (unit tests); internal_search/trust_oracle/utils/aegis/sys warning sweep; cargo test --lib 38 passed"
+      }
+    ],
+    "refinementActions": [
+      "Run epiphany_breakthrough_local.py or MCP epiphany_breakthrough_cycle with provided_sources on technical tasks.",
+      "Fork seed-refine-20260420 per feature branch; keep verificationEvidence populated or DEFER.",
+      "Bump nextReviewBy on each suite sync that touches mcp/server.json.",
+      "Optional: MCPAgentBench-style multi-tool session mock when scheduled."
+    ],
+    "nextReviewBy": "2026-06-20"
+  },
+  "syncMirror": {
+    "lastSyncedAt": "2026-04-20T08:05:25.569148+00:00",
+    "atomadicSuiteVisionPath": "C:\\Users\\atoma\\.cursor\\atomadic\\atomadic-suite-vision.json",
+    "globalPhaseIds": [
+      "phase-1-kernel",
+      "phase-2-swarm",
+      "phase-3-bootstrap",
+      "phase-4-watch",
+      "phase-5-sovereign-ade"
+    ],
+    "globalEngineKeys": [
+      "assAdeKernelAndTopics",
+      "devopsAndDocs",
+      "formalAndProof",
+      "mcpEfficiencyAndContext",
+      "memoryKnowledgeAndRag",
+      "nexusAndCloudflare",
+      "promptAndMetaOptimization",
+      "securityAndRedTeam",
+      "selfEvolutionAndDgmh",
+      "swarmOrchestration",
+      "telemetryAndBench",
+      "toolDiscoveryAndMcpZero"
+    ]
+  }
+}

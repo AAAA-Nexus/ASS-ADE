@@ -1,0 +1,127 @@
+{
+  "schemaVersion": "atomadic.context-pack.v1",
+  "generatedAt": "2026-04-20T08:08:00Z",
+  "intent": {
+    "summary": "No free-text intent after /context-pack; scoped to recent ASS-ADE + Atomadic surfaces: trust-scored vector memory, GitHub evolution gate, Cursor two-way suite sync, and context-pack workflow readiness.",
+    "deliverables": [
+      "Operate and extend query_vector_memory min_score + ASS_ADE_MEMORY_MIN_SCORE",
+      "Maintain github_evolution_control gate + .ass-ade/github-evolution-control.json",
+      "Re-run setup_cursor_atomadic.py --two-way when suite manifest changes",
+      "Align or add scripts/context_pack_gate.py if Write-gate enforcement is required"
+    ]
+  },
+  "paths": {
+    "repoRoot": "C:/!aaaa-nexus/!ass-ade",
+    "packDir": ".ass-ade/context-packs/atomadic-dev-surfaces-20260420-0808"
+  },
+  "repoMap": {
+    "tierMap": ".ass-ade/tier-map.json",
+    "tiersSampled": ["a0", "a1", "a2", "a3", "a4"],
+    "hotPaths": [
+      "src/ass_ade/context_memory.py",
+      "src/ass_ade/mcp/server.py",
+      "src/ass_ade/cli.py",
+      "scripts/github_evolution_control.py",
+      ".ass-ade/github-evolution-control.json",
+      ".github/workflows/auto-evolve-cycle.yml",
+      ".github/workflows/evolution-orchestrate.yml"
+    ],
+    "testsAndCommands": [
+      "pytest tests/test_recon_context.py",
+      "pytest tests/test_github_evolution_control.py",
+      "ass-ade context query \"...\" --min-score 0.2 --path .",
+      "py -3 C:/Users/atoma/.cursor/atomadic/setup_cursor_atomadic.py --two-way"
+    ]
+  },
+  "webResearch": {
+    "hops": [
+      {
+        "id": "H1-cag-vs-rag",
+        "queries": [
+          "When does Cache-Augmented Generation beat RAG for bounded knowledge?",
+          "2412.15605 CAG knowledge tasks"
+        ],
+        "findingSummary": "Peer-reviewed short paper argues CAG (preload/cache bounded corpora in long context) can beat classic RAG on latency and retrieval-error axes for constrained knowledge tasks; dynamic corpora still favor retrieval.",
+        "verificationEvidence": {
+          "kind": "path",
+          "ref": "http://arxiv.org/abs/2412.15605",
+          "note": "Primary PDF on arXiv; ACM WWW companion listing exists—verify venue details before citing as 'WWW full paper'."
+        }
+      },
+      {
+        "id": "H1b-ai-breakthrough-scan",
+        "queries": [
+          "arXiv 2412.15605 Don't Do RAG Cache-Augmented Generation"
+        ],
+        "findingSummary": "Same arXiv id surfaces on ADS abstract index and Hugging Face papers hub; use arXiv PDF as canonical.",
+        "verificationEvidence": {
+          "kind": "path",
+          "ref": "https://arxiv.org/abs/2412.15605",
+          "note": "Hop 1b lab/proceeding-style anchor; not reproduced locally."
+        }
+      },
+      {
+        "id": "H2-mcp-tools-contract",
+        "queries": [
+          "Model Context Protocol tools/list tools/call JSON-RPC 2025-11-25"
+        ],
+        "findingSummary": "ASS-ADE MCP exposes context_memory_store/query with extended optional min_score on query; contract lives in server tool schemas.",
+        "verificationEvidence": {
+          "kind": "path",
+          "ref": "src/ass_ade/mcp/server.py",
+          "note": "Repo is authority for tool inputSchema; compare to https://modelcontextprotocol.io/specification/2025-11-25/server/tools when changing shapes."
+        }
+      },
+      {
+        "id": "H3-local-terrain",
+        "queries": [
+          "Where is context pack gate script?",
+          "github evolution control workflow split jobs"
+        ],
+        "findingSummary": "github_evolution_control.py and auto-evolve-cycle.yml present; scripts/context_pack_gate.py not listed under scripts/ in this snapshot—hook doc may be ahead of repo.",
+        "verificationEvidence": {
+          "kind": "path",
+          "ref": "scripts/",
+          "note": "Heuristic: list_dir/grep scripts; add gate or update AGENTS if enforcement required."
+        }
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/2412.15605",
+        "retrievedAt": "2026-04-20T08:08:00Z",
+        "supports": ["H1-cag-vs-rag", "H1b-ai-breakthrough-scan"]
+      },
+      {
+        "url": "https://modelcontextprotocol.io/specification/2025-11-25/server/tools",
+        "retrievedAt": "2026-04-20T08:08:00Z",
+        "supports": ["H2-mcp-tools-contract"]
+      }
+    ]
+  },
+  "techDocs": {
+    "stackFingerprint": {
+      "python": ">=3.11 (pyproject.toml)",
+      "pydantic": ">=2.11,<3",
+      "typer": ">=0.15,<1",
+      "httpx": ">=0.28,<0.29",
+      "pytest": ">=8.0 (dev)"
+    },
+    "deliverableScopes": [
+      {
+        "path": "https://docs.pydantic.dev/latest/",
+        "note": "VectorMemory* models; validate new fields on query results."
+      },
+      {
+        "path": "https://typer.tiangolo.com/",
+        "note": "CLI context query --min-score Option typing."
+      }
+    ]
+  },
+  "risksAndGaps": [
+    "context_pack_gate.py referenced by Cursor command / AGENTS may be absent—Writes gated by hook could be no-ops or fail in CI until added.",
+    "Hashing embeddings are not neural cosine semantics; min_score defaults must stay conservative or env-driven.",
+    "setup_cursor_atomadic.py lives under ~/.cursor/atomadic—not versioned in !ass-ade; drift only visible after manual sync."
+  ],
+  "verdict": "REFINE"
+}

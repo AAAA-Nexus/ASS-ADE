@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "atomadic.context-pack.v1",
+  "generatedAt": "2026-04-22T19:20:00+00:00",
+  "intent": {
+    "summary": "ato-pilot closeout for ass-ade-expansion-evolution-promotion: handbook, release checklist, terrain keys, layout tests, CI path wiring.",
+    "deliverables": [
+      "docs/atomadic-triple-lane-handbook.md",
+      "docs/RELEASE_CHECKLIST.md",
+      "tests/test_docs_promotion_layout.py"
+    ]
+  },
+  "paths": {
+    "repoRoot": "C:\\!aaaa-nexus\\!ass-ade",
+    "packDir": "C:\\!aaaa-nexus\\!ass-ade\\.ass-ade\\context-packs\\ass-ade-eeep-pilot-20260422"
+  },
+  "repoMap": {
+    "tierMap": ".ass-ade/tier-map.json",
+    "hotPaths": [
+      "docs/atomadic-triple-lane-handbook.md",
+      "README.md",
+      ".ass-ade/terrain-index.v0.json"
+    ],
+    "testsAndCommands": [
+      "pytest tests/test_docs_promotion_layout.py",
+      "python scripts/atomadic_dev_harness.py --quick"
+    ]
+  },
+  "webResearch": { "hops": [], "sources": [] },
+  "techDocs": {},
+  "risksAndGaps": [],
+  "verdict": "PASS"
+}

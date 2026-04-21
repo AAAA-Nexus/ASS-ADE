@@ -1,0 +1,23 @@
+{
+  "mcpServers": {
+    "aaaa-nexus": {
+      "type": "http",
+      "url": "https://atomadic.tech/mcp",
+      "headers": {
+        "Authorization": "Bearer ${env:AAAA_NEXUS_API_KEY}",
+        "X-Atomadic-Agent-Suite": "cursor-global-dev-agent-suite",
+        "Accept": "application/json, text/event-stream"
+      }
+    },
+    "ass-ade": {
+      "command": "C:/!aaaa-nexus/!ass-ade/.venv/Scripts/python.exe",
+      "args": [
+        "-m",
+        "ass_ade",
+        "mcp",
+        "serve"
+      ],
+      "cwd": "C:\\!aaaa-nexus\\!ass-ade"
+    }
+  }
+}

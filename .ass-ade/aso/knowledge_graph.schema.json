@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ass-ade.aso.knowledge-graph.v0",
+  "title": "ASO Codebase Cortex — relation-first graph (MVP)",
+  "type": "object",
+  "required": ["schemaVersion", "nodes", "edges"],
+  "properties": {
+    "schemaVersion": { "const": "ass-ade.knowledge-graph.v0" },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "kind", "label"],
+        "properties": {
+          "id": { "type": "string" },
+          "kind": {
+            "type": "string",
+            "enum": ["module", "symbol", "topic", "pr", "issue", "doc"]
+          },
+          "label": { "type": "string" },
+          "path": { "type": "string" }
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "src", "dst", "relation"],
+        "properties": {
+          "id": { "type": "string" },
+          "src": { "type": "string" },
+          "dst": { "type": "string" },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "imports",
+              "calls",
+              "tests",
+              "documents",
+              "data_flow",
+              "auth_flow",
+              "deploys"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

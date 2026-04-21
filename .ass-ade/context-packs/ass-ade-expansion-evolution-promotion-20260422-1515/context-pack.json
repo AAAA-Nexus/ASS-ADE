@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "atomadic.context-pack.v1",
+  "generatedAt": "2026-04-22T15:15:00+00:00",
+  "intent": {
+    "summary": "Research-backed enhancement of ASS-ADE via three depth plans: expansion (technical terrain), evolution (governance), promotion (credibility and distribution), aligned with MCP spec trust model and repo gates.",
+    "deliverables": [
+      "ato-plan folder with plan.md, research.md, tasks.json, evolution.log",
+      "Context pack (this directory) for downstream /ato-pilot or /ass implementation",
+      "Executable first nodes: T1 recon; parallel lanes E/V/P per tasks.json in ato-plan"
+    ]
+  },
+  "paths": {
+    "repoRoot": "C:\\!aaaa-nexus\\!ass-ade",
+    "packDir": "C:\\!aaaa-nexus\\!ass-ade\\.ass-ade\\context-packs\\ass-ade-expansion-evolution-promotion-20260422-1515",
+    "atoPlanDir": "C:\\!aaaa-nexus\\.ato-plans\\active\\ass-ade-expansion-evolution-promotion-20260422-1515"
+  },
+  "repoMap": {
+    "tierMap": ".ass-ade/tier-map.json",
+    "terrainIndex": ".ass-ade/terrain-index.v0.json",
+    "tiersSampled": ["a0", "a1", "a2", "a3", "a4"],
+    "hotPaths": [
+      "src/ass_ade/mcp/server.py",
+      "mcp/server.json",
+      "tests/test_mcp_manifest_parity.py",
+      "tests/test_monadic_purity.py",
+      "scripts/atomadic_dev_harness.py",
+      "scripts/context_pack_gate.py",
+      ".github/workflows/epiphany-cycle.yml",
+      ".github/workflows/pr-labeled-ass-ade.yml"
+    ],
+    "testsAndCommands": [
+      "python scripts/atomadic_dev_harness.py --quick",
+      "pytest tests/",
+      "python scripts/check_evolution_context.py"
+    ]
+  },
+  "webResearch": {
+    "hops": [
+      {
+        "id": "H1-mcp-spec-trust",
+        "queries": ["Model Context Protocol specification latest tools security"],
+        "findingSummary": "MCP uses JSON-RPC 2.0; servers expose tools/resources/prompts; specification emphasizes user consent, data privacy, and treating tools as privileged execution with cautious descriptions.",
+        "verificationEvidence": {
+          "kind": "path",
+          "ref": "https://modelcontextprotocol.io/specification/latest (retrieved 2026-04-22)",
+          "note": "External spec; implement consent and tool-safety in ass_ade MCP handlers and docs."
+        }
+      },
+      {
+        "id": "H1b-ai-breakthrough-mcp-corpus",
+        "queries": ["arxiv 2603.23802 MCP tools agent usage"],
+        "findingSummary": "Large-scale empirical study of public MCP repositories (177k+ tools): categorizes perception vs reasoning vs action tools; reports rising share of action tools and discusses oversight at the tool layer.",
+        "verificationEvidence": {
+          "kind": "path",
+          "ref": "https://arxiv.org/abs/2603.23802",
+          "note": "Use as external motivation for registry discipline and risk framing; do not reproduce paper statistics without DEFER or reproduced methodology (see .ass-ade/research-radar/DEFER-paper-statistics.md)."
+        }
+      }
+    ],
+    "sources": [
+      "https://modelcontextprotocol.io/specification/latest",
+      "https://arxiv.org/abs/2603.23802"
+    ]
+  },
+  "techDocs": {
+    "stackFingerprint": {
+      "python": ">=3.11 per pyproject.toml",
+      "coreDeps": ["httpx", "pydantic", "typer", "rich", "jsonschema"],
+      "testRunner": "pytest>=8"
+    },
+    "deliverableScopes": [
+      {
+        "name": "expansion",
+        "files": ["mcp/server.json", "src/ass_ade/mcp/", ".ass-ade/tier-map.json", "tests/test_mcp_manifest_parity.py"]
+      },
+      {
+        "name": "evolution",
+        "files": [".ass-ade/ass-ade-suite-roadmap.json", ".ass-ade/autonomous/", ".ato-plans/.../evolution.log"]
+      },
+      {
+        "name": "promotion",
+        "files": ["CONTRIBUTING.md", "AGENTS.md", "docs/demos/", ".github/"]
+      }
+    ]
+  },
+  "risksAndGaps": [
+    "Canonical git remote for workspace root not confirmed in this session; promotion URLs may be pending.",
+    "Hosted MCP parity remains roadmap-aspirational until smoke artifacts land.",
+    "External benchmark papers (e.g. MCP-Bench class) cited only at ecosystem level unless DEFER lifted."
+  ],
+  "verdict": "PASS"
+}
