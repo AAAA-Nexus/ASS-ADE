@@ -11,7 +11,7 @@
     "oauth_protected_resource": "https://atomadic.tech/.well-known/oauth-protected-resource",
     "mcp_manifest": "https://atomadic.tech/.well-known/mcp.json",
     "pricing_manifest": "https://atomadic.tech/.well-known/pricing.json",
-    "note": "This file is the stdio ASS-ADE MCP catalog. Metered HTTPS tools and x402 pricing live on hosted_nexus_skus URLs; see storefront _scripts/mcp_http_smoke.md for curl checks."
+    "note": "Stdio ASS-ADE tool catalog (above). Metered HTTPS MCP and x402 pricing use mcp_http_post and pricing_manifest; smoke with curl against those URLs."
   },
   "command": "python",
   "args": ["-m", "ass_ade", "mcp", "serve"],

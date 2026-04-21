@@ -29,3 +29,18 @@ def test_server_json_tool_ids_are_subset_of_runtime_surfaces(server_json_tools: 
     available = set(reg.list_tools()) | workflow
     stray = sorted(server_json_tools - available)
     assert not stray, f"mcp/server.json lists unknown tools: {stray}"
+
+
+def test_server_json_hosted_nexus_skus_urls_are_https_when_present() -> None:
+    """Optional ``hosted_nexus_skus`` block must use https URL strings (typo gate)."""
+    path = _REPO / "mcp" / "server.json"
+    data = json.loads(path.read_text(encoding="utf-8"))
+    block = data.get("hosted_nexus_skus")
+    if block is None:
+        return
+    assert isinstance(block, dict)
+    for key, val in block.items():
+        if key == "note":
+            assert isinstance(val, str) and val
+            continue
+        assert isinstance(val, str) and val.startswith("https://"), f"{key}: {val!r}"
