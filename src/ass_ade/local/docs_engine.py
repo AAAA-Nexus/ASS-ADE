@@ -4,8 +4,19 @@ from __future__ import annotations
 
 Analyzes any repo without network calls. Returns structured data
 that the CLI layer forwards to the Nexus API for synthesis.
+
+Wave 3 additions
+----------------
+- :func:`scan_python_api` - AST walk that captures full function / class
+  signatures, docstrings, and line ranges (not just names).
+- :func:`scan_foreign_api` - uses :mod:`ass_ade.engine.transpile` to pull
+  Swift / TypeScript / Kotlin / Rust symbols into the same shape.
+- :func:`render_api_reference` - emits a proper ``API.md`` per-module.
+- ``render_local_docs`` now writes ``API.md`` when any symbols carry
+  signature metadata.
 """
 
+import ast
 import os
 import re
 from pathlib import Path
@@ -174,6 +185,191 @@ def scan_source_symbols(root: Path, max_files: int = 200) -> list[dict[str, Any]
     return symbols
 
 
+def scan_python_api(root: Path, max_files: int = 400) -> list[dict[str, Any]]:
+    """AST-based API extraction for Python sources.
+
+    Returns a list of symbol records with:
+      ``{"file": str, "kind": "function"|"class"|"method",
+        "name": str, "qualname": str, "signature": str,
+        "docstring": str|None, "lineno": int, "is_async": bool}``
+    """
+    _ignored = DEFAULT_IGNORED_DIRS | {".venv", "venv", "build", "dist"}
+    out: list[dict[str, Any]] = []
+    seen = 0
+
+    for dirpath, dirs, files in os.walk(root, topdown=True):
+        dirs[:] = [d for d in dirs if d not in _ignored]
+        for filename in files:
+            if not filename.endswith(".py"):
+                continue
+            if seen >= max_files:
+                return out
+            seen += 1
+            full = Path(dirpath) / filename
+            try:
+                rel = str(full.relative_to(root)).replace("\\", "/")
+                source = full.read_text(encoding="utf-8", errors="replace")
+                tree = ast.parse(source)
+            except Exception:
+                continue
+            for node in tree.body:
+                _collect_python_symbol(node, rel, qualname_prefix="", results=out)
+    return out
+
+
+def _collect_python_symbol(
+    node: ast.AST,
+    rel: str,
+    *,
+    qualname_prefix: str,
+    results: list[dict[str, Any]],
+) -> None:
+    if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+        qualname = f"{qualname_prefix}{node.name}" if qualname_prefix else node.name
+        results.append(
+            {
+                "file": rel,
+                "kind": "method" if qualname_prefix else "function",
+                "name": node.name,
+                "qualname": qualname,
+                "signature": _python_signature(node),
+                "docstring": ast.get_docstring(node),
+                "lineno": node.lineno,
+                "is_async": isinstance(node, ast.AsyncFunctionDef),
+            }
+        )
+    elif isinstance(node, ast.ClassDef):
+        qualname = f"{qualname_prefix}{node.name}" if qualname_prefix else node.name
+        bases = [ast.unparse(b) for b in node.bases]
+        results.append(
+            {
+                "file": rel,
+                "kind": "class",
+                "name": node.name,
+                "qualname": qualname,
+                "signature": f"class {qualname}({', '.join(bases)})" if bases else f"class {qualname}",
+                "docstring": ast.get_docstring(node),
+                "lineno": node.lineno,
+                "is_async": False,
+            }
+        )
+        for child in node.body:
+            _collect_python_symbol(
+                child, rel, qualname_prefix=f"{qualname}.", results=results
+            )
+
+
+def _python_signature(node: ast.FunctionDef | ast.AsyncFunctionDef) -> str:
+    args_src = ast.unparse(node.args)
+    ret = f" -> {ast.unparse(node.returns)}" if node.returns else ""
+    kw = "async def" if isinstance(node, ast.AsyncFunctionDef) else "def"
+    return f"{kw} {node.name}({args_src}){ret}"
+
+
+_FOREIGN_EXT = {
+    ".swift": "swift",
+    ".ts": "typescript",
+    ".tsx": "typescript",
+    ".js": "javascript",
+    ".jsx": "javascript",
+    ".mjs": "javascript",
+    ".kt": "kotlin",
+    ".kts": "kotlin",
+    ".rs": "rust",
+}
+
+
+def scan_foreign_api(root: Path, max_files: int = 200) -> list[dict[str, Any]]:
+    """Multi-language symbol extraction via the transpile engine.
+
+    Walks ``root``, dispatches each recognized non-Python source through the
+    appropriate :class:`Transpiler`, and flattens its functions / classes
+    into the same symbol shape as :func:`scan_python_api`.
+    """
+    try:
+        from ass_ade.engine.transpile import get_transpiler
+    except Exception:
+        return []
+
+    _ignored = DEFAULT_IGNORED_DIRS | {
+        ".venv",
+        "venv",
+        "node_modules",
+        "target",
+        "build",
+        "dist",
+    }
+    out: list[dict[str, Any]] = []
+    seen = 0
+    for dirpath, dirs, files in os.walk(root, topdown=True):
+        dirs[:] = [d for d in dirs if d not in _ignored]
+        for filename in files:
+            ext = Path(filename).suffix.lower()
+            lang = _FOREIGN_EXT.get(ext)
+            if lang is None:
+                continue
+            if seen >= max_files:
+                return out
+            seen += 1
+            full = Path(dirpath) / filename
+            try:
+                rel = str(full.relative_to(root)).replace("\\", "/")
+                source = full.read_text(encoding="utf-8", errors="replace")
+                result = get_transpiler(lang).transpile_source(source, source_path=rel)
+            except Exception:
+                continue
+            for f in result.functions:
+                params = ", ".join(f.params)
+                ret = f" -> {f.return_type}" if f.return_type else ""
+                kw = "async fn" if f.is_async else "fn"
+                out.append(
+                    {
+                        "file": rel,
+                        "kind": "function",
+                        "name": f.name,
+                        "qualname": f.name,
+                        "signature": f"{kw} {f.name}({params}){ret}",
+                        "docstring": f.docstring,
+                        "lineno": 0,
+                        "is_async": f.is_async,
+                        "language": lang,
+                    }
+                )
+            for cls in result.classes:
+                base_txt = f"({', '.join(cls.bases)})" if cls.bases else ""
+                out.append(
+                    {
+                        "file": rel,
+                        "kind": "class",
+                        "name": cls.name,
+                        "qualname": cls.name,
+                        "signature": f"class {cls.name}{base_txt}",
+                        "docstring": cls.docstring,
+                        "lineno": 0,
+                        "is_async": False,
+                        "language": lang,
+                    }
+                )
+                for m in cls.methods:
+                    params = ", ".join(m.params)
+                    ret = f" -> {m.return_type}" if m.return_type else ""
+                    kw = "async fn" if m.is_async else "fn"
+                    out.append(
+                        {
+                            "file": rel,
+                            "kind": "method",
+                            "name": m.name,
+                            "qualname": f"{cls.name}.{m.name}",
+                            "signature": f"{kw} {cls.name}.{m.name}({params}){ret}",
+                            "docstring": m.docstring,
+                            "lineno": 0,
+                            "is_async": m.is_async,
+                            "language": lang,
+                        }
+                    )
+    return out
+
+
 def detect_test_framework(root: Path) -> str | None:
     if (root / "pytest.ini").exists():
         return "pytest"
@@ -244,6 +440,14 @@ def build_local_analysis(root: Path) -> dict[str, Any]:
         analysis["symbols"] = scan_source_symbols(resolved)
     except Exception:
         analysis["symbols"] = []
+    try:
+        analysis["python_api"] = scan_python_api(resolved)
+    except Exception:
+        analysis["python_api"] = []
+    try:
+        analysis["foreign_api"] = scan_foreign_api(resolved)
+    except Exception:
+        analysis["foreign_api"] = []
     try:
         analysis["test_framework"] = detect_test_framework(resolved)
     except Exception:
@@ -459,7 +663,85 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 """
     written["CHANGELOG.md"] = _write(output_dir / "CHANGELOG.md", changelog)
 
+    api_md = render_api_reference(analysis)
+    if api_md is not None:
+        written["API.md"] = _write(output_dir / "API.md", api_md)
+
     return written
+
+
+def render_api_reference(analysis: dict[str, Any]) -> str | None:
+    """Render a full API reference from ``python_api`` + ``foreign_api``.
+
+    Returns ``None`` if no signature-carrying symbols were captured.
+    """
+    py_api: list[dict[str, Any]] = analysis.get("python_api") or []
+    foreign_api: list[dict[str, Any]] = analysis.get("foreign_api") or []
+    if not py_api and not foreign_api:
+        return None
+
+    meta: dict[str, Any] = analysis.get("metadata") or {}
+    project_name: str = meta.get("name") or Path(analysis.get("root", "project")).name
+    version: str = meta.get("version") or "0.1.0"
+
+    sections: list[str] = [
+        f"# {project_name} API Reference",
+        "",
+        f"**Version:** {version}",
+        "",
+        "Auto-generated from source using AST analysis (Python) and the",
+        "ASS-ADE transpile engine (Swift, TypeScript, Kotlin, Rust).",
+        "",
+    ]
+
+    if py_api:
+        sections.append("## Python")
+        sections.append("")
+        sections.extend(_render_api_group(py_api, language_label=None))
+
+    if foreign_api:
+        by_lang: dict[str, list[dict[str, Any]]] = {}
+        for s in foreign_api:
+            by_lang.setdefault(s.get("language", "unknown"), []).append(s)
+        for lang in sorted(by_lang):
+            sections.append(f"## {lang.capitalize()}")
+            sections.append("")
+            sections.extend(_render_api_group(by_lang[lang], language_label=lang))
+
+    return "\n".join(sections).rstrip() + "\n"
+
+
+def _render_api_group(
+    symbols: list[dict[str, Any]],
+    *,
+    language_label: str | None,
+) -> list[str]:
+    by_file: dict[str, list[dict[str, Any]]] = {}
+    for s in symbols:
+        by_file.setdefault(s["file"], []).append(s)
+    lines: list[str] = []
+    for filepath in sorted(by_file):
+        lines.append(f"### `{filepath}`")
+        lines.append("")
+        items = sorted(by_file[filepath], key=lambda r: (r.get("lineno", 0), r["qualname"]))
+        for sym in items:
+            kind = sym.get("kind", "symbol")
+            qualname = sym.get("qualname", sym.get("name", "?"))
+            sig = sym.get("signature") or qualname
+            lineno = sym.get("lineno")
+            loc = f" — line {lineno}" if lineno else ""
+            lines.append(f"#### `{qualname}` _({kind})_{loc}")
+            lines.append("")
+            lines.append("```python" if language_label is None else f"```{language_label}")
+            lines.append(sig)
+            lines.append("```")
+            lines.append("")
+            doc = sym.get("docstring")
+            if doc:
+                lines.append(doc.strip())
+                lines.append("")
+        lines.append("")
+    return lines
 
 
 def _write(path: Path, content: str) -> Path:
