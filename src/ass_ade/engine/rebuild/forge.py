@@ -67,24 +67,25 @@ def _hydrate_env_from_project() -> None:
     _load_env_file(Path.home() / ".ass-ade" / ".env")
 
 
-# Each spec: (env_key, base_url, model, completions_path)
-# completions_path defaults to "/chat/completions" when omitted.
-_PROVIDER_SPECS: list[tuple[str, str, str, str]] = [
-    # AAAA-Nexus first — our own inference API, no rate limits for internal use
-    ("AAAA_NEXUS_API_KEY",  "https://atomadic.tech",                   "llama-3.1-8b",                    "/v1/inference"),
-    ("GROQ_API_KEY",        "https://api.groq.com/openai/v1",          "llama-3.3-70b-versatile",         "/chat/completions"),
-    ("CEREBRAS_API_KEY",    "https://api.cerebras.ai/v1",              "llama3.3-70b",                    "/chat/completions"),
-    ("MISTRAL_API_KEY",     "https://api.mistral.ai/v1",               "mistral-large-latest",            "/chat/completions"),
-    ("TOGETHER_API_KEY",    "https://api.together.xyz/v1",             "meta-llama/Llama-3-70b-chat-hf",  "/chat/completions"),
-    ("OPENROUTER_API_KEY",  "https://openrouter.ai/api/v1",            "meta-llama/llama-3.3-70b-instruct", "/chat/completions"),
+# Each spec: (env_key, base_url, model, completions_path, auth_scheme)
+# auth_scheme is "bearer" (default) or "x-api-key" (AAAA-Nexus).
+_PROVIDER_SPECS: list[tuple[str, str, str, str, str]] = [
+    # AAAA-Nexus first — our own inference API, uses x-api-key header
+    ("AAAA_NEXUS_API_KEY",  "https://atomadic.tech",                   "llama-3.1-8b",                    "/v1/inference",     "x-api-key"),
+    ("CEREBRAS_API_KEY",    "https://api.cerebras.ai/v1",              "qwen-3-235b-a22b-instruct-2507",  "/chat/completions", "bearer"),
+    ("GROQ_API_KEY",        "https://api.groq.com/openai/v1",          "llama-3.3-70b-versatile",         "/chat/completions", "bearer"),
+    ("MISTRAL_API_KEY",     "https://api.mistral.ai/v1",               "mistral-large-latest",            "/chat/completions", "bearer"),
+    ("TOGETHER_API_KEY",    "https://api.together.xyz/v1",             "meta-llama/Llama-3-70b-chat-hf",  "/chat/completions", "bearer"),
+    ("OPENROUTER_API_KEY",  "https://openrouter.ai/api/v1",            "meta-llama/llama-3.3-70b-instruct", "/chat/completions", "bearer"),
 ]
 
 
-def _build_cloud_provider(env_key: str, base_url: str, model: str, completions_path: str = "/chat/completions") -> Any:
+def _build_cloud_provider(env_key: str, base_url: str, model: str, completions_path: str = "/chat/completions", auth_scheme: str = "bearer") -> Any:
     from ass_ade.engine.provider import OpenAICompatibleProvider
     return OpenAICompatibleProvider(base_url=base_url, api_key=os.environ[env_key],
                                     model=model, timeout=60.0,
-                                    completions_path=completions_path)
+                                    completions_path=completions_path,
+                                    auth_scheme=auth_scheme)
 
 
 def _get_all_providers() -> list[Any]:
@@ -95,9 +96,9 @@ def _get_all_providers() -> list[Any]:
     """
     _hydrate_env_from_project()
     providers = []
-    for env_key, base_url, model, completions_path in _PROVIDER_SPECS:
+    for env_key, base_url, model, completions_path, auth_scheme in _PROVIDER_SPECS:
         if os.getenv(env_key):
-            providers.append(_build_cloud_provider(env_key, base_url, model, completions_path))
+            providers.append(_build_cloud_provider(env_key, base_url, model, completions_path, auth_scheme))
             log.debug("Forge pool: added %s", env_key.split("_API_KEY")[0].split("_TOKEN")[0])
     if not providers:
         providers.append(_get_provider())
@@ -115,9 +116,9 @@ def _get_provider() -> Any:
 
     _hydrate_env_from_project()
 
-    for env_key, base_url, model, completions_path in _PROVIDER_SPECS:
+    for env_key, base_url, model, completions_path, auth_scheme in _PROVIDER_SPECS:
         if os.getenv(env_key):
-            _provider = _build_cloud_provider(env_key, base_url, model, completions_path)
+            _provider = _build_cloud_provider(env_key, base_url, model, completions_path, auth_scheme)
             log.info("Forge provider: %s @ %s", env_key.split("_API_KEY")[0], base_url)
             return _provider
 
