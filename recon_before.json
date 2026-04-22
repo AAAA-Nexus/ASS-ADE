@@ -1,0 +1,221 @@
+Running recon on /home/runner/work/ASS-ADE/ASS-ADE …
+{
+  "root": "/home/runner/work/ASS-ADE/ASS-ADE",
+  "duration_ms": 4511.05561899999,
+  "summary": "Repo at `/home/runner/work/ASS-ADE/ASS-ADE` contains 340 files (240 source, 74 test-related) across 4 directory levels (2788.8 KB total). Test coverage: 1081 test functions across 70 test files (ratio 0.47). Documentation coverage is low (38%). Dominant tier: `at`.",
+  "scout": {
+    "total_files": 340,
+    "total_size_bytes": 2855767,
+    "total_size_kb": 2788.8,
+    "max_depth": 4,
+    "top_level": [
+      ".github",
+      ".gitignore",
+      "AGENTS.md",
+      "CONTRIBUTING.md",
+      "README.md",
+      "docs",
+      "hooks",
+      "mcp",
+      "prompts",
+      "pyproject.toml",
+      "recon_before.json",
+      "scripts",
+      "skills",
+      "src",
+      "tests",
+      "tools"
+    ],
+    "by_extension": {
+      ".py": 239,
+      ".md": 76,
+      ".yml": 8,
+      ".txt": 6,
+      ".json": 5,
+      "[no_ext]": 2,
+      ".ipynb": 2,
+      ".toml": 1,
+      ".js": 1
+    },
+    "source_files": 240,
+    "test_files_count": 74
+  },
+  "dependency": {
+    "python_files": 239,
+    "unique_external_deps": 61,
+    "top_external_deps": [
+      "__future__",
+      "aaaa_nexus_mcp",
+      "argparse",
+      "ass_ade",
+      "ast",
+      "asyncio",
+      "collections",
+      "concurrent",
+      "dataclasses",
+      "datasets",
+      "datetime",
+      "difflib",
+      "dotenv",
+      "enum",
+      "eth_account",
+      "gradio",
+      "hashlib",
+      "http",
+      "httpx",
+      "importlib"
+    ],
+    "circular_deps": [],
+    "has_circular_deps": false,
+    "max_import_depth": 0,
+    "internal_modules": 239
+  },
+  "tier": {
+    "total_py_files": 239,
+    "tier_distribution": {
+      "qk": 13,
+      "at": 141,
+      "mo": 25,
+      "og": 13,
+      "sy": 47
+    },
+    "tier_examples": {
+      "qk": [
+        "src/ass_ade/__init__.py",
+        "src/ass_ade/mcp/__init__.py",
+        "src/ass_ade/aso/constants.py",
+        "src/ass_ade/aso/__init__.py",
+        "src/ass_ade/tools/__init__.py"
+      ],
+      "at": [
+        "src/ass_ade/system.py",
+        "src/ass_ade/context_memory.py",
+        "src/ass_ade/workflows.py",
+        "src/ass_ade/map_terrain.py",
+        "src/ass_ade/config.py"
+      ],
+      "mo": [
+        "src/ass_ade/mcp/server.py",
+        "src/ass_ade/mcp/zero_router.py",
+        "src/ass_ade/tools/prompt.py",
+        "src/ass_ade/tools/history.py",
+        "src/ass_ade/nexus/session.py"
+      ],
+      "og": [
+        "src/ass_ade/mcp/cancellation.py",
+        "src/ass_ade/tools/builtin.py",
+        "src/ass_ade/tools/plan.py",
+        "src/ass_ade/nexus/resilience.py",
+        "src/ass_ade/nexus/errors.py"
+      ],
+      "sy": [
+        "src/ass_ade/pipeline.py",
+        "src/ass_ade/cli.py",
+        "src/ass_ade/nexus/client.py",
+        "src/ass_ade/a3_og_features/forge_loop.py",
+        "src/ass_ade/engine/rebuild/orchestrator.py"
+      ]
+    },
+    "tier_violations": [
+      "src/ass_ade/map_terrain.py (at, 45KB — may span tiers)",
+      "src/ass_ade/recon.py (at, 30KB — may span tiers)",
+      "src/ass_ade/interpreter.py (at, 98KB — may span tiers)",
+      "src/ass_ade/protocol/evolution.py (at, 26KB — may span tiers)",
+      "src/ass_ade/nexus/models.py (at, 37KB — may span tiers)",
+      "src/ass_ade/engine/rebuild/forge.py (at, 26KB — may span tiers)",
+      "src/ass_ade/agent/capabilities.py (at, 35KB — may span tiers)",
+      "tests/test_phase_engines.py (at, 30KB — may span tiers)",
+      "tests/test_free_providers.py (at, 32KB — may span tiers)",
+      "tests/test_new_commands.py (at, 38KB — may span tiers)"
+    ],
+    "dominant_tier": "at"
+  },
+  "test": {
+    "test_files": 70,
+    "test_functions": 1081,
+    "source_files": 149,
+    "untested_modules": [
+      "src/ass_ade/context_memory.py",
+      "src/ass_ade/recon.py",
+      "src/ass_ade/prompt_toolkit.py",
+      "src/ass_ade/interpreter.py",
+      "src/ass_ade/__main__.py",
+      "src/ass_ade/commands/providers.py",
+      "src/ass_ade/commands/finish.py",
+      "src/ass_ade/commands/feature.py",
+      "src/ass_ade/commands/workflow.py",
+      "src/ass_ade/commands/blueprint.py",
+      "src/ass_ade/commands/selfbuild.py",
+      "src/ass_ade/commands/aso.py",
+      "src/ass_ade/commands/payment.py",
+      "src/ass_ade/mcp/server.py",
+      "src/ass_ade/mcp/cancellation.py",
+      "src/ass_ade/mcp/mock_server.py",
+      "src/ass_ade/mcp/zero_router.py",
+      "src/ass_ade/mcp/utils.py",
+      "src/ass_ade/a0_qk_constants/agent_seed_types.py",
+      "src/ass_ade/a0_qk_constants/swarm_types.py"
+    ],
+    "untested_count": 118,
+    "coverage_ratio": 0.47,
+    "frameworks": [
+      "pytest",
+      "unittest"
+    ],
+    "test_file_paths": [
+      "tests/test_github_ci_layout.py",
+      "tests/test_phase1_integration.py",
+      "tests/test_phase_engines.py",
+      "tests/test_body_extractor.py",
+      "tests/test_map_terrain.py",
+      "tests/test_pipeline.py",
+      "tests/test_synthesis_no_stubs.py",
+      "tests/test_session.py",
+      "tests/test_interpreter_edge_cases.py",
+      "tests/test_capabilities.py"
+    ]
+  },
+  "doc": {
+    "has_readme": true,
+    "readme_path": "README.md",
+    "doc_files": 82,
+    "doc_file_paths": [
+      "AGENTS.md",
+      "README.md",
+      "CONTRIBUTING.md",
+      "src/ass_ade/README.md",
+      "src/ass_ade/RECON_REPORT.md",
+      "src/ass_ade/prompts/uep_driver.md",
+      "src/ass_ade.egg-info/entry_points.txt",
+      "src/ass_ade.egg-info/requires.txt",
+      "src/ass_ade.egg-info/top_level.txt",
+      "src/ass_ade.egg-info/SOURCES.txt",
+      "src/ass_ade.egg-info/dependency_links.txt",
+      "tests/README.md",
+      "docs/tonight-plan.md",
+      "docs/phase0-recon-context-memory.md",
+      "docs/uep_phase_plan.md"
+    ],
+    "total_public_callables": 2663,
+    "documented_callables": 1016,
+    "doc_coverage": 0.38,
+    "undocumented_samples": [
+      "src/ass_ade/system.py:ToolStatus",
+      "src/ass_ade/system.py:detect_tool",
+      "src/ass_ade/system.py:collect_tool_status",
+      "src/ass_ade/context_memory.py:ContextFile",
+      "src/ass_ade/context_memory.py:ContextPacket",
+      "src/ass_ade/context_memory.py:VectorMemoryRecord",
+      "src/ass_ade/context_memory.py:VectorMemoryStoreResult",
+      "src/ass_ade/context_memory.py:VectorMemoryMatch",
+      "src/ass_ade/context_memory.py:VectorMemoryQueryResult",
+      "src/ass_ade/workflows.py:TrustGateStep"
+    ]
+  },
+  "recommendations": [
+    "Docstring coverage is 38%. Add docstrings to public functions and classes.",
+    "10 file(s) may span tier boundaries. Split into smaller, single-purpose modules."
+  ],
+  "next_action": "Run `ass-ade lint` for detailed style and security findings."
+}
+Completed in 4511 ms
