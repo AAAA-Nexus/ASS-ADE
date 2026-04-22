@@ -25,6 +25,80 @@ dependencies = [
     "typer>=0.15,<1",
 ]
 
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0,<7",
+    "import-linter>=2.0,<3",
+    "pyyaml>=6,<7",
+    "jsonschema>=4,<5",
+]
+
+[tool.setuptools.packages.find]
+where = ["ass-ade-v1.1/src"]
+
+[tool.importlinter]
+root_package = "ass_ade_v11"
+
+[[tool.importlinter.contracts]]
+name = "Monadic tiers (ASS-ADE v1.1)"
+type = "layers"
+layers = [
+    "ass_ade_v11.a4_sy_orchestration",
+    "ass_ade_v11.a3_og_features",
+    "ass_ade_v11.a2_mo_composites",
+    "ass_ade_v11.a1_at_functions",
+    "ass_ade_v11.a0_qk_constants",
+]
+
+[tool.pytest.ini_options]
+markers = [
+    "phase0_recon: Phase 0 terrain / recon gate",
+    "phase1_ingest: Phase 1 source ingest + symbol classification",
+    "phase2_gapfill: Phase 2 gap-fill plan from ingestions",
+    "phase3_enrich: Phase 3 enrich / body attachment",
+    "rebuild_v11: Full rebuild book through package",
+    "cli: Typer CLI integration",
+    "usecase: Operator journeys (doctor, assimilate, policy, plan artifacts); run ``pytest -m usecase``",
+    "dogfood: Self-rebuild / long-running dogfood checks",
+    "generated_smoke: Parametrized import tests from synth-tests manifest",
+]
+testpaths = ["ass-ade-v1.1/tests"]
+
+[tool.coverage.run]
+source = ["ass-ade-v1.1/src/ass_ade_v11"]
+
+[tool.coverage.report]
+fail_under = 100
+show_missing = true
+
+[tool.uv.workspace]
+members = [
+    "!atomadic-sdk",
+    "!atomadic-uep",
+    "!uep_ide",
+    "!atomadic-ecosystem",
+]
+
+[tool.uv.sources]
+ass-ade = { path = "../!aaaa-nexus/!ass-ade", editable = true }
+atomadic-sdk = { workspace = true }
+atomadic-uep-engines = { workspace = true }
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+extend-exclude = [
+    ".claude/worktrees",
+    ".venv",
+    "build",
+    "dist",
+    "*.egg-info",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]
 [project.scripts]
 ass-ade-v11 = "ass_ade_v11.a4_sy_orchestration.cli:main"
 ass-ade-unified = "ass_ade_v11.a4_sy_orchestration.unified_cli:main"
