@@ -517,7 +517,7 @@ Week 6-9:   Phase 5 (DGM-H + LoRA flywheel)
 | Invariant | Value | Enforcement Point |
 |-----------|-------|------------------|
 | D_MAX | 23 | AgentLoop delegation depth counter (Phase 1) |
-| TAU_TRUST | 1820/1823 | x402 payment proof verification (already live) |
+| TAU_TRUST | ≥threshold | x402 payment proof verification (already live) |
 | OMEGA_0 | 0 | DGM-H modification validation (Phase 5) |
 | RG_LOOP | 47 | LoRAFlywheel batch trigger interval (Phase 5) |
 | KL_BOUND | KL_BOUND | Hallucination oracle gate (already via QualityGates) |

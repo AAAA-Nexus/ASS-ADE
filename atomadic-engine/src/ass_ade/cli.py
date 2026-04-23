@@ -4944,7 +4944,7 @@ Regenerated on every rebuild — always current.
 |-----------|---------|-------|------|
 | D_max (depth) | {obs_depth} | {d_max.get('limit', 23)} | {'YES' if d_max.get('conformant', True) else 'NO'} |
 | epsilon_KL (dup fraction) | {eps.get('observed_duplicate_fraction', 0.0):.2e} | {eps.get('bound', 0.0):.2e} | {'YES' if eps.get('conformant', True) else 'NO'} |
-| tau_trust | {tau.get('numerator',1820)}/{tau.get('denominator',1823)} | ≥1820/1823 | YES |
+| tau_trust | {tau.get('score','≥threshold')} | ≥threshold | YES |
 | G_18 parity | {g18.get('parity', '?')} mod {g18.get('modulus', 324)} | — | — |
 
 ## Audit summary

@@ -11,7 +11,7 @@
 
 | Zone | Content | Agents / tools |
 |------|---------|------------------|
-| **Private / UEP / MHED-Codex** | Sovereign IP, unreleased engines, internal plans | Swarm prompts under [`agents/`](../agents), `.ato-plans/`, UEP under [`!atomadic-uep`](../!atomadic-uep) |
+| **Private / UEP / Sovereign Codex** | Sovereign IP, unreleased engines, internal plans | Swarm prompts under [`agents/`](../agents), `.ato-plans/`, UEP under [`!atomadic-uep`](../!atomadic-uep) |
 | **Public scrubbed** | Marketable names (e.g. Interpreter), AAAA-Nexus contracts | [`agents/NEXUS_SWARM_MCP.md`](../agents/NEXUS_SWARM_MCP.md), MCP `user-aaaa-nexus` |
 | **ASS-ADE product** | CNA/monadic emit, assimilate | `ass-ade`, backed by [`unified_cli.py`](../ass-ade-v1.1/src/ass_ade_v11/a4_sy_orchestration/unified_cli.py) |
 
