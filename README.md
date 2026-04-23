@@ -9,7 +9,7 @@
 </pre>
 
 [![CI](https://github.com/AAAA-Nexus/ASS-ADE/actions/workflows/ass-ade-ship.yml/badge.svg)](https://github.com/AAAA-Nexus/ASS-ADE/actions/workflows/ass-ade-ship.yml)
-[![Version](https://img.shields.io/badge/version-1.1.0a1-blue)](pyproject.toml)
+[![Version](https://img.shields.io/badge/version-1.1.0a3-blue)](pyproject.toml)
 [![Python](https://img.shields.io/badge/python-3.12%2B-blue)](pyproject.toml)
 [![License](https://img.shields.io/badge/license-Proprietary-orange)](LICENSE)
 

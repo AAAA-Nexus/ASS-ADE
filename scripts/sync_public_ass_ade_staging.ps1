@@ -62,6 +62,25 @@ $excludeDirs = @(
 )
 $excludeFiles = @(".coverage")
 
+# Single source: root SWARM-ONE-PROMPT.md → package vendor fallback (materialize when root missing).
+$rootSwarm = Join-Path $PrivateRoot "SWARM-ONE-PROMPT.md"
+$vendorSwarm = Join-Path $PrivateRoot "ass-ade-v1.1\src\ass_ade_v11\ade\SWARM-ONE-PROMPT.vendor.md"
+if (Test-Path -LiteralPath $rootSwarm) {
+    $vendorDir = Split-Path -Parent $vendorSwarm
+    if (-not (Test-Path -LiteralPath $vendorDir)) {
+        New-Item -ItemType Directory -Force -Path $vendorDir | Out-Null
+    }
+    $hdr = @"
+<!--
+  Fallback for ``materialize`` when the checkout has no root ``SWARM-ONE-PROMPT.md``.
+  Regenerated from repo-root ``SWARM-ONE-PROMPT.md`` by sync_public_ass_ade_staging.ps1.
+-->
+
+"@
+    $body = Get-Content -LiteralPath $rootSwarm -Raw
+    Set-Content -LiteralPath $vendorSwarm -Value ($hdr + $body) -Encoding utf8 -NoNewline
+}
+
 $rcArgs = @(
     (Join-Path $PrivateRoot "ass-ade-v1.1"),
     (Join-Path $StagingRoot "ass-ade-v1.1"),
@@ -116,12 +135,23 @@ if (Test-Path -LiteralPath $dup) {
     Remove-Item -LiteralPath $dup -Force
 }
 
-# Ensure staging ignores local pytest temp
+# Public MANIFEST only (private !atomadic may carry extra graft lines — do not ship those).
+$pubManifest = @(
+    "# Public ASS-ADE: Cursor hook templates for materialize (sdist/wheel).",
+    "graft ass-ade-v1.1/src/ass_ade_v11/ade/cursor_hooks_bundled",
+    ""
+) -join "`n"
+Set-Content -LiteralPath (Join-Path $StagingRoot "MANIFEST.in") -Value $pubManifest -Encoding utf8
+
+# Ensure staging ignores local pytest temp and CLI state dirs
 $gitignore = Join-Path $StagingRoot ".gitignore"
 if (Test-Path -LiteralPath $gitignore) {
     $gi = Get-Content -LiteralPath $gitignore -Raw
-    if ($gi -notmatch '(?m)^\.pytest_tmp/') {
-        Add-Content -LiteralPath $gitignore -Value "`n.pytest_tmp/`n"
+    $add = @()
+    if ($gi -notmatch '(?m)^\.pytest_tmp/') { $add += ".pytest_tmp/`n" }
+    if ($gi -notmatch '(?m)^\.ass-ade/$') { $add += "`n# Local CLI / doctor state (never commit)`n.ass-ade/`n" }
+    if ($add.Count -gt 0) {
+        Add-Content -LiteralPath $gitignore -Value ($add -join "")
     }
 }
 

@@ -46,3 +46,7 @@ dist/
 
 .pytest_tmp/
 
+
+# Local CLI / doctor state (never commit)
+.ass-ade/
+

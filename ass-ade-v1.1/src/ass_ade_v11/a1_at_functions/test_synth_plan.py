@@ -16,9 +16,21 @@ def qualname_for_src_py(py_file: Path, repo_root: Path) -> str:
     return ".".join(parts)
 
 
+def _is_vendor_cursor_hook_py(path: Path, ass_pkg: Path) -> bool:
+    """True for template hooks shipped for ``materialize`` (not product imports)."""
+    vendor = ass_pkg / "ade" / "cursor_hooks_bundled"
+    try:
+        path.relative_to(vendor)
+        return True
+    except ValueError:
+        return False
+
+
 def iter_src_py_files(repo_root: Path) -> list[Path]:
     root = repo_root / "src" / "ass_ade_v11"
-    return sorted(root.rglob("*.py"))
+    return sorted(
+        f for f in root.rglob("*.py") if not _is_vendor_cursor_hook_py(f, root)
+    )
 
 
 def list_expected_qualnames(repo_root: Path) -> list[str]:

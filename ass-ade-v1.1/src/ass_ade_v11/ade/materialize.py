@@ -243,7 +243,7 @@ def materialize_dotted_ade(
     if p_one.is_file() and _copy_file(p_one, ade / "SWARM-ONE-PROMPT.md"):
         n += 1
     else:
-        fb = _ade_package_dir() / "cross_ide_bundled" / "SWARM-ONE-PROMPT.md"
+        fb = _ade_package_dir() / "SWARM-ONE-PROMPT.vendor.md"
         if fb.is_file() and _copy_file(fb, ade / "SWARM-ONE-PROMPT.md"):
             n += 1
     if merge_vscode_recommendations:
