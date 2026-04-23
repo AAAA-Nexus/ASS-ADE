@@ -43,7 +43,12 @@ def _path_from_rel(rel_path: str) -> Path:
 
 
 def _sha256(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    try:
+        text = path.read_text(encoding="utf-8")
+    except (OSError, UnicodeDecodeError):
+        return hashlib.sha256(path.read_bytes()).hexdigest()
+    normalized = text.replace("\r\n", "\n").replace("\r", "\n").encode("utf-8")
+    return hashlib.sha256(normalized).hexdigest()
 
 
 def _read_project_metadata(root: Path) -> dict[str, Any] | None:

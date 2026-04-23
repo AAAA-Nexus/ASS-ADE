@@ -40,7 +40,9 @@ $junk = @(
     (Join-Path $StagingRoot "ass-ade-v1.1\\_cov_tmp_out"),
     (Join-Path $StagingRoot "ass-ade-v1.1\\_cov_tmp_out2"),
     (Join-Path $StagingRoot "ass-ade-v1.1\\cov_annot"),
-    (Join-Path $StagingRoot "ass-ade-v1.1\\.coverage")
+    (Join-Path $StagingRoot "ass-ade-v1.1\\.coverage"),
+    (Join-Path $StagingRoot "ass-ade-v1.1\\tests\\fixtures\\rebuilt-out\\bridges\\rust\\Cargo.lock"),
+    (Join-Path $StagingRoot "ass-ade-v1.1\\tests\\fixtures\\rebuilt-out\\bridges\\rust\\target")
 )
 foreach ($j in $junk) {
     if (Test-Path -LiteralPath $j) {

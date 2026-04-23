@@ -16,6 +16,11 @@ def _write(path: Path, text: str) -> None:
     path.write_text(text, encoding="utf-8")
 
 
+def _write_bytes(path: Path, data: bytes) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(data)
+
+
 def _init_clean_git_repo(repo: Path) -> None:
     subprocess.run(["git", "init", "-b", "main"], cwd=repo, check=True, capture_output=True, text=True)
     subprocess.run(["git", "config", "user.email", "tests@example.invalid"], cwd=repo, check=True, capture_output=True, text=True)
@@ -137,6 +142,27 @@ def test_build_staging_handoff_summary_uses_public_showcase_readme_as_source(tmp
     assert summary["ok"] is True
     assert summary["content_mismatches"] == []
     assert summary["source_overrides"] == {"README.md": "docs/PUBLIC_SHOWCASE_README.md"}
+
+
+def test_build_staging_handoff_summary_tolerates_crlf_checkout_for_text_files(tmp_path: Path) -> None:
+    private_root = tmp_path / "private"
+    staging_root = tmp_path / "staging"
+    private_root.mkdir()
+    staging_root.mkdir()
+    _seed_ship_surface(private_root)
+    _seed_ship_surface(staging_root)
+    _write_bytes(private_root / "CONTRIBUTING.md", b"# Contributing\nLine two\n")
+    _write_bytes(staging_root / "CONTRIBUTING.md", b"# Contributing\r\nLine two\r\n")
+    _init_clean_git_repo(staging_root)
+
+    summary = build_staging_handoff_summary(
+        private_root=private_root,
+        staging_root=staging_root,
+        required_paths=["CONTRIBUTING.md"],
+    )
+
+    assert summary["ok"] is True
+    assert summary["content_mismatches"] == []
 
 
 @pytest.mark.cli

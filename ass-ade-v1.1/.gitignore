@@ -15,3 +15,7 @@ _dogfood_out/
 rebuild_out/
 engine_out/
 drafts/
+
+# Generated bridge fixture artifacts
+tests/fixtures/rebuilt-out/bridges/rust/Cargo.lock
+tests/fixtures/rebuilt-out/bridges/rust/target/
