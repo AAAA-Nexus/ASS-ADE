@@ -19,6 +19,7 @@ def test_unified_cli_help_lists_book_and_doctor() -> None:
     assert "book" in out
     assert "doctor" in out
     assert "assimilate" in out
+    assert "atomadic" in out
 
 
 @pytest.mark.cli
@@ -37,6 +38,17 @@ def test_unified_doctor_runs() -> None:
     assert r.exit_code == 0
     out = r.stdout or r.output or ""
     assert "monadic pipeline" in out.lower()
+    assert "atomadic engine" in out.lower()
+
+
+@pytest.mark.cli
+def test_unified_atomadic_shim_forwards_build_help() -> None:
+    """``ass-ade-unified atomadic …`` forwards argv to the Click ``atomadic`` group."""
+    runner = CliRunner()
+    r = runner.invoke(unified_app, ["atomadic", "build", "--help"])
+    assert r.exit_code == 0, r.stdout + (r.stderr or "")
+    out = (r.stdout or r.output or "").lower()
+    assert "synthesize" in out or "build" in out
 
 
 @pytest.mark.cli

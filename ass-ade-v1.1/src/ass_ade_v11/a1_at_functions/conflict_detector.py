@@ -2,12 +2,21 @@
 
 from __future__ import annotations
 
+import fnmatch
 import hashlib
+import os
 from pathlib import Path
 from typing import Any
 
+from ass_ade_v11.a0_qk_constants.exclude_dirs import EXCLUDED_DIRS
+from ass_ade_v11.a0_qk_constants.policy_types import RootPolicy
+
 _SKIP_STEMS = frozenset({"__init__", "conftest", "setup", "manage"})
 _SKIP_PREFIXES = ("test_", "qk_draft_", "at_draft_", "mo_draft_", "og_draft_", "sy_draft_")
+
+
+def _matches_any(posix_rel: str, patterns: tuple[str, ...]) -> bool:
+    return any(fnmatch.fnmatch(posix_rel, pat) for pat in patterns)
 
 
 def _file_hash(path: Path) -> str:
@@ -17,14 +26,35 @@ def _file_hash(path: Path) -> str:
         return ""
 
 
-def detect_namespace_conflicts(source_paths: list[Path]) -> dict[str, Any]:
+def detect_namespace_conflicts(
+    source_paths: list[Path],
+    *,
+    policy_by_root: dict[Path, RootPolicy] | None = None,
+) -> dict[str, Any]:
     """Flag same module stem in 2+ roots with different content hashes."""
     stem_registry: dict[str, list[tuple[str, str]]] = {}
 
     for src_root in source_paths:
         if not src_root.is_dir():
             continue
-        for py_file in sorted(src_root.rglob("*.py")):
+        root_resolved = src_root.resolve()
+        row = policy_by_root.get(root_resolved) if policy_by_root else None
+        forbids: tuple[str, ...] = row["forbid_globs"] if row and row.get("forbid_globs") else ()
+        py_files: list[Path] = []
+        for dirpath, dirnames, filenames in os.walk(root_resolved):
+            dirnames[:] = [n for n in dirnames if n not in EXCLUDED_DIRS]
+            for filename in filenames:
+                if not filename.endswith(".py"):
+                    continue
+                py_files.append(Path(dirpath) / filename)
+        for py_file in sorted(py_files):
+            if forbids:
+                try:
+                    rel = py_file.resolve().relative_to(root_resolved).as_posix()
+                except ValueError:
+                    rel = py_file.name
+                if _matches_any(rel, forbids):
+                    continue
             stem = py_file.stem
             if stem in _SKIP_STEMS:
                 continue

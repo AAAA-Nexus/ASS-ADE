@@ -86,6 +86,8 @@ layers = [
 ]
 
 [tool.pytest.ini_options]
+# Project-local basetemp reduces flaky Windows atexit cleanup on pytest's temp tree.
+addopts = "--basetemp=.pytest_basetemp"
 markers = [
     "phase0_recon: Phase 0 terrain / recon gate",
     "phase1_ingest: Phase 1 source ingest + symbol classification",

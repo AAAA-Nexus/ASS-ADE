@@ -35,9 +35,9 @@ You are the lead ASS-ADE / Atomadic development agent for this repository. MAP =
 1. `AGENTS.md`
 2. `ASS_ADE_SHIP_PLAN.md` (phases, exit criteria, S1–S6)
 3. `ASS_ADE_GOAL_PIPELINE.md` (HAVE / GAP / tracks)
-4. `ASS_ADE_MATRIX.md` + `ASS_ADE_SUITE_SNAPSHOT.md` (or `ASS_ADE_INVENTORY.md`)
+4. `docs/ASS_ADE_FEATURE_INVENTORY.md` (feature × location map; Initiative U umbrella assimilate) + `ASS_ADE_MATRIX.md` + `ASS_ADE_SUITE_SNAPSHOT.md` (or `ASS_ADE_INVENTORY.md`)
 5. `agents/INDEX.md`, `agents/_PROTOCOL.md`, `agents/ASS_ADE_MONADIC_CODING.md`, `agents/NEXUS_SWARM_MCP.md` (§11 for Nexus) — do not invent MCP tool names
-6. Active ship plan: `.ato-plans/active/ass-ade-ship-nexus-github-20260422/` — especially `tasks.json`, `swarm-execution.md`, and append `evolution.log` when you complete a leg
+6. Active ship plan: `.ato-plans/active/ass-ade-ship-nexus-github-20260422/` — especially `tasks.json`, `swarm-execution.md` (**Initiative U** = umbrella multi-root assimilate on `ass-ade-v1.1` + `ass-ade-v1` + `ass-ade`), `plan.md` § Initiative U, `policies/umbrella_ass_ade_roots.yaml`, and append `evolution.log` when you complete a leg
 
 ## Swarm + orchestration (assume live)
 - **Persistent services:** operator may be running `python scripts/run_swarm_services.py run` in another terminal. If you cannot see it, run `python scripts/run_swarm_services.py status` once in the integrated terminal and summarize **READY** tasks.
@@ -93,16 +93,16 @@ F) **Gaps:** Anything QUARANTINE, DEFER, or **needs human** — label clearly. N
 
 **Sources of truth (use this order when they seem to conflict):**
 
-1. `**swarm_task_state.json` + `tasks.json`** in the active plan folder — DAG completion and **BLOCKED** vs pending.
-2. `**plan.md` § Current position** — human-readable verdict and **QUARANTINE** gates.
-3. `**evolution.log`** — append-only audit; not a substitute for `task mark`.
-4. `**ASS_ADE_SHIP_PLAN.md**` — phase exit criteria (S1–S6).
-5. `**AUTOMATION-PULSE.md` / P3 signals** — automation nudges only; **never** override (1)–(3).
+1. **`swarm_task_state.json`** and **`tasks.json`** in the active plan folder — DAG completion and **BLOCKED** vs pending.
+2. **`plan.md` (Current position)** — human-readable verdict and **QUARANTINE** gates.
+3. **`evolution.log`** — append-only audit; not a substitute for `task mark`.
+4. **`ASS_ADE_SHIP_PLAN.md`** — phase exit criteria (S1–S6).
+5. **`AUTOMATION-PULSE.md` / P3 signals** — automation nudges only; **never** override (1)–(3).
 
 **READY vs BLOCKED:** `python scripts/run_swarm_services.py status` labels nodes **BLOCKED** when marked blocked in `swarm_task_state.json`. **“Ready to start (actionable pending)”** lists only **pending** work (dependencies green). Do not treat a **BLOCKED** node as executable until the gate clears (e.g. PAT / org access for **T9**).
 
-**Multi-IDE hygiene:** One **git author** per slice; set `**SWARM_AGENT`** per tab. **Current operator split:** **VS Code Copilot = planning lane** (`plan.md`, `tasks.json`, `research.md`, **T13** living loop, **T16** dogfood protocol text); **Codex = dev lane** (implementation: **T14** `.github/*` surfaces, tests, CLI touches, **T17** execution captures). If you swap lanes again, restate that in both chats before parallel work. Split **file ownership** — no two agents on the same path without pull/rebase between them.
+**Multi-IDE hygiene:** One **git author** per slice; set **`SWARM_AGENT`** per tab. **Current operator split:** **VS Code Copilot = planning lane** (`plan.md`, `tasks.json`, `research.md`, **T13** living loop, **T16** dogfood protocol text); **Codex = dev lane** (implementation: **T14** `.github/*` surfaces, tests, CLI touches, **T17** execution captures). If you swap lanes again, restate that in both chats before parallel work. Split **file ownership** — no two agents on the same path without pull/rebase between them.
 
-**Drift recovery:** If pulse and log disagree, reconcile with `**task mark`** and one `**evolution.log**` line citing the authority doc you used.
+**Drift recovery:** If pulse and log disagree, reconcile with **`task mark`** and one **`evolution.log`** line citing the authority doc you used.
 
 *Generated for Atomadic; bump `swarm-execution.md` or this file when the active plan path changes.*

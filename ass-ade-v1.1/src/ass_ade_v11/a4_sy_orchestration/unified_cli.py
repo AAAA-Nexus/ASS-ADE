@@ -28,8 +28,9 @@ from ass_ade_v11.a4_sy_orchestration.cli import app as book_app
 app = typer.Typer(
     no_args_is_help=True,
     help=(
-        "United ASS-ADE: ``assimilate`` (multi-root → monadic emit); monadic "
-        "``book``; full IDE/Nexus ``studio`` when ``ass_ade`` (v1) is co-installed."
+        "United ASS-ADE: ``assimilate`` (multi-root -> monadic emit); monadic "
+        "``book``; optional legacy ``studio`` Typer app; "
+        "``atomadic`` Click CLI when ``ass_ade`` is installed."
     ),
 )
 
@@ -222,7 +223,7 @@ def assimilate_cmd(
 def doctor_cmd() -> None:
     """Show which united surfaces are available in this environment."""
     lines = [
-        "[united] monadic pipeline (ass_ade_v11): OK — `ass-ade-unified book …`",
+        "[united] monadic pipeline (ass_ade_v11): OK -> `ass-ade-unified book ...`",
         "[united] one-shot sibling ingest: `ass-ade-unified assimilate PRIMARY OUTPUT [--also PATH ...]`",
         "[united] multi-root policy: under CI (or ASS_ADE_ASSIMILATE_REQUIRE_POLICY=1), `--also` requires `--policy` YAML",
         "[united] assimilate emits `ASSIMILATE_PLAN` (see `--plan-out` + book JSON `ASSIMILATE_PLAN` key)",
@@ -230,11 +231,17 @@ def doctor_cmd() -> None:
     try:
         import ass_ade  # noqa: F401
 
-        lines.append("[united] v1 studio (ass_ade): OK — `ass-ade-unified studio …`")
+        lines.append(
+            "[united] atomadic engine (ass_ade): OK -> `atomadic ...` or "
+            "`ass-ade-unified atomadic ...`"
+        )
+        lines.append(
+            "[united] v1 studio (ass_ade): OK -> `ass-ade-unified studio ...`"
+        )
     except ImportError:
         lines.append(
-            "[united] v1 studio (ass_ade): MISSING — install the v1 tree in this venv "
-            "(e.g. `pip install -e ./ass-ade-v1`) so `import ass_ade` resolves"
+            "[united] ass_ade (atomadic engine + v1 studio): MISSING -> install this repo root with "
+            "`pip install -e \".[dev]\"` so `import ass_ade` resolves"
         )
     typer.echo("\n".join(lines))
 
@@ -245,13 +252,44 @@ from ass_ade_v11.ade.cli import app as ade_app  # noqa: E402  — after `app` ex
 
 app.add_typer(ade_app, name="ade")
 
-try:  # pragma: no cover - optional sibling package
+try:  # pragma: no cover - optional legacy Typer studio (v1 tree)
     from ass_ade.cli import app as studio_app
 except ImportError:
     studio_app = None
 
 if studio_app is not None:
     app.add_typer(studio_app, name="studio")
+
+
+@app.command(
+    "atomadic",
+    context_settings={
+        "allow_extra_args": True,
+        "ignore_unknown_options": True,
+        # Do not register Typer's own ``--help`` on this shim; forward argv to Click
+        # so ``… atomadic build --help`` reaches the ``build`` subcommand.
+        "help_option_names": [],
+    },
+    help=(
+        "Atomadic rebuild engine (Click): build, extend, reclaim, forge — same as the "
+        "``atomadic`` console script. Use ``… atomadic --help`` for Click top-level; "
+        "``… atomadic build --help`` for a subcommand."
+    ),
+)
+def atomadic_proxy(ctx: typer.Context) -> None:
+    """Delegate to :data:`ass_ade.cli.__main__.atomadic` (Click group)."""
+    try:
+        from ass_ade.cli.__main__ import atomadic as _atomadic_group
+        from ass_ade.cli._env import load_default_dotenv
+    except ImportError as exc:  # pragma: no cover
+        typer.secho(f"atomadic engine unavailable: {exc}", fg="red", err=True)
+        raise typer.Exit(2) from exc
+    load_default_dotenv()
+    argv = list(ctx.args)
+    try:
+        _atomadic_group.main(args=argv, prog_name="ass-ade-unified atomadic")
+    except SystemExit as exc:
+        raise typer.Exit(exc.code) from exc
 
 
 def main() -> None:

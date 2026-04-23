@@ -6,6 +6,7 @@ This folder is the **technical documentation hub** for the public ASS-ADE tree. 
 
 | Order | Document | What you get |
 |------|----------|--------------|
+| 0 | [ASS_ADE_FEATURE_INVENTORY.md](ASS_ADE_FEATURE_INVENTORY.md) | **Deep feature × location map** (umbrella + assimilate PoC) |
 | 1 | [PUBLIC_SHOWCASE_README.md](PUBLIC_SHOWCASE_README.md) | Install, first commands, CI, links |
 | 2 | [ASS_ADE_UNIFICATION.md](ASS_ADE_UNIFICATION.md) | Single-spine packaging story, `ass-ade-unified`, materialize |
 | 3 | [ARCHITECTURE.md](ARCHITECTURE.md) | Package layout, monadic tiers, where code lives |

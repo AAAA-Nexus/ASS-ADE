@@ -10,28 +10,29 @@ One **shippable** ASS-ADE: **one import namespace** (eventually `ass_ade`), **on
 - [`ass-ade-v1.1`](../ass-ade-v1.1) — phased `pipeline_book` (0–7), tier purity, certify, synth-tests.
 - [`ass-ade`](../ass-ade) — Click line, x402-heavy dependencies, genesis layout under `.ass-ade/`.
 
-## Tonight’s bridge (operator reality)
+## One install from repo root (2026-04-22)
 
-Until code is physically merged into one `src/` tree:
+The **private Atomadic monorepo** now vendors the `atomadic` engine beside the spine:
 
-1. Install the **monadic spine** from the **repository root** (T12): `pip install -e ".[dev]"` (metadata in root `pyproject.toml`; sources under `ass-ade-v1.1/src/`). **Contributors** need the **`[dev]`** extra for pytest, import-linter, PyYAML, and jsonschema (policy/plan validation and tests). A bare `pip install -e .` installs the CLI only; `--also` under CI or `ASS_ADE_ASSIMILATE_REQUIRE_POLICY=1` still requires `--policy` when validation deps are missing.
-2. Install the **v1 studio** in the **same** venv: `pip install -e ./ass-ade-v1`
-3. Run the **united** entrypoint:
+- **`ass-ade-v1.1/src/ass_ade_v11/`** — monadic pipeline, `assimilate`, `book`, `ade materialize`, …
+- **`atomadic-engine/src/ass_ade/`** — Click **`atomadic`** CLI (`build` / `extend` / `reclaim` / `forge`), sovereign + binder stack, engine tests under **`atomadic-engine/tests/`**
+
+From **`C:\!atomadic`** (or your public staging checkout after sync):
 
 ```text
-ass-ade-unified doctor
-# One command: primary MAP + optional sibling roots → monadic emit (through book phases)
-ass-ade-unified assimilate C:\path\to\primary C:\path\to\out --also C:\path\to\orphan-a --also C:\path\to\orphan-b
-# In CI (or ASS_ADE_ASSIMILATE_REQUIRE_POLICY=1), add: --policy path\to\assimilate-policy.yaml (see .ass-ade/specs/)
+pip install -e ".[dev]"
+ass-ade-unified doctor          # should report ass_ade OK
+atomadic --help                 # direct Click entry (same as legacy ass-ade tree)
+ass-ade-unified atomadic build --help   # shim: forwards argv to the Click group
+ass-ade-unified assimilate PRIMARY OUT  # multi-root → monadic emit (policy when --also in CI)
 ass-ade-unified book rebuild …
-ass-ade-unified studio chat …
 ```
 
-- **`assimilate`** — wraps `run_book_until` with `extra_source_roots` (same engine as `book rebuild --also`, default `--stop-after package`). With `--also`, CI (or `ASS_ADE_ASSIMILATE_REQUIRE_POLICY=1`) requires `--policy` YAML per `.ass-ade/specs/assimilate-policy.schema.json`. Every run emits **`ASSIMILATE_PLAN`** (validated JSON) on the book object; use **`--plan-out`** for a sidecar file (CI uploads it).
-- **`book`** — same commands as `ass-ade-v11` (CNA/monadic pipeline).
-- **`studio`** — appears only when `import ass_ade` works; it is the full v1 `ass_ade.cli` Typer app.
+Optional: **`ass-ade-unified studio …`** still appears only if a **legacy** Typer `ass_ade.cli.app` exists (older v1 checkout). The shipped engine uses **Click**; prefer **`atomadic`** or **`ass-ade-unified atomadic`**.
 
-This satisfies “one product **experience**” without pretending the **source** merge is already done.
+**Assimilate** still wraps `run_book_until` with `extra_source_roots` (same engine as `book rebuild --also`, default `--stop-after package`). With `--also`, CI (or `ASS_ADE_ASSIMILATE_REQUIRE_POLICY=1`) requires **`--policy`** YAML per `.ass-ade/specs/assimilate-policy.schema.json`. Every run emits **`ASSIMILATE_PLAN`**; use **`--plan-out`** for a sidecar file.
+
+This is a **physical merge of sources** into one distribution (`pyproject` at repo root); long-term rename `ass_ade_v11` → `ass_ade` remains a separate major release per the target architecture section below.
 
 **CI:** GitHub Actions workflow `.github/workflows/ass-ade-ship.yml` runs lint-imports, `pytest ass-ade-v1.1/tests -m "not dogfood"`, synth-tests, and a **single-root** golden assimilate (no `--policy` in that job). **Org push** to `aaaa-nexus/ass-ade` remains **human-gated** (plan quarantine T9).
 

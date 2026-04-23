@@ -154,13 +154,17 @@ def _run_book_until_core(
             policy_by_root=build_policy_plan(policy_doc, all_roots),
         )
     else:
+        _policy_plan = build_policy_plan(policy_doc, all_roots)
         p1 = run_phase1_ingest_multi(
             all_roots,
             root_ids=root_ids,
             registry=registry,
-            policy_by_root=build_policy_plan(policy_doc, all_roots),
+            policy_by_root=_policy_plan,
         )
-        p1["namespace_conflicts"] = detect_namespace_conflicts(all_roots)
+        p1["namespace_conflicts"] = detect_namespace_conflicts(
+            all_roots,
+            policy_by_root=_policy_plan or None,
+        )
 
     if stop_after <= 1:
         return {"stopped_after": 1, "phase0": p0, "phase1": p1, "rebuild_tag": tag}

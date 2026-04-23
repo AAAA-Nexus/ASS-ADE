@@ -7,7 +7,7 @@ import os
 _BASE_EXCLUDED_DIRS = frozenset({
     ".git", ".venv", "venv", "node_modules", "engine_out", "target",
     "dist", "build", "rebuilds", "drafts", "__pycache__", ".pytest_cache",
-    ".pytest_tmp", ".ruff_cache", ".next", ".turbo", "reports",
+    ".pytest_tmp", "pytest_tmp", ".ruff_cache", ".next", ".turbo", "reports",
     ".ass-ade", ".atomadic", ".claude", ".cursor", ".github", ".vscode",
 })
 
