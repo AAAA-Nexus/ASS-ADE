@@ -14,3 +14,4 @@ roots:
   - path: ass-ade-v1.1/tests/fixtures/cross_lib
     role: sibling
     license_class: compatible_oss
+
