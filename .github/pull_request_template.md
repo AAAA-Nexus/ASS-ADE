@@ -1,17 +1,16 @@
 ## Summary
 
-What does this PR change and why?
+Describe the change in one or two paragraphs. Focus on user-visible behavior, release impact, and why this should land now.
 
-## Verification
+## Validation
 
-- [ ] `python scripts/atomadic_dev_harness.py --quick` (or `pytest tests/` for full slices)
-- [ ] If MCP tools / `mcp/server.json` changed: `pytest tests/test_mcp_manifest_parity.py`
-- [ ] If Python packages changed: `.ass-ade/tier-map.json` updated
+- [ ] I ran targeted validation for the code I changed.
+- [ ] I ran `ass-ade-unified doctor` or the equivalent entrypoint I touched.
+- [ ] I updated docs, prompts, or help text when behavior changed.
+- [ ] I called out any known gaps, follow-up work, or quarantine items.
 
-## Labels (optional CI)
+## Release Notes
 
-- [ ] Add **`ass-ade-blueprint`** or **`ass-ade-feature`** for the label-gated smoke workflow (see `CONTRIBUTING.md`).
-
-## Risk / rollback
-
-Notable user-facing or security impact? How to revert?
+- User-facing change:
+- Risk or migration note:
+- Follow-up work, if any:

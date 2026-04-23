@@ -1,0 +1,16 @@
+{
+  "schema": "ASSADE-DOC-COVERAGE-1",
+  "coverage_mode": "generated-artifact-suite",
+  "public_symbols": 8,
+  "inline_docstrings": 8,
+  "inline_coverage_ratio": 1.0,
+  "api_inventory_entries": 8,
+  "covers_all_public_symbols": true,
+  "effective_coverage_ratio": 1.0,
+  "doc_artifacts": [
+    "API_INVENTORY.md",
+    "TEST_COVERAGE.md",
+    "DOC_COVERAGE.md"
+  ],
+  "missing_inline_docstrings": []
+}

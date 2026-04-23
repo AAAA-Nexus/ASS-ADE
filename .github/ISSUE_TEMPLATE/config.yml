@@ -1,1 +1,28 @@
-blank_issues_enabled: true
+blank_issues_enabled: false
+contact_links:
+  - name: Read the public quickstart
+    url: https://github.com/AAAA-Nexus/ASS-ADE/blob/main/README.md
+    about: Start here for install, first commands, and the project map.
+  - name: Review the ship plan
+    url: https://github.com/AAAA-Nexus/ASS-ADE/blob/main/ASS_ADE_SHIP_PLAN.md
+    about: Check current exit criteria and release posture before proposing major work.
+  - name: Security reporting
+    url: https://github.com/AAAA-Nexus/ASS-ADE/blob/main/SECURITY.md
+    about: Do not post vulnerability details in a public issue.
+*** Add File: C:\!atomadic\.github\PULL_REQUEST_TEMPLATE.md
+## Summary
+
+Describe the change in one or two paragraphs. Focus on user-visible behavior, release impact, and why this should land now.
+
+## Validation
+
+- [ ] I ran targeted validation for the code I changed.
+- [ ] I ran `ass-ade-unified doctor` or the equivalent entrypoint I touched.
+- [ ] I updated docs, prompts, or help text when behavior changed.
+- [ ] I called out any known gaps, follow-up work, or quarantine items.
+
+## Release Notes
+
+- User-facing change:
+- Risk or migration note:
+- Follow-up work, if any:

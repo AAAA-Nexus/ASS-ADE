@@ -1,0 +1,259 @@
+{
+  "_schema": "ass-ade/tier-map/v1",
+  "_description": "ASS-ADE monadic placement for src/ass_ade_v11. United operator entry: ass-ade-unified (book + optional studio). Target: single src tree; interim MAP=TERRAIN vs ass-ade-v1*; pipeline_book phases 0–7.",
+  "_reference_lineage": "MAP=TERRAIN: documented default C:\\!atomadic\\ass-ade-v1 (ass-ade-v1*); see a0_qk_constants/reference_roots.py",
+  "_cna_prefix": "tech.atomadic.ass_ade_v11",
+  "_cna_rules": "Each public module row MUST carry cna_id = <_cna_prefix>.<tier_hint>.<module_path_with_underscores>. Gate bypass and allow_stub are forbidden in production paths per _PROTOCOL.md / ASS_ADE_MONADIC_CODING.md.",
+  "_import_law": "CI enforces Import Linter layers in pyproject.toml (list order is high→low: a4 … a0; higher tiers may import lower tiers, never the reverse).",
+  "_tiers": {
+    "a0": "Pure constants, enums, exclusions — no logic",
+    "a1": "Pure stateless functions — no I/O except passed-in paths",
+    "a2": "Stateful composites (registry sessions, emitters)",
+    "a3": "Features composing a1/a2",
+    "a4": "CLI and top-level orchestrators"
+  },
+  "new_tier_directories": {
+    "a0_qk_constants": "a0",
+    "a1_at_functions": "a1",
+    "a2_mo_composites": "a2",
+    "a3_og_features": "a3",
+    "a4_sy_orchestration": "a4"
+  },
+  "legacy_modules": {
+    "a0_qk_constants/__init__.py": {
+      "tier": "a0",
+      "cna_id": "tech.atomadic.ass_ade_v11.a0.package_init",
+      "reason": "a0 package re-exports"
+    },
+    "a0_qk_constants/exclude_dirs.py": {
+      "tier": "a0",
+      "cna_id": "tech.atomadic.ass_ade_v11.a0.exclude_dirs",
+      "reason": "Directory exclusion constants"
+    },
+    "a0_qk_constants/pipeline_meta.py": {
+      "tier": "a0",
+      "cna_id": "tech.atomadic.ass_ade_v11.a0.pipeline_meta",
+      "reason": "Pipeline metadata and materialization interchange constants"
+    },
+    "a0_qk_constants/reference_roots.py": {
+      "tier": "a0",
+      "cna_id": "tech.atomadic.ass_ade_v11.a0.reference_roots",
+      "reason": "MAP=TERRAIN ass-ade-v1* path/env constants"
+    },
+    "a0_qk_constants/schemas.py": {
+      "tier": "a0",
+      "cna_id": "tech.atomadic.ass_ade_v11.a0.schemas",
+      "reason": "Schema version strings"
+    },
+    "a0_qk_constants/test_synth.py": {
+      "tier": "a0",
+      "cna_id": "tech.atomadic.ass_ade_v11.a0.test_synth",
+      "reason": "Generated smoke-test path constants"
+    },
+    "a0_qk_constants/tier_names.py": {
+      "tier": "a0",
+      "cna_id": "tech.atomadic.ass_ade_v11.a0.tier_names",
+      "reason": "Tier id tables"
+    },
+    "a1_at_functions/__init__.py": {
+      "tier": "a1",
+      "cna_id": "tech.atomadic.ass_ade_v11.a1.package_init",
+      "reason": "a1 package root"
+    },
+    "a1_at_functions/audit_rebuild.py": {
+      "tier": "a1",
+      "cna_id": "tech.atomadic.ass_ade_v11.a1.audit_rebuild",
+      "reason": "Pure rebuild audit helpers"
+    },
+    "a1_at_functions/assimilate_policy_gate.py": {
+      "tier": "a1",
+      "cna_id": "tech.atomadic.ass_ade_v11.a1.assimilate_policy_gate",
+      "reason": "Pure assimilate policy parse/validate for multi-root S2 gate"
+    },
+    "a1_at_functions/assimilate_plan_emit.py": {
+      "tier": "a1",
+      "cna_id": "tech.atomadic.ass_ade_v11.a1.assimilate_plan_emit",
+      "reason": "Pure ASSIMILATE_PLAN JSON builder + schema validate (B1/B2)"
+    },
+    "a1_at_functions/body_extractor.py": {
+      "tier": "a1",
+      "cna_id": "tech.atomadic.ass_ade_v11.a1.body_extractor",
+      "reason": "Pure body / made_of extraction"
+    },
+    "a1_at_functions/cycle_detector.py": {
+      "tier": "a1",
+      "cna_id": "tech.atomadic.ass_ade_v11.a1.cycle_detector",
+      "reason": "Pure dependency cycle detection"
+    },
+    "a1_at_functions/cna_import_rewrite.py": {
+      "tier": "a1",
+      "cna_id": "tech.atomadic.ass_ade_v11.a1.cna_import_rewrite",
+      "reason": "CNA import index and rewrite for assimilated materialized trees"
+    },
+    "a1_at_functions/gap_fill.py": {
+      "tier": "a1",
+      "cna_id": "tech.atomadic.ass_ade_v11.a1.gap_fill",
+      "reason": "Pure gap plan from ingestions"
+    },
+    "a1_at_functions/ingest.py": {
+      "tier": "a1",
+      "cna_id": "tech.atomadic.ass_ade_v11.a1.ingest",
+      "reason": "Pure ingest + AST symbol extract"
+    },
+    "a1_at_functions/materialize_a0_plan.py": {
+      "tier": "a1",
+      "cna_id": "tech.atomadic.ass_ade_v11.a1.materialize_a0_plan",
+      "reason": "Pure a0-only layout and certificate from gap plan"
+    },
+    "a1_at_functions/materialize_tiers.py": {
+      "tier": "a1",
+      "cna_id": "tech.atomadic.ass_ade_v11.a1.materialize_tiers",
+      "reason": "Pure tier materialization planning"
+    },
+    "a1_at_functions/package_layout.py": {
+      "tier": "a1",
+      "cna_id": "tech.atomadic.ass_ade_v11.a1.package_layout",
+      "reason": "Pure package path layout"
+    },
+    "a1_at_functions/registry_fingerprint.py": {
+      "tier": "a1",
+      "cna_id": "tech.atomadic.ass_ade_v11.a1.registry_fingerprint",
+      "reason": "Registry row match + snapshot / proposal fingerprints"
+    },
+    "a1_at_functions/repo_stats.py": {
+      "tier": "a1",
+      "cna_id": "tech.atomadic.ass_ade_v11.a1.repo_stats",
+      "reason": "Pure repo surface stats"
+    },
+    "a1_at_functions/tier_purity.py": {
+      "tier": "a1",
+      "cna_id": "tech.atomadic.ass_ade_v11.a1.tier_purity",
+      "reason": "Pure tier purity transforms"
+    },
+    "a1_at_functions/v1_reference_index.py": {
+      "tier": "a1",
+      "cna_id": "tech.atomadic.ass_ade_v11.a1.v1_reference_index",
+      "reason": "ass-ade-v1* reference root index for receipts"
+    },
+    "a1_at_functions/test_synth_plan.py": {
+      "tier": "a1",
+      "cna_id": "tech.atomadic.ass_ade_v11.a1.test_synth_plan",
+      "reason": "Pure plan for import-manifest / smoke test synthesis"
+    },
+    "a2_mo_composites/__init__.py": {
+      "tier": "a2",
+      "cna_id": "tech.atomadic.ass_ade_v11.a2.package_init",
+      "reason": "a2 package root (composites reserved)"
+    },
+    "a3_og_features/__init__.py": {
+      "tier": "a3",
+      "cna_id": "tech.atomadic.ass_ade_v11.a3.package_init",
+      "reason": "Feature package root"
+    },
+    "a3_og_features/phase0_recon.py": {
+      "tier": "a3",
+      "cna_id": "tech.atomadic.ass_ade_v11.a3.phase0_recon",
+      "reason": "Phase 0 recon feature"
+    },
+    "a3_og_features/phase0_recon_multi.py": {
+      "tier": "a3",
+      "cna_id": "tech.atomadic.ass_ade_v11.a3.phase0_recon_multi",
+      "reason": "Phase 0 multi-root recon (assimilation)"
+    },
+    "a3_og_features/phase1_ingest.py": {
+      "tier": "a3",
+      "cna_id": "tech.atomadic.ass_ade_v11.a3.phase1_ingest",
+      "reason": "Phase 1 ingest feature"
+    },
+    "a3_og_features/phase2_gapfill.py": {
+      "tier": "a3",
+      "cna_id": "tech.atomadic.ass_ade_v11.a3.phase2_gapfill",
+      "reason": "Phase 2 gap-fill feature"
+    },
+    "a3_og_features/phase3_enrich.py": {
+      "tier": "a3",
+      "cna_id": "tech.atomadic.ass_ade_v11.a3.phase3_enrich",
+      "reason": "Phase 3 enrich feature"
+    },
+    "a3_og_features/phase4_validate.py": {
+      "tier": "a3",
+      "cna_id": "tech.atomadic.ass_ade_v11.a3.phase4_validate",
+      "reason": "Phase 4 validate (cycles + purity)"
+    },
+    "a3_og_features/phase5_materialize.py": {
+      "tier": "a3",
+      "cna_id": "tech.atomadic.ass_ade_v11.a3.phase5_materialize",
+      "reason": "Phase 5 materialize feature"
+    },
+    "a3_og_features/phase6_audit.py": {
+      "tier": "a3",
+      "cna_id": "tech.atomadic.ass_ade_v11.a3.phase6_audit",
+      "reason": "Phase 6 audit feature"
+    },
+    "a3_og_features/phase7_package.py": {
+      "tier": "a3",
+      "cna_id": "tech.atomadic.ass_ade_v11.a3.phase7_package",
+      "reason": "Phase 7 package emit feature"
+    },
+    "a3_og_features/phase_a0_materialize.py": {
+      "tier": "a3",
+      "cna_id": "tech.atomadic.ass_ade_v11.a3.phase_a0_materialize",
+      "reason": "a0 stub materialization (filesystem I/O)"
+    },
+    "a3_og_features/pipeline_book.py": {
+      "tier": "a3",
+      "cna_id": "tech.atomadic.ass_ade_v11.a3.pipeline_book",
+      "reason": "Unified phases 0–7 book runner"
+    },
+    "a3_og_features/pipeline_phases_0_2.py": {
+      "tier": "a3",
+      "cna_id": "tech.atomadic.ass_ade_v11.a3.pipeline_phases_0_2",
+      "reason": "Chained phases 0–3 (enrich optional)"
+    },
+    "a3_og_features/pipeline_rebuild_v11.py": {
+      "tier": "a3",
+      "cna_id": "tech.atomadic.ass_ade_v11.a3.pipeline_rebuild_v11",
+      "reason": "Full rebuild through phase 7 (library)"
+    },
+    "a3_og_features/emit_test_manifest.py": {
+      "tier": "a3",
+      "cna_id": "tech.atomadic.ass_ade_v11.a3.emit_test_manifest",
+      "reason": "Write tests/generated_smoke manifest (engine hook)"
+    },
+    "a4_sy_orchestration/__init__.py": {
+      "tier": "a4",
+      "cna_id": "tech.atomadic.ass_ade_v11.a4.package_init",
+      "reason": "Orchestration package root"
+    },
+    "a4_sy_orchestration/__main__.py": {
+      "tier": "a4",
+      "cna_id": "tech.atomadic.ass_ade_v11.a4.main_module",
+      "reason": "python -m entry"
+    },
+    "a4_sy_orchestration/cli.py": {
+      "tier": "a4",
+      "cna_id": "tech.atomadic.ass_ade_v11.a4.cli",
+      "reason": "Typer CLI (ass-ade-v11)"
+    },
+    "a4_sy_orchestration/unified_cli.py": {
+      "tier": "a4",
+      "cna_id": "tech.atomadic.ass_ade_v11.a4.unified_cli",
+      "reason": "United Typer: assimilate (multi-root book), nests book CLI + optional ass_ade v1 studio when co-installed"
+    },
+    "a4_sy_orchestration/run_phases_0_2.py": {
+      "tier": "a4",
+      "cna_id": "tech.atomadic.ass_ade_v11.a4.run_phases_0_2",
+      "reason": "Public entry for phases 0–3 book"
+    },
+    "a4_sy_orchestration/run_phases_0_2_a0.py": {
+      "tier": "a4",
+      "cna_id": "tech.atomadic.ass_ade_v11.a4.run_phases_0_2_a0",
+      "reason": "Phases 0–2 plus a0 mini-rebuild orchestration"
+    },
+    "a4_sy_orchestration/run_rebuild_v11.py": {
+      "tier": "a4",
+      "cna_id": "tech.atomadic.ass_ade_v11.a4.run_rebuild_v11",
+      "reason": "Public rebuild_project_v11 entry"
+    }
+  }
+}

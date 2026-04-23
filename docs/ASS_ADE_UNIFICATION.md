@@ -44,17 +44,47 @@ into a target project as **`<workspace>/.ade/`** (and optionally
 reproducible for every consumer.
 
 - **CLI:** `ass-ade-unified ade materialize [WORKSPACE] [--source MONOREPO]`
-	(default workspace: `.`). The source tree must contain **`agents/INDEX.md`**
-	(set **`ATOMADIC_WORKSPACE`** to your clone, or use **`--source`**) — PyPI-only
-	installs do not include the monorepo; the wheel carries the `ade` code, and
-	**file copies** are taken from a checkout you point at.
+  (default workspace: `.`). The source tree must contain **`agents/INDEX.md`**
+  (set **`ATOMADIC_WORKSPACE`** to your clone, or use **`--source`**) — PyPI-only
+  installs do not include the monorepo; the wheel carries the `ade` code, and
+  **file copies** are taken from a checkout you point at.
 - **Contents of `.ade/`** (indicative): `cursor-hooks/` (Swarm bus + scribe),
-	`persistent/` (long-running `run_swarm_services` + `swarm_services/`), `scripts/`
-	(terrain `regenerate_ass_ade_docs.py`, `sync_build_swarm_to_cursor.py` where present),
-	`ade-harness/` (ADE `ade_hook_gate` + verify), `agents-core/` (INDEX, protocol, Nexus, monadic, ATO),
-	**`cross-ide/`** (Cursor vs **VS Code** — **Copilot**, **OpenAI Codex**, **MCP** samples, Copilot-instructions sample, optional tasks).
+  `persistent/` (long-running `run_swarm_services` + `swarm_services/`), `scripts/`
+  (terrain `regenerate_ass_ade_docs.py`, `sync_build_swarm_to_cursor.py` where present),
+  `ade-harness/` (ADE `ade_hook_gate` + verify), `agents-core/` (INDEX, protocol, Nexus, monadic, ATO),
+  **`cross-ide/`** (Cursor vs **VS Code** — **Copilot**, **OpenAI Codex**, **MCP** samples, Copilot-instructions sample, optional tasks).
 - **VS Code:** `materialize` can **merge** Copilot + Python **extension recommendations** into **`.vscode/extensions.json`**. Configure **MCP** (e.g. from `cross-ide/vscode-mcp.example.json` into **`.vscode/mcp.json`**) and use **Agent** + **Plan** in Chat; follow **`cross-ide/CODEX-BUILD-CYCLE.md`**. Use **`--no-vscode`** to skip the extensions merge.
 - **Hooks invariants:** `swarm_signal.py` is written so **`_REPO_ROOT`** resolves
-	when the script lives in **`<repo>/.cursor/hooks/`**; use **`ass-ade-unified ade materialize`**
-	with **`--no-cursor`** for a staging copy only, or the default to install into
-	**`.cursor/hooks`**.
+  when the script lives in **`<repo>/.cursor/hooks/`**; use **`ass-ade-unified ade materialize`**
+  with **`--no-cursor`** for a staging copy only, or the default to install into
+  **`.cursor/hooks`**.
+
+`ass-ade-unified ade doctor` — shows whether a monorepo is discoverable and
+whether the current directory already has **`.ade/LAYOUT.json`**.
+
+## Target architecture (physical merge)
+
+Phased, low-regret order:
+
+1. **Lock law** — keep `import-linter` contracts as the gate; all new code only in `a0…a4` (or the chosen single package’s tiers).
+2. **Relocate engines** — move `ass_ade.engine.rebuild` responsibilities into `ass_ade_v11` tiers (a2 composites + a3 features + a4 orchestration shims) behind stable CNA ids; keep thin **compat re-exports** in v1 only as long as needed.
+3. **Collapse CLIs** — one Typer root: pipeline subcommands stay; v1 commands migrate under names that match user mental model (`chat`, `nexus`, …) without a permanent `studio` prefix once namespaces merge.
+4. **Single `pyproject`** — one `[project]` name (likely `ass-ade`), one version line, optional extras for x402 / dev; retire duplicate `pyproject.toml` trees or mark them read-only archives.
+5. **Retire `ass_ade_v11` name** — rename package to `ass_ade` in a major release when imports and tier-map are updated everywhere (big bang; plan branch).
+
+## What “done” means
+
+- One checkout, one `pip install`, **`import ass_ade`** only.
+- `ass-ade-unified` (or renamed `atomadic` / `ass-ade`) exposes **both** pipeline and studio commands **without** a nested `studio` group.
+- [`ASS_ADE_MATRIX.md`](../ASS_ADE_MATRIX.md) collapses to a **single row** for the product.
+
+## References
+
+- [Ship track — packaging ADR (T3)](../.ato-plans/active/ass-ade-ship-nexus-github-20260422/T3-PACKAGING-ADR.md) — `pyproject` / co-install / post-merge **stub** (living under `.ato-plans/` until merged into this doc)  
+- [Ship README draft (T10)](../.ato-plans/active/ass-ade-ship-nexus-github-20260422/README.ship.md) — install, CI, artifact, and QUARANTINE notes aligned with root `README.md`  
+- [`ass-ade-v1.1/.ass-ade/specs/`](../ass-ade-v1.1/.ass-ade/specs/) — `assimilate-policy` + `assimilate-plan` JSON Schemas (T4)  
+- [`ASS_ADE_SHIP_PLAN.md`](../ASS_ADE_SHIP_PLAN.md) — phased **ship** roadmap (exit criteria, timeline, first 48h)  
+- [`ASS_ADE_GOAL_PIPELINE.md`](../ASS_ADE_GOAL_PIPELINE.md) — phased HAVE / GAP / IMPLEMENT checklist (preflight, book 0–7, ship)  
+- [`docs/ASS_ADE_SPINE_RFC.md`](ASS_ADE_SPINE_RFC.md) — terrain roles during migration  
+- [`ASS_ADE_MATRIX.md`](../ASS_ADE_MATRIX.md) — current capability split  
+- [`docs/ASS_ADE_FORGE_CLI.md`](ASS_ADE_FORGE_CLI.md) — dispatcher sketch for inventory / plan / rebuild  

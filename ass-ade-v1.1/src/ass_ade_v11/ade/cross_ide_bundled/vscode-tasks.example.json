@@ -1,0 +1,26 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "ASS-ADE: united doctor",
+      "type": "shell",
+      "command": "ass-ade-unified",
+      "args": ["doctor"],
+      "options": { "cwd": "${workspaceFolder}" }
+    },
+    {
+      "label": "ASS-ADE: ADE doctor",
+      "type": "shell",
+      "command": "ass-ade-unified",
+      "args": ["ade", "doctor"],
+      "options": { "cwd": "${workspaceFolder}" }
+    },
+    {
+      "label": "ASS-ADE: swarm services (one tick)",
+      "type": "shell",
+      "command": "python",
+      "args": [".ade/persistent/run_swarm_services.py", "once"],
+      "options": { "cwd": "${workspaceFolder}" }
+    }
+  ]
+}

@@ -1,3 +1,0 @@
-gradio>=4.44
-spaces
-ass-ade[lora] @ git+https://github.com/atomadictech/ass-ade.git

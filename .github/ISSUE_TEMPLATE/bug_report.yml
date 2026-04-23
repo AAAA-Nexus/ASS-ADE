@@ -1,0 +1,93 @@
+name: Bug report
+description: Report a reproducible defect in ASS-ADE.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Preflight
+      description: Confirm the basics before filing.
+      options:
+        - label: I searched existing issues for the same problem.
+          required: true
+        - label: I can reproduce this on the current release surface.
+          required: true
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Affected surface
+      options:
+        - ass-ade-unified CLI
+        - assimilate
+        - book phases
+        - studio / chat flow
+        - ADE / agent materializer
+        - CI / release surface
+        - Documentation
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+      description: Example: 1.1.0a1 or a short git SHA.
+      placeholder: 1.1.0a1
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - Windows
+        - macOS
+        - Linux
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: python
+    attributes:
+      label: Python version
+      placeholder: 3.12.3
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: Command or prompt
+      description: Paste the exact CLI command or natural-language prompt that triggered the issue.
+      placeholder: ass-ade-unified assimilate ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Reproduction steps
+      description: Keep this short but precise so someone else can replay it.
+      placeholder: |
+        1. Install the repo in a fresh virtualenv
+        2. Run ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or tracebacks
+      description: Include the smallest useful excerpt. Redact secrets and private paths when needed.
+      render: shell

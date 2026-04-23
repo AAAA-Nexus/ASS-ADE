@@ -1,0 +1,8 @@
+{
+  "command": "recon",
+  "args": [
+    "."
+  ],
+  "cwd": ".",
+  "expect_json": false
+}

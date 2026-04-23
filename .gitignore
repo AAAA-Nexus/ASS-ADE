@@ -43,3 +43,6 @@ training_data/
 
 # Dist packages
 dist/
+
+.pytest_tmp/
+

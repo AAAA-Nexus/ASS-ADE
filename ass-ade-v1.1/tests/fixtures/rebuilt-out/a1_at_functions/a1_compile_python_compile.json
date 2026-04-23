@@ -1,0 +1,30 @@
+{
+  "body_hash": "48b4ebc1f497cfd8",
+  "body_path": "a1_at_functions/a1_compile_python_compile.py",
+  "body_truncated": false,
+  "callers_of": [
+    "pure_helper"
+  ],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!atomadic/ass-ade-v1.1/tests/fixtures/minimal_pkg/example_pkg/core.py:8.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "a1.compile.python.compile",
+  "imports": [],
+  "interfaces": {
+    "source": "C:\\!atomadic\\ass-ade-v1.1\\tests\\fixtures\\minimal_pkg\\example_pkg\\core.py:8"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "caller_uses_helper",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for caller_uses_helper"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

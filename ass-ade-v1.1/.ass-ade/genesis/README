@@ -1,0 +1,4 @@
+Genesis artifacts for ASS-ADE v1.1 live under this directory.
+
+- events.schema.json — JSON Schema for genesis event envelopes (pointer for tooling and CI).
+- Runtime event logs are not committed; operators may write JSONL under .ass-ade/genesis/local/ (gitignored) or attach CI artifacts.

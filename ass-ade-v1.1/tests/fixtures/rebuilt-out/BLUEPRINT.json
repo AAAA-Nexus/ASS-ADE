@@ -1,0 +1,138 @@
+{
+  "atoms": [
+    {
+      "body_hash": "524fc5448eeefb072ac06ae45a0c3cd80231a90cd94d259da4603b48aed1847d",
+      "fulfills_blueprints": [],
+      "id": "a1.compile.python.compile",
+      "kind": "pure_function",
+      "module_path": "a1_at_functions/a1_compile_python_compile.py",
+      "name": "caller_uses_helper",
+      "tier": "a1_at_functions",
+      "version": "0.1.0"
+    },
+    {
+      "body_hash": "431b9557f5f9f02713e6b9386f1bcbde4dc6ab88a7023f73aabc685a8716877e",
+      "fulfills_blueprints": [],
+      "id": "a1.minimal_pkg.invariant_metadata",
+      "kind": "pure_function",
+      "module_path": "a1_at_functions/a1_minimal_pkg_invariant_metadata.py",
+      "name": "invariant_metadata",
+      "tier": "a1_at_functions",
+      "version": "0.1.0"
+    },
+    {
+      "body_hash": "68637def2f8d551d239f8acd6895118916e0f1442ced0dc6ff5dea609470154a",
+      "fulfills_blueprints": [],
+      "id": "a1.minimal_pkg.pure_helper",
+      "kind": "pure_function",
+      "module_path": "a1_at_functions/a1_minimal_pkg_pure_helper.py",
+      "name": "pure_helper",
+      "tier": "a1_at_functions",
+      "version": "0.1.0"
+    },
+    {
+      "body_hash": "13213cf32ccd4cfd04a1bdbcd8c1ab888a4d5e40d31a550eb662ae5cf599e289",
+      "fulfills_blueprints": [],
+      "id": "a1.minimal_pkg.run",
+      "kind": "pure_function",
+      "module_path": "a1_at_functions/a1_minimal_pkg_run.py",
+      "name": "run",
+      "tier": "a1_at_functions",
+      "version": "0.1.0"
+    },
+    {
+      "body_hash": "e2a73f5477581b748a42ef80ab6a87b64bc648df9ee82a074edcc400b37f627f",
+      "fulfills_blueprints": [],
+      "id": "a2.compile.python.compile",
+      "kind": "engine_molecule",
+      "module_path": "a2_mo_composites/a2_compile_python_compile.py",
+      "name": "ExampleService",
+      "tier": "a2_mo_composites",
+      "version": "0.1.0"
+    }
+  ],
+  "audit": {
+    "pass_rate": 0.4,
+    "structure_conformant": false,
+    "total": 5,
+    "valid": 2
+  },
+  "blueprint_schema": "ASSADE-SPEC-BLUEPRINT-1",
+  "counts": {
+    "by_tier": {
+      "a1_at_functions": 4,
+      "a2_mo_composites": 1
+    },
+    "total": 5
+  },
+  "forge": {
+    "applied": 5,
+    "tasks": 5
+  },
+  "generated_at": "2026-04-22T23:26:31.928242+00:00",
+  "package": {
+    "agents": null,
+    "ato_plans": null,
+    "bridge_languages": [
+      "typescript",
+      "rust",
+      "kotlin",
+      "swift"
+    ],
+    "bridge_manifests": [
+      ".ass-ade/bridges/bridge_manifest.json"
+    ],
+    "bridge_reports": [
+      "MULTILANG_BRIDGES.md",
+      "bridges/README.md"
+    ],
+    "coverage_manifests": [
+      ".ass-ade/coverage/test_coverage.json",
+      ".ass-ade/coverage/docs_coverage.json"
+    ],
+    "coverage_reports": [
+      "API_INVENTORY.md",
+      "TEST_COVERAGE.md",
+      "DOC_COVERAGE.md"
+    ],
+    "generated_tests": [
+      "tests/test_generated_multilang_bridges.py",
+      "tests/test_generated_rebuild_integrity.py"
+    ],
+    "leak_patterns": null,
+    "specs": null,
+    "tier_map": null
+  },
+  "plan_diff": {
+    "drift_ratio": 0.0,
+    "extra": [],
+    "extra_count": 0,
+    "intended_count": 5,
+    "missing": [],
+    "missing_count": 0,
+    "plan_blueprint_sha256": "facf8dfb5fc4a978d49e849ce253a1d6284081caee33905b83bafe4378be5b0c",
+    "realized_count": 5
+  },
+  "rebuild_tag": "20260422_232614",
+  "reconstruction": {
+    "command": "ass-ade rebuild-from-blueprint BLUEPRINT.json --source <atom-repo> --output ./out",
+    "engine": "ass-ade>=0.1",
+    "marketplace": "Sell the BLUEPRINT.json on the marketplace; buyers run `ass-ade rebuild-from-blueprint` against any atom registry to reproduce the build. Body hashes verify integrity.",
+    "requires": [
+      "scripts/leak_patterns/symbols.txt",
+      ".ass-ade/specs/cna-seed.yaml"
+    ],
+    "ships_with": [
+      "agents/",
+      "scripts/leak_patterns/",
+      ".ass-ade/specs/",
+      "MANIFEST.json",
+      "CERTIFICATE.json"
+    ]
+  },
+  "source_plan_digest": "369d769c80cbe38a",
+  "tier_versions": {
+    "a1_at_functions": "0.1.0",
+    "a2_mo_composites": "0.1.0"
+  }
+}

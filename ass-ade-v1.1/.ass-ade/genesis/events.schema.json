@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://atomadic.tech/schemas/ass-ade-v1.1/genesis-events/v1",
+  "title": "ASS-ADE v1.1 genesis events (pointer)",
+  "description": "Schema for recording bootstrap/genesis events. Events are append-only; payloads must be JSON-serializable.",
+  "type": "object",
+  "required": ["schema_version", "event_id", "occurred_at_utc", "kind", "payload"],
+  "properties": {
+    "schema_version": { "const": "ass-ade.genesis-events/v1" },
+    "event_id": { "type": "string", "minLength": 8 },
+    "occurred_at_utc": { "type": "string", "format": "date-time" },
+    "kind": {
+      "type": "string",
+      "enum": ["repo_scaffold", "tier_milestone", "e2e_gate_pass", "e2e_gate_fail", "certificate_pin"]
+    },
+    "payload": { "type": "object", "additionalProperties": true },
+    "cna_actor": {
+      "type": "string",
+      "description": "Canonical CNA id of the actor or automation that emitted the event."
+    }
+  },
+  "additionalProperties": false
+}

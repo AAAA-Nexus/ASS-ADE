@@ -1,0 +1,70 @@
+name: Feature request
+description: Propose a concrete improvement to ASS-ADE.
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Preflight
+      description: Help us keep proposals grounded in real operator needs.
+      options:
+        - label: I searched existing issues and plans for similar requests.
+          required: true
+        - label: This request is tied to a user workflow, not just an implementation preference.
+          required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - CLI UX
+        - Assimilate / rebuild flow
+        - Agent ecosystem / ADE
+        - CI / release engineering
+        - Documentation
+        - Governance / policy
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem to solve
+      description: What is hard, noisy, risky, or missing today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: Describe the user-facing result you want.
+    validations:
+      required: true
+  - type: textarea
+    id: workflow
+    attributes:
+      label: Example workflow
+      description: Share the CLI command, prompt, or operator sequence this should improve.
+      placeholder: |
+        Operator says:
+        "design a tiny local todo cli for this project"
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Exit criteria
+      description: What evidence would make this request feel done?
+      placeholder: |
+        - Command succeeds on a fresh checkout
+        - Docs are updated
+        - Regression coverage exists
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Optional, but helpful when you already ruled out another approach.

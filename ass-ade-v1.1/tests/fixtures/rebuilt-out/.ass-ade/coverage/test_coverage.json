@@ -1,0 +1,33 @@
+{
+  "schema": "ASSADE-TEST-COVERAGE-1",
+  "coverage_mode": "generated-baseline",
+  "covers_all_source_python": true,
+  "coverage_ratio": 1.0,
+  "source_python_file_count": 8,
+  "component_json_file_count": 5,
+  "source_python_paths": [
+    "__init__.py",
+    "a1_at_functions/__init__.py",
+    "a1_at_functions/a1_compile_python_compile.py",
+    "a1_at_functions/a1_minimal_pkg_invariant_metadata.py",
+    "a1_at_functions/a1_minimal_pkg_pure_helper.py",
+    "a1_at_functions/a1_minimal_pkg_run.py",
+    "a2_mo_composites/__init__.py",
+    "a2_mo_composites/a2_compile_python_compile.py"
+  ],
+  "component_json_paths": [
+    "a1_at_functions/a1_compile_python_compile.json",
+    "a1_at_functions/a1_minimal_pkg_invariant_metadata.json",
+    "a1_at_functions/a1_minimal_pkg_pure_helper.json",
+    "a1_at_functions/a1_minimal_pkg_run.json",
+    "a2_mo_composites/a2_compile_python_compile.json"
+  ],
+  "tier_packages": [
+    "a1_at_functions",
+    "a2_mo_composites"
+  ],
+  "generated_tests": [
+    "tests/test_generated_multilang_bridges.py",
+    "tests/test_generated_rebuild_integrity.py"
+  ]
+}

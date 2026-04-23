@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install
+        run: |
+          python -m pip install -U pip
+          python -m pip install -e ".[dev]"
+      - name: Monadic import law
+        run: lint-imports
+      - name: Import manifest (MAP=TERRAIN)
+        run: ass-ade-v11 synth-tests --check --repo .
+      - name: Tests + coverage
+        run: python -m pytest -q --cov=ass_ade_v11 --cov-report=term-missing

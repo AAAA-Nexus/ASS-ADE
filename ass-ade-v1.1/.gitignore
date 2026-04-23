@@ -1,0 +1,17 @@
+# Python / packaging
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Local scratch outputs (dogfood / manual rebuilds)
+_dogfood_out/
+rebuild_out/
+engine_out/
+drafts/
