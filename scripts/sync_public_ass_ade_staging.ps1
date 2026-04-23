@@ -75,10 +75,12 @@ $rcArgs = @(
 & robocopy @rcArgs
 if ($LASTEXITCODE -ge 8) { throw "robocopy ass-ade-v1.1 failed: $LASTEXITCODE" }
 
+# ADE/: required by CI (`ass-ade-ship` → `python ADE/harness/verify_ade_harness.py`).
 foreach ($pair in @(
     @( "docs", "docs" ),
     @( ".github", ".github" ),
     @( "agents", "agents" ),
+    @( "ADE", "ADE" ),
     @( "scripts", "scripts" )
 )) {
     $src = Join-Path $PrivateRoot $pair[0]
