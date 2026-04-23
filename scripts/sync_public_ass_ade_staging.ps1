@@ -92,6 +92,8 @@ foreach ($pair in @(
 }
 
 $rootFiles = @(
+    "MANIFEST.in",
+    "SWARM-ONE-PROMPT.md",
     "pyproject.toml", "LICENSE", "CONTRIBUTING.md", "SECURITY.md", "AGENTS.md",
     "ASS_ADE_SHIP_PLAN.md", "ASS_ADE_GOAL_PIPELINE.md", "ASS_ADE_MATRIX.md",
     "ENTER-SHIP-LOOP.cmd", "RULES.md"

@@ -16,6 +16,7 @@ include-package-data = true
     "_bundled_ade_specs/*.json",
     "ade/cross_ide_bundled/*.md",
     "ade/cross_ide_bundled/*.json",
+    "ade/cursor_hooks_bundled/*",
 ]
 
 [project]

@@ -55,6 +55,22 @@ def _ade_package_dir() -> Path:
     return Path(__file__).resolve().parent
 
 
+def _fill_cursor_hooks_from_bundled(ade_hooks: Path) -> int:
+    """When the monorepo has no ``.cursor/hooks`` (public ASS-ADE), copy defaults from the wheel."""
+    bundled = _ade_package_dir() / "cursor_hooks_bundled"
+    if not bundled.is_dir():
+        return 0
+    n = 0
+    for p in sorted(bundled.rglob("*"), key=lambda x: str(x)):
+        if p.is_file():
+            rel = p.relative_to(bundled)
+            dst = ade_hooks / rel
+            if not dst.is_file():
+                if _copy_file(p, dst):
+                    n += 1
+    return n
+
+
 def _copy_cross_ide_bundle(ade: Path) -> int:
     """Copy shipped ``cross-ide_bundled/`` (VS Code / Copilot / Codex) into ``.ade/cross-ide/``."""
     src = _ade_package_dir() / "cross_ide_bundled"
@@ -180,6 +196,7 @@ def materialize_dotted_ade(
         ade / "cursor-hooks",
         ("*.py", "*.md", "*.json", "*.ps1", "*.throttle.json"),
     )
+    n += _fill_cursor_hooks_from_bundled(ade / "cursor-hooks")
     p_run = root / "scripts" / "run_swarm_services.py"
     p_pkg = root / "scripts" / "swarm_services"
     p_regen = root / "scripts" / "regenerate_ass_ade_docs.py"
@@ -225,6 +242,10 @@ def materialize_dotted_ade(
     p_one = root / "SWARM-ONE-PROMPT.md"
     if p_one.is_file() and _copy_file(p_one, ade / "SWARM-ONE-PROMPT.md"):
         n += 1
+    else:
+        fb = _ade_package_dir() / "cross_ide_bundled" / "SWARM-ONE-PROMPT.md"
+        if fb.is_file() and _copy_file(fb, ade / "SWARM-ONE-PROMPT.md"):
+            n += 1
     if merge_vscode_recommendations:
         n += _merge_vscode_extension_recommendations(ws)
 

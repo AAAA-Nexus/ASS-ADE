@@ -1,0 +1,2 @@
+# Ensure Cursor hook templates (including dotfiles) ship in the wheel/sdist.
+graft ass-ade-v1.1/src/ass_ade_v11/ade/cursor_hooks_bundled
