@@ -1,5 +1,7 @@
 # ASS-ADE spine RFC (workspace convergence)
 
+> **Public `ASS-ADE` repository:** This document describes roles across **multiple trees** in a full Atomadic workspace. **This GitHub repo ships only** the monadic spine under `ass-ade-v1.1/` (plus root `pyproject.toml`, `ADE/`, `agents/`, and `docs/`). Rows that point to `ass-ade-v1`, `ass-ade`, or `!atomadic-uep` are **context** for upstream contributors, not paths inside this clone.
+
 Status: **Accepted for coordination** — interim roles across checkouts until **one** CNA/monadic product ships. Operator entry: **`ass-ade-unified`** ([`docs/ASS_ADE_UNIFICATION.md`](ASS_ADE_UNIFICATION.md)).
 
 ## Problem

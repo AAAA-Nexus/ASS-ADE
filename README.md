@@ -51,15 +51,54 @@ ass-ade-unified assimilate path/to/primary path/to/out --also path/to/sibling
 
 The golden CI fixture lives in [`.github/workflows/ass-ade-ship.yml`](.github/workflows/ass-ade-ship.yml) and exercises `assimilate` on `ass-ade-v1.1/tests/fixtures/minimal_pkg`, emitting JSON and plan artifacts.
 
-## Project Map
+Multi-root assimilate with `--also` may require `--policy` when `ASS_ADE_ASSIMILATE_REQUIRE_POLICY=1` or under CI; see [`ass-ade-v1.1/.ass-ade/specs/`](ass-ade-v1.1/.ass-ade/specs/) and [`docs/ASS_ADE_UNIFICATION.md`](docs/ASS_ADE_UNIFICATION.md).
+
+## Documentation
+
+**Start here:** [`docs/README.md`](docs/README.md) — full index (reading order, specs, operator files).
+
+| Topic | Document |
+|--------|-----------|
+| Architecture (tiers, package layout) | [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) |
+| Packaging + `ass-ade-unified` | [`docs/ASS_ADE_UNIFICATION.md`](docs/ASS_ADE_UNIFICATION.md) |
+| Phased roadmap + S1–S6 | [`ASS_ADE_SHIP_PLAN.md`](ASS_ADE_SHIP_PLAN.md) |
+| HAVE / GAP checklist | [`ASS_ADE_GOAL_PIPELINE.md`](ASS_ADE_GOAL_PIPELINE.md) |
+| Spine / workspace roles | [`docs/ASS_ADE_SPINE_RFC.md`](docs/ASS_ADE_SPINE_RFC.md) |
+| Capability matrix | [`ASS_ADE_MATRIX.md`](ASS_ADE_MATRIX.md) |
+| IDE / hooks audit | [`docs/ATOMADIC_SWARM_SURFACE_AUDIT.md`](docs/ATOMADIC_SWARM_SURFACE_AUDIT.md) |
+| Forge CLI sketch | [`docs/ASS_ADE_FORGE_CLI.md`](docs/ASS_ADE_FORGE_CLI.md) |
+| Emitter parity | [`docs/EMITTER_PARITY.md`](docs/EMITTER_PARITY.md) |
+
+## CLI essentials
+
+| Command | Use |
+|---------|-----|
+| `ass-ade-unified doctor` | Environment and monorepo discovery |
+| `ass-ade-unified book rebuild --help` | Phased book / pipeline |
+| `ass-ade-unified assimilate …` | Primary + optional `--also` roots → monadic emit |
+| `ass-ade-v11 synth-tests --check --repo ass-ade-v1.1` | Manifest vs sources (also run in CI) |
+| `lint-imports` | Monadic layer contract (after `[dev]` install) |
+
+Use `ass-ade-unified --help` and subcommand `--help` for the full surface.
+
+## Repository layout
+
+| Path | Role |
+|------|------|
+| [`pyproject.toml`](pyproject.toml) | Distribution + `ass-ade-unified` / `ass-ade-v11` entry points |
+| [`ass-ade-v1.1/src/ass_ade_v11/`](ass-ade-v1.1/src/ass_ade_v11/) | Library source (a0–a4 + `ade`) |
+| [`ass-ade-v1.1/tests/`](ass-ade-v1.1/tests/) | Pytest suite (`-m "not dogfood"` in CI) |
+| [`ADE/`](ADE/) | ADE harness + strict prompt stack (CI gate) |
+| [`agents/`](agents/) | Pipeline prompts; alignment checked in CI |
+| [`.github/workflows/ass-ade-ship.yml`](.github/workflows/ass-ade-ship.yml) | Public ship workflow |
+
+## Project map (quick)
 
 | Surface | Purpose |
-|-----|---------|
-| [`ASS_ADE_SHIP_PLAN.md`](ASS_ADE_SHIP_PLAN.md) | Exit criteria and phased ship plan |
-| [`docs/ASS_ADE_UNIFICATION.md`](docs/ASS_ADE_UNIFICATION.md) | Single-spine packaging and migration story |
-| [`AGENTS.md`](AGENTS.md) | Operator map, ADE hooks, and agent protocol surfaces |
-| [`CONTRIBUTING.md`](CONTRIBUTING.md) | Repo hygiene, validation expectations, and contribution norms |
-| [`SECURITY.md`](SECURITY.md) | Responsible disclosure path for security reports |
+|---------|---------|
+| [`AGENTS.md`](AGENTS.md) | Operator map, hooks, agent protocol |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | Hygiene, validation, contribution norms |
+| [`SECURITY.md`](SECURITY.md) | Responsible disclosure |
 
 ## CI And Quality Gates
 

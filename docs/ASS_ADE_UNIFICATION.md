@@ -1,5 +1,7 @@
 # ASS-ADE — single product (CNA / monadic) unification
 
+> **Public `ASS-ADE` repository:** You have **`ass-ade-v1.1/`** and the unified CLI from the repo root. Sibling distributions (`ass-ade-v1`, legacy `ass-ade`) and `.ato-plans/` paths mentioned below apply to the **private umbrella** used to build releases, not to every public clone.
+
 ## Goal
 
 One **shippable** ASS-ADE: **one import namespace** (eventually `ass_ade`), **one distribution**, **one primary CLI**, with **a0→a4 monadic layout**, **CNA ids**, and **import-linter** law — while retaining **every** capability that today lives across:
@@ -80,11 +82,13 @@ Phased, low-regret order:
 
 ## References
 
-- [Ship track — packaging ADR (T3)](../.ato-plans/active/ass-ade-ship-nexus-github-20260422/T3-PACKAGING-ADR.md) — `pyproject` / co-install / post-merge **stub** (living under `.ato-plans/` until merged into this doc)  
-- [Ship README draft (T10)](../.ato-plans/active/ass-ade-ship-nexus-github-20260422/README.ship.md) — install, CI, artifact, and QUARANTINE notes aligned with root `README.md`  
-- [`ass-ade-v1.1/.ass-ade/specs/`](../ass-ade-v1.1/.ass-ade/specs/) — `assimilate-policy` + `assimilate-plan` JSON Schemas (T4)  
-- [`ASS_ADE_SHIP_PLAN.md`](../ASS_ADE_SHIP_PLAN.md) — phased **ship** roadmap (exit criteria, timeline, first 48h)  
-- [`ASS_ADE_GOAL_PIPELINE.md`](../ASS_ADE_GOAL_PIPELINE.md) — phased HAVE / GAP / IMPLEMENT checklist (preflight, book 0–7, ship)  
-- [`docs/ASS_ADE_SPINE_RFC.md`](ASS_ADE_SPINE_RFC.md) — terrain roles during migration  
-- [`ASS_ADE_MATRIX.md`](../ASS_ADE_MATRIX.md) — current capability split  
+- [`ASS_ADE_SHIP_PLAN.md`](../ASS_ADE_SHIP_PLAN.md) — phased ship roadmap (S1–S6 exit criteria)  
+- [`ASS_ADE_GOAL_PIPELINE.md`](../ASS_ADE_GOAL_PIPELINE.md) — HAVE / GAP / IMPLEMENT checklist  
+- [`pyproject.toml`](../pyproject.toml) — distribution metadata, scripts, import-linter contracts  
+- [`ass-ade-v1.1/.ass-ade/specs/`](../ass-ade-v1.1/.ass-ade/specs/) — `assimilate-policy` + `assimilate-plan` JSON Schemas  
+- [`docs/README.md`](README.md) — full documentation index  
+- [`docs/ASS_ADE_SPINE_RFC.md`](ASS_ADE_SPINE_RFC.md) — terrain roles (full workspace vs public tree)  
+- [`ASS_ADE_MATRIX.md`](../ASS_ADE_MATRIX.md) — capability split  
 - [`docs/ASS_ADE_FORGE_CLI.md`](ASS_ADE_FORGE_CLI.md) — dispatcher sketch for inventory / plan / rebuild  
+
+_Private Atomadic workspace only:_ packaging ADR and ship-loop drafts under `.ato-plans/active/ass-ade-ship-nexus-github-20260422/` (not shipped on public GitHub).

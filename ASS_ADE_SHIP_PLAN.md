@@ -70,6 +70,8 @@ _Terrain refresh: **2026-04-22 22:51 UTC** — [`ASS_ADE_SUITE_SNAPSHOT.md`](ASS
 
 <!-- ASS_ADE_AUTOGEN:END -->
 
+> **Public GitHub readers:** The **Live terrain** block above is machine-generated from the publisher’s workspace and may list absolute paths (`C:/!atomadic`, extra `ass-ade*` siblings) that **do not exist** in your clone. Use this document for **phases, exit criteria, and S1–S6**; ignore paths that are not in your checkout.
+
 ## Phase 0 — Terrain truth & noise control (3–7 days)
 
 **Goal:** Everyone (human + agent) agrees **what exists**, **what is garbage**, and **what not to touch**.
