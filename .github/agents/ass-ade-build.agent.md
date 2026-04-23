@@ -38,9 +38,9 @@ Implement only the next approved node whose dependencies are satisfied in `.ato-
 Run the relevant gates for the slice you changed:
 
 ```bash
-ass-ade-unified doctor
+ass-ade doctor
 lint-imports
-ass-ade-v11 synth-tests --check --repo ass-ade-v1.1
+ass-ade book synth-tests --check --repo ass-ade-v1.1
 python -m pytest ass-ade-v1.1/tests -m "not dogfood" -q
 python scripts/ship_readiness_audit.py
 ```

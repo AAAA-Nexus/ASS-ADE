@@ -31,12 +31,12 @@ Use this skill when the goal is to keep the ASS-ADE execution plan current, synt
 ## Verification commands
 
 ```bash
-ass-ade-unified doctor
+ass-ade doctor
 python scripts/ship_readiness_audit.py
 lint-imports
-ass-ade-v11 synth-tests --check --repo ass-ade-v1.1
+ass-ade book synth-tests --check --repo ass-ade-v1.1
 python -m pytest ass-ade-v1.1/tests -m "not dogfood" -q
-ass-ade-unified ade ship-audit --staging-root C:\!aaaa-nexus\!ass-ade
+ass-ade ade ship-audit --staging-root C:\!aaaa-nexus\!ass-ade
 ```
 
 ## Expected outputs

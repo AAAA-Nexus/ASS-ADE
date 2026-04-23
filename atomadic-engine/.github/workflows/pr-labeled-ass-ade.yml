@@ -1,0 +1,37 @@
+# Label-gated smoke lane (MAP=TERRAIN: extend GitHub, no new MCP hosts).
+# Add labels `ass-ade-blueprint` or `ass-ade-feature` on a PR to run this job.
+name: pr-labeled-ass-ade-smoke
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled]
+
+jobs:
+  blueprint-or-feature-smoke:
+    runs-on: ubuntu-latest
+    if: >-
+      contains(toJson(github.event.pull_request.labels), 'ass-ade-blueprint')
+      || contains(toJson(github.event.pull_request.labels), 'ass-ade-feature')
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install editable (dev)
+        run: |
+          python -m pip install -U pip
+          python -m pip install -e ".[dev]"
+      - name: Evolution context vs roadmap
+        run: |
+          python scripts/check_evolution_context.py \
+            --roadmap .ass-ade/ass-ade-suite-roadmap.json \
+            --git-range "${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }}"
+      - name: Narrow pytest (MCP parity + monadic + demos gate)
+        run: |
+          python -m pytest \
+            tests/test_mcp_manifest_parity.py \
+            tests/test_mcp_extended.py::TestMCPToolListing::test_tools_list_includes_builtin_and_extended \
+            tests/test_mcp_extended.py::TestMCPToolListing::test_extended_tools_have_schemas \
+            tests/test_monadic_purity.py \
+            tests/test_demos_and_import_budget.py \
+            -q --tb=short

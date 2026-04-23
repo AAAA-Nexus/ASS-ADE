@@ -1,18 +1,22 @@
-"""United ASS-ADE CLI — CNA/monadic ``book`` + optional v1 ``studio`` surface.
+"""United ASS-ADE CLI — one command for the CNA book and Atomadic engine.
 
-This module is the **operator-facing** single entry while source trees still
-live in multiple checkouts. It nests:
+This module is the **operator-facing** single entry while the source still has
+two package roots in one checkout. It exposes:
 
-- ``book`` — full ``ass-ade-v11`` pipeline (phases 0–7, certify, synth-tests).
-- ``studio`` — the large ``ass_ade.cli`` Typer application **when** package
-  ``ass-ade`` (v1 tree) is installed in the same environment.
+- top-level Atomadic engine commands such as ``rebuild``, ``enhance``, ``docs``,
+  ``lint``, ``certify``, ``nexus``, ``agent``, and ``a2a``.
+- ``book`` — full monadic pipeline (phases 0–7, certify, synth-tests).
+- ``assimilate`` — multi-root ingest into the monadic book.
+- ``ade`` — workspace operator materialization and checks.
 
-Long-term goal: one ``src/`` tree and one distribution; see ``docs/ASS_ADE_UNIFICATION.md``.
+The public console scripts are ``ass-ade`` and ``atomadic`` aliases to this app.
 """
 
 from __future__ import annotations
 
+import importlib
 import json
+import sys
 from pathlib import Path
 from typing import Annotated, Any
 
@@ -25,14 +29,137 @@ from ass_ade_v11.a1_at_functions.assimilate_policy_gate import (
 )
 from ass_ade_v11.a4_sy_orchestration.cli import app as book_app
 
+# Inventory scanner import
+from ass_ade_v11.a1_at_functions.inventory_scan import scan_umbrella
+
 app = typer.Typer(
     no_args_is_help=True,
     help=(
-        "United ASS-ADE: ``assimilate`` (multi-root -> monadic emit); monadic "
-        "``book``; optional legacy ``studio`` Typer app; "
-        "``atomadic`` Click CLI when ``ass_ade`` is installed."
+        "ASS-ADE: one Atomadic Development Environment CLI with the restored "
+        "engine surface, monadic book pipeline, multi-root assimilate, and ADE "
+        "operator tooling."
     ),
 )
+
+
+# --- Inventory command ---
+@app.command("inventory")
+def inventory(
+    roots: Annotated[list[str], typer.Option(
+        "--root", "-r", help="Directories to scan (can be repeated)", show_default=True
+    )] = ["."],
+    format: Annotated[str, typer.Option("--format", "-f", help="Output format: json or table")] = "json",
+):
+    """Discover sibling repos and terrain."""
+    result = scan_umbrella(roots)
+    if format == "json":
+        typer.echo(json.dumps(result, indent=2))
+    else:
+        # Simple table output (fallback if tabulate not installed)
+        candidates = result["candidates"]
+        if not candidates:
+            typer.echo("No candidates found.")
+            return
+        headers = list(candidates[0].keys())
+        row_lines = [" | ".join(headers)]
+        row_lines.append("-|-" * len(headers))
+        for cand in candidates:
+            row_lines.append(" | ".join(str(cand[h]) if cand[h] is not None else "" for h in headers))
+        typer.echo("\n".join(row_lines))
+
+
+def _checkout_root() -> Path:
+    return Path(__file__).resolve().parents[4]
+
+
+def _bundled_engine_src() -> Path:
+    return _checkout_root() / "atomadic-engine" / "src"
+
+
+def _bundled_engine_pkg() -> Path:
+    return _bundled_engine_src() / "ass_ade"
+
+
+def _is_under(path: Path, root: Path) -> bool:
+    try:
+        path.resolve().relative_to(root.resolve())
+    except ValueError:
+        return False
+    return True
+
+
+def _module_resolves_under(module: Any, root: Path) -> bool:
+    module_file = getattr(module, "__file__", None)
+    if module_file:
+        return _is_under(Path(module_file), root)
+    module_paths = getattr(module, "__path__", ())
+    return any(_is_under(Path(path), root) for path in module_paths)
+
+
+def _ensure_bundled_engine_first() -> None:
+    """Prefer this checkout's restored ``ass_ade`` over older editable installs."""
+    engine_src = _bundled_engine_src()
+    engine_pkg = _bundled_engine_pkg()
+    if not engine_pkg.exists():
+        return
+
+    resolved_engine_src = engine_src.resolve()
+    sys.path[:] = [
+        path
+        for path in sys.path
+        if not path or Path(path).resolve() != resolved_engine_src
+    ]
+    sys.path.insert(0, str(engine_src))
+
+    imported = sys.modules.get("ass_ade")
+    if imported is not None and not _module_resolves_under(imported, engine_pkg):
+        for name in list(sys.modules):
+            if name == "ass_ade" or name.startswith("ass_ade."):
+                del sys.modules[name]
+
+
+def _typer_command_name(command_info: Any) -> str | None:
+    name = getattr(command_info, "name", None)
+    if name:
+        return str(name)
+    callback = getattr(command_info, "callback", None)
+    if callback is None:
+        return None
+    from typer.main import get_command_name
+
+    return get_command_name(callback.__name__)
+
+
+def _registered_cli_names(target: typer.Typer) -> set[str]:
+    names: set[str] = set()
+    for command_info in target.registered_commands:
+        name = _typer_command_name(command_info)
+        if name:
+            names.add(name)
+    for group_info in target.registered_groups:
+        name = getattr(group_info, "name", None)
+        if name:
+            names.add(str(name))
+    return names
+
+
+def _merge_atomadic_surface(source: typer.Typer) -> None:
+    """Flatten non-conflicting Atomadic commands onto the ASS-ADE root app."""
+    existing = _registered_cli_names(app)
+    for command_info in source.registered_commands:
+        name = _typer_command_name(command_info)
+        if name and name in existing:
+            continue
+        app.registered_commands.append(command_info)
+        if name:
+            existing.add(name)
+    for group_info in source.registered_groups:
+        name = getattr(group_info, "name", None)
+        if name and str(name) in existing:
+            continue
+        app.registered_groups.append(group_info)
+        if name:
+            existing.add(str(name))
 
 
 @app.command("assimilate")
@@ -100,6 +227,17 @@ def assimilate_cmd(
             help="Emitted pyproject [project] name when stop-after reaches package.",
         ),
     ] = "ass-ade-assimilated",
+    output_package_name: Annotated[
+        str | None,
+        typer.Option(
+            "--output-package-name",
+            help=(
+                "Optional Python package root for emitted trees. "
+                "Example: `ass_ade` writes under `src/ass_ade/...` and rewrites "
+                "materialized imports to that package prefix."
+            ),
+        ),
+    ] = None,
     json_out: Annotated[
         Path | None,
         typer.Option(
@@ -170,6 +308,7 @@ def assimilate_cmd(
         task_description=task_description,
         extra_source_roots=also or None,
         distribution_name=distribution_name,
+        output_package_name=output_package_name,
         policy_doc=policy_doc,
     )
     if policy_doc is not None:
@@ -221,26 +360,39 @@ def assimilate_cmd(
 
 @app.command("doctor")
 def doctor_cmd() -> None:
-    """Show which united surfaces are available in this environment."""
+    """Show which ASS-ADE surfaces are available in this environment."""
+    _ensure_bundled_engine_first()
+    checkout_root = _checkout_root()
+    expected_v11 = checkout_root / "ass-ade-v1.1" / "src" / "ass_ade_v11"
+    expected_engine = _bundled_engine_pkg()
+    v11_file = Path(__file__).resolve()
     lines = [
-        "[united] monadic pipeline (ass_ade_v11): OK -> `ass-ade-unified book ...`",
-        "[united] one-shot sibling ingest: `ass-ade-unified assimilate PRIMARY OUTPUT [--also PATH ...]`",
-        "[united] multi-root policy: under CI (or ASS_ADE_ASSIMILATE_REQUIRE_POLICY=1), `--also` requires `--policy` YAML",
-        "[united] assimilate emits `ASSIMILATE_PLAN` (see `--plan-out` + book JSON `ASSIMILATE_PLAN` key)",
+        f"[ass-ade] checkout root: {checkout_root}",
+        f"[ass-ade] monadic pipeline: OK -> {v11_file}",
+        "[ass-ade] one-shot sibling ingest: `ass-ade assimilate PRIMARY OUTPUT [--also PATH ...]`",
+        "[ass-ade] multi-root policy: under CI (or ASS_ADE_ASSIMILATE_REQUIRE_POLICY=1), `--also` requires `--policy` YAML",
+        "[ass-ade] assimilate emits `ASSIMILATE_PLAN` (see `--plan-out` + book JSON `ASSIMILATE_PLAN` key)",
     ]
+    if expected_v11.exists() and not _is_under(v11_file, expected_v11):
+        lines.append(f"[ass-ade] WARNING: monadic package is not resolving under {expected_v11}")
     try:
-        import ass_ade  # noqa: F401
-
-        lines.append(
-            "[united] atomadic engine (ass_ade): OK -> `atomadic ...` or "
-            "`ass-ade-unified atomadic ...`"
-        )
-        lines.append(
-            "[united] v1 studio (ass_ade): OK -> `ass-ade-unified studio ...`"
-        )
+        ass_ade = importlib.import_module("ass_ade")
+        ass_ade_file = Path(getattr(ass_ade, "__file__", "") or "")
+        ass_ade_location = str(ass_ade_file.resolve()) if ass_ade_file else "namespace package"
+        lines.append(f"[ass-ade] engine package (ass_ade): OK -> {ass_ade_location}")
+        if expected_engine.exists() and ass_ade_file and not _is_under(ass_ade_file, expected_engine):
+            lines.append(f"[ass-ade] WARNING: ass_ade is not resolving under {expected_engine}")
+        try:
+            cli_mod = importlib.import_module("ass_ade.cli")
+            cli_file = Path(getattr(cli_mod, "__file__", "") or "")
+            cli_location = str(cli_file.resolve()) if cli_file else "namespace package"
+            lines.append(f"[ass-ade] engine CLI: OK -> {cli_location}")
+            lines.append("[ass-ade] CLI aliases: `ass-ade ...` and `atomadic ...`")
+        except ImportError as exc:
+            lines.append(f"[ass-ade] engine CLI: MISSING -> {exc}")
     except ImportError:
         lines.append(
-            "[united] ass_ade (atomadic engine + v1 studio): MISSING -> install this repo root with "
+            "[ass-ade] ass_ade engine package: MISSING -> install this repo root with "
             "`pip install -e \".[dev]\"` so `import ass_ade` resolves"
         )
     typer.echo("\n".join(lines))
@@ -252,13 +404,15 @@ from ass_ade_v11.ade.cli import app as ade_app  # noqa: E402  — after `app` ex
 
 app.add_typer(ade_app, name="ade")
 
+_ensure_bundled_engine_first()
+
 try:  # pragma: no cover - optional legacy Typer studio (v1 tree)
     from ass_ade.cli import app as studio_app
 except ImportError:
     studio_app = None
 
 if studio_app is not None:
-    app.add_typer(studio_app, name="studio")
+    _merge_atomadic_surface(studio_app)
 
 
 @app.command(
@@ -270,30 +424,59 @@ if studio_app is not None:
         # so ``… atomadic build --help`` reaches the ``build`` subcommand.
         "help_option_names": [],
     },
+    hidden=True,
     help=(
-        "Atomadic rebuild engine (Click): build, extend, reclaim, forge — same as the "
-        "``atomadic`` console script. Use ``… atomadic --help`` for Click top-level; "
+        "Atomadic rebuild engine: rebuild, enhance, docs, lint, certify, forge, Nexus, MCP, A2A. "
+        "Legacy ``build`` is accepted as an alias for ``rebuild``. Use ``… atomadic --help`` for top-level; "
         "``… atomadic build --help`` for a subcommand."
     ),
 )
 def atomadic_proxy(ctx: typer.Context) -> None:
-    """Delegate to :data:`ass_ade.cli.__main__.atomadic` (Click group)."""
+    """Delegate to the bundled :mod:`ass_ade.cli` Typer app."""
+    _run_atomadic_command(list(ctx.args), prog_name="ass-ade atomadic")
+
+
+@app.command(
+    "build",
+    context_settings={
+        "allow_extra_args": True,
+        "ignore_unknown_options": True,
+        "help_option_names": [],
+    },
+    hidden=True,
+)
+def build_proxy(ctx: typer.Context) -> None:
+    """Legacy alias for ``rebuild``."""
+    _run_atomadic_command(["build", *ctx.args], prog_name="ass-ade")
+
+
+def _run_atomadic_command(argv: list[str], *, prog_name: str) -> None:
+    """Delegate argv to the bundled :mod:`ass_ade.cli` Typer app."""
+    _ensure_bundled_engine_first()
     try:
-        from ass_ade.cli.__main__ import atomadic as _atomadic_group
-        from ass_ade.cli._env import load_default_dotenv
+        from typer.main import get_command
+
+        from ass_ade.cli import app as _atomadic_app
     except ImportError as exc:  # pragma: no cover
         typer.secho(f"atomadic engine unavailable: {exc}", fg="red", err=True)
         raise typer.Exit(2) from exc
-    load_default_dotenv()
-    argv = list(ctx.args)
+    argv = list(argv)
+    if argv and argv[0] == "build":
+        argv[0] = "rebuild"
+    command = get_command(_atomadic_app)
     try:
-        _atomadic_group.main(args=argv, prog_name="ass-ade-unified atomadic")
+        command.main(args=argv, prog_name=prog_name)
     except SystemExit as exc:
         raise typer.Exit(exc.code) from exc
 
 
+def atomadic_main() -> None:
+    """Backward-compatible console script entry for old editable installs."""
+    main()
+
+
 def main() -> None:
-    """Console script entry (``ass-ade-unified``)."""
+    """Console script entry (``ass-ade`` / ``atomadic``)."""
     app()
 
 

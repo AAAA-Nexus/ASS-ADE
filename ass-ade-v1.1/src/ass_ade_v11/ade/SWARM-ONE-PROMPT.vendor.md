@@ -1,4 +1,4 @@
-﻿<!--
+<!--
   Fallback for `materialize` when the checkout has no root `SWARM-ONE-PROMPT.md`.
   Regenerated from repo-root `SWARM-ONE-PROMPT.md` by sync_public_ass_ade_staging.ps1.
 -->
@@ -26,7 +26,7 @@ python scripts/regenerate_ass_ade_docs.py
 `python scripts/run_swarm_services.py run`  
 (Heartbeat + terrain regen + optional P3 nudges â€” see `scripts/run_swarm_services.py` and `.cursor/hooks/README.md`.)
 
-**Cursor only:** ensure hooks are installed (`ass-ade-unified ade materialize` or existing `.cursor/hooks/`). **VS Code:** you still use the **same repo**; hooks donâ€™t run there â€” use terminal + scribe + this prompt.
+**Cursor only:** ensure hooks are installed (`ass-ade ade materialize` or existing `.cursor/hooks/`). **VS Code:** you still use the **same repo**; hooks donâ€™t run there â€” use terminal + scribe + this prompt.
 
 ---
 
@@ -56,7 +56,7 @@ Use lane **`orchestrator`** (or `stream-A` if you split work). When you write no
 ## What to do now (single coherent loop)
 A) **Recon:** In â‰¤10 bullets, state current terrain from `ASS_ADE_SUITE_SNAPSHOT.md` + the **Live terrain (auto-generated)** blocks in `ASS_ADE_SHIP_PLAN` / `ASS_ADE_GOAL_PIPELINE` if present.  
 B) **Next ship node:** From `tasks.json` + `python scripts/run_swarm_services.py status` (or infer), name the best **next** node to execute and why (deps, S1â€“S6).  
-C) **Plan:** 5â€“8 numbered steps: files, tests, and verification (`ass-ade-unified doctor`, `lint-imports`, `pytest` as in `.github/workflows/ass-ade-ship.yml` scope).  
+C) **Plan:** 5â€“8 numbered steps: files, tests, and verification (`ass-ade doctor`, `lint-imports`, `pytest` as in `.github/workflows/ass-ade-ship.yml` scope).  
 D) **Act:** Start step 1 only â€” produce a concrete diff plan or the exact commands to run; do not skip verification hooks.  
 E) **Scribe / evolution:** If you complete a node or meaningful slice, add one UTC line to the active `evolution.log` and suggest: `python scripts/run_swarm_services.py task mark <Tid> done --note "..."` when appropriate.  
 F) **Gaps:** Anything QUARANTINE, DEFER, or **needs human** â€” label clearly. No public push claims without CI truth.
@@ -88,7 +88,7 @@ F) **Gaps:** Anything QUARANTINE, DEFER, or **needs human** â€” label clear
 | Automation pulse        | `.ato-plans/assclaw-v1/swarm_services/AUTOMATION-PULSE.md`                         |
 | Signals                 | `python .cursor/hooks/swarm_signal.py list` (from repo root)                       |
 | Plan tasks              | `tasks.json` + `swarm_task_state.json` in active plan folder                       |
-| United CLI              | `ass-ade-unified doctor` Â· `ass-ade-unified book â€¦` Â· `ass-ade-unified ade doctor` |
+| United CLI              | `ass-ade doctor` Â· `ass-ade book â€¦` Â· `ass-ade ade doctor` |
 
 
 **Ship target:** `ASS_ADE_SHIP_PLAN.md` and CI `.github/workflows/ass-ade-ship.yml` â€” the model must stay aligned to those, not to vibes.

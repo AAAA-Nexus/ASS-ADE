@@ -42,11 +42,12 @@ def _seed_ship_surface(root: Path) -> None:
         "\n".join(
             [
                 "[project]",
-                'name = "ass-ade-v1-1"',
-                'version = "1.1.0a1"',
+                'name = "ass-ade"',
+                'version = "1.0.0"',
                 "",
                 "[project.scripts]",
-                'ass-ade-unified = "ass_ade_v11.a4_sy_orchestration.unified_cli:main"',
+                'ass-ade = "ass_ade_v11.a4_sy_orchestration.unified_cli:main"',
+                'atomadic = "ass_ade_v11.a4_sy_orchestration.unified_cli:main"',
                 "",
             ]
         ),

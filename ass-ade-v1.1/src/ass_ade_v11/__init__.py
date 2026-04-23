@@ -1,3 +1,3 @@
-"""ASS-ADE v1.1 — monadic rebuild pipeline (incremental bootstrap)."""
+"""ASS-ADE monadic rebuild pipeline."""
 
-__version__ = "1.1.0a1"
+__version__ = "1.0.0"

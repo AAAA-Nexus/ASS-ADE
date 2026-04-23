@@ -1,6 +1,6 @@
 # Codex + Copilot build cycle (VS Code) on ASS-ADE
 
-Use this on the **same repo** you materialized with `ass-ade-unified ade materialize` (so **`.ade/`** and the CLI exist).
+Use this on the **same repo** you materialized with `ass-ade ade materialize` (so **`.ade/`** and the CLI exist).
 
 ## 0) One-time in VS Code
 
@@ -16,7 +16,7 @@ Use this on the **same repo** you materialized with `ass-ade-unified ade materia
 | **Recon** | In Chat, attach or `@`-reference `AGENTS.md`, `ASS_ADE_SHIP_PLAN.md` (or Phase N), and `.ade/README.md`. Ask: “Map current HAVE/GAP and next exit criterion.” | Shaped context before edits. |
 | **Plan** | Use the **Plan** built-in (or a planning prompt) to break work into 3–7 steps. | A checklist you and the agent can follow. |
 | **Implement (Codex or Copilot Agent)** | With **Agent** mode, ask for the first step only; require tool approval for shell/file ops until you trust the loop. | Diffs in editor; use multi-file awareness. |
-| **Verify (terminal)** | **Integrated Terminal:** `ass-ade-unified doctor` · `ass-ade-unified ade doctor` · `python .ade/persistent/run_swarm_services.py once` (if materialized) · `pytest` / CI-equivalent. | Meets “terrain” not vibes. |
+| **Verify (terminal)** | **Integrated Terminal:** `ass-ade doctor` · `ass-ade ade doctor` · `python .ade/persistent/run_swarm_services.py once` (if materialized) · `pytest` / CI-equivalent. | Meets “terrain” not vibes. |
 | **Mark plan** | Update ship docs or your `tasks` state (`swarm task mark …` on the monorepo host if using swarm automation). | Traceable progress. |
 | **Rinse** | Next plan step. | Until exit criteria. |
 
@@ -33,4 +33,4 @@ Use this on the **same repo** you materialized with `ass-ade-unified ade materia
 
 ---
 
-*ADE layout v2+ — `CODEX-BUILD-CYCLE` ships under `.ade/cross-ide/` via `ass-ade-unified ade materialize`.*
+*ADE layout v2+ — `CODEX-BUILD-CYCLE` ships under `.ade/cross-ide/` via `ass-ade ade materialize`.*

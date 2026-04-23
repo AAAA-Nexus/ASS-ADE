@@ -1,8 +1,8 @@
-# ASS-ADE feature inventory (umbrella `C:\!atomadic`)
+# ASS-ADE feature inventory (single trunk `C:\!aaaa-nexus\!ass-ade`)
 
 **Purpose:** MAP = TERRAIN for *where capabilities live* before and during **multi-root assimilate**. This is deeper than [`ASS_ADE_MATRIX.md`](../ASS_ADE_MATRIX.md) (dist/CLI matrix): here we map **features** to **paths** and **entrypoints** so operators can wire one working tree without guessing.
 
-**Refresh:** bump the date when you change sibling layout or add a major surface. Regenerate machine snapshots with `python scripts/regenerate_ass_ade_docs.py` (updates matrix/ship autogen blocks).
+**Refresh:** bump the date when you change sibling layout or add a major surface. The current source-of-truth roles are also summarized in [`ONE_WORKING_PRODUCT.md`](ONE_WORKING_PRODUCT.md).
 
 ---
 
@@ -10,11 +10,12 @@
 
 | Feature | Location | How to run |
 |--------|----------|------------|
-| **`ass-ade-unified`** Typer root | [`ass-ade-v1.1/src/ass_ade_v11/a4_sy_orchestration/unified_cli.py`](../ass-ade-v1.1/src/ass_ade_v11/a4_sy_orchestration/unified_cli.py) | `ass-ade-unified doctor` |
-| **`book`** (phases 0–7) | [`cli.py`](../ass-ade-v1.1/src/ass_ade_v11/a4_sy_orchestration/cli.py) | `ass-ade-unified book rebuild …` |
-| **One-shot `assimilate`** | `unified_cli.py` (`assimilate` command) | `ass-ade-unified assimilate PRIMARY OUT [--also …] [--policy …]` |
-| **`ade`** (materialize, doctor) | [`ass_ade_v11/ade/cli.py`](../ass-ade-v1.1/src/ass_ade_v11/ade/cli.py) | `ass-ade-unified ade materialize` |
-| **`synth-tests`** manifest | [`cli.py`](../ass-ade-v1.1/src/ass_ade_v11/a4_sy_orchestration/cli.py) | `ass-ade-v11 synth-tests --check --repo ass-ade-v1.1` |
+| **`ass-ade`** Typer root | [`ass-ade-v1.1/src/ass_ade_v11/a4_sy_orchestration/unified_cli.py`](../ass-ade-v1.1/src/ass_ade_v11/a4_sy_orchestration/unified_cli.py) | `ass-ade doctor` |
+| **Atomadic engine shell** | [`atomadic-engine/src/ass_ade/cli.py`](../atomadic-engine/src/ass_ade/cli.py) | `ass-ade rebuild --help`, `atomadic --help` |
+| **`book`** (phases 0–7) | [`cli.py`](../ass-ade-v1.1/src/ass_ade_v11/a4_sy_orchestration/cli.py) | `ass-ade book rebuild ...` |
+| **One-shot `assimilate`** | `unified_cli.py` (`assimilate` command) | `ass-ade assimilate PRIMARY OUT [--also ...] [--policy ...]` |
+| **`ade`** (materialize, doctor) | [`ass_ade_v11/ade/cli.py`](../ass-ade-v1.1/src/ass_ade_v11/ade/cli.py) | `ass-ade ade materialize` |
+| **`synth-tests`** manifest | [`cli.py`](../ass-ade-v1.1/src/ass_ade_v11/a4_sy_orchestration/cli.py) | `ass-ade book synth-tests --check --repo ass-ade-v1.1` |
 | **Install / scripts** | Root [`pyproject.toml`](../pyproject.toml) `[project.scripts]` | `pip install -e ".[dev]"` from umbrella root |
 
 ---
@@ -46,15 +47,24 @@
 
 ---
 
-## 4. Sibling trees (what assimilate merges)
+## 4. Runtime trees in the single trunk
 
 | Path | Package / role | Rebuild engine | Monadic pipeline | Notes |
 |------|----------------|----------------|------------------|-------|
-| **`ass-ade-v1.1/`** | `ass_ade_v11` — **MAP (primary)** | a1-tier helpers, not v1 `engine/rebuild` | **Yes** `pipeline_book` | Design authority for assimilate **primary** root |
-| **`ass-ade-v1/`** | `ass_ade` — Typer **studio** + **engine/rebuild** | **Yes** | No | Typical `--also` **sibling** |
-| **`ass-ade/`** | `ass_ade` — Click **`atomadic`** line | Partial / CLI | No | Second **`ass_ade`** namespace — expect **conflicts** until policy/triage |
-| **`ass-ade-v1-test*`** | emitted / sandbox | varies | No | **Archive / input** — exclude from PoC by default |
-| **`!atomadic-uep/`** | composition | imports ass-ade | No | **Not** in default ASS-ADE assimilate PoC (sovereign bundle) |
+| **`ass-ade-v1.1/`** | `ass_ade_v11` - **MAP / spine** | a1-tier helpers, not v1 `engine/rebuild` | **Yes** `pipeline_book` | Design authority for assimilate primary root |
+| **`atomadic-engine/`** | `ass_ade` - restored Atomadic engine | **Yes** `engine/rebuild` | No | Runtime compatibility surface and broad CLI |
+| **`ADE/`** | harness | No | No | Strict prompt/hook harness used by ship checks |
+| **`agents/`** | prompt chain | No | No | Pipeline prompts and swarm protocol |
+
+## 4b. External folders in `C:\!aaaa-nexus`
+
+| Path | Role | Merge posture |
+|------|------|---------------|
+| `ass-ade-fix/` | clean donor | Already copied into `atomadic-engine`; use only for diff/reference. |
+| `QUARANTINE_IP_LEAK_v20/` | quarantine donor | Compare only; no direct copy until IP/scrub review. |
+| `ass-ade-final-release*`, `assimilated_ade/` | generated outputs | Evidence only until imports/tests pass. |
+| `ASS-CLAW*`, `ass-claw-repos/` | separate product inputs | Do not merge into ASS-ADE core automatically. |
+| `!ass-ade-control/`, `!ass-ade-cursor-dev-*` | audit/staging records | Useful history; not runtime source. |
 
 ---
 
@@ -66,7 +76,7 @@
 | **Discover monorepo** | [`discover.py`](../ass-ade-v1.1/src/ass_ade_v11/ade/discover.py) |
 | Bundled Cursor hook templates | `ass_ade_v11/ade/cursor_hooks_bundled/` (package data; **not** import-graph modules) |
 | Cross-IDE samples | `ass_ade_v11/ade/cross_ide_bundled/` |
-| Cursor hooks (dev) | [`.cursor/hooks/`](../.cursor/hooks) |
+| Cursor hooks (dev) | [`hooks/`](../hooks) and ADE materialized copies |
 | **ADE harness (CI)** | [`ADE/harness/`](../ADE/harness) |
 
 ---
@@ -94,14 +104,14 @@
 
 ---
 
-## 8. Umbrella self-assimilate (PoC) — intent
+## 8. Trunk self-assimilate (PoC) — intent
 
-**Goal:** Prove ASS-ADE on **its own** scattered trees: primary = **`ass-ade-v1.1`**, siblings = **`ass-ade-v1`**, **`ass-ade`**, with a **checked-in policy** and artifacts under **`_unified_assimilate_poc/`** (gitignored).
+**Goal:** Prove ASS-ADE on its own current trunk: primary = **`ass-ade-v1.1`**, sibling = **`atomadic-engine`**, with a checked policy and artifacts under **`_unified_assimilate_poc/`** (gitignored).
 
 **Commands and escalation** (recon → ingest → gapfill → …) live in [`swarm-execution.md`](../.ato-plans/active/ass-ade-ship-nexus-github-20260422/swarm-execution.md) § *Umbrella self-assimilate (PoC)*.
 
-**Honesty:** two packages both named `ass_ade` on disk will surface **namespace / symbol conflicts** in Phase 1 — that is *expected* until merge strategy or excludes are tightened; the PoC still produces **terrain + ingestions + gap_plan** for human triage.
+**Honesty:** generated final-release folders are not accepted as product source until they import and pass smoke tests. They remain evidence for parity and regression fixtures.
 
 ---
 
-*Inventory version: 2026-04-23 — Initiative U (umbrella unification PoC).*
+*Inventory version: 2026-04-23 — single-trunk consolidation pass.*

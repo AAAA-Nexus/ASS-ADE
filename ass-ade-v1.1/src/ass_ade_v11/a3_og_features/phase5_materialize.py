@@ -21,6 +21,7 @@ def run_phase5_materialize(
     assimilation_meta: dict[str, Any] | None = None,
     source_roots: list[Path] | None = None,
     rewrite_imports: bool = True,
+    output_package_name: str | None = None,
 ) -> dict[str, Any]:
     output_parent = Path(output_parent).resolve()
     plan_summary = emit_plan_blueprint_v11(gap_plan, output_parent, rebuild_tag)
@@ -31,6 +32,7 @@ def run_phase5_materialize(
         write_json_sidecars=write_json_sidecars,
         source_roots=source_roots,
         rewrite_imports=rewrite_imports,
+        output_package_name=output_package_name,
     )
     assim_out: dict[str, Any] | None = None
     if assimilation_meta is not None:
@@ -40,5 +42,6 @@ def run_phase5_materialize(
         "plan_blueprint": plan_summary,
         "materialize": receipt,
         "target_root": receipt["target_root"],
+        "package_root": receipt.get("package_root"),
         "assimilation": assim_out,
     }

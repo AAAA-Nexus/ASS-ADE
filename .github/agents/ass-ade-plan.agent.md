@@ -34,7 +34,7 @@ Stay in planning mode unless the user explicitly asks for implementation. Your j
 - Mark unknowns or unverified public claims as `QUARANTINE`.
 - Production-ready means both of these are green:
   - `python scripts/ship_readiness_audit.py`
-  - `ass-ade-unified ade ship-audit --staging-root C:\!aaaa-nexus\!ass-ade`
+  - `ass-ade ade ship-audit --staging-root C:\!aaaa-nexus\!ass-ade`
 - Keep the current verdict honest. "Private spine PASS, public handoff BLOCKED" is a valid outcome.
 - Keep `.github/copilot-instructions.md`, `.github/agents/`, `.github/skills/ass-ade-ship-control/`, and `AGENTS.md` aligned.
 

@@ -4,13 +4,15 @@ This is the **execution roadmap**: ordered work you can assign, schedule, and ve
 
 **Companion docs:** [`docs/ATOMADIC_SWARM_SURFACE_AUDIT.md`](docs/ATOMADIC_SWARM_SURFACE_AUDIT.md) (Cursor / hooks / agents alignment), [`ASS_ADE_GOAL_PIPELINE.md`](ASS_ADE_GOAL_PIPELINE.md) (HAVE/GAP per track), [`docs/ASS_ADE_UNIFICATION.md`](docs/ASS_ADE_UNIFICATION.md), [`docs/ASS_ADE_SPINE_RFC.md`](docs/ASS_ADE_SPINE_RFC.md), [`ASS_ADE_MATRIX.md`](ASS_ADE_MATRIX.md).
 
+**Current trunk decision (2026-04-23):** build and ship from `C:\!aaaa-nexus\!ass-ade` only. The product now vendors the restored engine at `atomadic-engine/src/ass_ade` beside the v1.1 spine at `ass-ade-v1.1/src/ass_ade_v11`. See [`docs/ONE_WORKING_PRODUCT.md`](docs/ONE_WORKING_PRODUCT.md).
+
 ---
 
 ## How to use this plan
 
 1. **Do phases in order** unless explicitly marked “parallel.” Skipping phases creates fake progress (green demos, red production).
 2. For each phase, tick **exit criteria** before starting the next. If an exit criterion fails, **stop** and file a gap in [`ASS_ADE_GOAL_PIPELINE.md`](ASS_ADE_GOAL_PIPELINE.md) under the right track.
-3. **Default spine for new work:** monadic package [`ass-ade-v1.1`](ass-ade-v1.1) (`ass_ade_v11`); operator entry [`ass-ade-unified`](ass-ade-v1.1/src/ass_ade_v11/a4_sy_orchestration/unified_cli.py). v1 is **input engine + studio** until merged.
+3. **Default spine for new work:** ASS-ADE monadic spine; operator entry [`ass-ade`](ass-ade-v1.1/src/ass_ade_v11/a4_sy_orchestration/unified_cli.py). Runtime engine/studio work now lives inside this product trunk.
 
 ---
 
@@ -38,7 +40,7 @@ Use this as a **MAP = TERRAIN** snapshot for the `!atomadic` umbrella; it does *
 | **S3** | **HAVE:** `CONTRIBUTING.md` hygiene; `.gitignore` patterns on subtrees. |
 | **S4** | **HAVE:** `lint-imports` in `ass-ade-ship` workflow; contract in root `pyproject.toml`. |
 | **S5** | **HAVE:** Root `README.md` + [`docs/ASS_ADE_UNIFICATION.md`](docs/ASS_ADE_UNIFICATION.md) copy-paste venv path. |
-| **S6** | **HAVE (spine):** One **`[project]`** for `ass-ade-v1-1` at **repo root** `pyproject.toml` (T12); `ass-ade-v1.1/pyproject.toml` is pointer-only. **GAP (target doc):** Legacy sibling distributions (`ass-ade`, `ass-ade-v1`) still carry their own `pyproject.toml` until full product merge. |
+| **S6** | **HAVE:** One **`[project]`** for `ass-ade` at **repo root** `pyproject.toml`; `ass-ade-v1.1/pyproject.toml` is pointer-only. Legacy sibling distributions are donors/archives, not product roots. |
 
 ---
 
@@ -85,7 +87,7 @@ _Terrain refresh: **2026-04-22 22:51 UTC** — [`ASS_ADE_SUITE_SNAPSHOT.md`](ASS
 3. **Hygiene rules** (pick one set and document in root `CONTRIBUTING.md` or [`AGENTS.md`](AGENTS.md)):  
    - Never commit under `ass-ade-v1/.pytest_tmp/`, `rebuild-outputs/` (unless golden fixtures).  
    - Dated `*-backup-*`: move to `archive/` or delete after N days—**write the rule**.
-4. **Single “start here” path** for operators: ensure [`AGENTS.md`](AGENTS.md) + [`docs/ASS_ADE_UNIFICATION.md`](docs/ASS_ADE_UNIFICATION.md) list `ass-ade-unified doctor` and `assimilate` first.
+4. **Single “start here” path** for operators: ensure [`AGENTS.md`](AGENTS.md) + [`docs/ASS_ADE_UNIFICATION.md`](docs/ASS_ADE_UNIFICATION.md) list `ass-ade doctor` and `assimilate` first.
 
 ### Exit criteria
 
@@ -108,10 +110,10 @@ _Terrain refresh: **2026-04-22 22:51 UTC** — [`ASS_ADE_SUITE_SNAPSHOT.md`](ASS
 
 1. **Pick three real inputs:** one **primary** (MAP), two **siblings** (smaller). Prefer repos you can legally merge and that are mostly Python.
 2. **Dry run book:**  
-   `ass-ade-unified assimilate <PRIMARY> <OUT> --also <A> --also <B> --stop-after gapfill`  
+   `ass-ade assimilate <PRIMARY> <OUT> --also <A> --also <B> --stop-after gapfill`  
    Inspect JSON stdout; fix recon exclusions until `READY_FOR_PHASE_1`.
 3. **Full emit:** same command **without** early stop (default `--stop-after package` or explicit `package`).
-4. **Run tests on output:** at minimum `pytest` on generated package if present; use **`ass-ade-unified book synth-tests --check`** (same as `ass-ade-v11 synth-tests --check --repo <path>`) where applicable ([`ASS_ADE_GOAL_PIPELINE.md`](ASS_ADE_GOAL_PIPELINE.md) S1).
+4. **Run tests on output:** at minimum `pytest` on generated package if present; use **`ass-ade book synth-tests --check --repo <path>`** where applicable ([`ASS_ADE_GOAL_PIPELINE.md`](ASS_ADE_GOAL_PIPELINE.md) S1).
 5. **Document the exact commands** in [`docs/ASS_ADE_UNIFICATION.md`](docs/ASS_ADE_UNIFICATION.md) or a new `docs/tutorials/GOLDEN_ASSIMILATE.md` (recommended): prerequisites, Windows paths, failure modes, time expectations.
 6. **Add CI job** (GitHub Actions or local harness) that runs **only** the golden fixture (small synthetic multi-root under `ass-ade-v1.1/tests/fixtures/` if real repos cannot be public). Job must fail if assimilate fails.
 
@@ -213,7 +215,7 @@ _Terrain refresh: **2026-04-22 22:51 UTC** — [`ASS_ADE_SUITE_SNAPSHOT.md`](ASS
 
 1. **Choose final PyPI name** (`ass-ade` vs bump) and **version policy** (semver; pre-1.0 if needed).  
 2. **Mechanical rename plan:** `ass_ade_v11` → `ass_ade` (or keep package name but unify **distribution**—pick one; document tradeoffs).  
-3. **Collapse console scripts:** `ass-ade-unified` → `ass-ade` / `atomadic` with backward-compat shims one release.  
+3. **Collapse console scripts:** keep `ass-ade` as the product CLI and `atomadic` as an alias; remove transitional scripts from the root distribution.  
 4. **Merge optional deps** (x402, dev) from legacy [`ass-ade`](ass-ade) tree into unified `pyproject.toml` extras.  
 5. **Migration guide** for early adopters (import paths, CLI flags).
 
@@ -236,7 +238,7 @@ _Terrain refresh: **2026-04-22 22:51 UTC** — [`ASS_ADE_SUITE_SNAPSHOT.md`](ASS
 ### Actions
 
 1. **Release checklist:** version bump, changelog, signed tags if you use them, smoke on clean VM/container.  
-   Before any public push, run `ass-ade-unified ade ship-audit --staging-root C:\!aaaa-nexus\!ass-ade` so the scrubbed checkout is clean, git-backed, and still mirrors the private ship surface.
+   Before any public push, run `ass-ade ade ship-audit --staging-root C:\!aaaa-nexus\!ass-ade` so the scrubbed checkout is clean, git-backed, and still mirrors the private ship surface.
 2. **Security:** dependency audit on unified package; secrets policy for assimilate on private repos.  
 3. **Support playbook:** “file an issue with `ASSIMILATE_PLAN.json` + policy file + versions.”  
 4. **Quarterly:** rerun Phase 0 inventory; prune fixtures; re-read [`ASS_ADE_GOAL_PIPELINE.md`](ASS_ADE_GOAL_PIPELINE.md) and move GAP → HAVE.

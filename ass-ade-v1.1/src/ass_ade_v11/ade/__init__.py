@@ -1,7 +1,7 @@
 """ASS-ADE workspace bundle — ADE operator stack (hooks, automation, ADE harness refs).
 
 This package is the **portable** twin of the Atomadic monorepo's ``.cursor/``, ``ADE/``,
-and ``scripts/`` surface. The CLI (``ass-ade-unified ade …``) materializes
+and ``scripts/`` surface. The CLI (``ass-ade ade ...``) materializes
 ``<workspace>/.ade/`` so every install can run the same *prompt → product* workflow
 without hand-copying paths. See :func:`ass_ade_v11.ade.materialize.materialize_dotted_ade`).
 

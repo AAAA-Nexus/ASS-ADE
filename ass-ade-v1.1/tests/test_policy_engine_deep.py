@@ -59,6 +59,25 @@ def test_forbid_glob_excludes_matching_file(tmp_path: Path) -> None:
 
 
 @pytest.mark.usecase
+def test_forbid_glob_double_star_matches_root_level_tests_dir(tmp_path: Path) -> None:
+    """Patterns like ``**/tests/**`` also catch a top-level ``tests/`` tree."""
+    root = _copy_fixture(FIXTURES / "minimal_pkg", tmp_path / "pkg")
+    tests_dir = root / "tests"
+    tests_dir.mkdir()
+    test_file = tests_dir / "test_sample.py"
+    test_file.write_text("def test_one() -> None:\n    assert True\n", encoding="utf-8")
+
+    baseline = [p.as_posix() for p in iter_source_files(root)]
+    assert test_file.as_posix() in baseline
+
+    filtered = [
+        p.as_posix()
+        for p in iter_source_files(root, forbid_globs=("**/tests/**",))
+    ]
+    assert test_file.as_posix() not in filtered
+
+
+@pytest.mark.usecase
 def test_max_file_bytes_skips_reads(tmp_path: Path) -> None:
     """``max_file_bytes=1`` causes ``ingest_project`` to skip reading real sources."""
     root = _copy_fixture(FIXTURES / "minimal_pkg", tmp_path / "pkg")

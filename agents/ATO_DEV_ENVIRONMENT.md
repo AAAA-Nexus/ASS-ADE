@@ -4,7 +4,7 @@ This file is the **single alignment brief** for:
 
 - **In-repo pipeline agents** — `agents/*-*.prompt.md` (00–24) and `INDEX.md`
 - **Global Cursor bridges** — `~/.cursor/agents/ass-ade-*.md` (generated; not committed)
-- **Host tooling** — inventory, CI, monadic spine install (T12)
+- **Host tooling** — inventory, CI, ASS-ADE install (T12)
 
 ## Authority stack (never invert)
 
@@ -16,12 +16,12 @@ This file is the **single alignment brief** for:
 
 **MAP = TERRAIN:** no stubs, no fake completions, no undocumented `engine/` drops. **Gap-file or refuse** per `_PROTOCOL.md` §4.
 
-## Monadic spine (T12) — paths operators must use
+## ASS-ADE product paths (T12)
 
 - **Install:** `pip install -e ".[dev]"` from the **monorepo root** (`pyproject.toml` is canonical `[project]`).
-- **Package:** `ass_ade_v11` under `ass-ade-v1.1/src/ass_ade_v11/` — tiers `a0_qk_constants` … `a4_sy_orchestration`.
-- **Legacy v1:** `ass-ade-v1/src/ass_ade/` until parity merge — do not silently mix emitters.
-- **Product assimilate:** `ass-ade-unified assimilate …` (see `docs/ASS_ADE_UNIFICATION.md`).
+- **Monadic package:** internal source path `ass-ade-v1.1/src/ass_ade_v11/` — tiers `a0_qk_constants` ... `a4_sy_orchestration`.
+- **Restored engine:** internal source path `atomadic-engine/src/ass_ade/` — do not silently mix with sibling emitters.
+- **Product assimilate:** `ass-ade assimilate ...` (see `docs/ASS_ADE_UNIFICATION.md`).
 
 When a handoff says “edit `ass_ade`”, resolve **which tree** from context: new monadic work → **`ass_ade_v11`** unless the task is explicitly v1 studio / rebuild.
 
@@ -48,7 +48,7 @@ Keep these repo-side surfaces aligned with the active ship plan and root `AGENTS
 Release truth still comes from the same gates regardless of host:
 
 - Private spine gate: `python scripts/ship_readiness_audit.py`
-- Public staging gate: `ass-ade-unified ade ship-audit --staging-root C:\!aaaa-nexus\!ass-ade`
+- Public staging gate: `ass-ade ade ship-audit --staging-root C:\!aaaa-nexus\!ass-ade`
 
 ## Verification (CI + local)
 

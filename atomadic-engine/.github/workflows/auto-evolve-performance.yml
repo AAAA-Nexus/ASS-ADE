@@ -1,0 +1,221 @@
+name: Auto-Evolution -- Performance
+on:
+  schedule:
+    - cron: '*/12 * * * *'
+  workflow_dispatch: {}
+
+# Personality: aggressive/optimizing -- target complexity, long functions, nested logic.
+
+jobs:
+  evolve-performance:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install ASS-ADE
+        run: pip install -e ".[dev]"
+
+      - name: Phase 0 - Bootstrap recon
+        run: ass-ade recon . --json > recon_before.json 2>/dev/null || true
+
+      - name: Phase 1 - Assessment scan
+        run: |
+          python3 -c "
+          import json, sys
+          sys.path.insert(0, 'src')
+          from ass_ade.local.enhancer import build_enhancement_report
+          from pathlib import Path
+          report = build_enhancement_report(Path('.'))
+          print(json.dumps(report, indent=2))
+          " > enhance_scan_raw.json 2>/dev/null || echo '{"findings":[],"total_findings":0}' > enhance_scan_raw.json
+
+      - name: Phase 2 - Context filter (performance track)
+        run: |
+          python3 -c "
+          import json
+          try:
+              d = json.load(open('enhance_scan_raw.json'))
+              performance_types = {
+                  'long_function', 'complex_function', 'nested_loop', 'performance',
+                  'inefficient_loop', 'redundant_computation', 'unnecessary_copy',
+                  'missing_cache', 'quadratic_complexity', 'deep_nesting', 'large_class',
+                  'bare_except',
+              }
+              findings = d.get('findings', [])
+              perf_findings = [o for o in findings if any(t in o.get('category','').lower() for t in performance_types)]
+              if not perf_findings:
+                  perf_findings = findings[:3]
+              d['findings'] = perf_findings
+              d['total_findings'] = len(perf_findings)
+              json.dump(d, open('enhance_scan.json','w'), indent=2)
+              print(f'Performance targets: {len(perf_findings)} of {len(findings)} total')
+          except Exception as e:
+              json.dump({'findings':[], 'total_findings':0, 'error':str(e)}, open('enhance_scan.json','w'))
+              print(f'Scan parse error: {e}')
+          " 2>&1 || true
+
+          echo "CYCLE_NUM=${{ github.run_number }}" >> $GITHUB_ENV
+
+          TOTAL_FOUND=$(python3 -c "
+          import json
+          try:
+              d = json.load(open('enhance_scan.json'))
+              print(d.get('total_findings', 0))
+          except:
+              print(0)
+          " 2>&1 || echo "0")
+          echo "TOTAL_FOUND=$TOTAL_FOUND" >> $GITHUB_ENV
+
+      - name: Create evolution branch
+        run: |
+          BRANCH="auto-evolve/performance-$(date +%Y%m%d-%H%M%S)"
+          git checkout -b $BRANCH
+          echo "BRANCH=$BRANCH" >> $GITHUB_ENV
+          git config user.name "ASS-ADE Auto-Evolve"
+          git config user.email "evolve@atomadic.tech"
+
+      - name: Phase 3 - Apply performance fixes
+        run: |
+          echo "Performance findings: ${{ env.TOTAL_FOUND }}"
+          python3 scripts/apply_fixes.py 3 --lane performance 2>&1 || true
+
+      - name: Phase 4 - Pytest gate (revert on failure)
+        run: |
+          if git diff --name-only | grep -q '\.py$' 2>/dev/null; then
+            if python -m pytest tests/ -q --tb=line -x --timeout=120 2>&1; then
+              echo "TESTS_FAILED=false" >> $GITHUB_ENV
+            else
+              echo "::warning::Tests failed after performance enhancement -- reverting"
+              git checkout -- src/ tests/ 2>/dev/null || git checkout -- . 2>/dev/null || true
+              echo "TESTS_FAILED=true" >> $GITHUB_ENV
+            fi
+          else
+            echo "TESTS_FAILED=false" >> $GITHUB_ENV
+          fi
+
+      - name: Phase 4 - Audit recon
+        run: ass-ade recon . --json > recon_after.json 2>/dev/null || true
+
+      - name: Phase 5 - Autopoiesis validate
+        run: |
+          COMPLEXITY_DELTA=$(python3 -c "
+          import json
+          try:
+              before = json.load(open('recon_before.json'))
+              after  = json.load(open('recon_after.json'))
+              print((after.get('total_py_files',0) - before.get('total_py_files',0))
+                    + (after.get('manifest_components',0) - before.get('manifest_components',0)))
+          except:
+              print(0)
+          " 2>&1 || echo "0")
+          echo "COMPLEXITY_DELTA=$COMPLEXITY_DELTA" >> $GITHUB_ENV
+
+          ENHANCEMENT=$(python3 -c "
+          import json
+          try:
+              summary = json.load(open('apply_summary.json'))
+              applied = summary.get('applied', [])
+              if applied:
+                  print(applied[0])
+                  raise SystemExit(0)
+          except SystemExit:
+              raise
+          except Exception:
+              pass
+          try:
+              d = json.load(open('enhance_scan.json'))
+              findings = d.get('findings', [])
+              if findings:
+                  o = findings[0]
+                  print(f\"{o.get('category','unknown')} in {o.get('file','?')}\")
+              else:
+                  print('no performance targets found')
+          except Exception as e:
+              print(f'scan error: {e}')
+          " 2>&1 || echo "unknown")
+          echo "ENHANCEMENT=$ENHANCEMENT" >> $GITHUB_ENV
+
+      - name: Append to EVOLUTION_LOG.md
+        if: ${{ env.TESTS_FAILED != 'true' }}
+        run: |
+          FILES_CHANGED=$(git diff --name-only | grep '\.py$' | wc -l | tr -d ' ')
+          APPLIED_COUNT=$(python3 -c "
+          import json
+          try:
+              print(len(json.load(open('apply_summary.json')).get('applied',[])))
+          except:
+              print(0)
+          " 2>&1 || echo "0")
+          cat >> EVOLUTION_LOG.md << EOF
+
+          ## Evolution #${{ env.CYCLE_NUM }} [PERFORMANCE] -- $(date -u '+%Y-%m-%d %H:%M UTC')
+          **Enhancement:** ${{ env.ENHANCEMENT }}
+          **Applied:** ${APPLIED_COUNT} fixes
+          **Lane:** performance -- long functions, complexity reduction, loop optimization
+          **Personality:** aggressive/optimizing (top 3 per cycle, no hesitation)
+          **Complexity delta:** ${{ env.COMPLEXITY_DELTA }}
+          **Python files changed:** ${FILES_CHANGED}
+          EOF
+
+      - name: Commit and push branch
+        if: ${{ env.TESTS_FAILED != 'true' }}
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+        run: |
+          git add -A
+          if ! git diff --cached --name-only | grep -q '\.py$' 2>/dev/null; then
+            echo "No Python source changes -- skipping commit and PR"
+            echo "PUSH_FAILED=true" >> $GITHUB_ENV
+            exit 0
+          fi
+          git commit -m "evolution/performance: ${{ env.ENHANCEMENT }}"
+          git push origin ${{ env.BRANCH }} || {
+            echo "::warning::Push failed (org write policy)."
+            echo "PUSH_FAILED=true" >> $GITHUB_ENV
+            exit 0
+          }
+
+      - name: Create PR
+        if: ${{ env.PUSH_FAILED != 'true' && env.TESTS_FAILED != 'true' }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+        run: |
+          SCAN_SUMMARY=$(python3 -c "
+          import json
+          try:
+              summary = json.load(open('apply_summary.json'))
+              applied = summary.get('applied', [])
+              print('\n'.join([f'- {a}' for a in applied]) or 'No fixes applied')
+          except:
+              print('summary unavailable')
+          " 2>&1 || echo "unavailable")
+
+          gh api repos/AAAA-Nexus/ASS-ADE/pulls \
+            -X POST \
+            -f title="[PERFORMANCE] evolution: ${{ env.ENHANCEMENT }}" \
+            -f body="$(cat <<PRBODY
+          ## Performance Evolution Cycle #${{ env.CYCLE_NUM }} -- $(date -u '+%Y-%m-%d %H:%M UTC')
+
+          **Lane:** PERFORMANCE -- long functions, complexity reduction, loop optimization
+          **Personality:** aggressive/optimizing -- top 3 per cycle, no hesitation
+          **Tests:** passed before commit
+          **Complexity delta:** ${{ env.COMPLEXITY_DELTA }}
+
+          ## Applied fixes
+          ${SCAN_SUMMARY}
+
+          > Part of the ASS-ADE five-lane evolution system.
+          PRBODY
+          )" \
+            -f head="${{ env.BRANCH }}" \
+            -f base="main" || true

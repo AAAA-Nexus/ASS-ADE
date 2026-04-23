@@ -26,11 +26,18 @@ def materialize_gap_plan_to_tree(
     write_json_sidecars: bool = True,
     source_roots: list[Path] | None = None,
     rewrite_imports: bool = True,
+    output_package_name: str | None = None,
 ) -> dict[str, Any]:
     """Write bodies into ``output_parent / rebuild_tag / <tier>/*.py`` (+ optional .json)."""
     output_parent = output_parent.resolve()
     target_root = output_parent / rebuild_tag
     target_root.mkdir(parents=True, exist_ok=True)
+    package_root = (
+        target_root / "src" / output_package_name
+        if output_package_name
+        else target_root
+    )
+    package_root.mkdir(parents=True, exist_ok=True)
 
     written_modules: list[str] = []
     by_tier: dict[str, int] = {}
@@ -49,7 +56,7 @@ def materialize_gap_plan_to_tree(
         if not cid:
             continue
         stem = _stem_from_id(cid)
-        tdir = target_root / tier
+        tdir = package_root / tier
         tdir.mkdir(parents=True, exist_ok=True)
 
         py_path = tdir / f"{stem}.py"
@@ -60,6 +67,7 @@ def materialize_gap_plan_to_tree(
                 dict(prop),
                 gap_plan=gap_plan,
                 source_roots=roots,
+                package_prefix=output_package_name,
             )
             import_rewrite_receipts.append({"id": cid, "receipt": ir})
         py_path.write_text(body_str, encoding="utf-8")
@@ -89,6 +97,7 @@ def materialize_gap_plan_to_tree(
 
     return {
         "target_root": target_root.as_posix(),
+        "package_root": package_root.as_posix(),
         "rebuild_tag": rebuild_tag,
         "written_count": len(written_modules),
         "by_tier": by_tier,

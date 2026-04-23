@@ -2,7 +2,7 @@
 
 This document is the **canonical checklist** for turning orphaned/sibling repos into **one shippable, CNA/monadic, Atomadic-structured** ASS-ADE. Each block lists **intent**, **what exists today** (paths / commands), **gaps**, and **how to implement** the missing pieces.
 
-Related docs: [`docs/ATOMADIC_SWARM_SURFACE_AUDIT.md`](docs/ATOMADIC_SWARM_SURFACE_AUDIT.md) (swarm surfaces), [`ASS_ADE_SHIP_PLAN.md`](ASS_ADE_SHIP_PLAN.md) (**phased execution roadmap**), [`docs/ASS_ADE_UNIFICATION.md`](docs/ASS_ADE_UNIFICATION.md), [`docs/ASS_ADE_SPINE_RFC.md`](docs/ASS_ADE_SPINE_RFC.md), [`docs/ASS_ADE_FORGE_CLI.md`](docs/ASS_ADE_FORGE_CLI.md), [`ASS_ADE_MATRIX.md`](ASS_ADE_MATRIX.md), [`ASS_ADE_INVENTORY.md`](ASS_ADE_INVENTORY.md).
+Related docs: [`docs/ONE_WORKING_PRODUCT.md`](docs/ONE_WORKING_PRODUCT.md) (current trunk decision), [`docs/ATOMADIC_SWARM_SURFACE_AUDIT.md`](docs/ATOMADIC_SWARM_SURFACE_AUDIT.md) (swarm surfaces), [`ASS_ADE_SHIP_PLAN.md`](ASS_ADE_SHIP_PLAN.md) (**phased execution roadmap**), [`docs/ASS_ADE_UNIFICATION.md`](docs/ASS_ADE_UNIFICATION.md), [`docs/ASS_ADE_SPINE_RFC.md`](docs/ASS_ADE_SPINE_RFC.md), [`docs/ASS_ADE_FORGE_CLI.md`](docs/ASS_ADE_FORGE_CLI.md), [`ASS_ADE_MATRIX.md`](ASS_ADE_MATRIX.md).
 
 ---
 
@@ -16,7 +16,16 @@ Related docs: [`docs/ATOMADIC_SWARM_SURFACE_AUDIT.md`](docs/ATOMADIC_SWARM_SURFA
 
 ### Workspace truth — Atomadic umbrella (`!atomadic`, 2026-04)
 
-Edits below call out **this checkout** where it differs from older authoring. **Canonical code paths:** monadic package `ass_ade_v11` under `ass-ade-v1.1/src/`; **editable install + `[tool.importlinter]` + `[tool.pytest.ini_options]`** live in the **repository root** `pyproject.toml` (T12). **`ass-ade-v1.1/pyproject.toml`** is a pointer stub only (no `[project]`). CI: `.github/workflows/ass-ade-ship.yml` (golden assimilate, `lint-imports`, pytest `-m "not dogfood"`, `ass-ade-v11 synth-tests --check`). Policy/plan: `.ass-ade/specs/*.schema.json`, bundled wheel copies under `ass_ade_v11/_bundled_ade_specs/`, CLI `--policy` / `--plan-out`, fail-closed `--also` when `CI` or `ASS_ADE_ASSIMILATE_REQUIRE_POLICY=1`.
+Edits below call out **this checkout** where it differs from older authoring. **Canonical code paths:** monadic package `ass_ade_v11` under `ass-ade-v1.1/src/`; **editable install + `[tool.importlinter]` + `[tool.pytest.ini_options]`** live in the **repository root** `pyproject.toml` (T12). **`ass-ade-v1.1/pyproject.toml`** is a pointer stub only (no `[project]`). CI: `.github/workflows/ass-ade-ship.yml` (golden assimilate, `lint-imports`, pytest `-m "not dogfood"`, `ass-ade book synth-tests --check`). Policy/plan: `.ass-ade/specs/*.schema.json`, bundled wheel copies under `ass_ade_v11/_bundled_ade_specs/`, CLI `--policy` / `--plan-out`, fail-closed `--also` when `CI` or `ASS_ADE_ASSIMILATE_REQUIRE_POLICY=1`.
+
+### Current trunk truth — `C:\!aaaa-nexus\!ass-ade` (2026-04-23)
+
+The one working product checkout is `C:\!aaaa-nexus\!ass-ade`. It contains:
+
+- `ass-ade-v1.1/src/ass_ade_v11` for the monadic book, assimilate, ADE, policy/plan schemas.
+- `atomadic-engine/src/ass_ade` for the restored Atomadic shell, local rebuild engine, Nexus, MCP, A2A, agent loop, and local docs/certify/lint/enhance surfaces.
+
+External sibling folders are donors or archives; do not use them as product roots unless [`docs/ONE_WORKING_PRODUCT.md`](docs/ONE_WORKING_PRODUCT.md) is updated first.
 
 ---
 
@@ -57,7 +66,7 @@ _Terrain refresh: **2026-04-22 22:51 UTC** — [`ASS_ADE_SUITE_SNAPSHOT.md`](ASS
 | **P1** | Define *what* may merge automatically, *what* requires human sign-off, license compatibility (GPL vs proprietary), and the **single primary** MAP root. |
 
 - **HAVE:** Narrative merge roles in [`docs/ASS_ADE_SPINE_RFC.md`](docs/ASS_ADE_SPINE_RFC.md) and sibling policy; multi-root **primary wins** on duplicate symbols in [`ass-ade-v1.1/src/ass_ade_v11/a3_og_features/pipeline_book.py`](ass-ade-v1.1/src/ass_ade_v11/a3_og_features/pipeline_book.py) (`run_book_until` docstring).
-- **HAVE (CLI gate):** Machine-readable policy YAML validated against [`ass-ade-v1.1/.ass-ade/specs/assimilate-policy.schema.json`](ass-ade-v1.1/.ass-ade/specs/assimilate-policy.schema.json); `ass-ade-unified assimilate --policy …`; fail-closed when `--also` is used under **`CI`** or **`ASS_ADE_ASSIMILATE_REQUIRE_POLICY=1`** (see [`ass-ade-v1.1/src/ass_ade_v11/a1_at_functions/assimilate_policy_gate.py`](ass-ade-v1.1/src/ass_ade_v11/a1_at_functions/assimilate_policy_gate.py) and unified CLI tests).
+- **HAVE (CLI gate):** Machine-readable policy YAML validated against [`ass-ade-v1.1/.ass-ade/specs/assimilate-policy.schema.json`](ass-ade-v1.1/.ass-ade/specs/assimilate-policy.schema.json); `ass-ade assimilate --policy ...`; fail-closed when `--also` is used under **`CI`** or **`ASS_ADE_ASSIMILATE_REQUIRE_POLICY=1`** (see [`ass-ade-v1.1/src/ass_ade_v11/a1_at_functions/assimilate_policy_gate.py`](ass-ade-v1.1/src/ass_ade_v11/a1_at_functions/assimilate_policy_gate.py) and unified CLI tests).
 - **PARTIAL:** Phase engines do not yet consume **every** policy row for automated refuse/allow beyond the CLI gate (deep semantic enforcement).
 - **IMPLEMENT:** Thread validated policy into `run_phase0_recon_multi` / ingest for root-specific allowlists and asset rules; keep YAML + schema as source of truth.
 
@@ -69,7 +78,7 @@ _Terrain refresh: **2026-04-22 22:51 UTC** — [`ASS_ADE_SUITE_SNAPSHOT.md`](ASS
 
 - **HAVE:** [`scripts/regenerate_ass_ade_docs.py`](scripts/regenerate_ass_ade_docs.py) (cross-platform, repo-local) and [`scripts/inventory_ass_ade.ps1`](scripts/inventory_ass_ade.ps1) (Windows-wide) → [`ASS_ADE_INVENTORY.md`](ASS_ADE_INVENTORY.md), `ASS_ADE_INVENTORY.paths.json`, plus [`ASS_ADE_SUITE_SNAPSHOT.md`](ASS_ADE_SUITE_SNAPSHOT.md) and autogen terrain blocks in matrix / ship / goal docs (Python only).
 - **PARTIAL:** Not invoked by default from CLI; [`docs/ASS_ADE_FORGE_CLI.md`](docs/ASS_ADE_FORGE_CLI.md) sketches `forge inventory`.
-- **IMPLEMENT:** Port inventory to a **Python module** under `ass_ade_v11.a1_at_functions` (pure) + thin `ass-ade-unified` subcommand, or call the script via subprocess from [`ass-ade-v1.1/src/ass_ade_v11/a4_sy_orchestration/unified_cli.py`](ass-ade-v1.1/src/ass_ade_v11/a4_sy_orchestration/unified_cli.py).
+- **IMPLEMENT:** Port inventory to a **Python module** under `ass_ade_v11.a1_at_functions` (pure) + thin `ass-ade` subcommand, or call the script via subprocess from [`ass-ade-v1.1/src/ass_ade_v11/a4_sy_orchestration/unified_cli.py`](ass-ade-v1.1/src/ass_ade_v11/a4_sy_orchestration/unified_cli.py).
 
 ### P3 — Operator / trust gates (optional but “Atomadic”)
 
@@ -85,7 +94,7 @@ _Terrain refresh: **2026-04-22 22:51 UTC** — [`ASS_ADE_SUITE_SNAPSHOT.md`](ASS
 
 ## Track B — Monadic “book” (phases 0–7) — core ingest → emit
 
-Implementation spine: [`ass-ade-v1.1/src/ass_ade_v11/a3_og_features/pipeline_book.py`](ass-ade-v1.1/src/ass_ade_v11/a3_og_features/pipeline_book.py) (`run_book_until`, `STOP_AFTER_PHASE`). CLI: `ass-ade-v11 …`, `ass-ade-unified book …`, **`ass-ade-unified assimilate`** ([`ass-ade-v1.1/src/ass_ade_v11/a4_sy_orchestration/unified_cli.py`](ass-ade-v1.1/src/ass_ade_v11/a4_sy_orchestration/unified_cli.py)).
+Implementation spine: [`ass-ade-v1.1/src/ass_ade_v11/a3_og_features/pipeline_book.py`](ass-ade-v1.1/src/ass_ade_v11/a3_og_features/pipeline_book.py) (`run_book_until`, `STOP_AFTER_PHASE`). CLI: **`ass-ade book ...`** and **`ass-ade assimilate`** ([`ass-ade-v1.1/src/ass_ade_v11/a4_sy_orchestration/unified_cli.py`](ass-ade-v1.1/src/ass_ade_v11/a4_sy_orchestration/unified_cli.py)).
 
 ### Phase 0 — `recon` (multi-root terrain)
 
@@ -165,7 +174,7 @@ Implementation spine: [`ass-ade-v1.1/src/ass_ade_v11/a3_og_features/pipeline_boo
 | **B7** | Emit installable metadata (`distribution_name`, etc.). |
 
 - **HAVE:** `run_phase7_package` — [`ass-ade-v1.1/src/ass_ade_v11/a3_og_features/phase7_package.py`](ass-ade-v1.1/src/ass_ade_v11/a3_og_features/phase7_package.py).
-- **GAP:** Final **product name** may still be `ass-ade-v1-1` / `ass-ade-assimilated` until single-package rename; optional deps (x402) not merged from [`ass-ade`](ass-ade).
+- **HAVE:** Final product distribution name is `ass-ade`; generated assimilated outputs can still use their own output package names such as `ass-ade-assimilated`.
 - **IMPLEMENT:** Template `pyproject` from policy; merge **optional extras** from v1/legacy Click package in unification phase ([`docs/ASS_ADE_UNIFICATION.md`](docs/ASS_ADE_UNIFICATION.md) §Target architecture).
 
 ---
@@ -190,10 +199,10 @@ Implementation spine: [`ass-ade-v1.1/src/ass_ade_v11/a3_og_features/pipeline_boo
 |------|--------|
 | **S1** | `pytest` (and synth import smoke) on assimilated output. |
 
-- **HAVE:** `ass-ade-unified book synth-tests`, `--check` mode — [`ass-ade-v1.1/src/ass_ade_v11/a4_sy_orchestration/cli.py`](ass-ade-v1.1/src/ass_ade_v11/a4_sy_orchestration/cli.py); generated smoke tests under `ass-ade-v1.1/tests/`. Same command is available as `ass-ade-v11 synth-tests` (standalone) or nested under `ass-ade-unified book …`.
+- **HAVE:** `ass-ade book synth-tests`, `--check` mode — [`ass-ade-v1.1/src/ass_ade_v11/a4_sy_orchestration/cli.py`](ass-ade-v1.1/src/ass_ade_v11/a4_sy_orchestration/cli.py); generated smoke tests under `ass-ade-v1.1/tests/`.
 - **HAVE (CI slice):** [`.github/workflows/ass-ade-ship.yml`](.github/workflows/ass-ade-ship.yml) runs pytest on `ass-ade-v1.1/tests` (excluding `dogfood`), `synth-tests --check`, and a **single-root** golden assimilate fixture (see [`ASS_ADE_SHIP_PLAN.md`](ASS_ADE_SHIP_PLAN.md) workspace notes).
 - **GAP:** No single **`assimilate && test`** wrapper; CI does not yet run a **checked-in multi-root** golden trio (policy + `--also` is covered in pytest / `pytest -m usecase`, not the default CI assimilate step).
-- **IMPLEMENT:** Add `ass-ade-unified assimilate … --then pytest` (subprocess) or `tox`-like mini harness; optional second CI job with synthetic multi-root fixture + `--policy`.
+- **IMPLEMENT:** Add `ass-ade assimilate ... --then pytest` (subprocess) or `tox`-like mini harness; optional second CI job with synthetic multi-root fixture + `--policy`.
 
 ### S2 — Documentation and API inventory
 
@@ -211,7 +220,7 @@ Implementation spine: [`ass-ade-v1.1/src/ass_ade_v11/a3_og_features/pipeline_boo
 |------|--------|
 | **S3** | One `pip install ass-ade`, one `atomadic` / `ass-ade` entry, `import ass_ade` only. |
 
-- **HAVE:** [`ass-ade-unified`](ass-ade-v1.1/src/ass_ade_v11/a4_sy_orchestration/unified_cli.py) unifies **UX** for book + assimilate + optional v1 `studio`.
+- **HAVE:** [`ass-ade`](ass-ade-v1.1/src/ass_ade_v11/a4_sy_orchestration/unified_cli.py) unifies **UX** for book + assimilate + the restored Atomadic engine surface.
 - **PARTIAL:** **Spine distribution** is merged to **one** `[project]` at **[repository root `pyproject.toml`](pyproject.toml)** (T12) with sources under `ass-ade-v1.1/src/`; **sibling** distributions remain for [`ass-ade-v1`](ass-ade-v1), [`ass-ade`](ass-ade), and harness trees ([`ASS_ADE_MATRIX.md`](ASS_ADE_MATRIX.md)).
 - **GAP:** Physical **single import namespace** (`ass_ade_v11` → `ass_ade`) and retiring duplicate sibling `pyproject.toml` **products** per [`docs/ASS_ADE_UNIFICATION.md`](docs/ASS_ADE_UNIFICATION.md) target architecture.
 - **IMPLEMENT:** Execute unification phases 1–5 there; bump major version; migration guide for imports `ass_ade_v11` → `ass_ade`.
@@ -222,9 +231,9 @@ Implementation spine: [`ass-ade-v1.1/src/ass_ade_v11/a3_og_features/pipeline_boo
 
 | Goal | Today | Target |
 |------|--------|--------|
-| Multi-root → monadic emit | `ass-ade-unified assimilate PRIMARY OUT [--also …]` | Same, but policy + plan artifacts + CI green without manual flags |
-| Full v1 IDE/Nexus surface | `ass-ade-unified studio …` (needs `pip install -e ass-ade-v1`) | Flattened under top-level CLI (no `studio` group) |
-| Disk inventory | `scripts/inventory_ass_ade.ps1` | `ass-ade-unified inventory` (or `forge inventory`) |
+| Multi-root → monadic emit | `ass-ade assimilate PRIMARY OUT [--also ...]` | Same, but policy + plan artifacts + CI green without manual flags |
+| Full IDE/Nexus surface | Flattened under top-level `ass-ade` | Keep it there; no `studio` group |
+| Disk inventory | `scripts/inventory_ass_ade.ps1` | `ass-ade inventory` (or `ass-ade forge inventory`) |
 | Merge plan / apply | **GAP** | `forge plan` / `forge apply` per [`docs/ASS_ADE_FORGE_CLI.md`](docs/ASS_ADE_FORGE_CLI.md) |
 
 ---
@@ -232,7 +241,7 @@ Implementation spine: [`ass-ade-v1.1/src/ass_ade_v11/a3_og_features/pipeline_boo
 ## Suggested execution order (for contributors)
 
 1. Run **P2** inventory; pick **P1** primary + policy stub.
-2. Run **`ass-ade-unified assimilate`** with `--stop-after gapfill`, review plan; iterate exclusions.
+2. Run **`ass-ade assimilate`** with `--stop-after gapfill`, review plan; iterate exclusions.
 3. Run **full book** to `package` (B0–B7); run **S1** tests on output.
 4. For parity with legacy emitters, execute **R1** compare or port (**IMPLEMENT** under B5/R1).
 5. When stable, execute **S3** unification doc phases (single tree).

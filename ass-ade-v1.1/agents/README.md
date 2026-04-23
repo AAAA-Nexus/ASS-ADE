@@ -8,7 +8,7 @@ This folder holds **v1.1-specific** prompt forks. Canonical Atomadic protocol an
 
 Rebuild orchestration for **this** repo:
 
-- **CLI:** `ass-ade-v11 rebuild <SOURCE> -o <OUTPUT_PARENT> [--stop-after recon|ingest|gapfill|enrich|validate|materialize|audit|package]`
+- **CLI:** `ass-ade book rebuild <SOURCE> -o <OUTPUT_PARENT> [--stop-after recon|ingest|gapfill|enrich|validate|materialize|audit|package]`
 - **Python:** `from ass_ade_v11.a4_sy_orchestration import rebuild_project_v11`
 
 Synthesis / forge parity with legacy `ass-ade-v1` `selfbuild` is intentionally not bundled; file a gap or use env-gated Nexus flows per protocol.

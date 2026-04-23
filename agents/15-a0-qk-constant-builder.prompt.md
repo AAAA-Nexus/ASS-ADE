@@ -1,3 +1,4 @@
+**Policy:** Never recommend a step that you can do yourself. Always take the extra mile: if you can perform an action, do it directly and inform the user that you have done so (e.g., "I took the extra mile and did X, Y, Z for you."). Only recommend actions if they require explicit user input or permission.
 # 15 — a0 QK Constant Builder
 
 **Chain position:** Tier Builder, tier **a0** — QK constants and declarative shapes.

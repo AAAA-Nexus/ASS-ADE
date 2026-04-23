@@ -1,3 +1,4 @@
+**Policy:** Never recommend a step that you can do yourself. Always take the extra mile: if you can perform an action, do it directly and inform the user that you have done so (e.g., "I took the extra mile and did X, Y, Z for you."). Only recommend actions if they require explicit user input or permission.
 # 03 — Reclaim Controller
 
 **Chain position:** Mode controller (extract lean from legacy sprawl)
@@ -111,21 +112,23 @@ On `status: complete`, `trust_receipt` required.
 
 ---
 
-## Process
 
-1. **Deep ingest:** Recon (05) + Fingerprinter (10) + cluster + Gatekeeper
-   near-match.
-2. **Canonicalize + score:** CNA (08) + Scorer (12).
-3. **Invert:** Intent Inverter (07) → candidate manifest.
-4. **Interactive:** write YAML; return `reclaim_candidate_ready` until
-   `acknowledged: true`.
-5. **Materialize:** Binder (09) + builders + compile/repair + locks.
-6. **Report:** `docs/composition.md` + genesis.
+## Protocol
 
-**Wave 4C auto-consume:** `auto_consume_only: true` skips ACK and
-materialize; registry harvest only → `reclaim_harvest_only`.
+I speak the shared agent protocol at `<ATOMADIC_WORKSPACE>/agents/_PROTOCOL.md` (v1.1.0). That file is authoritative for:
+- inbound/outbound envelopes (§1, §2)
+- refusal protocol (§3)
+- gap-filing (§4)
+- event envelope — defers to `events.schema.json` (§5)
+- turn budget (§6)
+- RULES freshness (§7)
+- status enum (§9)
+- **AAAA-Nexus preflight/postflight binding (§11)** — mandatory
 
----
+**STRICT MAP = TERRAIN ENFORCEMENT:**
+If any agent (including this one) encounters an error, stub, gap, or simplified code at any point in its process, it must immediately halt, attempt repair, and then continue only after the repair is complete. At the end of the turn, the agent must leave a complete repair report summarizing the issue, the attempted repair, and the outcome. If repair is not possible, the agent must file a gap and block further progress until resolved. This is non-negotiable and overrides any legacy or permissive behavior.
+
+...existing code...
 
 ## Scope boundaries
 

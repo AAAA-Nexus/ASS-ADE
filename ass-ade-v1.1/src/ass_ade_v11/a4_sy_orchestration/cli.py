@@ -1,4 +1,4 @@
-"""Typer CLI - ASS-ADE v1.1 rebuild book (phases 0-7, --stop-after)."""
+"""Typer CLI - ASS-ADE rebuild book (phases 0-7, --stop-after)."""
 
 from __future__ import annotations
 
@@ -18,10 +18,10 @@ from ass_ade_v11.a3_og_features.pipeline_book import (
 app = typer.Typer(
     no_args_is_help=True,
     help=(
-        "ASS-ADE v1.1 monadic rebuild: recon -> ingest -> gap-fill -> enrich -> "
+        "ASS-ADE monadic rebuild: recon -> ingest -> gap-fill -> enrich -> "
         "validate -> materialize -> audit -> package. "
         "Use --stop-after to halt after a named phase. "
-        "``certify`` fingerprints a materialized tier tree (ass-ade-v1 parity). "
+        "``certify`` fingerprints a materialized tier tree. "
         "``synth-tests`` regenerates import-smoke manifest under tests/generated_smoke/."
     ),
 )
@@ -32,9 +32,9 @@ def _version_callback(value: bool) -> None:
         try:
             from importlib.metadata import version as pkg_version
         except ImportError:
-            typer.echo("ass-ade-v1-1 (version metadata unavailable)", err=True)
+            typer.echo("ass-ade (version metadata unavailable)", err=True)
             raise typer.Exit(0)
-        typer.echo(pkg_version("ass-ade-v1-1"))
+        typer.echo(pkg_version("ass-ade"))
         raise typer.Exit(0)
 
 
@@ -90,7 +90,18 @@ def rebuild_cmd(
     distribution_name: Annotated[
         str,
         typer.Option("--distribution-name", help="Emitted pyproject [project] name (phase 7)."),
-    ] = "ass-ade-rebuilt-v11",
+    ] = "ass-ade-rebuilt",
+    output_package_name: Annotated[
+        str | None,
+        typer.Option(
+            "--output-package-name",
+            help=(
+                "Optional Python package root for emitted trees. "
+                "Example: `ass_ade` writes tiers under `src/ass_ade/...` "
+                "and rewrites materialized imports to that package prefix."
+            ),
+        ),
+    ] = None,
     json_out: Annotated[
         Path | None,
         typer.Option(
@@ -145,6 +156,7 @@ def rebuild_cmd(
         break_cycles_if_found=not no_break_cycles,
         enforce_purity=not no_enforce_purity,
         distribution_name=distribution_name,
+        output_package_name=output_package_name,
     )
 
     if json_out is not None:
@@ -255,7 +267,7 @@ def synth_tests_cmd(
 
 
 def main() -> None:
-    """Console script entry (``ass-ade-v11``) and ``python -m`` runner."""
+    """Book CLI runner used by the merged ``ass-ade book`` command."""
     app()
 
 

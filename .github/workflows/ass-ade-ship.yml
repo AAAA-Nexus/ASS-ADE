@@ -59,17 +59,17 @@ jobs:
       - name: Monadic import layers
         run: lint-imports
 
-      - name: Pytest (ass-ade-v1.1, no dogfood)
+      - name: Pytest (ASS-ADE, no dogfood)
         run: python -m pytest ass-ade-v1.1/tests -m "not dogfood"
 
       - name: Synth-test manifest matches sources
-        run: ass-ade-v11 synth-tests --check --repo ass-ade-v1.1
+        run: ass-ade book synth-tests --check --repo ass-ade-v1.1
 
       - name: Golden assimilate (gapfill)
         id: golden
         run: |
           mkdir -p /tmp/ass-ade-golden
-          ass-ade-unified assimilate \
+          ass-ade assimilate \
             ass-ade-v1.1/tests/fixtures/minimal_pkg \
             /tmp/ass-ade-golden \
             --stop-after gapfill \
@@ -82,7 +82,7 @@ jobs:
           ASS_ADE_ASSIMILATE_REQUIRE_POLICY: "1"
         run: |
           mkdir -p /tmp/ass-ade-golden-multi
-          ass-ade-unified assimilate \
+          ass-ade assimilate \
             ass-ade-v1.1/tests/fixtures/minimal_pkg \
             /tmp/ass-ade-golden-multi \
             --also ass-ade-v1.1/tests/fixtures/cross_lib \

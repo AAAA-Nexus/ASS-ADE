@@ -19,7 +19,7 @@ Use this file as the repo-wide orientation layer. The canonical agent brief is [
 ## Non-negotiables
 
 - MAP = TERRAIN. Do not claim a pass, push, or integration that was not verified.
-- New monadic Python work belongs under `ass-ade-v1.1/src/ass_ade_v11/` unless the task is explicitly legacy-v1.
+- New monadic Python work belongs under the ASS-ADE monadic source path `ass-ade-v1.1/src/ass_ade_v11/` unless the task is explicitly engine work.
 - `C:\!atomadic` is private development terrain. Do not treat it as the public push surface.
 - Public release readiness requires both the private spine gate and the public staging gate.
 - Whenever project state changes materially, update `plan.md`, `tasks.json`, `research.md`, and `evolution.log` together.
@@ -35,12 +35,12 @@ Use this file as the repo-wide orientation layer. The canonical agent brief is [
 ## Verification commands
 
 ```bash
-ass-ade-unified doctor
+ass-ade doctor
 python scripts/ship_readiness_audit.py
 lint-imports
-ass-ade-v11 synth-tests --check --repo ass-ade-v1.1
+ass-ade book synth-tests --check --repo ass-ade-v1.1
 python -m pytest ass-ade-v1.1/tests -m "not dogfood" -q
-ass-ade-unified ade ship-audit --staging-root C:\!aaaa-nexus\!ass-ade
+ass-ade ade ship-audit --staging-root C:\!aaaa-nexus\!ass-ade
 ```
 
 ## Alignment rule

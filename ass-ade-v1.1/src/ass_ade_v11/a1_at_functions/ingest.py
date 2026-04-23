@@ -11,7 +11,11 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any, Iterable
 
-from ass_ade_v11.a0_qk_constants.exclude_dirs import EXCLUDED_DIRS, MAX_FILE_BYTES, SOURCE_SUFFIXES
+from ass_ade_v11.a0_qk_constants.exclude_dirs import (
+    MAX_FILE_BYTES,
+    SOURCE_SUFFIXES,
+    is_excluded_dir_name,
+)
 from ass_ade_v11.a0_qk_constants.policy_types import RootPolicy
 from ass_ade_v11.a0_qk_constants.schemas import INGESTION_SCHEMA
 from ass_ade_v11.a0_qk_constants.tier_names import TIER_PREFIX
@@ -22,7 +26,12 @@ from ass_ade_v11.a1_at_functions.registry_fingerprint import (
 
 
 def _matches_any(posix_rel: str, patterns: tuple[str, ...]) -> bool:
-    return any(fnmatch.fnmatch(posix_rel, pat) for pat in patterns)
+    for pat in patterns:
+        if fnmatch.fnmatch(posix_rel, pat):
+            return True
+        if pat.startswith("**/") and fnmatch.fnmatch(posix_rel, pat[3:]):
+            return True
+    return False
 
 
 @dataclass
@@ -51,7 +60,7 @@ def iter_source_files(
     """
     root_resolved = root.resolve()
     for dirpath, dirnames, filenames in os.walk(root_resolved):
-        dirnames[:] = [name for name in dirnames if name not in EXCLUDED_DIRS]
+        dirnames[:] = [name for name in dirnames if not is_excluded_dir_name(name)]
         for filename in filenames:
             path = Path(dirpath) / filename
             if path.suffix.lower() not in SOURCE_SUFFIXES:

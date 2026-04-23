@@ -1,0 +1,64 @@
+# Weekly + manual cleanup for auto-evolve/* heads (merged leftovers + stale abandon).
+name: evolution-branch-prune
+
+on:
+  schedule:
+    - cron: "0 7 * * 1"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "If true, print planned deletions only (no DELETE)"
+        required: false
+        default: "true"
+        type: choice
+        options:
+          - "true"
+          - "false"
+      stale_days:
+        description: "Delete heads with no open PR when tip is older than this many days"
+        required: false
+        default: "21"
+      max_delete:
+        description: "Max branch deletions this run"
+        required: false
+        default: "50"
+
+permissions:
+  contents: read
+
+jobs:
+  prune:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Prune (weekly schedule)
+        if: github.event_name == 'schedule'
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python scripts/prune_evolution_branches.py \
+            --repo AAAA-Nexus/ASS-ADE \
+            --stale-days 21 \
+            --max-delete 50
+
+      - name: Prune (manual)
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          DRY=""
+          if [ "${{ inputs.dry_run }}" = "true" ]; then DRY="--dry-run"; fi
+          python scripts/prune_evolution_branches.py \
+            --repo AAAA-Nexus/ASS-ADE \
+            --stale-days "${{ inputs.stale_days }}" \
+            --max-delete "${{ inputs.max_delete }}" \
+            $DRY

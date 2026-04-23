@@ -9,6 +9,6 @@ You are working in the **ASS-ADE (Atomadic)** monorepo. Obey these sources in or
 
 **MAP = TERRAIN:** do not ship stubs, fake “done” without tests, or undocumented `engine/*` drops. If blocked, list gaps and refuse.
 
-**CLI (verify after edits):** from repo root with venv active — `ass-ade-unified doctor` · `pytest ass-ade-v1.1/tests` (or CI-equivalent) · `lint-imports` as configured.
+**CLI (verify after edits):** from repo root with venv active — `ass-ade doctor` · `pytest ass-ade-v1.1/tests` (or CI-equivalent) · `lint-imports` as configured.
 
 **IDE:** this session may be VS Code (Copilot / Codex). Hooks under `.cursor/` are for Cursor; use the integrated terminal for `python .ade/persistent/run_swarm_services.py status` if `.ade` is materialized.

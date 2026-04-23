@@ -1,11 +1,22 @@
-# Contributing — Atomadic workspace hygiene
+# Contributing
 
-**IP wall:** **`C:\!atomadic`** is **private** development — IP-sensitive; **do not `git push` it to public GitHub.** **`C:\!aaaa-nexus`** holds **public**-intent material. When ASS-ADE is production-ready, **move** it into `!aaaa-nexus` (scrubbed export per Stream B), then **push to GitHub from `!aaaa-nexus` only** (see `ass-ade/README.md` §IP rules, `LICENSE`, root `README.md`).
+Thank you for your interest in contributing to **ass-ade**!
 
-This tree mixes multiple products. For **ASS-ADE** ship hygiene (`ASS_ADE_SHIP_PLAN.md` Phase 0):
+## Getting Started
 
-- Do **not** commit under `ass-ade-v1/.pytest_tmp/`, `ass-ade-v1/.claude/worktrees/` scratch outputs, or other engine temp dirs unless they are **checked-in golden fixtures**.
-- Dated `*-backup-*` trees: move under an `archive/` path or delete after you have a recorded decision (link the PR or plan note).
-- Install the monadic spine from the **repository root**: `pip install -e ".[dev]"` (see root `pyproject.toml`).
+1. Fork the repository and clone it locally.
+2. Install dependencies: `pip install .`
+3. Create a feature branch: `git checkout -b feature/your-feature`
+4. Make your changes, add tests where applicable.
+5. Run the test suite: `pytest`
+6. Commit with a clear message and open a pull request.
 
-CI for the spine lives in `.github/workflows/ass-ade-ship.yml`.
+## Code Style
+
+- Follow the existing code style and conventions.
+- Keep functions focused and single-purpose.
+- Document non-obvious logic with comments that explain *why*, not *what*.
+
+## Reporting Issues
+
+Open a GitHub issue with reproduction steps and expected vs. actual behavior.

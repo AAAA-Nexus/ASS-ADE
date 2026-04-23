@@ -181,7 +181,7 @@ With a **valid key**, the host agent should run the **full** Nexus chain describ
 
 ### 9.3 — LoRA / fine-tune corpus from ASS-ADE development (this repo)
 
-The **united spine** (`ass-ade-unified` from root `pyproject.toml`) does **not** embed the historical `lora-train` Typer command; some sibling trees (e.g. legacy UEP bundles) documented **`ass-ade lora-train`** against a **`scripts.lora_train`** module and often require a separate **`AAAA_NEXUS_OWNER_TOKEN`** for **owner-only sample export**. Treat that as **optional** when you have that package installed and tokens provisioned.
+The **ASS-ADE product CLI** (`ass-ade` from root `pyproject.toml`) does **not** embed the historical `lora-train` Typer command; some sibling trees (e.g. legacy UEP bundles) documented **`ass-ade lora-train`** against a **`scripts.lora_train`** module and often require a separate **`AAAA_NEXUS_OWNER_TOKEN`** for **owner-only sample export**. Treat that as **optional** when you have that package installed and tokens provisioned.
 
 **Always-available path in this monorepo:**
 
