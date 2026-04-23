@@ -44,7 +44,7 @@ dev = [
 ]
 # Local LoRA on `training_data/*.jsonl` from `scripts/collect_ass_ade_dev_corpus.py` (GPU recommended).
 lora = [
-    "accelerate>=0.26,<1",
+    "accelerate>=0.26,<2",
     "datasets>=2.16,<4",
     "peft>=0.11,<0.18",
     "torch>=2.1,<3",
