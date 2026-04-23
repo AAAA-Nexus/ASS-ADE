@@ -7,11 +7,15 @@ on:
   push:
     paths:
       - "ass-ade-v1.1/**"
+      - "ADE/**"
+      - "agents/**"
       - "pyproject.toml"
       - ".github/workflows/ass-ade-ship.yml"
   pull_request:
     paths:
       - "ass-ade-v1.1/**"
+      - "ADE/**"
+      - "agents/**"
       - "pyproject.toml"
       - ".github/workflows/ass-ade-ship.yml"
 
