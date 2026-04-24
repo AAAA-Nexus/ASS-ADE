@@ -246,6 +246,67 @@ def build_app(working_dir: Path | None = None):
             limit=limit,
         )
 
+    @app.post("/assimilation/cherry-preview")
+    def assimilation_cherry_preview(req: dict = Body(default={})) -> dict:  # noqa: B008
+        """Preview ranked cherry-pick candidates for a scout report or source directory."""
+        from ass_ade.a3_og_features.cherry_feature import preview_cherry_pick
+
+        source = Path(str(req.get("source") or wdir)).resolve()
+        target = Path(str(req.get("target") or wdir)).resolve()
+        action = req.get("action")
+        actions = None if not action or action == "all" else {str(action)}
+        min_confidence = float(req.get("min_confidence") or 0.0)
+        limit = int(req.get("limit") or 200)
+        preview = preview_cherry_pick(
+            source=source,
+            target_root=target,
+            actions=actions,
+            min_confidence=min_confidence,
+            limit=limit,
+        )
+        bus.emit_widget("assimilation_table", {
+            "rows": preview.get("candidates", []),
+            "action_filter": str(action or "all"),
+            "min_confidence": min_confidence,
+            "total_candidates": (preview.get("summary") or {}).get("total", 0),
+        })
+        return preview
+
+    @app.post("/assimilation/cherry-pick")
+    def assimilation_cherry_pick(req: dict = Body(default={})) -> dict:  # noqa: B008
+        """Create/refresh a cherry_pick manifest from selected candidates."""
+        from ass_ade.a3_og_features.cherry_feature import run_cherry_pick
+
+        source = Path(str(req.get("source") or wdir)).resolve()
+        target = Path(str(req.get("target") or wdir)).resolve()
+        action = req.get("action")
+        actions = None if not action or action == "all" else {str(action)}
+        pick = str(req.get("pick") or "assimilate")
+        out = req.get("out")
+        out_path = Path(str(out)).resolve() if out else None
+        manifest = run_cherry_pick(
+            source=source,
+            target_root=target,
+            pick=pick,
+            actions=actions,
+            interactive=False,
+            out_path=out_path,
+            console_print=False,
+            min_confidence=float(req.get("min_confidence") or 0.0),
+            limit=int(req.get("limit") or 200),
+        )
+        actions_total: dict[str, int] = {}
+        for item in manifest.get("items") or []:
+            item_action = str(item.get("action") or "?")
+            actions_total[item_action] = actions_total.get(item_action, 0) + 1
+        bus.emit_widget("cherry_manifest", {
+            "source_label": manifest.get("source_label", ""),
+            "target_root": manifest.get("target_root", ""),
+            "selected_count": manifest.get("selected_count", 0),
+            "actions": actions_total,
+        })
+        return manifest
+
     # ── Wire tab ───────────────────────────────────────────────────────────
 
     def _resolve_source_dir(raw: str | None) -> Path:
@@ -364,6 +425,176 @@ def build_app(working_dir: Path | None = None):
         data["_action_totals"] = actions
         data["present"] = True
         return data
+
+    # ── Playground tab ─────────────────────────────────────────────────────
+
+    def _playground_source_dir() -> Path:
+        src = wdir / "src"
+        if src.is_dir():
+            subdirs = [p for p in src.iterdir() if p.is_dir() and p.name.isidentifier()]
+            if len(subdirs) == 1:
+                return subdirs[0]
+        return wdir
+
+    # Lazy singleton so scans are cached across requests
+    _registry_cache: dict[str, Any] = {"registry": None, "mtime": 0.0}
+
+    def _get_registry(force: bool = False):
+        from ass_ade.a2_mo_composites.block_registry import BlockRegistry
+
+        src = _playground_source_dir()
+        if _registry_cache["registry"] is None or force:
+            reg = BlockRegistry(src)
+            reg.scan()
+            _registry_cache["registry"] = reg
+            bus.emit_widget("block_registry_snapshot", reg.stats())
+        return _registry_cache["registry"]
+
+    @app.get("/playground/blocks")
+    def playground_blocks(
+        query: str | None = None,
+        tier: str | None = None,
+        kind: str | None = None,
+        has_test: bool | None = None,
+        limit: int = 200,
+        rescan: bool = False,
+    ) -> dict:
+        reg = _get_registry(force=rescan)
+        results = reg.search(
+            query=query, tier=tier, kind=kind, has_test=has_test, limit=limit
+        )
+        return {
+            "stats": reg.stats(),
+            "blocks": [b.to_dict() for b in results],
+        }
+
+    @app.get("/playground/block/{block_id}")
+    def playground_block(block_id: str) -> dict:
+        reg = _get_registry()
+        block = reg.get(block_id)
+        if block is None:
+            raise HTTPException(status_code=404, detail="Block not found")
+        return block.to_dict()
+
+    @app.post("/playground/compile")
+    def playground_compile(plan: dict = Body(default={})) -> dict:
+        """Compile a CompositionPlan; does NOT write to disk."""
+        from ass_ade.a3_og_features.composition_engine import (
+            CompositionEngine,
+            CompositionPlan,
+        )
+
+        run_id = bus.new_run_id()
+        try:
+            parsed = CompositionPlan.from_dict(plan)
+        except Exception as exc:
+            raise HTTPException(status_code=400, detail=f"Invalid plan: {exc}")
+
+        bus.emit_widget("composition_plan", {
+            "name": parsed.name,
+            "target_tier": parsed.target_tier,
+            "node_count": len(parsed.nodes),
+            "edge_count": len(parsed.edges),
+            "gap_count": len(parsed.gaps),
+            "description": parsed.description,
+        }, run_id=run_id)
+
+        reg = _get_registry()
+        engine = CompositionEngine(reg)
+        result = engine.compile(parsed)
+
+        bus.emit_widget("composition_result", {
+            "name": parsed.name,
+            "target_path": result.target_path,
+            "verdict": result.verdict,
+            "tier_violations": len(result.tier_violations),
+            "detected_gaps": len(result.detected_gaps),
+            "wrote_to_disk": False,
+        }, run_id=run_id)
+        return result.to_dict()
+
+    class MaterializeRequest(BaseModel):
+        plan: dict
+        target_root: str | None = None
+
+    @app.post("/playground/materialize")
+    def playground_materialize(body: dict = Body(default={})) -> dict:
+        """Compile AND write to disk. target_root defaults to the working dir."""
+        from ass_ade.a3_og_features.composition_engine import (
+            CompositionEngine,
+            CompositionPlan,
+        )
+
+        plan_dict = body.get("plan") if isinstance(body, dict) else None
+        if not isinstance(plan_dict, dict):
+            raise HTTPException(status_code=400, detail="Missing 'plan' in request body")
+        target_root_raw = body.get("target_root") if isinstance(body, dict) else None
+        target_root = Path(target_root_raw).resolve() if target_root_raw else _playground_source_dir()
+
+        parsed = CompositionPlan.from_dict(plan_dict)
+        reg = _get_registry()
+        engine = CompositionEngine(reg)
+        result = engine.compile(parsed)
+        if result.verdict == "REJECT":
+            return result.to_dict()
+        result = engine.materialize(result, target_root)
+        bus.emit_widget("composition_result", {
+            "name": parsed.name,
+            "target_path": result.target_path,
+            "verdict": result.verdict,
+            "tier_violations": len(result.tier_violations),
+            "detected_gaps": len(result.detected_gaps),
+            "wrote_to_disk": result.wrote_to_disk,
+        })
+        return result.to_dict()
+
+    # ── Atomadic Copilot ───────────────────────────────────────────────────
+
+    _copilot_cache: dict[str, Any] = {"copilot": None}
+
+    def _get_copilot():
+        from ass_ade.a3_og_features.atomadic_copilot import AtomadicCopilot
+
+        if _copilot_cache["copilot"] is None:
+            _copilot_cache["copilot"] = AtomadicCopilot(_get_registry())
+        return _copilot_cache["copilot"]
+
+    @app.post("/copilot/chat")
+    def copilot_chat(body: dict = Body(default={})) -> dict:
+        text = body.get("text") if isinstance(body, dict) else None
+        if not isinstance(text, str) or not text.strip():
+            raise HTTPException(status_code=400, detail="Missing 'text' in request body")
+
+        run_id = bus.new_run_id()
+        bus.emit_widget("copilot_message", {
+            "role": "user", "text": text[:500], "mode": "input", "has_plan": False,
+        }, run_id=run_id)
+
+        copilot = _get_copilot()
+        response = copilot.ask(text)
+
+        bus.emit_widget("copilot_message", {
+            "role": "assistant",
+            "text": response.text[:2000],
+            "mode": response.mode,
+            "has_plan": response.suggested_plan is not None,
+        }, run_id=run_id)
+        return response.to_dict()
+
+    @app.post("/copilot/critique")
+    def copilot_critique(body: dict = Body(default={})) -> dict:
+        plan = body.get("plan") if isinstance(body, dict) else None
+        if not isinstance(plan, dict):
+            raise HTTPException(status_code=400, detail="Missing 'plan' in request body")
+        copilot = _get_copilot()
+        response = copilot.critique_plan(plan)
+        return response.to_dict()
+
+    @app.post("/copilot/reset")
+    def copilot_reset() -> dict:
+        copilot = _get_copilot()
+        copilot.reset()
+        return {"ok": True}
 
     # ── Memory tab ─────────────────────────────────────────────────────────
 

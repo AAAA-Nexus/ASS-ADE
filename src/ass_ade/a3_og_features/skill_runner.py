@@ -468,6 +468,78 @@ def _run_scout(ctx: SkillContext) -> str:
     return "\n".join(lines)
 
 
+def _run_blocks(ctx: SkillContext) -> str:
+    """List available playground blocks from the block registry."""
+    from ass_ade.a2_mo_composites.block_registry import BlockRegistry
+
+    wd = ctx.working_dir
+    source = wd
+    src_dir = wd / "src"
+    if src_dir.is_dir():
+        subdirs = [p for p in src_dir.iterdir() if p.is_dir() and p.name.isidentifier()]
+        if len(subdirs) == 1:
+            source = subdirs[0]
+
+    reg = BlockRegistry(source)
+    reg.scan()
+
+    text_lower = ctx.user_input.lower()
+    query_match = re.search(r"(?:blocks?|lego)\s+(?:for|matching|about)?\s*(\w+)", text_lower)
+    query = query_match.group(1) if query_match else None
+
+    stats = reg.stats()
+    lines = [f"**Block Registry: `{source.name}`**\n"]
+    lines.append(f"- Total blocks: **{stats['total_blocks']}**")
+    for tier, n in sorted(stats["by_tier"].items()):
+        lines.append(f"  - {tier}: {n}")
+
+    if query:
+        hits = reg.search(query=query, limit=10)
+        lines.append(f"\n**Top matches for `{query}` ({len(hits)}):**")
+        for b in hits[:10]:
+            lines.append(f"- `{b.tier_prefix}.{b.name}` — {b.docstring[:60] or '(no doc)'}")
+    else:
+        lines.append("\n_Pass a keyword, e.g. `blocks for scout`, to filter._")
+    return "\n".join(lines)
+
+
+def _run_copilot(ctx: SkillContext) -> str:
+    """One-shot Copilot brainstorm — returns text + a proposed plan summary."""
+    from ass_ade.a2_mo_composites.block_registry import BlockRegistry
+    from ass_ade.a3_og_features.atomadic_copilot import AtomadicCopilot
+
+    wd = ctx.working_dir
+    source = wd
+    src_dir = wd / "src"
+    if src_dir.is_dir():
+        subdirs = [p for p in src_dir.iterdir() if p.is_dir() and p.name.isidentifier()]
+        if len(subdirs) == 1:
+            source = subdirs[0]
+
+    reg = BlockRegistry(source)
+    reg.scan()
+    copilot = AtomadicCopilot(reg)
+
+    # Strip the trigger word from the input to form the query
+    query = re.sub(r"^(copilot|brainstorm|plan|design|compose)\s*[:,]?\s*",
+                   "", ctx.user_input, flags=re.IGNORECASE).strip()
+    if not query:
+        query = ctx.user_input
+    response = copilot.ask(query)
+
+    lines = [f"**Atomadic Copilot ({response.mode})**\n"]
+    lines.append(response.text)
+    plan = response.suggested_plan
+    if plan:
+        lines.append("")
+        lines.append(f"**Proposed plan: `{plan.get('name', '?')}`**")
+        lines.append(f"- Target tier: `{plan.get('target_tier', '?')}`")
+        lines.append(f"- Nodes: {len(plan.get('nodes', []))}")
+        lines.append(f"- Edges: {len(plan.get('edges', []))}")
+        lines.append(f"- Gaps: {len(plan.get('gaps', []))}")
+    return "\n".join(lines)
+
+
 def _run_wire(ctx: SkillContext) -> str:
     """Scan a source tree for upward tier-import violations (dry-run by default).
 
@@ -649,6 +721,24 @@ def _register_builtins(registry: dict[str, Skill]) -> None:
                       "wire", "tier", "imports"],
             usage="wire imports",
             execute=_run_wire,
+        ),
+        Skill(
+            name="blocks",
+            description="List available playground building blocks from the registry",
+            triggers=["blocks", "lego", "building blocks", "list blocks",
+                      "show blocks", "block registry", "blocks for", "blocks matching",
+                      "what blocks", "available blocks"],
+            usage="blocks for scout",
+            execute=_run_blocks,
+        ),
+        Skill(
+            name="copilot",
+            description="Ask the Atomadic Copilot to brainstorm a composition plan",
+            triggers=["copilot", "brainstorm", "plan a feature", "design a feature",
+                      "compose a feature", "help me design", "atomadic copilot",
+                      "suggest a composition", "propose a plan", "plan:"],
+            usage="copilot: a feature that scouts + cherry-picks by coverage",
+            execute=_run_copilot,
         ),
     ]
     for s in skills:

@@ -2192,6 +2192,28 @@ def _handle_at_command(agent: "Atomadic", cmd: str, arg: str) -> str:
         )
         return _run_scout(ctx)
 
+    if cmd == "blocks":
+        from ass_ade.a3_og_features.skill_runner import SkillContext, _run_blocks
+        ctx = SkillContext(
+            user_input=f"blocks {arg}" if arg else "blocks",
+            working_dir=agent.working_dir,
+            tone="casual",
+            domain_level=agent.personality.domain_level,
+            history=agent.history,
+        )
+        return _run_blocks(ctx)
+
+    if cmd == "copilot":
+        from ass_ade.a3_og_features.skill_runner import SkillContext, _run_copilot
+        ctx = SkillContext(
+            user_input=f"copilot: {arg}" if arg else "copilot",
+            working_dir=agent.working_dir,
+            tone="casual",
+            domain_level=agent.personality.domain_level,
+            history=agent.history,
+        )
+        return _run_copilot(ctx)
+
     if cmd == "wire":
         apply_mode = arg.strip().lower().startswith("apply")
         if apply_mode:
@@ -2239,6 +2261,8 @@ def _handle_at_command(agent: "Atomadic", cmd: str, arg: str) -> str:
         "- `@skills` — list all available skills\n"
         "- `@scout [path] [--llm]` — scout a repo for intel and benefit opportunities\n"
         "- `@wire [apply]` — scan tier imports (dry-run); `@wire apply` to patch\n"
+        "- `@blocks [query]` — list playground building blocks from the registry\n"
+        "- `@copilot <prompt>` — brainstorm a composition plan with the Copilot\n"
         "- `@persona <mode>` — switch persona (co-pilot, mentor, commander, architect, debug-buddy)\n"
         "- `@remember <key>: <value>` — anchor a fact to memory\n"
         "- `@forget <key>` — remove an anchor\n"

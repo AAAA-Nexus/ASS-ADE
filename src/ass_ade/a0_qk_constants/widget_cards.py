@@ -30,6 +30,10 @@ WidgetKind = Literal[
     "anchor_added",
     "wiring_report",
     "cherry_manifest",
+    "block_registry_snapshot",
+    "composition_plan",
+    "composition_result",
+    "copilot_message",
 ]
 
 
@@ -126,6 +130,42 @@ class CherryManifestCard(TypedDict, total=False):
     actions: dict[str, int]  # assimilate/enhance/rebuild/skip totals
 
 
+class BlockRegistrySnapshotCard(TypedDict, total=False):
+    """Emitted when the playground block registry is rescanned."""
+    source_dir: str
+    total_blocks: int
+    by_tier: dict[str, int]
+    by_kind: dict[str, int]
+
+
+class CompositionPlanCard(TypedDict, total=False):
+    """Emitted when a composition plan is submitted to the engine."""
+    name: str
+    target_tier: str
+    node_count: int
+    edge_count: int
+    gap_count: int
+    description: str
+
+
+class CompositionResultCard(TypedDict, total=False):
+    """Emitted after compile/materialize — verdict + where source landed."""
+    name: str
+    target_path: str
+    verdict: str  # PASS | REFINE | REJECT
+    tier_violations: int
+    detected_gaps: int
+    wrote_to_disk: bool
+
+
+class CopilotMessageCard(TypedDict, total=False):
+    """Emitted on every Copilot turn."""
+    role: str  # user | assistant
+    text: str
+    mode: str  # llm | offline_fallback | critique
+    has_plan: bool
+
+
 # Export-by-name registry for runtime lookup (e.g. doc generation, validation)
 WIDGET_CARD_SCHEMAS: dict[str, type] = {
     "scout_report": ScoutReportCard,
@@ -138,4 +178,8 @@ WIDGET_CARD_SCHEMAS: dict[str, type] = {
     "anchor_added": AnchorAddedCard,
     "wiring_report": WiringReportCard,
     "cherry_manifest": CherryManifestCard,
+    "block_registry_snapshot": BlockRegistrySnapshotCard,
+    "composition_plan": CompositionPlanCard,
+    "composition_result": CompositionResultCard,
+    "copilot_message": CopilotMessageCard,
 }
