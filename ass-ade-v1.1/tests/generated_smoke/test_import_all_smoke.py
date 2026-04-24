@@ -1,4 +1,4 @@
-"""Import smoke tests — manifest driven (regenerate via ``ass-ade-v11 synth-tests``)."""
+"""Import smoke tests — manifest driven (regenerate via ``ass-ade book synth-tests``)."""
 
 from __future__ import annotations
 

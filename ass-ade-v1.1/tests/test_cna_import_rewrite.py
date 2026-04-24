@@ -140,6 +140,34 @@ def test_relative_import_from_rewrites_with_owning_path(tmp_path: Path) -> None:
     assert ".util import" not in out
 
 
+def test_rewrite_supports_src_layout_roots_and_package_prefix(tmp_path: Path) -> None:
+    project = tmp_path / "project"
+    util = project / "src" / "pkg" / "util.py"
+    util.parent.mkdir(parents=True)
+    util.write_text("def add_one(value: int) -> int:\n    return value + 1\n", encoding="utf-8")
+    plan = {
+        "proposed_components": [
+            {
+                "id": "util_c",
+                "tier": "a1_at_functions",
+                "name": "add_one",
+                "source_symbol": {"path": str(util.resolve()), "name": "add_one"},
+            }
+        ]
+    }
+    index = build_cna_import_index(plan)
+    body = "from pkg.util import add_one\n\ndef run() -> int:\n    return add_one(2)\n"
+    out, stats = rewrite_python_imports_in_body(
+        body,
+        source_roots=[project],
+        index=index,
+        package_prefix="ass_ade",
+    )
+    assert stats.get("imports_rewritten") == 1
+    assert "from ass_ade.a1_at_functions.util_c import add_one" in out
+    assert "from pkg.util import add_one" not in out
+
+
 def test_star_import_expands_to_indexed_symbols(tmp_path: Path) -> None:
     util = tmp_path / "pkg" / "util.py"
     util.parent.mkdir(parents=True)
@@ -516,7 +544,9 @@ def test_build_prepended_import_lines_branches(tmp_path: Path) -> None:
         prop, owning_source_file=str(util), index=index, source_roots=[tmp_path]
     )
     assert "from a1_at_functions.u import foo" in lines
-    assert pst["prepended"] == 1
+    assert "from json import loads" in lines
+    assert pst["prepended"] == 3
+    assert pst["preserved"] == 2
     assert pst["unresolved"] == 1
 
 

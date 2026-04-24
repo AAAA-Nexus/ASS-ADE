@@ -1,4 +1,4 @@
-"""``ass-ade-unified ade …`` — materialize and verify the workspace operator tree."""
+"""``ass-ade ade ...`` - materialize and verify the workspace operator tree."""
 
 from __future__ import annotations
 
@@ -98,7 +98,7 @@ def install_cursor_cmd(
     ade = ws / ".ade" / "cursor-hooks"
     if not ade.is_dir():
         raise typer.BadParameter(
-            f"Expected {ade} (run `ass-ade-unified ade materialize` in this project first.)"
+            f"Expected {ade} (run `ass-ade ade materialize` in this project first.)"
         )
     dst = ws / ".cursor" / "hooks"
     dst.mkdir(parents=True, exist_ok=True)
@@ -138,7 +138,7 @@ def doctor_ade() -> None:
         typer.echo(f"[ade] workspace {ws} has .ade/ (LAYOUT present) — good.")
     else:
         typer.echo(
-            f"[ade] no .ade/ in {ws} — run `ass-ade-unified ade materialize` after checkout."
+            f"[ade] no .ade/ in {ws} - run `ass-ade ade materialize` after checkout."
         )
 
 

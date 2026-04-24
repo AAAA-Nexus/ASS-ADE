@@ -27,7 +27,7 @@ Genesis event **shape** is defined by
 `<ATOMADIC_WORKSPACE>/ass-ade/.ass-ade/genesis/events.schema.json` (schema version
 inside each event).
 
-**Monadic multi-root assimilate (product):** `ass-ade-unified assimilate …` with
+**Monadic multi-root assimilate (product):** `ass-ade assimilate ...` with
 **`pip install -e ".[dev]"` from the monorepo root** (T12 spine — see `docs/ASS_ADE_UNIFICATION.md`)
 — not a separate `[project]` only under `ass-ade-v1.1/`. Ship plan: `ASS_ADE_SHIP_PLAN.md`.
 Swarm agents orchestrate *intent*; the book pipeline *materializes* tiered trees.
@@ -93,6 +93,14 @@ turn start and compares inbound `rules_hash` to its own read (`_PROTOCOL.md`
 - **22 — No-Stub Auditor** — enforces MAP = TERRAIN on every diff
 - **23 — Trust Propagator** — maintains `trust_score` across the registry
 - **24 — Genesis Recorder** — persists chained events from `events_emitted`
+
+### Consolidation lanes (Cursor-safe tiny tasks)
+- **25 — CLI Doc Sweeper** — docs-only replacement of transitional CLI names with `ass-ade`
+- **26 — Agent Prompt Sweeper** — agent-facing command examples and bundled ADE prompt docs
+- **27 — CLI Smoke Tester** — focused tests for `ass-ade`, `atomadic`, `book`, `assimilate`, `doctor`
+- **28 — Environment Dedupe Auditor** — read-only duplicate install troubleshooting docs
+
+The lane checklist lives at [`docs/CURSOR_AGENT_LANES.md`](../docs/CURSOR_AGENT_LANES.md).
 
 ---
 

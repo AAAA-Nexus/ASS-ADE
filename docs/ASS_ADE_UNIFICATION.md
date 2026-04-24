@@ -1,42 +1,45 @@
 # ASS-ADE — single product (CNA / monadic) unification
 
-> **Public `ASS-ADE` repository:** You have **`ass-ade-v1.1/`** and the unified CLI from the repo root. Sibling distributions (`ass-ade-v1`, legacy `ass-ade`) and `.ato-plans/` paths mentioned below apply to the **private umbrella** used to build releases, not to every public clone.
+> **Current trunk:** `C:\!aaaa-nexus\!ass-ade` is the one working product checkout. It contains the monadic spine under **`ass-ade-v1.1/`** and the restored Atomadic engine under **`atomadic-engine/`**. Sibling distributions outside this checkout are donors, archives, or quarantine inputs unless [`ONE_WORKING_PRODUCT.md`](ONE_WORKING_PRODUCT.md) says otherwise.
 
 ## Goal
 
-One **shippable** ASS-ADE: **one import namespace** (eventually `ass_ade`), **one distribution**, **one primary CLI**, with **a0→a4 monadic layout**, **CNA ids**, and **import-linter** law — while retaining **every** capability that today lives across:
+One **shippable** ASS-ADE: **one checkout**, **one install**, **one primary CLI**, with **a0->a4 monadic layout**, **CNA ids**, and **import-linter** law - while retaining the capabilities that were previously sprawled across:
 
-- [`ass-ade-v1`](../ass-ade-v1) — full Typer studio, `engine/rebuild`, Nexus families, interactive Atomadic, etc.
-- [`ass-ade-v1.1`](../ass-ade-v1.1) — phased `pipeline_book` (0–7), tier purity, certify, synth-tests.
-- [`ass-ade`](../ass-ade) — Click line, x402-heavy dependencies, genesis layout under `.ass-ade/`.
+- [`ass-ade-v1.1`](../ass-ade-v1.1) - phased `pipeline_book` (0-7), tier purity, certify, synth-tests.
+- [`atomadic-engine`](../atomadic-engine) - restored `ass_ade` Typer shell, `engine/rebuild`, Nexus families, MCP, A2A, agent loop, interactive Atomadic.
+- External donors such as `ass-ade-fix/` and `QUARANTINE_IP_LEAK_v20/` - reference only after diff/scrub.
 
-## One install from repo root (2026-04-22)
+## One install from repo root (2026-04-23)
 
-The **private Atomadic monorepo** now vendors the `atomadic` engine beside the spine:
+The product trunk vendors the Atomadic engine beside the spine:
 
 - **`ass-ade-v1.1/src/ass_ade_v11/`** — monadic pipeline, `assimilate`, `book`, `ade materialize`, …
-- **`atomadic-engine/src/ass_ade/`** — Click **`atomadic`** CLI (`build` / `extend` / `reclaim` / `forge`), sovereign + binder stack, engine tests under **`atomadic-engine/tests/`**
+- **`atomadic-engine/src/ass_ade/`** — Typer **`ass-ade`** / **`atomadic`** CLI, rebuild engine, Nexus/MCP/A2A/agent surfaces, engine tests under **`atomadic-engine/tests/`**
 
-From **`C:\!atomadic`** (or your public staging checkout after sync):
+From **`C:\!aaaa-nexus\!ass-ade`**:
 
 ```text
 pip install -e ".[dev]"
-ass-ade-unified doctor          # should report ass_ade OK
-atomadic --help                 # direct Click entry (same as legacy ass-ade tree)
-ass-ade-unified atomadic build --help   # shim: forwards argv to the Click group
-ass-ade-unified assimilate PRIMARY OUT  # multi-root → monadic emit (policy when --also in CI)
-ass-ade-unified book rebuild …
+ass-ade doctor                  # must report ass_ade from atomadic-engine/src/ass_ade
+ass-ade --help                  # merged product CLI
+ass-ade rebuild --help          # restored engine rebuild
+ass-ade assimilate PRIMARY OUT  # multi-root -> monadic emit
+ass-ade book rebuild ...
+atomadic --help                 # alias to the same merged CLI
 ```
 
-Optional: **`ass-ade-unified studio …`** still appears only if a **legacy** Typer `ass_ade.cli.app` exists (older v1 checkout). The shipped engine uses **Click**; prefer **`atomadic`** or **`ass-ade-unified atomadic`**.
+`ass-ade` is the product CLI. `atomadic` is kept as an alias for operator muscle memory, not as a second product.
 
 **Assimilate** still wraps `run_book_until` with `extra_source_roots` (same engine as `book rebuild --also`, default `--stop-after package`). With `--also`, CI (or `ASS_ADE_ASSIMILATE_REQUIRE_POLICY=1`) requires **`--policy`** YAML per `.ass-ade/specs/assimilate-policy.schema.json`. Every run emits **`ASSIMILATE_PLAN`**; use **`--plan-out`** for a sidecar file.
 
-This is a **physical merge of sources** into one distribution (`pyproject` at repo root); long-term rename `ass_ade_v11` → `ass_ade` remains a separate major release per the target architecture section below.
+This is a **physical merge of sources** into one distribution (`pyproject` at repo root). The long-term rename `ass_ade_v11` -> `ass_ade` remains a separate major release per the target architecture section below.
 
 **CI:** GitHub Actions workflow `.github/workflows/ass-ade-ship.yml` runs lint-imports, `pytest ass-ade-v1.1/tests -m "not dogfood"`, synth-tests, and a **single-root** golden assimilate (no `--policy` in that job). **Org push** to `aaaa-nexus/ass-ade` remains **human-gated** (plan quarantine T9).
 
-**IP / publish path:** build and test under **`C:\!atomadic`** (private). **Do not** push that workspace to public GitHub. Stage the scrubbed, shippable tree under **`C:\!aaaa-nexus`**, then push **from that** checkout only.
+**IP / publish path:** build and test under **`C:\!aaaa-nexus\!ass-ade`**. Treat `QUARANTINE_IP_LEAK_v20/` as evidence only until reviewed; do not copy quarantine deltas into the product without a scrubbed diff and tests.
+
+**Stale editable installs:** `ass-ade doctor` is the trust check for the CLI path. Raw `import ass_ade` can still be hijacked by older editable `.pth` files. Use `where ass-ade`, `python -m pip show ass-ade`, and `python -c "import ass_ade; print(ass_ade.__file__)"` before removing anything; see [`TROUBLESHOOTING.md`](TROUBLESHOOTING.md).
 
 ## ADE / Atomadic operator stack (shipped in the wheel)
 
@@ -46,7 +49,7 @@ into a target project as **`<workspace>/.ade/`** (and optionally
 **`<workspace>/.cursor/hooks`**) so the **prompt → product** path is
 reproducible for every consumer.
 
-- **CLI:** `ass-ade-unified ade materialize [WORKSPACE] [--source MONOREPO]`
+- **CLI:** `ass-ade ade materialize [WORKSPACE] [--source MONOREPO]`
   (default workspace: `.`). The source tree must contain **`agents/INDEX.md`**
   (set **`ATOMADIC_WORKSPACE`** to your clone, or use **`--source`**) — PyPI-only
   installs do not include the monorepo; the wheel carries the `ade` code, and
@@ -58,11 +61,11 @@ reproducible for every consumer.
   **`cross-ide/`** (Cursor vs **VS Code** — **Copilot**, **OpenAI Codex**, **MCP** samples, Copilot-instructions sample, optional tasks).
 - **VS Code:** `materialize` can **merge** Copilot + Python **extension recommendations** into **`.vscode/extensions.json`**. Configure **MCP** (e.g. from `cross-ide/vscode-mcp.example.json` into **`.vscode/mcp.json`**) and use **Agent** + **Plan** in Chat; follow **`cross-ide/CODEX-BUILD-CYCLE.md`**. Use **`--no-vscode`** to skip the extensions merge.
 - **Hooks invariants:** `swarm_signal.py` is written so **`_REPO_ROOT`** resolves
-  when the script lives in **`<repo>/.cursor/hooks/`**; use **`ass-ade-unified ade materialize`**
+  when the script lives in **`<repo>/.cursor/hooks/`**; use **`ass-ade ade materialize`**
   with **`--no-cursor`** for a staging copy only, or the default to install into
   **`.cursor/hooks`**.
 
-`ass-ade-unified ade doctor` — shows whether a monorepo is discoverable and
+`ass-ade ade doctor` — shows whether a monorepo is discoverable and
 whether the current directory already has **`.ade/LAYOUT.json`**.
 
 ## Target architecture (physical merge)
@@ -77,13 +80,14 @@ Phased, low-regret order:
 
 ## What “done” means
 
-- One checkout, one `pip install`, **`import ass_ade`** only.
-- `ass-ade-unified` (or renamed `atomadic` / `ass-ade`) exposes **both** pipeline and studio commands **without** a nested `studio` group.
+- One checkout, one `pip install`, both **`import ass_ade_v11`** and **`import ass_ade`** resolve from this checkout for the consolidation release.
+- `ass-ade` exposes **both** pipeline and Atomadic engine commands.
 - [`ASS_ADE_MATRIX.md`](../ASS_ADE_MATRIX.md) collapses to a **single row** for the product.
 
 ## References
 
 - [`ASS_ADE_SHIP_PLAN.md`](../ASS_ADE_SHIP_PLAN.md) — phased ship roadmap (S1–S6 exit criteria)  
+- [`docs/ONE_WORKING_PRODUCT.md`](ONE_WORKING_PRODUCT.md) — current trunk decision and source roles
 - [`ASS_ADE_GOAL_PIPELINE.md`](../ASS_ADE_GOAL_PIPELINE.md) — HAVE / GAP / IMPLEMENT checklist  
 - [`pyproject.toml`](../pyproject.toml) — distribution metadata, scripts, import-linter contracts  
 - [`ass-ade-v1.1/.ass-ade/specs/`](../ass-ade-v1.1/.ass-ade/specs/) — `assimilate-policy` + `assimilate-plan` JSON Schemas  

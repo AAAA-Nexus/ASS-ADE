@@ -1,13 +1,14 @@
+
 class ExampleService:
-    """Stateful-looking name for a2 default path."""
+    """Tier a2 — stateful composite for demonstration.
 
-def run(self) -> str:
-        """Runs the process and returns the result.
+    ExampleService is a minimal a2 composite used to validate tier boundaries and test stateful service patterns.
+    """
 
-        Args:
-            None
+    def run(self) -> str:
+        """Run the service process and return the result.
 
         Returns:
-            str: The result of the process.
+            str: Always returns 'ok' for test/demo purposes.
         """
         return "ok"

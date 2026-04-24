@@ -4,14 +4,14 @@
     {
       "label": "ASS-ADE: united doctor",
       "type": "shell",
-      "command": "ass-ade-unified",
+      "command": "ass-ade",
       "args": ["doctor"],
       "options": { "cwd": "${workspaceFolder}" }
     },
     {
       "label": "ASS-ADE: ADE doctor",
       "type": "shell",
-      "command": "ass-ade-unified",
+      "command": "ass-ade",
       "args": ["ade", "doctor"],
       "options": { "cwd": "${workspaceFolder}" }
     },

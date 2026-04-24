@@ -27,3 +27,9 @@ def test_exclude_dirs_covers_vcs_and_caches() -> None:
     assert ".git" in exclude_dirs.EXCLUDED_DIRS
     assert "__pycache__" in exclude_dirs.EXCLUDED_DIRS
     assert "node_modules" in exclude_dirs.EXCLUDED_DIRS
+
+
+def test_exclude_dir_patterns_cover_backups_and_egg_info() -> None:
+    assert exclude_dirs.is_excluded_dir_name("ass-ade-full-rebuild-clean-backup-20260423-102642")
+    assert exclude_dirs.is_excluded_dir_name("ass_ade_v1_1.egg-info")
+    assert exclude_dirs.is_excluded_dir_name("ass-ade-v1-test-old")

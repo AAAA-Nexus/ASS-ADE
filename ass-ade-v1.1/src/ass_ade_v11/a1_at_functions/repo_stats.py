@@ -6,7 +6,7 @@ import os
 from pathlib import Path
 from typing import Any
 
-from ass_ade_v11.a0_qk_constants.exclude_dirs import EXCLUDED_DIRS
+from ass_ade_v11.a0_qk_constants.exclude_dirs import is_excluded_dir_name
 
 
 def _walk_top_level_dirs(root: Path) -> list[str]:
@@ -15,7 +15,7 @@ def _walk_top_level_dirs(root: Path) -> list[str]:
     out: list[str] = []
     try:
         for child in sorted(root.iterdir()):
-            if child.is_dir() and child.name not in EXCLUDED_DIRS and not child.name.startswith("."):
+            if child.is_dir() and not is_excluded_dir_name(child.name) and not child.name.startswith("."):
                 out.append(child.name)
     except OSError:
         return []
@@ -29,7 +29,7 @@ def compute_repo_surface(root: Path) -> dict[str, Any]:
     total_files = 0
     if root.is_dir():
         for dirpath, dirnames, filenames in os.walk(root):
-            dirnames[:] = [d for d in dirnames if d not in EXCLUDED_DIRS]
+            dirnames[:] = [d for d in dirnames if not is_excluded_dir_name(d)]
             for name in filenames:
                 total_files += 1
                 if name.endswith(".py"):

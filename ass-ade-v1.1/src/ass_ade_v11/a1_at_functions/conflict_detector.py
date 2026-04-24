@@ -8,7 +8,7 @@ import os
 from pathlib import Path
 from typing import Any
 
-from ass_ade_v11.a0_qk_constants.exclude_dirs import EXCLUDED_DIRS
+from ass_ade_v11.a0_qk_constants.exclude_dirs import is_excluded_dir_name
 from ass_ade_v11.a0_qk_constants.policy_types import RootPolicy
 
 _SKIP_STEMS = frozenset({"__init__", "conftest", "setup", "manage"})
@@ -16,7 +16,12 @@ _SKIP_PREFIXES = ("test_", "qk_draft_", "at_draft_", "mo_draft_", "og_draft_", "
 
 
 def _matches_any(posix_rel: str, patterns: tuple[str, ...]) -> bool:
-    return any(fnmatch.fnmatch(posix_rel, pat) for pat in patterns)
+    for pat in patterns:
+        if fnmatch.fnmatch(posix_rel, pat):
+            return True
+        if pat.startswith("**/") and fnmatch.fnmatch(posix_rel, pat[3:]):
+            return True
+    return False
 
 
 def _file_hash(path: Path) -> str:
@@ -42,7 +47,7 @@ def detect_namespace_conflicts(
         forbids: tuple[str, ...] = row["forbid_globs"] if row and row.get("forbid_globs") else ()
         py_files: list[Path] = []
         for dirpath, dirnames, filenames in os.walk(root_resolved):
-            dirnames[:] = [n for n in dirnames if n not in EXCLUDED_DIRS]
+            dirnames[:] = [n for n in dirnames if not is_excluded_dir_name(n)]
             for filename in filenames:
                 if not filename.endswith(".py"):
                     continue

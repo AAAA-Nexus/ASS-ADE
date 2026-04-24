@@ -1,0 +1,31 @@
+flowchart TD
+  parent["C:/!aaaa-nexus"]
+  control["!ass-ade-control"]
+  inventory["inventory/latest.json"]
+  index["CONTROL_INDEX.json"]
+  stress["outputs/stress"]
+  docs["generated docs"]
+  parent --> control
+  control --> inventory
+  control --> index
+  control --> stress
+  index --> docs
+
+  subgraph Local_Siblings[Local siblings]
+    sibling_0["!ass-ade<br/>mixed-source-dump<br/>unstamped"]
+    sibling_1["!ass-ade-dev<br/>rebuild-output<br/>stamped"]
+    sibling_2["!ass-ade-legacy<br/>git-working-copy-dirty<br/>unstamped"]
+    sibling_3["!ass-ade-merged<br/>rebuild-output<br/>stamped"]
+    sibling_4["!ass-ade-rebuilt-test<br/>rebuild-output<br/>stamped"]
+    sibling_5["ass-ade-fix<br/>git-working-copy-dirty<br/>unstamped"]
+    sibling_6["ass-ade-github-latest<br/>canonical-mirror<br/>unstamped"]
+    sibling_7["ass-ade-unified<br/>rebuild-output<br/>stamped"]
+  end
+  parent --> sibling_0
+  sibling_1 --> index
+  parent --> sibling_2
+  sibling_3 --> index
+  sibling_4 --> index
+  parent --> sibling_5
+  sibling_6 --> stress
+  sibling_7 --> index

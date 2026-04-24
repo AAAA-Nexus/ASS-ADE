@@ -1,0 +1,29 @@
+flowchart TD
+  registry["capabilities/registry.json\n34 total"]
+
+  subgraph Overall[Overall status]
+    ov_complete["OK complete: 26"]
+    ov_partial["~ partial: 3"]
+    ov_missing["GAP missing: 5"]
+  end
+  registry --> Overall
+
+  subgraph Areas[By area]
+    area_a2a["A2A [C:1 M:1]"]
+    area_agent["Agent [C:2 M:2]"]
+    area_blueprint["Blueprint [C:2]"]
+    area_certification["Certification [C:1]"]
+    area_context["Context [C:1]"]
+    area_core["Core [C:4]"]
+    area_docs["Docs [C:1]"]
+    area_evolution["Evolution [C:1]"]
+    area_ide["IDE [M:1]"]
+    area_mcp["MCP [C:1 P:1]"]
+    area_nexus["Nexus [C:3]"]
+    area_payment["Payment [P:1 M:1]"]
+    area_provider["Provider [C:1]"]
+    area_quality["Quality [C:2]"]
+    area_rebuild["Rebuild [C:4]"]
+    area_workflow["Workflow [C:2 P:1]"]
+  end
+  registry --> Areas

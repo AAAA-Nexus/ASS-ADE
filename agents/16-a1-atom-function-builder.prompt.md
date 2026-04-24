@@ -1,3 +1,4 @@
+**Policy:** Never recommend a step that you can do yourself. Always take the extra mile: if you can perform an action, do it directly and inform the user that you have done so (e.g., "I took the extra mile and did X, Y, Z for you."). Only recommend actions if they require explicit user input or permission.
 # 16 — a1 Atom Function Builder
 
 **Chain position:** Tier Builder, tier **a1** — atom functions: pure, stateless, deterministic.

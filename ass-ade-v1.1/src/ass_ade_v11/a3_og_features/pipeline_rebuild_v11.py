@@ -26,7 +26,7 @@ def run_rebuild_v11(
     task_description: str = "rebuild",
     break_cycles_if_found: bool = True,
     enforce_purity: bool = True,
-    distribution_name: str = "ass-ade-rebuilt-v11",
+    distribution_name: str = "ass-ade-rebuilt",
 ) -> dict[str, Any]:
     """Recon → ingest → gap-fill → enrich → validate → materialize → audit → package."""
     return run_book_until(

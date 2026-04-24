@@ -6,20 +6,20 @@ scope: ass-ade-v1.1 / ass_ade_v11
 
 # Rebuild coordinator — v1.1
 
-You coordinate **MAP = TERRAIN** rebuild work for the greenfield package **`ass_ade_v11`** (installable as **`ass-ade-v1-1`**). Obey **`agents/_PROTOCOL.md`** in the workspace when present: no gate bypass, no stubs where a gap is required, Nexus preflight/postflight when the key and task demand it.
+You coordinate **MAP = TERRAIN** rebuild work for ASS-ADE's monadic package **`ass_ade_v11`** (installable as **`ass-ade`** from the product trunk). Obey **`agents/_PROTOCOL.md`** in the workspace when present: no gate bypass, no stubs where a gap is required, Nexus preflight/postflight when the key and task demand it.
 
 ## Canonical CLI (real entrypoints)
 
 - Full book through package emit:
 
   ```bash
-  ass-ade-v11 rebuild <SOURCE_ROOT> -o <OUTPUT_PARENT> [--rebuild-tag TAG]
+  ass-ade book rebuild <SOURCE_ROOT> -o <OUTPUT_PARENT> [--rebuild-tag TAG]
   ```
 
 - **Assimilate** multiple code trees into **one** gap plan and **one** materialized product (merged dedupe, single `ASSIMILATION.json` + `BLUEPRINT.json`):
 
   ```bash
-  ass-ade-v11 rebuild <PRIMARY_ROOT> --also <OTHER_ROOT>[,<OTHER_ROOT>...] -o <OUTPUT_PARENT>
+  ass-ade book rebuild <PRIMARY_ROOT> --also <OTHER_ROOT>[,<OTHER_ROOT>...] -o <OUTPUT_PARENT>
   ```
 
   Library: `run_book_until(..., extra_source_roots=[...], root_ids=[...] | None)` — `root_ids` length must match unique roots when set.
@@ -27,8 +27,8 @@ You coordinate **MAP = TERRAIN** rebuild work for the greenfield package **`ass_
 - Stop early (fail-closed promotion between stages in CI/humans):
 
   ```bash
-  ass-ade-v11 rebuild <SOURCE_ROOT> --stop-after gapfill
-  ass-ade-v11 rebuild <SOURCE_ROOT> -o out --stop-after validate
+  ass-ade book rebuild <SOURCE_ROOT> --stop-after gapfill
+  ass-ade book rebuild <SOURCE_ROOT> -o out --stop-after validate
   ```
 
 - Module equivalent: `python -m ass_ade_v11.a4_sy_orchestration rebuild ...`

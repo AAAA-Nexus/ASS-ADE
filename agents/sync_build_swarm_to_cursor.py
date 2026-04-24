@@ -21,13 +21,29 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 WORKSPACE = ROOT.parent
-REGISTRY = ROOT / "build_swarm_registry.json"
+import importlib.util
+import sys
+
+# Prefer Python module version of the registry if available
+REGISTRY_PY = ROOT / "build_swarm_registry.py"
+if REGISTRY_PY.exists():
+    spec = importlib.util.spec_from_file_location("build_swarm_registry", str(REGISTRY_PY))
+    build_swarm_registry = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = build_swarm_registry
+    spec.loader.exec_module(build_swarm_registry)
+    REGISTRY_DATA = build_swarm_registry.BUILD_SWARM_REGISTRY
+else:
+    REGISTRY = ROOT / "build_swarm_registry.json"
+    REGISTRY_DATA = None
 CURSOR_AGENTS = Path.home() / ".cursor" / "agents"
 
 
 def _load_registry() -> dict:
-    data = json.loads(REGISTRY.read_text(encoding="utf-8"))
-    return data
+    if REGISTRY_DATA is not None:
+        return REGISTRY_DATA
+    else:
+        data = json.loads(REGISTRY.read_text(encoding="utf-8"))
+        return data
 
 
 def _bridge_markdown(
@@ -112,7 +128,7 @@ def _orchestrator_markdown(agents: list[dict]) -> str:
     rules = (WORKSPACE / "RULES.md").as_posix()
     agents_dir = ROOT.as_posix()
     index_md = (ROOT / "INDEX.md").as_posix()
-    registry_json = REGISTRY.as_posix()
+    registry_json = REGISTRY.as_posix() if "REGISTRY" in globals() else "embedded"
     workspace_posix = WORKSPACE.as_posix()
     lines = [
         "---",
@@ -162,8 +178,8 @@ def _orchestrator_markdown(agents: list[dict]) -> str:
 
 
 def main() -> int:
-    if not REGISTRY.is_file():
-        print(f"Missing {REGISTRY}", file=sys.stderr)
+    if REGISTRY_DATA is None and not REGISTRY.is_file():
+        print(f"Missing registry", file=sys.stderr)
         return 1
     data = _load_registry()
     agents: list[dict] = data["agents"]

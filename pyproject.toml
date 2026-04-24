@@ -1,5 +1,5 @@
-# Atomadic monorepo — ASS-ADE spine (T12) + uv workspace for sibling packages.
-# Install the monadic CLI: `pip install -e ".[dev]"` from this directory.
+# Atomadic monorepo — ASS-ADE product trunk + uv workspace for sibling packages.
+# Install the product CLI: `pip install -e ".[dev]"` from this directory.
 # Legacy: `ass-ade-v1.1/pyproject.toml` was merged here; do not add a second [project] under ass-ade-v1.1.
 #
 # uv workspace: https://docs.astral.sh/uv/concepts/projects/workspaces/
@@ -12,6 +12,10 @@ build-backend = "setuptools.build_meta"
 include-package-data = true
 
 [tool.setuptools.package-data]
+"ass_ade" = [
+    "README.md",
+    "prompts/*.md",
+]
 "ass_ade_v11" = [
     "_bundled_ade_specs/*.json",
     "ade/cross_ide_bundled/*.md",
@@ -21,9 +25,9 @@ include-package-data = true
 ]
 
 [project]
-name = "ass-ade-v1-1"
-version = "1.1.0a3"
-description = "ASS-ADE — monadic spine (`ass-ade-unified`, `book`, `assimilate`) plus the `atomadic` rebuild engine (`ass_ade`) in one install from the workspace root."
+name = "ass-ade"
+version = "1.0.0"
+description = "ASS-ADE — one Atomadic Development Environment CLI with the restored engine surface, monadic book pipeline, assimilate, and ADE operator tooling."
 readme = "README.md"
 license = { file = "LICENSE" }
 requires-python = ">=3.12"
@@ -40,10 +44,8 @@ dependencies = [
 ]
 
 [project.scripts]
-ass-ade-v11 = "ass_ade_v11.a4_sy_orchestration.cli:main"
-ass-ade-unified = "ass_ade_v11.a4_sy_orchestration.unified_cli:main"
-atomadic = "ass_ade.cli.__main__:main"
-ass-ade = "ass_ade.cli.__main__:main"
+ass-ade = "ass_ade_v11.a4_sy_orchestration.unified_cli:main"
+atomadic = "ass_ade_v11.a4_sy_orchestration.unified_cli:main"
 
 [project.optional-dependencies]
 dev = [
@@ -74,7 +76,7 @@ where = ["ass-ade-v1.1/src", "atomadic-engine/src"]
 root_package = "ass_ade_v11"
 
 [[tool.importlinter.contracts]]
-name = "Monadic tiers (ASS-ADE v1.1)"
+name = "Monadic tiers (ASS-ADE)"
 type = "layers"
 layers = [
     "ass_ade_v11.a4_sy_orchestration",
@@ -86,8 +88,10 @@ layers = [
 ]
 
 [tool.pytest.ini_options]
-# Project-local basetemp reduces flaky Windows atexit cleanup on pytest's temp tree.
-addopts = "--basetemp=.pytest_basetemp"
+# Keep temp dirs outside the product tree so repo-discovery tests do not climb
+# from tmp_path back into this checkout and mistake the trunk for the fixture.
+addopts = "--basetemp=../.ass-ade-pytest-basetemp --import-mode=importlib"
+norecursedirs = ["fixtures"]
 markers = [
     "phase0_recon: Phase 0 terrain / recon gate",
     "phase1_ingest: Phase 1 source ingest + symbol classification",

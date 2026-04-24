@@ -1,6 +1,6 @@
 # `agents/` — Atomadic ASS-ADE swarm (Claude / Cursor / VS Code)
 
-This folder is the **canonical prompt surface** for the **25-agent** build pipeline (**00 → 24**). Cursor loads human-editable prompts here; bridge files under `~/.cursor/agents/` are **generated** from [`build_swarm_registry.json`](build_swarm_registry.json).
+This folder is the **canonical prompt surface** for the ASS-ADE build pipeline. Agents **00-24** are the core chain; agents **25-28** are tiny consolidation lanes for the single `ass-ade` CLI cleanup. Cursor loads human-editable prompts here; bridge files under `~/.cursor/agents/` are **generated** from [`build_swarm_registry.json`](build_swarm_registry.json).
 
 ## Start here
 
@@ -42,11 +42,11 @@ Install from **repository root** (T12 — see [`../docs/ASS_ADE_UNIFICATION.md`]
 
 ```text
 pip install -e ".[dev]"   # from repo root
-ass-ade-unified doctor
-ass-ade-unified assimilate PRIMARY_REPO OUTPUT --also OTHER_REPO
+ass-ade doctor
+ass-ade assimilate PRIMARY_REPO OUTPUT --also OTHER_REPO
 ```
 
-Optional v1 studio: `pip install -e ../ass-ade-v1` then `ass-ade-unified studio …`.
+`atomadic` is an alias to the same merged CLI.
 
 ## Historical audit
 

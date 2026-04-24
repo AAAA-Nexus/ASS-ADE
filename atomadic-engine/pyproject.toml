@@ -1,0 +1,38 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ass-ade"
+version = "0.3.1"
+description = "ASS-ADE v0.3.0 - merged rebuild: all folders unified, 1274 tests pass"
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.28,<0.29",
+    "pydantic>=2.11,<3",
+    "rich>=14,<15",
+    "typer>=0.15,<1",
+    "python-dotenv>=1.0,<2",
+    "jsonschema>=4.23,<5",
+    "anyio>=4.0.0",
+]
+
+[project.scripts]
+ass-ade = "ass_ade.cli:app"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=9.0.3",
+    "pytest-asyncio>=1.0.0",
+    "anyio>=4.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ass_ade"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"

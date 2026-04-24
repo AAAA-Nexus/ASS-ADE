@@ -11,14 +11,20 @@ from ass_ade_v11.a1_at_functions.package_layout import emit_robust_package
 def run_phase7_package(
     target_root: Path,
     *,
-    distribution_name: str = "ass-ade-rebuilt-v11",
+    distribution_name: str = "ass-ade-rebuilt",
     version: str = "0.0.0",
     gap_plan: dict[str, Any] | None = None,
+    output_package_name: str | None = None,
+    package_root: Path | None = None,
+    source_project_root: Path | None = None,
 ) -> dict[str, Any]:
     pkg = emit_robust_package(
         Path(target_root),
         distribution_name=distribution_name,
         version=version,
         gap_plan=gap_plan,
+        output_package_name=output_package_name,
+        package_root=package_root,
+        source_project_root=source_project_root,
     )
     return {"phase": 7, "package": pkg}

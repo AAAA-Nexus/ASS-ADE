@@ -1,0 +1,75 @@
+name: Evolution Auto-Merge
+
+# Auto-merge evolution PRs once the gate check passes.
+# Merges with squash to keep main history clean.
+
+on:
+  check_suite:
+    types: [completed]
+  workflow_run:
+    workflows: ["evolution-pr-gate"]
+    types: [completed]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  auto-merge:
+    runs-on: ubuntu-latest
+    if: github.event.workflow_run.conclusion == 'success' || github.event.check_suite.conclusion == 'success'
+    steps:
+      - name: Find passing evolution PRs and merge
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          # Fetch all open evolution PRs
+          PRS=$(gh api repos/AAAA-Nexus/ASS-ADE/pulls \
+            --paginate \
+            -q '.[] | select(.head.ref | startswith("auto-evolve/")) | select(.state == "open") | "\(.number) \(.head.ref)"' \
+            2>/dev/null || echo "")
+
+          if [ -z "$PRS" ]; then
+            echo "No open evolution PRs found."
+            exit 0
+          fi
+
+          echo "Open evolution PRs:"
+          echo "$PRS"
+
+          while IFS=" " read -r pr_num branch; do
+            [ -z "$pr_num" ] && continue
+
+            echo "--- Checking PR #$pr_num ($branch)"
+
+            # Get check statuses for this PR's head SHA
+            HEAD_SHA=$(gh api "repos/AAAA-Nexus/ASS-ADE/pulls/$pr_num" -q '.head.sha' 2>/dev/null || echo "")
+            if [ -z "$HEAD_SHA" ]; then
+              echo "  Could not get HEAD SHA — skipping"
+              continue
+            fi
+
+            # Check if evolution-gate check passed
+            GATE_STATUS=$(gh api "repos/AAAA-Nexus/ASS-ADE/commits/$HEAD_SHA/check-runs" \
+              -q '.check_runs[] | select(.name == "evolution-gate") | .conclusion' \
+              2>/dev/null | head -1 || echo "")
+
+            echo "  Gate status: '${GATE_STATUS:-none}'"
+
+            if [ "$GATE_STATUS" != "success" ]; then
+              echo "  Gate not passed — skipping PR #$pr_num"
+              continue
+            fi
+
+            # Merge with squash
+            echo "  Merging PR #$pr_num (gate passed)"
+            gh pr merge "$pr_num" \
+              --repo AAAA-Nexus/ASS-ADE \
+              --squash \
+              --delete-branch \
+              --subject "evolution: $(gh api "repos/AAAA-Nexus/ASS-ADE/pulls/$pr_num" -q '.title' 2>/dev/null)" \
+              2>&1 || echo "  Merge failed for PR #$pr_num — may already be merged"
+
+          done <<< "$PRS"

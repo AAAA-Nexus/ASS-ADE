@@ -14,6 +14,7 @@ from ass_ade_v11.a3_og_features.phase1_ingest import run_phase1_ingest, run_phas
 from ass_ade_v11.a3_og_features.phase2_gapfill import run_phase2_gapfill
 from ass_ade_v11.a3_og_features.phase3_enrich import run_phase3_enrich
 from ass_ade_v11.a3_og_features.phase4_validate import run_phase4_validate
+from ass_ade_v11.a3_og_features.phase3b_docstring_inject import run_phase3b_docstring_inject
 from ass_ade_v11.a3_og_features.phase5_materialize import run_phase5_materialize
 from ass_ade_v11.a3_og_features.phase6_audit import run_phase6_audit
 from ass_ade_v11.a3_og_features.phase7_package import run_phase7_package
@@ -23,6 +24,7 @@ STOP_AFTER_PHASE: dict[str, int] = {
     "ingest": 1,
     "gapfill": 2,
     "enrich": 3,
+    "docstring_inject": 3.5,
     "validate": 4,
     "materialize": 5,
     "audit": 6,
@@ -66,7 +68,8 @@ def run_book_until(
     max_body_chars: int | None = None,
     break_cycles_if_found: bool = True,
     enforce_purity: bool = True,
-    distribution_name: str = "ass-ade-rebuilt-v11",
+    distribution_name: str = "ass-ade-rebuilt",
+    output_package_name: str | None = None,
     policy_doc: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Run pipeline phases 0..``stop_after`` (inclusive). ``stop_after`` in 0..7.
@@ -100,6 +103,7 @@ def run_book_until(
             break_cycles_if_found=break_cycles_if_found,
             enforce_purity=enforce_purity,
             distribution_name=distribution_name,
+            output_package_name=output_package_name,
             policy_doc=policy_doc,
         )
     )
@@ -120,7 +124,8 @@ def _run_book_until_core(
     max_body_chars: int | None = None,
     break_cycles_if_found: bool = True,
     enforce_purity: bool = True,
-    distribution_name: str = "ass-ade-rebuilt-v11",
+    distribution_name: str = "ass-ade-rebuilt",
+    output_package_name: str | None = None,
     policy_doc: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     if stop_after < 0 or stop_after > 7:
@@ -177,6 +182,7 @@ def _run_book_until_core(
     if stop_after <= 2:
         return {"stopped_after": 2, "phase0": p0, "phase1": p1, "phase2": p2, "rebuild_tag": tag}
 
+
     p3 = run_phase3_enrich(p2["gap_plan"], max_body_chars=max_body_chars)
     if stop_after <= 3:
         return {
@@ -188,7 +194,21 @@ def _run_book_until_core(
             "rebuild_tag": tag,
         }
 
+    # --- Phase 3b: Docstring injection ---
     gap_plan = p3["gap_plan"]
+    gap_plan = run_phase3b_docstring_inject(gap_plan)
+    p3b = {"gap_plan": gap_plan}
+    if stop_after == 3.5:
+        return {
+            "stopped_after": 3.5,
+            "phase0": p0,
+            "phase1": p1,
+            "phase2": p2,
+            "phase3": p3,
+            "phase3b": p3b,
+            "rebuild_tag": tag,
+        }
+
     p4 = run_phase4_validate(
         gap_plan,
         break_cycles_if_found=break_cycles_if_found,
@@ -201,6 +221,7 @@ def _run_book_until_core(
             "phase1": p1,
             "phase2": p2,
             "phase3": p3,
+            "phase3b": p3b,
             "phase4": p4,
             "rebuild_tag": tag,
         }
@@ -222,6 +243,7 @@ def _run_book_until_core(
         tag,
         assimilation_meta=assimilation_meta,
         source_roots=all_roots if len(all_roots) > 1 else None,
+        output_package_name=output_package_name,
     )
     if stop_after <= 5:
         return {
@@ -236,7 +258,8 @@ def _run_book_until_core(
         }
 
     target_root = Path(p5["target_root"])
-    p6 = run_phase6_audit(target_root)
+    audit_root = Path(p5.get("package_root") or p5["target_root"])
+    p6 = run_phase6_audit(audit_root)
     if stop_after <= 6:
         return {
             "stopped_after": 6,
@@ -254,6 +277,9 @@ def _run_book_until_core(
         target_root,
         distribution_name=distribution_name,
         gap_plan=gap_plan,
+        output_package_name=output_package_name,
+        package_root=Path(p5.get("package_root")) if p5.get("package_root") else None,
+        source_project_root=primary,
     )
     return {
         "stopped_after": 7,

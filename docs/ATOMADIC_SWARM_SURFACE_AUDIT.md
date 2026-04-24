@@ -3,7 +3,7 @@
 **Date:** 2026-04-22  
 **Scope:** Workspace `C:\!atomadic` controlling surfaces: Cursor hooks/rules, ASS-ADE agent prompts (`agents/`), harness scripts, MCP/Nexus docs, alignment with [`ASS_ADE_SHIP_PLAN.md`](../ASS_ADE_SHIP_PLAN.md) and [`ASS_ADE_GOAL_PIPELINE.md`](../ASS_ADE_GOAL_PIPELINE.md).
 
-**Non-scope:** Deleting the **25 ASS-ADE pipeline agents (00–24)** — they are the intentional monadic/swarm chain. This audit **aligns** them; it does not replace product code.
+**Non-scope:** Deleting the ASS-ADE pipeline agents. Agents 00-24 are the intentional monadic/swarm chain; agents 25-28 are temporary tiny cleanup lanes. This audit **aligns** them; it does not replace product code.
 
 ---
 
@@ -11,9 +11,9 @@
 
 | Zone | Content | Agents / tools |
 |------|---------|------------------|
-| **Private / UEP / MHED-Codex** | Sovereign IP, unreleased engines, internal plans | Swarm prompts under [`agents/`](../agents), `.ato-plans/`, UEP under [`!atomadic-uep`](../!atomadic-uep) |
+| **Private / UEP / Sovereign Codex** | Sovereign IP, unreleased engines, internal plans | Swarm prompts under [`agents/`](../agents), `.ato-plans/`, UEP under [`!atomadic-uep`](../!atomadic-uep) |
 | **Public scrubbed** | Marketable names (e.g. Interpreter), AAAA-Nexus contracts | [`agents/NEXUS_SWARM_MCP.md`](../agents/NEXUS_SWARM_MCP.md), MCP `user-aaaa-nexus` |
-| **ASS-ADE product** | CNA/monadic emit, assimilate | [`ass-ade-unified`](../ass-ade-v1.1/src/ass_ade_v11/a4_sy_orchestration/unified_cli.py), [`ass-ade-v1.1`](../ass-ade-v1.1) book |
+| **ASS-ADE product** | CNA/monadic emit, assimilate | `ass-ade`, backed by [`unified_cli.py`](../ass-ade-v1.1/src/ass_ade_v11/a4_sy_orchestration/unified_cli.py) |
 
 **MAP = TERRAIN:** No stubs in shipped paths; unknowns → gap file or refuse ([`agents/_PROTOCOL.md`](../agents/_PROTOCOL.md), [`agents/ASS_ADE_MONADIC_CODING.md`](../agents/ASS_ADE_MONADIC_CODING.md)).
 
@@ -46,7 +46,8 @@
 
 | Asset | Count / role |
 |-------|----------------|
-| `00`–`24` `*.prompt.md` | **25** single-purpose agents (QK→SY chain) |
+| `00`-`24` `*.prompt.md` | **25** single-purpose agents (QK->SY chain) |
+| `25`-`28` `*.prompt.md` | **4** tiny consolidation lanes for docs, prompts, tests, and duplicate-install notes |
 | [`INDEX.md`](../agents/INDEX.md) | Chain diagram, envelopes, §11 Nexus |
 | [`_PROTOCOL.md`](../agents/_PROTOCOL.md), `NEXUS_SWARM_MCP.md`, `ASS_ADE_MONADIC_CODING.md` | Governance + MCP + monadic law |
 | [`build_swarm_registry.json`](../agents/build_swarm_registry.json) | Cursor bridge metadata |
@@ -79,7 +80,7 @@ Cursor / Claude **global** config lives outside this repo. Operators should veri
 
 | # | Action |
 |---|--------|
-| A1 | Add [`.cursor/rules/atomadic-swarm.mdc`](../.cursor/rules/atomadic-swarm.mdc) (workspace root) — Cursor rule for swarm + ship plan + `ass-ade-unified` when editing listed globs. |
+| A1 | Add [`.cursor/rules/atomadic-swarm.mdc`](../.cursor/rules/atomadic-swarm.mdc) (workspace root) — Cursor rule for swarm + ship plan + `ass-ade` when editing listed globs. |
 | A2 | Add [`agents/README.md`](../agents/README.md) — how to run sync, read INDEX, obey path bindings. |
 | A3 | Extend [`agents/ATOMADIC_PATH_BINDINGS.md`](../agents/ATOMADIC_PATH_BINDINGS.md) — `ATOMADIC_NEXUS_WORKSPACE` for second umbrella. |
 | A4 | Update [`agents/INDEX.md`](../agents/INDEX.md) — remove hardcoded `c:\!aaaa-nexus` path; reference assimilate + ship docs. |
@@ -91,7 +92,7 @@ Cursor / Claude **global** config lives outside this repo. Operators should veri
 ## 4. Recommended operator order (before executing ship plan)
 
 1. Read [`AGENTS.md`](../AGENTS.md) → [`ASS_ADE_SHIP_PLAN.md`](../ASS_ADE_SHIP_PLAN.md).  
-2. `pip install -e ".[dev]"` from repo root (T12 spine) + optional `pip install -e ./ass-ade-v1`; then `ass-ade-unified doctor`.  
+2. `pip install -e ".[dev]"` from repo root; then `ass-ade doctor`.  
 3. `python agents/sync_build_swarm_to_cursor.py`  
 4. `python agents/check_swarm_prompt_alignment.py`  
 5. Open Cursor **Hooks** output once to confirm `swarm_signal.py` exits 0.  

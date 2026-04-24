@@ -18,7 +18,7 @@ Read `AGENTS.md`, `.ato-plans/active/ass-ade-ship-nexus-github-20260422/plan.md`
 
 ```bash
 python scripts/ship_readiness_audit.py
-ass-ade-unified ade ship-audit --staging-root C:\!aaaa-nexus\!ass-ade
+ass-ade ade ship-audit --staging-root C:\!aaaa-nexus\!ass-ade
 ```
 
 ## Verdicts

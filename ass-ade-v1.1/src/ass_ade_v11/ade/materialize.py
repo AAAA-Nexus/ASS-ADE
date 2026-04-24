@@ -120,7 +120,7 @@ def _write_ade_readme(ade: Path, source: Path, cursor_installed: bool) -> None:
     ch = f"`{ade / 'cursor-hooks'}`" + (
         f" and copied into `.cursor/hooks/`"
         if cursor_installed
-        else f" (run `ass-ade-unified ade install-cursor` to push into `.cursor/hooks`)"
+        else f" (run `ass-ade ade install-cursor` to push into `.cursor/hooks`)"
     )
     body = f"""# ADE / Atomadic operator stack (shipped with ASS-ADE)
 
@@ -146,7 +146,7 @@ and (optional) the strict ADE harness.
 `swarm_signal.py` expects to live at **`<repo>/.cursor/hooks/swarm_signal.py`**
 so `_REPO_ROOT` resolves to your workspace. Do **not** run hooks from inside
 `./.ade/cursor-hooks` for daily work; install to `.cursor/hooks` or use
-`ass-ade-unified ade install-cursor`.
+`ass-ade ade install-cursor`.
 
 ## Cross-IDE (Cursor + VS Code)
 
@@ -183,7 +183,7 @@ def materialize_dotted_ade(
     if root is None:
         raise FileNotFoundError(
             "Could not find monorepo root (need agents/INDEX.md). Set ATOMADIC_WORKSPACE, "
-            "ASS_ADE_MONOREPO, or run `ass-ade-unified ade materialize --source PATH` from "
+            "ASS_ADE_MONOREPO, or run `ass-ade ade materialize --source PATH` from "
             "a checkout of the ass-ade / Atomadic tree; PyPI sdist-only trees need that path."
         )
 

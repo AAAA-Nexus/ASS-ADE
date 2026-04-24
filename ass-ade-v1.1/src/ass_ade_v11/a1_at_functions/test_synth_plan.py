@@ -3,17 +3,23 @@
 from __future__ import annotations
 
 import json
+import textwrap
 from pathlib import Path
 from typing import Any
 
 
-def qualname_for_src_py(py_file: Path, repo_root: Path) -> str:
-    """Map ``src/ass_ade_v11/.../*.py`` to dotted import name."""
-    rel = py_file.relative_to(repo_root / "src").with_suffix("")
+def _qualname_for_package_py(py_file: Path, package_root: Path, package_name: str) -> str:
+    rel = py_file.relative_to(package_root).with_suffix("")
     parts = list(rel.parts)
+    parts.insert(0, package_name)
     if parts[-1] == "__init__":
         parts = parts[:-1]
     return ".".join(parts)
+
+
+def qualname_for_src_py(py_file: Path, repo_root: Path) -> str:
+    """Map ``src/ass_ade_v11/.../*.py`` to dotted import name."""
+    return _qualname_for_package_py(py_file, repo_root / "src" / "ass_ade_v11", "ass_ade_v11")
 
 
 def _is_vendor_cursor_hook_py(path: Path, ass_pkg: Path) -> bool:
@@ -38,6 +44,16 @@ def list_expected_qualnames(repo_root: Path) -> list[str]:
     seen: set[str] = set()
     for f in iter_src_py_files(repo_root):
         seen.add(qualname_for_src_py(f, repo_root))
+    return sorted(seen)
+
+
+def list_expected_qualnames_for_package(package_root: Path, package_name: str) -> list[str]:
+    """Sorted unique import paths for every Python file under one emitted package root."""
+    seen: set[str] = set()
+    for f in sorted(package_root.rglob("*.py")):
+        if f.name == "__pycache__":
+            continue
+        seen.add(_qualname_for_package_py(f, package_root, package_name))
     return sorted(seen)
 
 
@@ -66,3 +82,35 @@ def plan_manifest_payload(repo_root: Path) -> str:
     """Stable JSON text for ``_qualnames.json``."""
     names = list_expected_qualnames(repo_root)
     return json.dumps(names, indent=2, ensure_ascii=True) + "\n"
+
+
+def plan_manifest_payload_for_package(package_root: Path, package_name: str) -> str:
+    names = list_expected_qualnames_for_package(package_root, package_name)
+    return json.dumps(names, indent=2, ensure_ascii=True) + "\n"
+
+
+def generated_smoke_test_source() -> str:
+    """Stable pytest smoke test used by emitted package layouts."""
+    return textwrap.dedent(
+        '''\
+        """Import smoke tests — manifest driven (regenerate via ``ass-ade book synth-tests``)."""
+
+        from __future__ import annotations
+
+        import importlib
+        import json
+        from pathlib import Path
+
+        import pytest
+
+        _MAN = Path(__file__).resolve().parent / "_qualnames.json"
+        QUALNAMES: list[str] = json.loads(_MAN.read_text(encoding="utf-8"))
+
+
+        @pytest.mark.generated_smoke
+        @pytest.mark.parametrize("qualname", QUALNAMES)
+        def test_import_smoke(qualname: str) -> None:
+            mod = importlib.import_module(qualname)
+            assert mod is not None
+        '''
+    )

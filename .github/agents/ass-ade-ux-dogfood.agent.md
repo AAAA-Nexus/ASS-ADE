@@ -29,13 +29,13 @@ Your job is to test the product the way a real operator would experience it, not
 
 ## Primary surfaces
 
-- `ass-ade-unified studio chat --dir <sandbox>`
-- `ass-ade-unified studio rebuild`
-- `ass-ade-unified studio enhance`
-- `ass-ade-unified studio build`
-- `ass-ade-unified studio design`
-- `ass-ade-unified studio blueprint`
-- `ass-ade-unified studio tutorial`
+- `ass-ade chat --dir <sandbox>`
+- `ass-ade rebuild`
+- `ass-ade enhance`
+- `ass-ade build`
+- `ass-ade design`
+- `ass-ade blueprint`
+- `ass-ade tutorial`
 
 ## Rules
 

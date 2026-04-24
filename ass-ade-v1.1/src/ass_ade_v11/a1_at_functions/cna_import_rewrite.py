@@ -45,6 +45,35 @@ def _safe_resolve_path(p: Path) -> Path:
         return p
 
 
+def _package_prefix(prefix: str | None) -> str:
+    return f"{prefix.strip('.')}." if prefix else ""
+
+
+def _qualified_module_name(
+    tier: str,
+    stem: str,
+    *,
+    package_prefix: str | None = None,
+) -> str:
+    return f"{_package_prefix(package_prefix)}{tier}.{stem}"
+
+
+def _candidate_search_roots(root: Path) -> list[Path]:
+    """Return plausible import bases for project roots and ``src`` layouts."""
+    roots: list[Path] = []
+    seen: set[str] = set()
+    for candidate in (root, root / "src"):
+        try:
+            key = candidate.resolve().as_posix()
+        except OSError:
+            key = candidate.as_posix()
+        if key in seen:
+            continue
+        seen.add(key)
+        roots.append(candidate)
+    return roots
+
+
 @dataclass(frozen=True)
 class CNAImportTarget:
     tier: str
@@ -52,9 +81,12 @@ class CNAImportTarget:
     component_id: str
     export_name: str
 
-    @property
-    def qualified_module(self) -> str:
-        return f"{self.tier}.{self.stem}"
+    def qualified_module(self, *, package_prefix: str | None = None) -> str:
+        return _qualified_module_name(
+            self.tier,
+            self.stem,
+            package_prefix=package_prefix,
+        )
 
 
 def build_cna_import_index(plan: dict[str, Any]) -> dict[tuple[str, str], CNAImportTarget]:
@@ -104,12 +136,12 @@ def resolve_import_from_module(
     if top in _STDLIB_TOP:
         return None
     for root in source_roots:
-        r = Path(root).resolve()
-        for cand in _candidate_module_files(module, r):
-            key = (cand.as_posix(), name.lower())
-            hit = index.get(key)
-            if hit is not None:
-                return hit
+        for search_root in _candidate_search_roots(Path(root).resolve()):
+            for cand in _candidate_module_files(module, search_root):
+                key = (cand.resolve().as_posix(), name.lower())
+                hit = index.get(key)
+                if hit is not None:
+                    return hit
     return None
 
 
@@ -117,11 +149,12 @@ def _module_paths_absolute(module: str, roots: list[Path]) -> list[Path]:
     out: list[Path] = []
     seen: set[str] = set()
     for root in roots:
-        for cand in _candidate_module_files(module, Path(root).resolve()):
-            px = cand.resolve().as_posix()
-            if px not in seen:
-                seen.add(px)
-                out.append(cand)
+        for search_root in _candidate_search_roots(Path(root).resolve()):
+            for cand in _candidate_module_files(module, search_root):
+                px = cand.resolve().as_posix()
+                if px not in seen:
+                    seen.add(px)
+                    out.append(cand)
     return out
 
 
@@ -228,10 +261,12 @@ class _AssimilateImportRewriter(ast.NodeTransformer):
         roots: list[Path],
         stats: dict[str, int],
         owning_source: Path | None,
+        package_prefix: str | None = None,
     ) -> None:
         self._index = index
         self._roots = [_safe_resolve_path(Path(r)) for r in roots]
         self._stats = stats
+        self._package_prefix = package_prefix
         try:
             self._owning = Path(owning_source).resolve() if owning_source else None
         except OSError:
@@ -245,7 +280,7 @@ class _AssimilateImportRewriter(ast.NodeTransformer):
         if len(tgts) != 1:
             return None
         tgt = tgts[0]
-        q = f"{tgt.tier}.{tgt.stem}"
+        q = tgt.qualified_module(package_prefix=self._package_prefix)
         if alias.asname:
             bind = alias.asname
         elif "." in alias.name:
@@ -352,7 +387,15 @@ class _AssimilateImportRewriter(ast.NodeTransformer):
             als = [ast.alias(n) for n in uniq]
             new_nodes.append(
                 ast.copy_location(
-                    ast.ImportFrom(module=f"{tier}.{stem}", names=als, level=0),
+                    ast.ImportFrom(
+                        module=_qualified_module_name(
+                            tier,
+                            stem,
+                            package_prefix=self._package_prefix,
+                        ),
+                        names=als,
+                        level=0,
+                    ),
                     node,
                 )
             )
@@ -404,7 +447,15 @@ class _AssimilateImportRewriter(ast.NodeTransformer):
         for (tier, stem), als in sorted(groups.items()):
             new_nodes.append(
                 ast.copy_location(
-                    ast.ImportFrom(module=f"{tier}.{stem}", names=als, level=0),
+                    ast.ImportFrom(
+                        module=_qualified_module_name(
+                            tier,
+                            stem,
+                            package_prefix=self._package_prefix,
+                        ),
+                        names=als,
+                        level=0,
+                    ),
                     node,
                 )
             )
@@ -429,6 +480,7 @@ def rewrite_python_imports_in_body(
     source_roots: list[Path],
     index: dict[tuple[str, str], CNAImportTarget],
     owning_source_file: str | Path | None = None,
+    package_prefix: str | None = None,
 ) -> tuple[str, dict[str, int]]:
     """Parse *body* and rewrite third-party (ingested) imports into materialized CNA modules.
 
@@ -446,7 +498,13 @@ def rewrite_python_imports_in_body(
         tree = ast.parse(body)
     except SyntaxError:
         return body, {"imports_rewritten": 0, "ast_error": 1}
-    rw = _AssimilateImportRewriter(index, source_roots, stats, owning)
+    rw = _AssimilateImportRewriter(
+        index,
+        source_roots,
+        stats,
+        owning,
+        package_prefix=package_prefix,
+    )
     new_tree = rw.visit(tree)
     ast.fix_missing_locations(new_tree)
     try:
@@ -464,10 +522,11 @@ def build_prepended_import_lines(
     owning_source_file: str,
     index: dict[tuple[str, str], CNAImportTarget],
     source_roots: list[Path],
+    package_prefix: str | None = None,
 ) -> tuple[list[str], dict[str, int]]:
     """Synthesize ``from <tier>.<stem> import …`` for file-level deps (enrich ``imports``)."""
-    stats = {"prepended": 0, "unresolved": 0}
-    seen: set[tuple[str, str, str]] = set()
+    stats = {"prepended": 0, "unresolved": 0, "preserved": 0}
+    seen_lines: set[str] = set()
     lines: list[str] = []
     _ = owning_source_file  # reserved for future relative-import / same-file filtering
 
@@ -476,19 +535,41 @@ def build_prepended_import_lines(
             continue
         parsed = _parse_flat_import_ref(raw)
         if parsed is None:
+            raw_mod = raw.strip()
+            if raw_mod and "." not in raw_mod and raw_mod.isidentifier() and not keyword.iskeyword(raw_mod):
+                line = f"import {raw_mod}"
+                if line not in seen_lines:
+                    seen_lines.add(line)
+                    lines.append(line)
+                    stats["prepended"] += 1
+                    stats["preserved"] += 1
             continue
         mod, nm = parsed
         if mod.split(".", 1)[0] in _STDLIB_TOP:
+            line = f"from {mod} import {nm}"
+            if line in seen_lines:
+                continue
+            seen_lines.add(line)
+            lines.append(line)
+            stats["prepended"] += 1
+            stats["preserved"] += 1
             continue
         hit = resolve_import_from_module(mod, nm, index=index, source_roots=source_roots)
         if hit is None:
+            line = f"from {mod} import {nm}"
+            if line in seen_lines:
+                continue
+            seen_lines.add(line)
+            lines.append(line)
+            stats["prepended"] += 1
+            stats["preserved"] += 1
             stats["unresolved"] += 1
             continue
-        dedupe = (hit.tier, hit.stem, nm)
-        if dedupe in seen:
+        line = f"from {hit.qualified_module(package_prefix=package_prefix)} import {nm}"
+        if line in seen_lines:
             continue
-        seen.add(dedupe)
-        lines.append(f"from {hit.qualified_module} import {nm}")
+        seen_lines.add(line)
+        lines.append(line)
         stats["prepended"] += 1
 
     return lines, stats
@@ -523,6 +604,7 @@ def assimilate_component_body(
     *,
     gap_plan: dict[str, Any],
     source_roots: list[Path],
+    package_prefix: str | None = None,
 ) -> tuple[str, dict[str, Any]]:
     """Rewrite imports for one materialized component; returns body + receipt.
 
@@ -543,13 +625,18 @@ def assimilate_component_body(
     owning = str(sym.get("path") or "")
 
     prepend, pstats = build_prepended_import_lines(
-        prop, owning_source_file=owning, index=index, source_roots=source_roots
+        prop,
+        owning_source_file=owning,
+        index=index,
+        source_roots=source_roots,
+        package_prefix=package_prefix,
     )
     body2, rstats = rewrite_python_imports_in_body(
         body,
         source_roots=source_roots,
         index=index,
         owning_source_file=owning or None,
+        package_prefix=package_prefix,
     )
 
     parts: list[str] = []

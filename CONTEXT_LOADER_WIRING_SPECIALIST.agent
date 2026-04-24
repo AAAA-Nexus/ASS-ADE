@@ -1,0 +1,9 @@
+---
+description: Agent manifest for the Context Loader & Wiring Specialist. Registers the agent for use in Atomadic/ASS-ADE build and rebuild pipelines.
+---
+
+name: Context Loader & Wiring Specialist
+role: context-loader-wiring-specialist
+entry: CONTEXT_LOADER_WIRING_SPECIALIST.agent.md
+instructions: CONTEXT_LOADER_WIRING_SPECIALIST.instructions.md
+prompt: CONTEXT_LOADER_WIRING_SPECIALIST.prompt.md

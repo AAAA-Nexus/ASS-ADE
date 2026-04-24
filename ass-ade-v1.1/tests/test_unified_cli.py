@@ -1,11 +1,14 @@
 from __future__ import annotations
 
 import json
+import re
 import shutil
 from pathlib import Path
 
 import pytest
 from typer.testing import CliRunner
+
+_ANSI_RE = re.compile(r"\x1b\[[0-9;]*[a-zA-Z]")
 
 from ass_ade_v11.a4_sy_orchestration.unified_cli import app as unified_app
 
@@ -19,7 +22,7 @@ def test_unified_cli_help_lists_book_and_doctor() -> None:
     assert "book" in out
     assert "doctor" in out
     assert "assimilate" in out
-    assert "atomadic" in out
+    assert "rebuild" in out
 
 
 @pytest.mark.cli
@@ -27,7 +30,7 @@ def test_unified_book_delegate_help() -> None:
     runner = CliRunner()
     r = runner.invoke(unified_app, ["book", "rebuild", "--help"])
     assert r.exit_code == 0
-    out = (r.stdout or r.output or "").lower()
+    out = _ANSI_RE.sub("", r.stdout or r.output or "").lower()
     assert "stop-after" in out
 
 
@@ -38,17 +41,27 @@ def test_unified_doctor_runs() -> None:
     assert r.exit_code == 0
     out = r.stdout or r.output or ""
     assert "monadic pipeline" in out.lower()
-    assert "atomadic engine" in out.lower()
+    assert "engine package" in out.lower()
 
 
 @pytest.mark.cli
 def test_unified_atomadic_shim_forwards_build_help() -> None:
-    """``ass-ade-unified atomadic …`` forwards argv to the Click ``atomadic`` group."""
+    """Legacy ``ass-ade atomadic …`` forwards argv to the bundled engine."""
     runner = CliRunner()
     r = runner.invoke(unified_app, ["atomadic", "build", "--help"])
     assert r.exit_code == 0, r.stdout + (r.stderr or "")
     out = (r.stdout or r.output or "").lower()
     assert "synthesize" in out or "build" in out
+
+
+@pytest.mark.cli
+def test_unified_top_level_build_alias_forwards_help() -> None:
+    """``ass-ade build …`` remains a compatibility alias for ``rebuild``."""
+    runner = CliRunner()
+    r = runner.invoke(unified_app, ["build", "--help"])
+    assert r.exit_code == 0, r.stdout + (r.stderr or "")
+    out = (r.stdout or r.output or "").lower()
+    assert "rebuild any codebase" in out
 
 
 @pytest.mark.cli
