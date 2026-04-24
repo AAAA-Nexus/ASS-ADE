@@ -169,8 +169,25 @@ DEFAULT_AAAA_NEXUS_MODEL = "falcon3-10B-1.58"
 
 # ── App callback: no-subcommand → Atomadic interactive mode ───────────────────
 
+def _version_callback(value: bool) -> None:
+    if value:
+        import importlib.metadata
+        try:
+            ver = importlib.metadata.version("ass-ade")
+        except importlib.metadata.PackageNotFoundError:
+            ver = "1.0.0"
+        console.print(f"ass-ade {ver}")
+        raise typer.Exit()
+
+
 @app.callback(invoke_without_command=True)
-def _app_callback(ctx: typer.Context) -> None:
+def _app_callback(
+    ctx: typer.Context,
+    version: bool = typer.Option(
+        False, "--version", "-V", callback=_version_callback, is_eager=True,
+        help="Show version and exit.",
+    ),
+) -> None:
     """Launch Atomadic if no subcommand is given."""
     if ctx.invoked_subcommand is None:
         cwd = Path(".").resolve()
@@ -491,6 +508,10 @@ def credits(
             result.raise_for_status()
             data = result.json()
     except httpx.HTTPStatusError as exc:
+        if exc.response.status_code == 404:
+            console.print("[yellow]Credits service not yet available for this account tier.[/yellow]")
+            console.print("Visit [cyan]https://atomadic.tech[/cyan] for account management.")
+            raise typer.Exit(code=0) from exc
         if exc.response.status_code in (401, 402):
             console.print("[red]Authentication failed.[/red]\n")
             console.print(_CREDITS_BUY_MESSAGE)
@@ -3751,6 +3772,21 @@ def pay(
     _, settings = _resolve_config(config)
     chain = get_chain_config()
 
+    # Windows Git-bash converts leading /path to C:/Git-root/path; recover original
+    import os as _os_pay
+    if _os_pay.name == 'nt' and len(endpoint) >= 2 and endpoint[1] == ':':
+        import re as _re_pay
+        _parts = endpoint.replace('\\', '/').split('/')
+        for _i, _p in enumerate(_parts):
+            if _p and _p[:1] == 'v' and len(_p) > 1 and _p[1:2].isdigit():
+                endpoint = '/' + '/'.join(_parts[_i:])
+                break
+        else:
+            endpoint = '/' + '/'.join(_parts[2:]) if len(_parts) > 2 else endpoint
+    # Ensure path starts with / for proper URL construction
+    if endpoint and not endpoint.startswith('/') and not endpoint.startswith('http'):
+        endpoint = '/' + endpoint
+
     console.print(f"[bold]x402 Payment Demo[/bold] — {chain['network_name']}")
     console.print(f"Calling: {settings.nexus_base_url}{endpoint}")
     console.print()
@@ -6651,7 +6687,12 @@ def lora_credit(
             balance = client.lora_credit_balance(agent_id=settings.agent_id)
             claim = client.lora_reward_claim(agent_id=settings.agent_id)
     except Exception as exc:
-        console.print(f"[red]Error:[/red] {exc}")
+        _msg = str(exc)
+        if "404" in _msg:
+            console.print("[yellow]LoRA credit service not yet available for this account.[/yellow]")
+            console.print("Visit [cyan]https://atomadic.tech[/cyan] for account management.")
+        else:
+            console.print(f"[red]Error:[/red] {exc}")
         return
     t = Table(title=f"Nexus Credit — {settings.agent_id}")
     t.add_column("Metric")

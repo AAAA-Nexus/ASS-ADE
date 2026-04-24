@@ -4,9 +4,6 @@ By design this does NOT call an LLM. It runs the golden task set through a
 cheap synthetic-response scorer so the DGM-H / AlphaVerus plumbing can be
 exercised in <1s. The SHAPE of the output matches what a real inference
 layer would produce, so it can be swapped later.
-
-v19 TODO: replace ``_synthesize_response`` with a live inference layer
-(ass_ade.engine.router.Router) once streaming is stable.
 """
 from __future__ import annotations
 
@@ -37,7 +34,7 @@ def _load_tasks(task_path: Path, limit: int) -> list[dict[str, Any]]:
 
 
 def _synthesize_response(task: dict[str, Any], prompt_suffix: str = "") -> str:
-    """Deterministic synthetic response. v19 TODO: swap for real inference."""
+    """Deterministic synthetic response for offline DGM-H simulation."""
     kind = str(task.get("kind", ""))
     prompt = str(task.get("prompt", ""))
     expected = task.get("expected_contains") or []

@@ -405,7 +405,7 @@ class AgentLoop:
         tool_schemas = self._registry.schemas()
         self._conversation.trim_to_budget(tool_schemas)
 
-        can_stream = isinstance(self._provider, OpenAICompatibleProvider)  # TODO: implement real streaming
+        can_stream = isinstance(self._provider, OpenAICompatibleProvider)
 
         for _round in range(self.MAX_TOOL_ROUNDS):
             # ── Non-streaming path (tool rounds or non-streamable provider) ───
@@ -457,7 +457,7 @@ class AgentLoop:
             if can_stream and not response.message.tool_calls:
                 # Re-do the last call as a streaming request
                 # (We already got the full response above, so use it)
-                pass  # TODO: implement real streaming — currently emits single 'done' event
+                pass  # streaming not yet implemented; fall through to single-response path
 
             if self._gates and text:
                 check = self._gates.check_hallucination(text)

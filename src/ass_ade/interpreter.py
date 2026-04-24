@@ -1928,7 +1928,7 @@ def _build_startup_greeting(
     cert_info = scan["cert_info"]
     component_count = scan["component_count"]
 
-    header = "Atomadic · ASS-ADE v0.0.1"
+    header = "Atomadic · ASS-ADE 1.0.0"
     suggestions: list[str] = []
 
     if has_tier and cert_info:
