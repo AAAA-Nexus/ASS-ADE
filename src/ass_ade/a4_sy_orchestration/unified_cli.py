@@ -359,7 +359,12 @@ def assimilate_cmd(
 
 
 @app.command("doctor")
-def doctor_cmd() -> None:
+def doctor_cmd(
+    no_remote: Annotated[
+        bool,
+        typer.Option("--no-remote", help="Skip remote connectivity checks (for offline/CI use)."),
+    ] = False,
+) -> None:
     """Show which ASS-ADE surfaces are available in this environment."""
     _ensure_bundled_engine_first()
     checkout_root = _checkout_root()
