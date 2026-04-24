@@ -316,5 +316,16 @@ def default_registry(working_dir: str | None = None) -> ToolRegistry:
     registry.register(PromptSectionTool(cwd))
     registry.register(PromptDiffTool(cwd))
     registry.register(PromptProposeTool(cwd))
+    # Personal assistant MCP tools
+    from ass_ade.tools.assistant_tools import (
+        AssistantInsightsTool,
+        AssistantStatusTool,
+        AssistantTasksTool,
+        HarvestTool,
+    )
+    registry.register(HarvestTool(cwd))
+    registry.register(AssistantStatusTool(cwd))
+    registry.register(AssistantTasksTool(cwd))
+    registry.register(AssistantInsightsTool(cwd))
     _register_generated_tools(registry, cwd)
     return registry

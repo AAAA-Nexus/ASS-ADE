@@ -409,6 +409,23 @@ from ass_ade.ade.cli import app as ade_app  # noqa: E402  — after `app` exists
 
 app.add_typer(ade_app, name="ade")
 
+# --- OpenClaw parity + personal assistant surface ---
+from ass_ade.a4_sy_orchestration.sessions_cmd import app as sessions_app  # noqa: E402
+from ass_ade.a4_sy_orchestration.cron_cmd import app as cron_app  # noqa: E402
+from ass_ade.a4_sy_orchestration.update_cmd import app as update_app  # noqa: E402
+from ass_ade.a4_sy_orchestration.notify_cmd import app as notify_app  # noqa: E402
+from ass_ade.a4_sy_orchestration.assistant_cmd import (  # noqa: E402
+    assistant_app,
+    harvest_app,
+)
+
+app.add_typer(sessions_app, name="sessions")
+app.add_typer(cron_app, name="cron")
+app.add_typer(update_app, name="update")
+app.add_typer(notify_app, name="notify")
+app.add_typer(assistant_app, name="assistant")
+app.add_typer(harvest_app, name="harvest")
+
 _ensure_bundled_engine_first()
 
 try:  # pragma: no cover - optional legacy Typer studio (v1 tree)

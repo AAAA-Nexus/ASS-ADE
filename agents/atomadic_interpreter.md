@@ -11,15 +11,15 @@
 This section is generated at prompt-build time from the code on disk.
 Treat it as the authoritative capability map for this session.
 
-Generated at: 2026-04-24T11:37:58Z
-Working directory: C:\!aaaa-nexus\ASS-ADE-SEED
-Resolved capability root: C:\!aaaa-nexus\ASS-ADE-SEED
+Generated at: 2026-04-24T19:51:50Z
+Working directory: C:\!aaaa-nexus\ASS-ADE-SEED\.claude\worktrees\modest-williams-b4f42e
+Resolved capability root: C:\!aaaa-nexus\ASS-ADE-SEED\.claude\worktrees\modest-williams-b4f42e
 
 ### Capability summary
 
-- CLI command paths: 232
-- Local agent tools: 13
-- MCP stdio tools: 25
+- CLI command paths: 233
+- Local agent tools: 17
+- MCP stdio tools: 29
 - Repo agents: 2
 - Skills: 0
 - Hooks: 8
@@ -57,7 +57,7 @@ Resolved capability root: C:\!aaaa-nexus\ASS-ADE-SEED
 
 ### Top-level CLI groups
 
-- `a2a`, `aegis`, `agent`, `agents-refresh`, `assimilate`, `bitnet`, `blueprint`, `bridge`, `certify`, `chat`, `cherry-pick`, `compliance`, `context`, `control`, `credits`, `cycle`, `data`, `defi`, `design`, `dev`, `discovery`, `docs`, `doctor`, `eco-scan`, `enhance`, `escrow`, `feature`, `finish`, `forge`, `identity`, `init`, `lint`, `llm`, `lora-credit`, `lora-status`, `lora-train`, `mcp`, `memory`, `mev`, `nexus`, `optimize`, `oracle`, `pay`, `pipeline`, `plan`, `prompt`, `protocol`, `providers`, `ratchet`, `rebuild`, `recon`, `repo`, `reputation`, `rollback`, `sam-status`, `scout`, `search`, `security`, `selfbuild`, `setup`, +13 more
+- `a2a`, `aegis`, `agent`, `agents-refresh`, `assimilate`, `bitnet`, `blueprint`, `bridge`, `certify`, `chat`, `cherry-pick`, `compliance`, `context`, `control`, `credits`, `cycle`, `data`, `defi`, `design`, `dev`, `discovery`, `docs`, `doctor`, `eco-scan`, `enhance`, `escrow`, `feature`, `finish`, `forge`, `identity`, `init`, `lint`, `llm`, `lora-credit`, `lora-status`, `lora-train`, `mcp`, `memory`, `mev`, `nexus`, `optimize`, `oracle`, `pay`, `pipeline`, `plan`, `prompt`, `protocol`, `providers`, `ratchet`, `rebuild`, `recon`, `repo`, `reputation`, `rollback`, `sam-status`, `scout`, `search`, `security`, `selfbuild`, `setup`, +14 more
 
 ### Runtime routing rules
 
@@ -273,12 +273,19 @@ Resolved capability root: C:\!aaaa-nexus\ASS-ADE-SEED
 - `prompt_section` - Extract a Markdown heading or XML tag section from an explicit prompt artifact.
 - `prompt_diff` - Compare an explicit prompt artifact to a baseline and return a redacted diff.
 - `prompt_propose` - Create a prompt self-improvement proposal for an explicit prompt artifact.
+- `harvest` - Crawl one or more directories (or the working directory) and extract research insights, action items, and TODO tasks fro
+- `assistant_status` - Return a summary of the personal assistant knowledge base: open tasks, total insights, base directory.
+- `assistant_tasks` - Return a list of action items and TODOs extracted from your files
+- `assistant_insights` - Return extracted research insights (decisions, actions, ideas, risks, questions) from the local knowledge base
 
 ### MCP stdio tools
 
 - `a2a_negotiate` - Compare the local ASS-ADE agent card with a remote agent card for A2A interoperability.
 - `a2a_validate` - Fetch and validate a remote agent card from a URL per the A2A specification.
 - `ask_agent` - Send a task to the ASS-ADE agent loop
+- `assistant_insights` - Return extracted research insights (decisions, actions, ideas, risks, questions) from the local knowledge base
+- `assistant_status` - Return a summary of the personal assistant knowledge base: open tasks, total insights, base directory.
+- `assistant_tasks` - Return a list of action items and TODOs extracted from your files
 - `certify_output` - Certify text output via AAAA-Nexus: hallucination oracle, ethics, compliance, and certification with lineage tracking.
 - `context_memory_query` - Query the local vector memory namespace.
 - `context_memory_store` - Store trusted text into the local vector memory namespace.
@@ -286,6 +293,7 @@ Resolved capability root: C:\!aaaa-nexus\ASS-ADE-SEED
 - `edit_file` - Edit a file by replacing exact text
 - `epiphany_breakthrough_cycle` - Epiphany → Breakthrough envelope: optional Phase 0 recon, planner track, and a versioned JSON document (epiphanies, hypo
 - `grep_search` - Search file contents for a regex pattern
+- `harvest` - Crawl one or more directories (or the working directory) and extract research insights, action items, and TODO tasks fro
 - `list_directory` - List files and directories
 - `map_terrain` - MAP = TERRAIN capability gate: verify required agents, hooks, skills, tools, harnesses, prompts, and instructions exist
 - `phase0_recon` - Never Code Blind gate: inspect the local codebase and require current technical-document source targets before capabilit
