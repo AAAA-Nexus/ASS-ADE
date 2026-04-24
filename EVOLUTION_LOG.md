@@ -13,3 +13,11 @@
 **Lane:** features -- missing docs, technical debt, new capabilities
 **Personality:** creative/additive (top 2 per cycle)
 **Python files changed:** 0
+
+## Evolution #37 [FEATURES] -- 2026-04-24 22:25 UTC
+**Enhancement:** missing_tests in src/ass_ade/a0_qk_constants/schemas.py
+**Applied:** 2 fixes
+**Design goal:** improve: missing_tests in src/ass_ade/a0_qk_constants/schemas.py, src/ass_ade/a0_qk_constants/tier_names.py
+**Lane:** features -- missing docs, technical debt, new capabilities
+**Personality:** creative/additive (top 2 per cycle)
+**Python files changed:** 0
