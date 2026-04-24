@@ -1,11 +1,14 @@
 from __future__ import annotations
 
 import json
+import re
 import shutil
 from pathlib import Path
 
 import pytest
 from typer.testing import CliRunner
+
+_ANSI_RE = re.compile(r"\x1b\[[0-9;]*[a-zA-Z]")
 
 from ass_ade_v11.a4_sy_orchestration.unified_cli import app as unified_app
 
@@ -27,7 +30,7 @@ def test_unified_book_delegate_help() -> None:
     runner = CliRunner()
     r = runner.invoke(unified_app, ["book", "rebuild", "--help"])
     assert r.exit_code == 0
-    out = (r.stdout or r.output or "").lower()
+    out = _ANSI_RE.sub("", r.stdout or r.output or "").lower()
     assert "stop-after" in out
 
 

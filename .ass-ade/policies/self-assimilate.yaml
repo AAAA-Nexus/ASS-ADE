@@ -1,0 +1,26 @@
+# Self-assimilation policy for the current ASS-ADE trunk.
+# As of 2026-04-23 this checkout contains the v1.1 spine plus the vendored
+# Atomadic engine; there is no sibling `ass-ade-v1/` root in-tree anymore.
+schema_version: "1"
+primary:
+  role: map
+  path: ass-ade-v1.1
+roots:
+  - path: ass-ade-v1.1
+    role: map
+    license_class: compatible_oss
+  - path: atomadic-engine
+    role: sibling
+    license_class: compatible_oss
+forbid_globs:
+  - "**/tests/**"
+  - "**/.pytest_basetemp/**"
+  - "**/.pytest_tmp/**"
+  - "**/pytest_tmp/**"
+  - "**/*.egg-info/**"
+  - "**/*-backup-*/**"
+  - "**/rebuild-outputs/**"
+  - "**/ass-ade-v1-test*/**"
+  - "**/__pycache__/**"
+max_file_bytes: 2000000
+binary_handling: forbid

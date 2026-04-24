@@ -31,7 +31,8 @@ Thumbs.db
 *.log
 
 # ASS-ADE tool state & generated output (not for tracking)
-.ass-ade/
+.ass-ade/state/
+.ass-ade/vector-memory/
 .ass-ade-rebuild-out/
 .ass-ade-*-selfbuilt*/
 _backup_ADE/

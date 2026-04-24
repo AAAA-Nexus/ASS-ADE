@@ -1,0 +1,21 @@
+{
+  "profile": "premium",
+  "nexus_base_url": "https://atomadic.tech",
+  "request_timeout_s": 20.0,
+  "agent_id": "ass-ade-local",
+  "agent_model": "",
+  "lse_enabled": true,
+  "tier_policy": {
+    "balanced": "nexus",
+    "fast": "nexus",
+    "deep": "nexus"
+  },
+  "provider_fallback_chain": [],
+  "providers": {},
+  "ollama_model": "helixqwen3_8b:latest",
+  "llm_priority": "free",
+  "llm_providers": [
+    "pollinations"
+  ],
+  "evolution_mode": "single"
+}
