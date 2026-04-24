@@ -6,7 +6,6 @@ import json
 from pathlib import Path
 
 import pytest
-from fastapi.testclient import TestClient
 
 from ass_ade.a2_mo_composites.block_registry import BlockRegistry
 from ass_ade.a3_og_features.atomadic_copilot import AtomadicCopilot, _offline_fallback_plan
@@ -260,11 +259,12 @@ fastapi = pytest.importorskip("fastapi")
 
 
 def _server(source_root: Path) -> TestClient:
+    from fastapi.testclient import TestClient as _TestClient
     from ass_ade.a2_mo_composites.ag_ui_bus import reset_bus
     from ass_ade.a3_og_features.ag_ui_server import build_app
 
     reset_bus()
-    return TestClient(build_app(working_dir=source_root))
+    return _TestClient(build_app(working_dir=source_root))
 
 
 def test_server_playground_blocks_lists_registry(tmp_path: Path) -> None:
