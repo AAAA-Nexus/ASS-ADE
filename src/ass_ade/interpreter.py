@@ -42,6 +42,8 @@ from ass_ade.agent.capabilities import (
     render_capability_prompt_section,
     render_atomadic_help,
 )
+from ass_ade.a2_mo_composites.personality_engine import PersonalityEngine
+from ass_ade.a2_mo_composites.episodic_memory import EpisodicStore
 
 # Ensure stdout/stderr use UTF-8 on Windows without replacing pytest/caller streams.
 for _stream in (sys.stdout, sys.stderr):
@@ -657,6 +659,8 @@ class Atomadic:
     working_dir: Path = field(default_factory=Path.cwd)
     history: list[Turn] = field(default_factory=list)
     memory: MemoryStore = field(default_factory=MemoryStore.load)
+    personality: PersonalityEngine = field(default_factory=PersonalityEngine.load)
+    episodes: EpisodicStore = field(default_factory=EpisodicStore.load)
     _pending_clarification: str | None = field(default=None, init=False, repr=False)
     _clarification_ctx: dict = field(default_factory=dict, init=False, repr=False)
     # Last enhance scan results (for "apply all" conversational follow-up)
@@ -668,6 +672,8 @@ class Atomadic:
     # Startup scan cache and suggestion list (set by run_interactive)
     _startup_scan: dict = field(default_factory=dict, init=False, repr=False)
     _startup_suggestions: list[str] = field(default_factory=list, init=False, repr=False)
+    # Skill runner (lazy-loaded on first use)
+    _skill_runner: Any = field(default=None, init=False, repr=False)
 
     # ── Public interface ───────────────────────────────────────────────────────
 
@@ -686,6 +692,37 @@ class Atomadic:
 
         tone = _detect_tone(text)
         lower_text = text.lower()
+
+        # ── Update personality signals from this message ───────────────────────
+        self.personality.update_from_input(text)
+
+        # ── Skill dispatch — checked before LLM for fast path ─────────────────
+        skill_runner = self._get_skills()
+        matched_skill = skill_runner.match(text)
+        if matched_skill is not None:
+            from ass_ade.a3_og_features.skill_runner import SkillContext
+            ctx = SkillContext(
+                user_input=text,
+                working_dir=self.working_dir,
+                tone=tone,
+                domain_level=self.personality.domain_level,
+                history=self.history,
+            )
+            print(f"\n🎯 Skill: {matched_skill.name} — {matched_skill.description}", flush=True)
+            print(flush=True)
+            raw_skill = skill_runner.run(matched_skill, ctx)
+            response = self.personality.shape_response(raw_skill)
+            turn = Turn(
+                user=text, tone=tone, intent=f"skill:{matched_skill.name}",
+                path=str(self.working_dir), command=[], output=raw_skill, response=response,
+            )
+            self.history.append(turn)
+            self.memory.update_from_turn(turn)
+            self.memory.append_history(turn)
+            self.memory.save()
+            if len(self.history) % 5 == 0:
+                self.episodes.record_episode(self.working_dir.name, self.history[-5:])
+            return response
 
         # ── Greeting intercept — project-aware, avoids generic LLM hello ─────
         _greeting_only = {"hello", "hi", "hey", "yo", "howdy", "sup", "greetings", "hiya"}
@@ -1039,6 +1076,7 @@ class Atomadic:
 
         raw_output, cmd = self._dispatch(intent, path, text, tone)
         response = self._postlude(intent, path, raw_output, tone)
+        response = self.personality.shape_response(response)
 
         turn = Turn(
             user=text, tone=tone, intent=intent, path=path,
@@ -1048,6 +1086,9 @@ class Atomadic:
         self.memory.update_from_turn(turn)
         self.memory.append_history(turn)
         self.memory.save()
+        # Record an episode every 5 meaningful turns
+        if len(self.history) % 5 == 0 and intent not in ("chat", "help"):
+            self.episodes.record_episode(self.working_dir.name, self.history[-5:])
         return response
 
     def _dispatch(
@@ -1227,13 +1268,33 @@ class Atomadic:
 
     def describe_self(self) -> str:
         try:
-            return render_atomadic_help(self.working_dir)
+            base = render_atomadic_help(self.working_dir)
         except Exception:
-            return (
+            base = (
                 "I'm Atomadic, the front door of ASS-ADE.\n\n"
                 "I can rebuild, design, document, lint, certify, enhance, scan, "
                 "and evolve codebases. Just tell me what you want in plain English."
             )
+        # Append skills summary
+        try:
+            skill_runner = self._get_skills()
+            skills = skill_runner.list_skills()
+            if skills:
+                skill_lines = ["\n\n**Built-in Skills** (auto-activated by keyword):"]
+                for s in skills:
+                    skill_lines.append(f"  `{s['name']}` — {s['description']}")
+                skill_lines.append("\nType `@skills` to list them, `@persona <mode>` to switch personality.")
+                base += "\n".join(skill_lines)
+        except Exception:
+            pass
+        return base
+
+    def _get_skills(self) -> Any:
+        """Lazy-load the SkillRunner for this working directory."""
+        if self._skill_runner is None:
+            from ass_ade.a3_og_features.skill_runner import SkillRunner
+            self._skill_runner = SkillRunner(self.working_dir)
+        return self._skill_runner
 
     # ── Internals ──────────────────────────────────────────────────────────────
 
@@ -2041,6 +2102,75 @@ def _run_setup_wizard(
         pass
 
 
+# ── @ meta-command handler ─────────────────────────────────────────────────────
+
+def _handle_at_command(agent: "Atomadic", cmd: str, arg: str) -> str:
+    """Dispatch REPL-level @ meta-commands without going through the agent loop."""
+    if cmd == "skills":
+        runner = agent._get_skills()
+        skills = runner.list_skills()
+        if not skills:
+            return "No skills loaded."
+        lines = ["**Available Skills**\n"]
+        for s in skills:
+            lines.append(f"- **{s['name']}** — {s['description']}\n  *(e.g. `{s['usage']}`)*")
+        return "\n".join(lines)
+
+    if cmd == "persona":
+        if not arg:
+            from ass_ade.a2_mo_composites.personality_engine import ALL_PERSONAS
+            available = ", ".join(ALL_PERSONAS)
+            current = agent.personality.persona
+            return f"**Current persona:** `{current}`\n\nAvailable: {available}\n\nUsage: `@persona <mode>`"
+        ok = agent.personality.set_persona(arg.lower())
+        if ok:
+            return f"**Persona set to `{arg.lower()}`.**"
+        from ass_ade.a2_mo_composites.personality_engine import ALL_PERSONAS
+        return f"Unknown persona `{arg}`. Available: {', '.join(ALL_PERSONAS)}"
+
+    if cmd == "remember":
+        if ":" in arg:
+            key, _, value = arg.partition(":")
+            agent.episodes.add_anchor(key.strip(), value.strip())
+            return f"**Anchored:** `{key.strip()}` → {value.strip()}"
+        return "Usage: `@remember <key>: <value>`"
+
+    if cmd == "forget":
+        if not arg:
+            return "Usage: `@forget <key>`"
+        removed = agent.episodes.remove_anchor(arg.strip())
+        if removed:
+            return f"**Anchor removed:** `{arg.strip()}`"
+        return f"No anchor found for `{arg.strip()}`."
+
+    if cmd in {"history", "episodes"}:
+        return agent.episodes.summarize()
+
+    if cmd == "personality":
+        return agent.personality.describe()
+
+    if cmd == "anchors":
+        anchors = agent.episodes.get_anchors()
+        if not anchors:
+            return "No anchors set. Use `@remember <key>: <value>` to add one."
+        lines = ["**Knowledge Anchors**\n"]
+        for k, v in anchors.items():
+            lines.append(f"- `{k}` → {v}")
+        return "\n".join(lines)
+
+    # Unknown command — list all available @ commands
+    return (
+        "**Available @ commands:**\n\n"
+        "- `@skills` — list all available skills\n"
+        "- `@persona <mode>` — switch persona (co-pilot, mentor, commander, architect, debug-buddy)\n"
+        "- `@remember <key>: <value>` — anchor a fact to memory\n"
+        "- `@forget <key>` — remove an anchor\n"
+        "- `@anchors` — list all anchored facts\n"
+        "- `@history` / `@episodes` — show past session summaries\n"
+        "- `@personality` — show current personality state\n"
+    )
+
+
 # ── Interactive session ────────────────────────────────────────────────────────
 
 def run_interactive(working_dir: Path | None = None) -> None:
@@ -2068,6 +2198,16 @@ def run_interactive(working_dir: Path | None = None) -> None:
     agent._startup_scan = scan
     greeting_text, suggestions = _build_startup_greeting(scan, agent.memory, wdir, is_first_visit)
 
+    # Personalise greeting if returning user
+    persona_greeting = agent.personality.greeting_prefix(agent.memory.user_profile.get("name"))
+    if not is_first_visit and persona_greeting:
+        greeting_text = greeting_text.replace("Welcome back to", persona_greeting + "\n\nWelcome back to")
+
+    # Include episodic working memory hint if relevant
+    ep_hint = agent.episodes.working_memory(wdir.name)
+    if ep_hint:
+        greeting_text += f"\n\n{ep_hint}"
+
     # Regenerate live capability doc so agent prompts and Claude Code context stay fresh
     try:
         from pathlib import Path as _Path
@@ -2089,15 +2229,18 @@ def run_interactive(working_dir: Path | None = None) -> None:
         from rich.markdown import Markdown as _Markdown
         console.print()
         console.print(f"[bold cyan]{greeting_text}[/bold cyan]")
-        console.print(f"\n[dim]Working dir: {wdir}   ·   type 'exit' to quit[/dim]\n")
+        console.print(f"\n[dim]Working dir: {wdir}   ·   type '@skills' for skills   ·   'exit' to quit[/dim]\n")
     else:
         print(f"\n{greeting_text}")
-        print(f"\nWorking dir: {wdir}   ·   type 'exit' to quit\n")
+        print(f"\nWorking dir: {wdir}   ·   type '@skills' for skills   ·   'exit' to quit\n")
 
     while True:
         try:
             user_input = input("you → ").strip()
         except (EOFError, KeyboardInterrupt):
+            # Record session episode on exit
+            if agent.history:
+                agent.episodes.record_episode(wdir.name, agent.history[-10:])
             msg = "\nGoodbye!"
             if use_rich and console:
                 console.print(f"[dim]{msg}[/dim]")
@@ -2106,12 +2249,28 @@ def run_interactive(working_dir: Path | None = None) -> None:
             break
 
         if user_input.lower() in {"exit", "quit", "bye", "q"}:
+            if agent.history:
+                agent.episodes.record_episode(wdir.name, agent.history[-10:])
             msg = "Goodbye!"
             if use_rich and console:
                 console.print(f"[dim]{msg}[/dim]")
             else:
                 print(msg)
             break
+
+        # ── @ meta-commands (not dispatched through the agent) ─────────────────
+        if user_input.startswith("@"):
+            parts = user_input[1:].strip().split(None, 1)
+            meta_cmd = parts[0].lower() if parts else ""
+            meta_arg = parts[1].strip() if len(parts) > 1 else ""
+            meta_output = _handle_at_command(agent, meta_cmd, meta_arg)
+            if use_rich and console:
+                console.print()
+                console.print(Markdown(meta_output))
+                console.print()
+            else:
+                print(f"\n{meta_output}\n")
+            continue
 
         if user_input.lower() in {"help", "?", "what can you do"}:
             desc = agent.describe_self()
