@@ -28,6 +28,8 @@ WidgetKind = Literal[
     "command_result",
     "personality_snapshot",
     "anchor_added",
+    "wiring_report",
+    "cherry_manifest",
 ]
 
 
@@ -102,6 +104,28 @@ class AnchorAddedCard(TypedDict, total=False):
     value: str
 
 
+class WiringReportCard(TypedDict, total=False):
+    """Emitted after a wire scan/apply completes."""
+    source_dir: str
+    violations_found: int
+    auto_fixed: int
+    would_fix: int
+    not_fixable: int
+    files_changed: int
+    files_to_change: int
+    verdict: str  # PASS | REFINE | DRY_RUN
+    dry_run: bool
+    manual_review_count: int
+
+
+class CherryManifestCard(TypedDict, total=False):
+    """Emitted when a cherry-pick manifest is created or refreshed."""
+    source_label: str
+    target_root: str
+    selected_count: int
+    actions: dict[str, int]  # assimilate/enhance/rebuild/skip totals
+
+
 # Export-by-name registry for runtime lookup (e.g. doc generation, validation)
 WIDGET_CARD_SCHEMAS: dict[str, type] = {
     "scout_report": ScoutReportCard,
@@ -112,4 +136,6 @@ WIDGET_CARD_SCHEMAS: dict[str, type] = {
     "command_result": CommandResultCard,
     "personality_snapshot": PersonalitySnapshotCard,
     "anchor_added": AnchorAddedCard,
+    "wiring_report": WiringReportCard,
+    "cherry_manifest": CherryManifestCard,
 }

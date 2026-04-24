@@ -32,7 +32,7 @@ def build_app(working_dir: Path | None = None):
     """Build the FastAPI app. Imports FastAPI lazily so the module imports
     cleanly even when the 'ui' extra is not installed."""
     try:
-        from fastapi import FastAPI, HTTPException
+        from fastapi import Body, FastAPI, HTTPException
         from fastapi.middleware.cors import CORSMiddleware
         from fastapi.responses import StreamingResponse
         from pydantic import BaseModel
@@ -245,6 +245,125 @@ def build_app(working_dir: Path | None = None):
             min_confidence=min_confidence,
             limit=limit,
         )
+
+    # ── Wire tab ───────────────────────────────────────────────────────────
+
+    def _resolve_source_dir(raw: str | None) -> Path:
+        if raw:
+            return Path(raw).resolve()
+        src_dir = wdir / "src"
+        if src_dir.is_dir():
+            subdirs = [p for p in src_dir.iterdir() if p.is_dir() and p.name.isidentifier()]
+            if len(subdirs) == 1:
+                return subdirs[0]
+        return wdir
+
+    @app.post("/wire/scan")
+    def wire_scan(req: dict = Body(default={})) -> dict:
+        """Dry-run wire scan: returns violations and proposed patches without writing."""
+        from ass_ade.a2_mo_composites.context_loader_wiring_specialist_core import (
+            ContextLoaderWiringSpecialist,
+        )
+
+        run_id = bus.new_run_id()
+        source = _resolve_source_dir(req.get("source") if isinstance(req, dict) else None)
+        bus.emit(AGUIEventType.TOOL_CALL_START,
+                 {"tool": "wire.scan", "source": str(source)}, run_id=run_id)
+        specialist = ContextLoaderWiringSpecialist(
+            package_name=req.get("package") if isinstance(req, dict) else None
+        )
+        records = specialist.rewire_imports(source)
+        fixable = [r for r in records if r.auto_fixable]
+        not_fixable = [r for r in records if not r.auto_fixable]
+        by_file: dict[str, list[dict[str, str]]] = {}
+        for r in fixable:
+            by_file.setdefault(r.file, []).append({"old": r.old_import, "new": r.new_import or ""})
+
+        report = {
+            "source_dir": str(source),
+            "violations_found": len(records),
+            "would_fix": len(fixable),
+            "not_fixable": len(not_fixable),
+            "files_to_change": len(by_file),
+            "changes": by_file,
+            "manual_review": [
+                {"file": r.file, "file_tier": r.file_tier, "import": r.old_import,
+                 "imported_tier": r.imported_tier, "reason": r.reason}
+                for r in not_fixable
+            ],
+            "dry_run": True,
+            "verdict": "PASS" if not records else ("REFINE" if not_fixable else "DRY_RUN"),
+        }
+
+        bus.emit_widget("wiring_report", {
+            "source_dir": report["source_dir"],
+            "violations_found": report["violations_found"],
+            "would_fix": report["would_fix"],
+            "not_fixable": report["not_fixable"],
+            "files_to_change": report["files_to_change"],
+            "verdict": report["verdict"],
+            "dry_run": True,
+            "auto_fixed": 0,
+            "files_changed": 0,
+            "manual_review_count": len(not_fixable),
+        }, run_id=run_id)
+        bus.emit(AGUIEventType.TOOL_CALL_RESULT,
+                 {"tool": "wire.scan", "ok": True}, run_id=run_id)
+        bus.emit(AGUIEventType.TOOL_CALL_END, {"tool": "wire.scan"}, run_id=run_id)
+        return report
+
+    @app.post("/wire/apply")
+    def wire_apply(req: dict = Body(default={})) -> dict:
+        """Live wire: actually patches files on disk. Use with caution."""
+        from ass_ade.a2_mo_composites.context_loader_wiring_specialist_core import (
+            ContextLoaderWiringSpecialist,
+        )
+
+        run_id = bus.new_run_id()
+        source = _resolve_source_dir(req.get("source") if isinstance(req, dict) else None)
+        bus.emit(AGUIEventType.TOOL_CALL_START,
+                 {"tool": "wire.apply", "source": str(source)}, run_id=run_id)
+        specialist = ContextLoaderWiringSpecialist(
+            package_name=req.get("package") if isinstance(req, dict) else None
+        )
+        report = specialist.wire(source)
+
+        bus.emit_widget("wiring_report", {
+            "source_dir": report["source_dir"],
+            "violations_found": report["violations_found"],
+            "auto_fixed": report["auto_fixed"],
+            "files_changed": report["files_changed"],
+            "not_fixable": report["not_fixable"],
+            "verdict": report["verdict"],
+            "dry_run": False,
+            "manual_review_count": len(report.get("manual_review") or []),
+        }, run_id=run_id)
+        bus.emit(AGUIEventType.TOOL_CALL_RESULT,
+                 {"tool": "wire.apply", "verdict": report["verdict"]}, run_id=run_id)
+        bus.emit(AGUIEventType.TOOL_CALL_END, {"tool": "wire.apply"}, run_id=run_id)
+        return report
+
+    # ── Cherry-pick manifest (read-only view of .ass-ade/cherry_pick.json) ─
+
+    @app.get("/assimilation/manifest")
+    def assimilation_manifest() -> dict:
+        """Return the current cherry_pick.json manifest, or {} if none."""
+        manifest_path = wdir / ".ass-ade" / "cherry_pick.json"
+        if not manifest_path.is_file():
+            return {"present": False}
+        try:
+            import json as _json
+            data = _json.loads(manifest_path.read_text(encoding="utf-8"))
+        except (OSError, ValueError) as exc:
+            raise HTTPException(status_code=500, detail=f"Could not read manifest: {exc}")
+        actions: dict[str, int] = {}
+        for item in data.get("items") or []:
+            a = str(item.get("action") or "?")
+            actions[a] = actions.get(a, 0) + 1
+        data["_path"] = str(manifest_path)
+        data["_action_totals"] = actions
+        data["present"] = True
+        return data
 
     # ── Memory tab ─────────────────────────────────────────────────────────
 

@@ -149,6 +149,9 @@ app.command("scout")(scout_command)
 from ass_ade.commands.ui import ui_command  # noqa: E402
 app.command("ui")(ui_command)
 
+from ass_ade.commands.wire import wire_command  # noqa: E402
+app.command("wire")(wire_command)
+
 from ass_ade.commands.aso import aso_app  # noqa: E402
 app.add_typer(aso_app, name="optimize")
 

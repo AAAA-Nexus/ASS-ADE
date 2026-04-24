@@ -468,6 +468,78 @@ def _run_scout(ctx: SkillContext) -> str:
     return "\n".join(lines)
 
 
+def _run_wire(ctx: SkillContext) -> str:
+    """Scan a source tree for upward tier-import violations (dry-run by default).
+
+    Dry-run: the skill only reports. To actually patch, the user must run
+    `ass-ade wire <src> --apply` or `@wire apply` from the REPL.
+    """
+    from ass_ade.a2_mo_composites.context_loader_wiring_specialist_core import (
+        ContextLoaderWiringSpecialist,
+    )
+
+    text = ctx.user_input
+    wd = ctx.working_dir
+
+    # Prefer src/<pkg> over bare working_dir for multi-package repos
+    source = wd
+    src_dir = wd / "src"
+    if src_dir.is_dir():
+        subdirs = [p for p in src_dir.iterdir() if p.is_dir() and p.name.isidentifier()]
+        if len(subdirs) == 1:
+            source = subdirs[0]
+
+    # Allow "wire <path>" override
+    path_match = re.search(r"wire\s+([\w./\\:-]+)", text, re.IGNORECASE)
+    if path_match and path_match.group(1).lower() not in {"imports", "tier", "violations", "apply"}:
+        candidate = Path(path_match.group(1).strip())
+        if not candidate.is_absolute():
+            candidate = wd / candidate
+        if candidate.exists():
+            source = candidate
+
+    specialist = ContextLoaderWiringSpecialist()
+    records = specialist.rewire_imports(source)
+    fixable = [r for r in records if r.auto_fixable]
+    not_fixable = [r for r in records if not r.auto_fixable]
+
+    lines: list[str] = [f"**Wire scan: `{source.name or source}`** (dry-run)\n"]
+    lines.append(f"- Violations found: **{len(records)}**")
+    lines.append(f"- Auto-fixable:     **{len(fixable)}**")
+    lines.append(f"- Manual review:    **{len(not_fixable)}**")
+
+    if not records:
+        lines.append("\nTier imports are clean — no upward violations detected. ✅")
+        return "\n".join(lines)
+
+    if fixable:
+        lines.append("\n**Proposed patches:**")
+        shown = 0
+        by_file: dict[str, list] = {}
+        for r in fixable:
+            by_file.setdefault(r.file, []).append(r)
+        for file_path, recs in list(by_file.items())[:5]:
+            short = Path(file_path).name
+            lines.append(f"- `{short}`")
+            for rec in recs[:3]:
+                lines.append(f"  - `{rec.old_import}` → `{rec.new_import}`")
+            shown += 1
+        if len(by_file) > 5:
+            lines.append(f"- _...and {len(by_file) - 5} more files_")
+
+    if not_fixable:
+        lines.append("\n**Needs manual review:**")
+        for rec in not_fixable[:4]:
+            short = Path(rec.file).name
+            lines.append(f"- `{short}` ({rec.file_tier} → {rec.imported_tier}): `{rec.old_import}`")
+
+    lines.append(
+        "\n_Dry-run complete. To apply patches, run `ass-ade wire --apply` "
+        "or `@wire apply` from this REPL._"
+    )
+    return "\n".join(lines)
+
+
 def _run_file_reader(ctx: SkillContext) -> str:
     """Read a file from the working directory and return its content."""
     text = ctx.user_input
@@ -567,6 +639,16 @@ def _register_builtins(registry: dict[str, Skill]) -> None:
                       "survey the repo", "scan this repo", "what does this repo contain"],
             usage="scout ../sibling-repo",
             execute=_run_scout,
+        ),
+        Skill(
+            name="wire",
+            description="Scan + fix upward tier-import violations (dry-run by default)",
+            triggers=["wire imports", "wire the imports", "fix tier violations",
+                      "check tier imports", "tier imports", "upward imports",
+                      "wire scan", "scan imports", "import violations", "wire tier",
+                      "wire", "tier", "imports"],
+            usage="wire imports",
+            execute=_run_wire,
         ),
     ]
     for s in skills:

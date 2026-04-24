@@ -2192,6 +2192,38 @@ def _handle_at_command(agent: "Atomadic", cmd: str, arg: str) -> str:
         )
         return _run_scout(ctx)
 
+    if cmd == "wire":
+        apply_mode = arg.strip().lower().startswith("apply")
+        if apply_mode:
+            from ass_ade.a2_mo_composites.context_loader_wiring_specialist_core import (
+                ContextLoaderWiringSpecialist,
+            )
+            source = agent.working_dir
+            src_dir = source / "src"
+            if src_dir.is_dir():
+                subdirs = [p for p in src_dir.iterdir() if p.is_dir() and p.name.isidentifier()]
+                if len(subdirs) == 1:
+                    source = subdirs[0]
+            specialist = ContextLoaderWiringSpecialist()
+            report = specialist.wire(source)
+            return (
+                f"**Wire apply: `{source.name or source}`**\n\n"
+                f"- Violations found: **{report['violations_found']}**\n"
+                f"- Auto-fixed (written to disk): **{report['auto_fixed']}**\n"
+                f"- Files changed: **{report['files_changed']}**\n"
+                f"- Not auto-fixable: **{report['not_fixable']}**\n"
+                f"- Verdict: **{report['verdict']}**"
+            )
+        from ass_ade.a3_og_features.skill_runner import SkillContext, _run_wire
+        ctx = SkillContext(
+            user_input=f"wire {arg}" if arg else "wire imports",
+            working_dir=agent.working_dir,
+            tone="casual",
+            domain_level=agent.personality.domain_level,
+            history=agent.history,
+        )
+        return _run_wire(ctx)
+
     if cmd == "anchors":
         anchors = agent.episodes.get_anchors()
         if not anchors:
@@ -2206,6 +2238,7 @@ def _handle_at_command(agent: "Atomadic", cmd: str, arg: str) -> str:
         "**Available @ commands:**\n\n"
         "- `@skills` — list all available skills\n"
         "- `@scout [path] [--llm]` — scout a repo for intel and benefit opportunities\n"
+        "- `@wire [apply]` — scan tier imports (dry-run); `@wire apply` to patch\n"
         "- `@persona <mode>` — switch persona (co-pilot, mentor, commander, architect, debug-buddy)\n"
         "- `@remember <key>: <value>` — anchor a fact to memory\n"
         "- `@forget <key>` — remove an anchor\n"
