@@ -14,11 +14,13 @@ This folder is the **technical documentation hub** for the public ASS-ADE tree. 
 | 5 | [ASS_ADE_SHIP_PLAN.md](../ASS_ADE_SHIP_PLAN.md) | Phased roadmap, exit criteria S1–S6 |
 | 6 | [ASS_ADE_GOAL_PIPELINE.md](../ASS_ADE_GOAL_PIPELINE.md) | HAVE / GAP / IMPLEMENT checklist |
 | 7 | [ASS_ADE_SPINE_RFC.md](ASS_ADE_SPINE_RFC.md) | Roles across trees (full workspace vs this repo) |
-| 8 | [ASS_ADE_FORGE_CLI.md](ASS_ADE_FORGE_CLI.md) | Forge / dispatcher sketch |
-| 9 | [EMITTER_PARITY.md](EMITTER_PARITY.md) | Emitter parity notes |
-| 10 | [ATOMADIC_SWARM_SURFACE_AUDIT.md](ATOMADIC_SWARM_SURFACE_AUDIT.md) | IDE / hooks / agents surface audit |
-| 11 | [CURSOR_AGENT_LANES.md](CURSOR_AGENT_LANES.md) | Four tiny Cursor-safe cleanup lanes |
-| 12 | [TROUBLESHOOTING.md](TROUBLESHOOTING.md) | Stale editable install checks |
+| 8 | [ASSIMILATION_TARGET_MAP.md](ASSIMILATION_TARGET_MAP.md) | Selective sibling growth: assimilate, rebuild, enhance, or skip |
+| 9 | [SCOUT_COMMAND.md](SCOUT_COMMAND.md) | LLM-powered repo scouting and benefit synthesis |
+| 10 | [ASS_ADE_FORGE_CLI.md](ASS_ADE_FORGE_CLI.md) | Forge / dispatcher sketch |
+| 11 | [EMITTER_PARITY.md](EMITTER_PARITY.md) | Emitter parity notes |
+| 12 | [ATOMADIC_SWARM_SURFACE_AUDIT.md](ATOMADIC_SWARM_SURFACE_AUDIT.md) | IDE / hooks / agents surface audit |
+| 13 | [CURSOR_AGENT_LANES.md](CURSOR_AGENT_LANES.md) | Four tiny Cursor-safe cleanup lanes |
+| 14 | [TROUBLESHOOTING.md](TROUBLESHOOTING.md) | Stale editable install checks |
 
 ## Specifications and schemas
 

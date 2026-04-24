@@ -1,32 +1,64 @@
-# ASS-ADE Package
+# ass_ade
 
-Core library for ASS-ADE CLI and local/hybrid workflows.
 
-## Submodules
 
-| Submodule | Purpose | Key Files |
-| --------- | ------- | --------- |
-| a2a/ | A2A validation/discovery/negotiate/local-card. | __init__.py |
-| agent/ | Agent loop/context/conversation/gates/routing. | loop.py, context.py |
-| engine/ | LLM providers/router/tokens/types. | provider.py, router.py |
-| local/ | Local planner/repo ops. | planner.py, repo.py |
-| mcp/ | MCP server/client (14 tools). | server.py, mock_server.py |
-| nexus/ | Resilient AAAA-Nexus client (~120 methods). | client.py, resilience.py |
-| protocol/ | Cycle protocol. | cycle.py |
-| tools/ | Builtin/history/plan/registry. | builtin.py, registry.py |
-| cli.py | Typer CLI (95+ cmds/30 sub-apps). | |
-| config.py | Config loading. | |
-| pipeline.py | Pipelines. | |
-| system.py | System utils. | |
-| workflows.py | Hero workflows (trust-gate, certify, safe-execute). | |
+**Version:** 0.1.0
+![Language](py) 
 
-## Usage
+## Installation
 
-```bash
-pip install -e .
-ass-ade --help
-```
+_See project documentation._
 
-Import: `from ass_ade.nexus import NexusClient`
+## Entry Points
 
-See root [README.md](../../README.md).
+_none detected_
+
+## Key Classes
+
+- `Config` (cli.py)
+- `ProviderOverride` (config.py)
+- `AssAdeConfig` (config.py)
+- `ContextFile` (context_memory.py)
+- `ContextPacket` (context_memory.py)
+- `VectorMemoryRecord` (context_memory.py)
+- `VectorMemoryStoreResult` (context_memory.py)
+- `VectorMemoryMatch` (context_memory.py)
+- `VectorMemoryQueryResult` (context_memory.py)
+- `_Defaults` (interpreter.py)
+- `MemoryStore` (interpreter.py)
+- `Turn` (interpreter.py)
+- `Atomadic` (interpreter.py)
+- `MissingCapability` (map_terrain.py)
+- `DevelopmentPlan` (map_terrain.py)
+- `MapTerrainResult` (map_terrain.py)
+- `InventionStub` (map_terrain.py)
+- `ActiveTerrainVerdict` (map_terrain.py)
+- `StepStatus` (pipeline.py)
+- `StepResult` (pipeline.py)
+
+## Key Functions
+
+- `_app_callback` (cli.py)
+- `interpreter_chat` (cli.py)
+- `memory_show` (cli.py)
+- `memory_clear` (cli.py)
+- `memory_export` (cli.py)
+- `_collapse_prompt_parts` (cli.py)
+- `_resolve_config` (cli.py)
+- `_redact_secrets` (cli.py)
+- `_print_json` (cli.py)
+- `_should_probe_remote` (cli.py)
+- `_require_remote_access` (cli.py)
+- `init` (cli.py)
+- `doctor` (cli.py)
+- `credits` (cli.py)
+- `plan` (cli.py)
+- `full_cycle` (cli.py)
+- `repo_summary` (cli.py)
+- `protocol_run` (cli.py)
+- `protocol_evolution_record` (cli.py)
+- `protocol_evolution_demo` (cli.py)
+
+## CI
+
+_none detected_

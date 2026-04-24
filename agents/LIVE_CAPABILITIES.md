@@ -1,7 +1,7 @@
 # Atomadic Live Capability Map
 
-> Auto-generated: 2026-04-24T07:15:02Z  
-> Repo root: `C:\!aaaa-nexus\!ass-ade`  
+> Auto-generated: 2026-04-24T08:22:34Z  
+> Repo root: `C:\!aaaa-nexus\ASS-ADE-SEED`  
 > Python: 3.12.10
 
 ## Capability Counts
@@ -12,7 +12,7 @@
 | Local agent tools | 13 |
 | MCP stdio tools | 25 |
 | Monadic tier dirs | 5 |
-| Surface locations | 9 |
+| Surface locations | 12 |
 
 ## CLI Command Groups
 
@@ -30,13 +30,16 @@
 
 - `agents/` — Agent definitions and routing prompts
 - `hooks/` — Pipeline hook scripts and hook configuration
-- `blueprints/` — Blueprint artifacts
+- `tools/` — Thin CLI wrapper modules for external callers
+- `mcp/` — MCP server and plugin manifests
 - `docs/` — Project documentation
 - `src/ass_ade/` — Runtime package source
 - `src/ass_ade/tools/` — Registered local tool implementations
+- `src/ass_ade/tools/generated/` — Generated local tool implementations
 - `src/ass_ade/agent/` — Agent loop and engine modules
 - `src/ass_ade/mcp/` — MCP server implementation
-- `CERTIFICATE.json` — Rebuild certificate
+- `hooks/pipeline_config.json` — Pipeline hook wiring
+- `mcp/server.json` — MCP server manifest
 
 ## Sibling Repos (in `!aaaa-nexus/`)
 
@@ -44,6 +47,7 @@
 - `!aaaa-nexus-mcp` v0.1.0 — 81 Python files
 - `!aaaa-nexus-sdk` — 0 Python files
 - `!aaaa-nexus-storefront` — 274 Python files
+- `!ass-ade` v1.0.0 — 5100 Python files
 - `!ass-ade-control` — 1 Python files
 - `!ass-ade-cursor-dev-20260420-1710` — 10203 Python files
 - `!ass-ade-dev` v0.1.0.dev0 — 215 Python files
@@ -59,13 +63,12 @@
 - `ass-ade-rebuild-demo` — 1093 Python files
 - `ass-ade-self-rebuild` v0.1.0.dev0 — 251 Python files
 - `ass-ade-stress-test` v0.1.0.dev0 — 217 Python files
-- `ass-ade-unified` v0.1.0.dev0 — 438 Python files
 
 ## Routing Rules
 
 - Prefer exact CLI command names from the list above.
 - For code edits, place files in the correct monadic tier directory.
-- Surface artifact paths are relative to the repo root `!ass-ade/`.
+- Surface artifact paths are relative to the repo root `ASS-ADE-SEED/`.
 - This file is regenerated at `ass-ade chat` startup and via `ass-ade agents-refresh`.
 - If this file is stale, run `ass-ade agents-refresh` to update it.
 

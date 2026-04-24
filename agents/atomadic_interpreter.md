@@ -11,19 +11,19 @@
 This section is generated at prompt-build time from the code on disk.
 Treat it as the authoritative capability map for this session.
 
-Generated at: 2026-04-24T07:33:46Z
+Generated at: 2026-04-24T11:37:58Z
 Working directory: C:\!aaaa-nexus\ASS-ADE-SEED
 Resolved capability root: C:\!aaaa-nexus\ASS-ADE-SEED
 
 ### Capability summary
 
-- CLI command paths: 224
+- CLI command paths: 232
 - Local agent tools: 13
 - MCP stdio tools: 25
-- Repo agents: 0
+- Repo agents: 2
 - Skills: 0
 - Hooks: 8
-- Surface locations: 12
+- Surface locations: 13
 - Monadic tier dirs: 5
 - Dynamic abilities: 0
 
@@ -33,6 +33,7 @@ Resolved capability root: C:\!aaaa-nexus\ASS-ADE-SEED
 - `hooks/` - Pipeline hook scripts and hook configuration
 - `tools/` - Thin CLI wrapper modules for external callers
 - `mcp/` - MCP server and plugin manifests
+- `blueprints/` - Blueprint artifacts
 - `docs/` - Project documentation
 - `src/ass_ade/` - Runtime package source
 - `src/ass_ade/tools/` - Registered local tool implementations
@@ -56,7 +57,7 @@ Resolved capability root: C:\!aaaa-nexus\ASS-ADE-SEED
 
 ### Top-level CLI groups
 
-- `a2a`, `aegis`, `agent`, `agents-refresh`, `bitnet`, `blueprint`, `certify`, `chat`, `compliance`, `context`, `control`, `credits`, `cycle`, `data`, `defi`, `design`, `dev`, `discovery`, `docs`, `doctor`, `eco-scan`, `enhance`, `escrow`, `feature`, `finish`, `forge`, `identity`, `init`, `lint`, `llm`, `lora-credit`, `lora-status`, `lora-train`, `mcp`, `memory`, `mev`, `nexus`, `optimize`, `oracle`, `pay`, `pipeline`, `plan`, `prompt`, `protocol`, `providers`, `ratchet`, `rebuild`, `recon`, `repo`, `reputation`, `rollback`, `sam-status`, `search`, `security`, `selfbuild`, `setup`, `sla`, `swarm`, `tca-status`, `text`, +8 more
+- `a2a`, `aegis`, `agent`, `agents-refresh`, `assimilate`, `bitnet`, `blueprint`, `bridge`, `certify`, `chat`, `cherry-pick`, `compliance`, `context`, `control`, `credits`, `cycle`, `data`, `defi`, `design`, `dev`, `discovery`, `docs`, `doctor`, `eco-scan`, `enhance`, `escrow`, `feature`, `finish`, `forge`, `identity`, `init`, `lint`, `llm`, `lora-credit`, `lora-status`, `lora-train`, `mcp`, `memory`, `mev`, `nexus`, `optimize`, `oracle`, `pay`, `pipeline`, `plan`, `prompt`, `protocol`, `providers`, `ratchet`, `rebuild`, `recon`, `repo`, `reputation`, `rollback`, `sam-status`, `scout`, `search`, `security`, `selfbuild`, `setup`, +13 more
 
 ### Runtime routing rules
 
@@ -109,6 +110,7 @@ Resolved capability root: C:\!aaaa-nexus\ASS-ADE-SEED
 - `agent chat` - Interactive agent chat session.
 - `agent run` - Execute a single task using the agent.
 - `agents-refresh` - Regenerate LIVE_CAPABILITIES.md and inject it into all agent prompts
+- `assimilate` - Assimilate cherry-picked symbols into the target project's monadic tier directories
 - `bitnet` - BitNet 1.58-bit inference — defaults to falcon3-10B-1.58.
 - `bitnet benchmark` - Run inference benchmark for a 1.58-bit model (BIT-103)
 - `bitnet chat` - 1.58-bit BitNet chat completion (BIT-100)
@@ -119,8 +121,12 @@ Resolved capability root: C:\!aaaa-nexus\ASS-ADE-SEED
 - `blueprint build` - Build a production-grade codebase from a blueprint (no stubs by default).
 - `blueprint list` - List blueprint files found under the blueprints directory.
 - `blueprint validate` - Validate a blueprint file against the minimum schema.
+- `bridge` - Multi-language bridge: generate TypeScript/Rust/Kotlin/Swift scaffolding that calls ASS-ADE.
+- `bridge init` - Generate multi-language bridge scaffolding in a target repository
+- `bridge status` - Show bridge manifest status for a repository.
 - `certify` - Generate a tamper-evident certificate for any codebase
 - `chat` - Start an interactive chat session with Atomadic
+- `cherry-pick` - Scout a codebase and cherry-pick symbols to assimilate
 - `compliance` - Compliance Products — EU AI Act, fairness, drift, oversight.
 - `compliance check` - Multi-framework compliance check
 - `compliance drift-cert` - Issue drift-free certificate
@@ -251,11 +257,6 @@ Resolved capability root: C:\!aaaa-nexus\ASS-ADE-SEED
 - `providers env` - Print env-var hints + signup URLs for every provider.
 - `providers list` - List available (or all) LLM providers with tier → model mapping.
 - `providers set-chain` - Override the provider fallback chain.
-- `providers set-default` - Set the default provider (and optionally model) for all tiers (fast, balanced, deep).
-- `providers set-key` - Set a provider API key for this shell session (not persisted)
-- `providers set-tier` - Pin a tier to a specific provider (e.g., 'balanced → groq').
-- `providers show` - Show details for a single provider.
-- `providers test` - Send a minimal request to verify the provider responds.
 
 ### Local agent tools
 
@@ -307,7 +308,8 @@ Resolved capability root: C:\!aaaa-nexus\ASS-ADE-SEED
 
 ### Repo agents
 
-- none detected
+- `subagent-template` - Template for Scout/Recon, Scribe, and Sidekick subagents
+- `web-researcher-planner` - Expert Multi-Hop Web Researcher & Planner Agent for Atomadic/ASS-ADE/IDE
 
 ### Skills
 

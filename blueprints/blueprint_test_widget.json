@@ -1,0 +1,33 @@
+{
+  "schema": "AAAA-SPEC-004",
+  "description": "test widget",
+  "tiers": [
+    "at",
+    "mo"
+  ],
+  "components": [],
+  "status": "draft",
+  "source": "local",
+  "repo": "ass-ade",
+  "languages": [
+    "py",
+    "md",
+    "json",
+    "rs",
+    "yml",
+    "swift",
+    "ts",
+    "kt",
+    "toml",
+    "txt",
+    "jsonl",
+    "kts",
+    "yaml",
+    "ipynb",
+    "lock",
+    "mjs",
+    "example",
+    "bak",
+    "js"
+  ]
+}

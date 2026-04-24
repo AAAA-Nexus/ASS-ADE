@@ -1,0 +1,25 @@
+{
+  "profile": "premium",
+  "nexus_base_url": "https://atomadic.tech",
+  "request_timeout_s": 20.0,
+  "agent_id": "ass-ade-local",
+  "agent_model": "",
+  "lse_enabled": true,
+  "tier_policy": {},
+  "provider_fallback_chain": [],
+  "providers": {},
+  "ollama_model": "codellama:7b-instruct",
+  "llm_priority": "nexus",
+  "llm_providers": [
+    "aaaa-nexus",
+    "ollama",
+    "pollinations",
+    "groq",
+    "cerebras",
+    "gemini",
+    "openrouter",
+    "mistral",
+    "github"
+  ],
+  "evolution_mode": "dual"
+}

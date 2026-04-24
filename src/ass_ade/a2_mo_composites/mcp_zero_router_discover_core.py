@@ -1,0 +1,34 @@
+"""Tier a2 — assimilated method 'MCPZeroRouter.discover'
+
+Assimilated from: zero_router.py:26-43
+"""
+
+from __future__ import annotations
+
+# --- imports from original module ---
+from __future__ import annotations
+
+from dataclasses import dataclass, field
+from typing import Any
+
+
+# --- assimilated symbol ---
+def discover(self, capability_embedding: Any, k: int = 5) -> list[ToolRef]:
+    self._calls += 1
+    if self._nexus is not None and hasattr(self._nexus, "discovery_search"):
+        try:
+            cap = capability_embedding if isinstance(capability_embedding, str) else str(capability_embedding)
+            result = self._nexus.discovery_search(cap, limit=k)
+            tools: list[ToolRef] = []
+            items = getattr(result, "results", None) or getattr(result, "tools", None) or []
+            for idx, item in enumerate(items[:k]):
+                name = getattr(item, "name", None) or (item.get("name") if isinstance(item, dict) else f"tool_{idx}")
+                score = getattr(item, "score", None) or (item.get("score") if isinstance(item, dict) else 1.0 - idx * 0.1)
+                server = getattr(item, "server", "") or (item.get("server", "") if isinstance(item, dict) else "")
+                tools.append(ToolRef(name=name, score=float(score), server=server))
+            if tools:
+                return tools
+        except Exception:
+            pass
+    return self._catalog[:k]
+

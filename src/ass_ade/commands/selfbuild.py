@@ -11,11 +11,16 @@ from __future__ import annotations
 import os
 import shutil
 from pathlib import Path
+from typing import Annotated
 
 import typer
 from rich.console import Console
 from rich.table import Table
 
+from ass_ade.a1_at_functions.assimilation_target_map import (
+    build_assimilation_target_map,
+    dumps_target_map,
+)
 from ass_ade.engine.rebuild.orchestrator import rebuild_project, render_rebuild_summary
 
 selfbuild_app = typer.Typer(
@@ -126,6 +131,90 @@ def run(
         shutil.move(str(built_root), str(final_dir))
         shutil.rmtree(scratch, ignore_errors=True)
         _console.print(f"[green]final:[/green] {final_dir}")
+
+
+@selfbuild_app.command("target-map")
+def target_map(
+    primary: Annotated[
+        Path,
+        typer.Option(
+            "--primary",
+            "-m",
+            exists=True,
+            file_okay=False,
+            dir_okay=True,
+            resolve_path=True,
+            help="Primary MAP terrain. Defaults to the current directory.",
+        ),
+    ] = Path("."),
+    sibling: Annotated[
+        list[Path] | None,
+        typer.Option(
+            "--sibling",
+            "-s",
+            exists=True,
+            file_okay=False,
+            dir_okay=True,
+            resolve_path=True,
+            help="Sibling root to map. May be repeated.",
+        ),
+    ] = None,
+    parent: Annotated[
+        Path | None,
+        typer.Option(
+            "--parent",
+            "-p",
+            file_okay=False,
+            dir_okay=True,
+            resolve_path=True,
+            help="Parent folder for glob discovery when --sibling is omitted.",
+        ),
+    ] = None,
+    pattern: Annotated[
+        str,
+        typer.Option("--pattern", help="Glob used with --parent."),
+    ] = "!ass-ade*",
+    focus: Annotated[
+        list[str] | None,
+        typer.Option(
+            "--focus",
+            "-f",
+            help="Only include symbols whose module or qualname contains this text.",
+        ),
+    ] = None,
+    out: Annotated[
+        Path | None,
+        typer.Option(
+            "--out",
+            "-o",
+            file_okay=True,
+            dir_okay=False,
+            help="Write target map JSON to this path.",
+        ),
+    ] = None,
+) -> None:
+    """Map sibling functions/features into assimilate, rebuild, enhance, or skip targets."""
+    primary = primary.resolve()
+    siblings = list(sibling or [])
+    if not siblings and parent is not None:
+        siblings = _discover_siblings(parent.resolve(), pattern, exclude=[primary])
+    siblings = [path.resolve() for path in siblings if path.resolve() != primary]
+    if not siblings:
+        _console.print("[red]no sibling roots supplied or discovered[/red]")
+        raise typer.Exit(code=2)
+
+    result = build_assimilation_target_map(
+        primary_root=primary,
+        sibling_roots=siblings,
+        focus=focus or [],
+    )
+    payload = dumps_target_map(result)
+    if out is not None:
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(payload, encoding="utf-8")
+        _console.print(f"[green]target map written:[/green] {out}")
+    else:
+        typer.echo(payload)
 
 
 def register_selfbuild_app(parent: typer.Typer) -> None:
