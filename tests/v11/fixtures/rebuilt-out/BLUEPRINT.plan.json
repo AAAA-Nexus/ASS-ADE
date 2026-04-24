@@ -1,0 +1,48 @@
+{
+  "atoms": [
+    {
+      "fulfills_blueprints": [],
+      "id": "a1.compile.python.compile",
+      "kind": "pure_function",
+      "name": "caller_uses_helper",
+      "tier": "a1_at_functions"
+    },
+    {
+      "fulfills_blueprints": [],
+      "id": "a1.minimal_pkg.invariant_metadata",
+      "kind": "pure_function",
+      "name": "invariant_metadata",
+      "tier": "a1_at_functions"
+    },
+    {
+      "fulfills_blueprints": [],
+      "id": "a1.minimal_pkg.pure_helper",
+      "kind": "pure_function",
+      "name": "pure_helper",
+      "tier": "a1_at_functions"
+    },
+    {
+      "fulfills_blueprints": [],
+      "id": "a1.minimal_pkg.run",
+      "kind": "pure_function",
+      "name": "run",
+      "tier": "a1_at_functions"
+    },
+    {
+      "fulfills_blueprints": [],
+      "id": "a2.compile.python.compile",
+      "kind": "engine_molecule",
+      "name": "ExampleService",
+      "tier": "a2_mo_composites"
+    }
+  ],
+  "blueprint_schema": "ASSADE-SPEC-BLUEPRINT-PLAN-1",
+  "generated_at": "2026-04-22T23:26:14.497771+00:00",
+  "intended_by_tier": {
+    "a1_at_functions": 4,
+    "a2_mo_composites": 1
+  },
+  "intended_count": 5,
+  "rebuild_tag": "20260422_232614",
+  "source_plan_digest": "369d769c80cbe38a"
+}

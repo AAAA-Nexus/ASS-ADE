@@ -1,0 +1,12 @@
+{
+  "allowed_source_root": "C:\\!atomadic\\ass-ade-v1.1\\tests\\fixtures\\minimal_pkg",
+  "materialized_at": "2026-04-22T23:26:14.516592+00:00",
+  "provenance": {
+    "ingest_mode": "single",
+    "source_paths": [
+      "C:/!atomadic/ass-ade-v1.1/tests/fixtures/minimal_pkg"
+    ]
+  },
+  "schema": "ASSADE-SPEC-PROVENANCE-1",
+  "unique_source_modules_archived": 1
+}

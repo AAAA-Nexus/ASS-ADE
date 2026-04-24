@@ -1,0 +1,93 @@
+{
+  "schema": "ASSADE-MULTILANG-BRIDGE-1",
+  "bridge_mode": "spawn-cli",
+  "bridge_ready": false,
+  "vendored_ass_ade": false,
+  "package_name": "ass_ade_rebuild",
+  "python_bridge_command": [],
+  "supported_languages": [
+    "python",
+    "rust",
+    "typescript",
+    "kotlin",
+    "swift",
+    "atomadic"
+  ],
+  "bridge_languages": [
+    "typescript",
+    "rust",
+    "kotlin",
+    "swift"
+  ],
+  "generated_report": "MULTILANG_BRIDGES.md",
+  "generated_tests": [
+    "tests/test_generated_multilang_bridges.py"
+  ],
+  "request_sample": "bridges/samples/bridge_request.sample.json",
+  "response_sample": "bridges/samples/bridge_response.sample.json",
+  "component_count": 5,
+  "by_tier": {
+    "a1_at_functions": 4,
+    "a2_mo_composites": 1
+  },
+  "tier_packages": [
+    "a1_at_functions",
+    "a2_mo_composites"
+  ],
+  "bridge_monadic_layout": [
+    "a0_qk_constants",
+    "a1_at_functions",
+    "a2_mo_composites",
+    "a3_og_features",
+    "a4_sy_orchestration"
+  ],
+  "bridge_roots": {
+    "typescript": "bridges/typescript",
+    "rust": "bridges/rust",
+    "kotlin": "bridges/kotlin",
+    "swift": "bridges/swift"
+  },
+  "generated_files": [
+    "bridges/README.md",
+    "bridges/kotlin/build.gradle.kts",
+    "bridges/kotlin/settings.gradle.kts",
+    "bridges/kotlin/src/main/kotlin/AssAdeBridge.kt",
+    "bridges/kotlin/src/main/kotlin/a0_qk_constants/BridgeContract.kt",
+    "bridges/kotlin/src/main/kotlin/a1_at_functions/ManifestLoader.kt",
+    "bridges/kotlin/src/main/kotlin/a2_mo_composites/PythonBridgeClient.kt",
+    "bridges/kotlin/src/main/kotlin/a3_og_features/BridgeFeature.kt",
+    "bridges/kotlin/src/main/kotlin/a4_sy_orchestration/BridgeMain.kt",
+    "bridges/rust/Cargo.toml",
+    "bridges/rust/src/a0_qk_constants/bridge_contract.rs",
+    "bridges/rust/src/a0_qk_constants/mod.rs",
+    "bridges/rust/src/a1_at_functions/manifest_loader.rs",
+    "bridges/rust/src/a1_at_functions/mod.rs",
+    "bridges/rust/src/a2_mo_composites/mod.rs",
+    "bridges/rust/src/a2_mo_composites/python_bridge_client.rs",
+    "bridges/rust/src/a3_og_features/bridge_feature.rs",
+    "bridges/rust/src/a3_og_features/mod.rs",
+    "bridges/rust/src/a4_sy_orchestration/bridge_main.rs",
+    "bridges/rust/src/a4_sy_orchestration/mod.rs",
+    "bridges/rust/src/main.rs",
+    "bridges/samples/bridge_request.sample.json",
+    "bridges/samples/bridge_response.sample.json",
+    "bridges/swift/Package.swift",
+    "bridges/swift/Sources/AssAdeBridge/a0_qk_constants/BridgeContract.swift",
+    "bridges/swift/Sources/AssAdeBridge/a1_at_functions/ManifestLoader.swift",
+    "bridges/swift/Sources/AssAdeBridge/a2_mo_composites/PythonBridgeClient.swift",
+    "bridges/swift/Sources/AssAdeBridge/a3_og_features/BridgeFeature.swift",
+    "bridges/swift/Sources/AssAdeBridge/a4_sy_orchestration/BridgeMain.swift",
+    "bridges/swift/Sources/AssAdeBridge/main.swift",
+    "bridges/typescript/package.json",
+    "bridges/typescript/smoke.mjs",
+    "bridges/typescript/src/a0_qk_constants/bridge_contract.ts",
+    "bridges/typescript/src/a1_at_functions/manifest_loader.ts",
+    "bridges/typescript/src/a2_mo_composites/python_bridge_client.ts",
+    "bridges/typescript/src/a3_og_features/bridge_feature.ts",
+    "bridges/typescript/src/a4_sy_orchestration/bridge_main.ts",
+    "bridges/typescript/src/index.ts",
+    "bridges/typescript/src/node-shims.d.ts",
+    "bridges/typescript/tsconfig.json",
+    "tests/test_generated_multilang_bridges.py"
+  ]
+}

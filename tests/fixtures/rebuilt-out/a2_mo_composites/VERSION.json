@@ -1,0 +1,13 @@
+{
+  "module_count": 1,
+  "modules": [
+    {
+      "change_type": "new",
+      "id": "a2.compile.python.compile",
+      "name": "ExampleService",
+      "version": "0.1.0"
+    }
+  ],
+  "tier": "a2_mo_composites",
+  "tier_version": "0.1.0"
+}

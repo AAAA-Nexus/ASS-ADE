@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://atomadic.tech/schemas/ass-ade/assimilate-policy/v1",
+  "title": "ASS-ADE assimilate policy (P1 contract)",
+  "description": "Machine-readable merge/ingest law for multi-root assimilate. See ASS_ADE_GOAL_PIPELINE P1; fail-closed in CI when using --also without a valid policy.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "primary", "roots"],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1"
+    },
+    "primary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "path"],
+      "properties": {
+        "role": {
+          "type": "string",
+          "const": "map"
+        },
+        "path": {
+          "type": "string",
+          "description": "Repository path (posix or win; resolved at run time)"
+        }
+      }
+    },
+    "roots": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "role", "license_class"],
+        "properties": {
+          "path": { "type": "string" },
+          "role": {
+            "type": "string",
+            "enum": ["map", "sibling", "input", "archive", "ephemeral"]
+          },
+          "license_class": {
+            "type": "string",
+            "enum": [
+              "compatible_oss",
+              "copyleft_review",
+              "proprietary",
+              "unknown"
+            ],
+            "description": "If unknown, CI may refuse unless explicitly allowed in policy"
+          },
+          "allow_globs": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Per-root override: when set, only matching files ingest."
+          },
+          "forbid_globs": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Per-root override: matching files are excluded from ingest."
+          },
+          "max_file_bytes": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Per-root override: files larger than this are skipped by the reader."
+          },
+          "binary_handling": {
+            "type": "string",
+            "enum": ["forbid", "allow_list", "track_only"],
+            "description": "Per-root override for binary handling policy."
+          }
+        }
+      }
+    },
+    "allow_globs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "forbid_globs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": [".git/**", "**/pytest_tmp/**", "**/node_modules/**"]
+    },
+    "max_file_bytes": {
+      "type": "integer",
+      "minimum": 1,
+      "default": 2000000
+    },
+    "binary_handling": {
+      "type": "string",
+      "enum": ["forbid", "allow_list", "track_only"]
+    }
+  }
+}

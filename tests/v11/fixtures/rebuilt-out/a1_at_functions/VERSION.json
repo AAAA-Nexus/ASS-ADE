@@ -1,0 +1,31 @@
+{
+  "module_count": 4,
+  "modules": [
+    {
+      "change_type": "new",
+      "id": "a1.compile.python.compile",
+      "name": "caller_uses_helper",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "a1.minimal_pkg.invariant_metadata",
+      "name": "invariant_metadata",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "a1.minimal_pkg.pure_helper",
+      "name": "pure_helper",
+      "version": "0.1.0"
+    },
+    {
+      "change_type": "new",
+      "id": "a1.minimal_pkg.run",
+      "name": "run",
+      "version": "0.1.0"
+    }
+  ],
+  "tier": "a1_at_functions",
+  "tier_version": "0.1.0"
+}

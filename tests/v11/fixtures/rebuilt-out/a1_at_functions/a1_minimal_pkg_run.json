@@ -1,0 +1,28 @@
+{
+  "body_hash": "a2a317fbd786b598",
+  "body_path": "a1_at_functions/a1_minimal_pkg_run.py",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!atomadic/ass-ade-v1.1/tests/fixtures/minimal_pkg/example_pkg/core.py:21.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "a1.minimal_pkg.run",
+  "imports": [],
+  "interfaces": {
+    "source": "C:\\!atomadic\\ass-ade-v1.1\\tests\\fixtures\\minimal_pkg\\example_pkg\\core.py:21"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "run",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for run"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

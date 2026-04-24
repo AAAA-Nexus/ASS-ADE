@@ -1,0 +1,17 @@
+# Checked-in policy for CI multi-root golden assimilate (T7 follow-up).
+# Reuses existing fixtures: minimal_pkg (primary) + cross_lib (sibling).
+# Paths are workspace-relative; policy gate validates schema shape, the CLI
+# passes PRIMARY and --also paths explicitly. See
+# ass-ade-v1.1/.ass-ade/specs/assimilate-policy.schema.json.
+schema_version: "1"
+primary:
+  role: map
+  path: ass-ade-v1.1/tests/fixtures/minimal_pkg
+roots:
+  - path: ass-ade-v1.1/tests/fixtures/minimal_pkg
+    role: map
+    license_class: compatible_oss
+  - path: ass-ade-v1.1/tests/fixtures/cross_lib
+    role: sibling
+    license_class: compatible_oss
+

@@ -1,0 +1,6 @@
+{
+  "ok": true,
+  "transport": "spawn-cli",
+  "bridge_ready": false,
+  "notes": "Example envelope returned by an adapter around the rebuilt Python CLI."
+}

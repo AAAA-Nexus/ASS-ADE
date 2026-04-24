@@ -1,0 +1,14 @@
+{
+  "name": "ass-ade-rebuild-bridge-typescript",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "smoke": "node smoke.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^20.16.0",
+    "typescript": "^5.6.0"
+  }
+}

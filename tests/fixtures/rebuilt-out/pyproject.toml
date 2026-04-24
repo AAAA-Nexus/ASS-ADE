@@ -1,0 +1,32 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ass_ade_rebuild"
+version = "0.1.0.dev0"
+description = "Auto-emitted rebuild package"
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.28,<0.29",
+    "pydantic>=2.11,<3",
+    "rich>=14,<15",
+    "typer>=0.15,<1",
+    "python-dotenv>=1.0,<2",
+    "jsonschema>=4.23,<5",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = [
+    "a1_at_functions",
+    "a2_mo_composites",
+    "example_pkg",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0,<9",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

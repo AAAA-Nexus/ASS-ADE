@@ -1,0 +1,91 @@
+{
+  "components": [
+    {
+      "body_hash": "48b4ebc1f497cfd8",
+      "body_path": "a1_at_functions/a1_compile_python_compile.py",
+      "change_type": "new",
+      "fulfills_blueprints": [],
+      "id": "a1.compile.python.compile",
+      "kind": "pure_function",
+      "name": "caller_uses_helper",
+      "path": "C:/!atomadic/ass-ade-v1.1/tests/fixtures/rebuilt-out/a1_at_functions/a1_compile_python_compile.json",
+      "source_file": "C:/!atomadic/ass-ade-v1.1/tests/fixtures/rebuilt-out/a1_at_functions/a1_compile_python_compile.py",
+      "tier": "a1_at_functions",
+      "version": "0.1.0"
+    },
+    {
+      "body_hash": "179e32ca8842d472",
+      "body_path": "a1_at_functions/a1_minimal_pkg_invariant_metadata.py",
+      "change_type": "new",
+      "fulfills_blueprints": [],
+      "id": "a1.minimal_pkg.invariant_metadata",
+      "kind": "pure_function",
+      "name": "invariant_metadata",
+      "path": "C:/!atomadic/ass-ade-v1.1/tests/fixtures/rebuilt-out/a1_at_functions/a1_minimal_pkg_invariant_metadata.json",
+      "source_file": "C:/!atomadic/ass-ade-v1.1/tests/fixtures/rebuilt-out/a1_at_functions/a1_minimal_pkg_invariant_metadata.py",
+      "tier": "a1_at_functions",
+      "version": "0.1.0"
+    },
+    {
+      "body_hash": "6441608da9ffe259",
+      "body_path": "a1_at_functions/a1_minimal_pkg_pure_helper.py",
+      "change_type": "new",
+      "fulfills_blueprints": [],
+      "id": "a1.minimal_pkg.pure_helper",
+      "kind": "pure_function",
+      "name": "pure_helper",
+      "path": "C:/!atomadic/ass-ade-v1.1/tests/fixtures/rebuilt-out/a1_at_functions/a1_minimal_pkg_pure_helper.json",
+      "source_file": "C:/!atomadic/ass-ade-v1.1/tests/fixtures/rebuilt-out/a1_at_functions/a1_minimal_pkg_pure_helper.py",
+      "tier": "a1_at_functions",
+      "version": "0.1.0"
+    },
+    {
+      "body_hash": "a2a317fbd786b598",
+      "body_path": "a1_at_functions/a1_minimal_pkg_run.py",
+      "change_type": "new",
+      "fulfills_blueprints": [],
+      "id": "a1.minimal_pkg.run",
+      "kind": "pure_function",
+      "name": "run",
+      "path": "C:/!atomadic/ass-ade-v1.1/tests/fixtures/rebuilt-out/a1_at_functions/a1_minimal_pkg_run.json",
+      "source_file": "C:/!atomadic/ass-ade-v1.1/tests/fixtures/rebuilt-out/a1_at_functions/a1_minimal_pkg_run.py",
+      "tier": "a1_at_functions",
+      "version": "0.1.0"
+    },
+    {
+      "body_hash": "97878c6a2204390c",
+      "body_path": "a2_mo_composites/a2_compile_python_compile.py",
+      "change_type": "new",
+      "fulfills_blueprints": [],
+      "id": "a2.compile.python.compile",
+      "kind": "engine_molecule",
+      "name": "ExampleService",
+      "path": "C:/!atomadic/ass-ade-v1.1/tests/fixtures/rebuilt-out/a2_mo_composites/a2_compile_python_compile.json",
+      "source_file": "C:/!atomadic/ass-ade-v1.1/tests/fixtures/rebuilt-out/a2_mo_composites/a2_compile_python_compile.py",
+      "tier": "a2_mo_composites",
+      "version": "0.1.0"
+    }
+  ],
+  "counts": {
+    "by_tier": {
+      "a1_at_functions": 4,
+      "a2_mo_composites": 1
+    },
+    "total": 5
+  },
+  "materialized_at": "2026-04-22T23:26:14.515587+00:00",
+  "rebuild_tag": "20260422_232614",
+  "schema": "ASSADE-SPEC-003",
+  "source_module_map": {
+    "C:\\!atomadic\\ass-ade-v1.1\\tests\\fixtures\\minimal_pkg\\example_pkg\\core.py": "C:/!atomadic/ass-ade-v1.1/tests/fixtures/rebuilt-out/_source_modules/a1_at_functions/a1_source_minimal_pkg_caller_uses_helper.py"
+  },
+  "source_plan_digest": "369d769c80cbe38a",
+  "tier_versions": {
+    "a1_at_functions": "0.1.0",
+    "a2_mo_composites": "0.1.0"
+  },
+  "file_mtimes": {
+    "example_pkg\\core.py": 1776830621.4841664,
+    "example_pkg\\__init__.py": 1776830573.5133798
+  }
+}

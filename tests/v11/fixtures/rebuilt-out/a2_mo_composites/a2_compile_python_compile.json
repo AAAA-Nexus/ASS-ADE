@@ -1,0 +1,28 @@
+{
+  "body_hash": "97878c6a2204390c",
+  "body_path": "a2_mo_composites/a2_compile_python_compile.py",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!atomadic/ass-ade-v1.1/tests/fixtures/minimal_pkg/example_pkg/core.py:18.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "a2.compile.python.compile",
+  "imports": [],
+  "interfaces": {
+    "source": "C:\\!atomadic\\ass-ade-v1.1\\tests\\fixtures\\minimal_pkg\\example_pkg\\core.py:18"
+  },
+  "kind": "engine_molecule",
+  "made_of": [],
+  "name": "ExampleService",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for ExampleService"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a2_mo_composites",
+  "version": "0.1.0"
+}

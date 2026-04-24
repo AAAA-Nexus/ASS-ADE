@@ -1,0 +1,101 @@
+# ASS-ADE ship plan (T7): golden assimilate + import law + unit tests
+# See .ato-plans/active/ass-ade-ship-nexus-github-20260422/ and ASS_ADE_SHIP_PLAN.md
+name: ass-ade-ship
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "ass-ade-v1.1/**"
+      - "atomadic-engine/**"
+      - "agents/**"
+      - "docs/**"
+      - "README.md"
+      - "SWARM-ONE-PROMPT.md"
+      - "MANIFEST.in"
+      - "pyproject.toml"
+      - ".github/workflows/ass-ade-ship.yml"
+  pull_request:
+    paths:
+      - "ass-ade-v1.1/**"
+      - "atomadic-engine/**"
+      - "agents/**"
+      - "docs/**"
+      - "README.md"
+      - "SWARM-ONE-PROMPT.md"
+      - "MANIFEST.in"
+      - "pyproject.toml"
+      - ".github/workflows/ass-ade-ship.yml"
+
+jobs:
+  ass-ade:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: write
+    env:
+      PYTHONPATH: ""
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+          cache-dependency-path: pyproject.toml
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+
+      - name: Swarm prompt alignment (agents/)
+        run: python agents/check_swarm_prompt_alignment.py
+
+      - name: Monadic import layers
+        run: lint-imports
+
+      - name: Pytest (ASS-ADE, no dogfood)
+        run: python -m pytest ass-ade-v1.1/tests -m "not dogfood"
+
+      - name: Synth-test manifest matches sources
+        run: ass-ade book synth-tests --check --repo ass-ade-v1.1
+
+      - name: Golden assimilate (gapfill)
+        id: golden
+        run: |
+          mkdir -p /tmp/ass-ade-golden
+          ass-ade assimilate \
+            ass-ade-v1.1/tests/fixtures/minimal_pkg \
+            /tmp/ass-ade-golden \
+            --stop-after gapfill \
+            --json-out /tmp/ass-ade-golden/book.json \
+            --plan-out /tmp/ass-ade-golden/ASSIMILATE_PLAN.json
+
+      - name: Golden assimilate multi-root (--also + --policy)
+        id: golden_multi
+        env:
+          ASS_ADE_ASSIMILATE_REQUIRE_POLICY: "1"
+        run: |
+          mkdir -p /tmp/ass-ade-golden-multi
+          ass-ade assimilate \
+            ass-ade-v1.1/tests/fixtures/minimal_pkg \
+            /tmp/ass-ade-golden-multi \
+            --also ass-ade-v1.1/tests/fixtures/cross_lib \
+            --policy ass-ade-v1.1/tests/fixtures/multi_root_policy.yaml \
+            --stop-after gapfill \
+            --json-out /tmp/ass-ade-golden-multi/book.json \
+            --plan-out /tmp/ass-ade-golden-multi/ASSIMILATE_PLAN.json
+
+      - name: Upload assimilate artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: golden-assimilate-artifacts
+          path: |
+            /tmp/ass-ade-golden/book.json
+            /tmp/ass-ade-golden/ASSIMILATE_PLAN.json
+            /tmp/ass-ade-golden-multi/book.json
+            /tmp/ass-ade-golden-multi/ASSIMILATE_PLAN.json
+          if-no-files-found: ignore

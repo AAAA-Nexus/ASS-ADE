@@ -1,0 +1,28 @@
+{
+  "body_hash": "6441608da9ffe259",
+  "body_path": "a1_at_functions/a1_minimal_pkg_pure_helper.py",
+  "body_truncated": false,
+  "callers_of": [],
+  "component_schema": "ASSADE-SPEC-003",
+  "description": "Draft candidate from C:/!atomadic/ass-ade-v1.1/tests/fixtures/minimal_pkg/example_pkg/core.py:4.",
+  "exceptions_raised": [],
+  "fulfills_blueprints": [],
+  "id": "a1.minimal_pkg.pure_helper",
+  "imports": [],
+  "interfaces": {
+    "source": "C:\\!atomadic\\ass-ade-v1.1\\tests\\fixtures\\minimal_pkg\\example_pkg\\core.py:4"
+  },
+  "kind": "pure_function",
+  "made_of": [],
+  "name": "pure_helper",
+  "product_categories": [
+    "COR"
+  ],
+  "provides": [
+    "rebuild candidate for pure_helper"
+  ],
+  "reuse_policy": "reference-only",
+  "status": "draft",
+  "tier": "a1_at_functions",
+  "version": "0.1.0"
+}

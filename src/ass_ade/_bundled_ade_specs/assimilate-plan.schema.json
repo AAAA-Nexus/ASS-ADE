@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://atomadic.tech/schemas/ass-ade/assimilate-plan/v1",
+  "title": "ASSIMILATE_PLAN artifact (B1/B2 handoff)",
+  "description": "Merge/reconciliation view after phase 1+ ingest; complements markdown ASSIMILATE_PLAN.md. GAP: not all fields may be emitted by code yet — see DEFER fields.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["schema_version", "generated_at_utc", "primary_path", "extra_roots", "book_stop_after"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "1" },
+    "generated_at_utc": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 UTC"
+    },
+    "primary_path": { "type": "string" },
+    "output_parent": { "type": "string" },
+    "extra_roots": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "book_stop_after": {
+      "type": "string",
+      "description": "e.g. gapfill, package — matches run_book_until stop"
+    },
+    "phase0_status": { "type": "string" },
+    "ready_for_phase_1": { "type": "boolean" },
+    "namespace_conflicts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["qualified_name", "source_roots"],
+        "properties": {
+          "qualified_name": { "type": "string" },
+          "source_roots": { "type": "array", "items": { "type": "string" } },
+          "resolution_recommendation": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "gapfill_summary": {
+      "type": "object",
+      "description": "DEFER: exact shape to match phase2 output when implemented",
+      "properties": {
+        "stub_count": { "type": "integer" },
+        "tier_gaps": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": true
+    },
+    "recommended_human_actions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "nexus_receipts": {
+      "type": "object",
+      "description": "DEFER: optional nexus_preflight / receipt bundles when P3 is wired; omit in offline runs",
+      "additionalProperties": true
+    }
+  }
+}
