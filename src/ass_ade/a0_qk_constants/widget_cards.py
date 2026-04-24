@@ -34,6 +34,8 @@ WidgetKind = Literal[
     "composition_plan",
     "composition_result",
     "copilot_message",
+    "gap_fill_report",
+    "hot_patch_report",
 ]
 
 
@@ -166,6 +168,29 @@ class CopilotMessageCard(TypedDict, total=False):
     has_plan: bool
 
 
+class GapFillReportCard(TypedDict, total=False):
+    """Emitted after the gap-fill pipeline runs."""
+    plan_name: str
+    gaps_total: int
+    gaps_filled: int
+    gaps_stubbed: int
+    gaps_failed: int
+    materialized_path: str
+    wire_verdict: str
+    final_verdict: str  # PASS | REFINE | REJECT
+
+
+class HotPatchReportCard(TypedDict, total=False):
+    """Emitted after hot-patching reloads modules into the live session."""
+    root: str
+    requested_paths: list[str]
+    reloaded: int
+    imported: int
+    blocked: int
+    errored: int
+    verdict: str  # PASS | REFINE | REJECT
+
+
 # Export-by-name registry for runtime lookup (e.g. doc generation, validation)
 WIDGET_CARD_SCHEMAS: dict[str, type] = {
     "scout_report": ScoutReportCard,
@@ -182,4 +207,6 @@ WIDGET_CARD_SCHEMAS: dict[str, type] = {
     "composition_plan": CompositionPlanCard,
     "composition_result": CompositionResultCard,
     "copilot_message": CopilotMessageCard,
+    "gap_fill_report": GapFillReportCard,
+    "hot_patch_report": HotPatchReportCard,
 }

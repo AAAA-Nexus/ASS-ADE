@@ -49,7 +49,7 @@ class CompositionEdge:
 class Gap:
     """A missing block the composition references but doesn't exist yet."""
     slug: str                        # stable identifier the user / LLM refers to
-    referenced_by: list[str]         # node_ids that depend on this gap
+    referenced_by: list[str] = field(default_factory=list)  # node_ids depending on this gap
     expected_kind: str = "function"
     expected_tier: str = "a1_at_functions"
     hint: str = ""                   # user-provided description for synthesis

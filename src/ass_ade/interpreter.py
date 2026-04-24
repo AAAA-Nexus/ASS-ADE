@@ -2192,6 +2192,39 @@ def _handle_at_command(agent: "Atomadic", cmd: str, arg: str) -> str:
         )
         return _run_scout(ctx)
 
+    if cmd == "patch":
+        if not arg.strip():
+            return (
+                "Usage: `@patch <path1> [path2 ...]`\n\n"
+                "Reloads newly-materialized Python modules into this live session.\n"
+                "Load-bearing modules (interpreter, cli, server) are refused automatically."
+            )
+        from ass_ade.a3_og_features.hot_patch_runtime import hot_patch
+        paths = [Path(p) for p in arg.split()]
+        report = hot_patch(paths, root=agent.working_dir)
+        counts: dict[str, int] = {}
+        for r in report.results:
+            counts[r.status] = counts.get(r.status, 0) + 1
+        lines = [f"**Hot-patch**  verdict: **{report.verdict}**\n"]
+        for r in report.results:
+            marker = {
+                "reloaded": "🔄",
+                "imported": "✨",
+                "skipped_blocked": "🛑",
+                "error": "❌",
+                "not_found": "❓",
+            }.get(r.status, "·")
+            label = r.module or r.path
+            err = f" — {r.error}" if r.error else ""
+            lines.append(f"- {marker} `{label}` ({r.status}){err}")
+        lines.append(
+            f"\n_{counts.get('reloaded', 0)} reloaded · "
+            f"{counts.get('imported', 0)} imported · "
+            f"{counts.get('skipped_blocked', 0)} blocked · "
+            f"{counts.get('error', 0) + counts.get('not_found', 0)} errored_"
+        )
+        return "\n".join(lines)
+
     if cmd == "blocks":
         from ass_ade.a3_og_features.skill_runner import SkillContext, _run_blocks
         ctx = SkillContext(
@@ -2263,6 +2296,7 @@ def _handle_at_command(agent: "Atomadic", cmd: str, arg: str) -> str:
         "- `@wire [apply]` — scan tier imports (dry-run); `@wire apply` to patch\n"
         "- `@blocks [query]` — list playground building blocks from the registry\n"
         "- `@copilot <prompt>` — brainstorm a composition plan with the Copilot\n"
+        "- `@patch <path> [...]` — hot-reload newly-materialized modules into this session\n"
         "- `@persona <mode>` — switch persona (co-pilot, mentor, commander, architect, debug-buddy)\n"
         "- `@remember <key>: <value>` — anchor a fact to memory\n"
         "- `@forget <key>` — remove an anchor\n"

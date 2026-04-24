@@ -19,11 +19,7 @@ FastAPI and uvicorn are optional — install with: pip install 'ass-ade[ui]'.
 
 from __future__ import annotations
 
-import asyncio
-import io
-import sys
 import traceback
-from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
 from typing import Any
 
@@ -547,6 +543,96 @@ def build_app(working_dir: Path | None = None):
             "wrote_to_disk": result.wrote_to_disk,
         })
         return result.to_dict()
+
+    # ── Gap-fill + hot-patch ───────────────────────────────────────────────
+
+    @app.post("/playground/synthesize")
+    def playground_synthesize(body: dict = Body(default={})) -> dict:
+        """Fill every gap in a plan, materialize the feature, wire imports.
+
+        Body:
+          {"plan": {...}, "target_root": "<optional path>",
+           "allow_stub_fallback": true, "use_llm": true}
+        """
+        from ass_ade.a3_og_features.composition_engine import CompositionPlan
+        from ass_ade.a3_og_features.gap_fill_pipeline import GapFillPipeline
+
+        plan_dict = body.get("plan") if isinstance(body, dict) else None
+        if not isinstance(plan_dict, dict):
+            raise HTTPException(status_code=400, detail="Missing 'plan' in request body")
+
+        target_root_raw = body.get("target_root") if isinstance(body, dict) else None
+        target_root = Path(target_root_raw).resolve() if target_root_raw else _playground_source_dir()
+        allow_stub = bool(body.get("allow_stub_fallback", True))
+        use_llm = bool(body.get("use_llm", True))
+
+        run_id = bus.new_run_id()
+        bus.emit(AGUIEventType.TOOL_CALL_START,
+                 {"tool": "playground.synthesize", "plan": plan_dict.get("name")},
+                 run_id=run_id)
+
+        plan = CompositionPlan.from_dict(plan_dict)
+        reg = _get_registry(force=True)
+        pipeline = GapFillPipeline(reg, allow_stub_fallback=allow_stub, use_llm=use_llm)
+        report = pipeline.run(plan, target_root=target_root)
+
+        bus.emit_widget("gap_fill_report", {
+            "plan_name": report.plan_name,
+            "gaps_total": report.gaps_total,
+            "gaps_filled": report.gaps_filled,
+            "gaps_stubbed": report.gaps_stubbed,
+            "gaps_failed": report.gaps_failed,
+            "materialized_path": report.materialized_path,
+            "wire_verdict": report.wire_verdict,
+            "final_verdict": report.final_verdict,
+        }, run_id=run_id)
+        bus.emit(AGUIEventType.TOOL_CALL_RESULT,
+                 {"tool": "playground.synthesize", "verdict": report.final_verdict},
+                 run_id=run_id)
+        bus.emit(AGUIEventType.TOOL_CALL_END, {"tool": "playground.synthesize"}, run_id=run_id)
+        _registry_cache["registry"] = None
+        return report.to_dict()
+
+    @app.post("/playground/hot-patch")
+    def playground_hot_patch(body: dict = Body(default={})) -> dict:
+        """Reload newly-materialized modules into the live Python process.
+
+        Body:
+          {"paths": ["a3_og_features/foo_feature.py", ...],
+           "root": "<optional root; defaults to playground source dir>"}
+        """
+        from ass_ade.a3_og_features.hot_patch_runtime import hot_patch
+
+        paths_raw = body.get("paths") if isinstance(body, dict) else None
+        if not isinstance(paths_raw, list) or not paths_raw:
+            raise HTTPException(status_code=400, detail="Missing 'paths' list in request body")
+        root_raw = body.get("root") if isinstance(body, dict) else None
+        root = Path(root_raw).resolve() if root_raw else _playground_source_dir()
+
+        run_id = bus.new_run_id()
+        bus.emit(AGUIEventType.TOOL_CALL_START,
+                 {"tool": "playground.hot_patch", "paths": paths_raw}, run_id=run_id)
+
+        report = hot_patch([Path(p) for p in paths_raw], root=root)
+
+        counts = {"reloaded": 0, "imported": 0, "skipped_blocked": 0, "error": 0, "not_found": 0}
+        for r in report.results:
+            counts[r.status] = counts.get(r.status, 0) + 1
+
+        bus.emit_widget("hot_patch_report", {
+            "root": report.root,
+            "requested_paths": list(report.requested_paths),
+            "reloaded": counts["reloaded"],
+            "imported": counts["imported"],
+            "blocked": counts["skipped_blocked"],
+            "errored": counts["error"] + counts["not_found"],
+            "verdict": report.verdict,
+        }, run_id=run_id)
+        bus.emit(AGUIEventType.TOOL_CALL_RESULT,
+                 {"tool": "playground.hot_patch", "verdict": report.verdict},
+                 run_id=run_id)
+        bus.emit(AGUIEventType.TOOL_CALL_END, {"tool": "playground.hot_patch"}, run_id=run_id)
+        return report.to_dict()
 
     # ── Atomadic Copilot ───────────────────────────────────────────────────
 
