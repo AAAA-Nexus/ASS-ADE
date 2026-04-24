@@ -143,8 +143,26 @@ app.add_typer(feature_app, name="feature")
 from ass_ade.commands.selfbuild import selfbuild_app  # noqa: E402
 app.add_typer(selfbuild_app, name="selfbuild")
 
+from ass_ade.commands.scout import scout_command  # noqa: E402
+app.command("scout")(scout_command)
+
+from ass_ade.commands.ui import ui_command  # noqa: E402
+app.command("ui")(ui_command)
+
 from ass_ade.commands.aso import aso_app  # noqa: E402
 app.add_typer(aso_app, name="optimize")
+
+# Multi-language bridge: generate TypeScript/Rust/Kotlin/Swift scaffolding
+from ass_ade.commands.bridge import app as bridge_app  # noqa: E402
+app.add_typer(bridge_app, name="bridge")
+
+# Cherry-pick: interactive symbol selection after scouting
+from ass_ade.commands.cherry import cherry_pick_command  # noqa: E402
+app.command("cherry-pick")(cherry_pick_command)
+
+# Assimilate: copy cherry-picked symbols into the target project's tier dirs
+from ass_ade.commands.assimilate import assimilate_command  # noqa: E402
+app.command("assimilate")(assimilate_command)
 
 providers_app = typer.Typer(help="Manage free LLM providers (Groq, Gemini, OpenRouter, Ollama, ...).")
 app.add_typer(providers_app, name="providers")

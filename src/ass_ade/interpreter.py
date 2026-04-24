@@ -710,7 +710,9 @@ class Atomadic:
             )
             print(f"\n🎯 Skill: {matched_skill.name} — {matched_skill.description}", flush=True)
             print(flush=True)
+            _emit_ag_ui_tool_start(matched_skill.name, text)
             raw_skill = skill_runner.run(matched_skill, ctx)
+            _emit_ag_ui_tool_result(matched_skill.name, raw_skill)
             response = self.personality.shape_response(raw_skill)
             turn = Turn(
                 user=text, tone=tone, intent=f"skill:{matched_skill.name}",
@@ -2103,6 +2105,36 @@ def _run_setup_wizard(
 
 
 # ── @ meta-command handler ─────────────────────────────────────────────────────
+
+def _emit_ag_ui_tool_start(tool_name: str, user_input: str) -> None:
+    """Publish a TOOL_CALL_START on the AG-UI bus, if the bus is available.
+
+    No-op when the UI extras are not imported or the bus cannot be acquired.
+    """
+    try:
+        from ass_ade.a2_mo_composites.ag_ui_bus import AGUIEventType, get_bus
+        get_bus().emit(
+            AGUIEventType.TOOL_CALL_START,
+            {"tool": f"skill:{tool_name}", "input": user_input[:500]},
+        )
+    except Exception:
+        pass
+
+
+def _emit_ag_ui_tool_result(tool_name: str, output: str) -> None:
+    """Publish a TOOL_CALL_RESULT + TOOL_CALL_END + widget card to the bus."""
+    try:
+        from ass_ade.a2_mo_composites.ag_ui_bus import AGUIEventType, get_bus
+        bus = get_bus()
+        bus.emit(
+            AGUIEventType.TOOL_CALL_RESULT,
+            {"tool": f"skill:{tool_name}", "output": output[:20_000]},
+        )
+        bus.emit_widget("skill_result", {"name": tool_name, "output": output[:20_000]})
+        bus.emit(AGUIEventType.TOOL_CALL_END, {"tool": f"skill:{tool_name}"})
+    except Exception:
+        pass
+
 
 def _handle_at_command(agent: "Atomadic", cmd: str, arg: str) -> str:
     """Dispatch REPL-level @ meta-commands without going through the agent loop."""
