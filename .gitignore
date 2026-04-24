@@ -36,7 +36,7 @@ Thumbs.db
 .ass-ade-*-selfbuilt*/
 _backup_ADE/
 RECON_REPORT.md
-a2_mo_composites/
+/a2_mo_composites/
 
 # Test/coverage artefacts
 .coverage

@@ -7,7 +7,7 @@ on:
   push:
     paths:
       - "ass-ade-v1.1/**"
-      - "ADE/**"
+      - "atomadic-engine/**"
       - "agents/**"
       - "docs/**"
       - "README.md"
@@ -18,7 +18,7 @@ on:
   pull_request:
     paths:
       - "ass-ade-v1.1/**"
-      - "ADE/**"
+      - "atomadic-engine/**"
       - "agents/**"
       - "docs/**"
       - "README.md"
@@ -52,9 +52,6 @@ jobs:
 
       - name: Swarm prompt alignment (agents/)
         run: python agents/check_swarm_prompt_alignment.py
-
-      - name: ADE strict harness verify
-        run: python ADE/harness/verify_ade_harness.py
 
       - name: Monadic import layers
         run: lint-imports

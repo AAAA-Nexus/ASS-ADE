@@ -1,0 +1,245 @@
+name: auto-evolve
+
+on:
+  schedule:
+    # Run once per day at 03:00 UTC — low-traffic window
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+    inputs:
+      target_index:
+        description: "Finding index to apply (0-based). Leave empty for auto-rotate."
+        required: false
+        default: ""
+
+jobs:
+  evolve:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+          cache-dependency-path: pyproject.toml
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+
+      # ── Skip list: files that already have open PRs or are permanently skipped ──
+      - name: Build skip list from open PRs
+        id: skip
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python - <<'PYEOF'
+          import json, os, subprocess, re
+
+          # Files with open evolution PRs (extract from PR titles)
+          result = subprocess.run(
+              ["gh", "pr", "list", "--state", "open",
+               "--json", "title,headRefName", "--limit", "100"],
+              capture_output=True, text=True
+          )
+          prs = json.loads(result.stdout or "[]")
+          skip_files = set()
+          for pr in prs:
+              # Match "evolution(*): ... in path/to/file.py ..."
+              m = re.search(r' in ([\w/\.]+\.py)', pr["title"])
+              if m:
+                  skip_files.add(m.group(1))
+              # Also skip if branch already exists for this file
+              branch = pr.get("headRefName", "")
+              m2 = re.search(r'auto-evolve/.*?/([\w_]+\.py)', branch)
+              if m2:
+                  skip_files.add(m2.group(1))
+
+          # Permanent skip list — files that are too complex or already addressed
+          PERMANENT_SKIP = {
+              "src/ass_ade/agent/alphaverus.py",  # was stuck in loop
+              "src/ass_ade/interpreter.py",       # 91KB — too large for single PR
+              "src/ass_ade/map_terrain.py",        # 45KB — too large
+          }
+          skip_files.update(PERMANENT_SKIP)
+
+          skip_json = json.dumps(sorted(skip_files))
+          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+              f.write(f"skip_files={skip_json}\n")
+          print(f"Skip list ({len(skip_files)} files): {skip_json}")
+          PYEOF
+
+      # ── Get enhance findings and pick a diverse target ──
+      - name: Pick enhancement target
+        id: target
+        run: |
+          python - <<'PYEOF'
+          import json, os, subprocess, sys, datetime, hashlib
+
+          skip_files = json.loads(os.environ.get("SKIP_FILES", "[]"))
+
+          # Get findings from enhance
+          result = subprocess.run(
+              ["ass-ade", "enhance", "atomadic-engine/src/ass_ade", "--local-only"],
+              capture_output=True, text=True
+          )
+
+          # Parse findings table (each line: "ID | impact | effort | category | title | file")
+          findings = []
+          for line in result.stdout.splitlines():
+              parts = [p.strip() for p in line.split("│") if p.strip()]
+              if len(parts) >= 6 and parts[0].isdigit():
+                  findings.append({
+                      "id": int(parts[0]),
+                      "impact": parts[1],
+                      "effort": parts[2],
+                      "category": parts[3],
+                      "title": parts[4],
+                      "file": parts[5],
+                  })
+
+          if not findings:
+              print("No findings from enhance — exiting.")
+              with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+                  f.write("skip=true\n")
+              sys.exit(0)
+
+          # Filter out skip list
+          eligible = [f for f in findings if not any(s in f["file"] for s in skip_files)]
+          if not eligible:
+              print("All findings are in skip list — no work today.")
+              with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+                  f.write("skip=true\n")
+              sys.exit(0)
+
+          # Diversity: rotate target using (day-of-year % eligible count) as index
+          # This ensures we don't always pick finding #1
+          manual_idx = os.environ.get("INPUT_TARGET_INDEX", "").strip()
+          if manual_idx.isdigit():
+              idx = int(manual_idx) % len(eligible)
+          else:
+              day_of_year = datetime.datetime.utcnow().timetuple().tm_yday
+              # Add a hash of the first eligible file to break ties on same day
+              salt = int(hashlib.md5(eligible[0]["file"].encode()).hexdigest()[:4], 16)
+              idx = (day_of_year + salt) % len(eligible)
+
+          chosen = eligible[idx]
+          print(f"Chosen finding [{idx}/{len(eligible)}]: {chosen}")
+
+          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+              f.write(f"skip=false\n")
+              f.write(f"finding_id={chosen['id']}\n")
+              f.write(f"finding_file={chosen['file']}\n")
+              f.write(f"finding_category={chosen['category']}\n")
+              f.write(f"finding_title={chosen['title']}\n")
+          PYEOF
+        env:
+          INPUT_TARGET_INDEX: ${{ inputs.target_index }}
+          SKIP_FILES: ${{ steps.skip.outputs.skip_files }}
+
+      - name: Skip if no eligible target
+        if: steps.target.outputs.skip == 'true'
+        run: echo "No eligible enhancement target today — skipping." && exit 0
+
+      # ── Bump patch version ──
+      - name: Bump patch version
+        id: version
+        run: |
+          python - <<'PYEOF'
+          import re, os
+
+          with open("pyproject.toml", "r") as f:
+              content = f.read()
+
+          m = re.search(r'^version\s*=\s*"(\d+)\.(\d+)\.(\d+)"', content, re.MULTILINE)
+          if not m:
+              print("Could not parse version"); exit(1)
+
+          major, minor, patch = int(m.group(1)), int(m.group(2)), int(m.group(3))
+          new_version = f"{major}.{minor}.{patch + 1}"
+          new_content = content[:m.start()] + f'version = "{new_version}"' + content[m.end():]
+
+          with open("pyproject.toml", "w") as f:
+              f.write(new_content)
+
+          print(f"Bumped: {major}.{minor}.{patch} → {new_version}")
+          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+              f.write(f"new_version={new_version}\n")
+              f.write(f"old_version={major}.{minor}.{patch}\n")
+          PYEOF
+
+      # ── Apply enhancement (using enhance --apply on the chosen finding ID) ──
+      - name: Apply enhancement
+        run: |
+          ass-ade enhance atomadic-engine/src/ass_ade \
+            --local-only \
+            --apply ${{ steps.target.outputs.finding_id }} \
+            || echo "enhance --apply not supported for this finding; skipping code change"
+
+      # ── Run tests to verify nothing broke ──
+      - name: Verify tests pass
+        run: python -m pytest ass-ade-v1.1/tests -m "not dogfood" -q --tb=short
+
+      # ── Create PR if there are changes ──
+      - name: Create evolution PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FINDING_FILE: ${{ steps.target.outputs.finding_file }}
+          FINDING_CATEGORY: ${{ steps.target.outputs.finding_category }}
+          NEW_VERSION: ${{ steps.version.outputs.new_version }}
+        run: |
+          python - <<'PYEOF'
+          import os, subprocess, datetime
+
+          file = os.environ["FINDING_FILE"]
+          category = os.environ["FINDING_CATEGORY"]
+          version = os.environ["NEW_VERSION"]
+          ts = datetime.datetime.utcnow().strftime("%Y%m%d-%H%M%S")
+
+          # Check if there are actual changes to commit
+          status = subprocess.run(["git", "diff", "--quiet"], capture_output=True)
+          if status.returncode == 0:
+              print("No file changes produced — skipping PR creation.")
+              exit(0)
+
+          # Create branch
+          safe_file = file.replace("/", "_").replace(".", "_")
+          branch = f"auto-evolve/{ts}/{safe_file}"
+          subprocess.run(["git", "checkout", "-b", branch], check=True)
+          subprocess.run(["git", "config", "user.email", "ci@atomadic.tech"], check=True)
+          subprocess.run(["git", "config", "user.name", "ASS-ADE Evolution Bot"], check=True)
+          subprocess.run(["git", "add", "-A"], check=True)
+          subprocess.run([
+              "git", "commit", "-m",
+              f"evolution({category}): {file} → v{version}"
+          ], check=True)
+          subprocess.run(["git", "push", "origin", branch], check=True)
+
+          # Create PR
+          body = f"""Auto-Evolution — {datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')}
+
+          **Category:** {category}
+          **File:** `{file}`
+          **Version bump:** v{version}
+
+          Tests passed before commit. Review and merge if the change looks correct.
+
+          > Generated by `auto-evolve.yml` — deduplication enabled, diversity rotation active.
+          """
+
+          subprocess.run([
+              "gh", "pr", "create",
+              "--title", f"evolution({category}): {file} (v{version})",
+              "--body", body,
+              "--base", "main",
+              "--head", branch,
+          ], check=True)
+          PYEOF
