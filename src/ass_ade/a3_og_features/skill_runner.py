@@ -388,6 +388,86 @@ def _run_dependency_scan(ctx: SkillContext) -> str:
     return "\n".join(lines)
 
 
+def _run_scout(ctx: SkillContext) -> str:
+    """Scout a repo: static intel, symbol count, benefit mapping, recommendations."""
+    from ass_ade.local.scout import scout_repo
+
+    text = ctx.user_input
+    wd = ctx.working_dir
+
+    path_match = re.search(r"scout\s+([\w./\\:-]+)", text, re.IGNORECASE)
+    if path_match:
+        candidate = Path(path_match.group(1).strip())
+        if not candidate.is_absolute():
+            candidate = wd / candidate
+        target = candidate if candidate.exists() else wd
+    else:
+        target = wd
+
+    use_llm = "--llm" in text or "with llm" in text.lower()
+    benefit = wd if target != wd else None
+
+    try:
+        report = scout_repo(target, benefit_root=benefit, use_llm=use_llm)
+    except Exception as exc:
+        return f"Scout failed: {exc}"
+
+    summary = report.get("summary", {})
+    symbols = report.get("symbol_summary", {})
+    llm_result = report.get("llm", {})
+    recs = report.get("static_recommendations", [])
+
+    display_name = target.resolve().name or str(target.resolve())
+    lines = [f"**Scout: `{display_name}`**\n"]
+    lines.append(
+        f"- Files: {summary.get('total_files', 0)} "
+        f"| Dirs: {summary.get('total_dirs', 0)}"
+    )
+
+    py_files = symbols.get("python_files", 0)
+    sym_count = symbols.get("symbols", 0)
+    tested = symbols.get("tested_symbols", 0)
+    if py_files:
+        lines.append(f"- Python: {py_files} files, {sym_count} symbols, {tested} tested")
+
+    file_types = summary.get("file_types", {})
+    if file_types:
+        top = " | ".join(f"{ext}: {n}" for ext, n in list(file_types.items())[:5])
+        lines.append(f"- File types: {top}")
+
+    target_map = report.get("target_map")
+    if target_map:
+        counts = target_map.get("action_counts", {})
+        lines.append(
+            f"\n**Benefit mapping:** "
+            f"assimilate={counts.get('assimilate', 0)}, "
+            f"enhance={counts.get('enhance', 0)}, "
+            f"rebuild={counts.get('rebuild', 0)}, "
+            f"skip={counts.get('skip', 0)}"
+        )
+
+    if recs:
+        lines.append("\n**Recommendations:**")
+        for rec in recs[:4]:
+            lines.append(f"- [{rec.get('priority', '?')}] {rec.get('title', '')}")
+
+    if llm_result.get("status") == "ok":
+        analysis = llm_result.get("analysis", {})
+        if isinstance(analysis, dict):
+            if analysis.get("summary"):
+                lines.append(f"\n**LLM:** {analysis['summary']}")
+            ops = analysis.get("opportunities", [])
+            if ops:
+                lines.append("**Opportunities:**")
+                for op in ops[:4]:
+                    lines.append(f"- {op}")
+    elif llm_result.get("status") == "unavailable":
+        lines.append(f"\n_LLM unavailable — {llm_result.get('error', '')[:120]}_")
+
+    lines.append(f"\n_Full report: `ass-ade scout {target} --json-out scout.json`_")
+    return "\n".join(lines)
+
+
 def _run_file_reader(ctx: SkillContext) -> str:
     """Read a file from the working directory and return its content."""
     text = ctx.user_input
@@ -478,6 +558,15 @@ def _register_builtins(registry: dict[str, Skill]) -> None:
                       "show file", "read file", "look at the", "check the file"],
             usage="read src/module.py",
             execute=_run_file_reader,
+        ),
+        Skill(
+            name="scout",
+            description="Scout a repo — static intel, symbol map, benefit mapping, LLM synthesis",
+            triggers=["scout", "survey this repo", "analyze this repo", "repo intel",
+                      "what's in this repo", "scout this", "scout the repo",
+                      "survey the repo", "scan this repo", "what does this repo contain"],
+            usage="scout ../sibling-repo",
+            execute=_run_scout,
         ),
     ]
     for s in skills:

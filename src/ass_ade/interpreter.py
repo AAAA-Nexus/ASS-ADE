@@ -2149,6 +2149,17 @@ def _handle_at_command(agent: "Atomadic", cmd: str, arg: str) -> str:
     if cmd == "personality":
         return agent.personality.describe()
 
+    if cmd == "scout":
+        from ass_ade.a3_og_features.skill_runner import SkillContext, _run_scout
+        ctx = SkillContext(
+            user_input=f"scout {arg}" if arg else "scout",
+            working_dir=agent.working_dir,
+            tone="casual",
+            domain_level=agent.personality.domain_level,
+            history=agent.history,
+        )
+        return _run_scout(ctx)
+
     if cmd == "anchors":
         anchors = agent.episodes.get_anchors()
         if not anchors:
@@ -2162,6 +2173,7 @@ def _handle_at_command(agent: "Atomadic", cmd: str, arg: str) -> str:
     return (
         "**Available @ commands:**\n\n"
         "- `@skills` — list all available skills\n"
+        "- `@scout [path] [--llm]` — scout a repo for intel and benefit opportunities\n"
         "- `@persona <mode>` — switch persona (co-pilot, mentor, commander, architect, debug-buddy)\n"
         "- `@remember <key>: <value>` — anchor a fact to memory\n"
         "- `@forget <key>` — remove an anchor\n"
@@ -2229,10 +2241,10 @@ def run_interactive(working_dir: Path | None = None) -> None:
         from rich.markdown import Markdown as _Markdown
         console.print()
         console.print(f"[bold cyan]{greeting_text}[/bold cyan]")
-        console.print(f"\n[dim]Working dir: {wdir}   ·   type '@skills' for skills   ·   'exit' to quit[/dim]\n")
+        console.print(f"\n[dim]Working dir: {wdir}   ·   type '@skills' for skills, '@scout' to survey a repo   ·   'exit' to quit[/dim]\n")
     else:
         print(f"\n{greeting_text}")
-        print(f"\nWorking dir: {wdir}   ·   type '@skills' for skills   ·   'exit' to quit\n")
+        print(f"\nWorking dir: {wdir}   ·   type '@skills' for skills, '@scout' to survey a repo   ·   'exit' to quit\n")
 
     while True:
         try:
