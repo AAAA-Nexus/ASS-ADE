@@ -42,7 +42,7 @@ def build_app(working_dir: Path | None = None):
         get_bus,
     )
 
-    app = FastAPI(title="ASS-ADE Dashboard", version="1.0.0")
+    app = FastAPI(title="Atomadic Control Center", version="1.0.0")
     app.add_middleware(
         CORSMiddleware,
         allow_origins=["*"],
@@ -774,5 +774,167 @@ def build_app(working_dir: Path | None = None):
                  {"tool": f"skill:{name}", "output": out[:20_000]}, run_id=run_id)
         bus.emit(AGUIEventType.TOOL_CALL_END, {"tool": f"skill:{name}"}, run_id=run_id)
         return {"run_id": run_id, "name": name, "output": out}
+
+    # ── Sessions tab ───────────────────────────────────────────────────────
+
+    @app.get("/sessions")
+    def sessions_list(include_archived: bool = False) -> list[dict]:
+        from ass_ade.a3_og_features.sessions_service import SessionsService
+
+        svc = SessionsService(wdir)
+        return [dict(s) for s in svc.list_sessions(include_archived=include_archived)]
+
+    class SessionCreate(BaseModel):
+        name: str
+        model: str = "claude-sonnet-4-6"
+
+    @app.post("/sessions")
+    def sessions_create(body: SessionCreate) -> dict:
+        from ass_ade.a3_og_features.sessions_service import SessionsService
+
+        svc = SessionsService(wdir)
+        rec = svc.new_session(body.name, model=body.model)
+        return dict(rec)
+
+    @app.get("/sessions/{session_id}/history")
+    def sessions_history(session_id: str, limit: int = 100) -> list[dict]:
+        from ass_ade.a3_og_features.sessions_service import SessionsService
+
+        svc = SessionsService(wdir)
+        return [dict(m) for m in svc.get_history(session_id, limit=limit)]
+
+    # ── Cron tab ───────────────────────────────────────────────────────────
+
+    @app.get("/cron")
+    def cron_list(all_jobs: bool = True) -> list[dict]:
+        from ass_ade.a3_og_features.cron_service import CronService
+
+        svc = CronService(wdir)
+        return [dict(j) for j in svc.list_jobs(all_=all_jobs)]
+
+    class CronCreate(BaseModel):
+        name: str
+        schedule: str = "@daily"
+        command: str
+
+    @app.post("/cron")
+    def cron_create(body: CronCreate) -> dict:
+        from ass_ade.a3_og_features.cron_service import CronService
+
+        svc = CronService(wdir)
+        try:
+            job = svc.add(body.name, body.schedule, body.command)
+        except ValueError as exc:
+            raise HTTPException(status_code=400, detail=str(exc))
+        return dict(job)
+
+    @app.post("/cron/{job_id}/run")
+    def cron_run(job_id: str) -> dict:
+        from ass_ade.a3_og_features.cron_service import CronService
+
+        svc = CronService(wdir)
+        try:
+            exit_code, output = svc.run(job_id)
+        except KeyError as exc:
+            raise HTTPException(status_code=404, detail=str(exc))
+        return {"ok": True, "exit_code": exit_code, "output": output}
+
+    @app.post("/cron/{job_id}/enable")
+    def cron_enable(job_id: str) -> dict:
+        from ass_ade.a3_og_features.cron_service import CronService
+
+        svc = CronService(wdir)
+        try:
+            job = svc.enable(job_id)
+        except KeyError as exc:
+            raise HTTPException(status_code=404, detail=str(exc))
+        return dict(job)
+
+    @app.post("/cron/{job_id}/disable")
+    def cron_disable(job_id: str) -> dict:
+        from ass_ade.a3_og_features.cron_service import CronService
+
+        svc = CronService(wdir)
+        try:
+            job = svc.disable(job_id)
+        except KeyError as exc:
+            raise HTTPException(status_code=404, detail=str(exc))
+        return dict(job)
+
+    @app.delete("/cron/{job_id}")
+    def cron_delete(job_id: str) -> dict:
+        from ass_ade.a3_og_features.cron_service import CronService
+
+        svc = CronService(wdir)
+        try:
+            svc.remove(job_id)
+        except KeyError as exc:
+            raise HTTPException(status_code=404, detail=str(exc))
+        return {"ok": True}
+
+    # ── Personal Assistant tab ─────────────────────────────────────────────
+
+    @app.get("/assistant/status")
+    def assistant_status() -> dict:
+        from ass_ade.a2_mo_composites.personal_assistant import PersonalAssistant
+
+        pa = PersonalAssistant(wdir)
+        return pa.status()
+
+    @app.get("/assistant/tasks")
+    def assistant_tasks(status: str = "open", limit: int = 50) -> list[dict]:
+        from ass_ade.a0_qk_constants.assistant_types import TaskStatus
+        from ass_ade.a2_mo_composites.personal_assistant import PersonalAssistant
+
+        pa = PersonalAssistant(wdir)
+        try:
+            ts = TaskStatus(status)
+        except ValueError:
+            ts = TaskStatus.OPEN
+        return [dict(t) for t in pa.list_tasks(status=ts)][:limit]
+
+    @app.post("/assistant/tasks/{task_id}/complete")
+    def assistant_complete(task_id: str) -> dict:
+        from ass_ade.a2_mo_composites.personal_assistant import PersonalAssistant
+
+        pa = PersonalAssistant(wdir)
+        ok = pa.complete_task(task_id)
+        if not ok:
+            raise HTTPException(status_code=404, detail="Task not found")
+        return {"ok": True}
+
+    @app.get("/assistant/insights")
+    def assistant_insights(tag: str = "", limit: int = 50) -> list[dict]:
+        from ass_ade.a2_mo_composites.personal_assistant import PersonalAssistant
+
+        pa = PersonalAssistant(wdir)
+        return [dict(i) for i in pa.list_insights(tag=tag or None)][:limit]
+
+    # ── Harvest ────────────────────────────────────────────────────────────
+
+    class HarvestRequest(BaseModel):
+        paths: list[str] = ["."]
+
+    @app.post("/harvest")
+    def harvest_run(body: HarvestRequest) -> dict:
+        from ass_ade.a3_og_features.harvest import harvest
+
+        run_id = bus.new_run_id()
+        bus.emit(AGUIEventType.TOOL_CALL_START,
+                 {"tool": "harvest", "paths": body.paths}, run_id=run_id)
+        results = []
+        for raw_path in body.paths:
+            target = Path(raw_path).resolve() if raw_path != "." else wdir
+            r = harvest(target)
+            results.append(r.to_dict() if hasattr(r, "to_dict") else {
+                "path": str(target),
+                "tasks_added": r.tasks_added,
+                "insights_added": r.insights_added,
+                "files_scanned": r.files_scanned,
+            })
+        bus.emit(AGUIEventType.TOOL_CALL_RESULT,
+                 {"tool": "harvest", "results": results}, run_id=run_id)
+        bus.emit(AGUIEventType.TOOL_CALL_END, {"tool": "harvest"}, run_id=run_id)
+        return {"ok": True, "results": results}
 
     return app

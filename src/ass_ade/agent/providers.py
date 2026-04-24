@@ -315,23 +315,22 @@ FREE_PROVIDERS: dict[str, ProviderProfile] = {
 
 
 # Default fallback chain when user hasn't specified one.
-# Order: fastest cloud-free → quality cloud-free → premium (Nexus) → local fallback
-# Nexus is ranked high for users who have a key because it applies trust/hallucination
-# gates server-side, but it is metered so it's placed after the free tier providers.
+# Thomas's preferred order: AAAA-Nexus first (quality-gated), then fastest
+# cloud-free providers, then local fallbacks that are never rate-limited.
 DEFAULT_FALLBACK_CHAIN: list[str] = [
-    "groq",          # fastest cloud, free tier
-    "cerebras",      # second-fastest, free tier
+    "nexus",         # AAAA-Nexus — quality-gated, trust-verified (metered)
+    "groq",          # fastest cloud-free (LPU, Llama 3.3 70B)
+    "cerebras",      # second-fastest, wafer-scale inference
+    "gemini",        # generous free quota, 1M+ context window
+    "github_models", # free GPT-4o + o1 via existing GitHub token
+    "mistral",       # European provider, strong at code + multilingual
+    "together",      # :free-suffix models, DeepSeek R1 distill
+    "openrouter",    # aggregator, many :free models
     "chutes",        # free DeepSeek V3/R1 via Bittensor
-    "gemini",        # generous free quota
-    "openrouter",    # many free models
-    "mistral",       # free experimentation tier
-    "together",      # :free-suffix models
-    "github_models", # free GPT-4o/o1 via GitHub
-    "huggingface",   # free HF inference
-    "deepinfra",     # free starter credit
-    "nexus",         # user's own AAAA-Nexus (metered, quality-gated)
-    "pollinations",  # anonymous, no key
-    "ollama",        # local, no internet needed
+    "huggingface",   # free HF inference, huge model selection
+    "deepinfra",     # pay-per-token with free starter credit
+    "pollinations",  # anonymous, no key, always available
+    "ollama",        # local, never rate-limited — final cloud fallback
     "lmstudio",      # local GUI
     "llamacpp",      # local C++ server
 ]
