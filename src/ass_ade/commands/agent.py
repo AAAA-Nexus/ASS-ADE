@@ -36,12 +36,14 @@ def register(app: typer.Typer) -> None:
     """Register agent commands on the provided app."""
     app.command("chat")(agent_chat)
     app.command("run")(agent_run)
+    app.command("voice")(agent_voice)
 
 
 def agent_chat(
     config: Path | None = CONFIG_OPTION,
     working_dir: Annotated[Path, typer.Option(help="Working directory for the agent.")] = Path("."),
     model: Annotated[str | None, typer.Option(help="Specific model to use.")] = None,
+    voice: Annotated[bool, typer.Option("--voice", help="Speak each response aloud via edge-tts.")] = False,
 ) -> None:
     """Interactive agent chat session."""
     from ass_ade.agent.loop import AgentLoop
@@ -101,11 +103,121 @@ def agent_chat(
 
                 console.print(f"\n[bold magenta]assistant[/bold magenta]> {response}\n")
                 _render_phase1_header(agent)
+                if voice:
+                    from ass_ade.a1_at_functions.speech import speak
+                    speak(response)
 
             except EOFError:
                 break
             except KeyboardInterrupt:
                 console.print("\n[yellow]Session interrupted.[/yellow]")
+                break
+            except Exception as exc:
+                console.print(f"[bold red]Error:[/bold red] {exc}")
+    finally:
+        if gates_client:
+            gates_client.close()
+
+
+def agent_voice(
+    config: Path | None = CONFIG_OPTION,
+    working_dir: Annotated[Path, typer.Option(help="Working directory for the agent.")] = Path("."),
+    model: Annotated[str | None, typer.Option(help="Specific model to use.")] = None,
+    mic_timeout: Annotated[float, typer.Option("--timeout", help="Mic listen timeout in seconds.")] = 5.0,
+) -> None:
+    """Full voice loop: speak to Atomadic, hear responses aloud.
+
+    Requires ``pip install ass-ade[voice]`` for mic input (speech_recognition + pyaudio).
+    Requires ``pip install edge-tts`` for TTS output.
+    Falls back to text input if speech_recognition is unavailable.
+    """
+    from ass_ade.a1_at_functions.speech import speak, listen_once
+    from ass_ade.agent.loop import AgentLoop
+    from ass_ade.agent.gates import QualityGates
+    from ass_ade.agent.lse import LSEEngine
+    from ass_ade.agent.orchestrator import EngineOrchestrator
+    from ass_ade.engine.router import build_provider
+    from ass_ade.tools.registry import default_registry
+    from ass_ade.nexus.client import NexusClient
+
+    _, settings = _resolve_config(config)
+    provider = build_provider(settings)
+    registry = default_registry(str(working_dir.resolve()))
+
+    # Check if mic input is available
+    try:
+        import speech_recognition  # type: ignore[import]  # noqa: F401
+        mic_available = True
+    except ImportError:
+        mic_available = False
+
+    gates_client = None
+    try:
+        gates = None
+        nexus_for_engines = None
+        if settings.profile in {"hybrid", "premium"} and settings.nexus_api_key:
+            gates_client = NexusClient(
+                base_url=settings.nexus_base_url,
+                timeout=settings.request_timeout_s,
+                api_key=settings.nexus_api_key,
+                agent_id=settings.agent_id,
+            )
+            gates = QualityGates(gates_client)
+            nexus_for_engines = gates_client
+
+        lse_cfg = _lse_config_from_settings(settings)
+        lse = LSEEngine(lse_cfg)
+        orchestrator = EngineOrchestrator(lse_cfg, nexus=nexus_for_engines, working_dir=str(working_dir.resolve()))
+
+        agent = AgentLoop(
+            provider=provider,
+            registry=registry,
+            working_dir=str(working_dir.resolve()),
+            model=model or settings.agent_model,
+            quality_gates=gates,
+            orchestrator=orchestrator,
+            lse=lse,
+        )
+
+        console.print(f"[bold green]Atomadic Voice Mode[/bold green] (Model: {model or settings.agent_model})")
+        if mic_available:
+            console.print("[dim]Speak your message. Say 'exit' or 'quit' to end. Ctrl-C to abort.[/dim]\n")
+        else:
+            console.print("[yellow]speech_recognition not installed — using text input. Run: pip install ass-ade[voice][/yellow]")
+            console.print("[dim]Type your message. Type 'exit' or 'quit' to end.[/dim]\n")
+
+        speak("Atomadic voice mode activated. I'm listening.")
+
+        while True:
+            try:
+                if mic_available:
+                    console.print("[bold blue]listening...[/bold blue]", end="\r")
+                    line = listen_once(timeout=mic_timeout)
+                    if line is None:
+                        console.print("[dim]  (nothing heard — try again)[/dim]      ")
+                        continue
+                    console.print(f"[bold blue]you[/bold blue]> {line}         ")
+                else:
+                    line = console.input("[bold blue]you[/bold blue]> ").strip()
+
+                if not line:
+                    continue
+                if line.lower() in {"exit", "quit"}:
+                    speak("Goodbye.")
+                    break
+
+                with console.status("[bold yellow]thinking...[/bold yellow]"):
+                    response = agent.step(line)
+
+                console.print(f"\n[bold magenta]atomadic[/bold magenta]> {response}\n")
+                _render_phase1_header(agent)
+                speak(response)
+
+            except EOFError:
+                break
+            except KeyboardInterrupt:
+                console.print("\n[yellow]Voice session ended.[/yellow]")
+                speak("Session ended.")
                 break
             except Exception as exc:
                 console.print(f"[bold red]Error:[/bold red] {exc}")

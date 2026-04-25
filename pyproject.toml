@@ -69,6 +69,11 @@ ui = [
     "fastapi>=0.110,<1",
     "uvicorn[standard]>=0.30,<1",
 ]
+voice = [
+    "edge-tts>=6.1,<7",
+    "SpeechRecognition>=3.10,<4",
+    "pyaudio>=0.2.14,<1",
+]
 
 [tool.setuptools.packages.find]
 where = ["src"]
