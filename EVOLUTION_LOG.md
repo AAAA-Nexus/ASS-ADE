@@ -5,3 +5,11 @@
 **Lane:** quality -- docstrings, bare_except, type hints, dead code
 **Personality:** thorough/systematic (top 3 per cycle)
 **Python files changed:** 0
+
+## Evolution #41 [FEATURES] -- 2026-04-25 05:30 UTC
+**Enhancement:** missing_tests in src/ass_ade/a0_qk_constants/policy_types.py
+**Applied:** 2 fixes
+**Design goal:** improve: missing_tests in src/ass_ade/a0_qk_constants/policy_types.py, src/ass_ade/a0_qk_constants/reference_roots.py
+**Lane:** features -- missing docs, technical debt, new capabilities
+**Personality:** creative/additive (top 2 per cycle)
+**Python files changed:** 0

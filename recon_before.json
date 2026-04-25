@@ -1,12 +1,12 @@
 Running recon on /home/runner/work/ASS-ADE/ASS-ADE …
 {
   "root": "/home/runner/work/ASS-ADE/ASS-ADE",
-  "duration_ms": 9105.264294999997,
-  "summary": "Repo at `/home/runner/work/ASS-ADE/ASS-ADE` contains 1074 files (832 source, 321 test-related) across 10 directory levels (4641.1 KB total). Test coverage: 1412 test functions across 130 test files (ratio 0.21). Documentation coverage is low (40%). Dominant tier: `at`.",
+  "duration_ms": 8164.679859999999,
+  "summary": "Repo at `/home/runner/work/ASS-ADE/ASS-ADE` contains 1082 files (835 source, 324 test-related) across 10 directory levels (4677.3 KB total). Test coverage: 1415 test functions across 133 test files (ratio 0.21). Documentation coverage is low (40%). Dominant tier: `at`.",
   "scout": {
-    "total_files": 1074,
-    "total_size_bytes": 4752534,
-    "total_size_kb": 4641.1,
+    "total_files": 1082,
+    "total_size_bytes": 4789604,
+    "total_size_kb": 4677.3,
     "max_depth": 10,
     "top_level": [
       ".env.example",
@@ -14,18 +14,23 @@ Running recon on /home/runner/work/ASS-ADE/ASS-ADE …
       ".gitignore",
       ".vscode",
       "CONTRIBUTING.md",
+      "EVOLUTION_LOG.md",
       "LAUNCH_AUDIT.md",
       "LICENSE",
       "MONADIC_DEVELOPMENT.md",
       "README.md",
       "RELEASE_PLAN.md",
       "agents",
+      "apply_summary.json",
       "assets",
       "blueprints",
       "docs",
+      "enhance_scan.json",
+      "enhance_scan_raw.json",
       "hooks",
       "mcp",
       "pyproject.toml",
+      "recon_after.json",
       "recon_before.json",
       "scripts",
       "src",
@@ -33,9 +38,9 @@ Running recon on /home/runner/work/ASS-ADE/ASS-ADE …
       "tools"
     ],
     "by_extension": {
-      ".py": 793,
-      ".md": 119,
-      ".json": 46,
+      ".py": 796,
+      ".md": 120,
+      ".json": 50,
       ".rs": 22,
       ".yml": 14,
       ".ts": 14,
@@ -53,12 +58,12 @@ Running recon on /home/runner/work/ASS-ADE/ASS-ADE …
       ".bak": 1,
       ".html": 1
     },
-    "source_files": 832,
-    "test_files_count": 321
+    "source_files": 835,
+    "test_files_count": 324
   },
   "dependency": {
-    "python_files": 793,
-    "unique_external_deps": 76,
+    "python_files": 796,
+    "unique_external_deps": 77,
     "top_external_deps": [
       "__future__",
       "aaaa_nexus_mcp",
@@ -84,13 +89,13 @@ Running recon on /home/runner/work/ASS-ADE/ASS-ADE …
     "circular_deps": [],
     "has_circular_deps": false,
     "max_import_depth": 1,
-    "internal_modules": 793
+    "internal_modules": 796
   },
   "tier": {
-    "total_py_files": 793,
+    "total_py_files": 796,
     "tier_distribution": {
       "qk": 23,
-      "at": 648,
+      "at": 651,
       "mo": 35,
       "og": 19,
       "sy": 68
@@ -147,8 +152,8 @@ Running recon on /home/runner/work/ASS-ADE/ASS-ADE …
     "dominant_tier": "at"
   },
   "test": {
-    "test_files": 130,
-    "test_functions": 1412,
+    "test_files": 133,
+    "test_functions": 1415,
     "source_files": 626,
     "untested_modules": [
       "src/ass_ade/interpreter.py",
@@ -172,7 +177,7 @@ Running recon on /home/runner/work/ASS-ADE/ASS-ADE …
       "src/ass_ade/protocol/cycle.py",
       "src/ass_ade/protocol/evolution.py"
     ],
-    "untested_count": 570,
+    "untested_count": 567,
     "coverage_ratio": 0.21,
     "frameworks": [
       "pytest",
@@ -194,9 +199,10 @@ Running recon on /home/runner/work/ASS-ADE/ASS-ADE …
   "doc": {
     "has_readme": true,
     "readme_path": "README.md",
-    "doc_files": 125,
+    "doc_files": 126,
     "doc_file_paths": [
       "README.md",
+      "EVOLUTION_LOG.md",
       "MONADIC_DEVELOPMENT.md",
       "LAUNCH_AUDIT.md",
       "RELEASE_PLAN.md",
@@ -209,10 +215,9 @@ Running recon on /home/runner/work/ASS-ADE/ASS-ADE …
       "src/ass_ade/README.md",
       "src/ass_ade/USER_GUIDE.md",
       "src/ass_ade/FEATURES.md",
-      "src/ass_ade/ARCHITECTURE.md",
-      "src/ass_ade/CHANGELOG.md"
+      "src/ass_ade/ARCHITECTURE.md"
     ],
-    "total_public_callables": 3819,
+    "total_public_callables": 3822,
     "documented_callables": 1521,
     "doc_coverage": 0.4,
     "undocumented_samples": [
@@ -229,10 +234,10 @@ Running recon on /home/runner/work/ASS-ADE/ASS-ADE …
     ]
   },
   "recommendations": [
-    "Test coverage is low (0.21). Add tests for the 570 untested modules.",
+    "Test coverage is low (0.21). Add tests for the 567 untested modules.",
     "10 file(s) may span tier boundaries. Split into smaller, single-purpose modules.",
     "Directory depth is 10. Consider flattening the structure to reduce navigation friction."
   ],
   "next_action": "Run `ass-ade lint` for detailed style and security findings."
 }
-Completed in 9105 ms
+Completed in 8165 ms
