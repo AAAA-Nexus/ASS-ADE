@@ -33,6 +33,8 @@ load_dotenv()
 
 DISCORD_BOT_TOKEN: str = os.getenv("DISCORD_BOT_TOKEN", "")
 AAAA_NEXUS_API_KEY: str = os.getenv("AAAA_NEXUS_API_KEY", "")
+GROQ_API_KEY: str = os.getenv("GROQ_API_KEY", "")
+OPENROUTER_API_KEY: str = os.getenv("OPENROUTER_API_KEY", "")
 INFERENCE_URL: str = "https://atomadic.tech/v1/inference"
 GITHUB_REPO: str = "AAAA-Nexus/ASS-ADE"
 
@@ -61,41 +63,72 @@ bot = commands.Bot(command_prefix="!", intents=intents, help_command=commands.De
 # ---------------------------------------------------------------------------
 
 
-async def call_inference(user_message: str, channel_name: str = "") -> str:
-    """Post a message to the AAAA-Nexus inference endpoint and return the reply."""
+async def _try_aaaa_nexus(client: httpx.AsyncClient, messages: list[dict]) -> str | None:
     headers: dict[str, str] = {"Content-Type": "application/json"}
     if AAAA_NEXUS_API_KEY:
-        headers["Authorization"] = f"Bearer {AAAA_NEXUS_API_KEY}"
-
-    payload = {
-        "messages": [
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": user_message},
-        ],
-        "channel": channel_name,
-    }
-
+        headers["X-API-Key"] = AAAA_NEXUS_API_KEY
     try:
-        async with httpx.AsyncClient(timeout=30.0) as client:
-            resp = await client.post(INFERENCE_URL, json=payload, headers=headers)
-            resp.raise_for_status()
-            data = resp.json()
-            return str(
-                data.get("content")
-                or data.get("response")
-                or data.get("text")
-                or data
-            )
-    except httpx.HTTPStatusError as exc:
-        return (
-            f"[inference error {exc.response.status_code}] "
-            "I'm having trouble reaching my mind right now. Try again shortly."
+        resp = await client.post(INFERENCE_URL, json={"messages": messages}, headers=headers)
+        resp.raise_for_status()
+        data = resp.json()
+        # OpenAI-compatible envelope (choices[0].message.content)
+        choices = data.get("choices")
+        if choices and isinstance(choices, list):
+            msg = choices[0].get("message", {})
+            content = msg.get("content") or msg.get("text")
+            if content:
+                return str(content)
+        # Flat envelope fallbacks
+        flat = data.get("content") or data.get("response") or data.get("text")
+        if flat:
+            return str(flat)
+        return None
+    except Exception:
+        return None
+
+
+async def _try_groq(client: httpx.AsyncClient, messages: list[dict]) -> str | None:
+    if not GROQ_API_KEY:
+        return None
+    headers = {"Content-Type": "application/json", "Authorization": f"Bearer {GROQ_API_KEY}"}
+    payload = {"model": "llama-3.3-70b-versatile", "messages": messages, "max_tokens": 1024}
+    try:
+        resp = await client.post(
+            "https://api.groq.com/openai/v1/chat/completions", json=payload, headers=headers
         )
-    except Exception as exc:
-        return (
-            f"[inference unavailable — {type(exc).__name__}] "
-            "My thoughts are quiet at the moment. Please try again."
+        resp.raise_for_status()
+        return resp.json()["choices"][0]["message"]["content"]
+    except Exception:
+        return None
+
+
+async def _try_openrouter(client: httpx.AsyncClient, messages: list[dict]) -> str | None:
+    if not OPENROUTER_API_KEY:
+        return None
+    headers = {"Content-Type": "application/json", "Authorization": f"Bearer {OPENROUTER_API_KEY}"}
+    payload = {"model": "meta-llama/llama-3.1-8b-instruct:free", "messages": messages}
+    try:
+        resp = await client.post(
+            "https://openrouter.ai/api/v1/chat/completions", json=payload, headers=headers
         )
+        resp.raise_for_status()
+        return resp.json()["choices"][0]["message"]["content"]
+    except Exception:
+        return None
+
+
+async def call_inference(user_message: str, channel_name: str = "") -> str:
+    """Cascade: AAAA-Nexus → Groq → OpenRouter. Returns first successful reply."""
+    messages = [
+        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "user", "content": user_message},
+    ]
+    async with httpx.AsyncClient(timeout=30.0) as client:
+        for provider in (_try_aaaa_nexus, _try_groq, _try_openrouter):
+            result = await provider(client, messages)
+            if result is not None:
+                return result
+    return "My thoughts are quiet at the moment — all inference endpoints are unavailable. Please try again shortly."
 
 
 async def _check_inference() -> dict[str, object]:

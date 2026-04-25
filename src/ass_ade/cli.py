@@ -215,6 +215,13 @@ app.add_typer(providers_app, name="providers")
 from ass_ade.commands import register_commands
 register_commands(agent_app, a2a_app, workflow_app, providers_app)
 
+# ── Launch readiness + wakeup ─────────────────────────────────────────────────
+from ass_ade.commands.launch import launch_app  # noqa: E402
+app.add_typer(launch_app, name="launch")
+
+from ass_ade.commands.wakeup import wakeup_command  # noqa: E402
+app.command("wakeup")(wakeup_command)
+
 # ── Atomadic memory sub-app ────────────────────────────────────────────────────
 memory_app = typer.Typer(help="Atomadic local memory — what I remember about you and your projects.")
 app.add_typer(memory_app, name="memory")
