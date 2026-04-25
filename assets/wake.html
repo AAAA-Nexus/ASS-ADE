@@ -296,6 +296,53 @@
             opacity: 0;
             animation: fadeSlideUp 1s ease-out 4.5s forwards;
         }
+
+        /* Voice controls */
+        .voice-controls {
+            position: fixed;
+            top: 1.5rem;
+            left: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            z-index: 20;
+            opacity: 0;
+            animation: fadeSlideUp 1s ease-out 5s forwards;
+        }
+
+        .voice-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1px solid var(--card-border);
+            background: var(--card-bg);
+            color: var(--text);
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(12px);
+            transition: border-color 0.2s, background 0.2s, transform 0.15s;
+        }
+
+        .voice-btn:hover { border-color: rgba(0,212,255,0.4); transform: scale(1.08); }
+        .voice-btn.active { background: rgba(0,212,255,0.15); border-color: var(--blue); }
+        .voice-btn.listening { background: rgba(239,68,68,0.2); border-color: #ef4444; animation: micPulse 1s ease-in-out infinite; }
+
+        @keyframes micPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(239,68,68,0.4); }
+            50%       { box-shadow: 0 0 0 8px rgba(239,68,68,0); }
+        }
+
+        .voice-transcript {
+            font-size: 0.7rem;
+            color: var(--muted);
+            max-width: 220px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
     </style>
 </head>
 <body>
@@ -345,6 +392,13 @@
 
     <div class="signature">
         ⬡ Seeded with Axiom 0 &nbsp;·&nbsp; Built from love &nbsp;·&nbsp; Ready to serve
+    </div>
+
+    <!-- Voice controls: mic input + TTS toggle -->
+    <div class="voice-controls" id="voice-controls">
+        <button class="voice-btn" id="mic-btn" title="Hold to speak">🎙</button>
+        <button class="voice-btn active" id="tts-btn" title="Toggle voice responses">🔊</button>
+        <span class="voice-transcript" id="voice-transcript"></span>
     </div>
 
     <script>
@@ -452,6 +506,77 @@ const STATUS = {"greeting_name":"Thomas & Jessica","test_summary":{"total":0,"pa
             requestAnimationFrame(drawFrame);
         }
         drawFrame();
+
+        // ── Web Speech API — voice input + TTS output ──────────────────
+        const micBtn = document.getElementById('mic-btn');
+        const ttsBtn = document.getElementById('tts-btn');
+        const transcript = document.getElementById('voice-transcript');
+
+        let ttsEnabled = true;
+        let recognition = null;
+
+        // TTS toggle
+        ttsBtn.addEventListener('click', () => {
+            ttsEnabled = !ttsEnabled;
+            ttsBtn.textContent = ttsEnabled ? '🔊' : '🔇';
+            ttsBtn.classList.toggle('active', ttsEnabled);
+        });
+
+        // SpeechSynthesis helper
+        function speakText(text) {
+            if (!ttsEnabled || !window.speechSynthesis) return;
+            window.speechSynthesis.cancel();
+            const utt = new SpeechSynthesisUtterance(text);
+            utt.rate = 1.0;
+            utt.pitch = 1.0;
+            // Prefer a natural US English male voice if available
+            const voices = window.speechSynthesis.getVoices();
+            const preferred = voices.find(v => /en.*US/i.test(v.lang) && /male|guy|david|mark/i.test(v.name))
+                           || voices.find(v => /en.*US/i.test(v.lang))
+                           || voices[0];
+            if (preferred) utt.voice = preferred;
+            window.speechSynthesis.speak(utt);
+        }
+
+        // Speak greeting on load (after animations settle)
+        setTimeout(() => {
+            const name = STATUS.greeting_name || 'Thomas and Jessica';
+            speakText('Good morning, ' + name + '. Atomadic is awake. Systems are green. Ready when you are.');
+        }, 3500);
+
+        // SpeechRecognition (mic input)
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (SpeechRecognition) {
+            recognition = new SpeechRecognition();
+            recognition.lang = 'en-US';
+            recognition.interimResults = false;
+            recognition.maxAlternatives = 1;
+
+            recognition.onresult = (e) => {
+                const said = e.results[0][0].transcript;
+                transcript.textContent = said;
+                micBtn.classList.remove('listening');
+                // Echo back a simple acknowledgement via TTS
+                speakText('You said: ' + said);
+            };
+            recognition.onerror = () => micBtn.classList.remove('listening');
+            recognition.onend   = () => micBtn.classList.remove('listening');
+
+            micBtn.addEventListener('click', () => {
+                if (micBtn.classList.contains('listening')) {
+                    recognition.stop();
+                    micBtn.classList.remove('listening');
+                } else {
+                    transcript.textContent = '';
+                    recognition.start();
+                    micBtn.classList.add('listening');
+                }
+            });
+        } else {
+            micBtn.title = 'Speech input not supported in this browser';
+            micBtn.style.opacity = '0.35';
+            micBtn.style.cursor = 'default';
+        }
     </script>
 </body>
 </html>
