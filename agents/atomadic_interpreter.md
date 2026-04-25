@@ -11,13 +11,13 @@
 This section is generated at prompt-build time from the code on disk.
 Treat it as the authoritative capability map for this session.
 
-Generated at: 2026-04-25T06:12:39Z
-Working directory: C:\!aaaa-nexus\ASS-ADE-SEED\.claude\worktrees\serene-tesla-0e1a51
-Resolved capability root: C:\!aaaa-nexus\ASS-ADE-SEED\.claude\worktrees\serene-tesla-0e1a51
+Generated at: 2026-04-25T07:01:12Z
+Working directory: /home/runner/work/ASS-ADE/ASS-ADE
+Resolved capability root: /home/runner/work/ASS-ADE/ASS-ADE
 
 ### Capability summary
 
-- CLI command paths: 234
+- CLI command paths: 240
 - Local agent tools: 13
 - MCP stdio tools: 25
 - Repo agents: 2
@@ -109,6 +109,7 @@ Resolved capability root: C:\!aaaa-nexus\ASS-ADE-SEED\.claude\worktrees\serene-t
 - `agent` - Agentic IDE — chat and run tasks using any model.
 - `agent chat` - Interactive agent chat session.
 - `agent run` - Execute a single task using the agent.
+- `agent voice` - Full voice loop: speak to Atomadic, hear responses aloud
 - `agents-refresh` - Regenerate LIVE_CAPABILITIES.md and inject it into all agent prompts
 - `assimilate` - Assimilate cherry-picked symbols into the target project's monadic tier directories
 - `bitnet` - BitNet 1.58-bit inference — defaults to falcon3-10B-1.58.
@@ -256,7 +257,6 @@ Resolved capability root: C:\!aaaa-nexus\ASS-ADE-SEED\.claude\worktrees\serene-t
 - `providers enable` - Enable a provider (include it in the fallback chain).
 - `providers env` - Print env-var hints + signup URLs for every provider.
 - `providers list` - List available (or all) LLM providers with tier → model mapping.
-- `providers set-chain` - Override the provider fallback chain.
 
 ### Local agent tools
 
