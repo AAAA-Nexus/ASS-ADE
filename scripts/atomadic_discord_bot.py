@@ -71,7 +71,18 @@ async def _try_aaaa_nexus(client: httpx.AsyncClient, messages: list[dict]) -> st
         resp = await client.post(INFERENCE_URL, json={"messages": messages}, headers=headers)
         resp.raise_for_status()
         data = resp.json()
-        return str(data.get("content") or data.get("response") or data.get("text") or data)
+        # OpenAI-compatible envelope (choices[0].message.content)
+        choices = data.get("choices")
+        if choices and isinstance(choices, list):
+            msg = choices[0].get("message", {})
+            content = msg.get("content") or msg.get("text")
+            if content:
+                return str(content)
+        # Flat envelope fallbacks
+        flat = data.get("content") or data.get("response") or data.get("text")
+        if flat:
+            return str(flat)
+        return None
     except Exception:
         return None
 
