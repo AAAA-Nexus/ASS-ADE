@@ -2374,6 +2374,7 @@ def run_interactive(
     *,
     verbosity: str = "normal",
     private: bool = False,
+    voice: str | None = None,
 ) -> None:
     """Drop into an interactive Atomadic session (REPL)."""
     try:
@@ -2387,20 +2388,26 @@ def run_interactive(
 
     wdir = working_dir or Path.cwd()
 
-    # Activate observability when any non-default verbosity or private mode is requested.
-    if verbosity != "normal" or private:
+    # Build narrator when voice mode is requested.
+    narrator = None
+    if voice is not None:
         try:
-            from ass_ade.a2_mo_composites.observer import Observer
-            set_observer(Observer(working_dir=wdir, verbosity=verbosity, private=private))
+            from ass_ade.a2_mo_composites.voice_narrator import VoiceNarrator
+            narrator = VoiceNarrator(voice=voice, speak_responses=True, speak_events=True)
         except Exception:
             pass
-    else:
-        # Default: create observer with normal verbosity so logs are always written.
-        try:
-            from ass_ade.a2_mo_composites.observer import Observer
-            set_observer(Observer(working_dir=wdir, verbosity="normal", private=False))
-        except Exception:
-            pass
+
+    # Always create an observer (logs every session); attach narrator when in voice mode.
+    try:
+        from ass_ade.a2_mo_composites.observer import Observer
+        set_observer(Observer(
+            working_dir=wdir,
+            verbosity=verbosity,
+            private=private,
+            narrator=narrator,
+        ))
+    except Exception:
+        pass
 
     agent = Atomadic(working_dir=wdir)
 
@@ -2509,6 +2516,8 @@ def run_interactive(
             console.print()
         else:
             print(f"\nAtomadic → {response}\n")
+        if narrator is not None and narrator.speak_responses:
+            narrator.narrate(response)
 
 
 # Public alias so external code can do: from ass_ade.interpreter import Interpreter

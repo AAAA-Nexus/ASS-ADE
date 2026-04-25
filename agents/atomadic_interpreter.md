@@ -11,13 +11,13 @@
 This section is generated at prompt-build time from the code on disk.
 Treat it as the authoritative capability map for this session.
 
-Generated at: 2026-04-25T05:41:49Z
+Generated at: 2026-04-25T06:12:39Z
 Working directory: C:\!aaaa-nexus\ASS-ADE-SEED\.claude\worktrees\serene-tesla-0e1a51
 Resolved capability root: C:\!aaaa-nexus\ASS-ADE-SEED\.claude\worktrees\serene-tesla-0e1a51
 
 ### Capability summary
 
-- CLI command paths: 233
+- CLI command paths: 234
 - Local agent tools: 13
 - MCP stdio tools: 25
 - Repo agents: 2
@@ -57,7 +57,7 @@ Resolved capability root: C:\!aaaa-nexus\ASS-ADE-SEED\.claude\worktrees\serene-t
 
 ### Top-level CLI groups
 
-- `a2a`, `aegis`, `agent`, `agents-refresh`, `assimilate`, `bitnet`, `blueprint`, `bridge`, `certify`, `chat`, `cherry-pick`, `compliance`, `context`, `control`, `credits`, `cycle`, `data`, `defi`, `design`, `dev`, `discovery`, `docs`, `doctor`, `eco-scan`, `enhance`, `escrow`, `feature`, `finish`, `forge`, `identity`, `init`, `lint`, `llm`, `lora-credit`, `lora-status`, `lora-train`, `mcp`, `memory`, `mev`, `nexus`, `optimize`, `oracle`, `pay`, `pipeline`, `plan`, `prompt`, `protocol`, `providers`, `ratchet`, `rebuild`, `recon`, `repo`, `reputation`, `rollback`, `sam-status`, `scout`, `search`, `security`, `selfbuild`, `setup`, +14 more
+- `a2a`, `aegis`, `agent`, `agents-refresh`, `assimilate`, `bitnet`, `blueprint`, `bridge`, `certify`, `chat`, `cherry-pick`, `compliance`, `context`, `control`, `credits`, `cycle`, `data`, `defi`, `design`, `dev`, `discovery`, `docs`, `doctor`, `eco-scan`, `enhance`, `escrow`, `feature`, `finish`, `forge`, `identity`, `init`, `lint`, `llm`, `lora-credit`, `lora-status`, `lora-train`, `mcp`, `memory`, `mev`, `nexus`, `optimize`, `oracle`, `pay`, `pipeline`, `plan`, `prompt`, `protocol`, `providers`, `ratchet`, `rebuild`, `recon`, `repo`, `reputation`, `rollback`, `sam-status`, `scout`, `search`, `security`, `selfbuild`, `setup`, +15 more
 
 ### Runtime routing rules
 

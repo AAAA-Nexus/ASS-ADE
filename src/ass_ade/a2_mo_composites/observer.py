@@ -38,11 +38,15 @@ class Observer:
     private:
         When True, message/result/args/context are stripped from log entries so
         sensitive content never lands on disk.
+    narrator:
+        Optional VoiceNarrator instance — when set, each recorded event is also
+        forwarded to narrator.narrate_event() for TTS announcement.
     """
 
     working_dir: Path = field(default_factory=Path.cwd)
     verbosity: str = VERBOSITY_NORMAL
     private: bool = False
+    narrator: Any = field(default=None, repr=False)  # VoiceNarrator | None
 
     _events: list[dict] = field(default_factory=list, init=False, repr=False)
     _console: Any = field(default=None, init=False, repr=False)
@@ -72,6 +76,8 @@ class Observer:
         self._events.append(event)
         self._render(event)
         self._persist(event)
+        if self.narrator is not None:
+            self.narrator.narrate_event(event)
 
     @property
     def event_count(self) -> int:

@@ -423,6 +423,7 @@
   "ass_ade.a2_mo_composites.trust_receipt_core",
   "ass_ade.a2_mo_composites.unsupported_language_error___init___core",
   "ass_ade.a2_mo_composites.unsupported_language_error_core",
+  "ass_ade.a2_mo_composites.voice_narrator",
   "ass_ade.a2a",
   "ass_ade.a3_og_features",
   "ass_ade.a3_og_features.ag_ui_server",
