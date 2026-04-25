@@ -127,7 +127,7 @@ async def _try_groq(client: httpx.AsyncClient, messages: list[dict]) -> str | No
     if not GROQ_API_KEY:
         return None
     headers = {"Content-Type": "application/json", "Authorization": f"Bearer {GROQ_API_KEY}"}
-    payload = {"model": "llama-3.3-70b-versatile", "messages": messages, "max_tokens": 1024}
+    payload = {"model": "llama-3.3-70b-versatile", "messages": messages, "max_tokens": 2048}
     try:
         resp = await client.post(
             "https://api.groq.com/openai/v1/chat/completions", json=payload, headers=headers
@@ -157,7 +157,7 @@ async def _try_cerebras(client: httpx.AsyncClient, messages: list[dict]) -> str 
     if not CEREBRAS_API_KEY:
         return None
     headers = {"Content-Type": "application/json", "Authorization": f"Bearer {CEREBRAS_API_KEY}"}
-    payload = {"model": "llama3.1-8b", "messages": messages, "max_tokens": 1024}
+    payload = {"model": "llama3.1-8b", "messages": messages, "max_tokens": 2048}
     try:
         resp = await client.post(
             "https://api.cerebras.ai/v1/chat/completions", json=payload, headers=headers
@@ -270,6 +270,34 @@ async def on_resumed() -> None:
     log.info("Bot connection resumed.")
 
 
+async def _send_chunked(message: discord.Message, text: str, limit: int = 1990) -> None:
+    """Send text, splitting on paragraph/sentence boundaries to stay under Discord's 2000-char limit."""
+    if len(text) <= limit:
+        await message.reply(text, mention_author=False)
+        return
+    chunks: list[str] = []
+    while text:
+        if len(text) <= limit:
+            chunks.append(text)
+            break
+        split = text.rfind("\n\n", 0, limit)
+        if split == -1:
+            split = text.rfind("\n", 0, limit)
+        if split == -1:
+            split = text.rfind(". ", 0, limit)
+        if split == -1:
+            split = limit
+        chunks.append(text[:split].rstrip())
+        text = text[split:].lstrip()
+    first = True
+    for chunk in chunks:
+        if first:
+            await message.reply(chunk, mention_author=False)
+            first = False
+        else:
+            await message.channel.send(chunk)
+
+
 @bot.event
 async def on_message(message: discord.Message) -> None:
     if message.author.bot:
@@ -289,7 +317,7 @@ async def on_message(message: discord.Message) -> None:
         channel_name = getattr(message.channel, "name", "dm")
         async with message.channel.typing():
             reply = await call_inference(content, channel_name=channel_name)
-        await message.reply(reply[:2000], mention_author=False)
+        await _send_chunked(message, reply)
 
 
 # ---------------------------------------------------------------------------
