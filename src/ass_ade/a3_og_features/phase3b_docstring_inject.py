@@ -14,8 +14,6 @@ def run_phase3b_docstring_inject(gap_plan: Dict[str, Any], agent=None) -> Dict[s
     Returns:
         Updated gap plan with docstrings injected.
     """
-    # For now, this is a placeholder. In production, agent should be a callable that takes a symbol and returns a docstring.
-    # Here, we simply annotate each symbol with a placeholder docstring.
     for symbol in gap_plan.get("symbols", []):
         logic_hint = symbol.get("logic_hint", "")
         docstring = None
