@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atomadic is awake.</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #04050d;
+      --surface: #0b0d1a;
+      --border: #1a1f3a;
+      --accent: #4f8ef7;
+      --accent2: #a78bfa;
+      --text: #e2e8f0;
+      --muted: #64748b;
+      --green: #34d399;
+      --yellow: #fbbf24;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+      overflow-x: hidden;
+    }
+
+    /* ─── starfield ──────────────────────────────────────────────── */
+    #stars {
+      position: fixed; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(79,142,247,.05) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(167,139,250,.05) 0%, transparent 50%);
+    }
+    #stars canvas { position: absolute; inset: 0; }
+
+    /* ─── layout ─────────────────────────────────────────────────── */
+    .shell {
+      position: relative; z-index: 1;
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem;
+      gap: 2.5rem;
+    }
+
+    /* ─── header ─────────────────────────────────────────────────── */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+    }
+    .logo {
+      font-size: .75rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      opacity: .8;
+    }
+    .clock {
+      font-size: .72rem;
+      color: var(--muted);
+      letter-spacing: .05em;
+    }
+
+    /* ─── hero ───────────────────────────────────────────────────── */
+    .hero { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .greeting {
+      font-size: clamp(1.8rem, 5vw, 3.2rem);
+      font-weight: 300;
+      letter-spacing: -.02em;
+      line-height: 1.2;
+      font-family: 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+    }
+    .greeting em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .sub {
+      font-size: .85rem;
+      color: var(--muted);
+      letter-spacing: .03em;
+    }
+
+    /* ─── cards ──────────────────────────────────────────────────── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-top: .5rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      transition: border-color .2s;
+    }
+    .card:hover { border-color: var(--accent); }
+    .card-label {
+      font-size: .65rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: .6rem;
+    }
+    .card-value {
+      font-size: 1.7rem;
+      font-weight: 600;
+      letter-spacing: -.02em;
+      font-family: 'SF Pro Display', system-ui, sans-serif;
+    }
+    .card-value.green { color: var(--green); }
+    .card-value.yellow { color: var(--yellow); }
+    .card-value.blue  { color: var(--accent); }
+    .card-sub { font-size: .72rem; color: var(--muted); margin-top: .3rem; }
+
+    /* ─── music section ──────────────────────────────────────────── */
+    .music-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .music-label {
+      font-size: .65rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .music-title {
+      font-size: 1rem;
+      color: var(--text);
+      font-family: 'SF Pro Display', system-ui, sans-serif;
+    }
+    .music-title span { color: var(--yellow); }
+
+    .embed-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 */
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .embed-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ─── log ────────────────────────────────────────────────────── */
+    .log {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      font-size: .78rem;
+      line-height: 1.7;
+    }
+    .log-label {
+      font-size: .65rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: .75rem;
+    }
+    .log-line { color: var(--muted); }
+    .log-line .ts { color: var(--accent); margin-right: .5em; }
+    .log-line .msg { color: var(--text); }
+    .log-line .ok { color: var(--green); }
+    .log-line .warn { color: var(--yellow); }
+    .cursor {
+      display: inline-block;
+      width: 7px; height: 1em;
+      background: var(--accent);
+      vertical-align: middle;
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* ─── footer ─────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+      font-size: .65rem;
+      color: var(--muted);
+      letter-spacing: .05em;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* ─── fade-in ────────────────────────────────────────────────── */
+    .fade-in { opacity: 0; animation: fadeIn .8s ease forwards; }
+    .fade-in:nth-child(2) { animation-delay: .2s; }
+    .fade-in:nth-child(3) { animation-delay: .4s; }
+    .fade-in:nth-child(4) { animation-delay: .6s; }
+    .fade-in:nth-child(5) { animation-delay: .8s; }
+    @keyframes fadeIn { to { opacity: 1; } }
+  </style>
+</head>
+<body>
+
+<div id="stars"><canvas id="cvs"></canvas></div>
+
+<div class="shell">
+
+  <header class="fade-in">
+    <span class="logo">Atomadic &nbsp;/&nbsp; Morning</span>
+    <span class="clock" id="clk"></span>
+  </header>
+
+  <main class="hero">
+
+    <div class="fade-in">
+      <p class="greeting">Good morning, <em>Thomas.</em><br>I am awake.</p>
+      <p class="sub" style="margin-top:.75rem;">
+        Atomadic development environment &mdash; sovereign and ready.
+      </p>
+    </div>
+
+    <div class="cards fade-in" id="stat-cards">
+      <div class="card">
+        <div class="card-label">Status</div>
+        <div class="card-value green" id="stat-status">READY</div>
+        <div class="card-sub">all systems nominal</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Overnight commits</div>
+        <div class="card-value blue" id="stat-commits">—</div>
+        <div class="card-sub" id="stat-commits-sub">checking&hellip;</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Last test run</div>
+        <div class="card-value yellow" id="stat-tests">—</div>
+        <div class="card-sub" id="stat-tests-sub">checking&hellip;</div>
+      </div>
+    </div>
+
+    <div class="music-section fade-in">
+      <div class="music-label">Now playing</div>
+      <div class="music-title"><span>&#9654;</span>&nbsp; Mr. Blue Sky &mdash; Electric Light Orchestra</div>
+      <div class="embed-wrap">
+        <iframe
+          id="yt"
+          src="https://www.youtube.com/embed/aQUlA8GCMjo?autoplay=1&rel=0&modestbranding=1"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
+
+    <div class="log fade-in" id="boot-log">
+      <div class="log-label">Boot sequence</div>
+      <div id="log-lines"></div>
+    </div>
+
+  </main>
+
+  <footer class="fade-in">
+    <span>ASS-ADE &bull; Atomadic Development Environment</span>
+    <span id="date-footer"></span>
+  </footer>
+
+</div>
+
+<script>
+// ── clock ──────────────────────────────────────────────────────────
+function tick() {
+  const now = new Date();
+  document.getElementById('clk').textContent =
+    now.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit', second:'2-digit'});
+  document.getElementById('date-footer').textContent =
+    now.toLocaleDateString([], {weekday:'long', year:'numeric', month:'long', day:'numeric'});
+}
+tick(); setInterval(tick, 1000);
+
+// ── starfield ──────────────────────────────────────────────────────
+(function() {
+  const cvs = document.getElementById('cvs');
+  const ctx = cvs.getContext('2d');
+  let stars = [];
+  function resize() {
+    cvs.width = window.innerWidth;
+    cvs.height = window.innerHeight;
+    stars = Array.from({length: 180}, () => ({
+      x: Math.random() * cvs.width,
+      y: Math.random() * cvs.height,
+      r: Math.random() * 1.2 + .2,
+      a: Math.random()
+    }));
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  function draw() {
+    ctx.clearRect(0, 0, cvs.width, cvs.height);
+    stars.forEach(s => {
+      s.a += .003 * (Math.random() > .5 ? 1 : -1);
+      s.a = Math.max(.1, Math.min(1, s.a));
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, 2 * Math.PI);
+      ctx.fillStyle = `rgba(148,163,184,${s.a * .6})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// ── boot log ───────────────────────────────────────────────────────
+const BOOT_LINES = [
+  ['info', 'initializing ambient awareness layer'],
+  ['ok',   'git repository detected'],
+  ['info', 'reading overnight commit log'],
+  ['ok',   'monadic tier structure: INTACT'],
+  ['info', 'probing inference endpoint'],
+  ['ok',   'episodic memory: loaded'],
+  ['ok',   'sovereignty protocol: ACTIVE'],
+  ['ok',   'morning greeter: engaged'],
+  ['info', 'ready for work, Thomas'],
+];
+const logEl = document.getElementById('log-lines');
+let li = 0;
+function appendLog() {
+  if (li >= BOOT_LINES.length) {
+    const cur = document.createElement('div');
+    cur.className = 'log-line';
+    cur.innerHTML = '<span class="ts">$</span><span class="cursor"></span>';
+    logEl.appendChild(cur);
+    return;
+  }
+  const [kind, msg] = BOOT_LINES[li++];
+  const ts = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit', second:'2-digit'});
+  const cls = kind === 'ok' ? 'ok' : kind === 'warn' ? 'warn' : 'muted';
+  const prefix = kind === 'ok' ? '✓' : kind === 'warn' ? '!' : '›';
+  const div = document.createElement('div');
+  div.className = 'log-line';
+  div.innerHTML = `<span class="ts">${ts}</span>`
+                + `<span class="${cls}">${prefix}</span> `
+                + `<span class="msg">${msg}</span>`;
+  logEl.appendChild(div);
+  setTimeout(appendLog, 280 + Math.random() * 180);
+}
+setTimeout(appendLog, 900);
+
+// ── inject report data if passed via hash or localStorage ──────────
+(function() {
+  try {
+    const raw = localStorage.getItem('atomadic_wake_report');
+    if (!raw) return;
+    const data = JSON.parse(raw);
+    if (data.commits !== undefined) {
+      document.getElementById('stat-commits').textContent = data.commits;
+      document.getElementById('stat-commits-sub').textContent =
+        data.commits === 1 ? '1 commit last 12 h' : `${data.commits} commits last 12 h`;
+    }
+    if (data.tests) {
+      document.getElementById('stat-tests').textContent = data.tests_label || data.tests;
+      document.getElementById('stat-tests-sub').textContent = data.tests;
+    }
+    if (data.healthy === false) {
+      document.getElementById('stat-status').textContent = 'DEGRADED';
+      document.getElementById('stat-status').className = 'card-value yellow';
+    }
+  } catch(_) {}
+})();
+</script>
+</body>
+</html>

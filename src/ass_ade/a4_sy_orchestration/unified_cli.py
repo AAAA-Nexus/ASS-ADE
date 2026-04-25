@@ -403,6 +403,58 @@ def doctor_cmd(
     typer.echo("\n".join(lines))
 
 
+@app.command("wake")
+def wake_cmd(
+    no_browser: Annotated[
+        bool,
+        typer.Option("--no-browser", help="Skip opening the wake page in a browser."),
+    ] = False,
+    no_music: Annotated[
+        bool,
+        typer.Option("--no-music", help="Skip opening Mr. Blue Sky."),
+    ] = False,
+    no_notify: Annotated[
+        bool,
+        typer.Option("--no-notify", help="Skip the desktop notification."),
+    ] = False,
+) -> None:
+    """Morning greeting — show overnight report, open wake page, play Mr. Blue Sky."""
+    from ass_ade.a1_at_functions.system_actions import (
+        open_browser,
+        play_audio,
+        send_desktop_notification,
+        wake_page_path,
+    )
+    from ass_ade.a2_mo_composites.ambient_awareness import AmbientAwareness
+
+    awareness = AmbientAwareness.from_cwd()
+    report = awareness.generate_status_report()
+    typer.echo("\n" + report + "\n")
+
+    commits = awareness.overnight_commits()
+    n = len(commits)
+    summary = f"{n} commit{'s' if n != 1 else ''} overnight." if commits else "Nothing overnight — clean slate."
+
+    if not no_notify:
+        sent = send_desktop_notification("Atomadic is awake", summary)
+        if not sent:
+            typer.secho("[wake] notification skipped (no supported notifier found)", fg="yellow", err=True)
+
+    page = wake_page_path()
+    if not no_browser:
+        if page.exists():
+            opened = open_browser(page.as_uri(), fullscreen=True)
+            if not opened:
+                typer.secho(f"[wake] could not open browser for {page}", fg="yellow", err=True)
+        else:
+            typer.secho(f"[wake] wake.html not found at {page}", fg="yellow", err=True)
+
+    if not no_music:
+        play_audio("https://www.youtube.com/watch?v=aQUlA8GCMjo")
+
+    typer.secho("Atomadic is awake.", fg="green")
+
+
 app.add_typer(book_app, name="book")
 
 from ass_ade.ade.cli import app as ade_app  # noqa: E402  — after `app` exists
