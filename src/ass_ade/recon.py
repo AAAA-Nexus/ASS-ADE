@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import ast
 import concurrent.futures
+import json
 import os
 import re
 import time
@@ -677,11 +678,125 @@ def _doc_agent(root: Path, files: list[Path]) -> dict[str, Any]:
     }
 
 
+# ── WebResearchAgent ──────────────────────────────────────────────────────────
+
+def _web_research_agent(root: Path, files: list[Path]) -> dict[str, Any]:
+    """Query AAAA-Nexus inference for external context: best practices, similar projects, dep updates.
+
+    Falls back gracefully when the endpoint is unreachable or API key is missing.
+    Results appear in the ## Web Research section of the recon report.
+    """
+    result: dict[str, Any] = {
+        "queried": False,
+        "project_name": root.name,
+        "best_practices": [],
+        "similar_projects": [],
+        "dep_updates": [],
+        "error": None,
+    }
+
+    # Resolve project name from pyproject.toml
+    pyproject = root / "pyproject.toml"
+    if pyproject.exists():
+        try:
+            text = pyproject.read_text(encoding="utf-8")
+            m = re.search(r'name\s*=\s*["\']([^"\']+)["\']', text)
+            if m:
+                result["project_name"] = m.group(1)
+        except OSError:
+            pass
+
+    # Resolve config for endpoint + key
+    base_url = "https://atomadic.tech"
+    try:
+        cfg_path = root / ".ass-ade" / "config.json"
+        if cfg_path.exists():
+            cfg = json.loads(cfg_path.read_text(encoding="utf-8"))
+            base_url = cfg.get("nexus_base_url", base_url).rstrip("/")
+    except (OSError, json.JSONDecodeError):
+        pass
+
+    api_key = os.environ.get("AAAA_NEXUS_API_KEY", "")
+    project_name = result["project_name"]
+
+    # Top 3 external deps for context
+    dep_names: list[str] = []
+    try:
+        pyproject_txt = pyproject.read_text(encoding="utf-8") if pyproject.exists() else ""
+        dep_names = re.findall(r'["\']([a-zA-Z][a-zA-Z0-9_\-]{2,})["\']', pyproject_txt)[:5]
+    except OSError:
+        pass
+
+    queries = [
+        f"List 3 best practices for {project_name} Python project in 2025. Be specific and brief.",
+        f"Name 3 open-source projects similar to {project_name}. Just names, one per line.",
+    ]
+    if dep_names:
+        queries.append(
+            f"Any breaking changes or major updates in {', '.join(dep_names[:3])} in 2024-2025? Be brief."
+        )
+
+    try:
+        import httpx as _httpx
+
+        headers: dict[str, str] = {"Content-Type": "application/json"}
+        if api_key:
+            headers["X-API-Key"] = api_key
+
+        responses: list[str] = []
+        for query in queries[:3]:
+            try:
+                resp = _httpx.post(
+                    f"{base_url}/v1/inference/chat/completions",
+                    headers=headers,
+                    json={
+                        "model": "falcon3-10B-1.58",
+                        "messages": [{"role": "user", "content": query}],
+                        "max_tokens": 150,
+                        "temperature": 0.3,
+                    },
+                    timeout=8.0,
+                )
+                if resp.status_code == 200:
+                    content = resp.json()["choices"][0]["message"]["content"].strip()
+                    responses.append(content)
+            except Exception:
+                continue
+
+        if responses:
+            result["queried"] = True
+            if len(responses) >= 1:
+                result["best_practices"] = [
+                    line.strip().lstrip("-•*123. ")
+                    for line in responses[0].splitlines()
+                    if line.strip() and len(line.strip()) > 10
+                ][:3]
+            if len(responses) >= 2:
+                result["similar_projects"] = [
+                    line.strip().lstrip("-•*123. ")
+                    for line in responses[1].splitlines()
+                    if line.strip() and len(line.strip()) > 2
+                ][:3]
+            if len(responses) >= 3:
+                result["dep_updates"] = [
+                    line.strip().lstrip("-•*123. ")
+                    for line in responses[2].splitlines()
+                    if line.strip() and len(line.strip()) > 10
+                ][:3]
+
+    except ImportError:
+        result["error"] = "httpx not available"
+    except Exception as exc:
+        result["error"] = str(exc)[:120]
+
+    return result
+
+
 # ── ReconReport ───────────────────────────────────────────────────────────────
 
 @dataclass
 class ReconReport:
-    """Consolidated output from all 5 parallel recon agents."""
+    """Consolidated output from all 6 parallel recon agents."""
 
     root: str
     duration_ms: float
@@ -690,6 +805,7 @@ class ReconReport:
     tier: dict[str, Any]
     test: dict[str, Any]
     doc: dict[str, Any]
+    web: dict[str, Any] = dc_field(default_factory=dict)
     recommendations: list[str] = dc_field(default_factory=list)
     next_action: str = ""
 
@@ -801,6 +917,30 @@ class ReconReport:
             for i, rec in enumerate(self.recommendations, 1):
                 lines.append(f"{i}. {rec}")
 
+        if self.web:
+            lines += ["", "## Web Research", ""]
+            if self.web.get("queried"):
+                bp = self.web.get("best_practices", [])
+                sp = self.web.get("similar_projects", [])
+                du = self.web.get("dep_updates", [])
+                if bp:
+                    lines.append(f"**Best practices for `{self.web.get('project_name', '')}`:**")
+                    for item in bp:
+                        lines.append(f"  - {item}")
+                if sp:
+                    lines.append("")
+                    lines.append("**Similar projects:**")
+                    for item in sp:
+                        lines.append(f"  - {item}")
+                if du:
+                    lines.append("")
+                    lines.append("**Dependency updates (2024-2025):**")
+                    for item in du:
+                        lines.append(f"  - {item}")
+            else:
+                err = self.web.get("error")
+                lines.append(f"*(Web research skipped — {err or 'endpoint unreachable or no API key'})*")
+
         if self.next_action:
             lines += ["", f"**Next action:** {self.next_action}"]
 
@@ -816,6 +956,7 @@ class ReconReport:
             "tier": self.tier,
             "test": self.test,
             "doc": self.doc,
+            "web": self.web,
             "recommendations": self.recommendations,
             "next_action": self.next_action,
         }
@@ -879,28 +1020,30 @@ def _build_recommendations(
 # ── Public API ────────────────────────────────────────────────────────────────
 
 def run_parallel_recon(path: str | Path = ".") -> ReconReport:
-    """Run all 5 recon agents in parallel and return a consolidated ReconReport.
+    """Run all 6 recon agents in parallel and return a consolidated ReconReport.
 
-    Completes in < 5 seconds for repos with < 500 files.
-    All analysis is local — no LLM calls, no network requests.
+    Agents 1-5 are local (no network). Agent 6 (WebResearch) queries the
+    AAAA-Nexus inference endpoint for external context and falls back gracefully.
     """
     root = Path(path).resolve()
     t0 = time.monotonic()
 
     files = _iter_files(root)
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=5) as pool:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:
         f_scout = pool.submit(_scout_agent, root, files)
         f_dep   = pool.submit(_dependency_agent, root, files)
         f_tier  = pool.submit(_tier_agent, root, files)
         f_test  = pool.submit(_test_agent, root, files)
         f_doc   = pool.submit(_doc_agent, root, files)
+        f_web   = pool.submit(_web_research_agent, root, files)
 
         scout      = f_scout.result()
         dependency = f_dep.result()
         tier       = f_tier.result()
         test       = f_test.result()
         doc        = f_doc.result()
+        web        = f_web.result()
 
     recs, next_action = _build_recommendations(scout, dependency, tier, test, doc)
     duration_ms = (time.monotonic() - t0) * 1000
@@ -913,6 +1056,7 @@ def run_parallel_recon(path: str | Path = ".") -> ReconReport:
         tier=tier,
         test=test,
         doc=doc,
+        web=web,
         recommendations=recs,
         next_action=next_action,
     )

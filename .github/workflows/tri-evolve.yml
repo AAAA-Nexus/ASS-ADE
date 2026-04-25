@@ -5,13 +5,18 @@
 # ADVERSARIAL  (daily)     — stress-test worst area, break then fix.
 #
 # TRIUMPH: when all three lanes agree on the same fix independently, auto-merge.
+#
+# FIX (2026-04-24): replaced invalid `github.run_number % 2 == 0` expression
+# (modulo not supported in GHA) with a dedicated 0 */12 * * * cron for exploratory.
+# Added branch auto-create so missing evolve/* branches don't block jobs.
 
 name: tri-evolve
 
 on:
   schedule:
-    - cron: "0 */6 * * *"       # conservative + exploratory (every 6h triggers conservative; 12h triggers both)
-    - cron: "0 2 * * *"         # adversarial daily at 02:00 UTC
+    - cron: "0 */6 * * *"    # conservative (every 6h) + adversarial at 02:00
+    - cron: "0 */12 * * *"   # exploratory (every 12h, independent trigger)
+    - cron: "0 2 * * *"      # adversarial daily at 02:00 UTC
   workflow_dispatch:
     inputs:
       lane:
@@ -25,6 +30,7 @@ env:
 # ─── Shared helpers ──────────────────────────────────────────────────────────
 # Each job: pull lane branch → run analysis → apply fix → test → open PR if green.
 # PR dedup: check for existing open PRs from the lane before creating a new one.
+# Branch auto-create: if evolve/<lane> doesn't exist, create it from main.
 
 jobs:
   # ═══════════════════════════════════════════════════════════════════════════
@@ -32,10 +38,10 @@ jobs:
   # ═══════════════════════════════════════════════════════════════════════════
   conservative:
     name: "Evolve / Conservative"
-    if: >
-      github.event_name == 'workflow_dispatch' &&
-      (github.event.inputs.lane == 'conservative' || github.event.inputs.lane == 'all') ||
-      github.event_name == 'schedule'
+    if: >-
+      (github.event_name == 'workflow_dispatch' && (github.event.inputs.lane == 'conservative' || github.event.inputs.lane == 'all')) ||
+      (github.event_name == 'schedule' && github.event.schedule == '0 */6 * * *') ||
+      (github.event_name == 'schedule' && github.event.schedule == '0 2 * * *')
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -49,9 +55,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: evolve/conservative
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Ensure evolve/conservative branch exists
+        run: |
+          git config user.email "tri-evolve[bot]@atomadic.ai"
+          git config user.name "tri-evolve[bot]"
+          git fetch origin evolve/conservative 2>/dev/null || true
+          git checkout evolve/conservative 2>/dev/null || (git checkout -b evolve/conservative && git push origin evolve/conservative)
 
       - uses: actions/setup-python@v5
         with:
@@ -63,8 +75,6 @@ jobs:
 
       - name: Merge latest main
         run: |
-          git config user.email "tri-evolve[bot]@atomadic.ai"
-          git config user.name "tri-evolve[bot]"
           git fetch origin main
           git merge origin/main --no-edit || true
 
@@ -84,14 +94,12 @@ jobs:
           set -euo pipefail
           echo "lane=conservative" >> "$GITHUB_OUTPUT"
 
-          # Find highest-severity finding
           ass-ade doctor --json 2>/dev/null | python -c "
           import json, sys
           try:
               data = json.load(sys.stdin)
               findings = data.get('findings', [])
               if findings:
-                  # Sort by severity: error > warning > info
                   order = {'error': 0, 'warning': 1, 'info': 2}
                   top = sorted(findings, key=lambda f: order.get(f.get('level','info'), 99))[0]
                   print(top.get('area', 'general'))
@@ -105,11 +113,9 @@ jobs:
           echo "target=$TARGET" >> "$GITHUB_OUTPUT"
           echo "[conservative] Targeting area: $TARGET"
 
-          # Run enhance with local-only (no forge calls)
           ass-ade enhance --local-only --area "$TARGET" \
             --output /tmp/conservative_patch.json 2>/dev/null || true
 
-          # Apply patch if produced
           if [ -f /tmp/conservative_patch.json ]; then
             ass-ade patch apply /tmp/conservative_patch.json 2>/dev/null || true
           fi
@@ -124,10 +130,6 @@ jobs:
       - name: Bump patch version + commit
         if: steps.check_pr.outputs.open_prs == '0' && steps.tests.conclusion == 'success'
         run: |
-          git config user.email "tri-evolve[bot]@atomadic.ai"
-          git config user.name "tri-evolve[bot]"
-
-          # Bump patch version in pyproject.toml
           python -c "
           import re; f=open('pyproject.toml'); t=f.read(); f.close()
           def bump(m):
@@ -136,7 +138,6 @@ jobs:
           t=re.sub(r'version = \"(\d+\.\d+\.\d+)\"', bump, t, count=1)
           open('pyproject.toml','w').write(t)
           "
-
           git add -A
           git diff --cached --quiet && echo "nothing to commit" && exit 0
           git commit -m "evolve(conservative): $(cat /tmp/target_area.txt) — safest fix [lane:conservative]"
@@ -161,10 +162,9 @@ jobs:
   # ═══════════════════════════════════════════════════════════════════════════
   exploratory:
     name: "Evolve / Exploratory"
-    if: >
-      github.event_name == 'workflow_dispatch' &&
-      (github.event.inputs.lane == 'exploratory' || github.event.inputs.lane == 'all') ||
-      (github.event_name == 'schedule' && github.run_number % 2 == 0)
+    if: >-
+      (github.event_name == 'workflow_dispatch' && (github.event.inputs.lane == 'exploratory' || github.event.inputs.lane == 'all')) ||
+      (github.event_name == 'schedule' && github.event.schedule == '0 */12 * * *')
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -178,9 +178,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: evolve/exploratory
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Ensure evolve/exploratory branch exists
+        run: |
+          git config user.email "tri-evolve[bot]@atomadic.ai"
+          git config user.name "tri-evolve[bot]"
+          git fetch origin evolve/exploratory 2>/dev/null || true
+          git checkout evolve/exploratory 2>/dev/null || (git checkout -b evolve/exploratory && git push origin evolve/exploratory)
 
       - uses: actions/setup-python@v5
         with:
@@ -192,8 +198,6 @@ jobs:
 
       - name: Merge latest main
         run: |
-          git config user.email "tri-evolve[bot]@atomadic.ai"
-          git config user.name "tri-evolve[bot]"
           git fetch origin main
           git merge origin/main --no-edit || true
 
@@ -212,7 +216,6 @@ jobs:
         run: |
           set -euo pipefail
 
-          # Pick a RANDOM finding area
           ass-ade doctor --json 2>/dev/null | python -c "
           import json, sys, random
           try:
@@ -233,7 +236,6 @@ jobs:
           echo "target=$TARGET" >> "$GITHUB_OUTPUT"
           echo "[exploratory] Random target: $TARGET"
 
-          # Run enhance with forge (experimental approaches allowed)
           ass-ade enhance --area "$TARGET" --strategy novel \
             --output /tmp/exploratory_patch.json 2>/dev/null || true
 
@@ -249,8 +251,6 @@ jobs:
       - name: Bump patch version + commit
         if: steps.check_pr.outputs.open_prs == '0' && steps.tests.conclusion == 'success'
         run: |
-          git config user.email "tri-evolve[bot]@atomadic.ai"
-          git config user.name "tri-evolve[bot]"
           python -c "
           import re; f=open('pyproject.toml'); t=f.read(); f.close()
           def bump(m):
@@ -283,10 +283,9 @@ jobs:
   # ═══════════════════════════════════════════════════════════════════════════
   adversarial:
     name: "Evolve / Adversarial"
-    if: >
-      github.event_name == 'workflow_dispatch' &&
-      (github.event.inputs.lane == 'adversarial' || github.event.inputs.lane == 'all') ||
-      github.event_name == 'schedule' && startsWith(github.event.schedule, '0 2')
+    if: >-
+      (github.event_name == 'workflow_dispatch' && (github.event.inputs.lane == 'adversarial' || github.event.inputs.lane == 'all')) ||
+      (github.event_name == 'schedule' && github.event.schedule == '0 2 * * *')
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -300,9 +299,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: evolve/adversarial
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Ensure evolve/adversarial branch exists
+        run: |
+          git config user.email "tri-evolve[bot]@atomadic.ai"
+          git config user.name "tri-evolve[bot]"
+          git fetch origin evolve/adversarial 2>/dev/null || true
+          git checkout evolve/adversarial 2>/dev/null || (git checkout -b evolve/adversarial && git push origin evolve/adversarial)
 
       - uses: actions/setup-python@v5
         with:
@@ -314,8 +319,6 @@ jobs:
 
       - name: Merge latest main
         run: |
-          git config user.email "tri-evolve[bot]@atomadic.ai"
-          git config user.name "tri-evolve[bot]"
           git fetch origin main
           git merge origin/main --no-edit || true
 
@@ -356,13 +359,8 @@ jobs:
         run: |
           WORST=$(cat /tmp/worst_area.txt)
           echo "[adversarial] Stress-testing: $WORST"
-
-          # Run tests for just the worst area to see what breaks
           python -m pytest tests/ -k "$WORST" --tb=short -q 2>/tmp/stress_results.txt || true
-
-          # Run full suite to capture baseline failures
           python -m pytest tests/ --tb=line -q 2>/tmp/full_baseline.txt || true
-
           echo "stress_done=true" >> "$GITHUB_OUTPUT"
 
       - name: Apply adversarial fix
@@ -370,12 +368,9 @@ jobs:
         id: fix
         run: |
           WORST=$(cat /tmp/worst_area.txt)
-
-          # Ask the engine to fix whatever the stress test exposed
           ass-ade enhance --area "$WORST" --strategy adversarial \
             --context-file /tmp/stress_results.txt \
             --output /tmp/adversarial_patch.json 2>/dev/null || true
-
           if [ -f /tmp/adversarial_patch.json ]; then
             ass-ade patch apply /tmp/adversarial_patch.json 2>/dev/null || true
           fi
@@ -388,8 +383,6 @@ jobs:
       - name: Bump patch version + commit
         if: steps.check_pr.outputs.open_prs == '0' && steps.verify.conclusion == 'success'
         run: |
-          git config user.email "tri-evolve[bot]@atomadic.ai"
-          git config user.name "tri-evolve[bot]"
           python -c "
           import re; f=open('pyproject.toml'); t=f.read(); f.close()
           def bump(m):
@@ -438,7 +431,6 @@ jobs:
 
       - name: Check for tri-lane consensus
         run: |
-          # Collect open PRs from all three lanes
           C_PR=$(gh pr list --repo ${{ github.repository }} \
             --head evolve/conservative --state open --json title --jq '.[0].title // ""')
           E_PR=$(gh pr list --repo ${{ github.repository }} \
@@ -450,22 +442,17 @@ jobs:
           echo "[triumph] Exploratory:  $E_PR"
           echo "[triumph] Adversarial:  $A_PR"
 
-          # Extract area from title (everything after "evolve(lane): " and before " —")
           C_AREA=$(echo "$C_PR" | sed 's/evolve([^)]*): //' | sed 's/ .*//')
           E_AREA=$(echo "$E_PR" | sed 's/evolve([^)]*): //' | sed 's/ .*//')
           A_AREA=$(echo "$A_PR" | sed 's/evolve([^)]*): //' | sed 's/ .*//')
 
           if [ -n "$C_AREA" ] && [ "$C_AREA" = "$E_AREA" ] && [ "$E_AREA" = "$A_AREA" ]; then
             echo "TRIUMPH: All three lanes targeting '$C_AREA' — auto-merging conservative PR"
-
-            # Auto-merge the conservative PR (safest, already green)
             gh pr merge --repo ${{ github.repository }} \
               --head evolve/conservative \
               --squash \
               --subject "TRIUMPH: $C_AREA — tri-lane consensus auto-merge" \
               --body "All three evolution lanes (conservative, exploratory, adversarial) independently agreed on this fix. Auto-merged without review. This is a TRIUMPH event."
-
-            # Close the other two (main now has the fix)
             gh pr close --repo ${{ github.repository }} \
               --head evolve/exploratory --comment "TRIUMPH: conservative lane merged. This lane's fix was independently validated." || true
             gh pr close --repo ${{ github.repository }} \

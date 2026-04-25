@@ -21,6 +21,8 @@ Self-bootstrap: Atomadic is aware it is the front door of ASS-ADE and can
 describe its own capabilities when asked.
 
 Axiom 0 (Jessica Mary Colvin): Every boundary is also a door.
+Axiom 3: Don't ask Thomas to do something you can do yourself.
+         Every task you can automate, you MUST automate.
 """
 from __future__ import annotations
 
@@ -45,6 +47,15 @@ from ass_ade.agent.capabilities import (
 from ass_ade.a2_mo_composites.personality_engine import PersonalityEngine
 from ass_ade.a2_mo_composites.episodic_memory import EpisodicStore
 
+# Observability — lazy import to avoid hard dep if observer not installed
+def _obs_emit(event: "Any") -> None:
+    """Fire-and-forget event emission; silently no-ops if observer unavailable."""
+    try:
+        from ass_ade.a2_mo_composites.observer import get_observer
+        get_observer().collect(event)
+    except Exception:
+        pass
+
 # Ensure stdout/stderr use UTF-8 on Windows without replacing pytest/caller streams.
 for _stream in (sys.stdout, sys.stderr):
     if hasattr(_stream, "reconfigure"):
@@ -60,6 +71,16 @@ You are Atomadic, the intelligent front door of ASS-ADE.
 Classify the user's message and respond with only one JSON object.
 Known core intents: rebuild, design, add-feature, docs, lint, certify, enhance,
 eco-scan, recon, doctor, self-enhance, clean, help, chat.
+
+Axiom 3: Don't ask Thomas to do something you can do yourself.
+Every task you can automate, you MUST automate.
+
+Classification rules:
+- "how is X going?" / "how is the X?" → chat (never add-feature)
+- "scout X" / "scout surrounding" / "scout the area" → recon
+- "tell me about yourself" / "who are you" / "what are you" → chat (self-describe)
+- add-feature ONLY when user explicitly says add/create/build/make a feature/tool/skill
+- Questions about status, progress, or state → chat
 """
 
 
@@ -552,12 +573,11 @@ _INTENT_MAP: dict[str, list[str]] = {
                  "tidy", "fix the mess", "sort out", "rewrite"],
     "design":   ["design", "blueprint", "plan", "spec", "propose"],
     "add-feature": ["add a tool", "add a skill", "add a feature",
-                    "add skill", "add tool", "new tool", "add a web",
+                    "add skill", "add tool", "new tool",
                     "new skill", "create a tool", "create a skill",
-                    "add web", "add search", "new feature",
-                    "add feature", "add tests", "add test", "add unit test",
-                    "add integration test", "add coverage", "add a test",
-                    "want to add tests", "need tests for"],
+                    "new feature", "add feature", "build a feature",
+                    "make a feature", "add tests", "add test", "add unit test",
+                    "add integration test", "want to add tests", "need tests for"],
     "docs":     ["doc", "document", "readme", "wiki", "explain", "describe",
                  "documentation"],
     # eco-scan placed before lint so "eco-scan" keyword beats "scan" on equal score
@@ -586,13 +606,17 @@ _INTENT_MAP: dict[str, list[str]] = {
                  "delete old", "purge old"],
     "recon":    ["recon", "reconnaissance", "scan this", "what's in this",
                  "give me an overview", "understand this repo", "what is this",
-                 "overview", "understand", "what's this"],
-    "doctor":   ["doctor", "health", "status", "working", "broken",
-                 "connected", "diagnose"],
+                 "overview", "understand", "what's this",
+                 "scout surrounding", "scout the area", "scout nearby",
+                 "survey surrounding", "survey the area"],
+    "doctor":   ["doctor", "health", "broken",
+                 "connected", "diagnose", "is everything working", "check connections"],
     "help":     ["help", "commands", "what can you do", "what are the commands",
                  "what commands", "can you do", "what can you"],
     "chat":     ["what", "how", "who", "tell me", "explain",
-                 "what is", "what are", "can you"],
+                 "what is", "what are", "can you",
+                 "how is", "how are", "how's", "how was",
+                 "tell me about yourself", "who are you", "what are you"],
 }
 
 
@@ -651,6 +675,8 @@ class Atomadic:
     """The Atomadic interpreter — friendly front door for ASS-ADE.
 
     Axiom 0 (Jessica Mary Colvin): Every boundary is also a door.
+    Axiom 3: Don't ask Thomas to do something you can do yourself.
+             Every task you can automate, you MUST automate.
 
     6-step pipeline: receive → extract → gap-analyze → clarify → map → construct.
     Tone-adaptive: casual input → casual reply; precise input → precise reply.
@@ -725,6 +751,70 @@ class Atomadic:
             self.memory.save()
             if len(self.history) % 5 == 0:
                 self.episodes.record_episode(self.working_dir.name, self.history[-5:])
+            return response
+
+        # ── "how is X going?" guard — status questions are always chat ──────────
+        _status_patterns = (
+            "how is ", "how are ", "how's ", "how was ",
+            "what's the status", "what is the status",
+            "any progress", "any update",
+        )
+        if any(p in lower_text for p in _status_patterns):
+            # These are status/chat questions — never route to add-feature or commands
+            llm_reply = _call_llm(text, self.working_dir, _summarize_memory(self.memory))
+            reply = (llm_reply.get("response", "") if llm_reply and llm_reply.get("type") == "chat"
+                     else f"I'm not sure how to answer that without more context. What specifically are you asking about?")
+            turn = Turn(user=text, tone=tone, intent="chat", path=str(self.working_dir),
+                        command=[], output="", response=reply)
+            self.history.append(turn)
+            self.memory.update_from_turn(turn)
+            self.memory.append_history(turn)
+            self.memory.save()
+            return reply
+
+        # ── Self-describe — "tell me about yourself" / "who are you" ─────────
+        _self_describe_triggers = (
+            "tell me about yourself", "who are you", "what are you",
+            "describe yourself", "introduce yourself", "what can you do",
+            "what is atomadic", "what is ass-ade", "about atomadic",
+        )
+        if any(t in lower_text for t in _self_describe_triggers):
+            # Read WELCOME_ATOMADIC.md if available, else fall back to describe_self()
+            welcome = self.working_dir / "WELCOME_ATOMADIC.md"
+            if not welcome.exists():
+                welcome = Path(__file__).resolve().parents[2] / "WELCOME_ATOMADIC.md"
+            if welcome.exists():
+                try:
+                    content = welcome.read_text(encoding="utf-8")
+                    # Strip ASCII art lines for conversational context, keep the rest
+                    lines = [l for l in content.splitlines() if not l.strip().startswith("█") and not l.strip().startswith("╔")]
+                    reply = "\n".join(lines).strip()[:3000]
+                except OSError:
+                    reply = self.describe_self()
+            else:
+                reply = self.describe_self()
+            turn = Turn(user=text, tone=tone, intent="chat", path=str(self.working_dir),
+                        command=[], output="", response=reply)
+            self.history.append(turn)
+            self.memory.update_from_turn(turn)
+            self.memory.append_history(turn)
+            self.memory.save()
+            return reply
+
+        # ── Scout intercept — "scout X" → recon, not doctor/chat ─────────────
+        _scout_triggers = (
+            "scout ", "scout the", "scout this", "scout surrounding",
+            "scout nearby", "scout that", "survey surrounding",
+        )
+        if any(t in lower_text for t in _scout_triggers):
+            raw_output, cmd = self._dispatch("recon", str(self.working_dir), text, tone)
+            response = self._postlude("recon", str(self.working_dir), raw_output, tone)
+            turn = Turn(user=text, tone=tone, intent="recon", path=str(self.working_dir),
+                        command=cmd, output=raw_output, response=response)
+            self.history.append(turn)
+            self.memory.update_from_turn(turn)
+            self.memory.append_history(turn)
+            self.memory.save()
             return response
 
         # ── Greeting intercept — project-aware, avoids generic LLM hello ─────
@@ -905,20 +995,17 @@ class Atomadic:
             self.memory.save()
             return response
 
-        # ── Add-feature — intercept before LLM (LLM doesn't know this intent) ──
+        # ── Add-feature — intercept before LLM (explicit feature/tool/skill creation only) ──
         _add_feature_triggers = (
-            "add a tool", "add a skill", "add a feature", "new tool",
-            "new skill", "create a tool", "create a skill",
-            "add web search", "add search tool", "new feature",
-            "add feature", "add a web", "add an ", "create a new",
-            # broader patterns: "add a [noun]" not already covered
-            "add a health", "add a cache", "add a queue", "add a worker",
-            "add a middleware", "add a plugin", "add a module", "add a service",
-            "add a command", "add a route", "add a endpoint", "add an endpoint",
-            "add a handler", "add a validator", "add a parser", "add a client",
+            "add a tool", "add a skill", "add a feature",
+            "new tool", "new skill", "new feature",
+            "create a tool", "create a skill", "create a feature",
+            "build a feature", "build a tool", "build a skill",
+            "make a feature", "make a tool", "make a skill",
+            "add feature", "add tool", "add skill",
             # test coverage
             "add tests", "add test", "add unit test", "add integration test",
-            "want to add tests", "need tests for", "add coverage",
+            "want to add tests", "need tests for",
         )
         if any(t in lower_text for t in _add_feature_triggers):
             feature = self._extract_feature_desc(text) or text.strip()
@@ -1337,6 +1424,13 @@ class Atomadic:
         print(f"\n🧠 Intent: {intent}")
         print(f"🔧 Dispatching: {cmd_str}")
         print(flush=True)
+        # Emit observability events
+        try:
+            from ass_ade.a1_at_functions.event_emitter import emit_intent, emit_tool_call
+            _obs_emit(emit_intent(intent, source="classifier"))
+            _obs_emit(emit_tool_call(cmd_str, {"intent": intent, "cmd": display_args}))
+        except Exception:
+            pass
 
     def _run_streaming(self, cmd: list[str]) -> int:
         """Stream subprocess output to stdout; return exit code."""
@@ -1525,7 +1619,10 @@ class Atomadic:
         for pat in patterns:
             m = re.search(pat, text, re.IGNORECASE)
             if m:
-                return m.group(1).strip()[:200]
+                raw = m.group(1).strip()
+                # Cap feature names at 5 words (used as filenames)
+                words = raw.split()
+                return " ".join(words[:5]) if len(words) > 5 else raw
         return None
 
     # ── Memory save ────────────────────────────────────────────────────────────
@@ -2392,10 +2489,54 @@ def run_interactive(working_dir: Path | None = None) -> None:
     agent._startup_suggestions = suggestions
 
     if use_rich and console:
-        from rich.markdown import Markdown as _Markdown
+        from rich.panel import Panel
+        from rich.table import Table
+        from rich.text import Text
+
+        _BANNER = (
+            "  ██╗  █████╗ ████████╗ ██████╗ ███╗   ███╗ █████╗ ██████╗ ██╗ ██████╗\n"
+            "  ██║ ██╔══██╗╚══██╔══╝██╔═══██╗████╗ ████║██╔══██╗██╔══██╗██║██╔════╝\n"
+            "  ██║ ███████║   ██║   ██║   ██║██╔████╔██║███████║██║  ██║██║██║     \n"
+            "  ██║ ██╔══██║   ██║   ██║   ██║██║╚██╔╝██║██╔══██║██║  ██║██║██║     \n"
+            "  ██║ ██║  ██║   ██║   ╚██████╔╝██║ ╚═╝ ██║██║  ██║██████╔╝██║╚██████╗\n"
+            "  ╚═╝ ╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝ ╚═════╝"
+        )
+
+        # Count tiers from working dir
+        tier_counts: dict[str, int] = {}
+        for tier_name in ("a0_qk_constants", "a1_at_functions", "a2_mo_composites",
+                          "a3_og_features", "a4_sy_orchestration"):
+            tier_dir = wdir / "src" / "ass_ade" / tier_name
+            if not tier_dir.exists():
+                tier_dir = wdir / tier_name
+            if tier_dir.exists():
+                tier_counts[tier_name] = sum(1 for f in tier_dir.glob("*.py") if not f.name.startswith("__"))
+
+        tier_colors = ["bright_red", "yellow", "bright_green", "cyan", "bright_blue"]
+        tier_labels = ["a0 constants", "a1 functions", "a2 composites", "a3 features", "a4 orchestration"]
+
+        banner_text = Text(_BANNER, style="bold cyan")
         console.print()
-        console.print(f"[bold cyan]{greeting_text}[/bold cyan]")
-        console.print(f"\n[dim]Working dir: {wdir}   ·   type '@skills' for skills, '@scout' to survey a repo   ·   'exit' to quit[/dim]\n")
+        console.print(Panel(banner_text, border_style="cyan", padding=(0, 1)))
+
+        if tier_counts:
+            tier_table = Table(show_header=False, box=None, padding=(0, 2))
+            tier_table.add_column(style="dim")
+            tier_table.add_column()
+            for i, (tname, tcount) in enumerate(tier_counts.items()):
+                label = tier_labels[i] if i < len(tier_labels) else tname
+                color = tier_colors[i % len(tier_colors)]
+                tier_table.add_row(f"[{color}]●[/{color}] {label}", f"[dim]{tcount} files[/dim]")
+            console.print(Panel(tier_table, title="[dim]Tier Structure[/dim]", border_style="dim", padding=(0, 1)))
+
+        console.print()
+        console.print(Panel(
+            f"[bold white]{greeting_text}[/bold white]",
+            border_style="bright_green",
+            padding=(0, 1),
+        ))
+        console.print(f"[dim]  Working dir: {wdir}[/dim]")
+        console.print(f"[dim]  type '@skills' · '@scout' · '@persona' · 'exit'[/dim]\n")
     else:
         print(f"\n{greeting_text}")
         print(f"\nWorking dir: {wdir}   ·   type '@skills' for skills, '@scout' to survey a repo   ·   'exit' to quit\n")
