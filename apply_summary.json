@@ -1,0 +1,9 @@
+{
+  "lane": "quality",
+  "applied": [
+    "missing_tests in src/ass_ade/a0_qk_constants/cherry_types.py",
+    "missing_tests in src/ass_ade/a0_qk_constants/exclude_dirs.py",
+    "missing_tests in src/ass_ade/a0_qk_constants/pipeline_meta.py"
+  ],
+  "skipped": []
+}
