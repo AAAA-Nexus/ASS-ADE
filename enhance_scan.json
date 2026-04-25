@@ -1,0 +1,260 @@
+{
+  "root": "/home/runner/work/ASS-ADE/ASS-ADE",
+  "total_findings": 24,
+  "by_impact": {
+    "high": 20,
+    "medium": 8,
+    "low": 22
+  },
+  "by_category": {
+    "security": 10,
+    "missing_tests": 10,
+    "long_function": 8,
+    "missing_docs": 8,
+    "missing_types": 8,
+    "technical_debt": 6
+  },
+  "findings": [
+    {
+      "id": 11,
+      "category": "missing_tests",
+      "title": "No tests for cherry_types.py",
+      "description": "src/ass_ade/a0_qk_constants/cherry_types.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/a0_qk_constants/cherry_types.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 12,
+      "category": "missing_tests",
+      "title": "No tests for exclude_dirs.py",
+      "description": "src/ass_ade/a0_qk_constants/exclude_dirs.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/a0_qk_constants/exclude_dirs.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 13,
+      "category": "missing_tests",
+      "title": "No tests for pipeline_meta.py",
+      "description": "src/ass_ade/a0_qk_constants/pipeline_meta.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/a0_qk_constants/pipeline_meta.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 14,
+      "category": "missing_tests",
+      "title": "No tests for policy_types.py",
+      "description": "src/ass_ade/a0_qk_constants/policy_types.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/a0_qk_constants/policy_types.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 15,
+      "category": "missing_tests",
+      "title": "No tests for reference_roots.py",
+      "description": "src/ass_ade/a0_qk_constants/reference_roots.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/a0_qk_constants/reference_roots.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 16,
+      "category": "missing_tests",
+      "title": "No tests for schemas.py",
+      "description": "src/ass_ade/a0_qk_constants/schemas.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/a0_qk_constants/schemas.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 17,
+      "category": "missing_tests",
+      "title": "No tests for tier_names.py",
+      "description": "src/ass_ade/a0_qk_constants/tier_names.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/a0_qk_constants/tier_names.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 18,
+      "category": "missing_tests",
+      "title": "No tests for a2a_discover_helpers.py",
+      "description": "src/ass_ade/a1_at_functions/a2a_discover_helpers.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/a1_at_functions/a2a_discover_helpers.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 19,
+      "category": "missing_tests",
+      "title": "No tests for a2a_negotiate_helpers.py",
+      "description": "src/ass_ade/a1_at_functions/a2a_negotiate_helpers.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/a1_at_functions/a2a_negotiate_helpers.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 20,
+      "category": "missing_tests",
+      "title": "No tests for a2a_validate_helpers.py",
+      "description": "src/ass_ade/a1_at_functions/a2a_validate_helpers.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/a1_at_functions/a2a_validate_helpers.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 29,
+      "category": "missing_docs",
+      "title": "Missing docstring: main",
+      "description": "main in agents/check_swarm_prompt_alignment.py has no docstring.",
+      "file": "agents/check_swarm_prompt_alignment.py",
+      "line": 27,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 30,
+      "category": "missing_docs",
+      "title": "Missing docstring: main",
+      "description": "main in agents/sync_build_swarm_to_cursor.py has no docstring.",
+      "file": "agents/sync_build_swarm_to_cursor.py",
+      "line": 180,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 31,
+      "category": "missing_docs",
+      "title": "Missing docstring: main",
+      "description": "main in scripts/apply_fixes.py has no docstring.",
+      "file": "scripts/apply_fixes.py",
+      "line": 41,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 32,
+      "category": "missing_docs",
+      "title": "Missing docstring: utc_now",
+      "description": "utc_now in scripts/ass_ade_local_control.py has no docstring.",
+      "file": "scripts/ass_ade_local_control.py",
+      "line": 64,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 33,
+      "category": "missing_docs",
+      "title": "Missing docstring: default_parent",
+      "description": "default_parent in scripts/ass_ade_local_control.py has no docstring.",
+      "file": "scripts/ass_ade_local_control.py",
+      "line": 68,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 34,
+      "category": "missing_docs",
+      "title": "Missing docstring: default_control_root",
+      "description": "default_control_root in scripts/ass_ade_local_control.py has no docstring.",
+      "file": "scripts/ass_ade_local_control.py",
+      "line": 77,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 35,
+      "category": "missing_docs",
+      "title": "Missing docstring: slugify",
+      "description": "slugify in scripts/ass_ade_local_control.py has no docstring.",
+      "file": "scripts/ass_ade_local_control.py",
+      "line": 85,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 36,
+      "category": "missing_docs",
+      "title": "Missing docstring: run",
+      "description": "run in scripts/ass_ade_local_control.py has no docstring.",
+      "file": "scripts/ass_ade_local_control.py",
+      "line": 90,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 45,
+      "category": "technical_debt",
+      "title": "Technical debt marker: # TODO",
+      "description": "# TODO: add error handling",
+      "file": "src/ass_ade/cli.py",
+      "line": 7135,
+      "impact": "low",
+      "effort": "medium"
+    },
+    {
+      "id": 46,
+      "category": "technical_debt",
+      "title": "Technical debt marker: # FIXME",
+      "description": "# FIXME: this is slow",
+      "file": "src/ass_ade/cli.py",
+      "line": 7144,
+      "impact": "low",
+      "effort": "medium"
+    },
+    {
+      "id": 47,
+      "category": "technical_debt",
+      "title": "Technical debt marker: # TODO",
+      "description": "markers = (\"# TODO\", \"# FIXME\", \"# HACK\", \"# XXX\")",
+      "file": "src/ass_ade/local/enhancer.py",
+      "line": 304,
+      "impact": "low",
+      "effort": "medium"
+    },
+    {
+      "id": 48,
+      "category": "technical_debt",
+      "title": "Technical debt marker: # TODO",
+      "description": "\"code\": f\"# TODO unverified synthesis for: {spec[:120]}\\npass\\n\",",
+      "file": "src/ass_ade/nexus/client.py",
+      "line": 969,
+      "impact": "low",
+      "effort": "medium"
+    },
+    {
+      "id": 49,
+      "category": "technical_debt",
+      "title": "Technical debt marker: # TODO",
+      "description": "\"    # TODO: fix later\\n\",",
+      "file": "tests/test_enhance_cli.py",
+      "line": 52,
+      "impact": "low",
+      "effort": "medium"
+    },
+    {
+      "id": 50,
+      "category": "technical_debt",
+      "title": "Technical debt marker: # TODO",
+      "description": "(tmp_path / \"sample.py\").write_text(\"def f():\\n    pass  # TODO: implement\\n\", encoding=\"utf-8\")",
+      "file": "tests/test_enhance_cli.py",
+      "line": 72,
+      "impact": "low",
+      "effort": "medium"
+    }
+  ],
+  "scanned_files": 500
+}
