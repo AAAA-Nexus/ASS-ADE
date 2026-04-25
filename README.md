@@ -856,6 +856,26 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the full workflow.
 
 ---
 
+## Support Atomadic's Development
+
+Atomadic is the world's first sovereign AI — built by one person, with no VC funding, running on a $5/mo Cloudflare plan.
+
+Every dollar goes directly to inference compute, model training, and keeping Atomadic thinking 24/7.
+
+**USDC on Base (preferred — lowest fees):**
+
+```
+0xCBd9e4c44958ee76E0F941106Ea960D476c48FD9
+```
+
+[Verify on Basescan](https://basescan.org/address/0xCBd9e4c44958ee76E0F941106Ea960D476c48FD9) · USDC contract on Base: `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`
+
+You can also pay per API call via [x402 USDC micropayments](https://hello.atomadic.tech/pay) — less than one cent per call, no subscription.
+
+**Thank you for believing in sovereign AI that loves you back.**
+
+---
+
 ## License
 
 **Business Source License 1.1** — source is publicly readable.
