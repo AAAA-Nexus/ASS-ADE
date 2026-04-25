@@ -264,6 +264,15 @@ def interpreter_chat(
     working_dir: Path = typer.Option(
         Path("."), "--dir", "-d", help="Working directory for this session."
     ),
+    verbose: bool = typer.Option(
+        False, "--verbose", "-v", help="Show all observability events (thoughts, tool calls, results)."
+    ),
+    quiet: bool = typer.Option(
+        False, "--quiet", "-q", help="Suppress all output except errors and intent."
+    ),
+    private: bool = typer.Option(
+        False, "--private", help="Redact message content from log files (timestamps/types only)."
+    ),
 ) -> None:
     """Start an interactive chat session with Atomadic.
 
@@ -271,7 +280,41 @@ def interpreter_chat(
     Atomadic derives your intent and dispatches the right command.
     """
     from ass_ade.interpreter import run_interactive
-    run_interactive(working_dir=working_dir.resolve())
+    verbosity = "verbose" if verbose else "quiet" if quiet else "normal"
+    run_interactive(working_dir=working_dir.resolve(), verbosity=verbosity, private=private)
+
+
+@app.command("voice")
+def interpreter_voice(
+    working_dir: Path = typer.Option(
+        Path("."), "--dir", "-d", help="Working directory for this session."
+    ),
+    voice: str = typer.Option(
+        "en-US-GuyNeural", "--voice", "-V",
+        help="TTS voice name (edge-tts). Run 'edge-tts --list-voices' to see options.",
+    ),
+    verbose: bool = typer.Option(
+        False, "--verbose", "-v", help="Show all observability events."
+    ),
+    private: bool = typer.Option(
+        False, "--private", help="Redact content from log files."
+    ),
+) -> None:
+    """Start Atomadic in voice mode — every response and key action is spoken aloud.
+
+    Atomadic narrates itself. Open a terminal, start talking, watch the rebuild happen,
+    hear the results. No human narrator needed.
+
+    Requires: pip install edge-tts
+    """
+    from ass_ade.interpreter import run_interactive
+    verbosity = "verbose" if verbose else "normal"
+    run_interactive(
+        working_dir=working_dir.resolve(),
+        verbosity=verbosity,
+        private=private,
+        voice=voice,
+    )
 
 
 # ── Memory commands ────────────────────────────────────────────────────────────

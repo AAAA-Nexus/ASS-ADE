@@ -53,6 +53,24 @@ for _stream in (sys.stdout, sys.stderr):
         except Exception:
             pass
 
+# ── Observability singleton ───────────────────────────────────────────────────
+# Set by run_interactive when --verbose/--quiet/--private flags are in use.
+# None by default so the observer is zero-cost unless explicitly activated.
+_observer: "Any | None" = None  # Observer instance from a2_mo_composites.observer
+
+
+def set_observer(obs: "Any | None") -> None:
+    """Attach (or detach) the session-scoped observer."""
+    global _observer
+    _observer = obs
+
+
+def _emit(event: dict) -> None:
+    """Forward an event to the current observer; no-op when none is set."""
+    if _observer is not None:
+        _observer.record(event)
+
+
 # ── LLM endpoint selection ─────────────────────────────────────────────────────
 
 _FALLBACK_LLM_SYSTEM_PROMPT = """\
@@ -293,6 +311,8 @@ def _call_llm(
                          "github", "aaaa-nexus", "ollama", "pollinations"]
 
     tried_pollinations = "pollinations" in providers
+    from ass_ade.a1_at_functions.event_emitter import emit_thought
+    _emit(emit_thought(f"LLM call: {user_text[:120]}"))
     for slug in providers:
         result = _try_provider(slug, system_prompt, user_text, ollama_model, nexus_api_key)
         if result is not None:
@@ -1088,6 +1108,8 @@ class Atomadic:
                 output_path_raw = llm_result.get("output_path")
                 output_path = _substitute_datetime_tokens(output_path_raw) if output_path_raw else None
                 feature_desc = llm_result.get("feature_desc")
+                from ass_ade.a1_at_functions.event_emitter import emit_intent as _emit_intent_fn
+                _emit(_emit_intent_fn(intent, path))
 
                 # Safety: rebuild is destructive — require explicit trigger in input.
                 # LLMs sometimes misclassify vague phrases ("make it faster", "fix the
@@ -1450,6 +1472,9 @@ class Atomadic:
 
     def _execute(self, cmd: list[str]) -> str:
         """Run a single command, streaming output live; return collected output."""
+        from ass_ade.a1_at_functions.event_emitter import emit_tool_call, emit_tool_result, emit_error
+        display = " ".join(str(a) for a in cmd[3:]) if len(cmd) > 3 else " ".join(str(a) for a in cmd)
+        _emit(emit_tool_call("subprocess", {"cmd": display}))
         output_parts: list[str] = []
         try:
             proc = subprocess.Popen(
@@ -1464,15 +1489,20 @@ class Atomadic:
             proc.wait(timeout=120)
             output = "".join(output_parts).strip()
             if proc.returncode != 0:
-                return f"[error] exit {proc.returncode}\n{output}"
+                result = f"[error] exit {proc.returncode}\n{output}"
+                _emit(emit_error(f"exit {proc.returncode}: {display}"))
+                return result
+            _emit(emit_tool_result("subprocess", output[:200]))
             return output
         except subprocess.TimeoutExpired:
             try:
                 proc.kill()
             except Exception:
                 pass
+            _emit(emit_error(f"timed out: {display}"))
             return "[error timed out after 120s]"
         except Exception as exc:
+            _emit(emit_error(str(exc)))
             return f"[execution error: {exc}]"
 
     def _execute_rebuild_pipeline(self, source: str, output: str) -> str:
@@ -2453,7 +2483,13 @@ def _handle_at_command(agent: "Atomadic", cmd: str, arg: str) -> str:
 
 # ── Interactive session ────────────────────────────────────────────────────────
 
-def run_interactive(working_dir: Path | None = None) -> None:
+def run_interactive(
+    working_dir: Path | None = None,
+    *,
+    verbosity: str = "normal",
+    private: bool = False,
+    voice: str | None = None,
+) -> None:
     """Drop into an interactive Atomadic session (REPL)."""
     try:
         from rich.console import Console
@@ -2465,6 +2501,28 @@ def run_interactive(working_dir: Path | None = None) -> None:
         use_rich = False
 
     wdir = working_dir or Path.cwd()
+
+    # Build narrator when voice mode is requested.
+    narrator = None
+    if voice is not None:
+        try:
+            from ass_ade.a2_mo_composites.voice_narrator import VoiceNarrator
+            narrator = VoiceNarrator(voice=voice, speak_responses=True, speak_events=True)
+        except Exception:
+            pass
+
+    # Always create an observer (logs every session); attach narrator when in voice mode.
+    try:
+        from ass_ade.a2_mo_composites.observer import Observer
+        set_observer(Observer(
+            working_dir=wdir,
+            verbosity=verbosity,
+            private=private,
+            narrator=narrator,
+        ))
+    except Exception:
+        pass
+
     agent = Atomadic(working_dir=wdir)
 
     is_first_visit = not bool(agent.memory.user_profile)
@@ -2598,6 +2656,8 @@ def run_interactive(working_dir: Path | None = None) -> None:
             console.print()
         else:
             print(f"\nAtomadic → {response}\n")
+        if narrator is not None and narrator.speak_responses:
+            narrator.narrate(response)
 
 
 # Public alias so external code can do: from ass_ade.interpreter import Interpreter
