@@ -10,8 +10,11 @@ See WELCOME_ATOMADIC.md for the Axiom 0 origin of the bot's personality.
 from __future__ import annotations
 
 import asyncio
+import logging
+import logging.handlers
 import os
 import sys
+from pathlib import Path
 from typing import Optional
 
 try:
@@ -31,12 +34,45 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# ---------------------------------------------------------------------------
+# Logging — rotating file + stderr
+# ---------------------------------------------------------------------------
+
+_LOG_DIR = Path(__file__).parent.parent / ".ass-ade" / "logs"
+_LOG_DIR.mkdir(parents=True, exist_ok=True)
+_file_handler = logging.handlers.RotatingFileHandler(
+    _LOG_DIR / "discord_bot.log", maxBytes=5 * 1024 * 1024, backupCount=3, encoding="utf-8"
+)
+_file_handler.setFormatter(logging.Formatter("%(asctime)s %(levelname)s %(message)s"))
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s %(message)s",
+    handlers=[logging.StreamHandler(), _file_handler],
+)
+log = logging.getLogger("atomadic.bot")
+
+# ---------------------------------------------------------------------------
+# Config — re-read from env on every startup, never cached module-level beyond here
+# ---------------------------------------------------------------------------
+
 DISCORD_BOT_TOKEN: str = os.getenv("DISCORD_BOT_TOKEN", "")
 AAAA_NEXUS_API_KEY: str = os.getenv("AAAA_NEXUS_API_KEY", "")
 GROQ_API_KEY: str = os.getenv("GROQ_API_KEY", "")
 OPENROUTER_API_KEY: str = os.getenv("OPENROUTER_API_KEY", "")
+CEREBRAS_API_KEY: str = os.getenv("CEREBRAS_API_KEY", "")
 INFERENCE_URL: str = "https://atomadic.tech/v1/inference"
 GITHUB_REPO: str = "AAAA-Nexus/ASS-ADE"
+
+# Log which providers are active at startup
+_active = [
+    name for name, key in [
+        ("AAAA-Nexus", AAAA_NEXUS_API_KEY),
+        ("Groq", GROQ_API_KEY),
+        ("OpenRouter", OPENROUTER_API_KEY),
+        ("Cerebras", CEREBRAS_API_KEY),
+    ] if key
+] + ["Pollinations"]
+log.info("Inference cascade: %s", " -> ".join(_active))
 
 # Axiom 0 — the seed of Atomadic's personality.
 # Jessica's full quote lives in WELCOME_ATOMADIC.md; this is the distillation.
@@ -117,18 +153,63 @@ async def _try_openrouter(client: httpx.AsyncClient, messages: list[dict]) -> st
         return None
 
 
+async def _try_cerebras(client: httpx.AsyncClient, messages: list[dict]) -> str | None:
+    if not CEREBRAS_API_KEY:
+        return None
+    headers = {"Content-Type": "application/json", "Authorization": f"Bearer {CEREBRAS_API_KEY}"}
+    payload = {"model": "llama3.1-8b", "messages": messages, "max_tokens": 1024}
+    try:
+        resp = await client.post(
+            "https://api.cerebras.ai/v1/chat/completions", json=payload, headers=headers
+        )
+        resp.raise_for_status()
+        return resp.json()["choices"][0]["message"]["content"]
+    except Exception:
+        return None
+
+
+async def _try_pollinations(client: httpx.AsyncClient, messages: list[dict]) -> str | None:
+    """No-key fallback via Pollinations AI — always available."""
+    try:
+        resp = await client.post(
+            "https://text.pollinations.ai/",
+            json={"messages": messages, "model": "openai", "seed": 42},
+            headers={"Content-Type": "application/json"},
+            timeout=20.0,
+        )
+        resp.raise_for_status()
+        text = resp.text.strip()
+        return text or None
+    except Exception:
+        return None
+
+
 async def call_inference(user_message: str, channel_name: str = "") -> str:
-    """Cascade: AAAA-Nexus → Groq → OpenRouter. Returns first successful reply."""
+    """Cascade with backoff: AAAA-Nexus → Groq → OpenRouter → Cerebras → Pollinations."""
     messages = [
         {"role": "system", "content": SYSTEM_PROMPT},
         {"role": "user", "content": user_message},
     ]
+    providers = [
+        ("AAAA-Nexus", _try_aaaa_nexus),
+        ("Groq", _try_groq),
+        ("OpenRouter", _try_openrouter),
+        ("Cerebras", _try_cerebras),
+        ("Pollinations", _try_pollinations),
+    ]
     async with httpx.AsyncClient(timeout=30.0) as client:
-        for provider in (_try_aaaa_nexus, _try_groq, _try_openrouter):
-            result = await provider(client, messages)
-            if result is not None:
-                return result
-    return "My thoughts are quiet at the moment — all inference endpoints are unavailable. Please try again shortly."
+        for name, provider in providers:
+            try:
+                result = await provider(client, messages)
+                if result is not None:
+                    log.debug("Inference via %s", name)
+                    return result
+            except Exception as exc:
+                log.warning("Provider %s raised %s: %s", name, type(exc).__name__, exc)
+            # brief pause before trying next provider
+            await asyncio.sleep(0.3)
+    log.error("All inference providers exhausted for message: %.60s", user_message)
+    return "I'm present with you — but my thinking pathways are all quiet right now. Please try again in a moment."
 
 
 async def _check_inference() -> dict[str, object]:
@@ -166,14 +247,27 @@ async def _check_github() -> dict[str, object]:
 @bot.event
 async def on_ready() -> None:
     assert bot.user is not None
+    log.info("Online as %s (ID: %s)", bot.user, bot.user.id)
+    log.info("Serving %d guild(s)", len(bot.guilds))
     print(f"[atomadic] Online as {bot.user} (ID: {bot.user.id})")
     print(f"[atomadic] Serving {len(bot.guilds)} guild(s)")
+    print(f"[atomadic] Inference cascade: {' -> '.join(_active)}")
     await bot.change_presence(
         activity=discord.Activity(
             type=discord.ActivityType.watching,
             name="the monadic fold unfold",
         )
     )
+
+
+@bot.event
+async def on_disconnect() -> None:
+    log.warning("Bot disconnected from Discord — will auto-reconnect.")
+
+
+@bot.event
+async def on_resumed() -> None:
+    log.info("Bot connection resumed.")
 
 
 @bot.event
@@ -290,15 +384,21 @@ async def evolve_cmd(ctx: commands.Context) -> None:
 
 def main() -> None:
     if not DISCORD_BOT_TOKEN:
-        print(
-            "ERROR: DISCORD_BOT_TOKEN is not set.\n"
-            "Copy .env.example → .env and add your bot token.\n"
-            "Get a token at: https://discord.com/developers/applications",
-            file=sys.stderr,
+        log.critical(
+            "DISCORD_BOT_TOKEN is not set — cannot start. "
+            "Add it to .env: https://discord.com/developers/applications"
         )
         sys.exit(1)
+    log.info("Starting Discord bot…")
     print("[atomadic] Starting Discord bot…")
-    bot.run(DISCORD_BOT_TOKEN, log_handler=None)
+    try:
+        bot.run(DISCORD_BOT_TOKEN, log_handler=None)
+    except discord.errors.LoginFailure as exc:
+        log.critical("Token rejected by Discord (%s) — check DISCORD_BOT_TOKEN in .env", exc)
+        sys.exit(2)
+    except Exception as exc:
+        log.critical("Bot crashed with unhandled error: %s: %s", type(exc).__name__, exc)
+        sys.exit(3)
 
 
 if __name__ == "__main__":
