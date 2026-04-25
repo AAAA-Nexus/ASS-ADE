@@ -631,6 +631,34 @@ def _substitute_datetime_tokens(path: str) -> str:
     return path
 
 
+_SLUG_STOPWORDS = frozenset({
+    "a", "an", "the", "and", "or", "of", "in", "on", "at", "to",
+    "for", "with", "by", "from", "as", "is", "be", "it", "that",
+    "this", "new", "create", "add", "make", "build", "implement",
+    "feature", "module", "command",
+})
+
+
+def _feature_slug(feature_desc: str, max_words: int = 5) -> str:
+    """Convert a feature description to a max-5-word descriptive snake_case slug."""
+    words = re.findall(r"[a-z0-9]+", feature_desc.lower())
+    meaningful = [w for w in words if w not in _SLUG_STOPWORDS and len(w) > 1]
+    slug = "_".join(meaningful[:max_words])
+    return slug or re.sub(r"[^a-z0-9]+", "_", feature_desc.lower()).strip("_")[:30]
+
+
+def _read_welcome_md(working_dir: Path) -> str | None:
+    """Search for WELCOME_ATOMADIC.md from working_dir upward; return content or None."""
+    for search_dir in (working_dir, *working_dir.parents):
+        candidate = search_dir / "WELCOME_ATOMADIC.md"
+        if candidate.exists():
+            try:
+                return candidate.read_text(encoding="utf-8")[:3000]
+            except OSError:
+                pass
+    return None
+
+
 # ── Turn record ───────────────────────────────────────────────────────────────
 
 @dataclass
@@ -905,18 +933,80 @@ class Atomadic:
             self.memory.save()
             return response
 
-        # ── Add-feature — intercept before LLM (LLM doesn't know this intent) ──
+        # ── Conversational status/progress queries → chat (not doctor or add-feature) ──
+        _status_chat_patterns = (
+            "how is ", "how's ", "how are ", "status on ", "status of ",
+            "update on ", "what's the status", "progress on ",
+            "any update", "any progress", "how's it going", "how is it going",
+        )
+        if any(p in lower_text for p in _status_chat_patterns):
+            llm_result = _call_llm(text, self.working_dir, _summarize_memory(self.memory))
+            reply = (
+                llm_result.get("response", "")
+                if llm_result and llm_result.get("type") == "chat"
+                else (
+                    "I don't have real-time status on that. "
+                    "Try `ass-ade doctor` to check system health, or describe what you're working on."
+                )
+            )
+            turn = Turn(user=text, tone=tone, intent="chat", path=str(self.working_dir),
+                        command=[], output="", response=reply)
+            self.history.append(turn)
+            self.memory.update_from_turn(turn)
+            self.memory.append_history(turn)
+            self.memory.save()
+            return reply
+
+        # ── Scout — first word "scout" dispatches to scout runner, not doctor ──
+        if lower_text.split()[:1] == ["scout"]:
+            from ass_ade.a3_og_features.skill_runner import SkillContext, _run_scout
+            ctx = SkillContext(
+                user_input=text,
+                working_dir=self.working_dir,
+                tone=tone,
+                domain_level=self.personality.domain_level,
+                history=self.history,
+            )
+            print(f"\n🧠 Intent: scout", flush=True)
+            print(flush=True)
+            raw_output = _run_scout(ctx)
+            response = self.personality.shape_response(raw_output)
+            turn = Turn(user=text, tone=tone, intent="recon",
+                        path=str(self.working_dir), command=[], output=raw_output, response=response)
+            self.history.append(turn)
+            self.memory.update_from_turn(turn)
+            self.memory.append_history(turn)
+            self.memory.save()
+            return response
+
+        # ── Self-introspect → WELCOME_ATOMADIC.md or describe_self() ──
+        _introspect_triggers = (
+            "tell me about yourself", "about yourself", "what are you",
+            "explore you", "who are you", "describe yourself",
+            "introduce yourself", "what is atomadic", "what's atomadic",
+        )
+        if any(t in lower_text for t in _introspect_triggers):
+            raw_output = _read_welcome_md(self.working_dir) or self.describe_self()
+            turn = Turn(user=text, tone=tone, intent="chat", path=str(self.working_dir),
+                        command=[], output=raw_output, response=raw_output)
+            self.history.append(turn)
+            self.memory.update_from_turn(turn)
+            self.memory.append_history(turn)
+            self.memory.save()
+            return raw_output
+
+        # ── Add-feature — explicit verb + feature/module/command/tool/skill only ──
         _add_feature_triggers = (
-            "add a tool", "add a skill", "add a feature", "new tool",
-            "new skill", "create a tool", "create a skill",
-            "add web search", "add search tool", "new feature",
-            "add feature", "add a web", "add an ", "create a new",
-            # broader patterns: "add a [noun]" not already covered
-            "add a health", "add a cache", "add a queue", "add a worker",
-            "add a middleware", "add a plugin", "add a module", "add a service",
-            "add a command", "add a route", "add a endpoint", "add an endpoint",
-            "add a handler", "add a validator", "add a parser", "add a client",
-            # test coverage
+            "add a feature", "add feature", "new feature",
+            "add a module", "add module", "new module",
+            "add a command", "add command", "new command",
+            "add a tool", "add tool", "new tool",
+            "add a skill", "add skill", "new skill",
+            "create a feature", "create a module", "create a command",
+            "create a tool", "create a skill",
+            "build a feature", "build a module", "build a command",
+            "make a feature", "make a module", "make a command",
+            # test coverage (explicit)
             "add tests", "add test", "add unit test", "add integration test",
             "want to add tests", "need tests for", "add coverage",
         )
@@ -1641,7 +1731,7 @@ class Atomadic:
 
     def _create_tier_feature_skeleton(self, feature_desc: str, source: Path) -> list[str]:
         """Create skeleton files in the correct monadic tier folders inside source."""
-        slug = re.sub(r"[^a-z0-9]+", "_", feature_desc.lower()).strip("_")[:40]
+        slug = _feature_slug(feature_desc)
         created: list[str] = []
 
         def _find_tier(prefix: str) -> Path | None:
@@ -2392,10 +2482,30 @@ def run_interactive(working_dir: Path | None = None) -> None:
     agent._startup_suggestions = suggestions
 
     if use_rich and console:
-        from rich.markdown import Markdown as _Markdown
+        from rich.panel import Panel as _Panel
+        _tier_colors = {
+            "a0_qk_constants":    "cyan",
+            "a1_at_functions":    "green",
+            "a2_mo_composites":   "yellow",
+            "a3_og_features":     "magenta",
+            "a4_sy_orchestration": "blue",
+        }
+        tier_dirs = sorted(scan.get("tier_dirs_found", []))
+        tier_line = ""
+        if tier_dirs:
+            parts = [
+                f"[{_tier_colors.get(t, 'white')}]{t}[/{_tier_colors.get(t, 'white')}]"
+                for t in tier_dirs
+            ]
+            tier_line = "\n\n[dim]Tiers:[/dim]  " + "  ".join(parts)
         console.print()
-        console.print(f"[bold cyan]{greeting_text}[/bold cyan]")
-        console.print(f"\n[dim]Working dir: {wdir}   ·   type '@skills' for skills, '@scout' to survey a repo   ·   'exit' to quit[/dim]\n")
+        console.print(_Panel(
+            f"[bold cyan]{greeting_text}[/bold cyan]{tier_line}",
+            title="[bold cyan]Atomadic · ASS-ADE[/bold cyan]",
+            border_style="cyan",
+            padding=(1, 2),
+        ))
+        console.print(f"[dim]Working dir: {wdir}   ·   '@skills' | '@scout' | 'exit'[/dim]\n")
     else:
         print(f"\n{greeting_text}")
         print(f"\nWorking dir: {wdir}   ·   type '@skills' for skills, '@scout' to survey a repo   ·   'exit' to quit\n")

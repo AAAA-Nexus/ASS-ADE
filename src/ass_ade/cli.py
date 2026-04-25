@@ -23,6 +23,8 @@ import httpx
 import typer
 from pydantic import BaseModel
 from rich.console import Console
+from rich.panel import Panel
+from rich.syntax import Syntax
 from rich.table import Table
 
 from ass_ade.config import default_config_path, load_config, write_default_config
@@ -47,6 +49,11 @@ from ass_ade.protocol.evolution import (
     write_branch_evolution_demo,
 )
 from ass_ade.system import collect_tool_status
+
+_DOCTOR_ASCII = r"""  __ _| |_ ___  _ __ ___   __ _  __| |(_) ___
+ / _` | __/ _ \| '_ ` _ \ / _` |/ _` || |/ __|
+| (_| | || (_) | | | | | | (_| | (_| || | (__
+ \__,_|\__\___/|_| |_| |_|\__,_|\__,_||_|\___|"""
 
 app = typer.Typer(
     invoke_without_command=True,
@@ -445,26 +452,33 @@ def doctor(
     health_data: dict | None = None
 
     if not json_out:
-        summary = Table(title="ASS-ADE Environment")
-        summary.add_column("Setting")
+        # ── Header panel with ASCII art ──────────────────────────────────────
+        console.print(Panel(
+            f"[bold cyan]{_DOCTOR_ASCII}[/bold cyan]\n\n"
+            "[bold white]Atomadic v1.0.0  ·  ASS-ADE Environment Check[/bold white]",
+            border_style="cyan",
+            padding=(0, 2),
+        ))
+
+        # ── Configuration table ──────────────────────────────────────────────
+        summary = Table(show_header=True, header_style="bold blue", box=None, padding=(0, 1))
+        summary.add_column("Setting", style="dim")
         summary.add_column("Value")
         summary.add_row("Config", str(config_path))
         summary.add_row("Profile", settings.profile)
         summary.add_row("Nexus Base URL", settings.nexus_base_url)
         summary.add_row("Remote Probe", "enabled" if probe_remote else "disabled")
-        console.print(summary)
+        console.print(Panel(summary, title="[bold blue]Configuration[/bold blue]", border_style="blue"))
 
-        tools = Table(title="Toolchain")
+        # ── Toolchain table with colored status dots ─────────────────────────
+        tools = Table(show_header=True, header_style="bold green", box=None, padding=(0, 1))
         tools.add_column("Tool")
-        tools.add_column("Status")
-        tools.add_column("Version / Error")
+        tools.add_column("", justify="center", width=3)
+        tools.add_column("Version / Error", style="dim")
         for item in tool_items:
-            tools.add_row(
-                item.name,
-                "ok" if item.available else "missing",
-                item.version or item.error or "",
-            )
-        console.print(tools)
+            dot = "[green]●[/green]" if item.available else "[red]●[/red]"
+            tools.add_row(item.name, dot, item.version or item.error or "")
+        console.print(Panel(tools, title="[bold green]Toolchain[/bold green]", border_style="green"))
 
     if probe_remote:
         try:
@@ -477,14 +491,22 @@ def doctor(
                 health_data = health.model_dump() if hasattr(health, "model_dump") else dict(health)
         except httpx.HTTPError as exc:
             if not json_out:
-                console.print(f"Remote probe failed: {exc}")
+                console.print(Panel(
+                    f"[red]Remote probe failed:[/red] {exc}",
+                    title="[red]Remote Probe[/red]",
+                    border_style="red",
+                ))
             else:
                 _print_json({"error": str(exc), "remote_probe": "failed"})
             raise typer.Exit(code=1) from exc
 
         if not json_out:
-            console.print("Remote probe succeeded.")
-            _print_json(health_data)
+            json_str = json.dumps(health_data, indent=2)
+            console.print(Panel(
+                Syntax(json_str, "json", theme="monokai", line_numbers=False),
+                title="[bold cyan]Remote Probe[/bold cyan]",
+                border_style="green",
+            ))
 
     if json_out:
         payload: dict = {
