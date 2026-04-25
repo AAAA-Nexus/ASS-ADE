@@ -10,7 +10,8 @@ name: tri-evolve
 
 on:
   schedule:
-    - cron: "0 */6 * * *"       # conservative + exploratory (every 6h triggers conservative; 12h triggers both)
+    - cron: "0 */6 * * *"       # conservative (every 6h)
+    - cron: "0 */12 * * *"      # exploratory (every 12h)
     - cron: "0 2 * * *"         # adversarial daily at 02:00 UTC
   workflow_dispatch:
     inputs:
@@ -171,7 +172,7 @@ jobs:
     if: >-
       (github.event_name == 'workflow_dispatch' &&
       (github.event.inputs.lane == 'exploratory' || github.event.inputs.lane == 'all' || github.event.inputs.lane == '')) ||
-      (github.event_name == 'schedule' && github.run_number % 2 == 0)
+      github.event_name == 'schedule'
     runs-on: ubuntu-latest
     permissions:
       contents: write
