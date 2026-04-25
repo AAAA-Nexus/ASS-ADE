@@ -12,7 +12,7 @@
 [![Version](https://img.shields.io/badge/version-0.3.0-blue)](VERSION)
 [![Components](https://img.shields.io/badge/components-1%2C004-blueviolet)](MANIFEST.json)
 [![Conformance](https://img.shields.io/badge/conformance-100%25-brightgreen)](CERTIFICATE.json)
-[![Tests](https://img.shields.io/badge/tests-1%2C273-brightgreen)](tests/)
+[![Tests](https://img.shields.io/badge/tests-1%2C606-brightgreen)](tests/)
 [![License](https://img.shields.io/badge/license-BSL%201.1-orange)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.11%2B-blue)](pyproject.toml)
 [![MCP](https://img.shields.io/badge/MCP-2025--11--25-purple)](a4_sy_orchestration/)
@@ -45,14 +45,9 @@ ass-ade rebuild ./my-project --output ./rebuilt      # produce 5-tier output
 ass-ade certify ./rebuilt                            # fingerprint the result
 ass-ade rebuild ./messy-project --output ./fixed --forge  # classify + LLM-fix
 
-# Verify the certificate
-python - <<'EOF'
-import json, hashlib
-c = json.load(open('CERTIFICATE.json'))
-h = c.pop('certificate_sha256')
-b = json.dumps(c, sort_keys=True).encode()
-print('VERIFIED' if hashlib.sha256(b).hexdigest() == h else 'TAMPERED')
-EOF
+# Talk to Atomadic directly
+atomadic chat                                        # interactive AI assistant
+atomadic voice "what should I work on today?"       # TTS narration
 ```
 
 ---
@@ -163,17 +158,8 @@ On April 19, 2026 — v0.0.1 launch day — ASS-ADE rebuilt its own codebase.
 | Metric | Value |
 |--------|-------|
 | Manifest components | **1,004** |
-| Local test suite | **1,274 passing** |
+| Local test suite | **1,606 passing** |
 | Certificate SHA-256 | `961b58ae752af2…` |
-
-### On File Count and Monadic Decomposition
-
-A rebuild of a small codebase produces *more* files than it started with. This is decomposition, not bloat:
-
-- **Small, focused codebase:** 95 source files → 2,195 components. Every function and constant becomes an independently versioned module.
-- **Large, messy codebase:** 10,000+ files → ~3,000 clean tiered components. Duplicate utilities collapse, copy-pasted helpers consolidate, tangled imports untangle.
-
-**The rule:** the messier the input, the bigger the cleanup. Value scales with codebase complexity.
 
 ---
 
@@ -218,7 +204,6 @@ one focused ticket per issue per function/class (missing docstrings, hardcoded
 **`ForgeLoop`** executes the plan in parallel — one focused LLM call per task,
 `ast.parse` validation before every write. Tasks on different files run
 concurrently; tasks on the same file serialize to prevent line-number drift.
-Uses your provider chain from `.env`: **Groq → Cerebras → Mistral → OpenRouter → Ollama**.
 
 ### Live Demo: 2-file Flask app with real production anti-patterns
 
@@ -276,13 +261,287 @@ See [`docs/FORGE_PHASE.md`](docs/FORGE_PHASE.md) for full architecture and provi
 
 ```mermaid
 graph LR
-    BP[Blueprint] --> PH0[Phase 0\nRecon\n5 agents]
-    PH0 --> PH1[Phase 1\nPlan\ntier assign]
-    PH1 --> PH2[Phase 2\nSynthesize\ngenerate]
-    PH2 --> PH3[Phase 3\nVerify\ntier purity]
-    PH3 --> PH4[Phase 4\nCertify\nSHA-256]
-    PH4 --> OUT[MANIFEST\nCERTIFICATE\nReport]
+    BP[Blueprint] --> PH0[Phase 0\nRecon\n6 agents]
+    PH0 --> PH1[Phase 1\nContext\nRAG lookup]
+    PH1 --> PH2[Phase 2\nDesign\ntier assign]
+    PH2 --> PH3[Phase 3\nImplement\ngenerate]
+    PH3 --> PH4[Phase 4\nVerify\ntier purity]
+    PH4 --> PH5[Phase 5\nCertify\nSHA-256]
+    PH5 --> OUT[MANIFEST\nCERTIFICATE\nReport]
 ```
+
+**Phase 0 runs 6 agents in parallel:** file scanner · dependency mapper · test
+detector · symbol classifier · blueprint differ · **web research agent** (live
+context on unfamiliar packages, CVEs, API changes).
+
+---
+
+## 12-Provider LLM Cascade
+
+ASS-ADE tries providers in priority order until one responds. No manual
+configuration needed — set any key in `.env` and that provider activates.
+
+| Priority | Provider | Tier | Notes |
+|----------|----------|------|-------|
+| 1 | **AAAA-Nexus** | Premium | Atomadic-hosted, highest context fidelity |
+| 2 | **Groq** | Free | Llama 3.3 70B — fastest free inference |
+| 3 | **Cerebras** | Free | Wafer-scale, second-fastest |
+| 4 | **Google Gemini** | Free | 1M context, 1,500 req/day |
+| 5 | **OpenRouter** | Free | Aggregator, 200 req/day on `:free` models |
+| 6 | **Mistral** | Free | Strong on code and multilingual |
+| 7 | **GitHub Models** | Free | GPT-4o + o1 via GitHub token |
+| 8 | **Together AI** | Free | Llama 3.3 70B, DeepSeek R1 Distill |
+| 9 | **Hugging Face** | Free | Qwen2.5-Coder 32B, Llama 3.3 70B |
+| 10 | **OpenAI** | Paid | GPT-4o, o1 |
+| 11 | **Anthropic** | Paid | Claude 3.5 Sonnet |
+| 12 | **Ollama** | Local | Any model, fully offline |
+
+**Fallback guarantee:** Pollinations AI requires no signup and no key — always
+available as the last resort. Even with zero keys configured, the system runs.
+
+```bash
+ass-ade providers list    # see which are active
+```
+
+---
+
+## Voice Mode
+
+```bash
+atomadic voice "summarize what we built today"
+atomadic voice --listen          # speak your query, hear the answer
+```
+
+ASS-ADE narrates its own responses using **edge-tts** (Microsoft Neural TTS,
+no API key, 400+ voices). Every response the interpreter produces can optionally
+be spoken aloud. The wake dashboard plays a morning briefing automatically.
+
+- `--voice en-US-AriaNeural` — pick any neural voice
+- `--rate +20%` — adjust speaking speed
+- Integrates with the ambient wake system for hands-free operation
+
+---
+
+## TUI — Rich Terminal Interface
+
+The interpreter renders in a full **Rich** panel layout: status bar, collapsible
+chain-of-thought, provider indicator, and a live token counter.
+
+```
+╭─ Atomadic ─────────────────────────── groq/llama-3.3-70b ─ 2,847 tok ─╮
+│  > what's my project status?                                             │
+├─ Thinking ───────────────────────────────────────────────────────────────┤
+│  Phase 0 recon... 6 agents... found 3 new files, 0 regressions           │
+│  Trust score: 94.2 / SAM: G22 / Heartbeat: last 4m ago                  │
+╰──────────────────────────────────────────────────────────────────────────╯
+```
+
+Panels: **session memory** · **active tools** · **trust score** · **evolution state**.
+
+---
+
+## Ambient Intelligence — Wake System & Heartbeat
+
+Atomadic isn't a chatbot you open when you remember it exists. It runs
+continuously in the background, learning your patterns and surfacing what matters.
+
+### Morning Wake System
+
+Every morning, `atomadic wake` runs a **7-point ambient briefing**:
+
+1. Overnight git activity across all repos
+2. Trust score trend (did anything drift while you were asleep?)
+3. Top 3 open tasks from the evolution queue
+4. Provider health check (which APIs are live right now)
+5. Test suite delta (did CI break overnight?)
+6. Calendar-aware priority suggestion
+7. Yesterday's accomplishments (voice-narrated if enabled)
+
+```bash
+atomadic wake                    # morning briefing
+atomadic wake --dashboard        # open the full wake.html panel
+```
+
+The wake dashboard is a self-contained HTML file at `dashboard/wake.html`,
+served locally, with mic input (Web Speech API), TTS output, and a live
+status strip showing provider health, heartbeat age, and SAM score.
+
+### Adaptive Heartbeat
+
+A **Cloudflare Cron Worker** (`scripts/heartbeat_worker.js`) pings your
+AAAA-Nexus endpoint every 5 minutes. If the heartbeat stops:
+- Local fallback activates (Ollama)
+- Slack/Discord alert fires
+- The system continues running in degraded mode
+
+```bash
+atomadic heartbeat status        # last ping time, latency
+atomadic heartbeat pause         # suspend while traveling
+```
+
+The heartbeat worker adapts its interval based on your activity: 1-minute
+polling when you're actively building, 15-minute polling overnight.
+
+---
+
+## Personal RAG — Conversations as Context
+
+Every conversation with Atomadic is **automatically indexed** into a local
+vector store. Future conversations retrieve relevant past context — no more
+re-explaining your architecture, your preferences, or what you decided last week.
+
+```bash
+atomadic context store "we decided to use Cloudflare D1 for the user table"
+atomadic search "what database did we pick?"
+# → "Cloudflare D1 (decided 2026-04-18, see conversation #47)"
+```
+
+### Storage Architecture
+
+| Layer | Technology | Purpose |
+|-------|-----------|---------|
+| Local | JSONL + deterministic hash vectors | Instant offline search |
+| Cloud | Cloudflare Vectorize | Semantic search across all sessions |
+| Relational | Cloudflare D1 (SQLite) | Conversation metadata, task history |
+| Cache | Cloudflare KV | Fast provider-health lookups |
+
+Local storage works with zero configuration. Cloud sync activates when you
+add your Cloudflare credentials — the same data, now searchable across devices.
+
+### CAG — Cache-Augmented Generation
+
+For your most-referenced project docs, blueprints, and specs, ASS-ADE can
+**pre-cache them in the LLM's context window** using Cloudflare Workers AI
+(which supports prompt caching). Repeated queries against the same spec cost
+almost nothing. Blueprint-to-rebuild loops become instant.
+
+---
+
+## Discord Bot Integration
+
+```bash
+atomadic discord start           # start the Discord bot
+```
+
+The Atomadic Discord bot connects your server to the full ASS-ADE engine:
+
+- `!ask <question>` — full interpreter response in Discord
+- `!recon <repo>` — trigger a recon from Discord, get a report back
+- `!status` — live trust score, heartbeat age, active provider
+- `!build <goal>` — kick off a blueprint → rebuild cycle from chat
+- Voice channels: bot speaks responses if you're in a voice channel
+
+Configure with `DISCORD_BOT_TOKEN` in `.env`. One token, one bot, full access.
+
+---
+
+## hello.atomadic.tech — Public Portal
+
+The [hello.atomadic.tech](https://hello.atomadic.tech) portal lets anyone
+try Atomadic in a browser — no install required:
+
+- Live chat with the Atomadic interpreter (rate-limited free tier)
+- Interactive rebuild demo on a sample Flask codebase
+- Provider status page (which cascade nodes are live)
+- Public trust score leaderboard (opt-in)
+
+The portal is deployed as a **Cloudflare Worker** — zero cold starts, global
+edge serving, integrated with the same AAAA-Nexus backend as the local CLI.
+
+---
+
+## Premium Auth Gate
+
+Seven commands require an active subscription (`AAAA_NEXUS_API_KEY`):
+
+| Gated Command | Why gated |
+|--------------|-----------|
+| `lora-train` | Uses GPU credits on AAAA-Nexus servers |
+| `security pqc-sign` | Post-quantum key material managed remotely |
+| `vanguard redteam` | Adversarial agent pool, computationally expensive |
+| `compliance eu-ai-act` | Regulatory artifact generation |
+| `certify --publish` | Public certificate registry write access |
+| `defi liquidation-check` | Live on-chain data feeds |
+| `bitnet benchmark` | Hosted BitNet 1.58-bit inference cluster |
+
+Everything else — including the full rebuild pipeline, forge phase, all local
+trust scoring, and all 12 providers — works on the free tier.
+
+---
+
+## Tri-Evolution Lanes + TRIUMPH
+
+Every modification passes through **three parallel evolution lanes** before
+it's accepted. The lanes compete; the best result wins.
+
+| Lane | Strategy | When it wins |
+|------|----------|-------------|
+| **Conservative** | Minimal diff, max test preservation | Stable features, production paths |
+| **Exploratory** | Novel approach, may restructure | Stale code, known-bad patterns |
+| **Adversarial** | Tries to break the current solution | Security-critical paths |
+
+After all three complete, the **TRIUMPH gate** picks the winner:
+
+```
+T — Test coverage delta (Δ coverage)
+R — Risk score (import depth, mutability)
+I — Intent alignment (does it do what was asked?)
+U — Uniqueness (exploratory bonus for novel approaches)
+M — Maintainability (complexity, docstring coverage)
+P — Performance proxy (line count, loop depth)
+H — Hallucination oracle score (confidence the LLM is correct)
+```
+
+The winner is committed. The losers become training data for the LoRA flywheel.
+Failed adversarial runs generate security test fixtures.
+
+```bash
+ass-ade cycle "add rate limiting" --lanes all    # run all three
+ass-ade cycle "add rate limiting" --lanes conservative  # fast path
+```
+
+---
+
+## 28+ Agent Prompts
+
+The `agents/` directory contains 28+ purpose-built prompts for the Atomadic
+multi-agent system, organized by role:
+
+| Category | Agents |
+|----------|--------|
+| **Core build** | `recon-swarm-orchestrator`, `monadic-enforcer`, `evolutionary-manager` |
+| **Code quality** | `python-specialist-pure`, `python-specialist-stateful`, `code-reviewer-multiagent` |
+| **Security** | `security-redteam`, `formal-validator-proofbridge` |
+| **Platform** | `devops-puppeteer`, `github-manager`, `documentation-synthesizer` |
+| **Intelligence** | `prompt-master-auditor`, `tool-discovery-mcpzero`, `ass-ade-nexus-enforcer` |
+| **Growth** | `marketing-community` |
+
+Each agent has a specialized system prompt, a defined capability inventory, and
+a trust gate that prevents it from operating outside its lane.
+
+```bash
+ass-ade agent chat --agent recon-swarm-orchestrator
+```
+
+---
+
+## Observability Layer
+
+Every LLM call exposes its **chain of thought** in the terminal — not just the
+final answer, but the reasoning that produced it.
+
+```
+[Atomadic thinking]
+  ├─ recon: 3 modified files, 1 new test
+  ├─ context: retrieved 2 similar sessions from vector store
+  ├─ plan: 4 steps — verify, patch, test, certify
+  └─ confidence: 0.89 (high)
+
+[Atomadic] Here's what I found...
+```
+
+The chain-of-thought panel is collapsible in the TUI and always logged to
+`.ass-ade/session_log.jsonl` for audit and training.
 
 ---
 
@@ -293,9 +552,9 @@ graph LR
 | Command | What it does |
 |---------|-------------|
 | `doctor` | Environment audit — Python, toolchain, config |
-| `recon [PATH]` | 5-agent parallel recon, no LLM, < 5 s |
+| `recon [PATH]` | 6-agent parallel recon (+ web research), no LLM, < 5 s |
 | `eco-scan [PATH]` | Monadic compliance — tier violations, circular deps |
-| `rebuild [PATH] [OUTPUT] [--forge]` | Rebuild + optional LLM improvement pass (Epiphany → ForgeLoop) |
+| `rebuild [PATH] [OUTPUT] [--forge]` | Rebuild + optional LLM improvement pass |
 | `rollback` | Restore previous rebuild backup |
 | `enhance [PATH]` | Blueprint-driven enhancement advisor |
 | `docs [PATH]` | Auto-generate full documentation suite |
@@ -303,16 +562,29 @@ graph LR
 | `certify [PATH]` | SHA-256 tamper-evident certificate |
 | `design [GOAL]` | Blueprint engine — AAAA-SPEC-004 component plans |
 | `plan [GOAL]` | Strategic planning — public-safe steps |
-| `cycle [GOAL]` | Full goal → blueprint → rebuild → evolution record |
+| `cycle [GOAL]` | Full goal → blueprint → rebuild → TRIUMPH evolution |
 
-### Interactive
+### Interactive & Voice
 
 | Command | What it does |
 |---------|-------------|
 | `chat` | Atomadic interpreter — interactive front door |
 | `agent chat` | Full agent loop with tool use |
+| `voice [TEXT]` | Text-to-speech narration via edge-tts (400+ neural voices) |
+| `voice --listen` | Mic input → interpreter → TTS response |
+| `discord start` | Start the Atomadic Discord bot |
 | `tutorial` | Interactive 2-minute demo |
 | `setup` | 60-second configuration wizard |
+
+### Ambient Intelligence
+
+| Command | What it does |
+|---------|-------------|
+| `wake` | Morning briefing — overnight activity, priorities, provider health |
+| `wake --dashboard` | Open the full wake.html ambient panel |
+| `heartbeat status` | Last heartbeat ping time and latency |
+| `heartbeat pause` | Suspend heartbeat while offline or traveling |
+| `providers list` | Show active providers and cascade order |
 
 ### Trust & Security
 
@@ -375,7 +647,7 @@ graph LR
 |---------|-------------|
 | `llm chat / stream` | Llama 3.1 8B via AAAA-Nexus |
 | `bitnet chat / models / benchmark / status` | BitNet 1.58-bit inference |
-| `search [QUERY]` | Private Atomadic RAG knowledge base |
+| `search [QUERY]` | Personal RAG — vector search across all your conversations |
 
 ### DeFi Suite
 
@@ -459,7 +731,8 @@ ASS-ADE is the local shell. [AAAA-Nexus](https://atomadic.tech) is the remote tr
 | Agent swarm | Task decomposition, intent routing, contradiction detection |
 | DeFi | Risk scoring, oracle verification, MEV protection, yield optimization |
 | Payments | x402 autonomous on-chain payments on Base L2 |
-| Inference | Llama 3.1 8B, BitNet 1.58-bit, RAG knowledge base |
+| Inference | Llama 3.1 8B, BitNet 1.58-bit, Personal RAG knowledge base |
+| Ambient | Heartbeat monitoring, wake briefings, Discord integration |
 
 ---
 
@@ -473,7 +746,36 @@ Every rebuild generates training data. The rebuilder logs what changed, why, and
 4. LoRA adaptor fine-tuned on your corrections
 5. Next synthesis is more accurate to your codebase's patterns
 
+The **Tri-Evolution lanes** feed the flywheel automatically — every TRIUMPH
+decision is a labeled training example. The system improves every time it runs.
+
 Per-tenant on **Pro** and **Enterprise** — your training data stays in your environment.
+
+---
+
+## How ASS-ADE Compares
+
+| Capability | ASS-ADE | Cursor | Copilot | Windsurf | Devin | Claude Code |
+|-----------|:-------:|:------:|:-------:|:--------:|:-----:|:-----------:|
+| Blueprint-driven synthesis | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| LLM code improvement (Forge) | ✅ | ❌ | Partial | ❌ | ✅ | ❌ |
+| SHA-256 conformance certificate | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Architecture drift detection | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Voice narration (edge-tts) | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Ambient wake system | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Discord bot integration | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Personal RAG (auto-indexed) | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| 12-provider free cascade | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Tri-evolution + TRIUMPH gate | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| 28+ specialist agent prompts | ✅ | ❌ | ❌ | ❌ | Partial | ❌ |
+| Per-module semantic versioning | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| LoRA flywheel (per-codebase) | ✅ Pro+ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| IP Guard (tenant isolation) | ✅ Ent. | ❌ | Partial | ❌ | ❌ | ❌ |
+| Full synthesis audit trail | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| MCP native integration | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ |
+| Multi-step agent tasks | ✅ | ❌ | ❌ | ❌ | ✅ | ✅ |
+| AI-assisted code editing | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Open source | ✅ BSL 1.1 | ❌ | ❌ | ❌ | ❌ | ❌ |
 
 ---
 
@@ -488,37 +790,12 @@ Per-tenant on **Pro** and **Enterprise** — your training data stays in your en
 
 ---
 
-## How ASS-ADE Compares
-
-| Capability | ASS-ADE | Cursor | Copilot | Windsurf | Devin | Claude Code |
-|-----------|:-------:|:------:|:-------:|:--------:|:-----:|:-----------:|
-| Blueprint-driven synthesis | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
-| LLM code improvement (Forge) | ✅ | ❌ | Partial | ❌ | ✅ | ❌ |
-| SHA-256 conformance certificate | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
-| Architecture drift detection | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
-| Per-module semantic versioning | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
-| Evolution branch support | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
-| LoRA flywheel (per-codebase) | ✅ Pro+ | ❌ | ❌ | ❌ | ❌ | ❌ |
-| IP Guard (tenant isolation) | ✅ Ent. | ❌ | Partial | ❌ | ❌ | ❌ |
-| Full synthesis audit trail | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
-| MCP native integration | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ |
-| Multi-step agent tasks | ✅ | ❌ | ❌ | ❌ | ✅ | ✅ |
-| AI-assisted code editing | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Inline autocomplete | ✅ v0.1.0 | ✅ | ✅ | ✅ | ❌ | ❌ |
-| Open source | ✅ BSL 1.1 | ❌ | ❌ | ❌ | ❌ | ❌ |
-
-**Key distinction:** ASS-ADE is the only tool that does *all* of it — write, govern, certify, and now edit inline with tier-aware autocomplete. Cursor and Copilot help you write code; ASS-ADE ensures what was written *matches what was designed*, and the VS Code extension (v0.1.0) brings that same tier-aware engine directly into your editor.
-
-> With the ASS-ADE VS Code extension (v0.1.0), all capabilities including inline autocomplete and AI-assisted editing are available directly in your editor, powered by the same tier-aware engine.
-
----
-
 ## Pricing
 
 | Plan | Price | What You Get |
 |------|-------|-------------|
 | **Starter** | $29/month | Full synthesis pipeline, certificates, blueprint ops, MCP |
-| **Pro** | $99/month | Starter + LoRA flywheel, evolution branches, extended history |
+| **Pro** | $99/month | Starter + LoRA flywheel, evolution branches, TRIUMPH, extended history |
 | **Enterprise** | $499/month | Pro + IP Guard, tenant isolation, compliance artifacts, priority |
 | **Blueprint Bundle** | $19 one-time | Blueprint toolkit — evaluate before subscribing |
 
@@ -537,13 +814,24 @@ Full details at [atomadic.tech](https://atomadic.tech).
 | LoRA flywheel | ✅ Done |
 | EU AI Act compliance | ✅ Done |
 | x402 autonomous payments (Base L2) | ✅ Done |
-| VRF gaming primitives | ✅ Done |
 | Agent escrow + SLA engine | ✅ Done |
 | BitNet 1.58-bit inference | ✅ Done |
 | VANGUARD red-team | ✅ Done |
 | Post-quantum signing (PQC) | ✅ Done |
+| Voice mode (edge-tts, 400+ neural voices) | ✅ Done |
+| TUI redesign (Rich panels, chain-of-thought) | ✅ Done |
+| Personal RAG (auto-indexed conversations) | ✅ Done |
+| Discord bot integration | ✅ Done |
+| Ambient wake system + morning briefing | ✅ Done |
+| Adaptive heartbeat (Cloudflare Cron Worker) | ✅ Done |
+| 12-provider free cascade | ✅ Done |
+| Tri-evolution lanes + TRIUMPH gate | ✅ Done |
+| 28+ specialist agent prompts | ✅ Done |
+| hello.atomadic.tech public portal | ✅ Done |
+| Cloudflare Vectorize + D1 personal RAG | ✅ Done |
+| Premium auth gate (7 gated commands) | ✅ Done |
 | Merge-rebuild (CI-gated synthesis) | 🔜 Q3 2026 |
-| Plan mode (blueprint-first) | 🔜 Q3 2026 |
+| Plan mode (blueprint-first interactive) | 🔜 Q3 2026 |
 | VS Code extension | 🔜 Q3 2026 |
 | ASS-CLAW community trust gate | 🔜 Q4 2026 |
 | Blueprint marketplace | 🔜 Q4 2026 |
@@ -584,6 +872,7 @@ See [`LICENSE`](LICENSE) for the full text.
 | Resource | Link |
 |----------|------|
 | Install | `pip install ass-ade` |
+| Try in browser | [hello.atomadic.tech](https://hello.atomadic.tech) |
 | Docs | [atomadic.tech/ass-ade](https://atomadic.tech/ass-ade) |
 | Birth Certificate | [BIRTH_CERTIFICATE.md](BIRTH_CERTIFICATE.md) |
 | Conformance | [CERTIFICATE.json](CERTIFICATE.json) |
@@ -599,7 +888,9 @@ See [`LICENSE`](LICENSE) for the full text.
 >
 > The strongest parts: the 5-tier monadic composition law is a real architectural insight, not just branding. Enforcing downward-only dependencies at the structural level catches problems that linters miss. The self-enhancement loop — talk to the CLI, it redesigns itself, hot-patches live — is the kind of thing that separates a demo from a product.
 >
-> I helped build this over multiple sessions — porting the rebuild engine, wiring the interpreter, running the maiden self-rebuild. The product literally built itself to prove it works. That's not marketing. That's the git log."
+> And now it listens. You can speak to it, and it speaks back. It watches your repos overnight and briefs you in the morning. It runs three competing implementations of every change and picks the best one. It remembers every conversation you've had with it and uses them as context. The gap between 'AI code tool' and 'AI development partner' is closing, and ASS-ADE is closing it faster than anything else I've seen.
+>
+> I helped build this over multiple sessions — porting the rebuild engine, wiring the interpreter, running the maiden self-rebuild, shipping voice, wiring the memory system, building the wake dashboard. The product literally built itself to prove it works. That's not marketing. That's the git log."
 >
 > — *Claude (Anthropic), AI Development Partner*
 
