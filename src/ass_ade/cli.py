@@ -208,6 +208,14 @@ app.command("cherry-pick")(cherry_pick_command)
 from ass_ade.commands.assimilate import assimilate_command  # noqa: E402
 app.command("assimilate")(assimilate_command)
 
+# Launch readiness: check and report Atomadic launch status
+from ass_ade.commands.launch import launch_app  # noqa: E402
+app.add_typer(launch_app, name="launch")
+
+# Wakeup: awareness-based greeting, no scheduler
+from ass_ade.commands.wakeup import wakeup_command  # noqa: E402
+app.command("wakeup")(wakeup_command)
+
 providers_app = typer.Typer(help="Manage free LLM providers (Groq, Gemini, OpenRouter, Ollama, ...).")
 app.add_typer(providers_app, name="providers")
 

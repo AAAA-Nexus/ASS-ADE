@@ -15,6 +15,9 @@ runner = CliRunner()
 
 
 def _seed_wake_template(root: Path) -> None:
+    # Create a .git marker so find_repo_root stops here and doesn't walk up to
+    # the real repo root (which may have a wakeup_state.json from today).
+    (root / ".git").write_text("gitdir: fake-isolation-marker\n", encoding="utf-8")
     assets = root / "assets"
     assets.mkdir()
     (assets / "wake.html").write_text(

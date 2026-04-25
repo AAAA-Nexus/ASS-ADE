@@ -11,13 +11,13 @@
 This section is generated at prompt-build time from the code on disk.
 Treat it as the authoritative capability map for this session.
 
-Generated at: 2026-04-25T06:12:39Z
-Working directory: C:\!aaaa-nexus\ASS-ADE-SEED\.claude\worktrees\serene-tesla-0e1a51
-Resolved capability root: C:\!aaaa-nexus\ASS-ADE-SEED\.claude\worktrees\serene-tesla-0e1a51
+Generated at: 2026-04-25T17:42:29Z
+Working directory: C:\!aaaa-nexus\ASS-ADE-SEED\.claude\worktrees\mystifying-nightingale-4dfaa4
+Resolved capability root: C:\!aaaa-nexus\ASS-ADE-SEED\.claude\worktrees\mystifying-nightingale-4dfaa4
 
 ### Capability summary
 
-- CLI command paths: 234
+- CLI command paths: 244
 - Local agent tools: 13
 - MCP stdio tools: 25
 - Repo agents: 2
@@ -57,7 +57,7 @@ Resolved capability root: C:\!aaaa-nexus\ASS-ADE-SEED\.claude\worktrees\serene-t
 
 ### Top-level CLI groups
 
-- `a2a`, `aegis`, `agent`, `agents-refresh`, `assimilate`, `bitnet`, `blueprint`, `bridge`, `certify`, `chat`, `cherry-pick`, `compliance`, `context`, `control`, `credits`, `cycle`, `data`, `defi`, `design`, `dev`, `discovery`, `docs`, `doctor`, `eco-scan`, `enhance`, `escrow`, `feature`, `finish`, `forge`, `identity`, `init`, `lint`, `llm`, `lora-credit`, `lora-status`, `lora-train`, `mcp`, `memory`, `mev`, `nexus`, `optimize`, `oracle`, `pay`, `pipeline`, `plan`, `prompt`, `protocol`, `providers`, `ratchet`, `rebuild`, `recon`, `repo`, `reputation`, `rollback`, `sam-status`, `scout`, `search`, `security`, `selfbuild`, `setup`, +15 more
+- `a2a`, `aegis`, `agent`, `agents-refresh`, `assimilate`, `bitnet`, `blueprint`, `bridge`, `certify`, `chat`, `cherry-pick`, `compliance`, `context`, `control`, `credits`, `cycle`, `data`, `defi`, `design`, `dev`, `discovery`, `docs`, `doctor`, `eco-scan`, `enhance`, `escrow`, `feature`, `finish`, `forge`, `identity`, `init`, `launch`, `lint`, `llm`, `lora-credit`, `lora-status`, `lora-train`, `mcp`, `memory`, `mev`, `nexus`, `optimize`, `oracle`, `pay`, `pipeline`, `plan`, `prompt`, `protocol`, `providers`, `ratchet`, `rebuild`, `recon`, `repo`, `reputation`, `rollback`, `sam-status`, `scout`, `search`, `security`, `selfbuild`, +17 more
 
 ### Runtime routing rules
 
@@ -109,6 +109,7 @@ Resolved capability root: C:\!aaaa-nexus\ASS-ADE-SEED\.claude\worktrees\serene-t
 - `agent` - Agentic IDE — chat and run tasks using any model.
 - `agent chat` - Interactive agent chat session.
 - `agent run` - Execute a single task using the agent.
+- `agent voice` - Full voice loop: speak to Atomadic, hear responses aloud
 - `agents-refresh` - Regenerate LIVE_CAPABILITIES.md and inject it into all agent prompts
 - `assimilate` - Assimilate cherry-picked symbols into the target project's monadic tier directories
 - `bitnet` - BitNet 1.58-bit inference — defaults to falcon3-10B-1.58.
@@ -193,6 +194,9 @@ Resolved capability root: C:\!aaaa-nexus\ASS-ADE-SEED\.claude\worktrees\serene-t
 - `identity sybil-check` - Sybil resistance check (free trial)
 - `identity verify` - Verify agent identity (allow/deny/flag)
 - `init`
+- `launch` - Atomadic launch readiness checks and handoff artifacts.
+- `launch handoff` - Print the launch handoff message for Atomadic without executing it.
+- `launch status` - Report launch readiness from real local code, docs, CLI, and storefront signals.
 - `lint` - Run the monadic linter on any codebase
 - `llm` - AI inference via AAAA-Nexus
 - `llm chat` - Chat inference via AAAA-Nexus
@@ -253,10 +257,6 @@ Resolved capability root: C:\!aaaa-nexus\ASS-ADE-SEED\.claude\worktrees\serene-t
 - `protocol version-bump` - Update package version surfaces and record the bump in the evolution ledger.
 - `providers` - Manage free LLM providers (Groq, Gemini, OpenRouter, Ollama, ...).
 - `providers disable` - Disable a provider (exclude from the fallback chain).
-- `providers enable` - Enable a provider (include it in the fallback chain).
-- `providers env` - Print env-var hints + signup URLs for every provider.
-- `providers list` - List available (or all) LLM providers with tier → model mapping.
-- `providers set-chain` - Override the provider fallback chain.
 
 ### Local agent tools
 
