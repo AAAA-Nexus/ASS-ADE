@@ -15,8 +15,6 @@ from typing import Any, Protocol, runtime_checkable
 
 import httpx
 
-from ass_ade.engine.types import (
-
 
 # --- assimilated symbol ---
 def close(self) -> None:

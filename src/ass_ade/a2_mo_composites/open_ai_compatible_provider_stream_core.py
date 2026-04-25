@@ -15,7 +15,7 @@ from typing import Any, Protocol, runtime_checkable
 
 import httpx
 
-from ass_ade.engine.types import (
+from ass_ade.engine.types import CompletionRequest
 
 
 # --- assimilated symbol ---
