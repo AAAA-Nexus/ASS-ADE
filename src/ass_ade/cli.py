@@ -223,6 +223,14 @@ def interpreter_chat(
     working_dir: Path = typer.Option(
         Path("."), "--dir", "-d", help="Working directory for this session."
     ),
+    verbose: bool = typer.Option(
+        True, "--verbose/--quiet",
+        help="Show observability events as they happen (default: on). Use --quiet to log only.",
+    ),
+    private: bool = typer.Option(
+        False, "--private",
+        help="Personal thinking mode: no CLI output and no log file.",
+    ),
 ) -> None:
     """Start an interactive chat session with Atomadic.
 
@@ -230,7 +238,7 @@ def interpreter_chat(
     Atomadic derives your intent and dispatches the right command.
     """
     from ass_ade.interpreter import run_interactive
-    run_interactive(working_dir=working_dir.resolve())
+    run_interactive(working_dir=working_dir.resolve(), verbose=verbose, private=private)
 
 
 # ── Memory commands ────────────────────────────────────────────────────────────

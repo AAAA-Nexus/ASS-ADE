@@ -44,6 +44,10 @@ from ass_ade.agent.capabilities import (
 )
 from ass_ade.a2_mo_composites.personality_engine import PersonalityEngine
 from ass_ade.a2_mo_composites.episodic_memory import EpisodicStore
+from ass_ade.a1_at_functions.event_emitter import (
+    emit_thought, emit_intent, emit_action, emit_decision, emit_error,
+)
+from ass_ade.a2_mo_composites.observer import Observer
 
 # Ensure stdout/stderr use UTF-8 on Windows without replacing pytest/caller streams.
 for _stream in (sys.stdout, sys.stderr):
@@ -675,6 +679,8 @@ class Atomadic:
     _startup_suggestions: list[str] = field(default_factory=list, init=False, repr=False)
     # Skill runner (lazy-loaded on first use)
     _skill_runner: Any = field(default=None, init=False, repr=False)
+    # Observability observer (set by run_interactive)
+    _observer: "Observer | None" = field(default=None, init=False, repr=False)
 
     # ── Public interface ───────────────────────────────────────────────────────
 
@@ -690,6 +696,9 @@ class Atomadic:
         text = user_input.strip()
         if not text:
             return ""
+
+        if self._observer:
+            self._observer.collect(emit_thought(f"processing: {text[:100]}"))
 
         tone = _detect_tone(text)
         lower_text = text.lower()
@@ -991,6 +1000,8 @@ class Atomadic:
 
             if llm_result.get("type") == "command":
                 intent = llm_result.get("intent", "chat")
+                if self._observer:
+                    self._observer.collect(emit_intent(intent, 0.8))
                 cli_args = llm_result.get("cli_args")
                 path = _substitute_datetime_tokens(
                     llm_result.get("path") or _extract_path(text) or str(self.working_dir)
@@ -1069,6 +1080,8 @@ class Atomadic:
                 intent = "help"
             else:
                 intent = _classify_intent(text)
+                if self._observer:
+                    self._observer.collect(emit_intent(intent, 0.5))
 
         if intent == "rebuild" and path == str(self.working_dir) and not self.history:
             print(f"\n🧠 Intent: rebuild", flush=True)
@@ -1077,10 +1090,14 @@ class Atomadic:
             self._clarification_ctx = {"intent": intent}
             return self._ask_clarification(tone)
 
+        if self._observer:
+            self._observer.collect(emit_action(f"dispatching: {intent}"))
         raw_output, cmd = self._dispatch(intent, path, text, tone)
         response = self._postlude(intent, path, raw_output, tone)
         response = self.personality.shape_response(response)
 
+        if self._observer:
+            self._observer.collect(emit_decision(response[:200]))
         turn = Turn(
             user=text, tone=tone, intent=intent, path=path,
             command=cmd, output=raw_output, response=response,
@@ -2339,7 +2356,12 @@ def _handle_at_command(agent: "Atomadic", cmd: str, arg: str) -> str:
 
 # ── Interactive session ────────────────────────────────────────────────────────
 
-def run_interactive(working_dir: Path | None = None) -> None:
+def run_interactive(
+    working_dir: Path | None = None,
+    *,
+    verbose: bool = True,
+    private: bool = False,
+) -> None:
     """Drop into an interactive Atomadic session (REPL)."""
     try:
         from rich.console import Console
@@ -2352,6 +2374,14 @@ def run_interactive(working_dir: Path | None = None) -> None:
 
     wdir = working_dir or Path.cwd()
     agent = Atomadic(working_dir=wdir)
+
+    # ── Observability observer ─────────────────────────────────────────────────
+    if private:
+        agent._observer = Observer(private_mode=True, no_log=True)
+    elif not verbose:
+        agent._observer = Observer(private_mode=True, no_log=False)
+    else:
+        agent._observer = Observer(private_mode=False, no_log=False)
 
     is_first_visit = not bool(agent.memory.user_profile)
 

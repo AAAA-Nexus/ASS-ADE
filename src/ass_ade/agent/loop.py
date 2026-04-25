@@ -30,6 +30,8 @@ from ass_ade.engine.tokens import TokenBudget
 from ass_ade.engine.types import CompletionRequest, CompletionResponse
 from ass_ade.tools.base import ToolResult
 from ass_ade.tools.registry import ToolRegistry
+from ass_ade.a1_at_functions.event_emitter import emit_thought, emit_tool_call, emit_tool_result
+from ass_ade.a2_mo_composites.observer import Observer
 
 MAX_ROUNDS_SENTINEL = "[Agent reached maximum tool rounds]"
 # UEP CODEX invariant: D_MAX = 23 (semantic delegation depth bound)
@@ -77,6 +79,7 @@ class AgentLoop:
         router: EpistemicRouter | None = None,
         orchestrator: EngineOrchestrator | None = None,
         lse: LSEEngine | None = None,
+        observer: Observer | None = None,
     ) -> None:
         self._provider = provider
         self._registry = registry
@@ -86,6 +89,7 @@ class AgentLoop:
         self._on_tool_result = on_tool_result
         self._on_assistant = on_assistant
         self._gates = quality_gates
+        self._observer = observer
         self._router = router or EpistemicRouter()
         self._last_routing: RoutingDecision | None = None
         self._orchestrator = orchestrator
@@ -242,6 +246,9 @@ class AgentLoop:
             if scan and scan.get("blocked"):
                 return "[BLOCKED] Input rejected by security scan."
 
+        if self._observer:
+            self._observer.collect(emit_thought(f"processing: {user_message[:100]}"))
+
         self._conversation.add_user(user_message)
 
         # ── Token budget — trim before calling model ──────────────────────
@@ -261,6 +268,8 @@ class AgentLoop:
                 for tc in response.message.tool_calls:
                     if self._on_tool_call:
                         self._on_tool_call(tc.name, tc.arguments)
+                    if self._observer:
+                        self._observer.collect(emit_tool_call(tc.name, tc.arguments))
 
                     # ── Conviction pre-gate for destructive tools ─────────
                     if self._orchestrator:
@@ -297,6 +306,9 @@ class AgentLoop:
 
                     if self._on_tool_result:
                         self._on_tool_result(tc.name, result)
+                    if self._observer:
+                        summary = (result.output or "")[:200] if result.success else (result.error or "")[:200]
+                        self._observer.collect(emit_tool_result(tc.name, summary))
 
                     content = result.output if result.success else f"[ERROR] {result.error}"
                     self._conversation.add_tool_result(tc.id, tc.name, content)
@@ -399,6 +411,9 @@ class AgentLoop:
                 yield StreamEvent(kind="blocked", text="Input rejected by security scan.")
                 return
 
+        if self._observer:
+            self._observer.collect(emit_thought(f"processing: {user_message[:100]}"))
+
         self._conversation.add_user(user_message)
 
         # ── Token budget ──────────────────────────────────────────────────
@@ -420,6 +435,8 @@ class AgentLoop:
 
                     if self._on_tool_call:
                         self._on_tool_call(tc.name, tc.arguments)
+                    if self._observer:
+                        self._observer.collect(emit_tool_call(tc.name, tc.arguments))
 
                     if self._gates:
                         shield = self._gates.shield_tool(tc.name, tc.arguments)
@@ -437,6 +454,9 @@ class AgentLoop:
 
                     if self._on_tool_result:
                         self._on_tool_result(tc.name, result)
+                    if self._observer:
+                        summary = (result.output or "")[:200] if result.success else (result.error or "")[:200]
+                        self._observer.collect(emit_tool_result(tc.name, summary))
 
                     content = result.output if result.success else f"[ERROR] {result.error}"
                     self._conversation.add_tool_result(tc.id, tc.name, content)
