@@ -227,6 +227,7 @@ def query_vector_memory(
     namespace: str = "default",
     top_k: int = 5,
     working_dir: str | Path = ".",
+    min_score: float | None = None,
 ) -> VectorMemoryQueryResult:
     """Return nearest local vector memories for a query."""
     if not query.strip():
@@ -242,6 +243,7 @@ def query_vector_memory(
         scored.append((_dot(query_vector, record.vector), record))
 
     scored.sort(key=lambda item: item[0], reverse=True)
+    threshold = float(min_score) if min_score is not None else None
     matches = [
         VectorMemoryMatch(
             id=record.id,
@@ -252,6 +254,7 @@ def query_vector_memory(
             created_at=record.created_at,
         )
         for score, record in scored[:top_k]
+        if threshold is None or score >= threshold
     ]
     return VectorMemoryQueryResult(
         query=query,
