@@ -584,7 +584,7 @@ _INTENT_MAP: dict[str, list[str]] = {
                  "remove old folders", "clean old", "delete old builds",
                  "remove evolved", "clean rebuild", "tidy rebuild",
                  "delete old", "purge old"],
-    "recon":    ["recon", "reconnaissance", "scan this", "what's in this",
+    "recon":    ["recon", "reconnaissance", "scout", "scan this", "what's in this",
                  "give me an overview", "understand this repo", "what is this",
                  "overview", "understand", "what's this"],
     "doctor":   ["doctor", "health", "status", "working", "broken",
@@ -754,6 +754,31 @@ class Atomadic:
             self.memory.save()
             return msg
 
+        # ── Self-introspection — Axiom 0 personality, reads WELCOME_ATOMADIC.md ─
+        _self_ref_patterns = (
+            "explore you", "tell me about yourself", "describe yourself",
+            "introduce yourself", "who are you", "what are you",
+            "explain yourself", "about atomadic", "about ass-ade",
+            "what is atomadic", "what is ass-ade",
+        )
+        if any(p in lower_text for p in _self_ref_patterns):
+            welcome_path = self.working_dir / "WELCOME_ATOMADIC.md"
+            if not welcome_path.exists():
+                _pkg_root = Path(__file__).resolve().parents[2]
+                welcome_path = _pkg_root / "WELCOME_ATOMADIC.md"
+            if welcome_path.exists():
+                _wc = welcome_path.read_text(encoding="utf-8")
+                response = _wc[:3000] + ("\n...(truncated)" if len(_wc) > 3000 else "")
+            else:
+                response = self.describe_self()
+            turn = Turn(user=text, tone=tone, intent="chat", path=str(self.working_dir),
+                        command=[], output=response, response=response)
+            self.history.append(turn)
+            self.memory.update_from_turn(turn)
+            self.memory.append_history(turn)
+            self.memory.save()
+            return response
+
         # ── Startup suggestion number dispatch ────────────────────────────────
         if self._startup_suggestions and re.fullmatch(r"[1-9]", text):
             idx = int(text) - 1
@@ -887,6 +912,18 @@ class Atomadic:
             self.memory.save()
             return response
 
+        # ── Scout — "scout" keyword routes to recon, not doctor ──────────────────
+        if lower_text.startswith("scout") or f" {lower_text} ".find(" scout ") >= 0:
+            raw_output, cmd = self._dispatch("recon", str(self.working_dir), text, tone)
+            response = self._postlude("recon", str(self.working_dir), raw_output, tone)
+            turn = Turn(user=text, tone=tone, intent="recon", path=str(self.working_dir),
+                        command=cmd, output=raw_output, response=response)
+            self.history.append(turn)
+            self.memory.update_from_turn(turn)
+            self.memory.append_history(turn)
+            self.memory.save()
+            return response
+
         # ── Security scan — intercept before LLM (LLM returns generic chat advice) ──
         _security_triggers = (
             "security issue", "security problem", "vulnerabilit",
@@ -906,12 +943,13 @@ class Atomadic:
             return response
 
         # ── Add-feature — intercept before LLM (LLM doesn't know this intent) ──
+        # Only trigger on explicit creation verbs — never on questions or status checks.
         _add_feature_triggers = (
             "add a tool", "add a skill", "add a feature", "new tool",
             "new skill", "create a tool", "create a skill",
             "add web search", "add search tool", "new feature",
-            "add feature", "add a web", "add an ", "create a new",
-            # broader patterns: "add a [noun]" not already covered
+            "add feature", "add a web",
+            # explicit "add a [noun]" patterns
             "add a health", "add a cache", "add a queue", "add a worker",
             "add a middleware", "add a plugin", "add a module", "add a service",
             "add a command", "add a route", "add a endpoint", "add an endpoint",
@@ -919,6 +957,8 @@ class Atomadic:
             # test coverage
             "add tests", "add test", "add unit test", "add integration test",
             "want to add tests", "need tests for", "add coverage",
+            # explicit build/make verbs
+            "build a feature", "make a feature", "implement a feature",
         )
         if any(t in lower_text for t in _add_feature_triggers):
             feature = self._extract_feature_desc(text) or text.strip()
@@ -973,6 +1013,33 @@ class Atomadic:
             self.memory.save()
             return response
 
+        # ── Status / progress questions — route to chat before LLM misclassifies ──
+        # Catches: "how is X going?", "any progress?", "what's the status of Y?"
+        _status_q_patterns = (
+            "how is ", "how's ", "how are the", "how are we",
+            "how did ", "how has ", "how have ",
+            "what's going on", "what is going on",
+            "progress on", "any progress", "status on", "status of",
+            "update on", "any update", "what happened to",
+            "how far", "where are we on",
+        )
+        if any(p in lower_text for p in _status_q_patterns):
+            _llm = _call_llm(text, self.working_dir, _summarize_memory(self.memory))
+            _reply = (_llm or {}).get("response") if _llm and _llm.get("type") == "chat" else None
+            if not _reply:
+                _reply = (
+                    "That sounds like a status or progress question — I don't have "
+                    "real-time tracking. I can run `recon` for a project snapshot or "
+                    "`doctor` for a health check. Just say the word."
+                )
+            turn = Turn(user=text, tone=tone, intent="chat", path=str(self.working_dir),
+                        command=[], output="", response=_reply)
+            self.history.append(turn)
+            self.memory.update_from_turn(turn)
+            self.memory.append_history(turn)
+            self.memory.save()
+            return _reply
+
         # ── LLM-first path ────────────────────────────────────────────────────
         llm_result = _call_llm(text, self.working_dir, _summarize_memory(self.memory))
         if llm_result is not None:
@@ -998,6 +1065,17 @@ class Atomadic:
                 output_path_raw = llm_result.get("output_path")
                 output_path = _substitute_datetime_tokens(output_path_raw) if output_path_raw else None
                 feature_desc = llm_result.get("feature_desc")
+
+                # Guard: questions must never dispatch add-feature.
+                # LLMs sometimes misclassify status/progress queries as add-feature.
+                if intent == "add-feature":
+                    _q_starters = {
+                        "how", "what", "why", "when", "where", "who", "which",
+                        "is", "are", "does", "did", "was", "were", "will", "can",
+                    }
+                    _first_w = lower_text.split()[0] if lower_text.split() else ""
+                    if lower_text.endswith("?") or _first_w in _q_starters:
+                        intent = "chat"
 
                 # Safety: rebuild is destructive — require explicit trigger in input.
                 # LLMs sometimes misclassify vague phrases ("make it faster", "fix the
@@ -1641,7 +1719,8 @@ class Atomadic:
 
     def _create_tier_feature_skeleton(self, feature_desc: str, source: Path) -> list[str]:
         """Create skeleton files in the correct monadic tier folders inside source."""
-        slug = re.sub(r"[^a-z0-9]+", "_", feature_desc.lower()).strip("_")[:40]
+        _slug_words = re.sub(r"[^a-z0-9 ]+", " ", feature_desc.lower()).split()[:5]
+        slug = "_".join(_slug_words).strip("_")[:40] or "feature"
         created: list[str] = []
 
         def _find_tier(prefix: str) -> Path | None:
@@ -2392,10 +2471,22 @@ def run_interactive(working_dir: Path | None = None) -> None:
     agent._startup_suggestions = suggestions
 
     if use_rich and console:
-        from rich.markdown import Markdown as _Markdown
+        from rich.panel import Panel as _Panel
+        from rich import box as _box
         console.print()
-        console.print(f"[bold cyan]{greeting_text}[/bold cyan]")
-        console.print(f"\n[dim]Working dir: {wdir}   ·   type '@skills' for skills, '@scout' to survey a repo   ·   'exit' to quit[/dim]\n")
+        console.print(_Panel(
+            f"[bold cyan]{greeting_text}[/bold cyan]",
+            title="[bold white]⚡ ATOMADIC[/bold white]",
+            subtitle="[dim]ASS-ADE  ·  Mission Control[/dim]",
+            border_style="cyan",
+            box=_box.ROUNDED,
+            padding=(0, 2),
+        ))
+        console.print(
+            f"[dim]  {wdir}   ·   [/dim]"
+            f"[dim cyan]@skills[/dim cyan][dim] · [/dim]"
+            f"[dim cyan]@scout[/dim cyan][dim]   ·   exit to quit[/dim]\n"
+        )
     else:
         print(f"\n{greeting_text}")
         print(f"\nWorking dir: {wdir}   ·   type '@skills' for skills, '@scout' to survey a repo   ·   'exit' to quit\n")

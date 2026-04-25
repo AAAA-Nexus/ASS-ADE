@@ -358,6 +358,16 @@ def assimilate_cmd(
             raise typer.Exit(1)
 
 
+_DOCTOR_BANNER = """\
+   ___   ____  ____     ___   ____  ____
+  / _ | / __/ / __/    / _ | / __ \/ __/
+ / __ |_\ \  _\ \     / __ |/ /_/ / _/
+/_/ |_/___/ /___/    /_/ |_/_____/___/
+"""
+
+_DOCTOR_SUBTITLE = "Atomadic Development Environment  ·  atomadic.tech"
+
+
 @app.command("doctor")
 def doctor_cmd(
     no_remote: Annotated[
@@ -367,40 +377,146 @@ def doctor_cmd(
 ) -> None:
     """Show which ASS-ADE surfaces are available in this environment."""
     _ensure_bundled_engine_first()
+
+    try:
+        from rich.console import Console
+        from rich.panel import Panel
+        from rich.table import Table
+        from rich.text import Text
+        from rich import box
+        console = Console()
+        use_rich = True
+    except ImportError:
+        console = None
+        use_rich = False
+
     checkout_root = _checkout_root()
     expected_v11 = checkout_root / "ass-ade-v1.1" / "src" / "ass_ade"
     expected_engine = _bundled_engine_pkg()
     v11_file = Path(__file__).resolve()
-    lines = [
-        f"[ass-ade] checkout root: {checkout_root}",
-        f"[ass-ade] monadic pipeline: OK -> {v11_file}",
-        "[ass-ade] one-shot sibling ingest: `ass-ade assimilate PRIMARY OUTPUT [--also PATH ...]`",
-        "[ass-ade] multi-root policy: under CI (or ASS_ADE_ASSIMILATE_REQUIRE_POLICY=1), `--also` requires `--policy` YAML",
-        "[ass-ade] assimilate emits `ASSIMILATE_PLAN` (see `--plan-out` + book JSON `ASSIMILATE_PLAN` key)",
+
+    # ── Probe toolchain ────────────────────────────────────────────────────────
+    warnings: list[str] = []
+    env_rows: list[tuple[str, str, str]] = [
+        ("Checkout root", str(checkout_root), "ok"),
+        ("Monadic pipeline", f"OK → {v11_file.name}", "ok"),
+        ("Assimilate", "ass-ade assimilate PRIMARY OUTPUT [--also PATH …]", "info"),
+        ("Multi-root policy", "–also requires –policy YAML under CI", "info"),
     ]
     if expected_v11.exists() and not _is_under(v11_file, expected_v11):
-        lines.append(f"[ass-ade] WARNING: monadic package is not resolving under {expected_v11}")
+        warnings.append(f"Monadic package not under {expected_v11}")
+        env_rows.append(("Pipeline path", "WARNING — not resolving under v1.1", "warn"))
+
+    # ass_ade package
+    pkg_status, pkg_loc, cli_status, cli_loc = "MISSING", "", "MISSING", ""
     try:
-        ass_ade = importlib.import_module("ass_ade")
-        ass_ade_file = Path(getattr(ass_ade, "__file__", "") or "")
-        ass_ade_location = str(ass_ade_file.resolve()) if ass_ade_file else "namespace package"
-        lines.append(f"[ass-ade] engine package (ass_ade): OK -> {ass_ade_location}")
+        ass_ade_mod = importlib.import_module("ass_ade")
+        ass_ade_file = Path(getattr(ass_ade_mod, "__file__", "") or "")
+        pkg_loc = str(ass_ade_file.resolve()) if ass_ade_file else "namespace package"
+        pkg_status = "OK"
         if expected_engine.exists() and ass_ade_file and not _is_under(ass_ade_file, expected_engine):
-            lines.append(f"[ass-ade] WARNING: ass_ade is not resolving under {expected_engine}")
+            warnings.append(f"ass_ade resolving outside expected engine dir")
+            pkg_status = "WARN"
         try:
             cli_mod = importlib.import_module("ass_ade.cli")
             cli_file = Path(getattr(cli_mod, "__file__", "") or "")
-            cli_location = str(cli_file.resolve()) if cli_file else "namespace package"
-            lines.append(f"[ass-ade] engine CLI: OK -> {cli_location}")
-            lines.append("[ass-ade] CLI aliases: `ass-ade ...` and `atomadic ...`")
+            cli_loc = str(cli_file.resolve()) if cli_file else "namespace package"
+            cli_status = "OK"
         except ImportError as exc:
-            lines.append(f"[ass-ade] engine CLI: MISSING -> {exc}")
+            cli_loc = str(exc)
     except ImportError:
-        lines.append(
-            "[ass-ade] ass_ade engine package: MISSING -> install this repo root with "
-            "`pip install -e \".[dev]\"` so `import ass_ade` resolves"
-        )
-    typer.echo("\n".join(lines))
+        pkg_loc = 'run: pip install -e ".[dev]"'
+
+    # ── HELIX anti-hallucination indicator ─────────────────────────────────────
+    import os as _os
+    _helix_active = bool(
+        _os.getenv("AAAA_NEXUS_API_KEY")
+        or _os.getenv("GROQ_API_KEY")
+        or _os.getenv("CEREBRAS_API_KEY")
+        or _os.getenv("GEMINI_API_KEY")
+    )
+    helix_status = "[bold green]● ACTIVE[/bold green]" if _helix_active else "[yellow]○ offline[/yellow]"
+    helix_label = "Anti-hallucination guard"
+
+    if not use_rich or console is None:
+        # Plain fallback
+        plain = [
+            _DOCTOR_BANNER.rstrip(),
+            _DOCTOR_SUBTITLE,
+            "",
+            f"Checkout root : {checkout_root}",
+            f"Pipeline      : OK → {v11_file.name}",
+            f"ass_ade pkg   : {pkg_status} → {pkg_loc}",
+            f"ass_ade.cli   : {cli_status} → {cli_loc}",
+            f"CLI aliases   : ass-ade ...  and  atomadic ...",
+            f"HELIX         : {'ACTIVE' if _helix_active else 'offline'}  ({helix_label})",
+        ]
+        for w in warnings:
+            plain.append(f"WARNING       : {w}")
+        typer.echo("\n".join(plain))
+        return
+
+    def _status_icon(s: str) -> str:
+        if s == "ok":
+            return "[bold green]●[/bold green]"
+        if s == "warn":
+            return "[bold yellow]▲[/bold yellow]"
+        return "[dim]·[/dim]"
+
+    # Header panel
+    console.print()
+    console.print(Panel(
+        f"[bold white]{_DOCTOR_BANNER.rstrip()}[/bold white]\n[dim]{_DOCTOR_SUBTITLE}[/dim]",
+        border_style="cyan",
+        box=box.ROUNDED,
+        padding=(0, 2),
+    ))
+
+    # Environment panel
+    env_text = Text()
+    for label, value, kind in env_rows:
+        icon = _status_icon(kind)
+        env_text.append(f"  ")
+        env_text.append_text(Text.from_markup(f"{icon}  "))
+        env_text.append(f"{label:<22}", style="bold")
+        env_text.append(f"{value}\n", style="dim" if kind == "info" else "")
+    console.print(Panel(env_text, title="[bold]Environment[/bold]", border_style="blue", box=box.ROUNDED, padding=(0, 1)))
+
+    # Toolchain table
+    tbl = Table(box=box.SIMPLE_HEAVY, show_header=True, header_style="bold cyan", padding=(0, 1))
+    tbl.add_column("Module", style="bold", min_width=16)
+    tbl.add_column("Status", min_width=10)
+    tbl.add_column("Location", style="dim", overflow="fold")
+
+    def _status_cell(s: str) -> Text:
+        if s == "OK":
+            return Text.from_markup("[bold green]✓ OK[/bold green]")
+        if s == "WARN":
+            return Text.from_markup("[bold yellow]⚠ WARN[/bold yellow]")
+        return Text.from_markup("[bold red]✗ MISSING[/bold red]")
+
+    tbl.add_row("ass_ade", _status_cell(pkg_status), pkg_loc)
+    tbl.add_row("ass_ade.cli", _status_cell(cli_status), cli_loc)
+    console.print(Panel(tbl, title="[bold]Toolchain[/bold]", border_style="blue", box=box.ROUNDED, padding=(0, 1)))
+
+    # CLI aliases + HELIX panel
+    aliases_text = Text()
+    aliases_text.append("  CLI aliases   ", style="bold")
+    aliases_text.append("ass-ade ...  and  atomadic ...\n", style="cyan")
+    aliases_text.append(f"  {helix_label}   ")
+    aliases_text.append_text(Text.from_markup(helix_status))
+    aliases_text.append("\n")
+    for w in warnings:
+        aliases_text.append(f"\n  ▲  {w}", style="bold yellow")
+
+    console.print(Panel(
+        aliases_text,
+        title="[bold]CLI  ·  HELIX[/bold]",
+        border_style="blue" if not warnings else "yellow",
+        box=box.ROUNDED,
+        padding=(0, 1),
+    ))
+    console.print()
 
 
 app.add_typer(book_app, name="book")
