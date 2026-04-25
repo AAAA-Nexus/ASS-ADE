@@ -66,6 +66,7 @@ GITHUB_REPO: str = "AAAA-Nexus/ASS-ADE"
 # Log which providers are active at startup
 _active = [
     name for name, key in [
+        ("Atomadic Brain", AAAA_NEXUS_API_KEY),
         ("AAAA-Nexus", AAAA_NEXUS_API_KEY),
         ("Groq", GROQ_API_KEY),
         ("OpenRouter", OPENROUTER_API_KEY),
@@ -99,22 +100,47 @@ bot = commands.Bot(command_prefix="!", intents=intents, help_command=commands.De
 # ---------------------------------------------------------------------------
 
 
+ATOMADIC_BRAIN_URL: str = "https://atomadic.tech/v1/atomadic/chat"
+
+
+async def _try_atomadic_brain(client: httpx.AsyncClient, messages: list[dict]) -> str | None:
+    """Atomadic's dedicated private endpoint — no trial counter, no payment gate."""
+    if not AAAA_NEXUS_API_KEY:
+        return None
+    headers = {"Content-Type": "application/json", "X-API-Key": AAAA_NEXUS_API_KEY}
+    try:
+        resp = await client.post(
+            ATOMADIC_BRAIN_URL,
+            json={"messages": messages, "mode": "smart", "max_tokens": 2048},
+            headers=headers,
+        )
+        resp.raise_for_status()
+        data = resp.json()
+        choices = data.get("choices")
+        if choices and isinstance(choices, list):
+            content = choices[0].get("message", {}).get("content")
+            if content:
+                return str(content)
+        return None
+    except Exception:
+        return None
+
+
 async def _try_aaaa_nexus(client: httpx.AsyncClient, messages: list[dict]) -> str | None:
-    headers: dict[str, str] = {"Content-Type": "application/json"}
-    if AAAA_NEXUS_API_KEY:
-        headers["X-API-Key"] = AAAA_NEXUS_API_KEY
+    """General AAAA-Nexus inference endpoint (paid, with trial fallback)."""
+    if not AAAA_NEXUS_API_KEY:
+        return None
+    headers: dict[str, str] = {"Content-Type": "application/json", "X-API-Key": AAAA_NEXUS_API_KEY}
     try:
         resp = await client.post(INFERENCE_URL, json={"messages": messages}, headers=headers)
         resp.raise_for_status()
         data = resp.json()
-        # OpenAI-compatible envelope (choices[0].message.content)
         choices = data.get("choices")
         if choices and isinstance(choices, list):
             msg = choices[0].get("message", {})
             content = msg.get("content") or msg.get("text")
             if content:
                 return str(content)
-        # Flat envelope fallbacks
         flat = data.get("content") or data.get("response") or data.get("text")
         if flat:
             return str(flat)
@@ -185,12 +211,13 @@ async def _try_pollinations(client: httpx.AsyncClient, messages: list[dict]) -> 
 
 
 async def call_inference(user_message: str, channel_name: str = "") -> str:
-    """Cascade with backoff: AAAA-Nexus → Groq → OpenRouter → Cerebras → Pollinations."""
+    """Cascade: Atomadic Brain → AAAA-Nexus → Groq → OpenRouter → Cerebras → Pollinations."""
     messages = [
         {"role": "system", "content": SYSTEM_PROMPT},
         {"role": "user", "content": user_message},
     ]
     providers = [
+        ("Atomadic Brain", _try_atomadic_brain),
         ("AAAA-Nexus", _try_aaaa_nexus),
         ("Groq", _try_groq),
         ("OpenRouter", _try_openrouter),
