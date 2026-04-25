@@ -2650,6 +2650,19 @@ def run_interactive(
             continue
 
         response = agent.process(user_input)
+
+        # Index each exchange so `atomadic context query` can recall it later.
+        try:
+            from ass_ade.context_memory import store_vector_memory
+            store_vector_memory(
+                text=f"User: {user_input}\nAtomadic: {response}",
+                namespace="conversations",
+                metadata={"project": wdir.name},
+                working_dir=wdir,
+            )
+        except Exception:
+            pass
+
         if use_rich and console:
             console.print(f"\n[bold green]Atomadic[/bold green] →")
             console.print(Markdown(response))

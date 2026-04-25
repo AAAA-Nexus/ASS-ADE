@@ -213,6 +213,10 @@ def _repo_root_from_working_dir(working_dir: str | Path) -> Path:
             (candidate / "pyproject.toml").exists()
             or (candidate / "agents").is_dir()
             or (candidate / "src" / "ass_ade").is_dir()
+            or (
+                (candidate / "MANIFEST.json").exists()
+                and (candidate / "CERTIFICATE.json").exists()
+            )
         ):
             return candidate
     return best
