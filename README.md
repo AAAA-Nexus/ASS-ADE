@@ -552,47 +552,6 @@ Full details at [atomadic.tech](https://atomadic.tech).
 
 ---
 
-## Showcase: ASS-CLAW Merge-Rebuild Demo
-
-ASS-ADE rebuilt three CLAW-ecosystem projects into a single certified monadic tree in a single command.
-
-**Repos merged:**
-| Repo | Stars | Notes |
-|------|-------|-------|
-| [OpenClaw](https://github.com/nicehash/OpenClaw) | 361 K ⭐ | Multi-platform 2D game engine, C++/Swift/Kotlin |
-| ClawCode | — | Python-heavy, 6 circular import cycles, 214 KB monolith files |
-| [Oh My Claude Code](https://github.com/nicehash/oh-my-claudecode) | 30 K ⭐ | TypeScript Claude Code config framework |
-
-**Stats (2026-04-20):**
-
-| Metric | Before | After |
-|--------|--------|-------|
-| Input files | 4,106 across 3 repos | — |
-| Output components | — | **92,305** classified |
-| Circular imports | 6 | **0** (dissolved by reconstruction) |
-| Purity violations fixed | — | **8,257** |
-| Audit pass rate | — | **100%** |
-| Wall-clock time | — | **~24 min** |
-
-**Command used:**
-```bash
-ass-ade rebuild openclaw clawcode oh-my-claudecode \
-  --output ASS-CLAW --yes --no-forge
-```
-
-### Reentrant Rebuild
-
-Point ASS-ADE at its own output and rebuild it again — enabling infinite evolution loops.
-
-```bash
-ass-ade rebuild ./ASS-CLAW --output ./ASS-CLAW-v2
-# 729 source files → 2,399 components, 100% audit pass
-```
-
-Tier-dir exclusion is now opt-in via `ASS_ADE_SKIP_TIER_DIRS=1`.
-
----
-
 ## Contributing
 
 1. Fork and clone
