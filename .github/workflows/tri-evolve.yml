@@ -32,9 +32,9 @@ jobs:
   # ═══════════════════════════════════════════════════════════════════════════
   conservative:
     name: "Evolve / Conservative"
-    if: >
-      github.event_name == 'workflow_dispatch' &&
-      (github.event.inputs.lane == 'conservative' || github.event.inputs.lane == 'all') ||
+    if: >-
+      (github.event_name == 'workflow_dispatch' &&
+      (github.event.inputs.lane == 'conservative' || github.event.inputs.lane == 'all' || github.event.inputs.lane == '')) ||
       github.event_name == 'schedule'
     runs-on: ubuntu-latest
     permissions:
@@ -49,9 +49,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: evolve/conservative
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up lane branch
+        run: |
+          git config user.email "tri-evolve[bot]@atomadic.ai"
+          git config user.name "tri-evolve[bot]"
+          git fetch origin evolve/conservative 2>/dev/null \
+            && git checkout evolve/conservative \
+            || git checkout -b evolve/conservative
 
       - uses: actions/setup-python@v5
         with:
@@ -161,9 +168,9 @@ jobs:
   # ═══════════════════════════════════════════════════════════════════════════
   exploratory:
     name: "Evolve / Exploratory"
-    if: >
-      github.event_name == 'workflow_dispatch' &&
-      (github.event.inputs.lane == 'exploratory' || github.event.inputs.lane == 'all') ||
+    if: >-
+      (github.event_name == 'workflow_dispatch' &&
+      (github.event.inputs.lane == 'exploratory' || github.event.inputs.lane == 'all' || github.event.inputs.lane == '')) ||
       (github.event_name == 'schedule' && github.run_number % 2 == 0)
     runs-on: ubuntu-latest
     permissions:
@@ -178,9 +185,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: evolve/exploratory
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up lane branch
+        run: |
+          git config user.email "tri-evolve[bot]@atomadic.ai"
+          git config user.name "tri-evolve[bot]"
+          git fetch origin evolve/exploratory 2>/dev/null \
+            && git checkout evolve/exploratory \
+            || git checkout -b evolve/exploratory
 
       - uses: actions/setup-python@v5
         with:
@@ -283,10 +297,10 @@ jobs:
   # ═══════════════════════════════════════════════════════════════════════════
   adversarial:
     name: "Evolve / Adversarial"
-    if: >
-      github.event_name == 'workflow_dispatch' &&
-      (github.event.inputs.lane == 'adversarial' || github.event.inputs.lane == 'all') ||
-      github.event_name == 'schedule' && startsWith(github.event.schedule, '0 2')
+    if: >-
+      (github.event_name == 'workflow_dispatch' &&
+      (github.event.inputs.lane == 'adversarial' || github.event.inputs.lane == 'all' || github.event.inputs.lane == '')) ||
+      (github.event_name == 'schedule' && startsWith(github.event.schedule, '0 2'))
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -300,9 +314,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: evolve/adversarial
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up lane branch
+        run: |
+          git config user.email "tri-evolve[bot]@atomadic.ai"
+          git config user.name "tri-evolve[bot]"
+          git fetch origin evolve/adversarial 2>/dev/null \
+            && git checkout evolve/adversarial \
+            || git checkout -b evolve/adversarial
 
       - uses: actions/setup-python@v5
         with:

@@ -17,7 +17,7 @@ crons = ["* * * * *"]
 # then fill in the id below.
 [[kv_namespaces]]
 binding = "ATOMADIC_CACHE"
-id = ""  # fill in after: wrangler kv namespace create ATOMADIC_CACHE
+id = "86c9e382e74f4d06b91418c8c675dd7e"
 
 # Secrets (set via wrangler secret put):
 #   GITHUB_TOKEN          — GitHub API token for repo checks
