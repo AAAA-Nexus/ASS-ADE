@@ -118,36 +118,6 @@
     {
       "id": 11,
       "category": "missing_tests",
-      "title": "No tests for cherry_types.py",
-      "description": "src/ass_ade/a0_qk_constants/cherry_types.py has no corresponding test file under tests/.",
-      "file": "src/ass_ade/a0_qk_constants/cherry_types.py",
-      "line": null,
-      "impact": "high",
-      "effort": "medium"
-    },
-    {
-      "id": 12,
-      "category": "missing_tests",
-      "title": "No tests for exclude_dirs.py",
-      "description": "src/ass_ade/a0_qk_constants/exclude_dirs.py has no corresponding test file under tests/.",
-      "file": "src/ass_ade/a0_qk_constants/exclude_dirs.py",
-      "line": null,
-      "impact": "high",
-      "effort": "medium"
-    },
-    {
-      "id": 13,
-      "category": "missing_tests",
-      "title": "No tests for pipeline_meta.py",
-      "description": "src/ass_ade/a0_qk_constants/pipeline_meta.py has no corresponding test file under tests/.",
-      "file": "src/ass_ade/a0_qk_constants/pipeline_meta.py",
-      "line": null,
-      "impact": "high",
-      "effort": "medium"
-    },
-    {
-      "id": 14,
-      "category": "missing_tests",
       "title": "No tests for policy_types.py",
       "description": "src/ass_ade/a0_qk_constants/policy_types.py has no corresponding test file under tests/.",
       "file": "src/ass_ade/a0_qk_constants/policy_types.py",
@@ -156,7 +126,7 @@
       "effort": "medium"
     },
     {
-      "id": 15,
+      "id": 12,
       "category": "missing_tests",
       "title": "No tests for reference_roots.py",
       "description": "src/ass_ade/a0_qk_constants/reference_roots.py has no corresponding test file under tests/.",
@@ -166,7 +136,7 @@
       "effort": "medium"
     },
     {
-      "id": 16,
+      "id": 13,
       "category": "missing_tests",
       "title": "No tests for schemas.py",
       "description": "src/ass_ade/a0_qk_constants/schemas.py has no corresponding test file under tests/.",
@@ -176,7 +146,7 @@
       "effort": "medium"
     },
     {
-      "id": 17,
+      "id": 14,
       "category": "missing_tests",
       "title": "No tests for tier_names.py",
       "description": "src/ass_ade/a0_qk_constants/tier_names.py has no corresponding test file under tests/.",
@@ -186,7 +156,7 @@
       "effort": "medium"
     },
     {
-      "id": 18,
+      "id": 15,
       "category": "missing_tests",
       "title": "No tests for a2a_discover_helpers.py",
       "description": "src/ass_ade/a1_at_functions/a2a_discover_helpers.py has no corresponding test file under tests/.",
@@ -196,7 +166,7 @@
       "effort": "medium"
     },
     {
-      "id": 19,
+      "id": 16,
       "category": "missing_tests",
       "title": "No tests for a2a_negotiate_helpers.py",
       "description": "src/ass_ade/a1_at_functions/a2a_negotiate_helpers.py has no corresponding test file under tests/.",
@@ -206,11 +176,41 @@
       "effort": "medium"
     },
     {
-      "id": 20,
+      "id": 17,
       "category": "missing_tests",
       "title": "No tests for a2a_validate_helpers.py",
       "description": "src/ass_ade/a1_at_functions/a2a_validate_helpers.py has no corresponding test file under tests/.",
       "file": "src/ass_ade/a1_at_functions/a2a_validate_helpers.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 18,
+      "category": "missing_tests",
+      "title": "No tests for agent_run_helpers.py",
+      "description": "src/ass_ade/a1_at_functions/agent_run_helpers.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/a1_at_functions/agent_run_helpers.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 19,
+      "category": "missing_tests",
+      "title": "No tests for api_inventory_emit.py",
+      "description": "src/ass_ade/a1_at_functions/api_inventory_emit.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/a1_at_functions/api_inventory_emit.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 20,
+      "category": "missing_tests",
+      "title": "No tests for assess_blueprint_fulfillment_helpers.py",
+      "description": "src/ass_ade/a1_at_functions/assess_blueprint_fulfillment_helpers.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/a1_at_functions/assess_blueprint_fulfillment_helpers.py",
       "line": null,
       "impact": "high",
       "effort": "medium"
