@@ -6270,49 +6270,57 @@ def docs_command(
         raise typer.Exit(code=1)
 
     out = output_dir.resolve() if output_dir else target
-    console.print(f"[bold]Analyzing[/bold] {target}")
+    console.print(command_header(
+        "Docs · Documentation Suite",
+        subtitle="AST analysis → local generation → Nexus enrichment",
+    ))
 
-    analysis = build_local_analysis(target)
+    with console.status("[muted]Analyzing repository…[/muted]", spinner="dots"):
+        analysis = build_local_analysis(target)
     meta = analysis.get("metadata", {})
-    console.print(
-        f"[dim]Detected: {meta.get('name', 'unknown')} "
-        f"({', '.join(list(analysis.get('languages', {}).keys())[:3])}), "
-        f"{analysis.get('summary', {}).get('total_files', 0)} files[/dim]"
-    )
+    langs = ", ".join(list(analysis.get("languages", {}).keys())[:3]) or "unknown"
+    total_files = analysis.get("summary", {}).get("total_files", 0)
+    console.print(check_grid([
+        ("info", "Project", meta.get("name", target.name)),
+        ("info", "Languages", langs),
+        ("info", "Files", str(total_files)),
+        ("info", "Output", str(out)),
+    ]))
 
     # Local doc generation (always runs)
-    console.print(f"[dim]Generating local docs -> {out}[/dim]")
-    written = render_local_docs(analysis, out)
+    console.print(section_rule("Local Generation"))
+    with console.status("[muted]Generating docs…[/muted]", spinner="dots"):
+        written = render_local_docs(analysis, out)
+    rows = [("ok", name, str(fpath)) for name, fpath in written.items()]
+    if rows:
+        console.print(check_grid(rows, col_widths=(24, 0)))
 
     nexus_result: dict = {}
     use_remote = not local_only and _should_probe_remote(settings, allow_remote if allow_remote else None)
 
     if use_remote:
+        console.print(section_rule("Nexus Enrichment"))
         try:
-            with NexusClient(
-                base_url=settings.nexus_base_url,
-                api_key=settings.nexus_api_key,
-                agent_id=str(settings.agent_id) if settings.agent_id else None,
-                timeout=60.0,
-            ) as nx:
-                console.print("[dim]Enriching via AAAA-Nexus synthesis engine…[/dim]")
-                result = nx.docs_generate(
-                    path_analysis=analysis,
+            with console.status("[muted]Enriching via AAAA-Nexus synthesis engine…[/muted]", spinner="dots"):
+                with NexusClient(
+                    base_url=settings.nexus_base_url,
+                    api_key=settings.nexus_api_key,
                     agent_id=str(settings.agent_id) if settings.agent_id else None,
-                )
-                nexus_result = result.model_dump()
-                if result.ok:
-                    console.print(
-                        f"[green][OK][/green] Nexus synthesis applied "
-                        f"({result.files_generated or []} enriched)"
+                    timeout=60.0,
+                ) as nx:
+                    result = nx.docs_generate(
+                        path_analysis=analysis,
+                        agent_id=str(settings.agent_id) if settings.agent_id else None,
                     )
-                    if result.lora_captured:
-                        console.print("[dim]LoRA flywheel: sample captured.[/dim]")
-                    if result.credit_used:
-                        console.print(f"[dim]Credit used: ${result.credit_used:.6f}[/dim]")
+            nexus_result = result.model_dump()
+            nexus_rows = [("ok", "Nexus synthesis", "applied")]
+            if result.lora_captured:
+                nexus_rows.append(("info", "LoRA flywheel", "sample captured"))
+            if result.credit_used:
+                nexus_rows.append(("info", "Credit used", f"${result.credit_used:.6f}"))
+            console.print(check_grid(nexus_rows))
         except Exception as exc:
-            console.print(f"[yellow]Nexus synthesis unavailable:[/yellow] {exc}")
-            console.print("[dim]Falling back to local-only output.[/dim]")
+            console.print(warn_panel(f"Nexus synthesis unavailable: {exc}\nFalling back to local-only output."))
 
     payload = {
         "ok": True,
@@ -6327,10 +6335,11 @@ def docs_command(
         _print_json(payload)
         return
 
-    console.print()
-    for name, fpath in written.items():
-        console.print(f"  [green]✓[/green] {fpath}")
-    console.print(f"\n[green][OK][/green] {len(written)} docs written to {out}")
+    console.print(verdict_panel(
+        f"{len(written)} docs written",
+        detail=f"Output: {out}",
+        passed=True,
+    ))
 
 
 @app.command("lint")

@@ -1113,8 +1113,6 @@ class Atomadic:
 
                 # Rebuild clarification guard applies on the LLM path too.
                 if intent == "rebuild" and path == str(self.working_dir) and not self.history:
-                    print(f"\n🧠 Intent: rebuild", flush=True)
-                    print(flush=True)
                     self._pending_clarification = "path"
                     self._clarification_ctx = {"intent": intent}
                     return self._ask_clarification(tone)
@@ -1161,8 +1159,6 @@ class Atomadic:
                 intent = _classify_intent(text)
 
         if intent == "rebuild" and path == str(self.working_dir) and not self.history:
-            print(f"\n🧠 Intent: rebuild", flush=True)
-            print(flush=True)
             self._pending_clarification = "path"
             self._clarification_ctx = {"intent": intent}
             return self._ask_clarification(tone)
@@ -1482,20 +1478,33 @@ class Atomadic:
     def _execute_rebuild_pipeline(self, source: str, output: str) -> str:
         """Built-in rebuild pipeline: backup → copy → recon → lint → docs → certify → hot-patch."""
         import shutil as _shutil
+        from rich.console import Console as _Console
+        from ass_ade.a0_qk_constants.cli_theme import CLI_THEME
+        from ass_ade.a1_at_functions.tui_helpers import (
+            check_grid, command_header, error_panel, section_rule, verdict_panel,
+        )
+        _rc = _Console(theme=CLI_THEME)
 
         source_path = Path(source).resolve()
         output_path = Path(output).resolve()
         base = [sys.executable, "-m", "ass_ade"]
 
-        # Safety: block in-place rebuild
         if source_path == output_path:
+            _rc.print(error_panel(
+                "Source and output are the same path — in-place rebuild blocked for safety.",
+                title="Rebuild Blocked",
+            ))
             return "[error] Source and output are the same path — in-place rebuild blocked for safety."
 
-        print(f"\n🧠 Intent: rebuild")
-        print(f"🔧 Dispatching: rebuild pipeline (5 phases)")
-        print(f"   Source : {source_path}")
-        print(f"   Output : {output_path}")
-        print(flush=True)
+        _rc.print(command_header(
+            "Rebuild Pipeline",
+            subtitle="backup → copy → recon → lint → docs → certify → hot-patch",
+            version="5 phases",
+        ))
+        _rc.print(check_grid([
+            ("info", "Source", str(source_path)),
+            ("info", "Output", str(output_path)),
+        ]))
 
         # Phase 0 — auto-backup
         ts = datetime.now().strftime("%Y%m%d-%H%M%S")
@@ -1504,28 +1513,30 @@ class Atomadic:
         while backup_path.exists():
             suffix += 1
             backup_path = source_path.parent / f"{source_path.name}-backup-{ts}-{suffix}"
-        print(f"🛡️  Backup : {backup_path}")
+        _rc.print(section_rule("Phase 0 · Backup"))
         try:
             _shutil.copytree(str(source_path), str(backup_path))
-            print(f"✅ Backup complete ({backup_path.name})", flush=True)
+            _rc.print(check_grid([("ok", "Backup", backup_path.name)]))
         except Exception as exc:
+            _rc.print(error_panel(f"Backup failed: {exc} — rebuild aborted.", title="Backup Failed"))
             return f"[error] Backup failed: {exc} — rebuild aborted for safety."
 
         # Phase 1 — copy source to output
-        print(f"\n⏳ Phase 1/5: Copying source to output folder...", flush=True)
+        _rc.print(section_rule("Phase 1 · Copy"))
         try:
             if output_path.exists():
                 _shutil.rmtree(output_path)
             _shutil.copytree(str(source_path), str(output_path))
             file_count = sum(1 for f in output_path.rglob("*") if f.is_file())
-            print(f"✅ Copied {file_count} files → {output_path.name}", flush=True)
+            _rc.print(check_grid([("ok", "Copied", f"{file_count} files → {output_path.name}")]))
         except OSError as exc:
-            print(f"[error] Copy failed: {exc}", flush=True)
+            _rc.print(error_panel(f"Copy failed: {exc}", title="Phase 1 Failed"))
             return (
                 f"[error] Copy failed (disk full?): {exc}\n"
                 f"Backup preserved at: {backup_path}"
             )
         except Exception as exc:
+            _rc.print(error_panel(f"Copy failed: {exc}", title="Phase 1 Failed"))
             return f"[error] Copy failed: {exc}"
 
         out_str = str(output_path)
@@ -1538,19 +1549,19 @@ class Atomadic:
             ("Certify", ["certify", out_str]),
         ]
         for idx, (label, args) in enumerate(phases, start=2):
-            print(f"\n⏳ Phase {idx}/5: {label}...", flush=True)
+            _rc.print(section_rule(f"Phase {idx} · {label}"))
             rc = self._run_streaming(base + args)
             if rc != 0:
-                print(f"⚠️  {label} completed with warnings (exit {rc})", flush=True)
+                _rc.print(check_grid([("warn", label, f"completed with warnings (exit {rc})")]))
                 warnings.append(label)
             else:
-                print(f"✅ {label} done", flush=True)
+                _rc.print(check_grid([("ok", label, "done")]))
 
         # Verify output is non-empty
         output_file_count = sum(1 for f in output_path.rglob("*") if f.is_file()) if output_path.exists() else 0
         if output_file_count == 0:
             failure_msg = "Rebuild produced empty output."
-            print(f"\n❌ {failure_msg}", flush=True)
+            _rc.print(error_panel(failure_msg, title="Rebuild Failed"))
             log_path = source_path / "REBUILD_FAILURE.log"
             try:
                 log_path.write_text(
@@ -1559,17 +1570,30 @@ class Atomadic:
                 )
             except OSError:
                 pass
-            print(f"🔄 Rolling back to backup {backup_path.name}...", flush=True)
+            _rc.print(section_rule("Rollback"))
             self._rollback(output_path, backup_path)
+            _rc.print(check_grid([("warn", "Restored", str(backup_path.name))]))
             return f"[error] {failure_msg} Restored from backup: {backup_path}"
 
         # Hot-patch: reload updated modules immediately
-        print(f"\n⚡ Hot-patching updated modules...", flush=True)
+        _rc.print(section_rule("Hot Patch"))
         patched = self._hot_patch()
         if patched:
-            print(f"✅ Hot-patched: {', '.join(patched)}", flush=True)
+            _rc.print(check_grid([("ok", "Hot-patched", ", ".join(patched))]))
 
-        print(flush=True)
+        has_warnings = bool(warnings)
+        verdict_text = (
+            "All 5 phases complete"
+            if not has_warnings
+            else f"Pipeline complete — warnings in: {', '.join(warnings)}"
+        )
+        _rc.print(verdict_panel(
+            verdict_text,
+            detail=f"Output: {output_path}  ·  Backup: {backup_path.name}",
+            passed=True,
+            has_warnings=has_warnings,
+        ))
+
         result_tag = "[ok] All 5 phases complete" if not warnings else f"[ok] Pipeline complete — warnings in: {', '.join(warnings)}"
         return f"{result_tag}\nOutput : {output_path}\nBackup : {backup_path}"
 
