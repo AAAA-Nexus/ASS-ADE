@@ -1,0 +1,23 @@
+# Wrangler config for Atomadic's adaptive heartbeat daemon
+# Deploy with: wrangler deploy --config wrangler.heartbeat.toml
+
+name = "atomadic-heartbeat"
+main = "heartbeat_worker.js"
+compatibility_date = "2024-11-01"
+
+[vars]
+ATOMADIC_INFERENCE_URL = "https://atomadic.tech/v1"
+GITHUB_REPO = "AAAA-Nexus/ASS-ADE"
+
+[triggers]
+crons = ["* * * * *"]
+
+# KV namespace — create with: wrangler kv namespace create ATOMADIC_CACHE
+# then fill in the id below.
+[[kv_namespaces]]
+binding = "ATOMADIC_CACHE"
+id = ""  # fill in after: wrangler kv namespace create ATOMADIC_CACHE
+
+# Secrets (set via wrangler secret put):
+#   GITHUB_TOKEN          — GitHub API token for repo checks
+#   DISCORD_WEBHOOK_URL   — Discord webhook for alerts

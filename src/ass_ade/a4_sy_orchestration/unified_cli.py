@@ -407,6 +407,96 @@ app.add_typer(book_app, name="book")
 
 from ass_ade.ade.cli import app as ade_app  # noqa: E402  — after `app` exists
 
+# ── discord sub-app ────────────────────────────────────────────────────────────
+
+_discord_app = typer.Typer(help="Atomadic Discord bot commands.")
+
+
+@_discord_app.command("start")
+def discord_start(
+    token: Annotated[
+        str,
+        typer.Option("--token", envvar="DISCORD_BOT_TOKEN", help="Discord bot token."),
+    ] = "",
+) -> None:
+    """Start the Atomadic Discord bot (blocks until Ctrl-C)."""
+    import sys
+
+    sys.path.insert(0, str(Path(__file__).resolve().parents[4] / "scripts"))
+    try:
+        from atomadic_discord_bot import run  # type: ignore[import]
+    except ImportError as exc:
+        typer.secho(
+            f"discord bot unavailable — install discord.py: pip install discord.py ({exc})",
+            fg="red",
+            err=True,
+        )
+        raise typer.Exit(1) from exc
+    run(token or None)
+
+
+app.add_typer(_discord_app, name="discord")
+
+# ── hello sub-app ──────────────────────────────────────────────────────────────
+
+_hello_app = typer.Typer(help="hello.atomadic.tech Cloudflare Worker commands.")
+
+
+@_hello_app.command("deploy")
+def hello_deploy(
+    env: Annotated[
+        str,
+        typer.Option("--env", help="Wrangler environment (e.g. production)."),
+    ] = "",
+) -> None:
+    """Deploy hello_worker.js to Cloudflare via wrangler."""
+    import subprocess
+
+    scripts_dir = Path(__file__).resolve().parents[4] / "scripts"
+    wrangler_toml = scripts_dir / "wrangler.toml"
+    if not wrangler_toml.exists():
+        typer.secho(f"wrangler.toml not found at {wrangler_toml}", fg="red", err=True)
+        raise typer.Exit(1)
+    cmd = ["wrangler", "deploy"]
+    if env:
+        cmd += ["--env", env]
+    typer.echo(f"[hello] running: {' '.join(cmd)} (cwd={scripts_dir})")
+    result = subprocess.run(cmd, cwd=str(scripts_dir))
+    raise typer.Exit(result.returncode)
+
+
+app.add_typer(_hello_app, name="hello")
+
+# ── heartbeat sub-app ──────────────────────────────────────────────────────────
+
+_heartbeat_app = typer.Typer(help="Atomadic heartbeat daemon (Cloudflare Worker).")
+
+
+@_heartbeat_app.command("deploy")
+def heartbeat_deploy(
+    env: Annotated[
+        str,
+        typer.Option("--env", help="Wrangler environment (e.g. production)."),
+    ] = "",
+) -> None:
+    """Deploy heartbeat_worker.js to Cloudflare via wrangler."""
+    import subprocess
+
+    scripts_dir = Path(__file__).resolve().parents[4] / "scripts"
+    config = scripts_dir / "wrangler.heartbeat.toml"
+    if not config.exists():
+        typer.secho(f"wrangler.heartbeat.toml not found at {config}", fg="red", err=True)
+        raise typer.Exit(1)
+    cmd = ["wrangler", "deploy", "--config", str(config)]
+    if env:
+        cmd += ["--env", env]
+    typer.echo(f"[heartbeat] running: {' '.join(cmd)} (cwd={scripts_dir})")
+    result = subprocess.run(cmd, cwd=str(scripts_dir))
+    raise typer.Exit(result.returncode)
+
+
+app.add_typer(_heartbeat_app, name="heartbeat")
+
 app.add_typer(ade_app, name="ade")
 
 _ensure_bundled_engine_first()
