@@ -10,6 +10,7 @@ _BASE_EXCLUDED_DIRS = frozenset({
     "dist", "build", "rebuilds", "drafts", "__pycache__", ".pytest_cache",
     ".pytest_tmp", ".pytest_basetemp", "pytest_tmp", ".ruff_cache", ".next", ".turbo",
     ".import_linter_cache", "reports", "rebuild-outputs",
+    ".ass-ade-pytest-basetemp",
     ".ass-ade", ".atomadic", ".claude", ".cursor", ".github", ".vscode",
 })
 
@@ -17,6 +18,8 @@ _EXCLUDED_DIR_PATTERNS = frozenset({
     "*.egg-info",
     "*-backup-*",
     "ass-ade-v1-test*",
+    ".ass-ade-pytest-basetemp*",
+    ".claude-worktrees*",
 })
 
 _TIER_DIRS = frozenset({

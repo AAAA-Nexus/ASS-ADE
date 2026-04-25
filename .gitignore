@@ -43,6 +43,8 @@ RECON_REPORT.md
 .coverage
 .pytest_basetemp/
 *.pytest_basetemp/
+.ass-ade-pytest-basetemp/
+.claude/worktrees/
 
 # Editor & IDE
 .claude/

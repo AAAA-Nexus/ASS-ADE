@@ -24,7 +24,8 @@ EXCLUDED_DIRS = {
     ".git", ".venv", "venv", "node_modules", "engine_out", "target",
     "dist", "build", "rebuilds", "drafts", "__pycache__", ".pytest_cache",
     ".pytest_tmp", ".ruff_cache", ".next", ".turbo", "reports",
-    ".ass-ade", ".atomadic", ".claude", ".cursor", ".github", ".vscode",
+    ".ass-ade-pytest-basetemp", ".ass-ade",
+    ".atomadic", ".claude", ".cursor", ".github", ".vscode",
     "a0_qk_constants", "a1_at_functions", "a2_mo_composites",
     "a3_og_features", "a4_sy_orchestration",
 }
