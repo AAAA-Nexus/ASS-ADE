@@ -13,3 +13,10 @@
 **Lane:** features -- missing docs, technical debt, new capabilities
 **Personality:** creative/additive (top 2 per cycle)
 **Python files changed:** 0
+
+## Evolution #41 [QUALITY] -- 2026-04-25 05:58 UTC
+**Enhancement:** missing_tests in src/ass_ade/a0_qk_constants/schemas.py
+**Applied:** 3 fixes
+**Lane:** quality -- docstrings, bare_except, type hints, dead code
+**Personality:** thorough/systematic (top 3 per cycle)
+**Python files changed:** 0
