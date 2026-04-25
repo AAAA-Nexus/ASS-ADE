@@ -2482,30 +2482,36 @@ def run_interactive(working_dir: Path | None = None) -> None:
     agent._startup_suggestions = suggestions
 
     if use_rich and console:
-        from rich.panel import Panel as _Panel
-        _tier_colors = {
-            "a0_qk_constants":    "cyan",
-            "a1_at_functions":    "green",
-            "a2_mo_composites":   "yellow",
-            "a3_og_features":     "magenta",
-            "a4_sy_orchestration": "blue",
-        }
+        try:
+            from rich.panel import Panel as _Panel
+            from rich import box as _rbox
+            from ass_ade.a0_qk_constants.cli_theme import CLI_THEME, TIER_COLORS
+            from ass_ade.a1_at_functions.tui_helpers import section_rule
+            _rc = __import__("rich.console", fromlist=["Console"]).Console(theme=CLI_THEME)
+        except Exception:
+            _rc = console  # fallback to existing console
+
         tier_dirs = sorted(scan.get("tier_dirs_found", []))
         tier_line = ""
         if tier_dirs:
-            parts = [
-                f"[{_tier_colors.get(t, 'white')}]{t}[/{_tier_colors.get(t, 'white')}]"
-                for t in tier_dirs
-            ]
+            parts = []
+            for t in tier_dirs:
+                _style = TIER_COLORS.get(t, "accent") if "TIER_COLORS" in dir() else "cyan"
+                parts.append(f"[{_style}]{t}[/{_style}]")
             tier_line = "\n\n[dim]Tiers:[/dim]  " + "  ".join(parts)
-        console.print()
-        console.print(_Panel(
-            f"[bold cyan]{greeting_text}[/bold cyan]{tier_line}",
-            title="[bold cyan]Atomadic · ASS-ADE[/bold cyan]",
-            border_style="cyan",
+
+        _rc.print()
+        _rc.print(_Panel(
+            f"[heading]{greeting_text}[/heading]{tier_line}",
+            title="[heading]Atomadic · ASS-ADE[/heading]",
+            border_style="accent",
+            box=_rbox.ROUNDED if "_rbox" in dir() else None,
             padding=(1, 2),
         ))
-        console.print(f"[dim]Working dir: {wdir}   ·   '@skills' | '@scout' | 'exit'[/dim]\n")
+        _rc.print(f"[muted]Working dir:[/muted] [path]{wdir}[/path]   "
+                  f"[muted]·   '@skills'  '@scout'  'exit'[/muted]\n")
+        # Reassign console for REPL output so it uses the theme
+        console = _rc
     else:
         print(f"\n{greeting_text}")
         print(f"\nWorking dir: {wdir}   ·   type '@skills' for skills, '@scout' to survey a repo   ·   'exit' to quit\n")

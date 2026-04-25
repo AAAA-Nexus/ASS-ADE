@@ -22,11 +22,45 @@ except ImportError:
 import httpx
 import typer
 from pydantic import BaseModel
+from rich import box as _rich_box
+from rich.align import Align as _Align
 from rich.console import Console
 from rich.panel import Panel
+from rich.rule import Rule as _Rule
 from rich.syntax import Syntax
 from rich.table import Table
 
+from ass_ade.a0_qk_constants.cli_theme import (
+    BOX_DEFAULT,
+    BOX_FORMAL,
+    BOX_HEADER,
+    BOX_MINIMAL,
+    CLI_THEME,
+    GRADE_STYLES,
+    ICON_DOT_ERR,
+    ICON_DOT_OK,
+    ICON_DOT_WRN,
+    ICON_FAIL,
+    ICON_OK,
+    ICON_WARN,
+    IMPACT_STYLES,
+    score_style,
+)
+from ass_ade.a1_at_functions.tui_helpers import (
+    certificate_panel,
+    check_grid,
+    command_header,
+    error_panel,
+    findings_table,
+    issues_panel,
+    linter_grid,
+    recon_summary_panel,
+    score_panel,
+    section_rule,
+    tier_table,
+    verdict_panel,
+    warn_panel,
+)
 from ass_ade.config import default_config_path, load_config, write_default_config
 from ass_ade.local.planner import draft_plan, render_markdown
 from ass_ade.local.repo import summarize_repo
@@ -191,7 +225,7 @@ if hasattr(_sys.stdout, "reconfigure"):
         _sys.stdout.reconfigure(encoding="utf-8")
     except Exception:
         pass
-console = Console()
+console = Console(theme=CLI_THEME)
 DEFAULT_AAAA_NEXUS_MODEL = "falcon3-10B-1.58"
 
 
@@ -4094,7 +4128,7 @@ def eco_scan(
 
     target = path.resolve()
     if not target.exists():
-        console.print(f"[red]Path does not exist:[/red] {target}")
+        console.print(error_panel(f"Path does not exist: {target}", title="Path Error"))
         raise typer.Exit(code=1)
 
     # ── External script path (when atomadic-ecosystem is installed) ───────────
@@ -4115,10 +4149,12 @@ def eco_scan(
             )
 
     # ── Built-in fallback ─────────────────────────────────────────────────────
-    console.print(f"[bold]Eco-scanning[/bold] {target}")
-    console.print("[dim]Running 5 parallel recon agents…[/dim]")
-
-    report = run_parallel_recon(target)
+    console.print(command_header(
+        "Eco-Scan  ·  Monadic Compliance Check",
+        subtitle=f"[path]{target}[/path]",
+    ))
+    with console.status("[muted]Running 5 parallel recon agents…[/muted]", spinner="dots"):
+        report = run_parallel_recon(target)
 
     # ── Compliance scoring (0–100) ────────────────────────────────────────────
     score = 100
@@ -4268,44 +4304,49 @@ def eco_scan(
         _print_json(payload)
         return
 
-    # ── Markdown report ───────────────────────────────────────────────────────
-    score_color = "green" if score >= 75 else "yellow" if score >= 50 else "red"
-    console.print(f"\n[bold]Monadic Compliance Score:[/bold] [{score_color}]{score}/100 (Grade {grade})[/{score_color}]")
+    # ── Rich report ───────────────────────────────────────────────────────────
+    # Verdict
+    _passed = score >= 60
+    _has_warnings = issues and score >= 60
+    console.print(verdict_panel(
+        f"Grade {grade}  ·  {score}/100",
+        detail=f"{len(issues)} issue{'s' if len(issues) != 1 else ''}" if issues else "No compliance issues",
+        passed=_passed,
+        has_warnings=bool(_has_warnings),
+    ))
 
-    # Tier table
+    # Score panel
+    console.print(score_panel(score, grade, label="Monadic Compliance", issues=len(issues)))
+
+    # Tier distribution
     if tier_dist:
-        t = Table(title="Tier Distribution", show_header=True)
-        t.add_column("Tier", style="bold")
-        t.add_column("Files", justify="right")
-        for tier_name, count in sorted(tier_dist.items()):
-            t.add_row(tier_name, str(count))
-        console.print(t)
+        console.print(tier_table(tier_dist))
 
-    if violations:
-        console.print(f"\n[yellow]Tier Violations ({len(violations)})[/yellow]")
-        for v in violations[:10]:
-            console.print(f"  • {v}")
-        if len(violations) > 10:
-            console.print(f"  … and {len(violations) - 10} more")
+    # Combined issues (violations + cross-tier + other)
+    all_issues: list[str] = []
+    for v in violations[:10]:
+        all_issues.append(f"Tier boundary: {v}")
+    if len(violations) > 10:
+        all_issues.append(f"… and {len(violations) - 10} more violations")
+    for ct in cross_tier[:5]:
+        all_issues.append(f"Cross-tier import: {ct}")
+    if len(cross_tier) > 5:
+        all_issues.append(f"… and {len(cross_tier) - 5} more cross-tier imports")
+    for issue in issues:
+        if not any(issue in a for a in all_issues):
+            all_issues.append(issue)
 
-    if cross_tier:
-        console.print(f"\n[yellow]Cross-Tier Imports ({len(cross_tier)})[/yellow]")
-        for ct in cross_tier[:5]:
-            console.print(f"  • {ct}")
-        if len(cross_tier) > 5:
-            console.print(f"  … and {len(cross_tier) - 5} more")
-
-    if issues:
-        console.print(f"\n[bold]Findings[/bold]")
-        for issue in issues:
-            console.print(f"  [yellow]⚠[/yellow]  {issue}")
-    else:
-        console.print("\n[green]No compliance issues found.[/green]")
+    console.print(issues_panel(all_issues, title="Compliance Findings"))
 
     if report.recommendations:
-        console.print(f"\n[bold]Recommendations[/bold]")
-        for rec in report.recommendations:
-            console.print(f"  {rec}")
+        recs = "\n".join(f"  {ICON_OK}  {r}" for r in report.recommendations)
+        console.print(Panel(
+            recs,
+            title="[heading]Recommendations[/heading]",
+            border_style="accent",
+            box=BOX_DEFAULT,
+            padding=(0, 1),
+        ))
 
     # Write to file if requested
     if out:
@@ -4358,22 +4399,24 @@ def recon_command(
 
     target = path.resolve()
     if not target.exists():
-        console.print(f"[red]Path does not exist:[/red] {target}")
+        console.print(error_panel(f"Path does not exist: {target}", title="Path Error"))
         raise typer.Exit(code=1)
 
-    console.print(f"[bold]Running recon on[/bold] {target} …")
-    report = run_parallel_recon(target)
+    console.print(command_header(
+        "Reconnaissance",
+        subtitle=f"5 agents  ·  no LLM  ·  [path]{target}[/path]",
+    ))
+    with console.status("[muted]Running Scout, Dependency, Tier, Test, Doc agents…[/muted]", spinner="dots"):
+        report = run_parallel_recon(target)
 
     if json_out:
         console.print_json(_json.dumps(report.to_dict(), indent=2))
     else:
-        console.print(report.to_markdown())
+        console.print(recon_summary_panel(report.to_markdown(), report.duration_ms))
 
     if out:
         out.write_text(report.to_markdown(), encoding="utf-8")
-        console.print(f"[green]Report written →[/green] {out}")
-
-    console.print(f"[dim]Completed in {report.duration_ms:.0f} ms[/dim]")
+        console.print(f"  {ICON_OK}  Report written → [path]{out}[/path]")
 
 
 def _generate_rebuild_docs(
@@ -5892,7 +5935,7 @@ def rollback_command(
 
     target = path.resolve()
     if not target.exists():
-        console.print(f"[red]Path does not exist:[/red] {target}")
+        console.print(error_panel(f"Path does not exist: {target}", title="Path Error"))
         raise typer.Exit(code=1)
 
     parent = target.parent
@@ -6003,7 +6046,7 @@ def enhance_command(
     _, settings = _resolve_config(config)
     target = path.resolve()
     if not target.exists():
-        console.print(f"[red]Path does not exist:[/red] {target}")
+        console.print(error_panel(f"Path does not exist: {target}", title="Path Error"))
         raise typer.Exit(code=1)
 
     # Check for NEXT_ENHANCEMENT.md planted by last rebuild
@@ -6023,16 +6066,23 @@ def enhance_command(
                 console.print(f"  [cyan]{i}.[/cyan] {s}")
             console.print()
 
-    console.print(f"[bold]Scanning[/bold] {target} for enhancement opportunities…")
-    report = build_enhancement_report(target)
+    console.print(command_header(
+        "Enhancement Scan",
+        subtitle=f"[path]{target}[/path]",
+    ))
+    with console.status("[muted]Scanning for enhancement opportunities…[/muted]", spinner="dots"):
+        report = build_enhancement_report(target)
     total = report.get("total_findings", 0)
     by_impact = report.get("by_impact", {})
-    console.print(
-        f"[dim]Local scan: {report.get('scanned_files', 0)} files, "
-        f"[red]{by_impact.get('high', 0)} high[/red] / "
-        f"[yellow]{by_impact.get('medium', 0)} medium[/yellow] / "
-        f"{by_impact.get('low', 0)} low impact findings[/dim]"
-    )
+    _h = by_impact.get("high", 0)
+    _m = by_impact.get("medium", 0)
+    _l = by_impact.get("low", 0)
+    console.print(check_grid([
+        ("info", "Files scanned",   str(report.get("scanned_files", 0))),
+        ("fail" if _h else "info",  "High impact",    str(_h)),
+        ("warn" if _m else "info",  "Medium impact",  str(_m)),
+        ("ok"   if _l else "info",  "Low impact",     str(_l)),
+    ]))
 
     nexus_result: dict = {}
     use_remote = not local_only and _should_probe_remote(settings, allow_remote if allow_remote else None)
@@ -6074,35 +6124,21 @@ def enhance_command(
         return
 
     if not findings:
-        console.print("\n[green]No improvement opportunities found.[/green] Codebase looks clean.")
+        console.print(verdict_panel(
+            "No improvement opportunities found — codebase looks clean.",
+            passed=True,
+        ))
         return
 
-    # Display findings table
-    t = _Table(title=f"Enhancement Opportunities ({total} total, showing {len(findings)})")
-    t.add_column("ID", style="bold", width=4)
-    t.add_column("Impact", width=8)
-    t.add_column("Effort", width=8)
-    t.add_column("Category", width=18)
-    t.add_column("Title")
-    t.add_column("File", style="dim")
-
-    impact_colors = {"high": "red", "medium": "yellow", "low": "green"}
-    for f in findings:
-        impact = f.get("impact", "low")
-        color = impact_colors.get(impact, "white")
-        line = f.get("line")
-        loc = f.get("file", "")
-        if line:
-            loc = f"{loc}:{line}"
-        t.add_row(
-            str(f.get("id", "")),
-            f"[{color}]{impact}[/{color}]",
-            f.get("effort", ""),
-            f.get("category", ""),
-            f.get("title", ""),
-            loc,
-        )
-    console.print(t)
+    # Verdict + findings table
+    _high = sum(1 for f in findings if f.get("impact") == "high")
+    console.print(verdict_panel(
+        f"{total} finding{'s' if total != 1 else ''}",
+        detail=f"{_high} high-impact" if _high else "No high-impact findings",
+        passed=total == 0,
+        has_warnings=total > 0,
+    ))
+    console.print(findings_table(findings, total=total, shown=len(findings)))
 
     # Handle --apply
     if apply:
@@ -6230,7 +6266,7 @@ def docs_command(
     _, settings = _resolve_config(config)
     target = path.resolve()
     if not target.exists():
-        console.print(f"[red]Path does not exist:[/red] {target}")
+        console.print(error_panel(f"Path does not exist: {target}", title="Path Error"))
         raise typer.Exit(code=1)
 
     out = output_dir.resolve() if output_dir else target
@@ -6330,16 +6366,13 @@ def lint_command(
     _, settings = _resolve_config(config)
     target = path.resolve()
     if not target.exists():
-        console.print(f"[red]Path does not exist:[/red] {target}")
+        console.print(error_panel(f"Path does not exist: {target}", title="Path Error"))
         raise typer.Exit(code=1)
 
-    console.print(f"[bold]Linting[/bold] {target}")
-    lint_results = run_linters(target, fix=fix)
-
-    for linter_name, res in lint_results.get("results", {}).items():
-        ok_str = "[green]OK[/green]" if res.get("ok") else "[red]FAIL[/red]"
-        count = res.get("error_count", 0) + res.get("warning_count", 0)
-        console.print(f"  {linter_name}: [{ok_str}] {count} findings")
+    console.print(command_header("Lint", subtitle=f"[path]{target}[/path]"))
+    with console.status("[muted]Running linters…[/muted]", spinner="dots"):
+        lint_results = run_linters(target, fix=fix)
+    console.print(linter_grid(lint_results.get("results", {})))
 
     nexus_result: dict = {}
     use_remote = not local_only and _should_probe_remote(settings, allow_remote if allow_remote else None)
@@ -6383,9 +6416,14 @@ def lint_command(
         _print_json(payload)
         return
 
-    status = "[green]PASS[/green]" if total == 0 else f"[red]FAIL[/red] ({total} findings)"
-    console.print(f"\n[bold]Lint result:[/bold] {status}")
-    if total > 0:
+    _lint_passed = total == 0
+    console.print(verdict_panel(
+        "All clean" if _lint_passed else f"{total} finding{'s' if total != 1 else ''}",
+        detail=("Run ass-ade enhance . for remediation suggestions" if not _lint_passed
+                else "Run ass-ade certify . to record a snapshot"),
+        passed=_lint_passed,
+    ))
+    if not _lint_passed:
         raise typer.Exit(code=1)
 
 
@@ -6427,11 +6465,15 @@ def certify_command(
     _, settings = _resolve_config(config)
     target = path.resolve()
     if not target.exists():
-        console.print(f"[red]Path does not exist:[/red] {target}")
+        console.print(error_panel(f"Path does not exist: {target}", title="Path Error"))
         raise typer.Exit(code=1)
 
-    console.print(f"[bold]Certifying[/bold] {target}")
-    cert = build_local_certificate(target, version=version)
+    console.print(command_header(
+        "Certify",
+        subtitle=f"Tamper-evident certificate  ·  [path]{target}[/path]",
+    ))
+    with console.status("[muted]Computing SHA-256 digests…[/muted]", spinner="dots"):
+        cert = build_local_certificate(target, version=version)
 
     use_remote = not local_only and _should_probe_remote(settings, allow_remote if allow_remote else None)
 
@@ -6479,20 +6521,21 @@ def certify_command(
     cert_path = out or (target / "CERTIFICATE.json")
     import json as _json
     cert_path.write_text(_json.dumps(cert, indent=2, default=str), encoding="utf-8")
-    console.print(f"\n[green][OK][/green] Certificate written: {cert_path}")
 
     if json_out:
         _print_json(cert)
         return
 
-    console.print()
-    console.print(render_certificate_text(cert))
+    # Rich certificate panel
+    console.print(certificate_panel(cert))
+    console.print(f"  {ICON_OK}  Certificate written → [path]{cert_path}[/path]")
 
     if not cert.get("valid"):
-        console.print(
-            "\n[yellow]Note:[/yellow] Certificate is not server-signed. "
-            "Use --allow-remote or set profile=hybrid/premium for a verifiable certificate."
-        )
+        console.print(warn_panel(
+            "Local-only certificate (not third-party verifiable).\n"
+            "Use [version]--allow-remote[/version] or set profile=hybrid/premium for PQC signing.",
+            title="Signature",
+        ))
 
 
 @app.command("design")
@@ -6530,7 +6573,7 @@ def design_command(
     _, settings = _resolve_config(config)
     target = path.resolve()
     if not target.exists():
-        console.print(f"[red]Path does not exist:[/red] {target}")
+        console.print(error_panel(f"Path does not exist: {target}", title="Path Error"))
         raise typer.Exit(code=1)
 
     def _make_slug(text: str) -> str:
