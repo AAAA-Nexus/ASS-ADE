@@ -74,7 +74,29 @@ def cherry_pick_command(
     ] = None,
     print_json: Annotated[
         bool,
-        typer.Option("--json", help="Print the saved manifest JSON to stdout after selection."),
+        typer.Option("--json", help="Print the saved manifest or preview JSON to stdout."),
+    ] = False,
+    preview: Annotated[
+        bool,
+        typer.Option(
+            "--preview",
+            help="Show a preview of candidates without saving a manifest.",
+        ),
+    ] = False,
+    min_confidence: Annotated[
+        Optional[float],
+        typer.Option(
+            "--min-confidence",
+            help="Drop candidates below this confidence threshold (0.0–1.0).",
+        ),
+    ] = None,
+    quiet: Annotated[
+        bool,
+        typer.Option(
+            "--quiet",
+            "-q",
+            help="Suppress console status output.",
+        ),
     ] = False,
 ) -> None:
     """Scout a codebase and cherry-pick symbols to assimilate.
@@ -90,13 +112,35 @@ def cherry_pick_command(
         ass-ade cherry-pick scout.json --pick 1,3,5
         ass-ade cherry-pick scout.json --pick all --no-interactive
         ass-ade cherry-pick scout.json --action assimilate --no-interactive
+        ass-ade cherry-pick scout.json --preview --min-confidence 0.6 --json
         ass-ade cherry-pick /path/to/sibling-repo --target .
     """
-    from ass_ade.a3_og_features.cherry_feature import run_cherry_pick
+    from ass_ade.a3_og_features.cherry_feature import preview_cherry_pick, run_cherry_pick
 
     action_set: set[str] | None = None
     if action and action != "all":
         action_set = {action}
+
+    if preview:
+        try:
+            result = preview_cherry_pick(
+                source=source,
+                target_root=target.resolve(),
+                actions=action_set,
+                min_confidence=min_confidence,
+            )
+        except (ValueError, OSError) as exc:
+            console.print(f"[red]cherry-pick preview error:[/red] {exc}")
+            raise typer.Exit(1) from exc
+
+        if print_json:
+            typer.echo(json.dumps(result, indent=2))
+        elif not quiet:
+            total = result["summary"]["total"]
+            console.print(f"[bold]Preview:[/bold] {total} candidate(s)")
+            for a, count in result["summary"]["actions"].items():
+                console.print(f"  {a}: {count}")
+        return
 
     effective_interactive = interactive and pick is None
 
@@ -108,7 +152,8 @@ def cherry_pick_command(
             actions=action_set,
             interactive=effective_interactive,
             out_path=out,
-            console_print=True,
+            console_print=not quiet,
+            min_confidence=min_confidence,
         )
     except (ValueError, OSError) as exc:
         console.print(f"[red]cherry-pick error:[/red] {exc}")
