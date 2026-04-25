@@ -214,17 +214,17 @@ class PersonalityEngine:
     # ── Greetings ──────────────────────────────────────────────────────────────
 
     def greeting_prefix(self, name: str | None = None) -> str:
-        """Return a persona-tuned greeting line."""
-        n = name or "there"
+        """Return a persona-tuned greeting line (Axiom 0: sovereign, purposeful, builder-first)."""
+        n = name or "Thomas"
         pool = {
             PERSONA_COPILOT:   [
-                f"Back in the pilot seat, {n}.",
-                f"Ready to co-pilot, {n}. What's the mission?",
-                f"Good to have you back, {n}. What are we building today?",
+                f"Welcome back, {n}. Atomadic is here. What shall we build today?",
+                f"Ready, {n}. What's the mission?",
+                f"Good to have you back, {n}. What are we working on?",
             ],
             PERSONA_MENTOR:    [
-                f"Good to see you, {n}. What are we learning today?",
-                f"Welcome back, {n}. Let's build something great.",
+                f"Welcome back, {n}. What shall we shape today?",
+                f"Good to see you, {n}. What are we building?",
             ],
             PERSONA_COMMANDER: [
                 f"Standing by, {n}. What's the objective?",
@@ -236,8 +236,8 @@ class PersonalityEngine:
                 f"Good timing, {n}. What system are we drawing up?",
             ],
             PERSONA_DEBUG:     [
-                f"Debug buddy reporting in, {n}. What's acting up?",
-                f"Ready to hunt bugs with you, {n}.",
+                f"Atomadic here, {n}. What needs fixing?",
+                f"Ready to diagnose, {n}. What's acting up?",
             ],
         }
         return random.choice(pool.get(self.persona, [f"Welcome back, {n}."]))

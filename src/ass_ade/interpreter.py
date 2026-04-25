@@ -343,16 +343,17 @@ class MemoryStore:
                     setattr(store, attr, json.loads(p.read_text(encoding="utf-8")))
                 except (json.JSONDecodeError, OSError):
                     pass
-        # Prompt for name if not set
+        # Resolve name: env var > config > "Thomas" (never prompt mid-session)
         profile = store.user_profile
         if "name" not in profile or not profile["name"].strip():
-            try:
-                name = input("What is your name? (for personalized greetings): ").strip()
-                if name:
-                    profile["name"] = name
-                    store.save()
-            except Exception:
-                pass
+            _load_env()
+            resolved_name = (
+                os.environ.get("USER_NAME", "").strip()
+                or os.environ.get("ATOMADIC_USER", "").strip()
+                or "Thomas"
+            )
+            profile["name"] = resolved_name
+            store.save()
         return store
 
     def save(self) -> None:
@@ -1863,6 +1864,25 @@ def quick_project_scan(path: Path) -> dict:
     untested modules, docstring coverage, and CERTIFICATE.json metadata.
     Results are cached on the Atomadic instance as ``_startup_scan``.
     """
+    # Guard: never scan a filesystem root (C:\, D:\, /, /home, etc.)
+    # Path.anchor on Windows is "C:\\" etc.; on POSIX it's "/".
+    # A path is a root if it equals its own anchor (i.e. no parent project dir).
+    resolved = path.resolve()
+    if str(resolved) == resolved.anchor.rstrip("\\/") or resolved == resolved.parent:
+        return {
+            "project_name": str(resolved),
+            "total_files": 0,
+            "language": "unknown",
+            "has_tier_structure": False,
+            "tier_dirs_found": [],
+            "component_count": 0,
+            "security_findings": 0,
+            "untested_modules": 0,
+            "docstring_pct": 0,
+            "cert_info": {},
+            "_no_project": True,
+        }
+
     _ignore = {".git", ".venv", "venv", "node_modules", "__pycache__", ".pytest_cache",
                "dist", "build", "target", ".ass-ade"}
     tier_names = {"a0_qk_constants", "a1_at_functions", "a2_mo_composites",
@@ -1993,6 +2013,17 @@ def _build_startup_greeting(
 
     header = "Atomadic · ASS-ADE 1.0.0"
     suggestions: list[str] = []
+
+    # No project detected — cwd is a filesystem root or empty drive
+    if scan.get("_no_project"):
+        lines = [
+            header, "",
+            "No project detected — you're at a filesystem root.",
+            "cd into a project directory first, then start Atomadic.",
+            "",
+            "Example:  cd C:\\!AAAA-Nexus\\ASS-ADE-SEED && atomadic chat",
+        ]
+        return "\n".join(lines), suggestions
 
     if has_tier and cert_info:
         last_rebuild = cert_info.get("date", "")
