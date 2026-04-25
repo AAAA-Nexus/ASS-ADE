@@ -66,7 +66,7 @@ bot = commands.Bot(command_prefix="!", intents=intents, help_command=commands.De
 async def _try_aaaa_nexus(client: httpx.AsyncClient, messages: list[dict]) -> str | None:
     headers: dict[str, str] = {"Content-Type": "application/json"}
     if AAAA_NEXUS_API_KEY:
-        headers["Authorization"] = f"Bearer {AAAA_NEXUS_API_KEY}"
+        headers["X-API-Key"] = AAAA_NEXUS_API_KEY
     try:
         resp = await client.post(INFERENCE_URL, json={"messages": messages}, headers=headers)
         resp.raise_for_status()
