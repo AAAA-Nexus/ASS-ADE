@@ -6,12 +6,12 @@
 └─────────────────────────────────── v1.0.0 ───────────────────────────────────┘
 {
   "root": "/home/runner/work/ASS-ADE/ASS-ADE",
-  "duration_ms": 8204.699283999958,
-  "summary": "Repo at `/home/runner/work/ASS-ADE/ASS-ADE` contains 1096 files (846 source, 326 test-related) across 10 directory levels (4811.4 KB total). Test coverage: 1417 test functions across 135 test files (ratio 0.21). Documentation coverage is low (41%). Dominant tier: `at`.",
+  "duration_ms": 8369.315128000011,
+  "summary": "Repo at `/home/runner/work/ASS-ADE/ASS-ADE` contains 1103 files (853 source, 330 test-related) across 10 directory levels (4868.4 KB total). Test coverage: 1429 test functions across 139 test files (ratio 0.22). Documentation coverage is low (41%). Dominant tier: `at`.",
   "scout": {
-    "total_files": 1096,
-    "total_size_bytes": 4926838,
-    "total_size_kb": 4811.4,
+    "total_files": 1103,
+    "total_size_bytes": 4985274,
+    "total_size_kb": 4868.4,
     "max_depth": 10,
     "top_level": [
       ".env.example",
@@ -46,7 +46,7 @@
       "wrangler.toml"
     ],
     "by_extension": {
-      ".py": 807,
+      ".py": 814,
       ".md": 122,
       ".json": 50,
       ".rs": 22,
@@ -66,11 +66,11 @@
       ".bak": 1,
       ".html": 1
     },
-    "source_files": 846,
-    "test_files_count": 326
+    "source_files": 853,
+    "test_files_count": 330
   },
   "dependency": {
-    "python_files": 807,
+    "python_files": 814,
     "unique_external_deps": 78,
     "top_external_deps": [
       "__future__",
@@ -97,15 +97,15 @@
     "circular_deps": [],
     "has_circular_deps": false,
     "max_import_depth": 1,
-    "internal_modules": 807
+    "internal_modules": 814
   },
   "tier": {
-    "total_py_files": 807,
+    "total_py_files": 814,
     "tier_distribution": {
       "qk": 23,
-      "at": 660,
+      "at": 666,
       "mo": 35,
-      "og": 19,
+      "og": 20,
       "sy": 70
     },
     "tier_examples": {
@@ -135,7 +135,7 @@
         "src/ass_ade/tools/plan.py",
         "src/ass_ade/tools/builtin.py",
         "src/ass_ade/a2_mo_composites/block_registry.py",
-        "src/ass_ade/a2_mo_composites/context_loader_wiring_specialist_core.py"
+        "src/ass_ade/a2_mo_composites/ambient_awareness.py"
       ],
       "sy": [
         "src/ass_ade/cli.py",
@@ -160,9 +160,9 @@
     "dominant_tier": "at"
   },
   "test": {
-    "test_files": 135,
-    "test_functions": 1417,
-    "source_files": 635,
+    "test_files": 139,
+    "test_functions": 1429,
+    "source_files": 638,
     "untested_modules": [
       "src/ass_ade/interpreter.py",
       "src/ass_ade/recon.py",
@@ -185,8 +185,8 @@
       "src/ass_ade/protocol/cycle.py",
       "src/ass_ade/protocol/evolution.py"
     ],
-    "untested_count": 574,
-    "coverage_ratio": 0.21,
+    "untested_count": 575,
+    "coverage_ratio": 0.22,
     "frameworks": [
       "pytest",
       "unittest"
@@ -197,11 +197,11 @@
       "tests/test_interpreter_edge_cases.py",
       "tests/test_conflict_detector.py",
       "tests/test_phase1_integration.py",
+      "tests/test_cherry_picker.py",
       "tests/test_ssrf_protection.py",
       "tests/test_map_terrain.py",
       "tests/test_assimilation_multi_source.py",
-      "tests/test_body_extractor.py",
-      "tests/test_emit_test_manifest.py"
+      "tests/test_body_extractor.py"
     ]
   },
   "doc": {
@@ -225,8 +225,8 @@
       "src/ass_ade/README.md",
       "src/ass_ade/USER_GUIDE.md"
     ],
-    "total_public_callables": 3869,
-    "documented_callables": 1568,
+    "total_public_callables": 3901,
+    "documented_callables": 1588,
     "doc_coverage": 0.41,
     "undocumented_samples": [
       "src/ass_ade/config.py:AssAdeConfig",
@@ -249,7 +249,7 @@
     "summary": ""
   },
   "recommendations": [
-    "Test coverage is low (0.21). Add tests for the 574 untested modules.",
+    "Test coverage is low (0.22). Add tests for the 575 untested modules.",
     "10 file(s) may span tier boundaries. Split into smaller, single-purpose modules.",
     "Directory depth is 10. Consider flattening the structure to reduce navigation friction."
   ],
