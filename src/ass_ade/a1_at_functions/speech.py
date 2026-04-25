@@ -3,13 +3,10 @@
 from __future__ import annotations
 
 import asyncio
-import os
 import subprocess
 import tempfile
-from pathlib import Path
 
 
-# Default voice — warm, clear, natural-sounding US English male.
 _DEFAULT_VOICE = "en-US-GuyNeural"
 
 
@@ -70,3 +67,25 @@ def speak_greeting(name: str = "Thomas and Jessica") -> bool:
         "Ready when you are."
     )
     return speak(text)
+
+
+def listen_once(timeout: float = 5.0, energy_threshold: int = 300) -> str | None:
+    """Capture one utterance from the microphone and return the transcript.
+
+    Requires the ``voice`` optional dep group: ``pip install ass-ade[voice]``.
+    Returns None if speech_recognition is unavailable or nothing was heard.
+    """
+    try:
+        import speech_recognition as sr  # type: ignore[import]
+    except ImportError:
+        return None
+
+    recognizer = sr.Recognizer()
+    recognizer.energy_threshold = energy_threshold
+    try:
+        with sr.Microphone() as source:
+            recognizer.adjust_for_ambient_noise(source, duration=0.3)
+            audio = recognizer.listen(source, timeout=timeout, phrase_time_limit=15)
+        return recognizer.recognize_google(audio)
+    except Exception:
+        return None

@@ -1,0 +1,14 @@
+name = "hello-atomadic"
+main = "scripts/hello_worker.js"
+compatibility_date = "2024-01-15"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+ATOMADIC_ENV = "production"
+
+# Local dev: npx wrangler dev
+# Deploy:    npx wrangler deploy  (or: atomadic hello deploy)
+
+[[env.production.routes]]
+pattern = "hello.atomadic.tech/*"
+zone_name = "atomadic.tech"

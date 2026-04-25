@@ -21,5 +21,7 @@
     "mistral",
     "github"
   ],
-  "evolution_mode": "dual"
+  "evolution_mode": "dual",
+  "tts_enabled": false,
+  "tts_voice": "en-US-GuyNeural"
 }
