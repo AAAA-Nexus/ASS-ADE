@@ -19,6 +19,16 @@
       "id": 1,
       "category": "security",
       "title": "Assertions used for control flow",
+      "description": "assert used for control flow at scripts/atomadic_discord_bot.py:135.",
+      "file": "scripts/atomadic_discord_bot.py",
+      "line": 135,
+      "impact": "high",
+      "effort": "low"
+    },
+    {
+      "id": 2,
+      "category": "security",
+      "title": "Assertions used for control flow",
       "description": "assert used for control flow at src/ass_ade/a2_mo_composites/context_loader_wiring_specialist_core.py:173.",
       "file": "src/ass_ade/a2_mo_composites/context_loader_wiring_specialist_core.py",
       "line": 173,
@@ -26,7 +36,7 @@
       "effort": "low"
     },
     {
-      "id": 2,
+      "id": 3,
       "category": "security",
       "title": "Assertions used for control flow",
       "description": "assert used for control flow at src/ass_ade/a3_og_features/pipeline_book.py:229.",
@@ -36,7 +46,7 @@
       "effort": "low"
     },
     {
-      "id": 3,
+      "id": 4,
       "category": "security",
       "title": "Assertions used for control flow",
       "description": "assert used for control flow at src/ass_ade/local/multilang_bridge.py:167.",
@@ -46,7 +56,7 @@
       "effort": "low"
     },
     {
-      "id": 4,
+      "id": 5,
       "category": "security",
       "title": "Assertions used for control flow",
       "description": "assert used for control flow at src/ass_ade/local/multilang_bridge.py:172.",
@@ -56,7 +66,7 @@
       "effort": "low"
     },
     {
-      "id": 5,
+      "id": 6,
       "category": "security",
       "title": "Assertions used for control flow",
       "description": "assert used for control flow at src/ass_ade/local/multilang_bridge.py:173.",
@@ -66,7 +76,7 @@
       "effort": "low"
     },
     {
-      "id": 6,
+      "id": 7,
       "category": "security",
       "title": "Assertions used for control flow",
       "description": "assert used for control flow at src/ass_ade/local/multilang_bridge.py:174.",
@@ -76,7 +86,7 @@
       "effort": "low"
     },
     {
-      "id": 7,
+      "id": 8,
       "category": "security",
       "title": "Assertions used for control flow",
       "description": "assert used for control flow at src/ass_ade/local/multilang_bridge.py:175.",
@@ -86,7 +96,7 @@
       "effort": "low"
     },
     {
-      "id": 8,
+      "id": 9,
       "category": "security",
       "title": "Assertions used for control flow",
       "description": "assert used for control flow at src/ass_ade/local/multilang_bridge.py:177.",
@@ -96,7 +106,7 @@
       "effort": "low"
     },
     {
-      "id": 9,
+      "id": 10,
       "category": "security",
       "title": "Assertions used for control flow",
       "description": "assert used for control flow at src/ass_ade/local/multilang_bridge.py:181.",
@@ -106,37 +116,17 @@
       "effort": "low"
     },
     {
-      "id": 10,
-      "category": "security",
-      "title": "Assertions used for control flow",
-      "description": "assert used for control flow at src/ass_ade/local/multilang_bridge.py:195.",
-      "file": "src/ass_ade/local/multilang_bridge.py",
-      "line": 195,
-      "impact": "high",
-      "effort": "low"
-    },
-    {
       "id": 11,
       "category": "missing_tests",
-      "title": "No tests for policy_types.py",
-      "description": "src/ass_ade/a0_qk_constants/policy_types.py has no corresponding test file under tests/.",
-      "file": "src/ass_ade/a0_qk_constants/policy_types.py",
+      "title": "No tests for cli_theme.py",
+      "description": "src/ass_ade/a0_qk_constants/cli_theme.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/a0_qk_constants/cli_theme.py",
       "line": null,
       "impact": "high",
       "effort": "medium"
     },
     {
       "id": 12,
-      "category": "missing_tests",
-      "title": "No tests for reference_roots.py",
-      "description": "src/ass_ade/a0_qk_constants/reference_roots.py has no corresponding test file under tests/.",
-      "file": "src/ass_ade/a0_qk_constants/reference_roots.py",
-      "line": null,
-      "impact": "high",
-      "effort": "medium"
-    },
-    {
-      "id": 13,
       "category": "missing_tests",
       "title": "No tests for schemas.py",
       "description": "src/ass_ade/a0_qk_constants/schemas.py has no corresponding test file under tests/.",
@@ -146,7 +136,7 @@
       "effort": "medium"
     },
     {
-      "id": 14,
+      "id": 13,
       "category": "missing_tests",
       "title": "No tests for tier_names.py",
       "description": "src/ass_ade/a0_qk_constants/tier_names.py has no corresponding test file under tests/.",
@@ -156,7 +146,7 @@
       "effort": "medium"
     },
     {
-      "id": 15,
+      "id": 14,
       "category": "missing_tests",
       "title": "No tests for a2a_discover_helpers.py",
       "description": "src/ass_ade/a1_at_functions/a2a_discover_helpers.py has no corresponding test file under tests/.",
@@ -166,7 +156,7 @@
       "effort": "medium"
     },
     {
-      "id": 16,
+      "id": 15,
       "category": "missing_tests",
       "title": "No tests for a2a_negotiate_helpers.py",
       "description": "src/ass_ade/a1_at_functions/a2a_negotiate_helpers.py has no corresponding test file under tests/.",
@@ -176,7 +166,7 @@
       "effort": "medium"
     },
     {
-      "id": 17,
+      "id": 16,
       "category": "missing_tests",
       "title": "No tests for a2a_validate_helpers.py",
       "description": "src/ass_ade/a1_at_functions/a2a_validate_helpers.py has no corresponding test file under tests/.",
@@ -186,7 +176,7 @@
       "effort": "medium"
     },
     {
-      "id": 18,
+      "id": 17,
       "category": "missing_tests",
       "title": "No tests for agent_run_helpers.py",
       "description": "src/ass_ade/a1_at_functions/agent_run_helpers.py has no corresponding test file under tests/.",
@@ -196,7 +186,7 @@
       "effort": "medium"
     },
     {
-      "id": 19,
+      "id": 18,
       "category": "missing_tests",
       "title": "No tests for api_inventory_emit.py",
       "description": "src/ass_ade/a1_at_functions/api_inventory_emit.py has no corresponding test file under tests/.",
@@ -206,11 +196,21 @@
       "effort": "medium"
     },
     {
-      "id": 20,
+      "id": 19,
       "category": "missing_tests",
       "title": "No tests for assess_blueprint_fulfillment_helpers.py",
       "description": "src/ass_ade/a1_at_functions/assess_blueprint_fulfillment_helpers.py has no corresponding test file under tests/.",
       "file": "src/ass_ade/a1_at_functions/assess_blueprint_fulfillment_helpers.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 20,
+      "category": "missing_tests",
+      "title": "No tests for assign_version_helpers.py",
+      "description": "src/ass_ade/a1_at_functions/assign_version_helpers.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/a1_at_functions/assign_version_helpers.py",
       "line": null,
       "impact": "high",
       "effort": "medium"
@@ -461,7 +461,7 @@
       "title": "Technical debt marker: # TODO",
       "description": "# TODO: add error handling",
       "file": "src/ass_ade/cli.py",
-      "line": 7135,
+      "line": 7252,
       "impact": "low",
       "effort": "medium"
     },
@@ -471,7 +471,7 @@
       "title": "Technical debt marker: # FIXME",
       "description": "# FIXME: this is slow",
       "file": "src/ass_ade/cli.py",
-      "line": 7144,
+      "line": 7261,
       "impact": "low",
       "effort": "medium"
     },
