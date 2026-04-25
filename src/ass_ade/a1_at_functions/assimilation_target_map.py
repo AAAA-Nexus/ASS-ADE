@@ -88,7 +88,10 @@ class AssimilationTargetMap:
 
 
 def _is_excluded(path: Path) -> bool:
-    return any(part in _EXCLUDE_DIRS for part in path.parts)
+    return any(
+        part in _EXCLUDE_DIRS or (part.startswith(".") and part not in (".", ".."))
+        for part in path.parts
+    )
 
 
 def _iter_python_files(root: Path) -> list[Path]:

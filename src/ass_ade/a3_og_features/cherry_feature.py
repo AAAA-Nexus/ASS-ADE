@@ -9,6 +9,41 @@ from ass_ade.a0_qk_constants.cherry_types import CherryItemDict, CherryManifestD
 from ass_ade.a2_mo_composites.cherry_session import CherryPickSession
 
 
+def preview_cherry_pick(
+    source: str | Path,
+    target_root: str | Path,
+    *,
+    actions: set[str] | None = None,
+    min_confidence: float | None = None,
+) -> dict[str, Any]:
+    """Return a preview of cherry-pick candidates without saving a manifest.
+
+    Args:
+        source:         Scout JSON file OR directory to scan directly.
+        target_root:    Where assimilated symbols would land (used by CherryPickSession).
+        actions:        Filter candidates to this action subset. Defaults to assimilate/rebuild/enhance.
+        min_confidence: Drop candidates below this confidence threshold.
+
+    Returns:
+        ``{"summary": {"total": int, "actions": dict}, "candidates": list[CherryItemDict]}``
+    """
+    session = CherryPickSession(source, target_root)
+    candidates = session.load_candidates(actions)
+
+    if min_confidence is not None:
+        candidates = [c for c in candidates if c["confidence"] >= min_confidence]
+
+    action_counts: dict[str, int] = {}
+    for item in candidates:
+        a = item["action"]
+        action_counts[a] = action_counts.get(a, 0) + 1
+
+    return {
+        "summary": {"total": len(candidates), "actions": action_counts},
+        "candidates": list(candidates),
+    }
+
+
 def run_cherry_pick(
     source: str | Path,
     target_root: str | Path,
@@ -18,25 +53,33 @@ def run_cherry_pick(
     interactive: bool = True,
     out_path: str | Path | None = None,
     console_print: bool = True,
+    min_confidence: float | None = None,
 ) -> CherryManifestDict:
     """Full cherry-pick pipeline: load → rank → select → save manifest.
 
     Args:
-        source:       Scout JSON file OR a directory to scan directly.
-        target_root:  Where assimilated symbols will land (sets manifest.target_root).
-        pick:         Pre-specified selection string ("1,3,5", "all", "assimilate", …).
-                      When set, the interactive prompt is skipped.
-        actions:      Filter candidates to this action subset before showing the menu.
-                      Defaults to {assimilate, rebuild, enhance}.
-        interactive:  When True and ``pick`` is None, print the menu and read stdin.
-        out_path:     Override the manifest output path.
-        console_print: Print status lines to stdout.
+        source:         Scout JSON file OR a directory to scan directly.
+        target_root:    Where assimilated symbols will land (sets manifest.target_root).
+        pick:           Pre-specified selection string ("1,3,5", "all", "assimilate", …).
+                        When set, the interactive prompt is skipped.
+        actions:        Filter candidates to this action subset before showing the menu.
+                        Defaults to {assimilate, rebuild, enhance}.
+        interactive:    When True and ``pick`` is None, print the menu and read stdin.
+        out_path:       Override the manifest output path.
+        console_print:  Print status lines to stdout.
+        min_confidence: Drop candidates below this confidence threshold before selection.
 
     Returns:
         The saved CherryManifestDict.
     """
     session = CherryPickSession(source, target_root)
     candidates = session.load_candidates(actions)
+
+    if min_confidence is not None:
+        candidates = [c for c in candidates if c["confidence"] >= min_confidence]
+        for new_idx, item in enumerate(candidates, 1):
+            item["index"] = new_idx
+        session._candidates = candidates
 
     if not candidates:
         if console_print:
@@ -54,7 +97,6 @@ def run_cherry_pick(
     selected: list[CherryItemDict]
 
     if pick is not None:
-        # Non-interactive: resolve from flag
         selected = session.collect_selection(pick)
         if console_print:
             print(f"Cherry-pick: {len(selected)} item(s) selected via --pick {pick!r}")
@@ -70,7 +112,6 @@ def run_cherry_pick(
         if console_print:
             print(f"Cherry-pick: {len(selected)} item(s) selected.")
     else:
-        # Non-interactive, no --pick: default to assimilate-only
         selected = session.collect_selection("assimilate")
         if console_print:
             print(f"Cherry-pick (auto assimilate): {len(selected)} item(s).")
