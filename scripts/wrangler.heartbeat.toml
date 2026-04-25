@@ -4,6 +4,7 @@
 name = "atomadic-heartbeat"
 main = "heartbeat_worker.js"
 compatibility_date = "2024-11-01"
+account_id = "74799e471a537b91cf0d6e633bd30d6f"
 
 [vars]
 ATOMADIC_INFERENCE_URL = "https://atomadic.tech/v1"
