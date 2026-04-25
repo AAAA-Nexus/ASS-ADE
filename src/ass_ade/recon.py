@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import ast
 import concurrent.futures
+import json as _json
 import os
 import re
 import time
@@ -677,11 +678,78 @@ def _doc_agent(root: Path, files: list[Path]) -> dict[str, Any]:
     }
 
 
+# ── WebResearchAgent ─────────────────────────────────────────────────────────
+
+def _extract_project_name(root: Path, files: list[Path]) -> str:
+    """Infer project name from pyproject.toml or package.json."""
+    for fname in ("pyproject.toml", "package.json"):
+        target = root / fname
+        if target.exists():
+            try:
+                text = target.read_text(encoding="utf-8", errors="replace")
+                if fname == "pyproject.toml":
+                    m = re.search(r'name\s*=\s*["\']([^"\']+)["\']', text)
+                    if m:
+                        return m.group(1)
+                else:
+                    data = _json.loads(text)
+                    if isinstance(data, dict) and "name" in data:
+                        return str(data["name"])
+            except (OSError, ValueError):
+                pass
+    return root.name
+
+
+def _web_research_agent(root: Path, files: list[Path]) -> dict[str, Any]:
+    """Research project context via the Atomadic inference endpoint.
+
+    Gracefully degrades — adds a skip note if the endpoint is unreachable.
+    """
+    project_name = _extract_project_name(root, files)
+    query = f"{project_name} best practices architecture dependency updates similar tools"
+
+    inference_url = "https://atomadic.tech/v1/inference"
+    config_file = root / ".ass-ade" / "config.json"
+    try:
+        cfg = _json.loads(config_file.read_text(encoding="utf-8"))
+        base = cfg.get("nexus_base_url", "https://atomadic.tech").rstrip("/")
+        inference_url = f"{base}/v1/inference"
+    except (OSError, ValueError):
+        pass
+
+    try:
+        import httpx  # already a package dep
+
+        resp = httpx.post(
+            inference_url,
+            json={"query": query, "project": project_name, "max_tokens": 512},
+            timeout=10.0,
+        )
+        resp.raise_for_status()
+        data = resp.json()
+        return {
+            "available": True,
+            "query": query,
+            "project": project_name,
+            "results": data.get("results", [])[:5],
+            "summary": str(data.get("summary", data.get("text", "")))[:1000],
+        }
+    except Exception as exc:
+        return {
+            "available": False,
+            "query": query,
+            "project": project_name,
+            "results": [],
+            "summary": "",
+            "skip_reason": f"{type(exc).__name__}: {exc}",
+        }
+
+
 # ── ReconReport ───────────────────────────────────────────────────────────────
 
 @dataclass
 class ReconReport:
-    """Consolidated output from all 5 parallel recon agents."""
+    """Consolidated output from all 6 parallel recon agents."""
 
     root: str
     duration_ms: float
@@ -690,6 +758,7 @@ class ReconReport:
     tier: dict[str, Any]
     test: dict[str, Any]
     doc: dict[str, Any]
+    web_research: dict[str, Any] = dc_field(default_factory=dict)
     recommendations: list[str] = dc_field(default_factory=list)
     next_action: str = ""
 
@@ -796,6 +865,19 @@ class ReconReport:
             for u in self.doc["undocumented_samples"]:
                 lines.append(f"  - `{u}`")
 
+        if self.web_research:
+            lines += ["", "## Web Research", ""]
+            if self.web_research.get("available"):
+                lines.append(f"- **Query:** `{self.web_research.get('query', '')}`")
+                summary = self.web_research.get("summary", "")
+                if summary:
+                    lines.append(f"- **Summary:** {summary[:400]}")
+                for item in self.web_research.get("results", [])[:3]:
+                    lines.append(f"  - {item}")
+            else:
+                reason = self.web_research.get("skip_reason", "endpoint unavailable")
+                lines.append(f"_(skipped — {reason})_")
+
         if self.recommendations:
             lines += ["", "## Recommendations", ""]
             for i, rec in enumerate(self.recommendations, 1):
@@ -816,6 +898,7 @@ class ReconReport:
             "tier": self.tier,
             "test": self.test,
             "doc": self.doc,
+            "web_research": self.web_research,
             "recommendations": self.recommendations,
             "next_action": self.next_action,
         }
@@ -879,28 +962,31 @@ def _build_recommendations(
 # ── Public API ────────────────────────────────────────────────────────────────
 
 def run_parallel_recon(path: str | Path = ".") -> ReconReport:
-    """Run all 5 recon agents in parallel and return a consolidated ReconReport.
+    """Run all 6 recon agents in parallel and return a consolidated ReconReport.
 
-    Completes in < 5 seconds for repos with < 500 files.
-    All analysis is local — no LLM calls, no network requests.
+    Completes in < 5 seconds for local analysis (< 500 files).
+    WebResearch agent calls the Atomadic inference endpoint and gracefully
+    degrades with a skip note if the endpoint is unavailable.
     """
     root = Path(path).resolve()
     t0 = time.monotonic()
 
     files = _iter_files(root)
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=5) as pool:
-        f_scout = pool.submit(_scout_agent, root, files)
-        f_dep   = pool.submit(_dependency_agent, root, files)
-        f_tier  = pool.submit(_tier_agent, root, files)
-        f_test  = pool.submit(_test_agent, root, files)
-        f_doc   = pool.submit(_doc_agent, root, files)
+    with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:
+        f_scout  = pool.submit(_scout_agent, root, files)
+        f_dep    = pool.submit(_dependency_agent, root, files)
+        f_tier   = pool.submit(_tier_agent, root, files)
+        f_test   = pool.submit(_test_agent, root, files)
+        f_doc    = pool.submit(_doc_agent, root, files)
+        f_web    = pool.submit(_web_research_agent, root, files)
 
         scout      = f_scout.result()
         dependency = f_dep.result()
         tier       = f_tier.result()
         test       = f_test.result()
         doc        = f_doc.result()
+        web        = f_web.result()
 
     recs, next_action = _build_recommendations(scout, dependency, tier, test, doc)
     duration_ms = (time.monotonic() - t0) * 1000
@@ -913,6 +999,7 @@ def run_parallel_recon(path: str | Path = ".") -> ReconReport:
         tier=tier,
         test=test,
         doc=doc,
+        web_research=web,
         recommendations=recs,
         next_action=next_action,
     )
