@@ -71,6 +71,11 @@ function nowISO() {
   return new Date().toISOString();
 }
 
+function safeJson(raw, fallback = null) {
+  if (!raw) return fallback;
+  try { return JSON.parse(raw); } catch { return fallback; }
+}
+
 function todayUTC() {
   return new Date().toISOString().slice(0, 10);
 }
@@ -688,7 +693,7 @@ async function act(env, decision, obs, cycleId) {
       const newAction = (decision.content || "").trim().toUpperCase().replace(/[^A-Z0-9_]/g, "_");
       if (!newAction) { result.ok = false; result.detail = { error: "empty action name" }; break; }
       try {
-        const raw     = await env.ATOMADIC_CACHE.get(KV.AVAILABLE_ACTIONS, { cacheTtl: 0 });
+        const raw     = await env.ATOMADIC_CACHE.get(KV.AVAILABLE_ACTIONS);
         const current = raw ? JSON.parse(raw) : [];
         if (!current.includes(newAction)) {
           current.push(newAction);
@@ -972,15 +977,16 @@ async function handleFetch(request, env) {
       env.ATOMADIC_CACHE.get("heartbeat_latest"),
       env.ATOMADIC_CACHE.get(KV.CYCLE_COUNT),
       env.ATOMADIC_CACHE.get("creator_alert"),
-      env.ATOMADIC_CACHE.get(KV.AVAILABLE_ACTIONS, { cacheTtl: 0 }),
+      env.ATOMADIC_CACHE.get(KV.AVAILABLE_ACTIONS),
     ]);
-    const storedActions = actionsRaw ? JSON.parse(actionsRaw) : [];
+    let storedActions = [];
+    try { storedActions = actionsRaw ? JSON.parse(actionsRaw) : []; } catch { /* stale data */ }
     const availableActions = [...new Set([...DEFAULT_ACTIONS, ...storedActions])];
     return Response.json({
       ok:                   true,
       ts:                   nowISO(),
-      state:                stateRaw     ? JSON.parse(stateRaw)     : null,
-      heartbeat:            heartbeatRaw ? JSON.parse(heartbeatRaw) : null,
+      state:                safeJson(stateRaw),
+      heartbeat:            safeJson(heartbeatRaw),
       last_thought_ts:      lastTs,
       tokens_used_today:    parseInt(tokensRaw      || "0",  10),
       cognition_interval:   parseInt(intervalRaw    || "60", 10),
@@ -988,7 +994,7 @@ async function handleFetch(request, env) {
       budget_max:           MAX_DAILY_TOKENS,
       smart_mode_available: !!(env.GEMINI_API_KEY || env.SAMBANOVA_API_KEY),
       smart_providers:      [env.GEMINI_API_KEY && "gemini", env.SAMBANOVA_API_KEY && "sambanova"].filter(Boolean),
-      creator_alert:        alertRaw ? JSON.parse(alertRaw) : null,
+      creator_alert:        safeJson(alertRaw),
       available_actions:    availableActions,
     }, { headers: CORS });
   }
