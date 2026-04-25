@@ -1,0 +1,9 @@
+{
+  "lane": "quality",
+  "applied": [
+    "missing_tests in src/ass_ade/a1_at_functions/a2a_discover_helpers.py",
+    "missing_tests in src/ass_ade/a1_at_functions/a2a_negotiate_helpers.py",
+    "missing_tests in src/ass_ade/a1_at_functions/a2a_validate_helpers.py"
+  ],
+  "skipped": []
+}
