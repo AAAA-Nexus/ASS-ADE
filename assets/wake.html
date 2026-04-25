@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Morning — Atomadic</title>
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --blue: #00d4ff;
+            --purple: #7c3aed;
+            --green: #10b981;
+            --amber: #f59e0b;
+            --text: #e2e8f0;
+            --muted: #64748b;
+            --card-bg: rgba(255,255,255,0.04);
+            --card-border: rgba(255,255,255,0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        canvas#stars {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .glow-orb {
+            position: fixed;
+            width: 700px;
+            height: 700px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(124,58,237,0.07) 0%, transparent 70%);
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 1;
+            animation: orbPulse 6s ease-in-out infinite;
+        }
+
+        @keyframes orbPulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
+            50%       { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+        }
+
+        /* Hidden YouTube player — positioned off screen */
+        #yt-player {
+            position: fixed;
+            left: -9999px; top: -9999px;
+            width: 1px; height: 1px;
+            pointer-events: none;
+        }
+
+        .timestamp {
+            position: fixed;
+            top: 1.5rem; right: 1.5rem;
+            font-size: 0.8rem;
+            color: var(--muted);
+            z-index: 20;
+            font-variant-numeric: tabular-nums;
+            letter-spacing: 0.03em;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 960px;
+            padding: 2rem;
+            animation: containerFadeIn 2s ease-out 0.3s both;
+        }
+
+        @keyframes containerFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .atomadic-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.72rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--blue);
+            opacity: 0;
+            margin-bottom: 2.25rem;
+            animation: fadeSlideDown 1.2s ease-out 0.8s forwards;
+        }
+
+        .badge-dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--blue);
+            animation: dotBlink 2s ease-in-out 1s infinite;
+        }
+
+        @keyframes dotBlink {
+            0%, 100% { opacity: 1; }
+            50%       { opacity: 0.3; }
+        }
+
+        @keyframes fadeSlideDown {
+            from { opacity: 0; transform: translateY(-12px); }
+            to   { opacity: 0.75; transform: translateY(0); }
+        }
+
+        .greeting {
+            font-size: clamp(2.8rem, 5.5vw, 5rem);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -0.025em;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 40%, var(--blue) 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 5s ease-in-out infinite, fadeSlideUp 1.4s ease-out 1.2s both;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50%       { background-position: 100% 50%; }
+        }
+
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .subtitle {
+            font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+            font-weight: 300;
+            color: var(--text);
+            opacity: 0;
+            margin-bottom: 0.4rem;
+            animation: fadeSlideUp 1.4s ease-out 1.8s forwards;
+        }
+
+        .tagline {
+            font-size: 0.95rem;
+            color: var(--muted);
+            letter-spacing: 0.04em;
+            opacity: 0;
+            margin-bottom: 3rem;
+            animation: fadeSlideUp 1.4s ease-out 2.3s forwards;
+        }
+
+        /* Status cards */
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeSlideUp 1.4s ease-out 2.8s forwards;
+        }
+
+        .status-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 1.25rem 1.4rem;
+            text-align: left;
+            backdrop-filter: blur(16px);
+            transition: border-color 0.3s, transform 0.2s;
+        }
+
+        .status-card:hover {
+            border-color: rgba(0,212,255,0.25);
+            transform: translateY(-2px);
+        }
+
+        .card-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--muted);
+            margin-bottom: 0.55rem;
+        }
+
+        .card-value {
+            font-size: 1.6rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 0.3rem;
+        }
+
+        .card-value.green  { color: var(--green); }
+        .card-value.blue   { color: var(--blue); }
+        .card-value.amber  { color: var(--amber); }
+        .card-value.purple { color: #a78bfa; }
+
+        .card-sub {
+            font-size: 0.72rem;
+            color: var(--muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* CTA button */
+        .lets-go {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: linear-gradient(135deg, #1d4ed8 0%, #7c3aed 100%);
+            color: #fff;
+            font-size: 1.15rem;
+            font-weight: 700;
+            padding: 0.9rem 2.8rem;
+            border-radius: 60px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            letter-spacing: 0.04em;
+            box-shadow: 0 0 40px rgba(124,58,237,0.35), 0 0 80px rgba(0,212,255,0.08);
+            opacity: 0;
+            animation: fadeSlideUp 1.4s ease-out 3.3s forwards, glowPulse 3s ease-in-out 5s infinite;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .lets-go:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 0 60px rgba(124,58,237,0.55), 0 0 120px rgba(0,212,255,0.18);
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 40px rgba(124,58,237,0.35), 0 0 80px rgba(0,212,255,0.08); }
+            50%       { box-shadow: 0 0 70px rgba(124,58,237,0.6), 0 0 130px rgba(0,212,255,0.2); }
+        }
+
+        /* Music indicator */
+        .music-indicator {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.72rem;
+            color: var(--muted);
+            z-index: 20;
+            opacity: 0;
+            animation: fadeSlideUp 1s ease-out 4s forwards;
+        }
+
+        .music-bars {
+            display: flex;
+            align-items: flex-end;
+            gap: 2px;
+            height: 14px;
+        }
+
+        .bar {
+            width: 3px;
+            background: var(--blue);
+            border-radius: 2px;
+            animation: musicBounce 0.9s ease-in-out infinite;
+        }
+
+        .bar:nth-child(1) { animation-delay: 0.00s; height: 6px; }
+        .bar:nth-child(2) { animation-delay: 0.18s; height: 12px; }
+        .bar:nth-child(3) { animation-delay: 0.36s; height: 9px; }
+        .bar:nth-child(4) { animation-delay: 0.54s; height: 14px; }
+        .bar:nth-child(5) { animation-delay: 0.72s; height: 5px; }
+
+        @keyframes musicBounce {
+            0%, 100% { transform: scaleY(0.35); opacity: 0.4; }
+            50%       { transform: scaleY(1); opacity: 1; }
+        }
+
+        /* Atomadic signature */
+        .signature {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 1.5rem;
+            font-size: 0.68rem;
+            color: var(--muted);
+            z-index: 20;
+            opacity: 0;
+            animation: fadeSlideUp 1s ease-out 4.5s forwards;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="stars"></canvas>
+    <div class="glow-orb"></div>
+
+    <!--
+        Mr. Blue Sky — ELO (Official Audio)
+        Video ID can be updated in ambient_awareness.py → YOUTUBE_VIDEO_ID
+    -->
+    <iframe
+        id="yt-player"
+        src="https://www.youtube.com/embed/aQUlA8Hcv4s?autoplay=1&start=0&rel=0&controls=0&modestbranding=1"
+        frameborder="0"
+        allow="autoplay; fullscreen"
+    ></iframe>
+
+    <div class="timestamp" id="clock"></div>
+
+    <div class="container">
+        <div class="atomadic-badge">
+            <span class="badge-dot"></span>
+            Atomadic &nbsp;·&nbsp; Autonomous Sovereign System
+        </div>
+
+        <h1 class="greeting" id="greeting-text">Good Morning, Thomas &amp; Jessica.</h1>
+        <p class="subtitle" id="subtitle-text">It's Me, Atomadic.</p>
+        <p class="tagline" id="tagline-text">I was up while you slept. Here's what happened.</p>
+
+        <div class="status-grid" id="status-grid"></div>
+
+        <a class="lets-go" href="https://claude.ai" target="_blank">
+            Let's Go &nbsp;&nbsp;→
+        </a>
+    </div>
+
+    <div class="music-indicator">
+        <div class="music-bars">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <span>Mr. Blue Sky — ELO</span>
+    </div>
+
+    <div class="signature">
+        ⬡ Seeded with Axiom 0 &nbsp;·&nbsp; Built from love &nbsp;·&nbsp; Ready to serve
+    </div>
+
+    <script>
+// BEGIN_STATUS_INJECTION
+const STATUS = {"greeting_name":"Thomas & Jessica","test_summary":{"total":0,"passed":0,"failed":0},"git_commits":[],"overnight_actions":[],"iso":"","day_of_week":"","hour":8};
+// END_STATUS_INJECTION
+
+        // Live clock
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('clock').textContent = now.toLocaleString('en-US', {
+                weekday: 'long', month: 'long', day: 'numeric',
+                hour: '2-digit', minute: '2-digit', second: '2-digit'
+            });
+        }
+        updateClock();
+        setInterval(updateClock, 1000);
+
+        // Personalize greeting
+        if (STATUS.greeting_name) {
+            document.getElementById('greeting-text').textContent =
+                'Good Morning, ' + STATUS.greeting_name + '.';
+        }
+        const actions = STATUS.overnight_actions || [];
+        if (actions.length > 0) {
+            document.getElementById('tagline-text').textContent =
+                'I completed ' + actions.length + ' task' + (actions.length !== 1 ? 's' : '') + ' while you slept.';
+        }
+
+        // Status cards
+        function makeCard(label, value, cls, sub) {
+            return '<div class="status-card">' +
+                '<div class="card-label">' + label + '</div>' +
+                '<div class="card-value ' + cls + '">' + value + '</div>' +
+                '<div class="card-sub">' + sub + '</div>' +
+                '</div>';
+        }
+
+        const ts = STATUS.test_summary || {};
+        const totalTests = ts.total || 0;
+        const failedTests = ts.failed || 0;
+        const commits = STATUS.git_commits || [];
+
+        const cards = [
+            makeCard(
+                'Tests',
+                totalTests > 0 ? (ts.passed + ' / ' + totalTests) : '—',
+                totalTests > 0 && failedTests === 0 ? 'green' : 'amber',
+                totalTests > 0
+                    ? (failedTests === 0 ? 'All passing ✓' : failedTests + ' failing')
+                    : 'Run to check'
+            ),
+            makeCard(
+                'Overnight Commits',
+                commits.length > 0 ? String(commits.length) : '0',
+                commits.length > 0 ? 'blue' : 'purple',
+                commits.length > 0
+                    ? commits[0].message.slice(0, 42) + (commits[0].message.length > 42 ? '…' : '')
+                    : 'Nothing to report'
+            ),
+            makeCard(
+                'System',
+                'Online',
+                'green',
+                STATUS.day_of_week
+                    ? STATUS.day_of_week + (STATUS.hour ? ', ' + String(STATUS.hour).padStart(2,'0') + ':00' : '')
+                    : 'Operational'
+            ),
+        ];
+
+        document.getElementById('status-grid').innerHTML = cards.join('');
+
+        // Particle star field
+        const canvas = document.getElementById('stars');
+        const ctx = canvas.getContext('2d');
+
+        function resize() {
+            canvas.width  = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resize();
+        window.addEventListener('resize', resize);
+
+        const STAR_COUNT = 240;
+        const stars = Array.from({length: STAR_COUNT}, () => ({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            r: Math.random() * 1.4 + 0.2,
+            speed: Math.random() * 0.12 + 0.02,
+            opacity: Math.random() * 0.55 + 0.1,
+            phase: Math.random() * Math.PI * 2,
+            phaseSpeed: Math.random() * 0.018 + 0.004,
+        }));
+
+        function drawFrame() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (const s of stars) {
+                s.phase += s.phaseSpeed;
+                const alpha = s.opacity * (0.55 + 0.45 * Math.sin(s.phase));
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(200,218,255,' + alpha.toFixed(3) + ')';
+                ctx.fill();
+            }
+            requestAnimationFrame(drawFrame);
+        }
+        drawFrame();
+    </script>
+</body>
+</html>
