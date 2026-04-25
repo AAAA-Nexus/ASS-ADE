@@ -406,8 +406,12 @@ def doctor_cmd(
 app.add_typer(book_app, name="book")
 
 from ass_ade.ade.cli import app as ade_app  # noqa: E402  — after `app` exists
+from ass_ade.a4_sy_orchestration.discord_cmd import discord_app  # noqa: E402
+from ass_ade.a4_sy_orchestration.hello_cmd import hello_app  # noqa: E402
 
 app.add_typer(ade_app, name="ade")
+app.add_typer(discord_app, name="discord")
+app.add_typer(hello_app, name="hello")
 
 _ensure_bundled_engine_first()
 

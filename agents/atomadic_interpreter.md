@@ -11,13 +11,13 @@
 This section is generated at prompt-build time from the code on disk.
 Treat it as the authoritative capability map for this session.
 
-Generated at: 2026-04-24T11:37:58Z
-Working directory: C:\!aaaa-nexus\ASS-ADE-SEED
-Resolved capability root: C:\!aaaa-nexus\ASS-ADE-SEED
+Generated at: 2026-04-25T00:53:36Z
+Working directory: C:\!aaaa-nexus\ASS-ADE-SEED\.claude\worktrees\priceless-cray-13ec70
+Resolved capability root: C:\!aaaa-nexus\ASS-ADE-SEED\.claude\worktrees\priceless-cray-13ec70
 
 ### Capability summary
 
-- CLI command paths: 232
+- CLI command paths: 233
 - Local agent tools: 13
 - MCP stdio tools: 25
 - Repo agents: 2
@@ -57,7 +57,7 @@ Resolved capability root: C:\!aaaa-nexus\ASS-ADE-SEED
 
 ### Top-level CLI groups
 
-- `a2a`, `aegis`, `agent`, `agents-refresh`, `assimilate`, `bitnet`, `blueprint`, `bridge`, `certify`, `chat`, `cherry-pick`, `compliance`, `context`, `control`, `credits`, `cycle`, `data`, `defi`, `design`, `dev`, `discovery`, `docs`, `doctor`, `eco-scan`, `enhance`, `escrow`, `feature`, `finish`, `forge`, `identity`, `init`, `lint`, `llm`, `lora-credit`, `lora-status`, `lora-train`, `mcp`, `memory`, `mev`, `nexus`, `optimize`, `oracle`, `pay`, `pipeline`, `plan`, `prompt`, `protocol`, `providers`, `ratchet`, `rebuild`, `recon`, `repo`, `reputation`, `rollback`, `sam-status`, `scout`, `search`, `security`, `selfbuild`, `setup`, +13 more
+- `a2a`, `aegis`, `agent`, `agents-refresh`, `assimilate`, `bitnet`, `blueprint`, `bridge`, `certify`, `chat`, `cherry-pick`, `compliance`, `context`, `control`, `credits`, `cycle`, `data`, `defi`, `design`, `dev`, `discovery`, `docs`, `doctor`, `eco-scan`, `enhance`, `escrow`, `feature`, `finish`, `forge`, `identity`, `init`, `lint`, `llm`, `lora-credit`, `lora-status`, `lora-train`, `mcp`, `memory`, `mev`, `nexus`, `optimize`, `oracle`, `pay`, `pipeline`, `plan`, `prompt`, `protocol`, `providers`, `ratchet`, `rebuild`, `recon`, `repo`, `reputation`, `rollback`, `sam-status`, `scout`, `search`, `security`, `selfbuild`, `setup`, +14 more
 
 ### Runtime routing rules
 

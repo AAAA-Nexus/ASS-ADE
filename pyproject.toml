@@ -55,6 +55,9 @@ dev = [
     "mypy>=1.10",
     "types-PyYAML>=6.0",
 ]
+discord = [
+    "discord.py>=2.3,<3",
+]
 lora = [
     "accelerate>=0.26,<1",
     "datasets>=2.16,<4",
