@@ -1,0 +1,360 @@
+{
+  "root": "/home/runner/work/ASS-ADE/ASS-ADE",
+  "total_findings": 34,
+  "by_impact": {
+    "high": 14,
+    "medium": 8,
+    "low": 22
+  },
+  "by_category": {
+    "security": 4,
+    "missing_tests": 10,
+    "long_function": 8,
+    "missing_docs": 8,
+    "missing_types": 8,
+    "technical_debt": 6
+  },
+  "findings": [
+    {
+      "id": 5,
+      "category": "missing_tests",
+      "title": "No tests for exclude_dirs.py",
+      "description": "src/ass_ade/a0_qk_constants/exclude_dirs.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/a0_qk_constants/exclude_dirs.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 6,
+      "category": "missing_tests",
+      "title": "No tests for pipeline_meta.py",
+      "description": "src/ass_ade/a0_qk_constants/pipeline_meta.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/a0_qk_constants/pipeline_meta.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 7,
+      "category": "missing_tests",
+      "title": "No tests for policy_types.py",
+      "description": "src/ass_ade/a0_qk_constants/policy_types.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/a0_qk_constants/policy_types.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 8,
+      "category": "missing_tests",
+      "title": "No tests for reference_roots.py",
+      "description": "src/ass_ade/a0_qk_constants/reference_roots.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/a0_qk_constants/reference_roots.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 9,
+      "category": "missing_tests",
+      "title": "No tests for schemas.py",
+      "description": "src/ass_ade/a0_qk_constants/schemas.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/a0_qk_constants/schemas.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 10,
+      "category": "missing_tests",
+      "title": "No tests for tier_names.py",
+      "description": "src/ass_ade/a0_qk_constants/tier_names.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/a0_qk_constants/tier_names.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 11,
+      "category": "missing_tests",
+      "title": "No tests for api_inventory_emit.py",
+      "description": "src/ass_ade/a1_at_functions/api_inventory_emit.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/a1_at_functions/api_inventory_emit.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 12,
+      "category": "missing_tests",
+      "title": "No tests for assimilate_policy_plan.py",
+      "description": "src/ass_ade/a1_at_functions/assimilate_policy_plan.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/a1_at_functions/assimilate_policy_plan.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 13,
+      "category": "missing_tests",
+      "title": "No tests for audit_rebuild.py",
+      "description": "src/ass_ade/a1_at_functions/audit_rebuild.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/a1_at_functions/audit_rebuild.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 14,
+      "category": "missing_tests",
+      "title": "No tests for cycle_detector.py",
+      "description": "src/ass_ade/a1_at_functions/cycle_detector.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/a1_at_functions/cycle_detector.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 15,
+      "category": "long_function",
+      "title": "Long function: _orchestrator_markdown",
+      "description": "_orchestrator_markdown spans ~52 lines in agents/sync_build_swarm_to_cursor.py.",
+      "file": "agents/sync_build_swarm_to_cursor.py",
+      "line": 125,
+      "impact": "medium",
+      "effort": "medium"
+    },
+    {
+      "id": 16,
+      "category": "long_function",
+      "title": "Long function: run",
+      "description": "run spans ~62 lines in hooks/post_rebuild.py.",
+      "file": "hooks/post_rebuild.py",
+      "line": 15,
+      "impact": "medium",
+      "effort": "medium"
+    },
+    {
+      "id": 17,
+      "category": "long_function",
+      "title": "Long function: run",
+      "description": "run spans ~55 lines in hooks/post_rebuild_collect_training.py.",
+      "file": "hooks/post_rebuild_collect_training.py",
+      "line": 20,
+      "impact": "medium",
+      "effort": "medium"
+    },
+    {
+      "id": 18,
+      "category": "long_function",
+      "title": "Long function: run",
+      "description": "run spans ~65 lines in hooks/post_rebuild_docs.py.",
+      "file": "hooks/post_rebuild_docs.py",
+      "line": 15,
+      "impact": "medium",
+      "effort": "medium"
+    },
+    {
+      "id": 19,
+      "category": "long_function",
+      "title": "Long function: run",
+      "description": "run spans ~58 lines in hooks/post_rebuild_eco_scan.py.",
+      "file": "hooks/post_rebuild_eco_scan.py",
+      "line": 15,
+      "impact": "medium",
+      "effort": "medium"
+    },
+    {
+      "id": 20,
+      "category": "long_function",
+      "title": "Long function: run",
+      "description": "run spans ~76 lines in hooks/pre_rebuild_validate.py.",
+      "file": "hooks/pre_rebuild_validate.py",
+      "line": 59,
+      "impact": "medium",
+      "effort": "medium"
+    },
+    {
+      "id": 21,
+      "category": "long_function",
+      "title": "Long function: build_output_metadata",
+      "description": "build_output_metadata spans ~63 lines in scripts/ass_ade_local_control.py.",
+      "file": "scripts/ass_ade_local_control.py",
+      "line": 271,
+      "impact": "medium",
+      "effort": "medium"
+    },
+    {
+      "id": 22,
+      "category": "long_function",
+      "title": "Long function: compare_snapshots",
+      "description": "compare_snapshots spans ~78 lines in scripts/ass_ade_local_control.py.",
+      "file": "scripts/ass_ade_local_control.py",
+      "line": 573,
+      "impact": "medium",
+      "effort": "medium"
+    },
+    {
+      "id": 23,
+      "category": "missing_docs",
+      "title": "Missing docstring: main",
+      "description": "main in agents/check_swarm_prompt_alignment.py has no docstring.",
+      "file": "agents/check_swarm_prompt_alignment.py",
+      "line": 27,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 24,
+      "category": "missing_docs",
+      "title": "Missing docstring: main",
+      "description": "main in agents/sync_build_swarm_to_cursor.py has no docstring.",
+      "file": "agents/sync_build_swarm_to_cursor.py",
+      "line": 180,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 25,
+      "category": "missing_docs",
+      "title": "Missing docstring: main",
+      "description": "main in scripts/apply_fixes.py has no docstring.",
+      "file": "scripts/apply_fixes.py",
+      "line": 41,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 26,
+      "category": "missing_docs",
+      "title": "Missing docstring: utc_now",
+      "description": "utc_now in scripts/ass_ade_local_control.py has no docstring.",
+      "file": "scripts/ass_ade_local_control.py",
+      "line": 64,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 27,
+      "category": "missing_docs",
+      "title": "Missing docstring: default_parent",
+      "description": "default_parent in scripts/ass_ade_local_control.py has no docstring.",
+      "file": "scripts/ass_ade_local_control.py",
+      "line": 68,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 28,
+      "category": "missing_docs",
+      "title": "Missing docstring: default_control_root",
+      "description": "default_control_root in scripts/ass_ade_local_control.py has no docstring.",
+      "file": "scripts/ass_ade_local_control.py",
+      "line": 77,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 29,
+      "category": "missing_docs",
+      "title": "Missing docstring: slugify",
+      "description": "slugify in scripts/ass_ade_local_control.py has no docstring.",
+      "file": "scripts/ass_ade_local_control.py",
+      "line": 85,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 30,
+      "category": "missing_docs",
+      "title": "Missing docstring: run",
+      "description": "run in scripts/ass_ade_local_control.py has no docstring.",
+      "file": "scripts/ass_ade_local_control.py",
+      "line": 90,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 31,
+      "category": "missing_types",
+      "title": "Missing return type hint: build_output_metadata",
+      "description": "build_output_metadata in scripts/ass_ade_local_control.py has no return type annotation.",
+      "file": "scripts/ass_ade_local_control.py",
+      "line": 271,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 32,
+      "category": "missing_types",
+      "title": "Missing return type hint: append_chain",
+      "description": "append_chain in scripts/ass_ade_local_control.py has no return type annotation.",
+      "file": "scripts/ass_ade_local_control.py",
+      "line": 1539,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 33,
+      "category": "missing_types",
+      "title": "Missing return type hint: promote_output",
+      "description": "promote_output in scripts/ass_ade_local_control.py has no return type annotation.",
+      "file": "scripts/ass_ade_local_control.py",
+      "line": 1645,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 34,
+      "category": "missing_types",
+      "title": "Missing return type hint: retire_outputs",
+      "description": "retire_outputs in scripts/ass_ade_local_control.py has no return type annotation.",
+      "file": "scripts/ass_ade_local_control.py",
+      "line": 1779,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 35,
+      "category": "missing_types",
+      "title": "Missing return type hint: check",
+      "description": "check in scripts/check_evolution_context.py has no return type annotation.",
+      "file": "scripts/check_evolution_context.py",
+      "line": 89,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 36,
+      "category": "missing_types",
+      "title": "Missing return type hint: cmd_recon",
+      "description": "cmd_recon in scripts/cli.py has no return type annotation.",
+      "file": "scripts/cli.py",
+      "line": 16,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 37,
+      "category": "missing_types",
+      "title": "Missing return type hint: cmd_enhance",
+      "description": "cmd_enhance in scripts/cli.py has no return type annotation.",
+      "file": "scripts/cli.py",
+      "line": 69,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 38,
+      "category": "missing_types",
+      "title": "Missing return type hint: cmd_rebuild",
+      "description": "cmd_rebuild in scripts/cli.py has no return type annotation.",
+      "file": "scripts/cli.py",
+      "line": 98,
+      "impact": "low",
+      "effort": "low"
+    }
+  ],
+  "scanned_files": 374
+}
