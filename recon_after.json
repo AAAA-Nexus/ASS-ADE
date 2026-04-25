@@ -6,12 +6,12 @@
 └─────────────────────────────────── v1.0.0 ───────────────────────────────────┘
 {
   "root": "/home/runner/work/ASS-ADE/ASS-ADE",
-  "duration_ms": 8321.256009999957,
-  "summary": "Repo at `/home/runner/work/ASS-ADE/ASS-ADE` contains 1098 files (848 source, 328 test-related) across 10 directory levels (4812.8 KB total). Test coverage: 1419 test functions across 137 test files (ratio 0.22). Documentation coverage is low (41%). Dominant tier: `at`.",
+  "duration_ms": 8437.717071000008,
+  "summary": "Repo at `/home/runner/work/ASS-ADE/ASS-ADE` contains 1106 files (856 source, 333 test-related) across 10 directory levels (4872.7 KB total). Test coverage: 1432 test functions across 142 test files (ratio 0.22). Documentation coverage is low (41%). Dominant tier: `at`.",
   "scout": {
-    "total_files": 1098,
-    "total_size_bytes": 4928347,
-    "total_size_kb": 4812.8,
+    "total_files": 1106,
+    "total_size_bytes": 4989613,
+    "total_size_kb": 4872.7,
     "max_depth": 10,
     "top_level": [
       ".env.example",
@@ -46,7 +46,7 @@
       "wrangler.toml"
     ],
     "by_extension": {
-      ".py": 809,
+      ".py": 817,
       ".md": 122,
       ".json": 50,
       ".rs": 22,
@@ -66,11 +66,11 @@
       ".bak": 1,
       ".html": 1
     },
-    "source_files": 848,
-    "test_files_count": 328
+    "source_files": 856,
+    "test_files_count": 333
   },
   "dependency": {
-    "python_files": 809,
+    "python_files": 817,
     "unique_external_deps": 78,
     "top_external_deps": [
       "__future__",
@@ -97,15 +97,15 @@
     "circular_deps": [],
     "has_circular_deps": false,
     "max_import_depth": 1,
-    "internal_modules": 809
+    "internal_modules": 817
   },
   "tier": {
-    "total_py_files": 809,
+    "total_py_files": 817,
     "tier_distribution": {
       "qk": 23,
-      "at": 662,
+      "at": 669,
       "mo": 35,
-      "og": 19,
+      "og": 20,
       "sy": 70
     },
     "tier_examples": {
@@ -135,7 +135,7 @@
         "src/ass_ade/tools/plan.py",
         "src/ass_ade/tools/builtin.py",
         "src/ass_ade/a2_mo_composites/block_registry.py",
-        "src/ass_ade/a2_mo_composites/context_loader_wiring_specialist_core.py"
+        "src/ass_ade/a2_mo_composites/ambient_awareness.py"
       ],
       "sy": [
         "src/ass_ade/cli.py",
@@ -160,9 +160,9 @@
     "dominant_tier": "at"
   },
   "test": {
-    "test_files": 137,
-    "test_functions": 1419,
-    "source_files": 635,
+    "test_files": 142,
+    "test_functions": 1432,
+    "source_files": 638,
     "untested_modules": [
       "src/ass_ade/interpreter.py",
       "src/ass_ade/recon.py",
@@ -197,11 +197,11 @@
       "tests/test_interpreter_edge_cases.py",
       "tests/test_conflict_detector.py",
       "tests/test_phase1_integration.py",
+      "tests/test_cherry_picker.py",
       "tests/test_ssrf_protection.py",
       "tests/test_map_terrain.py",
       "tests/test_assimilation_multi_source.py",
-      "tests/test_body_extractor.py",
-      "tests/test_emit_test_manifest.py"
+      "tests/test_body_extractor.py"
     ]
   },
   "doc": {
@@ -225,8 +225,8 @@
       "src/ass_ade/README.md",
       "src/ass_ade/USER_GUIDE.md"
     ],
-    "total_public_callables": 3871,
-    "documented_callables": 1568,
+    "total_public_callables": 3904,
+    "documented_callables": 1588,
     "doc_coverage": 0.41,
     "undocumented_samples": [
       "src/ass_ade/config.py:AssAdeConfig",
