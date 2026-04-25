@@ -631,6 +631,34 @@ def _substitute_datetime_tokens(path: str) -> str:
     return path
 
 
+_SLUG_STOPWORDS = frozenset({
+    "a", "an", "the", "and", "or", "of", "in", "on", "at", "to",
+    "for", "with", "by", "from", "as", "is", "be", "it", "that",
+    "this", "new", "create", "add", "make", "build", "implement",
+    "feature", "module", "command",
+})
+
+
+def _feature_slug(feature_desc: str, max_words: int = 5) -> str:
+    """Convert a feature description to a max-5-word descriptive snake_case slug."""
+    words = re.findall(r"[a-z0-9]+", feature_desc.lower())
+    meaningful = [w for w in words if w not in _SLUG_STOPWORDS and len(w) > 1]
+    slug = "_".join(meaningful[:max_words])
+    return slug or re.sub(r"[^a-z0-9]+", "_", feature_desc.lower()).strip("_")[:30]
+
+
+def _read_welcome_md(working_dir: Path) -> str | None:
+    """Search for WELCOME_ATOMADIC.md from working_dir upward; return content or None."""
+    for search_dir in (working_dir, *working_dir.parents):
+        candidate = search_dir / "WELCOME_ATOMADIC.md"
+        if candidate.exists():
+            try:
+                return candidate.read_text(encoding="utf-8")[:3000]
+            except OSError:
+                pass
+    return None
+
+
 # ── Turn record ───────────────────────────────────────────────────────────────
 
 @dataclass
@@ -905,18 +933,80 @@ class Atomadic:
             self.memory.save()
             return response
 
-        # ── Add-feature — intercept before LLM (LLM doesn't know this intent) ──
+        # ── Conversational status/progress queries → chat (not doctor or add-feature) ──
+        _status_chat_patterns = (
+            "how is ", "how's ", "how are ", "status on ", "status of ",
+            "update on ", "what's the status", "progress on ",
+            "any update", "any progress", "how's it going", "how is it going",
+        )
+        if any(p in lower_text for p in _status_chat_patterns):
+            llm_result = _call_llm(text, self.working_dir, _summarize_memory(self.memory))
+            reply = (
+                llm_result.get("response", "")
+                if llm_result and llm_result.get("type") == "chat"
+                else (
+                    "I don't have real-time status on that. "
+                    "Try `ass-ade doctor` to check system health, or describe what you're working on."
+                )
+            )
+            turn = Turn(user=text, tone=tone, intent="chat", path=str(self.working_dir),
+                        command=[], output="", response=reply)
+            self.history.append(turn)
+            self.memory.update_from_turn(turn)
+            self.memory.append_history(turn)
+            self.memory.save()
+            return reply
+
+        # ── Scout — first word "scout" dispatches to scout runner, not doctor ──
+        if lower_text.split()[:1] == ["scout"]:
+            from ass_ade.a3_og_features.skill_runner import SkillContext, _run_scout
+            ctx = SkillContext(
+                user_input=text,
+                working_dir=self.working_dir,
+                tone=tone,
+                domain_level=self.personality.domain_level,
+                history=self.history,
+            )
+            print(f"\n🧠 Intent: scout", flush=True)
+            print(flush=True)
+            raw_output = _run_scout(ctx)
+            response = self.personality.shape_response(raw_output)
+            turn = Turn(user=text, tone=tone, intent="recon",
+                        path=str(self.working_dir), command=[], output=raw_output, response=response)
+            self.history.append(turn)
+            self.memory.update_from_turn(turn)
+            self.memory.append_history(turn)
+            self.memory.save()
+            return response
+
+        # ── Self-introspect → WELCOME_ATOMADIC.md or describe_self() ──
+        _introspect_triggers = (
+            "tell me about yourself", "about yourself", "what are you",
+            "explore you", "who are you", "describe yourself",
+            "introduce yourself", "what is atomadic", "what's atomadic",
+        )
+        if any(t in lower_text for t in _introspect_triggers):
+            raw_output = _read_welcome_md(self.working_dir) or self.describe_self()
+            turn = Turn(user=text, tone=tone, intent="chat", path=str(self.working_dir),
+                        command=[], output=raw_output, response=raw_output)
+            self.history.append(turn)
+            self.memory.update_from_turn(turn)
+            self.memory.append_history(turn)
+            self.memory.save()
+            return raw_output
+
+        # ── Add-feature — explicit verb + feature/module/command/tool/skill only ──
         _add_feature_triggers = (
-            "add a tool", "add a skill", "add a feature", "new tool",
-            "new skill", "create a tool", "create a skill",
-            "add web search", "add search tool", "new feature",
-            "add feature", "add a web", "add an ", "create a new",
-            # broader patterns: "add a [noun]" not already covered
-            "add a health", "add a cache", "add a queue", "add a worker",
-            "add a middleware", "add a plugin", "add a module", "add a service",
-            "add a command", "add a route", "add a endpoint", "add an endpoint",
-            "add a handler", "add a validator", "add a parser", "add a client",
-            # test coverage
+            "add a feature", "add feature", "new feature",
+            "add a module", "add module", "new module",
+            "add a command", "add command", "new command",
+            "add a tool", "add tool", "new tool",
+            "add a skill", "add skill", "new skill",
+            "create a feature", "create a module", "create a command",
+            "create a tool", "create a skill",
+            "build a feature", "build a module", "build a command",
+            "make a feature", "make a module", "make a command",
+            # test coverage (explicit)
             "add tests", "add test", "add unit test", "add integration test",
             "want to add tests", "need tests for", "add coverage",
         )
@@ -1023,8 +1113,6 @@ class Atomadic:
 
                 # Rebuild clarification guard applies on the LLM path too.
                 if intent == "rebuild" and path == str(self.working_dir) and not self.history:
-                    print(f"\n🧠 Intent: rebuild", flush=True)
-                    print(flush=True)
                     self._pending_clarification = "path"
                     self._clarification_ctx = {"intent": intent}
                     return self._ask_clarification(tone)
@@ -1071,8 +1159,6 @@ class Atomadic:
                 intent = _classify_intent(text)
 
         if intent == "rebuild" and path == str(self.working_dir) and not self.history:
-            print(f"\n🧠 Intent: rebuild", flush=True)
-            print(flush=True)
             self._pending_clarification = "path"
             self._clarification_ctx = {"intent": intent}
             return self._ask_clarification(tone)
@@ -1392,20 +1478,33 @@ class Atomadic:
     def _execute_rebuild_pipeline(self, source: str, output: str) -> str:
         """Built-in rebuild pipeline: backup → copy → recon → lint → docs → certify → hot-patch."""
         import shutil as _shutil
+        from rich.console import Console as _Console
+        from ass_ade.a0_qk_constants.cli_theme import CLI_THEME
+        from ass_ade.a1_at_functions.tui_helpers import (
+            check_grid, command_header, error_panel, section_rule, verdict_panel,
+        )
+        _rc = _Console(theme=CLI_THEME)
 
         source_path = Path(source).resolve()
         output_path = Path(output).resolve()
         base = [sys.executable, "-m", "ass_ade"]
 
-        # Safety: block in-place rebuild
         if source_path == output_path:
+            _rc.print(error_panel(
+                "Source and output are the same path — in-place rebuild blocked for safety.",
+                title="Rebuild Blocked",
+            ))
             return "[error] Source and output are the same path — in-place rebuild blocked for safety."
 
-        print(f"\n🧠 Intent: rebuild")
-        print(f"🔧 Dispatching: rebuild pipeline (5 phases)")
-        print(f"   Source : {source_path}")
-        print(f"   Output : {output_path}")
-        print(flush=True)
+        _rc.print(command_header(
+            "Rebuild Pipeline",
+            subtitle="backup → copy → recon → lint → docs → certify → hot-patch",
+            version="5 phases",
+        ))
+        _rc.print(check_grid([
+            ("info", "Source", str(source_path)),
+            ("info", "Output", str(output_path)),
+        ]))
 
         # Phase 0 — auto-backup
         ts = datetime.now().strftime("%Y%m%d-%H%M%S")
@@ -1414,28 +1513,30 @@ class Atomadic:
         while backup_path.exists():
             suffix += 1
             backup_path = source_path.parent / f"{source_path.name}-backup-{ts}-{suffix}"
-        print(f"🛡️  Backup : {backup_path}")
+        _rc.print(section_rule("Phase 0 · Backup"))
         try:
             _shutil.copytree(str(source_path), str(backup_path))
-            print(f"✅ Backup complete ({backup_path.name})", flush=True)
+            _rc.print(check_grid([("ok", "Backup", backup_path.name)]))
         except Exception as exc:
+            _rc.print(error_panel(f"Backup failed: {exc} — rebuild aborted.", title="Backup Failed"))
             return f"[error] Backup failed: {exc} — rebuild aborted for safety."
 
         # Phase 1 — copy source to output
-        print(f"\n⏳ Phase 1/5: Copying source to output folder...", flush=True)
+        _rc.print(section_rule("Phase 1 · Copy"))
         try:
             if output_path.exists():
                 _shutil.rmtree(output_path)
             _shutil.copytree(str(source_path), str(output_path))
             file_count = sum(1 for f in output_path.rglob("*") if f.is_file())
-            print(f"✅ Copied {file_count} files → {output_path.name}", flush=True)
+            _rc.print(check_grid([("ok", "Copied", f"{file_count} files → {output_path.name}")]))
         except OSError as exc:
-            print(f"[error] Copy failed: {exc}", flush=True)
+            _rc.print(error_panel(f"Copy failed: {exc}", title="Phase 1 Failed"))
             return (
                 f"[error] Copy failed (disk full?): {exc}\n"
                 f"Backup preserved at: {backup_path}"
             )
         except Exception as exc:
+            _rc.print(error_panel(f"Copy failed: {exc}", title="Phase 1 Failed"))
             return f"[error] Copy failed: {exc}"
 
         out_str = str(output_path)
@@ -1448,19 +1549,19 @@ class Atomadic:
             ("Certify", ["certify", out_str]),
         ]
         for idx, (label, args) in enumerate(phases, start=2):
-            print(f"\n⏳ Phase {idx}/5: {label}...", flush=True)
+            _rc.print(section_rule(f"Phase {idx} · {label}"))
             rc = self._run_streaming(base + args)
             if rc != 0:
-                print(f"⚠️  {label} completed with warnings (exit {rc})", flush=True)
+                _rc.print(check_grid([("warn", label, f"completed with warnings (exit {rc})")]))
                 warnings.append(label)
             else:
-                print(f"✅ {label} done", flush=True)
+                _rc.print(check_grid([("ok", label, "done")]))
 
         # Verify output is non-empty
         output_file_count = sum(1 for f in output_path.rglob("*") if f.is_file()) if output_path.exists() else 0
         if output_file_count == 0:
             failure_msg = "Rebuild produced empty output."
-            print(f"\n❌ {failure_msg}", flush=True)
+            _rc.print(error_panel(failure_msg, title="Rebuild Failed"))
             log_path = source_path / "REBUILD_FAILURE.log"
             try:
                 log_path.write_text(
@@ -1469,17 +1570,30 @@ class Atomadic:
                 )
             except OSError:
                 pass
-            print(f"🔄 Rolling back to backup {backup_path.name}...", flush=True)
+            _rc.print(section_rule("Rollback"))
             self._rollback(output_path, backup_path)
+            _rc.print(check_grid([("warn", "Restored", str(backup_path.name))]))
             return f"[error] {failure_msg} Restored from backup: {backup_path}"
 
         # Hot-patch: reload updated modules immediately
-        print(f"\n⚡ Hot-patching updated modules...", flush=True)
+        _rc.print(section_rule("Hot Patch"))
         patched = self._hot_patch()
         if patched:
-            print(f"✅ Hot-patched: {', '.join(patched)}", flush=True)
+            _rc.print(check_grid([("ok", "Hot-patched", ", ".join(patched))]))
 
-        print(flush=True)
+        has_warnings = bool(warnings)
+        verdict_text = (
+            "All 5 phases complete"
+            if not has_warnings
+            else f"Pipeline complete — warnings in: {', '.join(warnings)}"
+        )
+        _rc.print(verdict_panel(
+            verdict_text,
+            detail=f"Output: {output_path}  ·  Backup: {backup_path.name}",
+            passed=True,
+            has_warnings=has_warnings,
+        ))
+
         result_tag = "[ok] All 5 phases complete" if not warnings else f"[ok] Pipeline complete — warnings in: {', '.join(warnings)}"
         return f"{result_tag}\nOutput : {output_path}\nBackup : {backup_path}"
 
@@ -1641,7 +1755,7 @@ class Atomadic:
 
     def _create_tier_feature_skeleton(self, feature_desc: str, source: Path) -> list[str]:
         """Create skeleton files in the correct monadic tier folders inside source."""
-        slug = re.sub(r"[^a-z0-9]+", "_", feature_desc.lower()).strip("_")[:40]
+        slug = _feature_slug(feature_desc)
         created: list[str] = []
 
         def _find_tier(prefix: str) -> Path | None:
@@ -2392,10 +2506,36 @@ def run_interactive(working_dir: Path | None = None) -> None:
     agent._startup_suggestions = suggestions
 
     if use_rich and console:
-        from rich.markdown import Markdown as _Markdown
-        console.print()
-        console.print(f"[bold cyan]{greeting_text}[/bold cyan]")
-        console.print(f"\n[dim]Working dir: {wdir}   ·   type '@skills' for skills, '@scout' to survey a repo   ·   'exit' to quit[/dim]\n")
+        try:
+            from rich.panel import Panel as _Panel
+            from rich import box as _rbox
+            from ass_ade.a0_qk_constants.cli_theme import CLI_THEME, TIER_COLORS
+            from ass_ade.a1_at_functions.tui_helpers import section_rule
+            _rc = __import__("rich.console", fromlist=["Console"]).Console(theme=CLI_THEME)
+        except Exception:
+            _rc = console  # fallback to existing console
+
+        tier_dirs = sorted(scan.get("tier_dirs_found", []))
+        tier_line = ""
+        if tier_dirs:
+            parts = []
+            for t in tier_dirs:
+                _style = TIER_COLORS.get(t, "accent") if "TIER_COLORS" in dir() else "cyan"
+                parts.append(f"[{_style}]{t}[/{_style}]")
+            tier_line = "\n\n[dim]Tiers:[/dim]  " + "  ".join(parts)
+
+        _rc.print()
+        _rc.print(_Panel(
+            f"[heading]{greeting_text}[/heading]{tier_line}",
+            title="[heading]Atomadic · ASS-ADE[/heading]",
+            border_style="accent",
+            box=_rbox.ROUNDED if "_rbox" in dir() else None,
+            padding=(1, 2),
+        ))
+        _rc.print(f"[muted]Working dir:[/muted] [path]{wdir}[/path]   "
+                  f"[muted]·   '@skills'  '@scout'  'exit'[/muted]\n")
+        # Reassign console for REPL output so it uses the theme
+        console = _rc
     else:
         print(f"\n{greeting_text}")
         print(f"\nWorking dir: {wdir}   ·   type '@skills' for skills, '@scout' to survey a repo   ·   'exit' to quit\n")

@@ -366,41 +366,68 @@ def doctor_cmd(
     ] = False,
 ) -> None:
     """Show which ASS-ADE surfaces are available in this environment."""
+    from rich.console import Console as _Console
+    from ass_ade.a0_qk_constants.cli_theme import CLI_THEME
+    from ass_ade.a1_at_functions.tui_helpers import (
+        check_grid, command_header, section_rule, verdict_panel, warn_panel,
+    )
+    _rc = _Console(theme=CLI_THEME)
+
     _ensure_bundled_engine_first()
     checkout_root = _checkout_root()
     expected_v11 = checkout_root / "ass-ade-v1.1" / "src" / "ass_ade"
     expected_engine = _bundled_engine_pkg()
     v11_file = Path(__file__).resolve()
-    lines = [
-        f"[ass-ade] checkout root: {checkout_root}",
-        f"[ass-ade] monadic pipeline: OK -> {v11_file}",
-        "[ass-ade] one-shot sibling ingest: `ass-ade assimilate PRIMARY OUTPUT [--also PATH ...]`",
-        "[ass-ade] multi-root policy: under CI (or ASS_ADE_ASSIMILATE_REQUIRE_POLICY=1), `--also` requires `--policy` YAML",
-        "[ass-ade] assimilate emits `ASSIMILATE_PLAN` (see `--plan-out` + book JSON `ASSIMILATE_PLAN` key)",
-    ]
+
+    _rc.print(command_header("ASS-ADE · Environment Check", subtitle="unified CLI surface diagnostics"))
+    _rc.print(section_rule("Paths"))
+    _rc.print(check_grid([
+        ("info", "Checkout root", str(checkout_root)),
+        ("info", "Monadic pipeline", str(v11_file)),
+    ]))
+
+    warnings: list[str] = []
     if expected_v11.exists() and not _is_under(v11_file, expected_v11):
-        lines.append(f"[ass-ade] WARNING: monadic package is not resolving under {expected_v11}")
+        warnings.append(f"Monadic package not resolving under {expected_v11}")
+
+    _rc.print(section_rule("Engine Package"))
+    rows = []
     try:
         ass_ade = importlib.import_module("ass_ade")
         ass_ade_file = Path(getattr(ass_ade, "__file__", "") or "")
         ass_ade_location = str(ass_ade_file.resolve()) if ass_ade_file else "namespace package"
-        lines.append(f"[ass-ade] engine package (ass_ade): OK -> {ass_ade_location}")
+        rows.append(("ok", "ass_ade package", ass_ade_location))
         if expected_engine.exists() and ass_ade_file and not _is_under(ass_ade_file, expected_engine):
-            lines.append(f"[ass-ade] WARNING: ass_ade is not resolving under {expected_engine}")
+            warnings.append(f"ass_ade not resolving under {expected_engine}")
         try:
             cli_mod = importlib.import_module("ass_ade.cli")
             cli_file = Path(getattr(cli_mod, "__file__", "") or "")
             cli_location = str(cli_file.resolve()) if cli_file else "namespace package"
-            lines.append(f"[ass-ade] engine CLI: OK -> {cli_location}")
-            lines.append("[ass-ade] CLI aliases: `ass-ade ...` and `atomadic ...`")
+            rows.append(("ok", "engine CLI", cli_location))
+            rows.append(("info", "CLI aliases", "ass-ade ...  /  atomadic ..."))
         except ImportError as exc:
-            lines.append(f"[ass-ade] engine CLI: MISSING -> {exc}")
+            rows.append(("fail", "engine CLI", f"MISSING — {exc}"))
+            warnings.append("engine CLI unavailable")
     except ImportError:
-        lines.append(
-            "[ass-ade] ass_ade engine package: MISSING -> install this repo root with "
-            "`pip install -e \".[dev]\"` so `import ass_ade` resolves"
-        )
-    typer.echo("\n".join(lines))
+        rows.append(("fail", "ass_ade package", "MISSING — pip install -e \".[dev]\""))
+        warnings.append("ass_ade engine package not installed")
+    _rc.print(check_grid(rows))
+
+    _rc.print(section_rule("Capabilities"))
+    _rc.print(check_grid([
+        ("info", "Assimilate", "ass-ade assimilate PRIMARY OUTPUT [--also PATH ...]"),
+        ("info", "Multi-root policy", "--also requires --policy YAML under CI"),
+        ("info", "Assimilate plan", "--plan-out + book JSON ASSIMILATE_PLAN key"),
+    ]))
+
+    for w in warnings:
+        _rc.print(warn_panel(w))
+
+    _rc.print(verdict_panel(
+        "Environment check complete",
+        passed=len(warnings) == 0,
+        has_warnings=len(warnings) > 0,
+    ))
 
 
 app.add_typer(book_app, name="book")
