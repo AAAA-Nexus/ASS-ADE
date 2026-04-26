@@ -60,7 +60,7 @@ AAAA_NEXUS_API_KEY: str = os.getenv("AAAA_NEXUS_API_KEY", "")
 GROQ_API_KEY: str = os.getenv("GROQ_API_KEY", "")
 OPENROUTER_API_KEY: str = os.getenv("OPENROUTER_API_KEY", "")
 CEREBRAS_API_KEY: str = os.getenv("CEREBRAS_API_KEY", "")
-INFERENCE_URL: str = "https://atomadic.tech/v1/inference"
+INFERENCE_URL: str = os.getenv("ATOMADIC_INFERENCE_URL", "https://atomadic.tech/v1/inference")
 GITHUB_REPO: str = "AAAA-Nexus/ASS-ADE"
 
 # Log which providers are active at startup
