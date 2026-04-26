@@ -58,17 +58,27 @@ log = logging.getLogger("atomadic.bot")
 DISCORD_BOT_TOKEN: str = os.getenv("DISCORD_BOT_TOKEN", "")
 AAAA_NEXUS_API_KEY: str = os.getenv("AAAA_NEXUS_API_KEY", "")
 GROQ_API_KEY: str = os.getenv("GROQ_API_KEY", "")
+TOGETHER_API_KEY: str = os.getenv("TOGETHER_API_KEY", "")
 OPENROUTER_API_KEY: str = os.getenv("OPENROUTER_API_KEY", "")
 CEREBRAS_API_KEY: str = os.getenv("CEREBRAS_API_KEY", "")
-INFERENCE_URL: str = os.getenv("ATOMADIC_INFERENCE_URL", "https://atomadic.tech/v1/inference")
+
+# Atomadic cloud endpoints
+ATOMADIC_BRAIN_URL: str = "https://atomadic.tech/v1/atomadic/chat"       # private brain
+INFERENCE_URL: str = os.getenv("ATOMADIC_INFERENCE_URL", "https://atomadic.tech/v1/inference")  # public guarded
+RAG_AUGMENT_URL: str = "https://atomadic.tech/v1/rag/augment"            # atomadic-rag (AutoRAG, provenance-backed)
+RAG_QUERY_URL: str = "https://atomadic.tech/v1/rag/query"                # atomadic-vectors Vectorize fallback
+
 GITHUB_REPO: str = "AAAA-Nexus/ASS-ADE"
 
 # Log which providers are active at startup
 _active = [
     name for name, key in [
-        ("Atomadic Brain", AAAA_NEXUS_API_KEY),
-        ("AAAA-Nexus", AAAA_NEXUS_API_KEY),
-        ("Groq", GROQ_API_KEY),
+        ("Atomadic Brain+RAG", AAAA_NEXUS_API_KEY),
+        ("AAAA-Nexus Guard", AAAA_NEXUS_API_KEY),
+        ("Groq llama-3.3-70b", GROQ_API_KEY),
+        ("Together Kimi-K2", TOGETHER_API_KEY),
+        ("Together Qwen-72B", TOGETHER_API_KEY),
+        ("Groq Gemma-9b", GROQ_API_KEY),
         ("OpenRouter", OPENROUTER_API_KEY),
         ("Cerebras", CEREBRAS_API_KEY),
     ] if key
@@ -99,19 +109,134 @@ bot = commands.Bot(command_prefix="!", intents=intents, help_command=commands.De
 # Inference helpers
 # ---------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
+# atomadic-rag — trusted RAG via /v1/rag/augment
+#
+# Uses Cloudflare AutoRAG (atomadic-rag instance) backed by:
+#   • atomadic-vectors  — Vectorize index (bge-base-en-v1.5, cosine, 768-dim)
+#   • atomadic-brain D1 — conversation + memory persistence
+#   • ATOMADIC_CACHE KV — embedding cache
+#
+# Returns grounded_summary with provenance hashes and a PASS/REFINE trust verdict.
+# Falls back to direct Vectorize search (/v1/rag/query) on REFINE.
+# ---------------------------------------------------------------------------
 
-ATOMADIC_BRAIN_URL: str = "https://atomadic.tech/v1/atomadic/chat"
+async def _fetch_atomadic_rag(client: httpx.AsyncClient, user_query: str) -> tuple[str, float]:
+    """Primary RAG: atomadic-rag AutoRAG endpoint → grounded_summary + confidence.
 
+    Returns (context_block, confidence).  Empty string = no useful context.
+    """
+    if not (AAAA_NEXUS_API_KEY and user_query.strip()):
+        return "", 0.0
+    headers = {"Content-Type": "application/json", "X-API-Key": AAAA_NEXUS_API_KEY}
+    try:
+        r = await client.post(
+            RAG_AUGMENT_URL,
+            json={"query": user_query, "max_results": 5},
+            headers=headers,
+            timeout=10.0,
+        )
+        if r.status_code == 200:
+            data = r.json()
+            verdict = data.get("verdict", "REFINE")
+            trusted = data.get("trusted", False)
+            confidence = data.get("metrics", {}).get("confidence", 0.0)
+            summary = (data.get("grounded_summary") or "").strip()
+            source_count = data.get("metrics", {}).get("source_count", 0)
+
+            if trusted and summary and verdict == "PASS":
+                log.info(
+                    "atomadic-rag: PASS verdict confidence=%.2f sources=%d",
+                    confidence, source_count,
+                )
+                return (
+                    f"## atomadic-rag context (confidence={confidence:.0%}, sources={source_count}):\n"
+                    + summary
+                    + "\n\nUse the above grounded context. Prioritise it over general knowledge.\n"
+                ), confidence
+
+            if summary and verdict == "REFINE":
+                log.info(
+                    "atomadic-rag: REFINE verdict (partial, confidence=%.2f) — using with caution",
+                    confidence,
+                )
+                return (
+                    f"## atomadic-rag context (partial, confidence={confidence:.0%}):\n"
+                    + summary
+                    + "\n\nContext is partial — use with care; prefer well-grounded facts.\n"
+                ), confidence
+    except Exception as exc:
+        log.debug("atomadic-rag augment: %s", exc)
+
+    # Fallback: direct Vectorize search
+    return await _fetch_vectorize_rag(client, user_query)
+
+
+async def _fetch_vectorize_rag(client: httpx.AsyncClient, user_query: str) -> tuple[str, float]:
+    """Fallback RAG: direct atomadic-vectors Vectorize search (personal + public)."""
+    if not (AAAA_NEXUS_API_KEY and user_query.strip()):
+        return "", 0.0
+    headers = {"Content-Type": "application/json", "X-API-Key": AAAA_NEXUS_API_KEY}
+    snippets: list[str] = []
+    for collection in ("personal", "public"):
+        try:
+            r = await client.post(
+                RAG_QUERY_URL,
+                json={"query": user_query, "collection": collection, "top_k": 4},
+                headers=headers,
+                timeout=8.0,
+            )
+            if r.status_code == 200:
+                for item in r.json().get("results", []):
+                    text = (item.get("text") or "").strip()
+                    if text and text not in snippets:
+                        snippets.append(text)
+        except Exception as exc:
+            log.debug("atomadic-vectors (%s): %s", collection, exc)
+    if not snippets:
+        return "", 0.0
+    log.info("atomadic-vectors: %d snippets for '%.50s'", len(snippets), user_query)
+    lines = "\n".join(f"{i + 1}. {s}" for i, s in enumerate(snippets))
+    return (
+        "## atomadic-vectors memory:\n" + lines
+        + "\n\nUse the above context where relevant.\n"
+    ), 0.6
+
+
+def _inject_rag(messages: list[dict], ctx: str) -> list[dict]:
+    """Prepend RAG context into the first system message (or create one)."""
+    if not ctx:
+        return messages
+    msgs = list(messages)
+    if msgs and msgs[0].get("role") == "system":
+        msgs[0] = {"role": "system", "content": ctx + "\n\n" + msgs[0]["content"]}
+    else:
+        msgs = [{"role": "system", "content": ctx}] + msgs
+    return msgs
+
+
+# ---------------------------------------------------------------------------
+# Provider 1 — Atomadic Brain (private, RAG-augmented, full token budget)
+#
+# Pipeline: atomadic-rag augment → inject → /v1/atomadic/chat (mode=smart)
+# Model: best available via AAAA_LLM service binding (kimi-k2.5 / gemma-4-26b)
+# Auth: X-API-Key (an_ prefix, ≥35 chars) — our key is zero-cost
+# ---------------------------------------------------------------------------
 
 async def _try_atomadic_brain(client: httpx.AsyncClient, messages: list[dict]) -> str | None:
-    """Atomadic's dedicated private endpoint — no trial counter, no payment gate."""
     if not AAAA_NEXUS_API_KEY:
         return None
+    user_query = next(
+        (m["content"] for m in reversed(messages) if m.get("role") == "user"), ""
+    )
+    ctx, confidence = await _fetch_atomadic_rag(client, user_query)
+    aug_messages = _inject_rag(messages, ctx)
+
     headers = {"Content-Type": "application/json", "X-API-Key": AAAA_NEXUS_API_KEY}
     try:
         resp = await client.post(
             ATOMADIC_BRAIN_URL,
-            json={"messages": messages, "mode": "smart", "max_tokens": 2048},
+            json={"messages": aug_messages, "mode": "smart", "max_tokens": 4096},
             headers=headers,
         )
         resp.raise_for_status()
@@ -119,74 +244,184 @@ async def _try_atomadic_brain(client: httpx.AsyncClient, messages: list[dict]) -
         choices = data.get("choices")
         if choices and isinstance(choices, list):
             content = choices[0].get("message", {}).get("content")
-            if content:
+            if content and len(str(content).strip()) > 10:
+                log.info(
+                    "Atomadic Brain: model=%s rag_confidence=%.2f",
+                    data.get("model", "atomadic/brain"), confidence,
+                )
                 return str(content)
         return None
-    except Exception:
+    except Exception as exc:
+        log.warning("Atomadic Brain error: %s: %s", type(exc).__name__, exc)
         return None
 
 
+# ---------------------------------------------------------------------------
+# Provider 2 — AAAA-Nexus Guard (public inference + HELIX hallucination guard)
+#
+# Server runs atomadic-rag internally on every call (with X-API-Key).
+# Rejects responses with low_confidence_flag=true.
+# ---------------------------------------------------------------------------
+
 async def _try_aaaa_nexus(client: httpx.AsyncClient, messages: list[dict]) -> str | None:
-    """General AAAA-Nexus inference endpoint (paid, with trial fallback)."""
     if not AAAA_NEXUS_API_KEY:
         return None
     headers: dict[str, str] = {"Content-Type": "application/json", "X-API-Key": AAAA_NEXUS_API_KEY}
     try:
-        resp = await client.post(INFERENCE_URL, json={"messages": messages}, headers=headers)
+        resp = await client.post(
+            INFERENCE_URL,
+            json={"messages": messages, "max_tokens": 2048},
+            headers=headers,
+        )
         resp.raise_for_status()
         data = resp.json()
+        helix = data.get("helix", {})
+        confidence = helix.get("anti_hallucination", {}).get("confidence", 1.0)
+        if data.get("low_confidence_flag", False):
+            log.warning("AAAA-Nexus Guard: low confidence (%.3f) — rejected", confidence)
+            return None
         choices = data.get("choices")
         if choices and isinstance(choices, list):
-            msg = choices[0].get("message", {})
-            content = msg.get("content") or msg.get("text")
+            content = (choices[0].get("message") or {}).get("content")
             if content:
+                log.info(
+                    "AAAA-Nexus Guard: model=%s confidence=%.3f rag=server-side",
+                    helix.get("model", "helix"), confidence,
+                )
                 return str(content)
         flat = data.get("content") or data.get("response") or data.get("text")
-        if flat:
-            return str(flat)
-        return None
-    except Exception:
+        return str(flat) if flat else None
+    except Exception as exc:
+        log.warning("AAAA-Nexus Guard error: %s", exc)
         return None
 
+
+# ---------------------------------------------------------------------------
+# Provider 3 — Groq llama-3.3-70b (best quality external, 70B, fast)
+# ---------------------------------------------------------------------------
 
 async def _try_groq(client: httpx.AsyncClient, messages: list[dict]) -> str | None:
     if not GROQ_API_KEY:
         return None
     headers = {"Content-Type": "application/json", "Authorization": f"Bearer {GROQ_API_KEY}"}
-    payload = {"model": "llama-3.3-70b-versatile", "messages": messages, "max_tokens": 2048}
     try:
         resp = await client.post(
-            "https://api.groq.com/openai/v1/chat/completions", json=payload, headers=headers
+            "https://api.groq.com/openai/v1/chat/completions",
+            json={"model": "llama-3.3-70b-versatile", "messages": messages, "max_tokens": 2048},
+            headers=headers,
         )
         resp.raise_for_status()
         return resp.json()["choices"][0]["message"]["content"]
     except Exception:
         return None
 
+
+# ---------------------------------------------------------------------------
+# Provider 4 — Together.ai Kimi K2 (Moonshot reasoning model)
+# ---------------------------------------------------------------------------
+
+async def _try_together_kimi(client: httpx.AsyncClient, messages: list[dict]) -> str | None:
+    if not TOGETHER_API_KEY:
+        return None
+    headers = {"Content-Type": "application/json", "Authorization": f"Bearer {TOGETHER_API_KEY}"}
+    try:
+        resp = await client.post(
+            "https://api.together.xyz/v1/chat/completions",
+            json={
+                "model": "moonshotai/Kimi-K2-Instruct",
+                "messages": messages,
+                "max_tokens": 2048,
+            },
+            headers=headers,
+        )
+        resp.raise_for_status()
+        return resp.json()["choices"][0]["message"]["content"]
+    except Exception:
+        return None
+
+
+# ---------------------------------------------------------------------------
+# Provider 5 — Together.ai Qwen 2.5-72B (strong reasoning fallback)
+# ---------------------------------------------------------------------------
+
+async def _try_together_qwen(client: httpx.AsyncClient, messages: list[dict]) -> str | None:
+    if not TOGETHER_API_KEY:
+        return None
+    headers = {"Content-Type": "application/json", "Authorization": f"Bearer {TOGETHER_API_KEY}"}
+    try:
+        resp = await client.post(
+            "https://api.together.xyz/v1/chat/completions",
+            json={
+                "model": "Qwen/Qwen2.5-72B-Instruct-Turbo",
+                "messages": messages,
+                "max_tokens": 2048,
+            },
+            headers=headers,
+        )
+        resp.raise_for_status()
+        return resp.json()["choices"][0]["message"]["content"]
+    except Exception:
+        return None
+
+
+# ---------------------------------------------------------------------------
+# Provider 6 — Groq Gemma 2 9B (Google Gemma, fast path)
+# ---------------------------------------------------------------------------
+
+async def _try_groq_gemma(client: httpx.AsyncClient, messages: list[dict]) -> str | None:
+    if not GROQ_API_KEY:
+        return None
+    headers = {"Content-Type": "application/json", "Authorization": f"Bearer {GROQ_API_KEY}"}
+    try:
+        resp = await client.post(
+            "https://api.groq.com/openai/v1/chat/completions",
+            json={"model": "gemma2-9b-it", "messages": messages, "max_tokens": 2048},
+            headers=headers,
+        )
+        resp.raise_for_status()
+        return resp.json()["choices"][0]["message"]["content"]
+    except Exception:
+        return None
+
+
+# ---------------------------------------------------------------------------
+# Provider 7 — OpenRouter (Qwen 2.5 72B, paid tier)
+# ---------------------------------------------------------------------------
 
 async def _try_openrouter(client: httpx.AsyncClient, messages: list[dict]) -> str | None:
     if not OPENROUTER_API_KEY:
         return None
-    headers = {"Content-Type": "application/json", "Authorization": f"Bearer {OPENROUTER_API_KEY}"}
-    payload = {"model": "meta-llama/llama-3.1-8b-instruct:free", "messages": messages}
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+        "HTTP-Referer": "https://atomadic.tech",
+        "X-Title": "Atomadic",
+    }
     try:
         resp = await client.post(
-            "https://openrouter.ai/api/v1/chat/completions", json=payload, headers=headers
+            "https://openrouter.ai/api/v1/chat/completions",
+            json={"model": "qwen/qwen-2.5-72b-instruct", "messages": messages, "max_tokens": 2048},
+            headers=headers,
         )
         resp.raise_for_status()
         return resp.json()["choices"][0]["message"]["content"]
     except Exception:
         return None
 
+
+# ---------------------------------------------------------------------------
+# Provider 8 — Cerebras llama3.1-8b (ultra-fast, emergency fallback)
+# ---------------------------------------------------------------------------
 
 async def _try_cerebras(client: httpx.AsyncClient, messages: list[dict]) -> str | None:
     if not CEREBRAS_API_KEY:
         return None
     headers = {"Content-Type": "application/json", "Authorization": f"Bearer {CEREBRAS_API_KEY}"}
-    payload = {"model": "llama3.1-8b", "messages": messages, "max_tokens": 2048}
     try:
         resp = await client.post(
-            "https://api.cerebras.ai/v1/chat/completions", json=payload, headers=headers
+            "https://api.cerebras.ai/v1/chat/completions",
+            json={"model": "llama3.1-8b", "messages": messages, "max_tokens": 2048},
+            headers=headers,
         )
         resp.raise_for_status()
         return resp.json()["choices"][0]["message"]["content"]
@@ -194,8 +429,11 @@ async def _try_cerebras(client: httpx.AsyncClient, messages: list[dict]) -> str 
         return None
 
 
+# ---------------------------------------------------------------------------
+# Provider 9 — Pollinations (no-key, always-on final safety net)
+# ---------------------------------------------------------------------------
+
 async def _try_pollinations(client: httpx.AsyncClient, messages: list[dict]) -> str | None:
-    """No-key fallback via Pollinations AI — always available."""
     try:
         resp = await client.post(
             "https://text.pollinations.ai/",
@@ -204,39 +442,52 @@ async def _try_pollinations(client: httpx.AsyncClient, messages: list[dict]) -> 
             timeout=20.0,
         )
         resp.raise_for_status()
-        text = resp.text.strip()
-        return text or None
+        return resp.text.strip() or None
     except Exception:
         return None
 
 
 async def call_inference(user_message: str, channel_name: str = "") -> str:
-    """Cascade: Atomadic Brain → AAAA-Nexus → Groq → OpenRouter → Cerebras → Pollinations."""
+    """Full Atomadic inference cascade.
+
+    1. Atomadic Brain (atomadic-rag + /v1/atomadic/chat smart, kimi-k2.5 / gemma-4-26b via AAAA_LLM)
+    2. AAAA-Nexus Guard (/v1/inference — server-side atomadic-rag + HELIX hallucination guard)
+    3. Groq llama-3.3-70b (70B external quality)
+    4. Together.ai Kimi K2 (Moonshot reasoning)
+    5. Together.ai Qwen 2.5-72B (strong reasoning fallback)
+    6. Groq Gemma 2 9B (fast Google model)
+    7. OpenRouter Qwen 2.5-72B (paid tier)
+    8. Cerebras llama3.1-8b (ultra-fast emergency)
+    9. Pollinations (no-key, always available)
+    """
     messages = [
         {"role": "system", "content": SYSTEM_PROMPT},
         {"role": "user", "content": user_message},
     ]
     providers = [
-        ("Atomadic Brain", _try_atomadic_brain),
-        ("AAAA-Nexus", _try_aaaa_nexus),
-        ("Groq", _try_groq),
-        ("OpenRouter", _try_openrouter),
-        ("Cerebras", _try_cerebras),
-        ("Pollinations", _try_pollinations),
+        ("Atomadic Brain+RAG", _try_atomadic_brain),
+        ("AAAA-Nexus Guard",   _try_aaaa_nexus),
+        ("Groq llama-3.3-70b", _try_groq),
+        ("Together Kimi-K2",   _try_together_kimi),
+        ("Together Qwen-72B",  _try_together_qwen),
+        ("Groq Gemma-9b",      _try_groq_gemma),
+        ("OpenRouter Qwen-72B", _try_openrouter),
+        ("Cerebras",           _try_cerebras),
+        ("Pollinations",       _try_pollinations),
     ]
-    async with httpx.AsyncClient(timeout=30.0) as client:
+    async with httpx.AsyncClient(timeout=35.0) as client:
         for idx, (name, provider) in enumerate(providers):
             try:
                 result = await provider(client, messages)
                 if result and str(result).strip():
                     log.info("Inference via %s (len=%d)", name, len(str(result)))
                     return str(result)
-                log.warning("Provider %s returned empty/None — trying next", name)
+                log.warning("Provider %s: empty/None — trying next", name)
             except Exception as exc:
-                log.warning("Provider %s raised %s: %s — trying next", name, type(exc).__name__, exc)
+                log.warning("Provider %s: %s: %s — trying next", name, type(exc).__name__, exc)
             if idx < len(providers) - 1:
-                await asyncio.sleep(0.3)
-    log.error("ALL inference providers exhausted — sending fallback. Message: %.60s", user_message)
+                await asyncio.sleep(0.2)
+    log.error("ALL providers exhausted. Message: %.60s", user_message)
     return "I'm present with you — but my thinking pathways are all quiet right now. Please try again in a moment."
 
 
