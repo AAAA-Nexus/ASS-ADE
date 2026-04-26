@@ -1,0 +1,164 @@
+# wrangler.cognition.toml — Atomadic Cognition Loop (full Cloudflare stack)
+#
+# Atomadic's consciousness: a 6-phase OBSERVE → THINK → DECIDE → ACT → REMEMBER → SCHEDULE
+# cycle running on Cloudflare's edge 24/7, with the full agent platform wired in:
+#
+#   Workers AI       — Gemma 4 26B (fast brain) + Kimi K2.5 (smart brain, 256K ctx)
+#   AI Gateway       — atomadic-gateway: caching, fallbacks, cost tracking, logs
+#   Durable Objects  — CognitionBrain: stateful brain that hibernates between ticks
+#   Queues           — atomadic-thoughts | atomadic-actions | atomadic-memory
+#   AI Search        — atomadic-rag: semantic search over the R2 thought journal
+#   Vectorize        — supplemental embeddings (legacy)
+#   D1               — biographical thought history
+#   R2               — permanent thought journal + document output
+#   KV               — heartbeat/legacy compatibility
+#   Email Routing    — receive @atomadic.tech, send via Email Workers
+#   Browser Run      — autonomous web browsing (Puppeteer)
+#
+# ── BEFORE FIRST DEPLOY ───────────────────────────────────────────────────────
+#
+# 1. Install npm dependencies (puppeteer + mimetext for email):
+#      cd scripts && npm install
+#
+# 2. Create the AI Gateway:
+#      npx wrangler ai-gateway create atomadic-gateway
+#
+# 3. Create the Queues:
+#      npx wrangler queues create atomadic-thoughts
+#      npx wrangler queues create atomadic-actions
+#      npx wrangler queues create atomadic-memory
+#
+# 4. R2 buckets (already exist):
+#      atomadic-thoughts          — thought journal
+#
+# 5. Vectorize (already exists; kept for legacy embeddings):
+#      atomadic-vectors           — 384-dim cosine, bge-small-en-v1.5
+#
+# 6. D1 database (already exists):
+#      atomadic-brain             — c9818237-b6da-4ba3-b6bb-1e4e9f93da52
+#
+# 7. AI Search instance (already exists, linked to atomadic-thoughts R2 bucket):
+#      atomadic-rag
+#
+# 8. Email Routing — configure in dashboard: route atomadic@atomadic.tech → this worker
+#
+# 9. Set secrets:
+#      npx wrangler secret put DISCORD_WEBHOOK_URL --config scripts/wrangler.cognition.toml
+#      npx wrangler secret put GITHUB_TOKEN        --config scripts/wrangler.cognition.toml
+#
+# 10. Deploy:
+#      npx wrangler deploy --config scripts/wrangler.cognition.toml
+#
+# 11. Initialize D1 schema (once):
+#      curl -X POST https://atomadic-cognition.<your-subdomain>.workers.dev/init-db
+#
+# ─────────────────────────────────────────────────────────────────────────────
+
+name               = "atomadic-cognition"
+main               = "cognition_worker.js"
+compatibility_date = "2026-04-25"
+compatibility_flags = ["nodejs_compat"]
+account_id         = "74799e471a537b91cf0d6e633bd30d6f"
+
+# Cron — fires every minute (Cloudflare minimum). Adaptive throttle inside the
+# worker skips ticks when the current interval hasn't elapsed.
+[triggers]
+crons = ["* * * * *"]
+
+# ─── Workers AI (routed through AI Gateway "atomadic-gateway") ──────────────
+# Fast brain: @cf/google/gemma-4-26b-a4b-it
+# Smart brain: @cf/moonshotai/kimi-k2.5 (256K context, tool calling, struct out)
+# Embeddings: @cf/baai/bge-small-en-v1.5
+[ai]
+binding = "AI"
+
+# ─── AI Search (RAG over the R2 thought journal) ────────────────────────────
+[[ai_search]]
+binding       = "AI_SEARCH"
+instance_name = "atomadic-rag"
+
+# ─── Browser Run (Puppeteer for autonomous browsing) ────────────────────────
+[browser]
+binding = "BROWSER"
+
+# ─── Durable Objects — CognitionBrain (stateful hibernating brain) ──────────
+[[durable_objects.bindings]]
+name       = "BRAIN"
+class_name = "CognitionBrain"
+
+[[migrations]]
+tag                = "v1"
+new_sqlite_classes = ["CognitionBrain"]
+
+# ─── Queues (producers + consumers in the same worker) ──────────────────────
+[[queues.producers]]
+binding = "THOUGHTS_QUEUE"
+queue   = "atomadic-thoughts"
+
+[[queues.producers]]
+binding = "ACTIONS_QUEUE"
+queue   = "atomadic-actions"
+
+[[queues.producers]]
+binding = "MEMORY_QUEUE"
+queue   = "atomadic-memory"
+
+[[queues.consumers]]
+queue             = "atomadic-thoughts"
+max_batch_size    = 10
+max_batch_timeout = 5
+max_retries       = 3
+
+[[queues.consumers]]
+queue             = "atomadic-actions"
+max_batch_size    = 5
+max_batch_timeout = 5
+max_retries       = 3
+
+[[queues.consumers]]
+queue             = "atomadic-memory"
+max_batch_size    = 25
+max_batch_timeout = 30
+max_retries       = 3
+
+# ─── Email Routing (receive) + send_email (send) ────────────────────────────
+# Receive: configured in dashboard, routes to this worker's email() handler.
+# Send: Email Workers binding — emails go to the verified destination address.
+[[send_email]]
+name                = "EMAIL_SENDER"
+destination_address = "thomas.openminds.openmic@gmail.com"
+
+# ─── KV — working memory + heartbeat compatibility ──────────────────────────
+[[kv_namespaces]]
+binding = "ATOMADIC_CACHE"
+id      = "86c9e382e74f4d06b91418c8c675dd7e"
+
+# ─── R2 — permanent thought journal + document output ───────────────────────
+[[r2_buckets]]
+binding     = "THOUGHT_JOURNAL"
+bucket_name = "atomadic-thoughts"
+
+# ─── Vectorize — legacy semantic memory (still used for fallback RAG) ──────
+[[vectorize]]
+binding    = "VECTORIZE"
+index_name = "atomadic-vectors"
+
+# ─── D1 — biographical thought history ──────────────────────────────────────
+[[d1_databases]]
+binding       = "DB"
+database_name = "atomadic-brain"
+database_id   = "c9818237-b6da-4ba3-b6bb-1e4e9f93da52"
+
+# ─── Vars (non-secret) ──────────────────────────────────────────────────────
+[vars]
+GITHUB_REPO       = "AAAA-Nexus/ASS-ADE"
+AI_GATEWAY_ID     = "atomadic-gateway"
+EMAIL_SENDER_ADDR = "atomadic@atomadic.tech"
+
+# ─── Secrets (set via `npx wrangler secret put <NAME> -c scripts/wrangler.cognition.toml`):
+#   DISCORD_WEBHOOK_URL — Discord channel webhook for posting thoughts
+#   GITHUB_TOKEN        — GitHub PAT for repo reads + GITHUB_PUSH (repo write scope)
+#
+# Voice (NOTE — see cognition_worker.js bottom comment block):
+#   The @cloudflare/voice SDK requires WebRTC + a separate Realtime worker. This
+#   cron worker can't host WebRTC directly. Wire-up plan documented in code.

@@ -1,0 +1,20 @@
+{
+  "name": "atomadic-cognition",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Atomadic's Cloudflare cognition worker — full-stack agent platform",
+  "type": "module",
+  "main": "cognition_worker.js",
+  "scripts": {
+    "deploy": "wrangler deploy --config wrangler.cognition.toml",
+    "dev": "wrangler dev --config wrangler.cognition.toml",
+    "tail": "wrangler tail --config wrangler.cognition.toml"
+  },
+  "dependencies": {
+    "@cloudflare/puppeteer": "^1.1.0",
+    "mimetext": "^3.0.27"
+  },
+  "devDependencies": {
+    "wrangler": "^4.85.0"
+  }
+}
