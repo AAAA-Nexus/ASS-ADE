@@ -1,350 +1,44 @@
 {
   "schema_version": "ass-ade.cherry-pick/v1",
-  "source_label": "C:\\!atomadic\\ass-ade-v1.1\\src\\ass_ade\\a3_og_features",
-  "source_root": "C:\\!atomadic\\ass-ade-v1.1\\src\\ass_ade\\a3_og_features",
+  "source_label": "C:\\!aaaa-nexus\\.ass-ade-pytest-basetemp\\test_cli_cherry_pick_quiet_jso2\\scout.json",
+  "source_root": "C:\\!aaaa-nexus\\.ass-ade-pytest-basetemp\\test_cli_cherry_pick_quiet_jso2",
   "target_root": "C:\\!aaaa-nexus\\ASS-ADE-SEED",
-  "selected_count": 19,
+  "selected_count": 2,
   "items": [
     {
       "index": 1,
       "action": "assimilate",
       "kind": "function",
-      "qualname": "emit_api_inventory",
-      "module": "emit_api_inventory",
-      "rel_path": "emit_api_inventory.py",
-      "source_root": "C:\\!atomadic\\ass-ade-v1.1\\src\\ass_ade\\a3_og_features",
-      "lineno": 15,
-      "end_lineno": 25,
-      "confidence": 0.55,
+      "qualname": "high_value",
+      "module": "pkg",
+      "rel_path": "pkg.py",
+      "source_root": "C:\\!aaaa-nexus\\.ass-ade-pytest-basetemp\\test_cli_cherry_pick_quiet_jso2",
+      "lineno": 1,
+      "end_lineno": 3,
+      "confidence": 0.91,
       "reasons": [
-        "direct-scan candidate (python)"
+        "tested"
       ],
-      "recommended_path": "direct-scan from emit_api_inventory.py",
+      "recommended_path": "a1_at_functions/",
       "docstring_present": true,
-      "has_nearby_test": false
+      "has_nearby_test": true
     },
     {
       "index": 2,
-      "action": "assimilate",
+      "action": "rebuild",
       "kind": "function",
-      "qualname": "run_book_until",
-      "module": "pipeline_book",
-      "rel_path": "pipeline_book.py",
-      "source_root": "C:\\!atomadic\\ass-ade-v1.1\\src\\ass_ade\\a3_og_features",
-      "lineno": 64,
-      "end_lineno": 118,
-      "confidence": 0.55,
+      "qualname": "needs_rebuild",
+      "module": "pkg",
+      "rel_path": "pkg.py",
+      "source_root": "",
+      "lineno": 0,
+      "end_lineno": 0,
+      "confidence": 0.8,
       "reasons": [
-        "direct-scan candidate (python)"
+        "risk"
       ],
-      "recommended_path": "direct-scan from pipeline_book.py",
-      "docstring_present": true,
-      "has_nearby_test": false
-    },
-    {
-      "index": 3,
-      "action": "assimilate",
-      "kind": "function",
-      "qualname": "run_emit_test_manifest",
-      "module": "emit_test_manifest",
-      "rel_path": "emit_test_manifest.py",
-      "source_root": "C:\\!atomadic\\ass-ade-v1.1\\src\\ass_ade\\a3_og_features",
-      "lineno": 11,
-      "end_lineno": 19,
-      "confidence": 0.55,
-      "reasons": [
-        "direct-scan candidate (python)"
-      ],
-      "recommended_path": "direct-scan from emit_test_manifest.py",
-      "docstring_present": true,
-      "has_nearby_test": false
-    },
-    {
-      "index": 4,
-      "action": "assimilate",
-      "kind": "function",
-      "qualname": "run_phase0_recon",
-      "module": "phase0_recon",
-      "rel_path": "phase0_recon.py",
-      "source_root": "C:\\!atomadic\\ass-ade-v1.1\\src\\ass_ade\\a3_og_features",
-      "lineno": 13,
-      "end_lineno": 38,
-      "confidence": 0.55,
-      "reasons": [
-        "direct-scan candidate (python)"
-      ],
-      "recommended_path": "direct-scan from phase0_recon.py",
-      "docstring_present": true,
-      "has_nearby_test": false
-    },
-    {
-      "index": 5,
-      "action": "assimilate",
-      "kind": "function",
-      "qualname": "run_phase0_recon_multi",
-      "module": "phase0_recon_multi",
-      "rel_path": "phase0_recon_multi.py",
-      "source_root": "C:\\!atomadic\\ass-ade-v1.1\\src\\ass_ade\\a3_og_features",
-      "lineno": 13,
-      "end_lineno": 58,
-      "confidence": 0.55,
-      "reasons": [
-        "direct-scan candidate (python)"
-      ],
-      "recommended_path": "direct-scan from phase0_recon_multi.py",
-      "docstring_present": true,
-      "has_nearby_test": false
-    },
-    {
-      "index": 6,
-      "action": "assimilate",
-      "kind": "function",
-      "qualname": "run_phase1_ingest",
-      "module": "phase1_ingest",
-      "rel_path": "phase1_ingest.py",
-      "source_root": "C:\\!atomadic\\ass-ade-v1.1\\src\\ass_ade\\a3_og_features",
-      "lineno": 14,
-      "end_lineno": 30,
-      "confidence": 0.55,
-      "reasons": [
-        "direct-scan candidate (python)"
-      ],
-      "recommended_path": "direct-scan from phase1_ingest.py",
+      "recommended_path": "",
       "docstring_present": false,
-      "has_nearby_test": false
-    },
-    {
-      "index": 7,
-      "action": "assimilate",
-      "kind": "function",
-      "qualname": "run_phase1_ingest_multi",
-      "module": "phase1_ingest",
-      "rel_path": "phase1_ingest.py",
-      "source_root": "C:\\!atomadic\\ass-ade-v1.1\\src\\ass_ade\\a3_og_features",
-      "lineno": 33,
-      "end_lineno": 84,
-      "confidence": 0.55,
-      "reasons": [
-        "direct-scan candidate (python)"
-      ],
-      "recommended_path": "direct-scan from phase1_ingest.py",
-      "docstring_present": true,
-      "has_nearby_test": false
-    },
-    {
-      "index": 8,
-      "action": "assimilate",
-      "kind": "function",
-      "qualname": "run_phase2_gapfill",
-      "module": "phase2_gapfill",
-      "rel_path": "phase2_gapfill.py",
-      "source_root": "C:\\!atomadic\\ass-ade-v1.1\\src\\ass_ade\\a3_og_features",
-      "lineno": 10,
-      "end_lineno": 21,
-      "confidence": 0.55,
-      "reasons": [
-        "direct-scan candidate (python)"
-      ],
-      "recommended_path": "direct-scan from phase2_gapfill.py",
-      "docstring_present": false,
-      "has_nearby_test": false
-    },
-    {
-      "index": 9,
-      "action": "assimilate",
-      "kind": "function",
-      "qualname": "run_phase3_enrich",
-      "module": "phase3_enrich",
-      "rel_path": "phase3_enrich.py",
-      "source_root": "C:\\!atomadic\\ass-ade-v1.1\\src\\ass_ade\\a3_og_features",
-      "lineno": 13,
-      "end_lineno": 30,
-      "confidence": 0.55,
-      "reasons": [
-        "direct-scan candidate (python)"
-      ],
-      "recommended_path": "direct-scan from phase3_enrich.py",
-      "docstring_present": true,
-      "has_nearby_test": false
-    },
-    {
-      "index": 10,
-      "action": "assimilate",
-      "kind": "function",
-      "qualname": "run_phase4_validate",
-      "module": "phase4_validate",
-      "rel_path": "phase4_validate.py",
-      "source_root": "C:\\!atomadic\\ass-ade-v1.1\\src\\ass_ade\\a3_og_features",
-      "lineno": 11,
-      "end_lineno": 30,
-      "confidence": 0.55,
-      "reasons": [
-        "direct-scan candidate (python)"
-      ],
-      "recommended_path": "direct-scan from phase4_validate.py",
-      "docstring_present": false,
-      "has_nearby_test": false
-    },
-    {
-      "index": 11,
-      "action": "assimilate",
-      "kind": "function",
-      "qualname": "run_phase5_materialize",
-      "module": "phase5_materialize",
-      "rel_path": "phase5_materialize.py",
-      "source_root": "C:\\!atomadic\\ass-ade-v1.1\\src\\ass_ade\\a3_og_features",
-      "lineno": 15,
-      "end_lineno": 44,
-      "confidence": 0.55,
-      "reasons": [
-        "direct-scan candidate (python)"
-      ],
-      "recommended_path": "direct-scan from phase5_materialize.py",
-      "docstring_present": false,
-      "has_nearby_test": false
-    },
-    {
-      "index": 12,
-      "action": "assimilate",
-      "kind": "function",
-      "qualname": "run_phase6_audit",
-      "module": "phase6_audit",
-      "rel_path": "phase6_audit.py",
-      "source_root": "C:\\!atomadic\\ass-ade-v1.1\\src\\ass_ade\\a3_og_features",
-      "lineno": 11,
-      "end_lineno": 13,
-      "confidence": 0.55,
-      "reasons": [
-        "direct-scan candidate (python)"
-      ],
-      "recommended_path": "direct-scan from phase6_audit.py",
-      "docstring_present": false,
-      "has_nearby_test": false
-    },
-    {
-      "index": 13,
-      "action": "assimilate",
-      "kind": "function",
-      "qualname": "run_phase7_package",
-      "module": "phase7_package",
-      "rel_path": "phase7_package.py",
-      "source_root": "C:\\!atomadic\\ass-ade-v1.1\\src\\ass_ade\\a3_og_features",
-      "lineno": 11,
-      "end_lineno": 24,
-      "confidence": 0.55,
-      "reasons": [
-        "direct-scan candidate (python)"
-      ],
-      "recommended_path": "direct-scan from phase7_package.py",
-      "docstring_present": false,
-      "has_nearby_test": false
-    },
-    {
-      "index": 14,
-      "action": "assimilate",
-      "kind": "function",
-      "qualname": "run_phase_a0_materialize",
-      "module": "phase_a0_materialize",
-      "rel_path": "phase_a0_materialize.py",
-      "source_root": "C:\\!atomadic\\ass-ade-v1.1\\src\\ass_ade\\a3_og_features",
-      "lineno": 21,
-      "end_lineno": 52,
-      "confidence": 0.55,
-      "reasons": [
-        "direct-scan candidate (python)"
-      ],
-      "recommended_path": "direct-scan from phase_a0_materialize.py",
-      "docstring_present": true,
-      "has_nearby_test": false
-    },
-    {
-      "index": 15,
-      "action": "assimilate",
-      "kind": "function",
-      "qualname": "run_phases_0_through_2",
-      "module": "pipeline_phases_0_2",
-      "rel_path": "pipeline_phases_0_2.py",
-      "source_root": "C:\\!atomadic\\ass-ade-v1.1\\src\\ass_ade\\a3_og_features",
-      "lineno": 16,
-      "end_lineno": 60,
-      "confidence": 0.55,
-      "reasons": [
-        "direct-scan candidate (python)"
-      ],
-      "recommended_path": "direct-scan from pipeline_phases_0_2.py",
-      "docstring_present": true,
-      "has_nearby_test": false
-    },
-    {
-      "index": 16,
-      "action": "assimilate",
-      "kind": "function",
-      "qualname": "run_phases_0_through_3",
-      "module": "pipeline_phases_0_2",
-      "rel_path": "pipeline_phases_0_2.py",
-      "source_root": "C:\\!atomadic\\ass-ade-v1.1\\src\\ass_ade\\a3_og_features",
-      "lineno": 63,
-      "end_lineno": 68,
-      "confidence": 0.55,
-      "reasons": [
-        "direct-scan candidate (python)"
-      ],
-      "recommended_path": "direct-scan from pipeline_phases_0_2.py",
-      "docstring_present": true,
-      "has_nearby_test": false
-    },
-    {
-      "index": 17,
-      "action": "assimilate",
-      "kind": "function",
-      "qualname": "run_rebuild_v11",
-      "module": "pipeline_rebuild_v11",
-      "rel_path": "pipeline_rebuild_v11.py",
-      "source_root": "C:\\!atomadic\\ass-ade-v1.1\\src\\ass_ade\\a3_og_features",
-      "lineno": 16,
-      "end_lineno": 46,
-      "confidence": 0.55,
-      "reasons": [
-        "direct-scan candidate (python)"
-      ],
-      "recommended_path": "direct-scan from pipeline_rebuild_v11.py",
-      "docstring_present": true,
-      "has_nearby_test": false
-    },
-    {
-      "index": 18,
-      "action": "assimilate",
-      "kind": "function",
-      "qualname": "stop_after_from_label",
-      "module": "pipeline_book",
-      "rel_path": "pipeline_book.py",
-      "source_root": "C:\\!atomadic\\ass-ade-v1.1\\src\\ass_ade\\a3_og_features",
-      "lineno": 55,
-      "end_lineno": 61,
-      "confidence": 0.55,
-      "reasons": [
-        "direct-scan candidate (python)"
-      ],
-      "recommended_path": "direct-scan from pipeline_book.py",
-      "docstring_present": true,
-      "has_nearby_test": false
-    },
-    {
-      "index": 19,
-      "action": "assimilate",
-      "kind": "function",
-      "qualname": "unique_source_roots",
-      "module": "pipeline_book",
-      "rel_path": "pipeline_book.py",
-      "source_root": "C:\\!atomadic\\ass-ade-v1.1\\src\\ass_ade\\a3_og_features",
-      "lineno": 45,
-      "end_lineno": 52,
-      "confidence": 0.55,
-      "reasons": [
-        "direct-scan candidate (python)"
-      ],
-      "recommended_path": "direct-scan from pipeline_book.py",
-      "docstring_present": true,
       "has_nearby_test": false
     }
   ]
