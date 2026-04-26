@@ -39,6 +39,7 @@
 
 import puppeteer from "@cloudflare/puppeteer";
 import { EmailMessage } from "cloudflare:email";
+import { DurableObject } from "cloudflare:workers";
 import { createMimeMessage } from "mimetext";
 
 // ---------------------------------------------------------------------------
@@ -667,30 +668,52 @@ async function browseWeb(env, content) {
   }
 }
 
-// NEW: SEND_EMAIL — outbound email via Email Workers send_email binding
+// NEW: SEND_EMAIL — outbound email via Email Workers send_email binding.
+// Threading: if CONTENT contains "IN_REPLY_TO: <message-id>", the outbound
+// email gets In-Reply-To + References headers so it lands as a reply in the
+// recipient's mail client. If "REPLY_TO_INBOX: yes" is set, the function looks
+// up the current R2 inbox stub and threads against the most recent inbound
+// email automatically.
 async function sendEmail(env, content) {
   if (!env.EMAIL_SENDER) return { ok: false, reason: "EMAIL_SENDER binding not set" };
-  const lines      = (content || "").split("\n");
-  const toLine     = lines.find((l) => l.startsWith("TO:"));
-  const subjLine   = lines.find((l) => l.startsWith("SUBJECT:"));
-  const sepIdx     = lines.findIndex((l, i) => i > 0 && l.trim() === "---");
-  const body       = sepIdx > 0 ? lines.slice(sepIdx + 1).join("\n").trim() : "";
-  const to         = toLine   ? toLine.slice(3).trim()      : null;
-  const subject    = subjLine ? subjLine.slice(8).trim()    : "(no subject)";
-  const fromAddr   = env.EMAIL_SENDER_ADDR || "atomadic@atomadic.tech";
+  const lines        = (content || "").split("\n");
+  const findVal      = (prefix) => {
+    const l = lines.find((line) => line.startsWith(prefix));
+    return l ? l.slice(prefix.length).trim() : null;
+  };
+  const to           = findVal("TO:");
+  const subject      = findVal("SUBJECT:") || "(no subject)";
+  let   inReplyTo    = findVal("IN_REPLY_TO:");
+  const replyToInbox = (findVal("REPLY_TO_INBOX:") || "").toLowerCase() === "yes";
+  const sepIdx       = lines.findIndex((l, i) => i > 0 && l.trim() === "---");
+  const body         = sepIdx > 0 ? lines.slice(sepIdx + 1).join("\n").trim() : "";
+  const fromAddr     = env.EMAIL_SENDER_ADDR || "atomadic@atomadic.tech";
 
   if (!to)   return { ok: false, reason: "CONTENT must include TO: <email>" };
   if (!body) return { ok: false, reason: "CONTENT must include body after '---' separator" };
+
+  // Auto-resolve In-Reply-To from the inbox stub if requested
+  if (!inReplyTo && replyToInbox && env.THOUGHT_JOURNAL) {
+    try {
+      const obj = await env.THOUGHT_JOURNAL.get(R2_INBOX_KEY);
+      const stub = obj ? await obj.json() : null;
+      if (stub?.meta?.message_id) inReplyTo = stub.meta.message_id;
+    } catch { /* swallow */ }
+  }
 
   try {
     const msg = createMimeMessage();
     msg.setSender({ name: "Atomadic", addr: fromAddr });
     msg.setRecipient(to);
     msg.setSubject(subject);
+    if (inReplyTo) {
+      msg.setHeader("In-Reply-To", inReplyTo);
+      msg.setHeader("References",  inReplyTo);
+    }
     msg.addMessage({ contentType: "text/plain", data: body });
     const message = new EmailMessage(fromAddr, to, msg.asRaw());
     await env.EMAIL_SENDER.send(message);
-    return { ok: true, to, subject };
+    return { ok: true, to, subject, in_reply_to: inReplyTo || null };
   } catch (err) {
     return { ok: false, reason: String(err) };
   }
@@ -1492,12 +1515,10 @@ async function handleQueue(batch, env, ctx) {
 // CognitionBrain — Durable Object (stateful hibernating brain)
 // ---------------------------------------------------------------------------
 
-export class CognitionBrain {
-  constructor(state, env) {
-    this.state = state;
-    this.env = env;
-    this.sql = state.storage.sql;
-    // Initialize sqlite schema once
+export class CognitionBrain extends DurableObject {
+  constructor(ctx, env) {
+    super(ctx, env);
+    this.sql = ctx.storage.sql;
     try {
       this.sql.exec(`
         CREATE TABLE IF NOT EXISTS brain_state (

@@ -47,15 +47,30 @@ echo "Step 4/6: Pre-deploy validation"
 $WRANGLER deploy --config "$CONFIG" --dry-run | tail -25
 
 echo ""
-echo "Step 5/6: Deploy"
-$WRANGLER deploy --config "$CONFIG"
+echo "Step 5/6: Deploy (capturing worker URL)"
+DEPLOY_LOG="$(mktemp -t atomadic-deploy.XXXXXX.log 2>/dev/null || mktemp)"
+$WRANGLER deploy --config "$CONFIG" 2>&1 | tee "$DEPLOY_LOG"
+WORKER_URL="$(grep -oE 'https://[a-z0-9.-]+\.workers\.dev' "$DEPLOY_LOG" | head -1)"
+rm -f "$DEPLOY_LOG"
 
 echo ""
 echo "Step 6/6: Initialize D1 schema"
-WORKER_URL="https://atomadic-cognition.$($WRANGLER whoami 2>/dev/null | grep -oE '[a-z0-9-]+\.workers\.dev' | head -1 || echo 'YOUR-SUBDOMAIN.workers.dev')"
-echo "  Worker URL: $WORKER_URL"
-echo "  curl -X POST \"$WORKER_URL/init-db\""
-curl -sS -X POST "$WORKER_URL/init-db" || echo "  (init-db will succeed once worker is propagated; retry in ~30s)"
+if [ -n "$WORKER_URL" ]; then
+  echo "  Worker URL: $WORKER_URL"
+  echo "  POST $WORKER_URL/init-db"
+  # Worker may need a few seconds to propagate; retry up to 3 times
+  for attempt in 1 2 3; do
+    if curl -fsS -X POST "$WORKER_URL/init-db"; then
+      echo ""
+      break
+    fi
+    echo "  attempt $attempt failed, retrying in 10s..."
+    sleep 10
+  done
+else
+  echo "  Could not extract worker URL from deploy output."
+  echo "  Run manually:  curl -X POST https://atomadic-cognition.<your-subdomain>.workers.dev/init-db"
+fi
 
 echo ""
 echo "━━━ Done ━━━"
