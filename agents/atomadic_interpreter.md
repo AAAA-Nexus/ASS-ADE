@@ -130,7 +130,7 @@ Resolved capability root: C:\!aaaa-nexus\ASS-ADE-SEED
 - `agent voice` - Full voice loop: speak to Atomadic, hear responses aloud
 - `agents-refresh` - Regenerate LIVE_CAPABILITIES.md and inject it into all agent prompts
 - `assimilate` - Assimilate cherry-picked symbols into the target project's monadic tier directories
-- `bitnet` - BitNet 1.58-bit inference — defaults to falcon3-10B-1.58.
+- `bitnet` - BitNet 1.58-bit inference — defaults to gemma-4-26b-a4b-it.
 - `bitnet benchmark` - Run inference benchmark for a 1.58-bit model (BIT-103)
 - `bitnet chat` - 1.58-bit BitNet chat completion (BIT-100)
 - `bitnet models` - List available 1.58-bit BitNet models

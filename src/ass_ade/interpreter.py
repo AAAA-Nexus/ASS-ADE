@@ -101,7 +101,7 @@ def _fallback_llm_system_prompt(
 # model=None      → read from config (ollama only)
 # auth_style      → "bearer" (Authorization header) | "x-api-key" (X-API-Key header)
 _PROVIDER_REGISTRY: dict[str, tuple[str, str | None, str | None, str]] = {
-    "aaaa-nexus":   ("https://atomadic.tech/v1/inference",                      "AAAA_NEXUS_API_KEY",  "falcon3-10B-1.58",                       "x-api-key"),
+    "aaaa-nexus":   ("https://atomadic.tech/v1/inference",                      "AAAA_NEXUS_API_KEY",  "gemma-4-26b-a4b-it",                       "x-api-key"),
     "groq":         ("https://api.groq.com/openai/v1",                          "GROQ_API_KEY",        "llama-3.3-70b-versatile",                "bearer"),
     "cerebras":     ("https://api.cerebras.ai/v1",                              "CEREBRAS_API_KEY",    "llama3.3-70b",                           "bearer"),
     "gemini":       ("https://generativelanguage.googleapis.com/v1beta/openai", "GEMINI_API_KEY",      "gemini-2.0-flash",                       "bearer"),

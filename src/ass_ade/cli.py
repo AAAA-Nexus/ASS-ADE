@@ -110,7 +110,7 @@ trust_app = typer.Typer(help="Trust Oracle (TCM-100/101) — formally bounded ag
 text_app = typer.Typer(help="Text AI — summarize, keywords, sentiment.")
 security_app = typer.Typer(help="Security — threat scoring, shield, PQC signing, zero-day scan.")
 prompt_app = typer.Typer(help="Prompt artifact tools — hash, validate, section, diff, propose.")
-inference_app = typer.Typer(help="AI inference via AAAA-Nexus. Defaults to falcon3-10B-1.58.")
+inference_app = typer.Typer(help="AI inference via AAAA-Nexus. Defaults to gemma-4-26b-a4b-it.")
 escrow_app = typer.Typer(help="Agent Escrow — create, release, status, dispute, arbitrate.")
 reputation_app = typer.Typer(help="Reputation Ledger — record, score, history, dispute.")
 sla_app = typer.Typer(help="SLA Engine — register, report, status, breach.")
@@ -122,7 +122,7 @@ aegis_app = typer.Typer(help="AEGIS — MCP proxy, epistemic route, certify epoc
 control_app = typer.Typer(help="Control Plane — authorize, spending, lineage, federation.")
 identity_app = typer.Typer(help="Identity & Auth — verify, sybil-check, delegate, federation.")
 vrf_app = typer.Typer(help="VRF Gaming — draw, verify-draw.")
-bitnet_app = typer.Typer(help="BitNet 1.58-bit inference — defaults to falcon3-10B-1.58.")
+bitnet_app = typer.Typer(help="BitNet 1.58-bit inference — defaults to gemma-4-26b-a4b-it.")
 vanguard_app = typer.Typer(help="VANGUARD — red-team, MEV route, wallet session, escrow.")
 mev_app = typer.Typer(help="MEV Shield — protect transaction bundles, check status.")
 forge_app = typer.Typer(help="Forge Marketplace — leaderboard, verify, quarantine, delta.")
@@ -233,7 +233,7 @@ if hasattr(_sys.stdout, "reconfigure"):
     except Exception:
         pass
 console = Console(theme=CLI_THEME)
-DEFAULT_AAAA_NEXUS_MODEL = "falcon3-10B-1.58"
+DEFAULT_AAAA_NEXUS_MODEL = "gemma-4-26b-a4b-it"
 
 
 # ── App callback: no-subcommand → Atomadic interactive mode ───────────────────
@@ -1884,7 +1884,7 @@ def llm_chat(
     allow_remote: bool = ALLOW_REMOTE_OPTION,
     json_out: Path | None = typer.Option(None, help="Write response JSON to this path."),
 ) -> None:
-    """Chat inference via AAAA-Nexus. Defaults to falcon3-10B-1.58. $0.060/call."""
+    """Chat inference via AAAA-Nexus. Defaults to gemma-4-26b-a4b-it. $0.060/call."""
     _, settings = _resolve_config(config)
     _require_remote_access(settings, allow_remote)
     prompt_text = _collapse_prompt_parts(prompt)

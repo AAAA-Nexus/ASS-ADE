@@ -68,7 +68,7 @@ _CONTEXT_WINDOWS: dict[str, int] = {
     "deepseek-r1": 128_000,
     # Local defaults
     "nexus-inference": 32_000,
-    "falcon3-10B-1.58": 32_000,
+    "gemma-4-26b-a4b-it": 32_000,
     "llama3-8B-1.58-100B": 32_000,
     "bitnet-b1.58-2B-4T": 32_000,
 }

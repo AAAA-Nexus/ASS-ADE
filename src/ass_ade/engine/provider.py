@@ -379,7 +379,7 @@ class NexusProvider:
     server-side.
     """
 
-    DEFAULT_MODEL = "falcon3-10B-1.58"
+    DEFAULT_MODEL = "gemma-4-26b-a4b-it"
 
     def __init__(self, client: Any) -> None:
         self._client = client

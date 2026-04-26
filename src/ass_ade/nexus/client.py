@@ -414,12 +414,12 @@ class NexusClient:
 
     # ── AI Inference ──────────────────────────────────────────────────────────
 
-    def inference(self, prompt: str, model: str = "falcon3-10B-1.58", **kwargs: Any) -> InferenceResponse:
-        """/v1/inference — AAAA-Nexus chat inference. Defaults to falcon3-10B-1.58. $0.060/call"""
+    def inference(self, prompt: str, model: str = "gemma-4-26b-a4b-it", **kwargs: Any) -> InferenceResponse:
+        """/v1/inference — AAAA-Nexus chat inference. Defaults to gemma-4-26b-a4b-it. $0.060/call"""
         return self._post_model("/v1/inference", InferenceResponse, {"prompt": prompt, "model": model, **kwargs})
 
-    def inference_stream(self, prompt: str, model: str = "falcon3-10B-1.58", **kwargs: Any) -> Iterator[str]:
-        """/v1/inference/stream — streaming CoT inference. Defaults to falcon3-10B-1.58. $0.100/call
+    def inference_stream(self, prompt: str, model: str = "gemma-4-26b-a4b-it", **kwargs: Any) -> Iterator[str]:
+        """/v1/inference/stream — streaming CoT inference. Defaults to gemma-4-26b-a4b-it. $0.100/call
 
         Yields text chunks as they arrive via SSE / chunked response.
         """
@@ -1267,11 +1267,11 @@ class NexusClient:
         """GET /v1/bitnet/models — list available 1.58-bit models (BIT-102). Free."""
         return self._get_model("/v1/bitnet/models", BitNetModelsResponse, **kwargs)
 
-    def bitnet_inference(self, prompt: str, model: str = "falcon3-10B-1.58", **kwargs: Any) -> BitNetInferenceResponse:
+    def bitnet_inference(self, prompt: str, model: str = "gemma-4-26b-a4b-it", **kwargs: Any) -> BitNetInferenceResponse:
         """POST /v1/bitnet/inference — 1-bit chat completion (BIT-100). $0.020/call"""
         return self._post_model("/v1/bitnet/inference", BitNetInferenceResponse, {"prompt": prompt, "model": model, **kwargs})
 
-    def bitnet_stream(self, prompt: str, model: str = "falcon3-10B-1.58", **kwargs: Any) -> Iterator[str]:
+    def bitnet_stream(self, prompt: str, model: str = "gemma-4-26b-a4b-it", **kwargs: Any) -> Iterator[str]:
         """POST /v1/bitnet/inference/stream — streaming 1-bit CoT (BIT-101). $0.040/call"""
         with self._client.stream("POST", "/v1/bitnet/inference/stream", json={"prompt": prompt, "model": model, **kwargs}) as r:
             r.raise_for_status()

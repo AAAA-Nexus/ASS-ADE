@@ -97,9 +97,9 @@ FREE_PROVIDERS: dict[str, ProviderProfile] = {
         api_key_env="AAAA_NEXUS_API_KEY",
         special=True,  # uses NexusProvider (NexusClient), not OpenAICompatibleProvider
         models_by_tier={
-            TIER_FAST: "falcon3-10B-1.58",
-            TIER_BALANCED: "falcon3-10B-1.58",
-            TIER_DEEP: "falcon3-10B-1.58",
+            TIER_FAST: "gemma-4-26b-a4b-it",
+            TIER_BALANCED: "gemma-4-26b-a4b-it",
+            TIER_DEEP: "gemma-4-26b-a4b-it",
         },
         signup_url="https://atomadic.tech/pay",
         rate_limit="Per-call metered ($0.060–0.100 via x402); quality-gated",
