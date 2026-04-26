@@ -11,7 +11,7 @@
 # 2. Create the primary Vectorize index (384-dim, cosine, for bge-small-en-v1.5):
 #      npx wrangler vectorize create atomadic-vectors --dimensions=384 --metric=cosine
 #
-# 3. The AI_SEARCH identity memory index already exists as "atomadic-rag" (linked to R2).
+# 3. The AI_SEARCH identity memory index already exists as "ai-search-ato-rag" (linked to R2).
 #    No need to create a new index — just populate with identity memories if needed.
 #
 # 4. Create the D1 database (if not already):
@@ -58,10 +58,10 @@ binding = "AI"
 
 # AI_SEARCH — identity memory RAG (Vectorize index for grounding / axioms / context)
 # Query is built from the full observation context on every cycle, before any model call.
-# Uses the existing atomadic-rag index which is already linked to the R2 bucket.
+# Uses the existing ai-search-ato-rag index which is already linked to the R2 bucket.
 [[vectorize]]
 binding    = "AI_SEARCH"
-index_name = "atomadic-rag"
+index_name = "ai-search-ato-rag"
 
 # KV — working memory and state (existing namespace)
 [[kv_namespaces]]
