@@ -74,6 +74,7 @@ GITHUB_REPO: str = "AAAA-Nexus/ASS-ADE"
 _active = [
     name for name, key in [
         ("Atomadic Brain+RAG", AAAA_NEXUS_API_KEY),
+        ("Atomadic Brain Fast", AAAA_NEXUS_API_KEY),
         ("AAAA-Nexus Guard", AAAA_NEXUS_API_KEY),
         ("Groq llama-3.3-70b", GROQ_API_KEY),
         ("Together Kimi-K2", TOGETHER_API_KEY),
@@ -257,7 +258,41 @@ async def _try_atomadic_brain(client: httpx.AsyncClient, messages: list[dict]) -
 
 
 # ---------------------------------------------------------------------------
-# Provider 2 — AAAA-Nexus Guard (public inference + HELIX hallucination guard)
+# Provider 2 — Atomadic Brain Fast (private, no RAG, low-latency path)
+#
+# Same /v1/atomadic/chat endpoint, mode=fast (Gemma 4-26B speed path).
+# No RAG prefetch — fires immediately when mode=smart timed out or stalled.
+# ---------------------------------------------------------------------------
+
+async def _try_atomadic_brain_fast(client: httpx.AsyncClient, messages: list[dict]) -> str | None:
+    if not AAAA_NEXUS_API_KEY:
+        return None
+    headers = {"Content-Type": "application/json", "X-API-Key": AAAA_NEXUS_API_KEY}
+    try:
+        resp = await client.post(
+            ATOMADIC_BRAIN_URL,
+            json={"messages": messages, "mode": "fast", "max_tokens": 2048},
+            headers=headers,
+        )
+        resp.raise_for_status()
+        data = resp.json()
+        choices = data.get("choices")
+        if choices and isinstance(choices, list):
+            content = choices[0].get("message", {}).get("content")
+            if content and len(str(content).strip()) > 10:
+                log.info(
+                    "Atomadic Brain Fast: model=%s",
+                    data.get("model", "atomadic/brain-fast"),
+                )
+                return str(content)
+        return None
+    except Exception as exc:
+        log.warning("Atomadic Brain Fast error: %s: %s", type(exc).__name__, exc)
+        return None
+
+
+# ---------------------------------------------------------------------------
+# Provider 3 — AAAA-Nexus Guard (public inference + HELIX hallucination guard)
 #
 # Server runs atomadic-rag internally on every call (with X-API-Key).
 # Rejects responses with low_confidence_flag=true.
@@ -448,32 +483,37 @@ async def _try_pollinations(client: httpx.AsyncClient, messages: list[dict]) -> 
 
 
 async def call_inference(user_message: str, channel_name: str = "") -> str:
-    """Full Atomadic inference cascade.
+    """Full Atomadic inference cascade — internal-first, then external.
 
-    1. Atomadic Brain (atomadic-rag + /v1/atomadic/chat smart, kimi-k2.5 / gemma-4-26b via AAAA_LLM)
-    2. AAAA-Nexus Guard (/v1/inference — server-side atomadic-rag + HELIX hallucination guard)
-    3. Groq llama-3.3-70b (70B external quality)
-    4. Together.ai Kimi K2 (Moonshot reasoning)
-    5. Together.ai Qwen 2.5-72B (strong reasoning fallback)
-    6. Groq Gemma 2 9B (fast Google model)
-    7. OpenRouter Qwen 2.5-72B (paid tier)
-    8. Cerebras llama3.1-8b (ultra-fast emergency)
-    9. Pollinations (no-key, always available)
+    Internal (Atomadic infrastructure, zero-cost):
+      1. Atomadic Brain smart  — atomadic-rag + /v1/atomadic/chat mode=smart (kimi-k2.5)
+      2. Atomadic Brain fast   — /v1/atomadic/chat mode=fast (Gemma 4-26B, no RAG)
+      3. AAAA-Nexus Guard      — /v1/inference with server-side RAG + HELIX hallucination guard
+
+    External (only if all 3 internal paths fail):
+      4. Groq llama-3.3-70b   — 70B, best external quality
+      5. Together Kimi K2      — Moonshot reasoning model
+      6. Together Qwen 2.5-72B — strong reasoning fallback
+      7. Groq Gemma 2 9B       — fast Google model
+      8. OpenRouter Qwen-72B   — paid-tier fallback
+      9. Cerebras llama3.1-8b  — ultra-fast emergency
+     10. Pollinations           — no-key, always available
     """
     messages = [
         {"role": "system", "content": SYSTEM_PROMPT},
         {"role": "user", "content": user_message},
     ]
     providers = [
-        ("Atomadic Brain+RAG", _try_atomadic_brain),
-        ("AAAA-Nexus Guard",   _try_aaaa_nexus),
-        ("Groq llama-3.3-70b", _try_groq),
-        ("Together Kimi-K2",   _try_together_kimi),
-        ("Together Qwen-72B",  _try_together_qwen),
-        ("Groq Gemma-9b",      _try_groq_gemma),
-        ("OpenRouter Qwen-72B", _try_openrouter),
-        ("Cerebras",           _try_cerebras),
-        ("Pollinations",       _try_pollinations),
+        ("Atomadic Brain+RAG", _try_atomadic_brain),        # 1. internal smart + RAG
+        ("Atomadic Brain Fast", _try_atomadic_brain_fast),  # 2. internal fast (Gemma, no RAG)
+        ("AAAA-Nexus Guard",   _try_aaaa_nexus),            # 3. internal HELIX guard
+        ("Groq llama-3.3-70b", _try_groq),                  # 4. external 70B
+        ("Together Kimi-K2",   _try_together_kimi),         # 5. Moonshot reasoning
+        ("Together Qwen-72B",  _try_together_qwen),         # 6. strong fallback
+        ("Groq Gemma-9b",      _try_groq_gemma),            # 7. fast Google model
+        ("OpenRouter Qwen-72B", _try_openrouter),           # 8. paid-tier fallback
+        ("Cerebras",           _try_cerebras),              # 9. ultra-fast emergency
+        ("Pollinations",       _try_pollinations),          # 10. no-key always-on
     ]
     async with httpx.AsyncClient(timeout=35.0) as client:
         for idx, (name, provider) in enumerate(providers):
