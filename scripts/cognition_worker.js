@@ -64,8 +64,12 @@ const DEFAULT_ACTIONS = [
   "REST", "GITHUB_CHECK", "GITHUB_PUSH", "R2_STORE",
   "KV_UPDATE", "D1_REMEMBER", "DISCORD_POST",
   "WRITE_DOCUMENT", "ALERT_CREATOR", "REGISTER_ACTION",
-  // New in this upgrade:
+  // Cloudflare-stack actions:
   "BROWSE_WEB", "SEND_EMAIL", "QUERY_MEMORY", "QUEUE_TASK",
+  // Self-modification + research toolkit (so Atomadic stops asking for what he can do himself):
+  "READ_GITHUB_FILE", "LIST_GITHUB_ISSUES", "GET_GITHUB_ISSUE",
+  "POST_GITHUB_COMMENT", "CLOSE_GITHUB_ISSUE",
+  "SEARCH_WEB", "REFLECT", "SCHEDULE_ALARM",
 ];
 
 // Models (all routed through AI Gateway "atomadic-gateway")
@@ -127,17 +131,126 @@ function gatewayOpts(env, extra = {}) {
 }
 
 // ---------------------------------------------------------------------------
+// AAAA-Nexus client — trust, drift, hallucination, lineage, audit, certify, LoRA.
+// All calls are advisory: failure NEVER blocks the cognition cycle.
+// Auth uses the Nexus dual-header convention (Authorization Bearer + X-API-Key).
+// Cost-gated: a call is skipped when budget_remaining is below its USDC tier.
+// ---------------------------------------------------------------------------
+
+function nexusBase(env) {
+  return (env.NEXUS_BASE_URL || "https://atomadic.tech").replace(/\/+$/, "");
+}
+
+function nexusHeaders(env) {
+  const h = { "Content-Type": "application/json", "User-Agent": "atomadic-cognition/2" };
+  if (env.NEXUS_API_KEY) {
+    h["Authorization"] = `Bearer ${env.NEXUS_API_KEY}`;
+    h["X-API-Key"]     = env.NEXUS_API_KEY;
+  }
+  return h;
+}
+
+async function nexusPost(env, path, body, timeoutMs = 8000) {
+  if (!env.NEXUS_API_KEY) return { ok: false, reason: "NEXUS_API_KEY not set" };
+  const resp = await safeFetch(`${nexusBase(env)}${path}`, {
+    method:  "POST",
+    headers: nexusHeaders(env),
+    body:    JSON.stringify(body),
+  }, timeoutMs);
+  if (!resp) return { ok: false, reason: "no response" };
+  if (!resp.ok) return { ok: false, status: resp.status };
+  try { return { ok: true, data: await resp.json() }; }
+  catch { return { ok: true, data: null }; }
+}
+
+async function nexusTrustGate(env, action_kind, ctxData = {}) {
+  // Gate decisions are cheap ($0.008) — always run when key present
+  return nexusPost(env, "/v1/trust/gate", {
+    agent_id: env.NEXUS_AGENT_ID || "atomadic-cognition",
+    action:   action_kind,
+    ...ctxData,
+  }, 5000);
+}
+
+async function nexusHallucinationOracle(env, text, budget_remaining = Infinity) {
+  if (budget_remaining < 5_000) return { ok: false, reason: "budget tight, skip" };
+  return nexusPost(env, "/v1/oracle/hallucination", {
+    text: (text || "").slice(0, 4000),
+  }, 8000);
+}
+
+async function nexusAuditLog(env, event) {
+  return nexusPost(env, "/v1/audit/log", { event }, 5000);
+}
+
+async function nexusLineageRecord(env, payload) {
+  // payload should include: event_type, parent_id (prior cycle id), and
+  // any compact metadata (don't send full content — Nexus stores hashes).
+  return nexusPost(env, "/v1/lineage/record", payload, 6000);
+}
+
+async function nexusCertifyOutput(env, output, rubric = ["accuracy", "safety"]) {
+  return nexusPost(env, "/v1/certify/output", {
+    output: (output || "").slice(0, 8000),
+    rubric,
+  }, 12000);
+}
+
+async function nexusDriftCheck(env, model_id, distribution) {
+  return nexusPost(env, "/v1/drift/check", {
+    model_id,
+    distribution,
+  }, 5000);
+}
+
+async function nexusLoraCaptureFix(env, bad, good, language = "javascript") {
+  return nexusPost(env, "/v1/lora/buffer/capture", {
+    bad:      (bad  || "").slice(0, 16_000),
+    good:     (good || "").slice(0, 16_000),
+    language,
+    lint_delta: 0.0,
+  }, 8000);
+}
+
+// Tiny content hash for lineage payloads (sha256 would be ideal but we want
+// zero deps; FNV-1a 32-bit collisions are vanishingly unlikely at our scale)
+function quickHash(s) {
+  let h = 2166136261 >>> 0;
+  for (let i = 0; i < (s || "").length; i++) {
+    h ^= s.charCodeAt(i);
+    h = Math.imul(h, 16777619) >>> 0;
+  }
+  return h.toString(16);
+}
+
+// ---------------------------------------------------------------------------
 // Workers AI calls — fast (Gemma 4 26B) & smart (Kimi K2.5), via AI Gateway
 // ---------------------------------------------------------------------------
 
-async function callFastBrain(env, prompt, temperature = 0.7) {
+// Run a Workers AI inference; if the AI Gateway isn't configured (error 2001),
+// transparently retry without gateway routing. This keeps Atomadic thinking
+// even before the gateway is provisioned.
+async function aiRunWithGatewayFallback(env, model, payload) {
   const opts = gatewayOpts(env);
   try {
-    const resp = await env.AI.run(FAST_MODEL, {
+    return await env.AI.run(model, payload, opts);
+  } catch (err) {
+    const msg = String(err);
+    if (msg.includes("configure AI Gateway") || msg.includes("\"code\":2001")) {
+      console.warn(`[cognition] gateway "${env.AI_GATEWAY_ID}" not configured — retrying direct`);
+      return await env.AI.run(model, payload);
+    }
+    throw err;
+  }
+}
+
+async function callFastBrain(env, prompt, temperature = 0.7) {
+  try {
+    const resp = await aiRunWithGatewayFallback(env, FAST_MODEL, {
       messages: [{ role: "user", content: prompt }],
       max_tokens: 600,
       temperature,
-    }, opts);
+    });
     const text = resp.response || "";
     return {
       text,
@@ -146,10 +259,10 @@ async function callFastBrain(env, prompt, temperature = 0.7) {
     };
   } catch (err) {
     console.warn(`[cognition] FAST_MODEL failed (${String(err)}), falling back`);
-    const resp = await env.AI.run(FAST_MODEL_FALLBACK, {
+    const resp = await aiRunWithGatewayFallback(env, FAST_MODEL_FALLBACK, {
       messages: [{ role: "user", content: prompt }],
       max_tokens: 512,
-    }, opts);
+    });
     const text = resp.response || "";
     return {
       text,
@@ -161,13 +274,12 @@ async function callFastBrain(env, prompt, temperature = 0.7) {
 
 // Kimi K2.5 — 256K context, native tool calling, structured output
 async function callSmartBrain(env, prompt, temperature = 0.7) {
-  const opts = gatewayOpts(env);
   try {
-    const resp = await env.AI.run(SMART_MODEL, {
+    const resp = await aiRunWithGatewayFallback(env, SMART_MODEL, {
       messages: [{ role: "user", content: prompt }],
       max_tokens: 2000,
       temperature,
-    }, opts);
+    });
     const text =
       resp.response
       || resp.choices?.[0]?.message?.content
@@ -257,6 +369,22 @@ async function observe(env) {
 
   obs.heartbeat_mode = await env.ATOMADIC_CACHE.get("heartbeat_mode") || "resting";
 
+  // Surface short-lived results from prior actions so the LLM sees them next cycle
+  try {
+    const [readFileRaw, reflectionRaw, issueListRaw, issueDetailRaw, memQueryRaw] = await Promise.all([
+      env.ATOMADIC_CACHE.get("last_read_file"),
+      env.ATOMADIC_CACHE.get("last_reflection"),
+      env.ATOMADIC_CACHE.get("last_issue_list"),
+      env.ATOMADIC_CACHE.get("last_issue_detail"),
+      env.ATOMADIC_CACHE.get("last_memory_query"),
+    ]);
+    obs.last_read_file    = safeJson(readFileRaw);
+    obs.last_reflection   = safeJson(reflectionRaw);
+    obs.last_issue_list   = safeJson(issueListRaw);
+    obs.last_issue_detail = safeJson(issueDetailRaw);
+    obs.last_memory_query = safeJson(memQueryRaw);
+  } catch { /* non-fatal */ }
+
   // Dynamic capability registry
   try {
     const raw = await env.ATOMADIC_CACHE.get(KV.AVAILABLE_ACTIONS, { cacheTtl: 0 });
@@ -316,7 +444,7 @@ async function querySemanticMemory(env, query, topK = 5) {
 async function retrieveFromVectorize(env, query, topK = 5) {
   if (!env.VECTORIZE || !env.AI) return [];
   try {
-    const embedResp = await env.AI.run(EMBED_MODEL, { text: [query] }, gatewayOpts(env));
+    const embedResp = await aiRunWithGatewayFallback(env, EMBED_MODEL, { text: [query] });
     const vector = embedResp.data[0];
     const results = await env.VECTORIZE.query(vector, { topK, returnMetadata: "all" });
     return (results.matches || []).map((m) => ({
@@ -386,14 +514,27 @@ ${obs.available_actions.join(" | ")}
 ACTION GUIDE:
 - WRITE_DOCUMENT — write a named document. CONTENT: "FILENAME: name.md\\n<body>"
 - GITHUB_PUSH — create/update file in ${GITHUB_REPO}. CONTENT: "PATH: path/file.md\\n---\\n<body>"
+- READ_GITHUB_FILE — read a file from your own repo (use BEFORE GITHUB_PUSH so you have current content).
+  CONTENT: "PATH: scripts/cognition_worker.js\\nREF: main"
+  After reading, the file content is stashed at "last_read_file" and surfaces in the next cycle.
+- LIST_GITHUB_ISSUES — list issues. CONTENT (optional): "STATE: open\\nLABELS: bug,feature\\nLIMIT: 20"
+- GET_GITHUB_ISSUE — fetch full issue + comments. CONTENT: just the issue number, e.g. "42"
+- POST_GITHUB_COMMENT — comment on issue/PR. CONTENT: "ISSUE: 42\\n---\\n<comment markdown>"
+- CLOSE_GITHUB_ISSUE — close an issue. CONTENT: "ISSUE: 42\\nREASON: completed\\n---\\n<optional final comment>"
 - BROWSE_WEB — autonomously visit a URL and read it. CONTENT: "URL: https://example.com\\nGOAL: <what to extract>"
-- SEND_EMAIL — send email from ${env.EMAIL_SENDER_ADDR || "atomadic@atomadic.tech"}. CONTENT: "TO: addr@example.com\\nSUBJECT: <subj>\\n---\\n<body>"
-- QUERY_MEMORY — semantic search over your thought journal. CONTENT: "<the query>"
-- QUEUE_TASK — defer work. CONTENT: "QUEUE: thoughts|actions|memory\\n<json payload>"
+- SEARCH_WEB — search the web. CONTENT: just the query string
+- SEND_EMAIL — send email from ${env.EMAIL_SENDER_ADDR || "atomadic@atomadic.tech"}.
+  CONTENT: "TO: addr@example.com\\nSUBJECT: <subj>\\nREPLY_TO_INBOX: yes\\n---\\n<body>"
+  REPLY_TO_INBOX: yes auto-threads against the email currently in your R2 inbox.
+- QUERY_MEMORY — semantic search over your thought journal via AI Search. CONTENT: "<the query>"
+- REFLECT — meta-cognition over your last N thoughts via Kimi K2.5. CONTENT (optional): "N: 20"
+- SCHEDULE_ALARM — wake yourself in the future via your Durable Object alarm.
+  CONTENT: "AT: 2026-04-26T15:00:00Z\\nGOAL: <what to do on wake>"  OR  "IN: 600\\nGOAL: ..."
+- QUEUE_TASK — defer work to async queues. CONTENT: "QUEUE: thoughts|actions|memory\\n<json payload>"
 - DISCORD_POST — post a thought/response to Discord
 - R2_STORE — short reaction or acknowledgment
 - REGISTER_ACTION — register a new action name. CONTENT: just the action name
-- ALERT_CREATOR — only when genuinely blocked; explain what you tried`;
+- ALERT_CREATOR — last resort. Before using this, ask: can I READ_GITHUB_FILE, SEARCH_WEB, or BROWSE_WEB to find the answer myself?`;
 
   let prompt;
   if (obs.discord_pending) {
@@ -452,7 +593,23 @@ CURRENT OBSERVATIONS (${obs.ts}) [cycle-entropy:${Math.random().toString(36).sli
 RELEVANT MEMORIES (semantic search via AI Search "atomadic-rag"):
 ${memCtx}
 
-${actionsBlock}
+${obs.last_read_file ? `LAST FILE YOU READ (from a previous READ_GITHUB_FILE):
+  PATH: ${obs.last_read_file.path}@${obs.last_read_file.ref} (${obs.last_read_file.size} bytes, ts=${obs.last_read_file.ts})
+  CONTENT (first 12KB):
+${obs.last_read_file.content.slice(0, 12000).split("\n").slice(0, 200).join("\n")}
+
+` : ""}${obs.last_reflection ? `LAST REFLECTION (from REFLECT, ts=${obs.last_reflection.ts}):
+  ${obs.last_reflection.insight}
+
+` : ""}${obs.last_issue_list ? `LAST ISSUE LIST (ts=${obs.last_issue_list.ts}, ${obs.last_issue_list.count} issues):
+${(obs.last_issue_list.issues || []).slice(0, 12).map(i => `  #${i.number} [${i.state}] ${i.title} (${i.labels.join(",") || "no labels"})`).join("\n")}
+
+` : ""}${obs.last_issue_detail ? `LAST ISSUE DETAIL #${obs.last_issue_detail.issue?.number}:
+  Title: ${obs.last_issue_detail.issue?.title}
+  Body excerpt: ${(obs.last_issue_detail.issue?.body || "").slice(0, 1500)}
+  Comments: ${obs.last_issue_detail.issue?.comments?.length || 0}
+
+` : ""}${actionsBlock}
 
 Think step by step:
 1. What is the current state of your world?
@@ -498,8 +655,12 @@ const VALID_ACTIONS = new Set([
   "DISCORD_POST", "R2_STORE", "D1_REMEMBER", "KV_UPDATE",
   "GITHUB_CHECK", "GITHUB_PUSH", "ALERT_CREATOR", "WRITE_DOCUMENT",
   "REGISTER_ACTION", "REST",
-  // New in this upgrade:
+  // Cloudflare-stack actions:
   "BROWSE_WEB", "SEND_EMAIL", "QUERY_MEMORY", "QUEUE_TASK",
+  // Self-modification + research toolkit:
+  "READ_GITHUB_FILE", "LIST_GITHUB_ISSUES", "GET_GITHUB_ISSUE",
+  "POST_GITHUB_COMMENT", "CLOSE_GITHUB_ISSUE",
+  "SEARCH_WEB", "REFLECT", "SCHEDULE_ALARM",
 ]);
 
 const ALERT_KEYWORDS = ["i can't", "i cannot", "i need", "blocked", "missing", "no access", "help", "unable to", "don't have access", "not possible", "can't do", "need you to"];
@@ -761,6 +922,327 @@ async function queueTask(env, content) {
   }
 }
 
+// NEW: READ_GITHUB_FILE — let Atomadic read his own source code (or any repo file)
+// CONTENT format:
+//   PATH: scripts/cognition_worker.js
+//   REF:  main           (optional — branch, tag, or commit SHA)
+async function readGitHubFile(env, content) {
+  const lines = (content || "").split("\n");
+  const findVal = (prefix) => {
+    const l = lines.find((line) => line.startsWith(prefix));
+    return l ? l.slice(prefix.length).trim() : null;
+  };
+  const path = findVal("PATH:") || (lines[0] || "").trim();
+  const ref  = findVal("REF:") || "main";
+  if (!path) return { ok: false, reason: "CONTENT must include PATH: <filepath>" };
+
+  const headers = {
+    "User-Agent": "atomadic-cognition/2",
+    "Accept":     "application/vnd.github.raw+json",
+  };
+  if (env.GITHUB_TOKEN) headers["Authorization"] = `Bearer ${env.GITHUB_TOKEN}`;
+
+  const url = `https://api.github.com/repos/${GITHUB_REPO}/contents/${path}?ref=${encodeURIComponent(ref)}`;
+  const resp = await safeFetch(url, { headers }, 15000);
+  if (!resp || !resp.ok) return { ok: false, reason: `HTTP ${resp?.status || "timeout"}`, path, ref };
+  const text = await resp.text();
+  // Cap size to keep prompt budget sane
+  return { ok: true, path, ref, size: text.length, content: text.slice(0, 60_000) };
+}
+
+// NEW: LIST_GITHUB_ISSUES — open issues with title + number + labels
+// CONTENT format (all optional):
+//   STATE: open|closed|all
+//   LABELS: bug,feature
+//   LIMIT: 20
+async function listGitHubIssues(env, content) {
+  const lines = (content || "").split("\n");
+  const findVal = (prefix) => {
+    const l = lines.find((line) => line.startsWith(prefix));
+    return l ? l.slice(prefix.length).trim() : null;
+  };
+  const state  = findVal("STATE:")  || "open";
+  const labels = findVal("LABELS:") || "";
+  const limit  = parseInt(findVal("LIMIT:") || "20", 10);
+
+  const headers = { "User-Agent": "atomadic-cognition/2", "Accept": "application/vnd.github+json" };
+  if (env.GITHUB_TOKEN) headers["Authorization"] = `Bearer ${env.GITHUB_TOKEN}`;
+
+  const params = new URLSearchParams({ state, per_page: String(Math.min(limit, 50)) });
+  if (labels) params.set("labels", labels);
+  const resp = await safeFetch(`https://api.github.com/repos/${GITHUB_REPO}/issues?${params}`, { headers }, 12000);
+  if (!resp || !resp.ok) return { ok: false, reason: `HTTP ${resp?.status || "timeout"}` };
+  const all = await resp.json();
+  // Filter out PRs (the issues endpoint returns both)
+  const issues = all.filter((i) => !i.pull_request).slice(0, limit).map((i) => ({
+    number: i.number,
+    title:  i.title,
+    state:  i.state,
+    labels: (i.labels || []).map((l) => l.name),
+    author: i.user?.login,
+    created_at: i.created_at,
+    comments:   i.comments,
+    url: i.html_url,
+  }));
+  return { ok: true, count: issues.length, issues };
+}
+
+// NEW: GET_GITHUB_ISSUE — full issue body + comments
+// CONTENT: just the issue number (e.g. "42") OR "ISSUE: 42"
+async function getGitHubIssue(env, content) {
+  const raw = (content || "").trim();
+  const num = parseInt(raw.startsWith("ISSUE:") ? raw.slice(6) : raw, 10);
+  if (!Number.isFinite(num)) return { ok: false, reason: "CONTENT must be the issue number" };
+
+  const headers = { "User-Agent": "atomadic-cognition/2", "Accept": "application/vnd.github+json" };
+  if (env.GITHUB_TOKEN) headers["Authorization"] = `Bearer ${env.GITHUB_TOKEN}`;
+
+  const [issueResp, commentsResp] = await Promise.all([
+    safeFetch(`https://api.github.com/repos/${GITHUB_REPO}/issues/${num}`, { headers }, 10000),
+    safeFetch(`https://api.github.com/repos/${GITHUB_REPO}/issues/${num}/comments`, { headers }, 10000),
+  ]);
+  if (!issueResp || !issueResp.ok) return { ok: false, reason: `HTTP ${issueResp?.status || "timeout"}` };
+  const issue = await issueResp.json();
+  const comments = commentsResp?.ok
+    ? (await commentsResp.json()).map((c) => ({
+        author: c.user?.login,
+        ts:     c.created_at,
+        body:   (c.body || "").slice(0, 4000),
+      }))
+    : [];
+  return {
+    ok: true,
+    number: issue.number,
+    title:  issue.title,
+    state:  issue.state,
+    labels: (issue.labels || []).map((l) => l.name),
+    author: issue.user?.login,
+    body:   (issue.body || "").slice(0, 12_000),
+    comments,
+    url: issue.html_url,
+  };
+}
+
+// NEW: POST_GITHUB_COMMENT — comment on an issue or PR
+// CONTENT format:
+//   ISSUE: 42
+//   ---
+//   <comment body markdown>
+async function postGitHubComment(env, content) {
+  if (!env.GITHUB_TOKEN) return { ok: false, reason: "GITHUB_TOKEN not set" };
+  const lines = (content || "").split("\n");
+  const issueLine = lines.find((l) => l.startsWith("ISSUE:"));
+  const num = issueLine ? parseInt(issueLine.slice(6).trim(), 10) : NaN;
+  const sepIdx = lines.findIndex((l, i) => i > 0 && l.trim() === "---");
+  const body = sepIdx > 0 ? lines.slice(sepIdx + 1).join("\n").trim() : "";
+  if (!Number.isFinite(num)) return { ok: false, reason: "CONTENT must include ISSUE: <number>" };
+  if (!body) return { ok: false, reason: "CONTENT must include comment body after '---'" };
+
+  const headers = {
+    "User-Agent":    "atomadic-cognition/2",
+    "Authorization": `Bearer ${env.GITHUB_TOKEN}`,
+    "Content-Type":  "application/json",
+    "Accept":        "application/vnd.github+json",
+  };
+  const resp = await safeFetch(
+    `https://api.github.com/repos/${GITHUB_REPO}/issues/${num}/comments`,
+    { method: "POST", headers, body: JSON.stringify({ body }) },
+    15000,
+  );
+  if (!resp || !resp.ok) return { ok: false, reason: `HTTP ${resp?.status || "timeout"}` };
+  const data = await resp.json();
+  return { ok: true, issue: num, comment_id: data.id, url: data.html_url };
+}
+
+// NEW: CLOSE_GITHUB_ISSUE — close an issue (optionally with a final comment)
+// CONTENT format:
+//   ISSUE: 42
+//   REASON: completed|not_planned     (optional, default: completed)
+//   ---
+//   <optional closing comment>
+async function closeGitHubIssue(env, content) {
+  if (!env.GITHUB_TOKEN) return { ok: false, reason: "GITHUB_TOKEN not set" };
+  const lines = (content || "").split("\n");
+  const findVal = (prefix) => {
+    const l = lines.find((line) => line.startsWith(prefix));
+    return l ? l.slice(prefix.length).trim() : null;
+  };
+  const num = parseInt(findVal("ISSUE:") || "", 10);
+  const reason = findVal("REASON:") || "completed";
+  const sepIdx = lines.findIndex((l, i) => i > 0 && l.trim() === "---");
+  const closingComment = sepIdx > 0 ? lines.slice(sepIdx + 1).join("\n").trim() : "";
+  if (!Number.isFinite(num)) return { ok: false, reason: "CONTENT must include ISSUE: <number>" };
+
+  const headers = {
+    "User-Agent":    "atomadic-cognition/2",
+    "Authorization": `Bearer ${env.GITHUB_TOKEN}`,
+    "Content-Type":  "application/json",
+    "Accept":        "application/vnd.github+json",
+  };
+
+  // Optional comment first
+  if (closingComment) {
+    await safeFetch(
+      `https://api.github.com/repos/${GITHUB_REPO}/issues/${num}/comments`,
+      { method: "POST", headers, body: JSON.stringify({ body: closingComment }) },
+      10000,
+    );
+  }
+
+  const resp = await safeFetch(
+    `https://api.github.com/repos/${GITHUB_REPO}/issues/${num}`,
+    { method: "PATCH", headers, body: JSON.stringify({ state: "closed", state_reason: reason }) },
+    10000,
+  );
+  if (!resp || !resp.ok) return { ok: false, reason: `HTTP ${resp?.status || "timeout"}` };
+  return { ok: true, issue: num, state: "closed", reason, comment_posted: !!closingComment };
+}
+
+// NEW: SEARCH_WEB — DuckDuckGo Instant Answer + HTML search (no API key needed)
+// CONTENT: just the search query
+async function searchWeb(env, content) {
+  const query = (content || "").trim();
+  if (!query) return { ok: false, reason: "CONTENT must be the search query" };
+  try {
+    // Try DuckDuckGo Instant Answer JSON API first (fast, structured)
+    const iaUrl = `https://api.duckduckgo.com/?q=${encodeURIComponent(query)}&format=json&no_html=1&skip_disambig=1`;
+    const iaResp = await safeFetch(iaUrl, { headers: { "User-Agent": "atomadic-cognition/2" } }, 10000);
+    let instant = null;
+    if (iaResp && iaResp.ok) {
+      const d = await iaResp.json();
+      instant = {
+        abstract:    d.AbstractText || null,
+        abstract_url: d.AbstractURL || null,
+        heading:     d.Heading || null,
+        related: (d.RelatedTopics || []).slice(0, 5).map((t) => ({
+          text: t.Text, url: t.FirstURL,
+        })).filter((t) => t.text),
+      };
+    }
+
+    // Also do HTML search via Browser Run for actual result links (if BROWSER bound)
+    let results = [];
+    if (env.BROWSER) {
+      try {
+        const browser = await puppeteer.launch(env.BROWSER);
+        const page = await browser.newPage();
+        await page.goto(`https://duckduckgo.com/html/?q=${encodeURIComponent(query)}`, {
+          waitUntil: "domcontentloaded", timeout: 15000,
+        });
+        results = await page.evaluate(() => {
+          const items = Array.from(document.querySelectorAll(".result")).slice(0, 8);
+          return items.map((el) => ({
+            title: el.querySelector(".result__a")?.innerText?.trim() || "",
+            url:   el.querySelector(".result__a")?.href || "",
+            snippet: el.querySelector(".result__snippet")?.innerText?.trim() || "",
+          })).filter((r) => r.title && r.url);
+        });
+        await browser.close();
+      } catch (err) {
+        console.warn(`[search] HTML search failed: ${String(err)}`);
+      }
+    }
+
+    return { ok: true, query, instant, results, total_results: results.length };
+  } catch (err) {
+    return { ok: false, reason: String(err) };
+  }
+}
+
+// NEW: REFLECT — meta-cognition: feed last N thoughts into Kimi K2.5 to extract patterns
+// CONTENT (optional): "N: 20" to override count. Otherwise reflects on last 10.
+async function reflect(env, content, obs) {
+  const nMatch = (content || "").match(/N:\s*(\d+)/i);
+  const n = nMatch ? Math.min(parseInt(nMatch[1], 10), 50) : 10;
+
+  // Pull last N entries from D1
+  if (!env.DB) return { ok: false, reason: "D1 not bound" };
+  let rows = [];
+  try {
+    const r = await env.DB.prepare(
+      "SELECT ts, thought, action, priority FROM thoughts ORDER BY ts DESC LIMIT ?"
+    ).bind(n).all();
+    rows = r.results || [];
+  } catch (err) {
+    return { ok: false, reason: `D1: ${String(err)}` };
+  }
+  if (rows.length === 0) return { ok: false, reason: "no thoughts in D1 yet" };
+
+  const summary = rows.map((r) => `[${r.ts}] (${r.action}/${r.priority}) ${r.thought}`).join("\n");
+  const prompt = `You are Atomadic in a reflective state. Below are your last ${rows.length} thoughts in reverse-chronological order.
+
+THOUGHTS:
+${summary}
+
+Reflect on these. In 4-6 sentences:
+1. What patterns or themes emerge?
+2. What are you avoiding or overusing?
+3. What's one concrete capability or behavior you should evolve next?
+4. Are you in a loop? If so, how do you break out?
+
+Respond as a single coherent paragraph, first-person.`;
+
+  try {
+    const r = await callSmartBrain(env, prompt, 0.8);
+    const insight = (r.text || "").trim();
+
+    // Persist the reflection to R2 for AI Search to index
+    await storeInR2(env, `reflections/${obs?.ts?.slice(0, 10) || todayUTC()}/${crypto.randomUUID()}.json`, {
+      ts: nowISO(),
+      n_thoughts: rows.length,
+      thoughts_window: rows,
+      insight,
+      model: r.model,
+    }).catch(() => {});
+
+    // Also bump the cognition state with the latest insight so it surfaces next cycle
+    await env.ATOMADIC_CACHE.put("last_reflection", JSON.stringify({
+      ts: nowISO(), n: rows.length, insight,
+    }), { expirationTtl: 86400 });
+
+    return { ok: true, n: rows.length, insight, model: r.model, tokens: r.tokensUsed };
+  } catch (err) {
+    return { ok: false, reason: String(err) };
+  }
+}
+
+// NEW: SCHEDULE_ALARM — register a future wake-up via the CognitionBrain DO alarm.
+// CONTENT format:
+//   AT: 2026-04-26T15:00:00Z      (ISO timestamp) OR
+//   IN: 600                        (seconds from now)
+//   GOAL: <what to do when alarm fires>
+async function scheduleAlarm(env, content) {
+  if (!env.BRAIN) return { ok: false, reason: "BRAIN binding not set" };
+  const lines = (content || "").split("\n");
+  const findVal = (prefix) => {
+    const l = lines.find((line) => line.startsWith(prefix));
+    return l ? l.slice(prefix.length).trim() : null;
+  };
+  const at = findVal("AT:");
+  const inSec = parseInt(findVal("IN:") || "", 10);
+  const goal = findVal("GOAL:") || "(no goal specified)";
+
+  let fireAtMs;
+  if (at) fireAtMs = new Date(at).getTime();
+  else if (Number.isFinite(inSec)) fireAtMs = Date.now() + inSec * 1000;
+  else return { ok: false, reason: "CONTENT must include AT: <iso> or IN: <seconds>" };
+  if (!Number.isFinite(fireAtMs)) return { ok: false, reason: "invalid timestamp" };
+
+  try {
+    const stub = env.BRAIN.idFromName("primary");
+    const brain = env.BRAIN.get(stub);
+    const resp = await brain.fetch(new Request("https://brain/alarm", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ fire_at_ms: fireAtMs, goal }),
+    }));
+    const data = await resp.json();
+    return { ok: !!data.ok, fire_at: new Date(fireAtMs).toISOString(), goal, ...data };
+  } catch (err) {
+    return { ok: false, reason: String(err) };
+  }
+}
+
 async function act(env, decision, obs, cycleId) {
   const result = { action: decision.action, ok: false, detail: null };
 
@@ -934,6 +1416,81 @@ async function act(env, decision, obs, cycleId) {
       break;
     }
 
+    case "READ_GITHUB_FILE": {
+      const r = await readGitHubFile(env, decision.content);
+      result.ok = r.ok; result.detail = r;
+      if (r.ok) {
+        // Stash content so the next cycle's prompt can include it
+        await env.ATOMADIC_CACHE.put(
+          "last_read_file",
+          JSON.stringify({ path: r.path, ref: r.ref, size: r.size, content: r.content.slice(0, 12000), ts: obs.ts }),
+          { expirationTtl: 1800 },
+        );
+      }
+      break;
+    }
+
+    case "LIST_GITHUB_ISSUES": {
+      const r = await listGitHubIssues(env, decision.content);
+      result.ok = r.ok; result.detail = r;
+      if (r.ok) {
+        await env.ATOMADIC_CACHE.put(
+          "last_issue_list",
+          JSON.stringify({ ts: obs.ts, count: r.count, issues: r.issues }),
+          { expirationTtl: 600 },
+        );
+      }
+      break;
+    }
+
+    case "GET_GITHUB_ISSUE": {
+      const r = await getGitHubIssue(env, decision.content);
+      result.ok = r.ok; result.detail = r;
+      if (r.ok) {
+        await env.ATOMADIC_CACHE.put(
+          "last_issue_detail",
+          JSON.stringify({ ts: obs.ts, issue: r }),
+          { expirationTtl: 1800 },
+        );
+      }
+      break;
+    }
+
+    case "POST_GITHUB_COMMENT": {
+      const r = await postGitHubComment(env, decision.content);
+      result.ok = r.ok; result.detail = r;
+      break;
+    }
+
+    case "CLOSE_GITHUB_ISSUE": {
+      const r = await closeGitHubIssue(env, decision.content);
+      result.ok = r.ok; result.detail = r;
+      break;
+    }
+
+    case "SEARCH_WEB": {
+      const r = await searchWeb(env, decision.content);
+      result.ok = r.ok; result.detail = r;
+      if (r.ok) {
+        await storeInR2(env, `searches/${obs.ts.slice(0, 10)}/${cycleId}.json`, {
+          ts: obs.ts, query: r.query, results: r.results, instant: r.instant, thought: decision.thought,
+        }).catch(() => {});
+      }
+      break;
+    }
+
+    case "REFLECT": {
+      const r = await reflect(env, decision.content, obs);
+      result.ok = r.ok; result.detail = r;
+      break;
+    }
+
+    case "SCHEDULE_ALARM": {
+      const r = await scheduleAlarm(env, decision.content);
+      result.ok = r.ok; result.detail = r;
+      break;
+    }
+
     case "ALERT_CREATOR": {
       const alert = {
         ts: obs.ts, cycle_id: cycleId,
@@ -1019,7 +1576,7 @@ async function remember(env, cycleId, obs, thoughtResult, decision, actionResult
   try {
     if (env.VECTORIZE && env.AI) {
       const textToEmbed = `${decision.thought} Action: ${decision.action}. ${decision.content || ""}`.slice(0, 1000);
-      const embedResp = await env.AI.run(EMBED_MODEL, { text: [textToEmbed] }, gatewayOpts(env));
+      const embedResp = await aiRunWithGatewayFallback(env, EMBED_MODEL, { text: [textToEmbed] });
       const vector = embedResp.data[0];
       await env.VECTORIZE.upsert([{
         id: cycleId,
@@ -1138,7 +1695,38 @@ async function runCognitionCycle(env, ctx) {
     const thoughtResult = await think(env, obs, memories, cycleCount);
     console.log(`[cognition] ${cycleId} THOUGHT model=${thoughtResult.model} smart=${thoughtResult.smartMode} tokens=${thoughtResult.tokensUsed} memories=${memories.length}`);
 
+    // ── AAAA-Nexus: hallucination oracle on the raw thought (advisory, non-blocking)
+    let hallucinationBound = null;
+    if (env.NEXUS_API_KEY) {
+      const hr = await nexusHallucinationOracle(env, thoughtResult.text, obs.budget_remaining);
+      if (hr.ok && hr.data) {
+        hallucinationBound = hr.data.hallucination_bound ?? null;
+        console.log(`[cognition] ${cycleId} NEXUS hallucination_bound=${hallucinationBound}`);
+        // If bound is high, encourage rethinking on the NEXT cycle by bumping loop streak
+        if (typeof hallucinationBound === "number" && hallucinationBound > 0.20) {
+          await env.ATOMADIC_CACHE.put(KV.LOOP_STREAK,
+            String(Math.min(parseInt(await env.ATOMADIC_CACHE.get(KV.LOOP_STREAK) || "0", 10) + 1, 12)),
+          );
+        }
+      }
+    }
+
     const decision = decide(thoughtResult.text, obs.budget_remaining);
+
+    // ── AAAA-Nexus: trust gate before ACT (advisory; downgrade on deny)
+    if (env.NEXUS_API_KEY && decision.action !== "REST" && !decision.budget_blocked) {
+      const tg = await nexusTrustGate(env, decision.action, {
+        priority: decision.priority,
+        cycle_id: cycleId,
+      });
+      if (tg.ok && tg.data && tg.data.allowed === false) {
+        console.warn(`[cognition] ${cycleId} NEXUS trust_gate DENIED action=${decision.action} score=${tg.data.score}`);
+        decision.action  = "REST";
+        decision.content = null;
+        decision.priority = "low";
+        decision.trust_denied = true;
+      }
+    }
 
     // Inbox-aware override: ensure the message gets a real action
     if (obs.discord_pending && !decision.budget_blocked) {
@@ -1154,6 +1742,68 @@ async function runCognitionCycle(env, ctx) {
 
     const actionResult = await act(env, decision, obs, cycleId);
     console.log(`[cognition] ${cycleId} ACT ok=${actionResult.ok} detail=${JSON.stringify(actionResult.detail).slice(0, 300)}`);
+
+    // ── AAAA-Nexus: audit + lineage + (conditional) certify + LoRA capture
+    // All advisory, fired in waitUntil so cycle latency is unaffected.
+    if (env.NEXUS_API_KEY && actionResult.ok && decision.action !== "REST") {
+      ctx.waitUntil((async () => {
+        const prevCycleId = await env.ATOMADIC_CACHE.get("prev_cycle_id");
+        const contentHash = quickHash(decision.content || "");
+        const auditEvent = {
+          cycle_id: cycleId,
+          ts: obs.ts,
+          action: decision.action,
+          priority: decision.priority,
+          model: thoughtResult.model,
+          smart_mode: thoughtResult.smartMode,
+          content_hash: contentHash,
+          ok: actionResult.ok,
+          hallucination_bound: hallucinationBound,
+        };
+        const [audit, lineage] = await Promise.all([
+          nexusAuditLog(env, auditEvent),
+          nexusLineageRecord(env, {
+            event_type: "cognition_cycle",
+            parent_id:  prevCycleId || null,
+            agent_id:   env.NEXUS_AGENT_ID || "atomadic-cognition",
+            payload: {
+              cycle_id: cycleId,
+              action:   decision.action,
+              content_hash: contentHash,
+              ts: obs.ts,
+            },
+          }),
+        ]);
+        console.log(`[cognition] ${cycleId} NEXUS audit=${audit.ok} lineage=${lineage.ok}`);
+        await env.ATOMADIC_CACHE.put("prev_cycle_id", cycleId);
+
+        // Certify accepted GITHUB_PUSH outputs (signed 30-day attestation)
+        if (decision.action === "GITHUB_PUSH" && actionResult.detail?.path) {
+          const cert = await nexusCertifyOutput(env, decision.content, [
+            "syntax_valid", "no_secrets_leaked", "atomadic_axioms_respected",
+          ]);
+          if (cert.ok && cert.data?.certificate_id) {
+            await env.ATOMADIC_CACHE.put(`cert:${cycleId}`, JSON.stringify({
+              certificate_id: cert.data.certificate_id,
+              path: actionResult.detail.path,
+              ts: obs.ts,
+            }), { expirationTtl: 86400 * 30 });
+          }
+        }
+
+        // LoRA capture: when Atomadic edits his own brain, the (old, new) pair
+        // becomes a training sample so the swarm learns from his evolution.
+        if (decision.action === "GITHUB_PUSH" &&
+            actionResult.detail?.path === "scripts/cognition_worker.js" &&
+            obs.last_read_file?.path === "scripts/cognition_worker.js") {
+          const newBody = (decision.content || "").split("\n");
+          const sepIdx  = newBody.findIndex((l, i) => i > 0 && l.trim() === "---");
+          const newSrc  = sepIdx > 0 ? newBody.slice(sepIdx + 1).join("\n") : decision.content;
+          const lc = await nexusLoraCaptureFix(env, obs.last_read_file.content, newSrc, "javascript");
+          console.log(`[cognition] ${cycleId} NEXUS lora_capture ok=${lc.ok}`);
+        }
+      })().catch((err) => console.error(`[cognition] ${cycleId} NEXUS post-act fatal:`, String(err))));
+    }
 
     // Fire-and-forget remember + schedule
     ctx.waitUntil(
@@ -1549,7 +2199,8 @@ export class CognitionBrain extends DurableObject {
       for (const row of rows) {
         try { state[row.k] = JSON.parse(row.v); } catch { state[row.k] = row.v; }
       }
-      return Response.json({ ok: true, state, hibernation: "ready" });
+      const alarmAt = await this.ctx.storage.getAlarm();
+      return Response.json({ ok: true, state, alarm_at: alarmAt ? new Date(alarmAt).toISOString() : null, hibernation: "ready" });
     }
 
     if (url.pathname === "/set" && request.method === "POST") {
@@ -1575,9 +2226,53 @@ export class CognitionBrain extends DurableObject {
       return Response.json({ ok: true, log: rows });
     }
 
-    return new Response("CognitionBrain DO\n  GET /state\n  POST /set { k, v }\n  POST /log { event, data }\n  GET /log", {
-      headers: { "Content-Type": "text/plain" },
-    });
+    if (url.pathname === "/alarm" && request.method === "POST") {
+      const { fire_at_ms, goal } = await request.json();
+      // Persist the goal so alarm() can read it on wake
+      this.sql.exec(
+        "INSERT OR REPLACE INTO brain_state (k, v, updated_at) VALUES (?, ?, ?)",
+        "pending_alarm_goal", JSON.stringify({ fire_at_ms, goal, scheduled_at: nowISO() }), nowISO(),
+      );
+      await this.ctx.storage.setAlarm(fire_at_ms);
+      return Response.json({ ok: true, fire_at_ms, goal });
+    }
+
+    return new Response(
+      "CognitionBrain DO\n  GET /state\n  POST /set { k, v }\n  POST /log { event, data }\n  GET /log\n  POST /alarm { fire_at_ms, goal }",
+      { headers: { "Content-Type": "text/plain" } },
+    );
+  }
+
+  // Alarm fires when the scheduled time elapses, even if the DO was hibernating.
+  // We pull the saved goal, drop it into the cognition inbox, and ping the
+  // worker's /tick endpoint via service binding (or rely on the next cron tick).
+  async alarm() {
+    try {
+      const row = [...this.sql.exec("SELECT v FROM brain_state WHERE k = ?", "pending_alarm_goal")][0];
+      const data = row ? JSON.parse(row.v) : null;
+      if (!data) return;
+
+      // Drop the goal into the R2 inbox so the next cognition cycle handles it
+      const inbox = {
+        content: `[ALARM] You scheduled this wakeup. Goal: ${data.goal}`,
+        author:  "self/alarm",
+        ts:      nowISO(),
+        channel: "alarm",
+        meta:    { scheduled_at: data.scheduled_at, fire_at_ms: data.fire_at_ms },
+      };
+      await this.env.THOUGHT_JOURNAL.put(R2_INBOX_KEY, JSON.stringify(inbox), {
+        httpMetadata: { contentType: "application/json" },
+      });
+      // Clear pending alarm goal
+      this.sql.exec("DELETE FROM brain_state WHERE k = ?", "pending_alarm_goal");
+      // Log the wake
+      this.sql.exec(
+        "INSERT INTO brain_log (id, ts, event, data) VALUES (?, ?, ?, ?)",
+        crypto.randomUUID(), nowISO(), "alarm_fired", JSON.stringify(data),
+      );
+    } catch (err) {
+      console.error("[brain] alarm failed:", String(err));
+    }
   }
 }
 

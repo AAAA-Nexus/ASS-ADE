@@ -154,10 +154,16 @@ database_id   = "c9818237-b6da-4ba3-b6bb-1e4e9f93da52"
 GITHUB_REPO       = "AAAA-Nexus/ASS-ADE"
 AI_GATEWAY_ID     = "atomadic-gateway"
 EMAIL_SENDER_ADDR = "atomadic@atomadic.tech"
+NEXUS_BASE_URL    = "https://atomadic.tech"
+NEXUS_AGENT_ID    = "atomadic-cognition"
 
 # ─── Secrets (set via `npx wrangler secret put <NAME> -c scripts/wrangler.cognition.toml`):
 #   DISCORD_WEBHOOK_URL — Discord channel webhook for posting thoughts
 #   GITHUB_TOKEN        — GitHub PAT for repo reads + GITHUB_PUSH (repo write scope)
+#   NEXUS_API_KEY       — AAAA-Nexus API key (https://atomadic.tech) — enables
+#                         trust gate, hallucination oracle, audit log, lineage
+#                         records, output certification, LoRA capture.
+#                         Without it, cycle still runs but Nexus calls are skipped.
 #
 # Voice (NOTE — see cognition_worker.js bottom comment block):
 #   The @cloudflare/voice SDK requires WebRTC + a separate Realtime worker. This
