@@ -1,8 +1,0 @@
-[phases.setup]
-nixPkgs = ["python312"]
-
-[phases.install]
-cmds = ["pip install -e '.[discord]'"]
-
-[start]
-cmd = "python scripts/atomadic_discord_bot.py"

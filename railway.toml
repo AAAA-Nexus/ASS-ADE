@@ -1,6 +1,6 @@
 [build]
-builder = "NIXPACKS"
-buildCommand = "pip install -e '.[discord]'"
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile.discord"
 
 [deploy]
 startCommand = "python scripts/atomadic_discord_bot.py"
