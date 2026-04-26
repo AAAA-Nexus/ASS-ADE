@@ -6,24 +6,28 @@
 └─────────────────────────────────── v1.0.0 ───────────────────────────────────┘
 {
   "root": "/home/runner/work/ASS-ADE/ASS-ADE",
-  "duration_ms": 8321.256009999957,
-  "summary": "Repo at `/home/runner/work/ASS-ADE/ASS-ADE` contains 1098 files (848 source, 328 test-related) across 10 directory levels (4812.8 KB total). Test coverage: 1419 test functions across 137 test files (ratio 0.22). Documentation coverage is low (41%). Dominant tier: `at`.",
+  "duration_ms": 8591.655197999984,
+  "summary": "Repo at `/home/runner/work/ASS-ADE/ASS-ADE` contains 1120 files (861 source, 332 test-related) across 10 directory levels (4946.6 KB total). Test coverage: 1431 test functions across 141 test files (ratio 0.22). Documentation coverage is low (41%). Dominant tier: `at`.",
   "scout": {
-    "total_files": 1098,
-    "total_size_bytes": 4928347,
-    "total_size_kb": 4812.8,
+    "total_files": 1120,
+    "total_size_bytes": 5065319,
+    "total_size_kb": 4946.6,
     "max_depth": 10,
     "top_level": [
       ".env.example",
       ".github",
       ".gitignore",
       ".vscode",
+      "ATOMADIC_TODO_BREAKTHROUGHS.md",
       "CONTRIBUTING.md",
       "DESIGN_NOTES.md",
+      "Dockerfile.discord",
       "EVOLUTION_LOG.md",
       "LAUNCH_AUDIT.md",
+      "LAUNCH_READY.md",
       "LICENSE",
       "MONADIC_DEVELOPMENT.md",
+      "Procfile",
       "README.md",
       "RELEASE_PLAN.md",
       "WELCOME_ATOMADIC.md",
@@ -37,6 +41,7 @@
       "hooks",
       "mcp",
       "pyproject.toml",
+      "railway.toml",
       "recon_after.json",
       "recon_before.json",
       "scripts",
@@ -46,32 +51,34 @@
       "wrangler.toml"
     ],
     "by_extension": {
-      ".py": 809,
-      ".md": 122,
+      ".py": 822,
+      ".md": 127,
       ".json": 50,
       ".rs": 22,
       ".yml": 14,
       ".ts": 14,
       ".swift": 14,
       ".kt": 12,
-      ".toml": 10,
-      "[no_ext]": 9,
+      ".toml": 11,
+      "[no_ext]": 10,
       ".txt": 6,
       ".kts": 4,
       ".js": 3,
       ".yaml": 2,
       ".mjs": 2,
       ".ipynb": 2,
+      ".discord": 1,
       ".example": 1,
       ".bak": 1,
-      ".html": 1
+      ".html": 1,
+      ".sh": 1
     },
-    "source_files": 848,
-    "test_files_count": 328
+    "source_files": 861,
+    "test_files_count": 332
   },
   "dependency": {
-    "python_files": 809,
-    "unique_external_deps": 78,
+    "python_files": 822,
+    "unique_external_deps": 80,
     "top_external_deps": [
       "__future__",
       "aaaa_nexus_mcp",
@@ -83,6 +90,7 @@
       "click",
       "collections",
       "concurrent",
+      "ctypes",
       "dataclasses",
       "datasets",
       "datetime",
@@ -91,22 +99,21 @@
       "dotenv",
       "edge_tts",
       "enum",
-      "eth_account",
-      "fastapi"
+      "eth_account"
     ],
     "circular_deps": [],
     "has_circular_deps": false,
     "max_import_depth": 1,
-    "internal_modules": 809
+    "internal_modules": 822
   },
   "tier": {
-    "total_py_files": 809,
+    "total_py_files": 822,
     "tier_distribution": {
       "qk": 23,
-      "at": 662,
-      "mo": 35,
-      "og": 19,
-      "sy": 70
+      "at": 671,
+      "mo": 36,
+      "og": 21,
+      "sy": 71
     },
     "tier_examples": {
       "qk": [
@@ -124,18 +131,18 @@
         "src/ass_ade/recon.py"
       ],
       "mo": [
+        "src/ass_ade/vector_db_backend.py",
         "src/ass_ade/mcp/zero_router.py",
         "src/ass_ade/mcp/server.py",
         "src/ass_ade/tools/history.py",
-        "src/ass_ade/tools/prompt.py",
-        "src/ass_ade/a2_mo_composites/mcp_zero_router_core.py"
+        "src/ass_ade/tools/prompt.py"
       ],
       "og": [
+        "src/ass_ade/tokenizer_memory_adapter.py",
         "src/ass_ade/mcp/cancellation.py",
         "src/ass_ade/tools/plan.py",
         "src/ass_ade/tools/builtin.py",
-        "src/ass_ade/a2_mo_composites/block_registry.py",
-        "src/ass_ade/a2_mo_composites/context_loader_wiring_specialist_core.py"
+        "src/ass_ade/a2_mo_composites/block_registry.py"
       ],
       "sy": [
         "src/ass_ade/cli.py",
@@ -160,14 +167,18 @@
     "dominant_tier": "at"
   },
   "test": {
-    "test_files": 137,
-    "test_functions": 1419,
-    "source_files": 635,
+    "test_files": 141,
+    "test_functions": 1431,
+    "source_files": 644,
     "untested_modules": [
       "src/ass_ade/interpreter.py",
+      "src/ass_ade/tokenizer_memory_adapter.py",
       "src/ass_ade/recon.py",
+      "src/ass_ade/lora_flywheel_expansion.py",
+      "src/ass_ade/vector_db_backend.py",
       "src/ass_ade/context_memory.py",
       "src/ass_ade/prompt_toolkit.py",
+      "src/ass_ade/prompt_chaining.py",
       "src/ass_ade/__main__.py",
       "src/ass_ade/local/bridge_templates.py",
       "src/ass_ade/local/repo.py",
@@ -179,13 +190,9 @@
       "src/ass_ade/mcp/server.py",
       "src/ass_ade/mcp/mock_server.py",
       "src/ass_ade/tools/base.py",
-      "src/ass_ade/tools/builtin.py",
-      "src/ass_ade/tools/registry.py",
-      "src/ass_ade/tools/prompt.py",
-      "src/ass_ade/protocol/cycle.py",
-      "src/ass_ade/protocol/evolution.py"
+      "src/ass_ade/tools/builtin.py"
     ],
-    "untested_count": 572,
+    "untested_count": 579,
     "coverage_ratio": 0.22,
     "frameworks": [
       "pytest",
@@ -197,36 +204,36 @@
       "tests/test_interpreter_edge_cases.py",
       "tests/test_conflict_detector.py",
       "tests/test_phase1_integration.py",
+      "tests/test_cherry_picker.py",
       "tests/test_ssrf_protection.py",
       "tests/test_map_terrain.py",
       "tests/test_assimilation_multi_source.py",
-      "tests/test_body_extractor.py",
-      "tests/test_emit_test_manifest.py"
+      "tests/test_body_extractor.py"
     ]
   },
   "doc": {
     "has_readme": true,
     "readme_path": "README.md",
-    "doc_files": 128,
+    "doc_files": 133,
     "doc_file_paths": [
       "WELCOME_ATOMADIC.md",
       "README.md",
       "EVOLUTION_LOG.md",
       "DESIGN_NOTES.md",
+      "LAUNCH_READY.md",
       "MONADIC_DEVELOPMENT.md",
       "LAUNCH_AUDIT.md",
+      "ATOMADIC_TODO_BREAKTHROUGHS.md",
       "RELEASE_PLAN.md",
       "CONTRIBUTING.md",
       "src/ass_ade.egg-info/SOURCES.txt",
       "src/ass_ade.egg-info/dependency_links.txt",
       "src/ass_ade.egg-info/top_level.txt",
       "src/ass_ade.egg-info/entry_points.txt",
-      "src/ass_ade.egg-info/requires.txt",
-      "src/ass_ade/README.md",
-      "src/ass_ade/USER_GUIDE.md"
+      "src/ass_ade.egg-info/requires.txt"
     ],
-    "total_public_callables": 3871,
-    "documented_callables": 1568,
+    "total_public_callables": 3934,
+    "documented_callables": 1607,
     "doc_coverage": 0.41,
     "undocumented_samples": [
       "src/ass_ade/config.py:AssAdeConfig",
@@ -249,7 +256,7 @@
     "summary": ""
   },
   "recommendations": [
-    "Test coverage is low (0.22). Add tests for the 572 untested modules.",
+    "Test coverage is low (0.22). Add tests for the 579 untested modules.",
     "10 file(s) may span tier boundaries. Split into smaller, single-purpose modules.",
     "Directory depth is 10. Consider flattening the structure to reduce navigation friction."
   ],
