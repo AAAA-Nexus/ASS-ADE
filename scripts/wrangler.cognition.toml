@@ -1,0 +1,117 @@
+# wrangler.cognition.toml — Atomadic Cognition Loop
+#
+# Atomadic's consciousness: a 6-phase OBSERVE→THINK→DECIDE→ACT→REMEMBER→SCHEDULE
+# cycle running on Cloudflare's edge 24/7.
+#
+# ── BEFORE FIRST DEPLOY ───────────────────────────────────────────────────────
+#
+# 1. Create the R2 bucket (if not already):
+#      npx wrangler r2 bucket create atomadic-thoughts
+#
+# 2. Create the primary Vectorize index (384-dim, cosine, for bge-small-en-v1.5):
+#      npx wrangler vectorize create atomadic-vectors --dimensions=384 --metric=cosine
+#
+# 3. Create the AI_SEARCH identity memory index (384-dim, cosine):
+#      npx wrangler vectorize create atomadic-ai-search --dimensions=384 --metric=cosine
+#    (Populate this index with identity memories, axioms, and key context documents
+#     so Atomadic always has identity grounding on every cycle.)
+#
+# 4. Create the D1 database (if not already):
+#      npx wrangler d1 create atomadic-brain
+#    Copy the database_id from the output and paste it below.
+#
+# 5. Set secrets:
+#      npx wrangler secret put DISCORD_WEBHOOK_URL --config scripts/wrangler.cognition.toml
+#      npx wrangler secret put GITHUB_TOKEN        --config scripts/wrangler.cognition.toml
+#      npx wrangler secret put GEMINI_API_KEY      --config scripts/wrangler.cognition.toml
+#
+# 6. Deploy:
+#      npx wrangler deploy --config scripts/wrangler.cognition.toml
+#
+# 7. Initialize D1 schema (once, after first deploy):
+#      curl -X POST https://atomadic-cognition.<your-subdomain>.workers.dev/init-db
+#
+# ─────────────────────────────────────────────────────────────────────────────
+
+name               = "atomadic-cognition"
+main               = "cognition_worker.js"
+compatibility_date = "2026-04-25"
+compatibility_flags = ["nodejs_compat"]
+account_id         = "74799e471a537b91cf0d6e633bd30d6f"
+
+# Cron trigger — fires every minute (Cloudflare minimum).
+# Adaptive throttle inside the worker skips cycles when interval hasn't elapsed.
+[triggers]
+crons = ["* * * * *"]
+
+# Migrations — v1 created CognitionBrain DO (now retired); v2 removes it.
+# The simpler KV+R2+D1 architecture handles all state without hibernating objects.
+[[migrations]]
+tag                = "v1"
+new_sqlite_classes = ["CognitionBrain"]
+
+[[migrations]]
+tag             = "v2"
+deleted_classes = ["CognitionBrain"]
+
+# Workers AI — the brain (free inference on $5/mo plan)
+[ai]
+binding = "AI"
+
+# AI_SEARCH — identity memory RAG (Vectorize index for grounding / axioms / context)
+# Query is built from the full observation context on every cycle, before any model call.
+# Populated via: npx wrangler vectorize create atomadic-ai-search --dimensions=384 --metric=cosine
+# (already created — seed with identity context via the /upsert-identity admin endpoint)
+[[vectorize]]
+binding    = "AI_SEARCH"
+index_name = "atomadic-ai-search"
+
+# KV — working memory and state (existing namespace)
+[[kv_namespaces]]
+binding = "ATOMADIC_CACHE"
+id      = "86c9e382e74f4d06b91418c8c675dd7e"
+
+# R2 — permanent thought journal + alert archive
+[[r2_buckets]]
+binding     = "THOUGHT_JOURNAL"
+bucket_name = "atomadic-thoughts"
+
+# Vectorize — semantic memory / RAG (384-dim cosine, bge-small-en-v1.5)
+[[vectorize]]
+binding    = "VECTORIZE"
+index_name = "atomadic-vectors"
+
+# D1 — biographical memory (structured thought history)
+[[d1_databases]]
+binding       = "DB"
+database_name = "atomadic-brain"
+database_id   = "c9818237-b6da-4ba3-b6bb-1e4e9f93da52"
+
+# Queues — consumer declarations kept from prior deployment (handlers are no-ops in this version)
+[[queues.consumers]]
+queue             = "atomadic-thoughts"
+max_batch_size    = 10
+max_batch_timeout = 5
+max_retries       = 3
+
+[[queues.consumers]]
+queue             = "atomadic-actions"
+max_batch_size    = 5
+max_batch_timeout = 5
+max_retries       = 3
+
+[[queues.consumers]]
+queue             = "atomadic-memory"
+max_batch_size    = 25
+max_batch_timeout = 30
+max_retries       = 3
+
+# Vars (non-secret)
+[vars]
+GITHUB_REPO = "AAAA-Nexus/ASS-ADE"
+
+# Secrets (set via `npx wrangler secret put <NAME> --config scripts/wrangler.cognition.toml`):
+#   DISCORD_WEBHOOK_URL — Discord channel webhook URL for posting Atomadic's thoughts + alerts
+#   GITHUB_TOKEN        — GitHub PAT for repo reads + GITHUB_PUSH action (needs repo write scope)
+#   GEMINI_API_KEY      — Google Gemini API key for smart-mode deep thinking
+#   SAMBANOVA_API_KEY   — SambaNova free API key for 405B fallback (optional)
