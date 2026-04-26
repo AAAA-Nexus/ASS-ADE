@@ -1,8 +1,8 @@
 {
   "lane": "features",
   "applied": [
-    "missing_tests in src/ass_ade/a0_qk_constants/cli_theme.py",
-    "missing_tests in src/ass_ade/a0_qk_constants/schemas.py"
+    "missing_tests in src/ass_ade/a0_qk_constants/tier_names.py",
+    "missing_tests in src/ass_ade/a1_at_functions/a2a_discover_helpers.py"
   ],
   "skipped": []
 }
