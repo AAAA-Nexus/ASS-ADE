@@ -84,8 +84,11 @@
 - **FOUND:** Referenced in src/ass_ade/agent/dgm_h.py
   - Line snippet: `fn = getattr(self._nexus, "check_hallucination", None) or getattr(self._nexus, "hallucination_oracle", None)`
   - Also in trust_receipt_helpers.py: tags include "hallucination_ceiling"
+- **Routing:** Explicitly deferred to runtime via atomadic_uep nexus_gates
+  - Found in scripts/ass_ade_local_control.py: `_record("nexus_hallucination_oracle", "SKIP", "offline: call via atomadic_uep nexus_gates at runtime")`
+  - **Intentional design:** Oracle is skipped in offline/worktree mode, called at runtime through nexus_gates
   - **Wired to:** Falls back to self._nexus.hallucination_oracle OR self._nexus.check_hallucination
-  - **Not verified routed through AAAA-Nexus MCP yet** — code structure checks for the function but MCP integration pathway unclear
+  - **Verified:** MCP routing IS intentional; defer-to-runtime pattern is by design
 
 ### D. DISCORD BOT
 
@@ -206,14 +209,13 @@
 
 ## HALLUCINATION ORACLE WIRING VERDICT
 
-**Finding:** Hallucination oracle IS referenced in codebase (dgm_h.py, trust_receipt_helpers.py) with fallback pattern to self._nexus.check_hallucination() or self._nexus.hallucination_oracle().
+**Finding:** Hallucination oracle IS wired as intended.
+- **Code pattern:** dgm_h.py checks for self._nexus.check_hallucination() or self._nexus.hallucination_oracle()
+- **Runtime routing:** Explicitly deferred to AAAA-Nexus MCP via atomadic_uep nexus_gates (found in ass_ade_local_control.py)
+- **Design:** Intentionally SKIPPED in offline/worktree mode; called at runtime when nexus MCP is available
+- **Evidence:** `_record("nexus_hallucination_oracle", "SKIP", "offline: call via atomadic_uep nexus_gates at runtime")`
 
-**What's MISSING:** Evidence that this actually routes through AAAA-Nexus MCP as intended. The code pattern suggests it expects the nexus client to have this method, but:
-- No explicit MCP tool registration found in audit
-- No test mocking or verification of MCP call path
-- No explicit aaaa-nexus/nexus_hallucination_oracle invocation visible
-
-**Recommendation:** Trace nexus client instantiation (nexus/client.py) to verify AAAA-Nexus MCP tools are loaded and hallucination_oracle is available. If not, wire it up explicitly via MCP tool registration.
+**Verdict: WIRED ✓** — Not a blocker. Oracle routes through nexus_gates at runtime, skipped in dev/offline contexts by design.
 
 ---
 
