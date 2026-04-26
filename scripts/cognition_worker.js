@@ -281,17 +281,30 @@ async function querySemanticMemory(env, query, topK = 5) {
       const instance = env.AI_SEARCH.get("atomadic-rag");
       const result = await instance.search({
         query,
-        max_num_results: topK,
-        rewrite_query: true,
+        ai_search_options: {
+          retrieval: {
+            retrieval_type:  "hybrid",
+            max_num_results: topK,
+            match_threshold: 0.3,
+          },
+          query_rewrite: { enabled: true },
+        },
       });
-      const matches = result?.data || result?.matches || [];
-      return matches.slice(0, topK).map((m, i) => ({
-        id:    m.id || m.chunk_id || `aisearch-${i}`,
-        score: m.score ?? m.similarity ?? 0,
-        text:  m.content || m.text || (Array.isArray(m.content) ? m.content.map(c => c.text).join(" ") : "(no text)"),
-        ts:    m.attributes?.ts || m.metadata?.ts || null,
-        source: m.filename || m.attributes?.filename || "ai-search",
-      }));
+      const matches = result?.data || result?.matches || result?.results || [];
+      return matches.slice(0, topK).map((m, i) => {
+        const text = typeof m.content === "string"
+          ? m.content
+          : Array.isArray(m.content)
+            ? m.content.map((c) => c.text || c).join(" ")
+            : (m.text || "(no text)");
+        return {
+          id:     m.id || m.chunk_id || `aisearch-${i}`,
+          score:  m.score ?? m.similarity ?? 0,
+          text,
+          ts:     m.attributes?.ts || m.metadata?.ts || null,
+          source: m.filename || m.attributes?.filename || "ai-search",
+        };
+      });
     } catch (err) {
       console.warn(`[cognition] AI Search failed, falling back to Vectorize: ${String(err)}`);
     }
@@ -1373,38 +1386,27 @@ async function handleFetch(request, env, ctx) {
 
 async function handleEmail(message, env, ctx) {
   try {
-    // Read the raw email body (size cap to keep memory sane)
-    const reader = message.raw.getReader();
-    const chunks = [];
-    let total = 0;
-    while (true) {
-      const { value, done } = await reader.read();
-      if (done) break;
-      chunks.push(value);
-      total += value.length;
-      if (total > 200_000) break;
-    }
-    const raw = new TextDecoder().decode(
-      chunks.reduce((acc, c) => {
-        const m = new Uint8Array(acc.length + c.length);
-        m.set(acc, 0); m.set(c, acc.length);
-        return m;
-      }, new Uint8Array(0)),
-    );
+    // message.raw is a ReadableStream; Response.text() drains it cleanly.
+    const raw = (await new Response(message.raw).text()).slice(0, 200_000);
 
-    // Crude header parsing — get Subject + a body excerpt
-    const headers = {};
-    for (const [k, v] of message.headers) headers[k.toLowerCase()] = v;
-    const subjectHeader = headers["subject"] || "(no subject)";
-    const bodyMatch = raw.split(/\r?\n\r?\n/);
-    const body = (bodyMatch.slice(1).join("\n\n") || raw).slice(0, 8000);
+    const subjectHeader = message.headers.get("subject") || "(no subject)";
+    const messageId     = message.headers.get("message-id") || null;
+    // RFC822 body = everything after the first blank line
+    const splitIdx = raw.search(/\r?\n\r?\n/);
+    const body = (splitIdx >= 0 ? raw.slice(splitIdx).trim() : raw).slice(0, 8000);
 
     const inboxMsg = {
       content: `[EMAIL from ${message.from}] Subject: ${subjectHeader}\n\n${body}`,
       author:  message.from,
       ts:      nowISO(),
       channel: "email",
-      meta:    { to: message.to, subject: subjectHeader },
+      meta: {
+        to:         message.to,
+        subject:    subjectHeader,
+        message_id: messageId,
+        // Keep the inbound stub around so Atomadic can reply in-thread on next cycle
+        reply_to:   message.from,
+      },
     };
 
     // Drop into the cognition inbox so the next tick processes it
@@ -1412,7 +1414,7 @@ async function handleEmail(message, env, ctx) {
       httpMetadata: { contentType: "application/json" },
     });
 
-    // Also archive raw to R2 for audit
+    // Archive raw to R2 for audit
     await env.THOUGHT_JOURNAL.put(
       `emails/received/${nowISO().slice(0, 10)}/${crypto.randomUUID()}.eml`,
       raw,
