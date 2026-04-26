@@ -19,9 +19,9 @@
       "id": 1,
       "category": "security",
       "title": "Assertions used for control flow",
-      "description": "assert used for control flow at scripts/atomadic_discord_bot.py:135.",
+      "description": "assert used for control flow at scripts/atomadic_discord_bot.py:277.",
       "file": "scripts/atomadic_discord_bot.py",
-      "line": 135,
+      "line": 277,
       "impact": "high",
       "effort": "low"
     },
@@ -118,26 +118,6 @@
     {
       "id": 11,
       "category": "missing_tests",
-      "title": "No tests for cli_theme.py",
-      "description": "src/ass_ade/a0_qk_constants/cli_theme.py has no corresponding test file under tests/.",
-      "file": "src/ass_ade/a0_qk_constants/cli_theme.py",
-      "line": null,
-      "impact": "high",
-      "effort": "medium"
-    },
-    {
-      "id": 12,
-      "category": "missing_tests",
-      "title": "No tests for schemas.py",
-      "description": "src/ass_ade/a0_qk_constants/schemas.py has no corresponding test file under tests/.",
-      "file": "src/ass_ade/a0_qk_constants/schemas.py",
-      "line": null,
-      "impact": "high",
-      "effort": "medium"
-    },
-    {
-      "id": 13,
-      "category": "missing_tests",
       "title": "No tests for tier_names.py",
       "description": "src/ass_ade/a0_qk_constants/tier_names.py has no corresponding test file under tests/.",
       "file": "src/ass_ade/a0_qk_constants/tier_names.py",
@@ -146,7 +126,7 @@
       "effort": "medium"
     },
     {
-      "id": 14,
+      "id": 12,
       "category": "missing_tests",
       "title": "No tests for a2a_discover_helpers.py",
       "description": "src/ass_ade/a1_at_functions/a2a_discover_helpers.py has no corresponding test file under tests/.",
@@ -156,7 +136,7 @@
       "effort": "medium"
     },
     {
-      "id": 15,
+      "id": 13,
       "category": "missing_tests",
       "title": "No tests for a2a_negotiate_helpers.py",
       "description": "src/ass_ade/a1_at_functions/a2a_negotiate_helpers.py has no corresponding test file under tests/.",
@@ -166,7 +146,7 @@
       "effort": "medium"
     },
     {
-      "id": 16,
+      "id": 14,
       "category": "missing_tests",
       "title": "No tests for a2a_validate_helpers.py",
       "description": "src/ass_ade/a1_at_functions/a2a_validate_helpers.py has no corresponding test file under tests/.",
@@ -176,7 +156,7 @@
       "effort": "medium"
     },
     {
-      "id": 17,
+      "id": 15,
       "category": "missing_tests",
       "title": "No tests for agent_run_helpers.py",
       "description": "src/ass_ade/a1_at_functions/agent_run_helpers.py has no corresponding test file under tests/.",
@@ -186,7 +166,7 @@
       "effort": "medium"
     },
     {
-      "id": 18,
+      "id": 16,
       "category": "missing_tests",
       "title": "No tests for api_inventory_emit.py",
       "description": "src/ass_ade/a1_at_functions/api_inventory_emit.py has no corresponding test file under tests/.",
@@ -196,7 +176,7 @@
       "effort": "medium"
     },
     {
-      "id": 19,
+      "id": 17,
       "category": "missing_tests",
       "title": "No tests for assess_blueprint_fulfillment_helpers.py",
       "description": "src/ass_ade/a1_at_functions/assess_blueprint_fulfillment_helpers.py has no corresponding test file under tests/.",
@@ -206,11 +186,31 @@
       "effort": "medium"
     },
     {
-      "id": 20,
+      "id": 18,
       "category": "missing_tests",
       "title": "No tests for assign_version_helpers.py",
       "description": "src/ass_ade/a1_at_functions/assign_version_helpers.py has no corresponding test file under tests/.",
       "file": "src/ass_ade/a1_at_functions/assign_version_helpers.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 19,
+      "category": "missing_tests",
+      "title": "No tests for assimilate_helpers.py",
+      "description": "src/ass_ade/a1_at_functions/assimilate_helpers.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/a1_at_functions/assimilate_helpers.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 20,
+      "category": "missing_tests",
+      "title": "No tests for assimilate_policy_plan.py",
+      "description": "src/ass_ade/a1_at_functions/assimilate_policy_plan.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/a1_at_functions/assimilate_policy_plan.py",
       "line": null,
       "impact": "high",
       "effort": "medium"
@@ -461,7 +461,7 @@
       "title": "Technical debt marker: # TODO",
       "description": "# TODO: add error handling",
       "file": "src/ass_ade/cli.py",
-      "line": 7252,
+      "line": 7259,
       "impact": "low",
       "effort": "medium"
     },
@@ -471,7 +471,7 @@
       "title": "Technical debt marker: # FIXME",
       "description": "# FIXME: this is slow",
       "file": "src/ass_ade/cli.py",
-      "line": 7261,
+      "line": 7268,
       "impact": "low",
       "effort": "medium"
     },
