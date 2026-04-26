@@ -21,7 +21,7 @@ include-package-data = true
 
 [project]
 name = "ass-ade"
-version = "1.0.6"
+version = "1.0.7"
 description = "ASS-ADE — Atomadic Development Environment. One CLI, monadic architecture, self-rebuilding engine."
 readme = "README.md"
 license = { file = "LICENSE" }

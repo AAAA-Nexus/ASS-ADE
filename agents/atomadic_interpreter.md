@@ -29,7 +29,7 @@ not to a timer. No scheduled task or cron job governs this — presence governs 
 This section is generated at prompt-build time from the code on disk.
 Treat it as the authoritative capability map for this session.
 
-Generated at: 2026-04-26T02:01:04Z
+Generated at: 2026-04-26T04:53:52Z
 Working directory: /home/runner/work/ASS-ADE/ASS-ADE
 Resolved capability root: /home/runner/work/ASS-ADE/ASS-ADE
 
