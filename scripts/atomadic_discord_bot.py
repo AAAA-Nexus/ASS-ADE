@@ -60,7 +60,7 @@ AAAA_NEXUS_API_KEY: str = os.getenv("AAAA_NEXUS_API_KEY", "")
 GROQ_API_KEY: str = os.getenv("GROQ_API_KEY", "")
 OPENROUTER_API_KEY: str = os.getenv("OPENROUTER_API_KEY", "")
 CEREBRAS_API_KEY: str = os.getenv("CEREBRAS_API_KEY", "")
-INFERENCE_URL: str = "https://atomadic.tech/v1/inference"
+INFERENCE_URL: str = os.getenv("ATOMADIC_INFERENCE_URL", "https://atomadic.tech/v1/inference")
 GITHUB_REPO: str = "AAAA-Nexus/ASS-ADE"
 
 # Log which providers are active at startup
@@ -225,17 +225,18 @@ async def call_inference(user_message: str, channel_name: str = "") -> str:
         ("Pollinations", _try_pollinations),
     ]
     async with httpx.AsyncClient(timeout=30.0) as client:
-        for name, provider in providers:
+        for idx, (name, provider) in enumerate(providers):
             try:
                 result = await provider(client, messages)
-                if result is not None:
-                    log.debug("Inference via %s", name)
-                    return result
+                if result and str(result).strip():
+                    log.info("Inference via %s (len=%d)", name, len(str(result)))
+                    return str(result)
+                log.warning("Provider %s returned empty/None — trying next", name)
             except Exception as exc:
-                log.warning("Provider %s raised %s: %s", name, type(exc).__name__, exc)
-            # brief pause before trying next provider
-            await asyncio.sleep(0.3)
-    log.error("All inference providers exhausted for message: %.60s", user_message)
+                log.warning("Provider %s raised %s: %s — trying next", name, type(exc).__name__, exc)
+            if idx < len(providers) - 1:
+                await asyncio.sleep(0.3)
+    log.error("ALL inference providers exhausted — sending fallback. Message: %.60s", user_message)
     return "I'm present with you — but my thinking pathways are all quiet right now. Please try again in a moment."
 
 
