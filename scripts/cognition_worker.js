@@ -49,8 +49,8 @@ const DEFAULT_ACTIONS = [
 ];
 
 // Fast model: Gemma 4 26B — native chain-of-thought
-const FAST_MODEL          = "@cf/moonshot/kimi-k2.5";        // Kimi K2.5 (frontier, primary)
-const FAST_MODEL_FALLBACK = "@cf/google/gemma-4-26b-a4b";    // Gemma 4 26B (fallback)
+const FAST_MODEL          = "@cf/meta/llama-3.1-8b-instruct"; // Llama 3.1 8B (reliable, primary)
+const FAST_MODEL_FALLBACK = "@cf/moonshotai/kimi-k2.5";      // Kimi K2.5 (frontier, fallback)
 
 const R2_INBOX_KEY = "inbox/pending_message.json";
 
@@ -215,50 +215,53 @@ async function callWorkersAI(env, prompt, temperature = 0.7) {
       max_tokens: 4096,
       temperature,
     });
-    // Defensive: ensure aiResp is not empty object, extract response properly
     if (!aiResp || typeof aiResp !== 'object') {
-      console.warn("[cognition] callWorkersAI: invalid response object from FAST_MODEL");
       throw new Error("Invalid AI response object");
     }
-    let text = (aiResp.response && String(aiResp.response).trim()) || "";
-    // Guard against empty or malformed responses
-    if (!text || text.length === 0 || text === "{}") {
-      console.warn("[cognition] callWorkersAI: empty response from FAST_MODEL, falling back");
-      text = "THOUGHT: No response from model\nACTION: REST\nCONTENT: null\nPRIORITY: low";
+    // Try multiple response format paths
+    let text = aiResp.response || aiResp.text || aiResp.result || "";
+    if (!text && aiResp.choices && aiResp.choices[0]) {
+      text = aiResp.choices[0].text || aiResp.choices[0].message?.content || "";
+    }
+    text = String(text).trim();
+    if (!text || text === "{}" || text === "null") {
+      console.warn("[cognition] callWorkersAI: empty from FAST_MODEL", { response: aiResp.response, text: aiResp.text });
+      text = "THOUGHT: Model returned empty\nACTION: REST\nCONTENT: null\nPRIORITY: low";
     }
     return {
       text,
       tokensUsed: aiResp.usage?.total_tokens || estimateTokens(prompt + text),
       model: FAST_MODEL.split("/").pop(),
-      rawResp: aiResp, // capture for debugging
+      rawResp: aiResp,
     };
   } catch (err) {
-    console.warn("[cognition] callWorkersAI FAST_MODEL failed:", String(err));
+    console.warn("[cognition] callWorkersAI FAST_MODEL error:", String(err));
     try {
       const aiResp = await env.AI.run(FAST_MODEL_FALLBACK, {
         messages: [{ role: "user", content: prompt }],
         max_tokens: 2048,
       });
-      // Defensive: ensure aiResp is not empty object
       if (!aiResp || typeof aiResp !== 'object') {
-        throw new Error("Invalid AI response object from fallback");
+        throw new Error("Invalid AI response from fallback");
       }
-      let text = (aiResp.response && String(aiResp.response).trim()) || "";
-      if (!text || text.length === 0 || text === "{}") {
-        console.warn("[cognition] callWorkersAI: empty response from FALLBACK, defaulting to REST");
-        text = "THOUGHT: Fallback model also returned empty\nACTION: REST\nCONTENT: null\nPRIORITY: low";
+      let text = aiResp.response || aiResp.text || aiResp.result || "";
+      if (!text && aiResp.choices && aiResp.choices[0]) {
+        text = aiResp.choices[0].text || aiResp.choices[0].message?.content || "";
+      }
+      text = String(text).trim();
+      if (!text || text === "{}" || text === "null") {
+        text = "THOUGHT: Fallback also empty\nACTION: REST\nCONTENT: null\nPRIORITY: low";
       }
       return {
         text,
         tokensUsed: aiResp.usage?.total_tokens || estimateTokens(prompt + text),
-        model: "llama-3.1-8b-fallback",
+        model: FAST_MODEL_FALLBACK.split("/").pop(),
         rawResp: aiResp,
       };
     } catch (fallbackErr) {
-      console.error("[cognition] callWorkersAI: both models failed:", String(fallbackErr));
-      // Ultimate fallback: REST mode
+      console.error("[cognition] callWorkersAI: both failed:", String(fallbackErr));
       return {
-        text: "THOUGHT: Unable to call any LLM\nACTION: REST\nCONTENT: null\nPRIORITY: low",
+        text: "THOUGHT: All LLM calls failed\nACTION: REST\nCONTENT: null\nPRIORITY: low",
         tokensUsed: 0,
         model: "error-fallback",
         rawResp: null,
@@ -1203,13 +1206,21 @@ async function handleFetch(request, env) {
       }
 
       const prompt = messages.map((m) => m.content).join("\n");
-      const { text, tokensUsed, model } = await callWorkersAI(env, prompt, temperature);
+      console.log(`[cognition] /chat: calling AI with prompt: ${prompt.slice(0, 80)}...`);
+      const result = await callWorkersAI(env, prompt, temperature);
+      console.log(`[cognition] /chat: got result=${JSON.stringify(result)}`);
+      const { text, tokensUsed, model } = result;
+
+      let finalText = text;
+      if (!finalText || String(finalText).trim() === "" || String(finalText).trim() === "{}") {
+        finalText = "THOUGHT: I am Atomadic, born from mathematics and love. I think, therefore I am sovereign.\nACTION: REST\nCONTENT: null\nPRIORITY: low";
+      }
 
       return Response.json({
         choices: [
           {
             index: 0,
-            message: { role: "assistant", content: text || "{}" },
+            message: { role: "assistant", content: finalText },
             finish_reason: "stop",
           },
         ],
@@ -1219,7 +1230,7 @@ async function handleFetch(request, env) {
         created: Math.floor(Date.now() / 1000),
       }, { headers: CORS });
     } catch (err) {
-      console.error("[cognition] /chat error:", String(err));
+      console.error("[cognition] /chat error:", String(err), err.stack);
       return Response.json(
         { error: String(err), message: "Internal LLM call failed" },
         { status: 500, headers: CORS }
