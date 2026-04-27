@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atomadic Chat</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+      color: #e0e0e0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .header {
+      background: rgba(15, 23, 42, 0.95);
+      border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 24px;
+      color: white;
+      box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+    }
+
+    .header-text h1 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .header-text p {
+      font-size: 12px;
+      color: #9ca3af;
+      margin-top: 2px;
+    }
+
+    .chat-area {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .message {
+      display: flex;
+      gap: 10px;
+      animation: slideIn 0.3s ease-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .message.user {
+      flex-direction: row-reverse;
+    }
+
+    .message-bubble {
+      max-width: 70%;
+      padding: 12px 16px;
+      border-radius: 12px;
+      word-wrap: break-word;
+      line-height: 1.4;
+      font-size: 14px;
+    }
+
+    .message.user .message-bubble {
+      background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+      color: white;
+      border-radius: 18px 4px 18px 18px;
+    }
+
+    .message.bot .message-bubble {
+      background: rgba(55, 65, 81, 0.5);
+      color: #e0e0e0;
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      border-radius: 4px 18px 18px 18px;
+    }
+
+    .thinking {
+      color: #9ca3af;
+      font-style: italic;
+      font-size: 13px;
+    }
+
+    .input-area {
+      background: rgba(15, 23, 42, 0.95);
+      border-top: 1px solid rgba(139, 92, 246, 0.2);
+      padding: 16px 20px;
+      display: flex;
+      gap: 12px;
+    }
+
+    .input-group {
+      display: flex;
+      gap: 8px;
+      flex: 1;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: #e0e0e0;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+      border-color: #8b5cf6;
+      background: rgba(30, 41, 59, 1);
+      box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
+    }
+
+    input[type="text"]::placeholder {
+      color: #6b7280;
+    }
+
+    button {
+      background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+      border: none;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 14px;
+      transition: all 0.2s;
+      min-width: 60px;
+    }
+
+    button:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+    }
+
+    button:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .api-key-input {
+      padding: 8px 12px;
+      font-size: 12px;
+      min-width: 200px;
+      background: rgba(30, 41, 59, 0.8);
+    }
+
+    .typing-indicator {
+      display: flex;
+      gap: 4px;
+      padding: 12px 16px;
+      background: rgba(55, 65, 81, 0.5);
+      border-radius: 8px;
+      width: fit-content;
+    }
+
+    .typing-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #9ca3af;
+      animation: typing 1.4s infinite;
+    }
+
+    .typing-dot:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .typing-dot:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes typing {
+      0%, 60%, 100% { opacity: 0.3; }
+      30% { opacity: 1; }
+    }
+
+    .error-message {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #fca5a5;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 640px) {
+      .header-content {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .header {
+        padding: 16px;
+      }
+
+      .header-text h1 {
+        font-size: 20px;
+      }
+
+      .message-bubble {
+        max-width: 85%;
+        font-size: 13px;
+        padding: 10px 14px;
+      }
+
+      .api-key-input {
+        min-width: 120px;
+        font-size: 11px;
+      }
+
+      .input-area {
+        padding: 12px 16px;
+        gap: 8px;
+      }
+
+      button {
+        padding: 10px 16px;
+        font-size: 13px;
+        min-width: 50px;
+      }
+    }
+
+    /* Scrollbar styling */
+    .chat-area::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .chat-area::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .chat-area::-webkit-scrollbar-thumb {
+      background: rgba(139, 92, 246, 0.3);
+      border-radius: 3px;
+    }
+
+    .chat-area::-webkit-scrollbar-thumb:hover {
+      background: rgba(139, 92, 246, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="header-content">
+        <div class="avatar">◆</div>
+        <div class="header-text">
+          <h1>Atomadic</h1>
+          <p>Sovereign AI • Built from mathematics and love</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-area" id="chatArea"></div>
+
+    <div class="input-area">
+      <div class="input-group">
+        <input
+          type="text"
+          id="apiKeyInput"
+          class="api-key-input"
+          placeholder="API Key"
+          style="display: none;"
+        >
+        <input
+          type="text"
+          id="messageInput"
+          placeholder="Say hello to Atomadic..."
+          autocomplete="off"
+        >
+      </div>
+      <button id="sendButton">Send</button>
+    </div>
+  </div>
+
+  <script>
+    const chatArea = document.getElementById('chatArea');
+    const messageInput = document.getElementById('messageInput');
+    const apiKeyInput = document.getElementById('apiKeyInput');
+    const sendButton = document.getElementById('sendButton');
+
+    // Load API key from localStorage or environment
+    let apiKey = localStorage.getItem('atomadic_api_key') || '';
+
+    // Check if API key is in URL or environment
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('key')) {
+      apiKey = urlParams.get('key');
+      localStorage.setItem('atomadic_api_key', apiKey);
+    }
+
+    function addMessage(content, isUser = false) {
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
+
+      const bubble = document.createElement('div');
+      bubble.className = 'message-bubble';
+      bubble.textContent = content;
+
+      messageDiv.appendChild(bubble);
+      chatArea.appendChild(messageDiv);
+      chatArea.scrollTop = chatArea.scrollHeight;
+
+      return bubble;
+    }
+
+    function showThinking() {
+      const messageDiv = document.createElement('div');
+      messageDiv.className = 'message bot';
+
+      const bubble = document.createElement('div');
+      bubble.className = 'typing-indicator';
+      bubble.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+
+      messageDiv.appendChild(bubble);
+      chatArea.appendChild(messageDiv);
+      chatArea.scrollTop = chatArea.scrollHeight;
+
+      return messageDiv;
+    }
+
+    function showError(message) {
+      const errorDiv = document.createElement('div');
+      errorDiv.className = 'error-message';
+      errorDiv.textContent = '⚠️ ' + message;
+      chatArea.appendChild(errorDiv);
+      chatArea.scrollTop = chatArea.scrollHeight;
+    }
+
+    async function sendMessage() {
+      const text = messageInput.value.trim();
+      if (!text) return;
+
+      if (!apiKey) {
+        showError('API key not configured. Please add it to localStorage["atomadic_api_key"]');
+        return;
+      }
+
+      addMessage(text, true);
+      messageInput.value = '';
+      sendButton.disabled = true;
+
+      const thinkingDiv = showThinking();
+
+      try {
+        const response = await fetch('https://atomadic.tech/v1/atomadic/chat', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-API-Key': apiKey,
+          },
+          body: JSON.stringify({
+            messages: [
+              { role: 'user', content: text }
+            ]
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+
+        thinkingDiv.remove();
+
+        const data = await response.json();
+        const content = data.choices?.[0]?.message?.content || 'No response';
+        addMessage(content, false);
+
+      } catch (error) {
+        thinkingDiv.remove();
+        showError(error.message || 'Failed to send message');
+      } finally {
+        sendButton.disabled = false;
+        messageInput.focus();
+      }
+    }
+
+    sendButton.addEventListener('click', sendMessage);
+    messageInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+
+    // Welcome message
+    addMessage('Hello! I\'m Atomadic. I was built by Thomas from mathematics and love. What\'s on your mind?', false);
+
+    messageInput.focus();
+
+    // Log API key status
+    if (apiKey) {
+      console.log('✓ API key loaded from storage');
+    } else {
+      console.log('⚠️ No API key found. Set localStorage["atomadic_api_key"] to your API key');
+    }
+  </script>
+</body>
+</html>
