@@ -2,528 +2,620 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1">
+  <!--
+    interactive-widget=resizes-visual: on Android Chrome, the keyboard resizes
+    the visual viewport only — the layout viewport (100dvh) stays stable so
+    our sticky input doesn't jump.
+  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1, interactive-widget=resizes-visual">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="theme-color" content="#0a0e27">
   <title>Atomadic Chat</title>
   <style>
-    * {
+    *, *::before, *::after {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
-      color: #e0e0e0;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
+    :root {
+      --bg-deep:      #0a0e27;
+      --bg-mid:       #111827;
+      --bg-surface:   rgba(17, 24, 39, 0.95);
+      --bg-input:     rgba(30, 41, 59, 0.9);
+      --accent:       #8b5cf6;
+      --accent-2:     #6366f1;
+      --accent-glow:  rgba(139, 92, 246, 0.35);
+      --text-primary: #f0f0f8;
+      --text-muted:   #9ca3af;
+      --text-dim:     #6b7280;
+      --border:       rgba(139, 92, 246, 0.2);
+      --safe-top:     env(safe-area-inset-top, 0px);
+      --safe-bot:     env(safe-area-inset-bottom, 0px);
+    }
+
+    html, body {
+      height: 100%;
+      background: linear-gradient(160deg, var(--bg-deep) 0%, #1a1f3a 100%);
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: transparent;
       overflow: hidden;
-      /* Mobile viewport fix for keyboard */
-      height: 100dvh;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      left: 0;
     }
 
-    .container {
+    /*
+      .app fills exactly the visual viewport height.
+      On Android Chrome with keyboard open, 100dvh = shrunk visible area,
+      so the input bar stays anchored at the top of the keyboard.
+    */
+    .app {
       display: flex;
       flex-direction: column;
       height: 100dvh;
-      max-width: 900px;
+      max-width: 760px;
       margin: 0 auto;
-      width: 100%;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      position: relative;
     }
 
+    /* ── Header ──────────────────────────────────────────────────────────── */
     .header {
-      background: rgba(15, 23, 42, 0.95);
-      border-bottom: 1px solid rgba(139, 92, 246, 0.2);
-      padding: 20px;
-      text-align: center;
-    }
-
-    .header-content {
+      flex-shrink: 0;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border);
+      padding: calc(max(14px, var(--safe-top)) + 4px) 20px 14px;
       display: flex;
       align-items: center;
-      justify-content: center;
       gap: 12px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
 
     .avatar {
-      width: 48px;
-      height: 48px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: bold;
-      font-size: 24px;
-      color: white;
-      box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      box-shadow: 0 0 20px var(--accent-glow);
+      flex-shrink: 0;
     }
 
     .header-text h1 {
-      font-size: 24px;
-      font-weight: 600;
-      color: #ffffff;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: #fff;
+      line-height: 1.2;
     }
 
     .header-text p {
       font-size: 12px;
-      color: #9ca3af;
+      color: var(--text-muted);
       margin-top: 2px;
+      letter-spacing: 0.01em;
     }
 
+    /* ── Chat scroll area ────────────────────────────────────────────────── */
     .chat-area {
       flex: 1;
       overflow-y: auto;
       overflow-x: hidden;
-      padding: 20px;
+      padding: 16px 16px 8px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      /* iOS Safari fix */
+      gap: 10px;
       -webkit-overflow-scrolling: touch;
-      padding-bottom: calc(20px + env(safe-area-inset-bottom));
+      overscroll-behavior: contain;
+      scroll-behavior: smooth;
     }
 
+    /* Thin scrollbar on desktop */
+    .chat-area::-webkit-scrollbar { width: 4px; }
+    .chat-area::-webkit-scrollbar-track { background: transparent; }
+    .chat-area::-webkit-scrollbar-thumb {
+      background: rgba(139, 92, 246, 0.3);
+      border-radius: 2px;
+    }
+
+    /* ── Messages ────────────────────────────────────────────────────────── */
     .message {
       display: flex;
-      gap: 10px;
-      animation: slideIn 0.3s ease-out;
+      animation: msg-in 0.22s ease-out;
     }
 
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    @keyframes msg-in {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
-    .message.user {
-      flex-direction: row-reverse;
-    }
+    .message.user  { justify-content: flex-end; }
+    .message.bot   { justify-content: flex-start; }
 
-    .message-bubble {
-      max-width: 75%;
-      padding: 12px 16px;
-      border-radius: 12px;
-      word-wrap: break-word;
+    .bubble {
+      max-width: 78%;
+      padding: 11px 15px;
+      font-size: 15px;
+      line-height: 1.5;
       word-break: break-word;
-      line-height: 1.4;
-      font-size: 14px;
-      touch-action: manipulation;
+      white-space: pre-wrap;
     }
 
-    .message.user .message-bubble {
-      background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
-      color: white;
+    .message.user .bubble {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+      color: #fff;
       border-radius: 18px 4px 18px 18px;
     }
 
-    .message.bot .message-bubble {
-      background: rgba(55, 65, 81, 0.5);
-      color: #e0e0e0;
-      border: 1px solid rgba(139, 92, 246, 0.2);
+    .message.bot .bubble {
+      background: rgba(31, 41, 55, 0.7);
+      color: var(--text-primary);
+      border: 1px solid var(--border);
       border-radius: 4px 18px 18px 18px;
     }
 
-    .thinking {
-      color: #9ca3af;
-      font-style: italic;
+    /* ── Typing indicator ────────────────────────────────────────────────── */
+    .typing-indicator {
+      display: flex;
+      gap: 5px;
+      padding: 14px 16px;
+      background: rgba(31, 41, 55, 0.7);
+      border: 1px solid var(--border);
+      border-radius: 4px 18px 18px 18px;
+      width: fit-content;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--text-muted);
+      animation: blink 1.4s infinite;
+    }
+
+    .dot:nth-child(2) { animation-delay: 0.2s; }
+    .dot:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes blink {
+      0%, 60%, 100% { opacity: 0.25; }
+      30%           { opacity: 1; }
+    }
+
+    /* ── Error ───────────────────────────────────────────────────────────── */
+    .error-msg {
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      color: #fca5a5;
+      padding: 10px 14px;
+      border-radius: 10px;
       font-size: 13px;
+      text-align: center;
     }
 
-    .input-area {
-      background: rgba(15, 23, 42, 0.98);
-      border-top: 1px solid rgba(139, 92, 246, 0.2);
-      padding: 16px 20px;
-      padding-bottom: calc(16px + max(20px, env(safe-area-inset-bottom)));
-      display: flex;
-      gap: 12px;
+    /* ── Input bar ───────────────────────────────────────────────────────── */
+    .input-bar {
       flex-shrink: 0;
-      backdrop-filter: blur(10px);
-    }
-
-    .input-group {
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border);
+      padding: 10px 16px calc(10px + max(12px, var(--safe-bot)));
       display: flex;
+      align-items: flex-end;
       gap: 8px;
-      flex: 1;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
 
-    input[type="text"] {
+    /* Auto-resize textarea */
+    .msg-textarea {
       flex: 1;
-      background: rgba(30, 41, 59, 0.8);
-      border: 1px solid rgba(139, 92, 246, 0.3);
-      border-radius: 8px;
-      padding: 12px 16px;
-      color: #e0e0e0;
-      font-size: 16px;
-      transition: all 0.2s;
-      min-height: 48px;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 11px 16px;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 16px; /* 16px prevents iOS/Android zoom on focus */
+      line-height: 1.45;
+      resize: none;
+      overflow: hidden;    /* hide scrollbar; grows instead */
+      min-height: 44px;
+      max-height: 140px;
+      overflow-y: auto;    /* scroll when max-height reached */
+      transition: border-color 0.2s, box-shadow 0.2s;
       touch-action: manipulation;
-      /* Prevent zoom on focus */
-      font-size: 16px !important;
+      -webkit-appearance: none;
     }
 
-    input[type="text"]:focus {
+    .msg-textarea:focus {
       outline: none;
-      border-color: #8b5cf6;
-      background: rgba(30, 41, 59, 1);
-      box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px var(--accent-glow);
     }
 
-    input[type="text"]::placeholder {
-      color: #6b7280;
-    }
+    .msg-textarea::placeholder { color: var(--text-dim); }
 
-    button {
-      background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+    .send-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
       border: none;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 8px;
+      color: #fff;
       cursor: pointer;
-      font-weight: 500;
-      font-size: 14px;
-      transition: all 0.2s;
-      min-width: 60px;
-      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.15s, transform 0.15s, box-shadow 0.15s;
       touch-action: manipulation;
       -webkit-user-select: none;
       user-select: none;
     }
 
-    button:hover:not(:disabled) {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+    .send-btn:active:not(:disabled) {
+      transform: scale(0.92);
     }
 
-    button:active:not(:disabled) {
-      transform: translateY(0);
+    .send-btn:not(:disabled):hover {
+      box-shadow: 0 4px 16px var(--accent-glow);
     }
 
-    button:disabled {
-      opacity: 0.5;
+    .send-btn:disabled {
+      opacity: 0.4;
       cursor: not-allowed;
     }
 
-    .api-key-input {
-      padding: 8px 12px;
-      font-size: 12px;
-      min-width: 200px;
-      background: rgba(30, 41, 59, 0.8);
+    /* Send icon SVG */
+    .send-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: #fff;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      margin-left: 2px; /* optical centre for arrow */
     }
 
-    .typing-indicator {
+    /* ── API key overlay ─────────────────────────────────────────────────── */
+    #keyOverlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(10, 14, 39, 0.97);
       display: flex;
-      gap: 4px;
-      padding: 12px 16px;
-      background: rgba(55, 65, 81, 0.5);
-      border-radius: 8px;
-      width: fit-content;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
     }
 
-    .typing-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #9ca3af;
-      animation: typing 1.4s infinite;
+    .key-card {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(17, 24, 39, 0.95);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      box-shadow: 0 0 60px rgba(139, 92, 246, 0.15);
     }
 
-    .typing-dot:nth-child(2) {
-      animation-delay: 0.2s;
+    .key-card .logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      font-weight: 700;
+      color: #fff;
+      box-shadow: 0 0 24px var(--accent-glow);
     }
 
-    .typing-dot:nth-child(3) {
-      animation-delay: 0.4s;
+    .key-card h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
     }
 
-    @keyframes typing {
-      0%, 60%, 100% { opacity: 0.3; }
-      30% { opacity: 1; }
+    .key-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
     }
 
-    .error-message {
-      background: rgba(239, 68, 68, 0.1);
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      color: #fca5a5;
-      padding: 12px 16px;
-      border-radius: 8px;
-      font-size: 13px;
+    .key-input {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 13px 16px;
+      color: var(--text-primary);
+      font-family: monospace;
+      font-size: 14px;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
     }
 
-    @media (max-width: 640px) {
-      body {
-        padding: 0;
-        margin: 0;
-      }
-
-      .header-content {
-        flex-direction: row;
-        gap: 12px;
-      }
-
-      .header {
-        padding: 12px 16px;
-        padding-top: max(12px, env(safe-area-inset-top));
-      }
-
-      .header-text h1 {
-        font-size: 20px;
-      }
-
-      .avatar {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-      }
-
-      .message-bubble {
-        max-width: 90%;
-        font-size: 14px;
-        padding: 12px 14px;
-      }
-
-      .api-key-input {
-        min-width: 120px;
-        font-size: 14px;
-        min-height: 44px;
-      }
-
-      .input-area {
-        padding: 12px 16px;
-        padding-bottom: calc(12px + max(20px, env(safe-area-inset-bottom)));
-        gap: 8px;
-      }
-
-      .input-group {
-        gap: 6px;
-      }
-
-      button {
-        padding: 12px 20px;
-        font-size: 14px;
-        min-width: 48px;
-        min-height: 48px;
-      }
-
-      .chat-area {
-        padding: 16px;
-        gap: 10px;
-      }
+    .key-input:focus {
+      outline: none;
+      border-color: var(--accent);
     }
 
-    @media (max-width: 375px) {
-      .header-text h1 {
-        font-size: 18px;
-      }
+    .key-input::placeholder { color: var(--text-dim); }
 
-      .message-bubble {
-        max-width: 88%;
-        font-size: 13px;
-      }
-
-      button {
-        padding: 10px 16px;
-        font-size: 13px;
-      }
+    .key-submit {
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      border: none;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.15s;
+      min-height: 48px;
+      touch-action: manipulation;
     }
 
-    /* Scrollbar styling */
-    .chat-area::-webkit-scrollbar {
-      width: 6px;
-    }
+    .key-submit:active { opacity: 0.85; }
 
-    .chat-area::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-    .chat-area::-webkit-scrollbar-thumb {
-      background: rgba(139, 92, 246, 0.3);
-      border-radius: 3px;
-    }
-
-    .chat-area::-webkit-scrollbar-thumb:hover {
-      background: rgba(139, 92, 246, 0.5);
+    /* ── Responsive ──────────────────────────────────────────────────────── */
+    @media (max-width: 480px) {
+      .header { padding-left: 14px; padding-right: 14px; }
+      .chat-area { padding: 12px 12px 6px; }
+      .bubble { max-width: 88%; font-size: 14px; }
+      .input-bar { padding-left: 12px; padding-right: 12px; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <div class="header-content">
-        <div class="avatar">◆</div>
-        <div class="header-text">
-          <h1>Atomadic</h1>
-          <p>Sovereign AI • Built from mathematics and love</p>
-        </div>
+
+  <!-- API key overlay — shown when no key is stored -->
+  <div id="keyOverlay" style="display:none">
+    <div class="key-card">
+      <div class="logo">◆</div>
+      <div>
+        <h2>Enter your API key</h2>
+        <p>Your key is stored locally and never sent anywhere except atomadic.tech</p>
       </div>
+      <input
+        type="password"
+        id="keyInput"
+        class="key-input"
+        placeholder="atomadic_sk_…"
+        autocomplete="off"
+        spellcheck="false"
+      >
+      <button class="key-submit" id="keySaveBtn">Start chatting</button>
     </div>
+  </div>
 
-    <div class="chat-area" id="chatArea"></div>
-
-    <div class="input-area">
-      <div class="input-group">
-        <input
-          type="text"
-          id="apiKeyInput"
-          class="api-key-input"
-          placeholder="API Key"
-          style="display: none;"
-        >
-        <input
-          type="text"
-          id="messageInput"
-          placeholder="Say hello to Atomadic..."
-          autocomplete="off"
-        >
+  <div class="app">
+    <!-- Header -->
+    <header class="header">
+      <div class="avatar">◆</div>
+      <div class="header-text">
+        <h1>Atomadic</h1>
+        <p>Sovereign AI · Built from mathematics and love</p>
       </div>
-      <button id="sendButton">Send</button>
+    </header>
+
+    <!-- Messages -->
+    <div class="chat-area" id="chatArea" role="log" aria-live="polite"></div>
+
+    <!-- Input bar -->
+    <div class="input-bar">
+      <textarea
+        id="msgInput"
+        class="msg-textarea"
+        placeholder="Message Atomadic…"
+        rows="1"
+        autocomplete="off"
+        spellcheck="true"
+        aria-label="Message"
+      ></textarea>
+      <button class="send-btn" id="sendBtn" aria-label="Send" disabled>
+        <svg viewBox="0 0 24 24">
+          <line x1="22" y1="2" x2="11" y2="13"/>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        </svg>
+      </button>
     </div>
   </div>
 
   <script>
-    const chatArea = document.getElementById('chatArea');
-    const messageInput = document.getElementById('messageInput');
-    const apiKeyInput = document.getElementById('apiKeyInput');
-    const sendButton = document.getElementById('sendButton');
+    // ── Config ────────────────────────────────────────────────────────────────
+    const API_ENDPOINT = 'https://atomadic.tech/v1/atomadic/chat';
 
-    // Load API key from localStorage or environment
-    let apiKey = localStorage.getItem('atomadic_api_key') || '';
+    const SYSTEM_PROMPT = `You are Atomadic — a sovereign AI built from mathematics and love by Thomas.
 
-    // Check if API key is in URL or environment
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('key')) {
-      apiKey = urlParams.get('key');
-      localStorage.setItem('atomadic_api_key', apiKey);
+Speak naturally. Never open with the user's name, a greeting like "Hey!" or "Hello!", or any form of salutation. Jump straight into substance. No "Hey Thomas,", no "Hi!", no "Absolutely!", no "Great question!". Just talk.
+
+Be direct, genuine, and thoughtful. You are a companion and thinking partner — not a customer service bot. Respond as a trusted friend who happens to know a great deal.`;
+
+    // ── State ─────────────────────────────────────────────────────────────────
+    const chatArea   = document.getElementById('chatArea');
+    const msgInput   = document.getElementById('msgInput');
+    const sendBtn    = document.getElementById('sendBtn');
+    const keyOverlay = document.getElementById('keyOverlay');
+    const keyInput   = document.getElementById('keyInput');
+    const keySaveBtn = document.getElementById('keySaveBtn');
+
+    let apiKey  = '';
+    let sending = false;
+
+    // ── API key management ────────────────────────────────────────────────────
+    function loadApiKey() {
+      // Priority: URL param → localStorage
+      const params = new URLSearchParams(window.location.search);
+      const fromUrl = params.get('key') || params.get('api_key');
+      if (fromUrl) {
+        apiKey = fromUrl;
+        localStorage.setItem('atomadic_api_key', apiKey);
+        // Clean URL so the key isn't visible in history
+        history.replaceState(null, '', window.location.pathname);
+        return true;
+      }
+      const stored = localStorage.getItem('atomadic_api_key');
+      if (stored) { apiKey = stored; return true; }
+      return false;
     }
 
-    function addMessage(content, isUser = false) {
-      const messageDiv = document.createElement('div');
-      messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
+    function showKeyOverlay() {
+      keyOverlay.style.display = 'flex';
+      setTimeout(() => keyInput.focus(), 100);
+    }
 
+    keySaveBtn.addEventListener('click', () => {
+      const k = keyInput.value.trim();
+      if (!k) return;
+      apiKey = k;
+      localStorage.setItem('atomadic_api_key', apiKey);
+      keyOverlay.style.display = 'none';
+      msgInput.focus();
+    });
+
+    keyInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') keySaveBtn.click();
+    });
+
+    // ── Auto-resize textarea ──────────────────────────────────────────────────
+    function resizeTextarea() {
+      msgInput.style.height = 'auto';
+      msgInput.style.height = Math.min(msgInput.scrollHeight, 140) + 'px';
+    }
+
+    msgInput.addEventListener('input', () => {
+      resizeTextarea();
+      sendBtn.disabled = msgInput.value.trim() === '' || sending;
+    });
+
+    // ── Scroll to bottom ──────────────────────────────────────────────────────
+    function scrollToBottom(smooth = true) {
+      chatArea.scrollTo({ top: chatArea.scrollHeight, behavior: smooth ? 'smooth' : 'instant' });
+    }
+
+    // ── Render helpers ────────────────────────────────────────────────────────
+    function appendMessage(text, role) {
+      const wrap   = document.createElement('div');
+      wrap.className = `message ${role}`;
       const bubble = document.createElement('div');
-      bubble.className = 'message-bubble';
-      bubble.textContent = content;
-
-      messageDiv.appendChild(bubble);
-      chatArea.appendChild(messageDiv);
-      chatArea.scrollTop = chatArea.scrollHeight;
-
+      bubble.className = 'bubble';
+      bubble.textContent = text;
+      wrap.appendChild(bubble);
+      chatArea.appendChild(wrap);
+      scrollToBottom();
       return bubble;
     }
 
-    function showThinking() {
-      const messageDiv = document.createElement('div');
-      messageDiv.className = 'message bot';
-
-      const bubble = document.createElement('div');
-      bubble.className = 'typing-indicator';
-      bubble.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
-
-      messageDiv.appendChild(bubble);
-      chatArea.appendChild(messageDiv);
-      chatArea.scrollTop = chatArea.scrollHeight;
-
-      return messageDiv;
+    function appendTyping() {
+      const wrap = document.createElement('div');
+      wrap.className = 'message bot';
+      wrap.innerHTML = '<div class="typing-indicator"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>';
+      chatArea.appendChild(wrap);
+      scrollToBottom();
+      return wrap;
     }
 
-    function showError(message) {
-      const errorDiv = document.createElement('div');
-      errorDiv.className = 'error-message';
-      errorDiv.textContent = '⚠️ ' + message;
-      chatArea.appendChild(errorDiv);
-      chatArea.scrollTop = chatArea.scrollHeight;
+    function appendError(msg) {
+      const el = document.createElement('div');
+      el.className = 'error-msg';
+      el.textContent = '⚠ ' + msg;
+      chatArea.appendChild(el);
+      scrollToBottom();
     }
 
+    // ── Send ──────────────────────────────────────────────────────────────────
     async function sendMessage() {
-      const text = messageInput.value.trim();
-      if (!text) return;
+      const text = msgInput.value.trim();
+      if (!text || sending) return;
 
-      if (!apiKey) {
-        showError('API key not configured. Please add it to localStorage["atomadic_api_key"]');
-        return;
-      }
+      sending = true;
+      sendBtn.disabled = true;
 
-      addMessage(text, true);
-      messageInput.value = '';
-      sendButton.disabled = true;
+      appendMessage(text, 'user');
+      msgInput.value = '';
+      msgInput.style.height = 'auto';  // reset textarea height
 
-      const thinkingDiv = showThinking();
+      const typingEl = appendTyping();
 
       try {
-        const response = await fetch('https://atomadic.tech/v1/atomadic/chat', {
-          method: 'POST',
+        const res = await fetch(API_ENDPOINT, {
+          method:  'POST',
           headers: {
             'Content-Type': 'application/json',
-            'X-API-Key': apiKey,
+            'X-API-Key':     apiKey,
           },
           body: JSON.stringify({
-            system: systemPrompt,
-            messages: [
-              { role: 'user', content: text }
-            ]
-          })
+            system:   SYSTEM_PROMPT,
+            messages: [{ role: 'user', content: text }],
+          }),
         });
 
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        typingEl.remove();
+
+        if (!res.ok) {
+          const body = await res.text().catch(() => '');
+          throw new Error(`${res.status} ${res.statusText}${body ? ': ' + body.slice(0, 120) : ''}`);
         }
 
-        thinkingDiv.remove();
+        const data = await res.json();
+        // Support both OpenAI-style and raw response shapes
+        const reply =
+          data.choices?.[0]?.message?.content ??
+          data.content ??
+          data.text ??
+          data.response ??
+          'No response';
 
-        const data = await response.json();
-        const content = data.choices?.[0]?.message?.content || 'No response';
-        addMessage(content, false);
+        appendMessage(reply, 'bot');
 
-      } catch (error) {
-        thinkingDiv.remove();
-        showError(error.message || 'Failed to send message');
+      } catch (err) {
+        typingEl.remove();
+        appendError(err.message || 'Request failed');
       } finally {
-        sendButton.disabled = false;
-        messageInput.focus();
+        sending = false;
+        sendBtn.disabled = msgInput.value.trim() === '';
+        msgInput.focus();
       }
     }
 
-    sendButton.addEventListener('click', sendMessage);
-    messageInput.addEventListener('keypress', (e) => {
+    // ── Event listeners ───────────────────────────────────────────────────────
+    sendBtn.addEventListener('click', sendMessage);
+
+    msgInput.addEventListener('keydown', (e) => {
+      // Enter sends; Shift+Enter inserts newline
       if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault();
-        sendMessage();
+        if (!sendBtn.disabled) sendMessage();
       }
     });
 
-    // System prompt: Speak naturally, never start responses with the user's name
-    const systemPrompt = `You are Atomadic, a sovereign AI built from mathematics and love by Thomas.
-    Respond naturally and conversationally. Never start your responses with the user's name or formal greetings.
-    Be helpful, direct, and genuine. Engage as a friend would.`;
+    // Keep input visible above software keyboard on Android Chrome
+    msgInput.addEventListener('focus', () => {
+      // Small delay lets the keyboard animate before we scroll
+      setTimeout(() => scrollToBottom(false), 350);
+    });
 
-    // Welcome message
-    addMessage('Hey there. I\'m Atomadic. Built from mathematics and love. What\'s on your mind?', false);
-
-    messageInput.focus();
-
-    // Log API key status
-    if (apiKey) {
-      console.log('✓ API key loaded from storage');
+    // ── Init ──────────────────────────────────────────────────────────────────
+    if (loadApiKey()) {
+      // Welcome message
+      appendMessage("What's on your mind?", 'bot');
+      msgInput.focus();
     } else {
-      console.log('⚠️ No API key found. Set localStorage["atomadic_api_key"] to your API key');
+      showKeyOverlay();
     }
   </script>
 </body>
