@@ -94,7 +94,7 @@ layers = [
 ]
 
 [tool.pytest.ini_options]
-addopts = "--basetemp=../.ass-ade-pytest-basetemp --import-mode=importlib"
+addopts = "--basetemp=../.ass-ade-pytest-basetemp --import-mode=importlib -p no:httpbin"
 norecursedirs = ["fixtures"]
 markers = [
     "phase0_recon: Phase 0 terrain / recon gate",
