@@ -49,8 +49,8 @@ const DEFAULT_ACTIONS = [
 ];
 
 // Fast model: Gemma 4 26B — native chain-of-thought
-const FAST_MODEL          = "@cf/google/gemma-4-26b-a4b-it";
-const FAST_MODEL_FALLBACK = "@cf/meta/llama-3.1-8b-instruct";
+const FAST_MODEL          = "@cf/moonshot/kimi-k2.5";        // Kimi K2.5 (frontier, primary)
+const FAST_MODEL_FALLBACK = "@cf/google/gemma-4-26b-a4b";    // Gemma 4 26B (fallback)
 
 const R2_INBOX_KEY = "inbox/pending_message.json";
 
@@ -206,92 +206,13 @@ async function callSambaNova(apiKey, prompt) {
 
 // Cloudflare AI Gateway — Thomas's primary LLM endpoint (OpenAI-compatible)
 // Uses account ID 74799e471a537b91cf0d6e633bd30d6f with CF_AI_TOKEN for auth
-async function callAIGateway(env, prompt, temperature = 0.7) {
-  if (!env.CF_AI_TOKEN) {
-    throw new Error("CF_AI_TOKEN not set");
-  }
-  const resp = await safeFetch("https://gateway.ai.cloudflare.com/v1/74799e471a537b91cf0d6e633bd30d6f/default/compat/chat/completions", {
-    method:  "POST",
-    headers: {
-      "Content-Type":  "application/json",
-      "Authorization": `Bearer ${env.CF_AI_TOKEN}`,
-    },
-    body: JSON.stringify({
-      model:       "@cf/meta/llama-3.1-8b-instruct",
-      messages:    [{ role: "user", content: prompt }],
-      max_tokens:  2048,
-      temperature: temperature,
-    }),
-  }, 20000);
-  if (!resp || !resp.ok) {
-    throw new Error(`AI Gateway HTTP ${resp?.status}`);
-  }
-  const data   = await resp.json();
-  let text   = data?.choices?.[0]?.message?.content || "";
-  // Guard against empty responses
-  if (!text || text.trim().length === 0 || text.trim() === "{}") {
-    throw new Error("AI Gateway returned empty response");
-  }
-  const tokens = data?.usage?.total_tokens || estimateTokens(prompt + text);
-  return { text, tokensUsed: tokens, model: "llama-3.1-8b-instruct (gateway)", rawData: data };
-}
-
-// Moonshot Kimi K2 — reasoning model via Together.ai
-async function callKimi(apiKey, prompt) {
-  const resp = await safeFetch("https://api.together.xyz/v1/chat/completions", {
-    method:  "POST",
-    headers: {
-      "Content-Type":  "application/json",
-      "Authorization": `Bearer ${apiKey}`,
-    },
-    body: JSON.stringify({
-      model:      "moonshotai/Kimi-K2-Instruct",
-      messages:   [{ role: "user", content: prompt }],
-      max_tokens: 2048,
-      temperature: 0.7,
-    }),
-  }, 25000);
-  if (!resp || !resp.ok) throw new Error(`Kimi HTTP ${resp?.status}`);
-  const data = await resp.json();
-  let text = data?.choices?.[0]?.message?.content || "";
-  if (!text || text.trim().length === 0 || text.trim() === "{}") {
-    throw new Error("Kimi returned empty response");
-  }
-  const tokens = data?.usage?.total_tokens || estimateTokens(prompt + text);
-  return { text, tokensUsed: tokens, model: "kimi-k2-instruct", rawData: data };
-}
-
-// Qwen 2.5 72B — strong reasoning fallback via Together.ai
-async function callQwen(apiKey, prompt) {
-  const resp = await safeFetch("https://api.together.xyz/v1/chat/completions", {
-    method:  "POST",
-    headers: {
-      "Content-Type":  "application/json",
-      "Authorization": `Bearer ${apiKey}`,
-    },
-    body: JSON.stringify({
-      model:      "Qwen/Qwen2.5-72B-Instruct-Turbo",
-      messages:   [{ role: "user", content: prompt }],
-      max_tokens: 2048,
-      temperature: 0.7,
-    }),
-  }, 25000);
-  if (!resp || !resp.ok) throw new Error(`Qwen HTTP ${resp?.status}`);
-  const data = await resp.json();
-  let text = data?.choices?.[0]?.message?.content || "";
-  if (!text || text.trim().length === 0 || text.trim() === "{}") {
-    throw new Error("Qwen returned empty response");
-  }
-  const tokens = data?.usage?.total_tokens || estimateTokens(prompt + text);
-  return { text, tokensUsed: tokens, model: "qwen2.5-72b-instruct", rawData: data };
-}
-
-// Fast Workers AI call with temperature support and fallback to 8B
+// Workers AI call with temperature support and fallback chain
+// Primary: Llama 3.1 8B | Fallback: Qwen 1.5 14B
 async function callWorkersAI(env, prompt, temperature = 0.7) {
   try {
     const aiResp = await env.AI.run(FAST_MODEL, {
       messages: [{ role: "user", content: prompt }],
-      max_tokens: 2048,
+      max_tokens: 4096,
       temperature,
     });
     // Defensive: ensure aiResp is not empty object, extract response properly
@@ -607,129 +528,11 @@ async function think(env, obs, memories, cycleCount) {
 
   let text, tokensUsed, model, rawLlmText;
 
-  if (useSmartMode) {
-    let smartSuccess = false;
-
-    // Tier 1: Reasoning models (Kimi, Qwen) via Together.ai
-    const TOGETHER_API_KEY = env.TOGETHER_API_KEY;
-
-    if (TOGETHER_API_KEY && !smartSuccess) {
-      try {
-        const k = await callKimi(TOGETHER_API_KEY, prompt);
-        ({ text, tokensUsed, model } = k);
-        smartSuccess = true;
-        rawLlmText = k.rawData?.choices?.[0]?.message?.content || text;
-        console.log("[cognition] Kimi succeeded");
-      } catch (err) {
-        console.warn(`[cognition] Kimi failed: ${String(err)}`);
-      }
-    }
-
-    if (TOGETHER_API_KEY && !smartSuccess) {
-      try {
-        const q = await callQwen(TOGETHER_API_KEY, prompt);
-        ({ text, tokensUsed, model } = q);
-        smartSuccess = true;
-        rawLlmText = q.rawData?.choices?.[0]?.message?.content || text;
-        console.log("[cognition] Qwen succeeded");
-      } catch (err) {
-        console.warn(`[cognition] Qwen failed: ${String(err)}`);
-      }
-    }
-
-    // Tier 2: AI Gateway (Thomas's Cloudflare endpoint)
-    if (env.CF_AI_TOKEN && !smartSuccess) {
-      try {
-        const g = await callAIGateway(env, prompt, temperature);
-        ({ text, tokensUsed, model } = g);
-        smartSuccess = true;
-        rawLlmText = g.rawData?.choices?.[0]?.message?.content || text;
-        console.log("[cognition] AI Gateway succeeded");
-      } catch (err) {
-        console.warn(`[cognition] AI Gateway failed: ${String(err)}`);
-      }
-    }
-
-    // Tier 3: Gemini
-    if (env.GEMINI_API_KEY && !smartSuccess) {
-      try {
-        const g = await callGemini(env.GEMINI_API_KEY, prompt);
-        ({ text, tokensUsed } = g);
-        model = g.model;
-        smartSuccess = true;
-        rawLlmText = g.rawData?.candidates?.[0]?.content?.parts?.[0]?.text || text;
-        console.log("[cognition] Gemini succeeded");
-      } catch (err) {
-        console.warn(`[cognition] Gemini failed: ${String(err)}`);
-      }
-    }
-
-    // Tier 4: SambaNova
-    if (env.SAMBANOVA_API_KEY && !smartSuccess) {
-      try {
-        const s = await callSambaNova(env.SAMBANOVA_API_KEY, prompt);
-        ({ text, tokensUsed } = s);
-        model = s.model;
-        smartSuccess = true;
-        rawLlmText = s.rawData?.choices?.[0]?.message?.content || text;
-        console.log("[cognition] SambaNova succeeded");
-      } catch (err) {
-        console.warn(`[cognition] SambaNova failed: ${String(err)}`);
-      }
-    }
-
-    // Fallback: Workers AI
-    if (!smartSuccess) {
-      console.warn("[cognition] All smart providers failed, using fast model");
-      const r = await callWorkersAI(env, prompt, temperature);
-      ({ text, tokensUsed, model } = r);
-      model += "-smart-fallback";
-      rawLlmText = r.rawResp?.response || text;
-    }
-  } else {
-    // Fast mode: Try Kimi → Qwen → AI Gateway → Workers AI
-    let fastSuccess = false;
-    const TOGETHER_API_KEY = env.TOGETHER_API_KEY;
-
-    if (TOGETHER_API_KEY && !fastSuccess) {
-      try {
-        const k = await callKimi(TOGETHER_API_KEY, prompt);
-        ({ text, tokensUsed, model } = k);
-        fastSuccess = true;
-        rawLlmText = k.rawData?.choices?.[0]?.message?.content || text;
-      } catch (err) {
-        console.warn(`[cognition] Kimi fast mode failed: ${String(err)}`);
-      }
-    }
-
-    if (TOGETHER_API_KEY && !fastSuccess) {
-      try {
-        const q = await callQwen(TOGETHER_API_KEY, prompt);
-        ({ text, tokensUsed, model } = q);
-        fastSuccess = true;
-        rawLlmText = q.rawData?.choices?.[0]?.message?.content || text;
-      } catch (err) {
-        console.warn(`[cognition] Qwen fast mode failed: ${String(err)}`);
-      }
-    }
-
-    if (env.CF_AI_TOKEN && !fastSuccess) {
-      try {
-        const g = await callAIGateway(env, prompt, temperature);
-        ({ text, tokensUsed, model } = g);
-        fastSuccess = true;
-        rawLlmText = g.rawData?.choices?.[0]?.message?.content || text;
-      } catch (err) {
-        console.warn(`[cognition] AI Gateway fast mode failed: ${String(err)}`);
-      }
-    }
-
-    if (!fastSuccess) {
-      const r = await callWorkersAI(env, prompt, temperature);
-      ({ text, tokensUsed, model } = r);
-      rawLlmText = r.rawResp?.response || text;
-    }
-  }
+  // Single stable model for both smart and fast modes: Llama 3.1 8B
+  // Fallback to Qwen 14B only if Llama errors completely
+  const r = await callWorkersAI(env, prompt, temperature);
+  ({ text, tokensUsed, model } = r);
+  rawLlmText = r.rawResp?.response || text;
 
   return { text, tokensUsed, model, smartMode: useSmartMode, loopStreak, temperature, rawLlmText };
 }
@@ -1383,6 +1186,44 @@ async function handleFetch(request, env) {
       }, { headers: CORS });
     } catch (err) {
       return Response.json({ ok: false, error: String(err) }, { status: 500, headers: CORS });
+    }
+  }
+
+  // /chat endpoint — single LLM call without full cognition loop
+  const chatMatch = url.pathname.match(/^(\/v1)?\/atomadic\/chat$|^\/chat$/i);
+  if (chatMatch && request.method === "POST") {
+    try {
+      const body = await request.json();
+      const messages = body.messages || [];
+      const mode = body.mode || "smart";
+      const temperature = body.temperature || 0.7;
+
+      if (!messages || messages.length === 0) {
+        return Response.json({ error: "messages required" }, { status: 400, headers: CORS });
+      }
+
+      const prompt = messages.map((m) => m.content).join("\n");
+      const { text, tokensUsed, model } = await callWorkersAI(env, prompt, temperature);
+
+      return Response.json({
+        choices: [
+          {
+            index: 0,
+            message: { role: "assistant", content: text || "{}" },
+            finish_reason: "stop",
+          },
+        ],
+        model: model,
+        usage: { completion_tokens: 0, prompt_tokens: 0, total_tokens: tokensUsed || 0 },
+        object: "chat.completion",
+        created: Math.floor(Date.now() / 1000),
+      }, { headers: CORS });
+    } catch (err) {
+      console.error("[cognition] /chat error:", String(err));
+      return Response.json(
+        { error: String(err), message: "Internal LLM call failed" },
+        { status: 500, headers: CORS }
+      );
     }
   }
 
