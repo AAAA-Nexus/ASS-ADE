@@ -48,9 +48,9 @@ const DEFAULT_ACTIONS = [
   "WRITE_DOCUMENT", "ALERT_CREATOR", "REGISTER_ACTION",
 ];
 
-// Fast model: Kimi K2.5 (frontier reasoning model)
-const FAST_MODEL          = "@cf/moonshotai/kimi-k2.5";       // Kimi K2.5 (primary, frontier)
-const FAST_MODEL_FALLBACK = "@cf/google/gemma-4-26b-a4b-it";  // Gemma 4 26B (fallback)
+// Fast model: Llama 3.1 (stable default on Cloudflare Workers AI)
+const FAST_MODEL          = "@cf/meta/llama-3.1-8b-instruct";   // Llama 3.1 8B (primary)
+const FAST_MODEL_FALLBACK = "@cf/meta/llama-2-7b-chat-int8";    // Llama 2 7B Chat (fallback)
 
 const R2_INBOX_KEY = "inbox/pending_message.json";
 
@@ -238,7 +238,7 @@ async function callWorkersAI(env, prompt, temperature = 0.7) {
       rawResp: aiResp,
     };
   } catch (err) {
-    console.warn("[cognition] callWorkersAI FAST_MODEL error:", String(err), err.message);
+    console.warn("[cognition] callWorkersAI FAST_MODEL error:", String(err), err.message, err.stack);
     try {
       if (!env.AI) {
         throw new Error("env.AI binding not available for fallback");
@@ -265,7 +265,7 @@ async function callWorkersAI(env, prompt, temperature = 0.7) {
         rawResp: aiResp,
       };
     } catch (fallbackErr) {
-      console.error("[cognition] callWorkersAI: both models failed - PRIMARY:", String(err), "FALLBACK:", String(fallbackErr));
+      console.error("[cognition] callWorkersAI: both models failed - PRIMARY:", String(err), err.stack, "FALLBACK:", String(fallbackErr), fallbackErr.stack);
       return {
         text: "THOUGHT: All LLM calls failed\nACTION: REST\nCONTENT: null\nPRIORITY: low",
         tokensUsed: 0,
@@ -1201,17 +1201,9 @@ async function handleFetch(request, env) {
   // /chat endpoint — single LLM call without full cognition loop
   const chatMatch = url.pathname.match(/^(\/v1)?\/atomadic\/chat$|^\/chat$/i);
   if (chatMatch && request.method === "POST") {
-    // DEBUG: Verify handler is reached
-    if (!env.AI) {
-      return Response.json({
-        debug: "handler reached but env.AI is missing",
-        bindings: Object.keys(env).filter(k => k.toUpperCase() === k)
-      }, { headers: CORS });
-    }
     try {
       const body = await request.json();
       const messages = body.messages || [];
-      const mode = body.mode || "smart";
       const temperature = body.temperature || 0.7;
 
       if (!messages || messages.length === 0) {
