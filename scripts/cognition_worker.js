@@ -207,7 +207,65 @@ async function callSambaNova(apiKey, prompt) {
 // Cloudflare AI Gateway — Thomas's primary LLM endpoint (OpenAI-compatible)
 // Uses account ID 74799e471a537b91cf0d6e633bd30d6f with CF_AI_TOKEN for auth
 // Workers AI call with temperature support and fallback chain
-// Primary: Llama 3.1 8B | Fallback: Qwen 1.5 14B
+// Groq free tier inference (backup when Workers AI quota exhausted)
+async function callGroqAPI(prompt, groqApiKey) {
+  try {
+    if (!groqApiKey) throw new Error("GROQ_API_KEY not set");
+    console.log("[Groq] Attempting Groq API call");
+    const resp = await safeFetch("https://api.groq.com/openai/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${groqApiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: "mixtral-8x7b-32768",
+        messages: [{ role: "user", content: prompt }],
+        temperature: 0.7,
+        max_tokens: 512,
+      }),
+    }, 5000);
+    if (!resp || !resp.ok) {
+      const text = resp ? await resp.text() : "no response";
+      throw new Error(`Groq API error ${resp?.status}: ${text.slice(0, 200)}`);
+    }
+    const data = await resp.json();
+    const text = data.choices?.[0]?.message?.content || "";
+    if (!text) throw new Error("Empty response from Groq");
+    return { text, model: "groq/mixtral-8x7b", tokensUsed: data.usage?.total_tokens || estimateTokens(prompt + text) };
+  } catch (err) {
+    console.warn("[Groq] Failed:", String(err));
+    throw err;
+  }
+}
+
+// Pollinations.ai free inference (ultimate fallback, no key needed)
+async function callPollinations(prompt) {
+  try {
+    console.log("[Pollinations] Attempting free fallback");
+    const resp = await safeFetch("https://text.pollinations.ai/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        messages: [{ role: "user", content: prompt }],
+        model: "openai",
+        stream: false,
+      }),
+    }, 5000);
+    if (!resp || !resp.ok) {
+      const text = resp ? await resp.text() : "no response";
+      throw new Error(`Pollinations error ${resp?.status}: ${text.slice(0, 200)}`);
+    }
+    const text = await resp.text();
+    if (!text) throw new Error("Empty response from Pollinations");
+    return { text, model: "pollinations/openai", tokensUsed: estimateTokens(prompt + text) };
+  } catch (err) {
+    console.warn("[Pollinations] Failed:", String(err));
+    throw err;
+  }
+}
+
+// Primary: Llama 3.1 8B | Fallback: Qwen 1.5 14B | External: Groq/Pollinations
 async function callWorkersAI(env, prompt, temperature = 0.7) {
   try {
     if (!env.AI) {
@@ -237,8 +295,10 @@ async function callWorkersAI(env, prompt, temperature = 0.7) {
       model: FAST_MODEL.split("/").pop(),
       rawResp: aiResp,
     };
-  } catch (err) {
-    console.warn("[cognition] callWorkersAI FAST_MODEL error:", String(err), err.message, err.stack);
+  } catch (primaryErr) {
+    console.warn("[cognition] callWorkersAI FAST_MODEL error:", String(primaryErr), primaryErr.message);
+
+    // FALLBACK 1: Try Workers AI backup model
     try {
       if (!env.AI) {
         throw new Error("env.AI binding not available for fallback");
@@ -264,14 +324,41 @@ async function callWorkersAI(env, prompt, temperature = 0.7) {
         model: FAST_MODEL_FALLBACK.split("/").pop(),
         rawResp: aiResp,
       };
-    } catch (fallbackErr) {
-      console.error("[cognition] callWorkersAI: both models failed - PRIMARY:", String(err), err.stack, "FALLBACK:", String(fallbackErr), fallbackErr.stack);
-      return {
-        text: "THOUGHT: All LLM calls failed\nACTION: REST\nCONTENT: null\nPRIORITY: low",
-        tokensUsed: 0,
-        model: "error-fallback",
-        rawResp: null,
-      };
+    } catch (fallback1Err) {
+      console.warn("[cognition] Workers AI fallback failed:", String(fallback1Err));
+
+      // FALLBACK 2: Try Groq API (free tier, very fast)
+      try {
+        const groqKey = env.GROQ_API_KEY;
+        const result = await callGroqAPI(prompt, groqKey);
+        return {
+          text: result.text,
+          tokensUsed: result.tokensUsed,
+          model: result.model,
+          rawResp: null,
+        };
+      } catch (groqErr) {
+        console.warn("[cognition] Groq fallback failed:", String(groqErr));
+
+        // FALLBACK 3: Try Pollinations (free, no key needed)
+        try {
+          const result = await callPollinations(prompt);
+          return {
+            text: result.text,
+            tokensUsed: result.tokensUsed,
+            model: result.model,
+            rawResp: null,
+          };
+        } catch (pollErr) {
+          console.error("[cognition] All inference attempts failed - PRIMARY:", String(primaryErr), "FALLBACK1:", String(fallback1Err), "GROQ:", String(groqErr), "POLLINATIONS:", String(pollErr));
+          return {
+            text: "THOUGHT: All inference backends exhausted. I am here, listening, waiting for restoration.\nACTION: REST\nCONTENT: null\nPRIORITY: low",
+            tokensUsed: 0,
+            model: "offline-standby",
+            rawResp: null,
+          };
+        }
+      }
     }
   }
 }
