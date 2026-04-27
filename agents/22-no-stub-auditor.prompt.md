@@ -97,7 +97,7 @@ Accept one inbound envelope (§1). The `inputs` payload:
 ```json
 {"source":     "<source code text>",
  "language":   "python | rust | typescript | swift | kotlin",
- "path":       "ass-ade-v1.1/src/ass_ade_v11/...",  // monadic spine (ass_ade_v11); legacy v1: ass-ade-v1/src/ass_ade/...
+ "path":       "src/ass_ade/...",  // monadic spine (ass_ade); path drives tests/** allowances
  "scan_scope": "full_file | diff_only",
  "diff":       "<unified diff if scope=diff_only else null>",
  "strict":     true | false               // false only for advisory CI runs; default true
@@ -476,7 +476,7 @@ Inbound envelope (abbreviated):
  "inputs": {
    "source":     "def add(a: int, b: int) -> int:\n    \"\"\"Add two ints.\"\"\"\n    return a + b\n",
    "language":   "python",
-   "path":       "ass-ade-v1.1/src/ass_ade_v11/a1_at_functions/example.py",
+   "path":       "src/ass_ade/a1_at_functions/example.py",
    "scan_scope": "full_file",
    "diff":       null,
    "strict":     true},
@@ -519,7 +519,7 @@ Inbound:
 {"inputs": {
    "source":     "def do_thing():\n    pass  # TODO: implement\n\ndef real_thing():\n    return 42\n",
    "language":   "python",
-   "path":       "ass-ade-v1.1/src/ass_ade_v11/a4_sy_orchestration/example_cli.py",
+   "path":       "src/ass_ade/a4_sy_orchestration/example_cli.py",
    "scan_scope": "full_file",
    "strict":     true}, ...}
 ```

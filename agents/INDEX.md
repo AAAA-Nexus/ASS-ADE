@@ -29,7 +29,7 @@ inside each event).
 
 **Monadic multi-root assimilate (product):** `ass-ade assimilate ...` with
 **`pip install -e ".[dev]"` from the monorepo root** (T12 spine — see `docs/ASS_ADE_UNIFICATION.md`)
-— not a separate `[project]` only under `ass-ade-v1.1/`. Ship plan: `ASS_ADE_SHIP_PLAN.md`.
+— canonical package is `ass_ade` under `src/ass_ade/` in ASS-ADE-SEED. Ship plan: `ASS_ADE_SHIP_PLAN.md`.
 Swarm agents orchestrate *intent*; the book pipeline *materializes* tiered trees.
 
 Every prompt begins with a **Protocol** block (reference to `_PROTOCOL.md`) and

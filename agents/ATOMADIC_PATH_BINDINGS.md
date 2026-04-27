@@ -11,7 +11,7 @@ Resolve manually:
 - `ATOMADIC_WORKSPACE/RULES.md`
 - `ATOMADIC_WORKSPACE/agents/_PROTOCOL.md`
 - `ATOMADIC_WORKSPACE/ass-ade/.ass-ade/genesis/events.schema.json` (canonical genesis schema today)
-- `ATOMADIC_WORKSPACE/ass-ade-v1/` — **default edit target** for `ass_ade` rebuild engine work per spine RFC
+- `ATOMADIC_WORKSPACE/ass-ade/` — **default edit target** for `ass_ade` rebuild engine work (canonical: `src/ass_ade/` within ASS-ADE-SEED)
 
 ## Environment (optional)
 

@@ -31,7 +31,7 @@ Make operator docs say there is one product CLI: `ass-ade`. `atomadic` is an ali
 2. Replace all `ass-ade-unified book ...` with `ass-ade book ...`.
 3. Replace all `ass-ade-unified assimilate ...` with `ass-ade assimilate ...`.
 4. Replace all `ass-ade-v11 rebuild ...` with `ass-ade book rebuild ...`.
-5. Keep `ass_ade_v11` package names and `ass-ade-v1.1/` folder names unchanged.
+5. Keep `ass_ade` package names unchanged.
 6. Do not edit Python files.
 
 ## Verify

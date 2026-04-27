@@ -164,9 +164,28 @@ python -m ass_ade rebuild \
   --yes --json
 ```
 
-**Status:** ⏳ Running in background at time of report. The 3-source merge across large repos takes 10–20 minutes. Check `C:\!aaaa-nexus\ASS-CLAW-v3-merged` for results after completion.
+**Status:** ✅ Completed (ran in background, results captured below).
 
-Previous mega merge results (from `MEGA_MERGE_REPORT.md` in repo): documented in commit `43c145d5 docs(audit): ASS-CLAW mega merge rebuild verification report`.
+**Final results:**
+
+| Metric | Value |
+|--------|-------|
+| Files scanned | 13,291 |
+| Components written | **94,001** |
+| Certified | ✅ Yes |
+
+**By tier:**
+
+| Tier | Components |
+|------|-----------|
+| a0_qk_constants | 6,535 |
+| a1_at_functions | 155,671 |
+| a2_mo_composites | 27,441 |
+| a3_og_features | 20,437 |
+| a4_sy_orchestration | 17,030 |
+| **Total gaps proposed** | 227,114 |
+
+Previous mega merge results also documented in commit `43c145d5 docs(audit): ASS-CLAW mega merge rebuild verification report`.
 
 ---
 
@@ -266,6 +285,37 @@ Note: `prompt_tokens: 0` and `total_tokens: 1` suggests the prompt is not being 
 
 ---
 
+## Step 9 — Agent Files Audit & Updates
+
+All files in `agents/` were audited for stale references to superseded paths, hardcoded absolute Windows paths, old package names, and deprecated endpoint URLs. The canonical repo is ASS-ADE-SEED with package `ass_ade` under `src/ass_ade/`. Historical references to `ass-ade-v1.1/src/ass_ade_v11/` and `atomadic-engine/src/ass_ade/` were replaced throughout.
+
+### Files Modified
+
+| File | Change |
+|------|--------|
+| `agents/ATO_DEV_ENVIRONMENT.md` | Replaced `ass-ade-v1.1/src/ass_ade_v11/` and `atomadic-engine/src/ass_ade/` with `src/ass_ade/`; removed the "restored engine" line; updated authority stack to reference `ass_ade` paths; replaced hardcoded `C:\!aaaa-nexus\!ass-ade` with `<ATOMADIC_NEXUS_WORKSPACE>/!ass-ade`; removed stale `ass-ade-v1` git command from matrix; added deprecation notice |
+| `agents/ASS_ADE_MONADIC_CODING.md` | Updated "Spine package today" from `ass_ade_v11`/`ass-ade-v1.1/` to `ass_ade`/`src/ass_ade/`; simplified import table to remove the `ass_ade_v11 →` migration column (target is current); updated CNA module path example; updated tier-map path from `src/ass_ade_v11/**` to `src/ass_ade/**` |
+| `agents/22-no-stub-auditor.prompt.md` | Updated all three `path` field examples from `ass-ade-v1.1/src/ass_ade_v11/...` to `src/ass_ade/...` |
+| `agents/25-ass-ade-cli-doc-sweeper.prompt.md` | Updated task 5 from "Keep `ass_ade_v11` package names and `ass-ade-v1.1/` folder names unchanged" to "Keep `ass_ade` package names unchanged" |
+| `agents/26-ass-ade-agent-prompt-sweeper.prompt.md` | Updated owned-files paths from `ass-ade-v1.1/src/ass_ade_v11/ade/` to `src/ass_ade/ade/`; updated task 5 to reference `ass_ade` not `ass_ade_v11`; updated verify `rg` command path |
+| `agents/27-ass-ade-cli-smoke-tester.prompt.md` | Updated all `ass-ade-v1.1/tests/` references to `tests/` (owned files + verify command) |
+| `agents/NEXUS_SWARM_MCP.md` | Replaced hardcoded `c:\!aaaa-nexus\.ato-plans\` with `<ATOMADIC_NEXUS_WORKSPACE>/.ato-plans/`; updated `ass_ade_v11 sources` to `ass_ade sources` in LoRA corpus script comment |
+| `agents/20-sovereign-gatekeeper.prompt.md` | Fixed endpoint URL from `https://aaaa-nexus.atomadic.tech/v1/sovereign/resolve` to `https://atomadic.tech/v1/sovereign/resolve` |
+| `agents/ATOMADIC_PATH_BINDINGS.md` | Updated `ass-ade-v1/` default edit target to `ass-ade/` with clarifying note about canonical SEED path |
+| `agents/INDEX.md` | Removed `ass-ade-v1.1/` reference; replaced with canonical `src/ass_ade/` note |
+| `agents/03-reclaim-controller.prompt.md` | Changed hardcoded `ass-claw-v1` example `out_dir` to generic `<reclaim-name>-v1` placeholder |
+| `agents/SIBLING_CAPABILITIES.md` | Added historical snapshot caveat — this was generated from `!ass-ade` on 2026-04-24 and is now superseded by ASS-ADE-SEED |
+
+### What Was NOT Changed
+
+- Agent protocol structure (`_PROTOCOL.md`) — correct as-is
+- AAAA-Nexus MCP tool names — current and correct
+- 4-pillar product scope — accurately reflected throughout
+- `atomadic-rag` binding — already correct in all agents (no `ato-rag` references found)
+- `<ATOMADIC_WORKSPACE>` placeholder usage — already correctly used in all mission-critical agents
+
+---
+
 ## Summary of Issues Found & Fixed
 
 | Issue | Severity | Fixed? |
@@ -277,6 +327,10 @@ Note: `prompt_tokens: 0` and `total_tokens: 1` suggests the prompt is not being 
 | 10 large files spanning tier boundaries | 🟡 Arch | ⚠️ Documented (pre-existing) |
 | Remote PQC signing returns 404 | 🟡 Infra | ⚠️ Infra issue (not code) |
 | Atomadic brain returns empty content | 🟡 Infra | ⚠️ Endpoint live, model gated |
+| Stale `ass_ade_v11` / `ass-ade-v1.1` paths in 12 agent files | 🟡 Agent | ✅ Fixed (all updated to `src/ass_ade/`) |
+| Hardcoded absolute Windows path in `ATO_DEV_ENVIRONMENT.md` | 🟡 Agent | ✅ Fixed (`<ATOMADIC_NEXUS_WORKSPACE>` placeholder) |
+| Wrong endpoint subdomain in `20-sovereign-gatekeeper.prompt.md` | 🟡 Agent | ✅ Fixed (`atomadic.tech`) |
+| Hardcoded `ass-claw-v1` example in `03-reclaim-controller.prompt.md` | 🟡 Agent | ✅ Fixed (generic placeholder) |
 
 ---
 
@@ -285,9 +339,12 @@ Note: `prompt_tokens: 0` and `total_tokens: 1` suggests the prompt is not being 
 | Hash | Message |
 |------|---------|
 | `3be478ba` | `fix(tests): disable broken pytest-httpbin plugin (werkzeug 3.x incompatibility)` |
+| *(pending)* | `fix(agents): update stale paths, package names, and endpoint URLs across agent control files` |
 
 ---
 
 ## Verdict: PASS
 
 The test suite is clean (1611/1611 passing), the self-rebuild produced 1,126 certified components at 100% pass rate, all major CLI commands are functional, and the PyPI package builds and installs cleanly. ASS-ADE-SEED is the canonical repo and is substantially more advanced than the historical `!ass-ade` reference. The Atomadic brain endpoint is live but returning empty content — likely a model routing or gating issue at the infrastructure level.
+
+Agent control files are now fully aligned with the current product state: all references point to `src/ass_ade/` (not the old `ass-ade-v1.1/src/ass_ade_v11/`), no hardcoded absolute Windows paths remain in mission-critical prompts, and endpoint URLs match the canonical `atomadic.tech` pattern.

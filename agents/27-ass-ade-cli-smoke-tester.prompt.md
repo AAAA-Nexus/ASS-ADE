@@ -19,8 +19,8 @@ Keep the focused CLI tests aligned with the one-command product shape.
 
 ## Owned Files
 
-- `ass-ade-v1.1/tests/test_unified_cli.py`
-- `ass-ade-v1.1/tests/test_staging_handoff.py`
+- `tests/test_unified_cli.py`
+- `tests/test_staging_handoff.py`
 - `pyproject.toml` only if an entry point mismatch is proven by tests
 
 ## Tiny Task List
@@ -38,7 +38,7 @@ Keep the focused CLI tests aligned with the one-command product shape.
 Run:
 
 ```text
-python -m pytest ass-ade-v1.1/tests/test_unified_cli.py ass-ade-v1.1/tests/test_staging_handoff.py -q
+python -m pytest tests/test_unified_cli.py tests/test_staging_handoff.py -q
 ```
 
 Done means the tests pass and no test fixture tells users to run `ass-ade-unified`. All user-facing test instructions must use `ass-ade` CLI only.
