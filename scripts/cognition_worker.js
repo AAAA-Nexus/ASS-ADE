@@ -204,6 +204,38 @@ async function callSambaNova(apiKey, prompt) {
   return { text, tokensUsed: tokens, model: "sambanova-405b", rawData: data };
 }
 
+// Cloudflare AI Gateway — Thomas's primary LLM endpoint (OpenAI-compatible)
+// Uses account ID 74799e471a537b91cf0d6e633bd30d6f with CF_AI_TOKEN for auth
+async function callAIGateway(env, prompt, temperature = 0.7) {
+  if (!env.CF_AI_TOKEN) {
+    throw new Error("CF_AI_TOKEN not set");
+  }
+  const resp = await safeFetch("https://gateway.ai.cloudflare.com/v1/74799e471a537b91cf0d6e633bd30d6f/default/compat/chat/completions", {
+    method:  "POST",
+    headers: {
+      "Content-Type":  "application/json",
+      "Authorization": `Bearer ${env.CF_AI_TOKEN}`,
+    },
+    body: JSON.stringify({
+      model:       "@cf/meta/llama-3.1-8b-instruct",
+      messages:    [{ role: "user", content: prompt }],
+      max_tokens:  2048,
+      temperature: temperature,
+    }),
+  }, 20000);
+  if (!resp || !resp.ok) {
+    throw new Error(`AI Gateway HTTP ${resp?.status}`);
+  }
+  const data   = await resp.json();
+  let text   = data?.choices?.[0]?.message?.content || "";
+  // Guard against empty responses
+  if (!text || text.trim().length === 0 || text.trim() === "{}") {
+    throw new Error("AI Gateway returned empty response");
+  }
+  const tokens = data?.usage?.total_tokens || estimateTokens(prompt + text);
+  return { text, tokensUsed: tokens, model: "llama-3.1-8b-instruct (gateway)", rawData: data };
+}
+
 // Fast Workers AI call with temperature support and fallback to 8B
 async function callWorkersAI(env, prompt, temperature = 0.7) {
   try {
@@ -212,9 +244,14 @@ async function callWorkersAI(env, prompt, temperature = 0.7) {
       max_tokens: 2048,
       temperature,
     });
-    let text = aiResp.response || "";
+    // Defensive: ensure aiResp is not empty object, extract response properly
+    if (!aiResp || typeof aiResp !== 'object') {
+      console.warn("[cognition] callWorkersAI: invalid response object from FAST_MODEL");
+      throw new Error("Invalid AI response object");
+    }
+    let text = (aiResp.response && String(aiResp.response).trim()) || "";
     // Guard against empty or malformed responses
-    if (!text || text.trim().length === 0 || text.trim() === "{}") {
+    if (!text || text.length === 0 || text === "{}") {
       console.warn("[cognition] callWorkersAI: empty response from FAST_MODEL, falling back");
       text = "THOUGHT: No response from model\nACTION: REST\nCONTENT: null\nPRIORITY: low";
     }
@@ -231,8 +268,12 @@ async function callWorkersAI(env, prompt, temperature = 0.7) {
         messages: [{ role: "user", content: prompt }],
         max_tokens: 2048,
       });
-      let text = aiResp.response || "";
-      if (!text || text.trim().length === 0 || text.trim() === "{}") {
+      // Defensive: ensure aiResp is not empty object
+      if (!aiResp || typeof aiResp !== 'object') {
+        throw new Error("Invalid AI response object from fallback");
+      }
+      let text = (aiResp.response && String(aiResp.response).trim()) || "";
+      if (!text || text.length === 0 || text === "{}") {
         console.warn("[cognition] callWorkersAI: empty response from FALLBACK, defaulting to REST");
         text = "THOUGHT: Fallback model also returned empty\nACTION: REST\nCONTENT: null\nPRIORITY: low";
       }
@@ -519,41 +560,73 @@ async function think(env, obs, memories, cycleCount) {
   if (useSmartMode) {
     let smartSuccess = false;
 
+    // Primary: AI Gateway (Thomas's Cloudflare endpoint)
+    if (env.CF_AI_TOKEN && !smartSuccess) {
+      try {
+        const g = await callAIGateway(env, prompt, temperature);
+        ({ text, tokensUsed, model } = g);
+        smartSuccess = true;
+        rawLlmText = g.rawData?.choices?.[0]?.message?.content || text;
+        console.log("[cognition] AI Gateway succeeded");
+      } catch (err) {
+        console.warn(`[cognition] AI Gateway failed: ${String(err)}`);
+      }
+    }
+
+    // Secondary: Gemini
     if (env.GEMINI_API_KEY && !smartSuccess) {
       try {
         const g = await callGemini(env.GEMINI_API_KEY, prompt);
         ({ text, tokensUsed } = g);
         model = g.model;
         smartSuccess = true;
-        rawLlmText = text; // capture raw response
+        rawLlmText = g.rawData?.candidates?.[0]?.content?.parts?.[0]?.text || text;
+        console.log("[cognition] Gemini succeeded");
       } catch (err) {
         console.warn(`[cognition] Gemini failed: ${String(err)}`);
       }
     }
 
+    // Tertiary: SambaNova
     if (env.SAMBANOVA_API_KEY && !smartSuccess) {
       try {
         const s = await callSambaNova(env.SAMBANOVA_API_KEY, prompt);
         ({ text, tokensUsed } = s);
         model = s.model;
         smartSuccess = true;
-        rawLlmText = text;
+        rawLlmText = s.rawData?.choices?.[0]?.message?.content || text;
+        console.log("[cognition] SambaNova succeeded");
       } catch (err) {
         console.warn(`[cognition] SambaNova failed: ${String(err)}`);
       }
     }
 
+    // Fallback: Workers AI
     if (!smartSuccess) {
       console.warn("[cognition] All smart providers failed, using fast model");
       const r = await callWorkersAI(env, prompt, temperature);
       ({ text, tokensUsed, model } = r);
       model += "-smart-fallback";
-      rawLlmText = text;
+      rawLlmText = r.rawResp?.response || text;
     }
   } else {
-    const r = await callWorkersAI(env, prompt, temperature);
-    ({ text, tokensUsed, model } = r);
-    rawLlmText = text;
+    // Fast mode: Try AI Gateway first, then Workers AI
+    let fastSuccess = false;
+    if (env.CF_AI_TOKEN && !fastSuccess) {
+      try {
+        const g = await callAIGateway(env, prompt, temperature);
+        ({ text, tokensUsed, model } = g);
+        fastSuccess = true;
+        rawLlmText = g.rawData?.choices?.[0]?.message?.content || text;
+      } catch (err) {
+        console.warn(`[cognition] AI Gateway fast mode failed: ${String(err)}`);
+      }
+    }
+    if (!fastSuccess) {
+      const r = await callWorkersAI(env, prompt, temperature);
+      ({ text, tokensUsed, model } = r);
+      rawLlmText = r.rawResp?.response || text;
+    }
   }
 
   return { text, tokensUsed, model, smartMode: useSmartMode, loopStreak, temperature, rawLlmText };
