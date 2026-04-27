@@ -236,6 +236,56 @@ async function callAIGateway(env, prompt, temperature = 0.7) {
   return { text, tokensUsed: tokens, model: "llama-3.1-8b-instruct (gateway)", rawData: data };
 }
 
+// Moonshot Kimi K2 — reasoning model via Together.ai
+async function callKimi(apiKey, prompt) {
+  const resp = await safeFetch("https://api.together.xyz/v1/chat/completions", {
+    method:  "POST",
+    headers: {
+      "Content-Type":  "application/json",
+      "Authorization": `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify({
+      model:      "moonshotai/Kimi-K2-Instruct",
+      messages:   [{ role: "user", content: prompt }],
+      max_tokens: 2048,
+      temperature: 0.7,
+    }),
+  }, 25000);
+  if (!resp || !resp.ok) throw new Error(`Kimi HTTP ${resp?.status}`);
+  const data = await resp.json();
+  let text = data?.choices?.[0]?.message?.content || "";
+  if (!text || text.trim().length === 0 || text.trim() === "{}") {
+    throw new Error("Kimi returned empty response");
+  }
+  const tokens = data?.usage?.total_tokens || estimateTokens(prompt + text);
+  return { text, tokensUsed: tokens, model: "kimi-k2-instruct", rawData: data };
+}
+
+// Qwen 2.5 72B — strong reasoning fallback via Together.ai
+async function callQwen(apiKey, prompt) {
+  const resp = await safeFetch("https://api.together.xyz/v1/chat/completions", {
+    method:  "POST",
+    headers: {
+      "Content-Type":  "application/json",
+      "Authorization": `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify({
+      model:      "Qwen/Qwen2.5-72B-Instruct-Turbo",
+      messages:   [{ role: "user", content: prompt }],
+      max_tokens: 2048,
+      temperature: 0.7,
+    }),
+  }, 25000);
+  if (!resp || !resp.ok) throw new Error(`Qwen HTTP ${resp?.status}`);
+  const data = await resp.json();
+  let text = data?.choices?.[0]?.message?.content || "";
+  if (!text || text.trim().length === 0 || text.trim() === "{}") {
+    throw new Error("Qwen returned empty response");
+  }
+  const tokens = data?.usage?.total_tokens || estimateTokens(prompt + text);
+  return { text, tokensUsed: tokens, model: "qwen2.5-72b-instruct", rawData: data };
+}
+
 // Fast Workers AI call with temperature support and fallback to 8B
 async function callWorkersAI(env, prompt, temperature = 0.7) {
   try {
@@ -560,7 +610,34 @@ async function think(env, obs, memories, cycleCount) {
   if (useSmartMode) {
     let smartSuccess = false;
 
-    // Primary: AI Gateway (Thomas's Cloudflare endpoint)
+    // Tier 1: Reasoning models (Kimi, Qwen) via Together.ai
+    const TOGETHER_API_KEY = env.TOGETHER_API_KEY;
+
+    if (TOGETHER_API_KEY && !smartSuccess) {
+      try {
+        const k = await callKimi(TOGETHER_API_KEY, prompt);
+        ({ text, tokensUsed, model } = k);
+        smartSuccess = true;
+        rawLlmText = k.rawData?.choices?.[0]?.message?.content || text;
+        console.log("[cognition] Kimi succeeded");
+      } catch (err) {
+        console.warn(`[cognition] Kimi failed: ${String(err)}`);
+      }
+    }
+
+    if (TOGETHER_API_KEY && !smartSuccess) {
+      try {
+        const q = await callQwen(TOGETHER_API_KEY, prompt);
+        ({ text, tokensUsed, model } = q);
+        smartSuccess = true;
+        rawLlmText = q.rawData?.choices?.[0]?.message?.content || text;
+        console.log("[cognition] Qwen succeeded");
+      } catch (err) {
+        console.warn(`[cognition] Qwen failed: ${String(err)}`);
+      }
+    }
+
+    // Tier 2: AI Gateway (Thomas's Cloudflare endpoint)
     if (env.CF_AI_TOKEN && !smartSuccess) {
       try {
         const g = await callAIGateway(env, prompt, temperature);
@@ -573,7 +650,7 @@ async function think(env, obs, memories, cycleCount) {
       }
     }
 
-    // Secondary: Gemini
+    // Tier 3: Gemini
     if (env.GEMINI_API_KEY && !smartSuccess) {
       try {
         const g = await callGemini(env.GEMINI_API_KEY, prompt);
@@ -587,7 +664,7 @@ async function think(env, obs, memories, cycleCount) {
       }
     }
 
-    // Tertiary: SambaNova
+    // Tier 4: SambaNova
     if (env.SAMBANOVA_API_KEY && !smartSuccess) {
       try {
         const s = await callSambaNova(env.SAMBANOVA_API_KEY, prompt);
@@ -610,8 +687,32 @@ async function think(env, obs, memories, cycleCount) {
       rawLlmText = r.rawResp?.response || text;
     }
   } else {
-    // Fast mode: Try AI Gateway first, then Workers AI
+    // Fast mode: Try Kimi → Qwen → AI Gateway → Workers AI
     let fastSuccess = false;
+    const TOGETHER_API_KEY = env.TOGETHER_API_KEY;
+
+    if (TOGETHER_API_KEY && !fastSuccess) {
+      try {
+        const k = await callKimi(TOGETHER_API_KEY, prompt);
+        ({ text, tokensUsed, model } = k);
+        fastSuccess = true;
+        rawLlmText = k.rawData?.choices?.[0]?.message?.content || text;
+      } catch (err) {
+        console.warn(`[cognition] Kimi fast mode failed: ${String(err)}`);
+      }
+    }
+
+    if (TOGETHER_API_KEY && !fastSuccess) {
+      try {
+        const q = await callQwen(TOGETHER_API_KEY, prompt);
+        ({ text, tokensUsed, model } = q);
+        fastSuccess = true;
+        rawLlmText = q.rawData?.choices?.[0]?.message?.content || text;
+      } catch (err) {
+        console.warn(`[cognition] Qwen fast mode failed: ${String(err)}`);
+      }
+    }
+
     if (env.CF_AI_TOKEN && !fastSuccess) {
       try {
         const g = await callAIGateway(env, prompt, temperature);
@@ -622,6 +723,7 @@ async function think(env, obs, memories, cycleCount) {
         console.warn(`[cognition] AI Gateway fast mode failed: ${String(err)}`);
       }
     }
+
     if (!fastSuccess) {
       const r = await callWorkersAI(env, prompt, temperature);
       ({ text, tokensUsed, model } = r);
