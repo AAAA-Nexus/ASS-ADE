@@ -48,9 +48,9 @@ const DEFAULT_ACTIONS = [
   "WRITE_DOCUMENT", "ALERT_CREATOR", "REGISTER_ACTION",
 ];
 
-// Fast model: Gemma 4 26B — native chain-of-thought
-const FAST_MODEL          = "@cf/meta/llama-3.1-8b-instruct"; // Llama 3.1 8B (reliable, primary)
-const FAST_MODEL_FALLBACK = "@cf/moonshotai/kimi-k2.5";      // Kimi K2.5 (frontier, fallback)
+// Fast model: Kimi K2.5 (frontier reasoning model)
+const FAST_MODEL          = "@cf/moonshotai/kimi-k2.5";       // Kimi K2.5 (primary, frontier)
+const FAST_MODEL_FALLBACK = "@cf/google/gemma-4-26b-a4b-it";  // Gemma 4 26B (fallback)
 
 const R2_INBOX_KEY = "inbox/pending_message.json";
 
@@ -210,13 +210,16 @@ async function callSambaNova(apiKey, prompt) {
 // Primary: Llama 3.1 8B | Fallback: Qwen 1.5 14B
 async function callWorkersAI(env, prompt, temperature = 0.7) {
   try {
+    if (!env.AI) {
+      throw new Error("env.AI binding not available - Workers AI not enabled");
+    }
+    console.log("[AI] Attempting model:", FAST_MODEL);
     const aiResp = await env.AI.run(FAST_MODEL, {
       messages: [{ role: "user", content: prompt }],
-      max_tokens: 4096,
-      temperature,
     });
+    console.log("[AI] Response received:", JSON.stringify(aiResp).slice(0, 500));
     if (!aiResp || typeof aiResp !== 'object') {
-      throw new Error("Invalid AI response object");
+      throw new Error("Invalid AI response object: " + JSON.stringify(aiResp));
     }
     // Try multiple response format paths
     let text = aiResp.response || aiResp.text || aiResp.result || "";
@@ -235,11 +238,14 @@ async function callWorkersAI(env, prompt, temperature = 0.7) {
       rawResp: aiResp,
     };
   } catch (err) {
-    console.warn("[cognition] callWorkersAI FAST_MODEL error:", String(err));
+    console.warn("[cognition] callWorkersAI FAST_MODEL error:", String(err), err.message);
     try {
+      if (!env.AI) {
+        throw new Error("env.AI binding not available for fallback");
+      }
+      console.log("[AI] Attempting fallback model:", FAST_MODEL_FALLBACK);
       const aiResp = await env.AI.run(FAST_MODEL_FALLBACK, {
         messages: [{ role: "user", content: prompt }],
-        max_tokens: 2048,
       });
       if (!aiResp || typeof aiResp !== 'object') {
         throw new Error("Invalid AI response from fallback");
@@ -259,7 +265,7 @@ async function callWorkersAI(env, prompt, temperature = 0.7) {
         rawResp: aiResp,
       };
     } catch (fallbackErr) {
-      console.error("[cognition] callWorkersAI: both failed:", String(fallbackErr));
+      console.error("[cognition] callWorkersAI: both models failed - PRIMARY:", String(err), "FALLBACK:", String(fallbackErr));
       return {
         text: "THOUGHT: All LLM calls failed\nACTION: REST\nCONTENT: null\nPRIORITY: low",
         tokensUsed: 0,
@@ -1195,6 +1201,13 @@ async function handleFetch(request, env) {
   // /chat endpoint — single LLM call without full cognition loop
   const chatMatch = url.pathname.match(/^(\/v1)?\/atomadic\/chat$|^\/chat$/i);
   if (chatMatch && request.method === "POST") {
+    // DEBUG: Verify handler is reached
+    if (!env.AI) {
+      return Response.json({
+        debug: "handler reached but env.AI is missing",
+        bindings: Object.keys(env).filter(k => k.toUpperCase() === k)
+      }, { headers: CORS });
+    }
     try {
       const body = await request.json();
       const messages = body.messages || [];

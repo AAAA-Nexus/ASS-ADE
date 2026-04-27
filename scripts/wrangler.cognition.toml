@@ -69,7 +69,7 @@ binding = "ATOMADIC_CACHE"
 id      = "86c9e382e74f4d06b91418c8c675dd7e"
 
 # R2 — permanent thought journal + alert archive
-# DISABLED: R2 not enabled on $5 plan — worker gracefully degrades
+# (TEMPORARILY DISABLED — Cloudflare propagation delay)
 # [[r2_buckets]]
 # binding     = "THOUGHT_JOURNAL"
 # bucket_name = "atomadic-thoughts"

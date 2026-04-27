@@ -29,7 +29,7 @@ not to a timer. No scheduled task or cron job governs this — presence governs 
 This section is generated at prompt-build time from the code on disk.
 Treat it as the authoritative capability map for this session.
 
-Generated at: 2026-04-27T01:11:54Z
+Generated at: 2026-04-27T04:34:36Z
 Working directory: C:\!aaaa-nexus\ASS-ADE-SEED
 Resolved capability root: C:\!aaaa-nexus\ASS-ADE-SEED
 

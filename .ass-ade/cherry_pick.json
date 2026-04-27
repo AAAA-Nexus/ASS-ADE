@@ -1,7 +1,7 @@
 {
   "schema_version": "ass-ade.cherry-pick/v1",
-  "source_label": "C:\\!aaaa-nexus\\.ass-ade-pytest-basetemp\\test_cli_cherry_pick_quiet_jso2\\scout.json",
-  "source_root": "C:\\!aaaa-nexus\\.ass-ade-pytest-basetemp\\test_cli_cherry_pick_quiet_jso2",
+  "source_label": "C:\\!aaaa-nexus\\.ass-ade-pytest-basetemp\\test_cli_cherry_pick_quiet_jso0\\scout.json",
+  "source_root": "C:\\!aaaa-nexus\\.ass-ade-pytest-basetemp\\test_cli_cherry_pick_quiet_jso0",
   "target_root": "C:\\!aaaa-nexus\\ASS-ADE-SEED",
   "selected_count": 2,
   "items": [
@@ -12,7 +12,7 @@
       "qualname": "high_value",
       "module": "pkg",
       "rel_path": "pkg.py",
-      "source_root": "C:\\!aaaa-nexus\\.ass-ade-pytest-basetemp\\test_cli_cherry_pick_quiet_jso2",
+      "source_root": "C:\\!aaaa-nexus\\.ass-ade-pytest-basetemp\\test_cli_cherry_pick_quiet_jso0",
       "lineno": 1,
       "end_lineno": 3,
       "confidence": 0.91,
