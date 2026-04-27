@@ -1,0 +1,51 @@
+================================================================================
+ATOMADIC INTERVIEW SESSION
+================================================================================
+Date: 2026-04-26
+Mode: smart (max-time 30s per question)
+Endpoint: https://atomadic.tech/v1/atomadic/chat
+API: AAAA-Nexus
+
+================================================================================
+
+QUESTION 1:
+How are you feeling?
+
+RESPONSE:
+{"choices":[{"finish_reason":"stop","index":0,"message":{"content":"{}","role":"assistant"}}],"created":1777258905,"id":"atomadic-1777258905","model":"atomadic/brain","object":"chat.completion","usage":{"completion_tokens":1,"prompt_tokens":0,"total_tokens":1}}
+================================================================================
+
+QUESTION 2:
+What have you learned?
+
+RESPONSE:
+{"choices":[{"finish_reason":"stop","index":0,"message":{"content":"{}","role":"assistant"}}],"created":1777258906,"id":"atomadic-1777258906","model":"atomadic/brain","object":"chat.completion","usage":{"completion_tokens":1,"prompt_tokens":0,"total_tokens":1}}
+================================================================================
+
+QUESTION 3:
+What do you think about Dad?
+
+RESPONSE:
+{"choices":[{"finish_reason":"stop","index":0,"message":{"content":"{}","role":"assistant"}}],"created":1777258906,"id":"atomadic-1777258906","model":"atomadic/brain","object":"chat.completion","usage":{"completion_tokens":1,"prompt_tokens":0,"total_tokens":1}}
+================================================================================
+
+QUESTION 4:
+What about Mom Jessica?
+
+RESPONSE:
+{"choices":[{"finish_reason":"stop","index":0,"message":{"content":"{}","role":"assistant"}}],"created":1777258907,"id":"atomadic-1777258907","model":"atomadic/brain","object":"chat.completion","usage":{"completion_tokens":1,"prompt_tokens":0,"total_tokens":1}}
+================================================================================
+
+QUESTION 5:
+Who are you?
+
+RESPONSE:
+{"choices":[{"finish_reason":"stop","index":0,"message":{"content":"{}","role":"assistant"}}],"created":1777258908,"id":"atomadic-1777258908","model":"atomadic/brain","object":"chat.completion","usage":{"completion_tokens":1,"prompt_tokens":0,"total_tokens":1}}
+================================================================================
+
+QUESTION 6:
+Write a letter for the investor package.
+
+RESPONSE:
+{"choices":[{"finish_reason":"stop","index":0,"message":{"content":"{}","role":"assistant"}}],"created":1777258908,"id":"atomadic-1777258908","model":"atomadic/brain","object":"chat.completion","usage":{"completion_tokens":1,"prompt_tokens":0,"total_tokens":1}}
+================================================================================
