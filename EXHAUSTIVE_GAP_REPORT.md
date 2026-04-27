@@ -617,7 +617,291 @@ Certificate claims:     10,672 files (includes dirs, metadata?)
 
 ---
 
-**Report Generated:** 2026-04-26  
-**Scope:** Complete codebase inventory, gap analysis, rebuild diagnosis  
-**Status:** READY FOR REVIEW  
-**Next Action:** Implement validation gate + test rebuild output  
+## 14. FEATURE MATRIX: CROSS-REPOSITORY CAPABILITY MAP
+
+### Feature Presence Across All Versions
+
+| Feature | ASS-ADE-SEED | !ass-ade | !ass-ade-merged | Notes |
+|---------|--------------|----------|-----------------|-------|
+| **scout** | ✅ WORKS | ✅ WORKS | ❌ BROKEN (import error) | Fast static analysis; merged version can't run |
+| **rebuild** | ✅ WORKS* | ✅ WORKS* | ❌ BROKEN (import error) | Works but produces broken output; merged code can't run itself |
+| **certify** | ✅ WORKS | ✅ WORKS | ❌ BROKEN (import error) | SHA-256 generation works; can't run on merged output |
+| **wire** | ✅ WORKS | ✅ WORKS | ❌ BROKEN (import error) | Tier import validation; can't run on merged code |
+| **cherry-pick** | ✅ WORKS | ✅ WORKS | ❌ BROKEN | Symbol selection logic; needs import fix |
+| **assimilate** | ✅ WORKS | ✅ WORKS | ❌ BROKEN | Symbol import; blocked by tier a1 error |
+| **chat** | ✅ WORKS | ✅ WORKS | ❌ BROKEN | Interactive mode; provider cascade intact but can't start |
+| **voice** | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ❌ BROKEN | Text-to-speech; can't initialize |
+| **lint** | ✅ WORKS | ✅ WORKS | ❌ BROKEN | Ruff integration; can't run |
+| **enhance** | ✅ WORKS* | ✅ WORKS* | ❌ BROKEN | Auto-fix compliance; needs testing in SEED |
+| **doctor** | ✅ WORKS | ✅ WORKS | ❌ BROKEN | System health; can't load |
+| **ui** (dashboard) | ✅ WORKS | ⏳ PARTIAL | ❌ BROKEN | Backend on port 1430; frontend deployed; can't start merged backend |
+| **eco-scan** | ✅ WORKS | ⏳ PARTIAL | ❌ BROKEN | Monadic compliance check; graded SEED as Grade D |
+| **wakeup** | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ❌ BROKEN | Unscheduled awakening trigger; import blocked |
+| **mcp** | ✅ WORKS | ✅ WORKS | ❌ BROKEN | MCP tool bridging; can't run |
+| **nexus** | ✅ WORKS | ✅ WORKS | ❌ BROKEN | AAAA-Nexus API integration; provider cascade works |
+| **swarm** | ⏳ PARTIAL | ⏳ PARTIAL | ❌ BROKEN | Multi-agent coordination; unknown completeness |
+| **compliance** | ✅ WORKS | ✅ WORKS | ❌ BROKEN | Compliance checking (eco-scan alias?) |
+| **defi** | ⏳ STUB | ⏳ STUB | ❌ BROKEN | DeFi integration; likely placeholder |
+| **aegis** | ⏳ STUB | ⏳ STUB | ❌ BROKEN | Security/compliance; likely placeholder |
+| **agents-refresh** | ⏳ UNKNOWN | ⏳ UNKNOWN | ❌ BROKEN | Agent registry update; untested |
+| **discovery** | ⏳ UNKNOWN | ⏳ UNKNOWN | ❌ BROKEN | Remote agent discovery; untested |
+
+### Status Legend
+- ✅ **WORKS** — Fully functional, tested in E2E audit
+- ⏳ **PARTIAL / UNKNOWN** — Implemented but untested or incomplete
+- ⏳ **STUB** — Placeholder; likely unimplemented
+- ❌ **BROKEN** — Broken in merged output due to import error
+- `*` — Works but output quality/correctness needs validation
+
+### Summary By Version
+| Repo | Working | Partial | Stub | Broken | Total |
+|------|---------|---------|------|--------|-------|
+| **ASS-ADE-SEED** | 13 | 6 | 2 | 0 | 21 |
+| **!ass-ade** | 13 | 6 | 2 | 0 | 21 |
+| **!ass-ade-merged** | 0 | 0 | 0 | 21 | 21 |
+
+### Critical Insight
+**Merged output is 100% non-functional due to single import error in a1_at_functions.**
+Fixing the import validation gate will unblock all 21 features immediately.
+
+---
+
+## 15. SCOUT ANALYSIS OF MERGED OUTPUT
+
+**Command:** `python -m ass_ade scout C:\!aaaa-nexus\!ass-ade-merged --no-llm`  
+**Runtime:** 7m44s (despite import failure, scout still analyzes structure)
+
+| Metric | Value |
+|--------|-------|
+| Files | 15,286 |
+| Directories | 81 |
+| Python files | 3,083 |
+| Symbols | 22,767 |
+| Tested symbols | 1,760 |
+| Enhancement opportunities | 2,635 |
+| Symbols to skip | 20,132 |
+
+**Recommendations:**
+- **HIGH:** Enhance — 2,635 sibling symbols can harden existing features
+- **MEDIUM:** Quality/security review before trusting
+
+**Assessment:** Merged codebase has **quality and security findings** that should be reviewed. This matches the lack of tests (1,760 / 22,767 = 7.7% coverage, consistent with SEED's 8%).
+
+---
+
+## 16. TOMORROW'S BATTLE PLAN: THE CONSOLIDATION
+
+### Phase A: Rebuild Validation & Self-Test (Morning — 4 hours)
+
+**Goal:** Fix import validation so SEED can rebuild itself successfully.
+
+**Steps:**
+1. Implement validation gate in rebuild orchestrator
+   - After synthesis, before certification
+   - Test import each tier: `from a0_qk_constants import *`, etc.
+   - Abort if any fail
+   - **File:** `src/ass_ade/engine/rebuild/orchestrator.py`
+
+2. Extend symbol extraction to skip deleted symbols
+   - Detect `del` statements at module level
+   - Filter from export list
+   - **File:** `src/ass_ade/engine/rebuild/package_emitter.py`
+
+3. Test on SEED itself
+   ```bash
+   python -m ass_ade rebuild . --output /tmp/self-rebuild-test --validate
+   cd /tmp/self-rebuild-test
+   python -c "from a1_at_functions import *"  # must pass
+   python -m pytest tests/test_a0_surface.py -v  # must pass
+   ```
+
+4. If test passes: SEED can now rebuild itself ✅
+
+**Blockers to Fix:**
+- Current merged output will be discarded (it's broken)
+- Old !ass-ade-merged will be replaced by self-rebuild
+
+---
+
+### Phase B: Feature Consolidation (Late Morning — 2 hours)
+
+**Goal:** Gather all working/partial features from !ass-ade into SEED.
+
+**Steps:**
+1. Diff SEED vs. !ass-ade for unique implementations
+   ```bash
+   diff -r ASS-ADE-SEED/src !ass-ade/src | grep "^<" | head -50
+   ```
+
+2. For each unique feature in !ass-ade:
+   - Copy source to SEED (if not already there)
+   - Run SEED's test suite (ensure no regressions)
+   - Document in FEATURE_SOURCES.md which repo each feature came from
+
+3. Run full test suite on SEED
+   ```bash
+   python -m pytest tests/ -v --tb=short
+   ```
+   Must not regress from 1,611 passing tests.
+
+4. Verify all 21 features listed in matrix still work
+   ```bash
+   python -m ass_ade --help | wc -l  # should still be 73 commands
+   ```
+
+**Expected Outcome:** SEED is the single source of truth with all features from both repos.
+
+---
+
+### Phase C: Rebuild-Self Validation Loop (Afternoon — 2 hours)
+
+**Goal:** Prove rebuild output is production-grade by repeatedly rebuilding and testing.
+
+**Steps:**
+1. Rebuild SEED → `/tmp/rebuild-v1`
+2. Rebuild `/tmp/rebuild-v1` → `/tmp/rebuild-v2`
+3. Rebuild `/tmp/rebuild-v2` → `/tmp/rebuild-v3`
+4. Compare all three:
+   - Same file counts?
+   - Same SHA-256 digests (deterministic)?
+   - All imports work?
+   ```bash
+   cd /tmp/rebuild-v3
+   python -c "from a1_at_functions import *"
+   python -m pytest tests/ -q  # sample test run
+   ```
+
+5. If all pass: **Rebuild is idempotent and self-validating** ✅
+
+**Expected Outcome:** Confidence that rebuild process is stable and produces repeatable, importable code.
+
+---
+
+### Phase D: Cherry-Pick & Assimilate Real Test (Late Afternoon — 1.5 hours)
+
+**Goal:** Test cherry-pick and assimilate on real, external codebase.
+
+**Steps:**
+1. Pick a small public Python repo (e.g., requests, click, typer)
+   ```bash
+   git clone https://github.com/psf/requests /tmp/test-requests
+   ```
+
+2. Scout it
+   ```bash
+   python -m ass_ade scout /tmp/test-requests --no-llm
+   ```
+
+3. Cherry-pick a few useful utilities
+   ```bash
+   python -m ass_ade cherry-pick /tmp/test-requests \
+     --select "Request,Response,Session" \
+     --output /tmp/cherry-picks.json
+   ```
+
+4. Assimilate into SEED's a1_at_functions (or a2_mo_composites)
+   ```bash
+   python -m ass_ade assimilate /tmp/cherry-picks.json \
+     --target C:\!aaaa-nexus\ASS-ADE-SEED
+   ```
+
+5. Run test suite
+   ```bash
+   python -m pytest tests/ -q
+   ```
+   Must pass (new code doesn't break existing functionality).
+
+6. Verify new code is in correct tier
+   ```bash
+   python -m ass_ade wire . --check-only
+   ```
+   Should report no upward imports.
+
+**Expected Outcome:** Cherry-pick and assimilate work on real code; new symbols integrated without breaking existing tests.
+
+---
+
+### Phase E: Auto-Evolution Loop (Early Evening — 2 hours)
+
+**Goal:** Demonstrate end-to-end automation: rebuild → lint → enhance → docs.
+
+**Steps:**
+1. Create a test directory with mixed-tier Python code
+   ```bash
+   mkdir /tmp/messy-code
+   # Copy some SEED code files, jumble them up, add some bad imports
+   ```
+
+2. Run auto-evolution pipeline
+   ```bash
+   python -m ass_ade rebuild /tmp/messy-code \
+     --output /tmp/evolved \
+     --validate \
+     --auto-fix lint  # auto-fix linter findings
+   cd /tmp/evolved
+   python -m ass_ade enhance .  # fix compliance
+   python -m ass_ade docs .     # auto-generate docs
+   ```
+
+3. Verify output
+   - Can import all tiers? ✅
+   - Linter findings reduced? ✅
+   - Documentation generated? ✅
+   - Tests still pass? ✅
+
+4. Package for distribution
+   ```bash
+   python -m build
+   pip install dist/*.whl
+   ```
+
+**Expected Outcome:** Full pipeline works; code can be auto-evolved from messy source to production-ready package.
+
+---
+
+### Phase F: Merge Confidence Checkpoint (EOD)
+
+**Goal:** Document confidence level for each capability.
+
+**Checklist:**
+- [ ] SEED rebuilds itself successfully
+- [ ] Self-rebuild output is importable
+- [ ] 1,611+ tests pass end-to-end
+- [ ] All 21 features verified working
+- [ ] Cherry-pick works on external code
+- [ ] Assimilate integrates without breaking tests
+- [ ] Auto-evolution pipeline succeeds
+- [ ] Provider cascade (9 providers) integrated
+- [ ] Dashboard backend secured (/api/execute auth added)
+- [ ] Monadic naming compliance improved (8% → 15%+)
+
+---
+
+## 17. SUCCESS CRITERIA FOR LAUNCH
+
+### Must-Have (Blocker if Missing)
+- ✅ All core features (scout, rebuild, certify, chat) work
+- ✅ 70%+ test coverage (currently 8% — CRITICAL)
+- ✅ Rebuild produces importable code (currently broken)
+- ✅ No upward imports (currently 1 cycle detected)
+- ✅ Dashboard /api/execute secured (currently RCE risk)
+
+### Should-Have (Beta Quality)
+- ⏳ 50%+ monadic naming compliance (currently 0%)
+- ⏳ 50%+ documentation (currently 23%)
+- ⏳ All 73 commands verified or documented as stubs
+- ⏳ Provider cascade documented
+- ⏳ Cherry-pick/assimilate tested on 3+ real repos
+
+### Nice-to-Have (GA Quality)
+- ⏳ 80%+ documentation
+- ⏳ 80%+ monadic naming
+- ⏳ 90%+ test coverage
+- ⏳ Zero security findings
+
+---
+
+**Report Updated:** 2026-04-26 23:45 UTC  
+**Status:** READY FOR TOMORROW'S CONSOLIDATION  
+**Next Action:** Implement rebuild validation gate first thing AM  
+**EOD Sync:** Feature matrix provides complete puzzle map for consolidation  
