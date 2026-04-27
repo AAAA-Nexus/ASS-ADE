@@ -689,191 +689,737 @@ Fixing the import validation gate will unblock all 21 features immediately.
 
 ---
 
+## 15.5 DEVELOPMENT RULES — NO EXCEPTIONS
+
+### ALL Code Must Follow 5-Tier Monadic Structure
+Every new file, every fix, every feature follows this architecture. No deviations.
+
+#### Tier Map (Strict Composition Rules)
+```
+a0_qk_constants/        Constants, enums, TypedDicts, config dataclasses
+├─ ALLOWED IMPORTS: None (zero)
+├─ WHAT LIVES HERE: Type definitions, config objects, magic numbers, global constants
+└─ EXAMPLE FILES: llm_config.py, api_constants.py, tier_names.py
+
+a1_at_functions/        Pure stateless functions — validators, parsers, formatters
+├─ ALLOWED IMPORTS: a0 only
+├─ WHAT LIVES HERE: Functions, validators, helpers, converters (zero side effects)
+├─ NO: async, state, external I/O, classes with __init__
+└─ EXAMPLE FILES: format_utils.py, validate_tokens.py, rebuild_helpers.py
+
+a2_mo_composites/       Stateful classes, clients, registries, repositories
+├─ ALLOWED IMPORTS: a0, a1
+├─ WHAT LIVES HERE: Classes with state, API clients, caches, stores
+├─ YES: __init__, state, async, database access
+├─ NO: business logic (that's a3)
+└─ EXAMPLE FILES: nexus_client.py, provider_registry.py, token_store.py
+
+a3_og_features/         Feature modules combining composites into capabilities
+├─ ALLOWED IMPORTS: a0, a1, a2
+├─ WHAT LIVES HERE: Feature implementations, pipelines, workflows
+├─ YES: Orchestrate lower-tier building blocks into user-facing capabilities
+├─ NO: CLI (that's a4), entry points
+└─ EXAMPLE FILES: rebuild_feature.py, chat_service.py, compliance_check.py
+
+a4_sy_orchestration/    CLI commands, entry points, top-level orchestrators
+├─ ALLOWED IMPORTS: a0, a1, a2, a3
+├─ WHAT LIVES HERE: Commands, CLI handlers, main entry point, Typer/Click decorators
+├─ YES: Dispatch to features, handle user input, print output
+├─ NO: Business logic (belongs in a3)
+└─ EXAMPLE FILES: rebuild_cmd.py, chat_cmd.py, cli_main.py
+```
+
+### Mandatory Requirements for ALL Code
+
+**1. NO STUBS. NO TODOS. NO PASS.**
+   - If a function is created, it must be **fully implemented**
+   - No placeholder comments, no unfinished logic, no simplified versions
+   - If you can't complete it, don't create the file
+   - Stub commands show up in `--help` only if they work end-to-end
+
+**2. NO SIMPLIFIED CODE. PRODUCTION QUALITY ONLY.**
+   - All error handling implemented
+   - All edge cases covered
+   - All inputs validated
+   - All outputs well-defined
+   - Type hints everywhere
+
+**3. EVERY FILE REQUIRES:**
+   - Module docstring: `"""Tier a1 — purpose of this module."""`
+   - Type hints on all functions: `def func(x: int) -> str:`
+   - Docstrings on all public functions (Google style)
+   - Error handling: explicit try/except or pre-validation
+   - Proper file naming: `a1_feature_name.py` (tier prefix required)
+
+**4. EVERY NEW FEATURE GETS:**
+   - Implementation in correct tier
+   - Tests written alongside (not as afterthought)
+   - Documentation auto-generated or manually written
+   - Lint passes: `ruff check --fix`
+   - All imports validated: `python -c "from a1_module import *"`
+
+**5. DEPENDENCY FLOW IS STRICT:**
+   ```
+   a0 → a1 → a2 → a3 → a4
+         ↑     ↑     ↑     ↑
+         └─────────────────┘ (can only import downward)
+   
+   NEVER:
+   - a1 importing from a2-a4
+   - a2 importing from a3-a4
+   - a3 importing from a4
+   - ANY tier importing upward
+   ```
+
+**6. FILE NAMING CONVENTION:**
+   ```
+   a0: *_config.py, *_constants.py, *_types.py, *_enums.py
+   a1: *_utils.py, *_helpers.py, *_validators.py, *_parsers.py
+   a2: *_client.py, *_core.py, *_store.py, *_registry.py
+   a3: *_feature.py, *_service.py, *_pipeline.py, *_gate.py
+   a4: *_cmd.py, *_cli.py, *_runner.py, *_main.py
+   ```
+
+**7. VERIFICATION GATE (BEFORE EVERY COMMIT):**
+   ```bash
+   # 1. Lint passes
+   ruff check . --fix
+   
+   # 2. Imports work
+   python -c "from a1_at_functions import *"
+   python -c "from a2_mo_composites import *"
+   
+   # 3. No upward imports
+   python -m ass_ade wire . --check-only
+   
+   # 4. Tests pass
+   python -m pytest tests/ -q --tb=short
+   
+   # If any fail, FIX BEFORE COMMITTING.
+   ```
+
+### Consequences of Violating These Rules
+- ❌ Code review will reject it
+- ❌ Tests will fail
+- ❌ Merge will be blocked
+- ❌ Lint will catch tier violations
+- ❌ `wire` command will flag upward imports
+
+**There are no exceptions. Every line of code is audited by the architecture.**
+
+---
+
 ## 16. TOMORROW'S BATTLE PLAN: THE CONSOLIDATION
+
+**CRITICAL:** Every phase below produces code that follows the monadic structure in Section 15.5. No exceptions.
+
+### Verification Loop (Required After Every Phase)
+Each phase follows this cycle BEFORE moving to the next phase:
+
+```
+Phase Work
+    ↓
+Audit (Scout, Lint, Imports, Tests)
+    ↓
+Do Failures Exist?
+    ├─ YES → Fix Issues → Re-Audit → Loop back
+    └─ NO → ✅ Phase Complete → Move to Next Phase
+```
+
+**Audit Checklist (Run after every phase):**
+```bash
+# 1. Structure audit
+find src/ass_ade -type f -name "*.py" | grep -v "^a[0-4]_" | head -5
+# Should return nothing (all files must have tier prefix)
+
+# 2. Import audit
+python -c "from a0_qk_constants import *"
+python -c "from a1_at_functions import *"
+python -c "from a2_mo_composites import *"
+python -c "from a3_og_features import *"
+python -c "from a4_sy_orchestration import *"
+# All must succeed
+
+# 3. Upward import audit
+python -m ass_ade wire . --check-only
+# Must report zero violations
+
+# 4. Lint audit
+ruff check src/ --count
+# Count should be <= previous count (no regression)
+
+# 5. Test audit
+python -m pytest tests/ -q --tb=no
+# Must show: X passed (where X >= 1611)
+
+# 6. Scout audit
+python -m ass_ade scout . --no-llm
+# Check: file counts, symbol counts, test coverage
+```
+
+**If any audit fails:**
+- Do NOT move to next phase
+- Investigate root cause
+- Fix the issue
+- Re-run audit
+- Only proceed when audit passes
+
+---
 
 ### Phase A: Rebuild Validation & Self-Test (Morning — 4 hours)
 
 **Goal:** Fix import validation so SEED can rebuild itself successfully.
 
+**Deliverables:** Two new a2 composites in `src/ass_ade/engine/rebuild/`
+
+**Code Requirements (Section 15.5 compliance):**
+- [ ] Module docstrings on all files
+- [ ] Type hints on all functions
+- [ ] Error handling for all edge cases
+- [ ] All imports validated (must not import upward from a0/a1)
+- [ ] Ruff lint passes
+- [ ] Tests pass
+
 **Steps:**
-1. Implement validation gate in rebuild orchestrator
-   - After synthesis, before certification
-   - Test import each tier: `from a0_qk_constants import *`, etc.
-   - Abort if any fail
-   - **File:** `src/ass_ade/engine/rebuild/orchestrator.py`
 
-2. Extend symbol extraction to skip deleted symbols
-   - Detect `del` statements at module level
-   - Filter from export list
-   - **File:** `src/ass_ade/engine/rebuild/package_emitter.py`
+1. **Create: `src/ass_ade/engine/rebuild/import_validator.py`** (a2_mo_composites)
+   ```python
+   """Tier a2 — import validation for rebuild output.
+   
+   Validates that all tiers can be imported successfully.
+   Catches module-loading errors before certification.
+   """
+   from __future__ import annotations
+   from pathlib import Path
+   from typing import list
+   import sys
+   
+   def validate_tier_imports(tier_dir: Path) -> list[str]:
+       """Test import from each tier. Return list of errors (empty if OK)."""
+       # Implementation: try importing each tier, catch ImportError, return errors
+       pass
+   
+   def validate_symbol_availability(module_path: Path, symbol_names: list[str]) -> list[str]:
+       """Check that symbols exist before adding to __init__.py."""
+       # Implementation: import module, check hasattr for each symbol
+       pass
+   ```
+   - No imports from a1+ (only a0)
+   - Pure functions, no state
+   - Full error messages for debugging
+   - Tests: `tests/test_import_validator.py`
 
-3. Test on SEED itself
+2. **Create: `src/ass_ade/engine/rebuild/symbol_extractor_safe.py`** (a2_mo_composites)
+   ```python
+   """Tier a2 — safe symbol extraction skipping module-magic patterns.
+   
+   Extends package_emitter.py logic to detect deleted symbols.
+   Prevents ImportError from lazy-loading modules (Pygments, etc.).
+   """
+   from __future__ import annotations
+   from pathlib import Path
+   from typing import list
+   import re
+   import ast
+   
+   def extract_public_names_safe(py_path: Path) -> list[str]:
+       """Extract names, excluding those deleted at module level."""
+       # Implementation: 
+       #   1. Parse AST for all top-level assignments
+       #   2. Scan source for `del name` patterns
+       #   3. Return names NOT in deleted set
+       pass
+   
+   def find_deleted_symbols(source: str) -> set[str]:
+       """Find all symbols deleted at module level via `del` statements."""
+       # Implementation: regex for `del name, name2, ...` at start of line
+       pass
+   ```
+   - No imports from a1+ (only a0, builtin)
+   - Pure functions
+   - Thorough docstrings
+   - Tests: `tests/test_symbol_extractor_safe.py`
+
+3. **Update: `src/ass_ade/engine/rebuild/orchestrator.py`** (a4_sy_orchestration)
+   - Add call to `validate_tier_imports()` before `certify()`
+   - Abort with clear error message if validation fails
+   - Log success message if imports pass
+   - **Code requirement:** Type hints, error handling, docstring update
+
+4. **Update: `src/ass_ade/engine/rebuild/package_emitter.py`** (a2_mo_composites)
+   - Replace `_extract_public_names()` with call to `extract_public_names_safe()`
+   - Update docstring to explain symbol skipping logic
+   - **Code requirement:** No logic changes to other functions, only this one method
+
+5. **Test on SEED itself**
    ```bash
+   # Pre-fix: this should FAIL (current code is broken)
+   cd C:\!aaaa-nexus\ASS-ADE-SEED
+   python -m pytest tests/test_rebuild_validation.py -v
+   
+   # Apply fixes above
+   # Post-fix: this should PASS
+   python -m pytest tests/test_rebuild_validation.py -v
+   
+   # Full rebuild test
    python -m ass_ade rebuild . --output /tmp/self-rebuild-test --validate
    cd /tmp/self-rebuild-test
    python -c "from a1_at_functions import *"  # must pass
    python -m pytest tests/test_a0_surface.py -v  # must pass
    ```
 
-4. If test passes: SEED can now rebuild itself ✅
+6. **Lint & verify before committing**
+   ```bash
+   ruff check src/ass_ade/engine/rebuild/ --fix
+   python -m ass_ade wire . --check-only
+   python -m pytest tests/ -q
+   ```
 
 **Blockers to Fix:**
 - Current merged output will be discarded (it's broken)
 - Old !ass-ade-merged will be replaced by self-rebuild
 
+**Verification Checklist (Phase A complete when all ✅):**
+- [ ] Two new a2 files created with full implementation
+- [ ] Orchestrator calls validator before certification
+- [ ] Package emitter uses safe symbol extraction
+- [ ] Self-rebuild on SEED succeeds
+- [ ] Self-rebuilt output is importable
+- [ ] All tests pass
+- [ ] Lint passes
+- [ ] No upward imports detected
+- [ ] Documentation generated
+
 ---
 
 ### Phase B: Feature Consolidation (Late Morning — 2 hours)
 
-**Goal:** Gather all working/partial features from !ass-ade into SEED.
+**Goal:** Gather all working/partial features from !ass-ade into SEED (monadic structure enforced).
+
+**Code Requirements (Section 15.5 compliance):**
+- [ ] All copied code files have correct tier prefix (a0_, a1_, a2_, a3_, a4_)
+- [ ] All copied code has full type hints
+- [ ] All copied code has module docstrings + function docstrings
+- [ ] All upward imports are fixed (use `wire` command)
+- [ ] Ruff lint passes on all new/modified files
+- [ ] Tests pass end-to-end
 
 **Steps:**
-1. Diff SEED vs. !ass-ade for unique implementations
+
+1. **Audit differences**
    ```bash
+   # Find what's in !ass-ade but not SEED
    diff -r ASS-ADE-SEED/src !ass-ade/src | grep "^<" | head -50
+   # Review each unique file
    ```
 
-2. For each unique feature in !ass-ade:
-   - Copy source to SEED (if not already there)
-   - Run SEED's test suite (ensure no regressions)
-   - Document in FEATURE_SOURCES.md which repo each feature came from
+2. **For each unique feature in !ass-ade:**
+   - Identify which tier it belongs to (read code, determine a0-a4)
+   - If already in SEED: skip (don't duplicate)
+   - If missing from SEED:
+     - Copy to correct tier directory with correct a0_/a1_/a2_/a3_/a4_ prefix
+     - Add/update module docstring: `"""Tier aX — purpose."""`
+     - Add full type hints
+     - Run `ruff check --fix` on it
+     - Run `wire` to detect upward imports, fix them
+     - Create/update tests alongside
+   - Document in `FEATURE_SOURCES.md`: which feature came from which repo
 
-3. Run full test suite on SEED
+3. **Validation after each copy:**
+   ```bash
+   # After copying each file:
+   python -m ass_ade wire . --check-only  # no upward imports
+   python -c "from a1_at_functions import *"  # imports work
+   python -m pytest tests/test_<new_module>.py -v  # tests pass
+   ```
+
+4. **Full test suite after consolidation**
    ```bash
    python -m pytest tests/ -v --tb=short
+   # Must not regress from 1,611 passing tests
+   # If regression: roll back that file, investigate
    ```
-   Must not regress from 1,611 passing tests.
 
-4. Verify all 21 features listed in matrix still work
+5. **Verify all 21 features still work**
    ```bash
    python -m ass_ade --help | wc -l  # should still be 73 commands
+   python -m ass_ade scout . --no-llm  # works
+   python -m ass_ade lint . --count    # works
    ```
 
-**Expected Outcome:** SEED is the single source of truth with all features from both repos.
+6. **Lint & verify before committing**
+   ```bash
+   ruff check src/ --fix
+   python -m ass_ade wire . --check-only
+   python -m pytest tests/ -q
+   ```
+
+**Output Artifacts:**
+- FEATURE_SOURCES.md — Which feature came from which repo
+- Updated tier directories with consolidated code
+- All tests passing (regression-free)
+
+**Expected Outcome:** SEED is the single source of truth with all features from both repos, all following monadic structure.
 
 ---
 
 ### Phase C: Rebuild-Self Validation Loop (Afternoon — 2 hours)
 
-**Goal:** Prove rebuild output is production-grade by repeatedly rebuilding and testing.
+**Goal:** Prove rebuild output is production-grade by repeatedly rebuilding and testing (validate monadic structure).
+
+**Code Requirements (Section 15.5 compliance):**
+- [ ] All rebuilt code follows tier structure
+- [ ] All tier imports work (no circular, no upward)
+- [ ] All tests pass on rebuilt output
+- [ ] Lint passes on rebuilt code
+- [ ] Deterministic (same input = same output)
 
 **Steps:**
-1. Rebuild SEED → `/tmp/rebuild-v1`
-2. Rebuild `/tmp/rebuild-v1` → `/tmp/rebuild-v2`
-3. Rebuild `/tmp/rebuild-v2` → `/tmp/rebuild-v3`
-4. Compare all three:
-   - Same file counts?
-   - Same SHA-256 digests (deterministic)?
-   - All imports work?
+
+1. **Rebuild SEED → `/tmp/rebuild-v1`**
    ```bash
-   cd /tmp/rebuild-v3
+   python -m ass_ade rebuild . --output /tmp/rebuild-v1 --validate
+   ```
+   Validation gate (from Phase A) must pass.
+
+2. **Validate v1 output structure**
+   ```bash
+   cd /tmp/rebuild-v1
+   
+   # Check tier directories exist
+   ls -d a0_qk_constants a1_at_functions a2_mo_composites a3_og_features a4_sy_orchestration
+   
+   # Verify imports work
+   python -c "from a0_qk_constants import *"
    python -c "from a1_at_functions import *"
-   python -m pytest tests/ -q  # sample test run
+   python -c "from a2_mo_composites import *"
+   python -c "from a3_og_features import *"
+   python -c "from a4_sy_orchestration import *"
+   
+   # Run a sample test
+   python -m pytest tests/test_a0_surface.py -v
    ```
 
-5. If all pass: **Rebuild is idempotent and self-validating** ✅
+3. **Rebuild v1 → `/tmp/rebuild-v2`**
+   ```bash
+   python -m ass_ade rebuild /tmp/rebuild-v1 --output /tmp/rebuild-v2 --validate
+   ```
+   Should succeed if v1 is importable.
 
-**Expected Outcome:** Confidence that rebuild process is stable and produces repeatable, importable code.
+4. **Rebuild v2 → `/tmp/rebuild-v3`**
+   ```bash
+   python -m ass_ade rebuild /tmp/rebuild-v2 --output /tmp/rebuild-v3 --validate
+   ```
+
+5. **Compare all three for idempotence**
+   ```bash
+   # File counts should match
+   find /tmp/rebuild-v1 -type f | wc -l  # should be same
+   find /tmp/rebuild-v2 -type f | wc -l
+   find /tmp/rebuild-v3 -type f | wc -l
+   
+   # SHA-256 digests should be deterministic
+   # (same source → same certificate)
+   cat /tmp/rebuild-v1/CERTIFICATE.json | jq .digest.root_digest
+   cat /tmp/rebuild-v2/CERTIFICATE.json | jq .digest.root_digest
+   cat /tmp/rebuild-v3/CERTIFICATE.json | jq .digest.root_digest
+   # All three should be identical
+   
+   # All imports must work on v3
+   cd /tmp/rebuild-v3
+   python -c "from a1_at_functions import *"
+   python -c "from a2_mo_composites import *"
+   
+   # Run full test suite on v3
+   python -m pytest tests/ -q
+   ```
+
+6. **Verify tier structure correctness**
+   ```bash
+   # No upward imports in v3
+   cd /tmp/rebuild-v3
+   python -m ass_ade wire . --check-only  # must pass
+   
+   # All files have tier prefix
+   find a1_at_functions -name "*.py" | while read f; do 
+     basename "$f" | grep -q "^a1_" || echo "MISSING PREFIX: $f"
+   done
+   ```
+
+**Verification Checklist (Phase C complete when all ✅):**
+- [ ] v1 imports all tiers successfully
+- [ ] v2 rebuilds from v1 successfully
+- [ ] v3 rebuilds from v2 successfully
+- [ ] File counts identical across v1/v2/v3
+- [ ] SHA-256 digests identical (deterministic)
+- [ ] v3 imports all tiers successfully
+- [ ] v3 has no upward imports
+- [ ] v3 all files have tier prefix
+- [ ] v3 tests pass
+
+**Expected Outcome:** Rebuild is idempotent and deterministic. Confidence that process is stable and production-grade.
 
 ---
 
 ### Phase D: Cherry-Pick & Assimilate Real Test (Late Afternoon — 1.5 hours)
 
-**Goal:** Test cherry-pick and assimilate on real, external codebase.
+**Goal:** Test cherry-pick and assimilate on real external code (enforce monadic structure on assimilated code).
+
+**Code Requirements (Section 15.5 compliance):**
+- [ ] Assimilated code placed in correct tier (must match symbol type)
+- [ ] All assimilated code gets tier prefix (a1_, a2_, etc.)
+- [ ] Type hints added to assimilated code
+- [ ] Module docstrings added
+- [ ] Upward imports fixed (if any)
+- [ ] Tests passing (no regressions)
+- [ ] Lint passes
 
 **Steps:**
-1. Pick a small public Python repo (e.g., requests, click, typer)
+
+1. **Pick a small public Python repo**
    ```bash
    git clone https://github.com/psf/requests /tmp/test-requests
+   # OR: psf/click, pallets/typer, samuelcolvin/pydantic (something useful)
    ```
 
-2. Scout it
+2. **Scout it**
    ```bash
    python -m ass_ade scout /tmp/test-requests --no-llm
+   # Review output: symbols, test coverage, recommendations
    ```
 
-3. Cherry-pick a few useful utilities
+3. **Cherry-pick useful utilities**
    ```bash
    python -m ass_ade cherry-pick /tmp/test-requests \
      --select "Request,Response,Session" \
      --output /tmp/cherry-picks.json
+   # Review /tmp/cherry-picks.json to see what will be extracted
    ```
 
-4. Assimilate into SEED's a1_at_functions (or a2_mo_composites)
+4. **Assimilate into SEED**
    ```bash
    python -m ass_ade assimilate /tmp/cherry-picks.json \
-     --target C:\!aaaa-nexus\ASS-ADE-SEED
+     --target C:\!aaaa-nexus\ASS-ADE-SEED \
+     --tier a1_at_functions  # or a2_mo_composites depending on symbols
+   ```
+   The assimilate command should:
+   - Create new files in correct tier (a0, a1, a2, etc.)
+   - Add tier prefix to filenames (a1_request_utils.py, etc.)
+   - Add module docstrings
+
+5. **Verify assimilated code structure**
+   ```bash
+   # Check files were created with tier prefix
+   ls -la src/ass_ade/a1_at_functions/a1_request*.py
+   
+   # Check for upward imports
+   grep -r "from a" src/ass_ade/a1_at_functions/a1_request* | grep -E "a[234]_" || echo "No upward imports ✅"
+   
+   # Check type hints exist
+   grep -E "def [^(]+\([^)]*:\s*\w+\)" src/ass_ade/a1_at_functions/a1_request*.py | wc -l
+   # Should find all function definitions with type hints
    ```
 
-5. Run test suite
+6. **Run test suite**
    ```bash
    python -m pytest tests/ -q
+   # Must pass (new code doesn't break existing functionality)
+   # Should see: N passed (where N = 1611 + any new tests)
    ```
-   Must pass (new code doesn't break existing functionality).
 
-6. Verify new code is in correct tier
+7. **Verify no upward imports**
    ```bash
    python -m ass_ade wire . --check-only
+   # Must report no violations
    ```
-   Should report no upward imports.
 
-**Expected Outcome:** Cherry-pick and assimilate work on real code; new symbols integrated without breaking existing tests.
+8. **Create tests for assimilated code**
+   ```bash
+   # Create tests/test_assimilated_requests.py
+   # Test each imported symbol:
+   def test_request_class_exists():
+       from ass_ade.a1_at_functions import Request
+       assert Request is not None
+   
+   # Run tests
+   python -m pytest tests/test_assimilated_requests.py -v
+   ```
+
+9. **Lint passes**
+   ```bash
+   ruff check src/ass_ade/a1_at_functions/ --fix
+   ```
+
+**Verification Checklist (Phase D complete when all ✅):**
+- [ ] cherry-pick succeeds on external repo
+- [ ] assimilate succeeds into SEED
+- [ ] Assimilated files have tier prefix (a1_, a2_, etc.)
+- [ ] Assimilated code has module docstrings
+- [ ] Assimilated code has type hints
+- [ ] No upward imports
+- [ ] Tests written for assimilated symbols
+- [ ] All tests pass (no regressions)
+- [ ] Lint passes
+
+**Expected Outcome:** Cherry-pick and assimilate work on real code. New symbols integrated in correct tier, following monadic structure, without breaking tests.
 
 ---
 
 ### Phase E: Auto-Evolution Loop (Early Evening — 2 hours)
 
-**Goal:** Demonstrate end-to-end automation: rebuild → lint → enhance → docs.
+**Goal:** Demonstrate end-to-end automation: rebuild → lint → enhance → docs (all output monadic-compliant).
+
+**Code Requirements (Section 15.5 compliance):**
+- [ ] Rebuilt code has correct tier structure
+- [ ] All auto-fixes preserve tier structure (no upward imports)
+- [ ] All auto-generated code has docstrings + type hints
+- [ ] Final output passes full validation (imports, lint, tests)
+- [ ] Documentation is generated, not stubbed
 
 **Steps:**
-1. Create a test directory with mixed-tier Python code
+
+1. **Create test directory with deliberately messy code**
    ```bash
-   mkdir /tmp/messy-code
-   # Copy some SEED code files, jumble them up, add some bad imports
+   mkdir -p /tmp/messy-code/src
+   # Copy mixed code files (some good, some bad):
+   # - Files without tier prefix
+   # - Files with upward imports
+   # - Files missing type hints
+   # - Files missing docstrings
+   cp -r src/ass_ade/a1_at_functions/a1_*.py /tmp/messy-code/src/
+   # Rename some to remove prefix (break structure)
+   mv /tmp/messy-code/src/a1_utils.py /tmp/messy-code/src/utils.py
+   # Add a bad upward import
+   echo "from a3_og_features import something  # BAD IMPORT" >> /tmp/messy-code/src/utils.py
    ```
 
-2. Run auto-evolution pipeline
+2. **Run rebuild with validation**
    ```bash
    python -m ass_ade rebuild /tmp/messy-code \
      --output /tmp/evolved \
-     --validate \
-     --auto-fix lint  # auto-fix linter findings
-   cd /tmp/evolved
-   python -m ass_ade enhance .  # fix compliance
-   python -m ass_ade docs .     # auto-generate docs
+     --validate
+   # Validation gate should pass (or report specific issues)
    ```
 
-3. Verify output
-   - Can import all tiers? ✅
-   - Linter findings reduced? ✅
-   - Documentation generated? ✅
-   - Tests still pass? ✅
-
-4. Package for distribution
+3. **Run enhance (fix compliance)**
    ```bash
-   python -m build
-   pip install dist/*.whl
+   cd /tmp/evolved
+   python -m ass_ade enhance . --tier-rename  # rename files to add prefix
+   python -m ass_ade wire . --auto-fix        # fix upward imports
    ```
 
-**Expected Outcome:** Full pipeline works; code can be auto-evolved from messy source to production-ready package.
+4. **Run lint (fix code quality)**
+   ```bash
+   ruff check . --fix
+   # Should resolve missing type hints, unused imports, etc.
+   ```
+
+5. **Auto-generate documentation**
+   ```bash
+   python -m ass_ade docs . --output docs/
+   # Should create API docs from docstrings
+   ```
+
+6. **Verify evolved output**
+   ```bash
+   # Check imports work
+   python -c "from a1_at_functions import *"
+   python -c "from a2_mo_composites import *"
+   
+   # Check no upward imports
+   python -m ass_ade wire . --check-only
+   
+   # Run tests
+   python -m pytest tests/ -q
+   
+   # Check documentation generated
+   ls docs/*.md | wc -l  # should be > 0
+   ```
+
+7. **Package for distribution (if all passed)**
+   ```bash
+   cd /tmp/evolved
+   python -m build
+   pip install -e dist/*.whl
+   
+   # Test installation
+   python -c "from a1_at_functions import *"
+   ```
+
+**Verification Checklist (Phase E complete when all ✅):**
+- [ ] Rebuild succeeds with validation
+- [ ] Enhance renames files to tier prefix
+- [ ] Wire fixes upward imports
+- [ ] Lint fixes code quality issues
+- [ ] Docs generated (not empty)
+- [ ] All tier imports work
+- [ ] No upward imports remain
+- [ ] Tests pass on evolved output
+- [ ] Package builds and installs
+
+**Expected Outcome:** Full automation pipeline works end-to-end. Messy code → production-ready package in one command chain. All output follows monadic structure.
 
 ---
 
-### Phase F: Merge Confidence Checkpoint (EOD)
+### Phase F: Merge Confidence Checkpoint & Monadic Audit (EOD)
 
-**Goal:** Document confidence level for each capability.
+**Goal:** Verify every deliverable follows monadic structure. Document confidence level for each capability.
 
-**Checklist:**
+**Code Quality Checklist (Section 15.5 Enforcement):**
+- [ ] All new code files have a0_/a1_/a2_/a3_/a4_ prefix
+- [ ] All new code has module docstrings (`"""Tier aX — purpose."""`)
+- [ ] All public functions have type hints
+- [ ] All public functions have docstrings
+- [ ] No upward imports anywhere (run `wire --check-only`)
+- [ ] All new files pass ruff lint
+- [ ] No TODOs, no stubs, no `pass` placeholders
+- [ ] All new code is production quality (not simplified)
+
+**Phase Completion Checklist:**
+- [ ] **Phase A:** Validation gate implemented, SEED rebuilds itself, output importable
+- [ ] **Phase B:** All features consolidated into SEED, FEATURE_SOURCES.md created
+- [ ] **Phase C:** Rebuild idempotent (v1/v2/v3 have same digests), all tests pass
+- [ ] **Phase D:** Cherry-pick & assimilate work on external code, assimilated code in correct tier
+- [ ] **Phase E:** Auto-evolution pipeline works (rebuild → enhance → lint → docs → package)
+- [ ] **Phase F:** All monadic structure rules verified, confidence documented
+
+**Functional Verification Checklist:**
 - [ ] SEED rebuilds itself successfully
-- [ ] Self-rebuild output is importable
-- [ ] 1,611+ tests pass end-to-end
-- [ ] All 21 features verified working
-- [ ] Cherry-pick works on external code
+- [ ] Self-rebuild output is importable (all 5 tiers)
+- [ ] 1,611+ tests pass end-to-end (no regressions)
+- [ ] All 21 features verified working (from feature matrix)
+- [ ] Cherry-pick works on 3+ external repos
 - [ ] Assimilate integrates without breaking tests
-- [ ] Auto-evolution pipeline succeeds
-- [ ] Provider cascade (9 providers) integrated
-- [ ] Dashboard backend secured (/api/execute auth added)
-- [ ] Monadic naming compliance improved (8% → 15%+)
+- [ ] Auto-evolution pipeline succeeds on messy code
+- [ ] Provider cascade (9 providers) verified working
+- [ ] Dashboard backend RCE fixed (/api/execute now requires auth)
+- [ ] Monadic naming compliance improved from 0% (checked via `wire`)
+
+**Red Flags (If any ❌, rollback and investigate):**
+- ❌ Any test fails
+- ❌ Any upward import detected
+- ❌ Any file missing tier prefix
+- ❌ Any file missing type hints or docstring
+- ❌ Lint fails on new code
+- ❌ Any `pass` or `TODO` in new code
+- ❌ Provider cascade broken
+
+**After Checklist (If all ✅):**
+1. Create `CONSOLIDATION_SUMMARY.md` documenting:
+   - What was consolidated from !ass-ade
+   - What was fixed in rebuild
+   - What new features/integrations were added
+   - Before/after metrics (test coverage, lint findings, compliance)
+
+2. Create PR for consolidation branch:
+   - Title: "consolidation: merge !ass-ade features into SEED with monadic validation"
+   - Description: Link to CONSOLIDATION_SUMMARY.md
+   - Reviewers: Thomas for final approval
+
+3. Document launch readiness:
+   - All blockers from EXHAUSTIVE_GAP_REPORT resolved? ✅
+   - All success criteria (Section 17) met? ✅
+   - Ready for GA or beta? → Document in PR description
 
 ---
 
