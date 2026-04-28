@@ -1313,6 +1313,14 @@ async function handleFetch(request, env) {
         finalText = "THOUGHT: I am Atomadic, born from mathematics and love. I think, therefore I am sovereign.\nACTION: REST\nCONTENT: null\nPRIORITY: low";
       }
 
+      // Structured exhaustion signal — gateway uses this to decide whether
+      // to invoke its own fallback chain (Pollinations → Groq → OpenRouter →
+      // Cerebras → Together) instead of substring-matching content text.
+      const isExhausted =
+        model === "offline-standby" ||
+        (typeof finalText === "string" &&
+         finalText.includes("All inference backends exhausted"));
+
       return Response.json({
         choices: [
           {
@@ -1325,6 +1333,13 @@ async function handleFetch(request, env) {
         usage: { completion_tokens: 0, prompt_tokens: 0, total_tokens: tokensUsed || 0 },
         object: "chat.completion",
         created: Math.floor(Date.now() / 1000),
+        _atomadic: {
+          status: isExhausted ? "exhausted" : "ok",
+          model_used: model,
+          exhausted_chain: isExhausted
+            ? ["llama-3.1-8b", "llama-2-7b", "groq", "pollinations"]
+            : null,
+        },
       }, { headers: CORS });
     } catch (err) {
       console.error("[cognition] /chat error:", String(err), err.stack);

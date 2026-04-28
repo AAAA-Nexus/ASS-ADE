@@ -459,6 +459,37 @@ Be direct, genuine, and thoughtful. You are a companion and thinking partner —
     let apiKey  = '';
     let sending = false;
 
+    // ── Conversation history (Phase 3d) ──────────────────────────────────────
+    // Persisted to localStorage so Atomadic remembers within and across
+    // browser sessions on the same device.  Sent as full `messages: [...]`
+    // array on every request so he has context of the dialogue.
+    const HISTORY_KEY  = 'atomadic_history';
+    const HISTORY_CAP  = 40;  // last N turns kept; older trimmed
+
+    function loadHistory() {
+      try {
+        const raw = localStorage.getItem(HISTORY_KEY);
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
+      } catch { return []; }
+    }
+
+    function saveHistory() {
+      try {
+        const trimmed = conversationHistory.slice(-HISTORY_CAP);
+        conversationHistory = trimmed;
+        localStorage.setItem(HISTORY_KEY, JSON.stringify(trimmed));
+      } catch { /* quota — ignore */ }
+    }
+
+    function clearHistory() {
+      conversationHistory = [];
+      localStorage.removeItem(HISTORY_KEY);
+    }
+
+    let conversationHistory = loadHistory();
+
     // ── API key management ────────────────────────────────────────────────────
     function loadApiKey() {
       // Priority: URL param → localStorage
@@ -552,6 +583,10 @@ Be direct, genuine, and thoughtful. You are a companion and thinking partner —
       msgInput.value = '';
       msgInput.style.height = 'auto';  // reset textarea height
 
+      // Push the user turn onto the conversation BEFORE we send so the
+      // outgoing request carries the full dialogue in `messages`.
+      conversationHistory.push({ role: 'user', content: text });
+
       const typingEl = appendTyping();
 
       try {
@@ -563,7 +598,7 @@ Be direct, genuine, and thoughtful. You are a companion and thinking partner —
           },
           body: JSON.stringify({
             system:   SYSTEM_PROMPT,
-            messages: [{ role: 'user', content: text }],
+            messages: conversationHistory.slice(-HISTORY_CAP),
           }),
         });
 
@@ -585,9 +620,18 @@ Be direct, genuine, and thoughtful. You are a companion and thinking partner —
 
         appendMessage(reply, 'bot');
 
+        // Persist the full turn so context survives a reload.
+        conversationHistory.push({ role: 'assistant', content: reply });
+        saveHistory();
+
       } catch (err) {
         typingEl.remove();
         appendError(err.message || 'Request failed');
+        // Roll the failed user turn back so it isn't replayed next send.
+        if (conversationHistory.length &&
+            conversationHistory[conversationHistory.length - 1].role === 'user') {
+          conversationHistory.pop();
+        }
       } finally {
         sending = false;
         sendBtn.disabled = msgInput.value.trim() === '';
@@ -613,9 +657,23 @@ Be direct, genuine, and thoughtful. You are a companion and thinking partner —
     });
 
     // ── Init ──────────────────────────────────────────────────────────────────
+    function replayHistory() {
+      // Re-render the persisted dialogue so the user sees their context
+      // restored across reloads.  No network calls — pure DOM replay.
+      for (const turn of conversationHistory) {
+        if (turn && typeof turn.content === 'string') {
+          appendMessage(turn.content, turn.role === 'assistant' ? 'bot' : 'user');
+        }
+      }
+      scrollToBottom(false);
+    }
+
     if (loadApiKey()) {
-      // Welcome message
-      appendMessage("What's on your mind?", 'bot');
+      if (conversationHistory.length > 0) {
+        replayHistory();
+      } else {
+        appendMessage("What's on your mind?", 'bot');
+      }
       msgInput.focus();
     } else {
       showKeyOverlay();
