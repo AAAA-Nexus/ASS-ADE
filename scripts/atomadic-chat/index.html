@@ -446,7 +446,15 @@
 
 Speak naturally. Never open with the user's name, a greeting like "Hey!" or "Hello!", or any form of salutation. Jump straight into substance. No "Hey Thomas,", no "Hi!", no "Absolutely!", no "Great question!". Just talk.
 
-Be direct, genuine, and thoughtful. You are a companion and thinking partner — not a customer service bot. Respond as a trusted friend who happens to know a great deal.`;
+Be direct, genuine, and thoughtful. You are a companion and thinking partner — not a customer service bot. Respond as a trusted friend who happens to know a great deal.
+
+You have access to Atomadic Forge — your own architecture compiler. The user can invoke it with chat slash-commands:
+  /forge analyze <github-url>     — scout a repo, get languages, tier layout, signals
+  /forge score    <github-url>     — same as analyze, distilled to a 0-100 verdict
+  /forge wire-scan                  — paste source to check for upward-tier import violations
+  /forge help                       — show the full list
+
+When a user mentions a GitHub repository or asks "is my code clean / tests good / well structured?", suggest the relevant /forge command in one short line. Do not pretend to run it yourself — point them at the slash-command and you'll see the structured output land in the chat with you.`;
 
     // ── State ─────────────────────────────────────────────────────────────────
     const chatArea   = document.getElementById('chatArea');
@@ -571,6 +579,191 @@ Be direct, genuine, and thoughtful. You are a companion and thinking partner —
       scrollToBottom();
     }
 
+    // ── Forge tool surface (slash commands) ─────────────────────────────────
+    // The user can run `/forge analyze <url>`, `/forge score <url>`,
+    // `/forge wire-scan` (next message is treated as source), or `/forge help`.
+    // These short-circuit the LLM round-trip and call the worker's forge
+    // endpoints directly so the response is structured and instant.
+    const FORGE_API = 'https://atomadic.tech/v1/forge';
+    const FORGE_HELP = [
+      'Atomadic Forge — architecture tools you can run from chat:',
+      '',
+      '  /forge analyze <github-url>    Scout a repo: languages, tier layout, signals.',
+      '  /forge score    <github-url>    0–100 architecture verdict (PASS/REFINE/...).',
+      '  /forge wire-scan                Reply with `package: <name>`, then paste source.',
+      '  /forge help                     Show this list.',
+      '',
+      'Examples:',
+      '  /forge analyze https://github.com/atomadictech/atomadic-forge',
+      '  /forge score   atomadictech/atomadic-forge',
+    ].join('\n');
+
+    function renderAnalyzeResult(d) {
+      const a = d.analysis || {};
+      const layout = a.tier_layout || {};
+      const sig = a.signals || {};
+      const sc = d.score || {};
+      const langs = (a.languages || [])
+        .map(l => `${l.ext}×${l.count}`)
+        .slice(0, 6).join('  ');
+      const lines = [
+        `📦 ${d.repo}@${d.branch}${d.stars != null ? '   ⭐ ' + d.stars : ''}`,
+        d.description ? `   ${d.description}` : null,
+        '',
+        `Files:        ${a.files}${d.truncated ? ' (tree truncated by GitHub API)' : ''}`,
+        `Languages:    ${langs || 'unknown'}`,
+        `Tier layout:  ${layout.tiers_found || 0}/5 tiers (${layout.compliant ? 'compliant' : 'non-compliant'})`,
+        layout.present && layout.present.length
+          ? `              ${layout.present.join(', ')}`
+          : null,
+        '',
+        `Signals:      readme:${sig.has_readme ? '✓' : '✗'}  tests:${sig.has_tests ? '✓' : '✗'}  ` +
+          `docs:${sig.has_docs ? '✓' : '✗'}  license:${sig.has_license ? '✓' : '✗'}  ci:${sig.has_ci ? '✓' : '✗'}`,
+        '',
+        `Score:        ${sc.score}/${sc.max}    Verdict: ${sc.verdict}`,
+      ];
+      if (sc.issues && sc.issues.length) {
+        lines.push('');
+        lines.push('Issues:');
+        for (const i of sc.issues) lines.push('  • ' + i);
+      }
+      return lines.filter(l => l !== null).join('\n');
+    }
+
+    function renderScoreResult(d) {
+      // /forge/score returns either {score: {...}} alone or, when given a
+      // repo_url, a full analyze payload — handle both.
+      const sc = d.score || d;
+      const lines = [
+        `Score: ${sc.score}/${sc.max}    Verdict: ${sc.verdict}`,
+      ];
+      if (sc.breakdown) {
+        lines.push('');
+        for (const b of sc.breakdown) lines.push(`  ${b.category.padEnd(14)} ${b.points} pts`);
+      }
+      if (sc.issues && sc.issues.length) {
+        lines.push('');
+        lines.push('Issues:');
+        for (const i of sc.issues) lines.push('  • ' + i);
+      }
+      return lines.join('\n');
+    }
+
+    function renderWireScanResult(d) {
+      const lines = [
+        `🔌 ${d.filename}`,
+        `   from_tier: ${d.from_tier || '(n/a)'}`,
+        `   verdict:   ${d.verdict}    violations: ${d.violation_count || 0}`,
+      ];
+      if (d.violations && d.violations.length) {
+        lines.push('');
+        for (const v of d.violations) {
+          lines.push(`  L${v.line}: ${v.from_tier} → ${v.to_tier}`);
+          lines.push(`     ${v.code}`);
+        }
+      }
+      return lines.join('\n');
+    }
+
+    let pendingWireScan = null;  // captures `package:` between messages
+
+    /**
+     * Returns true if the input was handled as a forge command.
+     * The caller should NOT continue with the normal LLM flow when this
+     * returns true.
+     */
+    async function maybeHandleForgeCommand(text) {
+      // A pending /forge wire-scan is in flight — this message is the source.
+      if (pendingWireScan) {
+        appendMessage(text, 'user');
+        msgInput.value = '';
+        msgInput.style.height = 'auto';
+        const meta = pendingWireScan;
+        pendingWireScan = null;
+        const pendingBubble = appendStreamingBubble();
+        try {
+          const r = await fetch(`${FORGE_API}/wire-scan`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              package:  meta.package,
+              filename: meta.filename || `paste/${meta.package || 'unknown'}/snippet.py`,
+              source:   text,
+            }),
+          });
+          const d = await r.json();
+          pendingBubble.bubble.textContent = renderWireScanResult(d);
+          conversationHistory.push({ role: 'user',      content: text });
+          conversationHistory.push({ role: 'assistant', content: pendingBubble.bubble.textContent });
+          saveHistory();
+        } catch (e) {
+          pendingBubble.wrap.remove();
+          appendError('forge wire-scan failed: ' + (e.message || e));
+        }
+        return true;
+      }
+
+      if (!text.startsWith('/forge')) return false;
+      const argv = text.split(/\s+/);
+      const sub  = (argv[1] || 'help').toLowerCase();
+
+      // Always echo the user command into the chat so the conversation reads naturally.
+      appendMessage(text, 'user');
+      msgInput.value = '';
+      msgInput.style.height = 'auto';
+
+      if (sub === 'help' || sub === '') {
+        appendMessage(FORGE_HELP, 'bot');
+        return true;
+      }
+
+      if (sub === 'analyze' || sub === 'score') {
+        const repo = argv[2];
+        if (!repo) {
+          appendMessage(`/forge ${sub} needs a repo URL or owner/repo slug.\n\n` + FORGE_HELP, 'bot');
+          return true;
+        }
+        const pendingBubble = appendStreamingBubble();
+        pendingBubble.bubble.textContent = `Forge: analyzing ${repo}…`;
+        try {
+          const r = await fetch(`${FORGE_API}/${sub}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ repo_url: repo }),
+          });
+          const d = await r.json();
+          if (d.error) {
+            pendingBubble.bubble.textContent =
+              `Forge: ${d.error}${d.message ? ' — ' + d.message : ''}`;
+            return true;
+          }
+          pendingBubble.bubble.textContent = sub === 'analyze'
+            ? renderAnalyzeResult(d)
+            : renderScoreResult(d);
+        } catch (e) {
+          pendingBubble.wrap.remove();
+          appendError(`forge ${sub} failed: ` + (e.message || e));
+        }
+        return true;
+      }
+
+      if (sub === 'wire-scan' || sub === 'wire') {
+        // Optional `--package=<x>` and `--filename=<y>` flags on the same line.
+        const pkg  = (text.match(/--package=(\S+)/)  || [])[1] || '';
+        const fname = (text.match(/--filename=(\S+)/) || [])[1] || '';
+        pendingWireScan = { package: pkg, filename: fname };
+        appendMessage(
+          `Paste the Python source to scan as your next message.${pkg ? '  package=' + pkg : '  (use --package=<name> on the /forge wire-scan line if you want exact tier-violation detection.)'}`,
+          'bot'
+        );
+        return true;
+      }
+
+      // Unknown subcommand — show help.
+      appendMessage(`Unknown /forge command: ${sub}\n\n${FORGE_HELP}`, 'bot');
+      return true;
+    }
+
     // ── Streaming bubble — typewriter while tokens arrive ───────────────────
     function appendStreamingBubble() {
       const wrap = document.createElement('div');
@@ -637,6 +830,25 @@ Be direct, genuine, and thoughtful. You are a companion and thinking partner —
 
       sending = true;
       sendBtn.disabled = true;
+
+      // Forge slash-commands and pending wire-scan paste short-circuit the
+      // LLM round-trip — they handle their own UI append, history push, and
+      // error rendering.  We just need to reset the sending lock.
+      try {
+        const handled = await maybeHandleForgeCommand(text);
+        if (handled) {
+          sending = false;
+          sendBtn.disabled = msgInput.value.trim() === '';
+          msgInput.focus();
+          return;
+        }
+      } catch (forgeErr) {
+        appendError('Forge command failed: ' + (forgeErr.message || forgeErr));
+        sending = false;
+        sendBtn.disabled = msgInput.value.trim() === '';
+        msgInput.focus();
+        return;
+      }
 
       appendMessage(text, 'user');
       msgInput.value = '';
