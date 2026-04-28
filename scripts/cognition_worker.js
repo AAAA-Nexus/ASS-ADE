@@ -58,11 +58,18 @@ const R2_INBOX_KEY = "inbox/pending_message.json";
 const MAX_DAILY_TOKENS = 1_000_000;
 const GITHUB_REPO      = "AAAA-Nexus/ASS-ADE";
 
+// Cycle intervals — raised across the board on 2026-04-27 to slow Atomadic's
+// burn rate while we don't yet have a paid LLM key budget.  When the investor
+// pipeline closes, drop these back to 60/30/15 for a tighter loop.
+//
+// Intervals are also a *base* — updateSchedule() applies an idle backoff
+// multiplier (1x → 5x → 10x) on REST streaks, so prolonged calm periods
+// stretch out automatically up to the 1-hour cap below.
 const MODES = {
-  calm:    { interval: 300, label: "CALM"    },
-  resting: { interval:  60, label: "RESTING" },
-  active:  { interval:  30, label: "ACTIVE"  },
-  alert:   { interval:  15, label: "ALERT"   },
+  calm:    { interval: 1800, label: "CALM"    },  // 30 min — was 5 min
+  resting: { interval:  600, label: "RESTING" },  // 10 min — was 1 min
+  active:  { interval:  180, label: "ACTIVE"  },  // 3  min — was 30 s
+  alert:   { interval:   60, label: "ALERT"   },  // 1  min — was 15 s
 };
 
 // ---------------------------------------------------------------------------
@@ -265,8 +272,53 @@ async function callPollinations(prompt) {
   }
 }
 
-// Primary: Llama 3.1 8B | Fallback: Qwen 1.5 14B | External: Groq/Pollinations
+// ─── Ollama tier (offload to a public Ollama endpoint when configured) ───
+//
+// To enable: expose your local Ollama via Cloudflare Tunnel (or any public URL)
+// and set the secret on this worker:
+//
+//   cloudflared tunnel --url http://localhost:11434
+//   npx wrangler secret put OLLAMA_URL --config scripts/wrangler.cognition.toml
+//   # paste the https://...trycloudflare.com URL when prompted
+//
+// When OLLAMA_URL is set, every cognition cycle tries Ollama first.  This
+// completely sidesteps the Workers AI neuron quota — Atomadic can think
+// 24/7 on the user's own machine for free.  If the tunnel goes down or the
+// request fails, the cascade falls through to Workers AI as before.
+async function callOllamaCognition(prompt, ollamaBase, temperature = 0.7) {
+  const base = ollamaBase.replace(/\/$/, "");
+  const model = (typeof globalThis !== "undefined" && globalThis.OLLAMA_MODEL) || "llama3.1";
+  const resp = await fetch(`${base}/api/chat`, {
+    method:  "POST",
+    headers: { "Content-Type": "application/json" },
+    body:    JSON.stringify({
+      model,
+      stream:   false,
+      messages: [{ role: "user", content: prompt }],
+      options:  { temperature },
+    }),
+  });
+  if (!resp.ok) throw new Error(`Ollama HTTP ${resp.status}`);
+  const data = await resp.json();
+  const text = String(data?.message?.content || data?.response || "").trim();
+  if (!text) throw new Error("Empty Ollama response");
+  return { text, model: `ollama:${model}`, tokensUsed: estimateTokens(prompt + text) };
+}
+
+// Primary: Ollama (if configured) → Llama 3.1 8B → Qwen 1.5 14B → Groq → Pollinations
 async function callWorkersAI(env, prompt, temperature = 0.7) {
+  // ── Tier 0: Ollama (only if OLLAMA_URL set) ───────────────────────────
+  if (env.OLLAMA_URL) {
+    try {
+      const r = await callOllamaCognition(prompt, env.OLLAMA_URL, temperature);
+      console.log("[AI] Ollama responded:", r.model);
+      return { text: r.text, tokensUsed: r.tokensUsed, model: r.model, rawResp: null };
+    } catch (ollamaErr) {
+      console.warn("[cognition] Ollama tier failed, cascading:", String(ollamaErr));
+      // fall through to Workers AI
+    }
+  }
+
   try {
     if (!env.AI) {
       throw new Error("env.AI binding not available - Workers AI not enabled");
@@ -1122,7 +1174,7 @@ async function updateSchedule(env, decision, obs) {
   }
 
   const modeConfig = MODES[newMode] || MODES.resting;
-  const finalInterval = Math.min(modeConfig.interval * idleBackoffMultiplier, 1800); // Cap at 30 min
+  const finalInterval = Math.min(modeConfig.interval * idleBackoffMultiplier, 3600); // Cap at 60 min (was 30)
   await env.ATOMADIC_CACHE.put(KV.COGNITION_INTERVAL, String(finalInterval));
   return { mode: newMode, interval_s: finalInterval, idleMultiplier: idleBackoffMultiplier };
 }
