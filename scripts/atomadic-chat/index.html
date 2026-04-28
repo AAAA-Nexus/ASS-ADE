@@ -571,7 +571,66 @@ Be direct, genuine, and thoughtful. You are a companion and thinking partner —
       scrollToBottom();
     }
 
-    // ── Send ──────────────────────────────────────────────────────────────────
+    // ── Streaming bubble — typewriter while tokens arrive ───────────────────
+    function appendStreamingBubble() {
+      const wrap = document.createElement('div');
+      wrap.className = 'message bot';
+      const bubble = document.createElement('div');
+      bubble.className = 'bubble';
+      bubble.textContent = '';
+      wrap.appendChild(bubble);
+      chatArea.appendChild(wrap);
+      scrollToBottom();
+      return { wrap, bubble };
+    }
+
+    /**
+     * Read an OpenAI-format SSE stream and call onChunk(text) for every
+     * `choices[0].delta.content` fragment.  Returns the full assembled text.
+     * Tolerates server-side fallback that emits a single delta + [DONE].
+     */
+    async function consumeOpenAISSE(response, onChunk) {
+      const reader  = response.body.getReader();
+      const decoder = new TextDecoder('utf-8');
+      let buffer    = '';
+      let assembled = '';
+
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+
+        // SSE events are separated by blank lines (\n\n).  Pull complete
+        // events out of the buffer; leave any partial tail for the next read.
+        let sepIdx;
+        while ((sepIdx = buffer.indexOf('\n\n')) !== -1) {
+          const rawEvent = buffer.slice(0, sepIdx);
+          buffer = buffer.slice(sepIdx + 2);
+
+          for (const line of rawEvent.split('\n')) {
+            if (!line.startsWith('data:')) continue;
+            const data = line.slice(5).trim();
+            if (!data) continue;
+            if (data === '[DONE]') return assembled;
+            try {
+              const obj   = JSON.parse(data);
+              const delta = obj?.choices?.[0]?.delta?.content
+                         ?? obj?.choices?.[0]?.message?.content
+                         ?? '';
+              if (delta) {
+                assembled += delta;
+                onChunk(assembled);
+              }
+            } catch { /* ignore malformed SSE chunks */ }
+          }
+        }
+      }
+      // Stream closed without an explicit [DONE] — treat the assembled
+      // text as the final reply.
+      return assembled;
+    }
+
+    // ── Send (streaming) ──────────────────────────────────────────────────────
     async function sendMessage() {
       const text = msgInput.value.trim();
       if (!text || sending) return;
@@ -581,50 +640,68 @@ Be direct, genuine, and thoughtful. You are a companion and thinking partner —
 
       appendMessage(text, 'user');
       msgInput.value = '';
-      msgInput.style.height = 'auto';  // reset textarea height
+      msgInput.style.height = 'auto';
 
-      // Push the user turn onto the conversation BEFORE we send so the
-      // outgoing request carries the full dialogue in `messages`.
       conversationHistory.push({ role: 'user', content: text });
 
       const typingEl = appendTyping();
+      let streamingBubble = null;
 
       try {
         const res = await fetch(API_ENDPOINT, {
           method:  'POST',
           headers: {
-            'Content-Type': 'application/json',
+            'Content-Type':  'application/json',
             'X-API-Key':     apiKey,
+            'Accept':        'text/event-stream',
           },
           body: JSON.stringify({
             system:   SYSTEM_PROMPT,
             messages: conversationHistory.slice(-HISTORY_CAP),
+            stream:   true,
           }),
         });
-
-        typingEl.remove();
 
         if (!res.ok) {
           const body = await res.text().catch(() => '');
           throw new Error(`${res.status} ${res.statusText}${body ? ': ' + body.slice(0, 120) : ''}`);
         }
 
-        const data = await res.json();
-        // Support both OpenAI-style and raw response shapes
-        const reply =
-          data.choices?.[0]?.message?.content ??
-          data.content ??
-          data.text ??
-          data.response ??
-          'No response';
+        const ct = (res.headers.get('content-type') || '').toLowerCase();
 
-        appendMessage(reply, 'bot');
+        // Drop the typing indicator and start the streaming bubble as soon
+        // as we know the server is talking back.
+        typingEl.remove();
+        streamingBubble = appendStreamingBubble();
 
-        // Persist the full turn so context survives a reload.
-        conversationHistory.push({ role: 'assistant', content: reply });
+        let finalText = '';
+        if (ct.includes('text/event-stream') && res.body) {
+          finalText = await consumeOpenAISSE(res, (assembled) => {
+            streamingBubble.bubble.textContent = assembled;
+            scrollToBottom(false);
+          });
+        } else {
+          // Server didn't honour stream:true — fall back to JSON parse.
+          const data = await res.json();
+          finalText =
+            data.choices?.[0]?.message?.content ??
+            data.content ??
+            data.text ??
+            data.response ??
+            '';
+          streamingBubble.bubble.textContent = finalText;
+        }
+
+        if (!finalText) {
+          finalText = '(no response)';
+          streamingBubble.bubble.textContent = finalText;
+        }
+
+        conversationHistory.push({ role: 'assistant', content: finalText });
         saveHistory();
 
       } catch (err) {
+        if (streamingBubble) streamingBubble.wrap.remove();
         typingEl.remove();
         appendError(err.message || 'Request failed');
         // Roll the failed user turn back so it isn't replayed next send.

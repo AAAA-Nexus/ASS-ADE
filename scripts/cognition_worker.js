@@ -305,6 +305,82 @@ async function callOllamaCognition(prompt, ollamaBase, temperature = 0.7) {
   return { text, model: `ollama:${model}`, tokensUsed: estimateTokens(prompt + text) };
 }
 
+// Pipe Workers AI's native SSE stream into OpenAI chat-completion-chunk SSE.
+// Workers AI emits   `data: {"response":"chunk text", ...}\n\n`
+// We rewrite each event to:
+//   data: {"id":"…","object":"chat.completion.chunk",
+//          "created":<ts>,"model":"<label>",
+//          "choices":[{"index":0,"delta":{"content":"chunk text"},"finish_reason":null}]}\n\n
+// then a final `data: [DONE]\n\n` once the source stream finishes.
+function workersAIToOpenAISSE(srcStream, modelLabel) {
+  const id        = `atomadic-${Math.floor(Date.now() / 1000)}`;
+  const created   = Math.floor(Date.now() / 1000);
+  const encoder   = new TextEncoder();
+  const decoder   = new TextDecoder("utf-8");
+  let   buffer    = "";
+
+  let doneEmitted = false;
+
+  function emitDelta(controller, content, finishReason) {
+    const obj = {
+      id, object: "chat.completion.chunk", created, model: modelLabel,
+      choices: [{ index: 0, delta: { content }, finish_reason: finishReason || null }],
+    };
+    controller.enqueue(encoder.encode(`data: ${JSON.stringify(obj)}\n\n`));
+  }
+  function emitDoneOnce(controller) {
+    if (doneEmitted) return;
+    doneEmitted = true;
+    controller.enqueue(encoder.encode("data: [DONE]\n\n"));
+  }
+
+  const ts = new TransformStream({
+    transform(chunk, controller) {
+      buffer += decoder.decode(chunk, { stream: true });
+      let sep;
+      while ((sep = buffer.indexOf("\n\n")) !== -1) {
+        const evt = buffer.slice(0, sep);
+        buffer    = buffer.slice(sep + 2);
+        for (const line of evt.split("\n")) {
+          if (!line.startsWith("data:")) continue;
+          const data = line.slice(5).trim();
+          if (!data) continue;
+          if (data === "[DONE]") {
+            emitDoneOnce(controller);
+            return;
+          }
+          try {
+            const parsed  = JSON.parse(data);
+            const content = typeof parsed.response === "string" ? parsed.response : "";
+            if (content) emitDelta(controller, content);
+            // Workers AI sometimes emits a final usage-only event with
+            // response:null — we drop those silently.
+          } catch { /* ignore malformed line */ }
+        }
+      }
+    },
+    flush(controller) {
+      // Drain any tail in the buffer if the source closed without a
+      // trailing blank line (rare but defensive).
+      if (buffer.trim().length) {
+        for (const line of buffer.split("\n")) {
+          if (!line.startsWith("data:")) continue;
+          const data = line.slice(5).trim();
+          if (!data || data === "[DONE]") continue;
+          try {
+            const parsed  = JSON.parse(data);
+            const content = typeof parsed.response === "string" ? parsed.response : "";
+            if (content) emitDelta(controller, content);
+          } catch {}
+        }
+      }
+      emitDoneOnce(controller);
+    },
+  });
+
+  return srcStream.pipeThrough(ts);
+}
+
 // Primary: Ollama (if configured) → Llama 3.1 8B → Qwen 1.5 14B → Groq → Pollinations
 async function callWorkersAI(env, prompt, temperature = 0.7) {
   // ── Tier 0: Ollama (only if OLLAMA_URL set) ───────────────────────────
@@ -1349,9 +1425,49 @@ async function handleFetch(request, env) {
       const body = await request.json();
       const messages = body.messages || [];
       const temperature = body.temperature || 0.7;
+      const wantStream = body.stream === true;
 
       if (!messages || messages.length === 0) {
         return Response.json({ error: "messages required" }, { status: 400, headers: CORS });
+      }
+
+      // ── Streaming path (real SSE end-to-end) ──────────────────────────
+      // Workers AI emits its OWN SSE format (`data: {"response":"foo"}\n\n`),
+      // not the OpenAI delta shape clients expect.  We pipe its stream
+      // through a TransformStream that rewrites each event into:
+      //   data: {"object":"chat.completion.chunk",
+      //          "choices":[{"index":0,
+      //                      "delta":{"content":"…"},
+      //                      "finish_reason":null}]}
+      // followed by a final `data: [DONE]\n\n`.  The gateway and the chat
+      // UI can then use the same parser regardless of provider.
+      //
+      // If Workers AI refuses to stream (quota / model error), we fall
+      // through to the non-streaming path below — the gateway will see
+      // a plain JSON response and cascade to a cloud provider as usual.
+      if (wantStream) {
+        try {
+          const stream = await env.AI.run(FAST_MODEL, { messages, stream: true });
+          if (stream && typeof stream.getReader === "function") {
+            const modelLabel = FAST_MODEL.split("/").pop();
+            const openaiStream = workersAIToOpenAISSE(stream, modelLabel);
+            return new Response(openaiStream, {
+              headers: {
+                "Content-Type":      "text/event-stream",
+                "Cache-Control":     "no-cache",
+                "X-Atomadic-Status": "ok",
+                "X-Atomadic-Model":  modelLabel,
+                "X-Atomadic-Tier":   "cognition-primary",
+                ...CORS,
+              },
+            });
+          }
+          console.warn("[cognition] /chat stream: env.AI.run did not return a stream — falling through to batch");
+        } catch (streamErr) {
+          console.warn("[cognition] /chat stream: env.AI.run failed:", String(streamErr));
+          // Fall through to non-streaming batch path so the gateway can
+          // still cascade to cloud streaming providers if needed.
+        }
       }
 
       const prompt = messages.map((m) => m.content).join("\n");
