@@ -171,6 +171,33 @@
       border: 1px solid var(--border);
       border-radius: 4px 18px 18px 18px;
     }
+    /* Per-bubble actions footer — copy + regenerate, only on bot messages */
+    .bubble-actions {
+      display: flex; gap: 6px;
+      margin-top: 4px;
+      padding: 0 4px;
+      opacity: 0.55;
+      transition: opacity 0.15s;
+    }
+    .bubble-actions:hover { opacity: 1; }
+    .bubble-action-btn {
+      background: none; border: none;
+      color: var(--text-muted);
+      font-size: 11px; font-family: inherit;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 6px;
+      display: inline-flex; align-items: center; gap: 4px;
+      -webkit-tap-highlight-color: transparent;
+      transition: background 0.15s, color 0.15s;
+    }
+    .bubble-action-btn:active,
+    .bubble-action-btn:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-primary);
+    }
+    .bubble-action-btn.ok { color: var(--accent-2); }
+
     .model-tag {
       display: inline-block;
       font-size: 10px; font-weight: 600;
@@ -800,6 +827,10 @@ When a user mentions a GitHub repo or asks about code quality / structure / test
     function appendMessage(text, role, model) {
       const wrap = document.createElement('div');
       wrap.className = `message ${role}`;
+      const stack = document.createElement('div');
+      stack.style.cssText = role === 'user'
+        ? 'display:flex;flex-direction:column;align-items:flex-end;max-width:82%'
+        : 'display:flex;flex-direction:column;align-items:flex-start;max-width:82%';
       const bubble = document.createElement('div');
       bubble.className = 'bubble';
       if (role === 'bot' && model) {
@@ -810,21 +841,89 @@ When a user mentions a GitHub repo or asks about code quality / structure / test
         bubble.appendChild(document.createElement('br'));
       }
       bubble.appendChild(document.createTextNode(text));
-      wrap.appendChild(bubble);
+      stack.appendChild(bubble);
+      wrap.appendChild(stack);
       chatArea.appendChild(wrap);
+      // Bot bubbles get a Copy + Regenerate footer.
+      if (role === 'bot') attachBubbleActions(stack, () => text);
       scrollChat();
       return bubble;
     }
     function appendStreamingBubble() {
       const wrap = document.createElement('div');
       wrap.className = 'message bot';
+      const stack = document.createElement('div');
+      stack.style.cssText = 'display:flex;flex-direction:column;align-items:flex-start;max-width:82%';
       const bubble = document.createElement('div');
       bubble.className = 'bubble';
       bubble.textContent = '';
-      wrap.appendChild(bubble);
+      stack.appendChild(bubble);
+      wrap.appendChild(stack);
       chatArea.appendChild(wrap);
       scrollChat();
-      return { wrap, bubble };
+      return { wrap, bubble, stack };
+    }
+
+    /**
+     * Mount a Copy + Regenerate footer under a finished bot bubble.
+     * Both buttons skip the LLM round-trip on click — copy uses the
+     * Clipboard API, regenerate replays the last user turn through
+     * sendMessage() after popping the bot turn back off history.
+     */
+    function attachBubbleActions(stack, getText) {
+      const bar = document.createElement('div');
+      bar.className = 'bubble-actions';
+      const copyBtn = document.createElement('button');
+      copyBtn.className = 'bubble-action-btn';
+      copyBtn.type = 'button';
+      copyBtn.innerHTML = '<span>⧉</span><span>Copy</span>';
+      copyBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(getText());
+          copyBtn.classList.add('ok');
+          copyBtn.innerHTML = '<span>✓</span><span>Copied</span>';
+          setTimeout(() => {
+            copyBtn.classList.remove('ok');
+            copyBtn.innerHTML = '<span>⧉</span><span>Copy</span>';
+          }, 1400);
+        } catch {
+          copyBtn.innerHTML = '<span>⚠</span><span>Failed</span>';
+        }
+      });
+      const regenBtn = document.createElement('button');
+      regenBtn.className = 'bubble-action-btn';
+      regenBtn.type = 'button';
+      regenBtn.innerHTML = '<span>↻</span><span>Regenerate</span>';
+      regenBtn.addEventListener('click', () => regenerateLast());
+      bar.appendChild(copyBtn);
+      bar.appendChild(regenBtn);
+      stack.appendChild(bar);
+    }
+
+    async function regenerateLast() {
+      if (sending) return;
+      // Pop the last assistant turn off history (if present) so the
+      // re-send doesn't see its own previous answer in context.
+      while (conversationHistory.length &&
+             conversationHistory[conversationHistory.length - 1].role === 'assistant') {
+        conversationHistory.pop();
+      }
+      // Pull the last user turn back out and resend.
+      let lastUser = '';
+      for (let i = conversationHistory.length - 1; i >= 0; i--) {
+        if (conversationHistory[i].role === 'user') {
+          lastUser = conversationHistory[i].content || '';
+          conversationHistory.splice(i, 1); // remove so sendMessage re-appends it
+          break;
+        }
+      }
+      saveHistory();
+      // Drop the last visible bot bubble (the one whose Regenerate fired).
+      const lastBotMsg = chatArea.querySelector('.message.bot:last-of-type');
+      if (lastBotMsg) lastBotMsg.remove();
+      if (!lastUser) return;
+      msgInput.value = lastUser;
+      sendMessage();
     }
     function appendTyping() {
       const wrap = document.createElement('div');
@@ -924,9 +1023,11 @@ When a user mentions a GitHub repo or asks about code quality / structure / test
             }),
           });
           const d = await r.json();
-          b.bubble.textContent = renderWireScan(d);
+          const rendered = renderWireScan(d);
+          b.bubble.textContent = rendered;
+          attachBubbleActions(b.stack, () => rendered);
           conversationHistory.push({ role: 'user', content: text });
-          conversationHistory.push({ role: 'assistant', content: b.bubble.textContent });
+          conversationHistory.push({ role: 'assistant', content: rendered });
           saveHistory();
         } catch (e) {
           b.wrap.remove();
@@ -957,7 +1058,12 @@ When a user mentions a GitHub repo or asks about code quality / structure / test
           });
           const d = await r.json();
           if (d.error) { b.bubble.textContent = `Forge: ${d.error}${d.message?' — '+d.message:''}`; return true; }
-          b.bubble.textContent = sub === 'analyze' ? renderAnalyze(d) : renderScore(d);
+          const rendered = sub === 'analyze' ? renderAnalyze(d) : renderScore(d);
+          b.bubble.textContent = rendered;
+          attachBubbleActions(b.stack, () => rendered);
+          conversationHistory.push({ role: 'user', content: text });
+          conversationHistory.push({ role: 'assistant', content: rendered });
+          saveHistory();
         } catch (e) { b.wrap.remove(); appendError(`forge ${sub} failed: ` + (e.message || e)); }
         return true;
       }
@@ -1091,6 +1197,9 @@ When a user mentions a GitHub repo or asks about code quality / structure / test
         }
         conversationHistory.push({ role: 'assistant', content: finalText });
         saveHistory();
+        // Mount Copy + Regenerate footer once the reply is finalized.
+        const replyText = finalText;
+        attachBubbleActions(streamingBubble.stack, () => replyText);
 
       } catch (err) {
         if (streamingBubble) streamingBubble.wrap.remove();

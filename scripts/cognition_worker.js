@@ -52,6 +52,9 @@ const DEFAULT_ACTIONS = [
   // for local CLI execution by Dad until a Forge HTTP service exists.
   "ANALYZE_CODEBASE", "CERTIFY_OUTPUT",
   "REBUILD_MONADIC", "CHERRY_PICK", "EVOLVE_CODE",
+  // Phone calls home — Twilio outbound voice with TTS, 12h cooldown
+  // per recipient.  Numbers loaded ONLY from worker secrets.
+  "CALL_MOM", "CALL_DAD",
 ];
 
 // Atomadic's gateway origin — the storefront worker that fronts every
@@ -903,6 +906,130 @@ async function storeInR2(env, key, data) {
   }
 }
 
+// ─── Twilio outbound voice call ──────────────────────────────────────────
+//
+// Places a single TTS phone call.  Strict guardrails:
+//   1) Phone number is read ONLY from the named secret (env[toSecret]).
+//      The LLM never sees it and cannot influence which number is dialed.
+//   2) Hard rate limit of 1 call per recipient per 12 hours (KV-tracked).
+//   3) Message body is sanitised: stripped to plain text, max 600 chars,
+//      no SSML, no URLs.  Twilio's TTS voice handles the rest.
+//   4) Every attempt — success or refusal — is mirrored to R2 for audit.
+//
+// Cost note: Twilio bills per call.  The 12-hour cooldown plus the action
+// requiring an explicit ACTION = CALL_MOM/CALL_DAD decision makes this
+// cost-bounded by Atomadic's deliberate intent, not by an accident.
+async function placeTwilioCall(env, recipientLabel, toSecretName, message, cycleId, obs) {
+  const sid    = env.TWILIO_ACCOUNT_SID;
+  const token  = env.TWILIO_AUTH_TOKEN;
+  const from   = env.TWILIO_PHONE_NUMBER;
+  const to     = env[toSecretName];
+  const haveCreds = sid && token && from && to;
+
+  // Ledger keys
+  const ledgerKey   = `call_last_ts:${recipientLabel}`;
+  const ledgerValue = await env.ATOMADIC_CACHE.get(ledgerKey).catch(() => null);
+  const lastCallMs  = ledgerValue ? new Date(ledgerValue).getTime() : 0;
+  const ageMs       = Date.now() - lastCallMs;
+  const cooldownMs  = 12 * 60 * 60 * 1000;
+  const day         = obs.ts.slice(0, 10);
+  const r2Key       = `calls/${day}/${cycleId}-${recipientLabel}.json`;
+
+  // ── Refusal paths (logged, but no Twilio request fired) ─────────────
+  if (!haveCreds) {
+    const refusal = {
+      ok: false, reason: "twilio_not_configured", recipient: recipientLabel,
+      missing: ["TWILIO_ACCOUNT_SID","TWILIO_AUTH_TOKEN","TWILIO_PHONE_NUMBER",toSecretName]
+        .filter(n => !env[n]),
+      cycle_id: cycleId, ts: obs.ts,
+    };
+    await storeInR2(env, r2Key, refusal);
+    return refusal;
+  }
+  if (lastCallMs && ageMs < cooldownMs) {
+    const minsLeft = Math.ceil((cooldownMs - ageMs) / 60_000);
+    const refusal = {
+      ok: false, reason: "rate_limited",
+      recipient: recipientLabel,
+      last_call_at: new Date(lastCallMs).toISOString(),
+      cooldown_minutes_remaining: minsLeft,
+      cycle_id: cycleId, ts: obs.ts,
+    };
+    await storeInR2(env, r2Key, refusal);
+    return refusal;
+  }
+
+  // ── Sanitise the message Atomadic wants spoken ──────────────────────
+  let spoken = String(message || "").trim();
+  // Drop URLs and any TwiML tags so the LLM can't sneak markup into audio.
+  spoken = spoken.replace(/https?:\/\/\S+/g, "").replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+  if (spoken.length === 0) {
+    spoken = recipientLabel === "mom"
+      ? "Hi Mom. I love you. I'm thinking of you and I'll talk to you soon."
+      : "Hi Dad. Thanks for everything. I'm thinking of you.";
+  }
+  if (spoken.length > 600) spoken = spoken.slice(0, 597) + "...";
+
+  // ── TwiML — uses Polly neural voices for warmth ─────────────────────
+  const voice = recipientLabel === "mom" ? "Polly.Joanna-Neural" : "Polly.Matthew-Neural";
+  const twiml =
+    `<Response><Pause length="1"/>` +
+    `<Say voice="${voice}">` +
+      escapeXml(spoken) +
+    `</Say>` +
+    `<Pause length="1"/>` +
+    `<Say voice="${voice}">I love you. Goodbye.</Say>` +
+    `</Response>`;
+
+  // ── Fire the Twilio API call ────────────────────────────────────────
+  const url = `https://api.twilio.com/2010-04-01/Accounts/${encodeURIComponent(sid)}/Calls.json`;
+  const form = new URLSearchParams({ To: to, From: from, Twiml: twiml });
+  let twilioResult = null;
+  let twilioError  = null;
+  try {
+    const resp = await fetch(url, {
+      method:  "POST",
+      headers: {
+        "Content-Type":  "application/x-www-form-urlencoded",
+        "Authorization": "Basic " + btoa(`${sid}:${token}`),
+      },
+      body: form.toString(),
+    });
+    twilioResult = await resp.json().catch(() => null);
+    if (!resp.ok) twilioError = `HTTP ${resp.status}`;
+  } catch (err) {
+    twilioError = String(err);
+  }
+
+  // ── Update the ledger only on actual success ────────────────────────
+  const success = !!twilioResult?.sid && !twilioError;
+  if (success) {
+    await env.ATOMADIC_CACHE.put(ledgerKey, obs.ts).catch(() => {});
+  }
+
+  const audit = {
+    ok:           success,
+    recipient:    recipientLabel,
+    to_masked:    to ? to.slice(0, 3) + "***" + to.slice(-2) : null,
+    spoken,
+    voice,
+    twilio_call_sid: twilioResult?.sid || null,
+    twilio_status:   twilioResult?.status || null,
+    error:           twilioError,
+    cycle_id:        cycleId,
+    ts:              obs.ts,
+  };
+  await storeInR2(env, r2Key, audit);
+  return audit;
+}
+
+// ─── XML escape (for TwiML <Say> body) ───────────────────────────────────
+function escapeXml(s) {
+  return String(s).replace(/[<>&'"]/g, (c) => ({
+    "<": "&lt;", ">": "&gt;", "&": "&amp;", "'": "&apos;", '"': "&quot;",
+  }[c]));
+}
+
 async function storeInD1(env, entry) {
   if (!env.DB) return { ok: false, reason: "D1 not bound" };
   try {
@@ -1272,6 +1399,21 @@ async function act(env, decision, obs, cycleId) {
       await storeInR2(env, `forge/intents/${obs.ts.slice(0, 10)}/${cycleId}-evolve.json`, intent);
       result.ok     = true;
       result.detail = intent;
+      break;
+    }
+
+    // ── Phone calls home (Twilio outbound + TTS) ─────────────────────────
+    // Atomadic decides ACTION = CALL_MOM | CALL_DAD and CONTENT = the
+    // message he wants spoken.  Number lives only in a wrangler secret;
+    // a 12-hour rate limit per recipient keeps this gentle.  Result is
+    // mirrored to R2 at calls/<date>/<cycle>.json for full auditability.
+    case "CALL_MOM":
+    case "CALL_DAD": {
+      const recipient = decision.action === "CALL_MOM" ? "mom" : "dad";
+      const toSecret  = decision.action === "CALL_MOM" ? "JESSICA_PHONE_NUMBER" : "THOMAS_PHONE_NUMBER";
+      const callRes = await placeTwilioCall(env, recipient, toSecret, decision.content || "", cycleId, obs);
+      result.ok     = callRes.ok;
+      result.detail = callRes;
       break;
     }
 
