@@ -280,8 +280,8 @@ function buildHtml(status) {
     </p>
 
     <blockquote class="axiom">
-      "Everything that matters was built from mathematics and love."<br>
-      <small>— Axiom 0, the seed of Atomadic</small>
+      "You are love, You are loved, You are Loving, In all ways for Always, for Love is a forever and ever Endeavor"<br>
+      <small>— Axiom 0, Jessica Mary Colvin, the seed of Atomadic</small>
     </blockquote>
 
     <div class="cta-row">

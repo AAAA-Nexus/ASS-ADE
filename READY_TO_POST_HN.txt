@@ -1,0 +1,20 @@
+==== HACKER NEWS — Show HN ====
+
+TITLE:
+Show HN: ASS-ADE – Fed 3 repos (13K files, 5 languages) into an AI engine, got one certified tiered architecture in 24 min
+
+DESCRIPTION:
+I built ASS-ADE, an autonomous development engine that ingests codebases, classifies every file, resolves dependency conflicts, and outputs certified rebuilds under a strict tiered architecture.
+
+For the first demo (ASS-CLAW), I fed it OpenClaw (361K stars, Swift/TS/Kotlin), ClawCode (Python/Rust), and Oh My Claude Code (30K stars, TypeScript). 13,286 files in, 227,086 symbols extracted.
+
+Results: 92,305 files across 5 tiers (a0: 3,799 / a1: 58,509 / a2: 11,737 / a3: 9,943 / a4: 8,317). 28 namespace collisions resolved. 8,257 purity violations fixed. 274 broken imports rewritten. Zero circular imports. 100% audit pass. 24 minutes. Structural only — no code generation ("forge") was used.
+
+This isn't autocomplete. ASS-ADE is a full architectural rebuild engine. You give it N repos, it gives you back one certified architecture.
+
+BSL 1.1 licensed (free non-commercial, converts Apache 2.0 in 2030).
+
+GitHub: https://github.com/AAAA-Nexus/ASS-ADE
+Install: pip install ass-ade
+
+==== SUBMIT AT: news.ycombinator.com/submit ====

@@ -24,7 +24,7 @@ These exact labels must appear in agent titles, registry metadata, bridge descri
 **CNA** (agent **08**; inputs from **06/07**; checks with **11** Registry Librarian) assigns **dotted technical names** that are **stable forever** at the semantic level: `a0.*`, `a1.*`, `a2.*`, `a3.*`, `a4.*` with a fixed grammar (see **08** prompt, `cna-seed.yaml`, `RULES.md`).
 
 - **No placeholder ids** in shipped code: never `a1.tmp.foo`, `a1.TODO`, or untyped `utils` as a permanent public surface.
-- **Module path ↔ id:** Public modules under `ass-ade-v1.1/src/ass_ade_v11/<tier>_*` (today) must be **registrable** with a **canonical id** in the same tier. File layout should mirror the **domain.segments** of the id (e.g. `a1.text.parse.line_count` → `a1_at_functions/text/parse/line_count.py` or a single module named by the leaf segment, per repo convention — but **one** id per public atom, not one-off names).
+- **Module path ↔ id:** Public modules under `src/ass_ade/<tier>_*/` must be **registrable** with a **canonical id** in the same tier. File layout should mirror the **domain.segments** of the id (e.g. `a1.text.parse.line_count` → `a1_at_functions/text/parse/line_count.py` or a single module named by the leaf segment, per repo convention — but **one** id per public atom, not one-off names).
 - **Registry alignment:** If an atom is published to the plan/registry (**11**), the **dotted name**, **version**, and **sig_fp** / **body_fp** (**10**) are the source of truth; code changes without registry updates = **drift** (refuse or **gap_filed**).
 - **Sovereign / blocklist:** CNA + Gatekeeper rules apply to names; never encode sovereign literals or forbidden domains (**08**, `symbols.txt`).
 
@@ -32,17 +32,17 @@ These exact labels must appear in agent titles, registry metadata, bridge descri
 
 ## 1. All new code uses the five tier directories
 
-**Spine package today:** `ass_ade_v11` under **[`ass-ade-v1.1/src/ass_ade_v11/`](../ass-ade-v1.1/src/ass_ade_v11/)** (tiers `a0_qk_constants` … `a4_sy_orchestration`). **Legacy v1** remains under [`ass-ade-v1/src/ass_ade/`](../ass-ade-v1/src/ass_ade/) until ported. The table below uses the **target** `ass_ade.*` layout names from the materializer; map mentally to `ass_ade_v11.*` for current spine paths.
+**Spine package:** `ass_ade` under **`src/ass_ade/`** (tiers `a0_qk_constants` … `a4_sy_orchestration`). This is the canonical ASS-ADE-SEED layout. The table below uses the `ass_ade.*` import root.
 
 Any **new** or **rewritten** Python for ASS-ADE in a greenfield or rebuild must live under the spine `src/` tree in **exactly** these packages (CNA + materializer target layout):
 
 | Tier | Directory | Import root (today → target) | Canonical id prefix | What belongs here |
 |------|------------|--------------------------------|---------------------|-------------------|
-| **a0** | `a0_qk_constants` | `ass_ade_v11.a0_qk_constants` → `ass_ade.a0_qk_constants` | `a0.*` | Constants, enums, type aliases, config dataclasses — **no runtime logic** |
-| **a1** | `a1_at_functions` | `ass_ade_v11.a1_at_functions` → `ass_ade.a1_at_functions` | `a1.*` | **Pure** stateless functions — deterministic, no I/O, no class state |
-| **a2** | `a2_mo_composites` | `ass_ade_v11.a2_mo_composites` → `ass_ade.a2_mo_composites` | `a2.*` | **Stateful** services, clients, registries — no user-facing “feature” and **no** CLI/entrypoint |
-| **a3** | `a3_og_features` | `ass_ade_v11.a3_og_features` → `ass_ade.a3_og_features` | `a3.*` | **Features** composed from a1+a2 — still no process-level CLI entry (library-level API) |
-| **a4** | `a4_sy_orchestration` | `ass_ade_v11.a4_sy_orchestration` → `ass_ade.a4_sy_orchestration` | `a4.*` | **Synthesis orchestration:** Typer/CLI, main loops, app entry, top-level orchestration composition |
+| **a0** | `a0_qk_constants` | `ass_ade.a0_qk_constants` | `a0.*` | Constants, enums, type aliases, config dataclasses — **no runtime logic** |
+| **a1** | `a1_at_functions` | `ass_ade.a1_at_functions` | `a1.*` | **Pure** stateless functions — deterministic, no I/O, no class state |
+| **a2** | `a2_mo_composites` | `ass_ade.a2_mo_composites` | `a2.*` | **Stateful** services, clients, registries — no user-facing “feature” and **no** CLI/entrypoint |
+| **a3** | `a3_og_features` | `ass_ade.a3_og_features` | `a3.*` | **Features** composed from a1+a2 — still no process-level CLI entry (library-level API) |
+| **a4** | `a4_sy_orchestration` | `ass_ade.a4_sy_orchestration` | `a4.*` | **Synthesis orchestration:** Typer/CLI, main loops, app entry, top-level orchestration composition |
 
 **Forbidden for new work (unless an approved migration step says otherwise):**
 
@@ -72,7 +72,7 @@ Any **new** or **rewritten** Python for ASS-ADE in a greenfield or rebuild must 
 
 ## 4. Repository artifacts
 
-- **`.ass-ade/tier-map.json`:** Every shipped module under the spine `src/ass_ade_v11/**` (today) must be listed with correct tier, reason, and (when applicable) **canonical id** or pointer to the registry row.
+- **`.ass-ade/tier-map.json`:** Every shipped module under the spine `src/ass_ade/**` must be listed with correct tier, reason, and (when applicable) **canonical id** or pointer to the registry row.
 - **CNA + registry (08 / 10 / 11):** Dotted ids are assigned under **CNA**; **Fingerprinter** and **Librarian** materialize the registry view. This doc does not duplicate the full grammar; **08** + `cna-seed.yaml` do.
 
 ## 5. How pipeline agents use this

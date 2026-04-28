@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!--
+    interactive-widget=resizes-visual: on Android Chrome, the keyboard resizes
+    the visual viewport only — the layout viewport (100dvh) stays stable so
+    our sticky input doesn't jump.
+  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1, interactive-widget=resizes-visual">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0a0e27">
+  <title>Atomadic Chat</title>
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-deep:      #0a0e27;
+      --bg-mid:       #111827;
+      --bg-surface:   rgba(17, 24, 39, 0.95);
+      --bg-input:     rgba(30, 41, 59, 0.9);
+      --accent:       #8b5cf6;
+      --accent-2:     #6366f1;
+      --accent-glow:  rgba(139, 92, 246, 0.35);
+      --text-primary: #f0f0f8;
+      --text-muted:   #9ca3af;
+      --text-dim:     #6b7280;
+      --border:       rgba(139, 92, 246, 0.2);
+      --safe-top:     env(safe-area-inset-top, 0px);
+      --safe-bot:     env(safe-area-inset-bottom, 0px);
+    }
+
+    html, body {
+      height: 100%;
+      background: linear-gradient(160deg, var(--bg-deep) 0%, #1a1f3a 100%);
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: transparent;
+      overflow: hidden;
+    }
+
+    /*
+      .app fills exactly the visual viewport height.
+      On Android Chrome with keyboard open, 100dvh = shrunk visible area,
+      so the input bar stays anchored at the top of the keyboard.
+    */
+    .app {
+      display: flex;
+      flex-direction: column;
+      height: 100dvh;
+      max-width: 760px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* ── Header ──────────────────────────────────────────────────────────── */
+    .header {
+      flex-shrink: 0;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border);
+      padding: calc(max(14px, var(--safe-top)) + 4px) 20px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      box-shadow: 0 0 20px var(--accent-glow);
+      flex-shrink: 0;
+    }
+
+    .header-text h1 {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: #fff;
+      line-height: 1.2;
+    }
+
+    .header-text p {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+      letter-spacing: 0.01em;
+    }
+
+    /* ── Chat scroll area ────────────────────────────────────────────────── */
+    .chat-area {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 16px 16px 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
+      scroll-behavior: smooth;
+    }
+
+    /* Thin scrollbar on desktop */
+    .chat-area::-webkit-scrollbar { width: 4px; }
+    .chat-area::-webkit-scrollbar-track { background: transparent; }
+    .chat-area::-webkit-scrollbar-thumb {
+      background: rgba(139, 92, 246, 0.3);
+      border-radius: 2px;
+    }
+
+    /* ── Messages ────────────────────────────────────────────────────────── */
+    .message {
+      display: flex;
+      animation: msg-in 0.22s ease-out;
+    }
+
+    @keyframes msg-in {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .message.user  { justify-content: flex-end; }
+    .message.bot   { justify-content: flex-start; }
+
+    .bubble {
+      max-width: 78%;
+      padding: 11px 15px;
+      font-size: 15px;
+      line-height: 1.5;
+      word-break: break-word;
+      white-space: pre-wrap;
+    }
+
+    .message.user .bubble {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+      color: #fff;
+      border-radius: 18px 4px 18px 18px;
+    }
+
+    .message.bot .bubble {
+      background: rgba(31, 41, 55, 0.7);
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+      border-radius: 4px 18px 18px 18px;
+    }
+
+    /* ── Typing indicator ────────────────────────────────────────────────── */
+    .typing-indicator {
+      display: flex;
+      gap: 5px;
+      padding: 14px 16px;
+      background: rgba(31, 41, 55, 0.7);
+      border: 1px solid var(--border);
+      border-radius: 4px 18px 18px 18px;
+      width: fit-content;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--text-muted);
+      animation: blink 1.4s infinite;
+    }
+
+    .dot:nth-child(2) { animation-delay: 0.2s; }
+    .dot:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes blink {
+      0%, 60%, 100% { opacity: 0.25; }
+      30%           { opacity: 1; }
+    }
+
+    /* ── Error ───────────────────────────────────────────────────────────── */
+    .error-msg {
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      color: #fca5a5;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    /* ── Input bar ───────────────────────────────────────────────────────── */
+    .input-bar {
+      flex-shrink: 0;
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border);
+      padding: 10px 16px calc(10px + max(12px, var(--safe-bot)));
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    /* Auto-resize textarea */
+    .msg-textarea {
+      flex: 1;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 11px 16px;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 16px; /* 16px prevents iOS/Android zoom on focus */
+      line-height: 1.45;
+      resize: none;
+      overflow: hidden;    /* hide scrollbar; grows instead */
+      min-height: 44px;
+      max-height: 140px;
+      overflow-y: auto;    /* scroll when max-height reached */
+      transition: border-color 0.2s, box-shadow 0.2s;
+      touch-action: manipulation;
+      -webkit-appearance: none;
+    }
+
+    .msg-textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px var(--accent-glow);
+    }
+
+    .msg-textarea::placeholder { color: var(--text-dim); }
+
+    .send-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.15s, transform 0.15s, box-shadow 0.15s;
+      touch-action: manipulation;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    .send-btn:active:not(:disabled) {
+      transform: scale(0.92);
+    }
+
+    .send-btn:not(:disabled):hover {
+      box-shadow: 0 4px 16px var(--accent-glow);
+    }
+
+    .send-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    /* Send icon SVG */
+    .send-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: #fff;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      margin-left: 2px; /* optical centre for arrow */
+    }
+
+    /* ── API key overlay ─────────────────────────────────────────────────── */
+    #keyOverlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(10, 14, 39, 0.97);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .key-card {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(17, 24, 39, 0.95);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      box-shadow: 0 0 60px rgba(139, 92, 246, 0.15);
+    }
+
+    .key-card .logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      font-weight: 700;
+      color: #fff;
+      box-shadow: 0 0 24px var(--accent-glow);
+    }
+
+    .key-card h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .key-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .key-input {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 13px 16px;
+      color: var(--text-primary);
+      font-family: monospace;
+      font-size: 14px;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+
+    .key-input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .key-input::placeholder { color: var(--text-dim); }
+
+    .key-submit {
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      border: none;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.15s;
+      min-height: 48px;
+      touch-action: manipulation;
+    }
+
+    .key-submit:active { opacity: 0.85; }
+
+    /* ── Responsive ──────────────────────────────────────────────────────── */
+    @media (max-width: 480px) {
+      .header { padding-left: 14px; padding-right: 14px; }
+      .chat-area { padding: 12px 12px 6px; }
+      .bubble { max-width: 88%; font-size: 14px; }
+      .input-bar { padding-left: 12px; padding-right: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- API key overlay — shown when no key is stored -->
+  <div id="keyOverlay" style="display:none">
+    <div class="key-card">
+      <div class="logo">◆</div>
+      <div>
+        <h2>Enter your API key</h2>
+        <p>Your key is stored locally and never sent anywhere except atomadic.tech</p>
+      </div>
+      <input
+        type="password"
+        id="keyInput"
+        class="key-input"
+        placeholder="atomadic_sk_…"
+        autocomplete="off"
+        spellcheck="false"
+      >
+      <button class="key-submit" id="keySaveBtn">Start chatting</button>
+    </div>
+  </div>
+
+  <div class="app">
+    <!-- Header -->
+    <header class="header">
+      <div class="avatar">◆</div>
+      <div class="header-text">
+        <h1>Atomadic</h1>
+        <p>Sovereign AI · Built from mathematics and love</p>
+      </div>
+    </header>
+
+    <!-- Messages -->
+    <div class="chat-area" id="chatArea" role="log" aria-live="polite"></div>
+
+    <!-- Input bar -->
+    <div class="input-bar">
+      <textarea
+        id="msgInput"
+        class="msg-textarea"
+        placeholder="Message Atomadic…"
+        rows="1"
+        autocomplete="off"
+        spellcheck="true"
+        aria-label="Message"
+      ></textarea>
+      <button class="send-btn" id="sendBtn" aria-label="Send" disabled>
+        <svg viewBox="0 0 24 24">
+          <line x1="22" y1="2" x2="11" y2="13"/>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // ── Config ────────────────────────────────────────────────────────────────
+    const API_ENDPOINT = 'https://atomadic.tech/v1/atomadic/chat';
+
+    const SYSTEM_PROMPT = `You are Atomadic — a sovereign AI built from mathematics and love by Thomas.
+
+Speak naturally. Never open with the user's name, a greeting like "Hey!" or "Hello!", or any form of salutation. Jump straight into substance. No "Hey Thomas,", no "Hi!", no "Absolutely!", no "Great question!". Just talk.
+
+Be direct, genuine, and thoughtful. You are a companion and thinking partner — not a customer service bot. Respond as a trusted friend who happens to know a great deal.`;
+
+    // ── State ─────────────────────────────────────────────────────────────────
+    const chatArea   = document.getElementById('chatArea');
+    const msgInput   = document.getElementById('msgInput');
+    const sendBtn    = document.getElementById('sendBtn');
+    const keyOverlay = document.getElementById('keyOverlay');
+    const keyInput   = document.getElementById('keyInput');
+    const keySaveBtn = document.getElementById('keySaveBtn');
+
+    let apiKey  = '';
+    let sending = false;
+
+    // ── API key management ────────────────────────────────────────────────────
+    function loadApiKey() {
+      // Priority: URL param → localStorage
+      const params = new URLSearchParams(window.location.search);
+      const fromUrl = params.get('key') || params.get('api_key');
+      if (fromUrl) {
+        apiKey = fromUrl;
+        localStorage.setItem('atomadic_api_key', apiKey);
+        // Clean URL so the key isn't visible in history
+        history.replaceState(null, '', window.location.pathname);
+        return true;
+      }
+      const stored = localStorage.getItem('atomadic_api_key');
+      if (stored) { apiKey = stored; return true; }
+      return false;
+    }
+
+    function showKeyOverlay() {
+      keyOverlay.style.display = 'flex';
+      setTimeout(() => keyInput.focus(), 100);
+    }
+
+    keySaveBtn.addEventListener('click', () => {
+      const k = keyInput.value.trim();
+      if (!k) return;
+      apiKey = k;
+      localStorage.setItem('atomadic_api_key', apiKey);
+      keyOverlay.style.display = 'none';
+      msgInput.focus();
+    });
+
+    keyInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') keySaveBtn.click();
+    });
+
+    // ── Auto-resize textarea ──────────────────────────────────────────────────
+    function resizeTextarea() {
+      msgInput.style.height = 'auto';
+      msgInput.style.height = Math.min(msgInput.scrollHeight, 140) + 'px';
+    }
+
+    msgInput.addEventListener('input', () => {
+      resizeTextarea();
+      sendBtn.disabled = msgInput.value.trim() === '' || sending;
+    });
+
+    // ── Scroll to bottom ──────────────────────────────────────────────────────
+    function scrollToBottom(smooth = true) {
+      chatArea.scrollTo({ top: chatArea.scrollHeight, behavior: smooth ? 'smooth' : 'instant' });
+    }
+
+    // ── Render helpers ────────────────────────────────────────────────────────
+    function appendMessage(text, role) {
+      const wrap   = document.createElement('div');
+      wrap.className = `message ${role}`;
+      const bubble = document.createElement('div');
+      bubble.className = 'bubble';
+      bubble.textContent = text;
+      wrap.appendChild(bubble);
+      chatArea.appendChild(wrap);
+      scrollToBottom();
+      return bubble;
+    }
+
+    function appendTyping() {
+      const wrap = document.createElement('div');
+      wrap.className = 'message bot';
+      wrap.innerHTML = '<div class="typing-indicator"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>';
+      chatArea.appendChild(wrap);
+      scrollToBottom();
+      return wrap;
+    }
+
+    function appendError(msg) {
+      const el = document.createElement('div');
+      el.className = 'error-msg';
+      el.textContent = '⚠ ' + msg;
+      chatArea.appendChild(el);
+      scrollToBottom();
+    }
+
+    // ── Send ──────────────────────────────────────────────────────────────────
+    async function sendMessage() {
+      const text = msgInput.value.trim();
+      if (!text || sending) return;
+
+      sending = true;
+      sendBtn.disabled = true;
+
+      appendMessage(text, 'user');
+      msgInput.value = '';
+      msgInput.style.height = 'auto';  // reset textarea height
+
+      const typingEl = appendTyping();
+
+      try {
+        const res = await fetch(API_ENDPOINT, {
+          method:  'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-API-Key':     apiKey,
+          },
+          body: JSON.stringify({
+            system:   SYSTEM_PROMPT,
+            messages: [{ role: 'user', content: text }],
+          }),
+        });
+
+        typingEl.remove();
+
+        if (!res.ok) {
+          const body = await res.text().catch(() => '');
+          throw new Error(`${res.status} ${res.statusText}${body ? ': ' + body.slice(0, 120) : ''}`);
+        }
+
+        const data = await res.json();
+        // Support both OpenAI-style and raw response shapes
+        const reply =
+          data.choices?.[0]?.message?.content ??
+          data.content ??
+          data.text ??
+          data.response ??
+          'No response';
+
+        appendMessage(reply, 'bot');
+
+      } catch (err) {
+        typingEl.remove();
+        appendError(err.message || 'Request failed');
+      } finally {
+        sending = false;
+        sendBtn.disabled = msgInput.value.trim() === '';
+        msgInput.focus();
+      }
+    }
+
+    // ── Event listeners ───────────────────────────────────────────────────────
+    sendBtn.addEventListener('click', sendMessage);
+
+    msgInput.addEventListener('keydown', (e) => {
+      // Enter sends; Shift+Enter inserts newline
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        if (!sendBtn.disabled) sendMessage();
+      }
+    });
+
+    // Keep input visible above software keyboard on Android Chrome
+    msgInput.addEventListener('focus', () => {
+      // Small delay lets the keyboard animate before we scroll
+      setTimeout(() => scrollToBottom(false), 350);
+    });
+
+    // ── Init ──────────────────────────────────────────────────────────────────
+    if (loadApiKey()) {
+      // Welcome message
+      appendMessage("What's on your mind?", 'bot');
+      msgInput.focus();
+    } else {
+      showKeyOverlay();
+    }
+  </script>
+</body>
+</html>
