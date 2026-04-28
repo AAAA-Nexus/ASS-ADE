@@ -22,8 +22,8 @@ Update agent-facing docs and prompts so Cursor, Copilot, and Codex all tell agen
 - `AGENTS.md`
 - `agents/*.md`
 - `agents/*.prompt.md`
-- `ass-ade-v1.1/src/ass_ade_v11/ade/cross_ide_bundled/*.md`
-- `ass-ade-v1.1/src/ass_ade_v11/ade/SWARM-ONE-PROMPT.vendor.md`
+- `src/ass_ade/ade/cross_ide_bundled/*.md`
+- `src/ass_ade/ade/SWARM-ONE-PROMPT.vendor.md`
 
 ## Tiny Task List
 
@@ -31,7 +31,7 @@ Update agent-facing docs and prompts so Cursor, Copilot, and Codex all tell agen
 2. Replace all `ass-ade-unified ade ...` with `ass-ade ade ...`.
 3. Replace all `ass-ade-unified book ...` with `ass-ade book ...`.
 4. Replace all `ass-ade-unified assimilate ...` with `ass-ade assimilate ...`.
-5. Leave package names like `ass_ade_v11` alone.
+5. Leave `ass_ade` package names and internal source references alone.
 6. Do not edit source code.
 
 ## Verify
@@ -40,7 +40,7 @@ Run:
 
 ```text
 python agents/check_swarm_prompt_alignment.py
-rg -n "ass-ade-unified|ass-ade-v11 " AGENTS.md agents ass-ade-v1.1/src/ass_ade_v11/ade
+rg -n "ass-ade-unified|ass-ade-v11 " AGENTS.md agents src/ass_ade/ade
 ```
 All remaining matches must be historical/archive notes or internal package/folder references, not user-facing CLI instructions.
 

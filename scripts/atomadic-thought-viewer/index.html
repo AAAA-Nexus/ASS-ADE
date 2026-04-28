@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Atomadic — Live Thought Stream</title>
+<script src="https://cdn.jsdelivr.net/npm/marked@9/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:          #080810;
+  --bg2:         #0d0d1a;
+  --bg3:         #12122a;
+  --surface:     #141428;
+  --surface2:    #1a1a35;
+  --border:      #1e1e40;
+  --text:        #e2e8f0;
+  --text-muted:  #64748b;
+  --text-dim:    #94a3b8;
+  --violet:      #7c3aed;
+  --violet-light:#a78bfa;
+  --violet-glow: rgba(124, 58, 237, 0.15);
+  --cyan:        #06b6d4;
+  --cyan-light:  #67e8f9;
+  --cyan-glow:   rgba(6, 182, 212, 0.12);
+  --observe:     #3b82f6;
+  --think:       #8b5cf6;
+  --decide:      #06b6d4;
+  --act:         #22c55e;
+  --remember:    #f59e0b;
+  --return-col:  #6b7280;
+  --radius:      10px;
+  --radius-sm:   6px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ── Loading overlay ─────────────────────────────────────────── */
+#loader {
+  position: fixed; inset: 0; z-index: 100;
+  background: var(--bg);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 24px;
+  transition: opacity 0.6s ease;
+}
+#loader.hidden { opacity: 0; pointer-events: none; }
+
+.loader-logo {
+  font-size: 28px; font-weight: 700; letter-spacing: -0.5px;
+  background: linear-gradient(135deg, var(--violet-light), var(--cyan-light));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.loader-sub { color: var(--text-muted); font-size: 13px; }
+
+.progress-bar-wrap {
+  width: 300px; height: 4px;
+  background: var(--surface2); border-radius: 2px; overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--violet), var(--cyan));
+  border-radius: 2px;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+#loader-count { color: var(--text-dim); font-size: 12px; font-variant-numeric: tabular-nums; }
+
+.pulse-ring {
+  width: 60px; height: 60px; border-radius: 50%;
+  border: 2px solid var(--violet);
+  animation: pulse-ring 1.8s ease-out infinite;
+  position: relative;
+}
+.pulse-ring::after {
+  content: '◈';
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; color: var(--violet-light);
+}
+@keyframes pulse-ring {
+  0%   { transform: scale(0.9); opacity: 1; box-shadow: 0 0 0 0 var(--violet-glow); }
+  70%  { transform: scale(1);   opacity: 0.7; box-shadow: 0 0 0 12px transparent; }
+  100% { transform: scale(0.9); opacity: 1; }
+}
+
+/* ── Header ──────────────────────────────────────────────────── */
+#header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(8, 8, 16, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 20px;
+}
+.header-row {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  max-width: 900px; margin: 0 auto;
+}
+.logo {
+  font-size: 18px; font-weight: 700;
+  background: linear-gradient(135deg, var(--violet-light), var(--cyan));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  flex-shrink: 0;
+}
+.logo span { font-weight: 300; opacity: 0.7; }
+
+.status-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--text-muted); flex-shrink: 0;
+  transition: background 0.3s;
+}
+.status-dot.live    { background: var(--act); box-shadow: 0 0 6px var(--act); animation: blink 2s ease-in-out infinite; }
+.status-dot.polling { background: var(--cyan); }
+.status-dot.error   { background: #ef4444; }
+@keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+
+#status-text { font-size: 12px; color: var(--text-muted); }
+
+.spacer { flex: 1; }
+
+.thought-count { font-size: 12px; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+
+.btn {
+  padding: 5px 12px; border-radius: var(--radius-sm);
+  border: 1px solid var(--border); background: var(--surface);
+  color: var(--text-dim); cursor: pointer; font-size: 12px;
+  transition: all 0.15s; white-space: nowrap;
+}
+.btn:hover { border-color: var(--violet); color: var(--violet-light); }
+.btn.active { border-color: var(--violet); color: var(--violet-light); background: var(--violet-glow); }
+
+/* ── Controls bar ────────────────────────────────────────────── */
+#controls {
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 20px;
+}
+.controls-row {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  max-width: 900px; margin: 0 auto;
+}
+
+.date-input {
+  padding: 5px 10px; border-radius: var(--radius-sm);
+  border: 1px solid var(--border); background: var(--surface);
+  color: var(--text); font-size: 12px; cursor: pointer;
+}
+.date-input:focus { outline: none; border-color: var(--violet); }
+
+.search-input {
+  flex: 1; min-width: 160px; max-width: 300px;
+  padding: 5px 10px; border-radius: var(--radius-sm);
+  border: 1px solid var(--border); background: var(--surface);
+  color: var(--text); font-size: 12px;
+}
+.search-input::placeholder { color: var(--text-muted); }
+.search-input:focus { outline: none; border-color: var(--cyan); }
+
+.phase-filters { display: flex; gap: 6px; flex-wrap: wrap; }
+.phase-chip {
+  padding: 3px 9px; border-radius: 20px; font-size: 11px;
+  border: 1px solid transparent; cursor: pointer;
+  transition: all 0.15s; font-weight: 500; letter-spacing: 0.3px;
+}
+.phase-chip:hover, .phase-chip.active { opacity: 1; }
+
+/* ── Main feed ───────────────────────────────────────────────── */
+#feed-wrap {
+  max-width: 900px; margin: 0 auto;
+  padding: 20px 20px 140px;
+}
+
+#empty-state {
+  text-align: center; padding: 80px 20px;
+  color: var(--text-muted);
+}
+#empty-state .icon { font-size: 40px; margin-bottom: 12px; opacity: 0.4; }
+
+/* ── Thought card ────────────────────────────────────────────── */
+.thought-card {
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  margin-bottom: 12px;
+  overflow: hidden;
+  animation: fade-in 0.35s ease forwards;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.thought-card:hover { border-color: var(--border-hover, var(--border)); box-shadow: var(--card-glow, none); }
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.card-header {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  padding: 10px 14px; border-bottom: 1px solid var(--border);
+  background: var(--surface2);
+}
+
+.phase-badge {
+  padding: 2px 8px; border-radius: 4px; font-size: 10px;
+  font-weight: 700; letter-spacing: 0.8px; flex-shrink: 0;
+  color: #fff;
+}
+
+.card-ts {
+  font-size: 11px; color: var(--text-muted);
+  font-variant-numeric: tabular-nums; font-family: monospace;
+}
+
+.card-model {
+  font-size: 11px; color: var(--text-muted);
+  background: var(--bg3); padding: 1px 6px; border-radius: 3px;
+}
+
+.card-meta { display: flex; gap: 8px; align-items: center; margin-left: auto; }
+
+.card-tokens { font-size: 11px; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+
+.priority-badge {
+  font-size: 10px; padding: 1px 6px; border-radius: 3px; font-weight: 600;
+}
+.priority-high   { background: rgba(239, 68, 68, 0.2);  color: #fca5a5; }
+.priority-medium { background: rgba(245, 158, 11, 0.2); color: #fcd34d; }
+.priority-low    { background: rgba(100, 116, 139, 0.15); color: var(--text-muted); }
+
+.heartbeat-mode {
+  font-size: 10px; padding: 1px 6px; border-radius: 3px;
+  background: var(--bg3); color: var(--text-muted);
+}
+
+.card-body { padding: 14px; }
+
+.thought-md {
+  color: var(--text); line-height: 1.7; word-break: break-word;
+}
+.thought-md p  { margin-bottom: 8px; }
+.thought-md p:last-child { margin-bottom: 0; }
+.thought-md h1,.thought-md h2,.thought-md h3 {
+  font-size: 14px; font-weight: 600; margin-bottom: 6px; color: var(--violet-light);
+}
+.thought-md code {
+  background: var(--bg3); padding: 1px 5px; border-radius: 3px;
+  font-family: 'Fira Code', monospace; font-size: 12px; color: var(--cyan-light);
+}
+.thought-md pre {
+  background: var(--bg3); padding: 10px; border-radius: var(--radius-sm);
+  overflow-x: auto; margin: 8px 0;
+}
+.thought-md pre code { background: none; padding: 0; }
+.thought-md ul, .thought-md ol { padding-left: 20px; margin-bottom: 8px; }
+.thought-md blockquote {
+  border-left: 3px solid var(--violet); padding-left: 12px;
+  color: var(--text-dim); margin: 8px 0;
+}
+
+.card-action {
+  padding: 8px 14px; border-top: 1px solid var(--border);
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+.action-label { font-size: 10px; color: var(--text-muted); letter-spacing: 0.6px; font-weight: 600; }
+.action-chip {
+  font-size: 11px; padding: 2px 8px; border-radius: 4px;
+  font-weight: 600; font-family: monospace;
+}
+.action-REST         { background: rgba(107,114,128,0.2); color: #9ca3af; }
+.action-DISCORD_POST { background: rgba(88,101,242,0.2);  color: #a5b4fc; }
+.action-GITHUB_PUSH  { background: rgba(34,197,94,0.2);   color: #86efac; }
+.action-R2_STORE     { background: rgba(245,158,11,0.2);  color: #fcd34d; }
+.action-WRITE_DOCUMENT { background: rgba(6,182,212,0.2); color: #67e8f9; }
+.action-READ_INBOX   { background: rgba(59,130,246,0.2);  color: #93c5fd; }
+.action-other        { background: rgba(139,92,246,0.2);  color: #c4b5fd; }
+
+.content-toggle {
+  font-size: 11px; color: var(--cyan); background: none;
+  border: none; cursor: pointer; padding: 0; margin-left: auto;
+}
+.content-toggle:hover { color: var(--cyan-light); }
+
+.action-content {
+  padding: 8px 14px; border-top: 1px solid var(--border);
+  font-size: 12px; color: var(--text-dim);
+  white-space: pre-wrap; word-break: break-all;
+  background: var(--bg3); max-height: 200px; overflow-y: auto;
+}
+.action-content.hidden { display: none; }
+
+/* ── Date separator ──────────────────────────────────────────── */
+.date-separator {
+  display: flex; align-items: center; gap: 12px;
+  margin: 20px 0 12px; color: var(--text-muted); font-size: 12px;
+}
+.date-separator::before,.date-separator::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+
+/* ── Scroll-to-top button ────────────────────────────────────── */
+#scroll-top {
+  position: fixed; bottom: 90px; right: 24px; z-index: 40;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--violet); color: #fff;
+  border: none; cursor: pointer; font-size: 18px;
+  box-shadow: 0 4px 20px rgba(124,58,237,0.4);
+  transition: all 0.2s; display: none; align-items: center; justify-content: center;
+}
+#scroll-top:hover { background: var(--violet-light); transform: translateY(-2px); }
+#scroll-top.visible { display: flex; }
+
+/* ── New thoughts banner ─────────────────────────────────────── */
+#new-banner {
+  position: fixed; top: 80px; left: 50%; transform: translateX(-50%);
+  z-index: 45; background: var(--violet); color: #fff;
+  padding: 8px 20px; border-radius: 20px; font-size: 13px; font-weight: 600;
+  cursor: pointer; box-shadow: 0 4px 20px rgba(124,58,237,0.4);
+  animation: slide-down 0.3s ease;
+  display: none;
+}
+#new-banner.visible { display: block; }
+@keyframes slide-down { from { transform: translateX(-50%) translateY(-20px); opacity: 0; } }
+
+/* ── Chat bar ────────────────────────────────────────────────── */
+#chat-bar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 60;
+  background: rgba(8, 8, 16, 0.97);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid var(--border);
+  padding: 10px 20px 14px;
+}
+.chat-inner {
+  max-width: 900px; margin: 0 auto;
+  display: flex; gap: 10px; align-items: flex-end;
+}
+#chat-input {
+  flex: 1; background: var(--surface);
+  border: 1px solid var(--border); border-radius: var(--radius);
+  color: var(--text); padding: 10px 14px;
+  font-size: 14px; line-height: 1.5; resize: none;
+  font-family: inherit; min-height: 42px; max-height: 160px;
+  transition: border-color 0.15s;
+}
+#chat-input:focus { outline: none; border-color: var(--violet); }
+#chat-input::placeholder { color: var(--text-muted); }
+#chat-send {
+  padding: 10px 18px; background: var(--violet);
+  border: none; border-radius: var(--radius); color: #fff;
+  font-size: 14px; font-weight: 600; cursor: pointer; flex-shrink: 0;
+  transition: background 0.15s; white-space: nowrap; min-height: 42px;
+}
+#chat-send:hover  { background: #6d28d9; }
+#chat-send:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* ── User message card ───────────────────────────────────────── */
+.user-card {
+  border-color: rgba(226, 232, 240, 0.2) !important;
+  background: linear-gradient(135deg, var(--surface) 0%, rgba(226,232,240,0.04) 100%) !important;
+  box-shadow: none !important;
+}
+.user-card .card-header { border-color: rgba(226,232,240,0.12) !important; }
+
+/* ── Assistant reply card ────────────────────────────────────── */
+.assistant-card {
+  border-color: rgba(124, 58, 237, 0.55) !important;
+  background: linear-gradient(135deg, var(--surface) 0%, rgba(124,58,237,0.09) 100%) !important;
+  box-shadow: 0 0 24px rgba(124,58,237,0.12);
+}
+.assistant-card .card-header { border-color: rgba(124,58,237,0.35) !important; }
+
+/* ── Typing indicator ────────────────────────────────────────── */
+.typing-dots { display: flex; gap: 5px; padding: 4px 0; align-items: center; }
+.typing-dots span {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--violet-light); opacity: 0.35;
+  animation: bounce 1.2s ease-in-out infinite;
+}
+.typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+.typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes bounce {
+  0%,60%,100% { transform: translateY(0); opacity: 0.35; }
+  30%          { transform: translateY(-6px); opacity: 1; }
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  #header, #controls { padding: 10px 14px; }
+  #feed-wrap { padding: 14px 14px 140px; }
+  .card-header { gap: 6px; }
+  .card-meta { width: 100%; margin-left: 0; }
+  #chat-bar { padding: 8px 12px 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Loading overlay -->
+<div id="loader">
+  <div class="pulse-ring"></div>
+  <div class="loader-logo">Atomadic <span>thought stream</span></div>
+  <div class="loader-sub" id="loader-msg">Connecting to cognition layer…</div>
+  <div class="progress-bar-wrap">
+    <div class="progress-bar-fill" id="progress-fill"></div>
+  </div>
+  <div id="loader-count">Preparing…</div>
+</div>
+
+<!-- Header -->
+<header id="header">
+  <div class="header-row">
+    <div class="logo">◈ Atomadic <span>thought stream</span></div>
+    <div class="status-dot" id="status-dot"></div>
+    <div id="status-text">Connecting…</div>
+    <div class="spacer"></div>
+    <div class="thought-count" id="thought-count"></div>
+    <button class="btn active" id="btn-source-worker" onclick="setSource('worker')">Worker</button>
+    <button class="btn" id="btn-source-r2" onclick="setSource('r2')" title="Requires Cloudflare credentials">R2</button>
+    <button class="btn" id="btn-reload" onclick="reloadHistory()" title="Reload full history">↺ Reload</button>
+  </div>
+</header>
+
+<!-- Controls -->
+<div id="controls">
+  <div class="controls-row">
+    <input type="date" class="date-input" id="date-picker" title="Jump to date" />
+    <button class="btn" onclick="jumpToDate()">Jump</button>
+    <button class="btn" onclick="clearDateFilter()" id="btn-clear-date" style="display:none">✕ Clear</button>
+    <input type="text" class="search-input" id="search-input" placeholder="Search thoughts…" oninput="onSearch(this.value)" />
+    <div class="phase-filters" id="phase-filters"></div>
+  </div>
+</div>
+
+<!-- Feed -->
+<main id="feed-wrap">
+  <div id="feed"></div>
+  <div id="empty-state" style="display:none">
+    <div class="icon">◈</div>
+    <div>No thoughts match your filter.</div>
+  </div>
+</main>
+
+<!-- New thoughts notification -->
+<div id="new-banner" onclick="scrollToTop()"></div>
+
+<!-- Scroll to top -->
+<button id="scroll-top" onclick="scrollToTop()" title="Scroll to newest">↑</button>
+
+<!-- Chat bar -->
+<div id="chat-bar">
+  <div class="chat-inner">
+    <textarea id="chat-input" rows="1"
+      placeholder="Message Atomadic… (Enter to send, Shift+Enter for newline)"
+      onkeydown="onChatKey(event)"></textarea>
+    <button id="chat-send" onclick="sendMessage()">Send ↑</button>
+  </div>
+</div>
+
+<script>
+'use strict';
+
+// ── Config ──────────────────────────────────────────────────────────────────
+
+const API_BASE = '';  // empty = same-origin (server.js proxy)
+
+const PHASE_CONFIG = {
+  observe : { label: 'OBSERVE', color: '#3b82f6', bg: 'rgba(59,130,246,0.12)',  border: 'rgba(59,130,246,0.35)' },
+  think   : { label: 'THINK',   color: '#8b5cf6', bg: 'rgba(139,92,246,0.12)', border: 'rgba(139,92,246,0.35)' },
+  decide  : { label: 'DECIDE',  color: '#06b6d4', bg: 'rgba(6,182,212,0.12)',  border: 'rgba(6,182,212,0.35)' },
+  act     : { label: 'ACT',     color: '#22c55e', bg: 'rgba(34,197,94,0.12)',  border: 'rgba(34,197,94,0.35)' },
+  remember: { label: 'REMEMBER',color: '#f59e0b', bg: 'rgba(245,158,11,0.12)', border: 'rgba(245,158,11,0.35)' },
+  return  : { label: 'REST',    color: '#6b7280', bg: 'rgba(107,114,128,0.1)', border: 'rgba(107,114,128,0.25)' },
+};
+
+const KNOWN_PHASES = new Set(Object.keys(PHASE_CONFIG));
+
+// ── State ───────────────────────────────────────────────────────────────────
+
+const state = {
+  all         : [],       // every thought ever loaded
+  filtered    : [],       // current visible set
+  seenIds     : new Set(),
+  lastTs      : null,     // newest thought timestamp for live polling
+  source      : 'worker',
+  searchQuery : '',
+  phaseFilter : null,
+  dateFilter  : null,
+  autoScroll  : true,
+  pollTimer   : null,
+  pendingNew  : [],       // thoughts waiting to show (user scrolled up)
+};
+
+// ── Phase detection ─────────────────────────────────────────────────────────
+
+function detectPhase(t) {
+  if (t.phase && KNOWN_PHASES.has(t.phase.toLowerCase())) return t.phase.toLowerCase();
+  const a = (t.action || '').toUpperCase();
+  if (a === 'REST')            return 'return';
+  if (a === 'READ_INBOX')      return 'observe';
+  if (a.includes('DISCORD') || a.includes('GITHUB') || a.includes('TWEET')) return 'act';
+  if (a.includes('R2_STORE') || a.includes('WRITE_DOCUMENT') || a.includes('VECTORIZE')) return 'remember';
+  if (t.smart_mode)            return 'decide';
+  return 'think';
+}
+
+// ── Formatting ──────────────────────────────────────────────────────────────
+
+const PST = 'America/Los_Angeles';
+
+function fmt(ts) {
+  if (!ts) return '—';
+  const d = new Date(ts);
+  if (isNaN(d)) return ts;
+  return d.toLocaleString('en-US', {
+    timeZone: PST, hour12: true,
+    month: 'short', day: 'numeric', year: 'numeric',
+    hour: 'numeric', minute: '2-digit', second: '2-digit',
+  });
+}
+
+function fmtDate(ts) {
+  const d = new Date(ts);
+  return d.toLocaleDateString('en-US', {
+    timeZone: PST, weekday: 'long', month: 'long', day: 'numeric', year: 'numeric',
+  });
+}
+
+function isoDate(ts) {
+  return new Date(ts).toISOString().slice(0, 10);
+}
+
+function renderMd(text) {
+  if (!text) return '';
+  try {
+    return DOMPurify.sanitize(marked.parse(String(text)));
+  } catch {
+    return DOMPurify.sanitize(String(text));
+  }
+}
+
+function actionClass(action) {
+  const a = (action || '').toUpperCase();
+  if (a === 'REST')             return 'action-REST';
+  if (a.includes('DISCORD'))    return 'action-DISCORD_POST';
+  if (a.includes('GITHUB'))     return 'action-GITHUB_PUSH';
+  if (a.includes('R2_STORE'))   return 'action-R2_STORE';
+  if (a.includes('WRITE_DOC'))  return 'action-WRITE_DOCUMENT';
+  if (a.includes('READ_INBOX')) return 'action-READ_INBOX';
+  return 'action-other';
+}
+
+// ── Card rendering ──────────────────────────────────────────────────────────
+
+function cardHTML(t) {
+  const phase  = detectPhase(t);
+  const cfg    = PHASE_CONFIG[phase];
+  const pri    = (t.priority || 'low').toLowerCase();
+  const hasAct = t.action && t.action !== 'REST';
+  const hasContent = hasAct && t.content && String(t.content).trim().length > 0;
+
+  return `
+<div class="thought-card"
+     data-id="${esc(t.id || '')}"
+     data-date="${isoDate(t.ts)}"
+     data-phase="${phase}"
+     style="border-color:${cfg.border}; background: linear-gradient(135deg, var(--surface) 0%, ${cfg.bg} 100%);
+            --border-hover:${cfg.color}; --card-glow:0 0 20px ${cfg.bg};">
+  <div class="card-header" style="border-color:${cfg.border}">
+    <span class="phase-badge" style="background:${cfg.color}">${cfg.label}</span>
+    <span class="card-ts">${fmt(t.ts)}</span>
+    ${t.model ? `<span class="card-model">${esc(t.model)}</span>` : ''}
+    <div class="card-meta">
+      ${t.heartbeat_mode ? `<span class="heartbeat-mode">${esc(t.heartbeat_mode)}</span>` : ''}
+      ${t.tokens_used ? `<span class="card-tokens">${t.tokens_used.toLocaleString()} tok</span>` : ''}
+      <span class="priority-badge priority-${pri}">${pri}</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="thought-md">${renderMd(t.thought)}</div>
+  </div>
+  ${hasAct ? `
+  <div class="card-action">
+    <span class="action-label">ACTION</span>
+    <span class="action-chip ${actionClass(t.action)}">${esc(t.action)}</span>
+    ${hasContent ? `<button class="content-toggle" onclick="toggleContent(this)">▸ details</button>` : ''}
+  </div>
+  ${hasContent ? `<div class="action-content hidden">${esc(String(t.content).slice(0, 2000))}</div>` : ''}
+  ` : ''}
+</div>`;
+}
+
+function esc(s) {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function toggleContent(btn) {
+  const el = btn.closest('.card-action').nextElementSibling;
+  if (!el) return;
+  const hidden = el.classList.toggle('hidden');
+  btn.textContent = hidden ? '▸ details' : '▾ hide';
+}
+
+// ── Phase filter chips ──────────────────────────────────────────────────────
+
+function buildPhaseChips() {
+  const wrap = document.getElementById('phase-filters');
+  wrap.innerHTML = Object.entries(PHASE_CONFIG).map(([key, cfg]) => `
+    <div class="phase-chip" data-phase="${key}"
+         style="color:${cfg.color}; border-color:${cfg.border}; background:${cfg.bg}"
+         onclick="togglePhaseFilter('${key}')">
+      ${cfg.label}
+    </div>`).join('') +
+    `<div class="phase-chip" data-phase="all"
+          style="color:var(--text-muted); border-color:var(--border)"
+          onclick="clearPhaseFilter()">ALL</div>`;
+}
+
+function togglePhaseFilter(phase) {
+  state.phaseFilter = state.phaseFilter === phase ? null : phase;
+  document.querySelectorAll('.phase-chip').forEach(c => c.classList.remove('active'));
+  if (state.phaseFilter) {
+    document.querySelector(`.phase-chip[data-phase="${state.phaseFilter}"]`)?.classList.add('active');
+  } else {
+    document.querySelector('.phase-chip[data-phase="all"]')?.classList.add('active');
+  }
+  applyFilters();
+}
+
+function clearPhaseFilter() {
+  state.phaseFilter = null;
+  document.querySelectorAll('.phase-chip').forEach(c => c.classList.remove('active'));
+  document.querySelector('.phase-chip[data-phase="all"]')?.classList.add('active');
+  applyFilters();
+}
+
+// ── Filtering ───────────────────────────────────────────────────────────────
+
+function applyFilters() {
+  let arr = state.all;
+
+  if (state.phaseFilter) {
+    arr = arr.filter(t => detectPhase(t) === state.phaseFilter);
+  }
+  if (state.dateFilter) {
+    arr = arr.filter(t => isoDate(t.ts) === state.dateFilter);
+  }
+  if (state.searchQuery) {
+    const q = state.searchQuery.toLowerCase();
+    arr = arr.filter(t =>
+      (t.thought || '').toLowerCase().includes(q) ||
+      (t.action  || '').toLowerCase().includes(q) ||
+      (t.content || '').toLowerCase().includes(q)
+    );
+  }
+
+  state.filtered = arr;
+  renderFeed();
+}
+
+// ── Feed rendering ──────────────────────────────────────────────────────────
+
+function renderFeed() {
+  const feed  = document.getElementById('feed');
+  const empty = document.getElementById('empty-state');
+  const arr   = state.filtered;
+
+  if (arr.length === 0) {
+    feed.innerHTML = '';
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+
+  let html = '';
+  let lastDate = null;
+  for (const t of arr) {
+    const d = isoDate(t.ts);
+    if (d !== lastDate) {
+      html += `<div class="date-separator" data-date="${d}">${fmtDate(t.ts)}</div>`;
+      lastDate = d;
+    }
+    html += cardHTML(t);
+  }
+  feed.innerHTML = html;
+  updateCount();
+}
+
+function updateCount() {
+  const el = document.getElementById('thought-count');
+  const tot = state.all.length;
+  const vis = state.filtered.length;
+  el.textContent = tot === vis ? `${tot.toLocaleString()} thoughts` : `${vis.toLocaleString()} / ${tot.toLocaleString()}`;
+}
+
+// ── Prepend new thoughts ────────────────────────────────────────────────────
+
+function prependThoughts(newOnes) {
+  if (newOnes.length === 0) return;
+  for (const t of newOnes) {
+    if (!state.seenIds.has(t.id || t.ts)) {
+      state.seenIds.add(t.id || t.ts);
+      state.all.unshift(t);
+    }
+  }
+  applyFilters();
+  if (state.autoScroll) scrollToTop();
+}
+
+// ── History loading ─────────────────────────────────────────────────────────
+
+async function loadHistory() {
+  setStatus('loading', 'Loading thought history…');
+  setLoaderMsg('Fetching full thought history…');
+
+  try {
+    const res  = await fetch(`${API_BASE}/api/history`);
+    const data = await res.json();
+
+    const thoughts = data.thoughts || [];
+    state.all = [];
+    state.seenIds.clear();
+    for (const t of thoughts) {
+      const key = t.id || t.ts;
+      if (!state.seenIds.has(key)) {
+        state.seenIds.add(key);
+        state.all.push(t);
+      }
+    }
+    if (thoughts.length > 0) {
+      state.lastTs = thoughts[0]?.ts || null;
+    }
+
+    applyFilters();
+    hideLoader();
+    setStatus('live', `Live · ${state.all.length.toLocaleString()} thoughts loaded`);
+    startPolling();
+  } catch (err) {
+    setStatus('error', 'Failed to load history — is server.js running?');
+    hideLoader();
+    document.getElementById('empty-state').style.display = 'block';
+    document.getElementById('empty-state').innerHTML =
+      `<div class="icon">⚠</div><div>Could not connect to server.<br><small>Run: <code>node server.js</code></small></div>`;
+  }
+}
+
+async function reloadHistory() {
+  stopPolling();
+  showLoader();
+  await loadHistory();
+}
+
+// ── Live polling ────────────────────────────────────────────────────────────
+
+async function poll() {
+  try {
+    const date  = new Date().toISOString().slice(0, 10);
+    const res   = await fetch(`${API_BASE}/api/journal?date=${date}`);
+    if (!res.ok) return;
+    const data  = await res.json();
+    const items = Array.isArray(data) ? data : (data.thoughts || data.entries || []);
+
+    const newOnes = items.filter(t => {
+      const key = t.id || t.ts;
+      return !state.seenIds.has(key);
+    });
+
+    if (newOnes.length > 0) {
+      if (state.autoScroll) {
+        prependThoughts(newOnes);
+      } else {
+        state.pendingNew.push(...newOnes);
+        showNewBanner(state.pendingNew.length);
+      }
+    }
+  } catch { /* network hiccup, ignore */ }
+}
+
+function startPolling() {
+  if (state.pollTimer) return;
+  state.pollTimer = setInterval(poll, 30_000);
+}
+
+function stopPolling() {
+  if (state.pollTimer) { clearInterval(state.pollTimer); state.pollTimer = null; }
+}
+
+// ── Data source toggle ───────────────────────────────────────────────────────
+
+function setSource(src) {
+  state.source = src;
+  document.getElementById('btn-source-worker').classList.toggle('active', src === 'worker');
+  document.getElementById('btn-source-r2').classList.toggle('active', src === 'r2');
+  reloadHistory();
+}
+
+// ── Date jump ────────────────────────────────────────────────────────────────
+
+function jumpToDate() {
+  const picker = document.getElementById('date-picker');
+  const date   = picker.value;
+  if (!date) return;
+
+  state.dateFilter = date;
+  document.getElementById('btn-clear-date').style.display = '';
+  applyFilters();
+
+  // scroll to first card with that date
+  setTimeout(() => {
+    const el = document.querySelector(`.date-separator[data-date="${date}"]`);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 50);
+}
+
+function clearDateFilter() {
+  state.dateFilter = null;
+  document.getElementById('date-picker').value = '';
+  document.getElementById('btn-clear-date').style.display = 'none';
+  applyFilters();
+}
+
+// ── Search ───────────────────────────────────────────────────────────────────
+
+let searchDebounce = null;
+function onSearch(q) {
+  clearTimeout(searchDebounce);
+  searchDebounce = setTimeout(() => {
+    state.searchQuery = q.trim();
+    applyFilters();
+  }, 250);
+}
+
+// ── Scroll behaviour ─────────────────────────────────────────────────────────
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // flush pending new thoughts
+  if (state.pendingNew.length > 0) {
+    prependThoughts(state.pendingNew.splice(0));
+  }
+  hideNewBanner();
+  state.autoScroll = true;
+}
+
+window.addEventListener('scroll', () => {
+  const atTop = window.scrollY < 200;
+  state.autoScroll = atTop;
+  document.getElementById('scroll-top').classList.toggle('visible', !atTop);
+  if (atTop && state.pendingNew.length > 0) {
+    prependThoughts(state.pendingNew.splice(0));
+    hideNewBanner();
+  }
+});
+
+// ── New-thoughts banner ───────────────────────────────────────────────────────
+
+function showNewBanner(count) {
+  const b = document.getElementById('new-banner');
+  b.textContent = `↑ ${count} new thought${count > 1 ? 's' : ''} — click to view`;
+  b.classList.add('visible');
+}
+function hideNewBanner() {
+  document.getElementById('new-banner').classList.remove('visible');
+}
+
+// ── Status ────────────────────────────────────────────────────────────────────
+
+function setStatus(type, msg) {
+  const dot  = document.getElementById('status-dot');
+  const text = document.getElementById('status-text');
+  dot.className  = 'status-dot ' + type;
+  text.textContent = msg;
+}
+
+// ── Loader ────────────────────────────────────────────────────────────────────
+
+function setLoaderMsg(msg, progress, count) {
+  document.getElementById('loader-msg').textContent = msg;
+  if (progress !== undefined) {
+    document.getElementById('progress-fill').style.width = `${progress}%`;
+  }
+  if (count !== undefined) {
+    document.getElementById('loader-count').textContent = `${count.toLocaleString()} thoughts found`;
+  }
+}
+
+function showLoader() {
+  const l = document.getElementById('loader');
+  l.classList.remove('hidden');
+  l.style.opacity = '';
+  document.getElementById('progress-fill').style.width = '0%';
+  document.getElementById('loader-count').textContent = 'Preparing…';
+}
+
+function hideLoader() {
+  const l = document.getElementById('loader');
+  l.classList.add('hidden');
+}
+
+// ── Chat ─────────────────────────────────────────────────────────────────────
+
+const chatHistory = [];
+
+function userCardHTML(text) {
+  return `<div class="thought-card user-card" data-chat="user">
+  <div class="card-header">
+    <span class="phase-badge" style="background:#cbd5e1;color:#0f172a">YOU</span>
+    <span class="card-ts">${fmt(new Date().toISOString())}</span>
+  </div>
+  <div class="card-body">
+    <div class="thought-md">${renderMd(text)}</div>
+  </div>
+</div>`;
+}
+
+function typingCardHTML() {
+  return `<div class="thought-card assistant-card" id="typing-card" data-chat="typing">
+  <div class="card-header">
+    <span class="phase-badge" style="background:var(--violet);color:#fff">ATOMADIC</span>
+    <span class="card-ts" style="color:var(--violet-light)">thinking…</span>
+  </div>
+  <div class="card-body">
+    <div class="typing-dots"><span></span><span></span><span></span></div>
+  </div>
+</div>`;
+}
+
+function assistantCardHTML(content, model) {
+  return `<div class="thought-card assistant-card" data-chat="assistant">
+  <div class="card-header">
+    <span class="phase-badge" style="background:var(--violet);color:#fff">ATOMADIC</span>
+    <span class="card-ts">${fmt(new Date().toISOString())}</span>
+    ${model ? `<span class="card-model">${esc(model)}</span>` : ''}
+    <span class="card-model" style="color:var(--violet-light)">direct reply</span>
+  </div>
+  <div class="card-body">
+    <div class="thought-md">${renderMd(content)}</div>
+  </div>
+</div>`;
+}
+
+function prependCard(html) {
+  const feed = document.getElementById('feed');
+  const tmp  = document.createElement('div');
+  tmp.innerHTML = html.trim();
+  feed.insertBefore(tmp.firstElementChild, feed.firstChild);
+}
+
+async function sendMessage() {
+  const input   = document.getElementById('chat-input');
+  const sendBtn = document.getElementById('chat-send');
+  const text    = input.value.trim();
+  if (!text || sendBtn.disabled) return;
+
+  sendBtn.disabled  = true;
+  input.value       = '';
+  input.style.height = '';
+
+  chatHistory.push({ role: 'user', content: text });
+
+  // Show user card then typing indicator both at top (typing above user)
+  prependCard(userCardHTML(text));
+  prependCard(typingCardHTML());
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  try {
+    const res  = await fetch('/api/chat', {
+      method : 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body   : JSON.stringify({ messages: chatHistory }),
+    });
+    const data = await res.json();
+
+    const choices = data.choices || [];
+    const reply   = choices[0]?.message?.content || data.content || JSON.stringify(data);
+    const model   = data._atomadic?.model_used || data.model || '';
+
+    chatHistory.push({ role: 'assistant', content: reply });
+
+    const typingCard = document.getElementById('typing-card');
+    const replCard   = document.createElement('div');
+    replCard.innerHTML = assistantCardHTML(reply, model).trim();
+    if (typingCard) {
+      typingCard.replaceWith(replCard.firstElementChild);
+    } else {
+      prependCard(assistantCardHTML(reply, model));
+    }
+  } catch (err) {
+    document.getElementById('typing-card')?.remove();
+    chatHistory.pop();
+    prependCard(`<div class="thought-card" style="border-color:#ef4444;animation:fade-in 0.3s ease forwards">
+      <div class="card-body"><div class="thought-md" style="color:#fca5a5">
+        ⚠ ${esc(err.message)}
+      </div></div></div>`);
+  }
+
+  sendBtn.disabled = false;
+  input.focus();
+}
+
+function onChatKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    sendMessage();
+    return;
+  }
+  // Auto-expand
+  const el = e.target;
+  requestAnimationFrame(() => {
+    el.style.height = 'auto';
+    el.style.height = Math.min(el.scrollHeight, 160) + 'px';
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const input = document.getElementById('chat-input');
+  input?.addEventListener('input', function () {
+    this.style.height = 'auto';
+    this.style.height = Math.min(this.scrollHeight, 160) + 'px';
+  });
+});
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+
+buildPhaseChips();
+
+// Pre-select "all" chip
+document.querySelector('.phase-chip[data-phase="all"]')?.classList.add('active');
+
+// Inform loader that requests are going (fake but reassuring progress)
+let fakeProgress = 0;
+const fakeTimer = setInterval(() => {
+  fakeProgress = Math.min(fakeProgress + 2, 85);
+  document.getElementById('progress-fill').style.width = fakeProgress + '%';
+}, 300);
+
+loadHistory().then(() => {
+  clearInterval(fakeTimer);
+  document.getElementById('progress-fill').style.width = '100%';
+});
+</script>
+</body>
+</html>

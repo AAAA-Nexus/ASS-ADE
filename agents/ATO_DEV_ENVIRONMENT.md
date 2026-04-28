@@ -10,7 +10,7 @@ This file is the **single alignment brief** for:
 
 1. `<ATOMADIC_WORKSPACE>/RULES.md` and the active plan `RULES.md` (when present)
 2. `agents/_PROTOCOL.md` — envelopes §1–§2, status §9, **§11 AAAA-Nexus** preflight/postflight
-3. `agents/ASS_ADE_MONADIC_CODING.md` — CNA, five-tier vocabulary, import law, `ass_ade_v11` paths
+3. `agents/ASS_ADE_MONADIC_CODING.md` — CNA, five-tier vocabulary, import law, `ass_ade` paths (`src/ass_ade/`)
 4. `agents/NEXUS_SWARM_MCP.md` — MCP tool names, RatchetGate, Aegis, drift, receipts
 5. The agent’s own `.prompt.md` (identity + task schema)
 
@@ -19,11 +19,10 @@ This file is the **single alignment brief** for:
 ## ASS-ADE product paths (T12)
 
 - **Install:** `pip install -e ".[dev]"` from the **monorepo root** (`pyproject.toml` is canonical `[project]`).
-- **Monadic package:** internal source path `ass-ade-v1.1/src/ass_ade_v11/` — tiers `a0_qk_constants` ... `a4_sy_orchestration`.
-- **Restored engine:** internal source path `atomadic-engine/src/ass_ade/` — do not silently mix with sibling emitters.
+- **Monadic package:** canonical source path `src/ass_ade/` — tiers `a0_qk_constants` ... `a4_sy_orchestration`.
 - **Product assimilate:** `ass-ade assimilate ...` (see `docs/ASS_ADE_UNIFICATION.md`).
 
-When a handoff says “edit `ass_ade`”, resolve **which tree** from context: new monadic work → **`ass_ade_v11`** unless the task is explicitly v1 studio / rebuild.
+When a handoff says “edit `ass_ade`”, the canonical package is `ass_ade` under `src/ass_ade/` in the ASS-ADE-SEED repo.
 
 ## Global Cursor agents (bridges)
 
@@ -48,7 +47,7 @@ Keep these repo-side surfaces aligned with the active ship plan and root `AGENTS
 Release truth still comes from the same gates regardless of host:
 
 - Private spine gate: `python scripts/ship_readiness_audit.py`
-- Public staging gate: `ass-ade ade ship-audit --staging-root C:\!aaaa-nexus\!ass-ade`
+- Public staging gate: `ass-ade ade ship-audit --staging-root <ATOMADIC_NEXUS_WORKSPACE>/!ass-ade`
 
 ## Verification (CI + local)
 
@@ -82,11 +81,10 @@ Refreshes `ASS_ADE_INVENTORY.md` / `ASS_ADE_INVENTORY.paths.json` only (does not
 
 ```bash
 git -C ass-ade rev-parse --short HEAD
-git -C ass-ade-v1 rev-parse --short HEAD
 git -C "!atomadic-uep" rev-parse --short HEAD
 ```
 
-The umbrella root may be non-git or a different remote; `ass-ade-v1.1` is often **not** a separate git root (sources ride the umbrella checkout).
+The canonical ASS-ADE source is `src/ass_ade/` in the ASS-ADE-SEED repo. Historical `ass-ade-v1.1` paths are deprecated — use `src/ass_ade/` for all new work.
 
 ## Related
 

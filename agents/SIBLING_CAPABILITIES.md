@@ -1,7 +1,10 @@
 # Sibling Capability Recon Summary
 
+> **⚠️ HISTORICAL SNAPSHOT** — Generated 2026-04-24 from `!ass-ade` (legacy reference repo).
+> The canonical repo is now **ASS-ADE-SEED** (`src/ass_ade/`). Regenerate from SEED before using as terrain.
+>
 > Generated: 2026-04-24  
-> Repo root: `C:\!aaaa-nexus\!ass-ade`
+> Repo root: `C:\!aaaa-nexus\!ass-ade` (historical — `!ass-ade` is superseded by ASS-ADE-SEED)
 
 This file summarises recon findings across key sibling repos. Individual
 detailed reports are at `agents/SIBLING_*.md`.

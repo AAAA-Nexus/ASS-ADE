@@ -29,7 +29,7 @@ not to a timer. No scheduled task or cron job governs this — presence governs 
 This section is generated at prompt-build time from the code on disk.
 Treat it as the authoritative capability map for this session.
 
-Generated at: 2026-04-27T05:19:14Z
+Generated at: 2026-04-28T05:27:20Z
 Working directory: /home/runner/work/ASS-ADE/ASS-ADE
 Resolved capability root: /home/runner/work/ASS-ADE/ASS-ADE
 
@@ -41,7 +41,7 @@ Resolved capability root: /home/runner/work/ASS-ADE/ASS-ADE
 - Repo agents: 2
 - Skills: 0
 - Hooks: 8
-- Surface locations: 13
+- Surface locations: 14
 - Monadic tier dirs: 5
 - Dynamic abilities: 0
 
@@ -60,6 +60,7 @@ Resolved capability root: /home/runner/work/ASS-ADE/ASS-ADE
 - `src/ass_ade/mcp/` - MCP server implementation
 - `hooks/pipeline_config.json` - Pipeline hook wiring
 - `mcp/server.json` - MCP server manifest
+- `REBUILD_REPORT.md` - Rebuild audit report
 
 ### Detected monadic tiers
 
