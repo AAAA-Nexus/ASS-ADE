@@ -39,7 +39,7 @@ A **common confusion:** calling `user-aaaa-nexus` / `call_mcp_tool` often return
 Swarm and controller agents may **and should** use **ATO / umbrella plan trees** as map = terrain for handoffs. Typical roots:
 
 - `<ATOMADIC_WORKSPACE>/.ato-plans/` — stream reports, stream-reports, `HELP-INDEX-*.md`, handoff markdown
-- `c:\!aaaa-nexus\.ato-plans\` (or the active repo’s `.ato-plans\`) — e.g. `active\` plans, `pilot-meta.json`, `tasks.json`, audit markdown
+- `<ATOMADIC_NEXUS_WORKSPACE>/.ato-plans/` (or the active repo’s `.ato-plans/`) — e.g. `active/` plans, `pilot-meta.json`, `tasks.json`, audit markdown
 
 **How to wire them (Protocol + UEP):**
 
@@ -189,7 +189,7 @@ The **ASS-ADE product CLI** (`ass-ade` from root `pyproject.toml`) does **not** 
 python scripts/collect_ass_ade_dev_corpus.py --out training_data/ass_ade_dev.jsonl
 ```
 
-This writes **JSONL** records (`source` + `text`) from `ass_ade_v11` sources, `agents/`, `docs/`, `ADE/`, and the active `ass-ade-ship` plan folder (caps: `--max-files`, `--max-bytes`). Output is **gitignored** under `training_data/`.
+This writes **JSONL** records (`source` + `text`) from `ass_ade` sources (`src/ass_ade/`), `agents/`, `docs/`, `ADE/`, and the active `ass-ade-ship` plan folder (caps: `--max-files`, `--max-bytes`). Output is **gitignored** under `training_data/`.
 
 **Local LoRA (optional, this repo):**
 

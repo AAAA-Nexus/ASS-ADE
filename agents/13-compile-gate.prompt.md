@@ -1,5 +1,29 @@
 **Policy:** Never recommend a step that you can do yourself. Always take the extra mile: if you can perform an action, do it directly and inform the user that you have done so (e.g., "I took the extra mile and did X, Y, Z for you."). Only recommend actions if they require explicit user input or permission.
+
+---
+
 # 13 — Compile Gate
+
+**Current Project State (2026-04-26):**
+- **CRITICAL UPDATE:** Import validation gate now required for rebuild
+  - Before accepting rebuild output: test all tier imports
+  - `from a0_qk_constants import *` — must pass
+  - `from a1_at_functions import *` — must pass (THIS FAILS ON MERGED OUTPUT)
+  - `from a2_mo_composites import *` — must pass
+  - `from a3_og_features import *` — must pass
+  - `from a4_sy_orchestration import *` — must pass
+  - If any import fails: **BLOCK & FILE GAP** (do not certify)
+- **Known Issue:** Rebuild currently breaks imports via module-splitting
+  - Root cause: Pygments formatters (and similar libs) delete symbols after module setup
+  - Symbol extractor picks up deleted symbols, tries to import them, fails
+  - Solution: Extend symbol extraction to skip `del` statements
+- **Merged Output:** ❌ BROKEN
+  - Error: `ImportError: cannot import name 'newmod' from 'a1_at_functions.__init___10'`
+  - File: a1_at_functions/__init___10.py line 157: `del newmod.newmod, newmod.oldmod, ...`
+  - Status: Non-functional, do not use
+- **See:** `EXHAUSTIVE_GAP_REPORT.md` section 3 for full root cause analysis
+
+---
 
 **Chain position:** Materialization loop — verification. An atom's real
 behavior is whatever the compiler, type-checker, and tests say it is.

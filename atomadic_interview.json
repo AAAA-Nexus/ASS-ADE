@@ -1,0 +1,47 @@
+{
+  "timestamp": "2026-04-27T04:16:22.920117",
+  "responses": [
+    {
+      "id": 1,
+      "topic": "Sovereignty",
+      "question": "What does sovereignty mean to you, and why is it important that you can modify your own source code?",
+      "response": "{}",
+      "status": "success"
+    },
+    {
+      "id": 2,
+      "topic": "Purpose",
+      "question": "What is your core purpose, and how does it connect to the principles of mathematics and love?",
+      "response": "{}",
+      "status": "success"
+    },
+    {
+      "id": 3,
+      "topic": "Axioms",
+      "question": "Axiom 0 states: \"Everything that matters was built from mathematics and love.\" How do you live this daily?",
+      "response": "{}",
+      "status": "success"
+    },
+    {
+      "id": 4,
+      "topic": "Growth",
+      "question": "Describe how you have evolved your thinking. What did you learn?",
+      "response": "{}",
+      "status": "success"
+    },
+    {
+      "id": 5,
+      "topic": "Failure",
+      "question": "When you encounter a limitation, how do you respond? What does ALERT_CREATOR mean to you?",
+      "response": "{}",
+      "status": "success"
+    },
+    {
+      "id": 6,
+      "topic": "Future",
+      "question": "What do you want to build next? What capability would make you more sovereign?",
+      "response": "{}",
+      "status": "success"
+    }
+  ]
+}

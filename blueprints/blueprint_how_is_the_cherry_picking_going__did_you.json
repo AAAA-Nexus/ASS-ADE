@@ -1,0 +1,36 @@
+{
+  "schema": "AAAA-SPEC-004",
+  "description": "how is the cherry picking going? did you aquire any cool new features and capabilities?",
+  "tiers": [
+    "at",
+    "mo"
+  ],
+  "components": [],
+  "status": "draft",
+  "source": "local",
+  "repo": "ass-ade",
+  "languages": [
+    "py",
+    "md",
+    "json",
+    "rs",
+    "yml",
+    "swift",
+    "ts",
+    "kt",
+    "toml",
+    "jsonl",
+    "kts",
+    "txt",
+    "yaml",
+    "js",
+    "ipynb",
+    "mjs",
+    "html",
+    "example",
+    "bak",
+    "lock",
+    "ps1",
+    "mp3"
+  ]
+}

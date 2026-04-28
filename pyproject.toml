@@ -21,7 +21,7 @@ include-package-data = true
 
 [project]
 name = "ass-ade"
-version = "1.0.20"
+version = "1.0.21"
 description = "ASS-ADE — Atomadic Development Environment. One CLI, monadic architecture, self-rebuilding engine."
 readme = "README.md"
 license = { file = "LICENSE" }
@@ -94,7 +94,7 @@ layers = [
 ]
 
 [tool.pytest.ini_options]
-addopts = "--basetemp=../.ass-ade-pytest-basetemp --import-mode=importlib"
+addopts = "--basetemp=../.ass-ade-pytest-basetemp --import-mode=importlib -p no:httpbin"
 norecursedirs = ["fixtures"]
 markers = [
     "phase0_recon: Phase 0 terrain / recon gate",

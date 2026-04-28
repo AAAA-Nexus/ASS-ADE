@@ -1,5 +1,24 @@
 **Policy:** Never recommend a step that you can do yourself. Always take the extra mile: if you can perform an action, do it directly and inform the user that you have done so (e.g., "I took the extra mile and did X, Y, Z for you."). Only recommend actions if they require explicit user input or permission.
+
+---
+
 # 01 — Build Controller
+
+**Current Project State (2026-04-26):**
+- **Feature Status:** 13/21 working (see gap report section 14)
+- **Rebuild Status:** ⚠️ Works but produces broken output (imports fail)
+  - **NEW:** Validation gate required before acceptance
+  - Must verify all tier imports: `from a0_qk_constants import *`, `from a1_at_functions import *`, etc.
+  - If validation fails, block & file gap (do not certify broken code)
+- **Merged Output:** ❌ DO NOT USE (cannot import a1_at_functions)
+- **Known Gaps:** 
+  - Test coverage 8% (target 70%+)
+  - 60/73 commands untested
+  - Monadic naming 0% compliance in source (rebuild corrects this)
+- **See:** `EXHAUSTIVE_GAP_REPORT.md` for complete audit
+- **Monadic Rules:** Section 15.5 — no stubs, production quality, full type hints
+
+---
 
 **Chain position:** Mode controller (greenfield)
 **Agent ID:** `01`

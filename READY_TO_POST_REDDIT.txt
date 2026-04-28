@@ -1,0 +1,33 @@
+==== REDDIT — r/programming ====
+
+TITLE:
+I fed 13,286 files from 3 open-source repos into an AI engine. It rebuilt them into a single 92,305-file certified architecture in 24 minutes.
+
+BODY:
+I got tired of AI tools that autocomplete one line at a time. So I built ASS-ADE — an autonomous development engine that works at the codebase level, not the line level.
+
+For the first public demo (ASS-CLAW), I fed it three repos:
+
+- OpenClaw — 361K stars, Swift/TypeScript/Kotlin
+- ClawCode — Python/Rust
+- Oh My Claude Code — 30K stars, TypeScript
+
+The engine ingested 13,286 files, extracted 227,086 symbols, and rebuilt everything into a single 5-tier monadic architecture:
+
+- a0 — Constants and type definitions (3,799 files)
+- a1 — Pure functions, zero side effects (58,509 files)
+- a2 — Stateful composites (11,737 files)
+- a3 — Features and domain logic (9,943 files)
+- a4 — Orchestration and entry points (8,317 files)
+
+Along the way it resolved 28 namespace collisions, fixed 8,257 purity violations (upward imports), and rewrote 274 broken imports. Final build: 92,305 files. Zero circular imports. 100% audit pass. 24 minutes. No human told it where to put anything.
+
+Every other AI coding tool is a passenger. ASS-ADE drives.
+
+GitHub: https://github.com/AAAA-Nexus/ASS-ADE
+PyPI: pip install ass-ade
+License: BSL 1.1 (free for non-commercial, converts Apache 2.0 in 2030)
+
+Happy to answer questions about the architecture, the classification engine, or the tier enforcement system.
+
+==== ALSO POST TO: r/MachineLearning, r/Python, r/softwareengineering ====

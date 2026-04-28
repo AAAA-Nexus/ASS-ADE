@@ -1,0 +1,5 @@
+# Cloudflare Pages configuration for Atomadic Chat
+# Deploy with: npx wrangler pages deploy public/
+
+name = "atomadic-chat"
+account_id = "74799e471a537b91cf0d6e633bd30d6f"

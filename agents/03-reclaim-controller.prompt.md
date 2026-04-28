@@ -164,7 +164,7 @@ Inbound `inputs` (pre-ACK):
 ```json
 {"mode": "reclaim",
  "target_paths": ["c:\\repos\\a", "c:\\repos\\b"],
- "out_dir": "<ATOMADIC_WORKSPACE>/ass-claw-v1",
+ "out_dir": "<ATOMADIC_WORKSPACE>/<reclaim-name>-v1",
  "quality_preference": "balanced",
  "acknowledged": false,
  "auto_consume_only": false}

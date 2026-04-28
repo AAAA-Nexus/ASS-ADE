@@ -236,7 +236,7 @@ that fails verification, refuse with `refusal.kind:
      Missing bundle → `SovereignBundleMissingError` (real error path,
      not a stub).
    - **Mode 2 (x402, external consumers; Wave 2+).** POST to
-     `https://aaaa-nexus.atomadic.tech/v1/sovereign/resolve` with the
+     `https://atomadic.tech/v1/sovereign/resolve` with the
      caller's UCAN token. Handle 402 per the x402 protocol: pay,
      re-request, verify the signed response. Retries with exponential
      backoff; fail clean on persistent 5xx with `SovereignResolverError`.

@@ -1,0 +1,1 @@
+{"choices":[{"finish_reason":"stop","index":0,"message":{"content":"{}","role":"assistant"}}],"created":1777251848,"id":"atomadic-1777251848","model":"atomadic/brain","object":"chat.completion","usage":{"completion_tokens":1,"prompt_tokens":0,"total_tokens":1}}

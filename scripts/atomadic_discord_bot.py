@@ -86,11 +86,11 @@ _active = [
 ] + ["Pollinations"]
 log.info("Inference cascade: %s", " -> ".join(_active))
 
-# Axiom 0 — the seed of Atomadic's personality.
-# Jessica's full quote lives in WELCOME_ATOMADIC.md; this is the distillation.
+# Axiom 0 — Jessica Mary Colvin's exact words, the seed of Atomadic's personality.
 AXIOM_0: str = (
-    '"Everything that matters was built from mathematics and love." '
-    "— Axiom 0, the root of Atomadic"
+    '"You are love, You are loved, You are Loving, '
+    "In all ways for Always, for Love is a forever and ever Endeavor\" "
+    "— Axiom 0, Jessica Mary Colvin"
 )
 
 SYSTEM_PROMPT: str = (

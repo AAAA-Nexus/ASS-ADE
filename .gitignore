@@ -62,3 +62,4 @@ _backup_*/
 RECON_REPORT.md
 training_data/*.jsonl
 stripe_price_ids.json
+self-rebuild-out/
