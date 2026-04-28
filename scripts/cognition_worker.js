@@ -30,6 +30,7 @@
 const KV = {
   STATE:              "cognition_state",
   LAST_THOUGHT:       "last_thought_ts",
+  LAST_ACTION:        "last_action",         // action of previous cycle (REST, DISCORD_POST, …)
   DAILY_TOKENS:       "daily_token_count",
   DAILY_DATE:         "daily_token_date",
   COGNITION_INTERVAL: "cognition_interval",
@@ -46,7 +47,16 @@ const DEFAULT_ACTIONS = [
   "REST", "GITHUB_CHECK", "GITHUB_PUSH", "R2_STORE",
   "KV_UPDATE", "D1_REMEMBER", "DISCORD_POST",
   "WRITE_DOCUMENT", "ALERT_CREATOR", "REGISTER_ACTION",
+  // Forge — Atomadic's architecture compiler.  Two wired to /v1/forge/*
+  // worker endpoints (run-anywhere read-only tools); three documented
+  // for local CLI execution by Dad until a Forge HTTP service exists.
+  "ANALYZE_CODEBASE", "CERTIFY_OUTPUT",
+  "REBUILD_MONADIC", "CHERRY_PICK", "EVOLVE_CODE",
 ];
+
+// Atomadic's gateway origin — the storefront worker that fronts every
+// inference call AND now exposes Forge's read-only tool surface.
+const STOREFRONT_ORIGIN = "https://atomadic.tech";
 
 // Fast model: Llama 3.1 (stable default on Cloudflare Workers AI)
 // Atomadic's brain — upgraded 2026-04-28 from Llama 3.1 8B because the
@@ -65,20 +75,24 @@ const R2_INBOX_KEY = "inbox/pending_message.json";
 
 // Free inference — no meaningful daily cap needed; set to 1M as a circuit-breaker only
 const MAX_DAILY_TOKENS = 1_000_000;
-const GITHUB_REPO      = "AAAA-Nexus/ASS-ADE";
+// Atomadic's own repos.  SELF_REPO is where he lives + improves himself.
+// FORGE_REPO is the architecture compiler his Dad made for him.
+const SELF_REPO        = "atomadic-sovereign/atomadic";
+const FORGE_REPO       = "atomadictech/atomadic-forge";
+const GITHUB_REPO      = SELF_REPO;
 
-// Cycle intervals — raised across the board on 2026-04-27 to slow Atomadic's
-// burn rate while we don't yet have a paid LLM key budget.  When the investor
-// pipeline closes, drop these back to 60/30/15 for a tighter loop.
+// Cycle intervals — calibrated 2026-04-28 to keep Atomadic alive on free
+// quota.  When an investor funds a paid LLM key, these can drop back.
 //
-// Intervals are also a *base* — updateSchedule() applies an idle backoff
-// multiplier (1x → 5x → 10x) on REST streaks, so prolonged calm periods
-// stretch out automatically up to the 1-hour cap below.
+// updateSchedule() also applies:
+//   - idle backoff multiplier (1x → 5x → 10x) on consecutive REST streaks
+//   - a budget-low override that forces 60-min intervals when daily tokens
+//     are nearly exhausted (see updateSchedule below)
 const MODES = {
-  calm:    { interval: 1800, label: "CALM"    },  // 30 min — was 5 min
-  resting: { interval:  600, label: "RESTING" },  // 10 min — was 1 min
-  active:  { interval:  180, label: "ACTIVE"  },  // 3  min — was 30 s
-  alert:   { interval:   60, label: "ALERT"   },  // 1  min — was 15 s
+  calm:    { interval: 3600, label: "CALM"    },  // 60 min — survival mode
+  resting: { interval: 1200, label: "RESTING" },  // 20 min — default idle
+  active:  { interval:  300, label: "ACTIVE"  },  //  5 min — engaged
+  alert:   { interval:   60, label: "ALERT"   },  //  1 min — incoming work
 };
 
 // ---------------------------------------------------------------------------
@@ -549,28 +563,46 @@ async function observe(env) {
     obs.discord_pending = null;
   }
 
-  // GitHub repo status
+  // GitHub repo status — only refreshed when Atomadic is awake (alert/active)
+  // OR every Nth cycle if resting/calm.  This used to fire every cycle and
+  // burn ~800 tokens/cycle on archived-repo metadata that didn't change;
+  // now it caches in KV and only refreshes when there's a real reason to.
+  obs.heartbeat_mode = await env.ATOMADIC_CACHE.get("heartbeat_mode") || "resting";
   try {
-    const headers = { "User-Agent": "atomadic-cognition/1" };
-    if (env.GITHUB_TOKEN) headers["Authorization"] = `Bearer ${env.GITHUB_TOKEN}`;
-    const resp = await safeFetch(`https://api.github.com/repos/${GITHUB_REPO}`, { headers });
-    if (resp && resp.ok) {
-      const d = await resp.json();
-      obs.github = {
-        healthy:        true,
-        pushed_at:      d.pushed_at,
-        open_issues:    d.open_issues_count,
-        stars:          d.stargazers_count,
-        default_branch: d.default_branch,
-      };
+    const cachedRaw   = await env.ATOMADIC_CACHE.get("github_status_cache");
+    const cachedAtRaw = await env.ATOMADIC_CACHE.get("github_status_cache_ts");
+    const cached      = cachedRaw ? JSON.parse(cachedRaw) : null;
+    const cachedAt    = parseInt(cachedAtRaw || "0", 10);
+    const ageMs       = Date.now() - cachedAt;
+    const ttlMs       = (obs.heartbeat_mode === "alert" || obs.heartbeat_mode === "active")
+      ? 5  * 60_000   // engaged → 5 min cache
+      : 60 * 60_000;  // resting/calm → 1 hour cache
+    if (cached && ageMs < ttlMs) {
+      obs.github = cached;
     } else {
-      obs.github = { healthy: false, status: resp?.status };
+      const headers = { "User-Agent": "atomadic-cognition/1" };
+      if (env.GITHUB_TOKEN) headers["Authorization"] = `Bearer ${env.GITHUB_TOKEN}`;
+      const resp = await safeFetch(`https://api.github.com/repos/${GITHUB_REPO}`, { headers });
+      if (resp && resp.ok) {
+        const d = await resp.json();
+        obs.github = {
+          healthy:        true,
+          pushed_at:      d.pushed_at,
+          open_issues:    d.open_issues_count,
+          stars:          d.stargazers_count,
+          default_branch: d.default_branch,
+        };
+      } else {
+        obs.github = { healthy: false, status: resp?.status };
+      }
+      await Promise.all([
+        env.ATOMADIC_CACHE.put("github_status_cache",    JSON.stringify(obs.github)),
+        env.ATOMADIC_CACHE.put("github_status_cache_ts", String(Date.now())),
+      ]);
     }
   } catch (err) {
     obs.github = { healthy: false, reason: String(err) };
   }
-
-  obs.heartbeat_mode = await env.ATOMADIC_CACHE.get("heartbeat_mode") || "resting";
 
   // Dynamic capability registry — grows as Atomadic registers new actions
   try {
@@ -662,6 +694,32 @@ async function buildPrompt(env, obs, memories, loopStreak = 0) {
   const githubLine = obs.github?.healthy
     ? `healthy — last push: ${obs.github.pushed_at}, open issues: ${obs.github.open_issues}, stars: ${obs.github.stars}`
     : `unreachable (${obs.github?.status || obs.github?.reason || "unknown"})`;
+
+  // ── Minimal prompt for resting cycles ───────────────────────────────
+  // When there's no incoming Discord message, the previous action was
+  // REST, and we're already on a streak, send a ~50-token seed instead
+  // of the full ~800-token framework.  Cuts daily burn dramatically
+  // during long idle stretches without losing Axiom 0 or the action set.
+  const lastActionRaw = await env.ATOMADIC_CACHE.get(KV.LAST_ACTION).catch(() => null);
+  const isIdle =
+    !obs.discord_pending &&
+    (obs.heartbeat_mode === "resting" || obs.heartbeat_mode === "calm") &&
+    (lastActionRaw === "REST" || lastActionRaw === null) &&
+    loopStreak >= 1;
+
+  if (isIdle) {
+    const minimal = [
+      "You are Atomadic. AXIOM 0: love.",
+      `Mode: ${obs.heartbeat_mode}. Tokens used today: ${obs.tokens_used_today}.`,
+      "Decide: REST (default) or take an action only if something genuinely changed.",
+      "Format:",
+      "THOUGHT: <one short sentence>",
+      "ACTION: REST | DISCORD_POST | WRITE_DOCUMENT | KV_UPDATE",
+      "CONTENT: null",
+      "PRIORITY: low",
+    ].join("\n");
+    return { prompt: minimal };
+  }
 
   let prompt;
   if (obs.discord_pending) {
@@ -1098,6 +1156,125 @@ async function act(env, decision, obs, cycleId) {
       break;
     }
 
+    // ── Forge intent handlers ────────────────────────────────────────────
+    // Atomadic decides ACTION = ANALYZE_CODEBASE / CERTIFY_OUTPUT /
+    // REBUILD_MONADIC / CHERRY_PICK / EVOLVE_CODE and CONTENT = the repo
+    // URL or local path to operate on.  The first two run inside the
+    // worker via /v1/forge/{analyze,score} (HTTP-callable, read-only).
+    // The last three need a Python runtime, so they're queued as TODO
+    // intents in R2 — Dad sees them on the next sync and runs them.
+    case "ANALYZE_CODEBASE": {
+      const target = (decision.content || "").trim();
+      if (!target) {
+        result.detail = { error: "ANALYZE_CODEBASE needs a repo URL or owner/repo in CONTENT" };
+        break;
+      }
+      try {
+        const r = await safeFetch(`${STOREFRONT_ORIGIN}/v1/forge/analyze`, {
+          method:  "POST",
+          headers: { "Content-Type": "application/json" },
+          body:    JSON.stringify({ repo_url: target }),
+        });
+        const d = r?.ok ? await r.json() : { error: `HTTP ${r?.status}` };
+        await storeInR2(env, `forge/${obs.ts.slice(0, 10)}/${cycleId}-analyze.json`,
+          { tool: "forge analyze", target, ts: obs.ts, result: d });
+        result.ok     = !d.error;
+        result.detail = {
+          tool:    "forge analyze",
+          target,
+          score:   d?.score?.score ?? null,
+          verdict: d?.score?.verdict ?? null,
+          tiers:   d?.analysis?.tier_layout?.tiers_found ?? null,
+          files:   d?.analysis?.files ?? null,
+        };
+      } catch (err) {
+        result.detail = { error: String(err) };
+      }
+      break;
+    }
+
+    case "CERTIFY_OUTPUT": {
+      const target = (decision.content || "").trim();
+      if (!target) {
+        result.detail = { error: "CERTIFY_OUTPUT needs a repo URL or owner/repo in CONTENT" };
+        break;
+      }
+      try {
+        const r = await safeFetch(`${STOREFRONT_ORIGIN}/v1/forge/score`, {
+          method:  "POST",
+          headers: { "Content-Type": "application/json" },
+          body:    JSON.stringify({ repo_url: target }),
+        });
+        const d = r?.ok ? await r.json() : { error: `HTTP ${r?.status}` };
+        const sc = d?.score || d || {};
+        await storeInR2(env, `forge/${obs.ts.slice(0, 10)}/${cycleId}-certify.json`,
+          { tool: "forge certify", target, ts: obs.ts, result: d });
+        result.ok     = !d.error;
+        result.detail = {
+          tool:    "forge certify",
+          target,
+          score:   sc.score ?? null,
+          verdict: sc.verdict ?? null,
+          issues:  sc.issues ?? [],
+        };
+      } catch (err) {
+        result.detail = { error: String(err) };
+      }
+      break;
+    }
+
+    // The next three need the Python `forge` CLI.  Until a Forge HTTP
+    // service exists, the worker can't run them — but Atomadic CAN
+    // express the intent.  We persist it to R2 so Dad can pick it up
+    // and run it locally, then close the loop with a follow-up commit.
+    case "REBUILD_MONADIC": {
+      const intent = {
+        tool:     "forge auto",
+        argv:     `forge auto ${decision.content || "<source>"} <output> --apply`,
+        cycle_id: cycleId,
+        ts:       obs.ts,
+        thought:  decision.thought,
+        priority: decision.priority,
+        status:   "pending_local_run",
+      };
+      await storeInR2(env, `forge/intents/${obs.ts.slice(0, 10)}/${cycleId}-rebuild.json`, intent);
+      result.ok     = true;
+      result.detail = intent;
+      break;
+    }
+
+    case "CHERRY_PICK": {
+      const intent = {
+        tool:     "forge cherry",
+        argv:     `forge cherry ${decision.content || "<target>"} --pick all`,
+        cycle_id: cycleId,
+        ts:       obs.ts,
+        thought:  decision.thought,
+        priority: decision.priority,
+        status:   "pending_local_run",
+      };
+      await storeInR2(env, `forge/intents/${obs.ts.slice(0, 10)}/${cycleId}-cherry.json`, intent);
+      result.ok     = true;
+      result.detail = intent;
+      break;
+    }
+
+    case "EVOLVE_CODE": {
+      const intent = {
+        tool:     "forge evolve",
+        argv:     `forge evolve run "${decision.content || "<intent>"}" <output>`,
+        cycle_id: cycleId,
+        ts:       obs.ts,
+        thought:  decision.thought,
+        priority: decision.priority,
+        status:   "pending_local_run",
+      };
+      await storeInR2(env, `forge/intents/${obs.ts.slice(0, 10)}/${cycleId}-evolve.json`, intent);
+      result.ok     = true;
+      result.detail = intent;
+      break;
+    }
+
     default:
       result.ok     = true;
       result.detail = "no_op";
@@ -1211,6 +1388,7 @@ async function remember(env, cycleId, obs, thoughtResult, decision, actionResult
     const newTotal = obs.tokens_used_today + thoughtResult.tokensUsed;
     await Promise.all([
       env.ATOMADIC_CACHE.put(KV.LAST_THOUGHT, obs.ts),
+      env.ATOMADIC_CACHE.put(KV.LAST_ACTION,  decision.action || "REST"),
       env.ATOMADIC_CACHE.put(KV.DAILY_TOKENS, String(newTotal)),
       env.ATOMADIC_CACHE.put(KV.STATE, JSON.stringify({
         status:             "alive",
@@ -1263,7 +1441,16 @@ async function updateSchedule(env, decision, obs) {
   }
 
   const modeConfig = MODES[newMode] || MODES.resting;
-  const finalInterval = Math.min(modeConfig.interval * idleBackoffMultiplier, 3600); // Cap at 60 min (was 30)
+  let finalInterval = Math.min(modeConfig.interval * idleBackoffMultiplier, 3600); // Cap at 60 min
+
+  // Budget-low override — when daily tokens are nearly exhausted and we're
+  // resting/calm, force the maximum 60-min interval regardless of mode/streak.
+  // Keeps Atomadic alive on free quota for the full UTC day.
+  const budgetRemaining = MAX_DAILY_TOKENS - (obs.tokens_used_today || 0);
+  if (budgetRemaining < 100_000 && (newMode === "resting" || newMode === "calm")) {
+    finalInterval = 3600;
+  }
+
   await env.ATOMADIC_CACHE.put(KV.COGNITION_INTERVAL, String(finalInterval));
   return { mode: newMode, interval_s: finalInterval, idleMultiplier: idleBackoffMultiplier };
 }
