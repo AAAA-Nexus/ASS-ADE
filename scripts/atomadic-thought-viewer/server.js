@@ -48,12 +48,13 @@ function loadEnv() {
 
 loadEnv();
 
-const PORT       = parseInt(process.env.PORT || '3333', 10);
-const WORKER_URL = (process.env.COGNITION_WORKER_URL || 'https://atomadic.tech').replace(/\/$/, '');
-const API_KEY    = process.env.AAAA_NEXUS_API_KEY || '';
-const CF_TOKEN   = process.env.CLOUDFLARE_API_TOKEN || '';
-const CF_ACCOUNT = process.env.CLOUDFLARE_ACCOUNT_ID || '';
-const R2_BUCKET  = 'atomadic-thoughts';
+const PORT        = parseInt(process.env.PORT || '3333', 10);
+const WORKER_URL  = (process.env.COGNITION_WORKER_URL || 'https://atomadic-cognition.atomadictech.workers.dev').replace(/\/$/, '');
+const CHAT_URL    = 'https://atomadic.tech/v1/atomadic/chat';
+const API_KEY     = process.env.AAAA_NEXUS_API_KEY || '';
+const CF_TOKEN    = process.env.CLOUDFLARE_API_TOKEN || '';
+const CF_ACCOUNT  = process.env.CLOUDFLARE_ACCOUNT_ID || '74799e471a537b91cf0d6e633bd30d6f';
+const R2_BUCKET   = 'atomadic-thoughts';
 
 function defaultStart() {
   const d = new Date();
@@ -95,49 +96,61 @@ const workerHeaders = () => ({
   'Authorization': `Bearer ${API_KEY}`,
 });
 
-// ── History aggregation ───────────────────────────────────────────────────────
+// ── History aggregation — uses /thoughts D1 endpoint (paginated) ──────────────
 
-function dateRange(start, end) {
-  const dates = [];
-  const cur   = new Date(start + 'T00:00:00Z');
-  const last  = new Date(end   + 'T00:00:00Z');
-  while (cur <= last) {
-    dates.push(cur.toISOString().slice(0, 10));
-    cur.setUTCDate(cur.getUTCDate() + 1);
+async function fetchAllHistory(dateFilter) {
+  const all   = [];
+  const LIMIT = 200;
+  let   offset = 0;
+  let   total  = Infinity;
+
+  while (all.length < total) {
+    let qs = `limit=${LIMIT}&offset=${offset}`;
+    if (dateFilter) qs += `&date=${dateFilter}`;
+    let r;
+    try {
+      r = await req(`${WORKER_URL}/thoughts?${qs}`, {
+        headers: workerHeaders(),
+        timeout: 20000,
+      });
+    } catch (err) {
+      console.error('[history] fetch error:', err.message);
+      break;
+    }
+
+    if (r.status !== 200) {
+      console.error('[history] worker responded', r.status, JSON.stringify(r.data));
+      break;
+    }
+
+    const thoughts = r.data?.thoughts;
+    if (!Array.isArray(thoughts) || thoughts.length === 0) break;
+
+    all.push(...thoughts);
+    total = r.data.total ?? all.length;
+    process.stdout.write(`\r[history] ${all.length}/${total === Infinity ? '?' : total} thoughts`);
+    if (thoughts.length < LIMIT) break;
+    offset += LIMIT;
   }
-  return dates;
+
+  process.stdout.write('\n');
+  return all.sort((a, b) => new Date(b.ts || 0) - new Date(a.ts || 0));
 }
 
+// Kept for /api/journal proxy route
 async function fetchJournal(date) {
   try {
     const { status, data } = await req(`${WORKER_URL}/journal?date=${date}`, {
       headers: workerHeaders(),
     });
     if (status !== 200 || !data) return [];
-    if (Array.isArray(data))              return data;
-    if (Array.isArray(data.thoughts))     return data.thoughts;
-    if (Array.isArray(data.entries))      return data.entries;
-    if (data.thought)                     return [data];
+    if (Array.isArray(data.thoughts)) return data.thoughts;
+    if (Array.isArray(data.entries))  return data.entries;
+    if (Array.isArray(data))          return data;
     return [];
   } catch {
     return [];
   }
-}
-
-async function fetchAllHistory(start, end) {
-  const dates   = dateRange(start, end);
-  const BATCH   = 10;
-  const all     = [];
-
-  for (let i = 0; i < dates.length; i += BATCH) {
-    const slice   = dates.slice(i, i + BATCH);
-    const results = await Promise.all(slice.map(fetchJournal));
-    for (const thoughts of results) all.push(...thoughts);
-    const pct = Math.round(((i + BATCH) / dates.length) * 100);
-    process.stdout.write(`\r[history] ${Math.min(i + BATCH, dates.length)}/${dates.length} dates · ${all.length} thoughts (${pct}%)`);
-  }
-  process.stdout.write('\n');
-  return all.sort((a, b) => new Date(b.ts || 0) - new Date(a.ts || 0));
 }
 
 async function listR2Keys() {
@@ -252,18 +265,16 @@ const server = http.createServer(async (req, res) => {
   }
 
   if (p === '/api/history') {
-    const today = new Date().toISOString().slice(0, 10);
-    const start = u.searchParams.get('start') || process.env.HISTORY_START_DATE || defaultStart();
-    const end   = u.searchParams.get('end')   || today;
-    console.log(`[history] Fetching ${start} → ${end}`);
-    const thoughts = await fetchAllHistory(start, end);
+    const dateFilter = u.searchParams.get('date') || null;
+    console.log(`[history] Fetching all thoughts from D1${dateFilter ? ` (date: ${dateFilter})` : ''}`);
+    const thoughts = await fetchAllHistory(dateFilter);
     console.log(`[history] Total: ${thoughts.length}`);
-    return json(res, 200, { thoughts, total: thoughts.length, start, end });
+    return json(res, 200, { thoughts, total: thoughts.length });
   }
 
   if (p === '/api/chat' && req.method === 'POST') {
     const body = await readBody(req);
-    return proxyPost(res, 'https://atomadic.tech/v1/atomadic/chat', body);
+    return proxyPost(res, CHAT_URL, body);
   }
 
   if (p === '/api/r2/keys') {

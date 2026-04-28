@@ -69,10 +69,9 @@ binding = "ATOMADIC_CACHE"
 id      = "86c9e382e74f4d06b91418c8c675dd7e"
 
 # R2 — permanent thought journal + alert archive
-# (TEMPORARILY DISABLED — Cloudflare propagation delay)
-# [[r2_buckets]]
-# binding     = "THOUGHT_JOURNAL"
-# bucket_name = "atomadic-thoughts"
+[[r2_buckets]]
+binding     = "THOUGHT_JOURNAL"
+bucket_name = "atomadic-thoughts"
 
 # Vectorize — semantic memory / RAG (384-dim cosine, bge-small-en-v1.5)
 [[vectorize]]
