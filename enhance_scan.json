@@ -1,6 +1,6 @@
 {
   "root": "/home/runner/work/ASS-ADE/ASS-ADE",
-  "total_findings": 24,
+  "total_findings": 34,
   "by_impact": {
     "high": 20,
     "medium": 8,
@@ -18,26 +18,6 @@
     {
       "id": 11,
       "category": "missing_tests",
-      "title": "No tests for cli_theme.py",
-      "description": "src/ass_ade/a0_qk_constants/cli_theme.py has no corresponding test file under tests/.",
-      "file": "src/ass_ade/a0_qk_constants/cli_theme.py",
-      "line": null,
-      "impact": "high",
-      "effort": "medium"
-    },
-    {
-      "id": 12,
-      "category": "missing_tests",
-      "title": "No tests for schemas.py",
-      "description": "src/ass_ade/a0_qk_constants/schemas.py has no corresponding test file under tests/.",
-      "file": "src/ass_ade/a0_qk_constants/schemas.py",
-      "line": null,
-      "impact": "high",
-      "effort": "medium"
-    },
-    {
-      "id": 13,
-      "category": "missing_tests",
       "title": "No tests for tier_names.py",
       "description": "src/ass_ade/a0_qk_constants/tier_names.py has no corresponding test file under tests/.",
       "file": "src/ass_ade/a0_qk_constants/tier_names.py",
@@ -46,7 +26,7 @@
       "effort": "medium"
     },
     {
-      "id": 14,
+      "id": 12,
       "category": "missing_tests",
       "title": "No tests for a2a_discover_helpers.py",
       "description": "src/ass_ade/a1_at_functions/a2a_discover_helpers.py has no corresponding test file under tests/.",
@@ -56,7 +36,7 @@
       "effort": "medium"
     },
     {
-      "id": 15,
+      "id": 13,
       "category": "missing_tests",
       "title": "No tests for a2a_negotiate_helpers.py",
       "description": "src/ass_ade/a1_at_functions/a2a_negotiate_helpers.py has no corresponding test file under tests/.",
@@ -66,7 +46,7 @@
       "effort": "medium"
     },
     {
-      "id": 16,
+      "id": 14,
       "category": "missing_tests",
       "title": "No tests for a2a_validate_helpers.py",
       "description": "src/ass_ade/a1_at_functions/a2a_validate_helpers.py has no corresponding test file under tests/.",
@@ -76,7 +56,7 @@
       "effort": "medium"
     },
     {
-      "id": 17,
+      "id": 15,
       "category": "missing_tests",
       "title": "No tests for agent_run_helpers.py",
       "description": "src/ass_ade/a1_at_functions/agent_run_helpers.py has no corresponding test file under tests/.",
@@ -86,7 +66,7 @@
       "effort": "medium"
     },
     {
-      "id": 18,
+      "id": 16,
       "category": "missing_tests",
       "title": "No tests for api_inventory_emit.py",
       "description": "src/ass_ade/a1_at_functions/api_inventory_emit.py has no corresponding test file under tests/.",
@@ -96,7 +76,7 @@
       "effort": "medium"
     },
     {
-      "id": 19,
+      "id": 17,
       "category": "missing_tests",
       "title": "No tests for assess_blueprint_fulfillment_helpers.py",
       "description": "src/ass_ade/a1_at_functions/assess_blueprint_fulfillment_helpers.py has no corresponding test file under tests/.",
@@ -106,13 +86,113 @@
       "effort": "medium"
     },
     {
-      "id": 20,
+      "id": 18,
       "category": "missing_tests",
       "title": "No tests for assign_version_helpers.py",
       "description": "src/ass_ade/a1_at_functions/assign_version_helpers.py has no corresponding test file under tests/.",
       "file": "src/ass_ade/a1_at_functions/assign_version_helpers.py",
       "line": null,
       "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 19,
+      "category": "missing_tests",
+      "title": "No tests for assimilate_helpers.py",
+      "description": "src/ass_ade/a1_at_functions/assimilate_helpers.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/a1_at_functions/assimilate_helpers.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 20,
+      "category": "missing_tests",
+      "title": "No tests for assimilate_policy_plan.py",
+      "description": "src/ass_ade/a1_at_functions/assimilate_policy_plan.py has no corresponding test file under tests/.",
+      "file": "src/ass_ade/a1_at_functions/assimilate_policy_plan.py",
+      "line": null,
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "id": 21,
+      "category": "long_function",
+      "title": "Long function: _orchestrator_markdown",
+      "description": "_orchestrator_markdown spans ~52 lines in agents/sync_build_swarm_to_cursor.py.",
+      "file": "agents/sync_build_swarm_to_cursor.py",
+      "line": 125,
+      "impact": "medium",
+      "effort": "medium"
+    },
+    {
+      "id": 22,
+      "category": "long_function",
+      "title": "Long function: interview_atomadic",
+      "description": "interview_atomadic spans ~65 lines in atomadic_interview.py.",
+      "file": "atomadic_interview.py",
+      "line": 78,
+      "impact": "medium",
+      "effort": "medium"
+    },
+    {
+      "id": 23,
+      "category": "long_function",
+      "title": "Long function: run",
+      "description": "run spans ~62 lines in hooks/post_rebuild.py.",
+      "file": "hooks/post_rebuild.py",
+      "line": 15,
+      "impact": "medium",
+      "effort": "medium"
+    },
+    {
+      "id": 24,
+      "category": "long_function",
+      "title": "Long function: run",
+      "description": "run spans ~55 lines in hooks/post_rebuild_collect_training.py.",
+      "file": "hooks/post_rebuild_collect_training.py",
+      "line": 20,
+      "impact": "medium",
+      "effort": "medium"
+    },
+    {
+      "id": 25,
+      "category": "long_function",
+      "title": "Long function: run",
+      "description": "run spans ~65 lines in hooks/post_rebuild_docs.py.",
+      "file": "hooks/post_rebuild_docs.py",
+      "line": 15,
+      "impact": "medium",
+      "effort": "medium"
+    },
+    {
+      "id": 26,
+      "category": "long_function",
+      "title": "Long function: run",
+      "description": "run spans ~58 lines in hooks/post_rebuild_eco_scan.py.",
+      "file": "hooks/post_rebuild_eco_scan.py",
+      "line": 15,
+      "impact": "medium",
+      "effort": "medium"
+    },
+    {
+      "id": 27,
+      "category": "long_function",
+      "title": "Long function: run",
+      "description": "run spans ~76 lines in hooks/pre_rebuild_validate.py.",
+      "file": "hooks/pre_rebuild_validate.py",
+      "line": 59,
+      "impact": "medium",
+      "effort": "medium"
+    },
+    {
+      "id": 28,
+      "category": "long_function",
+      "title": "Long function: build_output_metadata",
+      "description": "build_output_metadata spans ~63 lines in scripts/ass_ade_local_control.py.",
+      "file": "scripts/ass_ade_local_control.py",
+      "line": 271,
+      "impact": "medium",
       "effort": "medium"
     },
     {
@@ -196,64 +276,84 @@
       "effort": "low"
     },
     {
-      "id": 45,
-      "category": "technical_debt",
-      "title": "Technical debt marker: # TODO",
-      "description": "# TODO: add error handling",
-      "file": "src/ass_ade/cli.py",
-      "line": 7252,
+      "id": 37,
+      "category": "missing_types",
+      "title": "Missing return type hint: interview_atomadic",
+      "description": "interview_atomadic in interview_atomadic.py has no return type annotation.",
+      "file": "interview_atomadic.py",
+      "line": 20,
       "impact": "low",
-      "effort": "medium"
+      "effort": "low"
     },
     {
-      "id": 46,
-      "category": "technical_debt",
-      "title": "Technical debt marker: # FIXME",
-      "description": "# FIXME: this is slow",
-      "file": "src/ass_ade/cli.py",
-      "line": 7261,
+      "id": 38,
+      "category": "missing_types",
+      "title": "Missing return type hint: save_responses",
+      "description": "save_responses in interview_atomadic.py has no return type annotation.",
+      "file": "interview_atomadic.py",
+      "line": 70,
       "impact": "low",
-      "effort": "medium"
+      "effort": "low"
     },
     {
-      "id": 47,
-      "category": "technical_debt",
-      "title": "Technical debt marker: # TODO",
-      "description": "markers = (\"# TODO\", \"# FIXME\", \"# HACK\", \"# XXX\")",
-      "file": "src/ass_ade/local/enhancer.py",
-      "line": 304,
+      "id": 39,
+      "category": "missing_types",
+      "title": "Missing return type hint: build_output_metadata",
+      "description": "build_output_metadata in scripts/ass_ade_local_control.py has no return type annotation.",
+      "file": "scripts/ass_ade_local_control.py",
+      "line": 271,
       "impact": "low",
-      "effort": "medium"
+      "effort": "low"
     },
     {
-      "id": 48,
-      "category": "technical_debt",
-      "title": "Technical debt marker: # TODO",
-      "description": "\"code\": f\"# TODO unverified synthesis for: {spec[:120]}\\npass\\n\",",
-      "file": "src/ass_ade/nexus/client.py",
-      "line": 969,
+      "id": 40,
+      "category": "missing_types",
+      "title": "Missing return type hint: append_chain",
+      "description": "append_chain in scripts/ass_ade_local_control.py has no return type annotation.",
+      "file": "scripts/ass_ade_local_control.py",
+      "line": 1539,
       "impact": "low",
-      "effort": "medium"
+      "effort": "low"
     },
     {
-      "id": 49,
-      "category": "technical_debt",
-      "title": "Technical debt marker: # TODO",
-      "description": "\"    # TODO: fix later\\n\",",
-      "file": "tests/test_enhance_cli.py",
-      "line": 52,
+      "id": 41,
+      "category": "missing_types",
+      "title": "Missing return type hint: promote_output",
+      "description": "promote_output in scripts/ass_ade_local_control.py has no return type annotation.",
+      "file": "scripts/ass_ade_local_control.py",
+      "line": 1645,
       "impact": "low",
-      "effort": "medium"
+      "effort": "low"
     },
     {
-      "id": 50,
-      "category": "technical_debt",
-      "title": "Technical debt marker: # TODO",
-      "description": "(tmp_path / \"sample.py\").write_text(\"def f():\\n    pass  # TODO: implement\\n\", encoding=\"utf-8\")",
-      "file": "tests/test_enhance_cli.py",
-      "line": 72,
+      "id": 42,
+      "category": "missing_types",
+      "title": "Missing return type hint: retire_outputs",
+      "description": "retire_outputs in scripts/ass_ade_local_control.py has no return type annotation.",
+      "file": "scripts/ass_ade_local_control.py",
+      "line": 1779,
       "impact": "low",
-      "effort": "medium"
+      "effort": "low"
+    },
+    {
+      "id": 43,
+      "category": "missing_types",
+      "title": "Missing return type hint: check",
+      "description": "check in scripts/check_evolution_context.py has no return type annotation.",
+      "file": "scripts/check_evolution_context.py",
+      "line": 89,
+      "impact": "low",
+      "effort": "low"
+    },
+    {
+      "id": 44,
+      "category": "missing_types",
+      "title": "Missing return type hint: cmd_recon",
+      "description": "cmd_recon in scripts/cli.py has no return type annotation.",
+      "file": "scripts/cli.py",
+      "line": 16,
+      "impact": "low",
+      "effort": "low"
     }
   ],
   "scanned_files": 500
